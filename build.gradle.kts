@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.*
 
 plugins {
     kotlin("jvm") version "1.3.21"
@@ -14,6 +14,9 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.9.8")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.8")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.2.1")
 }
 
