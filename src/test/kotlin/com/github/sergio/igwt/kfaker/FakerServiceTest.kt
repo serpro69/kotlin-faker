@@ -4,13 +4,14 @@ import io.kotlintest.*
 import io.kotlintest.matchers.haveKeys
 import io.kotlintest.matchers.numerics.*
 import io.kotlintest.specs.*
+import java.util.*
 
 internal class FakerServiceTest : FreeSpec() {
 
     init {
         "GIVEN dictionary is loaded" - {
 
-            "WHEN locale is set to default value" - {
+            "WHEN locale for the dictionary is set to default value" - {
                 val dictionary = FakerService().dictionary
 
                 "THEN it should contain all keys for 'en' locale" {
@@ -155,6 +156,25 @@ internal class FakerServiceTest : FreeSpec() {
                 "THEN recurring keys should be appended" {
                     dictionary["creature"]?.keys?.size!! shouldBeGreaterThan 1
                     dictionary["games"]?.keys?.size!! shouldBeGreaterThan 1
+                }
+            }
+
+            "WHEN locale for the dictionary is set to custom value" - {
+                val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
+                val defaultDictionary = FakerService().dictionary
+
+                "THEN matching keys should be overwritten in the localized dictinoary" {
+                    val esAddress = esDictionary["address"]
+                    val defaultAddress = defaultDictionary["address"]
+
+                    esAddress shouldNotBe defaultAddress
+                }
+
+                "THEN non-matching default keys should be present in the localized dictionary" {
+                    val esGames = esDictionary["games"]
+                    val defaultGames = defaultDictionary["games"]
+
+                    esGames shouldBe defaultGames
                 }
             }
         }
