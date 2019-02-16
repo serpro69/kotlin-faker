@@ -1,10 +1,14 @@
 package com.github.sergio.igwt.kfaker
 
-import io.kotlintest.*
 import io.kotlintest.matchers.haveKeys
-import io.kotlintest.matchers.numerics.*
-import io.kotlintest.specs.*
-import java.util.*
+import io.kotlintest.matchers.numerics.shouldBeGreaterThan
+import io.kotlintest.matchers.startWith
+import io.kotlintest.should
+import io.kotlintest.shouldBe
+import io.kotlintest.shouldNotBe
+import io.kotlintest.shouldThrow
+import io.kotlintest.specs.FreeSpec
+import java.util.Locale
 
 internal class FakerServiceTest : FreeSpec() {
 
@@ -163,7 +167,7 @@ internal class FakerServiceTest : FreeSpec() {
                 val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
                 val defaultDictionary = FakerService().dictionary
 
-                "THEN matching keys should be overwritten in the localized dictinoary" {
+                "THEN matching keys should be overwritten in the localized dictionary" {
                     val esAddress = esDictionary["address"]
                     val defaultAddress = defaultDictionary["address"]
 
@@ -175,6 +179,23 @@ internal class FakerServiceTest : FreeSpec() {
                     val defaultGames = defaultDictionary["games"]
 
                     esGames shouldBe defaultGames
+                }
+            }
+
+            "WHEN locale for the dictionary is set with a String value" - {
+                "THEN localized dictionary should be loaded" {
+                    val esDictionary = FakerService("es").dictionary
+                    esDictionary shouldNotBe null
+                }
+            }
+
+            "WHEN locale for the dictionary is set with invalid String value" - {
+                "THEN an exception is thrown when loading the dictionary" {
+                    val exception = shouldThrow<IllegalArgumentException> {
+                        FakerService("esp").dictionary
+                    }
+
+                    exception.message should startWith("Unknown locale value")
                 }
             }
         }

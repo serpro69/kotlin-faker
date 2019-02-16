@@ -1,10 +1,13 @@
 package com.github.sergio.igwt.kfaker
 
-import java.io.*
-import java.util.*
-import kotlin.collections.LinkedHashMap
+import java.io.File
+import java.io.InputStream
+import java.util.Locale
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
+
+    internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
+
     internal val dictionary = load(locale)
 
     private fun load(locale: Locale? = null): Map<String, Map<String, *>> {
@@ -24,6 +27,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         // TODO: 2/16/2019 see if need to add checks for recurring values here as well and merge the maps
         if (locale != null && locale.toString() != "en") {
             val localeFileStream = this::class.java.classLoader.getResourceAsStream("locales/$locale.yml")
+                ?: throw IllegalArgumentException("Unknown locale value: $locale")
             defaultValues.putAll(readCategory(localeFileStream, locale))
         }
 
