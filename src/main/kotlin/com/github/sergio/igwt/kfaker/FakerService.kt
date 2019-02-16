@@ -5,16 +5,23 @@ import java.util.*
 import kotlin.collections.LinkedHashMap
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
-    private val dictionary = load(locale)
+    internal val dictionary = load(locale)
 
-    internal fun load(locale: Locale? = null): Map<String, Map<String, *>> {
+    private fun load(locale: Locale? = null): Map<String, Map<String, *>> {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
         val defaultDir = this::class.java.classLoader.getResource("locales/en/")
 
         File(defaultDir.toURI()).listFiles().forEach {
-            if (it.extension == "yml") defaultValues.putAll(readCategory(it, Locale.ENGLISH))
+            if (it.extension == "yml") {
+                readCategory(it, Locale.ENGLISH).entries.forEach { category ->
+                    if (defaultValues.containsKey(category.key)) {
+                        defaultValues.merge(category.key, category.value) { t, u -> t.plus(u) }
+                    } else defaultValues[category.key] = category.value
+                }
+            }
         }
 
+        // TODO: 2/16/2019 see if need to add checks for recurring values here as well and merge the maps
         if (locale != null && locale.toString() != "en") {
             val localeFileStream = this::class.java.classLoader.getResourceAsStream("locales/$locale.yml")
             defaultValues.putAll(readCategory(localeFileStream, locale))
