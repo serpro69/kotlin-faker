@@ -1,5 +1,6 @@
 package com.github.sergio.igwt.kfaker
 
+import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.haveKeys
 import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.should
@@ -157,8 +158,10 @@ internal class FakerServiceTest : FreeSpec() {
                 }
 
                 "THEN recurring keys should be appended" {
-                    dictionary["creature"]?.keys?.size!! shouldBeGreaterThan 1
-                    dictionary["games"]?.keys?.size!! shouldBeGreaterThan 1
+                    assertSoftly {
+                        dictionary["creature"]?.keys?.size!! shouldBeGreaterThan 1
+                        dictionary["games"]?.keys?.size!! shouldBeGreaterThan 1
+                    }
                 }
             }
 
