@@ -4,7 +4,7 @@ import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.FreeSpec
 
-class RandomServiceTest : FreeSpec({
+internal class RandomServiceTest : FreeSpec({
     "GIVEN RandomService instance" - {
         val randomService = RandomService()
 
