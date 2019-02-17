@@ -5,9 +5,11 @@ import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
 import java.io.File
 import java.io.InputStream
 import java.util.Locale
+import java.util.regex.Matcher
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
+    private val curlyBraceRegex = Regex("""#\{(\p{all}+?)\}""")
     internal val dictionary = load(locale)
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
@@ -73,7 +75,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      */
     fun getRawValue(category: Map<String, *>, key: String): String {
         val parameterValue = category[key]
-            ?: throw NoSuchElementException("Parameter with name $key for this category not found")
+            ?: throw NoSuchElementException("Parameter with name '$key' for this category not found")
 
         return when (parameterValue) {
             is List<*> -> randomService.randomValue(parameterValue) as String
@@ -93,5 +95,40 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             }
             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
         }
+    }
+
+    @Suppress("IMPLICIT_CAST_TO_ANY")
+    fun resolveExpressionWithNumerals(rawValue: String): String {
+        return rawValue.map { if (it == '#') randomService.nextInt(10) else it }.joinToString("")
+    }
+
+    tailrec fun resolveExpression(category: Map<String, *>, rawExpression: String): String {
+        val stringExpression = when {
+            curlyBraceRegex.containsMatchIn(rawExpression) -> {
+                val sb = StringBuffer()
+                findMatchesAndAppendTail(rawExpression, sb, curlyBraceRegex) {
+                    it.appendReplacement(sb, getRawValue(category, it.group(1)))
+                }
+            }
+            else -> rawExpression
+        }
+
+        return if (!curlyBraceRegex.containsMatchIn(stringExpression)) {
+            stringExpression
+        } else resolveExpression(category, stringExpression)
+    }
+
+    private fun findMatchesAndAppendTail(
+        string: String,
+        stringBuffer: StringBuffer,
+        regex: Regex,
+        invoke: (Matcher) -> Unit
+    ): String {
+        val matcher = regex.toPattern().matcher(string)
+
+        while (matcher.find()) invoke(matcher)
+
+        matcher.appendTail(stringBuffer)
+        return stringBuffer.toString()
     }
 }

@@ -3,8 +3,12 @@ package com.github.sergio.igwt.kfaker
 import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.matchers.collections.shouldContainAll
+import io.kotlintest.matchers.collections.shouldHaveAtLeastSize
+import io.kotlintest.matchers.collections.shouldHaveAtMostSize
 import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.matchers.string.shouldContain
+import io.kotlintest.matchers.string.shouldHaveSameLengthAs
+import io.kotlintest.matchers.string.shouldNotContain
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
@@ -12,9 +16,8 @@ import io.kotlintest.specs.FreeSpec
 import java.util.Locale
 
 internal class FakerServiceTest : FreeSpec({
-    "GIVEN dictionary is loaded with a certain locale" - {
-
-        "WHEN locale for the dictionary is set to default value" - {
+    "GIVEN locale for the dictionary" - {
+        "WHEN it is set to default value" - {
             val dictionary = FakerService().dictionary
 
             "THEN it should contain all keys for 'en' locale" {
@@ -52,7 +55,7 @@ internal class FakerServiceTest : FreeSpec({
             }
         }
 
-        "WHEN locale for the dictionary is set to custom value" - {
+        "WHEN it is set to custom value" - {
             val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
             val defaultDictionary = FakerService().dictionary
 
@@ -71,14 +74,14 @@ internal class FakerServiceTest : FreeSpec({
             }
         }
 
-        "WHEN locale for the dictionary is set with a String value" - {
+        "WHEN it is set with a String value" - {
             "THEN localized dictionary should be loaded" {
                 val esDictionary = FakerService("es").dictionary
                 esDictionary shouldNotBe null
             }
         }
 
-        "WHEN locale for the dictionary is set with invalid String value" - {
+        "WHEN it is set with invalid String value" - {
             "THEN an exception is thrown when loading the dictionary" {
                 val exception = shouldThrow<IllegalArgumentException> {
                     FakerService("pe").dictionary
@@ -106,7 +109,6 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN fetching raw value from category" - {
-
             "AND value type is List" - {
                 val category = fakerService.fetchCategory("address")
                 val rawValue = fakerService.getRawValue(category, "city_prefix")
@@ -152,6 +154,73 @@ internal class FakerServiceTest : FreeSpec({
                         assertSoftly {
                             rawValue shouldContain "length"
                             rawValue shouldContain "bban_pattern"
+                        }
+                    }
+                }
+            }
+        }
+
+        "WHEN resolving raw expression" - {
+            "AND expression contains only # chars" - {
+                val rawValue = "######"
+                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+
+                "THEN all # chars are replaced with random digits" {
+                    assertSoftly {
+                        resolvedValue.all { it.isDigit() } shouldBe true
+                        resolvedValue.all { it == resolvedValue[0] } shouldBe false
+                        resolvedValue shouldNotContain "#"
+                        resolvedValue shouldHaveSameLengthAs rawValue
+                    }
+                }
+            }
+
+            "AND expression contains a String and # chars" - {
+                val rawValue = "Winter is coming ###"
+                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+
+                "THEN all # chars are replaced with random digits" {
+                    assertSoftly {
+                        resolvedValue.takeLast(3).all { it.isDigit() } shouldBe true
+                        resolvedValue.takeLast(3).all { it == resolvedValue[0] } shouldBe false
+                        resolvedValue shouldNotContain "#"
+                        resolvedValue shouldHaveSameLengthAs rawValue
+                    }
+                }
+
+                "THEN String value is kept intact" {
+                    resolvedValue.dropLast(3) shouldBe rawValue.dropLast(3)
+                }
+            }
+
+            "AND expression matches the curly-brace-regex" - {
+                val category = fakerService.fetchCategory("name")
+
+                "AND expression matches the root category parameter" - {
+                    val rawExpression = fakerService.getRawValue(category, "first_name")
+
+                    "THEN expression is resolved to raw value of the pointer" {
+                        val resolvedValue = fakerService.resolveExpression(category, rawExpression)
+                        resolvedValue.first().isUpperCase() shouldBe true
+                    }
+                }
+
+                "AND expression matches parameter from another category" - {
+                    "THEN expression is resolved to raw value of another category" {
+                        TODO("Providers are not implemented")
+                    }
+                }
+
+                "AND expression is recursive" - {
+                    val rawExpression = fakerService.getRawValue(category, "name")
+
+                    "THEN expression is resolved recursively" {
+                        val resolvedValue = fakerService.resolveExpression(category, rawExpression)
+
+                        assertSoftly {
+                            resolvedValue.split(" ") shouldHaveAtLeastSize 2
+                            resolvedValue.split(" ") shouldHaveAtMostSize 3
+                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?\}""")
                         }
                     }
                 }
