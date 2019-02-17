@@ -1,18 +1,21 @@
 package com.github.sergio.igwt.kfaker
 
+import com.github.sergio.igwt.kfaker.ResourceLoader.getResource
+import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
 import java.io.File
 import java.io.InputStream
 import java.util.Locale
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
+    internal val dictionary = load(locale)
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
 
-    internal val dictionary = load(locale)
-
     private fun load(locale: Locale? = null): Map<String, Map<String, *>> {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
-        val defaultDir = this::class.java.classLoader.getResource("locales/en/")
+        val defaultDir = requireNotNull(getResource("locales/en/")) {
+            "Directory with default dictionary files not found"
+        }
 
         File(defaultDir.toURI()).listFiles().forEach {
             if (it.extension == "yml") {
@@ -26,8 +29,10 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
         // TODO: 2/16/2019 see if need to add checks for recurring values here as well and merge the maps
         if (locale != null && locale.toString() != "en") {
-            val localeFileStream = this::class.java.classLoader.getResourceAsStream("locales/$locale.yml")
-                ?: throw IllegalArgumentException("Unknown locale value: $locale")
+            val localeFileStream = requireNotNull(getResourceAsStream("locales/$locale.yml")) {
+                "Dictionary file not found for locale value: $locale"
+            }
+
             defaultValues.putAll(readCategory(localeFileStream, locale))
         }
 

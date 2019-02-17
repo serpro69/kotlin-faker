@@ -2,7 +2,6 @@ package com.github.sergio.igwt.kfaker
 
 import io.kotlintest.matchers.haveKeys
 import io.kotlintest.matchers.numerics.shouldBeGreaterThan
-import io.kotlintest.matchers.startWith
 import io.kotlintest.should
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
@@ -192,10 +191,10 @@ internal class FakerServiceTest : FreeSpec() {
             "WHEN locale for the dictionary is set with invalid String value" - {
                 "THEN an exception is thrown when loading the dictionary" {
                     val exception = shouldThrow<IllegalArgumentException> {
-                        FakerService("esp").dictionary
+                        FakerService("pe").dictionary
                     }
 
-                    exception.message should startWith("Unknown locale value")
+                    exception.message shouldBe "Dictionary file not found for locale value: pe"
                 }
             }
         }
