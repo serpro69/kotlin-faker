@@ -1,5 +1,6 @@
 package com.github.sergio.igwt.kfaker
 
+import com.github.sergio.igwt.kfaker.dictionary.toLowerCase
 import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.matchers.collections.shouldContainAll
@@ -18,7 +19,7 @@ import java.util.Locale
 internal class FakerServiceTest : FreeSpec({
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
-            val dictionary = FakerService().dictionary
+            val dictionary = FakerService().dictionaryMap
 
             "THEN it should contain all keys for 'en' locale" {
                 val dictionaryKeys = listOf(
@@ -56,8 +57,8 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set to custom value" - {
-            val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
-            val defaultDictionary = FakerService().dictionary
+            val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionaryMap
+            val defaultDictionary = FakerService().dictionaryMap
 
             "THEN matching keys should be overwritten in the localized dictionary" {
                 val esAddress = esDictionary["address"]
@@ -76,7 +77,7 @@ internal class FakerServiceTest : FreeSpec({
 
         "WHEN it is set with a String value" - {
             "THEN localized dictionary should be loaded" {
-                val esDictionary = FakerService("es").dictionary
+                val esDictionary = FakerService("es").dictionaryMap
                 esDictionary shouldNotBe null
             }
         }
@@ -84,7 +85,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set with invalid String value" - {
             "THEN an exception is thrown when loading the dictionary" {
                 val exception = shouldThrow<IllegalArgumentException> {
-                    FakerService("pe").dictionary
+                    FakerService("pe").dictionaryMap
                 }
 
                 exception.message shouldBe "Dictionary file not found for locale value: pe"
@@ -96,7 +97,7 @@ internal class FakerServiceTest : FreeSpec({
         val fakerService = FakerService()
 
         "WHEN fetching category by key" - {
-            val category = fakerService.fetchCategory("address")
+            val category = fakerService.fetchCategoryMap("address")
 
             "THEN category map should contain all its keys" {
                 category.keys shouldContainAll listOf(
@@ -110,7 +111,7 @@ internal class FakerServiceTest : FreeSpec({
 
         "WHEN fetching raw value from category" - {
             "AND value type is List" - {
-                val category = fakerService.fetchCategory("address")
+                val category = fakerService.fetchCategoryMap("address")
                 val rawValue = fakerService.getRawValue(category, "city_prefix")
                 val cityPrefixes = listOf("North", "East", "West", "South", "New", "Lake", "Port")
 
@@ -120,7 +121,7 @@ internal class FakerServiceTest : FreeSpec({
             }
 
             "AND value type is String" - {
-                val category = fakerService.fetchCategory("id_number")
+                val category = fakerService.fetchCategoryMap("id_number")
                 val rawValue = fakerService.getRawValue(category, "valid")
                 val expectedValue = "#{IDNumber.ssn_valid}"
 
@@ -131,7 +132,7 @@ internal class FakerServiceTest : FreeSpec({
 
             "AND value type is Map" - {
                 "AND values of the Map entries is String type" - {
-                    val category = fakerService.fetchCategory("address")
+                    val category = fakerService.fetchCategoryMap("address")
                     val rawValue = fakerService.getRawValue(category, "postcode_by_state")
                     val rawValues = listOf(
                         "350##", "995##", "967##", "850##", "717##", "900##", "800##", "061##", "204##", "198##",
@@ -148,7 +149,7 @@ internal class FakerServiceTest : FreeSpec({
                 }
 
                 "AND values of Map entries is Map type" - {
-                    val category = fakerService.fetchCategory("bank")
+                    val category = fakerService.fetchCategoryMap("bank")
                     val rawValue = fakerService.getRawValue(category, "iban_details")
                     "THEN value is returned as random value of Map<Map<*,*>> entries as String" {
                         assertSoftly {
@@ -194,7 +195,7 @@ internal class FakerServiceTest : FreeSpec({
             }
 
             "AND expression matches the curly-brace-regex" - {
-                val category = fakerService.fetchCategory("name")
+                val category = fakerService.fetchCategoryMap("name")
 
                 "AND expression matches the root category parameter" - {
                     val rawExpression = fakerService.getRawValue(category, "first_name")
@@ -224,6 +225,18 @@ internal class FakerServiceTest : FreeSpec({
                         }
                     }
                 }
+            }
+        }
+
+        "WHEN mapping raw dictionaryMap to data class" - {
+            val dictionaryMap = fakerService.dictionaryMap
+            val dictionary = fakerService.readDictionary(dictionaryMap)
+
+            "THEN dictionary data matches raw dictionary data" {
+                dictionary.categories.associateBy(
+                    { it.categoryName.toLowerCase() },
+                    { it.values }
+                ) shouldBe dictionaryMap
             }
         }
     }

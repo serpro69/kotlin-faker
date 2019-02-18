@@ -2,6 +2,9 @@ package com.github.sergio.igwt.kfaker
 
 import com.github.sergio.igwt.kfaker.ResourceLoader.getResource
 import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
+import com.github.sergio.igwt.kfaker.dictionary.Category
+import com.github.sergio.igwt.kfaker.dictionary.Dictionary
+import com.github.sergio.igwt.kfaker.dictionary.getCategoryName
 import java.io.File
 import java.io.InputStream
 import java.util.Locale
@@ -10,7 +13,12 @@ import java.util.regex.Matcher
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{all}+?)\}""")
-    internal val dictionary = load(locale)
+    private val dictionary: Dictionary
+    internal val dictionaryMap = load(locale)
+
+    init {
+        dictionary = readDictionary(dictionaryMap)
+    }
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
 
@@ -64,10 +72,22 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     }
 
     /**
-     * Returns the category by its [key] name from this [dictionary]
+     * Returns [Category] instance by its [categoryName]
      */
-    fun fetchCategory(key: String): Map<String, *> {
-        return dictionary[key] ?: throw NoSuchElementException("Category with name '$key' not found")
+    fun fetchCategory(categoryName: String): Category {
+        return dictionary.categories.firstOrNull { it.categoryName.name == categoryName }
+            ?: throw NoSuchElementException("Category with name '$categoryName' not found")
+    }
+
+    /**
+     * Returns the raw category map by its [key] name from this [dictionary] map
+     */
+    fun fetchCategoryMap(key: String): Map<String, *> {
+        return dictionaryMap[key] ?: throw NoSuchElementException("Category with name '$key' not found")
+    }
+
+    fun getRawValue(category: Category, key: String): String {
+        return getRawValue(category.values, key)
     }
 
     /**
@@ -102,6 +122,10 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return rawValue.map { if (it == '#') randomService.nextInt(10) else it }.joinToString("")
     }
 
+    fun resolveExpression(category: Category, rawExpression: String): String {
+        return resolveExpression(category.values, rawExpression)
+    }
+
     tailrec fun resolveExpression(category: Map<String, *>, rawExpression: String): String {
         val stringExpression = when {
             curlyBraceRegex.containsMatchIn(rawExpression) -> {
@@ -130,5 +154,10 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
+    }
+
+    fun readDictionary(dictionaryMap: Map<String, Map<String, *>>): Dictionary {
+        val categories = dictionaryMap.entries.toList().map { Category(getCategoryName(it.key), it.value) }
+        return Dictionary(categories)
     }
 }
