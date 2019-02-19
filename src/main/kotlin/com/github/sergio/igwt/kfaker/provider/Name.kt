@@ -10,5 +10,5 @@ import com.github.sergio.igwt.kfaker.dictionary.CategoryName
 class Name internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.NAME
 
-    val name = resolve { fakerService.resolveExpression(Faker, it, "name") }
+    val name = resolve { fakerService.resolve(Faker, it, "name") }
 }

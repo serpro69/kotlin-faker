@@ -5,6 +5,7 @@ import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
 import com.github.sergio.igwt.kfaker.dictionary.Category
 import com.github.sergio.igwt.kfaker.dictionary.CategoryName
 import com.github.sergio.igwt.kfaker.dictionary.Dictionary
+import com.github.sergio.igwt.kfaker.dictionary.RawExpression
 import com.github.sergio.igwt.kfaker.dictionary.getCategoryName
 import com.github.sergio.igwt.kfaker.provider.FakeDataProvider
 import java.io.File
@@ -17,12 +18,7 @@ import kotlin.reflect.full.declaredMemberProperties
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
-    private val dictionary: Dictionary
-    internal val dictionaryMap = load(locale)
-
-    init {
-        dictionary = readDictionary(dictionaryMap)
-    }
+    val dictionary = load(locale)
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
 
@@ -34,7 +30,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
-    private fun load(locale: Locale? = null): Map<String, Map<String, *>> {
+    private fun load(locale: Locale? = null): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
         val defaultDir = requireNotNull(getResource("locales/en/")) {
             "Directory with default dictionary files not found"
@@ -58,7 +54,8 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             defaultValues.putAll(readCategory(localeFileStream, locale))
         }
 
-        return defaultValues
+        val categories = defaultValues.entries.toList().map { Category(getCategoryName(it.key), it.value) }
+        return Dictionary(categories)
     }
 
     // TODO: 2/15/2019 auto-generate the code for each category (this will allow easy extensibility of the local files)
@@ -82,35 +79,25 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     }
 
     /**
-     * Returns the raw category map by its [key] name from this [dictionary] map
-     */
-    fun fetchCategoryMap(key: String): Map<String, *> {
-        return dictionaryMap[key] ?: throw NoSuchElementException("Category with name '$key' not found")
-    }
-
-    fun getRawValue(category: Category, key: String): String {
-        return getRawValue(category.values, key)
-    }
-
-    /**
      * Returns raw value as [String] from a given [category] fetched by its [key]
      */
-    fun getRawValue(category: Map<String, *>, key: String): String {
-        val parameterValue = category[key]
+    fun getRawValue(category: Category, key: String): RawExpression {
+        val parameterValue = category.values[key]
             ?: throw NoSuchElementException("Parameter with name '$key' for this category not found")
 
         return when (parameterValue) {
-            is List<*> -> randomService.randomValue(parameterValue) as String
-            is String -> parameterValue
+            is List<*> -> RawExpression(randomService.randomValue(parameterValue) as String)
+            is String -> RawExpression(parameterValue)
             is Map<*, *> -> {
+                // TODO: 2/20/2019 this should probably be reimplemented
                 when {
                     parameterValue.values.all { it is String } -> {
                         val values = parameterValue.values.toList()
-                        randomService.randomValue(values) as String
+                        RawExpression(randomService.randomValue(values) as String)
                     }
                     parameterValue.values.all { it is Map<*, *> } -> {
                         val values = parameterValue.values.toList()
-                        randomService.randomValue(values.map { "$it" })
+                        RawExpression(randomService.randomValue(values.map { "$it" }))
                     }
                     else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                 }
@@ -124,17 +111,17 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return rawValue.map { if (it == '#') randomService.nextInt(10) else it }.joinToString("")
     }
 
-    fun resolveExpression(faker: Faker, category: Category, rawExpression: String): String {
-        val stringExpression = getRawValue(category, rawExpression)
-        return resolveExpression(faker, category.values, stringExpression)
+    fun resolve(faker: Faker, category: Category, key: String): String {
+        val rawExpression = getRawValue(category, key)
+        return resolveExpression(faker, category, rawExpression)
     }
 
-    tailrec fun resolveExpression(faker: Faker, category: Map<String, *>, rawExpression: String): String {
+    private tailrec fun resolveExpression(faker: Faker, category: Category, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
         val resolvedExpression = when {
-            curlyBraceRegex.containsMatchIn(rawExpression) -> {
-                findMatchesAndAppendTail(rawExpression, sb, curlyBraceRegex) {
+            curlyBraceRegex.containsMatchIn(rawExpression.value) -> {
+                findMatchesAndAppendTail(rawExpression.value, sb, curlyBraceRegex) {
                     val simpleClassName = it.group(1)?.trimEnd('.')
 
                     val replacement = when (simpleClassName != null) {
@@ -144,18 +131,18 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
                             providerType.callProperty(propertyName)
                         }
-                        false -> getRawValue(category, it.group(2))
+                        false -> getRawValue(category, it.group(2)).value
                     }
 
                     it.appendReplacement(sb, replacement)
                 }
             }
-            else -> rawExpression
+            else -> rawExpression.value
         }
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
-        } else resolveExpression(faker, category, resolvedExpression)
+        } else resolveExpression(faker, category, RawExpression(resolvedExpression))
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -164,7 +151,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     }
 
     private fun <T : FakeDataProvider> T.getPropertyName(rawString: String): KProperty1<out T, Any?> {
-        val propertyName = rawString.split("_").mapIndexed {i: Int, s: String ->
+        val propertyName = rawString.split("_").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).toUpperCase() + s.substring(1)
         }.joinToString("")
 
@@ -192,9 +179,5 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
     }
-
-    fun readDictionary(dictionaryMap: Map<String, Map<String, *>>): Dictionary {
-        val categories = dictionaryMap.entries.toList().map { Category(getCategoryName(it.key), it.value) }
-        return Dictionary(categories)
-    }
 }
+

@@ -150,6 +150,18 @@ internal enum class CategoryName {
     YODA
 }
 
+@Suppress("EXPERIMENTAL_FEATURE_WARNING")
+internal inline class RawExpression(val value: String)
+
 internal fun getCategoryName(name: String) = CategoryName.values().first { it.toLowerCase() == name.toLowerCase() }
 
 internal fun CategoryName.toLowerCase() = this.name.toLowerCase()
+
+internal fun Dictionary.getCategoryByName(name: String): Category {
+    return this.getCategoryByName(categoryName = getCategoryName(name))
+}
+
+internal fun Dictionary.getCategoryByName(categoryName: CategoryName): Category {
+    return this.categories.firstOrNull { it.categoryName.toLowerCase() == categoryName.toLowerCase() }
+        ?: throw NoSuchElementException("Category with name $categoryName not found")
+}

@@ -1,5 +1,7 @@
 package com.github.sergio.igwt.kfaker
 
+import com.github.sergio.igwt.kfaker.dictionary.CategoryName
+import com.github.sergio.igwt.kfaker.dictionary.getCategoryByName
 import com.github.sergio.igwt.kfaker.dictionary.toLowerCase
 import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.collections.shouldContain
@@ -19,7 +21,7 @@ import java.util.Locale
 internal class FakerServiceTest : FreeSpec({
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
-            val dictionary = FakerService().dictionaryMap
+            val dictionary = FakerService().dictionary
 
             "THEN it should contain all keys for 'en' locale" {
                 val dictionaryKeys = listOf(
@@ -45,39 +47,39 @@ internal class FakerServiceTest : FreeSpec({
                     "world_cup", "yoda"
                 )
 
-                dictionary.keys.toList() shouldBe dictionaryKeys
+                dictionary.categories.map { it.categoryName.toLowerCase() } shouldBe dictionaryKeys
             }
 
             "THEN recurring keys should be appended" {
                 assertSoftly {
-                    dictionary["creature"]?.keys?.size!! shouldBeGreaterThan 1
-                    dictionary["games"]?.keys?.size!! shouldBeGreaterThan 1
+                    dictionary.getCategoryByName("creature").values.keys.size shouldBeGreaterThan 1
+                    dictionary.getCategoryByName("games").values.keys.size shouldBeGreaterThan 1
                 }
             }
         }
 
         "WHEN it is set to custom value" - {
-            val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionaryMap
-            val defaultDictionary = FakerService().dictionaryMap
+            val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
+            val defaultDictionary = FakerService().dictionary
 
             "THEN matching keys should be overwritten in the localized dictionary" {
-                val esAddress = esDictionary["address"]
-                val defaultAddress = defaultDictionary["address"]
+                val esAddress = esDictionary.getCategoryByName("address")
+                val defaultAddress = defaultDictionary.getCategoryByName("address")
 
                 esAddress shouldNotBe defaultAddress
             }
 
             "THEN non-matching default keys should be present in the localized dictionary" {
-                val esGames = esDictionary["games"]
-                val defaultGames = defaultDictionary["games"]
+                val esGames = esDictionary.getCategoryByName("games")
+                val defaultGames = defaultDictionary.getCategoryByName("games")
 
                 esGames shouldBe defaultGames
             }
         }
 
-        "WHEN it is set with a String value" - {
+        "WHEN it is set with a valid String value" - {
             "THEN localized dictionary should be loaded" {
-                val esDictionary = FakerService("es").dictionaryMap
+                val esDictionary = FakerService("es").dictionary
                 esDictionary shouldNotBe null
             }
         }
@@ -85,7 +87,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set with invalid String value" - {
             "THEN an exception is thrown when loading the dictionary" {
                 val exception = shouldThrow<IllegalArgumentException> {
-                    FakerService("pe").dictionaryMap
+                    FakerService("pe").dictionary
                 }
 
                 exception.message shouldBe "Dictionary file not found for locale value: pe"
@@ -97,42 +99,45 @@ internal class FakerServiceTest : FreeSpec({
         val fakerService = FakerService()
 
         "WHEN fetching category by key" - {
-            val category = fakerService.fetchCategoryMap("address")
+            val category = fakerService.fetchCategory(CategoryName.ADDRESS)
 
             "THEN category map should contain all its keys" {
-                category.keys shouldContainAll listOf(
+                val categoryKeys = listOf(
                     "city_prefix", "city_suffix", "country", "country_by_code", "country_by_name", "country_code",
                     "country_code_long", "building_number", "community_prefix", "community_suffix", "community",
                     "street_suffix", "secondary_address", "postcode", "postcode_by_state", "state", "state_abbr",
                     "time_zone", "city", "street_name", "street_address", "full_address", "default_country"
                 )
+
+                category.values.keys shouldContainAll categoryKeys
             }
         }
 
         "WHEN fetching raw value from category" - {
             "AND value type is List" - {
-                val category = fakerService.fetchCategoryMap("address")
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
                 val rawValue = fakerService.getRawValue(category, "city_prefix")
-                val cityPrefixes = listOf("North", "East", "West", "South", "New", "Lake", "Port")
 
                 "THEN a random raw value from the list is returned as String" {
-                    cityPrefixes shouldContain rawValue
+                    val cityPrefixes = listOf("North", "East", "West", "South", "New", "Lake", "Port")
+
+                    cityPrefixes shouldContain rawValue.value
                 }
             }
 
             "AND value type is String" - {
-                val category = fakerService.fetchCategoryMap("id_number")
+                val category = fakerService.fetchCategory(CategoryName.ID_NUMBER)
                 val rawValue = fakerService.getRawValue(category, "valid")
                 val expectedValue = "#{IDNumber.ssn_valid}"
 
                 "THEN the raw value is returned as String" {
-                    rawValue shouldBe expectedValue
+                    rawValue.value shouldBe expectedValue
                 }
             }
 
             "AND value type is Map" - {
                 "AND values of the Map entries is String type" - {
-                    val category = fakerService.fetchCategoryMap("address")
+                    val category = fakerService.fetchCategory(CategoryName.ADDRESS)
                     val rawValue = fakerService.getRawValue(category, "postcode_by_state")
                     val rawValues = listOf(
                         "350##", "995##", "967##", "850##", "717##", "900##", "800##", "061##", "204##", "198##",
@@ -144,17 +149,18 @@ internal class FakerServiceTest : FreeSpec({
                     )
 
                     "THEN value is returned as random value of Map<*, *> entries as String" {
-                        rawValues shouldContain rawValue
+                        rawValues shouldContain rawValue.value
                     }
                 }
 
                 "AND values of Map entries is Map type" - {
-                    val category = fakerService.fetchCategoryMap("bank")
+                    val category = fakerService.fetchCategory(CategoryName.BANK)
                     val rawValue = fakerService.getRawValue(category, "iban_details")
+
                     "THEN value is returned as random value of Map<Map<*,*>> entries as String" {
                         assertSoftly {
-                            rawValue shouldContain "length"
-                            rawValue shouldContain "bban_pattern"
+                            rawValue.value shouldContain "length"
+                            rawValue.value shouldContain "bban_pattern"
                         }
                     }
                 }
@@ -196,34 +202,40 @@ internal class FakerServiceTest : FreeSpec({
 
             "AND expression matches the curly-brace-regex" - {
                 "AND expression matches the root category parameter" - {
-                    val category = fakerService.fetchCategoryMap("name")
-                    val rawExpression = fakerService.getRawValue(category, "first_name")
+                    val category = fakerService.fetchCategory(CategoryName.NAME)
 
                     "THEN expression is resolved to raw value of the pointer" {
-                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
-                        resolvedValue.first().isUpperCase() shouldBe true
+                        val resolvedValue = fakerService.resolve(Faker, category, "first_name")
+
+                        assertSoftly {
+                            resolvedValue.first().isUpperCase() shouldBe true
+                            resolvedValue.split(" ") shouldHaveAtMostSize 1
+                        }
                     }
                 }
 
                 "AND expression matches parameter from another category" - {
-                    val category = fakerService.fetchCategoryMap("book")
-                    val rawExpression = fakerService.getRawValue(category, "author")
+                    val category = fakerService.fetchCategory(CategoryName.BOOK)
 
                     "THEN expression is resolved to raw value of another category" {
-                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
+                        val resolvedValue = fakerService.resolve(Faker, category, "author")
+
                         assertSoftly {
                             resolvedValue shouldNotBe ""
                             resolvedValue shouldNotContain "#"
+                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?\}""")
+                            resolvedValue.split(" ") shouldHaveAtLeastSize 2
+                            resolvedValue.split(" ") shouldHaveAtMostSize 3
+                            resolvedValue.split(" ").all { it.first().isUpperCase() } shouldBe true
                         }
                     }
                 }
 
                 "AND expression is recursive" - {
-                    val category = fakerService.fetchCategoryMap("name")
-                    val rawExpression = fakerService.getRawValue(category, "name")
+                    val category = fakerService.fetchCategory(CategoryName.NAME)
 
                     "THEN expression is resolved recursively" {
-                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
+                        val resolvedValue = fakerService.resolve(Faker, category, "name")
 
                         assertSoftly {
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
@@ -232,18 +244,6 @@ internal class FakerServiceTest : FreeSpec({
                         }
                     }
                 }
-            }
-        }
-
-        "WHEN mapping raw dictionaryMap to data class" - {
-            val dictionaryMap = fakerService.dictionaryMap
-            val dictionary = fakerService.readDictionary(dictionaryMap)
-
-            "THEN dictionary data matches raw dictionary data" {
-                dictionary.categories.associateBy(
-                    { it.categoryName.toLowerCase() },
-                    { it.values }
-                ) shouldBe dictionaryMap
             }
         }
     }
