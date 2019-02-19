@@ -3,16 +3,20 @@ package com.github.sergio.igwt.kfaker
 import com.github.sergio.igwt.kfaker.ResourceLoader.getResource
 import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
 import com.github.sergio.igwt.kfaker.dictionary.Category
+import com.github.sergio.igwt.kfaker.dictionary.CategoryName
 import com.github.sergio.igwt.kfaker.dictionary.Dictionary
 import com.github.sergio.igwt.kfaker.dictionary.getCategoryName
+import com.github.sergio.igwt.kfaker.provider.FakeDataProvider
 import java.io.File
 import java.io.InputStream
 import java.util.Locale
 import java.util.regex.Matcher
+import kotlin.reflect.KProperty1
+import kotlin.reflect.full.declaredMemberProperties
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
-    private val curlyBraceRegex = Regex("""#\{(\p{all}+?)\}""")
+    private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     private val dictionary: Dictionary
     internal val dictionaryMap = load(locale)
 
@@ -46,7 +50,6 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             }
         }
 
-        // TODO: 2/16/2019 see if need to add checks for recurring values here as well and merge the maps
         if (locale != null && locale.toString() != "en") {
             val localeFileStream = requireNotNull(getResourceAsStream("locales/$locale.yml")) {
                 "Dictionary file not found for locale value: $locale"
@@ -58,7 +61,6 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return defaultValues
     }
 
-    // TODO: 2/15/2019 map result to Dictionary class
     // TODO: 2/15/2019 auto-generate the code for each category (this will allow easy extensibility of the local files)
 
     private fun readCategory(file: File, locale: Locale): LinkedHashMap<String, Map<String, *>> {
@@ -74,8 +76,8 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     /**
      * Returns [Category] instance by its [categoryName]
      */
-    fun fetchCategory(categoryName: String): Category {
-        return dictionary.categories.firstOrNull { it.categoryName.name == categoryName }
+    fun fetchCategory(categoryName: CategoryName): Category {
+        return dictionary.categories.firstOrNull { it.categoryName == categoryName }
             ?: throw NoSuchElementException("Category with name '$categoryName' not found")
     }
 
@@ -122,24 +124,59 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return rawValue.map { if (it == '#') randomService.nextInt(10) else it }.joinToString("")
     }
 
-    fun resolveExpression(category: Category, rawExpression: String): String {
-        return resolveExpression(category.values, rawExpression)
+    fun resolveExpression(faker: Faker, category: Category, rawExpression: String): String {
+        val stringExpression = getRawValue(category, rawExpression)
+        return resolveExpression(faker, category.values, stringExpression)
     }
 
-    tailrec fun resolveExpression(category: Map<String, *>, rawExpression: String): String {
-        val stringExpression = when {
+    tailrec fun resolveExpression(faker: Faker, category: Map<String, *>, rawExpression: String): String {
+        val sb = StringBuffer()
+
+        val resolvedExpression = when {
             curlyBraceRegex.containsMatchIn(rawExpression) -> {
-                val sb = StringBuffer()
                 findMatchesAndAppendTail(rawExpression, sb, curlyBraceRegex) {
-                    it.appendReplacement(sb, getRawValue(category, it.group(1)))
+                    val simpleClassName = it.group(1)?.trimEnd('.')
+
+                    val replacement = when (simpleClassName != null) {
+                        true -> {
+                            val providerType = getProvider(faker, simpleClassName)
+                            val propertyName = providerType.getPropertyName(it.group(2))
+
+                            providerType.callProperty(propertyName)
+                        }
+                        false -> getRawValue(category, it.group(2))
+                    }
+
+                    it.appendReplacement(sb, replacement)
                 }
             }
             else -> rawExpression
         }
 
-        return if (!curlyBraceRegex.containsMatchIn(stringExpression)) {
-            stringExpression
-        } else resolveExpression(category, stringExpression)
+        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
+            resolvedExpression
+        } else resolveExpression(faker, category, resolvedExpression)
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun <T : FakeDataProvider> T.callProperty(kProperty1: KProperty1<out T, Any?>): String {
+        return (kProperty1.call(this) as () -> String).invoke()
+    }
+
+    private fun <T : FakeDataProvider> T.getPropertyName(rawString: String): KProperty1<out T, Any?> {
+        val propertyName = rawString.split("_").mapIndexed {i: Int, s: String ->
+            if (i == 0) s else s.substring(0, 1).toUpperCase() + s.substring(1)
+        }.joinToString("")
+
+        return this::class.declaredMemberProperties.first { it.name == propertyName }
+    }
+
+    private fun getProvider(faker: Faker, simpleClassName: String): FakeDataProvider {
+        val kProp = faker::class.declaredMemberProperties.first {
+            it.name.toLowerCase() == simpleClassName.toLowerCase()
+        }
+
+        return kProp.call(faker) as FakeDataProvider
     }
 
     private fun findMatchesAndAppendTail(

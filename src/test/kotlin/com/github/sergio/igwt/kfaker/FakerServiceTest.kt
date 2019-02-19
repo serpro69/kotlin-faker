@@ -195,28 +195,35 @@ internal class FakerServiceTest : FreeSpec({
             }
 
             "AND expression matches the curly-brace-regex" - {
-                val category = fakerService.fetchCategoryMap("name")
-
                 "AND expression matches the root category parameter" - {
+                    val category = fakerService.fetchCategoryMap("name")
                     val rawExpression = fakerService.getRawValue(category, "first_name")
 
                     "THEN expression is resolved to raw value of the pointer" {
-                        val resolvedValue = fakerService.resolveExpression(category, rawExpression)
+                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
                         resolvedValue.first().isUpperCase() shouldBe true
                     }
                 }
 
                 "AND expression matches parameter from another category" - {
+                    val category = fakerService.fetchCategoryMap("book")
+                    val rawExpression = fakerService.getRawValue(category, "author")
+
                     "THEN expression is resolved to raw value of another category" {
-                        TODO("Providers are not implemented")
+                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
+                        assertSoftly {
+                            resolvedValue shouldNotBe ""
+                            resolvedValue shouldNotContain "#"
+                        }
                     }
                 }
 
                 "AND expression is recursive" - {
+                    val category = fakerService.fetchCategoryMap("name")
                     val rawExpression = fakerService.getRawValue(category, "name")
 
                     "THEN expression is resolved recursively" {
-                        val resolvedValue = fakerService.resolveExpression(category, rawExpression)
+                        val resolvedValue = fakerService.resolveExpression(Faker, category, rawExpression)
 
                         assertSoftly {
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
