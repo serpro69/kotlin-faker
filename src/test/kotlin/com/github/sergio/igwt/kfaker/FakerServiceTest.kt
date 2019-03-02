@@ -244,6 +244,19 @@ internal class FakerServiceTest : FreeSpec({
                         }
                     }
                 }
+
+                "AND expression is resolved by secondary key" - {
+                    val address = fakerService.fetchCategory(CategoryName.ADDRESS)
+                    val peru = fakerService.resolve(Faker, address, "country_by_code", "PE")
+                    val norway = fakerService.resolve(Faker, address, "country_by_code", "NO")
+
+                    "THEN expression is resolved using secondary key" - {
+                        assertSoftly {
+                            peru shouldBe "Peru"
+                            norway shouldBe "Norway"
+                        }
+                    }
+                }
             }
         }
     }
