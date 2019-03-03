@@ -163,6 +163,10 @@ internal class FakerServiceTest : FreeSpec({
                 }
             }
 
+            "AND secondary key is invalid string" - {
+                // TODO: 3/3/2019 finish test
+            }
+
             "AND secondary key is empty String" - {
                 val category = fakerService.fetchCategory(CategoryName.ADDRESS)
                 val countryByCode = fakerService.getRawValue(category, "postcode_by_state", "")

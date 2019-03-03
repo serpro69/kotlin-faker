@@ -125,11 +125,19 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
                         if (secondaryKey == "") {
                             val values = parameterValue.values.toList()
                             RawExpression(randomService.randomValue(values) as String)
-                        } else RawExpression(parameterValue[secondaryKey] as String)
+                        } else {
+                            parameterValue[secondaryKey]?.let { RawExpression(it as String) }
+                                ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                        }
                     }
                     parameterValue.values.all { it is Map<*, *> } -> {
-                        val values = parameterValue.values.toList()
-                        RawExpression(randomService.randomValue(values.map { "$it" }))
+                        if (secondaryKey == "") {
+                            val values = parameterValue.values.toList()
+                            RawExpression(randomService.randomValue(values.map { "$it" }))
+                        } else {
+                            parameterValue[secondaryKey]?.let { RawExpression(it as String) }
+                                ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                        }
                     }
                     else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                 }
