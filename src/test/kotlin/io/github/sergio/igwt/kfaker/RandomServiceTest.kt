@@ -1,7 +1,9 @@
 package io.github.sergio.igwt.kfaker
 
+import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.shouldBe
+import io.kotlintest.shouldThrow
 import io.kotlintest.specs.FreeSpec
 
 internal class RandomServiceTest : FreeSpec({
@@ -25,12 +27,37 @@ internal class RandomServiceTest : FreeSpec({
         }
 
         "WHEN calling randomValue<T>(list)" - {
-            val values = List(100) { randomService.nextInt(3..9) }
-            val value = randomService.randomValue(values)
+            "AND list is not empty" - {
+                val values = List(100) { randomService.nextInt(3..9) }
+                val value = randomService.randomValue(values)
 
-            "THEN return value should be in the list" {
-                values shouldContain value
+                "THEN return value should be in the list" {
+                    values shouldContain value
+                }
             }
+
+            "AND list is empty" - {
+                val values = listOf<String>()
+
+                "THEN exception is thrown" {
+                    shouldThrow<IllegalArgumentException> {
+                        randomService.randomValue(values)
+                    }
+                }
+            }
+
+            "AND list contains nulls" - {
+                val values = listOf(1, 2, 3, null).filter { it == null }
+                val value = randomService.randomValue(values)
+
+                "THEN return value should be in the list" {
+                    assertSoftly {
+                        values shouldContain value
+                        value shouldBe null
+                    }
+                }
+            }
+
         }
     }
 })

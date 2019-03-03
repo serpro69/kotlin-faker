@@ -17,7 +17,10 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.9.8")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.8")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")
+//    implementation("dk.brics:automaton:1.12-1")
+    implementation("com.github.mifmif:generex:1.0.2")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.2.1")
+    runtime((kotlin("script-runtime")))
 }
 
 tasks.withType<KotlinCompile> {

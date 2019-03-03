@@ -13,10 +13,10 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     val cityPrefix = resolve { fakerService.resolve(Faker, it, "city_prefix") }
     val citySuffix = resolve { fakerService.resolve(Faker, it, "city_suffix") }
     val country = resolve { fakerService.resolve(Faker, it, "country") }
-    val countryByCode: (String) -> String = { code ->
+    val countryByCode: (countryCode: String) -> String = { code ->
         resolve { fakerService.resolve(Faker, it, "country_by_code", code) }.invoke()
     }
-    val countryByName: (String) -> String = { name ->
+    val countryByName: (countryName: String) -> String = { name ->
         resolve { fakerService.resolve(Faker, it, "country_by_name", name) }.invoke()
     }
     val countryCode = resolve { fakerService.resolve(Faker, it, "country_code") }
