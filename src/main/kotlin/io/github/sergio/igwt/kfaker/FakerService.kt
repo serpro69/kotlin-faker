@@ -1,13 +1,13 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
-import com.github.sergio.igwt.kfaker.ResourceLoader.getResource
-import com.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
-import com.github.sergio.igwt.kfaker.dictionary.Category
-import com.github.sergio.igwt.kfaker.dictionary.CategoryName
-import com.github.sergio.igwt.kfaker.dictionary.Dictionary
-import com.github.sergio.igwt.kfaker.dictionary.RawExpression
-import com.github.sergio.igwt.kfaker.dictionary.getCategoryName
-import com.github.sergio.igwt.kfaker.provider.FakeDataProvider
+import io.github.sergio.igwt.kfaker.ResourceLoader.getResource
+import io.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
+import io.github.sergio.igwt.kfaker.dictionary.Category
+import io.github.sergio.igwt.kfaker.dictionary.CategoryName
+import io.github.sergio.igwt.kfaker.dictionary.Dictionary
+import io.github.sergio.igwt.kfaker.dictionary.RawExpression
+import io.github.sergio.igwt.kfaker.dictionary.getCategoryName
+import io.github.sergio.igwt.kfaker.provider.FakeDataProvider
 import java.io.File
 import java.io.InputStream
 import java.util.Locale
@@ -54,7 +54,13 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             defaultValues.putAll(readCategory(localeFileStream, locale))
         }
 
-        val categories = defaultValues.entries.toList().map { Category(getCategoryName(it.key), it.value) }
+        val categories = defaultValues.entries.toList().map {
+            Category(
+                getCategoryName(
+                    it.key
+                ), it.value
+            )
+        }
         return Dictionary(categories)
     }
 
@@ -146,7 +152,9 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
-        } else resolveExpression(faker, category, RawExpression(resolvedExpression))
+        } else resolveExpression(faker, category,
+            RawExpression(resolvedExpression)
+        )
     }
 
     @Suppress("UNCHECKED_CAST")

@@ -1,4 +1,4 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
 import java.security.SecureRandom
 import java.util.Random

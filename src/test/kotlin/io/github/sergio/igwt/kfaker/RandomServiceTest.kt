@@ -1,4 +1,4 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
 import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.shouldBe

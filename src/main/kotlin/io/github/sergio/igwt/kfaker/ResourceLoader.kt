@@ -1,4 +1,4 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
 internal object ResourceLoader {
     private val classLoader = this::class.java.classLoader

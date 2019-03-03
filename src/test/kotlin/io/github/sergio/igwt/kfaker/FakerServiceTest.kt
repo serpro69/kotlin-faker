@@ -1,8 +1,8 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
-import com.github.sergio.igwt.kfaker.dictionary.CategoryName
-import com.github.sergio.igwt.kfaker.dictionary.getCategoryByName
-import com.github.sergio.igwt.kfaker.dictionary.toLowerCase
+import io.github.sergio.igwt.kfaker.dictionary.CategoryName
+import io.github.sergio.igwt.kfaker.dictionary.getCategoryByName
+import io.github.sergio.igwt.kfaker.dictionary.toLowerCase
 import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.collections.shouldContain
 import io.kotlintest.matchers.collections.shouldContainAll

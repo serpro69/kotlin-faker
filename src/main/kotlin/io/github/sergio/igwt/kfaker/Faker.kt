@@ -1,6 +1,6 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
-import com.github.sergio.igwt.kfaker.provider.Name
+import io.github.sergio.igwt.kfaker.provider.Name
 
 object Faker {
     private val fakerService = FakerService()

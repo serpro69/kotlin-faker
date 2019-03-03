@@ -1,4 +1,4 @@
-package com.github.sergio.igwt.kfaker
+package io.github.sergio.igwt.kfaker
 
 import com.fasterxml.jackson.databind.*
 import com.fasterxml.jackson.dataformat.yaml.*
