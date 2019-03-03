@@ -134,11 +134,40 @@ internal class FakerServiceTest : FreeSpec({
                     rawValue.value shouldBe expectedValue
                 }
             }
+        }
 
-            "AND value type is Map" - {
-                "AND values of the Map entries is String type" - {
-                    val category = fakerService.fetchCategory(CategoryName.ADDRESS)
-                    val rawValue = fakerService.getRawValue(category, "postcode_by_state")
+        "WHEN fetching raw value from category using secondary key" - {
+            "AND value type is Map<String, String>" - {
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
+
+                val peru = fakerService.getRawValue(category, "country_by_code", "PE")
+                val norway = fakerService.getRawValue(category, "country_by_code", "NO")
+
+                "THEN value is returned using secondary key" {
+                    assertSoftly {
+                        peru.value shouldBe "Peru"
+                        norway.value shouldBe "Norway"
+                    }
+                }
+            }
+
+            "AND value type is Map<Map<String, String>>" - {
+                val category = fakerService.fetchCategory(CategoryName.BANK)
+                val rawValue = fakerService.getRawValue(category, "iban_details", "ad")
+
+                "THEN value is returned as random value of Map<Map<*,*>> entries as String" {
+                    assertSoftly {
+                        rawValue.value shouldContain "length"
+                        rawValue.value shouldContain "bban_pattern"
+                    }
+                }
+            }
+
+            "AND secondary key is empty String" - {
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
+                val countryByCode = fakerService.getRawValue(category, "postcode_by_state", "")
+
+                "THEN random value is returned" {
                     val rawValues = listOf(
                         "350##", "995##", "967##", "850##", "717##", "900##", "800##", "061##", "204##", "198##",
                         "322##", "301##", "967##", "832##", "600##", "463##", "510##", "666##", "404##", "701##",
@@ -148,21 +177,25 @@ internal class FakerServiceTest : FreeSpec({
                         "549##", "831##"
                     )
 
-                    "THEN value is returned as random value of Map<*, *> entries as String" {
-                        rawValues shouldContain rawValue.value
+                    rawValues shouldContain countryByCode.value
+                }
+            }
+
+            "AND value type !is Map" - {
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
+
+                "THEN exception is thrown" {
+                    shouldThrow<UnsupportedOperationException> {
+                        fakerService.getRawValue(category, "country", "country")
                     }
                 }
 
-                "AND values of Map entries is Map type" - {
-                    val category = fakerService.fetchCategory(CategoryName.BANK)
-                    val rawValue = fakerService.getRawValue(category, "iban_details")
-
-                    "THEN value is returned as random value of Map<Map<*,*>> entries as String" {
-                        assertSoftly {
-                            rawValue.value shouldContain "length"
-                            rawValue.value shouldContain "bban_pattern"
-                        }
+                "THEN exception contains message" {
+                    val exception = shouldThrow<UnsupportedOperationException> {
+                        fakerService.getRawValue(category, "country", "country")
                     }
+
+                    exception.message shouldContain "Unsupported type of raw value"
                 }
             }
         }

@@ -64,8 +64,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return Dictionary(categories)
     }
 
-    // TODO: 2/15/2019 auto-generate the code for each category (this will allow easy extensibility of the local files)
-
+    @Suppress("SameParameterValue")
     private fun readCategory(file: File, locale: Locale): LinkedHashMap<String, Map<String, *>> {
         return readCategory(file.inputStream(), locale)
     }
@@ -94,12 +93,39 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return when (parameterValue) {
             is List<*> -> RawExpression(randomService.randomValue(parameterValue) as String)
             is String -> RawExpression(parameterValue)
-            is Map<*, *> -> {
+/*            is Map<*, *> -> {
                 // TODO: 2/20/2019 this should probably be reimplemented
                 when {
                     parameterValue.values.all { it is String } -> {
                         val values = parameterValue.values.toList()
                         RawExpression(randomService.randomValue(values) as String)
+                    }
+                    parameterValue.values.all { it is Map<*, *> } -> {
+                        val values = parameterValue.values.toList()
+                        RawExpression(randomService.randomValue(values.map { "$it" }))
+                    }
+                    else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                }
+            }*/
+            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+        }
+    }
+
+    /**
+     * Returns raw value as [String] from a given [category] fetched by its [key] and [secondaryKey]
+     */
+    fun getRawValue(category: Category, key: String, secondaryKey: String): RawExpression {
+        val parameterValue = category.values[key]
+            ?: throw NoSuchElementException("Parameter with name '$key' for this category not found")
+
+        return when (parameterValue) {
+            is Map<*, *> -> {
+                when {
+                    parameterValue.values.all { it is String } -> {
+                        if (secondaryKey == "") {
+                            val values = parameterValue.values.toList()
+                            RawExpression(randomService.randomValue(values) as String)
+                        } else RawExpression(parameterValue[secondaryKey] as String)
                     }
                     parameterValue.values.all { it is Map<*, *> } -> {
                         val values = parameterValue.values.toList()
@@ -123,7 +149,8 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     }
 
     fun resolve(faker: Faker, category: Category, key: String, secondaryKey: String): String {
-        TODO("Not implemented")
+        val rawExpression = getRawValue(category, key, secondaryKey)
+        return resolveExpression(faker, category, rawExpression)
     }
 
     private tailrec fun resolveExpression(faker: Faker, category: Category, rawExpression: RawExpression): String {
