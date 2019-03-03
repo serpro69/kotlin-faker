@@ -46,20 +46,18 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             }
         }
 
-        if (locale != null && locale.toString() != "en") {
-            val localeFileStream = requireNotNull(getResourceAsStream("locales/$locale.yml")) {
+        if (locale != null && locale.toLanguageTag() != "en") {
+            val localeFileStream = requireNotNull(getResourceAsStream("locales/${locale.toLanguageTag()}.yml")) {
                 "Dictionary file not found for locale value: $locale"
             }
 
-            defaultValues.putAll(readCategory(localeFileStream, locale))
+            readCategory(localeFileStream, locale).forEach {
+                defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+            }
         }
 
         val categories = defaultValues.entries.toList().map {
-            Category(
-                getCategoryName(
-                    it.key
-                ), it.value
-            )
+            Category(getCategoryName(it.key), it.value)
         }
         return Dictionary(categories)
     }
@@ -71,7 +69,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
     @Suppress("UNCHECKED_CAST")
     private fun readCategory(inputStream: InputStream, locale: Locale): LinkedHashMap<String, Map<String, *>> {
-        val localeValues = Mapper.readValue(inputStream, Map::class.java)[locale.toString()] as Map<*, *>
+        val localeValues = Mapper.readValue(inputStream, Map::class.java)[locale.toLanguageTag()] as Map<*, *>
         return localeValues["faker"] as LinkedHashMap<String, Map<String, *>>
     }
 
@@ -120,26 +118,12 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
         return when (parameterValue) {
             is Map<*, *> -> {
-                when {
-                    parameterValue.values.all { it is String } -> {
-                        if (secondaryKey == "") {
-                            val values = parameterValue.values.toList()
-                            RawExpression(randomService.randomValue(values) as String)
-                        } else {
-                            parameterValue[secondaryKey]?.let { RawExpression(it as String) }
-                                ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
-                        }
-                    }
-                    parameterValue.values.all { it is Map<*, *> } -> {
-                        if (secondaryKey == "") {
-                            val values = parameterValue.values.toList()
-                            RawExpression(randomService.randomValue(values.map { "$it" }))
-                        } else {
-                            parameterValue[secondaryKey]?.let { RawExpression(it as String) }
-                                ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
-                        }
-                    }
-                    else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                if (secondaryKey == "") {
+                    val values = parameterValue.values.map { "$it" }
+                    RawExpression(randomService.randomValue(values))
+                } else {
+                    parameterValue[secondaryKey]?.let { RawExpression(it.toString()) }
+                        ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
                 }
             }
             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")

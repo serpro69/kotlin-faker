@@ -19,6 +19,8 @@ import io.kotlintest.specs.FreeSpec
 import java.util.Locale
 
 internal class FakerServiceTest : FreeSpec({
+    Faker.init()
+
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
             val dictionary = FakerService().dictionary

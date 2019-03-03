@@ -10,6 +10,10 @@ import io.github.sergio.igwt.kfaker.dictionary.CategoryName
 class Address internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ADDRESS
 
+    /* TODO: 3/3/2019 remove things such as *suffix, *prefix, etc. as they are not uniform across translated dictionaries
+        i.e. default `address.yml` has `city_prefix` whereas `nb-NO.yml` has `city_root` instead.
+        Therefore things that are used as part of expressions should not be present.
+     */
     val cityPrefix = resolve { fakerService.resolve(Faker, it, "city_prefix") }
     val citySuffix = resolve { fakerService.resolve(Faker, it, "city_suffix") }
     val country = resolve { fakerService.resolve(Faker, it, "country") }
