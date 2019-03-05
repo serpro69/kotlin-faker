@@ -2,7 +2,6 @@ package io.github.sergio.igwt.kfaker
 
 import io.github.sergio.igwt.kfaker.provider.FakeDataProvider
 import io.kotlintest.assertSoftly
-import io.kotlintest.matchers.string.shouldContain
 import io.kotlintest.matchers.string.shouldNotContain
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
@@ -31,22 +30,25 @@ class FakerIT : FreeSpec({
                     }
                 }
 
-                "THEN each function can be called without exceptions and return type is String" {
-                    providerProps.forEach { (props: List<KProperty<*>>, provider) ->
-                        assertSoftly {
+                "THEN each function can be called without exceptions and return type is String" - {
+                    assertSoftly {
+                        providerProps.forEach { (props, provider) ->
                             props.forEach {
-                                val returnType = it.getter.call(provider.getter.call(faker)).toString()
-                                returnType shouldContain "kotlin.String"
-                                when (returnType) {
-                                    "() -> kotlin.String" -> {
-                                        val value = (it.getter.call(provider.getter.call(faker)) as (() -> String)).invoke()
-                                        value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
-                                    }
-                                    "(String) -> kotlin.String" -> {
-                                        val value = (it.getter.call(provider.getter.call(faker)) as ((String) -> String)).invoke("")
-                                        value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
-                                    }
-                                    else -> {
+                                val call = it.getter.call(provider.getter.call(faker))
+                                val returnType = call.toString()
+
+                                "AND result value for provider: ${provider.name} and fun: ${it.getter.name} should not contain expression characters" {
+                                    when (returnType) {
+                                        "() -> kotlin.String" -> {
+                                            val value = (call as (() -> String)).invoke()
+                                            value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
+                                        }
+                                        "(String) -> kotlin.String" -> {
+                                            val value = (call as ((String) -> String)).invoke("")
+                                            value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
+                                        }
+                                        else -> {
+                                        }
                                     }
                                 }
                             }
