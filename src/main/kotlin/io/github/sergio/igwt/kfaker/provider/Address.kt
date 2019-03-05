@@ -32,7 +32,9 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     val streetSuffix = resolve { fakerService.resolve(Faker, it, "street_suffix") }
     val secondaryAddress = resolve { fakerService.resolve(Faker, it, "secondary_address") }
     val postcode = resolve { fakerService.resolve(Faker, it, "postcode") }
-    val postcodeByState = resolve { fakerService.resolve(Faker, it, "postcode_by_state") }
+    val postcodeByState: (state: String) -> String = { state ->
+        resolve { fakerService.resolve(Faker, it, "postcode_by_state", state) }.invoke()
+    }
     val state = resolve { fakerService.resolve(Faker, it, "state") }
     val stateAbbr = resolve { fakerService.resolve(Faker, it, "state_abbr") }
     val timeZone = resolve { fakerService.resolve(Faker, it, "time_zone") }
