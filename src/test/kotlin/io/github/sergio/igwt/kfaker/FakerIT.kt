@@ -3,6 +3,7 @@ package io.github.sergio.igwt.kfaker
 import io.github.sergio.igwt.kfaker.provider.FakeDataProvider
 import io.kotlintest.assertSoftly
 import io.kotlintest.matchers.string.shouldContain
+import io.kotlintest.matchers.string.shouldNotContain
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.FreeSpec
@@ -13,6 +14,7 @@ import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.isSubtypeOf
 import kotlin.reflect.full.starProjectedType
 
+@Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({
     "GIVEN Faker instance is initialized" - {
         val faker = Faker.init()
@@ -33,7 +35,20 @@ class FakerIT : FreeSpec({
                     providerProps.forEach { (props: List<KProperty<*>>, provider) ->
                         assertSoftly {
                             props.forEach {
-                                it.getter.call(provider.getter.call(faker)).toString() shouldContain "String"
+                                val returnType = it.getter.call(provider.getter.call(faker)).toString()
+                                returnType shouldContain "kotlin.String"
+                                when (returnType) {
+                                    "() -> kotlin.String" -> {
+                                        val value = (it.getter.call(provider.getter.call(faker)) as (() -> String)).invoke()
+                                        value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
+                                    }
+                                    "(String) -> kotlin.String" -> {
+                                        val value = (it.getter.call(provider.getter.call(faker)) as ((String) -> String)).invoke("")
+                                        value shouldNotContain Regex("""(#\{.*\}|#+\p{all}+|\p{all}+#+)""")
+                                    }
+                                    else -> {
+                                    }
+                                }
                             }
                         }
                     }
