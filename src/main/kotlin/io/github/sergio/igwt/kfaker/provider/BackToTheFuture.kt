@@ -13,5 +13,4 @@ class BackToTheFuture internal constructor(fakerService: FakerService) : Abstrac
     val characters = resolve { fakerService.resolve(Faker, it, "characters") }
     val dates = resolve { fakerService.resolve(Faker, it, "dates") }
     val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
-    val names = resolve { fakerService.resolve(Faker, it, "names") }
 }

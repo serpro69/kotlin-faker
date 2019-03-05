@@ -8,7 +8,7 @@ import io.github.sergio.igwt.kfaker.dictionary.CategoryName
  * [FakeDataProvider] implementation for [CategoryName.CREATURE] category.
  */
 class Cannabis internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
-    override val categoryName = CategoryName.BUFFY
+    override val categoryName = CategoryName.CANNABIS
 
     val strains = resolve { fakerService.resolve(Faker, it, "strains") }
     val cannabinoidAbbreviations = resolve { fakerService.resolve(Faker, it, "cannabinoid_abbreviations") }
