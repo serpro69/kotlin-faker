@@ -18,6 +18,7 @@ import kotlin.reflect.full.declaredMemberProperties
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
+    private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]""")
     val dictionary = load(locale)
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
@@ -92,7 +93,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             is List<*> -> {
                 when (val value = randomService.randomValue(parameterValue)) {
                     is List<*> -> RawExpression(randomService.randomValue(value) as String)
-                    is String -> RawExpression(value as String)
+                    is String -> RawExpression(value)
                     else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                 }
             }
@@ -111,11 +112,22 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return when (parameterValue) {
             is Map<*, *> -> {
                 if (secondaryKey == "") {
-                    val values = parameterValue.values.map { "$it" }
-                    RawExpression(randomService.randomValue(values))
+                    val mapValues = parameterValue.values.toList()
+                    when (val value = randomService.randomValue(mapValues)) {
+                        is List<*> -> RawExpression(randomService.randomValue(value) as String)
+                        is String -> RawExpression(value)
+                        is Map<*, *> -> RawExpression(value.toString())
+                        else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                    }
                 } else {
-                    parameterValue[secondaryKey]?.let { RawExpression(it.toString()) }
-                        ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                    parameterValue[secondaryKey]?.let {
+                        when (it) {
+                            is List<*> -> RawExpression(randomService.randomValue(it) as String)
+                            is String -> RawExpression(it)
+                            is Map<*, *> -> RawExpression(it.toString())
+                            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                        }
+                    } ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
                 }
             }
             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
@@ -158,14 +170,19 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
                     it.appendReplacement(sb, replacement)
                 }
             }
+            numericRegex.containsMatchIn(rawExpression.value) -> rawExpression.value.numerify()
             else -> rawExpression.value
         }
 
-        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
+        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression) &&
+            !numericRegex.containsMatchIn(resolvedExpression)
+        ) {
             resolvedExpression
-        } else resolveExpression(faker, category,
-            RawExpression(resolvedExpression)
-        )
+        } else resolveExpression(faker, category, RawExpression(resolvedExpression))
+    }
+
+    private fun String.numerify(): String {
+        return this.map { if (it == '#') randomService.nextInt(10).toString() else "$it" }.joinToString("")
     }
 
     @Suppress("UNCHECKED_CAST")
