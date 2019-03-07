@@ -57,6 +57,10 @@ class FakerIT : FreeSpec({
                                         if (!value.contains("#chuck and #norris")) value shouldNotContain regex
                                     }
 
+                                    "AND resolved value should not be empty string" {
+                                        value shouldNotBe ""
+                                    }
+
                                     "AND resolved value should not contain duplicates" {
                                         val values = value.split(" ")
 
