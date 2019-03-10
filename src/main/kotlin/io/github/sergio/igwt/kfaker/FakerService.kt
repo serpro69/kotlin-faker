@@ -149,6 +149,10 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
         return resolveExpression(faker, category, rawExpression)
     }
 
+    fun resolve(faker: Faker, category: Category, key: String, secondaryKey: String, thirdKey: String): String {
+        TODO("Not implemented")
+    }
+
     private tailrec fun resolveExpression(faker: Faker, category: Category, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 

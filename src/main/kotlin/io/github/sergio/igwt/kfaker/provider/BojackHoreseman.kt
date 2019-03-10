@@ -5,7 +5,7 @@ import io.github.sergio.igwt.kfaker.FakerService
 import io.github.sergio.igwt.kfaker.dictionary.CategoryName
 
 /**
- * [FakeDataProvider] implementation for [CategoryName.CREATURE] category.
+ * [FakeDataProvider] implementation for [CategoryName.BOJACK_HORSEMAN] category.
  */
 class BojackHoreseman internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BOJACK_HORSEMAN
