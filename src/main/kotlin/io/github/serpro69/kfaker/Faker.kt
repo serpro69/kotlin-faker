@@ -54,7 +54,6 @@ object Faker {
     lateinit var elderScrolls: ElderScrolls
     lateinit var electricalComponents: ElectricalComponents
     lateinit var eSport: ESport
-    lateinit var fakeDataProvider: FakeDataProvider
     lateinit var fallout: Fallout
     lateinit var familyGuy: FamilyGuy
     lateinit var file: File
