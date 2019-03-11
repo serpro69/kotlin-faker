@@ -33,4 +33,14 @@ tasks.withType<Wrapper> {
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform {}
+
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
+
+    // Always run tests, even when nothing changed.
+    dependsOn("cleanTest")
+
+    testLogging {
+        events("PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR")
+    }
 }
