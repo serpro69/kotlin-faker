@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.3.21"
 }
 
-group = "io.github.sergio-igwt"
+group = "io.github.serpro69"
 version = "1.0-SNAPSHOT"
 
 repositories {
