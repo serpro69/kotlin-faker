@@ -1,4 +1,4 @@
-package io.github.sergio.igwt.kfaker.provider
+package io.github.serpro69.kfaker.provider
 
 /**
  * Interface for all fake data providers.

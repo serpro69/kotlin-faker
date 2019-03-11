@@ -1,19 +1,18 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import io.github.sergio.igwt.kfaker.ResourceLoader.getResource
-import io.github.sergio.igwt.kfaker.ResourceLoader.getResourceAsStream
-import io.github.sergio.igwt.kfaker.dictionary.Category
-import io.github.sergio.igwt.kfaker.dictionary.CategoryName
-import io.github.sergio.igwt.kfaker.dictionary.Dictionary
-import io.github.sergio.igwt.kfaker.dictionary.RawExpression
-import io.github.sergio.igwt.kfaker.dictionary.getCategoryName
-import io.github.sergio.igwt.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.ResourceLoader.getResource
+import io.github.serpro69.kfaker.ResourceLoader.getResourceAsStream
+import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.provider.*
+import java.io.*
 import java.io.File
-import java.io.InputStream
 import java.util.Locale
-import java.util.regex.Matcher
-import kotlin.reflect.KProperty1
-import kotlin.reflect.full.declaredMemberProperties
+import java.util.regex.*
+import kotlin.NoSuchElementException
+import kotlin.collections.LinkedHashMap
+import kotlin.collections.set
+import kotlin.reflect.*
+import kotlin.reflect.full.*
 
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()

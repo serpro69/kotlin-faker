@@ -1,10 +1,8 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import io.kotlintest.assertSoftly
-import io.kotlintest.matchers.collections.shouldContain
-import io.kotlintest.shouldBe
-import io.kotlintest.shouldThrow
-import io.kotlintest.specs.FreeSpec
+import io.kotlintest.*
+import io.kotlintest.matchers.collections.*
+import io.kotlintest.specs.*
 
 internal class RandomServiceTest : FreeSpec({
     "GIVEN RandomService instance" - {

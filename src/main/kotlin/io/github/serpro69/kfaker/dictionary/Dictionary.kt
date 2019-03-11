@@ -1,4 +1,4 @@
-package io.github.sergio.igwt.kfaker.dictionary
+package io.github.serpro69.kfaker.dictionary
 
 /**
  * Represents a collection of [categories] (i.e. `address`, `book`, etc.)

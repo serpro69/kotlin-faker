@@ -1,9 +1,8 @@
-package io.github.sergio.igwt.kfaker.provider
+package io.github.serpro69.kfaker.provider
 
-import com.mifmif.common.regex.Generex
-import io.github.sergio.igwt.kfaker.Faker
-import io.github.sergio.igwt.kfaker.FakerService
-import io.github.sergio.igwt.kfaker.dictionary.CategoryName
+import com.mifmif.common.regex.*
+import io.github.serpro69.kfaker.*
+import io.github.serpro69.kfaker.dictionary.*
 
 /**
  * [FakeDataProvider] implementation for [CategoryName.BANK] category.

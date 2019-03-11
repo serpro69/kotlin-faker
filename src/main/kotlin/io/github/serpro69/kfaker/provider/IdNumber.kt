@@ -1,8 +1,7 @@
-package io.github.sergio.igwt.kfaker.provider
+package io.github.serpro69.kfaker.provider
 
-import io.github.sergio.igwt.kfaker.Faker
-import io.github.sergio.igwt.kfaker.FakerService
-import io.github.sergio.igwt.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.*
+import io.github.serpro69.kfaker.dictionary.*
 
 /**
  * [FakeDataProvider] implementation for [CategoryName.ID_NUMBER] category.

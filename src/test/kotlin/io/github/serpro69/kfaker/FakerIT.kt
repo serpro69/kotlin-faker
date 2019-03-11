@@ -1,18 +1,12 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import io.github.sergio.igwt.kfaker.provider.FakeDataProvider
-import io.kotlintest.assertSoftly
-import io.kotlintest.matchers.string.shouldContain
-import io.kotlintest.matchers.string.shouldNotContain
-import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
-import io.kotlintest.specs.FreeSpec
-import java.util.Locale
-import kotlin.reflect.KProperty
-import kotlin.reflect.KVisibility
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.full.isSubtypeOf
-import kotlin.reflect.full.starProjectedType
+import io.github.serpro69.kfaker.provider.*
+import io.kotlintest.*
+import io.kotlintest.matchers.string.*
+import io.kotlintest.specs.*
+import java.util.*
+import kotlin.reflect.*
+import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({

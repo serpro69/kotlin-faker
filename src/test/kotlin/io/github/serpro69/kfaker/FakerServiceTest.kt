@@ -1,22 +1,12 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import io.github.sergio.igwt.kfaker.dictionary.CategoryName
-import io.github.sergio.igwt.kfaker.dictionary.getCategoryByName
-import io.github.sergio.igwt.kfaker.dictionary.toLowerCase
-import io.kotlintest.assertSoftly
-import io.kotlintest.matchers.collections.shouldContain
-import io.kotlintest.matchers.collections.shouldContainAll
-import io.kotlintest.matchers.collections.shouldHaveAtLeastSize
-import io.kotlintest.matchers.collections.shouldHaveAtMostSize
-import io.kotlintest.matchers.numerics.shouldBeGreaterThan
-import io.kotlintest.matchers.string.shouldContain
-import io.kotlintest.matchers.string.shouldHaveSameLengthAs
-import io.kotlintest.matchers.string.shouldNotContain
-import io.kotlintest.shouldBe
-import io.kotlintest.shouldNotBe
-import io.kotlintest.shouldThrow
-import io.kotlintest.specs.FreeSpec
-import java.util.Locale
+import io.github.serpro69.kfaker.dictionary.*
+import io.kotlintest.*
+import io.kotlintest.matchers.collections.*
+import io.kotlintest.matchers.numerics.*
+import io.kotlintest.matchers.string.*
+import io.kotlintest.specs.*
+import java.util.*
 
 internal class FakerServiceTest : FreeSpec({
     Faker.init()

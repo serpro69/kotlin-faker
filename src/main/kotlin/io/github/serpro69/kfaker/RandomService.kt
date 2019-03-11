@@ -1,7 +1,7 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import java.security.SecureRandom
-import java.util.Random
+import java.security.*
+import java.util.*
 
 internal class RandomService(private val random: Random = SecureRandom()) {
 

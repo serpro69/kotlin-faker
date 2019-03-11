@@ -1,7 +1,7 @@
-package io.github.sergio.igwt.kfaker
+package io.github.serpro69.kfaker
 
-import io.github.sergio.igwt.kfaker.provider.*
-import io.github.sergio.igwt.kfaker.provider.Currency
+import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.Currency
 import java.util.*
 
 object Faker {
