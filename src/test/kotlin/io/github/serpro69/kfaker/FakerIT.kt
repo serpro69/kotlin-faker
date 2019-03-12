@@ -25,6 +25,7 @@ class FakerIT : FreeSpec({
                     }
                 }
 
+                // TODO: 3/12/2019 see if possible to use kotlintest property-based functionality to test all functions of Faker
                 "AND each function is invoked without exceptions" - {
                     assertSoftly {
                         providerProps.forEach { (props, provider) ->
@@ -51,11 +52,11 @@ class FakerIT : FreeSpec({
                                         if (!value.contains("#chuck and #norris")) value shouldNotContain regex
                                     }
 
-                                    "AND resolved value should not be empty string" {
+                                    "THEN resolved value should not be empty string" {
                                         value shouldNotBe ""
                                     }
 
-                                    "AND resolved value should not contain duplicates" {
+                                    "THEN resolved value should not contain duplicates" {
                                         val values = value.split(" ")
 
                                         values.forEachIndexed { index, s ->

@@ -129,7 +129,15 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN fetching raw value from category using secondary key" - {
-            "AND value type is Map<String, String>" - {
+            "AND value type for primaryKey is Map<String, String>" - {
+                /*
+                  en:
+                    faker:
+                      address:
+                        country_by_code: # primaryKey
+                          PE: Peru # primaryKey.value == secondaryKey:value pair
+                          NO: Norway # primaryKey.value == secondaryKey:value pair
+                 */
                 val category = fakerService.fetchCategory(CategoryName.ADDRESS)
 
                 val peru = fakerService.getRawValue(category, "country_by_code", "PE")
@@ -143,7 +151,27 @@ internal class FakerServiceTest : FreeSpec({
                 }
             }
 
+            "AND value type is Map<String, List>" - {
+                val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
+                val tertiaryType = fakerService.getRawValue(category, "tertiary", "type")
+
+                "THEN value is returned using secondary key" {
+                    val types = listOf("College", "University", "Technical College", "TAFE")
+
+                    types shouldContain tertiaryType.value
+                }
+            }
+
             "AND value type is Map<Map<String, String>>" - {
+                /*
+                  en:
+                    faker:
+                      bank:
+                        iban_details: # primaryKey
+                          ua: # primaryKey.value == secondaryKey
+                            length: 29 # secondaryKey.value
+                            bban_pattern: '\d{25}' # secondaryKey.value
+                 */
                 val category = fakerService.fetchCategory(CategoryName.BANK)
                 val rawValue = fakerService.getRawValue(category, "iban_details", "ad")
 
@@ -156,7 +184,21 @@ internal class FakerServiceTest : FreeSpec({
             }
 
             "AND secondary key is invalid string" - {
-                // TODO: 3/3/2019 finish test
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
+
+                "THEN exception is thrown" {
+                    shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "postcode_by_state", "invalid")
+                    }
+                }
+
+                "THEN exceptions contains message" {
+                    val message = shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "postcode_by_state", "invalid")
+                    }.message
+
+                    message shouldContain "Secondary key 'invalid' not found"
+                }
             }
 
             "AND secondary key is empty String" - {
@@ -189,6 +231,111 @@ internal class FakerServiceTest : FreeSpec({
                 "THEN exception contains message" {
                     val exception = shouldThrow<UnsupportedOperationException> {
                         fakerService.getRawValue(category, "country", "country")
+                    }
+
+                    exception.message shouldContain "Unsupported type of raw value"
+                }
+            }
+        }
+
+        "WHEN fetching raw value from category using third key" - {
+            "AND value type is String" - {
+                "THEN value is returned using third key" - {
+                    // TODO: 3/12/2019 not currently used in any of the dictionary files
+                }
+            }
+
+            "AND value type is List" - {
+                val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
+                val tertiaryDegreeType = fakerService.getRawValue(category, "tertiary", "degree", "type")
+
+                "THEN value is returned using secondary key" {
+                    val values = listOf("Associate Degree in", "Bachelor of", "Master of")
+                    values shouldContain tertiaryDegreeType.value
+                }
+            }
+
+            "AND secondary key is invalid string" - {
+                val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
+
+                "THEN exception is thrown" {
+                    shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "tertiary", "invalid", "type")
+                    }
+                }
+
+                "THEN exception contains message" {
+                    val exception = shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "tertiary", "invalid", "type")
+                    }
+
+                    exception.message shouldContain "Secondary key 'invalid' not found"
+                }
+            }
+
+            "AND third key is invalid string" - {
+                val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
+
+                "THEN exception is thrown" {
+                    shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "tertiary", "degree", "invalid")
+                    }
+                }
+
+                "THEN exception contains message" {
+                    val exception = shouldThrow<NoSuchElementException> {
+                        fakerService.getRawValue(category, "tertiary", "degree", "invalid")
+                    }
+
+                    exception.message shouldContain "Third key 'invalid' not found"
+                }
+            }
+
+            "AND secondary key is empty String" - {
+                val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
+
+                "THEN exception is thrown" {
+                    shouldThrow<IllegalArgumentException> {
+                        fakerService.getRawValue(category, "tertiary", "", "type")
+                    }
+                }
+
+                "THEN exception contains message" {
+                    val exception = shouldThrow<IllegalArgumentException> {
+                        fakerService.getRawValue(category, "tertiary", "", "type")
+                    }
+
+                    exception.message shouldContain "Secondary key can not be empty string"
+                }
+            }
+
+            "AND third key is empty String" - {
+                val category = fakerService.fetchCategory(CategoryName.GAMES)
+                val quote = fakerService.getRawValue(category, "dota", "alchemist", "")
+
+                "THEN random value is returned" {
+                    val quotes = listOf(
+                        "Easy now, this stuff is explosive!",
+                        "Better living through alchemy!",
+                        "Tell the ogre you're sorry."
+                    )
+
+                    quotes shouldContain quote.value
+                }
+            }
+
+            "AND value type !is Map" - {
+                val category = fakerService.fetchCategory(CategoryName.ADDRESS)
+
+                "THEN exception is thrown" {
+                    shouldThrow<UnsupportedOperationException> {
+                        fakerService.getRawValue(category, "country_by_code", "PE", "")
+                    }
+                }
+
+                "THEN exception contains message" {
+                    val exception = shouldThrow<UnsupportedOperationException> {
+                        fakerService.getRawValue(category, "country_by_code", "PE", "")
                     }
 
                     exception.message shouldContain "Unsupported type of raw value"

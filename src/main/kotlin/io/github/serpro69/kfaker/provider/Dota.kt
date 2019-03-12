@@ -10,7 +10,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Dota internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    // TODO: 3/7/2019 Need to implement resolving by 3 keys
     val hero = resolve { fakerService.resolve(Faker, it, "dota", "hero", "quote") }
     val abaddon = resolve { fakerService.resolve(Faker, it, "dota", "abaddon", "quote") }
     val alchemist = resolve { fakerService.resolve(Faker, it, "dota", "alchemist", "quote") }

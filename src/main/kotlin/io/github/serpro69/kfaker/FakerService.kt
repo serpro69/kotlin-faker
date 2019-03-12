@@ -86,7 +86,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      */
     fun getRawValue(category: Category, key: String): RawExpression {
         val parameterValue = category.values[key]
-            ?: throw NoSuchElementException("Parameter with name '$key' for this category not found")
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
 
         return when (parameterValue) {
             is List<*> -> {
@@ -106,27 +106,68 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      */
     fun getRawValue(category: Category, key: String, secondaryKey: String): RawExpression {
         val parameterValue = category.values[key]
-            ?: throw NoSuchElementException("Parameter with name '$key' for this category not found")
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
                 if (secondaryKey == "") {
                     val mapValues = parameterValue.values.toList()
-                    when (val value = randomService.randomValue(mapValues)) {
-                        is List<*> -> RawExpression(randomService.randomValue(value) as String)
-                        is String -> RawExpression(value)
-                        is Map<*, *> -> RawExpression(value.toString())
+                    when (val secondaryValue = randomService.randomValue(mapValues)) {
+                        is List<*> -> RawExpression(randomService.randomValue(secondaryValue) as String)
+                        is String -> RawExpression(secondaryValue)
+                        is Map<*, *> -> RawExpression(secondaryValue.toString())
                         else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                     }
                 } else {
-                    parameterValue[secondaryKey]?.let {
-                        when (it) {
-                            is List<*> -> RawExpression(randomService.randomValue(it) as String)
-                            is String -> RawExpression(it)
-                            is Map<*, *> -> RawExpression(it.toString())
+                    parameterValue[secondaryKey]?.let { secondaryValue ->
+                        when (secondaryValue) {
+                            is List<*> -> RawExpression(randomService.randomValue(secondaryValue) as String)
+                            is String -> RawExpression(secondaryValue)
+                            is Map<*, *> -> RawExpression(secondaryValue.toString())
                             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                         }
                     } ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                }
+            }
+            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+        }
+    }
+
+    /**
+     * Returns raw value as [String] from a given [category] fetched by its [key], [secondaryKey], and [thirdKey]
+     */
+    fun getRawValue(category: Category, key: String, secondaryKey: String, thirdKey: String): RawExpression {
+        val parameterValue = category.values[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
+
+        return when (parameterValue) {
+            is Map<*, *> -> {
+                if (secondaryKey != "") {
+                    parameterValue[secondaryKey]?.let { secondaryValue ->
+                        when (secondaryValue) {
+                            is Map<*, *> -> {
+                                if (thirdKey == "") {
+                                    val mapValues = secondaryValue.values.toList()
+                                    when (val thirdValue = randomService.randomValue(mapValues)) {
+                                        is List<*> -> RawExpression(randomService.randomValue(thirdValue) as String)
+                                        is String -> RawExpression(thirdValue)
+                                        else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                                    }
+                                } else {
+                                    secondaryValue[thirdKey]?.let { thirdValue ->
+                                        when (thirdValue) {
+                                            is List<*> -> RawExpression(randomService.randomValue(thirdValue) as String)
+                                            is String -> RawExpression(thirdValue)
+                                            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                                        }
+                                    } ?: throw NoSuchElementException("Third key '$thirdKey' not found.")
+                                }
+                            }
+                            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                        }
+                    } ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                } else {
+                    throw IllegalArgumentException("Secondary key can not be empty string.")
                 }
             }
             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
@@ -149,7 +190,8 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     }
 
     fun resolve(faker: Faker, category: Category, key: String, secondaryKey: String, thirdKey: String): String {
-        TODO("Not implemented")
+        val rawExpression = getRawValue(category, key, secondaryKey, thirdKey)
+        return resolveExpression(faker, category, rawExpression)
     }
 
     private tailrec fun resolveExpression(faker: Faker, category: Category, rawExpression: RawExpression): String {
