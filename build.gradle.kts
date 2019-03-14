@@ -1,3 +1,5 @@
+
+import org.gradle.api.tasks.testing.logging.*
 import org.jetbrains.kotlin.gradle.tasks.*
 
 plugins {
@@ -41,6 +43,29 @@ val test by tasks.getting(Test::class) {
     dependsOn("cleanTest")
 
     testLogging {
-        events("PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR")
+        events(
+            TestLogEvent.FAILED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.STANDARD_OUT
+        )
+        exceptionFormat = TestExceptionFormat.FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+
+        debug {
+            events(
+                TestLogEvent.STARTED,
+                TestLogEvent.PASSED,
+                TestLogEvent.FAILED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_OUT,
+                TestLogEvent.STANDARD_ERROR
+            )
+            exceptionFormat = TestExceptionFormat.FULL
+        }
+
+        info.events = debug.events
+        info.exceptionFormat = debug.exceptionFormat
     }
 }

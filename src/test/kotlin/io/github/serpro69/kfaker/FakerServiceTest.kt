@@ -436,4 +436,7 @@ internal class FakerServiceTest : FreeSpec({
             }
         }
     }
-})
+}) {
+    override fun isolationMode() = IsolationMode.InstancePerLeaf
+}
+

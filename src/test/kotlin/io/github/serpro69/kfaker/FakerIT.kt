@@ -124,4 +124,6 @@ class FakerIT : FreeSpec({
             }
         }
     }
-})
+}) {
+    override fun isolationMode() = IsolationMode.SingleInstance
+}

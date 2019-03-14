@@ -58,4 +58,6 @@ internal class RandomServiceTest : FreeSpec({
 
         }
     }
-})
+}) {
+    override fun isolationMode() = IsolationMode.InstancePerLeaf
+}
