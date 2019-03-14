@@ -11,6 +11,6 @@ class Lorem internal constructor(fakerService: FakerService) : AbstractFakeDataP
 
     val words = resolve { fakerService.resolve(Faker, it, "words") }
     val supplemental = resolve { fakerService.resolve(Faker, it, "supplemental") }
-    val multibyte = resolve { fakerService.resolve(Faker, it, "multibyte") }
+//    val multibyte = resolve { fakerService.resolve(Faker, it, "multibyte") } // currently not supported due to logic for getting raw value for List<List<*>> types
     val punctuation = resolve { fakerService.resolve(Faker, it, "punctuation", "") }
 }

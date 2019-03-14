@@ -26,7 +26,7 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     val engineSizes = resolve { fakerService.resolve(Faker, it, "engine_sizes") }
     val licensePlate = resolve { fakerService.resolve(Faker, it, "license_plate") }
     val licencePlateByState: (stateCode: String) -> String = { stateCode ->
-        resolve { fakerService.resolve(Faker, it, "licenc_plate_by_state", stateCode) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "license_plate_by_state", stateCode) }.invoke()
     }
     val cylinderEngine = resolve { fakerService.resolve(Faker, it, "cylinder_engine") }
 }

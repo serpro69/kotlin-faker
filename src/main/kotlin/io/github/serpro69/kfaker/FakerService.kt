@@ -93,6 +93,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
                 when (val value = randomService.randomValue(parameterValue)) {
                     is List<*> -> RawExpression(randomService.randomValue(value) as String)
                     is String -> RawExpression(value)
+                    is Int -> RawExpression(value.toString())
                     else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                 }
             }

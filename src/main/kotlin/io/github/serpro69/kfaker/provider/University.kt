@@ -9,5 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class University internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.UNIVERSITY
 
+    // Prefix and suffix are needed because they are used as expressions, i.e. `#{University.prefix}`
+    val prefix = resolve { fakerService.resolve(Faker, it, "prefix") }
+    val suffix = resolve { fakerService.resolve(Faker, it, "suffix") }
     val name = resolve { fakerService.resolve(Faker, it, "name") }
 }

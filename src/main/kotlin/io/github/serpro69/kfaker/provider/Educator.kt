@@ -10,7 +10,7 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.EDUCATOR
 
     val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val secondary = resolve { fakerService.resolve(Faker, it, "secondry") }
+    val secondary = resolve { fakerService.resolve(Faker, it, "secondary") }
     val tertiaryType = resolve { fakerService.resolve(Faker, it, "tertiary", "type") }
     val tertiaryDegree: (type: String) -> String = { type ->
         resolve { fakerService.resolve(Faker, it, "tertiary", "degree", type) }.invoke()

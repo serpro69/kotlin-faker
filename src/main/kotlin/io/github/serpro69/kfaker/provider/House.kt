@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class House internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HOUSE
 
-    val furniture = resolve { fakerService.resolve(Faker, it, "funiture") }
-    val rooms = resolve { fakerService.resolve(Faker, it, "ooms") }
+    val furniture = resolve { fakerService.resolve(Faker, it, "furniture") }
+    val rooms = resolve { fakerService.resolve(Faker, it, "rooms") }
 }

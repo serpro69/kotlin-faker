@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Yoda internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.YODA
 
-    val quote = resolve { fakerService.resolve(Faker, it, "quote") }
+    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
 }

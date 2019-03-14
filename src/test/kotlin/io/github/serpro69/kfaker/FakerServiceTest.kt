@@ -30,7 +30,7 @@ internal class FakerServiceTest : FreeSpec({
                     "industry_segments", "internet", "invoice", "job", "kpop", "lebowski", "lord_of_the_rings", "lorem",
                     "lovecraft", "markdown", "marketing", "measurement", "michael_scott", "military", "movie", "music",
                     "name", "nation", "nato_phonetic_alphabet", "new_girl", "one_piece", "parks_and_rec", "phish",
-                    "phone_number", "cell_phone", "country_code", "princess_bride", "programming_language", "quote",
+                    "phone_number", "princess_bride", "programming_language", "quote",
                     "relationship", "restaurant", "rick_and_morty", "rock_band", "rupaul", "science", "seinfeld",
                     "shakespeare", "silicon_valley", "simpsons", "slack_emoji", "source", "south_park", "space",
                     "stargate", "star_trek", "star_wars", "stranger_things", "stripe", "subscription", "superhero",
