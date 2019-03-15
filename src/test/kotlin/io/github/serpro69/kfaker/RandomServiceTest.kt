@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker
 
 import io.kotlintest.*
 import io.kotlintest.matchers.collections.*
+import io.kotlintest.matchers.string.*
 import io.kotlintest.specs.*
 
 internal class RandomServiceTest : FreeSpec({
@@ -55,7 +56,24 @@ internal class RandomServiceTest : FreeSpec({
                     }
                 }
             }
+        }
 
+        "WHEN calling nextChar()" - {
+            val source = "qwertyuiopasdfghjklzxcvbnm"
+
+            "AND upperCase is true" - {
+                "THEN random upper-case letter is generated" {
+                    val letter = randomService.nextLetter(true).toString()
+                    source.toUpperCase() shouldContain letter
+                }
+            }
+
+            "AND upperCase is false" - {
+                "THEN random lower-case letter is generated" {
+                    val letter = randomService.nextLetter(false).toString()
+                    source shouldContain letter
+                }
+            }
         }
     }
 }) {

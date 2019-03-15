@@ -17,7 +17,8 @@ import kotlin.reflect.full.*
 internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
-    private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]""")
+    private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
+    private val letterRegex = Regex("""(\?\?+)[^\{\s+\p{L}+]?""")
     val dictionary = load(locale)
 
     internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
@@ -217,11 +218,13 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
                 }
             }
             numericRegex.containsMatchIn(rawExpression.value) -> rawExpression.value.numerify()
+            letterRegex.containsMatchIn(rawExpression.value) -> rawExpression.value.letterify()
             else -> rawExpression.value
         }
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression) &&
-            !numericRegex.containsMatchIn(resolvedExpression)
+            !numericRegex.containsMatchIn(resolvedExpression) &&
+            !letterRegex.containsMatchIn(resolvedExpression)
         ) {
             resolvedExpression
         } else resolveExpression(faker, category, RawExpression(resolvedExpression))
@@ -229,6 +232,12 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
 
     private fun String.numerify(): String {
         return this.map { if (it == '#') randomService.nextInt(10).toString() else "$it" }.joinToString("")
+    }
+
+    private fun String.letterify(): String {
+        return this.map {
+            if (it == '?') randomService.nextLetter(upper = true).toString() else "$it"
+        }.joinToString("")
     }
 
     @Suppress("UNCHECKED_CAST")
