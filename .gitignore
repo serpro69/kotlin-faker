@@ -5,3 +5,4 @@
 out/
 build/
 logs/
+!gradle/wrapper/gradle-wrapper.jar
