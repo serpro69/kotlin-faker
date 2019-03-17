@@ -2,7 +2,6 @@ package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
-import io.kotlintest.matchers.string.*
 import io.kotlintest.specs.*
 import java.util.*
 import kotlin.reflect.*
@@ -10,82 +9,84 @@ import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({
-    // TODO: 3/16/2019 add logging
-    // TODO: 3/16/2019 maybe reorganize abstract layers? could probably remove 1-2. Indentation seems a bit too much
-    "GIVEN Faker instance is initialized" - {
+    "GIVEN every public function in each provider is invoked without exceptions" - {
         val faker = Faker.init()
 
-        "WHEN getting all public providers" - {
-            val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
-                it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+        // Get a list of all publicly visible providers
+        val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
+            it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+        }
+
+        // Get a list of all publicly visible functions in each provider
+        val providerProps = providers.associateBy { provider ->
+            provider.getter.call(faker)!!::class.declaredMemberProperties.filter {
+                it.visibility == KVisibility.PUBLIC
             }
+        }
 
-            "AND getting all public functions in each provider" - {
-                val providerProps = providers.associateBy { provider ->
-                    provider.getter.call(faker)!!::class.declaredMemberProperties.filter {
-                        it.visibility == KVisibility.PUBLIC
-                    }
-                }
+        assertSoftly {
+            providerProps.forEach { (props, provider) ->
+                props.forEach {
+                    val call = it.getter.call(provider.getter.call(faker))
+                    val returnType = call.toString()
 
-                // TODO: 3/12/2019 see if possible to use kotlintest property-based functionality to test all functions of Faker
-                "AND each function is invoked without exceptions" - {
-                    assertSoftly {
-                        providerProps.forEach { (props, provider) ->
-                            props.forEach {
-                                val call = it.getter.call(provider.getter.call(faker))
-                                val returnType = call.toString()
+                    "WHEN result value for ${provider.name + it.getter.name} is resolved correctly" - {
+                        val regex = Regex("""#\{.*\}|#++""")
 
-                                "AND result value for ${provider.name + it.getter.name} should be resolved correctly" - {
-                                    val regex = Regex("""#\{.*\}|#++""")
+                        val value = when (returnType) {
+                            "() -> kotlin.String" -> (call as () -> String).invoke()
+                            "(kotlin.String) -> kotlin.String" -> (call as (String) -> String).invoke("")
+                            "(kotlin.String) -> kotlin.String!" -> (call as (String) -> String).invoke("")
+                            else -> throw AssertionError("Incorrect return type '$returnType' for ${provider.name + it.getter.name}")
+                        }
 
-                                    "#{expression}" shouldContain regex
-                                    "### Something with number" shouldContain regex
-                                    "### Something with numbers ###" shouldContain regex
-                                    "######" shouldContain regex
+                        "THEN resolved value should not contain yaml expression" {
+                            if (
+                                !value.contains("#chuck and #norris")
+                                && (provider.name != "invoice" && it.getter.name != "<get-pattern>")
+                                && (provider.name != "markdown" && it.getter.name != "<get-headers>")
+                            ) {
+                                if (value.contains(regex)) {
+                                    throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain regex '$regex'")
+                                }
+                            }
+                        }
 
-                                    val value = when (returnType) {
-                                        "() -> kotlin.String" -> (call as () -> String).invoke()
-                                        "(kotlin.String) -> kotlin.String" -> (call as (String) -> String).invoke("")
-                                        "(kotlin.String) -> kotlin.String!" -> (call as (String) -> String).invoke("")
-                                        else -> throw AssertionError("Incorrect return type '$returnType' for ${provider.name + it.getter.name}")
-                                    }
+                        "THEN resolved value should not be empty string" {
+                            if (value == "") {
+                                throw AssertionError("Value for '${provider.name + it.getter.name}' should not be empty string")
+                            }
+                        }
 
-                                    "THEN resolved value should not contain yaml expression" {
-                                        if (
-                                            !value.contains("#chuck and #norris")
-                                            && (provider.name != "invoice" && it.getter.name != "<get-pattern>")
-                                            && (provider.name != "markdown" && it.getter.name != "<get-headers>")
-                                        ) {
-                                            value shouldNotContain regex
-                                        }
-                                    }
+                        "THEN resolved value should not contain duplicates" {
+                            val values = value.split(" ")
 
-                                    "THEN resolved value should not be empty string" {
-                                        value shouldNotBe ""
-                                    }
-
-                                    "THEN resolved value should not contain duplicates" {
-                                        val values = value.split(" ")
-
-                                        values.forEachIndexed { index, s ->
-                                            if (index < values.size - 1) {
-                                                // Accounting for some exceptional cases where values are repeated
-                                                // in resolved expression
-                                                if (
-                                                    !value.startsWith("Officer Meow Meow")
-                                                    && !value.startsWith("Hello? Hello?")
-                                                    && !value.startsWith("No, no, no, no, no")
-                                                    && !value.startsWith("Yes. Yes.")
-                                                    && value != "Dance Dance Dance"
-                                                    && value != "Tiger! Tiger!"
-                                                    && (provider.name != "coffee" && it.getter.name != "<get-notes>")
-                                                    && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
-                                                    && value != "Girls Girls"
-                                                    && value != "woof woof"
-                                                ) {
-                                                    values.elementAt(index + 1) shouldNotBe s
-                                                }
-                                            }
+                            values.forEachIndexed { index, s ->
+                                if (index < values.size - 1) {
+                                    // Accounting for some exceptional cases where values are repeated
+                                    // in resolved expression
+                                    if (
+                                        !value.startsWith("Officer Meow Meow") // bojackHorseman<get-characters>
+                                        && !value.startsWith("Hello? Hello?") // backToTheFuture<get-quotes>
+                                        && !value.startsWith("No, no, no, no, no") // backToTheFuture<get-quotes>
+                                        && !value.startsWith("Yes. Yes.") // backToTheFuture<get-quotes>
+                                        && value != "Dance Dance Dance" // book<get-title>
+                                        && value != "Tiger! Tiger!" // book<get-title>
+                                        && (provider.name != "coffee" && it.getter.name != "<get-notes>")
+                                        && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
+                                        && value != "Girls Girls" // kPop<get-girlsGroups>
+                                        && value != "woof woof" // creature<get-dog><sound>
+                                        && (provider.name != "lorem" && it.getter.name != "<get-punctuation>" && value != " ")
+                                        && !value.startsWith("Mesa day startin pretty okee-day") // starWars<get-quotes>
+                                        && value != "Duran Duran" // rockBand<get-name>
+                                        && value != "Phi Phi O'Hara" // rupaul<get-queens>
+                                        && value.startsWith("Everyone has an individual background.") // quote<get-matz>
+                                        && value != "Pivot! Pivot! Pivot! Pivot! Pivot!" // friends<get-quotes>
+                                        && value != "NOM NOM NOM" // leagueOfLegends<get-quote>
+                                        && value != "Die! Die! Die!" // overwatch<get-quotes>
+                                    ) {
+                                        if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
+                                            throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
                                         }
                                     }
                                 }
@@ -134,6 +135,4 @@ class FakerIT : FreeSpec({
             }
         }
     }
-}) {
-    override fun isolationMode() = IsolationMode.SingleInstance
-}
+})
