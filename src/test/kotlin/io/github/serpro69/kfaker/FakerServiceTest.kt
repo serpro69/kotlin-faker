@@ -9,8 +9,6 @@ import io.kotlintest.specs.*
 import java.util.*
 
 internal class FakerServiceTest : FreeSpec({
-    Faker.init()
-
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
             val dictionary = FakerService().dictionary
@@ -404,6 +402,8 @@ internal class FakerServiceTest : FreeSpec({
                 }
 
                 "AND expression matches parameter from another category" - {
+                    Faker.init() // needed to initializy the category
+
                     val category = fakerService.fetchCategory(CategoryName.BOOK)
 
                     "THEN expression is resolved to raw value of another category" {
@@ -449,7 +449,5 @@ internal class FakerServiceTest : FreeSpec({
             }
         }
     }
-}) {
-    override fun isolationMode() = IsolationMode.InstancePerLeaf
-}
+})
 
