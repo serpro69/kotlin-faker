@@ -75,15 +75,19 @@ class FakerIT : FreeSpec({
                                         && (provider.name != "coffee" && it.getter.name != "<get-notes>")
                                         && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
                                         && value != "Girls Girls" // kPop<get-girlsGroups>
+                                        && value != "Two Two" // kPop<get-firstGroups>
                                         && value != "woof woof" // creature<get-dog><sound>
                                         && (provider.name != "lorem" && it.getter.name != "<get-punctuation>" && value != " ")
                                         && !value.startsWith("Mesa day startin pretty okee-day") // starWars<get-quotes>
                                         && value != "Duran Duran" // rockBand<get-name>
                                         && value != "Phi Phi O'Hara" // rupaul<get-queens>
-                                        && value.startsWith("Everyone has an individual background.") // quote<get-matz>
+                                        && value != "Hello Hello Hello!" // rupaul<get-quotes>
+                                        && value != "Shante, Shante, Shante" // rupaul<get-quotes>
+                                        && !value.startsWith("Everyone has an individual background.") // quote<get-matz>
                                         && value != "Pivot! Pivot! Pivot! Pivot! Pivot!" // friends<get-quotes>
                                         && value != "NOM NOM NOM" // leagueOfLegends<get-quote>
                                         && value != "Die! Die! Die!" // overwatch<get-quotes>
+                                        && !value.startsWith("Kitty, kitty, kitty,") // heyArnold<get-quotes>
                                     ) {
                                         if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
                                             throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
