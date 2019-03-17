@@ -37,7 +37,7 @@ internal class FakerServiceTest : FreeSpec({
                     "world_cup", "yoda"
                 )
 
-                dictionary.categories.map { it.categoryName.toLowerCase() } shouldBe dictionaryKeys
+                dictionary.categories.map { it.categoryName.toLowerCase() } shouldContainExactlyInAnyOrder dictionaryKeys
             }
 
             "THEN recurring keys should be appended" {
