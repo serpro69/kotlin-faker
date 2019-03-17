@@ -4,3 +4,4 @@
 *.jar
 out/
 build/
+logs/
