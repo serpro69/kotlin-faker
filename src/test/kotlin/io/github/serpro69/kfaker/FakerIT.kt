@@ -10,6 +10,8 @@ import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({
+    // TODO: 3/16/2019 add logging
+    // TODO: 3/16/2019 maybe reorganize abstract layers? could probably remove 1-2. Indentation seems a bit too much
     "GIVEN Faker instance is initialized" - {
         val faker = Faker.init()
 
@@ -45,11 +47,17 @@ class FakerIT : FreeSpec({
                                         "() -> kotlin.String" -> (call as () -> String).invoke()
                                         "(kotlin.String) -> kotlin.String" -> (call as (String) -> String).invoke("")
                                         "(kotlin.String) -> kotlin.String!" -> (call as (String) -> String).invoke("")
-                                        else -> ""
+                                        else -> throw AssertionError("Incorrect return type '$returnType' for ${provider.name + it.getter.name}")
                                     }
 
                                     "THEN resolved value should not contain yaml expression" {
-                                        if (!value.contains("#chuck and #norris")) value shouldNotContain regex
+                                        if (
+                                            !value.contains("#chuck and #norris")
+                                            && (provider.name != "invoice" && it.getter.name != "<get-pattern>")
+                                            && (provider.name != "markdown" && it.getter.name != "<get-headers>")
+                                        ) {
+                                            value shouldNotContain regex
+                                        }
                                     }
 
                                     "THEN resolved value should not be empty string" {
@@ -67,11 +75,13 @@ class FakerIT : FreeSpec({
                                                     !value.startsWith("Officer Meow Meow")
                                                     && !value.startsWith("Hello? Hello?")
                                                     && !value.startsWith("No, no, no, no, no")
-                                                    && !value.startsWith("Hello? Hello?")
                                                     && !value.startsWith("Yes. Yes.")
                                                     && value != "Dance Dance Dance"
                                                     && value != "Tiger! Tiger!"
                                                     && (provider.name != "coffee" && it.getter.name != "<get-notes>")
+                                                    && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
+                                                    && value != "Girls Girls"
+                                                    && value != "woof woof"
                                                 ) {
                                                     values.elementAt(index + 1) shouldNotBe s
                                                 }

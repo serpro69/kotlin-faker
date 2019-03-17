@@ -57,7 +57,7 @@ object Faker {
     lateinit var fallout: Fallout
     lateinit var familyGuy: FamilyGuy
     lateinit var file: File
-    lateinit var finance: Finance
+//    lateinit var finance: Finance
     lateinit var food: Food
     lateinit var football: Football
     lateinit var freshPriceOfBelAir: FreshPriceOfBelAir
@@ -207,7 +207,7 @@ object Faker {
         fallout = Fallout(fakerService)
         familyGuy = FamilyGuy(fakerService)
         file = File(fakerService)
-        finance = Finance(fakerService)
+//        finance = Finance(fakerService)
         food = Food(fakerService)
         football = Football(fakerService)
         freshPriceOfBelAir = FreshPriceOfBelAir(fakerService)

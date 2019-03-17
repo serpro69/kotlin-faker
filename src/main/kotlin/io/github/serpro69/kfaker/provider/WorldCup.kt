@@ -16,8 +16,8 @@ class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDa
         resolve { fakerService.resolve(Faker, it, "groups", group) }.invoke()
         // TODO: 3/10/2019 better resolving of group names
     }
-    val roosters: (rooster: Pair<String, String>) -> String = { (country, type) ->
-        resolve { fakerService.resolve(Faker, it, "roosters", country, type) }.invoke()
-        // TODO: 3/10/2019 better resoving of rooster for different countries and types
-    }
+//    val roosters: (rooster: Pair<String, String>) -> String = { (country, type) ->
+//        resolve { fakerService.resolve(Faker, it, "roosters", country, type) }.invoke()
+//        // TODO: 3/10/2019 better resoving of rooster for different countries and types
+//    }
 }

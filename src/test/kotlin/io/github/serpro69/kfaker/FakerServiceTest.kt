@@ -358,6 +358,19 @@ internal class FakerServiceTest : FreeSpec({
                 }
             }
 
+            "AND expression contains single # char" - {
+                val rawValue = "#"
+                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+
+                "THEN # char is replaced with random digit" {
+                    assertSoftly {
+                        resolvedValue.all { it.isDigit() } shouldBe true
+                        resolvedValue shouldNotContain "#"
+                        resolvedValue shouldHaveSameLengthAs rawValue
+                    }
+                }
+            }
+
             "AND expression contains a String and # chars" - {
                 val rawValue = "Winter is coming ###"
                 val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
