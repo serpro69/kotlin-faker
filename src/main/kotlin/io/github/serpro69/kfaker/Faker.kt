@@ -4,6 +4,11 @@ import io.github.serpro69.kfaker.provider.*
 import io.github.serpro69.kfaker.provider.Currency
 import java.util.*
 
+/**
+ * Object provides functionality to generate fake data.
+ *
+ * Each category from this [Faker] is represented by a property that has the same name as the `.yml` file.
+ */
 object Faker {
     private lateinit var fakerService: FakerService
 

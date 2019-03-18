@@ -58,6 +58,7 @@ class FakerIT : FreeSpec({
                             }
                         }
 
+                        // TODO: 3/17/2019 consider removing this test as checking for all exceptional cases becomes unwieldy
                         "THEN resolved value should not contain duplicates" {
                             val values = value.split(" ")
 
