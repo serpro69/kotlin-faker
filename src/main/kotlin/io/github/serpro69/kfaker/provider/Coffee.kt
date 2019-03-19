@@ -10,8 +10,9 @@ class Coffee internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.COFFEE
 
     val country = resolve { fakerService.resolve(Faker, it, "country") }
-    val regions: (region: String) -> String = { region ->
-        resolve { fakerService.resolve(Faker, it, "regions", region) }.invoke()
+    val regions: (country: String) -> String = { country ->
+        resolve { fakerService.resolve(Faker, it, "regions", country) }.invoke()
+        // TODO: 3/22/2019 ignore case for country?
     }
     val variety = resolve { fakerService.resolve(Faker, it, "variety") }
     val notes = resolve { fakerService.resolve(Faker, it, "notes") }
