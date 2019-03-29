@@ -21,6 +21,7 @@ class StarWars internal constructor(fakerService: FakerService) : AbstractFakeDa
     val quotes: (character: String) -> String = { character ->
         resolve { fakerService.resolve(Faker, it, "quotes", character) }.invoke()
     }
+    val quote = resolve { fakerService.resolve(Faker, it , "quotes", "") }
     val alternateCharacterSpellings: (character: String) -> String = { character ->
         resolve { fakerService.resolve(Faker, it, "alternate_character_spellings", character) }.invoke()
     }
