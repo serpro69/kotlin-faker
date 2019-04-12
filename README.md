@@ -51,7 +51,7 @@ Faker.init(locale)
 
 ```  
 
-<details><summary<b>List of available locales (clickable):</b></summary>
+<details><summary><b>List of available locales (clickable):</b></summary>
 <p>
 
 * `ar`
@@ -107,6 +107,7 @@ Faker.init(locale)
 * `vi`
 * `zh-CN`
 * `zh-TW`
+
 </p>
 </details>
 
