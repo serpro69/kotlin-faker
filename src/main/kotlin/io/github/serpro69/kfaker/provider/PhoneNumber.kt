@@ -9,7 +9,19 @@ import io.github.serpro69.kfaker.dictionary.*
 class PhoneNumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.PHONE_NUMBER
 
-    val phoneNumber = resolve { fakerService.resolve(Faker, it, "phone_number", "formats") }
-    val cellPhone = resolve { fakerService.resolve(Faker, it, "cell_phone", "formats") }
-    val countryCode = resolve { fakerService.resolve(Faker, it, "country_code", "codes") }
+    val phoneNumber = resolve { fakerService.resolve(Faker, it, "formats") }
+    val cellPhone = resolve {
+        fakerService.resolve(
+            Faker,
+            fakerService.fetchCategory(CategoryName.CELL_PHONE),
+            "formats"
+        )
+    }
+    val countryCode = resolve {
+        fakerService.resolve(
+            Faker,
+            fakerService.fetchCategory(CategoryName.COUNTRY_CODE),
+            "codes"
+        )
+    }
 }
