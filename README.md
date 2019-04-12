@@ -20,12 +20,12 @@ that can be used for testing purposes during development and testing.
 
 ## Usage
 ### Add a dependency:
-With gradle:   
+With gradle:  
 ```
 // todo
 ```
 
-With maven:
+With maven:  
 ```
 // todo
 ```
@@ -113,7 +113,7 @@ Faker.init(locale)
 
 Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.  
 
-```
+```kotlin
 Faker.init("es")
 Faker.address.city() // => Barcelona
 ```
@@ -121,7 +121,7 @@ Faker.address.city() // => Barcelona
 *Note that if the localized dictionary file does not contain a category (or a parameter in a category)*
 *that is present in the default locale, then non-localized value will be used instead.*  
 
-```
+```kotlin
 Faker.init()
 Faker.gameOfThrones.cities() // => Braavos
 
@@ -305,6 +305,12 @@ String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
 *Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,*
 *therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.*
 *This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`*
+
+
+## Contributing
+Submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
+and/or open [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
+if you would like to contribute.
 
 
 ## Licence
