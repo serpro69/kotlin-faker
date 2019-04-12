@@ -1,4 +1,5 @@
-![logo](/logo/kotlin_faker.png?raw=true)
+<img src=./logo/kotlin_faker.png width=250 height=250/>  
+
 ### kotlin-faker
 
 
