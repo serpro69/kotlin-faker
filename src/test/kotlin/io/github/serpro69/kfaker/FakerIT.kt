@@ -94,6 +94,7 @@ class FakerIT : FreeSpec({
                                         && value != "Li Li"
                                         && value != "Dee Dee"
                                         && !value.startsWith("A man, a woman and a yordle walk into the sun")
+                                        && !value.startsWith("A hundred million people went to see a movie about what I do.")
                                     ) {
                                         if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
                                             throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
