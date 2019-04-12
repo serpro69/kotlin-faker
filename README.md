@@ -1,7 +1,8 @@
-<img src=./logo/kotlin_faker.png width=250 height=250/>  
+<img src=./logo/kotlin_faker.png width=367.5 height=300/>  
 
 ### kotlin-faker
-
+[![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
+[![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 ## ToC
 - [Intro](#intro)
@@ -10,9 +11,6 @@
 
 
 ## Intro
-
-<!-- Todo ADD BADGES /-->
-
 Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin.
 Generates realistically looking fake data such as names, addresses, banking details, and many more, 
 that can be used for testing purposes during development and testing.
