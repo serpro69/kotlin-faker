@@ -157,6 +157,10 @@ object Faker {
     lateinit var yoda: Yoda
     lateinit var zelda: Zelda
 
+    @JvmStatic
+    fun init(locale: String) = init(Locale.forLanguageTag(locale.replace("_", "-")))
+
+    @JvmStatic
     @JvmOverloads
     fun init(locale: Locale = Locale.ENGLISH): Faker {
         fakerService = FakerService(locale)

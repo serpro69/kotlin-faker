@@ -19,7 +19,7 @@ import kotlin.reflect.full.*
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
  */
-internal class FakerService @JvmOverloads internal constructor(locale: Locale? = null) {
+internal class FakerService @JvmOverloads internal constructor(locale: Locale = Locale.ENGLISH) {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
@@ -29,7 +29,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(locale: String) : this(Locale.forLanguageTag(locale))
+    internal constructor(locale: String) : this(Locale.forLanguageTag(locale.replace("_", "-")))
 
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
@@ -39,15 +39,15 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
-    private fun load(locale: Locale? = null): Dictionary {
+    private fun load(locale: Locale): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
         val defaultDir = requireNotNull(getResource("locales/en/")) {
             "Directory with default dictionary files not found"
         }
 
         File(defaultDir.toURI()).listFiles().forEach {
-            if (it.extension == "yml") {
-                readCategory(it, Locale.ENGLISH).entries.forEach { category ->
+            if (it.extension == "yml") { // take care of `README.md` file present in the `locales/en` directory
+                readCategory(it, "en").entries.forEach { category ->
                     if (defaultValues.containsKey(category.key)) {
                         defaultValues.merge(category.key, category.value) { t, u -> t.plus(u) }
                     } else defaultValues[category.key] = category.value
@@ -55,13 +55,24 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
             }
         }
 
-        if (locale != null && locale.toLanguageTag() != "en") {
-            val localeFileStream = requireNotNull(getResourceAsStream("locales/${locale.toLanguageTag()}.yml")) {
-                "Dictionary file not found for locale value: $locale"
-            }
+        val localeLangTag = requireNotNull(locale.toLanguageTag())
 
-            readCategory(localeFileStream, locale).forEach {
-                defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+        if (localeLangTag != "en") {
+            val localeFileStream = getResourceAsStream("locales/$localeLangTag.yml")
+
+            if (localeFileStream == null) {
+                val localeLang = localeLangTag.substringBefore("-")
+
+                val fileStream = getResourceAsStream("locales/$localeLang.yml")
+                    ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$localeLangTag' or '$localeLang'")
+
+                readCategory(fileStream, localeLang).forEach {
+                    defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+                }
+            } else {
+                readCategory(localeFileStream, localeLangTag).forEach {
+                    defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+                }
             }
         }
 
@@ -77,7 +88,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      * and `value` represents the [Map] of values from this category.
      */
     @Suppress("SameParameterValue")
-    private fun readCategory(file: File, locale: Locale): LinkedHashMap<String, Map<String, *>> {
+    private fun readCategory(file: File, locale: String): LinkedHashMap<String, Map<String, *>> {
         return readCategory(file.inputStream(), locale)
     }
 
@@ -87,8 +98,8 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale? =
      * and `value` represents the [Map] of values from this category.
      */
     @Suppress("UNCHECKED_CAST")
-    private fun readCategory(inputStream: InputStream, locale: Locale): LinkedHashMap<String, Map<String, *>> {
-        val localeValues = Mapper.readValue(inputStream, Map::class.java)[locale.toLanguageTag()] as Map<*, *>
+    private fun readCategory(inputStream: InputStream, locale: String): LinkedHashMap<String, Map<String, *>> {
+        val localeValues = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
         return localeValues["faker"] as LinkedHashMap<String, Map<String, *>>
     }
 

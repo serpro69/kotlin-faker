@@ -80,7 +80,23 @@ internal class FakerServiceTest : FreeSpec({
                     FakerService("pe").dictionary
                 }
 
-                exception.message shouldBe "Dictionary file not found for locale value: pe"
+                exception.message shouldBe "Dictionary file not found for locale values: 'pe' or 'pe'"
+            }
+        }
+
+        "WHEN it is set as `lang-COUNTRY` but dictionary file exists only for `lang`" - {
+            val frFRDict = FakerService("fr-FR").dictionary
+
+            "f:THEN localized dictionary for `lang` should be loaded" {
+                frFRDict shouldNotBe null
+            }
+        }
+
+        "WHEN it is set as `lang_COUNTRY` String" - {
+            val frFRDict = FakerService("fr_FR").dictionary
+
+            "f:THEN it should be set as `lang-COUNTRY` String" {
+                frFRDict shouldNotBe null
             }
         }
     }

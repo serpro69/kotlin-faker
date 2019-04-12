@@ -89,6 +89,8 @@ class FakerIT : FreeSpec({
                                         && value != "NOM NOM NOM" // leagueOfLegends<get-quote>
                                         && value != "Die! Die! Die!" // overwatch<get-quotes>
                                         && !value.startsWith("Kitty, kitty, kitty,") // heyArnold<get-quotes>
+                                        && value != "B. B. King"
+                                        && value != "Li Li"
                                     ) {
                                         if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
                                             throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
@@ -139,5 +141,9 @@ class FakerIT : FreeSpec({
                 }
             }
         }
+    }
+
+    "GIVEN Faker instance is initialized with custom locale" - {
+        val locales =
     }
 })
