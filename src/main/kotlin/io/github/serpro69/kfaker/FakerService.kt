@@ -19,17 +19,17 @@ import kotlin.reflect.full.*
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
  */
-internal class FakerService @JvmOverloads internal constructor(locale: Locale = Locale.ENGLISH) {
+internal class FakerService @JvmOverloads internal constructor(locale: String = "en") {
     private val randomService = RandomService()
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
     private val letterRegex = Regex("""(\?\?+)[^\{\s+\p{L}+]?""")
-    val dictionary = load(locale)
+    val dictionary = load(locale.replace("_", "-"))
 
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(locale: String) : this(Locale.forLanguageTag(locale.replace("_", "-")))
+    internal constructor(locale: Locale) : this(locale.toLanguageTag())
 
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
@@ -39,7 +39,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale = 
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
-    private fun load(locale: Locale): Dictionary {
+    private fun load(locale: String): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
         val defaultDir = requireNotNull(getResource("locales/en/")) {
             "Directory with default dictionary files not found"
@@ -55,22 +55,20 @@ internal class FakerService @JvmOverloads internal constructor(locale: Locale = 
             }
         }
 
-        val localeLangTag = requireNotNull(locale.toLanguageTag())
-
-        if (localeLangTag != "en") {
-            val localeFileStream = getResourceAsStream("locales/$localeLangTag.yml")
+        if (locale != "en") {
+            val localeFileStream = getResourceAsStream("locales/$locale.yml")
 
             if (localeFileStream == null) {
-                val localeLang = localeLangTag.substringBefore("-")
+                val localeLang = locale.substringBefore("-")
 
                 val fileStream = getResourceAsStream("locales/$localeLang.yml")
-                    ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$localeLangTag' or '$localeLang'")
+                    ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
 
                 readCategory(fileStream, localeLang).forEach {
                     defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
                 }
             } else {
-                readCategory(localeFileStream, localeLangTag).forEach {
+                readCategory(localeFileStream, locale).forEach {
                     defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
                 }
             }
