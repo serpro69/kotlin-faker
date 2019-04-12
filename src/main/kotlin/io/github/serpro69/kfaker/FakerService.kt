@@ -53,6 +53,12 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
                     } else defaultValues[category.key] = category.value
                 }
             }
+
+            val enYml = File(defaultDir.toURI()).parentFile.listFiles().first { file -> file.name == "en.yml" }
+
+            readCategory(enYml, "en").entries.forEach { category ->
+                defaultValues[category.key] = category.value
+            }
         }
 
         if (locale != "en") {
@@ -64,18 +70,28 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
                 val fileStream = getResourceAsStream("locales/$localeLang.yml")
                     ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
 
-                readCategory(fileStream, localeLang).forEach {
-                    defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+                readCategory(fileStream, localeLang).forEach { cat ->
+                    when (cat.key) {
+                        "separator" -> defaultValues[cat.key] = cat.value
+                        else -> defaultValues.merge(cat.key, cat.value) { t, u -> t.plus(u) }
+                    }
                 }
             } else {
-                readCategory(localeFileStream, locale).forEach {
-                    defaultValues.merge(it.key, it.value) { t, u -> t.plus(u) }
+                readCategory(localeFileStream, locale).forEach { cat ->
+                    when (cat.key) {
+                        "separator" -> defaultValues[cat.key] = cat.value
+                        else -> defaultValues.merge(cat.key, cat.value) { t, u -> t.plus(u) }
+                    }
                 }
             }
         }
 
         val categories = defaultValues.entries.toList().map {
-            Category(getCategoryName(it.key), it.value)
+            val value = when (it.key) {
+                "separator" -> mapOf("separator" to it.value)
+                else -> it.value
+            }
+            Category(getCategoryName(it.key), value)
         }
         return Dictionary(categories)
     }

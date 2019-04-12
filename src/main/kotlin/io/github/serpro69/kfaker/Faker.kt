@@ -12,6 +12,7 @@ import java.util.*
 object Faker {
     private lateinit var fakerService: FakerService
 
+    lateinit var separator: Separator
     lateinit var address: Address
     lateinit var ancient: Ancient
     lateinit var animal: Animal
@@ -165,6 +166,7 @@ object Faker {
     fun init(locale: String = "en"): Faker {
         fakerService = FakerService(locale)
 
+        separator = Separator(fakerService)
         address = Address(fakerService)
         ancient = Ancient(fakerService)
         animal = Animal(fakerService)

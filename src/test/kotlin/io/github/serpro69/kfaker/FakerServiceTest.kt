@@ -34,7 +34,7 @@ internal class FakerServiceTest : FreeSpec({
                     "stargate", "star_trek", "star_wars", "stranger_things", "stripe", "subscription", "superhero",
                     "sword_art_online", "team", "the_expanse", "the_it_crowd", "the_thick_of_it", "twin_peaks",
                     "umphreys_mcgee", "university", "vehicle", "venture_bros", "verbs", "v_for_vendetta",
-                    "world_cup", "yoda"
+                    "world_cup", "yoda", "separator"
                 )
 
                 dictionary.categories.map { it.categoryName.toLowerCase() } shouldContainExactlyInAnyOrder dictionaryKeys

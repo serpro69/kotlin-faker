@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker
 
+import io.github.serpro69.kfaker.ResourceLoader.getResource
 import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
 import io.kotlintest.specs.*
@@ -91,6 +92,7 @@ class FakerIT : FreeSpec({
                                         && !value.startsWith("Kitty, kitty, kitty,") // heyArnold<get-quotes>
                                         && value != "B. B. King"
                                         && value != "Li Li"
+                                        && value != "Dee Dee"
                                     ) {
                                         if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
                                             throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
@@ -144,6 +146,16 @@ class FakerIT : FreeSpec({
     }
 
     "GIVEN Faker instance is initialized with custom locale" - {
-        val locales =
+        val localeDir = requireNotNull(getResource("locales/"))
+
+        val locales = java.io.File(localeDir.toURI()).listFiles().map {
+            if (it.isFile && it.extension == "yml") {
+                it.nameWithoutExtension
+            } else null
+        }.filterNotNull()
+
+        "THEN Faker should be initialized without exceptions" {
+            locales.forEach { Faker.init(it) }
+        }
     }
 })

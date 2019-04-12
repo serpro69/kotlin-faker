@@ -16,6 +16,7 @@ internal data class Category(val categoryName: CategoryName, val values: Map<Str
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
 internal enum class CategoryName {
+    SEPARATOR,
     ADDRESS,
     ANCIENT,
     CREATURE,
