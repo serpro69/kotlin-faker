@@ -1,6 +1,6 @@
-# kotlin-faker
+![logo](/logo/kotlin_faker.png?raw=true)
+### kotlin-faker
 
-<!-- TODO ADD LOGO /-->
 
 ## ToC
 - [Intro](#intro)
@@ -44,9 +44,88 @@ Faker.address.city() // => New York
 ```
 
 ### Using custom locales
+`Faker` instance can be initialized with a custom locale:  
 ```kotlin
 Faker.init(locale)
 
+```  
+
+<details><summary<b>List of available locales (clickable):</b></summary>
+<p>
+
+* `ar`
+* `bg`
+* `ca`
+* `ca-CAT`
+* `da-DK`
+* `de`
+* `de-AT`
+* `de-CH`
+* `ee`
+* `en` - default
+* `en-AU`
+* `en-au-ocker`
+* `en-BORK`
+* `en-CA`
+* `en-GB`
+* `en-IND`
+* `en-MS`
+* `en-NEP`
+* `en-NG`
+* `en-NZ`
+* `en-PAK`
+* `en-SG`
+* `en-UG`
+* `en-US`
+* `en-ZA`
+* `es`
+* `es-MX`
+* `fa`
+* `fi-FI`
+* `fr`
+* `fr-CA`
+* `fr-CH`
+* `he`
+* `hy`
+* `id`
+* `it`
+* `ja`
+* `ko`
+* `lv`
+* `nb-NO`
+* `nl`
+* `no`
+* `pl`
+* `pt`
+* `pt-BR`
+* `ru`
+* `sk`
+* `sv`
+* `tr`
+* `uk`
+* `vi`
+* `zh-CN`
+* `zh-TW`
+</p>
+</details>
+
+Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.  
+
+```
+Faker.init("es")
+Faker.address.city() // => Barcelona
+```
+
+*Note that if the localized dictionary file does not contain a category (or a parameter in a category)*
+*that is present in the default locale, then non-localized value will be used instead.*  
+
+```
+Faker.init()
+Faker.gameOfThrones.cities() // => Braavos
+
+Faker.init("nb-NO")
+// `game_of_thrones` category is not localized for `nb-NO` locale
+Faker.gameOfThrones.cities() // => Braavos
 ```
 
 
@@ -54,9 +133,9 @@ Faker.init(locale)
 Below is the list of available providers that correspond to the dictionary files found in [/locales/en](src/main/resources/locales/en)
 
 <i>Note that not all (although most) of the providers and their functions are implemented at this point.
-For more details see the particular `.md` file for each provider.</i>
+For more details see the particular `.md` file for each provider below.</i>
 
-<details><summary><b>List of available providers:</b></summary>
+<details><summary><b>List of available providers (clickable):</b></summary>
 <p>
 
 * [Address](doc/address.md)
@@ -206,6 +285,24 @@ For more details see the particular `.md` file for each provider.</i>
 
 </p>
 </details>
+
+## Java interop
+Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project
+thanks to great Kotlin-to-Java interop.
+
+First initialize `Faker`: 
+```
+Faker.init()
+```  
+
+Then call the getter methods on any of the available providers:
+```
+String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
+```
+*Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.*
+*Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,*
+*therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.*
+*This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`*
 
 
 ## Licence
