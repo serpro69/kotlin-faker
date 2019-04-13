@@ -5,19 +5,26 @@
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 ## ToC
-- [Intro](#intro)
-- [Usage](#usage)
+- [About](#about)
+- [Usage](#usage)  
+  - [Add a dependency](#add-a-dependency)
+  - [Initialize Faker](#initialize-faker-singleton)
+  - [Generate data](#generate-some-data)
+  - [Using custom locales](#using-custom-locales)
+  - [Java interop](#java-interop)
 - [Data Providers](#data-providers)
+- [Contributing](#contributing)
+- [Licence](#licence)
 
 
-## Intro
+## About
 Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin.
 Generates realistically looking fake data such as names, addresses, banking details, and many more, 
 that can be used for testing purposes during development and testing.
 
 
 ## Usage
-### Add a dependency:
+### Add a dependency
 With gradle:  
 ```
 // todo
@@ -31,7 +38,6 @@ With maven:
 ### Initialize `Faker` singleton
 ```kotlin
 Faker.init()
-
 ```
 
 ### Generate some data
@@ -39,14 +45,12 @@ Faker.init()
 Faker.name.firstName() // => Ana
 
 Faker.address.city() // => New York
-
 ```
 
 ### Using custom locales
 `Faker` instance can be initialized with a custom locale:  
 ```kotlin
 Faker.init(locale)
-
 ```  
 
 <details><summary><b>List of available locales (clickable):</b></summary>
@@ -127,6 +131,24 @@ Faker.init("nb-NO")
 // `game_of_thrones` category is not localized for `nb-NO` locale
 Faker.gameOfThrones.cities() // => Braavos
 ```
+
+### Java interop
+Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project
+thanks to great Kotlin-to-Java interop.
+
+First initialize `Faker`: 
+```
+Faker.init()
+```  
+
+Then call the getter methods on any of the available providers:
+```
+String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
+```
+*Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.*
+*Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,*
+*therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.*
+*This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`*
 
 
 ## Data Providers
@@ -285,24 +307,6 @@ For more details see the particular `.md` file for each provider below.</i>
 
 </p>
 </details>
-
-## Java interop
-Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project
-thanks to great Kotlin-to-Java interop.
-
-First initialize `Faker`: 
-```
-Faker.init()
-```  
-
-Then call the getter methods on any of the available providers:
-```
-String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
-```
-*Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.*
-*Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,*
-*therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.*
-*This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`*
 
 
 ## Contributing
