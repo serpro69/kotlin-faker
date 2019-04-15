@@ -1,15 +1,19 @@
-
 import org.gradle.api.tasks.testing.logging.*
 import org.jetbrains.kotlin.gradle.tasks.*
+import java.util.*
 
 plugins {
     kotlin("jvm") version "1.3.21"
+    `build-scan`
+    `maven-publish`
+    id("com.jfrog.bintray") version "1.8.4"
 }
 
-group = "io.github.serpro69"
-version = "1.0-SNAPSHOT"
+group = properties["GROUP"].toString()
+version = properties["VERSION"].toString()
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -23,8 +27,28 @@ dependencies {
     implementation("com.github.mifmif:generex:1.0.2")
     implementation("ch.qos.logback:logback-core:1.2.3")
     implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("io.github.classgraph:classgraph:4.8.24")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.2.1")
     runtime(kotlin("script-runtime"))
+}
+
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+}
+
+tasks {
+    jar {
+        manifest {
+            attributes(
+                mapOf(
+                    "Implementation-Title" to project.name,
+                    "Implementation-Version" to project.version,
+                    "Class-Path" to configurations.compile.get().joinToString(" ") { it.name }
+                )
+            )
+        }
+    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -46,6 +70,7 @@ val test by tasks.getting(Test::class) {
     dependsOn("cleanTest")
 
     testLogging {
+        showStandardStreams = true
         events(
             TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
@@ -70,5 +95,92 @@ val test by tasks.getting(Test::class) {
 
         info.events = debug.events
         info.exceptionFormat = debug.exceptionFormat
+    }
+}
+
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.getByName("main").allSource)
+}
+
+val artifactName = project.name
+val artifactGroup = project.group.toString()
+val artifactVersion = project.version.toString()
+
+val pomUrl = "https://github.com/serpro69/kotlin-faker"
+val pomScmUrl = "https://github.com/serpro69/kotlin-faker"
+val pomIssueUrl = "https://github.com/serpro69/kotlin-faker/issues"
+val pomDesc = "https://github.com/serpro69/kotlin-faker"
+
+val githubRepo = "serpro69/kotlin-faker"
+val githubReadme = "README.md"
+
+val pomLicenseName = "MIT"
+val pomLicenseUrl = "https://opensource.org/licenses/mit-license.php"
+val pomLicenseDist = "repo"
+
+val pomDeveloperId = "serpro69"
+val pomDeveloperName = "Sergii Prodanov"
+
+
+publishing {
+    publications {
+        create<MavenPublication>("kotlin-faker") {
+            groupId = artifactGroup
+            artifactId = artifactName
+            version = artifactVersion
+            from(components["java"])
+            artifact(sourcesJar)
+
+            pom.withXml {
+                asNode().apply {
+                    appendNode("description", pomDesc)
+                    appendNode("name", rootProject.name)
+                    appendNode("url", pomUrl)
+                    appendNode("licenses").appendNode("license").apply {
+                        appendNode("name", pomLicenseName)
+                        appendNode("url", pomLicenseUrl)
+                        appendNode("distribution", pomLicenseDist)
+                    }
+                    appendNode("developers").appendNode("developer").apply {
+                        appendNode("id", pomDeveloperId)
+                        appendNode("name", pomDeveloperName)
+                    }
+                    appendNode("scm").apply {
+                        appendNode("url", pomScmUrl)
+                    }
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.findProperty("bintrayUser").toString()
+    key = project.findProperty("bintrayKey").toString()
+    publish = true
+
+    setPublications("kotlin-faker")
+
+    pkg.apply {
+        repo = "maven"
+        name = artifactName
+        userOrg = "serpro69"
+        githubRepo = githubRepo
+        vcsUrl = pomScmUrl
+        description = "Port of ruby faker gem written in kotlin"
+        setLabels("kotlin", "faker", "testing", "test-automation", "data", "generation")
+        setLicenses("MIT")
+        desc = description
+        websiteUrl = pomUrl
+        issueTrackerUrl = pomIssueUrl
+        githubReleaseNotesFile = githubReadme
+
+        version.apply {
+            name = artifactVersion
+            desc = pomDesc
+            released = Date().toString()
+            vcsTag = artifactVersion
+        }
     }
 }
