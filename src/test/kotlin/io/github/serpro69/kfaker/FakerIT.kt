@@ -1,6 +1,5 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.ResourceLoader.getResource
 import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
 import io.kotlintest.specs.*
@@ -148,7 +147,7 @@ class FakerIT : FreeSpec({
     }
 
     "GIVEN Faker instance is initialized with custom locale" - {
-        val localeDir = requireNotNull(getResource("locales/"))
+        val localeDir = requireNotNull(this::class.java.classLoader.getResource("locales/"))
 
         val locales = java.io.File(localeDir.toURI()).listFiles().map {
             if (it.isFile && it.extension == "yml") {

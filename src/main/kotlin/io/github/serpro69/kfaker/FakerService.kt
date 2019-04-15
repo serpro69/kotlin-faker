@@ -1,11 +1,10 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.ResourceLoader.getResource
-import io.github.serpro69.kfaker.ResourceLoader.getResourceAsStream
+import io.github.classgraph.*
 import io.github.serpro69.kfaker.dictionary.*
 import io.github.serpro69.kfaker.provider.*
 import java.io.*
-import java.io.File
+import java.net.*
 import java.util.Locale
 import java.util.regex.*
 import kotlin.NoSuchElementException
@@ -31,6 +30,20 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
      */
     internal constructor(locale: Locale) : this(locale.toLanguageTag())
 
+    private fun getDefaultFilesURLs(): List<URL> {
+        return ClassGraph().whitelistPathsNonRecursive("locales/en").scan().use {
+            it.getResourcesWithExtension("yml").map { resource ->
+                resource.url
+            }
+        }
+    }
+
+    private fun getLocalizedFileStream(locale: String = "en"): InputStream? {
+        val classLoader = this.javaClass.classLoader
+
+        return classLoader.getResourceAsStream("locales/$locale.yml")
+    }
+
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
      *
@@ -41,20 +54,18 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
      */
     private fun load(locale: String): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
-        val defaultDir = requireNotNull(getResource("locales/en/")) {
-            "Directory with default dictionary files not found"
-        }
 
-        File(defaultDir.toURI()).listFiles().forEach {
-            if (it.extension == "yml") { // take care of `README.md` file present in the `locales/en` directory
-                readCategory(it, "en").entries.forEach { category ->
-                    if (defaultValues.containsKey(category.key)) {
-                        defaultValues.merge(category.key, category.value) { t, u -> t.plus(u) }
-                    } else defaultValues[category.key] = category.value
-                }
+        val defaultFiles = getDefaultFilesURLs()
+
+        defaultFiles.forEach { url ->
+            readCategory(url.openStream(), "en").entries.forEach { category ->
+                if (defaultValues.containsKey(category.key)) {
+                    defaultValues.merge(category.key, category.value) { t, u -> t.plus(u) }
+                } else defaultValues[category.key] = category.value
             }
 
-            val enYml = File(defaultDir.toURI()).parentFile.listFiles().first { file -> file.name == "en.yml" }
+//             Add `separator` category from `locales/en.yml` file
+            val enYml = requireNotNull(getLocalizedFileStream("en"))
 
             readCategory(enYml, "en").entries.forEach { category ->
                 defaultValues[category.key] = category.value
@@ -62,12 +73,12 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
         }
 
         if (locale != "en") {
-            val localeFileStream = getResourceAsStream("locales/$locale.yml")
+            val localeFileStream = getLocalizedFileStream(locale)
 
             if (localeFileStream == null) {
                 val localeLang = locale.substringBefore("-")
 
-                val fileStream = getResourceAsStream("locales/$localeLang.yml")
+                val fileStream = getLocalizedFileStream(localeLang)
                     ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
 
                 readCategory(fileStream, localeLang).forEach { cat ->
@@ -94,16 +105,6 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
             Category(getCategoryName(it.key), value)
         }
         return Dictionary(categories)
-    }
-
-    /**
-     * Reads values from the [file] for the given [locale] and returns as [LinkedHashMap]
-     * where `key` represents the category name, i.e. `address`,
-     * and `value` represents the [Map] of values from this category.
-     */
-    @Suppress("SameParameterValue")
-    private fun readCategory(file: File, locale: String): LinkedHashMap<String, Map<String, *>> {
-        return readCategory(file.inputStream(), locale)
     }
 
     /**
