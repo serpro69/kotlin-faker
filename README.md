@@ -76,7 +76,7 @@ The jar and pom files can also be found at this [link](https://dl.bintray.com/se
 ### Generating data
 First initialize `Faker` singleton:
 ```kotlin
-Faker.ini()
+Faker.init()
 ```  
 
 Then call properties of `Faker` which represent different data categories (i.e. address, name, etc.):  
