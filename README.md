@@ -2,6 +2,7 @@
 
 ### kotlin-faker
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
+[![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 ## ToC
@@ -24,23 +25,61 @@ that can be used for testing purposes during development and testing.
 
 
 ## Usage
-### Add a dependency
-With gradle:  
-```
-// todo
-```
+### Downloading
+**With gradle**  
+Add bintray repository:  
+```groovy
+repositories {
+    maven {
+      url 'https://dl.bintray.com/serpro69/maven/'
+    }
+}
+```  
 
-With maven:  
-```
-// todo
-```
+Add dependency:  
+```groovy
+dependencies {
+    implementation 'io.github.serpro69:kotlin-faker:$kotlinFakerVersion'
+}
+```  
 
-### Initialize `Faker` singleton
+**With maven**  
+Add bintray repository:  
+```xml
+<repositories>
+    <repository>
+        <id>serpro69-maven</id>
+        <url>https://dl.bintray.com/serpro69/maven/</url>
+        <layout>default</layout>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+    </repository>
+</repositories>
+```  
+
+Add dependency:  
+```xml
+<dependencies>
+    <!--Add dependency-->
+    <dependency>
+        <groupId>io.github.serpro69</groupId>
+        <artifactId>kotlin-faker</artifactId>
+        <version>${kotlin-faker.version}</version>
+    </dependency>
+</dependencies>
+```  
+
+**Downloading a jar**  
+The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
+
+### Generating data
+First initialize `Faker` singleton:
 ```kotlin
-Faker.init()
-```
+Faker.ini()
+```  
 
-### Generate some data
+Then call properties of `Faker` which represent different data categories (i.e. address, name, etc.):  
 ```kotlin
 Faker.name.firstName() // => Ana
 
@@ -310,8 +349,8 @@ For more details see the particular `.md` file for each provider below.</i>
 
 
 ## Contributing
-Submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
-and/or open [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
+Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
+and/or open a [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
 if you would like to contribute.
 
 
