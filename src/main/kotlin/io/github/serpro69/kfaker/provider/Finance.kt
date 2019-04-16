@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.FINANCE] category.
  */
+@Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
 class Finance internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.FINANCE
 

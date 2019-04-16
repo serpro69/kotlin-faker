@@ -12,7 +12,7 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     val manufacture = resolve { fakerService.resolve(Faker, it, "manufacture") }
     val makes = resolve { fakerService.resolve(Faker, it, "makes") }
     val modelsByMake: (make: String) -> String = { make ->
-        resolve { fakerService.resolve(Faker, it, "models_by_make", make) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "models_by_make", make.toLowerCase()) }.invoke()
     }
     val colors = resolve { fakerService.resolve(Faker, it, "colors") }
     val transmissions = resolve { fakerService.resolve(Faker, it, "transmissions") }
@@ -26,7 +26,7 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     val engineSizes = resolve { fakerService.resolve(Faker, it, "engine_sizes") }
     val licensePlate = resolve { fakerService.resolve(Faker, it, "license_plate") }
     val licencePlateByState: (stateCode: String) -> String = { stateCode ->
-        resolve { fakerService.resolve(Faker, it, "license_plate_by_state", stateCode) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "license_plate_by_state", stateCode.toLowerCase()) }.invoke()
     }
     val cylinderEngine = resolve { fakerService.resolve(Faker, it, "cylinder_engine") }
 }

@@ -13,8 +13,6 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     val femaleFirstName = resolve { fakerService.resolve(Faker, it, "female_first_name") }
     val firstName = resolve { fakerService.resolve(Faker, it, "first_name") }
     val lastName = resolve { fakerService.resolve(Faker, it, "last_name") }
-    val prefix = resolve { fakerService.resolve(Faker, it, "prefix") }
-    val suffix = resolve { fakerService.resolve(Faker, it, "suffix") }
     val name = resolve { fakerService.resolve(Faker, it, "name") }
     val nameWithMiddle = resolve { fakerService.resolve(Faker, it, "name_with_middle") }
 }

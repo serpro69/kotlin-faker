@@ -13,7 +13,7 @@ class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     val name = resolve { fakerService.resolve(Faker, it, "name") }
     val swiftBic = resolve { fakerService.resolve(Faker, it, "swift_bic") }
     val ibanDetails: (countryCode: String) -> String = { code ->
-        val regex = resolve { fakerService.resolve(Faker, it, "iban_details", code) }.invoke()
+        val regex = resolve { fakerService.resolve(Faker, it, "iban_details", code.toLowerCase()) }.invoke()
             .drop(1)
             .dropLast(1)
             .split(", ")

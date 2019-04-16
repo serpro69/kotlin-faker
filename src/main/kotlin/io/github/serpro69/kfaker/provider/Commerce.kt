@@ -10,12 +10,17 @@ class Commerce internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.COMMERCE
 
     val department = resolve { fakerService.resolve(Faker, it, "department") }
-    val productName: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "product_name", type) }.invoke()
-        // TODO: 3/22/2019 for empty type concatenate results of three sub-types
+    val productName = {
+        val adjective = resolve { fakerService.resolve(Faker, it, "product_name", "adjective") }.invoke()
+        val material = resolve { fakerService.resolve(Faker, it, "product_name", "material") }.invoke()
+        val product = resolve { fakerService.resolve(Faker, it, "product_name", "product") }.invoke()
+
+        "$adjective $material $product"
     }
-    val promotionCode: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "promotion_code", type) }.invoke()
-        // TODO: 3/22/2019 for empty type concatenate results of two sub-types
+    val promotionCode = {
+        val adjective = resolve { fakerService.resolve(Faker, it, "promotion_code", "adjective") }.invoke()
+        val noun = resolve { fakerService.resolve(Faker, it, "promotion_code", "noun") }.invoke()
+
+        "$adjective $noun"
     }
 }

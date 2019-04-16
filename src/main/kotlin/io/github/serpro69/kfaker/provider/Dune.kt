@@ -13,10 +13,10 @@ class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     val titles = resolve { fakerService.resolve(Faker, it, "titles") }
     val planets = resolve { fakerService.resolve(Faker, it, "planets") }
     val quotes: (character: String) -> String = { character ->
-        resolve { fakerService.resolve(Faker, it, "quotes", character) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "quotes", character.toLowerCase().replace("_", " ")) }.invoke()
     }
     val sayings: (origin: String) -> String = { origin ->
-        resolve { fakerService.resolve(Faker, it, "sayings", origin) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "sayings", origin.toLowerCase().replace("_", " ")) }.invoke()
     }
 
     // TODO: 3/10/2019 would it be better to have enums for functions such as `quotes` to offer constrained number of values for `character`

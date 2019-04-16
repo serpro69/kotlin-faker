@@ -51,7 +51,7 @@ object Faker {
     lateinit var dessert: Dessert
     lateinit var device: Device
     lateinit var dog: Dog
-//    lateinit var dota: Dota
+    lateinit var dota: Dota
     lateinit var dragonBall: DragonBall
     lateinit var drWho: DrWho
     lateinit var dumbAndDumber: DumbAndDumber
@@ -88,7 +88,7 @@ object Faker {
     lateinit var idNumber: IdNumber
     lateinit var industrySegments: IndustrySegments
     lateinit var internet: Internet
-    lateinit var invoice: Invoice
+//    lateinit var invoice: Invoice
     lateinit var job: Job
     lateinit var kPop: KPop
     lateinit var leagueOfLegends: LeagueOfLegends
@@ -205,7 +205,7 @@ object Faker {
         dessert = Dessert(fakerService)
         device = Device(fakerService)
         dog = Dog(fakerService)
-//        dota = Dota(fakerService)
+        dota = Dota(fakerService)
         dragonBall = DragonBall(fakerService)
         drWho = DrWho(fakerService)
         dumbAndDumber = DumbAndDumber(fakerService)
@@ -243,7 +243,7 @@ object Faker {
         idNumber = IdNumber(fakerService)
         industrySegments = IndustrySegments(fakerService)
         internet = Internet(fakerService)
-        invoice = Invoice(fakerService)
+//        invoice = Invoice(fakerService)
         job = Job(fakerService)
         kPop = KPop(fakerService)
         leagueOfLegends = LeagueOfLegends(fakerService)

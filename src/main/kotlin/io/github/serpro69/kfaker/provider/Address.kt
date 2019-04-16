@@ -9,12 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Address internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ADDRESS
 
-    /* TODO: 3/3/2019 remove things such as *suffix, *prefix, etc. as they are not uniform across translated dictionaries
-        i.e. default `address.yml` has `city_prefix` whereas `nb-NO.yml` has `city_root` instead.
-        Therefore things that are used as part of expressions should not be present.
-     */
-    val cityPrefix = resolve { fakerService.resolve(Faker, it, "city_prefix") }
-    val citySuffix = resolve { fakerService.resolve(Faker, it, "city_suffix") }
     val country = resolve { fakerService.resolve(Faker, it, "country") }
     val countryByCode: (countryCode: String) -> String = { code ->
         resolve { fakerService.resolve(Faker, it, "country_by_code", code) }.invoke()
@@ -25,10 +19,7 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     val countryCode = resolve { fakerService.resolve(Faker, it, "country_code") }
     val countryCodeLong = resolve { fakerService.resolve(Faker, it, "country_code_long") }
     val buildingNumber = resolve { fakerService.resolve(Faker, it, "building_number") }
-    val communityPrefix = resolve { fakerService.resolve(Faker, it, "community_prefix") }
-    val communitySuffix = resolve { fakerService.resolve(Faker, it, "community_suffix") }
     val community = resolve { fakerService.resolve(Faker, it, "community") }
-    val streetSuffix = resolve { fakerService.resolve(Faker, it, "street_suffix") }
     val secondaryAddress = resolve { fakerService.resolve(Faker, it, "secondary_address") }
     val postcode = resolve { fakerService.resolve(Faker, it, "postcode") }
     val postcodeByState: (state: String) -> String = { state ->

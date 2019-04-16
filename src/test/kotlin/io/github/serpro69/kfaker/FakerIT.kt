@@ -20,7 +20,7 @@ class FakerIT : FreeSpec({
         // Get a list of all publicly visible functions in each provider
         val providerProps = providers.associateBy { provider ->
             provider.getter.call(faker)!!::class.declaredMemberProperties.filter {
-                it.visibility == KVisibility.PUBLIC
+                it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
             }
         }
 

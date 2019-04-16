@@ -12,6 +12,6 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     val freeEmail = resolve { fakerService.resolve(Faker, it, "free_email") }
     val domainSuffix = resolve { fakerService.resolve(Faker, it, "domain_suffix") }
     val userAgent: (browserType: String) -> String = { browserType ->
-        resolve { fakerService.resolve(Faker, it, "user_agent", browserType) }.invoke()
+        resolve { fakerService.resolve(Faker, it, "user_agent", browserType.toLowerCase()) }.invoke()
     }
 }

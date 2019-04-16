@@ -12,4 +12,5 @@ class Dessert internal constructor(fakerService: FakerService) : AbstractFakeDat
     val variety = resolve { fakerService.resolve(Faker, it, "variety") }
     val topping = resolve { fakerService.resolve(Faker, it, "topping") }
     val flavor = resolve { fakerService.resolve(Faker, it, "flavor") }
+    val dessert = { "${flavor()} ${variety()} with ${topping()}" }
 }

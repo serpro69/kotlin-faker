@@ -11,6 +11,7 @@ class Relationship internal constructor(fakerService: FakerService) : AbstractFa
 
     val familialDirect = resolve { fakerService.resolve(Faker, it, "familial", "direct") }
     val familialExtended = resolve { fakerService.resolve(Faker, it, "familial", "extended") }
+    val familial = resolve { fakerService.resolve(Faker, it, "familial", "") }
     val inLaw = resolve { fakerService.resolve(Faker, it, "in_law") }
     val spouse = resolve { fakerService.resolve(Faker, it, "spouse") }
     val parent = resolve { fakerService.resolve(Faker, it, "parent") }

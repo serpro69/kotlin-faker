@@ -12,6 +12,8 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     val name = resolve { fakerService.resolve(Faker, it, "name") }
     val secondary = resolve { fakerService.resolve(Faker, it, "secondary") }
     val tertiaryType = resolve { fakerService.resolve(Faker, it, "tertiary", "type") }
+
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     val tertiaryDegree: (type: String) -> String = { type ->
         resolve { fakerService.resolve(Faker, it, "tertiary", "degree", type) }.invoke()
     }

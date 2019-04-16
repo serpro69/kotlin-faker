@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Team internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.TEAM
 
-    val creature = resolve { fakerService.resolve(Faker, it, "creature") }
     val name = resolve { fakerService.resolve(Faker, it, "name") }
     val sport = resolve { fakerService.resolve(Faker, it, "sport") }
     val mascot = resolve { fakerService.resolve(Faker, it, "mascot") }
