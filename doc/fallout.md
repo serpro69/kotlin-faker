@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.fallout.characters() // Ada
-Faker.fallout.factions() // Boomers
-Faker.fallout.locations() // Anchorage
-Faker.fallout.quotes() // Ad Victoriam!
+Faker.fallout.characters() // => Ada
+
+Faker.fallout.factions() // => Boomers
+
+Faker.fallout.locations() // => Anchorage
+
+Faker.fallout.quotes() // => Ad Victoriam!
 ```

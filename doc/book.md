@@ -4,15 +4,11 @@
 
 Available Functions:  
 ```kotlin
-// Title
-Faker.book.title() // Absalom, Absalom! 
+Faker.book.title() // => Absalom, Absalom! 
 
-// Author 
-Faker.book.author() // John Smith
+Faker.book.author() // => John Smith
 
-// Publisher
-Faker.book.publisher() // Academic Press 
+Faker.book.publisher() // => Academic Press 
 
-// Genre
-Faker.book.genre() // Classic
+Faker.book.genre() // => Classic
 ```

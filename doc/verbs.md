@@ -4,9 +4,13 @@
 
 Available Functions:  
 ```kotlin
-Faker.verbs.base() // abash
-Faker.verbs.past() // abashed
-Faker.verbs.pastParticiple() // abashed
-Faker.verbs.simplePresent() // abashes
-Faker.verbs.ingForm() // abashing
+Faker.verbs.base() // => abash
+
+Faker.verbs.past() // => abashed
+
+Faker.verbs.pastParticiple() // => abashed
+
+Faker.verbs.simplePresent() // => abashes
+
+Faker.verbs.ingForm() // => abashing
 ```

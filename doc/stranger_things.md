@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.strangerThings.character() // Joyce
-Faker.strangerThings.quote() // I just didn’t want you to think I was such a wastoid, you know?
+Faker.strangerThings.character() // => Joyce
+
+Faker.strangerThings.quote() // => I just didn’t want you to think I was such a wastoid, you know?
 ```

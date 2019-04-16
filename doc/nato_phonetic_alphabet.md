@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Kotlin.natoPhoneticAlphabet.code_word() // Alpha
+Kotlin.natoPhoneticAlphabet.codeWord() // => Alpha
 ```

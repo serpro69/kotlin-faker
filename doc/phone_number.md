@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.phoneNumber.phoneNumber() // ###-###-#### where '#' is a random digit
-Faker.phoneNumber.cellPhone() // ###-###-#### where '#' is a random digit
-Faker.phoneNumber.countryCode() // 1
+Faker.phoneNumber.phoneNumber() // => ###-###-#### where '#' is a random digit
+
+Faker.phoneNumber.cellPhone() // => ###-###-#### where '#' is a random digit
+
+Faker.phoneNumber.countryCode() // => 1
 ```

@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.hipster.words() // Wes Anderson
+Faker.hipster.words() // => Wes Anderson
 ```

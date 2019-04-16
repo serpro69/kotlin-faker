@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.currency.code() // AED
-Faker.currency.name() // UAE Dirham
-Faker.currency.symbol() // HK$
+Faker.currency.code() // => AED
+
+Faker.currency.name() // => UAE Dirham
+
+Faker.currency.symbol() // => HK$
 ```

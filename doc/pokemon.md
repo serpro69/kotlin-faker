@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.pokemon.names() // Bulbasaur
-Faker.pokemon.locations() // Accumula Town
-Faker.pokemon.moves() // Absorb
+Faker.pokemon.names() // => Bulbasaur
+
+Faker.pokemon.locations() // => Accumula Town
+
+Faker.pokemon.moves() // => Absorb
 ```

@@ -4,10 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.commerce.department() // Books
-Faker.commerce.product_name("adjective") // Small
-Faker.commerce.product_name("material") // Steel
-Faker.commerce.product_name("product") // Chair
-Faker.commerce.promotion_code("adjective") // Amazing
-Faker.commerce.promotion_code("noun") // Code
+Faker.commerce.department() // => Books
+
+Faker.commerce.productName() // => Intelligent Steel Coat
+
+Faker.commerce.promotionCode() // => Amazing Deal
 ```

@@ -5,5 +5,6 @@
 Available Functions:  
 ```kotlin
 Faker.programmingLanguage.name() // A# .NET
+
 Faker.programmingLanguage.creator() // John Backus
 ```

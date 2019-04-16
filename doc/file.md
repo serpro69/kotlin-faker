@@ -4,6 +4,6 @@
 
 Available Functions:  
 ```kotlin
-Faker.file.extension() // flac
-Faker.file.mimeType() // application/atom+xml
+Faker.file.extension() // => flac
+Faker.file.mimeType() // => application/atom+xml
 ```

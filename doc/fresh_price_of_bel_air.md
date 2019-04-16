@@ -4,8 +4,10 @@
 
 Available Functions:  
 ```kotlin
-Faker.freshPrinceOfBelAir.characters() // Will Smith
-Faker.freshPrinceOfBelAir.celebrities() // Quincy Jones
-Faker.freshPrinceOfBelAir.quotes() // Girl, you look so good, I would marry your brother just to get in your family.
+Faker.freshPrinceOfBelAir.characters() // => Will Smith
+
+Faker.freshPrinceOfBelAir.celebrities() // => Quincy Jones
+
+Faker.freshPrinceOfBelAir.quotes() // => Girl, you look so good, I would marry your brother just to get in your family.
 
 ```

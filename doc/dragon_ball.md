@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.dragonBall.characters() // Goku
+Faker.dragonBall.characters() // => Goku
 ```

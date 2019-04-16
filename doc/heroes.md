@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.heroes.names() // Christian
-Faker.heroes.specialties() // Ballista
-Faker.heroes.klasses() // Knight
+Faker.heroes.names() // => Christian
+
+Faker.heroes.specialties() // => Ballista
+
+Faker.heroes.klasses() // => Knight
 ```

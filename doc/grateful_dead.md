@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.gratefulDead.players() // Jerry Garcia
-Faker.gratefulDead.songs() // Touch of Grey
+Faker.gratefulDead.players() // => Jerry Garcia
+
+Faker.gratefulDead.songs() // => Touch of Grey
 ```

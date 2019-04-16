@@ -4,11 +4,8 @@
 
 Available Functions:  
 ```kotlin
-// Brand
 Faker.appliance.brand() //  => Bosch
 
-// Equipment
 Faker.appliance.quimpment() // => Air ioniser
-
 ```
 

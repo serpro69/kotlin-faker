@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.color.name() // blue
+Faker.color.name() // => blue
 ```

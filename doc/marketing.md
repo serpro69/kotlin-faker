@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.marketing.buzzwords() // put a pin in it
+Faker.marketing.buzzwords() // => put a pin in it
 ```

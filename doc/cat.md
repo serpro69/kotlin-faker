@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.cat.name() // Alfie
-Faker.cat.breed() // Abyssinian
-Faker.cat.registry() // American Cat Fanciers Association
+Faker.cat.name() // => Alfie
+
+Faker.cat.breed() // => Abyssinian
+
+Faker.cat.registry() // => American Cat Fanciers Association
 ```

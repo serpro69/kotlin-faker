@@ -4,9 +4,13 @@
 
 Available Functions:  
 ```kotlin
-Faker.gameOfThrones.characters() // Abelar Hightower
-Faker.gameOfThrones.houses() // Flint of Flint's Finger
-Faker.gameOfThrones.cities() // Braavos
-Faker.gameOfThrones.quotes() // There are no heroes...in life, the monsters win.
-Faker.gameOfThrones.dragons() // Drogon
+Faker.gameOfThrones.characters() // => Abelar Hightower
+
+Faker.gameOfThrones.houses() // => Flint of Flint's Finger
+
+Faker.gameOfThrones.cities() // => Braavos
+
+Faker.gameOfThrones.quotes() // => There are no heroes...in life, the monsters win.
+
+Faker.gameOfThrones.dragons() // => Drogon
 ```

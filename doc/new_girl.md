@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.newGirl.characters() // Winston Bishop
-Faker.newGirl.quotes() // A no-nail oath? You thought I was gonna sleep with one of you, like I just couldn't help it?
+Faker.newGirl.characters() // => Winston Bishop
+
+Faker.newGirl.quotes() // => A no-nail oath? You thought I was gonna sleep with one of you, like I just couldn't help it?
 ```

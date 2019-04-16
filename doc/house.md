@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.house.furniture() // chair
-Faker.house.rooms() // kitchen
+Faker.house.furniture() // => chair
+
+Faker.house.rooms() // => kitchen
 ```

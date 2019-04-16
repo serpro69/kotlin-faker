@@ -4,7 +4,5 @@
 
 Available Functions:  
 ```kotlin
-// Character
 Faker.aquaTeenHungerForce.character() // => Cybernetic Ghost of Christmas Past from the Future
-
 ```

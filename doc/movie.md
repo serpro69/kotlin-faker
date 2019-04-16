@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.movie.quote() // Frankly, my dear, I don’t give a damn.
+Faker.movie.quote() // => Frankly, my dear, I don’t give a damn.
 ```

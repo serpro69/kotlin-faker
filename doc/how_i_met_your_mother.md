@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.howIMetYourMother.character() // Ted Mosby
-Faker.howIMetYourMother.catchPhrase() // Legendary
-Faker.howIMetYourMother.highFive() // Arthritis Five
-Faker.howIMetYourMother.quote() // Whenever I’m sad, I stop being sad and be awesome instead.
+Faker.howIMetYourMother.character() // => Ted Mosby
+
+Faker.howIMetYourMother.catchPhrase() // => Legendary
+
+Faker.howIMetYourMother.highFive() // => Arthritis Five
+
+Faker.howIMetYourMother.quote() // => Whenever I’m sad, I stop being sad and be awesome instead.
 ```

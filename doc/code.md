@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.code.asin() // B000BJ20TO
+Faker.code.asin() // => B000BJ20TO
 ```

@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.rockBand.name() // Led Zeppelin
+Faker.rockBand.name() // => Led Zeppelin
 ```

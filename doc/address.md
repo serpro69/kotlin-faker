@@ -4,8 +4,7 @@
 
 Available Functions:  
 ```kotlin
-// Country
-Faker.address.city() // => Peru
+Faker.address.country() // => Peru
 
 // Country (fetched by country code)
 Faker.address.countryByCode("PE") // => Peru
@@ -17,40 +16,35 @@ Faker.address.countryByName("Peru") // => PE
 // or a random one
 Faker.address.countryByName("")
 
-// Building number
-Faker.address.buildingNumber() // => XXX || XXXX || XXXXX (where X is a random digit)
+Faker.address.countryCode() // => UA
 
-// Community 
+Faker.address.countryCodeLong() // => URK
+
+Faker.address.buildingNumber() // => 123
+
 Faker.address.community() // => Park Village
 
-// Postcode
-Faker.address.postcode() // => XXXXX || XXXXX-XXXX (where X is a random digit)
+Faker.address.secondaryAddress() // => Apt. 123
+
+Faker.address.postcode() // => 12345
 
 // Postcode (fetched by state abbreviation code)
 Faker.address.postcodeByState("AL") // => 350XX (where X is a random digit)
 
-// State
 Faker.address.state() // => Indiana
 
-// State abbreviation code
 Faker.address.stateAbbr() // => NY
 
-// Timezone
 Faker.address.timeZone() // => Pacific/Midway
 
-// City
-Faker.address.city() // => 
+Faker.address.city() // => Bartville
 
-// Street name
-Faker.address.streetName() // => 
+Faker.address.streetName() // => Adams Brook
 
-// Street address
-Faker.address.streetAddress() // =>
+Faker.address.streetAddress() // => 123 Adams Brook
 
-// Full address
-Faker.address.fullAddress() // =>
+Faker.address.fullAddress() // => 123 Adams Brook, Bartville, AL 12345-6789
 
-// Default country 
 Faker.address.defaultCountry() // => United States of America (this is a static value and only changes with the locale)
 
 ```

@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.yoda.quotes() // Use your feelings, Obi-Wan, and find him you will.
+Faker.yoda.quotes() // => Use your feelings, Obi-Wan, and find him you will.
 ```

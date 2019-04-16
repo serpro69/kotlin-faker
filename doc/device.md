@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.device.modelName() // iPhone
-Faker.device.platform() // Android OS
-Faker.device.manufacturer() // Dell
-Faker.device.serial() // pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
+Faker.device.modelName() // => iPhone
+
+Faker.device.platform() // => Android OS
+
+Faker.device.manufacturer() // => Dell
+
+Faker.device.serial() // => pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
 ```

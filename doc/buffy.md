@@ -4,18 +4,13 @@
 
 Available Functions:  
 ```kotlin
-//Character
-Faker.buffy.characters() // Buffy Summers
+Faker.buffy.characters() // => Buffy Summers
 
-//Quote
-Faker.buffy.quotes() // In every generation there is a chosen one.
+Faker.buffy.quotes() // => In every generation there is a chosen one.
 
-//Celebrity
-Faker.buffy.celebrities() // Sarah Michelle Geller
+Faker.buffy.celebrities() // => Sarah Michelle Geller
 
-//Big bad
-Faker.buffy.big_bads() // The Master
+Faker.buffy.big_bads() // => The Master
 
-//Episode
-Faker.buffy.episodes() // Welcome to the Hellmouth
+Faker.buffy.episodes() // => Welcome to the Hellmouth
 ```

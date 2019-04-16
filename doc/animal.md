@@ -6,5 +6,4 @@ Available Functions:
 ```kotlin
 // Name
 Faker.animal.name() // => alpaca
-
 ```

@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.umphreysMcgee.song() // 1000 Places to See Before You Die
+Faker.umphreysMcgee.song() // => 1000 Places to See Before You Die
 ```

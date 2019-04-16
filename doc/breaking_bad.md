@@ -4,9 +4,7 @@
 
 Available Functions:  
 ```kotlin
-//Character
-Faker.breakingBad.character() // Walter White
+Faker.breakingBad.character() // => Walter White
 
-//Episode
-Faker.breakingBad.episode() // Pilot
+Faker.breakingBad.episode() // => Pilot
 ```

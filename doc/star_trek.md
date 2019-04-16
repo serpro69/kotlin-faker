@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.starTrek.character() // James Tiberius Kirk
-Faker.starTrek.location() // Qo'noS
-Faker.starTrek.specie() // Breen
-Faker.starTrek.villain() // Q
+Faker.starTrek.character() // => James Tiberius Kirk
+
+Faker.starTrek.location() // => Qo'noS
+
+Faker.starTrek.specie() // => Breen
+
+Faker.starTrek.villain() // => Q
 ```

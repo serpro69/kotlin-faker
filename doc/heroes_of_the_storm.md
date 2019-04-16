@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.heroesOfTheStorm.battlegrounds() // Alterac Pass
-Faker.heroesOfTheStorm.classes() // Assasin
-Faker.heroesOfTheStorm.heroes() // Abathur
-Faker.heroesOfTheStorm.quotes() // Beat them like they owe you money!
+Faker.heroesOfTheStorm.battlegrounds() // => Alterac Pass
+
+Faker.heroesOfTheStorm.classes() // => Assasin
+
+Faker.heroesOfTheStorm.heroes() // => Abathur
+
+Faker.heroesOfTheStorm.quotes() // => Beat them like they owe you money!
 ```

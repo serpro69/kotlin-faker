@@ -4,8 +4,11 @@
 
 Available Functions:  
 ```kotlin
-Faker.industrySegments.industry() // Oil & Gas
-Faker.industrySegments.superSector() // Oil & Gas
-Faker.industrySegments.sector() // Oil & Gas Producers
-Faker.industrySegments.subSector() // Exploration & Production
+Faker.industrySegments.industry() // => Oil & Gas
+
+Faker.industrySegments.superSector() // => Oil & Gas
+
+Faker.industrySegments.sector() // => Oil & Gas Producers
+
+Faker.industrySegments.subSector() // => Exploration & Production
 ```

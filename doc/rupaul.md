@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.rupaul.queens() // Tyra Sanchez
-Faker.rupaul.quotes() // Glamazon!
+Faker.rupaul.queens() // => Tyra Sanchez
+
+Faker.rupaul.quotes() // => Glamazon!
 ```

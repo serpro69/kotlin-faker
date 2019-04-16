@@ -4,6 +4,6 @@
 
 Available Functions:  
 ```kotlin
-Faker.markdown.headers() // #
-Faker.markdown.emphasis() // _
+Faker.markdown.headers() // => #
+Faker.markdown.emphasis() // => _
 ```

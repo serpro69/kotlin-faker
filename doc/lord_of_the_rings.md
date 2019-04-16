@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.lordOfTheRings.characters() // Frodo Baggins
-Faker.lordOfTheRings.locations() // Aglarond
-Faker.lordOfTheRings.quotes() // Often does hatred hurt itself!
+Faker.lordOfTheRings.characters() // => Frodo Baggins
+
+Faker.lordOfTheRings.locations() // => Aglarond
+
+Faker.lordOfTheRings.quotes() // => Often does hatred hurt itself!
 ```

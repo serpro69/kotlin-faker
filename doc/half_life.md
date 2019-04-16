@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.halfLife.character() // Adrian Shephard
-Faker.halfLife.enemy() // APC
-Faker.halfLife.location() // Black Mesa East
+Faker.halfLife.character() // => Adrian Shephard
+
+Faker.halfLife.enemy() // => APC
+
+Faker.halfLife.location() // => Black Mesa East
 ```

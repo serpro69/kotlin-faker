@@ -4,9 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.superhero.power() //  Ability Shift
-Faker.superhero.prefix() //  The
-Faker.superhero.suffix() //  I
-Faker.superhero.descriptor() //  A-Bomb
-Faker.superhero.name() // Alien Man
+Faker.superhero.power() // =>  Ability Shift
+
+Faker.superhero.name() // => Alien Man
 ```

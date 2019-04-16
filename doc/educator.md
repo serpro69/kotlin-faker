@@ -4,15 +4,19 @@
 
 Available Functions:  
 ```kotlin
-Faker.educator.name() // Marblewald
-Faker.educator.secondary() // High School
-Faker.educator.tertiaryType() // University
+Faker.educator.name() // => Marblewald
 
+Faker.educator.secondary() // => High School
+
+Faker.educator.tertiaryType() // => University
+```
+
+Non-implemented Functions:  
+```kotlin
 // Random tertiary degree information based on type
-Faker.educator.tertiaryDegree("subject") // Arts
-Faker.educator.tertiaryDegree("type") // Master of
-Faker.educator.tertiaryDegree("course_number") // 168
+Faker.educator.tertiaryDegree("subject") // => Arts
+Faker.educator.tertiaryDegree("type") // => Master of
+Faker.educator.tertiaryDegree("course_number") // => 168
 // or a random one
-Faker.educator.tertiaryDegree("") // Bachelor of
-
+Faker.educator.tertiaryDegree("") // => Bachelor of
 ```

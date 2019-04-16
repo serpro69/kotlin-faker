@@ -4,9 +4,7 @@
 
 Available Functions:  
 ```kotlin
-//Credit card number
-Faker.business.creditCardNumbers() // 1234-2121-1221-1211
+Faker.business.creditCardNumbers() // => 1234-2121-1221-1211
 
-//Credit card type
-Faker.business.creditCardTypes() // visa
+Faker.business.creditCardTypes() // => visa
 ```

@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.coin.flip() // Heads || Tails
+Faker.coin.flip() // => Heads || Tails
 ```

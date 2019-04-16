@@ -4,7 +4,8 @@
 
 Available Functions:  
 ```kotlin
-Faker.greekPhilosophers.names() // Plato
-Faker.greekPhilosophers.quotes() // Quality is not an act, it is a habit.
+Faker.greekPhilosophers.names() // => Plato
+
+Faker.greekPhilosophers.quotes() // => Quality is not an act, it is a habit.
 
 ```

@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.twinPeaks.characters() // Albert Rosenfield
-Faker.twinPeaks.locations() // Big Ed's Gas Farm
-Faker.twinPeaks.quotes() // She's dead... Wrapped in plastic.
+Faker.twinPeaks.characters() // => Albert Rosenfield
+
+Faker.twinPeaks.locations() // => Big Ed's Gas Farm
+
+Faker.twinPeaks.quotes() // => She's dead... Wrapped in plastic.
 ```

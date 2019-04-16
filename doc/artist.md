@@ -4,7 +4,5 @@
 
 Available Functions:  
 ```kotlin
-// Name
 Faker.artist.names() // => Donatello
-
 ```

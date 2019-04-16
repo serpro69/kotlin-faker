@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.stargate.characters() // Jack O'Neill
-Faker.stargate.planets() // Abydos
-Faker.stargate.quotes() // What is an Oprah?
+Faker.stargate.characters() // => Jack O'Neill
+
+Faker.stargate.planets() // => Abydos
+
+Faker.stargate.quotes() // => What is an Oprah?
 ```

@@ -4,8 +4,14 @@
 
 Available Functions:  
 ```kotlin
-Faker.lorem.words() // alias
-Faker.lorem.supplemental() // abbas
-Faker.lorem.multibyte() // [240, 159, 152, 128]
-Faker.lorem.punctuation() // '.'
+Faker.lorem.words() // => alias
+
+Faker.lorem.supplemental() // => abbas
+
+Faker.lorem.punctuation() // => '.'
+```
+
+Non-implemented Functions:  
+```kotlin
+Faker.lorem.multibyte() // => [240, 159, 152, 128]
 ```

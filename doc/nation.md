@@ -4,8 +4,14 @@
 
 Available Functions:  
 ```kotlin
-Faker.nation.flag() // [240, 159, 135, 166, 240, 159, 135, 168]
-Faker.nation.nationality() // Afghans
-Faker.nation.language() // Nepali
-Faker.nation.capital_city() // Kabul
+Faker.nation.nationality() // => Afghans
+
+Faker.nation.language() // => Nepali
+
+Faker.nation.capital_city() // => Kabul
+```
+
+Non-implemented Functions:  
+```kotlin
+Faker.nation.flag() // => [240, 159, 135, 166, 240, 159, 135, 168]
 ```

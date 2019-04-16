@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.university.prefix() // The
-Faker.university.suffix() // University
-Faker.university.name() // West Carolina University
+Faker.university.prefix() // => The
+
+Faker.university.suffix() // => University
+
+Faker.university.name() // => West Carolina University
 ```

@@ -4,7 +4,13 @@
 
 Available Functions:  
 ```kotlin
-Faker.compass.direction() // north
-Faker.compass.abbreviation() // N
-Faker.compass.azimuth() // 180
+```
+
+Non-implemented Functions:  
+```kotlin
+Faker.compass.direction() // => north
+
+Faker.compass.abbreviation() // => N
+
+Faker.compass.azimuth() // => 180
 ```

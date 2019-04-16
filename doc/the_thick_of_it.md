@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.theThickOfIt.characters() // Malcolm Tucker
-Faker.theThickOfIt.positions() // General Elections Advisor
-Faker.theThickOfIt.departments() // Number 10
+Faker.theThickOfIt.characters() // => Malcolm Tucker
+
+Faker.theThickOfIt.positions() // => General Elections Advisor
+
+Faker.theThickOfIt.departments() // => Number 10
 ```

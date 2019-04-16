@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.electricalComponents.active() // Diode
-Faker.electricalComponents.passive() // Resistor
-Faker.electricalComponents.electromechanical() // Piezoelectric device
+Faker.electricalComponents.active() // => Diode
+
+Faker.electricalComponents.passive() // => Resistor
+
+Faker.electricalComponents.electromechanical() // => Piezoelectric device
 ```

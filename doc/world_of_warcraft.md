@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.worldOfWarcraft.hero() // Gul'dan
-Faker.worldOfWarcraft.quotes() // An'u belore delen'na.
+Faker.worldOfWarcraft.hero() // => Gul'dan
+
+Faker.worldOfWarcraft.quotes() // => An'u belore delen'na.
 ```

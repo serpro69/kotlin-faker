@@ -4,9 +4,7 @@
 
 Available Functions:  
 ```kotlin
-//Artist
-Faker.bossaNova.artists() // Alaide Costa
+Faker.bossaNova.artists() // => Alaide Costa
 
-// Song
-Faker.bossaNova.songs() // A Banda
+Faker.bossaNova.songs() // => A Banda
 ```

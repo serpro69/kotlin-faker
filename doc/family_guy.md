@@ -4,7 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.familyGuy.character() // Peter Griffin
-Faker.familyGuy.location() // Cleveland's Deli
-Faker.familyGuy.quote() // It’s Peanut Butter Jelly Time.
+Faker.familyGuy.character() // => Peter Griffin
+Faker.familyGuy.location() // => Cleveland's Deli
+Faker.familyGuy.quote() // => It’s Peanut Butter Jelly Time.
 ```

@@ -4,6 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker.superSmashBros.fighter() // Bayonetta
-Faker.superSmashBros.stage() // 3D Land
+Faker.superSmashBros.fighter() // => Bayonetta
+
+Faker.superSmashBros.stage() // => 3D Land
 ```

@@ -4,7 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.science.element() // Hydrogen
-Faker.science.elementSymbol() // H
-Faker.science.scientist() // Isaac Newton
+Faker.science.element() // => Hydrogen
+
+Faker.science.elementSymbol() // => H
+
+Faker.science.scientist() // => Isaac Newton
 ```

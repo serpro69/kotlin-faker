@@ -4,5 +4,5 @@
 
 Available Functions:  
 ```kotlin
-Faker.funnyName.name() // Aaron Thetires
+Faker.funnyName.name() // => Aaron Thetires
 ```

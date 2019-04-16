@@ -4,8 +4,9 @@
 
 Available Functions:  
 ```kotlin
-Faker.ghostBusters.actors() // Bill Murray
-Faker.ghostBusters.characters() // Dr. Peter Venkman
-Faker.ghostBusters.quotes() // This city is headed for a disaster of biblical proportions.
+Faker.ghostBusters.actors() // => Bill Murray
 
+Faker.ghostBusters.characters() // => Dr. Peter Venkman
+
+Faker.ghostBusters.quotes() // => This city is headed for a disaster of biblical proportions.
 ```
