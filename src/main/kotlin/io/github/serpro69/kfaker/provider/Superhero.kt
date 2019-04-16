@@ -11,9 +11,9 @@ class Superhero internal constructor(fakerService: FakerService) : AbstractFakeD
 
     // These properties are needed because the value for `name` property
     // is resolved with these properties through yml expression in the form of `#{Superhero.prefix}`
-    private val prefix = resolve { fakerService.resolve(Faker, it, "prefix") }
-    private val suffix = resolve { fakerService.resolve(Faker, it, "suffix") }
-    private val descriptor = resolve { fakerService.resolve(Faker, it, "descriptor") }
+    internal val prefix = resolve { fakerService.resolve(Faker, it, "prefix") }
+    internal val suffix = resolve { fakerService.resolve(Faker, it, "suffix") }
+    internal val descriptor = resolve { fakerService.resolve(Faker, it, "descriptor") }
 
     val power = resolve { fakerService.resolve(Faker, it, "power") }
     val name = resolve { fakerService.resolve(Faker, it, "name") }
