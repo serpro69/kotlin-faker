@@ -58,47 +58,34 @@ class FakerIT : FreeSpec({
                             }
                         }
 
-                        // TODO: 3/17/2019 consider removing this test as checking for all exceptional cases becomes unwieldy
                         "THEN resolved value should not contain duplicates" {
                             val values = value.split(" ")
 
-                            values.forEachIndexed { index, s ->
-                                if (index < values.size - 1) {
-                                    // Accounting for some exceptional cases where values are repeated
-                                    // in resolved expression
-                                    if (
-                                        !value.startsWith("Officer Meow Meow") // bojackHorseman<get-characters>
-                                        && !value.startsWith("Hello? Hello?") // backToTheFuture<get-quotes>
-                                        && !value.startsWith("No, no, no, no, no") // backToTheFuture<get-quotes>
-                                        && !value.startsWith("Yes. Yes.") // backToTheFuture<get-quotes>
-                                        && value != "Dance Dance Dance" // book<get-title>
-                                        && value != "Tiger! Tiger!" // book<get-title>
-                                        && (provider.name != "coffee" && it.getter.name != "<get-notes>")
-                                        && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
-                                        && value != "Girls Girls" // kPop<get-girlsGroups>
-                                        && value != "Two Two" // kPop<get-firstGroups>
-                                        && value != "woof woof" // creature<get-dog><sound>
-                                        && (provider.name != "lorem" && it.getter.name != "<get-punctuation>" && value != " ")
-                                        && !value.startsWith("Mesa day startin pretty okee-day") // starWars<get-quotes>
-                                        && value != "Duran Duran" // rockBand<get-name>
-                                        && value != "Phi Phi O'Hara" // rupaul<get-queens>
-                                        && value != "Hello Hello Hello!" // rupaul<get-quotes>
-                                        && value != "Shante, Shante, Shante" // rupaul<get-quotes>
-                                        && !value.startsWith("Everyone has an individual background.") // quote<get-matz>
-                                        && value != "Pivot! Pivot! Pivot! Pivot! Pivot!" // friends<get-quotes>
-                                        && value != "NOM NOM NOM" // leagueOfLegends<get-quote>
-                                        && value != "Die! Die! Die!" // overwatch<get-quotes>
-                                        && !value.startsWith("Kitty, kitty, kitty,") // heyArnold<get-quotes>
-                                        && value != "B. B. King"
-                                        && value != "Li Li"
-                                        && value != "Dee Dee"
-                                        && !value.startsWith("A man, a woman and a yordle walk into the sun")
-                                        && !value.startsWith("A hundred million people went to see a movie about what I do.")
-                                    ) {
-                                        if (values.elementAt(index + 1) == s) { // check that next string is not duplicated
-                                            throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
-                                        }
-                                    }
+                            fun List<String>.odds() = this.mapIndexedNotNull { index, s ->
+                                if (index % 2 == 0) s else null
+                            }
+
+                            fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
+                                if (index % 2 != 0) s else null
+                            }
+
+                            // Accounting for some exceptional cases where values are repeated
+                            // in resolved expression
+                            if (
+                                value != "Tiger! Tiger!" // book<get-title>
+                                && (provider.name != "coffee" && it.getter.name != "<get-notes>")
+                                && (provider.name != "onePiece" && it.getter.name != "<get-akumasNoMi>")
+                                && value != "Girls Girls" // kPop<get-girlsGroups>
+                                && value != "Two Two" // kPop<get-firstGroups>
+                                && value != "woof woof" // creature<get-dog><sound>
+                                && (provider.name != "lorem" && it.getter.name != "<get-punctuation>" && value != " ")
+                                && value != "Duran Duran" // rockBand<get-name>
+                                && value != "Li Li"
+                                && value != "Dee Dee"
+                            ) {
+                                // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
+                                if (values.odds() == values.evens()) {
+                                    throw AssertionError("Value '$value' for '${provider.name + it.getter.name}' should not contain duplicates")
                                 }
                             }
                         }
