@@ -12,151 +12,151 @@ import java.util.*
 object Faker {
     private lateinit var fakerService: FakerService
 
-    lateinit var separator: Separator
-    lateinit var address: Address
-    lateinit var ancient: Ancient
-    lateinit var animal: Animal
-    lateinit var app: App
-    lateinit var appliance: Appliance
-    lateinit var aquaTeenHungerForce: AquaTeenHungerForce
-    lateinit var artist: Artist
-    lateinit var backToTheFuture: BackToTheFuture
-    lateinit var bank: Bank
-    lateinit var basketball: Basketball
-    lateinit var beer: Beer
-    lateinit var bojackHoreseman: BojackHoreseman
-    lateinit var book: Book
-    lateinit var bossaNova: BossaNova
-    lateinit var breakingBad: BreakingBad
-    lateinit var buffy: Buffy
-    lateinit var business: Business
-    lateinit var cannabis: Cannabis
-    lateinit var cat: Cat
-    lateinit var chuckNorris: ChuckNorris
-    lateinit var code: Code
-    lateinit var coffee: Coffee
-    lateinit var coin: Coin
-    lateinit var color: Color
-    lateinit var commerce: Commerce
-    lateinit var community: Community
-    lateinit var company: Company
-//    lateinit var compass: Compass
-    lateinit var construction: Construction
-    lateinit var cosmere: Cosmere
-    lateinit var cryptoCoin: CryptoCoin
-    lateinit var cultureSeries: CultureSeries
-    lateinit var currency: Currency
-    lateinit var dcComics: DcComics
-    lateinit var demographic: Demographic
-    lateinit var dessert: Dessert
-    lateinit var device: Device
-    lateinit var dog: Dog
-    lateinit var dota: Dota
-    lateinit var dragonBall: DragonBall
-    lateinit var drWho: DrWho
-    lateinit var dumbAndDumber: DumbAndDumber
-    lateinit var dune: Dune
-    lateinit var educator: Educator
-    lateinit var elderScrolls: ElderScrolls
-    lateinit var electricalComponents: ElectricalComponents
-    lateinit var eSport: ESport
-    lateinit var fallout: Fallout
-    lateinit var familyGuy: FamilyGuy
-    lateinit var file: File
-//    lateinit var finance: Finance
-    lateinit var food: Food
-    lateinit var football: Football
-    lateinit var freshPriceOfBelAir: FreshPriceOfBelAir
-    lateinit var friends: Friends
-    lateinit var funnyName: FunnyName
-    lateinit var gameOfThrones: GameOfThrones
-    lateinit var gender: Gender
-    lateinit var ghostBusters: GhostBusters
-    lateinit var gratefulDead: GratefulDead
-    lateinit var greekPhilosophers: GreekPhilosophers
-    lateinit var hacker: Hacker
-    lateinit var halfLife: HalfLife
-    lateinit var harryPotter: HarryPotter
-    lateinit var heroes: Heroes
-    lateinit var heroesOfTheStorm: HeroesOfTheStorm
-    lateinit var heyArnold: HeyArnold
-    lateinit var hipster: Hipster
-    lateinit var hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy
-    lateinit var hobbit: Hobbit
-    lateinit var house: House
-    lateinit var howIMetYourMother: HowIMetYourMother
-    lateinit var idNumber: IdNumber
-    lateinit var industrySegments: IndustrySegments
-    lateinit var internet: Internet
-//    lateinit var invoice: Invoice
-    lateinit var job: Job
-    lateinit var kPop: KPop
-    lateinit var leagueOfLegends: LeagueOfLegends
-    lateinit var lebowski: Lebowski
-    lateinit var lordOfTheRings: LordOfTheRings
-    lateinit var lorem: Lorem
-    lateinit var lovecraft: Lovecraft
-    lateinit var markdown: Markdown
-    lateinit var marketing: Marketing
-    lateinit var measurement: Measurement
-    lateinit var michaelScott: MichaelScott
-    lateinit var military: Military
-    lateinit var movie: Movie
-    lateinit var music: Music
-    lateinit var myst: Myst
-    lateinit var name: Name
-    lateinit var nation: Nation
-    lateinit var natoPhoneticAlphabet: NatoPhoneticAlphabet
-    lateinit var newGirl: NewGirl
-    lateinit var onePiece: OnePiece
-    lateinit var overwatch: Overwatch
-    lateinit var parksAndRec: ParksAndRec
-    lateinit var phish: Phish
-    lateinit var phoneNumber: PhoneNumber
-    lateinit var pokemon: Pokemon
-    lateinit var princessBride: PrincessBride
-    lateinit var programmingLanguage: ProgrammingLanguage
-    lateinit var quote: Quote
-    lateinit var relationship: Relationship
-    lateinit var restaurant: Restaurant
-    lateinit var rickAndMorty: RickAndMorty
-    lateinit var rockBand: RockBand
-    lateinit var rupaul: Rupaul
-    lateinit var science: Science
-    lateinit var seinfeld: Seinfeld
-    lateinit var shakespeare: Shakespeare
-    lateinit var siliconValley: SiliconValley
-    lateinit var simpsons: Simpsons
-    lateinit var slackEmoji: SlackEmoji
-    lateinit var sonicTheHedgehog: SonicTheHedgehog
-//    lateinit var source: Source
-    lateinit var southPark: SouthPark
-    lateinit var space: Space
-    lateinit var stargate: Stargate
-    lateinit var starTrek: StarTrek
-    lateinit var starWars: StarWars
-    lateinit var strangerThings: StrangerThings
-    lateinit var stripe: Stripe
-    lateinit var subscription: Subscription
-    lateinit var superhero: Superhero
-    lateinit var superSmashBros: SuperSmashBros
-    lateinit var swordArtOnline: SwordArtOnline
-    lateinit var team: Team
-    lateinit var theExpanse: TheExpanse
-    lateinit var theITCrowd: TheITCrowd
-    lateinit var theThickOfIt: TheThickOfIt
-    lateinit var twinPeaks: TwinPeaks
-    lateinit var umphreysMcgee: UmphreysMcgee
-    lateinit var university: University
-    lateinit var vehicle: Vehicle
-    lateinit var ventureBros: VentureBros
-    lateinit var verbs: Verbs
-    lateinit var vForVendetta: VForVendetta
-    lateinit var witcher: Witcher
-    lateinit var worldCup: WorldCup
-    lateinit var worldOfWarcraft: WorldOfWarcraft
-    lateinit var yoda: Yoda
-    lateinit var zelda: Zelda
+    lateinit var separator: Separator private set
+    lateinit var address: Address private set
+    lateinit var ancient: Ancient private set
+    lateinit var animal: Animal private set
+    lateinit var app: App private set
+    lateinit var appliance: Appliance private set
+    lateinit var aquaTeenHungerForce: AquaTeenHungerForce private set
+    lateinit var artist: Artist private set
+    lateinit var backToTheFuture: BackToTheFuture private set
+    lateinit var bank: Bank private set
+    lateinit var basketball: Basketball private set
+    lateinit var beer: Beer private set
+    lateinit var bojackHoreseman: BojackHoreseman private set
+    lateinit var book: Book private set
+    lateinit var bossaNova: BossaNova private set
+    lateinit var breakingBad: BreakingBad private set
+    lateinit var buffy: Buffy private set
+    lateinit var business: Business private set
+    lateinit var cannabis: Cannabis private set
+    lateinit var cat: Cat private set
+    lateinit var chuckNorris: ChuckNorris private set
+    lateinit var code: Code private set
+    lateinit var coffee: Coffee private set
+    lateinit var coin: Coin private set
+    lateinit var color: Color private set
+    lateinit var commerce: Commerce private set
+    lateinit var community: Community private set
+    lateinit var company: Company private set
+//    lateinit var compass: Compass private set
+    lateinit var construction: Construction private set
+    lateinit var cosmere: Cosmere private set
+    lateinit var cryptoCoin: CryptoCoin private set
+    lateinit var cultureSeries: CultureSeries private set
+    lateinit var currency: Currency private set
+    lateinit var dcComics: DcComics private set
+    lateinit var demographic: Demographic private set
+    lateinit var dessert: Dessert private set
+    lateinit var device: Device private set
+    lateinit var dog: Dog private set
+    lateinit var dota: Dota private set
+    lateinit var dragonBall: DragonBall private set
+    lateinit var drWho: DrWho private set
+    lateinit var dumbAndDumber: DumbAndDumber private set
+    lateinit var dune: Dune private set
+    lateinit var educator: Educator private set
+    lateinit var elderScrolls: ElderScrolls private set
+    lateinit var electricalComponents: ElectricalComponents private set
+    lateinit var eSport: ESport private set
+    lateinit var fallout: Fallout private set
+    lateinit var familyGuy: FamilyGuy private set
+    lateinit var file: File private set
+//    lateinit var finance: Finance private set
+    lateinit var food: Food private set
+    lateinit var football: Football private set
+    lateinit var freshPriceOfBelAir: FreshPriceOfBelAir private set
+    lateinit var friends: Friends private set
+    lateinit var funnyName: FunnyName private set
+    lateinit var gameOfThrones: GameOfThrones private set
+    lateinit var gender: Gender private set
+    lateinit var ghostBusters: GhostBusters private set
+    lateinit var gratefulDead: GratefulDead private set
+    lateinit var greekPhilosophers: GreekPhilosophers private set
+    lateinit var hacker: Hacker private set
+    lateinit var halfLife: HalfLife private set
+    lateinit var harryPotter: HarryPotter private set
+    lateinit var heroes: Heroes private set
+    lateinit var heroesOfTheStorm: HeroesOfTheStorm private set
+    lateinit var heyArnold: HeyArnold private set
+    lateinit var hipster: Hipster private set
+    lateinit var hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy private set
+    lateinit var hobbit: Hobbit private set
+    lateinit var house: House private set
+    lateinit var howIMetYourMother: HowIMetYourMother private set
+    lateinit var idNumber: IdNumber private set
+    lateinit var industrySegments: IndustrySegments private set
+    lateinit var internet: Internet private set
+//    lateinit var invoice: Invoice private set
+    lateinit var job: Job private set
+    lateinit var kPop: KPop private set
+    lateinit var leagueOfLegends: LeagueOfLegends private set
+    lateinit var lebowski: Lebowski private set
+    lateinit var lordOfTheRings: LordOfTheRings private set
+    lateinit var lorem: Lorem private set
+    lateinit var lovecraft: Lovecraft private set
+    lateinit var markdown: Markdown private set
+    lateinit var marketing: Marketing private set
+    lateinit var measurement: Measurement private set
+    lateinit var michaelScott: MichaelScott private set
+    lateinit var military: Military private set
+    lateinit var movie: Movie private set
+    lateinit var music: Music private set
+    lateinit var myst: Myst private set
+    lateinit var name: Name private set
+    lateinit var nation: Nation private set
+    lateinit var natoPhoneticAlphabet: NatoPhoneticAlphabet private set
+    lateinit var newGirl: NewGirl private set
+    lateinit var onePiece: OnePiece private set
+    lateinit var overwatch: Overwatch private set
+    lateinit var parksAndRec: ParksAndRec private set
+    lateinit var phish: Phish private set
+    lateinit var phoneNumber: PhoneNumber private set
+    lateinit var pokemon: Pokemon private set
+    lateinit var princessBride: PrincessBride private set
+    lateinit var programmingLanguage: ProgrammingLanguage private set
+    lateinit var quote: Quote private set
+    lateinit var relationship: Relationship private set
+    lateinit var restaurant: Restaurant private set
+    lateinit var rickAndMorty: RickAndMorty private set
+    lateinit var rockBand: RockBand private set
+    lateinit var rupaul: Rupaul private set
+    lateinit var science: Science private set
+    lateinit var seinfeld: Seinfeld private set
+    lateinit var shakespeare: Shakespeare private set
+    lateinit var siliconValley: SiliconValley private set
+    lateinit var simpsons: Simpsons private set
+    lateinit var slackEmoji: SlackEmoji private set
+    lateinit var sonicTheHedgehog: SonicTheHedgehog private set
+//    lateinit var source: Source private set
+    lateinit var southPark: SouthPark private set
+    lateinit var space: Space private set
+    lateinit var stargate: Stargate private set
+    lateinit var starTrek: StarTrek private set
+    lateinit var starWars: StarWars private set
+    lateinit var strangerThings: StrangerThings private set
+    lateinit var stripe: Stripe private set
+    lateinit var subscription: Subscription private set
+    lateinit var superhero: Superhero private set
+    lateinit var superSmashBros: SuperSmashBros private set
+    lateinit var swordArtOnline: SwordArtOnline private set
+    lateinit var team: Team private set
+    lateinit var theExpanse: TheExpanse private set
+    lateinit var theITCrowd: TheITCrowd private set
+    lateinit var theThickOfIt: TheThickOfIt private set
+    lateinit var twinPeaks: TwinPeaks private set
+    lateinit var umphreysMcgee: UmphreysMcgee private set
+    lateinit var university: University private set
+    lateinit var vehicle: Vehicle private set
+    lateinit var ventureBros: VentureBros private set
+    lateinit var verbs: Verbs private set
+    lateinit var vForVendetta: VForVendetta private set
+    lateinit var witcher: Witcher private set
+    lateinit var worldCup: WorldCup private set
+    lateinit var worldOfWarcraft: WorldOfWarcraft private set
+    lateinit var yoda: Yoda private set
+    lateinit var zelda: Zelda private set
 
     @JvmStatic
     fun init(locale: Locale) = init(locale.toLanguageTag())
