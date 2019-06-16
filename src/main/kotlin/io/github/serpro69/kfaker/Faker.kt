@@ -158,6 +158,8 @@ object Faker {
     lateinit var yoda: Yoda private set
     lateinit var zelda: Zelda private set
 
+    val randomProvider = RandomProvider()
+
     @JvmStatic
     fun init(locale: Locale) = init(locale.toLanguageTag())
 

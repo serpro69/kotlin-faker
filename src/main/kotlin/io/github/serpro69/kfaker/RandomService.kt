@@ -31,4 +31,14 @@ internal class RandomService(private val random: Random = SecureRandom()) {
     }
 
     fun nextBoolean() = random.nextBoolean()
+
+    fun nextLong() = random.nextLong()
+
+    fun nextFloat() = random.nextFloat()
+
+    fun nextDouble() = random.nextDouble()
+
+    fun nextChar() = random.nextInt().toChar()
+
+    fun nextString() = List(100) { nextInt().toChar().toString() }.joinToString("")
 }

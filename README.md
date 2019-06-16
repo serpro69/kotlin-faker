@@ -179,12 +179,12 @@ Although this lib was created with Kotlin in mind it is still possible to use fr
 thanks to great Kotlin-to-Java interop.
 
 First initialize `Faker`: 
-```
+```java
 Faker.init()
 ```  
 
 Then call the getter methods on any of the available providers:
-```
+```java
 String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
 ```
 *Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.*
@@ -350,6 +350,25 @@ For more details see the particular `.md` file for each provider below.</i>
 </p>
 </details>
 
+### Generating a random instance of any class
+It is possible to generate a random instance of any class with `Faker.randomProvider.randomClassInstance()`. For example:
+```kotlin
+class Foo(val a: String)
+class Bar(val foo: Foo)
+
+class Test {
+    @Test
+    fun test() {
+        val foo: Foo = Faker.randomProvider.randomClassInstance()
+        val bar: Bar = Faker.randomProvider.randomClassInstance()
+    }
+}
+
+```
+
+There are the following rules when creating a random instance of a class:
+- The constructor with the least number of arguments is used
+- `kotlin.collection.*` and `kolin.Array` types in the constructor are not supported at the moment
 
 ## Contributing
 Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
