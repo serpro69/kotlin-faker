@@ -42,7 +42,7 @@ repositories {
 Add dependency:  
 ```groovy
 dependencies {
-    implementation 'io.github.serpro69:kotlin-faker:$kotlinFakerVersion'
+    implementation 'io.github.serpro69:kotlin-faker:0.1'
 }
 ```  
 
@@ -68,7 +68,7 @@ Add dependency:
     <dependency>
         <groupId>io.github.serpro69</groupId>
         <artifactId>kotlin-faker</artifactId>
-        <version>${kotlin-faker.version}</version>
+        <version>0.1</version>
     </dependency>
 </dependencies>
 ```  
