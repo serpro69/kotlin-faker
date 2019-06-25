@@ -375,6 +375,10 @@ Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/co
 and/or open a [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
 if you would like to contribute.
 
+## Thanks
+Many thanks to these awesome tools that help us creating open-source software:
+[![YourKit Java profiler](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/features/)
+
 
 ## Licence
 This code is free to use under the terms of the MIT licence.
