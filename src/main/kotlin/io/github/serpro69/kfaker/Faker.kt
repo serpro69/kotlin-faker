@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate", "unused")
+
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
@@ -40,7 +42,7 @@ object Faker {
     lateinit var commerce: Commerce private set
     lateinit var community: Community private set
     lateinit var company: Company private set
-//    lateinit var compass: Compass private set
+    //    lateinit var compass: Compass private set
     lateinit var construction: Construction private set
     lateinit var cosmere: Cosmere private set
     lateinit var cryptoCoin: CryptoCoin private set
@@ -63,7 +65,7 @@ object Faker {
     lateinit var fallout: Fallout private set
     lateinit var familyGuy: FamilyGuy private set
     lateinit var file: File private set
-//    lateinit var finance: Finance private set
+    //    lateinit var finance: Finance private set
     lateinit var food: Food private set
     lateinit var football: Football private set
     lateinit var freshPriceOfBelAir: FreshPriceOfBelAir private set
@@ -88,7 +90,7 @@ object Faker {
     lateinit var idNumber: IdNumber private set
     lateinit var industrySegments: IndustrySegments private set
     lateinit var internet: Internet private set
-//    lateinit var invoice: Invoice private set
+    //    lateinit var invoice: Invoice private set
     lateinit var job: Job private set
     lateinit var kPop: KPop private set
     lateinit var leagueOfLegends: LeagueOfLegends private set
@@ -129,7 +131,7 @@ object Faker {
     lateinit var simpsons: Simpsons private set
     lateinit var slackEmoji: SlackEmoji private set
     lateinit var sonicTheHedgehog: SonicTheHedgehog private set
-//    lateinit var source: Source private set
+    //    lateinit var source: Source private set
     lateinit var southPark: SouthPark private set
     lateinit var space: Space private set
     lateinit var stargate: Stargate private set
