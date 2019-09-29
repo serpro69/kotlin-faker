@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker
 import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
 import io.kotlintest.specs.*
+import java.io.File
 import java.util.*
 import kotlin.reflect.*
 import kotlin.reflect.full.*
@@ -31,7 +32,7 @@ class FakerIT : FreeSpec({
                     val returnType = call.toString()
 
                     "WHEN result value for ${provider.name + it.getter.name} is resolved correctly" - {
-                        val regex = Regex("""#\{.*\}|#++""")
+                        val regex = Regex("""#\{.*}|#++""")
 
                         val value = when (returnType) {
                             "() -> kotlin.String" -> (call as () -> String).invoke()
@@ -136,14 +137,14 @@ class FakerIT : FreeSpec({
     "GIVEN Faker instance is initialized with custom locale" - {
         val localeDir = requireNotNull(this::class.java.classLoader.getResource("locales/"))
 
-        val locales = java.io.File(localeDir.toURI()).listFiles().map {
+        val locales = File(localeDir.toURI()).listFiles()?.mapNotNull {
             if (it.isFile && it.extension == "yml") {
                 it.nameWithoutExtension
             } else null
-        }.filterNotNull()
+        }
 
         "THEN Faker should be initialized without exceptions" {
-            locales.forEach { Faker.init(it) }
+            locales?.forEach { Faker.init(it) }
         }
     }
 })

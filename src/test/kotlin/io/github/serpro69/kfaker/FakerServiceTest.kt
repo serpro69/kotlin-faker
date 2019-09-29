@@ -87,7 +87,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set as `lang-COUNTRY` but dictionary file exists only for `lang`" - {
             val frFRDict = FakerService("fr-FR").dictionary
 
-            "f:THEN localized dictionary for `lang` should be loaded" {
+            "THEN localized dictionary for `lang` should be loaded" {
                 frFRDict shouldNotBe null
             }
         }
@@ -95,7 +95,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set as `lang_COUNTRY` String" - {
             val frFRDict = FakerService("fr_FR").dictionary
 
-            "f:THEN it should be set as `lang-COUNTRY` String" {
+            "THEN it should be set as `lang-COUNTRY` String" {
                 frFRDict shouldNotBe null
             }
         }
@@ -428,7 +428,7 @@ internal class FakerServiceTest : FreeSpec({
                         assertSoftly {
                             resolvedValue shouldNotBe ""
                             resolvedValue shouldNotContain "#"
-                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?\}""")
+                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?}""")
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
                             resolvedValue.split(" ") shouldHaveAtMostSize 3
                             resolvedValue.split(" ").all { it.first().isUpperCase() } shouldBe true
@@ -445,7 +445,7 @@ internal class FakerServiceTest : FreeSpec({
                         assertSoftly {
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
                             resolvedValue.split(" ") shouldHaveAtMostSize 3
-                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?\}""")
+                            resolvedValue shouldNotContain Regex("""#\{\p{all}+?}""")
                         }
                     }
                 }

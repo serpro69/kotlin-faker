@@ -4,6 +4,7 @@ import io.kotlintest.matchers.*
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.*
 
+@Suppress("unused")
 class RandomProviderTest : FreeSpec({
     val randomProvider = RandomProvider()
 
