@@ -1,3 +1,4 @@
+.allure/
 .gradle/
 .idea/
 .kotlintest/
