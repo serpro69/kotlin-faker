@@ -4,10 +4,11 @@ import io.kotlintest.*
 import io.kotlintest.matchers.collections.*
 import io.kotlintest.matchers.string.*
 import io.kotlintest.specs.*
+import java.util.*
 
 internal class RandomServiceTest : FreeSpec({
     "GIVEN RandomService instance" - {
-        val randomService = RandomService()
+        val randomService = RandomService(Random())
 
         "WHEN calling nextInt(min, max)" - {
             val values = List(100) { randomService.nextInt(6..8) }

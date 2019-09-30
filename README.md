@@ -89,6 +89,39 @@ Faker.name.firstName() // => Ana
 Faker.address.city() // => New York
 ```
 
+### Deterministic Random
+Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to 
+provide deterministic output of repeated function invocations.  
+```kotlin
+Faker.Config.random = Random(42)
+Faker.init()
+val city1 = Faker.address.city() 
+val name1 = Faker.name.name()
+
+Faker.Config.random = Random(42)
+Faker.init()
+val city2 = Faker.address.city() 
+val name2 = Faker.name.name()
+
+city1 == city2 // => true
+name1 == name2 // => true
+```
+
+**Re-initializing `Faker` will discard any previous configuration settings.**
+```kotlin
+Faker.Config.random = Random(42)
+Faker.init()
+val city1 = Faker.address.city() 
+val name1 = Faker.name.name()
+
+Faker.init()
+val city2 = Faker.address.city() 
+val name2 = Faker.name.name()
+
+city1 == city2 // => false
+name1 == name2 // => false
+```
+
 ### Using custom locales
 `Faker` instance can be initialized with a custom locale:  
 ```kotlin
@@ -351,7 +384,8 @@ For more details see the particular `.md` file for each provider below.</i>
 </details>
 
 ### Generating a random instance of any class
-It is possible to generate a random instance of any class with `Faker.randomProvider.randomClassInstance()`. For example:
+It is possible to generate a random instance of any class with `Faker.randomProvider`. For example:
+
 ```kotlin
 class Foo(val a: String)
 class Bar(val foo: Foo)
@@ -359,6 +393,8 @@ class Bar(val foo: Foo)
 class Test {
     @Test
     fun test() {
+        Faker.init()
+
         val foo: Foo = Faker.randomProvider.randomClassInstance()
         val bar: Bar = Faker.randomProvider.randomClassInstance()
     }

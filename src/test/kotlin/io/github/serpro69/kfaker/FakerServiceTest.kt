@@ -8,10 +8,12 @@ import io.kotlintest.matchers.string.*
 import io.kotlintest.specs.*
 import java.util.*
 
+val random = Random()
+
 internal class FakerServiceTest : FreeSpec({
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
-            val dictionary = FakerService().dictionary
+            val dictionary = FakerService(random = random).dictionary
 
             "THEN it should contain all keys for 'en' locale" {
                 val dictionaryKeys = listOf(
@@ -49,8 +51,8 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set to custom value" - {
-            val esDictionary = FakerService(Locale.forLanguageTag("es")).dictionary
-            val defaultDictionary = FakerService().dictionary
+            val esDictionary = FakerService(Locale.forLanguageTag("es"), random).dictionary
+            val defaultDictionary = FakerService(random = random).dictionary
 
             "THEN matching keys should be overwritten in the localized dictionary" {
                 val esAddress = esDictionary.getCategoryByName("address")
@@ -69,7 +71,7 @@ internal class FakerServiceTest : FreeSpec({
 
         "WHEN it is set with a valid String value" - {
             "THEN localized dictionary should be loaded" {
-                val esDictionary = FakerService("es").dictionary
+                val esDictionary = FakerService("es", random).dictionary
                 esDictionary shouldNotBe null
             }
         }
@@ -77,7 +79,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set with invalid String value" - {
             "THEN an exception is thrown when loading the dictionary" {
                 val exception = shouldThrow<IllegalArgumentException> {
-                    FakerService("pe").dictionary
+                    FakerService("pe", random).dictionary
                 }
 
                 exception.message shouldBe "Dictionary file not found for locale values: 'pe' or 'pe'"
@@ -85,7 +87,7 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set as `lang-COUNTRY` but dictionary file exists only for `lang`" - {
-            val frFRDict = FakerService("fr-FR").dictionary
+            val frFRDict = FakerService("fr-FR", random).dictionary
 
             "THEN localized dictionary for `lang` should be loaded" {
                 frFRDict shouldNotBe null
@@ -93,7 +95,7 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set as `lang_COUNTRY` String" - {
-            val frFRDict = FakerService("fr_FR").dictionary
+            val frFRDict = FakerService("fr_FR", random).dictionary
 
             "THEN it should be set as `lang-COUNTRY` String" {
                 frFRDict shouldNotBe null
@@ -102,7 +104,7 @@ internal class FakerServiceTest : FreeSpec({
     }
 
     "GIVEN dictionary is loaded" - {
-        val fakerService = FakerService()
+        val fakerService = FakerService(random = random)
 
         "WHEN fetching category by key" - {
             val category = fakerService.fetchCategory(CategoryName.ADDRESS)

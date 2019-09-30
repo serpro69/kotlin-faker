@@ -3,10 +3,11 @@ package io.github.serpro69.kfaker.provider
 import io.kotlintest.matchers.*
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.*
+import java.util.*
 
 @Suppress("unused")
 class RandomProviderTest : FreeSpec({
-    val randomProvider = RandomProvider()
+    val randomProvider = RandomProvider(Random())
 
     "GIVEN a TestClass with an empty constructor" - {
         class TestClass

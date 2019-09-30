@@ -160,7 +160,7 @@ object Faker {
     lateinit var yoda: Yoda private set
     lateinit var zelda: Zelda private set
 
-    val randomProvider = RandomProvider()
+    lateinit var randomProvider: RandomProvider
 
     @JvmStatic
     fun init(locale: Locale) = init(locale.toLanguageTag())
@@ -168,7 +168,7 @@ object Faker {
     @JvmStatic
     @JvmOverloads
     fun init(locale: String = "en"): Faker {
-        fakerService = FakerService(locale)
+        fakerService = FakerService(locale, Config.random)
 
         separator = Separator(fakerService)
         address = Address(fakerService)
@@ -317,6 +317,16 @@ object Faker {
         yoda = Yoda(fakerService)
         zelda = Zelda(fakerService)
 
+        randomProvider = RandomProvider(Config.random)
+
         return this
+    }
+
+    class Config {
+
+        companion object {
+            @JvmStatic
+            var random = Random()
+        }
     }
 }

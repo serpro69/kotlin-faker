@@ -2,10 +2,11 @@ package io.github.serpro69.kfaker
 
 import io.github.classgraph.*
 import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.provider.*
 import java.io.*
 import java.net.*
-import java.util.Locale
+import java.util.*
 import java.util.regex.*
 import kotlin.NoSuchElementException
 import kotlin.collections.LinkedHashMap
@@ -18,8 +19,8 @@ import kotlin.reflect.full.*
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
  */
-internal class FakerService @JvmOverloads internal constructor(locale: String = "en") {
-    private val randomService = RandomService()
+internal class FakerService @JvmOverloads internal constructor(locale: String = "en", random: Random) {
+    private val randomService = RandomService(random)
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
     private val letterRegex = Regex("""(\?\?+)[^\{\s+\p{L}+]?""")
@@ -28,7 +29,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(locale: Locale) : this(locale.toLanguageTag())
+    internal constructor(locale: Locale, random: Random) : this(locale.toLanguageTag(), random)
 
     private fun getDefaultFilesURLs(): List<URL> {
         return ClassGraph().whitelistPathsNonRecursive("locales/en").scan().use {
