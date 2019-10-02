@@ -1,4 +1,5 @@
 @file:JvmName("FakerConfigBuilder")
+
 package io.github.serpro69.kfaker
 
 import java.util.*

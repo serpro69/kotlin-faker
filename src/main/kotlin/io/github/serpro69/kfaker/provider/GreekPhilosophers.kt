@@ -11,5 +11,5 @@ class GreekPhilosophers internal constructor(fakerService: FakerService) : Abstr
     override val categoryName = CategoryName.GREEK_PHILOSOPHERS
 
     val names = resolve { fakerService.resolve(it, "names") }
-    val quoetes = resolve { fakerService.resolve(it, "quotes") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

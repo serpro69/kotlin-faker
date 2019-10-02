@@ -15,6 +15,6 @@ class ElderScrolls internal constructor(fakerService: FakerService) : AbstractFa
     val region = resolve { fakerService.resolve(it, "elder_scrolls", "region") }
     val dragon = resolve { fakerService.resolve(it, "elder_scrolls", "dragon") }
     val city = resolve { fakerService.resolve(it, "elder_scrolls", "city") }
-    val first_name = resolve { fakerService.resolve(it, "elder_scrolls", "first_name") }
-    val last_name = resolve { fakerService.resolve(it, "elder_scrolls", "last_name") }
+    val firstName = resolve { fakerService.resolve(it, "elder_scrolls", "first_name") }
+    val lastName = resolve { fakerService.resolve(it, "elder_scrolls", "last_name") }
 }
