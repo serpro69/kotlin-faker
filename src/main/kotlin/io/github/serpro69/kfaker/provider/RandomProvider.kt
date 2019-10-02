@@ -18,6 +18,7 @@ import kotlin.reflect.*
  *
  * Inspired by [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
  */
+@Suppress("unused")
 class RandomProvider internal constructor(random: Random) {
     private val randomService = RandomService(random)
 

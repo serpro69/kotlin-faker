@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.HITCHHIKERS_GUIDE_TO_THE_GALAXY] category.
  */
+@Suppress("unused")
 class HitchhikersGuideToTheGalaxy internal constructor(
     fakerService: FakerService
 ) : AbstractFakeDataProvider(fakerService) {

@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.DUMB_AND_DUMBER] category.
  */
+@Suppress("unused")
 class DumbAndDumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.DUMB_AND_DUMBER
 

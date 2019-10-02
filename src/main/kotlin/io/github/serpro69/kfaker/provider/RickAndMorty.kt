@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.RICK_AND_MORTY] category.
  */
+@Suppress("unused")
 class RickAndMorty internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.RICK_AND_MORTY
 

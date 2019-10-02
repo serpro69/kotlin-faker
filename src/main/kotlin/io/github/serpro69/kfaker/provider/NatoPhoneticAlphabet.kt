@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.NATO_PHONETIC_ALPHABET] category.
  */
+@Suppress("unused")
 class NatoPhoneticAlphabet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.NATO_PHONETIC_ALPHABET
 

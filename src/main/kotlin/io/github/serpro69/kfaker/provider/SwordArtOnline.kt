@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.SWORD_ART_ONLINE] category.
  */
+@Suppress("unused")
 class SwordArtOnline internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SWORD_ART_ONLINE
 

@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.GRATEFUL_DEAD] category.
  */
+@Suppress("unused")
 class GratefulDead internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GRATEFUL_DEAD
 

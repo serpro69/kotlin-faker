@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.LORD_OF_THE_RINGS] category.
  */
+@Suppress("unused")
 class LordOfTheRings internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.LORD_OF_THE_RINGS
 

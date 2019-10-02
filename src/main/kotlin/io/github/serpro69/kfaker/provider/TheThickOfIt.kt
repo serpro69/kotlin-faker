@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.THE_THICK_OF_IT] category.
  */
+@Suppress("unused")
 class TheThickOfIt internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.THE_THICK_OF_IT
 
