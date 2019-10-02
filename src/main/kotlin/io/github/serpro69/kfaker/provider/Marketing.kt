@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Marketing internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.MARKETING
 
-    val buzzwords = resolve { fakerService.resolve(Faker, it, "buzzwords") }
+    val buzzwords = resolve { fakerService.resolve(it, "buzzwords") }
 }

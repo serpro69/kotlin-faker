@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Dessert internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.DESSERT
 
-    val variety = resolve { fakerService.resolve(Faker, it, "variety") }
-    val topping = resolve { fakerService.resolve(Faker, it, "topping") }
-    val flavor = resolve { fakerService.resolve(Faker, it, "flavor") }
+    val variety = resolve { fakerService.resolve(it, "variety") }
+    val topping = resolve { fakerService.resolve(it, "topping") }
+    val flavor = resolve { fakerService.resolve(it, "flavor") }
     val dessert = { "${flavor()} ${variety()} with ${topping()}" }
 }

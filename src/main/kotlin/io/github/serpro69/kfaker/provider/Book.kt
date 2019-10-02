@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Book internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BOOK
 
-    val title = resolve { fakerService.resolve(Faker, it, "title") }
-    val author = resolve { fakerService.resolve(Faker, it, "author") }
-    val publisher = resolve { fakerService.resolve(Faker, it, "publisher") }
-    val genre = resolve { fakerService.resolve(Faker, it, "genre") }
+    val title = resolve { fakerService.resolve(it, "title") }
+    val author = resolve { fakerService.resolve(it, "author") }
+    val publisher = resolve { fakerService.resolve(it, "publisher") }
+    val genre = resolve { fakerService.resolve(it, "genre") }
 }

@@ -29,6 +29,8 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.3")
     implementation("io.github.classgraph:classgraph:4.8.24")
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.2.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     runtime(kotlin("script-runtime"))
 }
 

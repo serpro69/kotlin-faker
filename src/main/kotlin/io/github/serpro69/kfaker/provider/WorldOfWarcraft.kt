@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class WorldOfWarcraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val hero = resolve { fakerService.resolve(Faker, it, "world_of_warcraft", "hero") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "world_of_warcraft", "quotes") }
+    val hero = resolve { fakerService.resolve(it, "world_of_warcraft", "hero") }
+    val quotes = resolve { fakerService.resolve(it, "world_of_warcraft", "quotes") }
 }

@@ -9,10 +9,10 @@ import io.github.serpro69.kfaker.dictionary.*
 class Beer internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BEER
 
-    val brand = resolve { fakerService.resolve(Faker, it, "brand") }
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val hop = resolve { fakerService.resolve(Faker, it, "hop") }
-    val yeast = resolve { fakerService.resolve(Faker, it, "yeast") }
-    val malt = resolve { fakerService.resolve(Faker, it, "malt") }
-    val style = resolve { fakerService.resolve(Faker, it, "style") }
+    val brand = resolve { fakerService.resolve(it, "brand") }
+    val name = resolve { fakerService.resolve(it, "name") }
+    val hop = resolve { fakerService.resolve(it, "hop") }
+    val yeast = resolve { fakerService.resolve(it, "yeast") }
+    val malt = resolve { fakerService.resolve(it, "malt") }
+    val style = resolve { fakerService.resolve(it, "style") }
 }

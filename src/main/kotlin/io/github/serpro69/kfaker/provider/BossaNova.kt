@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class BossaNova internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BOSSA_NOVA
 
-    val artists = resolve { fakerService.resolve(Faker, it, "artists") }
-    val songs = resolve { fakerService.resolve(Faker, it, "songs") }
+    val artists = resolve { fakerService.resolve(it, "artists") }
+    val songs = resolve { fakerService.resolve(it, "songs") }
 }

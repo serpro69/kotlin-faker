@@ -4,14 +4,13 @@ import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
 import io.kotlintest.specs.*
 import java.io.File
-import java.util.*
 import kotlin.reflect.*
 import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({
     "GIVEN every public function in each provider is invoked without exceptions" - {
-        val faker = Faker.init()
+        val faker = Faker()
 
         // Get a list of all publicly visible providers
         val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
@@ -97,15 +96,19 @@ class FakerIT : FreeSpec({
     }
 
     "GIVEN Faker instance is initialized with default locale" - {
-        Faker.init()
-        val defaultCountryUS = Faker.address.defaultCountry()
-        val peruOne = Faker.address.countryByCode("PE")
+        val faker = Faker()
+
+        val defaultCountryUS = faker.address.defaultCountry()
+        val peruOne = faker.address.countryByCode("PE")
 
         "WHEN it is re-initialized with another locale value" - {
-            Faker.init(Locale.forLanguageTag("nb-NO"))
+            val config = FakerConfig.builder().create {
+                locale = "nb-NO"
+            }
+            val otherFaker = Faker(config)
 
             "THEN matching keys should be overwritten in the re-initialized dictionary" {
-                val defaultCountryNO = Faker.address.defaultCountry()
+                val defaultCountryNO = otherFaker.address.defaultCountry()
 
                 assertSoftly {
                     defaultCountryNO shouldBe "Norge"
@@ -114,12 +117,12 @@ class FakerIT : FreeSpec({
             }
 
             "THEN non-matching default keys should be present in the re-initialized dictionary" {
-                val peruTwo = Faker.address.countryByCode("PE")
+                val peruTwo = otherFaker.address.countryByCode("PE")
                 peruOne shouldBe peruTwo
             }
         }
 
-        "WHEN it is again re-initialized with default locale" - {
+/*        "WHEN it is again re-initialized with default locale" - {
             Faker.init()
 
             "THEN matching keys should be overwritten back to defaults" {
@@ -131,7 +134,7 @@ class FakerIT : FreeSpec({
                     peruThree shouldBe peruOne
                 }
             }
-        }
+        }*/
     }
 
     "GIVEN Faker instance is initialized with custom locale" - {
@@ -144,7 +147,12 @@ class FakerIT : FreeSpec({
         }
 
         "THEN Faker should be initialized without exceptions" {
-            locales?.forEach { Faker.init(it) }
+            locales?.forEach {
+                val config = FakerConfig.builder().create {
+                    locale = it
+                }
+                Faker(config)
+            }
         }
     }
 })

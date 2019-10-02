@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class FreshPriceOfBelAir internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.THE_FRESH_PRINCE_OF_BEL_AIR
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val celebrities = resolve { fakerService.resolve(Faker, it, "celebrities") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val celebrities = resolve { fakerService.resolve(it, "celebrities") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

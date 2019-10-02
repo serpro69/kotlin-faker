@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Cat internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CREATURE
 
-    val name = resolve { fakerService.resolve(Faker, it, "cat", "name") }
-    val breed = resolve { fakerService.resolve(Faker, it, "cat", "breed") }
-    val registry = resolve { fakerService.resolve(Faker, it, "cat", "registry") }
+    val name = resolve { fakerService.resolve(it, "cat", "name") }
+    val breed = resolve { fakerService.resolve(it, "cat", "breed") }
+    val registry = resolve { fakerService.resolve(it, "cat", "registry") }
 }

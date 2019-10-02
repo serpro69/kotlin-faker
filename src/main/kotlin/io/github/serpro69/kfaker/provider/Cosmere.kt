@@ -9,12 +9,12 @@ import io.github.serpro69.kfaker.dictionary.*
 class Cosmere internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.COSMERE
 
-    val aons = resolve { fakerService.resolve(Faker, it, "aons") }
-    val shardWorlds = resolve { fakerService.resolve(Faker, it, "shard_worlds") }
-    val shards = resolve { fakerService.resolve(Faker, it, "shards") }
-    val surges = resolve { fakerService.resolve(Faker, it, "surges") }
-    val knightsRadiant = resolve { fakerService.resolve(Faker, it, "knights_radiant") }
-    val metals = resolve { fakerService.resolve(Faker, it, "metals") }
-    val allomancers = resolve { fakerService.resolve(Faker, it, "allomancers") }
-    val feruchemists = resolve { fakerService.resolve(Faker, it, "feruchemists") }
+    val aons = resolve { fakerService.resolve(it, "aons") }
+    val shardWorlds = resolve { fakerService.resolve(it, "shard_worlds") }
+    val shards = resolve { fakerService.resolve(it, "shards") }
+    val surges = resolve { fakerService.resolve(it, "surges") }
+    val knightsRadiant = resolve { fakerService.resolve(it, "knights_radiant") }
+    val metals = resolve { fakerService.resolve(it, "metals") }
+    val allomancers = resolve { fakerService.resolve(it, "allomancers") }
+    val feruchemists = resolve { fakerService.resolve(it, "feruchemists") }
 }

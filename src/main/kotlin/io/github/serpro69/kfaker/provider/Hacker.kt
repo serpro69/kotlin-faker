@@ -9,9 +9,9 @@ import io.github.serpro69.kfaker.dictionary.*
 class Hacker internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HACKER
 
-    val abbreviation = resolve { fakerService.resolve(Faker, it, "abbreviation") }
-    val adjective = resolve { fakerService.resolve(Faker, it, "adjective") }
-    val noun = resolve { fakerService.resolve(Faker, it, "noun") }
-    val verb = resolve { fakerService.resolve(Faker, it, "verb") }
-    val ingverb = resolve { fakerService.resolve(Faker, it, "ingverb") }
+    val abbreviation = resolve { fakerService.resolve(it, "abbreviation") }
+    val adjective = resolve { fakerService.resolve(it, "adjective") }
+    val noun = resolve { fakerService.resolve(it, "noun") }
+    val verb = resolve { fakerService.resolve(it, "verb") }
+    val ingverb = resolve { fakerService.resolve(it, "ingverb") }
 }

@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Artist internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ARTIST
 
-    val names = resolve { fakerService.resolve(Faker, it, "names") }
+    val names = resolve { fakerService.resolve(it, "names") }
 }

@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Stargate internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.STARGATE
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val planets = resolve { fakerService.resolve(Faker, it, "planets") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val planets = resolve { fakerService.resolve(it, "planets") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

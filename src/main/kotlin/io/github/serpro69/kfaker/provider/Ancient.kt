@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Ancient internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ANCIENT
 
-    val god = resolve { fakerService.resolve(Faker, it, "god") }
-    val primordial = resolve { fakerService.resolve(Faker, it, "primordial") }
-    val titan = resolve { fakerService.resolve(Faker, it, "titan") }
-    val hero = resolve { fakerService.resolve(Faker, it, "hero") }
+    val god = resolve { fakerService.resolve(it, "god") }
+    val primordial = resolve { fakerService.resolve(it, "primordial") }
+    val titan = resolve { fakerService.resolve(it, "titan") }
+    val hero = resolve { fakerService.resolve(it, "hero") }
 }

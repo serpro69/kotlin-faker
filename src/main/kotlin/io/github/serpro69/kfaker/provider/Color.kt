@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Color internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.COLOR
 
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
+    val name = resolve { fakerService.resolve(it, "name") }
 }

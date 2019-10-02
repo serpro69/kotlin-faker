@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class GratefulDead internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GRATEFUL_DEAD
 
-    val players = resolve { fakerService.resolve(Faker, it, "players") }
-    val songs = resolve { fakerService.resolve(Faker, it, "songs") }
+    val players = resolve { fakerService.resolve(it, "players") }
+    val songs = resolve { fakerService.resolve(it, "songs") }
 }

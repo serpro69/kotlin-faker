@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class SonicTheHedgehog internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val zone = resolve { fakerService.resolve(Faker, it, "sonic_the_hedgehog", "zone") }
-    val character = resolve { fakerService.resolve(Faker, it, "sonic_the_hedgehog", "character") }
-    val game = resolve { fakerService.resolve(Faker, it, "sonic_the_hedgehog", "game") }
+    val zone = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "zone") }
+    val character = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "character") }
+    val game = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "game") }
 }

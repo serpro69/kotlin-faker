@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class BackToTheFuture internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BACK_TO_THE_FUTURE
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val dates = resolve { fakerService.resolve(Faker, it, "dates") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val dates = resolve { fakerService.resolve(it, "dates") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class CryptoCoin internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CRYPTO_COIN
 
-    val coin = resolve { fakerService.resolve(Faker, it, "coin") }
+    val coin = resolve { fakerService.resolve(it, "coin") }
 }

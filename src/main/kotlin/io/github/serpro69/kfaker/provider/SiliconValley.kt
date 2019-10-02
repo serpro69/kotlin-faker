@@ -9,12 +9,12 @@ import io.github.serpro69.kfaker.dictionary.*
 class SiliconValley internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SILICON_VALLEY
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val companies = resolve { fakerService.resolve(Faker, it, "companies") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
-    val apps = resolve { fakerService.resolve(Faker, it, "apps") }
-    val inventions = resolve { fakerService.resolve(Faker, it, "inventions") }
-    val mottos = resolve { fakerService.resolve(Faker, it, "mottos") }
-    val urls = resolve { fakerService.resolve(Faker, it, "urls") }
-    val email = resolve { fakerService.resolve(Faker, it, "email") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val companies = resolve { fakerService.resolve(it, "companies") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val apps = resolve { fakerService.resolve(it, "apps") }
+    val inventions = resolve { fakerService.resolve(it, "inventions") }
+    val mottos = resolve { fakerService.resolve(it, "mottos") }
+    val urls = resolve { fakerService.resolve(it, "urls") }
+    val email = resolve { fakerService.resolve(it, "email") }
 }

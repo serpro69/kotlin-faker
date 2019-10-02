@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class ElectricalComponents internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ELECTRICAL_COMPONENTS
 
-    val active = resolve { fakerService.resolve(Faker, it, "active") }
-    val passive = resolve { fakerService.resolve(Faker, it, "passive") }
-    val electromechanical = resolve { fakerService.resolve(Faker, it, "electromechanical") }
+    val active = resolve { fakerService.resolve(it, "active") }
+    val passive = resolve { fakerService.resolve(it, "passive") }
+    val electromechanical = resolve { fakerService.resolve(it, "electromechanical") }
 }

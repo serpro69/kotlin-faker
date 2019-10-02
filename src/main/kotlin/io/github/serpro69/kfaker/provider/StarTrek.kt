@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class StarTrek internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.STAR_TREK
 
-    val character = resolve { fakerService.resolve(Faker, it, "character") }
-    val location = resolve { fakerService.resolve(Faker, it, "location") }
-    val specie = resolve { fakerService.resolve(Faker, it, "specie") }
-    val villain = resolve { fakerService.resolve(Faker, it, "villain") }
+    val character = resolve { fakerService.resolve(it, "character") }
+    val location = resolve { fakerService.resolve(it, "location") }
+    val specie = resolve { fakerService.resolve(it, "specie") }
+    val villain = resolve { fakerService.resolve(it, "villain") }
 }

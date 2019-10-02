@@ -9,12 +9,12 @@ import io.github.serpro69.kfaker.dictionary.*
 class Cannabis internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CANNABIS
 
-    val strains = resolve { fakerService.resolve(Faker, it, "strains") }
-    val cannabinoidAbbreviations = resolve { fakerService.resolve(Faker, it, "cannabinoid_abbreviations") }
-    val cannabinoids = resolve { fakerService.resolve(Faker, it, "cannabinoids") }
-    val terpenes = resolve { fakerService.resolve(Faker, it, "terpenes") }
-    val medicalUses = resolve { fakerService.resolve(Faker, it, "medical_uses") }
-    val healthBenefits = resolve { fakerService.resolve(Faker, it, "health_benefits") }
-    val categories = resolve { fakerService.resolve(Faker, it, "categories") }
-    val types = resolve { fakerService.resolve(Faker, it, "types") }
+    val strains = resolve { fakerService.resolve(it, "strains") }
+    val cannabinoidAbbreviations = resolve { fakerService.resolve(it, "cannabinoid_abbreviations") }
+    val cannabinoids = resolve { fakerService.resolve(it, "cannabinoids") }
+    val terpenes = resolve { fakerService.resolve(it, "terpenes") }
+    val medicalUses = resolve { fakerService.resolve(it, "medical_uses") }
+    val healthBenefits = resolve { fakerService.resolve(it, "health_benefits") }
+    val categories = resolve { fakerService.resolve(it, "categories") }
+    val types = resolve { fakerService.resolve(it, "types") }
 }

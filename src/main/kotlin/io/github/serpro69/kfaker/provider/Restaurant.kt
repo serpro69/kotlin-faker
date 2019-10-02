@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Restaurant internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.RESTAURANT
 
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val type = resolve { fakerService.resolve(Faker, it, "type") }
-    val description = resolve { fakerService.resolve(Faker, it, "description") }
-    val review = resolve { fakerService.resolve(Faker, it, "review") }
+    val name = resolve { fakerService.resolve(it, "name") }
+    val type = resolve { fakerService.resolve(it, "type") }
+    val description = resolve { fakerService.resolve(it, "description") }
+    val review = resolve { fakerService.resolve(it, "review") }
 }

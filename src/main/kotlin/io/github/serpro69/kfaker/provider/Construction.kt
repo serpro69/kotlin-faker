@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Construction internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CONSTRUCTION
 
-    val materials = resolve { fakerService.resolve(Faker, it, "materials") }
+    val materials = resolve { fakerService.resolve(it, "materials") }
 }

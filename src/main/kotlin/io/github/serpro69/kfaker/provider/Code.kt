@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Code internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CODE
 
-    val asin = resolve { fakerService.resolve(Faker, it, "asin") }
+    val asin = resolve { fakerService.resolve(it, "asin") }
 }

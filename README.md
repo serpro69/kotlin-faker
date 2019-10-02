@@ -11,13 +11,17 @@
 ## ToC
 - [About](#about)
 - [Usage](#usage)  
-  - [Add a dependency](#add-a-dependency)
-  - [Initialize Faker](#initialize-faker-singleton)
-  - [Generate data](#generate-some-data)
-  - [Using custom locales](#using-custom-locales)
+  - [Downloading](#downloading)
+  - [Generating data](#generating-data)
+  - [Configuring Faker](#configuring-faker)
+    - [Default configuration](#default-configuration)
+    - [Deterministic Random](#deterministic-random)
+    - [Localized dictionary](#localized-dictionary)
   - [Java interop](#java-interop)
 - [Data Providers](#data-providers)
+  - [Generation a random instance of any class](#generating-a-random-instance-of-any-class)
 - [Contributing](#contributing)
+- [Thanks](#thanks)
 - [Licence](#licence)
 
 
@@ -77,57 +81,53 @@ Add dependency:
 The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
 
 ### Generating data
-First initialize `Faker` singleton:
 ```kotlin
-Faker.init()
-```  
+val faker = Faker()
 
-Then call properties of `Faker` which represent different data categories (i.e. address, name, etc.):  
-```kotlin
-Faker.name.firstName() // => Ana
-
-Faker.address.city() // => New York
+faker.name.firstName() // => Ana
+faker.address.city() // => New York
 ```
 
-### Deterministic Random
+### Configuring Faker
+#### Default configuration
+If no `FakerConfig` instance is passed to `Faker` constructor then default configuration will be used:
+- `locale` is set to `en`
+- `random` is seeded with a pseudo-randomly generated number.
+
+#### Deterministic Random
 Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to 
 provide deterministic output of repeated function invocations.  
-```kotlin
-Faker.Config.random = Random(42)
-Faker.init()
-val city1 = Faker.address.city() 
-val name1 = Faker.name.name()
 
-Faker.Config.random = Random(42)
-Faker.init()
-val city2 = Faker.address.city() 
-val name2 = Faker.name.name()
+```kotlin
+val fakerConfig = FakerConfig.builder().create {
+    random = Random(42)
+}
+
+val faker = Faker(fakerConfig)
+val city1 = faker.address.city() 
+val name1 = faker.name.name()
+
+val otherFaker = Faker(fakerConfig)
+val city1 = otherFaker.address.city() 
+val name1 = otherFaker.name.name()
 
 city1 == city2 // => true
 name1 == name2 // => true
 ```
 
-**Re-initializing `Faker` will discard any previous configuration settings.**
+#### Localized dictionary
+`Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
+
 ```kotlin
-Faker.Config.random = Random(42)
-Faker.init()
-val city1 = Faker.address.city() 
-val name1 = Faker.name.name()
+val fakerConfig = FakerConfig.builder().create {
+    locale = "nb-NO"
+}
 
-Faker.init()
-val city2 = Faker.address.city() 
-val name2 = Faker.name.name()
-
-city1 == city2 // => false
-name1 == name2 // => false
-```
-
-### Using custom locales
-`Faker` instance can be initialized with a custom locale:  
-```kotlin
-Faker.init(locale)
+val faker = Faker(fakerConfig)
+val city1 = faker.address.city() // => Oslo
 ```  
 
+##### Available Locales
 <details><summary><b>List of available locales (clickable):</b></summary>
 <p>
 
@@ -191,39 +191,57 @@ Faker.init(locale)
 Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.  
 
 ```kotlin
-Faker.init("es")
-Faker.address.city() // => Barcelona
+val fakerConfig = FakerConfig.builder().create {
+    locale = "es"
+}
+val faker = Faker(fakerConfig)
+faker.address.city() // => Barcelona
 ```
 
-*Note that if the localized dictionary file does not contain a category (or a parameter in a category)*
-*that is present in the default locale, then non-localized value will be used instead.*  
+<i>Note that if the localized dictionary file does not contain a category (or a parameter in a category)
+that is present in the default locale, then non-localized value will be used instead.</i>  
 
 ```kotlin
-Faker.init()
-Faker.gameOfThrones.cities() // => Braavos
+val faker = Faker()
+faker.gameOfThrones.cities() // => Braavos
 
-Faker.init("nb-NO")
+val fakerConfig = FakerConfig.builder().create {
+    locale = "nb-NO"
+}
+val localizedFaker = Faker(fakerConfig)
 // `game_of_thrones` category is not localized for `nb-NO` locale
-Faker.gameOfThrones.cities() // => Braavos
+localizedFaker.gameOfThrones.cities() // => Braavos
 ```
 
 ### Java interop
 Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project
 thanks to great Kotlin-to-Java interop.
 
-First initialize `Faker`: 
+Configuring `Faker`:
 ```java
-Faker.init()
-```  
-
-Then call the getter methods on any of the available providers:
-```java
-String bldNum = Faker.address.getBuildingNumber().invoke() // => 123
+FakerConfig fakerConfig = FakerConfigBuilder.create(FakerConfig.builder(), fromConsumer(builder -> {
+    builder.setRandom(new Random(42));
+    builder.setLocale("en-AU");
+}));
 ```
-*Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.*
-*Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,*
-*therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.*
-*This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`*
+If `builder` parameter is not called with help of `fromConsumer` method,
+then explicit return should be specified:
+```java
+FakerConfig fakerConfig = FakerConfigBuilder.create(FakerConfig.builder(), builder -> {
+    builder.setRandom(new Random(42));
+    builder.setLocale("en-AU");
+    return Unit.INSTANCE;
+});
+```
+
+Calling `Faker` methods:
+```java
+new Faker(fakerConfig).getName().getFirstName().invoke();
+```
+<i>Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.
+Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,
+therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.
+This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`</i>
 
 
 ## Data Providers
@@ -384,7 +402,7 @@ For more details see the particular `.md` file for each provider below.</i>
 </details>
 
 ### Generating a random instance of any class
-It is possible to generate a random instance of any class with `Faker.randomProvider`. For example:
+It is possible to generate a random instance of any class with `Faker().randomProvider`. For example:
 
 ```kotlin
 class Foo(val a: String)
@@ -393,13 +411,12 @@ class Bar(val foo: Foo)
 class Test {
     @Test
     fun test() {
-        Faker.init()
+        val faker = Faker()
 
-        val foo: Foo = Faker.randomProvider.randomClassInstance()
-        val bar: Bar = Faker.randomProvider.randomClassInstance()
+        val foo: Foo = faker.randomProvider.randomClassInstance()
+        val bar: Bar = faker.randomProvider.randomClassInstance()
     }
 }
-
 ```
 
 There are the following rules when creating a random instance of a class:

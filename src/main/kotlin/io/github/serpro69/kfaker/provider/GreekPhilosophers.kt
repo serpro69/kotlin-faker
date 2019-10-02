@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class GreekPhilosophers internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GREEK_PHILOSOPHERS
 
-    val names = resolve { fakerService.resolve(Faker, it, "names") }
-    val quoetes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val names = resolve { fakerService.resolve(it, "names") }
+    val quoetes = resolve { fakerService.resolve(it, "quotes") }
 }

@@ -9,12 +9,12 @@ import io.github.serpro69.kfaker.dictionary.*
 class Educator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.EDUCATOR
 
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val secondary = resolve { fakerService.resolve(Faker, it, "secondary") }
-    val tertiaryType = resolve { fakerService.resolve(Faker, it, "tertiary", "type") }
+    val name = resolve { fakerService.resolve(it, "name") }
+    val secondary = resolve { fakerService.resolve(it, "secondary") }
+    val tertiaryType = resolve { fakerService.resolve(it, "tertiary", "type") }
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     val tertiaryDegree: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "tertiary", "degree", type) }.invoke()
+        resolve { fakerService.resolve(it, "tertiary", "degree", type) }.invoke()
     }
 }

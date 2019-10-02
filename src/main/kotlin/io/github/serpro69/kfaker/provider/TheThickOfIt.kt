@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class TheThickOfIt internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.THE_THICK_OF_IT
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val positions = resolve { fakerService.resolve(Faker, it, "positions") }
-    val departments = resolve { fakerService.resolve(Faker, it, "departments") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val positions = resolve { fakerService.resolve(it, "positions") }
+    val departments = resolve { fakerService.resolve(it, "departments") }
 }

@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class File internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.FILE
 
-    val extension = resolve { fakerService.resolve(Faker, it, "extension") }
-    val mimeType = resolve { fakerService.resolve(Faker, it, "mime_type") }
+    val extension = resolve { fakerService.resolve(it, "extension") }
+    val mimeType = resolve { fakerService.resolve(it, "mime_type") }
 }

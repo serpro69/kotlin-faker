@@ -11,11 +11,11 @@ class HitchhikersGuideToTheGalaxy internal constructor(
 ) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HITCHHIKERS_GUIDE_TO_THE_GALAXY
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val locations = resolve { fakerService.resolve(Faker, it, "locations") }
-    val marvinQuote = resolve { fakerService.resolve(Faker, it, "marvin_quote") }
-    val planets = resolve { fakerService.resolve(Faker, it, "planets") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
-    val species = resolve { fakerService.resolve(Faker, it, "species") }
-    val starships = resolve { fakerService.resolve(Faker, it, "starships") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val locations = resolve { fakerService.resolve(it, "locations") }
+    val marvinQuote = resolve { fakerService.resolve(it, "marvin_quote") }
+    val planets = resolve { fakerService.resolve(it, "planets") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val species = resolve { fakerService.resolve(it, "species") }
+    val starships = resolve { fakerService.resolve(it, "starships") }
 }

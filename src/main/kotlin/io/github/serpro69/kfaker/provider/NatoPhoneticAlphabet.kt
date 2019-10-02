@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class NatoPhoneticAlphabet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.NATO_PHONETIC_ALPHABET
 
-    val codeWord = resolve { fakerService.resolve(Faker, it, "code_word") }
+    val codeWord = resolve { fakerService.resolve(it, "code_word") }
 }

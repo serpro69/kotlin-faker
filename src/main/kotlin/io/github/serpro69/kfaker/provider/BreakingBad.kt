@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class BreakingBad internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.BREAKING_BAD
 
-    val character = resolve { fakerService.resolve(Faker, it, "character") }
-    val episode = resolve { fakerService.resolve(Faker, it, "episode") }
+    val character = resolve { fakerService.resolve(it, "character") }
+    val episode = resolve { fakerService.resolve(it, "episode") }
 }

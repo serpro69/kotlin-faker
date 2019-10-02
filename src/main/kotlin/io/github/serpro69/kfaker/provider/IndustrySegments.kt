@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class IndustrySegments internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.INDUSTRY_SEGMENTS
 
-    val industry = resolve { fakerService.resolve(Faker, it, "industry") }
-    val superSector = resolve { fakerService.resolve(Faker, it, "super_sector") }
-    val sector = resolve { fakerService.resolve(Faker, it, "sector") }
-    val subSector = resolve { fakerService.resolve(Faker, it, "sub_sector") }
+    val industry = resolve { fakerService.resolve(it, "industry") }
+    val superSector = resolve { fakerService.resolve(it, "super_sector") }
+    val sector = resolve { fakerService.resolve(it, "sector") }
+    val subSector = resolve { fakerService.resolve(it, "sub_sector") }
 }

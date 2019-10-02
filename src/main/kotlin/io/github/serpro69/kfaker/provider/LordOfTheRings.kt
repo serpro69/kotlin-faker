@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class LordOfTheRings internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.LORD_OF_THE_RINGS
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val locations = resolve { fakerService.resolve(Faker, it, "locations") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val locations = resolve { fakerService.resolve(it, "locations") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Pokemon internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val names = resolve { fakerService.resolve(Faker, it, "pokemon", "names") }
-    val locations = resolve { fakerService.resolve(Faker, it, "pokemon", "locations") }
-    val moves = resolve { fakerService.resolve(Faker, it, "pokemon", "moves") }
+    val names = resolve { fakerService.resolve(it, "pokemon", "names") }
+    val locations = resolve { fakerService.resolve(it, "pokemon", "locations") }
+    val moves = resolve { fakerService.resolve(it, "pokemon", "moves") }
 }

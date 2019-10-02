@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class UmphreysMcgee internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.UMPHREYS_MCGEE
 
-    val song = resolve { fakerService.resolve(Faker, it, "song") }
+    val song = resolve { fakerService.resolve(it, "song") }
 }

@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Movie internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.MOVIE
 
-    val quote = resolve { fakerService.resolve(Faker, it, "quote") }
+    val quote = resolve { fakerService.resolve(it, "quote") }
 }

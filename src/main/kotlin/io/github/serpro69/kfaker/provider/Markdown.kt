@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Markdown internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.MARKDOWN
 
-    val headers = resolve { fakerService.resolve(Faker, it, "headers") }
-    val emphasis = resolve { fakerService.resolve(Faker, it, "emphasis") }
+    val headers = resolve { fakerService.resolve(it, "headers") }
+    val emphasis = resolve { fakerService.resolve(it, "emphasis") }
 }

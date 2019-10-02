@@ -9,12 +9,12 @@ import io.github.serpro69.kfaker.dictionary.*
 class Measurement internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.MEASUREMENT
 
-    val height = resolve { fakerService.resolve(Faker, it, "height") }
-    val length = resolve { fakerService.resolve(Faker, it, "length") }
-    val volume = resolve { fakerService.resolve(Faker, it, "volume") }
-    val weight = resolve { fakerService.resolve(Faker, it, "weight") }
-    val metricHeight = resolve { fakerService.resolve(Faker, it, "metric_height") }
-    val metricLength = resolve { fakerService.resolve(Faker, it, "metric_length") }
-    val metricVolume = resolve { fakerService.resolve(Faker, it, "metric_volume") }
-    val metricWeight = resolve { fakerService.resolve(Faker, it, "metric_weight") }
+    val height = resolve { fakerService.resolve(it, "height") }
+    val length = resolve { fakerService.resolve(it, "length") }
+    val volume = resolve { fakerService.resolve(it, "volume") }
+    val weight = resolve { fakerService.resolve(it, "weight") }
+    val metricHeight = resolve { fakerService.resolve(it, "metric_height") }
+    val metricLength = resolve { fakerService.resolve(it, "metric_length") }
+    val metricVolume = resolve { fakerService.resolve(it, "metric_volume") }
+    val metricWeight = resolve { fakerService.resolve(it, "metric_weight") }
 }

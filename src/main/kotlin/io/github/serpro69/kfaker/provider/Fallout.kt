@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Fallout internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val characters = resolve { fakerService.resolve(Faker, it, "fallout", "characters") }
-    val factions = resolve { fakerService.resolve(Faker, it, "fallout", "factions") }
-    val locations = resolve { fakerService.resolve(Faker, it, "fallout", "locations") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "fallout", "quotes") }
+    val characters = resolve { fakerService.resolve(it, "fallout", "characters") }
+    val factions = resolve { fakerService.resolve(it, "fallout", "factions") }
+    val locations = resolve { fakerService.resolve(it, "fallout", "locations") }
+    val quotes = resolve { fakerService.resolve(it, "fallout", "quotes") }
 }

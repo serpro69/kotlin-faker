@@ -9,9 +9,9 @@ import io.github.serpro69.kfaker.dictionary.*
 class Lovecraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.LOVECRAFT
 
-    val fhtagn = resolve { fakerService.resolve(Faker, it, "fhtagn") }
-    val deity = resolve { fakerService.resolve(Faker, it, "deity") }
-    val location = resolve { fakerService.resolve(Faker, it, "location") }
-    val tome = resolve { fakerService.resolve(Faker, it, "tome") }
-    val words = resolve { fakerService.resolve(Faker, it, "words") }
+    val fhtagn = resolve { fakerService.resolve(it, "fhtagn") }
+    val deity = resolve { fakerService.resolve(it, "deity") }
+    val location = resolve { fakerService.resolve(it, "location") }
+    val tome = resolve { fakerService.resolve(it, "tome") }
+    val words = resolve { fakerService.resolve(it, "words") }
 }

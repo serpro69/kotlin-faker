@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Currency internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.CURRENCY
 
-    val code = resolve { fakerService.resolve(Faker, it, "code") }
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val symbol = resolve { fakerService.resolve(Faker, it, "symbol") }
+    val code = resolve { fakerService.resolve(it, "code") }
+    val name = resolve { fakerService.resolve(it, "name") }
+    val symbol = resolve { fakerService.resolve(it, "symbol") }
 }

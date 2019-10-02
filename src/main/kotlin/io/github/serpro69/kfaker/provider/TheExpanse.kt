@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class TheExpanse internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.THE_EXPANSE
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val locations = resolve { fakerService.resolve(Faker, it, "locations") }
-    val ships = resolve { fakerService.resolve(Faker, it, "ships") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val locations = resolve { fakerService.resolve(it, "locations") }
+    val ships = resolve { fakerService.resolve(it, "ships") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class HeroesOfTheStorm internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HEROES_OF_THE_STORM
 
-    val battlegrounds = resolve { fakerService.resolve(Faker, it, "battlegrounds") }
-    val classes = resolve { fakerService.resolve(Faker, it, "classes") }
-    val heroes = resolve { fakerService.resolve(Faker, it, "heroes") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val battlegrounds = resolve { fakerService.resolve(it, "battlegrounds") }
+    val classes = resolve { fakerService.resolve(it, "classes") }
+    val heroes = resolve { fakerService.resolve(it, "heroes") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

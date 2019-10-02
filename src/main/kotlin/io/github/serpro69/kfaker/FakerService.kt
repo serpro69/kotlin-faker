@@ -19,7 +19,10 @@ import kotlin.reflect.full.*
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
  */
-internal class FakerService @JvmOverloads internal constructor(locale: String = "en", random: Random) {
+internal class FakerService @JvmOverloads internal constructor(
+    private val faker: Faker,
+    locale: String = "en", random: Random
+) {
     private val randomService = RandomService(random)
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
@@ -29,7 +32,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(locale: Locale, random: Random) : this(locale.toLanguageTag(), random)
+    internal constructor(faker: Faker, locale: Locale, random: Random) : this(faker, locale.toLanguageTag(), random)
 
     private fun getDefaultFilesURLs(): List<URL> {
         return ClassGraph().whitelistPathsNonRecursive("locales/en").scan().use {
@@ -65,7 +68,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
                 } else defaultValues[category.key] = category.value
             }
 
-//             Add `separator` category from `locales/en.yml` file
+//             todo Add `separator` category from `locales/en.yml` file
             val enYml = requireNotNull(getLocalizedFileStream("en"))
 
             readCategory(enYml, "en").entries.forEach { category ->
@@ -230,25 +233,25 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
     /**
      * Resolves [RawExpression] value of the [key] in this [category].
      */
-    fun resolve(faker: Faker, category: Category, key: String): String {
+    fun resolve(category: Category, key: String): String {
         val rawExpression = getRawValue(category, key)
-        return resolveExpression(faker, category, rawExpression)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
      * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [category].
      */
-    fun resolve(faker: Faker, category: Category, key: String, secondaryKey: String): String {
+    fun resolve(category: Category, key: String, secondaryKey: String): String {
         val rawExpression = getRawValue(category, key, secondaryKey)
-        return resolveExpression(faker, category, rawExpression)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
      * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [category].
      */
-    fun resolve(faker: Faker, category: Category, key: String, secondaryKey: String, thirdKey: String): String {
+    fun resolve(category: Category, key: String, secondaryKey: String, thirdKey: String): String {
         val rawExpression = getRawValue(category, key, secondaryKey, thirdKey)
-        return resolveExpression(faker, category, rawExpression)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
@@ -267,7 +270,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
      * will be resolved to concatenating values from `en: faker: name: first_name` and `en: faker: name: last_name` and so on until
      * the expression is exhausted to the actual value.
      */
-    private tailrec fun resolveExpression(faker: Faker, category: Category, rawExpression: RawExpression): String {
+    private tailrec fun resolveExpression(category: Category, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
         val resolvedExpression = when {
@@ -277,7 +280,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
 
                     val replacement = when (simpleClassName != null) {
                         true -> {
-                            val providerType = getProvider(faker, simpleClassName)
+                            val providerType = getProvider(simpleClassName)
                             val propertyName = providerType.getPropertyName(it.group(2))
 
                             providerType.callProperty(propertyName)
@@ -298,7 +301,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
             !letterRegex.containsMatchIn(resolvedExpression)
         ) {
             resolvedExpression
-        } else resolveExpression(faker, category, RawExpression(resolvedExpression))
+        } else resolveExpression(category, RawExpression(resolvedExpression))
     }
 
 
@@ -353,7 +356,7 @@ internal class FakerService @JvmOverloads internal constructor(locale: String = 
     /**
      * Returns an instance of [FakeDataProvider] fetched by it's [simpleClassName] (case-insensitive).
      */
-    private fun getProvider(faker: Faker, simpleClassName: String): FakeDataProvider {
+    private fun getProvider(simpleClassName: String): FakeDataProvider {
         val kProp = faker::class.declaredMemberProperties.first {
             it.name.toLowerCase() == simpleClassName.toLowerCase()
         }

@@ -9,9 +9,9 @@ import io.github.serpro69.kfaker.dictionary.*
 class Myst internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val games = resolve { fakerService.resolve(Faker, it, "myst", "games") }
-    val creatures = resolve { fakerService.resolve(Faker, it, "myst", "creatures") }
-    val characters = resolve { fakerService.resolve(Faker, it, "myst", "characters") }
-    val ages = resolve { fakerService.resolve(Faker, it, "myst", "ages") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "myst", "quotes") }
+    val games = resolve { fakerService.resolve(it, "myst", "games") }
+    val creatures = resolve { fakerService.resolve(it, "myst", "creatures") }
+    val characters = resolve { fakerService.resolve(it, "myst", "characters") }
+    val ages = resolve { fakerService.resolve(it, "myst", "ages") }
+    val quotes = resolve { fakerService.resolve(it, "myst", "quotes") }
 }

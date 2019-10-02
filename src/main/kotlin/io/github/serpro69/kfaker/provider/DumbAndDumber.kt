@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class DumbAndDumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.DUMB_AND_DUMBER
 
-    val actors = resolve { fakerService.resolve(Faker, it, "actors") }
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val actors = resolve { fakerService.resolve(it, "actors") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

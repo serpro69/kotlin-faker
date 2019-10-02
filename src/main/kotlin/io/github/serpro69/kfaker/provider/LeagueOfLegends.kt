@@ -9,10 +9,10 @@ import io.github.serpro69.kfaker.dictionary.*
 class LeagueOfLegends internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val champion = resolve { fakerService.resolve(Faker, it, "league_of_legends", "champion") }
-    val location = resolve { fakerService.resolve(Faker, it, "league_of_legends", "location") }
-    val quote = resolve { fakerService.resolve(Faker, it, "league_of_legends", "quote") }
-    val summonerSpell = resolve { fakerService.resolve(Faker, it, "league_of_legends", "summoner_spell") }
-    val masteries = resolve { fakerService.resolve(Faker, it, "league_of_legends", "masteries") }
-    val rank = resolve { fakerService.resolve(Faker, it, "league_of_legends", "rank") }
+    val champion = resolve { fakerService.resolve(it, "league_of_legends", "champion") }
+    val location = resolve { fakerService.resolve(it, "league_of_legends", "location") }
+    val quote = resolve { fakerService.resolve(it, "league_of_legends", "quote") }
+    val summonerSpell = resolve { fakerService.resolve(it, "league_of_legends", "summoner_spell") }
+    val masteries = resolve { fakerService.resolve(it, "league_of_legends", "masteries") }
+    val rank = resolve { fakerService.resolve(it, "league_of_legends", "rank") }
 }

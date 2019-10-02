@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Music internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.MUSIC
 
-    val instruments = resolve { fakerService.resolve(Faker, it, "instruments") }
-    val bands = resolve { fakerService.resolve(Faker, it, "bands") }
-    val albums = resolve { fakerService.resolve(Faker, it, "albums") }
-    val genres = resolve { fakerService.resolve(Faker, it, "genres") }
+    val instruments = resolve { fakerService.resolve(it, "instruments") }
+    val bands = resolve { fakerService.resolve(it, "bands") }
+    val albums = resolve { fakerService.resolve(it, "albums") }
+    val genres = resolve { fakerService.resolve(it, "genres") }
 }

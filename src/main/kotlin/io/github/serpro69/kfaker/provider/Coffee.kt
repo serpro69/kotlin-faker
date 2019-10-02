@@ -9,11 +9,11 @@ import io.github.serpro69.kfaker.dictionary.*
 class Coffee internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.COFFEE
 
-    val country = resolve { fakerService.resolve(Faker, it, "country") }
+    val country = resolve { fakerService.resolve(it, "country") }
     val regions: (country: String) -> String = { country ->
-        resolve { fakerService.resolve(Faker, it, "regions", country.toLowerCase()) }.invoke()
+        resolve { fakerService.resolve(it, "regions", country.toLowerCase()) }.invoke()
     }
-    val variety = resolve { fakerService.resolve(Faker, it, "variety") }
-    val notes = resolve { fakerService.resolve(Faker, it, "notes") }
-    val blendName = resolve { fakerService.resolve(Faker, it, "blend_name") }
+    val variety = resolve { fakerService.resolve(it, "variety") }
+    val notes = resolve { fakerService.resolve(it, "notes") }
+    val blendName = resolve { fakerService.resolve(it, "blend_name") }
 }

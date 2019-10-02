@@ -11,9 +11,9 @@ class Nation internal constructor(fakerService: FakerService) : AbstractFakeData
 
     // currently not supported due to logic for getting raw value for List<List<*>> types
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val flag = resolve { fakerService.resolve(Faker, it, "flag") }
+    val flag = resolve { fakerService.resolve(it, "flag") }
 
-    val nationality = resolve { fakerService.resolve(Faker, it, "nationality") }
-    val language = resolve { fakerService.resolve(Faker, it, "language") }
-    val capitalCity = resolve { fakerService.resolve(Faker, it, "capital_city") }
+    val nationality = resolve { fakerService.resolve(it, "nationality") }
+    val language = resolve { fakerService.resolve(it, "language") }
+    val capitalCity = resolve { fakerService.resolve(it, "capital_city") }
 }

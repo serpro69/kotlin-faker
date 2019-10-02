@@ -9,11 +9,11 @@ import io.github.serpro69.kfaker.dictionary.*
 class Job internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.JOB
 
-    val field = resolve { fakerService.resolve(Faker, it, "field") }
-    val seniority = resolve { fakerService.resolve(Faker, it, "seniority") }
-    val position = resolve { fakerService.resolve(Faker, it, "position") }
-    val keySkills = resolve { fakerService.resolve(Faker, it, "key_skills") }
-    val employmentType = resolve { fakerService.resolve(Faker, it, "employment_type") }
-    val educationLevel = resolve { fakerService.resolve(Faker, it, "education_level") }
-    val title = resolve { fakerService.resolve(Faker, it, "title") }
+    val field = resolve { fakerService.resolve(it, "field") }
+    val seniority = resolve { fakerService.resolve(it, "seniority") }
+    val position = resolve { fakerService.resolve(it, "position") }
+    val keySkills = resolve { fakerService.resolve(it, "key_skills") }
+    val employmentType = resolve { fakerService.resolve(it, "employment_type") }
+    val educationLevel = resolve { fakerService.resolve(it, "education_level") }
+    val title = resolve { fakerService.resolve(it, "title") }
 }

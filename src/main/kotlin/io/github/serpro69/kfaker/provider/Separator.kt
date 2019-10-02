@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class Separator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SEPARATOR
 
-    val separator = resolve { fakerService.resolve(Faker, it, "separator") }
+    val separator = resolve { fakerService.resolve(it, "separator") }
 }

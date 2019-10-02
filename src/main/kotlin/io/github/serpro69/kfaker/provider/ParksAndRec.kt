@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class ParksAndRec internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.PARKS_AND_REC
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val cities = resolve { fakerService.resolve(Faker, it, "cities") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val cities = resolve { fakerService.resolve(it, "cities") }
 }

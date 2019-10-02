@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Device internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.DEVICE
 
-    val modelName = resolve { fakerService.resolve(Faker, it, "model_name") }
-    val platform = resolve { fakerService.resolve(Faker, it, "platform") }
-    val manufacturer = resolve { fakerService.resolve(Faker, it, "manufacturer") }
-    val serial = resolve { fakerService.resolve(Faker, it, "serial") }
+    val modelName = resolve { fakerService.resolve(it, "model_name") }
+    val platform = resolve { fakerService.resolve(it, "platform") }
+    val manufacturer = resolve { fakerService.resolve(it, "manufacturer") }
+    val serial = resolve { fakerService.resolve(it, "serial") }
 }

@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 class Shakespeare internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SHAKESPEARE
 
-    val hamlet = resolve { fakerService.resolve(Faker, it, "hamlet") }
-    val asYouLikeIt = resolve { fakerService.resolve(Faker, it, "as_you_like_it") }
-    val kingRichardTheThird = resolve { fakerService.resolve(Faker, it, "king_richard_iii") }
-    val romeoAndJuliet = resolve { fakerService.resolve(Faker, it, "romeo_and_juliet") }
+    val hamlet = resolve { fakerService.resolve(it, "hamlet") }
+    val asYouLikeIt = resolve { fakerService.resolve(it, "as_you_like_it") }
+    val kingRichardTheThird = resolve { fakerService.resolve(it, "king_richard_iii") }
+    val romeoAndJuliet = resolve { fakerService.resolve(it, "romeo_and_juliet") }
 }

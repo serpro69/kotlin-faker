@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class VForVendetta internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.V_FOR_VENDETTA
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val speeches = resolve { fakerService.resolve(Faker, it, "speeches") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val speeches = resolve { fakerService.resolve(it, "speeches") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

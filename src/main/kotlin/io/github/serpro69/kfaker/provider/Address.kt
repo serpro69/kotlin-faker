@@ -9,28 +9,28 @@ import io.github.serpro69.kfaker.dictionary.*
 class Address internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ADDRESS
 
-    val country = resolve { fakerService.resolve(Faker, it, "country") }
+    val country = resolve { fakerService.resolve(it, "country") }
     val countryByCode: (countryCode: String) -> String = { code ->
-        resolve { fakerService.resolve(Faker, it, "country_by_code", code) }.invoke()
+        resolve { fakerService.resolve(it, "country_by_code", code) }.invoke()
     }
     val countryByName: (countryName: String) -> String = { name ->
-        resolve { fakerService.resolve(Faker, it, "country_by_name", name) }.invoke()
+        resolve { fakerService.resolve(it, "country_by_name", name) }.invoke()
     }
-    val countryCode = resolve { fakerService.resolve(Faker, it, "country_code") }
-    val countryCodeLong = resolve { fakerService.resolve(Faker, it, "country_code_long") }
-    val buildingNumber = resolve { fakerService.resolve(Faker, it, "building_number") }
-    val community = resolve { fakerService.resolve(Faker, it, "community") }
-    val secondaryAddress = resolve { fakerService.resolve(Faker, it, "secondary_address") }
-    val postcode = resolve { fakerService.resolve(Faker, it, "postcode") }
+    val countryCode = resolve { fakerService.resolve(it, "country_code") }
+    val countryCodeLong = resolve { fakerService.resolve(it, "country_code_long") }
+    val buildingNumber = resolve { fakerService.resolve(it, "building_number") }
+    val community = resolve { fakerService.resolve(it, "community") }
+    val secondaryAddress = resolve { fakerService.resolve(it, "secondary_address") }
+    val postcode = resolve { fakerService.resolve(it, "postcode") }
     val postcodeByState: (state: String) -> String = { state ->
-        resolve { fakerService.resolve(Faker, it, "postcode_by_state", state) }.invoke()
+        resolve { fakerService.resolve(it, "postcode_by_state", state) }.invoke()
     }
-    val state = resolve { fakerService.resolve(Faker, it, "state") }
-    val stateAbbr = resolve { fakerService.resolve(Faker, it, "state_abbr") }
-    val timeZone = resolve { fakerService.resolve(Faker, it, "time_zone") }
-    val city = resolve { fakerService.resolve(Faker, it, "city") }
-    val streetName = resolve { fakerService.resolve(Faker, it, "street_name") }
-    val streetAddress = resolve { fakerService.resolve(Faker, it, "street_address") }
-    val fullAddress = resolve { fakerService.resolve(Faker, it, "full_address") }
-    val defaultCountry = resolve { fakerService.resolve(Faker, it, "default_country") }
+    val state = resolve { fakerService.resolve(it, "state") }
+    val stateAbbr = resolve { fakerService.resolve(it, "state_abbr") }
+    val timeZone = resolve { fakerService.resolve(it, "time_zone") }
+    val city = resolve { fakerService.resolve(it, "city") }
+    val streetName = resolve { fakerService.resolve(it, "street_name") }
+    val streetAddress = resolve { fakerService.resolve(it, "street_address") }
+    val fullAddress = resolve { fakerService.resolve(it, "full_address") }
+    val defaultCountry = resolve { fakerService.resolve(it, "default_country") }
 }

@@ -9,11 +9,11 @@ import io.github.serpro69.kfaker.dictionary.*
 class Relationship internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.RELATIONSHIP
 
-    val familialDirect = resolve { fakerService.resolve(Faker, it, "familial", "direct") }
-    val familialExtended = resolve { fakerService.resolve(Faker, it, "familial", "extended") }
-    val familial = resolve { fakerService.resolve(Faker, it, "familial", "") }
-    val inLaw = resolve { fakerService.resolve(Faker, it, "in_law") }
-    val spouse = resolve { fakerService.resolve(Faker, it, "spouse") }
-    val parent = resolve { fakerService.resolve(Faker, it, "parent") }
-    val sibling = resolve { fakerService.resolve(Faker, it, "sibling") }
+    val familialDirect = resolve { fakerService.resolve(it, "familial", "direct") }
+    val familialExtended = resolve { fakerService.resolve(it, "familial", "extended") }
+    val familial = resolve { fakerService.resolve(it, "familial", "") }
+    val inLaw = resolve { fakerService.resolve(it, "in_law") }
+    val spouse = resolve { fakerService.resolve(it, "spouse") }
+    val parent = resolve { fakerService.resolve(it, "parent") }
+    val sibling = resolve { fakerService.resolve(it, "sibling") }
 }

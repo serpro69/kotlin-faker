@@ -27,5 +27,7 @@ abstract class AbstractFakeDataProvider internal constructor(
      *
      * @return parameterless function that returns a [String]: `() -> String`
      */
-    internal fun resolve(block: (Category) -> String) = { -> block(fakerService.fetchCategory(categoryName)) }
+    internal fun resolve(block: (Category) -> String): () -> String = {
+        block(fakerService.fetchCategory(categoryName))
+    }
 }

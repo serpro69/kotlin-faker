@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class FamilyGuy internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.FAMILY_GUY
 
-    val character = resolve { fakerService.resolve(Faker, it, "character") }
-    val location = resolve { fakerService.resolve(Faker, it, "location") }
-    val quote = resolve { fakerService.resolve(Faker, it, "quote") }
+    val character = resolve { fakerService.resolve(it, "character") }
+    val location = resolve { fakerService.resolve(it, "location") }
+    val quote = resolve { fakerService.resolve(it, "quote") }
 }

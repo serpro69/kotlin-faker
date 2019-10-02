@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class DragonBall internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.DRAGON_BALL
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
 }

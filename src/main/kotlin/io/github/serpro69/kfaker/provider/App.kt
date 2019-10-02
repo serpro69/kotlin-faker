@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class App internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.APP
 
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
-    val version = resolve { fakerService.resolve(Faker, it, "version") }
-    val author = resolve { fakerService.resolve(Faker, it, "author") }
+    val name = resolve { fakerService.resolve(it, "name") }
+    val version = resolve { fakerService.resolve(it, "version") }
+    val author = resolve { fakerService.resolve(it, "author") }
 }

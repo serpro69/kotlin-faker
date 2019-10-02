@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class HalfLife internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val character = resolve { fakerService.resolve(Faker, it, "half_life", "character") }
-    val enemy = resolve { fakerService.resolve(Faker, it, "half_life", "enemy") }
-    val location = resolve { fakerService.resolve(Faker, it, "half_life", "location") }
+    val character = resolve { fakerService.resolve(it, "half_life", "character") }
+    val enemy = resolve { fakerService.resolve(it, "half_life", "enemy") }
+    val location = resolve { fakerService.resolve(it, "half_life", "location") }
 }

@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Appliance internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.APPLIANCE
 
-    val brand = resolve { fakerService.resolve(Faker, it, "brand") }
-    val equipment = resolve { fakerService.resolve(Faker, it, "equipment") }
+    val brand = resolve { fakerService.resolve(it, "brand") }
+    val equipment = resolve { fakerService.resolve(it, "equipment") }
 }

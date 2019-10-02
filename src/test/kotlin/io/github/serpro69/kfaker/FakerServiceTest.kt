@@ -13,7 +13,7 @@ val random = Random()
 internal class FakerServiceTest : FreeSpec({
     "GIVEN locale for the dictionary" - {
         "WHEN it is set to default value" - {
-            val dictionary = FakerService(random = random).dictionary
+            val dictionary = FakerService(faker = Faker(), random = random).dictionary
 
             "THEN it should contain all keys for 'en' locale" {
                 val dictionaryKeys = listOf(
@@ -51,8 +51,8 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set to custom value" - {
-            val esDictionary = FakerService(Locale.forLanguageTag("es"), random).dictionary
-            val defaultDictionary = FakerService(random = random).dictionary
+            val esDictionary = FakerService(Faker(), Locale.forLanguageTag("es"), random).dictionary
+            val defaultDictionary = FakerService(faker = Faker(), random = random).dictionary
 
             "THEN matching keys should be overwritten in the localized dictionary" {
                 val esAddress = esDictionary.getCategoryByName("address")
@@ -71,7 +71,7 @@ internal class FakerServiceTest : FreeSpec({
 
         "WHEN it is set with a valid String value" - {
             "THEN localized dictionary should be loaded" {
-                val esDictionary = FakerService("es", random).dictionary
+                val esDictionary = FakerService(Faker(), "es", random).dictionary
                 esDictionary shouldNotBe null
             }
         }
@@ -79,7 +79,7 @@ internal class FakerServiceTest : FreeSpec({
         "WHEN it is set with invalid String value" - {
             "THEN an exception is thrown when loading the dictionary" {
                 val exception = shouldThrow<IllegalArgumentException> {
-                    FakerService("pe", random).dictionary
+                    FakerService(Faker(), "pe", random).dictionary
                 }
 
                 exception.message shouldBe "Dictionary file not found for locale values: 'pe' or 'pe'"
@@ -87,7 +87,7 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set as `lang-COUNTRY` but dictionary file exists only for `lang`" - {
-            val frFRDict = FakerService("fr-FR", random).dictionary
+            val frFRDict = FakerService(Faker(), "fr-FR", random).dictionary
 
             "THEN localized dictionary for `lang` should be loaded" {
                 frFRDict shouldNotBe null
@@ -95,7 +95,7 @@ internal class FakerServiceTest : FreeSpec({
         }
 
         "WHEN it is set as `lang_COUNTRY` String" - {
-            val frFRDict = FakerService("fr_FR", random).dictionary
+            val frFRDict = FakerService(Faker(), "fr_FR", random).dictionary
 
             "THEN it should be set as `lang-COUNTRY` String" {
                 frFRDict shouldNotBe null
@@ -104,7 +104,7 @@ internal class FakerServiceTest : FreeSpec({
     }
 
     "GIVEN dictionary is loaded" - {
-        val fakerService = FakerService(random = random)
+        val fakerService = FakerService(faker = Faker(), random = random)
 
         "WHEN fetching category by key" - {
             val category = fakerService.fetchCategory(CategoryName.ADDRESS)
@@ -410,7 +410,7 @@ internal class FakerServiceTest : FreeSpec({
                     val category = fakerService.fetchCategory(CategoryName.NAME)
 
                     "THEN expression is resolved to raw value of the pointer" {
-                        val resolvedValue = fakerService.resolve(Faker, category, "first_name")
+                        val resolvedValue = fakerService.resolve(category, "first_name")
 
                         assertSoftly {
                             resolvedValue.first().isUpperCase() shouldBe true
@@ -420,12 +420,11 @@ internal class FakerServiceTest : FreeSpec({
                 }
 
                 "AND expression matches parameter from another category" - {
-                    Faker.init() // needed to initializy the category
 
                     val category = fakerService.fetchCategory(CategoryName.BOOK)
 
                     "THEN expression is resolved to raw value of another category" {
-                        val resolvedValue = fakerService.resolve(Faker, category, "author")
+                        val resolvedValue = fakerService.resolve(category, "author")
 
                         assertSoftly {
                             resolvedValue shouldNotBe ""
@@ -442,7 +441,7 @@ internal class FakerServiceTest : FreeSpec({
                     val category = fakerService.fetchCategory(CategoryName.NAME)
 
                     "THEN expression is resolved recursively" {
-                        val resolvedValue = fakerService.resolve(Faker, category, "name")
+                        val resolvedValue = fakerService.resolve(category, "name")
 
                         assertSoftly {
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
@@ -454,8 +453,8 @@ internal class FakerServiceTest : FreeSpec({
 
                 "AND expression is resolved by secondary key" - {
                     val address = fakerService.fetchCategory(CategoryName.ADDRESS)
-                    val peru = fakerService.resolve(Faker, address, "country_by_code", "PE")
-                    val norway = fakerService.resolve(Faker, address, "country_by_code", "NO")
+                    val peru = fakerService.resolve(address, "country_by_code", "PE")
+                    val norway = fakerService.resolve(address, "country_by_code", "NO")
 
                     "THEN expression is resolved using secondary key" - {
                         assertSoftly {

@@ -10,21 +10,24 @@ class FakerConfigTest : FreeSpec() {
 
     init {
         "GIVEN random is set through FakerConfig" - {
-            Faker.Config.random = Random(42)
-            Faker.init()
+            val fakerConfig = FakerConfig.builder().create {
+                random = Random(42)
+            }
 
-            val rand1 = Faker.Config.random
+            val faker = Faker(fakerConfig)
 
-            val city1 = Faker.address.city()
-            val name1 = Faker.name.name()
+            val city1 = faker.address.city()
+            val name1 = faker.name.name()
 
             "WHEN random is seeded with the same value" - {
-                Faker.Config.random = Random(42)
-                Faker.init()
+                val otherFakerConfig = FakerConfig.builder().create {
+                    random = Random(42)
+                }
+                val otherFaker = Faker(otherFakerConfig)
 
                 "THEN the output of repeated function calls should be the same" {
-                    val city2 = Faker.address.city()
-                    val name2 = Faker.name.name()
+                    val city2 = otherFaker.address.city()
+                    val name2 = otherFaker.name.name()
 
                     assertSoftly {
                         city2 shouldBe city1
@@ -33,7 +36,7 @@ class FakerConfigTest : FreeSpec() {
                 }
             }
 
-            "WHEN Faker is re-initialized without setting Faker.Config.random" - {
+/*            "WHEN Faker is re-initialized without setting Faker.Config.random" - {
                 Faker.init()
 
                 val rand2 = Faker.Config.random
@@ -49,7 +52,7 @@ class FakerConfigTest : FreeSpec() {
                         rand2 shouldNotBe rand1
                     }
                 }
-            }
+            }*/
         }
     }
 }

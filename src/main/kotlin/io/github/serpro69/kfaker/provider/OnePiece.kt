@@ -9,10 +9,10 @@ import io.github.serpro69.kfaker.dictionary.*
 class OnePiece internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ONE_PIECE
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val seas = resolve { fakerService.resolve(Faker, it, "seas") }
-    val islands = resolve { fakerService.resolve(Faker, it, "islands") }
-    val locations = resolve { fakerService.resolve(Faker, it, "locations") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
-    val akumasNoMi = resolve { fakerService.resolve(Faker, it, "akumas_no_mi") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val seas = resolve { fakerService.resolve(it, "seas") }
+    val islands = resolve { fakerService.resolve(it, "islands") }
+    val locations = resolve { fakerService.resolve(it, "locations") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val akumasNoMi = resolve { fakerService.resolve(it, "akumas_no_mi") }
 }

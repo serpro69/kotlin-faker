@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Overwatch internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.GAMES
 
-    val heroes = resolve { fakerService.resolve(Faker, it, "overwatch", "heroes") }
-    val locations = resolve { fakerService.resolve(Faker, it, "overwatch", "locations") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "overwatch", "quotes") }
+    val heroes = resolve { fakerService.resolve(it, "overwatch", "heroes") }
+    val locations = resolve { fakerService.resolve(it, "overwatch", "locations") }
+    val quotes = resolve { fakerService.resolve(it, "overwatch", "quotes") }
 }

@@ -10,12 +10,12 @@ class Stripe internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.STRIPE
 
     val validCards: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "valid_cards", type) }.invoke()
+        resolve { fakerService.resolve(it, "valid_cards", type) }.invoke()
     }
     val validTokens: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "valid_tokens", type) }.invoke()
+        resolve { fakerService.resolve(it, "valid_tokens", type) }.invoke()
     }
     val invalidCards: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(Faker, it, "invalid_cards", type) }.invoke()
+        resolve { fakerService.resolve(it, "invalid_cards", type) }.invoke()
     }
 }

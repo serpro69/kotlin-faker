@@ -3,173 +3,164 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
-import io.github.serpro69.kfaker.provider.Currency
-import java.util.*
 
 /**
  * Object provides functionality to generate fake data.
  *
  * Each category from this [Faker] is represented by a property that has the same name as the `.yml` file.
  */
-object Faker {
-    private lateinit var fakerService: FakerService
+class Faker @JvmOverloads constructor(fakerConfig: FakerConfig = FakerConfig.builder().create { }) {
+    private val fakerService: FakerService = FakerService(this, fakerConfig.locale, fakerConfig.random)
 
-    lateinit var separator: Separator private set
-    lateinit var address: Address private set
-    lateinit var ancient: Ancient private set
-    lateinit var animal: Animal private set
-    lateinit var app: App private set
-    lateinit var appliance: Appliance private set
-    lateinit var aquaTeenHungerForce: AquaTeenHungerForce private set
-    lateinit var artist: Artist private set
-    lateinit var backToTheFuture: BackToTheFuture private set
-    lateinit var bank: Bank private set
-    lateinit var basketball: Basketball private set
-    lateinit var beer: Beer private set
-    lateinit var bojackHoreseman: BojackHoreseman private set
-    lateinit var book: Book private set
-    lateinit var bossaNova: BossaNova private set
-    lateinit var breakingBad: BreakingBad private set
-    lateinit var buffy: Buffy private set
-    lateinit var business: Business private set
-    lateinit var cannabis: Cannabis private set
-    lateinit var cat: Cat private set
-    lateinit var chuckNorris: ChuckNorris private set
-    lateinit var code: Code private set
-    lateinit var coffee: Coffee private set
-    lateinit var coin: Coin private set
-    lateinit var color: Color private set
-    lateinit var commerce: Commerce private set
-    lateinit var community: Community private set
-    lateinit var company: Company private set
-    //    lateinit var compass: Compass private set
-    lateinit var construction: Construction private set
-    lateinit var cosmere: Cosmere private set
-    lateinit var cryptoCoin: CryptoCoin private set
-    lateinit var cultureSeries: CultureSeries private set
-    lateinit var currency: Currency private set
-    lateinit var dcComics: DcComics private set
-    lateinit var demographic: Demographic private set
-    lateinit var dessert: Dessert private set
-    lateinit var device: Device private set
-    lateinit var dog: Dog private set
-    lateinit var dota: Dota private set
-    lateinit var dragonBall: DragonBall private set
-    lateinit var drWho: DrWho private set
-    lateinit var dumbAndDumber: DumbAndDumber private set
-    lateinit var dune: Dune private set
-    lateinit var educator: Educator private set
-    lateinit var elderScrolls: ElderScrolls private set
-    lateinit var electricalComponents: ElectricalComponents private set
-    lateinit var eSport: ESport private set
-    lateinit var fallout: Fallout private set
-    lateinit var familyGuy: FamilyGuy private set
-    lateinit var file: File private set
-    //    lateinit var finance: Finance private set
-    lateinit var food: Food private set
-    lateinit var football: Football private set
-    lateinit var freshPriceOfBelAir: FreshPriceOfBelAir private set
-    lateinit var friends: Friends private set
-    lateinit var funnyName: FunnyName private set
-    lateinit var gameOfThrones: GameOfThrones private set
-    lateinit var gender: Gender private set
-    lateinit var ghostBusters: GhostBusters private set
-    lateinit var gratefulDead: GratefulDead private set
-    lateinit var greekPhilosophers: GreekPhilosophers private set
-    lateinit var hacker: Hacker private set
-    lateinit var halfLife: HalfLife private set
-    lateinit var harryPotter: HarryPotter private set
-    lateinit var heroes: Heroes private set
-    lateinit var heroesOfTheStorm: HeroesOfTheStorm private set
-    lateinit var heyArnold: HeyArnold private set
-    lateinit var hipster: Hipster private set
-    lateinit var hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy private set
-    lateinit var hobbit: Hobbit private set
-    lateinit var house: House private set
-    lateinit var howIMetYourMother: HowIMetYourMother private set
-    lateinit var idNumber: IdNumber private set
-    lateinit var industrySegments: IndustrySegments private set
-    lateinit var internet: Internet private set
-    //    lateinit var invoice: Invoice private set
-    lateinit var job: Job private set
-    lateinit var kPop: KPop private set
-    lateinit var leagueOfLegends: LeagueOfLegends private set
-    lateinit var lebowski: Lebowski private set
-    lateinit var lordOfTheRings: LordOfTheRings private set
-    lateinit var lorem: Lorem private set
-    lateinit var lovecraft: Lovecraft private set
-    lateinit var markdown: Markdown private set
-    lateinit var marketing: Marketing private set
-    lateinit var measurement: Measurement private set
-    lateinit var michaelScott: MichaelScott private set
-    lateinit var military: Military private set
-    lateinit var movie: Movie private set
-    lateinit var music: Music private set
-    lateinit var myst: Myst private set
-    lateinit var name: Name private set
-    lateinit var nation: Nation private set
-    lateinit var natoPhoneticAlphabet: NatoPhoneticAlphabet private set
-    lateinit var newGirl: NewGirl private set
-    lateinit var onePiece: OnePiece private set
-    lateinit var overwatch: Overwatch private set
-    lateinit var parksAndRec: ParksAndRec private set
-    lateinit var phish: Phish private set
-    lateinit var phoneNumber: PhoneNumber private set
-    lateinit var pokemon: Pokemon private set
-    lateinit var princessBride: PrincessBride private set
-    lateinit var programmingLanguage: ProgrammingLanguage private set
-    lateinit var quote: Quote private set
-    lateinit var relationship: Relationship private set
-    lateinit var restaurant: Restaurant private set
-    lateinit var rickAndMorty: RickAndMorty private set
-    lateinit var rockBand: RockBand private set
-    lateinit var rupaul: Rupaul private set
-    lateinit var science: Science private set
-    lateinit var seinfeld: Seinfeld private set
-    lateinit var shakespeare: Shakespeare private set
-    lateinit var siliconValley: SiliconValley private set
-    lateinit var simpsons: Simpsons private set
-    lateinit var slackEmoji: SlackEmoji private set
-    lateinit var sonicTheHedgehog: SonicTheHedgehog private set
-    //    lateinit var source: Source private set
-    lateinit var southPark: SouthPark private set
-    lateinit var space: Space private set
-    lateinit var stargate: Stargate private set
-    lateinit var starTrek: StarTrek private set
-    lateinit var starWars: StarWars private set
-    lateinit var strangerThings: StrangerThings private set
-    lateinit var stripe: Stripe private set
-    lateinit var subscription: Subscription private set
-    lateinit var superhero: Superhero private set
-    lateinit var superSmashBros: SuperSmashBros private set
-    lateinit var swordArtOnline: SwordArtOnline private set
-    lateinit var team: Team private set
-    lateinit var theExpanse: TheExpanse private set
-    lateinit var theITCrowd: TheITCrowd private set
-    lateinit var theThickOfIt: TheThickOfIt private set
-    lateinit var twinPeaks: TwinPeaks private set
-    lateinit var umphreysMcgee: UmphreysMcgee private set
-    lateinit var university: University private set
-    lateinit var vehicle: Vehicle private set
-    lateinit var ventureBros: VentureBros private set
-    lateinit var verbs: Verbs private set
-    lateinit var vForVendetta: VForVendetta private set
-    lateinit var witcher: Witcher private set
-    lateinit var worldCup: WorldCup private set
-    lateinit var worldOfWarcraft: WorldOfWarcraft private set
-    lateinit var yoda: Yoda private set
-    lateinit var zelda: Zelda private set
+    val randomProvider: RandomProvider = RandomProvider(fakerConfig.random)
 
-    lateinit var randomProvider: RandomProvider
+    val separator: Separator
+    val address: Address
+    val ancient: Ancient
+    val animal: Animal
+    val app: App
+    val appliance: Appliance
+    val aquaTeenHungerForce: AquaTeenHungerForce
+    val artist: Artist
+    val backToTheFuture: BackToTheFuture
+    val bank: Bank
+    val basketball: Basketball
+    val beer: Beer
+    val bojackHoreseman: BojackHoreseman
+    val book: Book
+    val bossaNova: BossaNova
+    val breakingBad: BreakingBad
+    val buffy: Buffy
+    val business: Business
+    val cannabis: Cannabis
+    val cat: Cat
+    val chuckNorris: ChuckNorris
+    val code: Code
+    val coffee: Coffee
+    val coin: Coin
+    val color: Color
+    val commerce: Commerce
+    val community: Community
+    val company: Company
+    //    val compass: Compass
+    val construction: Construction
+    val cosmere: Cosmere
+    val cryptoCoin: CryptoCoin
+    val cultureSeries: CultureSeries
+    val currency: Currency
+    val dcComics: DcComics
+    val demographic: Demographic
+    val dessert: Dessert
+    val device: Device
+    val dog: Dog
+    val dota: Dota
+    val dragonBall: DragonBall
+    val drWho: DrWho
+    val dumbAndDumber: DumbAndDumber
+    val dune: Dune
+    val educator: Educator
+    val elderScrolls: ElderScrolls
+    val electricalComponents: ElectricalComponents
+    val eSport: ESport
+    val fallout: Fallout
+    val familyGuy: FamilyGuy
+    val file: File
+    //    val finance: Finance
+    val food: Food
+    val football: Football
+    val freshPriceOfBelAir: FreshPriceOfBelAir
+    val friends: Friends
+    val funnyName: FunnyName
+    val gameOfThrones: GameOfThrones
+    val gender: Gender
+    val ghostBusters: GhostBusters
+    val gratefulDead: GratefulDead
+    val greekPhilosophers: GreekPhilosophers
+    val hacker: Hacker
+    val halfLife: HalfLife
+    val harryPotter: HarryPotter
+    val heroes: Heroes
+    val heroesOfTheStorm: HeroesOfTheStorm
+    val heyArnold: HeyArnold
+    val hipster: Hipster
+    val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy
+    val hobbit: Hobbit
+    val house: House
+    val howIMetYourMother: HowIMetYourMother
+    val idNumber: IdNumber
+    val industrySegments: IndustrySegments
+    val internet: Internet
+    //    val invoice: Invoice
+    val job: Job
+    val kPop: KPop
+    val leagueOfLegends: LeagueOfLegends
+    val lebowski: Lebowski
+    val lordOfTheRings: LordOfTheRings
+    val lorem: Lorem
+    val lovecraft: Lovecraft
+    val markdown: Markdown
+    val marketing: Marketing
+    val measurement: Measurement
+    val michaelScott: MichaelScott
+    val military: Military
+    val movie: Movie
+    val music: Music
+    val myst: Myst
+    val name: Name
+    val nation: Nation
+    val natoPhoneticAlphabet: NatoPhoneticAlphabet
+    val newGirl: NewGirl
+    val onePiece: OnePiece
+    val overwatch: Overwatch
+    val parksAndRec: ParksAndRec
+    val phish: Phish
+    val phoneNumber: PhoneNumber
+    val pokemon: Pokemon
+    val princessBride: PrincessBride
+    val programmingLanguage: ProgrammingLanguage
+    val quote: Quote
+    val relationship: Relationship
+    val restaurant: Restaurant
+    val rickAndMorty: RickAndMorty
+    val rockBand: RockBand
+    val rupaul: Rupaul
+    val science: Science
+    val seinfeld: Seinfeld
+    val shakespeare: Shakespeare
+    val siliconValley: SiliconValley
+    val simpsons: Simpsons
+    val slackEmoji: SlackEmoji
+    val sonicTheHedgehog: SonicTheHedgehog
+    //    val source: Source
+    val southPark: SouthPark
+    val space: Space
+    val stargate: Stargate
+    val starTrek: StarTrek
+    val starWars: StarWars
+    val strangerThings: StrangerThings
+    val stripe: Stripe
+    val subscription: Subscription
+    val superhero: Superhero
+    val superSmashBros: SuperSmashBros
+    val swordArtOnline: SwordArtOnline
+    val team: Team
+    val theExpanse: TheExpanse
+    val theITCrowd: TheITCrowd
+    val theThickOfIt: TheThickOfIt
+    val twinPeaks: TwinPeaks
+    val umphreysMcgee: UmphreysMcgee
+    val university: University
+    val vehicle: Vehicle
+    val ventureBros: VentureBros
+    val verbs: Verbs
+    val vForVendetta: VForVendetta
+    val witcher: Witcher
+    val worldCup: WorldCup
+    val worldOfWarcraft: WorldOfWarcraft
+    val yoda: Yoda
+    val zelda: Zelda
 
-    @JvmStatic
-    fun init(locale: Locale) = init(locale.toLanguageTag())
-
-    @JvmStatic
-    @JvmOverloads
-    fun init(locale: String = "en"): Faker {
-        fakerService = FakerService(locale, Config.random)
-
+    init {
         separator = Separator(fakerService)
         address = Address(fakerService)
         ancient = Ancient(fakerService)
@@ -316,17 +307,5 @@ object Faker {
         worldOfWarcraft = WorldOfWarcraft(fakerService)
         yoda = Yoda(fakerService)
         zelda = Zelda(fakerService)
-
-        randomProvider = RandomProvider(Config.random)
-
-        return this
-    }
-
-    class Config {
-
-        companion object {
-            @JvmStatic
-            var random = Random()
-        }
     }
 }

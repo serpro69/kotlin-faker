@@ -9,9 +9,9 @@ import io.github.serpro69.kfaker.dictionary.*
 class ESport internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ESPORT
 
-    val players = resolve { fakerService.resolve(Faker, it, "players") }
-    val teams = resolve { fakerService.resolve(Faker, it, "teams") }
-    val events = resolve { fakerService.resolve(Faker, it, "events") }
-    val leagues = resolve { fakerService.resolve(Faker, it, "leagues") }
-    val games = resolve { fakerService.resolve(Faker, it, "games") }
+    val players = resolve { fakerService.resolve(it, "players") }
+    val teams = resolve { fakerService.resolve(it, "teams") }
+    val events = resolve { fakerService.resolve(it, "events") }
+    val leagues = resolve { fakerService.resolve(it, "leagues") }
+    val games = resolve { fakerService.resolve(it, "games") }
 }

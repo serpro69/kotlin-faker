@@ -10,6 +10,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Invoice internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.INVOICE
 
-    val checkDigitMethod = resolve { fakerService.resolve(Faker, it, "reference", "check_digit_method") }
-    val pattern = resolve { fakerService.resolve(Faker, it, "reference", "pattern") }
+    val checkDigitMethod = resolve { fakerService.resolve(it, "reference", "check_digit_method") }
+    val pattern = resolve { fakerService.resolve(it, "reference", "pattern") }
 }

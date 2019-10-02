@@ -9,14 +9,14 @@ import io.github.serpro69.kfaker.dictionary.*
 class Food internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.FOOD
 
-    val dish = resolve { fakerService.resolve(Faker, it, "dish") }
-    val descriptions = resolve { fakerService.resolve(Faker, it, "descriptions") }
-    val ingredients = resolve { fakerService.resolve(Faker, it, "ingredients") }
-    val fruits = resolve { fakerService.resolve(Faker, it, "fruits") }
-    val vegetables = resolve { fakerService.resolve(Faker, it, "vegetables") }
-    val spices = resolve { fakerService.resolve(Faker, it, "spices") }
-    val measurements = resolve { fakerService.resolve(Faker, it, "measurements") }
-    val measurementSizes = resolve { fakerService.resolve(Faker, it, "measurement_sizes") }
-    val metricMeasurements = resolve { fakerService.resolve(Faker, it, "metric_measurements") }
-    val sushi = resolve { fakerService.resolve(Faker, it, "sushi") }
+    val dish = resolve { fakerService.resolve(it, "dish") }
+    val descriptions = resolve { fakerService.resolve(it, "descriptions") }
+    val ingredients = resolve { fakerService.resolve(it, "ingredients") }
+    val fruits = resolve { fakerService.resolve(it, "fruits") }
+    val vegetables = resolve { fakerService.resolve(it, "vegetables") }
+    val spices = resolve { fakerService.resolve(it, "spices") }
+    val measurements = resolve { fakerService.resolve(it, "measurements") }
+    val measurementSizes = resolve { fakerService.resolve(it, "measurement_sizes") }
+    val metricMeasurements = resolve { fakerService.resolve(it, "metric_measurements") }
+    val sushi = resolve { fakerService.resolve(it, "sushi") }
 }

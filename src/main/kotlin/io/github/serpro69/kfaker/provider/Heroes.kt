@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Heroes internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HEROES
 
-    val names = resolve { fakerService.resolve(Faker, it, "names") }
-    val specialties = resolve { fakerService.resolve(Faker, it, "specialties") }
-    val klasses = resolve { fakerService.resolve(Faker, it, "klasses") }
+    val names = resolve { fakerService.resolve(it, "names") }
+    val specialties = resolve { fakerService.resolve(it, "specialties") }
+    val klasses = resolve { fakerService.resolve(it, "klasses") }
 }

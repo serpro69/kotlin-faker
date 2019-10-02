@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Seinfeld internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SEINFELD
 
-    val character = resolve { fakerService.resolve(Faker, it, "character") }
-    val quote = resolve { fakerService.resolve(Faker, it, "quote") }
-    val business = resolve { fakerService.resolve(Faker, it, "business") }
+    val character = resolve { fakerService.resolve(it, "character") }
+    val quote = resolve { fakerService.resolve(it, "quote") }
+    val business = resolve { fakerService.resolve(it, "business") }
 }

@@ -9,10 +9,10 @@ import io.github.serpro69.kfaker.dictionary.*
 class HarryPotter internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.HARRY_POTTER
 
-    val characters = resolve { fakerService.resolve(Faker, it, "characters") }
-    val locations = resolve { fakerService.resolve(Faker, it, "locations") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
-    val books = resolve { fakerService.resolve(Faker, it, "books") }
-    val houses = resolve { fakerService.resolve(Faker, it, "houses") }
-    val spells = resolve { fakerService.resolve(Faker, it, "spells") }
+    val characters = resolve { fakerService.resolve(it, "characters") }
+    val locations = resolve { fakerService.resolve(it, "locations") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val books = resolve { fakerService.resolve(it, "books") }
+    val houses = resolve { fakerService.resolve(it, "houses") }
+    val spells = resolve { fakerService.resolve(it, "spells") }
 }

@@ -9,6 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 class Rupaul internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.RUPAUL
 
-    val queens = resolve { fakerService.resolve(Faker, it, "queens") }
-    val quotes = resolve { fakerService.resolve(Faker, it, "quotes") }
+    val queens = resolve { fakerService.resolve(it, "queens") }
+    val quotes = resolve { fakerService.resolve(it, "quotes") }
 }

@@ -9,10 +9,10 @@ import io.github.serpro69.kfaker.dictionary.*
 class KPop internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.KPOP
 
-    val firstGroups = resolve { fakerService.resolve(Faker, it, "i_groups") }
-    val secondGroups = resolve { fakerService.resolve(Faker, it, "ii_groups") }
-    val thirdGroups = resolve { fakerService.resolve(Faker, it, "iii_groups") }
-    val girlGroups = resolve { fakerService.resolve(Faker, it, "girl_groups") }
-    val boyBands = resolve { fakerService.resolve(Faker, it, "boy_bands") }
-    val solo = resolve { fakerService.resolve(Faker, it, "solo") }
+    val firstGroups = resolve { fakerService.resolve(it, "i_groups") }
+    val secondGroups = resolve { fakerService.resolve(it, "ii_groups") }
+    val thirdGroups = resolve { fakerService.resolve(it, "iii_groups") }
+    val girlGroups = resolve { fakerService.resolve(it, "girl_groups") }
+    val boyBands = resolve { fakerService.resolve(it, "boy_bands") }
+    val solo = resolve { fakerService.resolve(it, "solo") }
 }

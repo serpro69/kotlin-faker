@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class RockBand internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ROCK_BAND
 
-    val name = resolve { fakerService.resolve(Faker, it, "name") }
+    val name = resolve { fakerService.resolve(it, "name") }
 }

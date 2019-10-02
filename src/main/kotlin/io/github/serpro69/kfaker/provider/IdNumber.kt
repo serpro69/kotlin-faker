@@ -9,5 +9,5 @@ import io.github.serpro69.kfaker.dictionary.*
 class IdNumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.ID_NUMBER
 
-    val invalid = resolve { fakerService.resolve(Faker, it, "invalid") }
+    val invalid = resolve { fakerService.resolve(it, "invalid") }
 }

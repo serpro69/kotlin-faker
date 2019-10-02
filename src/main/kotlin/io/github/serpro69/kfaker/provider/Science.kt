@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
 class Science internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
     override val categoryName = CategoryName.SCIENCE
 
-    val element = resolve { fakerService.resolve(Faker, it, "element") }
-    val elementSymbol = resolve { fakerService.resolve(Faker, it, "element_symbol") }
-    val scientist = resolve { fakerService.resolve(Faker, it, "scientist") }
+    val element = resolve { fakerService.resolve(it, "element") }
+    val elementSymbol = resolve { fakerService.resolve(it, "element_symbol") }
+    val scientist = resolve { fakerService.resolve(it, "scientist") }
 }
