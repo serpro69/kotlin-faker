@@ -6,7 +6,6 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.COMPASS] category.
  */
-@Deprecated(level = DeprecationLevel.ERROR, message = "Provider not implemented.")
 @Suppress("unused")
 class Compass internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Compass>(fakerService) {
     override val categoryName = CategoryName.COMPASS

@@ -13,10 +13,10 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
 
     val country = resolve("country")
     val countryByCode: (countryCode: String) -> String = { code ->
-        resolve { fakerService.resolve(it, "country_by_code", code) }.invoke()
+        resolve("country_by_code", code)
     }
     val countryByName: (countryName: String) -> String = { name ->
-        resolve { fakerService.resolve(it, "country_by_name", name) }.invoke()
+        resolve("country_by_name", name)
     }
     val countryCode = resolve("country_code")
     val countryCodeLong = resolve("country_code_long")
@@ -25,7 +25,7 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     val secondaryAddress = resolve("secondary_address")
     val postcode = resolve("postcode")
     val postcodeByState: (state: String) -> String = { state ->
-        resolve { fakerService.resolve(it, "postcode_by_state", state) }.invoke()
+        resolve("postcode_by_state", state)
     }
     val state = resolve("state")
     val stateAbbr = resolve("state_abbr")

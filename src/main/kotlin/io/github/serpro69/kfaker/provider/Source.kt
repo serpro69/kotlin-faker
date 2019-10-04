@@ -6,7 +6,6 @@ import io.github.serpro69.kfaker.dictionary.*
 /**
  * [FakeDataProvider] implementation for [CategoryName.SOURCE] category.
  */
-@Deprecated(level = DeprecationLevel.ERROR, message = "Not implemented")
 @Suppress("unused")
 class Source internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Source>(fakerService) {
     override val categoryName = CategoryName.SOURCE

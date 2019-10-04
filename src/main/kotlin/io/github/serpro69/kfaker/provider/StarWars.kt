@@ -21,10 +21,10 @@ class StarWars internal constructor(fakerService: FakerService) : AbstractFakeDa
     val vehicles = resolve("vehicles")
     val wookieeWords = resolve("wookiee_words")
     val quotes: (character: String) -> String = { character ->
-        resolve { fakerService.resolve(it, "quotes", character.toLowerCase().replace("_", " ")) }.invoke()
+        resolve("quotes", character.toLowerCase().replace("_", " "))
     }
-    val quote = resolve { fakerService.resolve(it, "quotes", "") }
+    val quote = resolve("quotes", "")
     val alternateCharacterSpellings: (character: String) -> String = { character ->
-        resolve { fakerService.resolve(it, "alternate_character_spellings", character) }.invoke()
+        resolve("alternate_character_spellings", character)
     }
 }
