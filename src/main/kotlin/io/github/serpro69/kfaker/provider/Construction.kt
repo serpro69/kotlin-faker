@@ -11,5 +11,5 @@ class Construction internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.CONSTRUCTION
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val materials = resolve("materials")
+    fun materials() = resolve("materials")
 }

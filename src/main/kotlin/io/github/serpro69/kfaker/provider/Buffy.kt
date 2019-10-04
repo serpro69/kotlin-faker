@@ -11,9 +11,9 @@ class Buffy internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.BUFFY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
-    val celebrities = resolve("celebrities")
-    val bigBads = resolve("big_bads")
-    val episodes = resolve("episodes")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
+    fun celebrities() = resolve("celebrities")
+    fun bigBads() = resolve("big_bads")
+    fun episodes() = resolve("episodes")
 }

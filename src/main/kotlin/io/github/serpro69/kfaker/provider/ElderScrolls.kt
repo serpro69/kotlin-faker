@@ -11,11 +11,11 @@ class ElderScrolls internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val race = resolve { fakerService.resolve(it, "elder_scrolls", "race") }
-    val creature = resolve { fakerService.resolve(it, "elder_scrolls", "creature") }
-    val region = resolve { fakerService.resolve(it, "elder_scrolls", "region") }
-    val dragon = resolve { fakerService.resolve(it, "elder_scrolls", "dragon") }
-    val city = resolve { fakerService.resolve(it, "elder_scrolls", "city") }
-    val firstName = resolve { fakerService.resolve(it, "elder_scrolls", "first_name") }
-    val lastName = resolve { fakerService.resolve(it, "elder_scrolls", "last_name") }
+    fun race() = resolve("elder_scrolls", "race")
+    fun creature() = resolve("elder_scrolls", "creature")
+    fun region() = resolve("elder_scrolls", "region")
+    fun dragon() = resolve("elder_scrolls", "dragon")
+    fun city() = resolve("elder_scrolls", "city")
+    fun firstName() = resolve("elder_scrolls", "first_name")
+    fun lastName() = resolve("elder_scrolls", "last_name")
 }

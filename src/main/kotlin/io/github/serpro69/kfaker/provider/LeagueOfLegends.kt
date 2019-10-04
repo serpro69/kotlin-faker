@@ -11,10 +11,10 @@ class LeagueOfLegends internal constructor(fakerService: FakerService) : Abstrac
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val champion = resolve { fakerService.resolve(it, "league_of_legends", "champion") }
-    val location = resolve { fakerService.resolve(it, "league_of_legends", "location") }
-    val quote = resolve { fakerService.resolve(it, "league_of_legends", "quote") }
-    val summonerSpell = resolve { fakerService.resolve(it, "league_of_legends", "summoner_spell") }
-    val masteries = resolve { fakerService.resolve(it, "league_of_legends", "masteries") }
-    val rank = resolve { fakerService.resolve(it, "league_of_legends", "rank") }
+    fun champion() = resolve("league_of_legends", "champion")
+    fun location() = resolve("league_of_legends", "location")
+    fun quote() = resolve("league_of_legends", "quote")
+    fun summonerSpell() = resolve("league_of_legends", "summoner_spell")
+    fun masteries() = resolve("league_of_legends", "masteries")
+    fun rank() = resolve("league_of_legends", "rank")
 }

@@ -11,5 +11,5 @@ class DragonBall internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.DRAGON_BALL
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
+    fun characters() = resolve("characters")
 }

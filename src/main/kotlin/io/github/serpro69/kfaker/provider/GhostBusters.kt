@@ -11,7 +11,7 @@ class GhostBusters internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.GHOSTBUSTERS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val actors = resolve("actors")
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
+    fun actors() = resolve("actors")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
 }

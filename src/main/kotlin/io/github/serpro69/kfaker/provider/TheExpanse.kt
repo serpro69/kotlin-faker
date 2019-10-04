@@ -11,8 +11,8 @@ class TheExpanse internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.THE_EXPANSE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val ships = resolve("ships")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun ships() = resolve("ships")
+    fun quotes() = resolve("quotes")
 }

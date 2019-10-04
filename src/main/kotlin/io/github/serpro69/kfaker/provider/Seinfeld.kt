@@ -11,7 +11,7 @@ class Seinfeld internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.SEINFELD
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val quote = resolve("quote")
-    val business = resolve("business")
+    fun character() = resolve("character")
+    fun quote() = resolve("quote")
+    fun business() = resolve("business")
 }

@@ -11,6 +11,6 @@ class Gender internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.GENDER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val types = resolve("types")
-    val binaryTypes = resolve("binary_types")
+    fun types() = resolve("types")
+    fun binaryTypes() = resolve("binary_types")
 }

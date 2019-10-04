@@ -11,7 +11,7 @@ class Heroes internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.HEROES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val names = resolve("names")
-    val specialties = resolve("specialties")
-    val klasses = resolve("klasses")
+    fun names() = resolve("names")
+    fun specialties() = resolve("specialties")
+    fun klasses() = resolve("klasses")
 }

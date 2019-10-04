@@ -11,7 +11,7 @@ class DumbAndDumber internal constructor(fakerService: FakerService) : AbstractF
     override val categoryName = CategoryName.DUMB_AND_DUMBER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val actors = resolve("actors")
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
+    fun actors() = resolve("actors")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
 }

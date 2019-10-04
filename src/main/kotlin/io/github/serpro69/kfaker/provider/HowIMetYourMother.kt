@@ -11,8 +11,8 @@ class HowIMetYourMother internal constructor(fakerService: FakerService) : Abstr
     override val categoryName = CategoryName.HOW_I_MET_YOUR_MOTHER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val catchPhrase = resolve("catch_phrase")
-    val highFive = resolve("high_five")
-    val quote = resolve("quote")
+    fun character() = resolve("character")
+    fun catchPhrase() = resolve("catch_phrase")
+    fun highFive() = resolve("high_five")
+    fun quote() = resolve("quote")
 }

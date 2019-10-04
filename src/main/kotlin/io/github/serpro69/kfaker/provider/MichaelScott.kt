@@ -11,5 +11,5 @@ class MichaelScott internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.MICHAEL_SCOTT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val quotes = resolve("quotes")
+    fun quotes() = resolve("quotes")
 }

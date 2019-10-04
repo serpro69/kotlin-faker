@@ -11,5 +11,5 @@ class Code internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.CODE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val asin = resolve("asin")
+    fun asin() = resolve("asin")
 }

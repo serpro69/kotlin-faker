@@ -11,7 +11,7 @@ class LordOfTheRings internal constructor(fakerService: FakerService) : Abstract
     override val categoryName = CategoryName.LORD_OF_THE_RINGS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
 }

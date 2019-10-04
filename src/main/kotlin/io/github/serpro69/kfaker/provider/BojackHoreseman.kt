@@ -11,7 +11,7 @@ class BojackHoreseman internal constructor(fakerService: FakerService) : Abstrac
     override val categoryName = CategoryName.BOJACK_HORSEMAN
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
-    val tongueTwisters = resolve("tongue_twisters")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
+    fun tongueTwisters() = resolve("tongue_twisters")
 }

@@ -11,7 +11,7 @@ class FreshPriceOfBelAir internal constructor(fakerService: FakerService) : Abst
     override val categoryName = CategoryName.THE_FRESH_PRINCE_OF_BEL_AIR
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val celebrities = resolve("celebrities")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun celebrities() = resolve("celebrities")
+    fun quotes() = resolve("quotes")
 }

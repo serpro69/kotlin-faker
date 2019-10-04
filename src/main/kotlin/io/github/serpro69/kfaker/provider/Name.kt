@@ -11,10 +11,10 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.NAME
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val maleFirstName = resolve("male_first_name")
-    val femaleFirstName = resolve("female_first_name")
-    val firstName = resolve("first_name")
-    val lastName = resolve("last_name")
-    val name = resolve("name")
-    val nameWithMiddle = resolve("name_with_middle")
+    fun maleFirstName() = resolve("male_first_name")
+    fun femaleFirstName() = resolve("female_first_name")
+    fun firstName() = resolve("first_name")
+    fun lastName() = resolve("last_name")
+    fun name() = resolve("name")
+    fun nameWithMiddle() = resolve("name_with_middle")
 }

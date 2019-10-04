@@ -11,5 +11,5 @@ class Color internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.COLOR
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
+    fun name() = resolve("name")
 }

@@ -11,9 +11,7 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.INTERNET
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val freeEmail = resolve("free_email")
-    val domainSuffix = resolve("domain_suffix")
-    val userAgent: (browserType: String) -> String = { browserType ->
-        resolve { fakerService.resolve(it, "user_agent", browserType.toLowerCase()) }.invoke()
-    }
+    fun freeEmail() = resolve("free_email")
+    fun domainSuffix() = resolve("domain_suffix")
+    fun userAgent(browserType: String) = resolve("user_agent", browserType.toLowerCase())
 }

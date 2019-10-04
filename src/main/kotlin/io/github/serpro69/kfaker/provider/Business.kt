@@ -11,6 +11,6 @@ class Business internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.BUSINESS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val creditCardNumbers = resolve("credit_card_numbers")
-    val creditCardTypes = resolve("credit_card_types")
+    fun creditCardNumbers() = resolve("credit_card_numbers")
+    fun creditCardTypes() = resolve("credit_card_types")
 }

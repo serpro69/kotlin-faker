@@ -11,9 +11,9 @@ class Football internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.FOOTBALL
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val teams = resolve("teams")
-    val players = resolve("players")
-    val coaches = resolve("coaches")
-    val competitions = resolve("competitions")
-    val positions = resolve("positions")
+    fun teams() = resolve("teams")
+    fun players() = resolve("players")
+    fun coaches() = resolve("coaches")
+    fun competitions() = resolve("competitions")
+    fun positions() = resolve("positions")
 }

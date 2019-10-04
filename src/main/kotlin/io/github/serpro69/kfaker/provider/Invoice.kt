@@ -12,8 +12,8 @@ class Invoice internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val checkDigitMethod = resolve("reference", "check_digit_method")
+    fun checkDigitMethod() = resolve("reference", "check_digit_method")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val pattern = resolve("reference", "pattern")
+    fun pattern() = resolve("reference", "pattern")
 }

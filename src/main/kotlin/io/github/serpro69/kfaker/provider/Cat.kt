@@ -11,7 +11,7 @@ class Cat internal constructor(fakerService: FakerService) : AbstractFakeDataPro
     override val categoryName = CategoryName.CREATURE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve { fakerService.resolve(it, "cat", "name") }
-    val breed = resolve { fakerService.resolve(it, "cat", "breed") }
-    val registry = resolve { fakerService.resolve(it, "cat", "registry") }
+    fun name() = resolve("cat", "name")
+    fun breed() = resolve("cat", "breed")
+    fun registry() = resolve("cat", "registry")
 }

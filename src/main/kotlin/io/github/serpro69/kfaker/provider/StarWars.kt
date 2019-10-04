@@ -11,20 +11,16 @@ class StarWars internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.STAR_WARS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val callSquadrons = resolve("call_squadrons")
-    val callNumbers = resolve("call_numbers")
-    val callSign = resolve("call_sign")
-    val droids = resolve("droids")
-    val planets = resolve("planets")
-    val species = resolve("species")
-    val vehicles = resolve("vehicles")
-    val wookieeWords = resolve("wookiee_words")
-    val quotes: (character: String) -> String = { character ->
-        resolve("quotes", character.toLowerCase().replace("_", " "))
-    }
-    val quote = resolve("quotes", "")
-    val alternateCharacterSpellings: (character: String) -> String = { character ->
-        resolve("alternate_character_spellings", character)
-    }
+    fun characters() = resolve("characters")
+    fun callSquadrons() = resolve("call_squadrons")
+    fun callNumbers() = resolve("call_numbers")
+    fun callSign() = resolve("call_sign")
+    fun droids() = resolve("droids")
+    fun planets() = resolve("planets")
+    fun species() = resolve("species")
+    fun vehicles() = resolve("vehicles")
+    fun wookieeWords() = resolve("wookiee_words")
+    fun quotes(character: String) = resolve("quotes", character.toLowerCase().replace("_", " "))
+    fun quote() = resolve("quotes", "")
+    fun alternateCharacterSpellings(character: String) = resolve("alternate_character_spellings", character)
 }

@@ -11,5 +11,5 @@ class Marketing internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.MARKETING
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val buzzwords = resolve("buzzwords")
+    fun buzzwords() = resolve("buzzwords")
 }

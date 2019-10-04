@@ -11,12 +11,12 @@ class Measurement internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.MEASUREMENT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val height = resolve("height")
-    val length = resolve("length")
-    val volume = resolve("volume")
-    val weight = resolve("weight")
-    val metricHeight = resolve("metric_height")
-    val metricLength = resolve("metric_length")
-    val metricVolume = resolve("metric_volume")
-    val metricWeight = resolve("metric_weight")
+    fun height() = resolve("height")
+    fun length() = resolve("length")
+    fun volume() = resolve("volume")
+    fun weight() = resolve("weight")
+    fun metricHeight() = resolve("metric_height")
+    fun metricLength() = resolve("metric_length")
+    fun metricVolume() = resolve("metric_volume")
+    fun metricWeight() = resolve("metric_weight")
 }

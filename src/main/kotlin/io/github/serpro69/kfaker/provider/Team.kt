@@ -11,7 +11,7 @@ class Team internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.TEAM
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val sport = resolve("sport")
-    val mascot = resolve("mascot")
+    fun name() = resolve("name")
+    fun sport() = resolve("sport")
+    fun mascot() = resolve("mascot")
 }

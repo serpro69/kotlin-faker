@@ -11,10 +11,10 @@ class Quote internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.QUOTE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val famousLastWords = resolve("famous_last_words")
-    val matz = resolve("matz")
-    val mostInterestingManInTheWorld = resolve("most_interesting_man_in_the_world")
-    val robin = resolve("robin")
-    val singularSiegler = resolve("singular_siegler")
-    val yoda = resolve("yoda")
+    fun famousLastWords() = resolve("famous_last_words")
+    fun matz() = resolve("matz")
+    fun mostInterestingManInTheWorld() = resolve("most_interesting_man_in_the_world")
+    fun robin() = resolve("robin")
+    fun singularSiegler() = resolve("singular_siegler")
+    fun yoda() = resolve("yoda")
 }

@@ -9,14 +9,15 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class HitchhikersGuideToTheGalaxy internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider(fakerService) {
+) : AbstractFakeDataProvider<HitchhikersGuideToTheGalaxy>(fakerService) {
     override val categoryName = CategoryName.HITCHHIKERS_GUIDE_TO_THE_GALAXY
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val marvinQuote = resolve("marvin_quote")
-    val planets = resolve("planets")
-    val quotes = resolve("quotes")
-    val species = resolve("species")
-    val starships = resolve("starships")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun marvinQuote() = resolve("marvin_quote")
+    fun planets() = resolve("planets")
+    fun quotes() = resolve("quotes")
+    fun species() = resolve("species")
+    fun starships() = resolve("starships")
 }

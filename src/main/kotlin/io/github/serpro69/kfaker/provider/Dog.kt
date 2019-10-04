@@ -11,11 +11,11 @@ class Dog internal constructor(fakerService: FakerService) : AbstractFakeDataPro
     override val categoryName = CategoryName.CREATURE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve { fakerService.resolve(it, "dog", "name") }
-    val breed = resolve { fakerService.resolve(it, "dog", "breed") }
-    val sound = resolve { fakerService.resolve(it, "dog", "sound") }
-    val memePhrase = resolve { fakerService.resolve(it, "dog", "meme_phrase") }
-    val age = resolve { fakerService.resolve(it, "dog", "age") }
-    val coatLength = resolve { fakerService.resolve(it, "dog", "coat_length") }
-    val size = resolve { fakerService.resolve(it, "dog", "size") }
+    fun name() = resolve("dog", "name")
+    fun breed() = resolve("dog", "breed")
+    fun sound() = resolve("dog", "sound")
+    fun memePhrase() = resolve("dog", "meme_phrase")
+    fun age() = resolve("dog", "age")
+    fun coatLength() = resolve("dog", "coat_length")
+    fun size() = resolve("dog", "size")
 }

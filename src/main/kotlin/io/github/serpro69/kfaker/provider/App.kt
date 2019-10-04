@@ -11,7 +11,7 @@ class App internal constructor(fakerService: FakerService) : AbstractFakeDataPro
     override val categoryName = CategoryName.APP
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val version = resolve("version")
-    val author = resolve("author")
+    fun name() = resolve("name")
+    fun version() = resolve("version")
+    fun author() = resolve("author")
 }

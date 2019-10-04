@@ -11,28 +11,22 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.ADDRESS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val country = resolve("country")
-    val countryByCode: (countryCode: String) -> String = { code ->
-        resolve("country_by_code", code)
-    }
-    val countryByName: (countryName: String) -> String = { name ->
-        resolve("country_by_name", name)
-    }
-    val countryCode = resolve("country_code")
-    val countryCodeLong = resolve("country_code_long")
-    val buildingNumber = resolve("building_number")
-    val community = resolve("community")
-    val secondaryAddress = resolve("secondary_address")
-    val postcode = resolve("postcode")
-    val postcodeByState: (state: String) -> String = { state ->
-        resolve("postcode_by_state", state)
-    }
-    val state = resolve("state")
-    val stateAbbr = resolve("state_abbr")
-    val timeZone = resolve("time_zone")
-    val city = resolve("city")
-    val streetName = resolve("street_name")
-    val streetAddress = resolve("street_address")
-    val fullAddress = resolve("full_address")
-    val defaultCountry = resolve("default_country")
+    fun country() = resolve("country")
+    fun countryByCode(countryCode: String) = resolve("country_by_code", countryCode)
+    fun countryByName(countryName: String) = resolve("country_by_name", countryName)
+    fun countryCode() = resolve("country_code")
+    fun countryCodeLong() = resolve("country_code_long")
+    fun buildingNumber() = resolve("building_number")
+    fun community() = resolve("community")
+    fun secondaryAddress() = resolve("secondary_address")
+    fun postcode() = resolve("postcode")
+    fun postcodeByState(state: String) = resolve("postcode_by_state", state)
+    fun state() = resolve("state")
+    fun stateAbbr() = resolve("state_abbr")
+    fun timeZone() = resolve("time_zone")
+    fun city() = resolve("city")
+    fun streetName() = resolve("street_name")
+    fun streetAddress() = resolve("street_address")
+    fun fullAddress() = resolve("full_address")
+    fun defaultCountry() = resolve("default_country")
 }

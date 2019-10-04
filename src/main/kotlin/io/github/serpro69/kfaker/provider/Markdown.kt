@@ -11,6 +11,6 @@ class Markdown internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.MARKDOWN
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val headers = resolve("headers")
-    val emphasis = resolve("emphasis")
+    fun headers() = resolve("headers")
+    fun emphasis() = resolve("emphasis")
 }

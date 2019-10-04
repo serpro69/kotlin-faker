@@ -11,11 +11,11 @@ class DrWho internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.DR_WHO
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val theDoctors = resolve("the_doctors")
-    val actors = resolve("actors")
-    val catchPhrases = resolve("catch_phrases")
-    val quotes = resolve("quotes")
-    val villians = resolve("villians")
-    val species = resolve("species")
+    fun character() = resolve("character")
+    fun theDoctors() = resolve("the_doctors")
+    fun actors() = resolve("actors")
+    fun catchPhrases() = resolve("catch_phrases")
+    fun quotes() = resolve("quotes")
+    fun villians() = resolve("villians")
+    fun species() = resolve("species")
 }

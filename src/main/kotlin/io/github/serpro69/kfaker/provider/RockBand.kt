@@ -11,5 +11,5 @@ class RockBand internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.ROCK_BAND
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
+    fun name() = resolve("name")
 }

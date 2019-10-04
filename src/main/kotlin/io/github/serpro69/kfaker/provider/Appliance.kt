@@ -11,6 +11,6 @@ class Appliance internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.APPLIANCE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val brand = resolve("brand")
-    val equipment = resolve("equipment")
+    fun brand() = resolve("brand")
+    fun equipment() = resolve("equipment")
 }

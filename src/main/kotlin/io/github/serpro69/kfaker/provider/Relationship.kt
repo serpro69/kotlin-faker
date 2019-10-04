@@ -11,11 +11,11 @@ class Relationship internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.RELATIONSHIP
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val familialDirect = resolve { fakerService.resolve(it, "familial", "direct") }
-    val familialExtended = resolve { fakerService.resolve(it, "familial", "extended") }
-    val familial = resolve { fakerService.resolve(it, "familial", "") }
-    val inLaw = resolve("in_law")
-    val spouse = resolve("spouse")
-    val parent = resolve("parent")
-    val sibling = resolve("sibling")
+    fun familialDirect() = resolve("familial", "direct")
+    fun familialExtended() = resolve("familial", "extended")
+    fun familial() = resolve("familial", "")
+    fun inLaw() = resolve("in_law")
+    fun spouse() = resolve("spouse")
+    fun parent() = resolve("parent")
+    fun sibling() = resolve("sibling")
 }

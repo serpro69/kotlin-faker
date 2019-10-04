@@ -11,6 +11,6 @@ class SuperSmashBros internal constructor(fakerService: FakerService) : Abstract
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val fighter = resolve { fakerService.resolve(it, "super_smash_bros", "fighter") }
-    val stage = resolve { fakerService.resolve(it, "super_smash_bros", "stage") }
+    fun fighter() = resolve("super_smash_bros", "fighter")
+    fun stage() = resolve("super_smash_bros", "stage")
 }

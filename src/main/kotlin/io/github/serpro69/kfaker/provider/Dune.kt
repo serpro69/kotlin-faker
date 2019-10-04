@@ -11,15 +11,11 @@ class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.DUNE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val titles = resolve("titles")
-    val planets = resolve("planets")
-    val quotes: (character: String) -> String = { character ->
-        resolve { fakerService.resolve(it, "quotes", character.toLowerCase().replace("_", " ")) }.invoke()
-    }
-    val sayings: (origin: String) -> String = { origin ->
-        resolve { fakerService.resolve(it, "sayings", origin.toLowerCase().replace("_", " ")) }.invoke()
-    }
+    fun characters() = resolve("characters")
+    fun titles() = resolve("titles")
+    fun planets() = resolve("planets")
+    fun quotes(character: String) = resolve("quotes", character.toLowerCase().replace("_", " "))
+    fun sayings(origin: String) = resolve("sayings", origin.toLowerCase().replace("_", " "))
 
     // TODO: 3/10/2019 would it be better to have enums for functions such as `quotes` to offer constrained number of values for `character`
 }

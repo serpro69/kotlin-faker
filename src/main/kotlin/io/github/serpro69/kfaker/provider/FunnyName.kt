@@ -11,5 +11,5 @@ class FunnyName internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.FUNNY_NAME
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
+    fun name() = resolve("name")
 }

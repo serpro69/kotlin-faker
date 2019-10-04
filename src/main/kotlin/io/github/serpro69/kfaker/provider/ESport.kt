@@ -11,9 +11,9 @@ class ESport internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.ESPORT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val players = resolve("players")
-    val teams = resolve("teams")
-    val events = resolve("events")
-    val leagues = resolve("leagues")
-    val games = resolve("games")
+    fun players() = resolve("players")
+    fun teams() = resolve("teams")
+    fun events() = resolve("events")
+    fun leagues() = resolve("leagues")
+    fun games() = resolve("games")
 }

@@ -11,9 +11,9 @@ class Military internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.MILITARY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val armyRank = resolve("army_rank")
-    val marinesRank = resolve("marines_rank")
-    val navyRank = resolve("navy_rank")
-    val airForceRank = resolve("air_force_rank")
-    val dodPaygrade = resolve("dod_paygrade")
+    fun armyRank() = resolve("army_rank")
+    fun marinesRank() = resolve("marines_rank")
+    fun navyRank() = resolve("navy_rank")
+    fun airForceRank() = resolve("air_force_rank")
+    fun dodPaygrade() = resolve("dod_paygrade")
 }

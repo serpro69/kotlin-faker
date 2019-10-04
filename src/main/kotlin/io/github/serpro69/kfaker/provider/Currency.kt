@@ -11,7 +11,7 @@ class Currency internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.CURRENCY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val code = resolve("code")
-    val name = resolve("name")
-    val symbol = resolve("symbol")
+    fun code() = resolve("code")
+    fun name() = resolve("name")
+    fun symbol() = resolve("symbol")
 }

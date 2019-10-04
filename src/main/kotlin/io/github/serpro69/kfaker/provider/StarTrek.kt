@@ -11,8 +11,8 @@ class StarTrek internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.STAR_TREK
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val location = resolve("location")
-    val specie = resolve("specie")
-    val villain = resolve("villain")
+    fun character() = resolve("character")
+    fun location() = resolve("location")
+    fun specie() = resolve("specie")
+    fun villain() = resolve("villain")
 }

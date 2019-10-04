@@ -11,12 +11,12 @@ class Superhero internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.SUPERHERO
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    // These properties are needed because the value for `name` property
+    // These functions are needed because the value for `name` property
     // is resolved with these properties through yml expression in the form of `#{Superhero.prefix}`
-    internal val prefix = resolve("prefix")
-    internal val suffix = resolve("suffix")
-    internal val descriptor = resolve("descriptor")
+    internal fun prefix() = resolve("prefix")
+    internal fun suffix() = resolve("suffix")
+    internal fun descriptor() = resolve("descriptor")
 
-    val power = resolve("power")
-    val name = resolve("name")
+    fun power() = resolve("power")
+    fun name() = resolve("name")
 }

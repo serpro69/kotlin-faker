@@ -11,5 +11,5 @@ class Yoda internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.YODA
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val quotes = resolve("quotes")
+    fun quotes() = resolve("quotes")
 }

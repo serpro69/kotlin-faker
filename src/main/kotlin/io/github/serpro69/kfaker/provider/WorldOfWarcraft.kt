@@ -11,6 +11,6 @@ class WorldOfWarcraft internal constructor(fakerService: FakerService) : Abstrac
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val hero = resolve { fakerService.resolve(it, "world_of_warcraft", "hero") }
-    val quotes = resolve { fakerService.resolve(it, "world_of_warcraft", "quotes") }
+    fun hero() = resolve("world_of_warcraft", "hero")
+    fun quotes() = resolve("world_of_warcraft", "quotes")
 }

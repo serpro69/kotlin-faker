@@ -11,8 +11,8 @@ class TheITCrowd internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.THE_IT_CROWD
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val actors = resolve("actors")
-    val characters = resolve("characters")
-    val emails = resolve("emails")
-    val quotes = resolve("quotes")
+    fun actors() = resolve("actors")
+    fun characters() = resolve("characters")
+    fun emails() = resolve("emails")
+    fun quotes() = resolve("quotes")
 }

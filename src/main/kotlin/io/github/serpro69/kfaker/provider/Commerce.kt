@@ -11,18 +11,20 @@ class Commerce internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.COMMERCE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val department = resolve("department")
-    val productName = {
-        val adjective = resolve { fakerService.resolve(it, "product_name", "adjective") }.invoke()
-        val material = resolve { fakerService.resolve(it, "product_name", "material") }.invoke()
-        val product = resolve { fakerService.resolve(it, "product_name", "product") }.invoke()
+    fun department() = resolve("department")
 
-        "$adjective $material $product"
+    fun productName(): String {
+        val adjective = resolve("product_name", "adjective")
+        val material = resolve("product_name", "material")
+        val product = resolve("product_name", "product")
+
+        return "$adjective $material $product"
     }
-    val promotionCode = {
-        val adjective = resolve { fakerService.resolve(it, "promotion_code", "adjective") }.invoke()
-        val noun = resolve { fakerService.resolve(it, "promotion_code", "noun") }.invoke()
 
-        "$adjective $noun"
+    fun promotionCode(): String {
+        val adjective = resolve("promotion_code", "adjective")
+        val noun = resolve("promotion_code", "noun")
+
+        return "$adjective $noun"
     }
 }

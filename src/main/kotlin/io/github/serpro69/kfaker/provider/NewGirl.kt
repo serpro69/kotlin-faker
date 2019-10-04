@@ -11,6 +11,6 @@ class NewGirl internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.NEW_GIRL
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
 }

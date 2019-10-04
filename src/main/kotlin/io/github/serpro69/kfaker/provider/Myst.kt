@@ -11,9 +11,9 @@ class Myst internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val games = resolve { fakerService.resolve(it, "myst", "games") }
-    val creatures = resolve { fakerService.resolve(it, "myst", "creatures") }
-    val characters = resolve { fakerService.resolve(it, "myst", "characters") }
-    val ages = resolve { fakerService.resolve(it, "myst", "ages") }
-    val quotes = resolve { fakerService.resolve(it, "myst", "quotes") }
+    fun games() = resolve("myst", "games")
+    fun creatures() = resolve("myst", "creatures")
+    fun characters() = resolve("myst", "characters")
+    fun ages() = resolve("myst", "ages")
+    fun quotes() = resolve("myst", "quotes")
 }

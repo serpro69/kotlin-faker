@@ -11,5 +11,5 @@ class CryptoCoin internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.CRYPTO_COIN
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val coin = resolve("coin")
+    fun coin() = resolve("coin")
 }

@@ -12,7 +12,8 @@ class University internal constructor(fakerService: FakerService) : AbstractFake
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     // Prefix and suffix are needed because they are used as expressions, i.e. `#{University.prefix}`
-    val prefix = resolve("prefix")
-    val suffix = resolve("suffix")
-    val name = resolve("name")
+
+    fun prefix() = resolve("prefix")
+    fun suffix() = resolve("suffix")
+    fun name() = resolve("name")
 }

@@ -11,7 +11,7 @@ class SonicTheHedgehog internal constructor(fakerService: FakerService) : Abstra
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val zone = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "zone") }
-    val character = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "character") }
-    val game = resolve { fakerService.resolve(it, "sonic_the_hedgehog", "game") }
+    fun zone() = resolve("sonic_the_hedgehog", "zone")
+    fun character() = resolve("sonic_the_hedgehog", "character")
+    fun game() = resolve("sonic_the_hedgehog", "game")
 }

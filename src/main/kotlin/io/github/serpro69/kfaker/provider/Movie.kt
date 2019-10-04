@@ -11,5 +11,5 @@ class Movie internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.MOVIE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val quote = resolve("quote")
+    fun quote() = resolve("quote")
 }

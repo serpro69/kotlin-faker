@@ -11,12 +11,12 @@ class Cosmere internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.COSMERE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val aons = resolve("aons")
-    val shardWorlds = resolve("shard_worlds")
-    val shards = resolve("shards")
-    val surges = resolve("surges")
-    val knightsRadiant = resolve("knights_radiant")
-    val metals = resolve("metals")
-    val allomancers = resolve("allomancers")
-    val feruchemists = resolve("feruchemists")
+    fun aons() = resolve("aons")
+    fun shardWorlds() = resolve("shard_worlds")
+    fun shards() = resolve("shards")
+    fun surges() = resolve("surges")
+    fun knightsRadiant() = resolve("knights_radiant")
+    fun metals() = resolve("metals")
+    fun allomancers() = resolve("allomancers")
+    fun feruchemists() = resolve("feruchemists")
 }

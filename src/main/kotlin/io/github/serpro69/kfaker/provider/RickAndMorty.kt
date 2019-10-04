@@ -11,7 +11,7 @@ class RickAndMorty internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.RICK_AND_MORTY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
 }

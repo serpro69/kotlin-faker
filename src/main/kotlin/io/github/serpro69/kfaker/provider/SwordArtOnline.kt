@@ -11,8 +11,8 @@ class SwordArtOnline internal constructor(fakerService: FakerService) : Abstract
     override val categoryName = CategoryName.SWORD_ART_ONLINE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val realName = resolve("real_name")
-    val gameName = resolve("game_name")
-    val location = resolve("location")
-    val item = resolve("item")
+    fun realName() = resolve("real_name")
+    fun gameName() = resolve("game_name")
+    fun location() = resolve("location")
+    fun item() = resolve("item")
 }

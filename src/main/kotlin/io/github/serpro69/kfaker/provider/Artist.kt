@@ -11,5 +11,5 @@ class Artist internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.ARTIST
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val names = resolve("names")
+    fun names() = resolve("names")
 }

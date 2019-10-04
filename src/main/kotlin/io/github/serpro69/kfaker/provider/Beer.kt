@@ -11,10 +11,10 @@ class Beer internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.BEER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val brand = resolve("brand")
-    val name = resolve("name")
-    val hop = resolve("hop")
-    val yeast = resolve("yeast")
-    val malt = resolve("malt")
-    val style = resolve("style")
+    fun brand() = resolve("brand")
+    fun name() = resolve("name")
+    fun hop() = resolve("hop")
+    fun yeast() = resolve("yeast")
+    fun malt() = resolve("malt")
+    fun style() = resolve("style")
 }

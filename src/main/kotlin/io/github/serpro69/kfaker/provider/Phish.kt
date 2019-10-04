@@ -11,5 +11,5 @@ class Phish internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.PHISH
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val song = resolve("song")
+    fun song() = resolve("song")
 }

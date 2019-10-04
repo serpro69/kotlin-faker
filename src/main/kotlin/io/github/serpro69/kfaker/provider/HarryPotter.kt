@@ -11,10 +11,10 @@ class HarryPotter internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.HARRY_POTTER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
-    val books = resolve("books")
-    val houses = resolve("houses")
-    val spells = resolve("spells")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
+    fun books() = resolve("books")
+    fun houses() = resolve("houses")
+    fun spells() = resolve("spells")
 }

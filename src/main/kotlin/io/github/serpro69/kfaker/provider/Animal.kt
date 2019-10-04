@@ -11,5 +11,5 @@ class Animal internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.CREATURE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve { fakerService.resolve(it, "animal", "name") }
+    fun name() = resolve("animal", "name")
 }

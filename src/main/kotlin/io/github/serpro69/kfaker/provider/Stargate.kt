@@ -11,7 +11,7 @@ class Stargate internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.STARGATE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val planets = resolve("planets")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun planets() = resolve("planets")
+    fun quotes() = resolve("quotes")
 }

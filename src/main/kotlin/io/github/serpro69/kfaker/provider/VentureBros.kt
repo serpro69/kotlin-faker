@@ -11,8 +11,8 @@ class VentureBros internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.VENTURE_BROS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val organization = resolve("organization")
-    val vehicle = resolve("vehicle")
-    val quote = resolve("quote")
+    fun character() = resolve("character")
+    fun organization() = resolve("organization")
+    fun vehicle() = resolve("vehicle")
+    fun quote() = resolve("quote")
 }

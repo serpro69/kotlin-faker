@@ -11,9 +11,9 @@ class Hacker internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.HACKER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val abbreviation = resolve("abbreviation")
-    val adjective = resolve("adjective")
-    val noun = resolve("noun")
-    val verb = resolve("verb")
-    val ingverb = resolve("ingverb")
+    fun abbreviation() = resolve("abbreviation")
+    fun adjective() = resolve("adjective")
+    fun noun() = resolve("noun")
+    fun verb() = resolve("verb")
+    fun ingverb() = resolve("ingverb")
 }

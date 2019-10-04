@@ -11,9 +11,9 @@ class GameOfThrones internal constructor(fakerService: FakerService) : AbstractF
     override val categoryName = CategoryName.GAME_OF_THRONES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val houses = resolve("houses")
-    val cities = resolve("cities")
-    val quotes = resolve("quotes")
-    val dragons = resolve("dragons")
+    fun characters() = resolve("characters")
+    fun houses() = resolve("houses")
+    fun cities() = resolve("cities")
+    fun quotes() = resolve("quotes")
+    fun dragons() = resolve("dragons")
 }

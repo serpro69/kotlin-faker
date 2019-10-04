@@ -11,13 +11,13 @@ class SlackEmoji internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.SLACK_EMOJI
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val people = resolve("people")
-    val nature = resolve("nature")
-    val foodAndDrink = resolve("food_and_drink")
-    val celebration = resolve("celebration")
-    val activity = resolve("activity")
-    val travelAndPlaces = resolve("travel_and_places")
-    val objectsAndSymbols = resolve("objects_and_symbols")
-    val custom = resolve("custom")
-    val emoji = resolve("emoji")
+    fun people() = resolve("people")
+    fun nature() = resolve("nature")
+    fun foodAndDrink() = resolve("food_and_drink")
+    fun celebration() = resolve("celebration")
+    fun activity() = resolve("activity")
+    fun travelAndPlaces() = resolve("travel_and_places")
+    fun objectsAndSymbols() = resolve("objects_and_symbols")
+    fun custom() = resolve("custom")
+    fun emoji() = resolve("emoji")
 }

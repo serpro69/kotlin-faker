@@ -12,10 +12,10 @@ class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.BANK
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val swiftBic = resolve("swift_bic")
-    val ibanDetails: (countryCode: String) -> String = { code ->
-        val regex = resolve { fakerService.resolve(it, "iban_details", code.toLowerCase()) }.invoke()
+    fun name() = resolve("name")
+    fun swiftBic() = resolve("swift_bic")
+    fun ibanDetails(countryCode: String): String {
+        val regex = resolve("iban_details", countryCode.toLowerCase())
             .drop(1)
             .dropLast(1)
             .split(", ")
@@ -23,6 +23,6 @@ class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataPr
             .split("=")
             .last()
 
-        Generex(regex).random()
+        return Generex(regex).random()
     }
 }

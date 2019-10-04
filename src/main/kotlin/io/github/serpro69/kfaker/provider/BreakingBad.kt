@@ -11,6 +11,6 @@ class BreakingBad internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.BREAKING_BAD
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val episode = resolve("episode")
+    fun character() = resolve("character")
+    fun episode() = resolve("episode")
 }

@@ -11,9 +11,9 @@ class Verbs internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.VERBS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val base = resolve("base")
-    val past = resolve("past")
-    val pastParticiple = resolve("past_participle")
-    val simplePresent = resolve("simple_present")
-    val ingForm = resolve("ing_form")
+    fun base() = resolve("base")
+    fun past() = resolve("past")
+    fun pastParticiple() = resolve("past_participle")
+    fun simplePresent() = resolve("simple_present")
+    fun ingForm() = resolve("ing_form")
 }

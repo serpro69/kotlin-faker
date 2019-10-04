@@ -11,6 +11,6 @@ class GreekPhilosophers internal constructor(fakerService: FakerService) : Abstr
     override val categoryName = CategoryName.GREEK_PHILOSOPHERS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val names = resolve("names")
-    val quotes = resolve("quotes")
+    fun names() = resolve("names")
+    fun quotes() = resolve("quotes")
 }

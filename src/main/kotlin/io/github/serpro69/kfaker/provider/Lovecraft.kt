@@ -11,9 +11,9 @@ class Lovecraft internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.LOVECRAFT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val fhtagn = resolve("fhtagn")
-    val deity = resolve("deity")
-    val location = resolve("location")
-    val tome = resolve("tome")
-    val words = resolve("words")
+    fun fhtagn() = resolve("fhtagn")
+    fun deity() = resolve("deity")
+    fun location() = resolve("location")
+    fun tome() = resolve("tome")
+    fun words() = resolve("words")
 }

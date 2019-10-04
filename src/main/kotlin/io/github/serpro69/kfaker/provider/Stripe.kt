@@ -11,13 +11,7 @@ class Stripe internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.STRIPE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val validCards: (type: String) -> String = { type ->
-        resolve("valid_cards", type)
-    }
-    val validTokens: (type: String) -> String = { type ->
-        resolve("valid_tokens", type)
-    }
-    val invalidCards: (type: String) -> String = { type ->
-        resolve("invalid_cards", type)
-    }
+    fun validCards(type: String) = resolve("valid_cards", type)
+    fun validTokens(type: String) = resolve("valid_tokens", type)
+    fun invalidCards(type: String) = resolve("invalid_cards", type)
 }

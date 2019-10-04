@@ -11,7 +11,7 @@ class FamilyGuy internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.FAMILY_GUY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val location = resolve("location")
-    val quote = resolve("quote")
+    fun character() = resolve("character")
+    fun location() = resolve("location")
+    fun quote() = resolve("quote")
 }

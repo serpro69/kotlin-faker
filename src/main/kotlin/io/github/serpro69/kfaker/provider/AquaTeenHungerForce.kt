@@ -11,5 +11,5 @@ class AquaTeenHungerForce internal constructor(fakerService: FakerService) : Abs
     override val categoryName = CategoryName.AQUA_TEEN_HUNGER_FORCE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
+    fun character() = resolve("character")
 }

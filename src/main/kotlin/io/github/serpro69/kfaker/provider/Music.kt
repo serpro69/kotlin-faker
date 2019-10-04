@@ -11,8 +11,8 @@ class Music internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.MUSIC
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val instruments = resolve("instruments")
-    val bands = resolve("bands")
-    val albums = resolve("albums")
-    val genres = resolve("genres")
+    fun instruments() = resolve("instruments")
+    fun bands() = resolve("bands")
+    fun albums() = resolve("albums")
+    fun genres() = resolve("genres")
 }

@@ -11,5 +11,5 @@ class UmphreysMcgee internal constructor(fakerService: FakerService) : AbstractF
     override val categoryName = CategoryName.UMPHREYS_MCGEE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val song = resolve("song")
+    fun song() = resolve("song")
 }

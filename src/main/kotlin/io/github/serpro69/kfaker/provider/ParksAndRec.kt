@@ -11,6 +11,6 @@ class ParksAndRec internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.PARKS_AND_REC
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val cities = resolve("cities")
+    fun characters() = resolve("characters")
+    fun cities() = resolve("cities")
 }

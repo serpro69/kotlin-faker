@@ -11,7 +11,7 @@ class HalfLife internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve { fakerService.resolve(it, "half_life", "character") }
-    val enemy = resolve { fakerService.resolve(it, "half_life", "enemy") }
-    val location = resolve { fakerService.resolve(it, "half_life", "location") }
+    fun character() = resolve("half_life", "character")
+    fun enemy() = resolve("half_life", "enemy")
+    fun location() = resolve("half_life", "location")
 }

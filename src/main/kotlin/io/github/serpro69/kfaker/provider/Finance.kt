@@ -12,10 +12,8 @@ class Finance internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val creditCard: (type: String) -> String = { type -> resolve("credit_card", type) }
+    fun creditCard(type: String) = resolve("credit_card", type)
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val vatNumber: (countryCode: String) -> String = { countryCode ->
-        resolve("vat_number", countryCode)
-    }
+    fun vatNumber(countryCode: String) = resolve("vat_number", countryCode)
 }

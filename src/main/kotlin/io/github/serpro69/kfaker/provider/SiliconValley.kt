@@ -11,12 +11,12 @@ class SiliconValley internal constructor(fakerService: FakerService) : AbstractF
     override val categoryName = CategoryName.SILICON_VALLEY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val companies = resolve("companies")
-    val quotes = resolve("quotes")
-    val apps = resolve("apps")
-    val inventions = resolve("inventions")
-    val mottos = resolve("mottos")
-    val urls = resolve("urls")
-    val email = resolve("email")
+    fun characters() = resolve("characters")
+    fun companies() = resolve("companies")
+    fun quotes() = resolve("quotes")
+    fun apps() = resolve("apps")
+    fun inventions() = resolve("inventions")
+    fun mottos() = resolve("mottos")
+    fun urls() = resolve("urls")
+    fun email() = resolve("email")
 }

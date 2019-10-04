@@ -11,7 +11,7 @@ class BackToTheFuture internal constructor(fakerService: FakerService) : Abstrac
     override val categoryName = CategoryName.BACK_TO_THE_FUTURE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val dates = resolve("dates")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun dates() = resolve("dates")
+    fun quotes() = resolve("quotes")
 }

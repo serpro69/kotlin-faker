@@ -11,8 +11,8 @@ class Fallout internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "fallout", "characters") }
-    val factions = resolve { fakerService.resolve(it, "fallout", "factions") }
-    val locations = resolve { fakerService.resolve(it, "fallout", "locations") }
-    val quotes = resolve { fakerService.resolve(it, "fallout", "quotes") }
+    fun characters() = resolve("fallout", "characters")
+    fun factions() = resolve("fallout", "factions")
+    fun locations() = resolve("fallout", "locations")
+    fun quotes() = resolve("fallout", "quotes")
 }

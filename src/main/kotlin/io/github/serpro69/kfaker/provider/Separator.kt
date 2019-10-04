@@ -11,5 +11,5 @@ class Separator internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.SEPARATOR
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val separator = resolve("separator")
+    fun separator() = resolve("separator")
 }

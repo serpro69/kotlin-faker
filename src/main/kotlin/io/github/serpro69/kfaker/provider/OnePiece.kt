@@ -11,10 +11,10 @@ class OnePiece internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.ONE_PIECE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val seas = resolve("seas")
-    val islands = resolve("islands")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
-    val akumasNoMi = resolve("akumas_no_mi")
+    fun characters() = resolve("characters")
+    fun seas() = resolve("seas")
+    fun islands() = resolve("islands")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
+    fun akumasNoMi() = resolve("akumas_no_mi")
 }

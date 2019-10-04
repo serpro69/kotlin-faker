@@ -11,8 +11,8 @@ class Shakespeare internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.SHAKESPEARE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val hamlet = resolve("hamlet")
-    val asYouLikeIt = resolve("as_you_like_it")
-    val kingRichardTheThird = resolve("king_richard_iii")
-    val romeoAndJuliet = resolve("romeo_and_juliet")
+    fun hamlet() = resolve("hamlet")
+    fun asYouLikeIt() = resolve("as_you_like_it")
+    fun kingRichardTheThird() = resolve("king_richard_iii")
+    fun romeoAndJuliet() = resolve("romeo_and_juliet")
 }

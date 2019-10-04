@@ -11,5 +11,5 @@ class ChuckNorris internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.CHUCK_NORRIS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val fact = resolve("fact")
+    fun fact() = resolve("fact")
 }

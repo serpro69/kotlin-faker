@@ -11,7 +11,7 @@ class ElectricalComponents internal constructor(fakerService: FakerService) : Ab
     override val categoryName = CategoryName.ELECTRICAL_COMPONENTS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val active = resolve("active")
-    val passive = resolve("passive")
-    val electromechanical = resolve("electromechanical")
+    fun active() = resolve("active")
+    fun passive() = resolve("passive")
+    fun electromechanical() = resolve("electromechanical")
 }

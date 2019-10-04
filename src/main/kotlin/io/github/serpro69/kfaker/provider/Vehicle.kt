@@ -11,24 +11,20 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.VEHICLE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val manufacture = resolve("manufacture")
-    val makes = resolve("makes")
-    val modelsByMake: (make: String) -> String = { make ->
-        resolve { fakerService.resolve(it, "models_by_make", make.toLowerCase()) }.invoke()
-    }
-    val colors = resolve("colors")
-    val transmissions = resolve("transmissions")
-    val driveTypes = resolve("drive_types")
-    val fuelTypes = resolve("fuel_types")
-    val styles = resolve("styles")
-    val carTypes = resolve("car_types")
-    val carOptions = resolve("car_options")
-    val standardSpecs = resolve("standard_specs")
-    val doors = resolve("doors")
-    val engineSizes = resolve("engine_sizes")
-    val licensePlate = resolve("license_plate")
-    val licencePlateByState: (stateCode: String) -> String = { stateCode ->
-        resolve { fakerService.resolve(it, "license_plate_by_state", stateCode.toLowerCase()) }.invoke()
-    }
-    val cylinderEngine = resolve("cylinder_engine")
+    fun manufacture() = resolve("manufacture")
+    fun makes() = resolve("makes")
+    fun modelsByMake(make: String) = resolve("models_by_make", make.toLowerCase())
+    fun colors() = resolve("colors")
+    fun transmissions() = resolve("transmissions")
+    fun driveTypes() = resolve("drive_types")
+    fun fuelTypes() = resolve("fuel_types")
+    fun styles() = resolve("styles")
+    fun carTypes() = resolve("car_types")
+    fun carOptions() = resolve("car_options")
+    fun standardSpecs() = resolve("standard_specs")
+    fun doors() = resolve("doors")
+    fun engineSizes() = resolve("engine_sizes")
+    fun licensePlate() = resolve("license_plate")
+    fun licencePlateByState(stateCode: String) = resolve("license_plate_by_state", stateCode.toLowerCase())
+    fun cylinderEngine() = resolve("cylinder_engine")
 }

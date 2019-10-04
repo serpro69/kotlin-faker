@@ -11,5 +11,5 @@ class Hipster internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.HIPSTER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val words = resolve("words")
+    fun words() = resolve("words")
 }

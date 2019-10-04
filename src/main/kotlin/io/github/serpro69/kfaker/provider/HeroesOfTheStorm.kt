@@ -11,8 +11,8 @@ class HeroesOfTheStorm internal constructor(fakerService: FakerService) : Abstra
     override val categoryName = CategoryName.HEROES_OF_THE_STORM
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val battlegrounds = resolve("battlegrounds")
-    val classes = resolve("classes")
-    val heroes = resolve("heroes")
-    val quotes = resolve("quotes")
+    fun battlegrounds() = resolve("battlegrounds")
+    fun classes() = resolve("classes")
+    fun heroes() = resolve("heroes")
+    fun quotes() = resolve("quotes")
 }

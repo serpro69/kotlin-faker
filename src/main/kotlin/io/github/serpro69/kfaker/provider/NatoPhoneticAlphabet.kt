@@ -11,5 +11,5 @@ class NatoPhoneticAlphabet internal constructor(fakerService: FakerService) : Ab
     override val categoryName = CategoryName.NATO_PHONETIC_ALPHABET
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val codeWord = resolve("code_word")
+    fun codeWord() = resolve("code_word")
 }

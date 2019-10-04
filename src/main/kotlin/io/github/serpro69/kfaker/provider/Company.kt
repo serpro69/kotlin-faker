@@ -11,10 +11,10 @@ class Company internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.COMPANY
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val buzzwords = resolve("buzzwords")
-    val bs = resolve("bs")
-    val name = resolve("name")
-    val industry = resolve("industry")
-    val profession = resolve("profession")
-    val type = resolve("type")
+    fun buzzwords() = resolve("buzzwords")
+    fun bs() = resolve("bs")
+    fun name() = resolve("name")
+    fun industry() = resolve("industry")
+    fun profession() = resolve("profession")
+    fun type() = resolve("type")
 }

@@ -11,7 +11,7 @@ class Pokemon internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val names = resolve { fakerService.resolve(it, "pokemon", "names") }
-    val locations = resolve { fakerService.resolve(it, "pokemon", "locations") }
-    val moves = resolve { fakerService.resolve(it, "pokemon", "moves") }
+    fun names() = resolve("pokemon", "names")
+    fun locations() = resolve("pokemon", "locations")
+    fun moves() = resolve("pokemon", "moves")
 }

@@ -11,6 +11,6 @@ class ProgrammingLanguage internal constructor(fakerService: FakerService) : Abs
     override val categoryName = CategoryName.PROGRAMMING_LANGUAGE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val creator = resolve("creator")
+    fun name() = resolve("name")
+    fun creator() = resolve("creator")
 }

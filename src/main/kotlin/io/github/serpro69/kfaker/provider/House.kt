@@ -11,6 +11,6 @@ class House internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val categoryName = CategoryName.HOUSE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val furniture = resolve("furniture")
-    val rooms = resolve("rooms")
+    fun furniture() = resolve("furniture")
+    fun rooms() = resolve("rooms")
 }

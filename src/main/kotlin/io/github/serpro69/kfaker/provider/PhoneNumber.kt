@@ -11,11 +11,15 @@ class PhoneNumber internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.PHONE_NUMBER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val phoneNumber = resolve("formats")
-    val cellPhone = resolve {
+    fun phoneNumber() = resolve("formats")
+/*
+    TODO: 04.10.2019 this needs reimplementation
+
+    fun cellPhone() = resolve {
         fakerService.resolve(fakerService.fetchCategory(CategoryName.CELL_PHONE), "formats")
     }
-    val countryCode = resolve {
+    fun countryCode() = resolve {
         fakerService.resolve(fakerService.fetchCategory(CategoryName.COUNTRY_CODE), "codes")
     }
+*/
 }

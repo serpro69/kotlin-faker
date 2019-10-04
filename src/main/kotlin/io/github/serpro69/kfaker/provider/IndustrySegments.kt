@@ -11,8 +11,8 @@ class IndustrySegments internal constructor(fakerService: FakerService) : Abstra
     override val categoryName = CategoryName.INDUSTRY_SEGMENTS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val industry = resolve("industry")
-    val superSector = resolve("super_sector")
-    val sector = resolve("sector")
-    val subSector = resolve("sub_sector")
+    fun industry() = resolve("industry")
+    fun superSector() = resolve("super_sector")
+    fun sector() = resolve("sector")
+    fun subSector() = resolve("sub_sector")
 }

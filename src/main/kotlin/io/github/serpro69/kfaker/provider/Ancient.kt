@@ -11,8 +11,8 @@ class Ancient internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.ANCIENT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val god = resolve("god")
-    val primordial = resolve("primordial")
-    val titan = resolve("titan")
-    val hero = resolve("hero")
+    fun god() = resolve("god")
+    fun primordial() = resolve("primordial")
+    fun titan() = resolve("titan")
+    fun hero() = resolve("hero")
 }

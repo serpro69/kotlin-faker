@@ -11,9 +11,9 @@ class Demographic internal constructor(fakerService: FakerService) : AbstractFak
     override val categoryName = CategoryName.DEMOGRAPHIC
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val race = resolve("race")
-    val sex = resolve("sex")
-    val demonym = resolve("demonym")
-    val educationalAttainment = resolve("educational_attainment")
-    val maritalStatus = resolve("marital_status")
+    fun race() = resolve("race")
+    fun sex() = resolve("sex")
+    fun demonym() = resolve("demonym")
+    fun educationalAttainment() = resolve("educational_attainment")
+    fun maritalStatus() = resolve("marital_status")
 }

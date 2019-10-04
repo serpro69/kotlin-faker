@@ -11,7 +11,7 @@ class TheThickOfIt internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.THE_THICK_OF_IT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val positions = resolve("positions")
-    val departments = resolve("departments")
+    fun characters() = resolve("characters")
+    fun positions() = resolve("positions")
+    fun departments() = resolve("departments")
 }

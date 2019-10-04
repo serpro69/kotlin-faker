@@ -11,12 +11,10 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.EDUCATOR
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val secondary = resolve("secondary")
-    val tertiaryType = resolve { fakerService.resolve(it, "tertiary", "type") }
+    fun name() = resolve("name")
+    fun secondary() = resolve("secondary")
+    fun tertiaryType() = resolve("tertiary", "type")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val tertiaryDegree: (type: String) -> String = { type ->
-        resolve { fakerService.resolve(it, "tertiary", "degree", type) }.invoke()
-    }
+    fun tertiaryDegree(type: String) = resolve("tertiary", "degree", type)
 }

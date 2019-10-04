@@ -11,10 +11,10 @@ class Witcher internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "witcher", "characters") }
-    val witchers = resolve { fakerService.resolve(it, "witcher", "witchers") }
-    val schools = resolve { fakerService.resolve(it, "witcher", "schools") }
-    val locations = resolve { fakerService.resolve(it, "witcher", "locations") }
-    val quotes = resolve { fakerService.resolve(it, "witcher", "quotes") }
-    val monsters = resolve { fakerService.resolve(it, "witcher", "monsters") }
+    fun characters() = resolve("witcher", "characters")
+    fun witchers() = resolve("witcher", "witchers")
+    fun schools() = resolve("witcher", "schools")
+    fun locations() = resolve("witcher", "locations")
+    fun quotes() = resolve("witcher", "quotes")
+    fun monsters() = resolve("witcher", "monsters")
 }

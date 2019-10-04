@@ -11,7 +11,7 @@ class VForVendetta internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.V_FOR_VENDETTA
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val speeches = resolve("speeches")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun speeches() = resolve("speeches")
+    fun quotes() = resolve("quotes")
 }

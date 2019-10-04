@@ -11,19 +11,15 @@ class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.WORLD_CUP
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val teams = resolve("teams")
-    val stadiums = resolve("stadiums")
-    val cities = resolve("cities")
+    fun teams() = resolve("teams")
+    fun stadiums() = resolve("stadiums")
+    fun cities() = resolve("cities")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val groups: (group: String) -> String = { group ->
-        // TODO: 3/10/2019 better resolving of group names
-        resolve("groups", group)
-    }
+    // TODO: 3/10/2019 better resolving of group names
+    fun groups(group: String) = resolve("groups", group)
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    val roosters: (rooster: Pair<String, String>) -> String = { (country, type) ->
-        // TODO: 3/10/2019 better resoving of rooster for different countries and types
-        resolve("roosters", country, type)
-    }
+    // TODO: 3/10/2019 better resoving of rooster for different countries and types
+    fun roosters(country: String, type: String) = resolve("roosters", country, type)
 }

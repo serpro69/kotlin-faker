@@ -11,8 +11,8 @@ class Device internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.DEVICE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val modelName = resolve("model_name")
-    val platform = resolve("platform")
-    val manufacturer = resolve("manufacturer")
-    val serial = resolve("serial")
+    fun modelName() = resolve("model_name")
+    fun platform() = resolve("platform")
+    fun manufacturer() = resolve("manufacturer")
+    fun serial() = resolve("serial")
 }

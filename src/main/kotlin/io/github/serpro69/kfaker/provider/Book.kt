@@ -11,8 +11,8 @@ class Book internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.BOOK
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val title = resolve("title")
-    val author = resolve("author")
-    val publisher = resolve("publisher")
-    val genre = resolve("genre")
+    fun title() = resolve("title")
+    fun author() = resolve("author")
+    fun publisher() = resolve("publisher")
+    fun genre() = resolve("genre")
 }

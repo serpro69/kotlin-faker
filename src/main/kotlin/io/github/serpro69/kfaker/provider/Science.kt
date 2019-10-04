@@ -11,7 +11,7 @@ class Science internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.SCIENCE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val element = resolve("element")
-    val elementSymbol = resolve("element_symbol")
-    val scientist = resolve("scientist")
+    fun element() = resolve("element")
+    fun elementSymbol() = resolve("element_symbol")
+    fun scientist() = resolve("scientist")
 }

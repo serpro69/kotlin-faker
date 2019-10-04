@@ -11,8 +11,8 @@ class Restaurant internal constructor(fakerService: FakerService) : AbstractFake
     override val categoryName = CategoryName.RESTAURANT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve("name")
-    val type = resolve("type")
-    val description = resolve("description")
-    val review = resolve("review")
+    fun name() = resolve("name")
+    fun type() = resolve("type")
+    fun description() = resolve("description")
+    fun review() = resolve("review")
 }

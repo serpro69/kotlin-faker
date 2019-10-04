@@ -11,6 +11,6 @@ class SouthPark internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.SOUTH_PARK
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
 }

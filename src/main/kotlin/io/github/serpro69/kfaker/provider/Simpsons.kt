@@ -11,7 +11,7 @@ class Simpsons internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.SIMPSONS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
 }

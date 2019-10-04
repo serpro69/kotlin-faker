@@ -11,6 +11,6 @@ class File internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.FILE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val extension = resolve("extension")
-    val mimeType = resolve("mime_type")
+    fun extension() = resolve("extension")
+    fun mimeType() = resolve("mime_type")
 }

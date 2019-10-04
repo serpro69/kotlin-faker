@@ -11,6 +11,6 @@ class GratefulDead internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.GRATEFUL_DEAD
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val players = resolve("players")
-    val songs = resolve("songs")
+    fun players() = resolve("players")
+    fun songs() = resolve("songs")
 }

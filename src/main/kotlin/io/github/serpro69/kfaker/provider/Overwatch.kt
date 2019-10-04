@@ -11,7 +11,7 @@ class Overwatch internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.GAMES
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val heroes = resolve { fakerService.resolve(it, "overwatch", "heroes") }
-    val locations = resolve { fakerService.resolve(it, "overwatch", "locations") }
-    val quotes = resolve { fakerService.resolve(it, "overwatch", "quotes") }
+    fun heroes() = resolve("overwatch", "heroes")
+    fun locations() = resolve("overwatch", "locations")
+    fun quotes() = resolve("overwatch", "quotes")
 }

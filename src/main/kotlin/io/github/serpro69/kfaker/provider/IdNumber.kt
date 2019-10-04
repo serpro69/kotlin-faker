@@ -11,5 +11,5 @@ class IdNumber internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.ID_NUMBER
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val invalid = resolve("invalid")
+    fun invalid() = resolve("invalid")
 }

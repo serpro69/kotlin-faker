@@ -11,11 +11,11 @@ class Job internal constructor(fakerService: FakerService) : AbstractFakeDataPro
     override val categoryName = CategoryName.JOB
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val field = resolve("field")
-    val seniority = resolve("seniority")
-    val position = resolve("position")
-    val keySkills = resolve("key_skills")
-    val employmentType = resolve("employment_type")
-    val educationLevel = resolve("education_level")
-    val title = resolve("title")
+    fun field() = resolve("field")
+    fun seniority() = resolve("seniority")
+    fun position() = resolve("position")
+    fun keySkills() = resolve("key_skills")
+    fun employmentType() = resolve("employment_type")
+    fun educationLevel() = resolve("education_level")
+    fun title() = resolve("title")
 }

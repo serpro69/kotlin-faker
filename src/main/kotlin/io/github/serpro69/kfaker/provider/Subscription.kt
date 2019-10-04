@@ -11,9 +11,9 @@ class Subscription internal constructor(fakerService: FakerService) : AbstractFa
     override val categoryName = CategoryName.SUBSCRIPTION
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val plans = resolve("plans")
-    val statuses = resolve("statuses")
-    val paymentMethods = resolve("payment_methods")
-    val subscriptionTerms = resolve("subscription_terms")
-    val paymentTerms = resolve("payment_terms")
+    fun plans() = resolve("plans")
+    fun statuses() = resolve("statuses")
+    fun paymentMethods() = resolve("payment_methods")
+    fun subscriptionTerms() = resolve("subscription_terms")
+    fun paymentTerms() = resolve("payment_terms")
 }

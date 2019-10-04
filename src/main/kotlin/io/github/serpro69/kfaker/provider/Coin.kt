@@ -11,5 +11,5 @@ class Coin internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val categoryName = CategoryName.COIN
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val flip = resolve("flip")
+    fun flip() = resolve("flip")
 }

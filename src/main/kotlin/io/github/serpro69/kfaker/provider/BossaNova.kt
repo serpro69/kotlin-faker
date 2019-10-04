@@ -11,6 +11,6 @@ class BossaNova internal constructor(fakerService: FakerService) : AbstractFakeD
     override val categoryName = CategoryName.BOSSA_NOVA
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val artists = resolve("artists")
-    val songs = resolve("songs")
+    fun artists() = resolve("artists")
+    fun songs() = resolve("songs")
 }

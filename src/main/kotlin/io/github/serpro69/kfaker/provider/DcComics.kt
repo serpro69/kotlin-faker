@@ -11,9 +11,9 @@ class DcComics internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.DC_COMICS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val hero = resolve("hero")
-    val heroine = resolve("heroine")
-    val villain = resolve("villain")
-    val name = resolve("name")
-    val title = resolve("title")
+    fun hero() = resolve("hero")
+    fun heroine() = resolve("heroine")
+    fun villain() = resolve("villain")
+    fun name() = resolve("name")
+    fun title() = resolve("title")
 }

@@ -11,8 +11,8 @@ class Dessert internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.DESSERT
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val variety = resolve("variety")
-    val topping = resolve("topping")
-    val flavor = resolve("flavor")
-    val dessert = { "${flavor()} ${variety()} with ${topping()}" }
+    fun variety() = resolve("variety")
+    fun topping() = resolve("topping")
+    fun flavor() = resolve("flavor")
+    fun dessert() = { "${flavor()} ${variety()} with ${topping()}" }
 }

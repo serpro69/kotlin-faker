@@ -11,6 +11,6 @@ class PrincessBride internal constructor(fakerService: FakerService) : AbstractF
     override val categoryName = CategoryName.PRINCESS_BRIDE
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun quotes() = resolve("quotes")
 }

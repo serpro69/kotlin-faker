@@ -11,6 +11,6 @@ class StrangerThings internal constructor(fakerService: FakerService) : Abstract
     override val categoryName = CategoryName.STRANGER_THINGS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve("character")
-    val quote = resolve("quote")
+    fun character() = resolve("character")
+    fun quote() = resolve("quote")
 }

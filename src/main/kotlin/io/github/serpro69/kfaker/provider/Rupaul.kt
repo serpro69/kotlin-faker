@@ -11,6 +11,6 @@ class Rupaul internal constructor(fakerService: FakerService) : AbstractFakeData
     override val categoryName = CategoryName.RUPAUL
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val queens = resolve("queens")
-    val quotes = resolve("quotes")
+    fun queens() = resolve("queens")
+    fun quotes() = resolve("quotes")
 }

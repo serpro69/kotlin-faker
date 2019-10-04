@@ -11,7 +11,7 @@ class Friends internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val categoryName = CategoryName.FRIENDS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve("characters")
-    val locations = resolve("locations")
-    val quotes = resolve("quotes")
+    fun characters() = resolve("characters")
+    fun locations() = resolve("locations")
+    fun quotes() = resolve("quotes")
 }

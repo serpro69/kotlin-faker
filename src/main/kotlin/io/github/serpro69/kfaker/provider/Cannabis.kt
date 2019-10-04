@@ -11,12 +11,12 @@ class Cannabis internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val categoryName = CategoryName.CANNABIS
     override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val strains = resolve("strains")
-    val cannabinoidAbbreviations = resolve("cannabinoid_abbreviations")
-    val cannabinoids = resolve("cannabinoids")
-    val terpenes = resolve("terpenes")
-    val medicalUses = resolve("medical_uses")
-    val healthBenefits = resolve("health_benefits")
-    val categories = resolve("categories")
-    val types = resolve("types")
+    fun strains() = resolve("strains")
+    fun cannabinoidAbbreviations() = resolve("cannabinoid_abbreviations")
+    fun cannabinoids() = resolve("cannabinoids")
+    fun terpenes() = resolve("terpenes")
+    fun medicalUses() = resolve("medical_uses")
+    fun healthBenefits() = resolve("health_benefits")
+    fun categories() = resolve("categories")
+    fun types() = resolve("types")
 }
