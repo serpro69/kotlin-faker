@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.GAMES] category.
  */
 @Suppress("unused")
-class WorldOfWarcraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class WorldOfWarcraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<WorldOfWarcraft>(fakerService) {
     override val categoryName = CategoryName.GAMES
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     val hero = resolve { fakerService.resolve(it, "world_of_warcraft", "hero") }
     val quotes = resolve { fakerService.resolve(it, "world_of_warcraft", "quotes") }

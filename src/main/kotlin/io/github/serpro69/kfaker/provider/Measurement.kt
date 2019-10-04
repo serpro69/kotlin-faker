@@ -7,15 +7,16 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.MEASUREMENT] category.
  */
 @Suppress("unused")
-class Measurement internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Measurement internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Measurement>(fakerService) {
     override val categoryName = CategoryName.MEASUREMENT
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val height = resolve { fakerService.resolve(it, "height") }
-    val length = resolve { fakerService.resolve(it, "length") }
-    val volume = resolve { fakerService.resolve(it, "volume") }
-    val weight = resolve { fakerService.resolve(it, "weight") }
-    val metricHeight = resolve { fakerService.resolve(it, "metric_height") }
-    val metricLength = resolve { fakerService.resolve(it, "metric_length") }
-    val metricVolume = resolve { fakerService.resolve(it, "metric_volume") }
-    val metricWeight = resolve { fakerService.resolve(it, "metric_weight") }
+    val height = resolve("height")
+    val length = resolve("length")
+    val volume = resolve("volume")
+    val weight = resolve("weight")
+    val metricHeight = resolve("metric_height")
+    val metricLength = resolve("metric_length")
+    val metricVolume = resolve("metric_volume")
+    val metricWeight = resolve("metric_weight")
 }

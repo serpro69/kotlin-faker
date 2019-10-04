@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.GRATEFUL_DEAD] category.
  */
 @Suppress("unused")
-class GratefulDead internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class GratefulDead internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<GratefulDead>(fakerService) {
     override val categoryName = CategoryName.GRATEFUL_DEAD
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val players = resolve { fakerService.resolve(it, "players") }
-    val songs = resolve { fakerService.resolve(it, "songs") }
+    val players = resolve("players")
+    val songs = resolve("songs")
 }

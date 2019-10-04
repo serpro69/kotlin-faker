@@ -8,11 +8,12 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.BANK] category.
  */
 @Suppress("unused")
-class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Bank>(fakerService) {
     override val categoryName = CategoryName.BANK
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve { fakerService.resolve(it, "name") }
-    val swiftBic = resolve { fakerService.resolve(it, "swift_bic") }
+    val name = resolve("name")
+    val swiftBic = resolve("swift_bic")
     val ibanDetails: (countryCode: String) -> String = { code ->
         val regex = resolve { fakerService.resolve(it, "iban_details", code.toLowerCase()) }.invoke()
             .drop(1)

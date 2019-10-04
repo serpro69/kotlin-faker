@@ -7,10 +7,11 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.LORD_OF_THE_RINGS] category.
  */
 @Suppress("unused")
-class LordOfTheRings internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class LordOfTheRings internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<LordOfTheRings>(fakerService) {
     override val categoryName = CategoryName.LORD_OF_THE_RINGS
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "characters") }
-    val locations = resolve { fakerService.resolve(it, "locations") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val characters = resolve("characters")
+    val locations = resolve("locations")
+    val quotes = resolve("quotes")
 }

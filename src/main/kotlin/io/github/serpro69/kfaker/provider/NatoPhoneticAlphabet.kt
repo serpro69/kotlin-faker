@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.NATO_PHONETIC_ALPHABET] category.
  */
 @Suppress("unused")
-class NatoPhoneticAlphabet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class NatoPhoneticAlphabet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<NatoPhoneticAlphabet>(fakerService) {
     override val categoryName = CategoryName.NATO_PHONETIC_ALPHABET
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val codeWord = resolve { fakerService.resolve(it, "code_word") }
+    val codeWord = resolve("code_word")
 }

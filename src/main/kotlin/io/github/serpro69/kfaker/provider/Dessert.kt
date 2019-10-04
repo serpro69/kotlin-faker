@@ -7,11 +7,12 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.DESSERT] category.
  */
 @Suppress("unused")
-class Dessert internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Dessert internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Dessert>(fakerService) {
     override val categoryName = CategoryName.DESSERT
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val variety = resolve { fakerService.resolve(it, "variety") }
-    val topping = resolve { fakerService.resolve(it, "topping") }
-    val flavor = resolve { fakerService.resolve(it, "flavor") }
+    val variety = resolve("variety")
+    val topping = resolve("topping")
+    val flavor = resolve("flavor")
     val dessert = { "${flavor()} ${variety()} with ${topping()}" }
 }

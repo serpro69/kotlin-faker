@@ -7,14 +7,15 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.DR_WHO] category.
  */
 @Suppress("unused")
-class DrWho internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class DrWho internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<DrWho>(fakerService) {
     override val categoryName = CategoryName.DR_WHO
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve { fakerService.resolve(it, "character") }
-    val theDoctors = resolve { fakerService.resolve(it, "the_doctors") }
-    val actors = resolve { fakerService.resolve(it, "actors") }
-    val catchPhrases = resolve { fakerService.resolve(it, "catch_phrases") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
-    val villians = resolve { fakerService.resolve(it, "villians") }
-    val species = resolve { fakerService.resolve(it, "species") }
+    val character = resolve("character")
+    val theDoctors = resolve("the_doctors")
+    val actors = resolve("actors")
+    val catchPhrases = resolve("catch_phrases")
+    val quotes = resolve("quotes")
+    val villians = resolve("villians")
+    val species = resolve("species")
 }

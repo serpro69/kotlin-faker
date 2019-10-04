@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.BUSINESS] category.
  */
 @Suppress("unused")
-class Business internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Business internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Business>(fakerService) {
     override val categoryName = CategoryName.BUSINESS
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val creditCardNumbers = resolve { fakerService.resolve(it, "credit_card_numbers") }
-    val creditCardTypes = resolve { fakerService.resolve(it, "credit_card_types") }
+    val creditCardNumbers = resolve("credit_card_numbers")
+    val creditCardTypes = resolve("credit_card_types")
 }

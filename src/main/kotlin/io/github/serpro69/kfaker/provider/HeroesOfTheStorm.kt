@@ -7,11 +7,12 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.HEROES_OF_THE_STORM] category.
  */
 @Suppress("unused")
-class HeroesOfTheStorm internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class HeroesOfTheStorm internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<HeroesOfTheStorm>(fakerService) {
     override val categoryName = CategoryName.HEROES_OF_THE_STORM
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val battlegrounds = resolve { fakerService.resolve(it, "battlegrounds") }
-    val classes = resolve { fakerService.resolve(it, "classes") }
-    val heroes = resolve { fakerService.resolve(it, "heroes") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val battlegrounds = resolve("battlegrounds")
+    val classes = resolve("classes")
+    val heroes = resolve("heroes")
+    val quotes = resolve("quotes")
 }

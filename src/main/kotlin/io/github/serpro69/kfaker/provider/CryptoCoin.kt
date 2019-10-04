@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.CRYPTO_COIN] category.
  */
 @Suppress("unused")
-class CryptoCoin internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class CryptoCoin internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<CryptoCoin>(fakerService) {
     override val categoryName = CategoryName.CRYPTO_COIN
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val coin = resolve { fakerService.resolve(it, "coin") }
+    val coin = resolve("coin")
 }

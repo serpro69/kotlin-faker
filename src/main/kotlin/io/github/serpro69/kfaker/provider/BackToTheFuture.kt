@@ -7,10 +7,11 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.BACK_TO_THE_FUTURE] category.
  */
 @Suppress("unused")
-class BackToTheFuture internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class BackToTheFuture internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<BackToTheFuture>(fakerService) {
     override val categoryName = CategoryName.BACK_TO_THE_FUTURE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "characters") }
-    val dates = resolve { fakerService.resolve(it, "dates") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val characters = resolve("characters")
+    val dates = resolve("dates")
+    val quotes = resolve("quotes")
 }

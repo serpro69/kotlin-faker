@@ -7,12 +7,13 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.SUBSCRIPTION] category.
  */
 @Suppress("unused")
-class Subscription internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Subscription internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Subscription>(fakerService) {
     override val categoryName = CategoryName.SUBSCRIPTION
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val plans = resolve { fakerService.resolve(it, "plans") }
-    val statuses = resolve { fakerService.resolve(it, "statuses") }
-    val paymentMethods = resolve { fakerService.resolve(it, "payment_methods") }
-    val subscriptionTerms = resolve { fakerService.resolve(it, "subscription_terms") }
-    val paymentTerms = resolve { fakerService.resolve(it, "payment_terms") }
+    val plans = resolve("plans")
+    val statuses = resolve("statuses")
+    val paymentMethods = resolve("payment_methods")
+    val subscriptionTerms = resolve("subscription_terms")
+    val paymentTerms = resolve("payment_terms")
 }

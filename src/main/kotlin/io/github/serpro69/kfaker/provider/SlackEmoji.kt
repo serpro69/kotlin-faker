@@ -7,16 +7,17 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.SLACK_EMOJI] category.
  */
 @Suppress("unused")
-class SlackEmoji internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class SlackEmoji internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SlackEmoji>(fakerService) {
     override val categoryName = CategoryName.SLACK_EMOJI
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val people = resolve { fakerService.resolve(it, "people") }
-    val nature = resolve { fakerService.resolve(it, "nature") }
-    val foodAndDrink = resolve { fakerService.resolve(it, "food_and_drink") }
-    val celebration = resolve { fakerService.resolve(it, "celebration") }
-    val activity = resolve { fakerService.resolve(it, "activity") }
-    val travelAndPlaces = resolve { fakerService.resolve(it, "travel_and_places") }
-    val objectsAndSymbols = resolve { fakerService.resolve(it, "objects_and_symbols") }
-    val custom = resolve { fakerService.resolve(it, "custom") }
-    val emoji = resolve { fakerService.resolve(it, "emoji") }
+    val people = resolve("people")
+    val nature = resolve("nature")
+    val foodAndDrink = resolve("food_and_drink")
+    val celebration = resolve("celebration")
+    val activity = resolve("activity")
+    val travelAndPlaces = resolve("travel_and_places")
+    val objectsAndSymbols = resolve("objects_and_symbols")
+    val custom = resolve("custom")
+    val emoji = resolve("emoji")
 }

@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.MARKDOWN] category.
  */
 @Suppress("unused")
-class Markdown internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Markdown internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Markdown>(fakerService) {
     override val categoryName = CategoryName.MARKDOWN
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val headers = resolve { fakerService.resolve(it, "headers") }
-    val emphasis = resolve { fakerService.resolve(it, "emphasis") }
+    val headers = resolve("headers")
+    val emphasis = resolve("emphasis")
 }

@@ -7,11 +7,12 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.STAR_TREK] category.
  */
 @Suppress("unused")
-class StarTrek internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class StarTrek internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<StarTrek>(fakerService) {
     override val categoryName = CategoryName.STAR_TREK
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve { fakerService.resolve(it, "character") }
-    val location = resolve { fakerService.resolve(it, "location") }
-    val specie = resolve { fakerService.resolve(it, "specie") }
-    val villain = resolve { fakerService.resolve(it, "villain") }
+    val character = resolve("character")
+    val location = resolve("location")
+    val specie = resolve("specie")
+    val villain = resolve("villain")
 }

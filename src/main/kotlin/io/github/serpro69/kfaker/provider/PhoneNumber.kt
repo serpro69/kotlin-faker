@@ -7,10 +7,11 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.PHONE_NUMBER] category.
  */
 @Suppress("unused")
-class PhoneNumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class PhoneNumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<PhoneNumber>(fakerService) {
     override val categoryName = CategoryName.PHONE_NUMBER
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val phoneNumber = resolve { fakerService.resolve(it, "formats") }
+    val phoneNumber = resolve("formats")
     val cellPhone = resolve {
         fakerService.resolve(fakerService.fetchCategory(CategoryName.CELL_PHONE), "formats")
     }

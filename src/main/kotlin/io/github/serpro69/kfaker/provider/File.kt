@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.FILE] category.
  */
 @Suppress("unused")
-class File internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class File internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<File>(fakerService) {
     override val categoryName = CategoryName.FILE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val extension = resolve { fakerService.resolve(it, "extension") }
-    val mimeType = resolve { fakerService.resolve(it, "mime_type") }
+    val extension = resolve("extension")
+    val mimeType = resolve("mime_type")
 }

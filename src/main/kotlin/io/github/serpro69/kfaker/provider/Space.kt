@@ -7,21 +7,22 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.SPACE] category.
  */
 @Suppress("unused")
-class Space internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Space internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Space>(fakerService) {
     override val categoryName = CategoryName.SPACE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val planet = resolve { fakerService.resolve(it, "planet") }
-    val moon = resolve { fakerService.resolve(it, "moon") }
-    val galaxy = resolve { fakerService.resolve(it, "galaxy") }
-    val nebula = resolve { fakerService.resolve(it, "nebula") }
-    val starCluster = resolve { fakerService.resolve(it, "star_cluster") }
-    val constellation = resolve { fakerService.resolve(it, "constellation") }
-    val star = resolve { fakerService.resolve(it, "star") }
-    val agency = resolve { fakerService.resolve(it, "agency") }
-    val agencyAbv = resolve { fakerService.resolve(it, "agency_abv") }
-    val nasaSpaceCraft = resolve { fakerService.resolve(it, "nasa_space_craft") }
-    val company = resolve { fakerService.resolve(it, "company") }
-    val distanceMeasurement = resolve { fakerService.resolve(it, "distance_measurement") }
-    val meteorite = resolve { fakerService.resolve(it, "meteorite") }
-    val launchVehicule = resolve { fakerService.resolve(it, "launch_vehicule") }
+    val planet = resolve("planet")
+    val moon = resolve("moon")
+    val galaxy = resolve("galaxy")
+    val nebula = resolve("nebula")
+    val starCluster = resolve("star_cluster")
+    val constellation = resolve("constellation")
+    val star = resolve("star")
+    val agency = resolve("agency")
+    val agencyAbv = resolve("agency_abv")
+    val nasaSpaceCraft = resolve("nasa_space_craft")
+    val company = resolve("company")
+    val distanceMeasurement = resolve("distance_measurement")
+    val meteorite = resolve("meteorite")
+    val launchVehicule = resolve("launch_vehicule")
 }

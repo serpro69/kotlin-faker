@@ -7,13 +7,14 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.CULTURE_SERIES] category.
  */
 @Suppress("unused")
-class CultureSeries internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class CultureSeries internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<CultureSeries>(fakerService) {
     override val categoryName = CategoryName.CULTURE_SERIES
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val books = resolve { fakerService.resolve(it, "books") }
-    val cultureShips = resolve { fakerService.resolve(it, "culture_ships") }
-    val cultureShipClasses = resolve { fakerService.resolve(it, "culture_ship_classes") }
-    val cultureShipClassAbvs = resolve { fakerService.resolve(it, "culture_ship_class_abvs") }
-    val civs = resolve { fakerService.resolve(it, "civs") }
-    val planets = resolve { fakerService.resolve(it, "planets") }
+    val books = resolve("books")
+    val cultureShips = resolve("culture_ships")
+    val cultureShipClasses = resolve("culture_ship_classes")
+    val cultureShipClassAbvs = resolve("culture_ship_class_abvs")
+    val civs = resolve("civs")
+    val planets = resolve("planets")
 }

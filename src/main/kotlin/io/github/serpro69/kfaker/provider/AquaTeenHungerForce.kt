@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.AQUA_TEEN_HUNGER_FORCE] category.
  */
 @Suppress("unused")
-class AquaTeenHungerForce internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class AquaTeenHungerForce internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<AquaTeenHungerForce>(fakerService) {
     override val categoryName = CategoryName.AQUA_TEEN_HUNGER_FORCE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve { fakerService.resolve(it, "character") }
+    val character = resolve("character")
 }

@@ -7,12 +7,13 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.LOVECRAFT] category.
  */
 @Suppress("unused")
-class Lovecraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Lovecraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Lovecraft>(fakerService) {
     override val categoryName = CategoryName.LOVECRAFT
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val fhtagn = resolve { fakerService.resolve(it, "fhtagn") }
-    val deity = resolve { fakerService.resolve(it, "deity") }
-    val location = resolve { fakerService.resolve(it, "location") }
-    val tome = resolve { fakerService.resolve(it, "tome") }
-    val words = resolve { fakerService.resolve(it, "words") }
+    val fhtagn = resolve("fhtagn")
+    val deity = resolve("deity")
+    val location = resolve("location")
+    val tome = resolve("tome")
+    val words = resolve("words")
 }

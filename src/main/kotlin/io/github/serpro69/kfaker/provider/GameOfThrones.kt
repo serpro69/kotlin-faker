@@ -7,12 +7,13 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.GAME_OF_THRONES] category.
  */
 @Suppress("unused")
-class GameOfThrones internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class GameOfThrones internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<GameOfThrones>(fakerService) {
     override val categoryName = CategoryName.GAME_OF_THRONES
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "characters") }
-    val houses = resolve { fakerService.resolve(it, "houses") }
-    val cities = resolve { fakerService.resolve(it, "cities") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
-    val dragons = resolve { fakerService.resolve(it, "dragons") }
+    val characters = resolve("characters")
+    val houses = resolve("houses")
+    val cities = resolve("cities")
+    val quotes = resolve("quotes")
+    val dragons = resolve("dragons")
 }

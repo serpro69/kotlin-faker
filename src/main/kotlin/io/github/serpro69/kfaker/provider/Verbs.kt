@@ -7,12 +7,13 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.VERBS] category.
  */
 @Suppress("unused")
-class Verbs internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Verbs internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Verbs>(fakerService) {
     override val categoryName = CategoryName.VERBS
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val base = resolve { fakerService.resolve(it, "base") }
-    val past = resolve { fakerService.resolve(it, "past") }
-    val pastParticiple = resolve { fakerService.resolve(it, "past_participle") }
-    val simplePresent = resolve { fakerService.resolve(it, "simple_present") }
-    val ingForm = resolve { fakerService.resolve(it, "ing_form") }
+    val base = resolve("base")
+    val past = resolve("past")
+    val pastParticiple = resolve("past_participle")
+    val simplePresent = resolve("simple_present")
+    val ingForm = resolve("ing_form")
 }

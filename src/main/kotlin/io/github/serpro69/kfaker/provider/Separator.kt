@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.ADDRESS] category.
  */
 @Suppress("unused")
-class Separator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Separator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Separator>(fakerService) {
     override val categoryName = CategoryName.SEPARATOR
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val separator = resolve { fakerService.resolve(it, "separator") }
+    val separator = resolve("separator")
 }

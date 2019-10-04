@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.ROCK_BAND] category.
  */
 @Suppress("unused")
-class RockBand internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class RockBand internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<RockBand>(fakerService) {
     override val categoryName = CategoryName.ROCK_BAND
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val name = resolve { fakerService.resolve(it, "name") }
+    val name = resolve("name")
 }

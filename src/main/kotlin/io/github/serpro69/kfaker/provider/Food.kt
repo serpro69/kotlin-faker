@@ -7,17 +7,18 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.FOOD] category.
  */
 @Suppress("unused")
-class Food internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Food internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Food>(fakerService) {
     override val categoryName = CategoryName.FOOD
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val dish = resolve { fakerService.resolve(it, "dish") }
-    val descriptions = resolve { fakerService.resolve(it, "descriptions") }
-    val ingredients = resolve { fakerService.resolve(it, "ingredients") }
-    val fruits = resolve { fakerService.resolve(it, "fruits") }
-    val vegetables = resolve { fakerService.resolve(it, "vegetables") }
-    val spices = resolve { fakerService.resolve(it, "spices") }
-    val measurements = resolve { fakerService.resolve(it, "measurements") }
-    val measurementSizes = resolve { fakerService.resolve(it, "measurement_sizes") }
-    val metricMeasurements = resolve { fakerService.resolve(it, "metric_measurements") }
-    val sushi = resolve { fakerService.resolve(it, "sushi") }
+    val dish = resolve("dish")
+    val descriptions = resolve("descriptions")
+    val ingredients = resolve("ingredients")
+    val fruits = resolve("fruits")
+    val vegetables = resolve("vegetables")
+    val spices = resolve("spices")
+    val measurements = resolve("measurements")
+    val measurementSizes = resolve("measurement_sizes")
+    val metricMeasurements = resolve("metric_measurements")
+    val sushi = resolve("sushi")
 }

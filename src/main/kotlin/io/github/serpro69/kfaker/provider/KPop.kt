@@ -7,13 +7,14 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.KPOP] category.
  */
 @Suppress("unused")
-class KPop internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class KPop internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<KPop>(fakerService) {
     override val categoryName = CategoryName.KPOP
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val firstGroups = resolve { fakerService.resolve(it, "i_groups") }
-    val secondGroups = resolve { fakerService.resolve(it, "ii_groups") }
-    val thirdGroups = resolve { fakerService.resolve(it, "iii_groups") }
-    val girlGroups = resolve { fakerService.resolve(it, "girl_groups") }
-    val boyBands = resolve { fakerService.resolve(it, "boy_bands") }
-    val solo = resolve { fakerService.resolve(it, "solo") }
+    val firstGroups = resolve("i_groups")
+    val secondGroups = resolve("ii_groups")
+    val thirdGroups = resolve("iii_groups")
+    val girlGroups = resolve("girl_groups")
+    val boyBands = resolve("boy_bands")
+    val solo = resolve("solo")
 }

@@ -7,15 +7,16 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.SILICON_VALLEY] category.
  */
 @Suppress("unused")
-class SiliconValley internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class SiliconValley internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SiliconValley>(fakerService) {
     override val categoryName = CategoryName.SILICON_VALLEY
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val characters = resolve { fakerService.resolve(it, "characters") }
-    val companies = resolve { fakerService.resolve(it, "companies") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
-    val apps = resolve { fakerService.resolve(it, "apps") }
-    val inventions = resolve { fakerService.resolve(it, "inventions") }
-    val mottos = resolve { fakerService.resolve(it, "mottos") }
-    val urls = resolve { fakerService.resolve(it, "urls") }
-    val email = resolve { fakerService.resolve(it, "email") }
+    val characters = resolve("characters")
+    val companies = resolve("companies")
+    val quotes = resolve("quotes")
+    val apps = resolve("apps")
+    val inventions = resolve("inventions")
+    val mottos = resolve("mottos")
+    val urls = resolve("urls")
+    val email = resolve("email")
 }

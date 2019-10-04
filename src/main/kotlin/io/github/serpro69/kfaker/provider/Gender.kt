@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.GENDER] category.
  */
 @Suppress("unused")
-class Gender internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Gender internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Gender>(fakerService) {
     override val categoryName = CategoryName.GENDER
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val types = resolve { fakerService.resolve(it, "types") }
-    val binaryTypes = resolve { fakerService.resolve(it, "binary_types") }
+    val types = resolve("types")
+    val binaryTypes = resolve("binary_types")
 }

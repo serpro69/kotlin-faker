@@ -7,14 +7,15 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.JOB] category.
  */
 @Suppress("unused")
-class Job internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Job internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Job>(fakerService) {
     override val categoryName = CategoryName.JOB
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val field = resolve { fakerService.resolve(it, "field") }
-    val seniority = resolve { fakerService.resolve(it, "seniority") }
-    val position = resolve { fakerService.resolve(it, "position") }
-    val keySkills = resolve { fakerService.resolve(it, "key_skills") }
-    val employmentType = resolve { fakerService.resolve(it, "employment_type") }
-    val educationLevel = resolve { fakerService.resolve(it, "education_level") }
-    val title = resolve { fakerService.resolve(it, "title") }
+    val field = resolve("field")
+    val seniority = resolve("seniority")
+    val position = resolve("position")
+    val keySkills = resolve("key_skills")
+    val employmentType = resolve("employment_type")
+    val educationLevel = resolve("education_level")
+    val title = resolve("title")
 }

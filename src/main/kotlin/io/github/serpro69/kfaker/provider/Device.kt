@@ -7,11 +7,12 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.DEVICE] category.
  */
 @Suppress("unused")
-class Device internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Device internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Device>(fakerService) {
     override val categoryName = CategoryName.DEVICE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val modelName = resolve { fakerService.resolve(it, "model_name") }
-    val platform = resolve { fakerService.resolve(it, "platform") }
-    val manufacturer = resolve { fakerService.resolve(it, "manufacturer") }
-    val serial = resolve { fakerService.resolve(it, "serial") }
+    val modelName = resolve("model_name")
+    val platform = resolve("platform")
+    val manufacturer = resolve("manufacturer")
+    val serial = resolve("serial")
 }

@@ -7,10 +7,11 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.SEINFELD] category.
  */
 @Suppress("unused")
-class Seinfeld internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Seinfeld internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Seinfeld>(fakerService) {
     override val categoryName = CategoryName.SEINFELD
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val character = resolve { fakerService.resolve(it, "character") }
-    val quote = resolve { fakerService.resolve(it, "quote") }
-    val business = resolve { fakerService.resolve(it, "business") }
+    val character = resolve("character")
+    val quote = resolve("quote")
+    val business = resolve("business")
 }

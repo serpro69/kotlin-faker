@@ -7,12 +7,13 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.WORLD_CUP] category.
  */
 @Suppress("unused")
-class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<WorldCup>(fakerService) {
     override val categoryName = CategoryName.WORLD_CUP
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val teams = resolve { fakerService.resolve(it, "teams") }
-    val stadiums = resolve { fakerService.resolve(it, "stadiums") }
-    val cities = resolve { fakerService.resolve(it, "cities") }
+    val teams = resolve("teams")
+    val stadiums = resolve("stadiums")
+    val cities = resolve("cities")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     val groups: (group: String) -> String = { group ->

@@ -8,8 +8,9 @@ import io.github.serpro69.kfaker.dictionary.*
  */
 @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
 @Suppress("unused")
-class Finance internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Finance internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Finance>(fakerService) {
     override val categoryName = CategoryName.FINANCE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
 //    val creditCard: (type: String) -> String = { type ->
 //        resolve { fakerService.resolve(it, "credit_card", type) }.invoke()

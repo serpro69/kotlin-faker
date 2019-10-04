@@ -7,9 +7,10 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.GREEK_PHILOSOPHERS] category.
  */
 @Suppress("unused")
-class GreekPhilosophers internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class GreekPhilosophers internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<GreekPhilosophers>(fakerService) {
     override val categoryName = CategoryName.GREEK_PHILOSOPHERS
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
-    val names = resolve { fakerService.resolve(it, "names") }
-    val quotes = resolve { fakerService.resolve(it, "quotes") }
+    val names = resolve("names")
+    val quotes = resolve("quotes")
 }

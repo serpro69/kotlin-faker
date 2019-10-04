@@ -7,8 +7,9 @@ import io.github.serpro69.kfaker.dictionary.*
  * [FakeDataProvider] implementation for [CategoryName.STRIPE] category.
  */
 @Suppress("unused")
-class Stripe internal constructor(fakerService: FakerService) : AbstractFakeDataProvider(fakerService) {
+class Stripe internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Stripe>(fakerService) {
     override val categoryName = CategoryName.STRIPE
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     val validCards: (type: String) -> String = { type ->
         resolve { fakerService.resolve(it, "valid_cards", type) }.invoke()
