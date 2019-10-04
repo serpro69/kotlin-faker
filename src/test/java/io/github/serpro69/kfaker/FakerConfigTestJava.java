@@ -16,7 +16,7 @@ class FakerConfigTestJava {
             builder.setRandom(new Random(42));
         }));
 
-        String name = new Faker(fakerConfig).getName().getName().invoke();
+        String name = new Faker(fakerConfig).getName().name();
 
         assertNotEquals("", name);
     }

@@ -281,9 +281,9 @@ internal class FakerService @JvmOverloads internal constructor(
                     val replacement = when (simpleClassName != null) {
                         true -> {
                             val providerType = getProvider(simpleClassName)
-                            val propertyName = providerType.getPropertyName(it.group(2))
+                            val propertyName = providerType.getFunctionName(it.group(2))
 
-                            providerType.callProperty(propertyName)
+                            providerType.callFunction(propertyName)
                         }
                         false -> getRawValue(category, it.group(2)).value
                     }
@@ -327,30 +327,30 @@ internal class FakerService @JvmOverloads internal constructor(
      * Calls the property of this [FakeDataProvider] receiver and returns the result as [String].
      *
      * @param T instance of [FakeDataProvider]
-     * @param kProperty1 the [KProperty1] of [T]
+     * @param kFunction the [KFunction] of [T]
      */
     @Suppress("UNCHECKED_CAST")
-    private fun <T : FakeDataProvider> T.callProperty(kProperty1: KProperty1<out T, Any?>): String {
-        return (kProperty1.call(this) as () -> String).invoke()
+    private fun <T : FakeDataProvider> T.callFunction(kFunction: KFunction<*>): String {
+        return kFunction.call(this) as String
     }
 
     /**
-     * Gets the [KProperty1] of this [FakeDataProvider] receiver from the [rawString].
+     * Gets the [KFunction] of this [FakeDataProvider] receiver from the [rawString].
      *
      * Examples:
      *
-     * Yaml expression in the form of `Name.first_name` would be translated to [Name.firstName] property.
+     * Yaml expression in the form of `Name.first_name` would be translated to [Name.firstName] function.
      *
-     * Yaml expression in the form of `Address.country` would be translated to [Address.country] property.
+     * Yaml expression in the form of `Address.country` would be translated to [Address.country] function.
      *
      * @param T instance of [FakeDataProvider]
      */
-    private fun <T : FakeDataProvider> T.getPropertyName(rawString: String): KProperty1<out T, Any?> {
+    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): KFunction<*> {
         val propertyName = rawString.split("_").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).toUpperCase() + s.substring(1)
         }.joinToString("")
 
-        return this::class.declaredMemberProperties.first { it.name == propertyName }
+        return this::class.declaredFunctions.first { it.name == propertyName }
     }
 
     /**
@@ -378,4 +378,3 @@ internal class FakerService @JvmOverloads internal constructor(
         return stringBuffer.toString()
     }
 }
-
