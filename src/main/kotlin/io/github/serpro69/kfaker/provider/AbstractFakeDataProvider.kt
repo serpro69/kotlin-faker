@@ -61,4 +61,62 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
             }
         }
     }
+
+    /**
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
+     *
+     * Will return a unique value if the call to the function is prefixed with `unique` property.
+     * Example:
+     * ```
+     * faker.address.unique.countryByCode(countryCode) => will return a unique value for the `city` parameter
+     * ```
+     */
+    protected fun resolve(primaryKey: String, secondaryKey: String): String {
+        val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
+
+        return if (!uniqueDataProvider.markedUnique.contains(unique)) {
+            result
+        } else {
+            when (val set = uniqueDataProvider.usedValues[primaryKey]) {
+                null -> {
+                    uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result)
+                    result
+                }
+                else -> {
+                    (if (!set.contains(result)) result.also {
+                        uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result).also { it.addAll(set) }
+                    } else resolve(primaryKey))
+                }
+            }
+        }
+    }
+
+    /**
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey], [secondaryKey] and [thirdKey]
+     *
+     * Will return a unique value if the call to the function is prefixed with `unique` property.
+     * Example:
+     * ```
+     * faker.educator.tertiaryDegree(type) => will return a unique value for the `tertiaryDegree` parameter
+     * ```
+     */
+    protected fun resolve(primaryKey: String, secondaryKey: String, thirdKey: String): String {
+        val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
+
+        return if (!uniqueDataProvider.markedUnique.contains(unique)) {
+            result
+        } else {
+            when (val set = uniqueDataProvider.usedValues[primaryKey]) {
+                null -> {
+                    uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result)
+                    result
+                }
+                else -> {
+                    (if (!set.contains(result)) result.also {
+                        uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result).also { it.addAll(set) }
+                    } else resolve(primaryKey))
+                }
+            }
+        }
+    }
 }
