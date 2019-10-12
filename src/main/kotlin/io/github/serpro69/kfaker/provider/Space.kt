@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Space internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Space>(fakerService) {
     override val categoryName = CategoryName.SPACE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun planet() = resolve("planet")
     fun moon() = resolve("moon")

@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Hobbit internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Hobbit>(fakerService) {
     override val categoryName = CategoryName.HOBBIT
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun character() = resolve("character")
     fun thorinsCompany() = resolve("thorins_company")

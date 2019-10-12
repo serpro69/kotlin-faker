@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Buffy internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Buffy>(fakerService) {
     override val categoryName = CategoryName.BUFFY
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun quotes() = resolve("quotes")

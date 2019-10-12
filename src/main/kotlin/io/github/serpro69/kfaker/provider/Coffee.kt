@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Coffee internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Coffee>(fakerService) {
     override val categoryName = CategoryName.COFFEE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun country() = resolve("country")
     fun regions(country: String) = resolve("regions", country.toLowerCase())

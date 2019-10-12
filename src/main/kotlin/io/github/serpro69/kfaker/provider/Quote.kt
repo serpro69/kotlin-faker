@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Quote internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Quote>(fakerService) {
     override val categoryName = CategoryName.QUOTE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun famousLastWords() = resolve("famous_last_words")
     fun matz() = resolve("matz")

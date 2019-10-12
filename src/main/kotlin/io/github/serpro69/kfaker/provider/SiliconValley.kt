@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class SiliconValley internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SiliconValley>(fakerService) {
     override val categoryName = CategoryName.SILICON_VALLEY
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun companies() = resolve("companies")

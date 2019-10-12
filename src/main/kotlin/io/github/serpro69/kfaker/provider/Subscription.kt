@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Subscription internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Subscription>(fakerService) {
     override val categoryName = CategoryName.SUBSCRIPTION
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun plans() = resolve("plans")
     fun statuses() = resolve("statuses")

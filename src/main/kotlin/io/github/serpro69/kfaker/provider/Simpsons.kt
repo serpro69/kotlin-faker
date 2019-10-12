@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Simpsons internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Simpsons>(fakerService) {
     override val categoryName = CategoryName.SIMPSONS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun locations() = resolve("locations")

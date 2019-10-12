@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Ancient internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Ancient>(fakerService) {
     override val categoryName = CategoryName.ANCIENT
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun god() = resolve("god")
     fun primordial() = resolve("primordial")

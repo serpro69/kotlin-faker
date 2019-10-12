@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Color internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Color>(fakerService) {
     override val categoryName = CategoryName.COLOR
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun name() = resolve("name")
 }

@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Science internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Science>(fakerService) {
     override val categoryName = CategoryName.SCIENCE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun element() = resolve("element")
     fun elementSymbol() = resolve("element_symbol")

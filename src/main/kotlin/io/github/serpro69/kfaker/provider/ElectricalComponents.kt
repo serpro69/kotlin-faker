@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class ElectricalComponents internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<ElectricalComponents>(fakerService) {
     override val categoryName = CategoryName.ELECTRICAL_COMPONENTS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun active() = resolve("active")
     fun passive() = resolve("passive")

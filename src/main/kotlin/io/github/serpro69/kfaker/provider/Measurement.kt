@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Measurement internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Measurement>(fakerService) {
     override val categoryName = CategoryName.MEASUREMENT
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun height() = resolve("height")
     fun length() = resolve("length")

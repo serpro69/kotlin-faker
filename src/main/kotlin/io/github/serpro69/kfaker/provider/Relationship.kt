@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Relationship internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Relationship>(fakerService) {
     override val categoryName = CategoryName.RELATIONSHIP
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun familialDirect() = resolve("familial", "direct")
     fun familialExtended() = resolve("familial", "extended")

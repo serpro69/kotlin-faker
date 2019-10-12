@@ -11,8 +11,6 @@ import io.github.serpro69.kfaker.dictionary.*
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
     private val fakerService: FakerService
 ) : FakeDataProvider {
-    internal val uniqueDataProvider by lazy { UniqueDataProvider<T>() }
-    abstract val unique: AbstractFakeDataProvider<T>
 
     /**
      * Name of the category for `this` fake data provider class.
@@ -44,22 +42,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      */
     protected fun resolve(key: String): String {
         val result = resolve { fakerService.resolve(it, key) }.invoke()
-
-        return if (!uniqueDataProvider.markedUnique.contains(unique)) {
-            result
-        } else {
-            when (val set = uniqueDataProvider.usedValues[key]) {
-                null -> {
-                    uniqueDataProvider.usedValues[key] = mutableSetOf(result)
-                    result
-                }
-                else -> {
-                    (if (!set.contains(result)) result.also {
-                        uniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
-                    } else resolve(key))
-                }
-            }
-        }
+        return returnOrResolveUnique(result, key)
     }
 
     /**
@@ -73,22 +56,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      */
     protected fun resolve(primaryKey: String, secondaryKey: String): String {
         val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
-
-        return if (!uniqueDataProvider.markedUnique.contains(unique)) {
-            result
-        } else {
-            when (val set = uniqueDataProvider.usedValues[primaryKey]) {
-                null -> {
-                    uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result)
-                    result
-                }
-                else -> {
-                    (if (!set.contains(result)) result.also {
-                        uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result).also { it.addAll(set) }
-                    } else resolve(primaryKey))
-                }
-            }
-        }
+        return returnOrResolveUnique(result, primaryKey, secondaryKey)
     }
 
     /**
@@ -102,19 +70,35 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      */
     protected fun resolve(primaryKey: String, secondaryKey: String, thirdKey: String): String {
         val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
+        return returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey)
+    }
 
-        return if (!uniqueDataProvider.markedUnique.contains(unique)) {
+    private tailrec fun returnOrResolveUnique(
+        result: String,
+        primaryKey: String,
+        secondaryKey: String? = null,
+        thirdKey: String? = null,
+        counter: Int = 0
+    ): String {
+        val uniqueDataProvider = fakerService.faker.unique
+
+        return if (!uniqueDataProvider.markedUnique.contains(this::class)) {
             result
         } else {
-            when (val set = uniqueDataProvider.usedValues[primaryKey]) {
+            val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
+
+            val usedValuesMap = requireNotNull(uniqueDataProvider.usedValues[this::class])
+            when (val set = usedValuesMap[key]) {
                 null -> {
-                    uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result)
+                    usedValuesMap[key] = mutableSetOf(result)
                     result
                 }
                 else -> {
-                    (if (!set.contains(result)) result.also {
-                        uniqueDataProvider.usedValues[primaryKey] = mutableSetOf(result).also { it.addAll(set) }
-                    } else resolve(primaryKey))
+                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) throw Error("Retry limit of $counter exceeded")
+                    else if (!set.contains(result)) result.also {
+                        usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
+                    }
+                    else returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         }

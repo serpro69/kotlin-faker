@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Dune>(fakerService) {
     override val categoryName = CategoryName.DUNE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun titles() = resolve("titles")

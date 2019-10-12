@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Internet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Internet>(fakerService) {
     override val categoryName = CategoryName.INTERNET
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun freeEmail() = resolve("free_email")
     fun domainSuffix() = resolve("domain_suffix")

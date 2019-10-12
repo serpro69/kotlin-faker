@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Cannabis internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Cannabis>(fakerService) {
     override val categoryName = CategoryName.CANNABIS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun strains() = resolve("strains")
     fun cannabinoidAbbreviations() = resolve("cannabinoid_abbreviations")

@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Overwatch internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Overwatch>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun heroes() = resolve("overwatch", "heroes")
     fun locations() = resolve("overwatch", "locations")

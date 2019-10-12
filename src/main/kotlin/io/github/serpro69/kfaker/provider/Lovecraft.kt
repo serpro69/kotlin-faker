@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Lovecraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Lovecraft>(fakerService) {
     override val categoryName = CategoryName.LOVECRAFT
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun fhtagn() = resolve("fhtagn")
     fun deity() = resolve("deity")

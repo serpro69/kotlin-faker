@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Educator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Educator>(fakerService) {
     override val categoryName = CategoryName.EDUCATOR
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun name() = resolve("name")
     fun secondary() = resolve("secondary")

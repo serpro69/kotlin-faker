@@ -20,7 +20,7 @@ import kotlin.reflect.full.*
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
  */
 internal class FakerService @JvmOverloads internal constructor(
-    private val faker: Faker,
+    internal val faker: Faker,
     locale: String = "en", random: Random
 ) {
     private val randomService = RandomService(random)

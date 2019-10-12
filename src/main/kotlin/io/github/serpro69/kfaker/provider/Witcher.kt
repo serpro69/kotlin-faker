@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Witcher internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Witcher>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("witcher", "characters")
     fun witchers() = resolve("witcher", "witchers")

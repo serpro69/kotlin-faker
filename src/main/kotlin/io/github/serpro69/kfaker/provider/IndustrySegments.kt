@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class IndustrySegments internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<IndustrySegments>(fakerService) {
     override val categoryName = CategoryName.INDUSTRY_SEGMENTS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun industry() = resolve("industry")
     fun superSector() = resolve("super_sector")

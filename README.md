@@ -115,6 +115,41 @@ city1 == city2 // => true
 name1 == name2 // => true
 ```
 
+#### Generating unique values
+Faker supports generation of unique values through it's data providers:
+```kotlin
+val faker = Faker()
+faker.unique.enable(faker::address) // enable generation of unique values for address provider
+
+repeat(10) {
+    faker.address.country() // will generate unique country each time it's called
+}
+```
+
+If the retry count exceeds the configured value (defaults to `10`)
+then `RetryLimitException` will be thrown.
+
+To clear the record of unique values that were already returned:
+```kotlin
+faker.unique.clear(faker::address) // clears used values for address provider
+
+faker.unique.clearAll() // clears used values for all providers
+```
+
+To disable generation of unique values:
+```kotlin
+faker.unique.clear(faker::address) // disables generation of unique values for address provider and clears all used values
+
+faker.unique.disableAll() // disables generation of unique values for all providers and clears all used values
+```
+
+It is also possible to exclude some values from being generated:
+```kotlin
+faker.address.unique.exclude(::country, "USA")
+```
+
+
+
 #### Localized dictionary
 `Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
 
@@ -236,12 +271,8 @@ FakerConfig fakerConfig = FakerConfigBuilder.create(FakerConfig.builder(), build
 
 Calling `Faker` methods:
 ```java
-new Faker(fakerConfig).getName().getFirstName().invoke();
+new Faker(fakerConfig).getName().firstName(); // => John
 ```
-<i>Note the `invoke()` at the end. This is basically the only difference when it comes to using this library from Java.
-Calling `invoke()` is needed because all the methods in providers' classes are function literals, not properties,
-therefore to get the `String` value of the method `getBuildingNumber()` an `invoke()` operator should be called.
-This is not necessary in Kotlin because you can call function literals with just braces like so: `buildingNumber()`</i>
 
 
 ## Data Providers

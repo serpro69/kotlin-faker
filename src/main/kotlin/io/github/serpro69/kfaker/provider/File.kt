@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class File internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<File>(fakerService) {
     override val categoryName = CategoryName.FILE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun extension() = resolve("extension")
     fun mimeType() = resolve("mime_type")

@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class StarWars internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<StarWars>(fakerService) {
     override val categoryName = CategoryName.STAR_WARS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun callSquadrons() = resolve("call_squadrons")

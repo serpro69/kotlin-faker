@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Address internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Address>(fakerService) {
     override val categoryName = CategoryName.ADDRESS
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun country() = resolve("country")
     fun countryByCode(countryCode: String) = resolve("country_by_code", countryCode)

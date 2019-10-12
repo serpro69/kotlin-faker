@@ -6,7 +6,8 @@ import java.util.*
 
 class FakerConfig private constructor(
     val locale: String,
-    val random: Random
+    val random: Random,
+    val uniqueGeneratorRetryLimit: Int
 ) {
 
     companion object {
@@ -17,10 +18,12 @@ class FakerConfig private constructor(
     class Builder internal constructor() {
         var locale = "en"
         var random = Random()
+        var uniqueGeneratorRetryLimit = 25
 
         internal fun build() = FakerConfig(
             locale,
-            random
+            random,
+            uniqueGeneratorRetryLimit
         )
     }
 }

@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class DumbAndDumber internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<DumbAndDumber>(fakerService) {
     override val categoryName = CategoryName.DUMB_AND_DUMBER
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun actors() = resolve("actors")
     fun characters() = resolve("characters")

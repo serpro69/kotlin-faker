@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Fallout internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Fallout>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("fallout", "characters")
     fun factions() = resolve("fallout", "factions")

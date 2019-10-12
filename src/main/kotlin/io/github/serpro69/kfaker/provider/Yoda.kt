@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Yoda internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Yoda>(fakerService) {
     override val categoryName = CategoryName.YODA
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun quotes() = resolve("quotes")
 }

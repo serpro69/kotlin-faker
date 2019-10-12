@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Lorem internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Lorem>(fakerService) {
     override val categoryName = CategoryName.LOREM
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun words() = resolve("words")
     fun supplemental() = resolve("supplemental")

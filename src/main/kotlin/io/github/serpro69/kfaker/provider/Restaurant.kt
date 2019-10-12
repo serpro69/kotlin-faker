@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Restaurant internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Restaurant>(fakerService) {
     override val categoryName = CategoryName.RESTAURANT
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun name() = resolve("name")
     fun type() = resolve("type")

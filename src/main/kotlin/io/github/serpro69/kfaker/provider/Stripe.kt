@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Stripe internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Stripe>(fakerService) {
     override val categoryName = CategoryName.STRIPE
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun validCards(type: String) = resolve("valid_cards", type)
     fun validTokens(type: String) = resolve("valid_tokens", type)

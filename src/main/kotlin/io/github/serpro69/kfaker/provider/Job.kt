@@ -9,7 +9,6 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Job internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Job>(fakerService) {
     override val categoryName = CategoryName.JOB
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun field() = resolve("field")
     fun seniority() = resolve("seniority")
