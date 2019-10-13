@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class SuperSmashBros internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SuperSmashBros>(fakerService) {
     override val categoryName = CategoryName.GAMES
+    override val uniqueDataProvider = UniqueDataProvider<SuperSmashBros>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun fighter() = resolve("super_smash_bros", "fighter")
     fun stage() = resolve("super_smash_bros", "stage")

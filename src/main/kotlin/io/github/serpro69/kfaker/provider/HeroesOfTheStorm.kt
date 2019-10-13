@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class HeroesOfTheStorm internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<HeroesOfTheStorm>(fakerService) {
     override val categoryName = CategoryName.HEROES_OF_THE_STORM
+    override val uniqueDataProvider = UniqueDataProvider<HeroesOfTheStorm>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun battlegrounds() = resolve("battlegrounds")
     fun classes() = resolve("classes")

@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
 import io.kotlintest.*
+import io.kotlintest.matchers.collections.*
 import io.kotlintest.specs.*
 import java.io.File
 import kotlin.reflect.*
@@ -9,7 +10,7 @@ import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : FreeSpec({
-    "f:GIVEN every public function in each provider is invoked without exceptions" - {
+    "GIVEN every public function in each provider is invoked without exceptions" - {
         val faker = Faker()
 
         // Get a list of all publicly visible providers
@@ -149,6 +150,61 @@ class FakerIT : FreeSpec({
                     locale = it
                 }
                 Faker(config)
+            }
+        }
+    }
+
+    "f:GIVEN unique generation for category is enabled" - {
+        val faker = Faker()
+        faker.unique.enable(faker::address)
+
+        "WHEN collection of values is generated" - {
+            val countries = (0..10).map { faker.address.country() }
+
+            "THEN collection should not contain duplicates" {
+                countries should beUnique()
+            }
+
+            "AND used values are cleared" - {
+                faker.unique.clear(faker::address)
+
+                val newCountries = (0..10).map { faker.address.country() }
+
+                "THEN new collection should not contain duplicates" {
+                    newCountries should beUnique()
+                }
+
+                "AND new collection should not equal old collection" {
+                    newCountries shouldNotBe countries
+                }
+            }
+        }
+
+        "WHEN unique generation for category is disabled" - {
+            faker.unique.disable(faker::address)
+
+            "AND collection of values is generated" - {
+                val countries = (0..30).map { faker.address.country() }
+
+                "THEN collection can have duplicates" {
+                    countries shouldNot beUnique()
+                }
+            }
+        }
+
+        "WHEN unique property prefixes the category function invocation" - {
+            faker.unique.disableAll() // TODO: 13.10.2019 test for this function
+
+            val countries = (0..10).map {
+                faker.address.unique.country()
+            }
+
+            "THEN collection should not contain duplicates" {
+                countries should beUnique()
+            }
+
+            "AND other functions of the same category should not be marked as unique" {
+                (0..10).map { faker.address.defaultCountry() }
             }
         }
     }

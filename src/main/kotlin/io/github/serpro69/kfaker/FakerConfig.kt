@@ -18,7 +18,7 @@ class FakerConfig private constructor(
     class Builder internal constructor() {
         var locale = "en"
         var random = Random()
-        var uniqueGeneratorRetryLimit = 25
+        var uniqueGeneratorRetryLimit = 50
 
         internal fun build() = FakerConfig(
             locale,

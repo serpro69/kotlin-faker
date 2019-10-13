@@ -37,5 +37,5 @@ appender("Async-Appender", AsyncAppender) {
     appenderRef("RollingFile-Appender")
 }
 
-root(INFO, ["Console-Appender"])
-logger("io.github.serpro69.kfaker", INFO, ["Console-Appender", "File-Appender", "Async-Appender"], false)
+root(DEBUG, ["Console-Appender"])
+logger("io.github.serpro69.kfaker", DEBUG, ["Console-Appender", "File-Appender", "Async-Appender"], false)

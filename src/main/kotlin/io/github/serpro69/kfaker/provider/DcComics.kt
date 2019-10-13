@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class DcComics internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<DcComics>(fakerService) {
     override val categoryName = CategoryName.DC_COMICS
+    override val uniqueDataProvider = UniqueDataProvider<DcComics>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun hero() = resolve("hero")
     fun heroine() = resolve("heroine")

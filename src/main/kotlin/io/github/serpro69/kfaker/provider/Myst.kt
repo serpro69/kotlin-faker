@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Myst internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Myst>(fakerService) {
     override val categoryName = CategoryName.GAMES
+    override val uniqueDataProvider = UniqueDataProvider<Myst>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun games() = resolve("myst", "games")
     fun creatures() = resolve("myst", "creatures")

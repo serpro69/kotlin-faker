@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Movie internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Movie>(fakerService) {
     override val categoryName = CategoryName.MOVIE
+    override val uniqueDataProvider = UniqueDataProvider<Movie>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun quote() = resolve("quote")
 }

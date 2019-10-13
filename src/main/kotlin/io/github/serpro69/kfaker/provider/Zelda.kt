@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Zelda internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Zelda>(fakerService) {
     override val categoryName = CategoryName.GAMES
+    override val uniqueDataProvider = UniqueDataProvider<Zelda>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun games() = resolve("zelda", "games")
     fun characters() = resolve("zelda", "characters")

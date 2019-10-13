@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class TheThickOfIt internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<TheThickOfIt>(fakerService) {
     override val categoryName = CategoryName.THE_THICK_OF_IT
+    override val uniqueDataProvider = UniqueDataProvider<TheThickOfIt>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun positions() = resolve("positions")

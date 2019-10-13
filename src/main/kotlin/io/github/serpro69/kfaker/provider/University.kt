@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class University internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<University>(fakerService) {
     override val categoryName = CategoryName.UNIVERSITY
+    override val uniqueDataProvider = UniqueDataProvider<University>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     // Prefix and suffix are needed because they are used as expressions, i.e. `#{University.prefix}`
 

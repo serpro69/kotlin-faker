@@ -9,7 +9,7 @@ import io.github.serpro69.kfaker.dictionary.*
  * All data providers should implement this class.
  */
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
-    private val fakerService: FakerService
+    internal val fakerService: FakerService
 ) : FakeDataProvider {
 
     /**
@@ -21,6 +21,10 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      * then the category name would be [CategoryName.ADDRESS]
      */
     internal abstract val categoryName: CategoryName
+
+    internal abstract val uniqueDataProvider: UniqueDataProvider<T>
+
+    abstract val unique: T
 
     /**
      * Higher-order function that resolves the [block] expression for this [categoryName].
@@ -80,14 +84,27 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
         thirdKey: String? = null,
         counter: Int = 0
     ): String {
-        val uniqueDataProvider = fakerService.faker.unique
+        val globalUniqueProvider = fakerService.faker.unique
+        val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
 
-        return if (!uniqueDataProvider.markedUnique.contains(this::class)) {
+        return if (uniqueDataProvider.markedUnique.contains(this)) {
+            when (val set = uniqueDataProvider.usedValues[key]) {
+                null -> {
+                    uniqueDataProvider.usedValues[key] = mutableSetOf(result)
+                    result
+                }
+                else -> {
+                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) throw Error("Retry limit of $counter exceeded")
+                    else if (!set.contains(result)) result.also {
+                        uniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
+                    }
+                    else returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey, counter + 1)
+                }
+            }
+        } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
             result
         } else {
-            val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
-
-            val usedValuesMap = requireNotNull(uniqueDataProvider.usedValues[this::class])
+            val usedValuesMap = requireNotNull(globalUniqueProvider.usedValues[this::class])
             when (val set = usedValuesMap[key]) {
                 null -> {
                     usedValuesMap[key] = mutableSetOf(result)

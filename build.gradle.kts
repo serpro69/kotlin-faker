@@ -7,6 +7,7 @@ plugins {
     `build-scan`
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
+    id("io.qameta.allure") version "2.8.1"
 }
 
 group = properties["GROUP"].toString()
@@ -15,7 +16,10 @@ version = properties["VERSION"].toString()
 repositories {
     jcenter()
     mavenCentral()
+    maven("https://dl.bintray.com/serpro69/maven")
 }
+
+val agent: Configuration by configurations.creating
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -31,7 +35,10 @@ dependencies {
     testImplementation("io.kotlintest:kotlintest-runner-junit5:3.2.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testImplementation("io.kotlintest:kotlintest-extensions-allure:3.2.1")
     runtime(kotlin("script-runtime"))
+    implementation("io.github.serpro69:aspe.Kt-core:0.1")
+    agent("org.aspectj:aspectjweaver:1.9.4")
 }
 
 buildScan {
@@ -64,6 +71,9 @@ tasks.withType<Wrapper> {
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform {}
+    doFirst {
+        jvmArgs("-javaagent:${agent.singleFile}")
+    }
 
     // show standard out and standard error of the test JVM(s) on the console
     testLogging.showStandardStreams = true
@@ -74,6 +84,8 @@ val test by tasks.getting(Test::class) {
     testLogging {
         showStandardStreams = true
         events(
+            TestLogEvent.STARTED,
+            TestLogEvent.PASSED,
             TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
             TestLogEvent.STANDARD_OUT
@@ -97,6 +109,16 @@ val test by tasks.getting(Test::class) {
 
         info.events = debug.events
         info.exceptionFormat = debug.exceptionFormat
+    }
+}
+
+allure {
+    version = "2.8.1"
+    aspectjweaver = false
+    autoconfigure = true
+    allureJavaVersion = "2.12.1"
+    useJUnit5 {
+        version = "2.12.1"
     }
 }
 

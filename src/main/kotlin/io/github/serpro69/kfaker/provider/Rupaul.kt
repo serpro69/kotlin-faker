@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Rupaul internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Rupaul>(fakerService) {
     override val categoryName = CategoryName.RUPAUL
+    override val uniqueDataProvider = UniqueDataProvider<Rupaul>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun queens() = resolve("queens")
     fun quotes() = resolve("quotes")

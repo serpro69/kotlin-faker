@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class DrWho internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<DrWho>(fakerService) {
     override val categoryName = CategoryName.DR_WHO
+    override val uniqueDataProvider = UniqueDataProvider<DrWho>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun character() = resolve("character")
     fun theDoctors() = resolve("the_doctors")

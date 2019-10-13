@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<WorldCup>(fakerService) {
     override val categoryName = CategoryName.WORLD_CUP
+    override val uniqueDataProvider = UniqueDataProvider<WorldCup>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun teams() = resolve("teams")
     fun stadiums() = resolve("stadiums")

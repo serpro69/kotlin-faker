@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Music internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Music>(fakerService) {
     override val categoryName = CategoryName.MUSIC
+    override val uniqueDataProvider = UniqueDataProvider<Music>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun instruments() = resolve("instruments")
     fun bands() = resolve("bands")

@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Shakespeare internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Shakespeare>(fakerService) {
     override val categoryName = CategoryName.SHAKESPEARE
+    override val uniqueDataProvider = UniqueDataProvider<Shakespeare>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun hamlet() = resolve("hamlet")
     fun asYouLikeIt() = resolve("as_you_like_it")

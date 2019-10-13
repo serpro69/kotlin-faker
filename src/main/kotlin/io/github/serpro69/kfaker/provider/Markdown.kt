@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Markdown internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Markdown>(fakerService) {
     override val categoryName = CategoryName.MARKDOWN
+    override val uniqueDataProvider = UniqueDataProvider<Markdown>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun headers() = resolve("headers")
     fun emphasis() = resolve("emphasis")

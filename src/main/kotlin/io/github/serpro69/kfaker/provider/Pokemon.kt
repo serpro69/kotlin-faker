@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Pokemon internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Pokemon>(fakerService) {
     override val categoryName = CategoryName.GAMES
+    override val uniqueDataProvider = UniqueDataProvider<Pokemon>()
+    override val unique by UniqueProviderDelegate(uniqueDataProvider)
 
     fun names() = resolve("pokemon", "names")
     fun locations() = resolve("pokemon", "locations")
