@@ -16,10 +16,7 @@ version = properties["VERSION"].toString()
 repositories {
     jcenter()
     mavenCentral()
-    maven("https://dl.bintray.com/serpro69/maven")
 }
-
-val agent: Configuration by configurations.creating
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
@@ -37,8 +34,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     testImplementation("io.kotlintest:kotlintest-extensions-allure:3.2.1")
     runtime(kotlin("script-runtime"))
-    implementation("io.github.serpro69:aspe.Kt-core:0.1")
-    agent("org.aspectj:aspectjweaver:1.9.4")
 }
 
 buildScan {
@@ -71,9 +66,6 @@ tasks.withType<Wrapper> {
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform {}
-    doFirst {
-        jvmArgs("-javaagent:${agent.singleFile}")
-    }
 
     // show standard out and standard error of the test JVM(s) on the console
     testLogging.showStandardStreams = true
