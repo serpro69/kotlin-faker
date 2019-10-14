@@ -154,12 +154,15 @@ class FakerIT : FreeSpec({
         }
     }
 
-    "f:GIVEN unique generation for category is enabled" - {
-        val faker = Faker()
+    "GIVEN unique generation for category is enabled" - {
+        val config = FakerConfig.builder().create {
+            uniqueGeneratorRetryLimit = 100
+        }
+        val faker = Faker(config)
         faker.unique.enable(faker::address)
 
         "WHEN collection of values is generated" - {
-            val countries = (0..10).map { faker.address.country() }
+            val countries = (0..20).map { faker.address.country() }
 
             "THEN collection should not contain duplicates" {
                 countries should beUnique()
@@ -168,7 +171,7 @@ class FakerIT : FreeSpec({
             "AND used values are cleared" - {
                 faker.unique.clear(faker::address)
 
-                val newCountries = (0..10).map { faker.address.country() }
+                val newCountries = (0..20).map { faker.address.country() }
 
                 "THEN new collection should not contain duplicates" {
                     newCountries should beUnique()
@@ -184,7 +187,7 @@ class FakerIT : FreeSpec({
             faker.unique.disable(faker::address)
 
             "AND collection of values is generated" - {
-                val countries = (0..30).map { faker.address.country() }
+                val countries = (0..50).map { faker.address.country() }
 
                 "THEN collection can have duplicates" {
                     countries shouldNot beUnique()
@@ -195,7 +198,7 @@ class FakerIT : FreeSpec({
         "WHEN unique property prefixes the category function invocation" - {
             faker.unique.disableAll() // TODO: 13.10.2019 test for this function
 
-            val countries = (0..10).map {
+            val countries = (0..20).map {
                 faker.address.unique.country()
             }
 
@@ -204,6 +207,8 @@ class FakerIT : FreeSpec({
             }
 
             "AND other functions of the same category should not be marked as unique" {
+                // This will produce an error if used with `unique` prefix
+                // because there is only one value in the dictionary
                 (0..10).map { faker.address.defaultCountry() }
             }
         }

@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider
 import kotlin.properties.*
 import kotlin.reflect.*
 import kotlin.reflect.full.*
+import kotlin.reflect.jvm.*
 
 interface UniqueProvider {
 
@@ -124,9 +125,14 @@ class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
             uniqueDataProvider.markedUnique.first { it::class == thisRef::class } as T
         } else {
             val cls = property.returnType.classifier as KClass<T>
+            val prop = cls.memberProperties.first { it.name == "uniqueDataProvider" }
             val newRef = requireNotNull(cls.primaryConstructor?.call(thisRef.fakerService))
-            uniqueDataProvider.markedUnique.add(newRef)
-            newRef
+            prop.javaField?.let {
+                it.isAccessible = true
+                it.set(newRef, uniqueDataProvider)
+                uniqueDataProvider.markedUnique.add(newRef)
+                newRef
+            } ?: throw NoSuchElementException("Unable to get java field for property $prop")
         }
     }
 }

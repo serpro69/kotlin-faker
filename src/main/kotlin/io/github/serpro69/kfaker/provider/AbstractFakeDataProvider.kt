@@ -45,8 +45,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      * ```
      */
     protected fun resolve(key: String): String {
-        val result = resolve { fakerService.resolve(it, key) }.invoke()
-        return returnOrResolveUnique(result, key)
+        return returnOrResolveUnique(key)
     }
 
     /**
@@ -59,8 +58,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      * ```
      */
     protected fun resolve(primaryKey: String, secondaryKey: String): String {
-        val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
-        return returnOrResolveUnique(result, primaryKey, secondaryKey)
+        return returnOrResolveUnique(primaryKey, secondaryKey)
     }
 
     /**
@@ -73,18 +71,25 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      * ```
      */
     protected fun resolve(primaryKey: String, secondaryKey: String, thirdKey: String): String {
-        val result = resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
-        return returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey)
+        return returnOrResolveUnique(primaryKey, secondaryKey, thirdKey)
     }
 
     private tailrec fun returnOrResolveUnique(
-        result: String,
         primaryKey: String,
         secondaryKey: String? = null,
         thirdKey: String? = null,
         counter: Int = 0
     ): String {
+        val result = if (secondaryKey != null && thirdKey != null) {
+            resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
+        } else if (secondaryKey != null) {
+            resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
+        } else {
+            resolve { fakerService.resolve(it, primaryKey) }.invoke()
+        }
+
         val globalUniqueProvider = fakerService.faker.unique
+
         val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
 
         return if (uniqueDataProvider.markedUnique.contains(this)) {
@@ -98,7 +103,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     else if (!set.contains(result)) result.also {
                         uniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
                     }
-                    else returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey, counter + 1)
+                    else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
@@ -115,7 +120,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     else if (!set.contains(result)) result.also {
                         usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
                     }
-                    else returnOrResolveUnique(result, primaryKey, secondaryKey, thirdKey, counter + 1)
+                    else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         }
