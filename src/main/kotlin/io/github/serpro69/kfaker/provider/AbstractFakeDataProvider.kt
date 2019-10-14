@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.*
 import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.exception.*
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s.
@@ -99,11 +100,11 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     result
                 }
                 else -> {
-                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) throw Error("Retry limit of $counter exceeded")
-                    else if (!set.contains(result)) result.also {
+                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) {
+                        throw RetryLimitException("Retry limit of $counter exceeded")
+                    } else if (!set.contains(result)) result.also {
                         uniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
-                    }
-                    else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
+                    } else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
@@ -116,11 +117,11 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     result
                 }
                 else -> {
-                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) throw Error("Retry limit of $counter exceeded")
-                    else if (!set.contains(result)) result.also {
+                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) {
+                        throw RetryLimitException("Retry limit of $counter exceeded")
+                    } else if (!set.contains(result)) result.also {
                         usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
-                    }
-                    else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
+                    } else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         }
