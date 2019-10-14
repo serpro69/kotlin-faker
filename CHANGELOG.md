@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3] - UNRELEASED
 ### Added
 - `FakerConfig` for configuration of `Faker` instance
+- [#7]Generation of unique values through `Faker` instance and separate providers
 
 ### Changed
 - Make `Faker` a class instead of object

@@ -16,6 +16,7 @@
   - [Configuring Faker](#configuring-faker)
     - [Default configuration](#default-configuration)
     - [Deterministic Random](#deterministic-random)
+    - [Generating unique values](#generating-unique-values)
     - [Localized dictionary](#localized-dictionary)
   - [Java interop](#java-interop)
 - [Data Providers](#data-providers)
@@ -116,20 +117,17 @@ name1 == name2 // => true
 ```
 
 #### Generating unique values
-Faker supports generation of unique values through it's data providers:
+Faker supports generation of unique values. There are two ways to generate unique values:  
+
+**Unique values for entire provider**
 ```kotlin
 val faker = Faker()
 faker.unique.enable(faker::address) // enable generation of unique values for address provider
 
-repeat(10) {
-    faker.address.country() // will generate unique country each time it's called
-}
+repeat(10) { faker.address.country() } // will generate unique country each time it's called
 ```
 
-If the retry count exceeds the configured value (defaults to `10`)
-then `RetryLimitException` will be thrown.
-
-To clear the record of unique values that were already returned:
+To clear the record of unique values that were already generated:
 ```kotlin
 faker.unique.clear(faker::address) // clears used values for address provider
 
@@ -143,12 +141,35 @@ faker.unique.clear(faker::address) // disables generation of unique values for a
 faker.unique.disableAll() // disables generation of unique values for all providers and clears all used values
 ```
 
-It is also possible to exclude some values from being generated:
+**Unique values for particular functions of a provider**
 ```kotlin
-faker.address.unique.exclude(::country, "USA")
+val faker = Faker()
+
+repeat(10) { faker.address.unique.country() } // will generate unique country each time `country()` is prefixed with `unique`
+
+repeat(10) { faker.address.city() } // this will not necessarily be unique (unless `faker.unique.enable(faker::address)` was called previously)
 ```
 
+To clear the record of unique values that were already generated:
+```kotlin
+faker.address.unique.clear("city") // clears used values for `faker.address.unique.city()` function
 
+faker.address.unique.clearAll() // clears used values for all functions of address provider
+```
+
+**Configuring retry limit**
+If the retry count of unique generator exceeds the configured value (defaults to `100`)
+then `RetryLimitException` will be thrown.  
+
+It is possible to re-configure the default value through `FakerConfig`:
+
+```kotlin
+val config = FakerConfig.builder().create {
+    uniqueGeneratorRetryLimit = 1000
+}
+
+val faker = Faker(config)
+```
 
 #### Localized dictionary
 `Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
