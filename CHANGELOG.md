@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.3] - UNRELEASED
+## [1.0] - UNRELEASED
 ### Added
 - `FakerConfig` for configuration of `Faker` instance
-- [#7]Generation of unique values through `Faker` instance and separate providers
+- [#7](https://github.com/serpro69/kotlin-faker/issues/7) Generation of unique values through `Faker` instance and separate providers
 
 ### Changed
-- Make `Faker` a class instead of object
+- Make `Faker` a class instead of singleton object
 
 ## [0.2] - 2019-09-30
 ### Added

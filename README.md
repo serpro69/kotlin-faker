@@ -21,6 +21,9 @@
   - [Java interop](#java-interop)
 - [Data Providers](#data-providers)
   - [Generation a random instance of any class](#generating-a-random-instance-of-any-class)
+- [Migrating to 1.0](#migrating-to-1.0)
+  - [For kotlin users](#for-kotlin-users)
+  - [For java users](#for-java-users)
 - [Contributing](#contributing)
 - [Thanks](#thanks)
 - [Licence](#licence)
@@ -476,10 +479,62 @@ There are the following rules when creating a random instance of a class:
 - The constructor with the least number of arguments is used
 - `kotlin.collection.*` and `kolin.Array` types in the constructor are not supported at the moment
 
+
+## Migrating to 1.0
+
+### For kotlin users
+Prior to version 1.0:
+- `Faker` was a singleton
+- random seed was provided through `Faker.Config` instance
+- locale was provided as parameter to `init()` function
+- provider functions were function literals. If `invoke()` was explicitly specified,
+then it will have to be removed (See below)
+
+```kotlin
+// prior to version 1.0
+Faker.Config.random = Random(42)
+Faker.init(locale)
+
+Faker.address.city()
+Faker.address.country.invoke()
+```
+
+```kotlin
+// since version 1.0
+// locale and random configuration is set with `FakerConfig` class (See Usage in this readme)
+val faker = Faker(fakerConfig)
+
+faker.address.city()
+faker.address.country()
+```
+
+### For java users
+Apart from changes to configuring locale and random seed
+and instantiating `Faker` through constructor instead of using a singleton instance (see kotlin examples),
+the main difference for java users is that provider functions are no longer function literals,
+therefore calls to `invoke()` operator will have to be removed and 
+getters replaced with function calls.
+```java
+// prior to version 1.0
+Faker.init(locale);
+Faker.getAddress().getCity().invoke();
+```
+
+```java
+// since version 1.0
+Faker faker = new Faker(fakerConfig);
+
+// note `city()` function is called instead of getter 
+// and no call to `invoke()` operator 
+faker.getAddress().city();
+```
+
+
 ## Contributing
 Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
 and/or open a [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
 if you would like to contribute.
+
 
 ## Thanks
 Many thanks to these awesome tools that help us in creating open-source software:  
