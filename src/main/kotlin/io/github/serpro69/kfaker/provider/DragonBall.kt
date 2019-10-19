@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class DragonBall internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<DragonBall>(fakerService) {
     override val categoryName = CategoryName.DRAGON_BALL
-    override val uniqueDataProvider = UniqueDataProvider<DragonBall>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<DragonBall>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
 }

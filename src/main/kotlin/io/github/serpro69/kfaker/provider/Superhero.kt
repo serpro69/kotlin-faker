@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Superhero internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Superhero>(fakerService) {
     override val categoryName = CategoryName.SUPERHERO
-    override val uniqueDataProvider = UniqueDataProvider<Superhero>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Superhero>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     // These functions are needed because the value for `name` property
     // is resolved with these properties through yml expression in the form of `#{Superhero.prefix}`

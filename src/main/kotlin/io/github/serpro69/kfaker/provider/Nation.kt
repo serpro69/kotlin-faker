@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Nation internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Nation>(fakerService) {
     override val categoryName = CategoryName.NATION
-    override val uniqueDataProvider = UniqueDataProvider<Nation>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Nation>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     // currently not supported due to logic for getting raw value for List<List<*>> types
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")

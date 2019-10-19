@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class SlackEmoji internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SlackEmoji>(fakerService) {
     override val categoryName = CategoryName.SLACK_EMOJI
-    override val uniqueDataProvider = UniqueDataProvider<SlackEmoji>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<SlackEmoji>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun people() = resolve("people")
     fun nature() = resolve("nature")

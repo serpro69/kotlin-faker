@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class LeagueOfLegends internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<LeagueOfLegends>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val uniqueDataProvider = UniqueDataProvider<LeagueOfLegends>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<LeagueOfLegends>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun champion() = resolve("league_of_legends", "champion")
     fun location() = resolve("league_of_legends", "location")

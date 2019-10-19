@@ -5,19 +5,19 @@ import kotlin.reflect.*
 import kotlin.reflect.full.*
 import kotlin.reflect.jvm.*
 
-interface UniqueProvider {
+abstract class UniqueDataProvider {
+    internal abstract val markedUnique: Set<*>
+    internal abstract val usedValues: Map<*, *>
 
-    fun disableAll()
-    fun clearAll()
-    fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>)
-    fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>)
-    fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>)
+    abstract fun disableAll()
+
+    abstract fun clearAll()
 }
 
 @Suppress("UNCHECKED_CAST", "unused")
-class GlobalUniqueDataProvider : UniqueProvider {
-    internal val markedUnique = mutableSetOf<KClass<out FakeDataProvider>>()
-    internal val usedValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
+class GlobalUniqueDataDataProvider : UniqueDataProvider() {
+    override val markedUnique = mutableSetOf<KClass<out FakeDataProvider>>()
+    override val usedValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
 
     override fun disableAll() {
         markedUnique.clear()
@@ -25,18 +25,20 @@ class GlobalUniqueDataProvider : UniqueProvider {
     }
 
     override fun clearAll() {
-        usedValues.clear()
+        usedValues.keys.forEach { k ->
+            usedValues[k] = hashMapOf()
+        }
     }
 
-    override fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>) {
+    fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>) {
         enable(providerProperty.returnType.classifier as KClass<T>)
     }
 
-    override fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
+    fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
         disable(providerProperty.returnType.classifier as KClass<T>)
     }
 
-    override fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
+    fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
         clear(providerProperty.returnType.classifier as KClass<T>)
     }
 
@@ -64,60 +66,27 @@ class GlobalUniqueDataProvider : UniqueProvider {
 }
 
 @Suppress("UNCHECKED_CAST", "unused")
-class UniqueDataProvider<T : FakeDataProvider> : UniqueProvider {
-
-    internal val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
-    internal val usedValues = hashMapOf<String, MutableSet<String>>()
+class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
+    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
+    override val usedValues = hashMapOf<String, MutableSet<String>>()
 
     override fun disableAll() {
-        markedUnique.clear()
-        usedValues.clear()
+        clearAll()
     }
 
     override fun clearAll() {
-        usedValues.clear()
+        usedValues.keys.forEach { k ->
+            usedValues[k] = mutableSetOf()
+        }
     }
 
-    override fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>) {
-        enable(providerProperty.invoke())
-    }
-
-    override fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
-        disable(providerProperty.invoke())
-    }
-
-    override fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
-        clear(providerProperty.invoke())
-    }
-
-    private fun <T : FakeDataProvider> enable(provider: T) {
-        TODO("not implemented")
-//        if (!markedUnique.contains(provider)) {
-//            markedUnique.add(provider).also {
-//                usedValues[provider::class] = hashMapOf()
-//            }
-//        }
-    }
-
-    private fun <T : FakeDataProvider> disable(provider: T) {
-        TODO("not implemented")
-//        if (markedUnique.contains(provider)) {
-//            markedUnique.remove(provider).also {
-//                usedValues.remove(provider::class)
-//            }
-//        }
-    }
-
-    private fun <T : FakeDataProvider> clear(provider: T) {
-        TODO("not implemented")
-//        if (markedUnique.contains(provider)) {
-//            usedValues[provider::class] = hashMapOf()
-//        }
+    fun clear(name: String) {
+        usedValues[name] = mutableSetOf()
     }
 }
 
 class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
-    private val uniqueDataProvider: UniqueDataProvider<T>
+    private val uniqueDataProvider: LocalUniqueDataProvider<T>
 ) : ReadOnlyProperty<T, T> {
 
     override fun getValue(thisRef: T, property: KProperty<*>): T {
@@ -125,7 +94,7 @@ class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
             uniqueDataProvider.markedUnique.first { it::class == thisRef::class } as T
         } else {
             val cls = property.returnType.classifier as KClass<T>
-            val prop = cls.memberProperties.first { it.name == "uniqueDataProvider" }
+            val prop = cls.memberProperties.first { it.name == "localUniqueDataProvider" }
             val newRef = requireNotNull(cls.primaryConstructor?.call(thisRef.fakerService))
             prop.javaField?.let {
                 it.isAccessible = true

@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class CultureSeries internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<CultureSeries>(fakerService) {
     override val categoryName = CategoryName.CULTURE_SERIES
-    override val uniqueDataProvider = UniqueDataProvider<CultureSeries>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<CultureSeries>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun books() = resolve("books")
     fun cultureShips() = resolve("culture_ships")

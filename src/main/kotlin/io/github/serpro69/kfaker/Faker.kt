@@ -12,7 +12,7 @@ import io.github.serpro69.kfaker.provider.*
 class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = FakerConfig.builder().create { }) {
     private val fakerService: FakerService = FakerService(this, fakerConfig.locale, fakerConfig.random)
 
-    val unique = GlobalUniqueDataProvider()
+    val unique = GlobalUniqueDataDataProvider()
 
     val randomProvider: RandomProvider = RandomProvider(fakerConfig.random)
 

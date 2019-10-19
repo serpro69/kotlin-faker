@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class GratefulDead internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<GratefulDead>(fakerService) {
     override val categoryName = CategoryName.GRATEFUL_DEAD
-    override val uniqueDataProvider = UniqueDataProvider<GratefulDead>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<GratefulDead>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun players() = resolve("players")
     fun songs() = resolve("songs")

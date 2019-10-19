@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class SonicTheHedgehog internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SonicTheHedgehog>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val uniqueDataProvider = UniqueDataProvider<SonicTheHedgehog>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<SonicTheHedgehog>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun zone() = resolve("sonic_the_hedgehog", "zone")
     fun character() = resolve("sonic_the_hedgehog", "character")

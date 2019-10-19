@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class GameOfThrones internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<GameOfThrones>(fakerService) {
     override val categoryName = CategoryName.GAME_OF_THRONES
-    override val uniqueDataProvider = UniqueDataProvider<GameOfThrones>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<GameOfThrones>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun houses() = resolve("houses")

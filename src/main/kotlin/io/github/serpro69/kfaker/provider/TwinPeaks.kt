@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class TwinPeaks internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<TwinPeaks>(fakerService) {
     override val categoryName = CategoryName.TWIN_PEAKS
-    override val uniqueDataProvider = UniqueDataProvider<TwinPeaks>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<TwinPeaks>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun locations() = resolve("locations")

@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Invoice internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Invoice>(fakerService) {
     override val categoryName = CategoryName.INVOICE
-    override val uniqueDataProvider = UniqueDataProvider<Invoice>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Invoice>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     fun checkDigitMethod() = resolve("reference", "check_digit_method")

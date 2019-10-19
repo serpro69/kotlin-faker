@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Demographic internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Demographic>(fakerService) {
     override val categoryName = CategoryName.DEMOGRAPHIC
-    override val uniqueDataProvider = UniqueDataProvider<Demographic>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Demographic>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun race() = resolve("race")
     fun sex() = resolve("sex")

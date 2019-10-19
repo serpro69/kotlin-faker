@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class HalfLife internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<HalfLife>(fakerService) {
     override val categoryName = CategoryName.GAMES
-    override val uniqueDataProvider = UniqueDataProvider<HalfLife>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<HalfLife>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun character() = resolve("half_life", "character")
     fun enemy() = resolve("half_life", "enemy")

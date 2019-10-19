@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class BossaNova internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<BossaNova>(fakerService) {
     override val categoryName = CategoryName.BOSSA_NOVA
-    override val uniqueDataProvider = UniqueDataProvider<BossaNova>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<BossaNova>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun artists() = resolve("artists")
     fun songs() = resolve("songs")

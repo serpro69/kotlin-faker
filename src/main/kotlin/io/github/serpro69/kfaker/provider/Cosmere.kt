@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Cosmere internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Cosmere>(fakerService) {
     override val categoryName = CategoryName.COSMERE
-    override val uniqueDataProvider = UniqueDataProvider<Cosmere>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Cosmere>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun aons() = resolve("aons")
     fun shardWorlds() = resolve("shard_worlds")

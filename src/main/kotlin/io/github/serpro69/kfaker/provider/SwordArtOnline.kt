@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class SwordArtOnline internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<SwordArtOnline>(fakerService) {
     override val categoryName = CategoryName.SWORD_ART_ONLINE
-    override val uniqueDataProvider = UniqueDataProvider<SwordArtOnline>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<SwordArtOnline>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun realName() = resolve("real_name")
     fun gameName() = resolve("game_name")

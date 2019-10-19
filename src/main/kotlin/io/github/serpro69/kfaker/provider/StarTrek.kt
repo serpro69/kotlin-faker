@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class StarTrek internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<StarTrek>(fakerService) {
     override val categoryName = CategoryName.STAR_TREK
-    override val uniqueDataProvider = UniqueDataProvider<StarTrek>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<StarTrek>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun character() = resolve("character")
     fun location() = resolve("location")

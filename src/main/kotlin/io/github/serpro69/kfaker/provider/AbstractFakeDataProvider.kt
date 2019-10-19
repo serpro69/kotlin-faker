@@ -8,6 +8,8 @@ import io.github.serpro69.kfaker.exception.*
  * Abstract class for all concrete [FakeDataProvider]'s.
  *
  * All data providers should implement this class.
+ *
+ * @param T type of data provider (i.e. [Address])
  */
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
     internal val fakerService: FakerService
@@ -23,9 +25,25 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      */
     internal abstract val categoryName: CategoryName
 
-    internal abstract val uniqueDataProvider: UniqueDataProvider<T>
+    /**
+     * A [LocalUniqueDataProvider] instance that is used with this [unique] provider.
+     */
+    internal abstract val localUniqueDataProvider: LocalUniqueDataProvider<T>
 
+    /**
+     * An instance of [T] for generating unique values
+     */
     abstract val unique: T
+
+    /**
+     * Clears used unique values for the function [name] of this provider.
+     */
+    fun clear(name: String) = localUniqueDataProvider.clear(name)
+
+    /**
+     * Clears all used unique values of this provider.
+     */
+    fun clearAll() = localUniqueDataProvider.clearAll()
 
     /**
      * Higher-order function that resolves the [block] expression for this [categoryName].
@@ -75,6 +93,15 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
         return returnOrResolveUnique(primaryKey, secondaryKey, thirdKey)
     }
 
+    /**
+     * Returns the result of this [resolve] function.
+     *
+     * IF [Faker.unique] is enabled for this [T] provider type
+     * OR this [unique] is used
+     * THEN will attempt to return a unique value.
+     *
+     * @throws RetryLimitException if exceeds number of retries to generate a unique value.
+     */
     private tailrec fun returnOrResolveUnique(
         primaryKey: String,
         secondaryKey: String? = null,
@@ -90,24 +117,27 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
         }
 
         val globalUniqueProvider = fakerService.faker.unique
+        val fakerConfig = fakerService.faker.fakerConfig
 
         val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
 
-        return if (uniqueDataProvider.markedUnique.contains(this)) {
-            when (val set = uniqueDataProvider.usedValues[key]) {
+        return if (localUniqueDataProvider.markedUnique.contains(this)) {
+            // if function is prefixed with `unique` -> try to resolve a unique value
+            when (val set = localUniqueDataProvider.usedValues[key]) {
                 null -> {
-                    uniqueDataProvider.usedValues[key] = mutableSetOf(result)
+                    localUniqueDataProvider.usedValues[key] = mutableSetOf(result)
                     result
                 }
                 else -> {
-                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) {
+                    if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                         throw RetryLimitException("Retry limit of $counter exceeded")
                     } else if (!set.contains(result)) result.also {
-                        uniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
+                        localUniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
                     } else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
                 }
             }
         } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
+            // if global unique provider is not enabled for this category -> return result
             result
         } else {
             val usedValuesMap = requireNotNull(globalUniqueProvider.usedValues[this::class])
@@ -117,7 +147,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     result
                 }
                 else -> {
-                    if (counter >= fakerService.faker.fakerConfig.uniqueGeneratorRetryLimit) {
+                    if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                         throw RetryLimitException("Retry limit of $counter exceeded")
                     } else if (!set.contains(result)) result.also {
                         usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }

@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Hipster internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Hipster>(fakerService) {
     override val categoryName = CategoryName.HIPSTER
-    override val uniqueDataProvider = UniqueDataProvider<Hipster>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Hipster>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun words() = resolve("words")
 }

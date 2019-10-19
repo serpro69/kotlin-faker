@@ -10,8 +10,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Bank>(fakerService) {
     override val categoryName = CategoryName.BANK
-    override val uniqueDataProvider = UniqueDataProvider<Bank>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Bank>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun name() = resolve("name")
     fun swiftBic() = resolve("swift_bic")

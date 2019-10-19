@@ -9,8 +9,8 @@ import io.github.serpro69.kfaker.dictionary.*
 @Suppress("unused")
 class Cat internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Cat>(fakerService) {
     override val categoryName = CategoryName.CREATURE
-    override val uniqueDataProvider = UniqueDataProvider<Cat>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Cat>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun name() = resolve("cat", "name")
     fun breed() = resolve("cat", "breed")

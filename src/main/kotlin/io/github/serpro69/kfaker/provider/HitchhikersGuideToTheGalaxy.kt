@@ -11,8 +11,8 @@ class HitchhikersGuideToTheGalaxy internal constructor(
     fakerService: FakerService
 ) : AbstractFakeDataProvider<HitchhikersGuideToTheGalaxy>(fakerService) {
     override val categoryName = CategoryName.HITCHHIKERS_GUIDE_TO_THE_GALAXY
-    override val uniqueDataProvider = UniqueDataProvider<HitchhikersGuideToTheGalaxy>()
-    override val unique by UniqueProviderDelegate(uniqueDataProvider)
+    override val localUniqueDataProvider = LocalUniqueDataProvider<HitchhikersGuideToTheGalaxy>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
     fun locations() = resolve("locations")
