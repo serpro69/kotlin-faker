@@ -76,11 +76,10 @@ val test by tasks.getting(Test::class) {
     testLogging {
         showStandardStreams = true
         events(
-            TestLogEvent.STARTED,
-            TestLogEvent.PASSED,
             TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
-            TestLogEvent.STANDARD_OUT
+            TestLogEvent.STANDARD_OUT,
+            TestLogEvent.STANDARD_ERROR
         )
         exceptionFormat = TestExceptionFormat.FULL
         showExceptions = true
@@ -89,8 +88,6 @@ val test by tasks.getting(Test::class) {
 
         debug {
             events(
-                TestLogEvent.STARTED,
-                TestLogEvent.PASSED,
                 TestLogEvent.FAILED,
                 TestLogEvent.SKIPPED,
                 TestLogEvent.STANDARD_OUT,

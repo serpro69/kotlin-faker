@@ -94,6 +94,7 @@ faker.address.city() // => New York
 If no `FakerConfig` instance is passed to `Faker` constructor then default configuration will be used:
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
+- `uniqueGeneratorRetryLimit` is set to `100`
 
 #### Deterministic Random
 Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to 
@@ -136,7 +137,7 @@ faker.unique.clearAll() // clears used values for all providers
 
 To disable generation of unique values:
 ```kotlin
-faker.unique.clear(faker::address) // disables generation of unique values for address provider and clears all used values
+faker.unique.disable(faker::address) // disables generation of unique values for address provider and clears all used values
 
 faker.unique.disableAll() // disables generation of unique values for all providers and clears all used values
 ```

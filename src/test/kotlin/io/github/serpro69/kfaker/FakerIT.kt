@@ -59,14 +59,6 @@ class FakerIT : FreeSpec({
                         "THEN resolved value should not contain duplicates" {
                             val values = value.split(" ")
 
-                            fun List<String>.odds() = this.mapIndexedNotNull { index, s ->
-                                if (index % 2 == 0) s else null
-                            }
-
-                            fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
-                                if (index % 2 != 0) s else null
-                            }
-
                             // Accounting for some exceptional cases where values are repeated
                             // in resolved expression
                             if (
@@ -154,14 +146,17 @@ class FakerIT : FreeSpec({
         }
     }
 
-    "GIVEN unique generation for category is enabled" - {
+    "GIVEN unique generation for category" - {
         val config = FakerConfig.builder().create {
             uniqueGeneratorRetryLimit = 100
         }
-        val faker = Faker(config)
-        faker.unique.enable(faker::address)
 
         "WHEN collection of values is generated" - {
+            val faker = Faker(config)
+
+            faker.unique.enable(faker::address)
+            faker.unique.enable(faker::ancient)
+
             val countries = (0..20).map { faker.address.country() }
 
             "THEN collection should not contain duplicates" {
@@ -177,17 +172,32 @@ class FakerIT : FreeSpec({
                     newCountries should beUnique()
                 }
 
-                "AND new collection should not equal old collection" {
+                "THEN new collection should not equal old collection" {
                     newCountries shouldNotBe countries
                 }
             }
         }
 
+        "WHEN values are generated for another category that is not marked for unique generation" - {
+            val faker = Faker(config)
+            faker.unique.enable(faker::address)
+
+            val animalNames = (0..100).map { faker.animal.name() }
+
+            "THEN collection can have duplicates" {
+                animalNames shouldNot beUnique()
+            }
+        }
+
         "WHEN unique generation for category is disabled" - {
+            val faker = Faker(config)
+            faker.unique.enable(faker::address)
+            (0..20).map { faker.address.country() }
+
             faker.unique.disable(faker::address)
 
             "AND collection of values is generated" - {
-                val countries = (0..50).map { faker.address.country() }
+                val countries = (0..100).map { faker.address.country() }
 
                 "THEN collection can have duplicates" {
                     countries shouldNot beUnique()
@@ -195,9 +205,70 @@ class FakerIT : FreeSpec({
             }
         }
 
-        "WHEN unique property prefixes the category function invocation" - {
-            faker.unique.disableAll() // TODO: 13.10.2019 test for this function
+        "WHEN unique generation is disabled for all categories" - {
+            val faker = Faker(config)
+            faker.unique.enable(faker::address)
+            faker.unique.enable(faker::ancient)
 
+            faker.unique.disableAll()
+
+            "AND collections of values are generated" - {
+                val countries = (0..100).map { faker.address.country() }
+                val gods = (0..100).map { faker.ancient.god() }
+
+                "THEN collection can have duplicates" {
+                    assertSoftly {
+                        countries shouldNot beUnique()
+                        gods shouldNot beUnique()
+                    }
+                }
+            }
+
+            "AND unique generation for a category is re-enabled" - {
+                faker.unique.enable(faker::address)
+
+                "AND collection of values is generated" - {
+                    val countries = (0..20).map { faker.address.country() }
+
+                    "THEN collection should not contain duplicates" {
+                        countries should beUnique()
+                    }
+                }
+            }
+        }
+
+        "WHEN unique generation is cleared for all categories" - {
+            val faker = Faker(config)
+            faker.unique.enable(faker::address)
+            faker.unique.enable(faker::ancient)
+
+            // Generate some values first
+            (0..20).map { faker.address.country() }
+            (0..20).map { faker.ancient.hero() }
+
+            faker.unique.clearAll()
+
+            "AND collections of values are generated" - {
+                val countries = (0..20).map { faker.address.country() }
+                val heroes = (0..20).map { faker.ancient.hero() }
+
+                "THEN collections should be unique" {
+                    assertSoftly {
+                        countries should beUnique()
+                        heroes should beUnique()
+                    }
+                }
+            }
+        }
+    }
+
+    "GIVEN local unique generation" - {
+        val config = FakerConfig.builder().create {
+            uniqueGeneratorRetryLimit = 100
+        }
+        val faker = Faker(config)
+
+        "WHEN unique property prefixes the category function invocation" - {
             val countries = (0..20).map {
                 faker.address.unique.country()
             }
@@ -206,11 +277,48 @@ class FakerIT : FreeSpec({
                 countries should beUnique()
             }
 
-            "AND other functions of the same category should not be marked as unique" {
+            "THEN other functions of the same category should not be marked as unique" {
                 // This will produce an error if used with `unique` prefix
                 // because there is only one value in the dictionary
                 (0..10).map { faker.address.defaultCountry() }
             }
+
+            "AND values are cleared for the function name" - {
+                faker.address.unique.clear("country")
+
+                val newCountries = (0..20).map {
+                    faker.address.unique.country()
+                }
+
+                "THEN collection should not contain duplicates" {
+                    newCountries should beUnique()
+                }
+            }
+
+            "AND values are cleared for all functions" - {
+                repeat(20) { faker.address.unique.country() }
+                repeat(20) { faker.address.unique.state() }
+
+                faker.address.unique.clearAll()
+
+                "THEN re-generated collections should be unique" {
+                    val newCountries = (0..20).map { faker.address.unique.country() }
+                    val states = (0..20).map { faker.address.unique.state() }
+
+                    assertSoftly {
+                        newCountries should beUnique()
+                        states should beUnique()
+                    }
+                }
+            }
         }
     }
 })
+
+private fun List<String>.odds() = this.mapIndexedNotNull { index, s ->
+    if (index % 2 == 0) s else null
+}
+
+private fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
+    if (index % 2 != 0) s else null
+}
