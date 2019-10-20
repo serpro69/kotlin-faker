@@ -6,35 +6,35 @@ import io.kotlintest.specs.*
 import java.util.*
 
 @Suppress("unused")
-class RandomProviderTest : FreeSpec({
+class RandomProviderTest : DescribeSpec({
     val randomProvider = RandomProvider(Random())
 
-    "GIVEN a TestClass with an empty constructor" - {
+    describe("a TestClass with an empty constructor") {
         class TestClass
 
-        "WHEN creating a random instance of the class" - {
+        context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            "THEN it should be instance of TestClass" {
+            it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
             }
         }
     }
 
-    "GIVEN a TestClass with non-empty constructor" - {
+    describe("a TestClass with non-empty constructor") {
         class Foo
         class TestClass(val foo: Foo)
 
-        "WHEN creating a random instance of the class" - {
+        context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            "THEN it should be instance of TestClass" {
+            it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
             }
         }
     }
 
-    "GIVEN a TestClass with non-empty constructor with primitive type parameters" - {
+    describe("a TestClass with non-empty constructor with primitive type parameters") {
         class TestClass(
             val double: Double,
             val float: Float,
@@ -48,16 +48,16 @@ class RandomProviderTest : FreeSpec({
 //            val array: Array<String> // TODO: 12.06.19
         )
 
-        "WHEN creating a random instance of the class" - {
+        context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            "THEN it should be instance of TestClass" {
+            it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
             }
         }
     }
 
-    "GIVEN a TestClass with non-empty constructor with primitive type and custom-type parameters" - {
+    describe("a TestClass with non-empty constructor with primitive type and custom-type parameters") {
         class Foo(val string: String)
 
         class TestClass(
@@ -73,33 +73,33 @@ class RandomProviderTest : FreeSpec({
             val boolean: Boolean
         )
 
-        "WHEN creating a random instance of the class" - {
+        context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            "THEN it should be instance of TestClass" {
+            it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
             }
         }
     }
 
-    "GIVEN a TestClass with non-empty constructor with nullable type parameters" - {
+    describe("a TestClass with non-empty constructor with nullable type parameters") {
         class Foo(val string: String?)
         class TestClass(val foo: Foo?)
 
-        "WHEN creating a random instance of the class" - {
+        context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            "THEN it should be instance of TestClass" {
+            it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
             }
         }
     }
 
-    "GIVEN a TestClass with private constructor" - {
+    describe("a TestClass with private constructor") {
         class TestClass private constructor()
 
-        "WHEN creating a random instance of the class" - {
-            "THEN exception is thrown" {
+        context("creating a random instance of the class") {
+            it("exception is thrown") {
                 val exception = io.kotlintest.shouldThrow<NoSuchElementException> {
                     randomProvider.randomClassInstance<TestClass>()
                 }

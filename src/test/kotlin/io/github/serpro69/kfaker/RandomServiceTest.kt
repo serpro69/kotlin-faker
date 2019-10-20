@@ -6,51 +6,51 @@ import io.kotlintest.matchers.string.*
 import io.kotlintest.specs.*
 import java.util.*
 
-internal class RandomServiceTest : FreeSpec({
-    "GIVEN RandomService instance" - {
+internal class RandomServiceTest : DescribeSpec({
+    describe("RandomService instance") {
         val randomService = RandomService(Random())
 
-        "WHEN calling nextInt(min, max)" - {
+        context("calling nextInt(min, max)") {
             val values = List(100) { randomService.nextInt(6..8) }
 
-            "THEN return value should be within specified range" {
+            it("return value should be within specified range") {
                 values.all { it in 6..8 } shouldBe true
             }
         }
 
-        "WHEN calling nextInt(intRange)" - {
+        context("calling nextInt(intRange)") {
             val values = List(100) { randomService.nextInt(3..9) }
 
-            "THEN return value should be within specified range" {
+            it("return value should be within specified range") {
                 values.all { it in 3..9 } shouldBe true
             }
         }
 
-        "WHEN calling randomValue<T>(list)" - {
-            "AND list is not empty" - {
+        context("calling randomValue<T>(list)") {
+            context("list is not empty") {
                 val values = List(100) { randomService.nextInt(3..9) }
                 val value = randomService.randomValue(values)
 
-                "THEN return value should be in the list" {
+                it("return value should be in the list") {
                     values shouldContain value
                 }
             }
 
-            "AND list is empty" - {
+            context("list is empty") {
                 val values = listOf<String>()
 
-                "THEN exception is thrown" {
+                it("exception is thrown") {
                     shouldThrow<IllegalArgumentException> {
                         randomService.randomValue(values)
                     }
                 }
             }
 
-            "AND list contains nulls" - {
+            context("list contains nulls") {
                 val values = listOf(1, 2, 3, null).filter { it == null }
                 val value = randomService.randomValue(values)
 
-                "THEN return value should be in the list" {
+                it("return value should be in the list") {
                     assertSoftly {
                         values shouldContain value
                         value shouldBe null
@@ -59,18 +59,18 @@ internal class RandomServiceTest : FreeSpec({
             }
         }
 
-        "WHEN calling nextChar()" - {
+        context("calling nextChar()") {
             val source = "qwertyuiopasdfghjklzxcvbnm"
 
-            "AND upperCase is true" - {
-                "THEN random upper-case letter is generated" {
+            context("upperCase is true") {
+                it("random upper-case letter is generated") {
                     val letter = randomService.nextLetter(true).toString()
                     source.toUpperCase() shouldContain letter
                 }
             }
 
-            "AND upperCase is false" - {
-                "THEN random lower-case letter is generated" {
+            context("upperCase is false") {
+                it("random lower-case letter is generated") {
                     val letter = randomService.nextLetter(false).toString()
                     source shouldContain letter
                 }

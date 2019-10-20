@@ -4,12 +4,12 @@ import io.kotlintest.*
 import io.kotlintest.specs.*
 import java.util.*
 
-class FakerConfigTest : FreeSpec() {
+class FakerConfigTest : DescribeSpec() {
 
     override fun isolationMode() = IsolationMode.InstancePerLeaf
 
     init {
-        "GIVEN random is set through FakerConfig" - {
+        describe("random is set through FakerConfig") {
             val fakerConfig = FakerConfig.builder().create {
                 random = Random(42)
             }
@@ -19,13 +19,13 @@ class FakerConfigTest : FreeSpec() {
             val city1 = faker.address.city()
             val name1 = faker.name.name()
 
-            "WHEN random is seeded with the same value" - {
+            context("random is seeded with the same value") {
                 val otherFakerConfig = FakerConfig.builder().create {
                     random = Random(42)
                 }
                 val otherFaker = Faker(otherFakerConfig)
 
-                "THEN the output of repeated function calls should be the same" {
+                it("the output of repeated function calls should be the same") {
                     val city2 = otherFaker.address.city()
                     val name2 = otherFaker.name.name()
 
@@ -36,12 +36,12 @@ class FakerConfigTest : FreeSpec() {
                 }
             }
 
-/*            "WHEN Faker is re-initialized without setting Faker.Config.random" - {
+/*            context("Faker is re-initialized without setting Faker.Config.random") {
                 Faker.init()
 
                 val rand2 = Faker.Config.random
 
-                "THEN the output of repeated function calls should be different" {
+                it("the output of repeated function calls should be different") {
                     val city2 = Faker.address.city()
                     val name2 = Faker.name.name()
 

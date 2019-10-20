@@ -9,8 +9,8 @@ import kotlin.reflect.*
 import kotlin.reflect.full.*
 
 @Suppress("UNCHECKED_CAST")
-class FakerIT : FreeSpec({
-    "GIVEN every public function in each provider is invoked without exceptions" - {
+class FakerIT : DescribeSpec({
+    describe("every public function in each provider is invoked without exceptions") {
         val faker = Faker()
 
         // Get a list of all publicly visible providers
@@ -28,7 +28,7 @@ class FakerIT : FreeSpec({
         assertSoftly {
             providerFunctions.forEach { (functions, provider) ->
                 functions.forEach {
-                    "WHEN result value for ${provider.name + it.name} is resolved correctly" - {
+                    context("result value for ${provider.name + it.name} is resolved correctly") {
                         val regex = Regex("""#\{.*}|#++""")
 
                         val value = when (it.parameters.size) {
@@ -38,7 +38,7 @@ class FakerIT : FreeSpec({
                             else -> throw IllegalArgumentException("")
                         }
 
-                        "THEN resolved value should not contain yaml expression" {
+                        it("resolved value should not contain yaml expression") {
                             if (
                                 !value.contains("#chuck and #norris")
                                 && (provider.name != "invoice" && it.name != "pattern")
@@ -50,13 +50,13 @@ class FakerIT : FreeSpec({
                             }
                         }
 
-                        "THEN resolved value should not be empty string" {
+                        it("resolved value should not be empty string") {
                             if (value == "") {
                                 throw AssertionError("Value for '${provider.name + it.name}' should not be empty string")
                             }
                         }
 
-                        "THEN resolved value should not contain duplicates" {
+                        it("resolved value should not contain duplicates") {
                             val values = value.split(" ")
 
                             // Accounting for some exceptional cases where values are repeated
@@ -85,19 +85,19 @@ class FakerIT : FreeSpec({
         }
     }
 
-    "GIVEN Faker instance is initialized with default locale" - {
+    describe("Faker instance is initialized with default locale") {
         val faker = Faker()
 
         val defaultCountryUS = faker.address.defaultCountry()
         val peruOne = faker.address.countryByCode("PE")
 
-        "WHEN it is re-initialized with another locale value" - {
+        context("it is re-initialized with another locale value") {
             val config = FakerConfig.builder().create {
                 locale = "nb-NO"
             }
             val otherFaker = Faker(config)
 
-            "THEN matching keys should be overwritten in the re-initialized dictionary" {
+            it("matching keys should be overwritten in the re-initialized dictionary") {
                 val defaultCountryNO = otherFaker.address.defaultCountry()
 
                 assertSoftly {
@@ -106,16 +106,16 @@ class FakerIT : FreeSpec({
                 }
             }
 
-            "THEN non-matching default keys should be present in the re-initialized dictionary" {
+            it("non-matching default keys should be present in the re-initialized dictionary") {
                 val peruTwo = otherFaker.address.countryByCode("PE")
                 peruOne shouldBe peruTwo
             }
         }
 
-/*        "WHEN it is again re-initialized with default locale" - {
+/*        context("it is again re-initialized with default locale") {
             Faker.init()
 
-            "THEN matching keys should be overwritten back to defaults" {
+            it("matching keys should be overwritten back to defaults") {
                 val defaultCountry = Faker.address.defaultCountry()
                 val peruThree = Faker.address.countryByCode("PE")
 
@@ -127,7 +127,7 @@ class FakerIT : FreeSpec({
         }*/
     }
 
-    "GIVEN Faker instance is initialized with custom locale" - {
+    describe("Faker instance is initialized with custom locale") {
         val localeDir = requireNotNull(this::class.java.classLoader.getResource("locales/"))
 
         val locales = File(localeDir.toURI()).listFiles()?.mapNotNull {
@@ -136,7 +136,7 @@ class FakerIT : FreeSpec({
             } else null
         }
 
-        "THEN Faker should be initialized without exceptions" {
+        it("Faker should be initialized without exceptions") {
             locales?.forEach {
                 val config = FakerConfig.builder().create {
                     locale = it
@@ -146,12 +146,12 @@ class FakerIT : FreeSpec({
         }
     }
 
-    "GIVEN unique generation for category" - {
+    describe("unique generation for category") {
         val config = FakerConfig.builder().create {
             uniqueGeneratorRetryLimit = 100
         }
 
-        "WHEN collection of values is generated" - {
+        context("collection of values is generated") {
             val faker = Faker(config)
 
             faker.unique.enable(faker::address)
@@ -159,64 +159,64 @@ class FakerIT : FreeSpec({
 
             val countries = (0..20).map { faker.address.country() }
 
-            "THEN collection should not contain duplicates" {
+            it("collection should not contain duplicates") {
                 countries should beUnique()
             }
 
-            "AND used values are cleared" - {
+            context("used values are cleared") {
                 faker.unique.clear(faker::address)
 
                 val newCountries = (0..20).map { faker.address.country() }
 
-                "THEN new collection should not contain duplicates" {
+                it("new collection should not contain duplicates") {
                     newCountries should beUnique()
                 }
 
-                "THEN new collection should not equal old collection" {
+                it("new collection should not equal old collection") {
                     newCountries shouldNotBe countries
                 }
             }
         }
 
-        "WHEN values are generated for another category that is not marked for unique generation" - {
+        context("values are generated for another category that is not marked for unique generation") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
 
             val animalNames = (0..100).map { faker.animal.name() }
 
-            "THEN collection can have duplicates" {
+            it("collection can have duplicates") {
                 animalNames shouldNot beUnique()
             }
         }
 
-        "WHEN unique generation for category is disabled" - {
+        context("unique generation for category is disabled") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
             (0..20).map { faker.address.country() }
 
             faker.unique.disable(faker::address)
 
-            "AND collection of values is generated" - {
+            context("collection of values is generated") {
                 val countries = (0..100).map { faker.address.country() }
 
-                "THEN collection can have duplicates" {
+                it("collection can have duplicates") {
                     countries shouldNot beUnique()
                 }
             }
         }
 
-        "WHEN unique generation is disabled for all categories" - {
+        context("unique generation is disabled for all categories") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
             faker.unique.enable(faker::ancient)
 
             faker.unique.disableAll()
 
-            "AND collections of values are generated" - {
+            context("collections of values are generated") {
                 val countries = (0..100).map { faker.address.country() }
                 val gods = (0..100).map { faker.ancient.god() }
 
-                "THEN collection can have duplicates" {
+                it("collection can have duplicates") {
                     assertSoftly {
                         countries shouldNot beUnique()
                         gods shouldNot beUnique()
@@ -224,20 +224,20 @@ class FakerIT : FreeSpec({
                 }
             }
 
-            "AND unique generation for a category is re-enabled" - {
+            context("unique generation for a category is re-enabled") {
                 faker.unique.enable(faker::address)
 
-                "AND collection of values is generated" - {
+                context("collection of values is generated") {
                     val countries = (0..20).map { faker.address.country() }
 
-                    "THEN collection should not contain duplicates" {
+                    it("collection should not contain duplicates") {
                         countries should beUnique()
                     }
                 }
             }
         }
 
-        "WHEN unique generation is cleared for all categories" - {
+        context("unique generation is cleared for all categories") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
             faker.unique.enable(faker::ancient)
@@ -248,11 +248,11 @@ class FakerIT : FreeSpec({
 
             faker.unique.clearAll()
 
-            "AND collections of values are generated" - {
+            context("collections of values are generated") {
                 val countries = (0..20).map { faker.address.country() }
                 val heroes = (0..20).map { faker.ancient.hero() }
 
-                "THEN collections should be unique" {
+                it("collections should be unique") {
                     assertSoftly {
                         countries should beUnique()
                         heroes should beUnique()
@@ -262,46 +262,46 @@ class FakerIT : FreeSpec({
         }
     }
 
-    "GIVEN local unique generation" - {
+    describe("local unique generation") {
         val config = FakerConfig.builder().create {
             uniqueGeneratorRetryLimit = 100
         }
         val faker = Faker(config)
 
-        "WHEN unique property prefixes the category function invocation" - {
+        context("unique property prefixes the category function invocation") {
             val countries = (0..20).map {
                 faker.address.unique.country()
             }
 
-            "THEN collection should not contain duplicates" {
+            it("collection should not contain duplicates") {
                 countries should beUnique()
             }
 
-            "THEN other functions of the same category should not be marked as unique" {
+            it("other functions of the same category should not be marked as unique") {
                 // This will produce an error if used with `unique` prefix
                 // because there is only one value in the dictionary
                 (0..10).map { faker.address.defaultCountry() }
             }
 
-            "AND values are cleared for the function name" - {
+            context("values are cleared for the function name") {
                 faker.address.unique.clear("country")
 
                 val newCountries = (0..20).map {
                     faker.address.unique.country()
                 }
 
-                "THEN collection should not contain duplicates" {
+                it("collection should not contain duplicates") {
                     newCountries should beUnique()
                 }
             }
 
-            "AND values are cleared for all functions" - {
+            context("values are cleared for all functions") {
                 repeat(20) { faker.address.unique.country() }
                 repeat(20) { faker.address.unique.state() }
 
                 faker.address.unique.clearAll()
 
-                "THEN re-generated collections should be unique" {
+                it("re-generated collections should be unique") {
                     val newCountries = (0..20).map { faker.address.unique.country() }
                     val states = (0..20).map { faker.address.unique.state() }
 
