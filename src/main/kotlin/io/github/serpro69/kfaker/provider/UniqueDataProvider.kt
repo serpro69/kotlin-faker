@@ -16,7 +16,12 @@ abstract class UniqueDataProvider {
 
 @Suppress("UNCHECKED_CAST", "unused")
 class GlobalUniqueDataDataProvider : UniqueDataProvider() {
+    @PublishedApi
+    @JvmSynthetic
     override val markedUnique = mutableSetOf<KClass<out FakeDataProvider>>()
+
+    @PublishedApi
+    @JvmSynthetic
     override val usedValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
 
     override fun disableAll() {
@@ -27,6 +32,18 @@ class GlobalUniqueDataDataProvider : UniqueDataProvider() {
     override fun clearAll() {
         usedValues.keys.forEach { k ->
             usedValues[k] = hashMapOf()
+        }
+    }
+
+    inline fun <reified T : FakeDataProvider> exclude(funcName: String, values: List<String>) {
+        exclude<T>(funcName, *values.toTypedArray())
+    }
+
+    inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg values: String) {
+        if (markedUnique.contains(T::class)) {
+            usedValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
+                oldSet.apply { addAll(newSet) }
+            }
         }
     }
 
@@ -42,7 +59,9 @@ class GlobalUniqueDataDataProvider : UniqueDataProvider() {
         clear(providerProperty.returnType.classifier as KClass<T>)
     }
 
-    private fun <T : FakeDataProvider> enable(provider: KClass<out T>) {
+    @PublishedApi
+    @JvmSynthetic
+    internal fun <T : FakeDataProvider> enable(provider: KClass<out T>) {
         if (!markedUnique.contains(provider)) {
             markedUnique.add(provider).also {
                 usedValues[provider] = hashMapOf()

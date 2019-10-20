@@ -22,7 +22,7 @@
   - [Java interop](#java-interop)
 - [Data Providers](#data-providers)
   - [Generation a random instance of any class](#generating-a-random-instance-of-any-class)
-- [Migrating to 1.0](#migrating-to-1.0)
+- [Migrating to 1.0](#migrating-to-10)
   - [For kotlin users](#for-kotlin-users)
   - [For java users](#for-java-users)
 - [Contributing](#contributing)
@@ -203,6 +203,36 @@ val config = FakerConfig.builder().create {
 }
 
 val faker = Faker(config)
+```
+
+**Excluding values from generation**
+It is possible to exclude values from being generated with unique generator:
+
+```kotlin
+val faker = Faker()
+faker.unique.enable(faker::address)
+
+val excludedCountries = listOf(
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "American Samoa",
+    "Andorra",
+    "Angola"
+)
+
+faker.unique.exclude<Address>("country", excludedCountries)
+
+// in addition to generating unique values 
+// this will not generate any of the excluded countries as well
+faker.address.country() 
+```
+
+This is only applicable when the whole category, i.e. `Address` is enabled for unique generation
+of values.
+
+```kotlin
+faker.address.unique.country() // will still generate unique values, but won't consider exclusions if any
 ```
 
 #### Localized dictionary

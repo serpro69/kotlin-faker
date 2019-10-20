@@ -178,6 +178,91 @@ class FakerIT : DescribeSpec({
             }
         }
 
+        context("some values have been generated") {
+            // repeat 30 times to make sure values are not included in the collection
+            repeat(30) {
+                val faker = Faker(config)
+                faker.unique.enable(faker::address)
+
+                val countries = (0..5).map { faker.address.country() }
+
+                context("some values were marked for exclusion") {
+                    val excludedCountries = listOf(
+                        "Afghanistan",
+                        "Albania",
+                        "Algeria",
+                        "American Samoa",
+                        "Andorra",
+                        "Angola"
+                    )
+
+                    faker.unique.exclude<Address>("country", excludedCountries)
+
+                    val newCountries = (0..20).map { faker.address.country() }
+
+                    it("excluded values should not be included in the generation") {
+                        newCountries shouldNotContainAll excludedCountries
+                    }
+
+                    it("already generated values should not be included in the generation") {
+                        newCountries shouldNotContainAll countries
+                    }
+                }
+            }
+        }
+
+        context("unique generation is not enabled for category") {
+            val faker = Faker(config)
+
+            context("some values were marked for exclusion") {
+                val excludedCountries = listOf(
+                    "Afghanistan",
+                    "Albania",
+                    "Algeria",
+                    "American Samoa",
+                    "Andorra",
+                    "Angola",
+                    "Anguilla",
+                    "Antarctica",
+                    "Antigua And Barbuda",
+                    "Argentina",
+                    "Armenia",
+                    "Aruba",
+                    "Australia",
+                    "Austria",
+                    "Aland Islands",
+                    "Azerbaijan",
+                    "Bahamas",
+                    "Bahrain",
+                    "Bangladesh",
+                    "Barbados",
+                    "Belarus",
+                    "Belgium",
+                    "Belize",
+                    "Benin",
+                    "Bermuda",
+                    "Bhutan",
+                    "Bolivia",
+                    "Bonaire",
+                    "Bosnia And Herzegovina",
+                    "Botswana",
+                    "Bouvet Island"
+                )
+
+                faker.unique.exclude<Address>("country", excludedCountries)
+
+                val countries = (0..100).map { faker.address.country() }
+
+                it("collection can have duplicates") {
+                    countries should containDuplicates()
+                }
+
+                it("collection can have excluded values") {
+                    countries.any { excludedCountries.contains(it) } shouldBe true
+                }
+            }
+        }
+
         context("values are generated for another category that is not marked for unique generation") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
