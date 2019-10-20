@@ -113,7 +113,10 @@ allure {
 
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
-    from(sourceSets.getByName("main").allSource)
+    from(sourceSets.getByName("main").allSource) {
+        include("LICENCE.md")
+        into("META-INF")
+    }
 }
 
 val artifactName = project.name
@@ -145,22 +148,27 @@ publishing {
             from(components["java"])
             artifact(sourcesJar)
 
-            pom.withXml {
-                asNode().apply {
-                    appendNode("description", pomDesc)
-                    appendNode("name", rootProject.name)
-                    appendNode("url", pomUrl)
-                    appendNode("licenses").appendNode("license").apply {
-                        appendNode("name", pomLicenseName)
-                        appendNode("url", pomLicenseUrl)
-                        appendNode("distribution", pomLicenseDist)
+            pom {
+                packaging = "jar"
+                name.set(rootProject.name)
+                description.set(pomDesc)
+                url.set(pomUrl)
+                scm {
+                    url.set(pomScmUrl)
+                }
+                issueManagement {
+                    url.set(pomIssueUrl)
+                }
+                licenses {
+                    license {
+                        name.set(pomLicenseName)
+                        url.set(pomLicenseUrl)
                     }
-                    appendNode("developers").appendNode("developer").apply {
-                        appendNode("id", pomDeveloperId)
-                        appendNode("name", pomDeveloperName)
-                    }
-                    appendNode("scm").apply {
-                        appendNode("url", pomScmUrl)
+                }
+                developers {
+                    developer {
+                        id.set(pomDeveloperId)
+                        name.set(pomDeveloperName)
                     }
                 }
             }
