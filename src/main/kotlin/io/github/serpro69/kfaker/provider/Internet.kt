@@ -12,7 +12,7 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val localUniqueDataProvider = LocalUniqueDataProvider<Internet>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun freeEmail() = resolve("free_email")
+    fun domain() = resolve("free_email")
 
     fun email(): String {
         val name = fakerService.faker.name.name()
@@ -20,7 +20,7 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
             .replace(" ", ".")
             .toLowerCase()
 
-        return "$name@${freeEmail()}"
+        return "$name@${domain()}"
     }
 
     fun safeEmail() = "${email().substringBeforeLast(".")}.test"

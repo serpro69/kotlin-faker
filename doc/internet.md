@@ -4,7 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker().internet.freeEmail() // => gmail.com
+Faker().internet.domain() // => gmail.com
 
 Faker().internet.email() // les.weissnat@gmail.com
 
