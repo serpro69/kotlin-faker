@@ -541,31 +541,33 @@ There are the following rules when creating a random instance of a class:
 
 
 ## Migrating to 1.0
+**Prior to version 1.0:**
+- `Faker` was a singleton.
+- Random seed was provided through `Faker.Config` instance.
+- Locale was provided as parameter to `init()` function.
+- Provider functions were function literals. If `invoke()` was explicitly specified,
+then it will have to be removed (See below.)
+
+**After version 1.0:**
+- `Faker` is a class.
+- Configuration (rng, locale) is set with `FakerConfig` class. 
+An instance of `FakerConfig` can be passed to `Faker` constructor.
+- Provider functions are no longer function literals. Explicit calls to `invoke()` will throw compilation error.
 
 ### For kotlin users
-Prior to version 1.0:
-- `Faker` was a singleton
-- random seed was provided through `Faker.Config` instance
-- locale was provided as parameter to `init()` function
-- provider functions were function literals. If `invoke()` was explicitly specified,
-then it will have to be removed (See below)
-
-```kotlin
-// prior to version 1.0
-Faker.Config.random = Random(42)
-Faker.init(locale)
-
-Faker.address.city()
-Faker.address.country.invoke()
-```
-
-```kotlin
-// since version 1.0
-// locale and random configuration is set with `FakerConfig` class (See Usage in this readme)
-val faker = Faker(fakerConfig)
-
-faker.address.city()
-faker.address.country()
+```diff
+- // prior to version 1.0
+- Faker.Config.random = Random(42)
+- Faker.init(locale)
+- Faker.address.city()
+- // or with explicit `invoke()`
+- Faker.address.country.invoke()
++ // since version 1.0
++ // locale and random configuration is set with `FakerConfig` class (See Usage in this readme)
++ val faker = Faker(fakerConfig)
++ faker.address.city()
++ // explicit calls to `invoke()` have to be removed
++ faker.address.country()
 ```
 
 ### For java users
@@ -574,19 +576,15 @@ and instantiating `Faker` through constructor instead of using a singleton insta
 the main difference for java users is that provider functions are no longer function literals,
 therefore calls to `invoke()` operator will have to be removed and 
 getters replaced with function calls.
-```java
-// prior to version 1.0
-Faker.init(locale);
-Faker.getAddress().getCity().invoke();
-```
-
-```java
-// since version 1.0
-Faker faker = new Faker(fakerConfig);
-
-// note `city()` function is called instead of getter 
-// and no call to `invoke()` operator 
-faker.getAddress().city();
+```diff
+- // prior to version 1.0
+- Faker.init(locale);
+- Faker.getAddress().getCity().invoke();
++ // since version 1.0
++ Faker faker = new Faker(fakerConfig);
++ // note `city()` function is called instead of getter 
++ // and no call to `invoke()` operator 
++ faker.getAddress().city();
 ```
 
 
