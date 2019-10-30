@@ -6,6 +6,10 @@ Available Functions:
 ```kotlin
 Faker().internet.freeEmail() // => gmail.com
 
+Faker().internet.email() // les.weissnat@gmail.com
+
+Faker().internet.safeEmail() // les.weissnat@gmail.test
+
 Faker().internet.domainSuffix() // => com
 
 // Random user agent by browser type (case-insensitive)

@@ -13,6 +13,17 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun freeEmail() = resolve("free_email")
+
+    fun email(): String {
+        val name = fakerService.faker.name.name()
+            .replace(".", "")
+            .replace(" ", ".")
+            .toLowerCase()
+
+        return "$name@${freeEmail()}"
+    }
+
+    fun safeEmail() = "${email().substringBeforeLast(".")}.test"
     fun domainSuffix() = resolve("domain_suffix")
     fun userAgent(browserType: String) = resolve("user_agent", browserType.toLowerCase())
 }
