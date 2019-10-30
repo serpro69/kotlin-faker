@@ -1,14 +1,14 @@
-# `Faker.ancient`
+# `Faker().ancient`
 
 [Dictionary file](../src/main/resources/locales/en/ancient.yml)
 
 Available Functions:  
 ```kotlin
-Faker.ancient.god() // => Apollo
+Faker().ancient.god() // => Apollo
 
-Faker.ancient.primordial() // => Chaos
+Faker().ancient.primordial() // => Chaos
 
-Faker.ancient.titan() // => Atlas
+Faker().ancient.titan() // => Atlas
 
-Faker.ancient.hero // => Achilles
+Faker().ancient.hero // => Achilles
 ```

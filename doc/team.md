@@ -1,12 +1,12 @@
-# `Faker.team`
+# `Faker().team`
 
 [Dictionary file](../src/main/resources/locales/en/team.yml)
 
 Available Functions:  
 ```kotlin
-Faker.team.name() // => Los Angeles bees
+Faker().team.name() // => Los Angeles bees
 
-Faker.team.sport() // => baseball
+Faker().team.sport() // => baseball
 
-Faker.team.mascot() // => Raymond
+Faker().team.mascot() // => Raymond
 ```

@@ -1,14 +1,14 @@
-# `Faker.device`
+# `Faker().device`
 
 [Dictionary file](../src/main/resources/locales/en/device.yml)
 
 Available Functions:  
 ```kotlin
-Faker.device.modelName() // => iPhone
+Faker().device.modelName() // => iPhone
 
-Faker.device.platform() // => Android OS
+Faker().device.platform() // => Android OS
 
-Faker.device.manufacturer() // => Dell
+Faker().device.manufacturer() // => Dell
 
-Faker.device.serial() // => pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
+Faker().device.serial() // => pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
 ```

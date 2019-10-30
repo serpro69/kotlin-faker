@@ -1,12 +1,12 @@
-# `Faker.currency`
+# `Faker().currency`
 
 [Dictionary file](../src/main/resources/locales/en/currency.yml)
 
 Available Functions:  
 ```kotlin
-Faker.currency.code() // => AED
+Faker().currency.code() // => AED
 
-Faker.currency.name() // => UAE Dirham
+Faker().currency.name() // => UAE Dirham
 
-Faker.currency.symbol() // => HK$
+Faker().currency.symbol() // => HK$
 ```

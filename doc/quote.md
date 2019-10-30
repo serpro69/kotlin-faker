@@ -1,18 +1,18 @@
-# `Faker.quote`
+# `Faker().quote`
 
 [Dictionary file](../src/main/resources/locales/en/quote.yml)
 
 Available Functions:  
 ```kotlin
-Faker.quote.famousLastWords() // I don't know.
+Faker().quote.famousLastWords() // I don't know.
 
-Faker.quote.matz() // I believe consistency and orthogonality are tools of desig
+Faker().quote.matz() // I believe consistency and orthogonality are tools of desig
 
-Faker.quote.mostInterestingManInTheWorld() // His only regret is not knowing what regret feels like.
+Faker().quote.mostInterestingManInTheWorld() // His only regret is not knowing what regret feels like.
 
-Faker.quote.robin() // Holy Agility
+Faker().quote.robin() // Holy Agility
 
-Faker.quote.singularSiegler() // Texas!
+Faker().quote.singularSiegler() // Texas!
 
-Faker.quote.yoda() // Use your feelings, Obi-Wan, and find him you will.
+Faker().quote.yoda() // Use your feelings, Obi-Wan, and find him you will.
 ```

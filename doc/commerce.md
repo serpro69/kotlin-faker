@@ -1,12 +1,12 @@
-# `Faker.commerce`
+# `Faker().commerce`
 
 [Dictionary file](../src/main/resources/locales/en/commerce.yml)
 
 Available Functions:  
 ```kotlin
-Faker.commerce.department() // => Books
+Faker().commerce.department() // => Books
 
-Faker.commerce.productName() // => Intelligent Steel Coat
+Faker().commerce.productName() // => Intelligent Steel Coat
 
-Faker.commerce.promotionCode() // => Amazing Deal
+Faker().commerce.promotionCode() // => Amazing Deal
 ```

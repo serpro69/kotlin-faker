@@ -1,14 +1,14 @@
-# `Faker.book`
+# `Faker().book`
 
 [Dictionary file](../src/main/resources/locales/en/book.yml)
 
 Available Functions:  
 ```kotlin
-Faker.book.title() // => Absalom, Absalom! 
+Faker().book.title() // => Absalom, Absalom! 
 
-Faker.book.author() // => John Smith
+Faker().book.author() // => John Smith
 
-Faker.book.publisher() // => Academic Press 
+Faker().book.publisher() // => Academic Press 
 
-Faker.book.genre() // => Classic
+Faker().book.genre() // => Classic
 ```

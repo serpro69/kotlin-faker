@@ -1,14 +1,14 @@
-# `Faker.star_trek`
+# `Faker().star_trek`
 
 [Dictionary file](../src/main/resources/locales/en/star_trek.yml)
 
 Available Functions:  
 ```kotlin
-Faker.starTrek.character() // => James Tiberius Kirk
+Faker().starTrek.character() // => James Tiberius Kirk
 
-Faker.starTrek.location() // => Qo'noS
+Faker().starTrek.location() // => Qo'noS
 
-Faker.starTrek.specie() // => Breen
+Faker().starTrek.specie() // => Breen
 
-Faker.starTrek.villain() // => Q
+Faker().starTrek.villain() // => Q
 ```

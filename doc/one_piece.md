@@ -1,18 +1,18 @@
-# `Faker.onePiece`
+# `Faker().onePiece`
 
 [Dictionary file](../src/main/resources/locales/en/one_piece.yml)
 
 Available Functions:  
 ```kotlin
-Faker.onePiece.characters() // => Monkey D. Luffy
+Faker().onePiece.characters() // => Monkey D. Luffy
 
-Faker.onePiece.seas() // => East Blue
+Faker().onePiece.seas() // => East Blue
 
-Faker.onePiece.islands() // => Dawn Island
+Faker().onePiece.islands() // => Dawn Island
 
-Faker.onePiece.locations() // => Foosha Village
+Faker().onePiece.locations() // => Foosha Village
 
-Faker.onePiece.quotes() // => I love heroes, but I don't want to be one. Do you even know what a hero is!? For example, you have some meat. Pirates will feast on the meat, but the hero will distribute it among the people! I want to eat the meat!
+Faker().onePiece.quotes() // => I love heroes, but I don't want to be one. Do you even know what a hero is!? For example, you have some meat. Pirates will feast on the meat, but the hero will distribute it among the people! I want to eat the meat!
 
-Faker.onePiece.akumas_no_mi() // => Gomu Gomu no Mi
+Faker().onePiece.akumas_no_mi() // => Gomu Gomu no Mi
 ```

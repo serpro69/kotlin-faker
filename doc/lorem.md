@@ -1,17 +1,17 @@
-# `Faker.lorem`
+# `Faker().lorem`
 
 [Dictionary file](../src/main/resources/locales/en/lorem.yml)
 
 Available Functions:  
 ```kotlin
-Faker.lorem.words() // => alias
+Faker().lorem.words() // => alias
 
-Faker.lorem.supplemental() // => abbas
+Faker().lorem.supplemental() // => abbas
 
-Faker.lorem.punctuation() // => '.'
+Faker().lorem.punctuation() // => '.'
 ```
 
 Non-implemented Functions:  
 ```kotlin
-Faker.lorem.multibyte() // => [240, 159, 152, 128]
+Faker().lorem.multibyte() // => [240, 159, 152, 128]
 ```

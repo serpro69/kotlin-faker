@@ -1,10 +1,10 @@
-# `Faker.bossaNova`
+# `Faker().bossaNova`
 
 [Dictionary file](../src/main/resources/locales/en/bossa_nova.yml)
 
 Available Functions:  
 ```kotlin
-Faker.bossaNova.artists() // => Alaide Costa
+Faker().bossaNova.artists() // => Alaide Costa
 
-Faker.bossaNova.songs() // => A Banda
+Faker().bossaNova.songs() // => A Banda
 ```

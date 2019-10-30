@@ -1,40 +1,40 @@
-# `Faker.starWars`
+# `Faker().starWars`
 
 [Dictionary file](../src/main/resources/locales/en/star_wars.yml)
 
 Available Functions:  
 ```kotlin
-Faker.starWars.characters() // => Padme Amidala
+Faker().starWars.characters() // => Padme Amidala
 
-Faker.starWars.callSquadrons() // => Rogue
+Faker().starWars.callSquadrons() // => Rogue
 
-Faker.starWars.callNumbers() // => 6
+Faker().starWars.callNumbers() // => 6
 
-Faker.starWars.callSign() // => Blue Leader
+Faker().starWars.callSign() // => Blue Leader
 
-Faker.starWars.droids() // => 2-1B
+Faker().starWars.droids() // => 2-1B
 
-Faker.starWars.planets() // => Alderaan
+Faker().starWars.planets() // => Alderaan
 
-Faker.starWars.species() // => Ewok
+Faker().starWars.species() // => Ewok
 
-Faker.starWars.vehicles() // => V-Wing Fighter
+Faker().starWars.vehicles() // => V-Wing Fighter
 
-Faker.starWars.wookieeWords() // => wyaaaaaa
+Faker().starWars.wookieeWords() // => wyaaaaaa
 
 // Random quote from a character (case-insensitive)
-Faker.starWars.quotes("admiral_ackbar") // => "It's a trap!"
+Faker().starWars.quotes("admiral_ackbar") // => "It's a trap!"
 // can have spaces instead of underscores
-Faker.starWars.quotes("admiral ackbar") // => "It's a trap!"
+Faker().starWars.quotes("admiral ackbar") // => "It's a trap!"
 // or a random quote of any character
-Faker.startWars.quotes("") // => It's the ship that made the Kessel Run in less than 12 parsecs.
+Faker().startWars.quotes("") // => It's the ship that made the Kessel Run in less than 12 parsecs.
 // or
-Faker.startWars.quote() // => It's the ship that made the Kessel Run in less than 12 parsecs.
+Faker().startWars.quote() // => It's the ship that made the Kessel Run in less than 12 parsecs.
 
 // Alternative spelling of a character name
-Faker.starWars.alternateCharacterSpellings("admiral_ackbar") // => akbar
+Faker().starWars.alternateCharacterSpellings("admiral_ackbar") // => akbar
 // can have spaces instead of underscores
-Faker.starWars.alternateCharacterSpellings("admiral ackbar") // => akbar
+Faker().starWars.alternateCharacterSpellings("admiral ackbar") // => akbar
 // or of any random character
-Faker.starWars.alternateCharacterSpellings() // => 'anakin'
+Faker().starWars.alternateCharacterSpellings() // => 'anakin'
 ```
