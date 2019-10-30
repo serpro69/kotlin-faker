@@ -2,9 +2,17 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
+with the exception of using "patch" version numbers only when necessary. 
+<i>For example there could be a released version `1.0` (without the patch number), 
+but if a hotfix is needed for this version and no new functionality is added, 
+then the next version would be `1.0.1`</i>
 
-## [1.0] - 2019-10.30
+## [1.1] - UNRELEASED 
+### Added
+- []
+
+## [1.0] - 2019-10.30 
 ### Added
 - `FakerConfig` for configuration of `Faker` instance
 - [#7](https://github.com/serpro69/kotlin-faker/issues/7) Generation of unique values through `Faker` instance and separate providers
@@ -15,12 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Make `Faker` a class instead of singleton object
 - [#13](https://github.com/serpro69/kotlin-faker/issues/13) Rename `Internet.safeEmail` to `Internet.domain`
 
-## [0.2] - 2019-09-30
+## [0.2] - 2019-09-30 
 ### Added
 - [#1](https://github.com/serpro69/kotlin-faker/issues/1) Random class instance generator
 - [#2](https://github.com/serpro69/kotlin-faker/issues/2) Support for deterministic random
 
-## [0.1] - 2019-04-16
+## [0.1] - 2019-04-16 
 ### Added
 - Generator of fake data for the majority of .yml files
 - Readme containing installation and usage examples
