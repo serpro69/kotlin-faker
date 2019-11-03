@@ -113,8 +113,8 @@ allure {
 
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
-    from(sourceSets.getByName("main").allSource) {
-        include("LICENCE.md")
+    from(sourceSets.getByName("main").allSource)
+    from("LICENCE.md") {
         into("META-INF")
     }
 }
