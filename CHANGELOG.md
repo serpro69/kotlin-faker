@@ -10,7 +10,21 @@ then the next version would be `1.0.1`</i>
 
 ## [1.1] - UNRELEASED 
 ### Added
-- []
+- 3 new providers: `game`, `horse`, and `opera` 
+- 2 new locales: `th` and `en-TH`
+- New functions to existing providers:
+    - `cannabis.brands()`
+    - `company.sicCode()`
+    
+### Changed
+- Rename functions as per changes in the dictionary files:
+    - `drWho.villians()` -> `drWho.villains()`
+    - `space.launchVehicule()` -> `space.launchVehicle()`
+- Updated all dictionary files incl. localizations
+
+### Fixed
+- [#15](https://github.com/serpro69/kotlin-faker/issues/15) Sources artifact is empty
+
 
 ## [1.0] - 2019-10.30 
 ### Added
