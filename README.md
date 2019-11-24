@@ -273,6 +273,7 @@ val city1 = faker.address.city() // => Oslo
 * `en-NZ`
 * `en-PAK`
 * `en-SG`
+* `en-TH`
 * `en-UG`
 * `en-US`
 * `en-ZA`
@@ -299,6 +300,7 @@ val city1 = faker.address.city() // => Oslo
 * `ru`
 * `sk`
 * `sv`
+* `th`
 * `tr`
 * `uk`
 * `vi`
@@ -425,6 +427,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [FreshPriceOfBelAir](doc/fresh_price_of_bel_air.md)
 * [Friends](doc/friends.md)
 * [FunnyName](doc/funny_name.md)
+* [Game](doc/game.md)
 * [GameOfThrones](doc/game_of_thrones.md)
 * [Gender](doc/gender.md)
 * [GhostBusters](doc/ghost_busters.md)
@@ -439,6 +442,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [Hipster](doc/hipster.md)
 * [HitchhikersGuideToTheGalaxy](doc/hitchhikers_guide_to_the_galaxy.md)
 * [Hobbit](doc/hobbit.md)
+* [Horse](doc/horse.md)
 * [House](doc/house.md)
 * [HowIMetYourMother](doc/how_i_met_your_mother.md)
 * [IdNumber](doc/id_number.md)
@@ -465,6 +469,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [NatoPhoneticAlphabet](doc/nato_phonetic_alphabet.md)
 * [NewGirl](doc/new_girl.md)
 * [OnePiece](doc/one_piece.md)
+* [Opera](doc/opera.md)
 * [Overwatch](doc/overwatch.md)
 * [ParksAndRec](doc/parks_and_rec.md)
 * [Phish](doc/phish.md)
