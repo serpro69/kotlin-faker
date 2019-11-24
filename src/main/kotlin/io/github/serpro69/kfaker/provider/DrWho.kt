@@ -17,6 +17,6 @@ class DrWho internal constructor(fakerService: FakerService) : AbstractFakeDataP
     fun actors() = resolve("actors")
     fun catchPhrases() = resolve("catch_phrases")
     fun quotes() = resolve("quotes")
-    fun villians() = resolve("villians")
+    fun villains() = resolve("villains")
     fun species() = resolve("species")
 }

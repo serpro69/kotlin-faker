@@ -58,8 +58,8 @@ benchmarks for `moove-it/fakeit` could not be done due to android dependencies i
 |                                                             | **kotlin-faker** | [DiUS/java-faker](https://github.com/DiUS/java-faker) | [Devskiller/jfairy](https://github.com/Devskiller/jfairy) | [blocoio/faker](https://github.com/blocoio/faker) | [moove-it/fakeit](https://github.com/moove-it/fakeit) |
 |-------------------------------------------------------------|------------------|-------------------------------------------------------|-----------------------------------------------------------|---------------------------------------------------|-------------------------------------------------------|
 | **language**                                                | kotlin           | java                                                  | java                                                      | java                                              | kotlin                                                |
-| **number of available providers** (`address`, `name`, etc.) | 144              | 73                                                    | 8                                                         | 21                                                | 36                                                    |
-| **number of available locales**                             | 53               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
+| **number of available providers** (`address`, `name`, etc.) | 147              | 73                                                    | 8                                                         | 21                                                | 36                                                    |
+| **number of available locales**                             | 55               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
 | **extra functionality**                                     | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **actively maintained**                                     | &#9989;          | &#9989;                                               | &#9989;                                                   | &#9989;                                           | &#10062;                                              |
 | **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
@@ -273,6 +273,7 @@ val city1 = faker.address.city() // => Oslo
 * `en-NZ`
 * `en-PAK`
 * `en-SG`
+* `en-TH`
 * `en-UG`
 * `en-US`
 * `en-ZA`
@@ -299,6 +300,7 @@ val city1 = faker.address.city() // => Oslo
 * `ru`
 * `sk`
 * `sv`
+* `th`
 * `tr`
 * `uk`
 * `vi`
@@ -425,6 +427,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [FreshPriceOfBelAir](doc/fresh_price_of_bel_air.md)
 * [Friends](doc/friends.md)
 * [FunnyName](doc/funny_name.md)
+* [Game](doc/game.md)
 * [GameOfThrones](doc/game_of_thrones.md)
 * [Gender](doc/gender.md)
 * [GhostBusters](doc/ghost_busters.md)
@@ -439,6 +442,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [Hipster](doc/hipster.md)
 * [HitchhikersGuideToTheGalaxy](doc/hitchhikers_guide_to_the_galaxy.md)
 * [Hobbit](doc/hobbit.md)
+* [Horse](doc/horse.md)
 * [House](doc/house.md)
 * [HowIMetYourMother](doc/how_i_met_your_mother.md)
 * [IdNumber](doc/id_number.md)
@@ -465,6 +469,7 @@ For more details see the particular `.md` file for each provider below.</i>
 * [NatoPhoneticAlphabet](doc/nato_phonetic_alphabet.md)
 * [NewGirl](doc/new_girl.md)
 * [OnePiece](doc/one_piece.md)
+* [Opera](doc/opera.md)
 * [Overwatch](doc/overwatch.md)
 * [ParksAndRec](doc/parks_and_rec.md)
 * [Phish](doc/phish.md)

@@ -20,4 +20,5 @@ class Cannabis internal constructor(fakerService: FakerService) : AbstractFakeDa
     fun healthBenefits() = resolve("health_benefits")
     fun categories() = resolve("categories")
     fun types() = resolve("types")
+    fun brands() = resolve("brands")
 }

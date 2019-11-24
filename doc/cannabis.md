@@ -21,4 +21,6 @@ Faker().cannabis.categories() // => capsules
 Faker().cannabis.types() // => hybrid
 
 Faker().cannabis.buzzwords() // => blunt wrap
+
+Faker().cannabis.brands() // => 8 | FOLD Cultivation
 ```

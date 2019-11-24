@@ -15,4 +15,6 @@ Faker().company.industry() // Defense & Space
 Faker().company.profession // teacher
 
 Faker().company.type() // Public Company
+
+Faker().company.sicCode() // 0112
 ```

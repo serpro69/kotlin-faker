@@ -30,5 +30,5 @@ Faker().space.distance_measurement()  // => light years
 
 Faker().space.meteorite()  // => Aarhus
 
-Faker().space.launchVehicule()  // => Antares
+Faker().space.launchVehicle()  // => Antares
 ```

@@ -73,6 +73,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val freshPriceOfBelAir: FreshPriceOfBelAir
     val friends: Friends
     val funnyName: FunnyName
+    val game: Game
     val gameOfThrones: GameOfThrones
     val gender: Gender
     val ghostBusters: GhostBusters
@@ -87,6 +88,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val hipster: Hipster
     val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy
     val hobbit: Hobbit
+    val horse: Horse
     val house: House
     val howIMetYourMother: HowIMetYourMother
     val idNumber: IdNumber
@@ -113,6 +115,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val natoPhoneticAlphabet: NatoPhoneticAlphabet
     val newGirl: NewGirl
     val onePiece: OnePiece
+    val opera: Opera
     val overwatch: Overwatch
     val parksAndRec: ParksAndRec
     val phish: Phish
@@ -221,6 +224,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         freshPriceOfBelAir = FreshPriceOfBelAir(fakerService)
         friends = Friends(fakerService)
         funnyName = FunnyName(fakerService)
+        game = Game(fakerService)
         gameOfThrones = GameOfThrones(fakerService)
         gender = Gender(fakerService)
         ghostBusters = GhostBusters(fakerService)
@@ -235,6 +239,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         hipster = Hipster(fakerService)
         hitchhikersGuideToTheGalaxy = HitchhikersGuideToTheGalaxy(fakerService)
         hobbit = Hobbit(fakerService)
+        horse = Horse(fakerService)
         house = House(fakerService)
         howIMetYourMother = HowIMetYourMother(fakerService)
         idNumber = IdNumber(fakerService)
@@ -261,6 +266,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         natoPhoneticAlphabet = NatoPhoneticAlphabet(fakerService)
         newGirl = NewGirl(fakerService)
         onePiece = OnePiece(fakerService)
+        opera = Opera(fakerService)
         overwatch = Overwatch(fakerService)
         parksAndRec = ParksAndRec(fakerService)
         phish = Phish(fakerService)
