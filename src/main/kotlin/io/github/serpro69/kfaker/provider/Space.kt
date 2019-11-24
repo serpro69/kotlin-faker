@@ -25,5 +25,5 @@ class Space internal constructor(fakerService: FakerService) : AbstractFakeDataP
     fun company() = resolve("company")
     fun distanceMeasurement() = resolve("distance_measurement")
     fun meteorite() = resolve("meteorite")
-    fun launchVehicule() = resolve("launch_vehicule")
+    fun launchVehicle() = resolve("launch_vehicle")
 }

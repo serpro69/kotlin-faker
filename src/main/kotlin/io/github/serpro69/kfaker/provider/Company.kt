@@ -18,4 +18,5 @@ class Company internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun industry() = resolve("industry")
     fun profession() = resolve("profession")
     fun type() = resolve("type")
+    fun sicCode() = resolve("sic_code")
 }

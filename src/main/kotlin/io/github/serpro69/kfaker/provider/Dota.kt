@@ -78,6 +78,9 @@ class Dota internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun magnus() = resolve("dota", "magnus", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
+    fun meepo() = resolve("dota", "meepo", "quote")
+
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     fun nightStalker() = resolve("dota", "night_stalker", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
