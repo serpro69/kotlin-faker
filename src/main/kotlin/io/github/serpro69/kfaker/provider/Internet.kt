@@ -14,16 +14,21 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
 
     fun domain() = resolve("free_email")
 
-    fun email(): String {
-        val name = fakerService.faker.name.name()
-            .replace(".", "")
-            .replace(" ", ".")
-            .toLowerCase()
+    @JvmOverloads
+    fun email(name: String = ""): String {
+        val localName = if (name.trim() == "") {
+            fakerService.faker.name.name()
+                .replace(".", "")
+                .replace(" ", ".")
+                .toLowerCase()
+        } else name.replace(" ", "")
 
-        return "$name@${domain()}"
+        return "$localName@${domain()}"
     }
 
-    fun safeEmail() = "${email().substringBeforeLast(".")}.test"
+    @JvmOverloads
+    fun safeEmail(name: String = "") = "${email(name).substringBeforeLast(".")}.test"
+
     fun domainSuffix() = resolve("domain_suffix")
     fun userAgent(browserType: String) = resolve("user_agent", browserType.toLowerCase())
 }

@@ -7,8 +7,11 @@ Available Functions:
 Faker().internet.domain() // => gmail.com
 
 Faker().internet.email() // les.weissnat@gmail.com
+Faker().internet.email("john.doe") // => john.doe@gmail.com
 
+// Generates an RFC 2606 compliant fake email with a `test` domain suffix, which means it will never deliver successfully
 Faker().internet.safeEmail() // les.weissnat@gmail.test
+Faker().internet.safeEmail("jane.doe") // => jane.doe@yahoo.test
 
 Faker().internet.domainSuffix() // => com
 
