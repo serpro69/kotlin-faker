@@ -15,6 +15,8 @@ then the next version would be `1.0.1`</i>
 - New functions to existing providers:
     - `cannabis.brands()`
     - `company.sicCode()`
+    - `internet.email(name)`
+    - `internet.safeEmail(name)`
     
 ### Changed
 - Rename functions as per changes in the dictionary files:
