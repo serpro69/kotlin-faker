@@ -133,7 +133,12 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         throw RetryLimitException("Retry limit of $counter exceeded")
                     } else if (!set.contains(result)) result.also {
                         localUniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
-                    } else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
+                    } else returnOrResolveUnique(
+                        primaryKey = primaryKey,
+                        secondaryKey = secondaryKey,
+                        thirdKey = thirdKey,
+                        counter = counter + 1
+                    )
                 }
             }
         } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
@@ -151,7 +156,12 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         throw RetryLimitException("Retry limit of $counter exceeded")
                     } else if (!set.contains(result)) result.also {
                         usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
-                    } else returnOrResolveUnique(primaryKey, secondaryKey, thirdKey, counter + 1)
+                    } else returnOrResolveUnique(
+                        primaryKey = primaryKey,
+                        secondaryKey = secondaryKey,
+                        thirdKey = thirdKey,
+                        counter = counter + 1
+                    )
                 }
             }
         }
