@@ -4,7 +4,6 @@ import java.util.*
 
 plugins {
     kotlin("jvm") version "1.3.61"
-    `build-scan`
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
     id("io.qameta.allure") version "2.8.1"
@@ -33,13 +32,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
     testImplementation("io.kotlintest:kotlintest-extensions-allure:3.4.2")
-    runtime(kotlin("script-runtime"))
+    runtimeOnly(kotlin("script-runtime"))
 }
 
-buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
-}
 
 tasks {
     jar {
@@ -48,7 +43,7 @@ tasks {
                 mapOf(
                     "Implementation-Title" to project.name,
                     "Implementation-Version" to project.version,
-                    "Class-Path" to configurations.compile.get().joinToString(" ") { it.name }
+                    "Class-Path" to configurations.compileClasspath.get().joinToString(" ") { it.name }
                 )
             )
         }
@@ -60,7 +55,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Wrapper> {
-    this.gradleVersion = "5.2.1"
+    this.gradleVersion = "6.0.1"
     this.distributionType = Wrapper.DistributionType.ALL
 }
 
