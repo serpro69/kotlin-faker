@@ -8,7 +8,10 @@ with the exception of using "patch" version numbers only when necessary.
 but if a hotfix is needed for this version and no new functionality is added, 
 then the next version would be `1.0.1`</i>
 
-## [1.1] - UNRELEASED 
+## [1.2] - UNRELEASED
+
+
+## [1.1] - 2019-11-30
 ### Added
 - 3 new providers: `game`, `horse`, and `opera` 
 - 2 new locales: `th` and `en-TH`
@@ -28,7 +31,7 @@ then the next version would be `1.0.1`</i>
 - [#15](https://github.com/serpro69/kotlin-faker/issues/15) Sources artifact is empty
 
 
-## [1.0] - 2019-10.30 
+## [1.0] - 2019-10-30 
 ### Added
 - `FakerConfig` for configuration of `Faker` instance
 - [#7](https://github.com/serpro69/kotlin-faker/issues/7) Generation of unique values through `Faker` instance and separate providers
