@@ -104,6 +104,7 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
     }
 }
 
+@Suppress("UNCHECKED_CAST")
 class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
     private val uniqueDataProvider: LocalUniqueDataProvider<T>
 ) : ReadOnlyProperty<T, T> {
