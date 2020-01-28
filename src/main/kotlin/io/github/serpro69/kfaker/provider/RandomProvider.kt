@@ -28,9 +28,11 @@ class RandomProvider internal constructor(random: Random) {
      *
      * @throws NoSuchElementException if [T] has no public constructor.
      */
-    internal inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance()
+    inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance()
 
-    private fun <T : Any> KClass<T>.randomClassInstance(): T {
+    @JvmSynthetic
+    @PublishedApi
+    internal fun <T : Any> KClass<T>.randomClassInstance(): T {
         val instance = this.constructors.find { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
 
         return if (instance != null) instance else {
