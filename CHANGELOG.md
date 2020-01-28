@@ -11,6 +11,11 @@ then the next version would be `1.0.1`</i>
 ## [1.2] - UNRELEASED
 
 
+## [1.1.1] - 2020-01-28
+### Fixed
+- [#18](https://github.com/serpro69/kotlin-faker/issues/18) Visibility of `randomClassInstance()` function 
+in [RandomProvider](src/main/kotlin/io/github/serpro69/kfaker/provider/RandomProvider.kt) class
+
 ## [1.1] - 2019-11-30
 ### Added
 - 3 new providers: `game`, `horse`, and `opera` 
