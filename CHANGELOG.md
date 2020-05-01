@@ -10,6 +10,9 @@ then the next version would be `1.0.1`</i>
 
 ## [1.2] - UNRELEASED
 
+## [1.1.2] - 2020-05-01
+### Fixed
+- [#20](https://github.com/serpro69/kotlin-faker/issues/20) Issues with FasterXML Jackson 2.10.1
 
 ## [1.1.1] - 2020-01-28
 ### Fixed
