@@ -20,9 +20,9 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.10.1")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.10.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.0")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
     implementation("com.github.mifmif:generex:1.0.2")
     implementation("io.github.classgraph:classgraph:4.8.56")
     implementation("org.slf4j:slf4j-api:1.7.28")
