@@ -10,4 +10,4 @@ deploy:
   on:
     branch: master
 
-after_deploy: ./push-tags.sh
+after_deploy: bash push-tags.sh
