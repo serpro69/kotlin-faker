@@ -1,19 +1,11 @@
 language: java
-
-jobs:
-  include:
-    - stage: Git config
-      script: bash git-set-author.sh
-
-    - stage: Build and Deploy
-      deploy:
-        if: tag IS blank
-        provider: script
-        skip_cleanup: true
-        cleanup: false
-        script: ./gradlew clean tag build bintrayUpload -Prelease -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
-        on:
-          branch: master
-
-    - stage: Push tags
-      script: bash push-tags.sh
+before_deploy: bash git-set-author.sh
+after_deploy: bash push-tags.sh
+deploy:
+  if: tag IS blank
+  provider: script
+  skip_cleanup: true
+  cleanup: false
+  script: ./gradlew clean tag build bintrayUpload -Prelease -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+  on:
+    branch: master
