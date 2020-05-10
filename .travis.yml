@@ -3,7 +3,7 @@ language: java
 jobs:
   include:
     - stage: Git config
-      script: ./git-set-author.sh
+      script: bash git-set-author.sh
 
     - stage: Build and Deploy
       deploy:
@@ -16,4 +16,4 @@ jobs:
           branch: master
 
     - stage: Push tags
-      script: ./push-tags.sh
+      script: bash push-tags.sh
