@@ -6,13 +6,13 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import java.util.*
 
 plugins {
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.3.72"
     `maven-publish`
-    id("com.jfrog.bintray") version "1.8.4"
+    id("com.jfrog.bintray") version "1.8.5"
     id("io.qameta.allure") version "2.8.1"
     id("net.vivin.gradle-semantic-build-versioning") apply false
     id("com.adarshr.test-logger") version "2.0.0" apply true
-    id("com.github.ben-manes.versions") version "0.27.0"
+    id("com.github.ben-manes.versions") version "0.28.0"
 }
 
 group = properties["GROUP"].toString()
@@ -29,8 +29,8 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
     implementation("com.github.mifmif:generex:1.0.2")
-    implementation("io.github.classgraph:classgraph:4.8.56")
-    implementation("org.slf4j:slf4j-api:1.7.28")
+    implementation("io.github.classgraph:classgraph:4.8.78")
+    implementation("org.slf4j:slf4j-api:1.7.30")
     testImplementation("io.kotest:kotest-runner-junit5:4.0.5")
     testImplementation("io.kotest:kotest-extensions-allure:4.0.5")
     testImplementation("io.kotest:kotest-runner-junit5-jvm:4.0.5")
@@ -40,7 +40,7 @@ dependencies {
     testRuntimeOnly("ch.qos.logback:logback-core:1.2.3")
     testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
-    testRuntimeOnly("org.codehaus.groovy:groovy:2.5.6")
+    testRuntimeOnly("org.codehaus.groovy:groovy:3.0.3")
     runtimeOnly(kotlin("script-runtime"))
 }
 
@@ -80,7 +80,7 @@ java {
 }
 
 tasks.withType<Wrapper> {
-    this.gradleVersion = "6.0.1"
+    this.gradleVersion = "6.4"
     this.distributionType = Wrapper.DistributionType.ALL
 }
 
@@ -129,10 +129,11 @@ testlogger {
 allure {
     version = "2.8.1"
     aspectjweaver = false
+    aspectjVersion = "1.9.5"
     autoconfigure = true
-    allureJavaVersion = "2.13.1"
+    allureJavaVersion = "2.13.3"
     useJUnit5 {
-        version = "2.13.1"
+        version = "2.13.3"
     }
 }
 
