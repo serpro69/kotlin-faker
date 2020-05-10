@@ -1,7 +1,8 @@
-import net.vivin.gradle.versioning.tasks.TagTask
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import java.util.*
 
 plugins {
@@ -10,6 +11,8 @@ plugins {
     id("com.jfrog.bintray") version "1.8.4"
     id("io.qameta.allure") version "2.8.1"
     id("net.vivin.gradle-semantic-build-versioning") apply false
+    id("com.adarshr.test-logger") version "2.0.0" apply true
+    id("com.github.ben-manes.versions") version "0.27.0"
 }
 
 group = properties["GROUP"].toString()
@@ -55,8 +58,25 @@ tasks {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+val compileKotlin by tasks.getting(KotlinCompile::class) {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+val compileTestKotlin by tasks.getting(KotlinCompile::class) {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 tasks.withType<Wrapper> {
@@ -101,6 +121,11 @@ val test by tasks.getting(Test::class) {
     }
 }
 
+testlogger {
+    showPassed = false
+    theme = MOCHA
+}
+
 allure {
     version = "2.8.1"
     aspectjweaver = false
@@ -108,6 +133,19 @@ allure {
     allureJavaVersion = "2.13.1"
     useJUnit5 {
         version = "2.13.1"
+    }
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    fun isNonStable(version: String): Boolean {
+        val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+        val regex = "^[0-9,.v-]+(-r|-jre)?$".toRegex()
+        val isStable = stableKeyword || regex.matches(version)
+        return isStable.not()
+    }
+
+    rejectVersionIf {
+        isNonStable(candidate.version)
     }
 }
 
@@ -204,8 +242,4 @@ bintray {
             vcsTag = "v$artifactVersion"
         }
     }
-}
-
-tasks.withType(TagTask::class) {
-    dependsOn("publishToMavenLocal")
 }
