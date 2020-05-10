@@ -1,8 +1,7 @@
 plugins {
-    id("com.gradle.enterprise").version("3.1")
+    id("com.gradle.enterprise") version "3.1"
+    id("net.vivin.gradle-semantic-build-versioning") version "4.0.0"
 }
-
-rootProject.name = 'kotlin-faker'
 
 gradleEnterprise {
     buildScan {
@@ -10,3 +9,5 @@ gradleEnterprise {
         termsOfServiceAgree = "yes"
     }
 }
+
+rootProject.name = "kotlin-faker"

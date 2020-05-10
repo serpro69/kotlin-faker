@@ -1,14 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
-with the exception of using "patch" version numbers only when necessary. 
-<i>For example there could be a released version `1.0` (without the patch number), 
-but if a hotfix is needed for this version and no new functionality is added, 
-then the next version would be `1.0.1`</i>
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [1.2] - UNRELEASED
+## [1.2.0] - UNRELEASED
 
 ## [1.1.2] - 2020-05-01
 ### Fixed

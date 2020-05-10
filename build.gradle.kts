@@ -1,5 +1,7 @@
-import org.gradle.api.tasks.testing.logging.*
-import org.jetbrains.kotlin.gradle.tasks.*
+import net.vivin.gradle.versioning.tasks.TagTask
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.util.*
 
 plugins {
@@ -7,10 +9,10 @@ plugins {
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
     id("io.qameta.allure") version "2.8.1"
+    id("net.vivin.gradle-semantic-build-versioning") apply false
 }
 
 group = properties["GROUP"].toString()
-version = properties["VERSION"].toString()
 
 repositories {
     jcenter()
@@ -177,7 +179,7 @@ publishing {
 bintray {
     user = project.findProperty("bintrayUser").toString()
     key = project.findProperty("bintrayKey").toString()
-    publish = true
+    publish = !project.version.toString().endsWith("SNAPSHOT")
 
     setPublications("kotlin-faker")
 
@@ -199,7 +201,11 @@ bintray {
             name = artifactVersion
             desc = pomDesc
             released = Date().toString()
-            vcsTag = artifactVersion
+            vcsTag = "v$artifactVersion"
         }
     }
+}
+
+tasks.withType(TagTask::class) {
+    dependsOn("publishToMavenLocal")
 }
