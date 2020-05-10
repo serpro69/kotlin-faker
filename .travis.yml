@@ -4,14 +4,14 @@ jobs:
   include:
     - stage: Release tag
       if: tag IS blank
-      script: ./gradlew clean build tag -Prelease
+      script: ./gradlew tag -Prelease
 
     - stage: Build and Deploy
       deploy:
         provider: script
         skip_cleanup: true
         cleanup: false
-        script: ./gradlew bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+        script: ./gradlew clean build bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
         on:
           branch: master
 
