@@ -1,9 +1,11 @@
 package io.github.serpro69.kfaker
 
-import io.kotlintest.*
-import io.kotlintest.matchers.collections.*
-import io.kotlintest.matchers.string.*
-import io.kotlintest.specs.*
+import io.kotest.assertions.assertSoftly
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldContain
 import java.util.*
 
 internal class RandomServiceTest : DescribeSpec({

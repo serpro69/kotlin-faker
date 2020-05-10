@@ -1,10 +1,16 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
-import io.kotlintest.*
-import io.kotlintest.matchers.collections.*
-import io.kotlintest.matchers.string.*
-import io.kotlintest.specs.*
+import io.kotest.assertions.assertSoftly
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.beUnique
+import io.kotest.matchers.collections.containDuplicates
+import io.kotest.matchers.collections.shouldNotContainAll
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNot
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.string.shouldMatch
 import java.io.File
 import kotlin.reflect.*
 import kotlin.reflect.full.*
@@ -187,7 +193,7 @@ class FakerIT : DescribeSpec({
 
                 val countries = (0..5).map { faker.address.country() }
 
-                context("some values were marked for exclusion") {
+                context("some values were marked for exclusion run#$it") {
                     val excludedCountries = listOf(
                         "Afghanistan",
                         "Albania",

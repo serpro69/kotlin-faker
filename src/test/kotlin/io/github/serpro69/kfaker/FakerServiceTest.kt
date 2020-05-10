@@ -1,11 +1,20 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.dictionary.*
-import io.kotlintest.*
-import io.kotlintest.matchers.collections.*
-import io.kotlintest.matchers.numerics.*
-import io.kotlintest.matchers.string.*
-import io.kotlintest.specs.*
+import io.kotest.assertions.assertSoftly
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.collections.shouldHaveAtLeastSize
+import io.kotest.matchers.collections.shouldHaveAtMostSize
+import io.kotest.matchers.comparables.shouldBeGreaterThan
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.string.shouldHaveSameLengthAs
+import io.kotest.matchers.string.shouldNotContain
 import java.util.*
 
 val random = Random()

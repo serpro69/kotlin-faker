@@ -1,8 +1,9 @@
 package io.github.serpro69.kfaker.provider
 
-import io.kotlintest.matchers.*
-import io.kotlintest.shouldBe
-import io.kotlintest.specs.*
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.instanceOf
+import io.kotest.matchers.shouldBe
 import java.util.*
 
 @Suppress("unused")
@@ -100,7 +101,7 @@ class RandomProviderTest : DescribeSpec({
 
         context("creating a random instance of the class") {
             it("exception is thrown") {
-                val exception = io.kotlintest.shouldThrow<NoSuchElementException> {
+                val exception = shouldThrow<NoSuchElementException> {
                     randomProvider.randomClassInstance<TestClass>()
                 }
 

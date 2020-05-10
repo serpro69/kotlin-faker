@@ -1,7 +1,9 @@
 package io.github.serpro69.kfaker
 
-import io.kotlintest.*
-import io.kotlintest.specs.*
+import io.kotest.assertions.assertSoftly
+import io.kotest.core.spec.IsolationMode
+import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.shouldBe
 import java.util.*
 
 class FakerConfigTest : DescribeSpec() {

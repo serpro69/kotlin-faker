@@ -26,12 +26,15 @@ dependencies {
     implementation("com.github.mifmif:generex:1.0.2")
     implementation("io.github.classgraph:classgraph:4.8.56")
     implementation("org.slf4j:slf4j-api:1.7.28")
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
-    testImplementation("io.kotlintest:kotlintest-extensions-allure:3.4.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
+    testImplementation("io.kotest:kotest-runner-junit5:4.0.5")
+    testImplementation("io.kotest:kotest-extensions-allure:4.0.5")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.0.5")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:4.0.5")
+    testImplementation("io.kotest:kotest-property-jvm:4.0.5")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
     testRuntimeOnly("ch.qos.logback:logback-core:1.2.3")
     testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
     testRuntimeOnly("org.codehaus.groovy:groovy:2.5.6")
     runtimeOnly(kotlin("script-runtime"))
 }
@@ -100,9 +103,9 @@ allure {
     version = "2.8.1"
     aspectjweaver = false
     autoconfigure = true
-    allureJavaVersion = "2.12.1"
+    allureJavaVersion = "2.13.1"
     useJUnit5 {
-        version = "2.12.1"
+        version = "2.13.1"
     }
 }
 
