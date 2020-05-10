@@ -5,7 +5,6 @@ script: ./gradlew clean build
 deploy:
   provider: script
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN
   script: |
     ./gradlew tag -Prelease
     bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
