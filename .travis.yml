@@ -1,12 +1,12 @@
 language: java
 
-script: ./gradlew clean build
+script: ./gradlew clean build tag -Prelease
 
 deploy:
   provider: script
+  skip_cleanup: true
   cleanup: false
-  script: >
-    ./gradlew tag -Prelease bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+  script: ./gradlew bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
   on:
     branch: master
 
