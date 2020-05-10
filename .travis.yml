@@ -4,6 +4,11 @@ script: ./gradlew clean build
 
 deploy:
   provider: script
-  script: ./gradlew tag -Prelease bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  script: |
+    ./gradlew tag -Prelease
+    bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+    && git push "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" --tags
   on:
     branch: master
