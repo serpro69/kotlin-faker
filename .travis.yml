@@ -2,19 +2,18 @@ language: java
 
 jobs:
   include:
-    - stage: Release tag
-      if: tag IS blank
-      script: ./gradlew tag -Prelease
+    - stage: Git config
+      script: ./git-set-author.sh
 
     - stage: Build and Deploy
       deploy:
+        if: tag IS blank
         provider: script
         skip_cleanup: true
         cleanup: false
-        script: ./gradlew clean build bintrayUpload -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+        script: ./gradlew clean tag build bintrayUpload -Prelease -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
         on:
           branch: master
 
     - stage: Push tags
-      if: tag IS present
-      script: git push "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" --tags
+      script: ./push-tags.sh
