@@ -13,6 +13,7 @@
 - [Comparison with other JVM-based faker libraries](#comparison-with-other-jvm-based-faker-libs)
 - [Usage](#usage)  
   - [Downloading](#downloading)
+    - [Using latest hotfix version](#using-the-latest-hotfix-release)
   - [Generating data](#generating-data)
   - [Configuring Faker](#configuring-faker)
     - [Default configuration](#default-configuration)
@@ -113,6 +114,30 @@ Add dependency:
 
 **Downloading a jar**  
 The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
+
+#### Using the latest hotfix release
+Hotfixes are automatically built and deployed to bintray on every push to master that passes tests.
+This means that it could be cumbersome to always have the latest hotfix version in your dependencies,
+therefore it is recommended to use a dependency range instead, providing only major and minor versions.
+
+In maven:
+```xml
+<dependency>
+    <groupId>io.github.serpro69</groupId>
+    <artifactId>kotlin-faker</artifactId>
+    <version>[1.1,1.2)</version> <!--Use latest version between 1.1 (inclusive) and 1.2 (exclusive)-->
+</dependency>
+```
+
+In gradle:
+```groovy
+dependencies {
+    implementation 'io.github.serpro69:kotlin-faker:1.1.+'
+}
+```
+
+Major and minor versions are still bumped manually and therefore are not that frequent.
+The project adheres to semantic versions rules.
 
 ### Generating data
 ```kotlin
