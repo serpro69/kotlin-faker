@@ -2,7 +2,7 @@ language: java
 
 jobs:
   include:
-    - stage: deploy
+    - stage: deploy hotfix
       script: skip # skip re-running tests
       before_deploy: bash git-set-author.sh
       after_deploy: bash push-tags.sh
@@ -14,6 +14,19 @@ jobs:
         on:
           branch: master
 
+    - stage: deploy
+      script: skip # skip re-running tests
+      before_deploy: bash git-set-author.sh
+      deploy:
+        provider: script
+        skip_cleanup: true
+        cleanup: false
+        script: ./gradlew clean printVersion build bintrayUpload -Prelease -PbintrayUser=$BINTRAY_USER -PbintrayKey=$BINTRAY_KEY
+        on:
+          branch: master
+
 stages:
-  - name: deploy
+  - name: deploy hotfix
     if: tag IS blank
+  - name: deploy
+    if: tag IS present
