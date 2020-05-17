@@ -4,12 +4,12 @@ jobs:
   include:
     - stage: deploy
       script: skip # skip re-running tests
-      before_deploy: bash git-set-author.sh
+      before_deploy: ./git-set-author.sh
       deploy:
         provider: script
         skip_cleanup: true
         cleanup: false
-        script: bash deploy.sh
+        script: ./deploy.sh
         on:
           branch: master
 
