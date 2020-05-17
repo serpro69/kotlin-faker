@@ -1,5 +1,9 @@
 language: java
 
+branches:
+  except:
+    - /^v(\d+\.?){3}/
+
 jobs:
   include:
     - stage: deploy
