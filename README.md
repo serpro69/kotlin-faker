@@ -26,6 +26,7 @@
 - [Migrating to 1.0](#migrating-to-10)
   - [For kotlin users](#for-kotlin-users)
   - [For java users](#for-java-users)
+- [Build and Deploy](#build-and-deploy)
 - [Contributing](#contributing)
 - [Thanks](#thanks)
 - [Licence](#licence)
@@ -616,6 +617,15 @@ getters replaced with function calls.
 + // and no call to `invoke()` operator 
 + faker.getAddress().city();
 ```
+
+
+## Build and Deploy
+Builds and deploys to bintray are automated with travis-ci through usage of git tags.
+Patches/hotfixes versions are automatically bumped on every push to master and do not require any user interactions.
+Major and minor versions need to be bumped manually through a tag with the next release version that has to follow the 
+`v<major>.<minor>.<patch>` pattern, and the tag has to be pushed to origin along with the changes. 
+Creating the tag can be either done manually with `git tag` or by using `gradlew tag -Prelease -PbumpComponent=${comp}` 
+where `comp` can be one of the following values: `major`, `minor`, or `patch`.
 
 
 ## Contributing
