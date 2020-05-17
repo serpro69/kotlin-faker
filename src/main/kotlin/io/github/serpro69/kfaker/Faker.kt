@@ -36,6 +36,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val business: Business
     val cannabis: Cannabis
     val cat: Cat
+    val chiquito: Chiquito
     val chuckNorris: ChuckNorris
     val code: Code
     val coffee: Coffee
@@ -45,6 +46,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val community: Community
     val company: Company
     //    val compass: Compass
+    val computer: Computer
     val construction: Construction
     val cosmere: Cosmere
     val cryptoCoin: CryptoCoin
@@ -124,6 +126,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val princessBride: PrincessBride
     val programmingLanguage: ProgrammingLanguage
     val quote: Quote
+    val rajnikanth: Rajnikanth
     val relationship: Relationship
     val restaurant: Restaurant
     val rickAndMorty: RickAndMorty
@@ -186,6 +189,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         business = Business(fakerService)
         cannabis = Cannabis(fakerService)
         cat = Cat(fakerService)
+        chiquito = Chiquito(fakerService)
         chuckNorris = ChuckNorris(fakerService)
         code = Code(fakerService)
         coffee = Coffee(fakerService)
@@ -195,6 +199,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         community = Community(fakerService)
         company = Company(fakerService)
 //        compass = Compass(fakerService)
+        computer = Computer(fakerService)
         construction = Construction(fakerService)
         cosmere = Cosmere(fakerService)
         cryptoCoin = CryptoCoin(fakerService)
@@ -275,6 +280,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         princessBride = PrincessBride(fakerService)
         programmingLanguage = ProgrammingLanguage(fakerService)
         quote = Quote(fakerService)
+        rajnikanth = Rajnikanth(fakerService)
         relationship = Relationship(fakerService)
         restaurant = Restaurant(fakerService)
         rickAndMorty = RickAndMorty(fakerService)
