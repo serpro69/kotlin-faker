@@ -123,7 +123,8 @@ internal class FakerServiceTest : DescribeSpec({
                     "city_prefix", "city_suffix", "country", "country_by_code", "country_by_name", "country_code",
                     "country_code_long", "building_number", "community_prefix", "community_suffix", "community",
                     "street_suffix", "secondary_address", "postcode", "postcode_by_state", "state", "state_abbr",
-                    "time_zone", "city", "street_name", "street_address", "full_address", "default_country"
+                    "time_zone", "city", "city_with_state", "street_name", "street_address", "full_address", "mail_box",
+                    "default_country"
                 )
 
                 category.values.keys shouldContainAll categoryKeys
@@ -178,7 +179,7 @@ internal class FakerServiceTest : DescribeSpec({
 
             context("value type is Map<String, List>") {
                 val category = fakerService.fetchCategory(CategoryName.EDUCATOR)
-                val tertiaryType = fakerService.getRawValue(category, "tertiary", "type")
+                val tertiaryType = fakerService.getRawValue(category, "tertiary", "university_type")
 
                 it("value is returned using secondary key") {
                     val types = listOf("College", "University", "Technical College", "TAFE")

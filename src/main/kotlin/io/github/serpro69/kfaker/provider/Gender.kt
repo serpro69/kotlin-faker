@@ -14,4 +14,5 @@ class Gender internal constructor(fakerService: FakerService) : AbstractFakeData
 
     fun types() = resolve("types")
     fun binaryTypes() = resolve("binary_types")
+    fun shortBinaryTypes() = resolve("short_binary_types")
 }

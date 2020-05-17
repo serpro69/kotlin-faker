@@ -5,6 +5,6 @@
 Available Functions:  
 ```kotlin
 Faker().gender.types() // => Female
-
 Faker().gender.binaryTypes() // => Female
+Faker().gender.shortBinaryTypes() // => f
 ```

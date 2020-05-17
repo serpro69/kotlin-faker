@@ -12,10 +12,23 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val localUniqueDataProvider = LocalUniqueDataProvider<Educator>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun name() = resolve("name")
+    fun schoolName() = resolve("school_name")
     fun secondary() = resolve("secondary")
-    fun tertiaryType() = resolve("tertiary", "type")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun tertiaryDegree(type: String) = resolve("tertiary", "degree", type)
+    fun university() = resolve("university")
+
+    fun secondarySchool() = resolve("secondary_school")
+    fun campus() = resolve("campus")
+    fun subject() = resolve("subject")
+
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
+    fun degree() = resolve("degree")
+
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
+    fun courseName() = resolve("course_name")
+
+    fun universityType() = resolve("tertiary", "university_type")
+    fun tertiaryDegreeType() = resolve("tertiary", "degree", "type")
+    fun tertiaryDegreeCourseNumber() = resolve("tertiary", "degree", "course_number")
 }

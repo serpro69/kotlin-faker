@@ -39,11 +39,15 @@ Faker().address.timeZone() // => Pacific/Midway
 
 Faker().address.city() // => Bartville
 
+Faker().address.cityWithState() // => Bartville, Indiana
+
 Faker().address.streetName() // => Adams Brook
 
 Faker().address.streetAddress() // => 123 Adams Brook
 
 Faker().address.fullAddress() // => 123 Adams Brook, Bartville, AL 12345-6789
+
+Faker().address.mailbox() // => PO BOX 693
 
 Faker().address.defaultCountry() // => United States of America (this is a static value and only changes with the locale)
 

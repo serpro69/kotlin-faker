@@ -26,8 +26,10 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun stateAbbr() = resolve("state_abbr")
     fun timeZone() = resolve("time_zone")
     fun city() = resolve("city")
+    fun cityWithState() = resolve("city_with_state")
     fun streetName() = resolve("street_name")
     fun streetAddress() = resolve("street_address")
     fun fullAddress() = resolve("full_address")
+    fun mailbox() = resolve("mail_box")
     fun defaultCountry() = resolve("default_country")
 }
