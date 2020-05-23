@@ -11,3 +11,5 @@ gradleEnterprise {
 }
 
 rootProject.name = "kotlin-faker"
+include("core")
+include("cli-bot")
