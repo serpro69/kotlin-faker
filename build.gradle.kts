@@ -2,7 +2,7 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    `kotlin-dsl` version "1.3.6" apply false
+//    `kotlin-dsl` version "1.3.6" apply false
     kotlin("jvm") version "1.3.72" apply false
     id("net.vivin.gradle-semantic-build-versioning") apply false
     id("com.adarshr.test-logger") version "2.0.0" apply false
@@ -19,7 +19,7 @@ subprojects {
     }
 
     apply {
-        plugin("org.gradle.kotlin.kotlin-dsl")
+//        plugin("org.gradle.kotlin.kotlin-dsl")
         plugin("java")
         plugin("org.jetbrains.kotlin.jvm")
         plugin("com.adarshr.test-logger")

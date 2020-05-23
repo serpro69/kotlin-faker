@@ -16,6 +16,8 @@ dependencies {
 }
 
 tasks.withType<Jar> {
+    archiveBaseName.set(rootProject.name)
+
     manifest {
         attributes(
             mapOf(
@@ -56,7 +58,7 @@ val sourcesJar by tasks.creating(Jar::class) {
     }
 }
 
-val artifactName = project.name
+val artifactName = rootProject.name
 val artifactGroup = project.group.toString()
 val artifactVersion = project.version.toString()
 
