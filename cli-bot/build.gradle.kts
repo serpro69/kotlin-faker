@@ -18,17 +18,6 @@ testlogger {
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 }
 
-allure {
-    version = "2.8.1"
-    aspectjweaver = false
-    aspectjVersion = "1.9.5"
-    autoconfigure = true
-    allureJavaVersion = "2.13.3"
-    useJUnit5 {
-        version = "2.13.3"
-    }
-}
-
 /*val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
     manifest {
         attributes(

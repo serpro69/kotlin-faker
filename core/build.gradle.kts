@@ -39,17 +39,6 @@ testlogger {
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 }
 
-allure {
-    version = "2.8.1"
-    aspectjweaver = false
-    aspectjVersion = "1.9.5"
-    autoconfigure = true
-    allureJavaVersion = "2.13.3"
-    useJUnit5 {
-        version = "2.13.3"
-    }
-}
-
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets.getByName("main").allSource)

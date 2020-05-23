@@ -1,5 +1,7 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import io.qameta.allure.gradle.task.AllureReport
+import io.qameta.allure.gradle.task.AllureServe
 
 plugins {
 //    `kotlin-dsl` version "1.3.6" apply false
@@ -7,7 +9,11 @@ plugins {
     id("net.vivin.gradle-semantic-build-versioning") apply false
     id("com.adarshr.test-logger") version "2.0.0" apply false
     id("com.github.ben-manes.versions") version "0.28.0" apply false
-    id("io.qameta.allure") version "2.8.1" apply false
+    id("io.qameta.allure") version "2.8.1"
+}
+
+repositories {
+    mavenCentral()
 }
 
 subprojects {
@@ -113,4 +119,16 @@ subprojects {
             isNonStable(candidate.version)
         }
     }
+
+    allure {
+        version = "2.8.1"
+        aspectjweaver = false
+        aspectjVersion = "1.9.5"
+        autoconfigure = true
+        allureJavaVersion = "2.13.3"
+        useJUnit5 {
+            version = "2.13.3"
+        }
+    }
 }
+
