@@ -132,3 +132,34 @@ subprojects {
     }
 }
 
+rootProject.allure {
+    version = "2.8.1"
+}
+
+val allureAggregatedReport by tasks.creating(AllureReport::class) {
+    doFirst {
+        val results = mutableListOf<File>()
+
+        subprojects.stream().forEach {
+            it.allure.resultsDir?.let { dir ->
+                results.add(dir)
+            }
+        }
+
+        resultsDirs = results
+    }
+}
+
+val allureAggregatedServe by tasks.creating(AllureServe::class) {
+    doFirst {
+        val results = mutableListOf<File>()
+
+        subprojects.stream().forEach {
+            it.allure.resultsDir?.let { dir ->
+                results.add(dir)
+            }
+        }
+
+        resultsDirs = results
+    }
+}
