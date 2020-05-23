@@ -4,7 +4,6 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation(project(":core"))
     implementation("info.picocli:picocli:4.2.0")
 }

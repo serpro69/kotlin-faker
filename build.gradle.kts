@@ -1,9 +1,5 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import java.util.*
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl` version "1.3.6" apply false
@@ -29,7 +25,6 @@ subprojects {
         plugin("com.adarshr.test-logger")
         plugin("com.github.ben-manes.versions")
         plugin("io.qameta.allure")
-        plugin("org.gradle.kotlin.kotlin-dsl")
     }
 
     dependencies {
@@ -49,6 +44,7 @@ subprojects {
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
         testRuntimeOnly("ch.qos.logback:logback-core:1.2.3")
         testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
+        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.3")
     }
 
     configure<JavaPluginConvention> {
