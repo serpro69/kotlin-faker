@@ -1,8 +1,9 @@
 package io.github.serpro69.kfaker.app
 
-import io.github.serpro69.kfaker.app.subcommands.*
-import picocli.*
-import kotlin.random.*
+import io.github.serpro69.kfaker.app.subcommands.List
+import io.github.serpro69.kfaker.app.subcommands.Lookup
+import picocli.CommandLine
+import kotlin.system.exitProcess
 
 @CommandLine.Command(
     name = "kFaker",
@@ -14,17 +15,11 @@ import kotlin.random.*
         "OS: \${os.name} \${os.version} \${os.arch}"
     ],
     subcommands = [
-        Address::class
+        List::class,
+        Lookup::class
     ]
 )
 object KFaker : Runnable {
-    @CommandLine.Option(
-        names = ["-s", "--seed"],
-        description = ["random seed to use when generating data"],
-        required = false
-    )
-    internal var seed = Random.nextLong()
-
     @CommandLine.Option(
         names = ["-l", "--locale"],
         description = ["dictionary to use when generating data", "default: 'en'"],
@@ -32,17 +27,10 @@ object KFaker : Runnable {
     )
     internal var locale: String = "en"
 
-    @CommandLine.Option(
-        names = ["--retry-limit"],
-        description = ["retry limit for unique generated values until an exception is thrown", "default: 10000"],
-        required = false
-    )
-    internal var retryLimit = 10000
-
     @CommandLine.Option(names = ["-h", "--help"], usageHelp = true, description = ["display this help message"])
     private var usageHelpRequested: Boolean = false
 
-    @CommandLine.Option(names = ["-v", "--version"], versionHelp = true, description = ["display version info"])
+    @CommandLine.Option(names = ["--version"], versionHelp = true, description = ["display version info"])
     private var versionHelpRequested: Boolean = false
 
     @CommandLine.Spec
@@ -55,6 +43,6 @@ object KFaker : Runnable {
 
 fun main(args: Array<String>) {
     val cli = CommandLine(KFaker)
-    System.exit(cli.execute(*args))
+    exitProcess(cli.execute(*args))
 }
 

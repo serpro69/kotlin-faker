@@ -18,7 +18,7 @@ testlogger {
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 }
 
-/*val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
+val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
     manifest {
         attributes(
             mapOf(
@@ -34,7 +34,7 @@ testlogger {
 
     from(project.configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     with(tasks.jar.get() as CopySpec)
-}*/
+}
 
 /*
 tasks {
