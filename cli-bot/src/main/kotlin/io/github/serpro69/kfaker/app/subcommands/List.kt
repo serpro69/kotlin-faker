@@ -15,6 +15,13 @@ object List : SubCommand() {
 
     override fun run() {
         super.run()
-        println("Print list of providers and their functions")
+
+        val list = if (verbose) {
+            TODO("Not implemented")
+        } else {
+            renderer.toString()
+        }
+
+        println(list)
     }
 }

@@ -8,7 +8,7 @@ import kotlin.reflect.full.*
 /**
  * Introspects [Faker] and it's descendants.
  */
-internal class Introspector(private val faker: Faker) {
+class Introspector(private val faker: Faker) {
     // Get a list of all publicly visible providers
     val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
         it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
