@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     kotlin("jvm")
     id("com.github.johnrengelman.shadow") version "5.2.0"
@@ -18,7 +20,7 @@ testlogger {
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
 }
 
-val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
+val shadowJar by tasks.getting(ShadowJar::class) {
     manifest {
         attributes(
             mapOf(
@@ -36,10 +38,8 @@ val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.
     with(tasks.jar.get() as CopySpec)
 }
 
-/*
 tasks {
     build {
-        dependsOn(shadowJar)
+        finalizedBy(shadowJar)
     }
 }
-*/
