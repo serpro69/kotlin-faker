@@ -11,7 +11,6 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
     implementation("com.github.mifmif:generex:1.0.2")
-    implementation("io.github.classgraph:classgraph:4.8.78")
     runtimeOnly(kotlin("script-runtime"))
 }
 
