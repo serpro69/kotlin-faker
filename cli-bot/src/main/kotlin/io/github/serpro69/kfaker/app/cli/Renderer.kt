@@ -1,7 +1,5 @@
 package io.github.serpro69.kfaker.app.cli
 
-import io.github.serpro69.kfaker.*
-
 /**
  * Renders and prints a tree.
  */
