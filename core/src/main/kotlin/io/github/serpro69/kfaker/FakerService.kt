@@ -10,14 +10,12 @@ import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import java.io.InputStream
+import java.lang.reflect.Method
 import java.util.*
 import java.util.regex.Matcher
 import kotlin.NoSuchElementException
 import kotlin.collections.LinkedHashMap
 import kotlin.collections.set
-import kotlin.reflect.KFunction
-import kotlin.reflect.full.declaredFunctions
-import kotlin.reflect.full.declaredMemberProperties
 
 /**
  * Internal class used for resolving yaml expressions into values.
@@ -362,8 +360,8 @@ internal class FakerService @JvmOverloads internal constructor(
      * @param kFunction the [KFunction] of [T]
      */
     @Suppress("UNCHECKED_CAST")
-    private fun <T : FakeDataProvider> T.callFunction(kFunction: KFunction<*>): String {
-        return kFunction.call(this) as String
+    private fun <T : FakeDataProvider> T.callFunction(kFunction: Method): String {
+        return kFunction.invoke(this) as String
     }
 
     /**
@@ -377,23 +375,23 @@ internal class FakerService @JvmOverloads internal constructor(
      *
      * @param T instance of [FakeDataProvider]
      */
-    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): KFunction<*> {
+    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): Method {
         val propertyName = rawString.split("_").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).toUpperCase() + s.substring(1)
         }.joinToString("")
 
-        return this::class.declaredFunctions.first { it.name == propertyName }
+        return this.javaClass.methods.first { it.name == propertyName }
     }
 
     /**
      * Returns an instance of [FakeDataProvider] fetched by it's [simpleClassName] (case-insensitive).
      */
     private fun getProvider(simpleClassName: String): FakeDataProvider {
-        val kProp = faker::class.declaredMemberProperties.first {
-            it.name.toLowerCase() == simpleClassName.toLowerCase()
+        val kProp = faker.javaClass.declaredMethods.first {
+            it.name.toLowerCase().replaceFirst("get", "") == simpleClassName.toLowerCase()
         }
 
-        return kProp.call(faker) as FakeDataProvider
+        return kProp.invoke(faker) as FakeDataProvider
     }
 
     private fun findMatchesAndAppendTail(
@@ -409,4 +407,8 @@ internal class FakerService @JvmOverloads internal constructor(
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
     }
+}
+
+fun main() {
+    println(Faker().address.city())
 }

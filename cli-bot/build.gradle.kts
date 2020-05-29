@@ -14,6 +14,7 @@ val codegen by configurations.creating
 dependencies {
     implementation(project(":core"))
     implementation("info.picocli:picocli:4.3.2")
+    implementation("com.oracle.substratevm:svm:19.2.1")
     codegen("info.picocli:picocli-codegen:4.3.2")
 }
 
@@ -29,34 +30,6 @@ java {
 testlogger {
     showPassed = false
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
-}
-
-val shadowJar by tasks.getting(ShadowJar::class) {
-    manifest {
-        attributes(
-            mapOf(
-                "Implementation-Title" to project.name,
-                "Implementation-Version" to project.version,
-                "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name },
-                "Main-Class" to mainFunction
-            )
-        )
-    }
-
-    archiveClassifier.set("fat")
-    from(sourceSets.main.get().output)
-    from(project.configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
-    with(tasks.jar.get() as CopySpec)
-    dependsOn(project.configurations.runtimeClasspath)
-}
-
-graal {
-    mainClass(mainFunction)
-    outputName("kFaker")
-    option("--no-fallback")
-    option("--no-server")
-//    option("--allow-incomplete-classpath")
-    option("--report-unsupported-elements-at-runtime")
 }
 
 val generateGraalReflectionConfig by tasks.creating(JavaExec::class) {
@@ -80,11 +53,50 @@ val generateGraalResourceConfig by tasks.creating(JavaExec::class) {
     main = "picocli.codegen.aot.graalvm.ResourceConfigGenerator"
     classpath = codegen + sourceSets.main.get().runtimeClasspath
     val outFile = "${project.buildDir}/resources/main/META-INF/native-image/${project.group}/${project.name}/resource-config.json"
-    args = listOf("--output=${outFile}", mainAppClass)
+    args = listOf(
+        "--output=${outFile}", mainAppClass,
+        "--pattern", ".*/*.yml$"
+    )
+}
+
+val shadowJar by tasks.getting(ShadowJar::class) {
+    manifest {
+        attributes(
+            mapOf(
+                "Implementation-Title" to project.name,
+                "Implementation-Version" to project.version,
+                "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name },
+                "Main-Class" to mainFunction
+            )
+        )
+    }
+
+    archiveClassifier.set("fat")
+    from(sourceSets.main.get().output)
+//    from(project.configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    from(project.configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) })
+    with(tasks.jar.get() as CopySpec)
+    dependsOn(
+        project.configurations.runtimeClasspath
+//        generateGraalReflectionConfig,
+//        generateGraalDynamicProxyConfig,
+//        generateGraalResourceConfig
+    )
+}
+
+graal {
+    graalVersion("19.3.1")
+    javaVersion("8")
+    mainClass(mainFunction)
+    outputName("kFaker")
+    option("--no-fallback")
+    option("--no-server")
+//    option("--allow-incomplete-classpath")
+    option("--report-unsupported-elements-at-runtime")
 }
 
 tasks {
     nativeImage {
-        dependsOn(shadowJar, generateGraalReflectionConfig, generateGraalDynamicProxyConfig)
+        dependsOn(shadowJar)
     }
 }

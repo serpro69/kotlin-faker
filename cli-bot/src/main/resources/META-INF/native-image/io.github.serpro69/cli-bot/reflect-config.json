@@ -1,0 +1,85 @@
+[
+  {
+    "name" : "io.github.serpro69.kfaker.app.KFaker",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "locale" },
+      { "name" : "spec" },
+      { "name" : "usageHelpRequested" },
+      { "name" : "versionHelpRequested" }
+    ]
+  },
+  {
+    "name" : "io.github.serpro69.kfaker.app.cli.Introspector",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "allDeclaredFields" : true,
+    "allPublicFields" : true
+  },
+  {
+    "name" : "io.github.serpro69.kfaker.app.subcommands.CommandOptions",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "javaSyntax" },
+      { "name" : "locale" },
+      { "name" : "verbose" }
+    ]
+  },
+  {
+    "name" : "io.github.serpro69.kfaker.app.subcommands.List",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "listLocales" },
+      { "name" : "options", "allowWrite" : true }
+    ]
+  },
+  {
+    "name" : "io.github.serpro69.kfaker.app.subcommands.Lookup",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "fields" : [
+      { "name" : "functionName" },
+      { "name" : "options", "allowWrite" : true }
+    ]
+  },
+  {
+    "name" : "io.github.serpro69.kfaker.FakerService",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "allDeclaredFields" : true,
+    "allPublicFields" : true
+  },
+  {
+    "name" : "java.lang.Class",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "allDeclaredClasses" : true,
+    "allPublicClasses" : true
+  },
+  {
+    "name" : "java.lang.Class$Atomic",
+    "allDeclaredConstructors" : true,
+    "allPublicConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allPublicMethods" : true,
+    "allDeclaredClasses" : true,
+    "allPublicClasses" : true
+  }
+]

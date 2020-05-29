@@ -68,5 +68,6 @@ object Lookup : Runnable {
 
     override fun run() {
         printMatchingFunctions()
+        println(Faker().address.city())
     }
 }
