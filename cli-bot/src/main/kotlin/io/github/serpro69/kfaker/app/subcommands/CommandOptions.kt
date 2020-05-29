@@ -19,6 +19,13 @@ class CommandOptions {
     var locale: String = "en"
 
     @CommandLine.Option(
+        names = ["--java-syntax"],
+        description = ["display syntax for java instead of kotlin"],
+        required = false
+    )
+    var javaSyntax: Boolean = false
+
+    @CommandLine.Option(
         names = ["-v", "--verbose"],
         description = ["adds a sample value to the output"],
         required = false
