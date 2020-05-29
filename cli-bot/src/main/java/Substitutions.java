@@ -6,7 +6,7 @@ public class Substitutions {
 }
 
 @TargetClass(className = "java.lang.Class$Atomic")
-class Target_java_lang_Class$Atomic {
+final class Target_java_lang_Class$Atomic {
         @Alias
         @RecomputeFieldValue(kind = RecomputeFieldValue.Kind.FieldOffset, declClassName = "java.lang.Class$Atomic", name = "reflectionDataOffset")
         private static long reflectionDataOffset;

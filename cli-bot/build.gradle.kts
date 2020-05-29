@@ -14,7 +14,7 @@ val codegen by configurations.creating
 dependencies {
     implementation(project(":core"))
     implementation("info.picocli:picocli:4.3.2")
-    implementation("com.oracle.substratevm:svm:19.2.1")
+    compileOnly("com.oracle.substratevm:svm:19.2.1")
     codegen("info.picocli:picocli-codegen:4.3.2")
 }
 
