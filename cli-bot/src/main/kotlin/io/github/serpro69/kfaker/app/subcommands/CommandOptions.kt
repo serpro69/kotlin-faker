@@ -1,7 +1,11 @@
 package io.github.serpro69.kfaker.app.subcommands
 
 import picocli.CommandLine
+import io.github.serpro69.kfaker.app.KFaker
 
+/**
+ * Reusable options for [KFaker] commands
+ */
 @CommandLine.Command(
     synopsisHeading = "%nUsage:%n",
     descriptionHeading = "%nDescription:%n",

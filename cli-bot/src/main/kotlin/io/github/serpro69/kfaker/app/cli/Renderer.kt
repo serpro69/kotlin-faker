@@ -1,7 +1,33 @@
 package io.github.serpro69.kfaker.app.cli
 
+import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.app.subcommands.CommandOptions
+import kotlin.reflect.KFunction
+import kotlin.reflect.KProperty
+import kotlin.system.exitProcess
+
 /**
- * Renders and prints a tree.
+ * Renders and prints a tree with root (parent) node [name] and a list of [children] nodes.
+ *
+ * The children node can be an `emptyList` if no children are present on the next level.
+ *
+ * For example:
+ * ```
+ * Renderer("parent", listOf(
+ *     Renderer("child1", Renderer("grandChild1", emptyList)),
+ *     Renderer("child2", emptyList()),
+ *     Renderer("child3", Renderer("grandChild3", emptyList))
+ * ).toString()
+ * ```
+ * will print:
+ * ```
+ * parent
+ * ├── child1
+ * |   └── grandChild1
+ * ├── child2
+ * └── child3
+ *     └── grandChild3
+ * ```
  */
 class Renderer(private val name: String, private val children: List<Renderer>) {
 
@@ -23,5 +49,37 @@ class Renderer(private val name: String, private val children: List<Renderer>) {
                 it.value.printTree(buffer, "$childrenPrefix├── ", "$childrenPrefix│   ")
             }
         }
+    }
+}
+
+/**
+ * Renders the [provider] and it's [functions] of a [faker] instance and returns as [Renderer].
+ */
+fun renderProvider(
+    options: CommandOptions,
+    faker: Faker,
+    provider: KProperty<*>,
+    functions: List<KFunction<*>>
+): Renderer {
+    val renderedFunctions = if (options.verbose) {
+        functions.map {
+            val value = when (it.parameters.size) {
+                1 -> it.call(provider.getter.call(faker)).toString()
+                2 -> it.call(provider.getter.call(faker), "").toString()
+                3 -> it.call(provider.getter.call(faker), "", "").toString()
+                else -> exitProcess(3)
+            }
+
+            Renderer("${it.name}() // => $value", emptyList())
+        }
+    } else {
+        functions.map { Renderer("${it.name}()", emptyList()) }
+    }
+
+    return if (options.javaSyntax) {
+        val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+        Renderer(getterName, renderedFunctions)
+    } else {
+        Renderer(provider.name, renderedFunctions)
     }
 }

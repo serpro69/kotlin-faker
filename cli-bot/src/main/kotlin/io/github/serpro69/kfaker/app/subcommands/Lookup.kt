@@ -4,10 +4,14 @@ import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
+import io.github.serpro69.kfaker.app.cli.renderProvider
+import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.create
 import picocli.CommandLine
-import kotlin.system.exitProcess
 
+/**
+ * [KFaker] command for looking up required functionality by [functionName]
+ */
 @CommandLine.Command(
     name = "lookup",
     description = ["lookup functions by name"],
@@ -37,39 +41,8 @@ object Lookup : Runnable {
             v.filter { it.name.toLowerCase().contains(functionName.toLowerCase()) }
         }.filterValues { it.isNotEmpty() }
 
-        val renderedProviders = if (options.verbose) {
-            filteredMap.map { (provider, functions) ->
-                val renderedFunctions = functions.map {
-                    val value = when (it.parameters.size) {
-                        1 -> it.call(provider.getter.call(faker)).toString()
-                        2 -> it.call(provider.getter.call(faker), "").toString()
-                        3 -> it.call(provider.getter.call(faker), "", "").toString()
-                        else -> exitProcess(3)
-                    }
-
-                    Renderer("${it.name}() // => $value", emptyList())
-                }
-
-                if (options.javaSyntax) {
-                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
-                    Renderer(getterName, renderedFunctions)
-                } else {
-                    Renderer(provider.name, renderedFunctions)
-                }
-            }
-        } else {
-            filteredMap.map { (provider, functions) ->
-                val renderedFunctions = functions.map {
-                    Renderer("${it.name}()", emptyList())
-                }
-
-                if (options.javaSyntax) {
-                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
-                    Renderer(getterName, renderedFunctions)
-                } else {
-                    Renderer(provider.name, renderedFunctions)
-                }
-            }
+        val renderedProviders = filteredMap.map { (provider, functions) ->
+            renderProvider(options, faker, provider, functions)
         }
 
         val output = Renderer("Faker()", renderedProviders).toString()
