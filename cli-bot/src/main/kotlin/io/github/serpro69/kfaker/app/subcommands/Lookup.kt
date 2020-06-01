@@ -10,7 +10,8 @@ import kotlin.system.exitProcess
 
 @CommandLine.Command(
     name = "lookup",
-    description = ["lookup functions by name"]
+    description = ["lookup functions by name"],
+    mixinStandardHelpOptions = true
 )
 object Lookup : Runnable {
 
@@ -40,9 +41,9 @@ object Lookup : Runnable {
             filteredMap.map { (provider, functions) ->
                 val renderedFunctions = functions.map {
                     val value = when (it.parameters.size) {
-                        1 -> it.invoke(provider.invoke(faker)).toString()
-                        2 -> it.invoke(provider.invoke(faker), "").toString()
-                        3 -> it.invoke(provider.invoke(faker), "", "").toString()
+                        1 -> it.call(provider.getter.call(faker)).toString()
+                        2 -> it.call(provider.getter.call(faker), "").toString()
+                        3 -> it.call(provider.getter.call(faker), "", "").toString()
                         else -> exitProcess(3)
                     }
 
@@ -68,6 +69,5 @@ object Lookup : Runnable {
 
     override fun run() {
         printMatchingFunctions()
-        println(Faker().address.city())
     }
 }

@@ -10,7 +10,8 @@ import kotlin.system.exitProcess
 
 @CommandLine.Command(
     name = "list",
-    description = ["list available providers and their functions"]
+    description = ["list available providers and their functions"],
+    mixinStandardHelpOptions = true
 )
 object List : Runnable {
 
@@ -37,9 +38,9 @@ object List : Runnable {
             introspector.providerFunctions.map { (provider, functions) ->
                 val renderedFunctions = functions.map {
                     val value = when (it.parameters.size) {
-                        1 -> it.invoke(provider.invoke(faker)).toString()
-                        2 -> it.invoke(provider.invoke(faker), "").toString()
-                        3 -> it.invoke(provider.invoke(faker), "", "").toString()
+                        1 -> it.call(provider.getter.call(faker)).toString()
+                        2 -> it.call(provider.getter.call(faker), "").toString()
+                        3 -> it.call(provider.getter.call(faker), "", "").toString()
                         else -> exitProcess(3)
                     }
 
