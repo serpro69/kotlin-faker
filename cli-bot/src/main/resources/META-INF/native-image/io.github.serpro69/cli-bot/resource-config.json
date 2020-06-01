@@ -1,7 +1,9 @@
 {
-  "bundles" : [
-  ],
-  "resources" : [
-    {"pattern" : ".*/*.yml$"}
+  "resources":[
+    {"pattern":"META-INF/services/jdk.vm.ci.hotspot.HotSpotJVMCIBackendFactory"},
+    {"pattern":"META-INF/services/jdk.vm.ci.services.JVMCIServiceLocator"},
+    {"pattern":"META-INF/services/kotlin.reflect.jvm.internal.impl.resolve.ExternalOverridabilityCondition"},
+    {"pattern":"kotlin/kotlin.kotlin_builtins"},
+    {"pattern":".*/*.yml$"}
   ]
 }
