@@ -50,7 +50,12 @@ object Lookup : Runnable {
                     Renderer("${it.name}() // => $value", emptyList())
                 }
 
-                Renderer(provider.name, renderedFunctions)
+                if (options.javaSyntax) {
+                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+                    Renderer(getterName, renderedFunctions)
+                } else {
+                    Renderer(provider.name, renderedFunctions)
+                }
             }
         } else {
             filteredMap.map { (provider, functions) ->
@@ -58,7 +63,12 @@ object Lookup : Runnable {
                     Renderer("${it.name}()", emptyList())
                 }
 
-                Renderer(provider.name, renderedFunctions)
+                if (options.javaSyntax) {
+                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+                    Renderer(getterName, renderedFunctions)
+                } else {
+                    Renderer(provider.name, renderedFunctions)
+                }
             }
         }
 

@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.create
 import picocli.CommandLine
+import java.nio.file.ProviderNotFoundException
 import kotlin.system.exitProcess
 
 @CommandLine.Command(
@@ -47,7 +48,12 @@ object List : Runnable {
                     Renderer("${it.name}() // => $value", emptyList())
                 }
 
-                Renderer(provider.name, renderedFunctions)
+                if (options.javaSyntax) {
+                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+                    Renderer(getterName, renderedFunctions)
+                } else {
+                    Renderer(provider.name, renderedFunctions)
+                }
             }
         } else {
             introspector.providerFunctions.map { (provider, functions) ->
@@ -55,7 +61,12 @@ object List : Runnable {
                     Renderer("${it.name}()", emptyList())
                 }
 
-                Renderer(provider.name, renderedFunctions)
+                if (options.javaSyntax) {
+                    val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+                    Renderer(getterName, renderedFunctions)
+                } else {
+                    Renderer(provider.name, renderedFunctions)
+                }
             }
         }
 
