@@ -9,13 +9,10 @@ plugins {
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
 val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
-val codegen by configurations.creating
 
 dependencies {
     implementation(project(":core"))
     implementation("info.picocli:picocli:4.3.2")
-    compileOnly("com.oracle.substratevm:svm:19.2.1")
-    codegen("info.picocli:picocli-codegen:4.3.2")
 }
 
 application {
@@ -30,33 +27,6 @@ java {
 testlogger {
     showPassed = false
     theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
-}
-
-val generateGraalReflectionConfig by tasks.creating(JavaExec::class) {
-    dependsOn("classes")
-    main = "picocli.codegen.aot.graalvm.ReflectionConfigGenerator"
-    classpath = codegen + sourceSets.main.get().runtimeClasspath
-    val outFile = "${project.buildDir}/resources/main/META-INF/native-image/${project.group}/${project.name}/reflect-config.json"
-    args = listOf("--output=${outFile}", mainAppClass)
-}
-
-val generateGraalDynamicProxyConfig by tasks.creating(JavaExec::class) {
-    dependsOn("classes")
-    main = "picocli.codegen.aot.graalvm.DynamicProxyConfigGenerator"
-    classpath = codegen + sourceSets.main.get().runtimeClasspath
-    val outFile = "${project.buildDir}/resources/main/META-INF/native-image/${project.group}/${project.name}/proxy-config.json"
-    args = listOf("--output=${outFile}", mainAppClass)
-}
-
-val generateGraalResourceConfig by tasks.creating(JavaExec::class) {
-    dependsOn("classes")
-    main = "picocli.codegen.aot.graalvm.ResourceConfigGenerator"
-    classpath = codegen + sourceSets.main.get().runtimeClasspath
-    val outFile = "${project.buildDir}/resources/main/META-INF/native-image/${project.group}/${project.name}/resource-config.json"
-    args = listOf(
-        "--output=${outFile}", mainAppClass,
-        "--pattern", ".*/*.yml$"
-    )
 }
 
 val shadowJar by tasks.getting(ShadowJar::class) {
@@ -85,7 +55,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
 }
 
 graal {
-    graalVersion("19.3.1")
+    graalVersion("20.1.0")
     javaVersion("8")
     mainClass(mainFunction)
     outputName("kFaker")
