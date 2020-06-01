@@ -46,22 +46,16 @@ val shadowJar by tasks.getting(ShadowJar::class) {
 //    from(project.configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     from(project.configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) })
     with(tasks.jar.get() as CopySpec)
-    dependsOn(
-        project.configurations.runtimeClasspath
-//        generateGraalReflectionConfig,
-//        generateGraalDynamicProxyConfig,
-//        generateGraalResourceConfig
-    )
+    dependsOn(project.configurations.runtimeClasspath)
 }
 
 graal {
     graalVersion("20.1.0")
     javaVersion("8")
     mainClass(mainFunction)
-    outputName("kFaker")
+    outputName("faker-bot_${project.version}")
     option("--no-fallback")
     option("--no-server")
-//    option("--allow-incomplete-classpath")
     option("--report-unsupported-elements-at-runtime")
 }
 
