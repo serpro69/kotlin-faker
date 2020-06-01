@@ -1325,7 +1325,8 @@
     {"name":"descriptor$core","parameterTypes":[] }, 
     {"name":"name","parameterTypes":[] }, 
     {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$core","parameterTypes":[] }
+    {"name":"prefix$core","parameterTypes":[] },
+    {"name":"suffix$core","parameterTypes":[] }
   ]
 },
 {
