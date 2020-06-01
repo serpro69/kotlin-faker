@@ -6,26 +6,29 @@ import picocli.CommandLine
 import kotlin.system.exitProcess
 
 @CommandLine.Command(
-    name = "kFaker",
-    description = ["Generates realistic looking fake data"],
+    name = "faker-bot",
+    description = [
+        "helps to quickly find required faker functionality",
+        "see https://github.com/serpro69/kotlin-faker/README.md for more installation and usage examples"
+    ],
     version = [
-        "kFaker 1.1.1",
+        "faker: 1.3.+",
+        "faker-bot: 1.3.0",
         "Built with picocli ${CommandLine.VERSION}",
         "JVM: \${java.version} (\${java.vendor} \${java.vm.name} \${java.vm.version})",
         "OS: \${os.name} \${os.version} \${os.arch}"
     ],
+    synopsisHeading = "Usage:%n",
+    descriptionHeading = "%nDescription:%n",
+    parameterListHeading = "%nParameters:%n",
+    optionListHeading = "%nOptions:%n",
+    commandListHeading = "%nCommands:%n",
     subcommands = [
         List::class,
         Lookup::class
     ]
 )
 object KFaker : Runnable {
-    @CommandLine.Option(
-        names = ["-l", "--locale"],
-        description = ["dictionary to use when generating data", "default: 'en'"],
-        required = false
-    )
-    internal var locale: String = "en"
 
     @CommandLine.Option(names = ["-h", "--help"], usageHelp = true, description = ["display this help message"])
     private var usageHelpRequested: Boolean = false

@@ -13,6 +13,11 @@ releases will contain a release of this application, as they are likely to have 
 or changes.</i>
 
 ## Usage
+Usage details are also available with the `--help` option:  
+`./faker-bot --help`  
+`./faker-bot list --help`  
+`./faker-bot lookup --help`
+
 ### Available commands
 #### `list` - List available providers and their functions
 
