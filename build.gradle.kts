@@ -19,6 +19,8 @@ repositories {
 subprojects {
     group = properties["GROUP"].toString()
 
+    version = rootProject.version
+
     repositories {
         jcenter()
         mavenCentral()
