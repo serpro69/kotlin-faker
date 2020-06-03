@@ -30,6 +30,11 @@ object List : Runnable {
     )
     var listLocales: Boolean = false
 
+    @CommandLine.Parameters(
+        description = ["limit output to specified provider(s)", "case-insensitive"]
+    )
+    var providerNames = arrayOf<String>()
+
     private fun printProvidersList() {
         val fakerConfig = FakerConfig.builder().create {
             locale = options.locale
@@ -39,8 +44,16 @@ object List : Runnable {
 
         val introspector = Introspector(faker)
 
-        val renderedProviders = introspector.providerFunctions.map { (provider, functions) ->
-            renderProvider(options, faker, provider, functions)
+        val renderedProviders = if (providerNames.isNotEmpty()) {
+            introspector.providerFunctions.filter { (provider, _) ->
+                providerNames.any { it.toLowerCase() == provider.name.toLowerCase() }
+            }.map { (provider, functions) ->
+                renderProvider(options, faker, provider, functions)
+            }
+        } else {
+            introspector.providerFunctions.map { (provider, functions) ->
+                renderProvider(options, faker, provider, functions)
+            }
         }
 
         val output = Renderer("Faker()", renderedProviders).toString()

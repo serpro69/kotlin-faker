@@ -8,9 +8,13 @@ A CLI application that helps to quickly find required functions of kotlin-faker
 
 ## Installation
 The native images are available on [releases](https://github.com/serpro69/kotlin-faker/releases) page.  
-<i> Note that not every release will have a corresponding native image. In most cases only major/minor version
-releases will contain a release of this application, as they are likely to have new functionality
-or changes.</i>
+Download the image to a desired location and make it executable or use below script (Depends on [jq](https://stedolan.github.io/jq/))
+
+```
+cd ~
+wget $(curl -s https://api.github.com/repos/serpro69/kotlin-faker/releases/latest | jq -r '.assets[].browser_download_url') -O faker-bot
+chmod a+x ~/faker-bot
+``` 
 
 ## Usage
 Usage details are also available with the `--help` option:  
@@ -19,9 +23,12 @@ Usage details are also available with the `--help` option:
 `./faker-bot lookup --help`
 
 ### Available commands
-#### `list` - List available providers and their functions
+#### `list`
+* `./faker-bot list` - list all providers and their functions
+* `./faker-bot list Address Name` list functions of `Address` and `Name` providers (Case insensitive)
 
-#### `lookup` - Lookup functions by name (Case insensitive)
+#### `lookup` 
+* `./faker-bot lookup name` Lookup functions by name (Case insensitive)
 
 ### Available options
 #### Verbose output
@@ -32,7 +39,8 @@ Usage details are also available with the `--help` option:
 `./faker-bot list --java-syntax` - prints list of all available providers and their functions using java syntax
 
 #### Using non-default locale
-`./faker-bot list --verbose --locale de` - all localized functions with be printed using `de` locale.
+`./faker-bot list --verbose --locale de` - combined with `--verbose`, all localized functions will be printed 
+using `de` locale.
 
 #### List available locales
 `./faker-bot list --list-locales` - prints all available locales

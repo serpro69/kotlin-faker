@@ -21,6 +21,7 @@
     - [Generating unique values](#generating-unique-values)
     - [Localized dictionary](#localized-dictionary)
   - [Java interop](#java-interop)
+- [CLI](#cli)
 - [Data Providers](#data-providers)
   - [Generation a random instance of any class](#generating-a-random-instance-of-any-class)
 - [Migrating to 1.0](#migrating-to-10)
@@ -386,6 +387,11 @@ Calling `Faker` methods:
 ```java
 new Faker(fakerConfig).getName().firstName(); // => John
 ```
+
+
+## CLI
+Command line application can be used for a quick lookup of faker functions.
+See [README.md](cli-bot/README.MD) for installation and usage details.
 
 
 ## Data Providers
