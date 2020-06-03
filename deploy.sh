@@ -5,17 +5,19 @@ if [[ "${_dir}" != "$(pwd)" ]]; then
     cd "${_dir}"
 fi
 
+# Set git author config
+git config --local user.name "${GIT_USER_NAME}"
+git config --local user.email "${GIT_USER_EMAIL}"
+
 _tag="$(git describe --exact-match --tags HEAD 2>&1)"
 
 if [[ "${_tag}" == *"no tag exactly matches"* ]]; then
-    ./gradlew clean tag build bintrayUpload -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
-
-    # Set git author config for the next step to have proper history
-    git config user.name "${GIT_USER_NAME}"
-    git config user.email "${GIT_USER_EMAIL}"
-
-    # Push newly created tag to remote
-    git push "https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git" --tags
+    ./gradlew clean tag build core:bintrayUpload cli-bot:nativeImage -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
 else
-    ./gradlew clean printVersion build bintrayUpload -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
+    if [[ "${_tag}" == *"No names found, cannot describe anything"* ]]; then
+        echo "Setting tag for first release"
+        git tag v0.0.1
+    fi
+
+    ./gradlew clean printVersion build core:bintrayUpload cli-bot:nativeImage -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
 fi

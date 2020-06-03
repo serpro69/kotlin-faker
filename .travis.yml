@@ -3,19 +3,23 @@ language: java
 branches:
   except:
     - /^v(\d+\.?){3}/
+    - /^untagged/
 
 jobs:
   include:
     - stage: test
       script: ./gradlew clean test
 
-    - stage: deploy
+    - stage: deploy and release
       script: skip # skip re-running tests
+      before_deploy: ./deploy.sh
       deploy:
-        provider: script
+        provider: releases
         skip_cleanup: true
         cleanup: false
-        script: ./deploy.sh
+        api_key: ${GH_TOKEN}
+        file_glob: true
+        file: "cli-bot/build/graal/faker-bot_*"
         on:
           branch: master
 
@@ -23,5 +27,5 @@ stages:
   - name: test
     if: NOT branch = master
 
-  - name: deploy
+  - name: deploy and release
     if: branch = master
