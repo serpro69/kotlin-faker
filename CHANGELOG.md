@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [v1.3.0] - 2020-06-03
+### Added
+- [#24](https://github.com/serpro69/kotlin-faker/issues/24) faker-bot cli application
+- Automated releases to github
+
+### Changed
+- [#29](https://github.com/serpro69/kotlin-faker/issues/29) Remove classgraph dependency
+- Split core faker functionality and cli bot application into sub-projects.
+
 ## [v1.2.0] - 2020-05-17
 ### Added
 - 3 new providers: `chiquito`, `computer`, and `rajnikanth`
