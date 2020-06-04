@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm")
     id("com.github.johnrengelman.shadow") version "5.2.0"
     application
-    id("com.palantir.graal") version "0.7.0-2-g4a93d00"
+    id("com.palantir.graal") version "0.7.1"
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
