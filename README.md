@@ -23,7 +23,7 @@
   - [Java interop](#java-interop)
 - [CLI](#cli)
 - [Data Providers](#data-providers)
-  - [Generation a random instance of any class](#generating-a-random-instance-of-any-class)
+  - [Generating a random instance of any class](#generating-a-random-instance-of-any-class)
 - [Migrating to 1.0](#migrating-to-10)
   - [For kotlin users](#for-kotlin-users)
   - [For java users](#for-java-users)
@@ -65,7 +65,7 @@ benchmarks for `moove-it/fakeit` could not be done due to android dependencies i
 | **number of available locales**                             | 55               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
 | **extra functionality**                                     | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **actively maintained**                                     | &#9989;          | &#9989;                                               | &#9989;                                                   | &#9989;                                           | &#10062;                                              |
-| [cli-bot app](cli-bot)                                      | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
+| **[cli-bot app](cli-bot)**                                  | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
 
 
@@ -396,7 +396,7 @@ See [README.md](cli-bot/README.MD) for installation and usage details.
 
 
 ## Data Providers
-Below is the list of available providers that correspond to the dictionary files found in [/locales/en](src/main/resources/locales/en)
+Below is the list of available providers that correspond to the dictionary files found in [core/locales/en](core/src/main/resources/locales/en)
 
 <i>Note that not all (although most) of the providers and their functions are implemented at this point.
 For more details see the particular `.md` file for each provider below.</i>

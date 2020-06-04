@@ -25,10 +25,10 @@ Usage details are also available with the `--help` option:
 ### Available commands
 #### `list`
 * `./faker-bot list` - list all providers and their functions
-* `./faker-bot list Address Name` list functions of `Address` and `Name` providers (Case insensitive)
+* `./faker-bot list Address Name` - list functions of `Address` and `Name` providers (Case insensitive)
 
 #### `lookup` 
-* `./faker-bot lookup name` Lookup functions by name (Case insensitive)
+* `./faker-bot lookup name` - lookup functions by name (Case insensitive)
 
 ### Available options
 #### Verbose output
