@@ -1,10 +1,23 @@
 <img src=../logo/faker_bot.png width=337 height=299 alt=""/>  
 
-# Faker-Bot
+### Faker-Bot
 
-A CLI application that helps to quickly find required functions of kotlin-faker
+Quickly find required kotlin-faker functionality from your terminal
 
 <img src=./img/faker-peek.gif width="768" height="606" alt=""/>
+
+## ToC
+* [Installation](#installation)
+* [Usage](#usage)
+  * [Available commands](#available-commands)
+    * [list](#list)
+    * [lookup](#lookup)
+  * [Available options](#available-options)
+    * [--verbose](#verbose-output)
+    * [--java-syntax](#switch-to-java-syntax)
+    * [--locale](#using-non-default-locale)
+    * [--list-locales](#list-available-locales)
+* [Thanks](#thanks)
 
 ## Installation
 The native images are available on [releases](https://github.com/serpro69/kotlin-faker/releases) page.  
@@ -44,3 +57,6 @@ using `de` locale.
 
 #### List available locales
 `./faker-bot list --list-locales` - prints all available locales
+
+## Thanks
+Inspired by [faker-ruby/faker-bot](https://github.com/faker-ruby/faker-bot)
