@@ -1,12 +1,14 @@
-<img src=./logo/kotlin_faker.png width=367.5 height=300/>  
+<img src=./logo/kotlin_faker.png width="411.5" height="296" alt=""/>  
 
-### kotlin-faker
+### <img src=./logo/k.png width="18" height="18">otlin-fa<img src=./logo/k.png width="18" height="18">er
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
 [![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
 [![Issues Badge](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg)](https://github.com/serpro69/kotlin-faker/issues)
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![Licence Badge](https://img.shields.io/github/license/serpro69/kotlin-faker.svg)](LICENCE.md)
+
+> **Generates realistically-looking fake data**
 
 ## ToC
 - [About](#about)
@@ -392,7 +394,7 @@ new Faker(fakerConfig).getName().firstName(); // => John
 
 ## CLI
 Command line application can be used for a quick lookup of faker functions.
-See [README.md](cli-bot/README.MD) for installation and usage details.
+See [faker-bot README](cli-bot/README.md) for installation and usage details.
 
 
 ## Data Providers
