@@ -1,6 +1,4 @@
-<img src=../logo/faker_bot.png width=337 height=299 alt=""/>  
-
-### Faker-Bot
+<a href="https://github.com/serpro69/kotlin-faker"> <img src=../logo/faker_bot.png alt="faker-bot"/> </a>  
 
 Quickly find required kotlin-faker functionality from your terminal
 
