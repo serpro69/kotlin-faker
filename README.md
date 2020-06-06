@@ -1,6 +1,6 @@
 <img src=./logo/kotlin_faker.png width="411.5" height="296" alt=""/>  
 
-### <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/k.png width="136.86" height="18" alt="kotlin-faker"/> </a>
+### <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/name.png width="136.86" height="18" alt="kotlin-faker"/> </a>
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
 [![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
