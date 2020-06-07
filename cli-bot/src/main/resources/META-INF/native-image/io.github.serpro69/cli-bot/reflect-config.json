@@ -26,6 +26,7 @@
     {"name":"getBank","parameterTypes":[] }, 
     {"name":"getBasketball","parameterTypes":[] }, 
     {"name":"getBeer","parameterTypes":[] }, 
+    {"name":"getBlood","parameterTypes":[] }, 
     {"name":"getBojackHoreseman","parameterTypes":[] }, 
     {"name":"getBook","parameterTypes":[] }, 
     {"name":"getBossaNova","parameterTypes":[] }, 
@@ -45,14 +46,17 @@
     {"name":"getCompany","parameterTypes":[] }, 
     {"name":"getComputer","parameterTypes":[] }, 
     {"name":"getConstruction","parameterTypes":[] }, 
+    {"name":"getControl","parameterTypes":[] }, 
     {"name":"getCosmere","parameterTypes":[] }, 
     {"name":"getCryptoCoin","parameterTypes":[] }, 
     {"name":"getCultureSeries","parameterTypes":[] }, 
     {"name":"getCurrency","parameterTypes":[] }, 
     {"name":"getDcComics","parameterTypes":[] }, 
     {"name":"getDemographic","parameterTypes":[] }, 
+    {"name":"getDeparted","parameterTypes":[] }, 
     {"name":"getDessert","parameterTypes":[] }, 
     {"name":"getDevice","parameterTypes":[] }, 
+    {"name":"getDnd","parameterTypes":[] }, 
     {"name":"getDog","parameterTypes":[] }, 
     {"name":"getDota","parameterTypes":[] }, 
     {"name":"getDrWho","parameterTypes":[] }, 
@@ -115,6 +119,7 @@
     {"name":"getOpera","parameterTypes":[] }, 
     {"name":"getOverwatch","parameterTypes":[] }, 
     {"name":"getParksAndRec","parameterTypes":[] }, 
+    {"name":"getPearlJam","parameterTypes":[] }, 
     {"name":"getPhish","parameterTypes":[] }, 
     {"name":"getPhoneNumber","parameterTypes":[] }, 
     {"name":"getPokemon","parameterTypes":[] }, 
@@ -131,6 +136,7 @@
     {"name":"getSeinfeld","parameterTypes":[] }, 
     {"name":"getSeparator","parameterTypes":[] }, 
     {"name":"getShakespeare","parameterTypes":[] }, 
+    {"name":"getShow","parameterTypes":[] }, 
     {"name":"getSiliconValley","parameterTypes":[] }, 
     {"name":"getSimpsons","parameterTypes":[] }, 
     {"name":"getSlackEmoji","parameterTypes":[] }, 
@@ -143,6 +149,7 @@
     {"name":"getStrangerThings","parameterTypes":[] }, 
     {"name":"getStripe","parameterTypes":[] }, 
     {"name":"getSubscription","parameterTypes":[] }, 
+    {"name":"getSuits","parameterTypes":[] }, 
     {"name":"getSuperSmashBros","parameterTypes":[] }, 
     {"name":"getSuperhero","parameterTypes":[] }, 
     {"name":"getSwordArtOnline","parameterTypes":[] }, 
@@ -157,6 +164,7 @@
     {"name":"getVehicle","parameterTypes":[] }, 
     {"name":"getVentureBros","parameterTypes":[] }, 
     {"name":"getVerbs","parameterTypes":[] }, 
+    {"name":"getWarhammerFantasy","parameterTypes":[] }, 
     {"name":"getWitcher","parameterTypes":[] }, 
     {"name":"getWorldCup","parameterTypes":[] }, 
     {"name":"getWorldOfWarcraft","parameterTypes":[] }, 
@@ -309,6 +317,14 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.Blood",
+  "methods":[
+    {"name":"group","parameterTypes":[] }, 
+    {"name":"rhFactor","parameterTypes":[] }, 
+    {"name":"type","parameterTypes":[] }
+  ]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.BojackHoreseman",
   "methods":[
     {"name":"characters","parameterTypes":[] }, 
@@ -455,6 +471,19 @@
   "methods":[{"name":"materials","parameterTypes":[] }]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.Control",
+  "methods":[
+    {"name":"alteredItem","parameterTypes":[] }, 
+    {"name":"alteredWorldEvent","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] }, 
+    {"name":"hiss","parameterTypes":[] }, 
+    {"name":"location","parameterTypes":[] }, 
+    {"name":"objectOfPower","parameterTypes":[] }, 
+    {"name":"quote","parameterTypes":[] }, 
+    {"name":"theBoard","parameterTypes":[] }
+  ]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.Cosmere",
   "methods":[
     {"name":"allomancers","parameterTypes":[] }, 
@@ -511,6 +540,14 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.Departed",
+  "methods":[
+    {"name":"actors","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] }, 
+    {"name":"quotes","parameterTypes":[] }
+  ]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.Dessert",
   "methods":[
     {"name":"dessert","parameterTypes":[] }, 
@@ -526,6 +563,15 @@
     {"name":"modelName","parameterTypes":[] }, 
     {"name":"platform","parameterTypes":[] }, 
     {"name":"serial","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.DnD",
+  "methods":[
+    {"name":"alignments","parameterTypes":[] }, 
+    {"name":"backgrounds","parameterTypes":[] }, 
+    {"name":"klasses","parameterTypes":[] }, 
+    {"name":"species","parameterTypes":[] }
   ]
 },
 {
@@ -1068,6 +1114,14 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.PearlJam",
+  "methods":[
+    {"name":"albums","parameterTypes":[] }, 
+    {"name":"musicians","parameterTypes":[] }, 
+    {"name":"songs","parameterTypes":[] }
+  ]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.Phish",
   "methods":[{"name":"song","parameterTypes":[] }]
 },
@@ -1182,6 +1236,14 @@
     {"name":"hamlet","parameterTypes":[] }, 
     {"name":"kingRichardTheThird","parameterTypes":[] }, 
     {"name":"romeoAndJuliet","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Show",
+  "methods":[
+    {"name":"adultMusical","parameterTypes":[] }, 
+    {"name":"kidsMusical","parameterTypes":[] }, 
+    {"name":"play","parameterTypes":[] }
   ]
 },
 {
@@ -1313,6 +1375,13 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.Suits",
+  "methods":[
+    {"name":"characters","parameterTypes":[] }, 
+    {"name":"quotes","parameterTypes":[] }
+  ]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.SuperSmashBros",
   "methods":[
     {"name":"fighter","parameterTypes":[] }, 
@@ -1325,7 +1394,7 @@
     {"name":"descriptor$core","parameterTypes":[] }, 
     {"name":"name","parameterTypes":[] }, 
     {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$core","parameterTypes":[] },
+    {"name":"prefix$core","parameterTypes":[] }, 
     {"name":"suffix$core","parameterTypes":[] }
   ]
 },
@@ -1444,6 +1513,16 @@
     {"name":"past","parameterTypes":[] }, 
     {"name":"pastParticiple","parameterTypes":[] }, 
     {"name":"simplePresent","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.WarhammerFantasy",
+  "methods":[
+    {"name":"creatures","parameterTypes":[] }, 
+    {"name":"factions","parameterTypes":[] }, 
+    {"name":"heroes","parameterTypes":[] }, 
+    {"name":"locations","parameterTypes":[] }, 
+    {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
@@ -1603,9 +1682,6 @@
   "name":"kotlin.jvm.internal.DefaultConstructorMarker"
 },
 {
-  "name":"kotlin.jvm.functions.Function0"
-},
-{
   "name":"kotlin.reflect.KProperty[][]"
 },
 {
@@ -1623,5 +1699,8 @@
 },
 {
   "name":"java.lang.String"
+},
+{
+  "name":"kotlin.jvm.functions.Function0"
 }
 ]
