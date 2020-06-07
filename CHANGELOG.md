@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [v1.4.0] - UNRELEASED
+### Added
+- 8 new providers:
+  - `warhammerFantasy`
+  - `suits`
+  - `show`
+  - `pearlJam`
+  - `departed`
+  - `control`
+  - `dnd`
+  - `blood`
+
 ## [v1.3.1] - 2020-06-07
 ### Fixed
 - [#27](https://github.com/serpro69/kotlin-faker/issues/27) Resolving partially-localized provider functions
