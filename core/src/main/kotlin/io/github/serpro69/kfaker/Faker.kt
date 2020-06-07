@@ -49,6 +49,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     //    val compass: Compass
     val computer: Computer
     val construction: Construction
+    val control: Control
     val cosmere: Cosmere
     val cryptoCoin: CryptoCoin
     val cultureSeries: CultureSeries
@@ -204,6 +205,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
 //        compass = Compass(fakerService)
         computer = Computer(fakerService)
         construction = Construction(fakerService)
+        control = Control(fakerService)
         cosmere = Cosmere(fakerService)
         cryptoCoin = CryptoCoin(fakerService)
         cultureSeries = CultureSeries(fakerService)

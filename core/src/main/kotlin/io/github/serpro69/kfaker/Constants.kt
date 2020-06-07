@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker
 
+/**
+ * File names in `locales/en` directory.
+ */
 val defaultFileNames = listOf(
     "address.yml",
     "ancient.yml",
@@ -33,6 +36,7 @@ val defaultFileNames = listOf(
     "compass.yml",
     "computer.yml",
     "construction.yml",
+    "control.yml",
     "cosmere.yml",
     "crypto_coin.yml",
     "culture_series.yml",
