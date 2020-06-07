@@ -131,6 +131,7 @@ val dictionaryKeys = listOf(
     "stranger_things",
     "stripe",
     "subscription",
+    "suits",
     "superhero",
     "sword_art_online",
     "team",

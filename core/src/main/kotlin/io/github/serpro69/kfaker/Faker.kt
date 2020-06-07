@@ -154,6 +154,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val strangerThings: StrangerThings
     val stripe: Stripe
     val subscription: Subscription
+    val suits: Suits
     val superhero: Superhero
     val superSmashBros: SuperSmashBros
     val swordArtOnline: SwordArtOnline
@@ -314,6 +315,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         strangerThings = StrangerThings(fakerService)
         stripe = Stripe(fakerService)
         subscription = Subscription(fakerService)
+        suits = Suits(fakerService)
         superhero = Superhero(fakerService)
         superSmashBros = SuperSmashBros(fakerService)
         swordArtOnline = SwordArtOnline(fakerService)

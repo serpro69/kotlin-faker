@@ -141,6 +141,7 @@ val defaultFileNames = listOf(
     "stranger_thing.yml",
     "stripe.yml",
     "subscription.yml",
+    "suits.yml",
     "super_smash_bros.yml",
     "superhero.yml",
     "sword_art_online.yml",

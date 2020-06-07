@@ -143,6 +143,7 @@ internal enum class CategoryName {
     STRANGER_THINGS,
     STRIPE,
     SUBSCRIPTION,
+    SUITS,
     SUPERHERO,
     SWORD_ART_ONLINE,
     TEAM,
