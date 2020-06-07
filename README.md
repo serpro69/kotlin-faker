@@ -29,6 +29,7 @@
 - [Migrating to 1.0](#migrating-to-10)
   - [For kotlin users](#for-kotlin-users)
   - [For java users](#for-java-users)
+- [For developers](#for-developers)
 - [Build and Deploy](#build-and-deploy)
 - [Contributing](#contributing)
 - [Thanks](#thanks)
@@ -629,6 +630,20 @@ getters replaced with function calls.
 + // and no call to `invoke()` operator 
 + faker.getAddress().city();
 ```
+
+
+## For developers
+### Adding a new dictionary (provider)
+When adding a new dictionary yml file the following places need to reflect changes:
+
+- [Dictionary.kt](core/src/main/kotlin/io/github/serpro69/kfaker/dictionary/Dictionary.kt) - add a new class 
+to `CategoryName` enum. This is only necessary if the category is not already there.
+- [Constants.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Constants.kt) - the new dictionary filename 
+should be added to `defaultFileNames` property.
+- [Faker.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) - add a new faker provider property to `Faker` class.
+- The provider implementation class should go into [provider](core/src/main/kotlin/io/github/serpro69/kfaker/provider) package.
+- [doc](doc) - add an `.md` file for the new provider.
+- And of course unit tests.
 
 
 ## Build and Deploy
