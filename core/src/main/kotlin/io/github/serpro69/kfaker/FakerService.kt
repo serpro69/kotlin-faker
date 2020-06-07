@@ -109,6 +109,57 @@ internal class FakerService @JvmOverloads internal constructor(
             }
         }
 
+        /**
+         * Merges [default] and [localized] categories (providers) and values, using localized value if present.
+         *
+         * Will also handle partially-localized categories, including partially-localized functions with secondary_keys,
+         * for example:
+         *
+         * IF (en.category.function.secondary_key1 AND en.category.function.secondary_key2) IS PRESENT
+         * AND <locale>.category.function.secondary_key1 IS PRESENT
+         * AND en.category.function.another_secondary_key2 IS ABSENT
+         * THEN RETURN <locale>.category.function.secondary_key1 AND en.category.function.secondary_key2
+         *
+         * Currently does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
+         */
+        fun merge(default: HashMap<String, Map<String, *>>, localized: HashMap<String, Map<String, *>>) {
+            localized.forEach { category ->
+                default.merge(category.key, category.value) { enMap, localizedMap ->
+                    /*
+                     * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
+                     * WHERE mapKey IS provider_name: [address, name, games, etc]
+                     * AND map[mapKey] (i.e. map["name") IS provider_functions: [name.first_name, name.last_name, etc]
+                     *
+                     * For example:
+                     * enMap.key == en.faker.games // 'games' provider for 'en' locale
+                     * localizedMap.key == de.faker.games // 'games' provider for 'de' locale
+                     * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
+                     * localizedMap["games"] == { pokemon={names=[...]} }
+                     */
+                    enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
+                        /*
+                         * This is provider_functions level access for default providers (enMap).
+                         * The goal here is to find-and-replace any matching functions (v) for each provider (k).
+                         * But since some functions may contain secondary_key the following is needed.
+                         */
+                        if (v is Map<*, *> && localizedMap.containsKey(k)) {
+                            // check if function has a secondary_key that is used to resolve the values
+                            // if true we assume that u[k] should also be a Map because the structure of dict files should match
+                            // v IS en.faker.games.<secondary_key> (i.e pokemon)
+                            v.plus(localizedMap[k] as Map<*, *>)
+                        } else if (localizedMap.containsKey(k)) {
+                            // check if the primary_key (function_name) matches with localized provider
+                            // if v is not a map, but localized key matches, then use the values for that key
+                            localizedMap[k]
+                        } else {
+                            // else just return the original value
+                            v
+                        }
+                    }
+                }
+            }
+        }
+
         if (locale != "en") {
             val localeFileStream = getLocalizedFileStream(locale)
 
@@ -120,47 +171,16 @@ internal class FakerService @JvmOverloads internal constructor(
 
                 readCategory(fileStream, localeLang).forEach { cat ->
                     when (cat.key) {
+                        // 'separator' is a bit of a special case so needs to be handled separately
                         "separator" -> defaultValues[cat.key] = cat.value
-                        else -> defaultValues.merge(cat.key, cat.value) { t, u -> t.plus(u) }
+                        else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
                     }
                 }
             } else {
                 readCategory(localeFileStream, locale).forEach { cat ->
                     when (cat.key) {
                         "separator" -> defaultValues[cat.key] = cat.value
-                        else -> defaultValues.merge(cat.key, cat.value) { enMap, localizedMap ->
-                            /*
-                             * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
-                             * WHERE mapKey IS provider_name: [address, name, games, etc]
-                             * AND map[mapKey] (i.e. map["name") IS provider_functions: [name.first_name, name.last_name, etc]
-                             *
-                             * For example:
-                             * enMap.key == en.faker.games // 'games' provider for 'en' locale
-                             * localizedMap.key == de.faker.games // 'games' provider for 'de' locale
-                             * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
-                             * localizedMap["games"] == { pokemon={names=[...]} }
-                             */
-                            enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
-                                /*
-                                 * This is provider_functions level access for default providers (enMap).
-                                 * The goal here is to find-and-replace any matching functions (v) for each provider (k).
-                                 * But since some functions may contain secondary_key the following is needed.
-                                 */
-                                if (v is Map<*, *> && localizedMap.containsKey(k)) {
-                                    // check if function has a secondary_key that is used to resolve the values
-                                    // if true we assume that u[k] should also be a Map because the structure of dict files should match
-                                    // v IS en.faker.games.<secondary_key> (i.e pokemon)
-                                    v.plus(localizedMap[k] as Map<*, *>)
-                                } else if (localizedMap.containsKey(k)) {
-                                    // check if the primary_key (function_name) matches with localized provider
-                                    // if v is not a map, but localized key matches, then use the values for that key
-                                    localizedMap[k]
-                                } else {
-                                    // else just return the original value
-                                    v
-                                }
-                            }
-                        }
+                        else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
                     }
                 }
             }
@@ -368,7 +388,6 @@ internal class FakerService @JvmOverloads internal constructor(
             resolvedExpression
         } else resolveExpression(category, RawExpression(resolvedExpression))
     }
-
 
     /**
      * Replaces every `#` char for this [String] receiver with a random int from 0 to 9 inclusive
