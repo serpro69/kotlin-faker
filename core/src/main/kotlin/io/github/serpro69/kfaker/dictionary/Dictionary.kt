@@ -115,6 +115,7 @@ internal enum class CategoryName {
     ONE_PIECE,
     OPERA,
     PARKS_AND_REC,
+    PEARL_JAM,
     PHISH,
     PHONE_NUMBER,
     PRINCESS_BRIDE,

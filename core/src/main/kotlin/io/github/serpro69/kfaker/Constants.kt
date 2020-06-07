@@ -111,6 +111,7 @@ val defaultFileNames = listOf(
     "opera.yml",
     "overwatch.yml",
     "parks_and_rec.yml",
+    "pearl_jam.yml",
     "phish.yml",
     "phone_number.yml",
     "pokemon.yml",

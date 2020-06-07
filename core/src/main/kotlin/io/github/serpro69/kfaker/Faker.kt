@@ -124,6 +124,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val opera: Opera
     val overwatch: Overwatch
     val parksAndRec: ParksAndRec
+    val pearlJam: PearlJam
     val phish: Phish
     val phoneNumber: PhoneNumber
     val pokemon: Pokemon
@@ -282,6 +283,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         opera = Opera(fakerService)
         overwatch = Overwatch(fakerService)
         parksAndRec = ParksAndRec(fakerService)
+        pearlJam = PearlJam(fakerService)
         phish = Phish(fakerService)
         phoneNumber = PhoneNumber(fakerService)
         pokemon = Pokemon(fakerService)
