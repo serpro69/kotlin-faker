@@ -56,6 +56,7 @@ internal enum class CategoryName {
     CURRENCY,
     DC_COMICS,
     DEMOGRAPHIC,
+    DEPARTED,
     DESSERT,
     DEVICE,
     DND,

@@ -41,6 +41,7 @@ val dictionaryKeys = listOf(
     "currency",
     "dc_comics",
     "demographic",
+    "departed",
     "dessert",
     "device",
     "dnd",
