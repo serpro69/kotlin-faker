@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [v1.3.1] - 2020-06-07
+### Fixed
+- [#27](https://github.com/serpro69/kotlin-faker/issues/27) Resolving partially-localized provider functions
+with secondary_key
+
 ## [v1.3.0] - 2020-06-03
 ### Added
 - [#24](https://github.com/serpro69/kotlin-faker/issues/24) faker-bot cli application

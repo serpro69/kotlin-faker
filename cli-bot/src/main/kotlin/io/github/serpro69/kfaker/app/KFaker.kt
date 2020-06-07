@@ -13,7 +13,7 @@ import kotlin.system.exitProcess
     ],
     version = [
         "faker: 1.3.+",
-        "faker-bot: 1.3.0",
+        "faker-bot: 1.3.1",
         "Built with picocli ${CommandLine.VERSION}",
         "JVM: \${java.version} (\${java.vendor} \${java.vm.name} \${java.vm.version})",
         "OS: \${os.name} \${os.version} \${os.arch}"
