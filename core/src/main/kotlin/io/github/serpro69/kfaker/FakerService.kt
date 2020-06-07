@@ -161,27 +161,20 @@ internal class FakerService @JvmOverloads internal constructor(
         }
 
         if (locale != "en") {
-            val localeFileStream = getLocalizedFileStream(locale)
-
-            if (localeFileStream == null) {
+            val (localeFileStream, localeString) = getLocalizedFileStream(locale)?.let { it to locale } ?: let {
                 val localeLang = locale.substringBefore("-")
 
                 val fileStream = getLocalizedFileStream(localeLang)
                     ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
 
-                readCategory(fileStream, localeLang).forEach { cat ->
-                    when (cat.key) {
-                        // 'separator' is a bit of a special case so needs to be handled separately
-                        "separator" -> defaultValues[cat.key] = cat.value
-                        else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
-                    }
-                }
-            } else {
-                readCategory(localeFileStream, locale).forEach { cat ->
-                    when (cat.key) {
-                        "separator" -> defaultValues[cat.key] = cat.value
-                        else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
-                    }
+                fileStream to localeLang
+            }
+
+            readCategory(localeFileStream, localeString).forEach { cat ->
+                when (cat.key) {
+                    // 'separator' is a bit of a special case so needs to be handled separately
+                    "separator" -> defaultValues[cat.key] = cat.value
+                    else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
                 }
             }
         }
