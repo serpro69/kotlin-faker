@@ -31,7 +31,7 @@ internal class FakerServiceTest : DescribeSpec({
                     "breaking_bad", "buffy", "business", "cannabis", "chiquito", "chuck_norris", "code", "coffee",
                     "coin", "color", "commerce", "community", "company", "compass", "computer", "construction",
                     "cosmere", "crypto_coin", "culture_series", "currency", "dc_comics", "demographic", "dessert",
-                    "device", "game", "games", "dragon_ball", "dr_who", "dumb_and_dumber", "dune", "educator",
+                    "device", "dnd", "game", "games", "dragon_ball", "dr_who", "dumb_and_dumber", "dune", "educator",
                     "electrical_components", "esport", "family_guy", "file", "finance", "food", "football",
                     "the_fresh_prince_of_bel_air", "friends", "funny_name", "game_of_thrones", "gender", "ghostbusters",
                     "grateful_dead", "greek_philosophers", "hacker", "harry_potter", "heroes", "heroes_of_the_storm",

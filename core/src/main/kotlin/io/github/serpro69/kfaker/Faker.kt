@@ -57,6 +57,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val demographic: Demographic
     val dessert: Dessert
     val device: Device
+    val dnd: DnD
     val dog: Dog
     val dota: Dota
     val dragonBall: DragonBall
@@ -211,6 +212,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         demographic = Demographic(fakerService)
         dessert = Dessert(fakerService)
         device = Device(fakerService)
+        dnd = DnD(fakerService)
         dog = Dog(fakerService)
         dota = Dota(fakerService)
         dragonBall = DragonBall(fakerService)

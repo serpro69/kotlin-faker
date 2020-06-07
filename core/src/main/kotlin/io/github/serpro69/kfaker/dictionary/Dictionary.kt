@@ -58,6 +58,7 @@ internal enum class CategoryName {
     DEMOGRAPHIC,
     DESSERT,
     DEVICE,
+    DND,
     GAMES,
     DRAGON_BALL,
     DR_WHO,
