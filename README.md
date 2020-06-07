@@ -643,6 +643,8 @@ should be added to `defaultFileNames` property.
 - [Faker.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) - add a new faker provider property to `Faker` class.
 - The provider implementation class should go into [provider](core/src/main/kotlin/io/github/serpro69/kfaker/provider) package.
 - [doc](doc) - add an `.md` file for the new provider.
+- [reflect-config.json](cli-bot/src/main/resources/META-INF/native-image/io.github.serpro69/cli-bot/reflect-config.json)
+has to be updated to build the native image with graal.
 - And of course unit tests.
 
 
