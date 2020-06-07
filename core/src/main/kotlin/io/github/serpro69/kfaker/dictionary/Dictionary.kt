@@ -27,6 +27,7 @@ internal enum class CategoryName {
     BANK,
     BASKETBALL,
     BEER,
+    BLOOD,
     BOJACK_HORSEMAN,
     BOOK,
     BOSSA_NOVA,

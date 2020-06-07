@@ -12,6 +12,7 @@ val defaultFileNames = listOf(
     "bank.yml",
     "basketball.yml",
     "beer.yml",
+    "blood.yml",
     "bojack_horseman.yml",
     "book.yml",
     "bossa_nova.yml",

@@ -28,6 +28,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val bank: Bank
     val basketball: Basketball
     val beer: Beer
+    val blood: Blood
     val bojackHoreseman: BojackHoreseman
     val book: Book
     val bossaNova: BossaNova
@@ -181,6 +182,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         bank = Bank(fakerService)
         basketball = Basketball(fakerService)
         beer = Beer(fakerService)
+        blood = Blood(fakerService)
         bojackHoreseman = BojackHoreseman(fakerService)
         book = Book(fakerService)
         bossaNova = BossaNova(fakerService)
