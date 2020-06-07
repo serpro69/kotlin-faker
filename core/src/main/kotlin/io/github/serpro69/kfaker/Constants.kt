@@ -127,6 +127,7 @@ val defaultFileNames = listOf(
     "science.yml",
     "seinfeld.yml",
     "shakespeare.yml",
+    "show.yml",
     "silicon_valley.yml",
     "simpsons.yml",
     "slack_emoji.yml",

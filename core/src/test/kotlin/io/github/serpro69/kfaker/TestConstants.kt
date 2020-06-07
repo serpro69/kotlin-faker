@@ -118,6 +118,7 @@ val dictionaryKeys = listOf(
     "science",
     "seinfeld",
     "shakespeare",
+    "show",
     "silicon_valley",
     "simpsons",
     "slack_emoji",

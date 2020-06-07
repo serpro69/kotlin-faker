@@ -140,6 +140,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val science: Science
     val seinfeld: Seinfeld
     val shakespeare: Shakespeare
+    val show: Show
     val siliconValley: SiliconValley
     val simpsons: Simpsons
     val slackEmoji: SlackEmoji
@@ -299,6 +300,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         science = Science(fakerService)
         seinfeld = Seinfeld(fakerService)
         shakespeare = Shakespeare(fakerService)
+        show = Show(fakerService)
         siliconValley = SiliconValley(fakerService)
         simpsons = Simpsons(fakerService)
         slackEmoji = SlackEmoji(fakerService)

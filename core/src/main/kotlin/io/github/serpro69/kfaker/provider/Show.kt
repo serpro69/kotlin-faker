@@ -1,0 +1,18 @@
+package io.github.serpro69.kfaker.provider
+
+import io.github.serpro69.kfaker.*
+import io.github.serpro69.kfaker.dictionary.*
+
+/**
+ * [FakeDataProvider] implementation for [CategoryName.SHOW] category.
+ */
+@Suppress("unused")
+class Show internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Show>(fakerService) {
+    override val categoryName = CategoryName.SHOW
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Show>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    fun adultMusical() = resolve("adult_musical")
+    fun play() = resolve("play")
+    fun kidsMusical() = resolve("kids_musical")
+}

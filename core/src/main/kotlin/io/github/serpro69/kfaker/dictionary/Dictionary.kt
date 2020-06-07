@@ -130,6 +130,7 @@ internal enum class CategoryName {
     SCIENCE,
     SEINFELD,
     SHAKESPEARE,
+    SHOW,
     SILICON_VALLEY,
     SIMPSONS,
     SLACK_EMOJI,
