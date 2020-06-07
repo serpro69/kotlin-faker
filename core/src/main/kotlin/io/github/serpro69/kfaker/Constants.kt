@@ -156,6 +156,7 @@ val defaultFileNames = listOf(
     "vehicle.yml",
     "venture_bros.yml",
     "verbs.yml",
+    "warhammer_fantasy.yml",
     "witcher.yml",
     "world_cup.yml",
     "world_of_warcraft.yml",

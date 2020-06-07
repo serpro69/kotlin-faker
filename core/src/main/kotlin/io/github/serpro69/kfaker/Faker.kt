@@ -168,6 +168,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val vehicle: Vehicle
     val ventureBros: VentureBros
     val verbs: Verbs
+    val warhammerFantasy: WarhammerFantasy
     val vForVendetta: VForVendetta
     val witcher: Witcher
     val worldCup: WorldCup
@@ -329,6 +330,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         vehicle = Vehicle(fakerService)
         ventureBros = VentureBros(fakerService)
         verbs = Verbs(fakerService)
+        warhammerFantasy = WarhammerFantasy(fakerService)
         vForVendetta = VForVendetta(fakerService)
         witcher = Witcher(fakerService)
         worldCup = WorldCup(fakerService)
