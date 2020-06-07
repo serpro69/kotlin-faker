@@ -1,6 +1,6 @@
 # `Faker().parksAndRec`
 
-[Dictionary file](../src/main/resources/locales/en/parks_and_rec.yml)
+[Dictionary file](../core/src/main/resources/locales/en/parks_and_rec.yml)
 
 Available Functions:  
 ```kotlin

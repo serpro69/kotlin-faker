@@ -1,6 +1,6 @@
 # `Faker().gender`
 
-[Dictionary file](../src/main/resources/locales/en/gender.yml)
+[Dictionary file](../core/src/main/resources/locales/en/gender.yml)
 
 Available Functions:  
 ```kotlin

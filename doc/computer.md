@@ -1,6 +1,6 @@
 # `Faker().computer`
 
-[Dictionary file](../src/main/resources/locales/en/computer.yml)
+[Dictionary file](../core/src/main/resources/locales/en/computer.yml)
 
 Available Functions:  
 ```kotlin

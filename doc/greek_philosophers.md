@@ -1,6 +1,6 @@
 # `Faker().greekPhilosophers`
 
-[Dictionary file](../src/main/resources/locales/en/greek_philosophers.yml)
+[Dictionary file](../core/src/main/resources/locales/en/greek_philosophers.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().leagueOfLegends`
 
-[Dictionary file](../src/main/resources/locales/en/league_of_legends.yml)
+[Dictionary file](../core/src/main/resources/locales/en/league_of_legends.yml)
 
 Available Functions:  
 ```kotlin

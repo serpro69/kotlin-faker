@@ -1,6 +1,6 @@
 # `Faker().halfLife`
 
-[Dictionary file](../src/main/resources/locales/en/half_life.yml)
+[Dictionary file](../core/src/main/resources/locales/en/half_life.yml)
 
 Available Functions:  
 ```kotlin

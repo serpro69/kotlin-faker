@@ -1,6 +1,6 @@
 # `Faker().onePiece`
 
-[Dictionary file](../src/main/resources/locales/en/one_piece.yml)
+[Dictionary file](../core/src/main/resources/locales/en/one_piece.yml)
 
 Available Functions:  
 ```kotlin

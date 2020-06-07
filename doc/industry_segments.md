@@ -1,6 +1,6 @@
 # `Faker().industrySegments`
 
-[Dictionary file](../src/main/resources/locales/en/industry_segments.yml)
+[Dictionary file](../core/src/main/resources/locales/en/industry_segments.yml)
 
 Available Functions:  
 ```kotlin

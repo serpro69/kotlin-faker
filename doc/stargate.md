@@ -1,6 +1,6 @@
 # `Faker().stargate`
 
-[Dictionary file](../src/main/resources/locales/en/stargate.yml)
+[Dictionary file](../core/src/main/resources/locales/en/stargate.yml)
 
 Available Functions:  
 ```kotlin

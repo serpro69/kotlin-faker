@@ -1,6 +1,6 @@
 # `Faker().science`
 
-[Dictionary file](../src/main/resources/locales/en/science.yml)
+[Dictionary file](../core/src/main/resources/locales/en/science.yml)
 
 Available Functions:  
 ```kotlin

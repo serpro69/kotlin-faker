@@ -1,6 +1,6 @@
 # `Faker().invoice`
 
-[Dictionary file](../src/main/resources/locales/en/invoice.yml)
+[Dictionary file](../core/src/main/resources/locales/en/invoice.yml)
 
 Available Functions:  
 ```kotlin

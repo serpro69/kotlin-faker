@@ -1,6 +1,6 @@
 # `Faker().heyArnold`
 
-[Dictionary file](../src/main/resources/locales/en/hey_arnold.yml)
+[Dictionary file](../core/src/main/resources/locales/en/hey_arnold.yml)
 
 Available Functions:  
 ```kotlin

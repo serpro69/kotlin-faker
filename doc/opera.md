@@ -1,6 +1,6 @@
 # `Faker().opera`
 
-[Dictionary file](../src/main/resources/locales/en/horse.yml)
+[Dictionary file](../core/src/main/resources/locales/en/horse.yml)
 
 Available Functions:  
 ```kotlin

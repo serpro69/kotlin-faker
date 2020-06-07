@@ -1,6 +1,6 @@
 # `Faker().breakingBad`
 
-[Dictionary file](../src/main/resources/locales/en/breaking_bad.yml)
+[Dictionary file](../core/src/main/resources/locales/en/breaking_bad.yml)
 
 Available Functions:  
 ```kotlin

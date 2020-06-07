@@ -1,6 +1,6 @@
 # `Faker().beer`
 
-[Dictionary file](../src/main/resources/locales/en/beer.yml)
+[Dictionary file](../core/src/main/resources/locales/en/beer.yml)
 
 Available Functions:  
 ```kotlin

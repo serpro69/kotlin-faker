@@ -1,6 +1,6 @@
 # `Faker().hacker`
 
-[Dictionary file](../src/main/resources/locales/en/hacker.yml)
+[Dictionary file](../core/src/main/resources/locales/en/hacker.yml)
 
 Available Functions:  
 ```kotlin

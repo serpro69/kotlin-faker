@@ -1,6 +1,6 @@
 # `Faker().internet`
 
-[Dictionary file](../src/main/resources/locales/en/internet.yml)
+[Dictionary file](../core/src/main/resources/locales/en/internet.yml)
 
 Available Functions:  
 ```kotlin

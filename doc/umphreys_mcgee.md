@@ -1,6 +1,6 @@
 # `Faker().umphreysMcgee`
 
-[Dictionary file](../src/main/resources/locales/en/umphreys_mcgee.yml)
+[Dictionary file](../core/src/main/resources/locales/en/umphreys_mcgee.yml)
 
 Available Functions:  
 ```kotlin

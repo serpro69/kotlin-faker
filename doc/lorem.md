@@ -1,6 +1,6 @@
 # `Faker().lorem`
 
-[Dictionary file](../src/main/resources/locales/en/lorem.yml)
+[Dictionary file](../core/src/main/resources/locales/en/lorem.yml)
 
 Available Functions:  
 ```kotlin

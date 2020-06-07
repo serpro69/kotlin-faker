@@ -1,6 +1,6 @@
 # `Faker().lovecraft`
 
-[Dictionary file](../src/main/resources/locales/en/lovecraft.yml)
+[Dictionary file](../core/src/main/resources/locales/en/lovecraft.yml)
 
 Available Functions:  
 ```kotlin

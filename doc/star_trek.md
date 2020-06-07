@@ -1,6 +1,6 @@
 # `Faker().star_trek`
 
-[Dictionary file](../src/main/resources/locales/en/star_trek.yml)
+[Dictionary file](../core/src/main/resources/locales/en/star_trek.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().esport`
 
-[Dictionary file](../src/main/resources/locales/en/esport.yml)
+[Dictionary file](../core/src/main/resources/locales/en/esport.yml)
 
 Available Functions:  
 ```kotlin

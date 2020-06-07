@@ -1,6 +1,6 @@
 # `Faker().buffy`
 
-[Dictionary file](../src/main/resources/locales/en/buffy.yml)
+[Dictionary file](../core/src/main/resources/locales/en/buffy.yml)
 
 Available Functions:  
 ```kotlin

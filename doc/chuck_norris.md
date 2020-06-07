@@ -1,6 +1,6 @@
 # `Faker().chuckNorris`
 
-[Dictionary file](../src/main/resources/locales/en/chuck_norris.yml)
+[Dictionary file](../core/src/main/resources/locales/en/chuck_norris.yml)
 
 Available Functions:  
 ```kotlin

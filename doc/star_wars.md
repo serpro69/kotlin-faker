@@ -1,6 +1,6 @@
 # `Faker().starWars`
 
-[Dictionary file](../src/main/resources/locales/en/star_wars.yml)
+[Dictionary file](../core/src/main/resources/locales/en/star_wars.yml)
 
 Available Functions:  
 ```kotlin

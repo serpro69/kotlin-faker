@@ -1,6 +1,6 @@
 # `Faker().strangerThings`
 
-[Dictionary file](../src/main/resources/locales/en/stranger_thing.yml)
+[Dictionary file](../core/src/main/resources/locales/en/stranger_thing.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().yoda`
 
-[Dictionary file](../src/main/resources/locales/en/yoda.yml)
+[Dictionary file](../core/src/main/resources/locales/en/yoda.yml)
 
 Available Functions:  
 ```kotlin

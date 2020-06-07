@@ -1,6 +1,6 @@
 # `Faker().rupaul`
 
-[Dictionary file](../src/main/resources/locales/en/rupaul.yml)
+[Dictionary file](../core/src/main/resources/locales/en/rupaul.yml)
 
 Available Functions:  
 ```kotlin

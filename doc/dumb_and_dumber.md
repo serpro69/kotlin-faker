@@ -1,6 +1,6 @@
 # `Faker().dumbAndDumber`
 
-[Dictionary file](../src/main/resources/locales/en/dumb_and_dumber.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dumb_and_dumber.yml)
 
 Available Functions:  
 ```kotlin

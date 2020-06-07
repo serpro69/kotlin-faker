@@ -1,6 +1,6 @@
 # `Faker().rickAndMorty`
 
-[Dictionary file](../src/main/resources/locales/en/rick_and_morty.yml)
+[Dictionary file](../core/src/main/resources/locales/en/rick_and_morty.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().basketball`
 
-[Dictionary file](../src/main/resources/locales/en/basketball.yml)
+[Dictionary file](../core/src/main/resources/locales/en/basketball.yml)
 
 Available Functions:  
 ```kotlin

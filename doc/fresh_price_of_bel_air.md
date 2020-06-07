@@ -1,6 +1,6 @@
 # `Faker().freshPrinceOfBelAir`
 
-[Dictionary file](../src/main/resources/locales/en/fresh_prince_of_bel_air.yml)
+[Dictionary file](../core/src/main/resources/locales/en/fresh_prince_of_bel_air.yml)
 
 Available Functions:  
 ```kotlin

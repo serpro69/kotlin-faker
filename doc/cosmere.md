@@ -1,6 +1,6 @@
 # `Faker().cosmere`
 
-[Dictionary file](../src/main/resources/locales/en/cosmere.yml)
+[Dictionary file](../core/src/main/resources/locales/en/cosmere.yml)
 
 Available Functions:  
 ```kotlin

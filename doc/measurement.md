@@ -1,6 +1,6 @@
 # `Faker().measurement`
 
-[Dictionary file](../src/main/resources/locales/en/measurement.yml)
+[Dictionary file](../core/src/main/resources/locales/en/measurement.yml)
 
 Available Functions:  
 ```kotlin

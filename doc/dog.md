@@ -1,6 +1,6 @@
 # `Faker().dog`
 
-[Dictionary file](../src/main/resources/locales/en/dog.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dog.yml)
 
 Available Functions:  
 ```kotlin

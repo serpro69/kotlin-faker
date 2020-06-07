@@ -1,6 +1,6 @@
 # `Faker().funnyName`
 
-[Dictionary file](../src/main/resources/locales/en/funny_name.yml)
+[Dictionary file](../core/src/main/resources/locales/en/funny_name.yml)
 
 Available Functions:  
 ```kotlin

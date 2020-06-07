@@ -1,6 +1,6 @@
 # `Faker().electricalComponents`
 
-[Dictionary file](../src/main/resources/locales/en/electrical_components.yml)
+[Dictionary file](../core/src/main/resources/locales/en/electrical_components.yml)
 
 Available Functions:  
 ```kotlin

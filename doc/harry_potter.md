@@ -1,6 +1,6 @@
 # `Faker().harryPotter`
 
-[Dictionary file](../src/main/resources/locales/en/harry_potter.yml)
+[Dictionary file](../core/src/main/resources/locales/en/harry_potter.yml)
 
 Available Functions:  
 ```kotlin

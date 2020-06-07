@@ -1,6 +1,6 @@
 # `Faker().movie`
 
-[Dictionary file](../src/main/resources/locales/en/movie.yml)
+[Dictionary file](../core/src/main/resources/locales/en/movie.yml)
 
 Available Functions:  
 ```kotlin

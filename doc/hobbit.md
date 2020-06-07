@@ -1,6 +1,6 @@
 # `Faker().hobbit`
 
-[Dictionary file](../src/main/resources/locales/en/hobbit.yml)
+[Dictionary file](../core/src/main/resources/locales/en/hobbit.yml)
 
 Available Functions:  
 ```kotlin

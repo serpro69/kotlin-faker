@@ -1,6 +1,6 @@
 # `Faker().theITCrowd`
 
-[Dictionary file](../src/main/resources/locales/en/the_it_crowd.yml)
+[Dictionary file](../core/src/main/resources/locales/en/the_it_crowd.yml)
 
 Available Functions:  
 ```kotlin

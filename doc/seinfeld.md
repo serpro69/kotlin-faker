@@ -1,6 +1,6 @@
 # `Faker().seinfeld`
 
-[Dictionary file](../src/main/resources/locales/en/seinfeld.yml)
+[Dictionary file](../core/src/main/resources/locales/en/seinfeld.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().phoneNumber`
 
-[Dictionary file](../src/main/resources/locales/en/phone_number.yml)
+[Dictionary file](../core/src/main/resources/locales/en/phone_number.yml)
 
 Available Functions:  
 ```kotlin

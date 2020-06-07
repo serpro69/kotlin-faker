@@ -1,6 +1,6 @@
 # `Faker().slackEmoji`
 
-[Dictionary file](../src/main/resources/locales/en/slack_emoji.yml)
+[Dictionary file](../core/src/main/resources/locales/en/slack_emoji.yml)
 
 Available Functions:  
 ```kotlin

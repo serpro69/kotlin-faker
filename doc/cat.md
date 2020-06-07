@@ -1,6 +1,6 @@
 # `Faker().cat`
 
-[Dictionary file](../src/main/resources/locales/en/cat.yml)
+[Dictionary file](../core/src/main/resources/locales/en/cat.yml)
 
 Available Functions:  
 ```kotlin

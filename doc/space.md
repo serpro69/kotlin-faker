@@ -1,6 +1,6 @@
 # `Faker().space`
 
-[Dictionary file](../src/main/resources/locales/en/space.yml)
+[Dictionary file](../core/src/main/resources/locales/en/space.yml)
 
 Available Functions:  
 ```kotlin

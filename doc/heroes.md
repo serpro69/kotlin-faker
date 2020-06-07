@@ -1,6 +1,6 @@
 # `Faker().heroes`
 
-[Dictionary file](../src/main/resources/locales/en/heroes.yml)
+[Dictionary file](../core/src/main/resources/locales/en/heroes.yml)
 
 Available Functions:  
 ```kotlin

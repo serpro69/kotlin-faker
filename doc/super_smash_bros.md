@@ -1,6 +1,6 @@
 # `Faker().superSmashBros`
 
-[Dictionary file](../src/main/resources/locales/en/super_smash_bros.yml)
+[Dictionary file](../core/src/main/resources/locales/en/super_smash_bros.yml)
 
 Available Functions:  
 ```kotlin

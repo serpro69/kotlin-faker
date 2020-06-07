@@ -1,6 +1,6 @@
 # `Faker().aquaTeenHungerForce`
 
-[Dictionary file](../src/main/resources/locales/en/aqua_teen_hunger_force.yml)
+[Dictionary file](../core/src/main/resources/locales/en/aqua_teen_hunger_force.yml)
 
 Available Functions:  
 ```kotlin

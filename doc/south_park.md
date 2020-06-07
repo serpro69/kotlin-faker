@@ -1,6 +1,6 @@
 # `Faker().southPark`
 
-[Dictionary file](../src/main/resources/locales/en/south_park.yml)
+[Dictionary file](../core/src/main/resources/locales/en/south_park.yml)
 
 Available Functions:  
 ```kotlin

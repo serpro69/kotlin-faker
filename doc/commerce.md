@@ -1,6 +1,6 @@
 # `Faker().commerce`
 
-[Dictionary file](../src/main/resources/locales/en/commerce.yml)
+[Dictionary file](../core/src/main/resources/locales/en/commerce.yml)
 
 Available Functions:  
 ```kotlin

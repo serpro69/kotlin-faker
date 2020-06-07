@@ -1,6 +1,6 @@
 # `Faker().address`
 
-[Dictionary file](../src/main/resources/locales/en/address.yml)
+[Dictionary file](../core/src/main/resources/locales/en/address.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().drWho`
 
-[Dictionary file](../src/main/resources/locales/en/dr_who.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dr_who.yml)
 
 Available Functions:  
 ```kotlin

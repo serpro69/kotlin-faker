@@ -1,6 +1,6 @@
 # `Faker().elderScrolls`
 
-[Dictionary file](../src/main/resources/locales/en/elder_scrolls.yml)
+[Dictionary file](../core/src/main/resources/locales/en/elder_scrolls.yml)
 
 Available Functions:  
 ```kotlin

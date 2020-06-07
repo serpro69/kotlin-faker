@@ -1,6 +1,6 @@
 # `Faker().blood`
 
-[Dictionary file](../src/main/resources/locales/en/blood.yml)
+[Dictionary file](../core/src/main/resources/locales/en/blood.yml)
 
 Available Functions:  
 ```kotlin

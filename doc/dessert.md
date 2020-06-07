@@ -1,6 +1,6 @@
 # `Faker().dessert`
 
-[Dictionary file](../src/main/resources/locales/en/dessert.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dessert.yml)
 
 Available Functions:  
 ```kotlin

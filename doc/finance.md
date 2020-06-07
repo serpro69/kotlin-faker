@@ -1,6 +1,6 @@
 # `Faker().finance`
 
-[Dictionary file](../src/main/resources/locales/en/finance.yml)
+[Dictionary file](../core/src/main/resources/locales/en/finance.yml)
 
 Available Functions:  
 ```kotlin

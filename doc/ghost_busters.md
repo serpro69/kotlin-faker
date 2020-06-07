@@ -1,6 +1,6 @@
 # `Faker().ghostBusters`
 
-[Dictionary file](../src/main/resources/locales/en/ghostbusters.yml)
+[Dictionary file](../core/src/main/resources/locales/en/ghostbusters.yml)
 
 Available Functions:  
 ```kotlin

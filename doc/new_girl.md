@@ -1,6 +1,6 @@
 # `Faker().newGirl`
 
-[Dictionary file](../src/main/resources/locales/en/new_girl.yml)
+[Dictionary file](../core/src/main/resources/locales/en/new_girl.yml)
 
 Available Functions:  
 ```kotlin

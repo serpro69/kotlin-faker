@@ -1,6 +1,6 @@
 # `Faker().siliconValley`
 
-[Dictionary file](../src/main/resources/locales/en/silicon_valley.yml)
+[Dictionary file](../core/src/main/resources/locales/en/silicon_valley.yml)
 
 Available Functions:  
 ```kotlin

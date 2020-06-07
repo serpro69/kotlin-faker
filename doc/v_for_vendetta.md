@@ -1,6 +1,6 @@
 # `Faker().vForVendetta`
 
-[Dictionary file](../src/main/resources/locales/en/v_for_vendetta.yml)
+[Dictionary file](../core/src/main/resources/locales/en/v_for_vendetta.yml)
 
 Available Functions:  
 ```kotlin

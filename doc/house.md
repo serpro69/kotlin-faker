@@ -1,6 +1,6 @@
 # `Faker().house`
 
-[Dictionary file](../src/main/resources/locales/en/house.yml)
+[Dictionary file](../core/src/main/resources/locales/en/house.yml)
 
 Available Functions:  
 ```kotlin

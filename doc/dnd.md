@@ -1,6 +1,6 @@
 # `Faker().dnd`
 
-[Dictionary file](../src/main/resources/locales/en/dnd.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dnd.yml)
 
 Available Functions:  
 ```kotlin

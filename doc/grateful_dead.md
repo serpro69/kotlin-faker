@@ -1,6 +1,6 @@
 # `Faker().gratefulDead`
 
-[Dictionary file](../src/main/resources/locales/en/grateful_dead.yml)
+[Dictionary file](../core/src/main/resources/locales/en/grateful_dead.yml)
 
 Available Functions:  
 ```kotlin

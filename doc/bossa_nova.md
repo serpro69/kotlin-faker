@@ -1,6 +1,6 @@
 # `Faker().bossaNova`
 
-[Dictionary file](../src/main/resources/locales/en/bossa_nova.yml)
+[Dictionary file](../core/src/main/resources/locales/en/bossa_nova.yml)
 
 Available Functions:  
 ```kotlin

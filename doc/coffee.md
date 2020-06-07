@@ -1,6 +1,6 @@
 # `Faker().coffee`
 
-[Dictionary file](../src/main/resources/locales/en/coffee.yml)
+[Dictionary file](../core/src/main/resources/locales/en/coffee.yml)
 
 Available Functions:  
 ```kotlin

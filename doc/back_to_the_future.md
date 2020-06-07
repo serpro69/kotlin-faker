@@ -1,6 +1,6 @@
 # `Faker().backToTheFuture`
 
-[Dictionary file](../src/main/resources/locales/en/back_to_the_future.yml)
+[Dictionary file](../core/src/main/resources/locales/en/back_to_the_future.yml)
 
 Available Functions:  
 ```kotlin

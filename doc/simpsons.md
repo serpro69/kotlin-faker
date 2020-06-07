@@ -1,6 +1,6 @@
 # `Faker().simpsons`
 
-[Dictionary file](../src/main/resources/locales/en/simpsons.yml)
+[Dictionary file](../core/src/main/resources/locales/en/simpsons.yml)
 
 Available Functions:  
 ```kotlin

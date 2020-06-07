@@ -1,6 +1,6 @@
 # `Faker().familyGuy`
 
-[Dictionary file](../src/main/resources/locales/en/family_guy.yml)
+[Dictionary file](../core/src/main/resources/locales/en/family_guy.yml)
 
 Available Functions:  
 ```kotlin

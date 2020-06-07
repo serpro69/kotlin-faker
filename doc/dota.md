@@ -1,6 +1,6 @@
 # `Faker().dota`
 
-[Dictionary file](../src/main/resources/locales/en/dota.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dota.yml)
 
 Available Functions:  
 ```kotlin

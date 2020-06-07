@@ -1,6 +1,6 @@
 # `Faker().princessBride`
 
-[Dictionary file](../src/main/resources/locales/en/princess_bride.yml)
+[Dictionary file](../core/src/main/resources/locales/en/princess_bride.yml)
 
 Available Functions:  
 ```kotlin

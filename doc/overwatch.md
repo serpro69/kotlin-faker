@@ -1,6 +1,6 @@
 # `Faker().overwatch`
 
-[Dictionary file](../src/main/resources/locales/en/overwatch.yml)
+[Dictionary file](../core/src/main/resources/locales/en/overwatch.yml)
 
 Available Functions:  
 ```kotlin

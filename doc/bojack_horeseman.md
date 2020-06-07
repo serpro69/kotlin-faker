@@ -1,6 +1,6 @@
 # `Faker().bojackHorseman`
 
-[Dictionary file](../src/main/resources/locales/en/bojack_horseman.yml)
+[Dictionary file](../core/src/main/resources/locales/en/bojack_horseman.yml)
 
 Available Functions:  
 ```kotlin

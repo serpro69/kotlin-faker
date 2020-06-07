@@ -1,6 +1,6 @@
 # `Faker().zelda`
 
-[Dictionary file](../src/main/resources/locales/en/zelda.yml)
+[Dictionary file](../core/src/main/resources/locales/en/zelda.yml)
 
 Available Functions:  
 ```kotlin

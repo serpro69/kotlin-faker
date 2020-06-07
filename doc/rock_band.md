@@ -1,6 +1,6 @@
 # `Faker().rockBand`
 
-[Dictionary file](../src/main/resources/locales/en/rock_band.yml)
+[Dictionary file](../core/src/main/resources/locales/en/rock_band.yml)
 
 Available Functions:  
 ```kotlin

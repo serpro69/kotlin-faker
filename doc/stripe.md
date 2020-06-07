@@ -1,6 +1,6 @@
 # `Faker().stripe`
 
-[Dictionary file](../src/main/resources/locales/en/stripe.yml)
+[Dictionary file](../core/src/main/resources/locales/en/stripe.yml)
 
 Available Functions:  
 ```kotlin

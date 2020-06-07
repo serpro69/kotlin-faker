@@ -1,6 +1,6 @@
 # `Faker().quote`
 
-[Dictionary file](../src/main/resources/locales/en/quote.yml)
+[Dictionary file](../core/src/main/resources/locales/en/quote.yml)
 
 Available Functions:  
 ```kotlin

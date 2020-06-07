@@ -1,6 +1,6 @@
 # `Faker().file`
 
-[Dictionary file](../src/main/resources/locales/en/file.yml)
+[Dictionary file](../core/src/main/resources/locales/en/file.yml)
 
 Available Functions:  
 ```kotlin

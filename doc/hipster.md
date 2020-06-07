@@ -1,6 +1,6 @@
 # `Faker().hipster`
 
-[Dictionary file](../src/main/resources/locales/en/hipster.yml)
+[Dictionary file](../core/src/main/resources/locales/en/hipster.yml)
 
 Available Functions:  
 ```kotlin

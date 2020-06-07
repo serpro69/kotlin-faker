@@ -1,6 +1,6 @@
 # `Faker().lebowski`
 
-[Dictionary file](../src/main/resources/locales/en/lebowski.yml)
+[Dictionary file](../core/src/main/resources/locales/en/lebowski.yml)
 
 Available Functions:  
 ```kotlin

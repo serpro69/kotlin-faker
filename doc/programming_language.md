@@ -1,6 +1,6 @@
 # `Faker().programmingLanguage`
 
-[Dictionary file](../src/main/resources/locales/en/programming_language.yml)
+[Dictionary file](../core/src/main/resources/locales/en/programming_language.yml)
 
 Available Functions:  
 ```kotlin

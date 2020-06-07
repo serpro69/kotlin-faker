@@ -1,6 +1,6 @@
 # `Faker().witcher`
 
-[Dictionary file](../src/main/resources/locales/en/witcher.yml)
+[Dictionary file](../core/src/main/resources/locales/en/witcher.yml)
 
 Available Functions:  
 ```kotlin

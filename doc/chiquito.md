@@ -1,6 +1,6 @@
 # `Faker().chiquito`
 
-[Dictionary file](../src/main/resources/locales/en/chiquito.yml)
+[Dictionary file](../core/src/main/resources/locales/en/chiquito.yml)
 
 Available Functions:  
 ```kotlin

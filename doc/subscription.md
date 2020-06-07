@@ -1,6 +1,6 @@
 # `Faker().subscription`
 
-[Dictionary file](../src/main/resources/locales/en/subscription.yml)
+[Dictionary file](../core/src/main/resources/locales/en/subscription.yml)
 
 Available Functions:  
 ```kotlin

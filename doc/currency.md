@@ -1,6 +1,6 @@
 # `Faker().currency`
 
-[Dictionary file](../src/main/resources/locales/en/currency.yml)
+[Dictionary file](../core/src/main/resources/locales/en/currency.yml)
 
 Available Functions:  
 ```kotlin

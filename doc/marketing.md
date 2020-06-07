@@ -1,6 +1,6 @@
 # `Faker().marketing`
 
-[Dictionary file](../src/main/resources/locales/en/marketing.yml)
+[Dictionary file](../core/src/main/resources/locales/en/marketing.yml)
 
 Available Functions:  
 ```kotlin

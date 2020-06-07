@@ -1,6 +1,6 @@
 # `Faker().color`
 
-[Dictionary file](../src/main/resources/locales/en/color.yml)
+[Dictionary file](../core/src/main/resources/locales/en/color.yml)
 
 Available Functions:  
 ```kotlin

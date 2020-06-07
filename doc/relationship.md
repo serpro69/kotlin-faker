@@ -1,6 +1,6 @@
 # `Faker().relationship`
 
-[Dictionary file](../src/main/resources/locales/en/relationship.yml)
+[Dictionary file](../core/src/main/resources/locales/en/relationship.yml)
 
 Available Functions:  
 ```kotlin

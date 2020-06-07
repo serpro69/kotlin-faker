@@ -1,6 +1,6 @@
 # `Faker().kPop`
 
-[Dictionary file](../src/main/resources/locales/en/kpop.yml)
+[Dictionary file](../core/src/main/resources/locales/en/kpop.yml)
 
 Available Functions:  
 ```kotlin

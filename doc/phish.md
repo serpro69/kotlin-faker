@@ -1,6 +1,6 @@
 # `Faker().phish`
 
-[Dictionary file](../src/main/resources/locales/en/phish.yml)
+[Dictionary file](../core/src/main/resources/locales/en/phish.yml)
 
 Available Functions:  
 ```kotlin

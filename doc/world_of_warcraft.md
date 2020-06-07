@@ -1,6 +1,6 @@
 # `Faker().worldOfWarcraft`
 
-[Dictionary file](../src/main/resources/locales/en/world_of_warcraft.yml)
+[Dictionary file](../core/src/main/resources/locales/en/world_of_warcraft.yml)
 
 Available Functions:  
 ```kotlin

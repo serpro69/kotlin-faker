@@ -1,6 +1,6 @@
 # `Faker().vehicle`
 
-[Dictionary file](../src/main/resources/locales/en/vehicle.yml)
+[Dictionary file](../core/src/main/resources/locales/en/vehicle.yml)
 
 Available Functions:  
 ```kotlin

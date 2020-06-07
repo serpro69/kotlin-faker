@@ -1,6 +1,6 @@
 # `Faker().restaurant`
 
-[Dictionary file](../src/main/resources/locales/en/restaurant.yml)
+[Dictionary file](../core/src/main/resources/locales/en/restaurant.yml)
 
 Available Functions:  
 ```kotlin

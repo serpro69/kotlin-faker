@@ -1,6 +1,6 @@
 # `Faker().cryptoCoin`
 
-[Dictionary file](../src/main/resources/locales/en/crypto_coin.yml)
+[Dictionary file](../core/src/main/resources/locales/en/crypto_coin.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().hitchhikersGuideToTheGalaxy`
 
-[Dictionary file](../src/main/resources/locales/en/hitchhikers_guide_to_the_galaxy.yml)
+[Dictionary file](../core/src/main/resources/locales/en/hitchhikers_guide_to_the_galaxy.yml)
 
 Available Functions:  
 ```kotlin

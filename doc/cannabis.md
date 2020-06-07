@@ -1,6 +1,6 @@
 # `Faker().cannabis`
 
-[Dictionary file](../src/main/resources/locales/en/cannabis.yml)
+[Dictionary file](../core/src/main/resources/locales/en/cannabis.yml)
 
 Available Functions:  
 ```kotlin

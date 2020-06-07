@@ -1,6 +1,6 @@
 # `Faker().verbs`
 
-[Dictionary file](../src/main/resources/locales/en/verbs.yml)
+[Dictionary file](../core/src/main/resources/locales/en/verbs.yml)
 
 Available Functions:  
 ```kotlin

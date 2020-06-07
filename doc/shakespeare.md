@@ -1,6 +1,6 @@
 # `Faker().shakespeare`
 
-[Dictionary file](../src/main/resources/locales/en/shakespeare.yml)
+[Dictionary file](../core/src/main/resources/locales/en/shakespeare.yml)
 
 Available Functions:  
 ```kotlin

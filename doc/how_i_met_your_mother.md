@@ -1,6 +1,6 @@
 # `Faker().howIMetYourMother`
 
-[Dictionary file](../src/main/resources/locales/en/how_i_met_your_mother.yml)
+[Dictionary file](../core/src/main/resources/locales/en/how_i_met_your_mother.yml)
 
 Available Functions:  
 ```kotlin

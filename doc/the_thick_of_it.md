@@ -1,6 +1,6 @@
 # `Faker().theThickOfIt`
 
-[Dictionary file](../src/main/resources/locales/en/the_thick_of_it.yml)
+[Dictionary file](../core/src/main/resources/locales/en/the_thick_of_it.yml)
 
 Available Functions:  
 ```kotlin

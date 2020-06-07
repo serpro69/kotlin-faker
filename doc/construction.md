@@ -1,6 +1,6 @@
 # `Faker().construction`
 
-[Dictionary file](../src/main/resources/locales/en/construction.yml)
+[Dictionary file](../core/src/main/resources/locales/en/construction.yml)
 
 Available Functions:  
 ```kotlin

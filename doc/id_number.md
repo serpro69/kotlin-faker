@@ -1,6 +1,6 @@
 # `Faker().idNumber`
 
-[Dictionary file](../src/main/resources/locales/en/id_number.yml)
+[Dictionary file](../core/src/main/resources/locales/en/id_number.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().job`
 
-[Dictionary file](../src/main/resources/locales/en/job.yml)
+[Dictionary file](../core/src/main/resources/locales/en/job.yml)
 
 Available Functions:  
 ```kotlin

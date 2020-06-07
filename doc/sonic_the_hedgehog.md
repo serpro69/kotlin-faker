@@ -1,6 +1,6 @@
 # `Faker().sonicTheHedgehog`
 
-[Dictionary file](../src/main/resources/locales/en/sonic_the_hedgehog.yml)
+[Dictionary file](../core/src/main/resources/locales/en/sonic_the_hedgehog.yml)
 
 Available Functions:  
 ```kotlin

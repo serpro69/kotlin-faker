@@ -1,6 +1,6 @@
 # `Faker().music`
 
-[Dictionary file](../src/main/resources/locales/en/music.yml)
+[Dictionary file](../core/src/main/resources/locales/en/music.yml)
 
 Available Functions:  
 ```kotlin

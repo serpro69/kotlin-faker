@@ -1,6 +1,6 @@
 # `Faker().swordArtOnline`
 
-[Dictionary file](../src/main/resources/locales/en/sword_art_online.yml)
+[Dictionary file](../core/src/main/resources/locales/en/sword_art_online.yml)
 
 Available Functions:  
 ```kotlin

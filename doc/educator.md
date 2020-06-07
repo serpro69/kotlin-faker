@@ -1,6 +1,6 @@
 # `Faker().educator`
 
-[Dictionary file](../src/main/resources/locales/en/educator.yml)
+[Dictionary file](../core/src/main/resources/locales/en/educator.yml)
 
 Available Functions:  
 ```kotlin

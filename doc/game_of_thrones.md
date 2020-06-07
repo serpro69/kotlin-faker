@@ -1,6 +1,6 @@
 # `Faker().gameOfThrones`
 
-[Dictionary file](../src/main/resources/locales/en/game_of_thrones.yml)
+[Dictionary file](../core/src/main/resources/locales/en/game_of_thrones.yml)
 
 Available Functions:  
 ```kotlin

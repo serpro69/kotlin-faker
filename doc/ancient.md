@@ -1,6 +1,6 @@
 # `Faker().ancient`
 
-[Dictionary file](../src/main/resources/locales/en/ancient.yml)
+[Dictionary file](../core/src/main/resources/locales/en/ancient.yml)
 
 Available Functions:  
 ```kotlin

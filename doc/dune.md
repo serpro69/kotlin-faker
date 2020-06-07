@@ -1,6 +1,6 @@
 # `Faker().dune`
 
-[Dictionary file](../src/main/resources/locales/en/dune.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dune.yml)
 
 Available Functions:  
 ```kotlin

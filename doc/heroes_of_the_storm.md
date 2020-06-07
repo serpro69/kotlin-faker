@@ -1,6 +1,6 @@
 # `Faker().heroesOfTheStorm`
 
-[Dictionary file](../src/main/resources/locales/en/heroes_of_the_storm.yml)
+[Dictionary file](../core/src/main/resources/locales/en/heroes_of_the_storm.yml)
 
 Available Functions:  
 ```kotlin

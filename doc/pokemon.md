@@ -1,6 +1,6 @@
 # `Faker().pokemon`
 
-[Dictionary file](../src/main/resources/locales/en/pokemon.yml)
+[Dictionary file](../core/src/main/resources/locales/en/pokemon.yml)
 
 Available Functions:  
 ```kotlin

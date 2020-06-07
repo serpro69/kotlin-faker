@@ -1,6 +1,6 @@
 # `Faker().friends`
 
-[Dictionary file](../src/main/resources/locales/en/friends.yml)
+[Dictionary file](../core/src/main/resources/locales/en/friends.yml)
 
 Available Functions:  
 ```kotlin

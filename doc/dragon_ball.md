@@ -1,6 +1,6 @@
 # `Faker().dragonBall`
 
-[Dictionary file](../src/main/resources/locales/en/dragon_ball.yml)
+[Dictionary file](../core/src/main/resources/locales/en/dragon_ball.yml)
 
 Available Functions:  
 ```kotlin

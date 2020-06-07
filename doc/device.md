@@ -1,6 +1,6 @@
 # `Faker().device`
 
-[Dictionary file](../src/main/resources/locales/en/device.yml)
+[Dictionary file](../core/src/main/resources/locales/en/device.yml)
 
 Available Functions:  
 ```kotlin

@@ -1,6 +1,6 @@
 # `Faker().appliance`
 
-[Dictionary file](../src/main/resources/locales/en/appliance.yml)
+[Dictionary file](../core/src/main/resources/locales/en/appliance.yml)
 
 Available Functions:  
 ```kotlin

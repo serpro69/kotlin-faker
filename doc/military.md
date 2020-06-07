@@ -1,6 +1,6 @@
 # `Faker().military`
 
-[Dictionary file](../src/main/resources/locales/en/military.yml)
+[Dictionary file](../core/src/main/resources/locales/en/military.yml)
 
 Available Functions:  
 ```kotlin

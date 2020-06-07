@@ -1,6 +1,6 @@
 # `Faker().worldCup`
 
-[Dictionary file](../src/main/resources/locales/en/world_cup.yml)
+[Dictionary file](../core/src/main/resources/locales/en/world_cup.yml)
 
 Available Functions:  
 ```kotlin

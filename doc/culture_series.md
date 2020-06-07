@@ -1,6 +1,6 @@
 # `Faker().cultureSeries`
 
-[Dictionary file](../src/main/resources/locales/en/culture_series.yml)
+[Dictionary file](../core/src/main/resources/locales/en/culture_series.yml)
 
 Available Functions:  
 ```kotlin

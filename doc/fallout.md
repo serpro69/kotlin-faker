@@ -1,6 +1,6 @@
 # `Faker().fallout`
 
-[Dictionary file](../src/main/resources/locales/en/fallout.yml)
+[Dictionary file](../core/src/main/resources/locales/en/fallout.yml)
 
 Available Functions:  
 ```kotlin

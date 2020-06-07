@@ -1,6 +1,6 @@
 # `Faker().theExpanse`
 
-[Dictionary file](../src/main/resources/locales/en/the_expanse.yml)
+[Dictionary file](../core/src/main/resources/locales/en/the_expanse.yml)
 
 Available Functions:  
 ```kotlin

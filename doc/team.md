@@ -1,6 +1,6 @@
 # `Faker().team`
 
-[Dictionary file](../src/main/resources/locales/en/team.yml)
+[Dictionary file](../core/src/main/resources/locales/en/team.yml)
 
 Available Functions:  
 ```kotlin
