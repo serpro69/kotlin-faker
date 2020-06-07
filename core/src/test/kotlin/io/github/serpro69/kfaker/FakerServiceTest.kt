@@ -77,6 +77,17 @@ internal class FakerServiceTest : DescribeSpec({
 
                 esGames shouldBe defaultGames
             }
+
+            it("partially localized functions with secondary_key should contain non-localized default values ") {
+                val deDict = FakerService(Faker(), Locale.forLanguageTag("de"), random).dictionary
+
+                val deCommerce = deDict.getCategoryByName("commerce").values
+                val defaultCommerce = defaultDictionary.getCategoryByName("commerce").values
+
+                deCommerce["department"] shouldNotBe defaultCommerce["department"] // localized function
+                deCommerce["product_name"] shouldNotBe defaultCommerce["product_name"] // localized function with secondary_key
+                deCommerce["promotion_code"] shouldBe defaultCommerce["promotion_code"] // not localized
+            }
         }
 
         context("it is set with a valid String value") {
