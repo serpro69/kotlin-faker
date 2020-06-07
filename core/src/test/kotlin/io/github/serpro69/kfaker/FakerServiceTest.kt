@@ -27,7 +27,7 @@ internal class FakerServiceTest : DescribeSpec({
             it("it should contain all keys for 'en' locale") {
                 val dictionaryKeys = listOf(
                     "address", "ancient", "creature", "app", "appliance", "aqua_teen_hunger_force", "artist",
-                    "back_to_the_future", "bank", "basketball", "beer", "bojack_horseman", "book", "bossa_nova",
+                    "back_to_the_future", "bank", "basketball", "beer", "blood", "bojack_horseman", "book", "bossa_nova",
                     "breaking_bad", "buffy", "business", "cannabis", "chiquito", "chuck_norris", "code", "coffee",
                     "coin", "color", "commerce", "community", "company", "compass", "computer", "construction",
                     "cosmere", "crypto_coin", "culture_series", "currency", "dc_comics", "demographic", "dessert",
