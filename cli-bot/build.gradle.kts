@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import com.adarshr.gradle.testlogger.theme.ThemeType
 
 plugins {
     kotlin("jvm")
@@ -26,7 +27,7 @@ java {
 
 testlogger {
     showPassed = false
-    theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
+    theme = ThemeType.MOCHA
 }
 
 val shadowJar by tasks.getting(ShadowJar::class) {
@@ -47,6 +48,8 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from(project.configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) })
     with(tasks.jar.get() as CopySpec)
     dependsOn(project.configurations.runtimeClasspath)
+
+
 }
 
 graal {
@@ -60,6 +63,24 @@ graal {
 }
 
 tasks {
+    compileKotlin {
+        // Set version for --version options
+        doFirst("Set app version") {
+            val command = "find . -type f -name 'KFaker.kt' -exec sed -i 's/{FAKER_VER}/${project.version}/g' {} +;"
+
+            exec {
+                commandLine("sh", "-c", command)
+            }
+        }
+
+        // Restore the file so it's not accidentally committed
+        doLast {
+            exec {
+                commandLine("sh", "-c", "git checkout *KFaker.kt")
+            }
+        }
+    }
+
     nativeImage {
         dependsOn(shadowJar)
     }
