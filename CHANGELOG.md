@@ -12,7 +12,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#37](https://github.com/serpro69/kotlin-faker/issues/37) Revisit automated builds for patches
 
 ### Added
-- [#34](https://github.com/serpro69/kotlin-faker/issues/34) 8 new providers:
+- [#34](https://github.com/serpro69/kotlin-faker/issues/34) [core] 8 new providers:
   - `warhammerFantasy`
   - `suits`
   - `show`
@@ -21,6 +21,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
   - `control`
   - `dnd`
   - `blood`
+- [#33](https://github.com/serpro69/kotlin-faker/issues/33) [faker-bot] partial matching for provider names
 
 ## [v1.3.1] - 2020-06-07
 ### Fixed
