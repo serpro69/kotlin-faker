@@ -5,8 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
 ## [v1.4.0] - UNRELEASED
+### Fixed
+- [#36](https://github.com/serpro69/kotlin-faker/issues/36) Build native-image before uploading to bintray
+
 ### Added
-- 8 new providers:
+- [#34](https://github.com/serpro69/kotlin-faker/issues/34) 8 new providers:
   - `warhammerFantasy`
   - `suits`
   - `show`
