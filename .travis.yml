@@ -2,7 +2,6 @@ language: java
 
 branches:
   except:
-    - /^v(\d+\.?){3}/
     - /^untagged/
 
 jobs:
@@ -21,11 +20,12 @@ jobs:
         file_glob: true
         file: "cli-bot/build/graal/faker-bot_*"
         on:
-          branch: master
+          branch: /^v(\d+\.?){3}/
+          tags: true
 
 stages:
   - name: test
-    if: NOT branch = master
+    if: tag is blank
 
   - name: deploy and release
-    if: branch = master
+    if: tag IS present

@@ -15,7 +15,6 @@
 - [Comparison with other JVM-based faker libraries](#comparison-with-other-jvm-based-faker-libs)
 - [Usage](#usage)  
   - [Downloading](#downloading)
-    - [Using latest hotfix version](#using-the-latest-hotfix-release)
   - [Generating data](#generating-data)
   - [Configuring Faker](#configuring-faker)
     - [Default configuration](#default-configuration)
@@ -121,29 +120,6 @@ Add dependency:
 **Downloading a jar**  
 The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
 
-#### Using the latest hotfix release
-Hotfixes are automatically built and deployed to bintray on every push to master that passes tests.
-This means that it could be cumbersome to always have the latest hotfix version in your dependencies,
-therefore it is recommended to use a dependency range instead, providing only major and minor versions.
-
-In maven:
-```xml
-<dependency>
-    <groupId>io.github.serpro69</groupId>
-    <artifactId>kotlin-faker</artifactId>
-    <version>[1.1,1.2)</version> <!--Use latest version between 1.1 (inclusive) and 1.2 (exclusive)-->
-</dependency>
-```
-
-In gradle:
-```groovy
-dependencies {
-    implementation 'io.github.serpro69:kotlin-faker:1.1.+'
-}
-```
-
-Major and minor versions are still bumped manually and therefore are not that frequent.
-The project adheres to semantic versions rules.
 
 ### Generating data
 ```kotlin
@@ -649,9 +625,8 @@ has to be updated to build the native image with graal.
 
 
 ## Build and Deploy
-Builds and deploys to bintray are automated with travis-ci through usage of git tags.
-Patches/hotfixes versions are automatically bumped on every push to master and do not require any user interactions.
-Major and minor versions need to be bumped manually through a tag with the next release version that has to follow the 
+Build/deploy to bintray and github release processes are automated with travis-ci through usage of git tags.
+Major, minor, and patch versions need to be bumped manually through a tag with the next release version that has to follow the 
 `v<major>.<minor>.<patch>` pattern, and the tag has to be pushed to origin along with the changes. 
 Creating the tag can be either done manually with `git tag` or by using `gradlew tag -Prelease -PbumpComponent=${comp}` 
 where `comp` can be one of the following values: `major`, `minor`, or `patch`.

@@ -8,6 +8,9 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ### Fixed
 - [#36](https://github.com/serpro69/kotlin-faker/issues/36) Build native-image before uploading to bintray
 
+### Changed
+- [#37](https://github.com/serpro69/kotlin-faker/issues/37) Revisit automated builds for patches
+
 ### Added
 - [#34](https://github.com/serpro69/kotlin-faker/issues/34) 8 new providers:
   - `warhammerFantasy`
