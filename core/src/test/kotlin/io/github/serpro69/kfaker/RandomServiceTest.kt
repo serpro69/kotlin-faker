@@ -61,6 +61,39 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
+        context("calling randomValue<T>(array)") {
+            context("array is not empty") {
+                val values = Array(100) { randomService.nextInt(3..9) }
+                val value = randomService.randomValue(values)
+
+                it("return value should be in the array") {
+                    values shouldContain value
+                }
+            }
+
+            context("array is empty") {
+                val values = arrayOf<String>()
+
+                it("exception is thrown") {
+                    shouldThrow<IllegalArgumentException> {
+                        randomService.randomValue(values)
+                    }
+                }
+            }
+
+            context("array contains nulls") {
+                val values = arrayOf(1, 2, 3, null).filter { it == null }
+                val value = randomService.randomValue(values)
+
+                it("return value should be in the array") {
+                    assertSoftly {
+                        values shouldContain value
+                        value shouldBe null
+                    }
+                }
+            }
+        }
+
         context("calling nextChar()") {
             val source = "qwertyuiopasdfghjklzxcvbnm"
 
