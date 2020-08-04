@@ -44,16 +44,9 @@ class RandomProvider internal constructor(random: Random) {
             val params = constructor.parameters
                 .map { it.type.classifier as KClass<*> }
                 .map {
-                    when (it) {
-                        Double::class,
-                        Float::class,
-                        Long::class,
-                        Int::class,
-                        Short::class,
-                        Byte::class,
-                        String::class,
-                        Char::class,
-                        Boolean::class -> it.randomPrimitive()
+                    when {
+                        it.isPrimitive() -> it.randomPrimitive()
+                        it.java.isEnum -> it.randomEnum()
                         // TODO: 16.06.19 Arrays, Lists, Maps, (other collections?)
                         else -> it.randomClassInstance()
                     }
@@ -62,6 +55,22 @@ class RandomProvider internal constructor(random: Random) {
 
             constructor.call(*params)
         }
+    }
+
+    /**
+     * @return true if this class represents a primitive type which can be handled in [randomPrimitive].
+     */
+    private fun KClass<*>.isPrimitive(): Boolean = when (this) {
+        Double::class,
+        Float::class,
+        Long::class,
+        Int::class,
+        Short::class,
+        Byte::class,
+        String::class,
+        Char::class,
+        Boolean::class -> true
+        else -> false
     }
 
     /**
@@ -81,5 +90,12 @@ class RandomProvider internal constructor(random: Random) {
             // TODO: 16.06.19 Arrays
             else -> null
         }
+    }
+
+    /**
+     * Handles generation of enums types since they do not have a public constructor.
+     */
+    private fun KClass<*>.randomEnum(): Any? {
+        return randomService.randomValue(this.java.enumConstants)
     }
 }

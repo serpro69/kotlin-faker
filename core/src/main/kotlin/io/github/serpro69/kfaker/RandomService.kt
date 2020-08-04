@@ -23,6 +23,8 @@ internal class RandomService(private val random: Random) {
 
     fun <T> randomValue(list: List<T>) = list[nextInt(list.size)]
 
+    fun <T> randomValue(array: Array<T>) = array[nextInt(array.size)]
+
     fun nextLetter(upper: Boolean): Char {
         val source = if (upper) alphabeticSource.toUpperCase() else alphabeticSource
 

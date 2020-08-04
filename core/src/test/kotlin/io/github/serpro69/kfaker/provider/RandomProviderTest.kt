@@ -109,4 +109,22 @@ class RandomProviderTest : DescribeSpec({
             }
         }
     }
+
+    describe("a TestClass with non-empty constructor with enum type") {
+        class TestClass(val enum: TestEnum)
+
+        context("creating a random instance of the class") {
+            val testClass: TestClass = randomProvider.randomClassInstance()
+
+            it("it should be instance of TestClass") {
+                testClass shouldBe instanceOf(TestClass::class)
+            }
+        }
+    }
 })
+
+enum class TestEnum {
+    KOTLIN,
+    JAVA,
+    GO
+}
