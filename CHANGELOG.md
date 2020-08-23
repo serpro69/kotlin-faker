@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [v1.4.0] - UNRELEASED
+## [v1.4.2] - UNRELEASED
+### Added
+- [#40](https://github.com/serpro69/kotlin-faker/issues/40) Add enum support for `RandomProvider`
+
+## [v1.4.1] - 2020-08-22
+### Added
+- [#41](https://github.com/serpro69/kotlin-faker/issues/41) Publish to maven central
+
+## [v1.4.0] - 2020-07-09
 ### Fixed
 - [#36](https://github.com/serpro69/kotlin-faker/issues/36) Build native-image before uploading to bintray
 

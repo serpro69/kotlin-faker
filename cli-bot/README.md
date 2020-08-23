@@ -38,8 +38,11 @@ Usage details are also available with the `--help` option:
 * `./faker-bot list` - list all providers and their functions
 * `./faker-bot list Address Name` - list functions of `Address` and `Name` providers (Case insensitive)
 
+Since version `1.4.0` partial matching is also supported:
+* `./faker-bot list addr` - list functions of `Address` provider
+
 #### `lookup` 
-* `./faker-bot lookup name` - lookup functions by name (Case insensitive)
+* `./faker-bot lookup name` - lookup functions by name (Case insensitive partial matching)
 
 ### Available options
 #### Verbose output

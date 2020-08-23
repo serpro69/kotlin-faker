@@ -1,5 +1,3 @@
-<img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>  
-
 ### <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/name.png alt="kotlin-faker"/> </a>
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
@@ -9,6 +7,9 @@
 [![Licence Badge](https://img.shields.io/github/license/serpro69/kotlin-faker.svg)](LICENCE.md)
 
 > **Generates realistically-looking fake data**
+>
+> <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>  
+
 
 ## ToC
 - [About](#about)
