@@ -73,17 +73,11 @@ benchmarks for `moove-it/fakeit` could not be done due to android dependencies i
 
 ## Usage
 ### Downloading
-**With gradle**  
-Add bintray repository:  
-```groovy
-repositories {
-    maven {
-      url 'https://dl.bintray.com/serpro69/maven/'
-    }
-}
-```  
+Latest releases are always available on [jcenter](https://bintray.com/bintray/jcenter).
 
-Add dependency:  
+From `v1.4.1` onward releases are also published on maven central.
+
+**With gradle**  
 ```groovy
 dependencies {
     implementation 'io.github.serpro69:kotlin-faker:$version'
@@ -91,24 +85,8 @@ dependencies {
 ```  
 
 **With maven**  
-Add bintray repository:  
-```xml
-<repositories>
-    <repository>
-        <id>serpro69-maven</id>
-        <url>https://dl.bintray.com/serpro69/maven/</url>
-        <layout>default</layout>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-    </repository>
-</repositories>
-```  
-
-Add dependency:  
 ```xml
 <dependencies>
-    <!--Add dependency-->
     <dependency>
         <groupId>io.github.serpro69</groupId>
         <artifactId>kotlin-faker</artifactId>

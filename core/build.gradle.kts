@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm")
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.5"
+    id("org.jetbrains.dokka") version "1.4.0-rc"
 }
 
 dependencies {
@@ -46,6 +47,12 @@ val sourcesJar by tasks.creating(Jar::class) {
     }
 }
 
+val dokkaJavadocJar by tasks.creating(Jar::class) {
+    dependsOn(tasks.dokkaJavadoc)
+    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
+    archiveClassifier.set("javadoc")
+}
+
 val artifactName = rootProject.name
 val artifactGroup = project.group.toString()
 val artifactVersion = project.version.toString()
@@ -74,6 +81,7 @@ publishing {
             version = artifactVersion
             from(components["java"])
             artifact(sourcesJar)
+            artifact(dokkaJavadocJar) //TODO configure dokka or use defaults?
 
             pom {
                 packaging = "jar"
