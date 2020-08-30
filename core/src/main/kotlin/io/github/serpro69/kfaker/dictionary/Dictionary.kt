@@ -123,6 +123,7 @@ internal enum class CategoryName {
     PEARL_JAM,
     PHISH,
     PHONE_NUMBER,
+    PRINCE,
     PRINCESS_BRIDE,
     PROGRAMMING_LANGUAGE,
     QUOTE,

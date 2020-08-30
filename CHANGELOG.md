@@ -30,6 +30,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `drone`
     - `futurama`
     - `minecraft`
+    - `prince`
 
 ## [v1.4.1] - 2020-08-22
 ### Added

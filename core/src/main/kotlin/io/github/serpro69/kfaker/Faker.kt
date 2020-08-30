@@ -134,6 +134,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val phish: Phish
     val phoneNumber: PhoneNumber
     val pokemon: Pokemon
+    val prince: Prince
     val princessBride: PrincessBride
     val programmingLanguage: ProgrammingLanguage
     val quote: Quote
@@ -302,6 +303,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         phish = Phish(fakerService)
         phoneNumber = PhoneNumber(fakerService)
         pokemon = Pokemon(fakerService)
+        prince = Prince(fakerService)
         princessBride = PrincessBride(fakerService)
         programmingLanguage = ProgrammingLanguage(fakerService)
         quote = Quote(fakerService)
