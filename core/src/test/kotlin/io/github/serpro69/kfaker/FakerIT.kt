@@ -58,14 +58,14 @@ class FakerIT : DescribeSpec({
                                 && (provider.name != "markdown" && it.name != "headers")
                             ) {
                                 if (value.contains(regex)) {
-                                    throw AssertionError("Value '$value' for '${provider.name + it.name}' should not contain regex '$regex'")
+                                    throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain regex '$regex'")
                                 }
                             }
                         }
 
                         it("resolved value should not be empty string") {
                             if (value == "") {
-                                throw AssertionError("Value for '${provider.name + it.name}' should not be empty string")
+                                throw AssertionError("Value for '${provider.name} ${it.name}' should not be empty string")
                             }
                         }
 
@@ -86,10 +86,11 @@ class FakerIT : DescribeSpec({
                                 && value != "Li Li"
                                 && value != "Dee Dee"
                                 && value != "Lola Lola" // cannabis#brands
+                                && value != "Hail Hail" // pearlJam#songs
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
-                                    throw AssertionError("Value '$value' for '${provider.name + it.name}' should not contain duplicates")
+                                    throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain duplicates")
                                 }
                             }
                         }
