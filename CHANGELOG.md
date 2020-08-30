@@ -28,6 +28,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `bigBangTheory`
     - `drivingLicense`
     - `drone`
+    - `futurama`
 
 ## [v1.4.1] - 2020-08-22
 ### Added

@@ -79,6 +79,7 @@ internal enum class CategoryName {
     FOOTBALL,
     FRIENDS,
     FUNNY_NAME,
+    FUTURAMA,
     GAME,
     GAME_OF_THRONES,
     GENDER,

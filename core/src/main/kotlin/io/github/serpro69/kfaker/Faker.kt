@@ -83,6 +83,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val freshPriceOfBelAir: FreshPriceOfBelAir
     val friends: Friends
     val funnyName: FunnyName
+    val futurama: Futurama
     val game: Game
     val gameOfThrones: GameOfThrones
     val gender: Gender
@@ -249,6 +250,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         freshPriceOfBelAir = FreshPriceOfBelAir(fakerService)
         friends = Friends(fakerService)
         funnyName = FunnyName(fakerService)
+        futurama = Futurama(fakerService)
         game = Game(fakerService)
         gameOfThrones = GameOfThrones(fakerService)
         gender = Gender(fakerService)
