@@ -14,6 +14,7 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
 
     fun maleFirstName() = resolve("male_first_name")
     fun femaleFirstName() = resolve("female_first_name")
+    fun neutralFirstName() = resolve("neutral_first_name")
     fun firstName() = resolve("first_name")
     fun lastName() = resolve("last_name")
     fun name() = resolve("name")

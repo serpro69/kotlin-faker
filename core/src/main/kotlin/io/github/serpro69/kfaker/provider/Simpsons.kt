@@ -15,4 +15,5 @@ class Simpsons internal constructor(fakerService: FakerService) : AbstractFakeDa
     fun characters() = resolve("characters")
     fun locations() = resolve("locations")
     fun quotes() = resolve("quotes")
+    fun episodeTitles() = resolve("episode_titles")
 }

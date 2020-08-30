@@ -4,8 +4,13 @@
 
 Available Functions:  
 ```kotlin
-Faker().dnd.species() // => Dragonborn
-Faker().dnd.klasses() // => Barbarian
+Faker().dnd.alignments() // => Chaotic Evil
 Faker().dnd.backgrounds() // => Acolyte
-Faker().dnd.alignments() // => Lawful Good
+Faker().dnd.cities() // => Almraiven
+Faker().dnd.klasses() // => Artificer
+Faker().dnd.languages() // => Abyssal
+Faker().dnd.meleeWeapons() // => Battleaxe
+Faker().dnd.monsters() // => Aarakocra
+Faker().dnd.races() // => Aarakocra
+Faker().dnd.rangedWeapons() // => Blowgun
 ```

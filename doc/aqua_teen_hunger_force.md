@@ -5,4 +5,6 @@
 Available Functions:  
 ```kotlin
 Faker().aquaTeenHungerForce.character() // => Cybernetic Ghost of Christmas Past from the Future
+
+Faker().aquaTeenHungerForce.quote() // => Dancing is forbidden!
 ```

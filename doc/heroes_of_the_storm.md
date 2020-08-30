@@ -6,7 +6,7 @@ Available Functions:
 ```kotlin
 Faker().heroesOfTheStorm.battlegrounds() // => Alterac Pass
 
-Faker().heroesOfTheStorm.classes() // => Assasin
+Faker().heroesOfTheStorm.classNames() // => Assasin
 
 Faker().heroesOfTheStorm.heroes() // => Abathur
 

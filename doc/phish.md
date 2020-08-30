@@ -4,5 +4,7 @@
 
 Available Functions:  
 ```kotlin
-Faker().phish.song() // => A Song I Heard the Ocean Sing
+Faker().phish.albums() // => Junta
+Faker().phish.musicians() // => Jon Fishman
+Faker().phish.songs() // => A Song I Heard the Ocean Sing
 ```

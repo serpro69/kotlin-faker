@@ -13,4 +13,5 @@ class AquaTeenHungerForce internal constructor(fakerService: FakerService) : Abs
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun character() = resolve("character")
+    fun quote() = resolve("quote")
 }

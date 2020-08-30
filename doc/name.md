@@ -8,6 +8,8 @@ Faker().name.maleFirstName() // => Aaron
 
 Faker().name.femaleFirstName() // => Abbey
 
+Faker().name.neutralFirstName() // => Alexis
+
 // Male of Female first name
 Faker().name.firstName() // => Aaron || Abbey
 

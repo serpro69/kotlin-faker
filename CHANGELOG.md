@@ -4,9 +4,27 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [v1.4.2] - UNRELEASED
+## [v1.5.0] - UNRELEASED
 ### Added
-- [#40](https://github.com/serpro69/kotlin-faker/issues/40) Add enum support for `RandomProvider`
+- [#40](https://github.com/serpro69/kotlin-faker/issues/40) [core] Add enum support for `RandomProvider`
+- [#39](https://github.com/serpro69/kotlin-faker/issues/39) [core] Update dict files.
+  - Including new functions in existing providers:
+    - `aquaTeenHungerForce.quote()`
+    - `dnd.cities()`
+    - `dnd.languages()`
+    - `dnd.meleeWeapons()`
+    - `dnd.monsters()`
+    - `dnd.races()` - replaces deprecated `species()` function.
+    - `dnd.rangedWeapons()`
+    - `heroesOfTheStorm.classNames()` - replaces deprecated `classes()` function
+    - `movie.title()`
+    - `name.neutralFirstName()`
+    - `phish.albums()`
+    - `phish.musicians()`
+    - `phish.songs()` - replaces deprecated `song()` function
+    - `simpsons.episodeTitles()`
+  - Including new providers:
+    - 
 
 ## [v1.4.1] - 2020-08-22
 ### Added

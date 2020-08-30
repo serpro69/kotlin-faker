@@ -12,5 +12,6 @@ class Movie internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val localUniqueDataProvider = LocalUniqueDataProvider<Movie>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
+    fun title() = resolve("title")
     fun quote() = resolve("quote")
 }
