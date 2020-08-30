@@ -20,5 +20,9 @@ id:
         - "#{street_prefix} #{street_title}"
       street_address:
         - "#{street_name} No. #{building_number}"
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['62']
     phone_number:
-      formats: ['08##########', '08##-####-####', '+628#########']
+      formats: ['08##########', '08##-####-####', '8#########']

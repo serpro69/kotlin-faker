@@ -22,4 +22,8 @@ en-IND:
     company:
       suffix: [Pvt Ltd, Limited, Ltd, and Sons, Corp, Group, Brothers]
     phone_number:
-      formats: ['+91###-###-####', '+91##########', '+91-###-#######']
+      formats: ['###-###-####', '##########', '###-#######']
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['91']

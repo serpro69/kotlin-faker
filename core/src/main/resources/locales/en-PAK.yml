@@ -14,5 +14,9 @@ en-PAK:
       domain_suffix: [pk, com, com.pk, name, net, org, html, edu]
     company:
       suffix: [Pvt Ltd, Limited, Ltd, and Sons, Corp, Group, Brothers, CO]
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['92']
     phone_number:
-      formats: ['+92##########', '+92 ### #######', '03##-#######']
+      formats: ['##########', '### #######', '03##-#######']

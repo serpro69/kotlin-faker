@@ -45,5 +45,11 @@ en-NEP:
       domain_suffix: ['np', 'com', 'info', 'net', 'org']
     company:
       suffix: ['Pvt Ltd', 'Group', 'Ltd', 'Limited']
+
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['977']
+
     phone_number:
-      formats: ['##-#######', '+977-#-#######', '+977########']
+      formats: ['##-#######', '#-#######', '########']

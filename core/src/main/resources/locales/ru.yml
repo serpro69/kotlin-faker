@@ -51,8 +51,13 @@ ru:
       name_with_middle:
         - "#{first_name} #{last_name} #{last_name}"
 
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['7']
+
     phone_number:
-      formats: ['+7(9##)###-##-##']
+      formats: ['(9##)###-##-##']
 
     commerce:
       color: [красный, зеленый, синий, желтый, багровый, мятный, зеленовато-голубой, белый, черный, оранжевый, розовый, серый, красно-коричневый, фиолетовый, бирюзовый, желто-коричневый, небесно голубой, оранжево-розовый, темно-фиолетовый, орхидный, оливковый, пурпурный, лимонный, кремовый, сине-фиолетовый, золотой, красно-пурпурный, голубой, лазурный, лиловый, серебряный]

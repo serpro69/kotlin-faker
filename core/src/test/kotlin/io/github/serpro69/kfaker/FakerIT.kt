@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.Address
+import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.beUnique
@@ -11,9 +12,14 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldMatch
+import org.junit.jupiter.api.assertDoesNotThrow
 import java.io.File
-import kotlin.reflect.*
-import kotlin.reflect.full.*
+import kotlin.reflect.KProperty
+import kotlin.reflect.KVisibility
+import kotlin.reflect.full.declaredMemberFunctions
+import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.full.isSubtypeOf
+import kotlin.reflect.full.starProjectedType
 
 @Suppress("UNCHECKED_CAST")
 class FakerIT : DescribeSpec({
@@ -145,11 +151,13 @@ class FakerIT : DescribeSpec({
         }
 
         it("Faker should be initialized without exceptions") {
-            locales?.forEach {
-                val config = FakerConfig.builder().create {
-                    locale = it
+            assertSoftly {
+                locales?.forEach {
+                    val config = FakerConfig.builder().create {
+                        locale = it
+                    }
+                    assertDoesNotThrow { Faker(config) }
                 }
-                Faker(config)
             }
         }
     }

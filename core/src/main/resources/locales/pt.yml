@@ -62,5 +62,10 @@ pt:
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
 
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['351']
+
     phone_number:
-      formats: ["(##) ###-####", "+351 (##) ###-####", "884 ###-###"]
+      formats: ["(##) ###-####", "(##) ###-####", "884 ###-###"]
