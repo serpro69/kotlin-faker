@@ -23,8 +23,9 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `phish.musicians()`
     - `phish.songs()` - replaces deprecated `song()` function
     - `simpsons.episodeTitles()`
-  - Including new providers:
+  - Including new `faker` providers:
     - `barcode`
+    - `bigBangTheory`
 
 ## [v1.4.1] - 2020-08-22
 ### Added
@@ -76,7 +77,7 @@ with secondary_key
 
 ### Fixed
 - [#18](https://github.com/serpro69/kotlin-faker/issues/18) Visibility of `randomClassInstance()` function 
-in [RandomProvider](src/main/kotlin/io/github/serpro69/kfaker/provider/RandomProvider.kt) class
+in [RandomProvider](core/src/main/kotlin/io/github/serpro69/kfaker/provider/RandomProvider.kt) class
 - [#20](https://github.com/serpro69/kotlin-faker/issues/20) Issues with FasterXML Jackson 2.10.1
 
 ## [v1.1.0] - 2019-11-30

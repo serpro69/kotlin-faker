@@ -28,6 +28,7 @@ internal enum class CategoryName {
     BARCODE,
     BASKETBALL,
     BEER,
+    BIG_BANG_THEORY,
     BLOOD,
     BOJACK_HORSEMAN,
     BOOK,
