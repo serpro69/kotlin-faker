@@ -118,6 +118,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val measurement: Measurement
     val michaelScott: MichaelScott
     val military: Military
+    val minecraft: Minecraft
     val movie: Movie
     val music: Music
     val myst: Myst
@@ -285,6 +286,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         measurement = Measurement(fakerService)
         michaelScott = MichaelScott(fakerService)
         military = Military(fakerService)
+        minecraft = Minecraft(fakerService)
         movie = Movie(fakerService)
         music = Music(fakerService)
         myst = Myst(fakerService)

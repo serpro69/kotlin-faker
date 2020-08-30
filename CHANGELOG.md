@@ -29,6 +29,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `drivingLicense`
     - `drone`
     - `futurama`
+    - `minecraft`
 
 ## [v1.4.1] - 2020-08-22
 ### Added
