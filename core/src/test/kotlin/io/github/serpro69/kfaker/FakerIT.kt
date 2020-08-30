@@ -41,7 +41,7 @@ class FakerIT : DescribeSpec({
         assertSoftly {
             providerFunctions.forEach { (functions, provider) ->
                 functions.forEach {
-                    context("result value for ${provider.name + it.name} is resolved correctly") {
+                    context("result value for ${provider.name} ${it.name} is resolved correctly") {
                         val regex = Regex("""#\{.*}|#++""")
 
                         val value = when (it.parameters.size) {
