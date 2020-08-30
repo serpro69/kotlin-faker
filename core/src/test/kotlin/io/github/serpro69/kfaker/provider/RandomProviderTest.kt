@@ -2,8 +2,8 @@ package io.github.serpro69.kfaker.provider
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.instanceOf
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.instanceOf
 import java.util.*
 
 @Suppress("unused")
