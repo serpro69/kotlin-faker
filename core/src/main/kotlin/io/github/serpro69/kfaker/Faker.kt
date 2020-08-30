@@ -160,6 +160,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val starTrek: StarTrek
     val starWars: StarWars
     val strangerThings: StrangerThings
+    val streetFighter: StreetFighter
     val stripe: Stripe
     val subscription: Subscription
     val suits: Suits
@@ -330,6 +331,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         starTrek = StarTrek(fakerService)
         starWars = StarWars(fakerService)
         strangerThings = StrangerThings(fakerService)
+        streetFighter = StreetFighter(fakerService)
         stripe = Stripe(fakerService)
         subscription = Subscription(fakerService)
         suits = Suits(fakerService)
