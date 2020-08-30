@@ -144,6 +144,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val rickAndMorty: RickAndMorty
     val rockBand: RockBand
     val rupaul: Rupaul
+    val rush: Rush
     val science: Science
     val seinfeld: Seinfeld
     val shakespeare: Shakespeare
@@ -313,6 +314,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         rickAndMorty = RickAndMorty(fakerService)
         rockBand = RockBand(fakerService)
         rupaul = Rupaul(fakerService)
+        rush = Rush(fakerService)
         science = Science(fakerService)
         seinfeld = Seinfeld(fakerService)
         shakespeare = Shakespeare(fakerService)

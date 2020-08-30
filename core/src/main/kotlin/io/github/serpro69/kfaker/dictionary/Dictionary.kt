@@ -133,6 +133,7 @@ internal enum class CategoryName {
     RICK_AND_MORTY,
     ROCK_BAND,
     RUPAUL,
+    RUSH,
     SCIENCE,
     SEINFELD,
     SHAKESPEARE,
