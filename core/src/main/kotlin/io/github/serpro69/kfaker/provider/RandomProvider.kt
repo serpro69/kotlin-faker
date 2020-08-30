@@ -38,7 +38,7 @@ class RandomProvider internal constructor(random: Random) {
         return if (instance != null) instance else {
             val constructor = this.constructors
                 .filter { it.visibility == KVisibility.PUBLIC }
-                .minBy { it.parameters.size }
+                .minByOrNull { it.parameters.size }
                 ?: throw NoSuchElementException("No suitable constructor found for $this")
 
             val params = constructor.parameters

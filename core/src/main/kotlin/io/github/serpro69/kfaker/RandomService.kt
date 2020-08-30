@@ -13,8 +13,8 @@ internal class RandomService(private val random: Random) {
     fun nextInt(bound: Int) = random.nextInt(bound)
 
     fun nextInt(intRange: IntRange): Int {
-        val lowerBound = requireNotNull(intRange.min())
-        val upperBound = requireNotNull(intRange.max())
+        val lowerBound = requireNotNull(intRange.minOrNull())
+        val upperBound = requireNotNull(intRange.maxOrNull())
 
         return nextInt(lowerBound, upperBound)
     }

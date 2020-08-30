@@ -3,7 +3,7 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 
 plugins {
     kotlin("jvm")
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "6.0.0"
     application
     id("com.palantir.graal") version "0.7.1"
 }
@@ -13,7 +13,7 @@ val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
     implementation(project(":core"))
-    implementation("info.picocli:picocli:4.3.2")
+    implementation("info.picocli:picocli:4.5.1")
 }
 
 application {

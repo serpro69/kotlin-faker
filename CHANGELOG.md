@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [v1.5.0] - UNRELEASED
+## [v1.5.0] - 2020-08-30
 ### Added
 - [#40](https://github.com/serpro69/kotlin-faker/issues/40) [core] Add enum support for `RandomProvider`
 - [#39](https://github.com/serpro69/kotlin-faker/issues/39) [core] Update dict files.
@@ -33,10 +33,13 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `prince`
     - `rush`
     - `streetFighter`
+    
+### Changed
+- [#32](https://github.com/serpro69/kotlin-faker/issues/32) Upgrade kotlin to 1.4.0
 
 ## [v1.4.1] - 2020-08-22
 ### Added
-- [#41](https://github.com/serpro69/kotlin-faker/issues/41) Publish to maven central
+- [#41](https://github.com/serpro69/kotlin-faker/issues/41) publish to maven central
 
 ## [v1.4.0] - 2020-07-09
 ### Fixed

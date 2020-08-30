@@ -8,9 +8,9 @@ plugins {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.0")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.0")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.2")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
     implementation("com.github.mifmif:generex:1.0.2")
     runtimeOnly(kotlin("script-runtime"))
 }
