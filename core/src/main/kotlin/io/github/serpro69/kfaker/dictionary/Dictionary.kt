@@ -25,6 +25,7 @@ internal enum class CategoryName {
     ARTIST,
     BACK_TO_THE_FUTURE,
     BANK,
+    BARCODE,
     BASKETBALL,
     BEER,
     BLOOD,
