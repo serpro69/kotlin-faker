@@ -66,6 +66,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val dota: Dota
     val dragonBall: DragonBall
     val drivingLicense: DrivingLicense
+    val drone: Drone
     val drWho: DrWho
     val dumbAndDumber: DumbAndDumber
     val dune: Dune
@@ -230,6 +231,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         dota = Dota(fakerService)
         dragonBall = DragonBall(fakerService)
         drivingLicense = DrivingLicense(fakerService)
+        drone = Drone(fakerService)
         drWho = DrWho(fakerService)
         dumbAndDumber = DumbAndDumber(fakerService)
         dune = Dune(fakerService)

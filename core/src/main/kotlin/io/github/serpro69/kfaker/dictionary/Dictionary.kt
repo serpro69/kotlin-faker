@@ -65,6 +65,7 @@ internal enum class CategoryName {
     GAMES,
     DRAGON_BALL,
     DRIVING_LICENSE,
+    DRONE,
     DR_WHO,
     DUMB_AND_DUMBER,
     DUNE,
