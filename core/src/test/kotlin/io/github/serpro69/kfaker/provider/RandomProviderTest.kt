@@ -121,6 +121,33 @@ class RandomProviderTest : DescribeSpec({
             }
         }
     }
+
+    describe("a TestClass with non-empty constructor for custom type generators") {
+        class Foo(val int: Int)
+        class TestClass(
+            val id: UUID,
+            val int: Int,
+            val long: Long,
+            val foo: Foo
+        )
+
+        val givenUuid = UUID.fromString("00000000-0000-0000-0000-000000000000")
+        val givenInt = 0
+
+        context("creating a random instance of the class with custom generators") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                typeGenerator<UUID> { givenUuid }
+                typeGenerator<Int> { givenInt }
+            }
+
+            it("it should be a predefined UUID and primitives") {
+                testClass shouldBe instanceOf(TestClass::class)
+                testClass.id shouldBe givenUuid
+                testClass.int shouldBe givenInt
+                testClass.foo.int shouldBe givenInt
+            }
+        }
+    }
 })
 
 enum class TestEnum {
