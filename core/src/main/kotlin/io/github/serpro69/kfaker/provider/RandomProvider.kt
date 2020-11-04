@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
+import io.github.serpro69.kfaker.RandomService
 import java.util.*
 import kotlin.Boolean
 import kotlin.Char
@@ -11,7 +11,8 @@ import kotlin.Long
 import kotlin.NoSuchElementException
 import kotlin.Short
 import kotlin.String
-import kotlin.reflect.*
+import kotlin.reflect.KClass
+import kotlin.reflect.KVisibility
 
 /**
  * Provider for functionality not covered by the standard dictionary files.
@@ -28,11 +29,24 @@ class RandomProvider internal constructor(random: Random) {
      *
      * @throws NoSuchElementException if [T] has no public constructor.
      */
-    inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance()
+    inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance(RandomProviderConfig())
+
+    /**
+     * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     *
+     * @param configurator configure instance creation.
+     *
+     * @throws NoSuchElementException if [T] has no public constructor.
+     */
+    inline fun <reified T : Any> randomClassInstance(configurator: RandomProviderConfig.() -> Unit): T {
+        val config = RandomProviderConfig().apply(configurator)
+        return T::class.randomClassInstance(config)
+    }
 
     @JvmSynthetic
     @PublishedApi
-    internal fun <T : Any> KClass<T>.randomClassInstance(): T {
+    internal fun <T : Any> KClass<T>.randomClassInstance(config: RandomProviderConfig): T {
         val instance = this.constructors.find { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
 
         return if (instance != null) instance else {
@@ -44,12 +58,10 @@ class RandomProvider internal constructor(random: Random) {
             val params = constructor.parameters
                 .map { it.type.classifier as KClass<*> }
                 .map {
-                    when {
-                        it.isPrimitive() -> it.randomPrimitive()
-                        it.java.isEnum -> it.randomEnum()
-                        // TODO: 16.06.19 Arrays, Lists, Maps, (other collections?)
-                        else -> it.randomClassInstance()
-                    }
+                    it.predefinedTypeOrNull(config)
+                        ?: it.randomPrimitiveOrNull()
+                        ?: it.randomEnumOrNull()
+                        ?: it.randomClassInstance(config)
                 }
                 .toTypedArray()
 
@@ -57,45 +69,43 @@ class RandomProvider internal constructor(random: Random) {
         }
     }
 
-    /**
-     * @return true if this class represents a primitive type which can be handled in [randomPrimitive].
-     */
-    private fun KClass<*>.isPrimitive(): Boolean = when (this) {
-        Double::class,
-        Float::class,
-        Long::class,
-        Int::class,
-        Short::class,
-        Byte::class,
-        String::class,
-        Char::class,
-        Boolean::class -> true
-        else -> false
+    private fun <T : Any> KClass<T>.predefinedTypeOrNull(config: RandomProviderConfig): Any? {
+        return config.predefinedGenerators[this]?.invoke()
     }
 
     /**
      * Handles generation of primitive types since they do not have a public constructor.
      */
-    private fun KClass<*>.randomPrimitive(): Any? {
-        return when (this) {
-            Double::class -> randomService.nextDouble()
-            Float::class -> randomService.nextFloat()
-            Long::class -> randomService.nextLong()
-            Int::class -> randomService.nextInt()
-            Short::class -> randomService.nextInt().toShort()
-            Byte::class -> randomService.nextInt().toByte()
-            String::class -> randomService.nextString()
-            Char::class -> randomService.nextChar()
-            Boolean::class -> randomService.nextBoolean()
-            // TODO: 16.06.19 Arrays
-            else -> null
-        }
+    private fun KClass<*>.randomPrimitiveOrNull(): Any? = when (this) {
+        Double::class -> randomService.nextDouble()
+        Float::class -> randomService.nextFloat()
+        Long::class -> randomService.nextLong()
+        Int::class -> randomService.nextInt()
+        Short::class -> randomService.nextInt().toShort()
+        Byte::class -> randomService.nextInt().toByte()
+        String::class -> randomService.nextString()
+        Char::class -> randomService.nextChar()
+        Boolean::class -> randomService.nextBoolean()
+        // TODO: 16.06.19 Arrays
+        else -> null
     }
 
     /**
      * Handles generation of enums types since they do not have a public constructor.
      */
-    private fun KClass<*>.randomEnum(): Any? {
-        return randomService.randomValue(this.java.enumConstants)
+    private fun KClass<*>.randomEnumOrNull(): Any? =
+        if (this.java.isEnum) randomService.randomValue(this.java.enumConstants) else null
+
+}
+
+class RandomProviderConfig @PublishedApi internal constructor() {
+    @PublishedApi
+    internal val predefinedGenerators = mutableMapOf<KClass<*>, () -> Any>()
+
+    /**
+     * Configures generation for a specific type. It can override internal generators (for primitives, for example)
+     */
+    inline fun <reified K : Any> typeGenerator(noinline generator: () -> K) {
+        predefinedGenerators[K::class] = generator
     }
 }

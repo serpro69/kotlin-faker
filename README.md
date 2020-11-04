@@ -522,6 +522,7 @@ It is possible to generate a random instance of any class with `Faker().randomPr
 ```kotlin
 class Foo(val a: String)
 class Bar(val foo: Foo)
+class Baz(val uuid: UUID)
 
 class Test {
     @Test
@@ -530,6 +531,9 @@ class Test {
 
         val foo: Foo = faker.randomProvider.randomClassInstance()
         val bar: Bar = faker.randomProvider.randomClassInstance()
+        val baz: Baz = faker.randomProvider.randomClassInstance {
+            typeGenerator<UUID> { UUID.randomUUID() }
+        }
     }
 }
 ```
