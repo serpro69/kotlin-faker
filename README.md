@@ -636,9 +636,27 @@ has to be updated to build the native image with graal.
 
 ## Build and Deploy
 Build/deploy to bintray and github release processes are automated with travis-ci through usage of git tags.
-Major, minor, and patch versions need to be bumped manually through a tag with the next release version that has to follow the 
-`v<major>.<minor>.<patch>` pattern, and the tag has to be pushed to origin along with the changes. 
-Creating the tag can be either done manually with `git tag` or by using `gradlew tag -Prelease -PbumpComponent=${comp}` 
+
+### Bumping versions
+Versions need to be bumped manually through a tag with the next release version that has to follow the 
+[semver](https://semver.org/) rules, and the tag has to be pushed to origin. 
+
+Creating the tag can be either done manually with `git tag` or by using `gradlew tag` task.
+
+#### Pre-releases
+To create a new pre-release version (new release candidate) 
+the following can be used: `./gradlew clean tag -Prelease -PnewPreRelease -PbumpComponent={comp}`,
+where `comp` can be one of the following values: `major`, `minor`, or `patch`.
+
+To bump an existing pre-release to the next version (next release candidate for the same release version)
+the following can be used: `./gradlew clean tag -Prelease -PpreRelease`.
+
+#### Releases
+To promote a pre-release to a release version the following can be used: 
+`./gradlew clean tag -Prelease -PpromoteToRelease`,
+
+To create a new release version the following can be used:
+`./gradlew clean tag -Prelease -PbumpComponent={comp}`,
 where `comp` can be one of the following values: `major`, `minor`, or `patch`.
 
 
