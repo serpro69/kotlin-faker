@@ -66,7 +66,7 @@ benchmarks for `moove-it/fakeit` could not be done due to android dependencies i
 | **language**                                                | kotlin           | java                                                  | java                                                      | java                                              | kotlin                                                |
 | **number of available providers** (`address`, `name`, etc.) | 165              | 73                                                    | 8                                                         | 21                                                | 36                                                    |
 | **number of available locales**                             | 55               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
-| **extra functionality**                                     | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
+| **extra functionality** (i.e. `randomClassInstance` gen)    | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **actively maintained**                                     | &#9989;          | &#9989;                                               | &#9989;                                                   | &#9989;                                           | &#10062;                                              |
 | **[cli-bot app](cli-bot)**                                  | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
@@ -95,6 +95,33 @@ dependencies {
     </dependency>
 </dependencies>
 ```  
+
+**Using release candidate versions**
+Release candidates contain the newest functionality before next version gets released 
+and can be downloaded by adding the following repo:
+
+Gradle:
+```
+repositories {
+    maven {
+      url 'https://dl.bintray.com/serpro69/maven/'
+    }
+}
+```
+
+Maven:
+```
+<repositories>
+    <repository>
+        <id>serpro69-maven</id>
+        <url>https://dl.bintray.com/serpro69/maven/</url>
+        <layout>default</layout>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+    </repository>
+</repositories>
+```
 
 **Downloading a jar**  
 The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)

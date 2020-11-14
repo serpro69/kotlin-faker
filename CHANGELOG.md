@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [v1.6.0] - UNRELEASED
+### Added
+- [#44](https://github.com/serpro69/kotlin-faker/pull/44) [core] Add support for random instance configuration.
+- [#47](https://github.com/serpro69/kotlin-faker/issues/47) [core] Publish release candidates to bintray
+
 ## [v1.5.0] - 2020-08-30
 ### Added
 - [#40](https://github.com/serpro69/kotlin-faker/issues/40) [core] Add enum support for `RandomProvider`
