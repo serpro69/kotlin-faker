@@ -56,14 +56,15 @@ val dokkaJavadocJar by tasks.creating(Jar::class) {
 val artifactName = rootProject.name
 val artifactGroup = project.group.toString()
 val artifactVersion = project.version.toString()
+val releaseTagName = "v$artifactVersion"
 
 val pomUrl = "https://github.com/serpro69/kotlin-faker"
 val pomScmUrl = "https://github.com/serpro69/kotlin-faker"
 val pomIssueUrl = "https://github.com/serpro69/kotlin-faker/issues"
 val pomDesc = "https://github.com/serpro69/kotlin-faker"
 
-val githubRepo = "serpro69/kotlin-faker"
-val githubReadme = "README.md"
+val ghRepo = "serpro69/kotlin-faker"
+val ghReadme = "README.md"
 
 val pomLicenseName = "MIT"
 val pomLicenseUrl = "https://opensource.org/licenses/mit-license.php"
@@ -112,31 +113,35 @@ publishing {
 }
 
 bintray {
+    val baseReleasePattern = "v\\d+\\.\\d+\\.\\d+"
+
     user = project.findProperty("bintrayUser").toString()
     key = project.findProperty("bintrayKey").toString()
-    publish = !project.version.toString().endsWith("SNAPSHOT")
+    publish = releaseTagName.matches(Regex("^${baseReleasePattern}(-rc\\.\\d+)?$"))
 
     setPublications("kotlin-faker")
 
     pkg.apply {
-        repo = "maven"
+        val isRelease = releaseTagName.matches(Regex("^${baseReleasePattern}$"))
+
+        repo = if (isRelease) "maven" else "maven-release-candidates"
         name = artifactName
         userOrg = "serpro69"
-        githubRepo = githubRepo
-        vcsUrl = pomScmUrl
+        githubRepo = ghRepo
+        vcsUrl = "$pomScmUrl.git"
         description = "Port of ruby faker gem written in kotlin"
         setLabels("kotlin", "faker", "testing", "test-automation", "data", "generation")
         setLicenses("MIT")
         desc = description
         websiteUrl = pomUrl
         issueTrackerUrl = pomIssueUrl
-        githubReleaseNotesFile = githubReadme
+        githubReleaseNotesFile = ghReadme
 
         version.apply {
             name = artifactVersion
             desc = pomDesc
             released = Date().toString()
-            vcsTag = "v$artifactVersion"
+            vcsTag = releaseTagName
         }
     }
 }
