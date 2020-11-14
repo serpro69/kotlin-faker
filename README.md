@@ -661,6 +661,9 @@ To create a new release version the following can be used:
 `./gradlew clean tag -Prelease -PbumpComponent={comp}`,
 where `comp` can be one of the following values: `major`, `minor`, or `patch`.
 
+#### Make targets
+Alternatively to the above targets from [Makefile](Makefile) can be used for the same purposes.
+
 
 ## Contributing
 Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
