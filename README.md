@@ -1,7 +1,7 @@
 ### <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/name.png alt="kotlin-faker"/> </a>
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
-[![RC Version Badge](https://api.bintray.com/packages/serpro69/maven-release-candidates/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
+[![RC Version Badge](https://api.bintray.com/packages/serpro69/maven-release-candidates/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven-release-candidates/kotlin-faker/_latestVersion)
 [![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
 [![Issues Badge](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg)](https://github.com/serpro69/kotlin-faker/issues)
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
