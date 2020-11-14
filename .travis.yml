@@ -20,7 +20,7 @@ jobs:
         file_glob: true
         file: "cli-bot/build/graal/faker-bot_*"
         on:
-          branch: /^v(\d+\.?){3}/
+          branch: /^v(\d+\.?){3}(-rc\.\d+)?$/
           tags: true
 
 stages:
