@@ -141,11 +141,11 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
             }
-        } else if (!globalUniqueProvider.markedUnique.contains(this::class)) {
+        } else if (!globalUniqueProvider.config.markedUnique.contains(this::class)) {
             // if global unique provider is not enabled for this category -> return result
             result
         } else {
-            val usedValuesMap = requireNotNull(globalUniqueProvider.usedValues[this::class])
+            val usedValuesMap = requireNotNull(globalUniqueProvider.config.usedValues[this::class])
             when (val set = usedValuesMap[key]) {
                 null -> {
                     usedValuesMap[key] = mutableSetOf(result)

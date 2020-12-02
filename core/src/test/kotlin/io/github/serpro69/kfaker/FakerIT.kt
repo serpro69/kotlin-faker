@@ -7,6 +7,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.beUnique
 import io.kotest.matchers.collections.containDuplicates
 import io.kotest.matchers.collections.shouldNotContainAll
+import io.kotest.matchers.collections.shouldNotContainExactly
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
@@ -87,6 +88,7 @@ class FakerIT : DescribeSpec({
                                 && value != "Dee Dee"
                                 && value != "Lola Lola" // cannabis#brands
                                 && value != "Hail Hail" // pearlJam#songs
+                                && value != "Help Help" // pearlJam#songs
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
@@ -163,7 +165,47 @@ class FakerIT : DescribeSpec({
         }
     }
 
-    describe("unique generation for category") {
+    // TODO this can be removed in 1.7.0 once deprecated functions are replaced
+    context("configuration for unique generation of values") {
+        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
+
+        // repeat 30 times to make sure values are not included in the collection
+        repeat(30) {
+            val faker = Faker(config)
+            faker.unique.configuration { enable(faker::address) }
+
+            context("collection of unique values is generated #$it") {
+                val countries = (0..5).map { faker.address.country() }
+
+                val excludedCountries = listOf("Afghanistan", "Albania", "Algeria")
+                faker.unique.configuration { exclude<Address>("country", excludedCountries) }
+                val newCountries = (0..20).map { faker.address.country() }
+
+                // FIXME this should probably be in a separate test
+                val moreExcludedCountries = listOf("American Samoa", "Andorra", "Angola")
+                faker.unique.configuration { exclude(Address::country, moreExcludedCountries) }
+                val moreCountries = (0..20).map { faker.address.country() }
+                // ---
+
+                it("excluded values through config should not be included in the generation") {
+                    assertSoftly {
+                        newCountries shouldNotContainAll excludedCountries
+                        moreCountries shouldNotContainAll moreExcludedCountries
+                    }
+                }
+
+                it("already generated values through config should not be included in the generation") {
+                    assertSoftly {
+                        newCountries shouldNotContainAll countries
+                        moreCountries shouldNotContainAll newCountries
+                        moreCountries shouldNotContainAll countries
+                    }
+                }
+            }
+        }
+    }
+
+    describe("unique generation of values for category") {
         val config = FakerConfig.builder().create {
             uniqueGeneratorRetryLimit = 100
         }
@@ -176,7 +218,7 @@ class FakerIT : DescribeSpec({
 
             val countries = (0..20).map { faker.address.country() }
 
-            it("collection should not contain duplicates") {
+            it("should not contain duplicates") {
                 countries should beUnique()
             }
 
@@ -225,6 +267,64 @@ class FakerIT : DescribeSpec({
                         newCountries shouldNotContainAll countries
                     }
                 }
+
+/*                context("exclude values with pattern") {
+                    val faker = Faker(config)
+
+                    // Exclude values for 'country' function
+                    val excludedCountries = listOf(
+                        "Afghanistan",
+                        "Albania",
+                        "Algeria",
+                        "American Samoa",
+                        "Andorra",
+                        "Angola"
+                    )
+
+                    faker.unique.configuration {
+                        // Enable unique generation for Address provider
+                        enable(faker::address) {
+                            excludePatterns(Address::country) { listOf(Regex("^B")) }
+                            exclude(Address::country, excludedCountries)
+                        }
+
+                        // TODO not implemented
+//                        // Applies to all enabled providers
+//                        excludePatterns { listOf(Regex("^A")) }
+//
+//                        // Applies to all enabled providers
+//                        val excludedValues = listOf("One", "Two", "Three")
+//                        exclude(excludedValues)
+                    }
+
+                    // run some generation
+                    val countries = (0..20).map { faker.address.country() }
+
+*//*                    faker.unique.configuration {
+                        enable(faker::address) {
+                            val excludedCountries = listOf(
+                                "Afghanistan",
+                                "Albania",
+                                "Algeria",
+                                "American Samoa",
+                                "Andorra",
+                                "Angola"
+                            )
+                            exclude<Address>("country", excludedCountries)
+                        }
+                    }*//*
+
+//                    // run more generation
+//                    val newerCountries = (0..20).map { faker.address.country() }
+
+//                    it("generated values should not match exclusion patterns") {
+//                        countries.any { s -> s.startsWith("B") } shouldBe false
+//                    }
+
+                    it("excluded values should not be included in the generation") {
+                        countries shouldNotContainAll excludedCountries
+                    }
+                }*/
             }
         }
 
