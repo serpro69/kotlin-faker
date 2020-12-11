@@ -453,7 +453,7 @@ details see the particular `.md` file for each provider below.</i>
 * [Bank](doc/bank.md)
 * [Basketball](doc/basketball.md)
 * [Beer](doc/beer.md)
-* [BojackHoreseman](doc/bojack_horeseman.md)
+* [BojackHorseman](doc/bojack_horseman.md)
 * [Book](doc/book.md)
 * [BossaNova](doc/bossa_nova.md)
 * [BreakingBad](doc/breaking_bad.md)
