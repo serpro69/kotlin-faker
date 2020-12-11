@@ -29,7 +29,7 @@
     {"name":"getBeer","parameterTypes":[] }, 
     {"name":"getBigBangTheory","parameterTypes":[] }, 
     {"name":"getBlood","parameterTypes":[] }, 
-    {"name":"getBojackHoreseman","parameterTypes":[] }, 
+    {"name":"getBojackHorseman","parameterTypes":[] }, 
     {"name":"getBook","parameterTypes":[] }, 
     {"name":"getBossaNova","parameterTypes":[] }, 
     {"name":"getBreakingBad","parameterTypes":[] }, 
@@ -357,7 +357,7 @@
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.BojackHoreseman",
+  "name":"io.github.serpro69.kfaker.provider.BojackHorseman",
   "methods":[
     {"name":"characters","parameterTypes":[] }, 
     {"name":"quotes","parameterTypes":[] }, 
