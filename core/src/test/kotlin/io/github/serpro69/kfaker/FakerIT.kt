@@ -6,6 +6,7 @@ import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.beUnique
 import io.kotest.matchers.collections.containDuplicates
+import io.kotest.matchers.collections.shouldContainAnyOf
 import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.collections.shouldNotContainAll
 import io.kotest.matchers.should
@@ -200,13 +201,13 @@ class FakerIT : DescribeSpec({
                 val excludedCountries = listOf(
                     "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola"
                 )
-                faker.unique.configuration { exclude<Address>("country", excludedCountries) }
+                faker.unique.configuration { excludeFor<Address>("country", excludedCountries) }
                 val newCountries = (0..25).map { faker.address.country() }
 
                 val moreExcludedCountries = listOf(
                     "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic"
                 )
-                faker.unique.configuration { exclude(Address::country, moreExcludedCountries) }
+                faker.unique.configuration { excludeFor(Address::country, moreExcludedCountries) }
                 val moreCountries = (0..30).map { faker.address.country() }
 
                 it("excluded values through config should not be included in the generation") {
@@ -227,12 +228,10 @@ class FakerIT : DescribeSpec({
         }
     }
 
-    context("!use collections to exclude values from being generated for all providers") {
-        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
-
+    context("use collections to exclude values from being generated for all providers") {
         // repeat 30 times to make sure values are not included in the collection
         repeat(30) {
-            val faker = Faker(config)
+            val faker = Faker()
 
             val excludedCountries = listOf(
                 "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra",
@@ -246,31 +245,47 @@ class FakerIT : DescribeSpec({
                 "Colombia", "Comoros", "Congo", "Congo", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia",
                 "Cuba", "Cyprus", "Czech Republic",
             )
+            val excludedNames = listOf(
+                "Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson", "Ankunding", "Armstrong", "Auer",
+                "Aufderhar", "Bahringer", "Bailey", "Balistreri", "Barrows", "Bartell", "Bartoletti", "Barton",
+                "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty", "Bechtelar", "Becker", "Bednar",
+                "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard", "Bernier", "Bins", "Blanda", "Blick",
+                "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle",
+                "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge"
+            )
+            val excludedBicCodes = listOf(
+                "AACCGB21", "AACNGB21", "AAFMGB21", "AAHOGB21", "AAHVGB21", "AANLGB21",
+                "AANLGB2L", "AAOGGB21", "AAPEGB21", "AAPUGB21", "AAQIGB21", "ABBYGB2L"
+            )
+            val excludeAll = listOf(excludedCountries, excludedNames, excludedBicCodes).flatten()
 
             faker.unique.configuration {
                 enable(faker::address)
                 enable(faker::name)
-                TODO("not implemented")
-                exclude(excludedCountries)
+                exclude(excludeAll)
             }
 
             context("collection of unique values is generated run#$it") {
-                val countriesOne = (0..6).map { faker.address.country() }
-                val countriesTwo = (0..6).map { faker.address.country() }
+                val countries = (0..30).map { faker.address.country() }
+                val names = (0..30).map { faker.name.lastName() }
+                // Unique generation not enabled for Bank
+                val bicCodes = (0..30).map { faker.bank.swiftBic() }
 
                 it("should not contain excluded values") {
                     assertSoftly {
-                        countriesOne shouldNotContainAll excludedCountries
-                        countriesTwo shouldNotContainAll excludedCountries
+                        countries shouldNotContainAll excludeAll
+                        names shouldNotContainAll excludeAll
+                        // Unique generation not enabled for Bank
+                        bicCodes shouldNot beUnique()
+                        bicCodes shouldContainAnyOf excludedBicCodes
                     }
                 }
             }
         }
     }
 
-    context("!use regex patterns to exclude values from being generated for all providers") {
+    context("use regex patterns to exclude values from being generated for all providers") {
         repeat(30) {
-            TODO("Not implemented")
             val faker = Faker()
 
             faker.unique.configuration {
@@ -278,16 +293,23 @@ class FakerIT : DescribeSpec({
                 enable(faker::address)
                 enable(faker::name)
                 // Exclude all values starting with "A"
-                excludePatterns { listOf(Regex("^A")) }
+                exclude { listOf(Regex("^A")) }
             }
 
-            it("excluded values by pattern should not be included in the generation run#$it") {
+            it("should not contain values matching pattern run#$it") {
                 val countries = (0..30).map { faker.address.country() }
                 val names = (0..30).map { faker.name.lastName() }
+                // Unique generation not enabled for Bank
+                val bicCodes = (0..30).map { faker.bank.swiftBic() }
 
                 assertSoftly {
-                    countries.any { s -> s.startsWith("A") } shouldBe false
-                    names.any { s -> s.startsWith("A") } shouldBe false
+                    countries.none { s -> s.startsWith("A") } shouldBe true
+                    countries should beUnique()
+                    names.none { s -> s.startsWith("A") } shouldBe true
+                    names should beUnique()
+                    // Unique generation not enabled for Bank
+                    bicCodes.any { s -> s.startsWith("A") } shouldBe true
+                    bicCodes shouldNot beUnique()
                 }
             }
         }
@@ -300,8 +322,8 @@ class FakerIT : DescribeSpec({
             // Enable unique generation and exclude by patterns
             enable(faker::address) {
 //                TODO("not implemented")
-                excludePatterns(Address::country) { listOf(Regex("^A")) }
-                excludePatterns<Address> { listOf(Regex("^B")) }
+                excludeFor(Address::country) { listOf(Regex("^A")) }
+                excludeFor<Address> { listOf(Regex("^B")) }
             }
         }
 

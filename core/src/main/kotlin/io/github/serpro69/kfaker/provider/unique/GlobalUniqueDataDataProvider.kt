@@ -36,9 +36,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
      * and clears out any already returned values, so they can possibly be returned again.
      */
     override fun disableAll() {
-        config.markedUnique.clear()
-        config.usedValues.clear()
-        config.exclusionPatterns.clear()
+        config.disableAll()
     }
 
     /**
@@ -46,7 +44,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
      */
     override fun clearAll() {
         config.usedValues.keys.forEach { k -> config.usedValues[k] = hashMapOf() }
-        config.exclusionPatterns.keys.forEach { k -> config.exclusionPatterns[k] = hashMapOf() }
+        config.providerExclusionPatterns.keys.forEach { k -> config.providerExclusionPatterns[k] = hashMapOf() }
     }
 
     fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
