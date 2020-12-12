@@ -1,7 +1,7 @@
 package io.github.serpro69.kfaker.provider.unique
 
 abstract class UniqueDataProvider {
-    internal abstract val config: UniqueProviderConfiguration
+//    internal abstract val config: UniqueProviderConfiguration
 
     /**
      * Disables "unique generation" for all providers that were configured to return unique values.

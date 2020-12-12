@@ -7,8 +7,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.beUnique
 import io.kotest.matchers.collections.containDuplicates
 import io.kotest.matchers.collections.shouldContainAnyOf
-import io.kotest.matchers.collections.shouldNotContain
-import io.kotest.matchers.collections.shouldNotContainAll
+import io.kotest.matchers.collections.shouldNotContainAnyOf
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
@@ -89,6 +88,7 @@ class FakerIT : DescribeSpec({
                                 && value != "Lola Lola" // cannabis#brands
                                 && value != "Hail Hail" // pearlJam#songs
                                 && value != "Help Help" // pearlJam#songs
+                                && value != "Mr. Mr." // kPop#thirdGroups
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
@@ -181,7 +181,7 @@ class FakerIT : DescribeSpec({
                     assertSoftly {
                         countries should beUnique()
                         newCountries should beUnique()
-                        newCountries shouldNotContain countries
+                        newCountries shouldNotContainAnyOf countries
                     }
                 }
             }
@@ -210,18 +210,23 @@ class FakerIT : DescribeSpec({
                 faker.unique.configuration { excludeForProvider<Address>(moreExcludedCountries) }
                 val moreCountries = (0..30).map { faker.address.country() }
 
+                val excludedCountryCodes = listOf("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ")
+                faker.unique.configuration { excludeForProvider<Address>(excludedCountryCodes) }
+                val countryCodes = (0..30).map { faker.address.countryCode() }
+
                 it("excluded values through config should not be included in the generation") {
                     assertSoftly {
-                        newCountries shouldNotContainAll excludedCountries
-                        moreCountries shouldNotContainAll moreExcludedCountries
+                        newCountries shouldNotContainAnyOf excludedCountries
+                        moreCountries shouldNotContainAnyOf moreExcludedCountries
+                        countryCodes shouldNotContainAnyOf excludedCountryCodes
                     }
                 }
 
                 it("already generated values through config should not be included in the generation") {
                     assertSoftly {
-                        newCountries shouldNotContainAll countries
-                        moreCountries shouldNotContainAll newCountries
-                        moreCountries shouldNotContainAll countries
+                        newCountries shouldNotContainAnyOf countries
+                        moreCountries shouldNotContainAnyOf newCountries
+                        moreCountries shouldNotContainAnyOf countries
                     }
                 }
             }
@@ -255,7 +260,8 @@ class FakerIT : DescribeSpec({
             )
             val excludedBicCodes = listOf(
                 "AACCGB21", "AACNGB21", "AAFMGB21", "AAHOGB21", "AAHVGB21", "AANLGB21",
-                "AANLGB2L", "AAOGGB21", "AAPEGB21", "AAPUGB21", "AAQIGB21", "ABBYGB2L"
+                "AANLGB2L", "AAOGGB21", "AAPEGB21", "AAPUGB21", "AAQIGB21", "ABBYGB2L",
+                "BCYPGB2LCBB", "BCYPGB2LHGB", "BCYPGB2LHHB", "BCYPGB2LPGB", "BCYPGB2LSSB", "BCYPGB2LMBB"
             )
             val excludeAll = listOf(excludedCountries, excludedNames, excludedBicCodes).flatten()
 
@@ -273,11 +279,11 @@ class FakerIT : DescribeSpec({
 
                 it("should not contain excluded values") {
                     assertSoftly {
-                        countries shouldNotContainAll excludeAll
-                        names shouldNotContainAll excludeAll
+                        countries shouldNotContainAnyOf excludeAll
+                        names shouldNotContainAnyOf excludeAll
                         // Unique generation not enabled for Bank
                         bicCodes shouldNot beUnique()
-                        bicCodes shouldContainAnyOf excludedBicCodes
+                        bicCodes shouldContainAnyOf  excludedBicCodes
                     }
                 }
             }
@@ -315,24 +321,26 @@ class FakerIT : DescribeSpec({
         }
     }
 
-    context("!use regex patterns to exclude values from being generated for specific provider") {
-        val faker = Faker()
-
-        faker.unique.configuration {
-            // Enable unique generation and exclude by patterns
-            enable(faker::address) {
-//                TODO("not implemented")
-                excludeFor(Address::country) { listOf(Regex("^A")) }
-                excludeFor<Address> { listOf(Regex("^B")) }
-            }
-        }
-
+    context("use regex patterns to exclude values from being generated for specific provider") {
         repeat(30) {
+            val faker = Faker()
+
+            faker.unique.configuration {
+                // Enable unique generation and exclude by patterns
+                enable(faker::address) {
+                    excludeForProvider<Address> { listOf(Regex("^A")) }
+                    excludeForFunction(Address::country) { listOf(Regex("^B")) }
+                }
+            }
+
             it("excluded values by pattern should not be included in the generation for the provider run#$it") {
                 val countries = (0..30).map { faker.address.country() }
+                val cities = (0..30).map { faker.address.city() }
 
                 assertSoftly {
-                    countries.any { s -> s.startsWith("A") } shouldBe false
+                    countries.none { s -> s.startsWith("A") } shouldBe true
+                    countries.none { s -> s.startsWith("B") } shouldBe true
+                    cities.none { s -> s.startsWith("A") } shouldBe true
                 }
             }
         }
@@ -395,11 +403,11 @@ class FakerIT : DescribeSpec({
                     val newCountries = (0..20).map { faker.address.country() }
 
                     it("excluded values should not be included in the generation") {
-                        newCountries shouldNotContainAll excludedCountries
+                        newCountries shouldNotContainAnyOf excludedCountries
                     }
 
                     it("already generated values should not be included in the generation") {
-                        newCountries shouldNotContainAll countries
+                        newCountries shouldNotContainAnyOf countries
                     }
                 }
 

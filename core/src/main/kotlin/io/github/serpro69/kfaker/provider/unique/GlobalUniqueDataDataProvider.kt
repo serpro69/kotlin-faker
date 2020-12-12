@@ -29,7 +29,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     @JvmSynthetic
     @PublishedApi
-    override val config = UniqueProviderConfiguration()
+    internal val config = UniqueProviderConfiguration()
 
     /**
      * Disables "unique generation" for all providers that were configured to return unique values,
@@ -44,7 +44,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
      */
     override fun clearAll() {
         config.usedProviderFunctionValues.keys.forEach { k -> config.usedProviderFunctionValues[k] = hashMapOf() }
-        config.providerExclusionPatterns.keys.forEach { k -> config.providerExclusionPatterns[k] = hashMapOf() }
+        config.providerFunctionExclusionPatterns.keys.forEach { k -> config.providerFunctionExclusionPatterns[k] = hashMapOf() }
     }
 
     fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {

@@ -22,13 +22,13 @@ import kotlin.reflect.jvm.javaField
  */
 @Suppress("UNCHECKED_CAST", "unused")
 class LocalUniqueDataProvider<T : FakeDataProvider> internal constructor() : UniqueDataProvider() {
-    override val config: UniqueProviderConfiguration
-        get() = TODO("Not yet implemented")
+//    override val config: UniqueProviderConfiguration
+//        get() = TODO("Not yet implemented")
 //    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
 //    override val usedValues = hashMapOf<String, MutableSet<String>>()
 
-    val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
-    val usedValues = hashMapOf<String, MutableSet<String>>()
+    internal val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
+    internal val usedValues = hashMapOf<String, MutableSet<String>>()
 
     /**
      * In `this` class the function works the same as [clearAll] implementation.
