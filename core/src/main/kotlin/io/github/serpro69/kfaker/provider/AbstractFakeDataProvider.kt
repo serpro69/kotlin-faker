@@ -150,7 +150,8 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
             // if global unique provider is not enabled for this category -> return result
             result
         } else {
-            val usedValuesMap = requireNotNull(globalUniqueProvider.config.usedValues[this::class])
+            val usedProviderFunctionsValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderFunctionValues[this::class])
+            val usedProviderValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderValues[this::class])
             val exclusionValues = globalUniqueProvider.config.excludedValues
             val exclusionPatterns = globalUniqueProvider.config.excludedPatterns
 
@@ -173,18 +174,27 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         counter = counter + 1
                     )
                 }
-                // Provider-based exclusions
+                // Provider-based exclusions for all functions
+                usedProviderValuesMap.isNotEmpty() && usedProviderValuesMap.contains(result) -> {
+                    returnOrResolveUnique(
+                        primaryKey = primaryKey,
+                        secondaryKey = secondaryKey,
+                        thirdKey = thirdKey,
+                        counter = counter + 1
+                    )
+                }
+                // Provider-based exclusions for specific functions
                 else -> {
-                    when (val set = usedValuesMap[key]) {
+                    when (val set = usedProviderFunctionsValuesMap[key]) {
                         null -> {
-                            usedValuesMap[key] = mutableSetOf(result)
+                            usedProviderFunctionsValuesMap[key] = mutableSetOf(result)
                             result
                         }
                         else -> {
                             if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                                 throw RetryLimitException("Retry limit of $counter exceeded")
                             } else if (!set.contains(result)) result.also {
-                                usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
+                                usedProviderFunctionsValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
                             } else returnOrResolveUnique(
                                 primaryKey = primaryKey,
                                 secondaryKey = secondaryKey,

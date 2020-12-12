@@ -38,11 +38,21 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
 
     /**
      * A HashMap where the key is a [KClass] of [FakeDataProvider],
+     * and value is a set of already returned (used) values in this provider.
+     *
+     * This applies to ALL functions in a particular provider.
+     */
+    @PublishedApi
+    @JvmSynthetic
+    internal val usedProviderValues = hashMapOf<KClass<out FakeDataProvider>, MutableSet<String>>()
+
+    /**
+     * A HashMap where the key is a [KClass] of [FakeDataProvider],
      * and values are Maps of provider's functionName to a set of already returned (used) values.
      */
     @PublishedApi
     @JvmSynthetic
-    internal val usedValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
+    internal val usedProviderFunctionValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
 
     /**
      * A map of key=value pairs, where
@@ -69,7 +79,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     fun disableAll() {
         markedUnique.clear()
-        usedValues.clear()
+        usedProviderFunctionValues.clear()
         excludedValues.clear()
         excludedPatterns.clear()
         providerExclusionPatterns.clear()
@@ -111,7 +121,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     internal fun <T : FakeDataProvider> enable(provider: KClass<out T>) {
         if (!markedUnique.contains(provider)) {
             markedUnique.add(provider).also {
-                usedValues[provider] = hashMapOf()
+                usedProviderValues[provider] = mutableSetOf()
+                usedProviderFunctionValues[provider] = hashMapOf()
                 providerExclusionPatterns[provider] = hashMapOf()
             }
         }
@@ -127,7 +138,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     internal fun <T : FakeDataProvider> disable(provider: KClass<out T>) {
         if (markedUnique.contains(provider)) {
             markedUnique.remove(provider).also {
-                usedValues.remove(provider)
+                usedProviderFunctionValues.remove(provider)
                 providerExclusionPatterns.remove(provider)
             }
         }
@@ -143,7 +154,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     @JvmSynthetic
     internal fun <T : FakeDataProvider> clear(provider: KClass<out T>) {
         if (markedUnique.contains(provider)) {
-            usedValues[provider] = hashMapOf()
+            usedProviderFunctionValues[provider] = hashMapOf()
             providerExclusionPatterns[provider] = hashMapOf()
         }
     }
@@ -156,8 +167,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `Address::country` for [Address.country]
      * @param values values that should not be generated when calling the [providerFunction] in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> excludeFor(providerFunction: KFunction1<T, String>, values: List<String>) {
-        excludeFor<T>(providerFunction.name, values)
+    inline fun <reified T : FakeDataProvider> excludeForFunction(providerFunction: KFunction1<T, String>, values: List<String>) {
+        excludeForFunction<T>(providerFunction.name, values)
     }
 
     /**
@@ -168,8 +179,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `"country"` for [Address.country]
      * @param values values that should not be generated when calling the [funcName] function in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> excludeFor(funcName: String, values: List<String>) {
-        excludeFor<T>(funcName, *values.toTypedArray())
+    inline fun <reified T : FakeDataProvider> excludeForFunction(funcName: String, values: List<String>) {
+        excludeForFunction<T>(funcName, *values.toTypedArray())
     }
 
     /**
@@ -180,11 +191,33 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `"country"` for [Address.country]
      * @param values values that should not be generated when calling the [funcName] function in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> excludeFor(funcName: String, vararg values: String) {
+    inline fun <reified T : FakeDataProvider> excludeForFunction(funcName: String, vararg values: String) {
         if (markedUnique.contains(T::class)) {
-            usedValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
+            usedProviderFunctionValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
                 oldSet.apply { addAll(newSet) }
             }
+        }
+    }
+
+    /**
+     * Exclude [values] from being generated with in provider [T].
+     *
+     * @param T an implementation class of [FakeDataProvider], for example [Address]
+     * @param values values that should not be generated when calling any of the functions in provider [T]
+     */
+    inline fun <reified T : FakeDataProvider> excludeForProvider(values: List<String>) {
+        excludeForProvider<T>(*values.toTypedArray())
+    }
+
+    /**
+     * Exclude [values] from being generated with in provider [T].
+     *
+     * @param T an implementation class of [FakeDataProvider], for example [Address]
+     * @param values values that should not be generated when calling any of the functions in provider [T]
+     */
+    inline fun <reified T : FakeDataProvider> excludeForProvider(vararg values: String) {
+        if (markedUnique.contains(T::class)) {
+            usedProviderValues[T::class]?.addAll(values.toList())
         }
     }
 

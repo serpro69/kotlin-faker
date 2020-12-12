@@ -43,7 +43,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
      * Clears the already returned (used) unique values and exclusion patterns so that values can again be returned.
      */
     override fun clearAll() {
-        config.usedValues.keys.forEach { k -> config.usedValues[k] = hashMapOf() }
+        config.usedProviderFunctionValues.keys.forEach { k -> config.usedProviderFunctionValues[k] = hashMapOf() }
         config.providerExclusionPatterns.keys.forEach { k -> config.providerExclusionPatterns[k] = hashMapOf() }
     }
 
@@ -67,7 +67,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
     )
     inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg values: String) {
         if (config.markedUnique.contains(T::class)) {
-            config.usedValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
+            config.usedProviderFunctionValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
                 oldSet.apply { addAll(newSet) }
             }
         }
