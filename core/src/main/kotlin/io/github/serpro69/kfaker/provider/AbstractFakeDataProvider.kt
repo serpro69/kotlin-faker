@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.*
 import io.github.serpro69.kfaker.dictionary.*
 import io.github.serpro69.kfaker.exception.*
+import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s.

@@ -3,6 +3,7 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
 /**
  * Object provides functionality to generate fake data.
