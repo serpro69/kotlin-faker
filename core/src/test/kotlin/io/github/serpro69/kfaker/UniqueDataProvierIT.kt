@@ -50,17 +50,17 @@ class UniqueDataProviderIT : DescribeSpec({
                 val excludedCountries = listOf(
                     "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola"
                 )
-                faker.unique.configuration { excludeForFunction(Address::country, excludedCountries) }
+                faker.unique.configuration { excludeFromFunction(Address::country, excludedCountries) }
                 val newCountries = (0..30).map { faker.address.country() }
 
                 val moreExcludedCountries = listOf(
                     "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic"
                 )
-                faker.unique.configuration { excludeForProvider<Address>(moreExcludedCountries) }
+                faker.unique.configuration { excludeFromProvider<Address>(moreExcludedCountries) }
                 val moreCountries = (0..30).map { faker.address.country() }
 
                 val excludedCountryCodes = listOf("AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ")
-                faker.unique.configuration { excludeForProvider<Address>(excludedCountryCodes) }
+                faker.unique.configuration { excludeFromProvider<Address>(excludedCountryCodes) }
                 val countryCodes = (0..30).map { faker.address.countryCode() }
 
                 it("excluded values through config should not be included in the generation") {
@@ -177,8 +177,8 @@ class UniqueDataProviderIT : DescribeSpec({
             faker.unique.configuration {
                 // Enable unique generation and exclude by patterns
                 enable(faker::address) {
-                    excludeForProvider<Address> { listOf(Regex("^A")) }
-                    excludeForFunction(Address::country) { listOf(Regex("^B")) }
+                    excludeFromProvider<Address> { listOf(Regex("^A")) }
+                    excludeFromFunction(Address::country) { listOf(Regex("^B")) }
                 }
             }
 
