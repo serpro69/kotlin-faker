@@ -1,9 +1,12 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
-import io.github.serpro69.kfaker.exception.*
+import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.Category
+import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
+import org.slf4j.LoggerFactory
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s.
@@ -15,6 +18,7 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
     internal val fakerService: FakerService
 ) : FakeDataProvider {
+    private val log = LoggerFactory.getLogger(this::class.java)
 
     /**
      * Name of the category for `this` fake data provider class.
@@ -147,22 +151,48 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
             result
         } else {
             val usedValuesMap = requireNotNull(globalUniqueProvider.config.usedValues[this::class])
-            when (val set = usedValuesMap[key]) {
-                null -> {
-                    usedValuesMap[key] = mutableSetOf(result)
-                    result
-                }
-                else -> {
-                    if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                        throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(result)) result.also {
-                        usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
-                    } else returnOrResolveUnique(
+            val exclusionValues = globalUniqueProvider.config.excludedValues
+            val exclusionPatterns = globalUniqueProvider.config.excludedPatterns
+
+            when {
+                // Check globally excluded values
+                exclusionValues.isNotEmpty() && exclusionValues.contains(result) -> {
+                    returnOrResolveUnique(
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
                         counter = counter + 1
                     )
+                }
+                // Check globally excluded patterns
+                exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(result) } -> {
+                    returnOrResolveUnique(
+                        primaryKey = primaryKey,
+                        secondaryKey = secondaryKey,
+                        thirdKey = thirdKey,
+                        counter = counter + 1
+                    )
+                }
+                // Provider-based exclusions
+                else -> {
+                    when (val set = usedValuesMap[key]) {
+                        null -> {
+                            usedValuesMap[key] = mutableSetOf(result)
+                            result
+                        }
+                        else -> {
+                            if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
+                                throw RetryLimitException("Retry limit of $counter exceeded")
+                            } else if (!set.contains(result)) result.also {
+                                usedValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
+                            } else returnOrResolveUnique(
+                                primaryKey = primaryKey,
+                                secondaryKey = secondaryKey,
+                                thirdKey = thirdKey,
+                                counter = counter + 1
+                            )
+                        }
+                    }
                 }
             }
         }

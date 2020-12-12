@@ -13,10 +13,21 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
 
     /**
      * A Set of [Regex]es that are used to exclude values from being returned when unique generation is enabled.
+     *
+     * This applies to ALL providers that have unique generation enabled.
      */
     @JvmSynthetic
     @PublishedApi
-    internal val patterns = mutableSetOf<Regex>()
+    internal val excludedPatterns = mutableListOf<Regex>()
+
+    /**
+     * A List of [String]s used to exclude values from being returned when unique generation is enabled.
+     *
+     * This applies to ALL providers that have unique generation enabled.
+     */
+    @PublishedApi
+    @JvmSynthetic
+    internal val excludedValues = mutableListOf<String>()
 
     /**
      * A Set of [FakeDataProvider]s' [KClass]es that are configured to return unique values.
@@ -40,7 +51,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     @PublishedApi
     @JvmSynthetic
-    internal val exclusionPatterns = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<Regex>>>()
+    internal val providerExclusionPatterns = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<Regex>>>()
 
     /**
      * Disables generation of unique values for [providerFunction] of [T] provider.
@@ -59,7 +70,9 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     fun disableAll() {
         markedUnique.clear()
         usedValues.clear()
-        exclusionPatterns.clear()
+        excludedValues.clear()
+        excludedPatterns.clear()
+        providerExclusionPatterns.clear()
     }
 
     /**
@@ -74,7 +87,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
         config: UniqueProviderConfiguration.() -> Unit
     ) {
         enable(providerFunction)
-        this.apply(config)
+        apply(config)
     }
 
     /**
@@ -99,7 +112,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
         if (!markedUnique.contains(provider)) {
             markedUnique.add(provider).also {
                 usedValues[provider] = hashMapOf()
-                exclusionPatterns[provider] = hashMapOf()
+                providerExclusionPatterns[provider] = hashMapOf()
             }
         }
     }
@@ -115,7 +128,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
         if (markedUnique.contains(provider)) {
             markedUnique.remove(provider).also {
                 usedValues.remove(provider)
-                exclusionPatterns.remove(provider)
+                providerExclusionPatterns.remove(provider)
             }
         }
     }
@@ -131,7 +144,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     internal fun <T : FakeDataProvider> clear(provider: KClass<out T>) {
         if (markedUnique.contains(provider)) {
             usedValues[provider] = hashMapOf()
-            exclusionPatterns[provider] = hashMapOf()
+            providerExclusionPatterns[provider] = hashMapOf()
         }
     }
 
@@ -143,8 +156,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `Address::country` for [Address.country]
      * @param values values that should not be generated when calling the [providerFunction] in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> exclude(providerFunction: KFunction1<T, String>, values: List<String>) {
-        exclude<T>(providerFunction.name, values)
+    inline fun <reified T : FakeDataProvider> excludeFor(providerFunction: KFunction1<T, String>, values: List<String>) {
+        excludeFor<T>(providerFunction.name, values)
     }
 
     /**
@@ -155,8 +168,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `"country"` for [Address.country]
      * @param values values that should not be generated when calling the [funcName] function in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> exclude(funcName: String, values: List<String>) {
-        exclude<T>(funcName, *values.toTypedArray())
+    inline fun <reified T : FakeDataProvider> excludeFor(funcName: String, values: List<String>) {
+        excludeFor<T>(funcName, *values.toTypedArray())
     }
 
     /**
@@ -167,7 +180,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `"country"` for [Address.country]
      * @param values values that should not be generated when calling the [funcName] function in provider [T]
      */
-    inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg values: String) {
+    inline fun <reified T : FakeDataProvider> excludeFor(funcName: String, vararg values: String) {
         if (markedUnique.contains(T::class)) {
             usedValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
                 oldSet.apply { addAll(newSet) }
@@ -181,10 +194,9 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      * @param T an implementation class of [FakeDataProvider], for example [Address]
      * @param func a function that does not take any arguments and returns a [List] of [Regex]es
      */
-    @JvmName("excludePatternsFor")
-    inline fun <reified T : FakeDataProvider> excludePatterns(func: () -> List<Regex>) {
+    inline fun <reified T : FakeDataProvider> excludeFor(func: () -> List<Regex>) {
         TODO("Not implemented")
-        patterns.addAll(func.invoke())
+        excludedPatterns.addAll(func.invoke())
     }
 
     /**
@@ -196,12 +208,12 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *  for example `Address::country` for [Address.country]
      * @param func a function that does not take any arguments and returns a [List] of [Regex]es
      */
-    inline fun <reified T : FakeDataProvider> excludePatterns(
+    inline fun <reified T : FakeDataProvider> excludeFor(
         providerFunction: KFunction1<T, String>,
         func: () -> List<Regex>
     ) {
         TODO("Not implemented")
-        patterns.addAll(func.invoke())
+        excludedPatterns.addAll(func.invoke())
     }
 
     /**
@@ -210,7 +222,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      * This applies to ALL providers that are enabled for unique value generation.
      */
     fun exclude(values: List<String>) {
-        TODO("Not implemented")
+        excludedValues.addAll(values)
     }
 
     /**
@@ -220,8 +232,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *
      * @param func a function that does not take any arguments and returns a [List] of [Regex]es
      */
-    fun excludePatterns(func: () -> List<Regex>) {
-        TODO("Not implemented")
-        patterns.addAll(func.invoke())
+    fun exclude(func: () -> List<Regex>) {
+        excludedPatterns.addAll(func.invoke())
     }
 }
