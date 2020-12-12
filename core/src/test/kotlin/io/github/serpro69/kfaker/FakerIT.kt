@@ -195,19 +195,19 @@ class FakerIT : DescribeSpec({
         repeat(30) {
             val faker = Faker(config)
             faker.unique.configuration { enable(faker::address) }
-            val countries = (0..18).map { faker.address.country() }
+            val countries = (0..30).map { faker.address.country() }
 
             context("collection of unique values is generated run#$it") {
                 val excludedCountries = listOf(
                     "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola"
                 )
-                faker.unique.configuration { excludeFor<Address>("country", excludedCountries) }
-                val newCountries = (0..25).map { faker.address.country() }
+                faker.unique.configuration { excludeForFunction(Address::country, excludedCountries) }
+                val newCountries = (0..30).map { faker.address.country() }
 
                 val moreExcludedCountries = listOf(
                     "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic"
                 )
-                faker.unique.configuration { excludeFor(Address::country, moreExcludedCountries) }
+                faker.unique.configuration { excludeForProvider<Address>(moreExcludedCountries) }
                 val moreCountries = (0..30).map { faker.address.country() }
 
                 it("excluded values through config should not be included in the generation") {
