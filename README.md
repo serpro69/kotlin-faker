@@ -1,4 +1,9 @@
 ### <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/name.png alt="kotlin-faker"/> </a>
+
+> **Generates realistically-looking fake data**  
+> Just like this fake-logo, but not quite so.  
+> <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>  
+
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
 [![RC Version Badge](https://api.bintray.com/packages/serpro69/maven-release-candidates/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven-release-candidates/kotlin-faker/_latestVersion)
@@ -7,12 +12,8 @@
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![Licence Badge](https://img.shields.io/github/license/serpro69/kotlin-faker.svg)](LICENCE.md)
 
-> **Generates realistically-looking fake data**
->
-> <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>  
-
-
 ## ToC
+
 - [About](#about)
 - [Comparison with other JVM-based faker libraries](#comparison-with-other-jvm-based-faker-libs)
 - [Usage](#usage)  
@@ -36,14 +37,14 @@
 - [Thanks](#thanks)
 - [Licence](#licence)
 
-
 ## About
+
 Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin.
 Generates realistically looking fake data such as names, addresses, banking details, and many more, 
 that can be used for testing purposes during development and testing.
 
-
 ## Comparison with other jvm-based faker libs
+
 While there are several other libraries out there with similar functionalities,
 I had several reasons for creating this one:
  - most of the ones I've found are written in java and I wanted to use kotlin
@@ -72,9 +73,10 @@ benchmarks for `moove-it/fakeit` could not be done due to android dependencies i
 | **[cli-bot app](cli-bot)**                                  | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
 | **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
 
-
 ## Usage
+
 ### Downloading
+
 Latest releases are always available on [jcenter](https://bintray.com/bintray/jcenter).
 
 From `v1.4.1` onward releases are also published on maven central.
@@ -130,6 +132,7 @@ The jar and pom files can also be found at this [link](https://dl.bintray.com/se
 
 
 ### Generating data
+
 ```kotlin
 val faker = Faker()
 
@@ -138,13 +141,16 @@ faker.address.city() // => New York
 ```
 
 ### Configuring Faker
+
 #### Default configuration
+
 If no `FakerConfig` instance is passed to `Faker` constructor then default configuration will be used:
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
 - `uniqueGeneratorRetryLimit` is set to `100`
 
 #### Deterministic Random
+
 Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to 
 provide deterministic output of repeated function invocations.  
 
@@ -166,14 +172,18 @@ name1 == name2 // => true
 ```
 
 #### Generating unique values
-Faker supports generation of unique values. There are two ways to generate unique values:  
+
+Faker supports generation of unique values. There are basically two ways to generate unique values:  
 
 **Unique values for entire provider**  
 ```kotlin
 val faker = Faker()
-faker.unique.enable(faker::address) // enable generation of unique values for address provider
+faker.unique.configure {
+    enable(faker::address) // enable generation of unique values for address provider
+}
 
-repeat(10) { faker.address.country() } // will generate unique country each time it's called
+// will generate unique country each time it's called
+repeat(10) { faker.address.country() }
 ```
 
 To clear the record of unique values that were already generated:
@@ -221,33 +231,65 @@ val faker = Faker(config)
 ```
 
 **Excluding values from generation**
-It is possible to exclude values from being generated with unique generator:
+It is possible to exclude values from being generated with unique generator.
+This is configured on the `faker` level for each (or in some cases - all) of the providers.
 
 ```kotlin
 val faker = Faker()
-faker.unique.enable(faker::address)
 
-val excludedCountries = listOf(
-    "Afghanistan",
-    "Albania",
-    "Algeria",
-    "American Samoa",
-    "Andorra",
-    "Angola"
-)
+faker.unique.configuration {
+    // Enable generation of unique values for Address provider
+    // Any unique generation configuration will only affect "enabled" providers
+    enable(faker::address) 
 
-faker.unique.exclude<Address>("country", excludedCountries)
+    // Exclude listOfValues from being generated 
+    // in all providers that are enabled for unique generation
+    exclude(listOfValues)
 
-// in addition to generating unique values 
-// this will not generate any of the excluded countries as well
-faker.address.country() 
+    // Exclude values starting with "A" from being generated 
+    // in all providers that are enabled for unique generation
+    exclude { listOf(Regex("^A")) }
+
+    // Additional configuration for particular provider
+    // First enable generation of unique values for Name provider
+    enable(faker::name) {
+        // Exclude listOfNames from being generated by any Name provider function
+        excludeFromProvider<Name>(listOfNames)
+
+        // Exclude listOfLastNames from being generated by Name#lastName function
+        excludeFromFunction(Name::lastName, listOfLastNames)
+
+        // Exclude values starting with "B" from being generated by any Name provider function
+        excludeFromProvider<Name> { listOf(Regex("^B")) }
+
+        // Exclude values starting with "C" from being generated by Name#country function
+        excludeFromFunction(Name::lastName) { listOf(Regex("^C")) }
+    }
+}
+
+// Based on the above config the following will be true in addition to generating unique values:
+val city = faker.address.city()
+assertTrue(listOfValues.contains(city) == false)
+assertTrue(city.startsWith("A") == false)
+
+val firstName = faker.name.firstName()
+val lastName = faker.name.lastName()
+assertTrue(listOfValues.contains(firstName) == false)
+assertTrue(listOfValues.contains(lastName) == false)
+assertTrue(listOfNames.contains(firstName) == false)
+assertTrue(listOfNames.contains(lastName) == false)
+assertTrue(listOfLastNames.contains(lastName) == false)
+assertTrue(firstName.startsWith("A") == false)
+assertTrue(lastName.startsWith("A") == false)
+assertTrue(firstName.startsWith("B") == false)
+assertTrue(lastName.startsWith("B") == false)
+assertTrue(lastName.startsWith("C") == false)
 ```
 
-This is only applicable when the whole category, i.e. `Address` is enabled for unique generation
-of values.
+This is only applicable when the whole category, i.e. `Address` or `Name` is enabled for unique generation of values.
 
 ```kotlin
-faker.address.unique.country() // will still generate unique values, but won't consider exclusions if any
+faker.address.unique.country() // will still generate unique values, but won't consider exclusions, if any
 ```
 
 #### Localized dictionary
