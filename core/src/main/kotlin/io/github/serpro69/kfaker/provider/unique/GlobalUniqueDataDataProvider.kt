@@ -13,39 +13,23 @@ import kotlin.reflect.KProperty0
  * Example usage:
  * ```
  * val faker = Faker()
- * faker.unique.enable(faker::address) // enables unique generation for all functions of Address provider
+ * faker.unique.configuration {
+ *     enable(faker::address) // enables unique generation for all functions of Address provider
+ *     enable(faker::name) // enables unique generation for all functions of Name provider
+ *     exclude(listOfValues) // exclude values from `listOfValue` collection from being generated (for all providers that are enabled for unique generation)
+ *     enable(faker::internet) { enables unique generation for all functions of Internet provider
+ *         exclude<Internet>(listOfValues) // exclude values from `listOfValue` collection from being generated with Internet provider
+ *         exclude(faker::internet, listOfPatterns)
+ *     }
+ * }
  * ```
  */
-@Suppress("UNCHECKED_CAST", "unused")
+@Suppress("UNCHECKED_CAST")
 class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider() {
 
     @JvmSynthetic
     @PublishedApi
     override val config = UniqueProviderConfiguration()
-
-//    /**
-//     * A Set of [FakeDataProvider]s' [KClass]es that are configured to return unique values.
-//     */
-//    @PublishedApi
-//    @JvmSynthetic
-//    override val markedUnique = mutableSetOf<KClass<out FakeDataProvider>>()
-//
-//    /**
-//     * A HashMap where the key is a [KClass] of [FakeDataProvider],
-//     * and values are Maps of provider's functionName to a set of already returned (used) values.
-//     */
-//    @PublishedApi
-//    @JvmSynthetic
-//    override val usedValues = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
-//
-//    /**
-//     * A map of key=value pairs, where
-//     * A set of patterns which are matched against resolved values (before they are returned to the client)
-//     * to determine if the value should be returned or not.
-//     */
-//    @PublishedApi
-//    @JvmSynthetic
-//    internal val exclusionPatterns = hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<Regex>>>()
 
     /**
      * Disables "unique generation" for all providers that were configured to return unique values,
@@ -63,6 +47,10 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
     override fun clearAll() {
         config.usedValues.keys.forEach { k -> config.usedValues[k] = hashMapOf() }
         config.exclusionPatterns.keys.forEach { k -> config.exclusionPatterns[k] = hashMapOf() }
+    }
+
+    fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
+        config.clear(providerProperty.returnType.classifier as KClass<T>)
     }
 
     @Deprecated(
@@ -87,15 +75,6 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
         }
     }
 
-    // TODO remove - unused
-//    inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg patterns: Regex) {
-//        if (config.markedUnique.contains(T::class)) {
-//            config.exclusionPatterns[T::class]?.merge(funcName, patterns.toMutableSet()) { oldSet, newSet ->
-//                oldSet.apply { addAll(newSet) }
-//            }
-//        }
-//    }
-
     @Deprecated(
         level = DeprecationLevel.WARNING,
         message = "This functionality is deprecated and will be removed in release 1.7.0",
@@ -112,39 +91,6 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
     )
     fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
         config.disable(providerProperty.returnType.classifier as KClass<T>)
-    }
-
-    fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
-        config.clear(providerProperty.returnType.classifier as KClass<T>)
-    }
-
-    // TODO remove - unused
-//    @PublishedApi
-//    @JvmSynthetic
-//    internal fun <T : FakeDataProvider> enable(provider: KClass<out T>) {
-//        if (!markedUnique.contains(provider)) {
-//            markedUnique.add(provider).also {
-//                usedValues[provider] = hashMapOf()
-//                exclusionPatterns[provider] = hashMapOf()
-//            }
-//        }
-//    }
-
-    // TODO remove - unused
-//    private fun <T : FakeDataProvider> disable(provider: KClass<out T>) {
-//        if (markedUnique.contains(provider)) {
-//            markedUnique.remove(provider).also {
-//                usedValues.remove(provider)
-//                exclusionPatterns.remove(provider)
-//            }
-//        }
-//    }
-//
-    private fun <T : FakeDataProvider> clear(provider: KClass<out T>) {
-        if (config.markedUnique.contains(provider)) {
-            config.usedValues[provider] = hashMapOf()
-            config.exclusionPatterns[provider] = hashMapOf()
-        }
     }
 
     /**
