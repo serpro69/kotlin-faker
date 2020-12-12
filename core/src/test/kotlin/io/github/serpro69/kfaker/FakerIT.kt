@@ -173,7 +173,7 @@ class FakerIT : DescribeSpec({
             val faker = Faker(config)
             faker.unique.configuration { enable(faker::address) }
 
-            context("collection of unique values is generated #$it") {
+            context("collection of unique values is generated run#$it") {
                 val countries = (0..5).map { faker.address.country() }
 
                 val excludedCountries = listOf("Afghanistan", "Albania", "Algeria")
@@ -205,9 +205,7 @@ class FakerIT : DescribeSpec({
     }
 
     describe("unique generation of values for category") {
-        val config = FakerConfig.builder().create {
-            uniqueGeneratorRetryLimit = 100
-        }
+        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
 
         context("collection of values is generated") {
             val faker = Faker(config)
@@ -220,23 +218,27 @@ class FakerIT : DescribeSpec({
             it("should not contain duplicates") {
                 countries should beUnique()
             }
+        }
 
-            context("used values are cleared") {
-                faker.unique.clear(faker::address)
+        context("used values are cleared") {
+            val faker = Faker(config).also {
+                it.unique.enable(it::address)
+            }
+            val countries = (0..20).map { faker.address.country() }
 
-                val newCountries = (0..20).map { faker.address.country() }
+            faker.unique.clear(faker::address)
+            val newCountries = (0..20).map { faker.address.country() }
 
-                it("new collection should not contain duplicates") {
-                    newCountries should beUnique()
-                }
+            it("new collection should not contain duplicates") {
+                newCountries should beUnique()
+            }
 
-                it("new collection should not equal old collection") {
-                    newCountries shouldNotBe countries
-                }
+            it("new collection should not equal old collection") {
+                newCountries shouldNotBe countries
             }
         }
 
-        context("some values have been generated") {
+        context("exclude values from being generated") {
             // repeat 30 times to make sure values are not included in the collection
             repeat(30) {
                 val faker = Faker(config)
@@ -244,7 +246,7 @@ class FakerIT : DescribeSpec({
 
                 val countries = (0..5).map { faker.address.country() }
 
-                context("some values were marked for exclusion run#$it") {
+                context("collection of values was marked for exclusion run#$it") {
                     val excludedCountries = listOf(
                         "Afghanistan",
                         "Albania",
