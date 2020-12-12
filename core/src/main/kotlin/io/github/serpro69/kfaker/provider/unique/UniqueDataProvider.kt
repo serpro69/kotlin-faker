@@ -1,6 +1,8 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.provider.unique
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
+import io.github.serpro69.kfaker.provider.FakeDataProvider
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction1
