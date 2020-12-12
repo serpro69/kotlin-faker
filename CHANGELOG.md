@@ -8,6 +8,14 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ### Added
 - [#44](https://github.com/serpro69/kotlin-faker/pull/44) [core] Add support for random instance configuration.
 - [#47](https://github.com/serpro69/kotlin-faker/issues/47) [core] Publish release candidates to bintray
+- [#49](https://github.com/serpro69/kotlin-faker/issues/49) [core] Unique values exclusions with wildcards
+
+### Fixed
+- [#48](https://github.com/serpro69/kotlin-faker/issues/48) [core] streetFighter#moves: class java.util.LinkedHashMap cannot be cast to class java.lang.String
+- [#50](https://github.com/serpro69/kotlin-faker/issues/50) [core] Horseman spelt wrong
+
+### Changed
+- [core] Configuration for generation of unique values. Old functionality is deprecated and will be removed in future releases. This relates to changes in [#49](https://github.com/serpro69/kotlin-faker/issues/49)
 
 ## [v1.5.0] - 2020-08-30
 ### Added
