@@ -17,8 +17,8 @@ class UniqueDataProviderIT : DescribeSpec({
     describe("unique generation of values enabled for provider through configuration") {
         val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
 
-        // repeat 30 times to make sure values are not included in the collection
-        repeat(30) {
+        // repeat 10 times to make sure values are not included in the collection
+        repeat(10) {
             context("collection of values is generated #run$it") {
                 val faker = Faker(config)
                 faker.unique.configuration { enable(faker::address) }
@@ -40,8 +40,8 @@ class UniqueDataProviderIT : DescribeSpec({
     describe("collection of values is used to exclude values from being generated for specific provider") {
         val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
 
-        // repeat 30 times to make sure values are not included in the collection
-        repeat(30) {
+        // repeat 10 times to make sure values are not included in the collection
+        repeat(10) {
             val faker = Faker(config)
             faker.unique.configuration { enable(faker::address) }
             val countries = (0..30).map { faker.address.country() }
@@ -83,8 +83,8 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("use collections to exclude values from being generated for all providers") {
-        // repeat 30 times to make sure values are not included in the collection
-        repeat(30) {
+        // repeat 10 times to make sure values are not included in the collection
+        repeat(10) {
             val faker = Faker()
 
             val excludedCountries = listOf(
@@ -140,7 +140,7 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("use regex patterns to exclude values from being generated for all providers") {
-        repeat(30) {
+        repeat(10) {
             val faker = Faker()
 
             faker.unique.configuration {
@@ -171,7 +171,7 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("use regex patterns to exclude values from being generated for specific provider") {
-        repeat(30) {
+        repeat(10) {
             val faker = Faker()
 
             faker.unique.configuration {
@@ -230,8 +230,8 @@ class UniqueDataProviderIT : DescribeSpec({
         }
 
         context("exclude values from being generated") {
-            // repeat 30 times to make sure values are not included in the collection
-            repeat(30) {
+            // repeat 10 times to make sure values are not included in the collection
+            repeat(10) {
                 val faker = Faker(config)
                 faker.unique.enable(faker::address)
 
