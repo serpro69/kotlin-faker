@@ -150,13 +150,15 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
             // if global unique provider is not enabled for this category -> return result
             result
         } else {
-            val usedProviderFunctionsValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderFunctionValues[this::class])
-            val usedProviderValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderValues[this::class])
             val exclusionValues = globalUniqueProvider.config.excludedValues
             val exclusionPatterns = globalUniqueProvider.config.excludedPatterns
+            val usedProviderValues = requireNotNull(globalUniqueProvider.config.usedProviderValues[this::class])
+            val providerExclusionPatterns = requireNotNull(globalUniqueProvider.config.providerExclusionPatterns[this::class])
+            val providerFunctionExclusionPatternsMap = requireNotNull(globalUniqueProvider.config.providerFunctionExclusionPatterns[this::class])
+            val usedProviderFunctionsValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderFunctionValues[this::class])
 
             when {
-                // Check globally excluded values
+                // Globally excluded values
                 exclusionValues.isNotEmpty() && exclusionValues.contains(result) -> {
                     returnOrResolveUnique(
                         primaryKey = primaryKey,
@@ -165,7 +167,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         counter = counter + 1
                     )
                 }
-                // Check globally excluded patterns
+                // Global exclusion patterns
                 exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(result) } -> {
                     returnOrResolveUnique(
                         primaryKey = primaryKey,
@@ -174,8 +176,8 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         counter = counter + 1
                     )
                 }
-                // Provider-based exclusions for all functions
-                usedProviderValuesMap.isNotEmpty() && usedProviderValuesMap.contains(result) -> {
+                // Provider-based excluded values for all functions
+                usedProviderValues.isNotEmpty() && usedProviderValues.contains(result) -> {
                     returnOrResolveUnique(
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
@@ -183,18 +185,37 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                         counter = counter + 1
                     )
                 }
-                // Provider-based exclusions for specific functions
+                // Provider-based exclusion patterns for all functions
+                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any { it.containsMatchIn(result) } -> {
+                    returnOrResolveUnique(
+                        primaryKey = primaryKey,
+                        secondaryKey = secondaryKey,
+                        thirdKey = thirdKey,
+                        counter = counter + 1
+                    )
+                }
                 else -> {
-                    when (val set = usedProviderFunctionsValuesMap[key]) {
-                        null -> {
+                    val patterns = providerFunctionExclusionPatternsMap[key]
+                    val usedValues = usedProviderFunctionsValuesMap[key]
+
+                    when {
+                        patterns != null && patterns.isNotEmpty() && patterns.any { r -> r.containsMatchIn(result) } -> {
+                            returnOrResolveUnique(
+                                primaryKey = primaryKey,
+                                secondaryKey = secondaryKey,
+                                thirdKey = thirdKey,
+                                counter = counter + 1
+                            )
+                        }
+                        usedValues == null -> {
                             usedProviderFunctionsValuesMap[key] = mutableSetOf(result)
                             result
                         }
                         else -> {
                             if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                                 throw RetryLimitException("Retry limit of $counter exceeded")
-                            } else if (!set.contains(result)) result.also {
-                                usedProviderFunctionsValuesMap[key] = mutableSetOf(result).also { it.addAll(set) }
+                            } else if (!usedValues.contains(result)) result.also {
+                                usedProviderFunctionsValuesMap[key] = mutableSetOf(result).also { it.addAll(usedValues) }
                             } else returnOrResolveUnique(
                                 primaryKey = primaryKey,
                                 secondaryKey = secondaryKey,
