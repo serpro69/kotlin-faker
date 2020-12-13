@@ -852,7 +852,10 @@
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.GlobalUniqueDataDataProvider"
+  "name":"io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider"
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.unique.UniqueProviderConfiguration"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.GratefulDead",
@@ -1035,10 +1038,10 @@
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.LocalUniqueDataProvider"
+  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider"
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.LocalUniqueDataProvider[]"
+  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.LordOfTheRings",
@@ -1575,10 +1578,10 @@
   "methods":[{"name":"song","parameterTypes":[] }]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.UniqueDataProvider"
+  "name":"io.github.serpro69.kfaker.provider.unique.UniqueDataProvider"
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.UniqueProviderDelegate[]"
+  "name":"io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.University",

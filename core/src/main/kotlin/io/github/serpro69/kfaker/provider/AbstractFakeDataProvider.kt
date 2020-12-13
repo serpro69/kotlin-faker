@@ -6,7 +6,6 @@ import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.CategoryName
 import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
-import org.slf4j.LoggerFactory
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s.
@@ -18,7 +17,6 @@ import org.slf4j.LoggerFactory
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
     internal val fakerService: FakerService
 ) : FakeDataProvider {
-    private val log = LoggerFactory.getLogger(this::class.java)
 
     /**
      * Name of the category for `this` fake data provider class.
