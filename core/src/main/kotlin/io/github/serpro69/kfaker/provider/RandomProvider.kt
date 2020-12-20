@@ -47,13 +47,32 @@ class RandomProvider internal constructor(random: Random) {
     @JvmSynthetic
     @PublishedApi
     internal fun <T : Any> KClass<T>.randomClassInstance(config: RandomProviderConfig): T {
-        val instance = this.constructors.find { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+        val defaultInstance: T? = if (
+            config.constructorParamSize == -1
+            && config.constructorFilterStrategy == ConstructorFilterStrategy.NO_ARGS
+        ) {
+            constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+        } else null
 
-        return if (instance != null) instance else {
-            val constructor = this.constructors
+        return if (defaultInstance != null) defaultInstance else {
+            val constructors = constructors
                 .filter { it.visibility == KVisibility.PUBLIC }
-                .minByOrNull { it.parameters.size }
-                ?: throw NoSuchElementException("No suitable constructor found for $this")
+
+            val constructor = constructors.firstOrNull {
+                it.parameters.size == config.constructorParamSize
+            } ?: when (config.constructorFilterStrategy) {
+                ConstructorFilterStrategy.MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
+                ConstructorFilterStrategy.MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
+                else -> {
+                    when (config.fallbackStrategy) {
+                        FallbackStrategy.FAIL_IF_NOT_FOUND -> {
+                            throw NoSuchElementException("Constructor with 'parameters.size == ${config.constructorParamSize}' not found for $this")
+                        }
+                        FallbackStrategy.USE_MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
+                        FallbackStrategy.USE_MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
+                    }
+                }
+            } ?: throw NoSuchElementException("No suitable constructor found for $this")
 
             val params = constructor.parameters
                 .map { it.type.classifier as KClass<*> }
@@ -98,7 +117,26 @@ class RandomProvider internal constructor(random: Random) {
 
 }
 
+/**
+ * Configuration for [RandomProvider.randomClassInstance].
+ *
+ * @property constructorParamSize will try to look up the constructor with specified number of arguments,
+ * and use that to create the instance of the class.
+ * Defaults to `-1`, which ignores this configuration property.
+ * This takes precedence over [constructorFilterStrategy] configuration.
+ *
+ * @property constructorFilterStrategy default strategy for looking up a constructor
+ * that is used to create the instance of a class.
+ * By default a zero-args constructor will be used.
+ *
+ * @property fallbackStrategy fallback strategy that is used to look up a constructor
+ * if no constructor with [constructorParamSize] or [constructorFilterStrategy] was found.
+ */
 class RandomProviderConfig @PublishedApi internal constructor() {
+    var constructorParamSize: Int = -1
+    var constructorFilterStrategy: ConstructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
+    var fallbackStrategy: FallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+
     @PublishedApi
     internal val predefinedGenerators = mutableMapOf<KClass<*>, () -> Any>()
 
@@ -108,4 +146,16 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     inline fun <reified K : Any> typeGenerator(noinline generator: () -> K) {
         predefinedGenerators[K::class] = generator
     }
+}
+
+enum class FallbackStrategy {
+    USE_MIN_NUM_OF_ARGS,
+    USE_MAX_NUM_OF_ARGS,
+    FAIL_IF_NOT_FOUND
+}
+
+enum class ConstructorFilterStrategy {
+    NO_ARGS,
+    MIN_NUM_OF_ARGS,
+    MAX_NUM_OF_ARGS
 }

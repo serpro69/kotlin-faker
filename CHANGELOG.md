@@ -9,6 +9,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#44](https://github.com/serpro69/kotlin-faker/pull/44) [core] Add support for random instance configuration.
 - [#47](https://github.com/serpro69/kotlin-faker/issues/47) [core] Publish release candidates to bintray
 - [#49](https://github.com/serpro69/kotlin-faker/issues/49) [core] Unique values exclusions with wildcards
+- [#46](https://github.com/serpro69/kotlin-faker/issues/46) [core] Support deterministic constructor selection for randomClassInstance
 
 ### Fixed
 - [#48](https://github.com/serpro69/kotlin-faker/issues/48) [core] streetFighter#moves: class java.util.LinkedHashMap cannot be cast to class java.lang.String

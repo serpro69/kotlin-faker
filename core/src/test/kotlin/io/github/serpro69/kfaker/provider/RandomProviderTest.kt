@@ -1,8 +1,10 @@
 package io.github.serpro69.kfaker.provider
 
+import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.instanceOf
 import java.util.*
 
@@ -137,19 +139,126 @@ class RandomProviderTest : DescribeSpec({
         context("creating a random instance of the class with custom generators") {
             val testClass: TestClass = randomProvider.randomClassInstance {
                 typeGenerator<UUID> { givenUuid }
+                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Int> { givenInt }
             }
 
             it("it should be a predefined UUID and primitives") {
-                testClass shouldBe instanceOf(TestClass::class)
-                testClass.id shouldBe givenUuid
-                testClass.int shouldBe givenInt
-                testClass.foo.int shouldBe givenInt
+                assertSoftly {
+                    testClass shouldBe instanceOf(TestClass::class)
+                    testClass.id shouldBe givenUuid
+                    testClass.int shouldBe givenInt
+                    testClass.foo.int shouldBe givenInt
+                }
+            }
+        }
+    }
+
+    describe("a TestClass with 3 non-default constructors") {
+
+        class Foo
+        class Bar(val int: Int)
+        class Baz(val foo: Foo, val string: String)
+
+        class TestClass {
+            var foo: Foo? = null
+                private set
+            var bar: Bar? = null
+                private set
+            var baz: Baz? = null
+                private set
+
+            constructor()
+
+            constructor(foo: Foo) {
+                this.foo = foo
+            }
+
+            constructor(foo: Foo, bar: Bar) : this(foo) {
+                this.bar = bar
+            }
+
+            constructor(foo: Foo, bar: Bar, baz: Baz) : this(foo, bar) {
+                this.baz = baz
+            }
+        }
+
+        context("creating a random instance of the class with constructor args size") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                constructorParamSize = 3
+            }
+
+            it("constructor with specified args size is used") {
+                assertSoftly {
+                    testClass.foo shouldNotBe null
+                    testClass.bar shouldNotBe null
+                    testClass.baz shouldNotBe null
+                }
+            }
+        }
+
+        context("creating a random instance of the class with constructor filter strategy") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+            }
+
+            it("constructor with specified filter is used") {
+                assertSoftly {
+                    testClass.foo shouldNotBe null
+                    testClass.bar shouldNotBe null
+                    testClass.baz shouldNotBe null
+                }
+            }
+        }
+
+        context("creating a random instance of the class with invalid number of args and a fallback strategy") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                constructorParamSize = 6
+                fallbackStrategy = FallbackStrategy.USE_MAX_NUM_OF_ARGS
+            }
+
+            it("constructor with specified fallback is used") {
+                assertSoftly {
+                    testClass.foo shouldNotBe null
+                    testClass.bar shouldNotBe null
+                    testClass.baz shouldNotBe null
+                }
+            }
+        }
+
+        context("creating a random instance of the class with invalid number of args and a filter strategy") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                constructorParamSize = 6
+                constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+            }
+
+            it("constructor with specified fallback is used") {
+                assertSoftly {
+                    testClass.foo shouldNotBe null
+                    testClass.bar shouldNotBe null
+                    testClass.baz shouldNotBe null
+                }
+            }
+        }
+
+        context("precedence of using constructor param size over a filter strategy") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                constructorParamSize = 2
+                constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+            }
+
+            it("constructor with specified fallback is used") {
+                assertSoftly {
+                    testClass.foo shouldNotBe null
+                    testClass.bar shouldNotBe null
+                    testClass.baz shouldBe null
+                }
             }
         }
     }
 })
 
+@Suppress("unused")
 enum class TestEnum {
     KOTLIN,
     JAVA,

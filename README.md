@@ -2,7 +2,7 @@
 
 > **Generates realistically-looking fake data**  
 > Just like this fake-logo, but not quite so.  
-> <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>  
+> <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>
 
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
 [![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
@@ -16,21 +16,21 @@
 
 - [About](#about)
 - [Comparison with other JVM-based faker libraries](#comparison-with-other-jvm-based-faker-libs)
-- [Usage](#usage)  
-  - [Downloading](#downloading)
-  - [Generating data](#generating-data)
-  - [Configuring Faker](#configuring-faker)
-    - [Default configuration](#default-configuration)
-    - [Deterministic Random](#deterministic-random)
-    - [Generating unique values](#generating-unique-values)
-    - [Localized dictionary](#localized-dictionary)
-  - [Java interop](#java-interop)
+- [Usage](#usage)
+    - [Downloading](#downloading)
+    - [Generating data](#generating-data)
+    - [Configuring Faker](#configuring-faker)
+        - [Default configuration](#default-configuration)
+        - [Deterministic Random](#deterministic-random)
+        - [Generating unique values](#generating-unique-values)
+        - [Localized dictionary](#localized-dictionary)
+    - [Java interop](#java-interop)
 - [CLI](#cli)
 - [Data Providers](#data-providers)
-  - [Generating a random instance of any class](#generating-a-random-instance-of-any-class)
+    - [Generating a random instance of any class](#generating-a-random-instance-of-any-class)
 - [Migrating to 1.0](#migrating-to-10)
-  - [For kotlin users](#for-kotlin-users)
-  - [For java users](#for-java-users)
+    - [For kotlin users](#for-kotlin-users)
+    - [For java users](#for-java-users)
 - [For developers](#for-developers)
 - [Build and Deploy](#build-and-deploy)
 - [Contributing](#contributing)
@@ -39,39 +39,43 @@
 
 ## About
 
-Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin.
-Generates realistically looking fake data such as names, addresses, banking details, and many more, 
-that can be used for testing purposes during development and testing.
+Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin. Generates
+realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing
+purposes during development and testing.
 
 ## Comparison with other jvm-based faker libs
 
-While there are several other libraries out there with similar functionalities,
-I had several reasons for creating this one:
- - most of the ones I've found are written in java and I wanted to use kotlin
- - none of them has the functionality I needed 
- - I didn't feel like forking an existing kotlin-based lib and refactoring the entire codebase,
-especially with it not being maintained for the past couple of years.
+While there are several other libraries out there with similar functionalities, I had several reasons for creating this
+one:
 
-So why use this one instead? I've decided to make a comparison between this lib
-and the others that have been out there for quite some time.
+- most of the ones I've found are written in java and I wanted to use kotlin
+- none of them has the functionality I needed
+- I didn't feel like forking an existing kotlin-based lib and refactoring the entire codebase, especially with it not
+  being maintained for the past couple of years.
 
-<i>The benchmarks time is an average execution time of 10 consecutive runs.
-Each run includes creating a new Faker instance and generating a 1_000_000 values 
-with the function returning a person's full name.  
+So why use this one instead? I've decided to make a comparison between this lib and the others that have been out there
+for quite some time.
 
-Note: 
+<i>The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker
+instance and generating a 1_000_000 values with the function returning a person's full name.
+
+Note:
 benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib,  
 benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
 
-|                                                             | **kotlin-faker** | [DiUS/java-faker](https://github.com/DiUS/java-faker) | [Devskiller/jfairy](https://github.com/Devskiller/jfairy) | [blocoio/faker](https://github.com/blocoio/faker) | [moove-it/fakeit](https://github.com/moove-it/fakeit) |
+| | **
+kotlin-faker** | [DiUS/java-faker](https://github.com/DiUS/java-faker)
+| [Devskiller/jfairy](https://github.com/Devskiller/jfairy) | [blocoio/faker](https://github.com/blocoio/faker)
+| [moove-it/fakeit](https://github.com/moove-it/fakeit) |
 |-------------------------------------------------------------|------------------|-------------------------------------------------------|-----------------------------------------------------------|---------------------------------------------------|-------------------------------------------------------|
-| **language**                                                | kotlin           | java                                                  | java                                                      | java                                              | kotlin                                                |
-| **number of available providers** (`address`, `name`, etc.) | 165              | 73                                                    | 8                                                         | 21                                                | 36                                                    |
-| **number of available locales**                             | 55               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
-| **extra functionality** (i.e. `randomClassInstance` gen)    | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
-| **actively maintained**                                     | &#9989;          | &#9989;                                               | &#9989;                                                   | &#9989;                                           | &#10062;                                              |
-| **[cli-bot app](cli-bot)**                                  | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
-| **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
+| **
+language**                                                | kotlin | java | java | java | kotlin | | **number of
+available providers** (`address`, `name`, etc.) | 165 | 73 | 8 | 21 | 36 | | **number of available locales**
+| 55 | 47 | 10 | 46 | 44 | | **extra functionality** (i.e. `randomClassInstance` gen)    | &#9989; | &#10062; | &#10062;
+| &#10062; | &#10062; | | **actively maintained**                                     | &#9989; | &#9989; | &#9989; |
+&#9989; | &#10062; | | **[cli-bot app](cli-bot)**                                  | &#9989; | &#10062; | &#10062; |
+&#10062; | &#10062; | | **
+benchmarks**                                              | 5482ms | 17529.9ms | 15036.5ms | NA | NA |
 
 ## Usage
 
@@ -81,15 +85,18 @@ Latest releases are always available on [jcenter](https://bintray.com/bintray/jc
 
 From `v1.4.1` onward releases are also published on maven central.
 
-**With gradle**  
+**With gradle**
+
 ```groovy
 dependencies {
     implementation 'io.github.serpro69:kotlin-faker:$version'
 }
 ```  
 
-**With maven**  
+**With maven**
+
 ```xml
+
 <dependencies>
     <dependency>
         <groupId>io.github.serpro69</groupId>
@@ -101,10 +108,11 @@ dependencies {
 
 **Using release candidate versions**
 
-Release candidates contain the newest functionality before next version gets released 
-and can be downloaded by adding the following repo:
+Release candidates contain the newest functionality before next version gets released and can be downloaded by adding
+the following repo:
 
 Gradle:
+
 ```
 repositories {
     maven {
@@ -114,6 +122,7 @@ repositories {
 ```
 
 Maven:
+
 ```
 <repositories>
     <repository>
@@ -128,8 +137,8 @@ Maven:
 ```
 
 **Downloading a jar**  
-The jar and pom files can also be found at this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
-
+The jar and pom files can also be found at
+this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-faker/)
 
 ### Generating data
 
@@ -145,14 +154,15 @@ faker.address.city() // => New York
 #### Default configuration
 
 If no `FakerConfig` instance is passed to `Faker` constructor then default configuration will be used:
+
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
 - `uniqueGeneratorRetryLimit` is set to `100`
 
 #### Deterministic Random
 
-Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to 
-provide deterministic output of repeated function invocations.  
+Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to provide deterministic
+output of repeated function invocations.
 
 ```kotlin
 val fakerConfig = FakerConfig.builder().create {
@@ -160,11 +170,11 @@ val fakerConfig = FakerConfig.builder().create {
 }
 
 val faker = Faker(fakerConfig)
-val city1 = faker.address.city() 
+val city1 = faker.address.city()
 val name1 = faker.name.name()
 
 val otherFaker = Faker(fakerConfig)
-val city1 = otherFaker.address.city() 
+val city1 = otherFaker.address.city()
 val name1 = otherFaker.name.name()
 
 city1 == city2 // => true
@@ -173,9 +183,10 @@ name1 == name2 // => true
 
 #### Generating unique values
 
-Faker supports generation of unique values. There are basically two ways to generate unique values:  
+Faker supports generation of unique values. There are basically two ways to generate unique values:
 
-**Unique values for entire provider**  
+**Unique values for entire provider**
+
 ```kotlin
 val faker = Faker()
 faker.unique.configure {
@@ -187,6 +198,7 @@ repeat(10) { faker.address.country() }
 ```
 
 To clear the record of unique values that were already generated:
+
 ```kotlin
 faker.unique.clear(faker::address) // clears used values for address provider
 
@@ -194,13 +206,15 @@ faker.unique.clearAll() // clears used values for all providers
 ```
 
 To disable generation of unique values:
+
 ```kotlin
 faker.unique.disable(faker::address) // disables generation of unique values for address provider and clears all used values
 
 faker.unique.disableAll() // disables generation of unique values for all providers and clears all used values
 ```
 
-**Unique values for particular functions of a provider**  
+**Unique values for particular functions of a provider**
+
 ```kotlin
 val faker = Faker()
 
@@ -210,6 +224,7 @@ repeat(10) { faker.address.city() } // this will not necessarily be unique (unle
 ```
 
 To clear the record of unique values that were already generated:
+
 ```kotlin
 faker.address.unique.clear("city") // clears used values for `faker.address.unique.city()` function
 
@@ -218,7 +233,7 @@ faker.address.unique.clearAll() // clears used values for all functions of addre
 
 **Configuring retry limit**  
 If the retry count of unique generator exceeds the configured value (defaults to `100`)
-then `RetryLimitException` will be thrown.  
+then `RetryLimitException` will be thrown.
 
 It is possible to re-configure the default value through `FakerConfig`:
 
@@ -231,8 +246,8 @@ val faker = Faker(config)
 ```
 
 **Excluding values from generation**
-It is possible to exclude values from being generated with unique generator.
-This is configured on the `faker` level for each (or in some cases - all) of the providers.
+It is possible to exclude values from being generated with unique generator. This is configured on the `faker` level for
+each (or in some cases - all) of the providers.
 
 ```kotlin
 val faker = Faker()
@@ -240,7 +255,7 @@ val faker = Faker()
 faker.unique.configuration {
     // Enable generation of unique values for Address provider
     // Any unique generation configuration will only affect "enabled" providers
-    enable(faker::address) 
+    enable(faker::address)
 
     // Exclude listOfValues from being generated 
     // in all providers that are enabled for unique generation
@@ -293,6 +308,7 @@ faker.address.unique.country() // will still generate unique values, but won't c
 ```
 
 #### Localized dictionary
+
 `Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
 
 ```kotlin
@@ -305,6 +321,7 @@ val city1 = faker.address.city() // => Oslo
 ```  
 
 ##### Available Locales
+
 <details><summary><b>List of available locales (clickable):</b></summary>
 <p>
 
@@ -367,7 +384,7 @@ val city1 = faker.address.city() // => Oslo
 </p>
 </details>
 
-Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.  
+Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.
 
 ```kotlin
 val fakerConfig = FakerConfig.builder().create {
@@ -378,7 +395,7 @@ faker.address.city() // => Barcelona
 ```
 
 <i>Note that if the localized dictionary file does not contain a category (or a parameter in a category)
-that is present in the default locale, then non-localized value will be used instead.</i>  
+that is present in the default locale, then non-localized value will be used instead.</i>
 
 ```kotlin
 val faker = Faker()
@@ -393,42 +410,47 @@ localizedFaker.gameOfThrones.cities() // => Braavos
 ```
 
 ### Java interop
-Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project
-thanks to great Kotlin-to-Java interop.
+
+Although this lib was created with Kotlin in mind it is still possible to use from a Java-based project thanks to great
+Kotlin-to-Java interop.
 
 Configuring `Faker`:
+
 ```java
-FakerConfig fakerConfig = FakerConfigBuilder.create(FakerConfig.builder(), fromConsumer(builder -> {
+FakerConfig fakerConfig=FakerConfigBuilder.create(FakerConfig.builder(),fromConsumer(builder->{
     builder.setRandom(new Random(42));
     builder.setLocale("en-AU");
-}));
+    }));
 ```
-If `builder` parameter is not called with help of `fromConsumer` method,
-then explicit return should be specified:
+
+If `builder` parameter is not called with help of `fromConsumer` method, then explicit return should be specified:
+
 ```java
-FakerConfig fakerConfig = FakerConfigBuilder.create(FakerConfig.builder(), builder -> {
+FakerConfig fakerConfig=FakerConfigBuilder.create(FakerConfig.builder(),builder->{
     builder.setRandom(new Random(42));
     builder.setLocale("en-AU");
     return Unit.INSTANCE;
-});
+    });
 ```
 
 Calling `Faker` methods:
+
 ```java
 new Faker(fakerConfig).getName().firstName(); // => John
 ```
 
-
 ## CLI
-Command line application can be used for a quick lookup of faker functions.
-See [faker-bot README](cli-bot/README.md) for installation and usage details.
 
+Command line application can be used for a quick lookup of faker functions. See [faker-bot README](cli-bot/README.md)
+for installation and usage details.
 
 ## Data Providers
-Below is the list of available providers that correspond to the dictionary files found in [core/locales/en](core/src/main/resources/locales/en)
 
-<i>Note that not all (although most) of the providers and their functions are implemented at this point.
-For more details see the particular `.md` file for each provider below.</i>
+Below is the list of available providers that correspond to the dictionary files found
+in [core/locales/en](core/src/main/resources/locales/en)
+
+<i>Note that not all (although most) of the providers and their functions are implemented at this point. For more
+details see the particular `.md` file for each provider below.</i>
 
 <details><summary><b>List of available providers (clickable):</b></summary>
 <p>
@@ -588,12 +610,16 @@ For more details see the particular `.md` file for each provider below.</i>
 </details>
 
 ### Generating a random instance of any class
-It is possible to generate a random instance of any class with `Faker().randomProvider`. For example:
+
+There are some rules when creating a random instance of a class:
+- The constructor with the least number of arguments is used (This can be configured - read on.)
+- `kotlin.collection.*` and `kolin.Array` types in the constructor are not supported at the moment
+
+To generate a random instance of any class use `Faker().randomProvider`. For example:
 
 ```kotlin
 class Foo(val a: String)
 class Bar(val foo: Foo)
-class Baz(val uuid: UUID)
 
 class Test {
     @Test
@@ -602,33 +628,149 @@ class Test {
 
         val foo: Foo = faker.randomProvider.randomClassInstance()
         val bar: Bar = faker.randomProvider.randomClassInstance()
+    }
+}
+```
+
+#### Pre-Configuring type generation for constructor params
+
+Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` function. Consider the following example:
+
+```kotlin
+class Baz(val id: Int, val uuid: UUID)
+
+class Test {
+    @Test
+    fun test() {
+        val faker = Faker()
+
         val baz: Baz = faker.randomProvider.randomClassInstance {
-            typeGenerator<UUID> { UUID.randomUUID() }
+            typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
+            typeGenerator<Int> { 0 }
+        }
+
+    }
+}
+```
+
+For each instance of `Baz` the following will be true:
+
+```
+baz.id == 0
+baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
+```
+
+The example itself does not make that much sense, since we're using "static" values, but we could also do something like:
+
+```kotlin
+val baz: Baz = faker.randomProvider.randomClassInstance {
+    typeGenerator<UUID> { UUID.randomUUID() }
+}
+```
+
+or even:
+
+```kotlin
+class Person(val id: Int, val name: String)
+
+class Test {
+    @Test
+    fun test() {
+        val faker = Faker()
+
+        val person: Person = faker.randomProvider.randomClassInstance {
+            typeGenerator<String> { faker.name.fullName() }
         }
     }
 }
 ```
 
-There are the following rules when creating a random instance of a class:
-- The constructor with the least number of arguments is used
-- `kotlin.collection.*` and `kolin.Array` types in the constructor are not supported at the moment
+#### Deterministic constructor selection
 
+By default, the constructor with the least number of args is used when creating a random instance of the class. This might not always be desirable and can be configured. Consider the following data classes:
+
+```kotlin
+class Foo
+class Bar(val int: Int)
+class Baz(val foo: Foo, val string: String)
+
+class FooBarBaz {
+    var foo: Foo? = null
+        private set
+    var bar: Bar? = null
+        private set
+    var baz: Baz? = null
+        private set
+
+    constructor(foo: Foo) {
+        this.foo = foo
+    }
+
+    constructor(foo: Foo, bar: Bar) : this(foo) {
+        this.bar = bar
+    }
+
+    constructor(foo: Foo, bar: Bar, baz: Baz) : this(foo, bar) {
+        this.baz = baz
+    }
+}
+```
+
+If there is a need to use the constructor with 3 arguments when creating an instance of `FooBarBaz`, we can do it like so:
+```kotlin
+class Test {
+    @Test
+    fun test() {
+        val faker = Faker()
+
+        val fooBarBaz: FooBarBaz = randomProvider.randomClassInstance {
+            constructorParamSize = 3
+            fallbackStrategy = FallbackStrategy.USE_MAX_NUM_OF_ARGS
+        }
+    }
+}
+```
+
+In the above example, `FooBarBaz` will be instantiated with the first discovered constructor that has `parameters.size == 3`; if there are multiple constructors that satisfy this condition - a random one will be used. Failing that (for example, if there is no such constructor), a constructor with the maximum number of arguments will be used to create an instance of the class.
+
+Alternatively to `constructorParamSize` a `constructorFilterStrategy` config property can be used as well:
+```kotlin
+class Test {
+    @Test
+    fun test() {
+        val faker = Faker()
+
+        val fooBarBaz: FooBarBaz = randomProvider.randomClassInstance {
+            constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+        }
+    }
+}
+```
+
+There are some rules to the above:
+- `constructorParamSize` config property takes precedence over `constructorFilterStrategy`
+- both can be specified at the same time, though in most cases it probably makes more sense to use `failbackStrategy` with `constructorParamSize` as it just makes things a bit more readable
+- configuration properties that are set in `randomClassInstance` block will be applied to all "children" classes. For example classes `Foo`, `Bar`, and `Baz` will use the same random instance configuration settings when instances of those classes are created in `FooBarBaz` class.
 
 ## Migrating to 1.0
+
 **Prior to version 1.0:**
+
 - `Faker` was a singleton.
 - Random seed was provided through `Faker.Config` instance.
 - Locale was provided as parameter to `init()` function.
-- Provider functions were function literals. If `invoke()` was explicitly specified,
-then it will have to be removed (See below.)
+- Provider functions were function literals. If `invoke()` was explicitly specified, then it will have to be removed (
+  See below.)
 
 **After version 1.0:**
+
 - `Faker` is a class.
-- Configuration (rng, locale) is set with `FakerConfig` class. 
-An instance of `FakerConfig` can be passed to `Faker` constructor.
+- Configuration (rng, locale) is set with `FakerConfig` class. An instance of `FakerConfig` can be passed to `Faker`
+  constructor.
 - Provider functions are no longer function literals. Explicit calls to `invoke()` will throw compilation error.
 
 ### For kotlin users
+
 ```diff
 - // prior to version 1.0
 - Faker.Config.random = Random(42)
@@ -645,11 +787,12 @@ An instance of `FakerConfig` can be passed to `Faker` constructor.
 ```
 
 ### For java users
-Apart from changes to configuring locale and random seed
-and instantiating `Faker` through constructor instead of using a singleton instance (see kotlin examples),
-the main difference for java users is that provider functions are no longer function literals,
-therefore calls to `invoke()` operator will have to be removed and 
-getters replaced with function calls.
+
+Apart from changes to configuring locale and random seed and instantiating `Faker` through constructor instead of using
+a singleton instance (see kotlin examples), the main difference for java users is that provider functions are no longer
+function literals, therefore calls to `invoke()` operator will have to be removed and getters replaced with function
+calls.
+
 ```diff
 - // prior to version 1.0
 - Faker.init(locale);
@@ -661,64 +804,70 @@ getters replaced with function calls.
 + faker.getAddress().city();
 ```
 
-
 ## For developers
+
 ### Adding a new dictionary (provider)
+
 When adding a new dictionary yml file the following places need to reflect changes:
 
-- [Dictionary.kt](core/src/main/kotlin/io/github/serpro69/kfaker/dictionary/Dictionary.kt) - add a new class 
-to `CategoryName` enum. This is only necessary if the category is not already there.
-- [Constants.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Constants.kt) - the new dictionary filename 
-should be added to `defaultFileNames` property.
-- [Faker.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) - add a new faker provider property to `Faker` class.
-- The provider implementation class should go into [provider](core/src/main/kotlin/io/github/serpro69/kfaker/provider) package.
+- [Dictionary.kt](core/src/main/kotlin/io/github/serpro69/kfaker/dictionary/Dictionary.kt) - add a new class
+  to `CategoryName` enum. This is only necessary if the category is not already there.
+- [Constants.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Constants.kt) - the new dictionary filename should be
+  added to `defaultFileNames` property.
+- [Faker.kt](core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) - add a new faker provider property to `Faker`
+  class.
+- The provider implementation class should go into [provider](core/src/main/kotlin/io/github/serpro69/kfaker/provider)
+  package.
 - [doc](doc) - add an `.md` file for the new provider.
 - [reflect-config.json](cli-bot/src/main/resources/META-INF/native-image/io.github.serpro69/cli-bot/reflect-config.json)
-has to be updated to build the native image with graal.
+  has to be updated to build the native image with graal.
 - And of course unit tests.
 
-
 ## Build and Deploy
+
 Build/deploy to bintray and github release processes are automated with travis-ci through usage of git tags.
 
 ### Bumping versions
-Versions need to be bumped manually through a tag with the next release version that has to follow the 
-[semver](https://semver.org/) rules, and the tag has to be pushed to origin. 
+
+Versions need to be bumped manually through a tag with the next release version that has to follow the
+[semver](https://semver.org/) rules, and the tag has to be pushed to origin.
 
 Creating the tag can be either done manually with `git tag` or by using `gradlew tag` task.
 
 #### Pre-releases
-To create a new pre-release version (new release candidate) 
-the following can be used: `./gradlew clean tag -Prelease -PnewPreRelease -PbumpComponent={comp}`,
-where `comp` can be one of the following values: `major`, `minor`, or `patch`.
+
+To create a new pre-release version (new release candidate)
+the following can be used: `./gradlew clean tag -Prelease -PnewPreRelease -PbumpComponent={comp}`, where `comp` can be
+one of the following values: `major`, `minor`, or `patch`.
 
 To bump an existing pre-release to the next version (next release candidate for the same release version)
 the following can be used: `./gradlew clean tag -Prelease -PpreRelease`.
 
 #### Releases
-To promote a pre-release to a release version the following can be used: 
+
+To promote a pre-release to a release version the following can be used:
 `./gradlew clean tag -Prelease -PpromoteToRelease`,
 
 To create a new release version the following can be used:
-`./gradlew clean tag -Prelease -PbumpComponent={comp}`,
-where `comp` can be one of the following values: `major`, `minor`, or `patch`.
+`./gradlew clean tag -Prelease -PbumpComponent={comp}`, where `comp` can be one of the following values: `major`
+, `minor`, or `patch`.
 
 #### Make targets
+
 Alternatively to the above targets from [Makefile](Makefile) can be used for the same purposes.
 
-
 ## Contributing
-Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare) 
+
+Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare)
 and/or open a [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
 if you would like to contribute.
 
-
 ## Thanks
+
 Many thanks to these awesome tools that help us in creating open-source software:  
-[![Intellij IDEA](https://cloud.google.com/tools/images/icon_IntelliJIDEA.png)](http://www.jetbrains.com/idea) 
+[![Intellij IDEA](https://cloud.google.com/tools/images/icon_IntelliJIDEA.png)](http://www.jetbrains.com/idea)
 [![YourKit Java profiler](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/features/)
 
-
 ## Licence
-This code is free to use under the terms of the MIT licence.
-See [LICENCE.md](LICENCE.md).
+
+This code is free to use under the terms of the MIT licence. See [LICENCE.md](LICENCE.md).
