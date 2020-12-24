@@ -16,7 +16,7 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
 
     fun manufacture() = resolve("manufacture")
     fun makes() = resolve("makes")
-    fun modelsByMake(make: String) = resolve("models_by_make", make.toLowerCase())
+    fun modelsByMake(make: String) = resolve("models_by_make", make)
     fun colors() = resolve("colors")
     fun transmissions() = resolve("transmissions")
     fun driveTypes() = resolve("drive_types")
@@ -27,7 +27,12 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun standardSpecs() = resolve("standard_specs")
     fun doors() = resolve("doors")
     fun engineSizes() = resolve("engine_sizes")
-    fun licensePlate() = resolve("license_plate")
-    fun licencePlateByState(stateCode: String) = resolve("license_plate_by_state", stateCode.toLowerCase())
+    // TODO add `regexify` to fakerService and fix usages for license_plate(_by_state) functions
+    fun licensePlate() = with(fakerService) { resolve("license_plate").numerify().letterify() }
+    fun licencePlateByState(stateCode: String) = with(fakerService) {
+        resolve("license_plate_by_state", stateCode)
+            .numerify()
+            .letterify()
+    }
     fun cylinderEngine() = resolve("cylinder_engine")
 }

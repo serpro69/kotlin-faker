@@ -27,12 +27,11 @@ import kotlin.reflect.full.declaredMemberProperties
  */
 internal class FakerService @JvmOverloads internal constructor(
     internal val faker: Faker,
-    locale: String = "en", random: Random
+    locale: String = "en",
+    random: Random
 ) {
     private val randomService = RandomService(random)
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
-    private val numericRegex = Regex("""(#+)[^\{\s+\p{L}+]?""")
-    private val letterRegex = Regex("""(\?\?+)[^\{\s+\p{L}+]?""")
     val dictionary = load(locale.replace("_", "-"))
 
     /**
@@ -273,12 +272,6 @@ internal class FakerService @JvmOverloads internal constructor(
         }
     }
 
-    // TODO: 3/18/2019 remove as it's unused
-    @Suppress("IMPLICIT_CAST_TO_ANY")
-    fun resolveExpressionWithNumerals(rawValue: String): String {
-        return rawValue.map { if (it == '#') randomService.nextInt(10) else it }.joinToString("")
-    }
-
     /**
      * Resolves [RawExpression] value of the [key] in this [category].
      */
@@ -309,15 +302,48 @@ internal class FakerService @JvmOverloads internal constructor(
      * For yaml expressions:
      * - `#{city_prefix}` from `en: faker: address` would be resolved to getting value from `address: city_prefix`
      * - `#{Name.first_name} from `en: faker: address` would be resolved to calling [Name.name] function.
-     * - `Apt. ###` returned from `en: faker: address: secondary_address` could be resolved to `Apt. 123`
-     * where `123` could be a combination of any random digits.
-     * - `???` from `en: faker: restaurant: name_prefix` could be resolved to `XYZ`
-     * where `XYZ` could be a combination fo any random English letters in upper-case.
      *
      * Recursive expressions are also supported:
      * - `#{Name.name}` from `en: faker: book: author` that could be resolved to `#{first_name} #{last_name}` from `en: faker: name: name`
      * will be resolved to concatenating values from `en: faker: name: first_name` and `en: faker: name: last_name` and so on until
      * the expression is exhausted to the actual value.
+     *
+     *
+     * *It is worth noting that `'#'` and `'?'` chars will not be numerified/letterified inside this function,
+     * and will be returned as is. To further numerify/letterify the resolved expression, one must do that explicitly
+     * where it is needed.*
+     *
+     * For example, if the resolved string `"???###"` needs to be further numerified/letterified to return `XYZ012`,
+     * where `XYZ` is a combination of pseudo-randomly generated English letters in upper-case,
+     * and `012` is a combination of pseudo-randomly generated digits, it could be done like so:
+     * ```
+     * val resolvedExpressionString: String = resolveExpression() // returns ???###
+     * with(fakerService) {
+     *     resolvedExpressionString.numerify().letterify()
+     * }
+     * ```
+     *
+     * For recursive expressions, this must be used for function calls within the same [category],
+     * but can be omitted for calls to other [category]s.
+     * For example:
+     *
+     * `address.yml`:
+     * ```
+     * en:
+     *   faker:
+     *     address:
+     *       street_number: ###
+     *       street_name: ???
+     *       street: "#{street_number} #{street_name} street"
+     * ```
+     * `Address.kt`:
+     * ```
+     * fun street_number() = with(fakerService) { resolveExpression().numerify() }
+     * fun street_name() = with(fakerService) { resolveExpression().letterify() }
+     * // Explicitly numerify and letterify returned value, even though we are doing that above as well
+     * // because the functions are in the same categry
+     * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
+     * ```
      */
     private tailrec fun resolveExpression(category: Category, rawExpression: RawExpression): String {
         val sb = StringBuffer()
@@ -340,15 +366,10 @@ internal class FakerService @JvmOverloads internal constructor(
                     it.appendReplacement(sb, replacement)
                 }
             }
-            numericRegex.containsMatchIn(rawExpression.value) -> rawExpression.value.numerify()
-            letterRegex.containsMatchIn(rawExpression.value) -> rawExpression.value.letterify()
             else -> rawExpression.value
         }
 
-        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression) &&
-            !numericRegex.containsMatchIn(resolvedExpression) &&
-            !letterRegex.containsMatchIn(resolvedExpression)
-        ) {
+        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
         } else resolveExpression(category, RawExpression(resolvedExpression))
     }
@@ -357,18 +378,18 @@ internal class FakerService @JvmOverloads internal constructor(
      * Replaces every `#` char for this [String] receiver with a random int from 0 to 9 inclusive
      * and returns the modified [String].
      */
-    private fun String.numerify(): String {
-        return this.map { if (it == '#') randomService.nextInt(10).toString() else "$it" }.joinToString("")
+    fun String.numerify(): String {
+        return map { if (it == '#') randomService.nextInt(10).toString() else "$it" }
+            .joinToString("")
     }
 
     /**
      * Replaces every `?` char for this [String] receiver with a random upper-case letter from the English alphabet
      * and returns the modified [String].
      */
-    private fun String.letterify(): String {
-        return this.map {
-            if (it == '?') randomService.nextLetter(upper = true).toString() else "$it"
-        }.joinToString("")
+    fun String.letterify(): String {
+        return map { if (it == '?') randomService.nextLetter(upper = true).toString() else "$it" }
+            .joinToString("")
     }
 
     /**

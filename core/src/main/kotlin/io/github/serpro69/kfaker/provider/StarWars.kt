@@ -16,8 +16,8 @@ class StarWars internal constructor(fakerService: FakerService) : AbstractFakeDa
 
     fun characters() = resolve("characters")
     fun callSquadrons() = resolve("call_squadrons")
-    fun callNumbers() = resolve("call_numbers")
-    fun callSign() = resolve("call_sign")
+    fun callNumbers() = with(fakerService) { resolve("call_numbers").numerify() }
+    fun callSign() = with(fakerService) { resolve("call_sign").numerify() }
     fun droids() = resolve("droids")
     fun planets() = resolve("planets")
     fun species() = resolve("species")

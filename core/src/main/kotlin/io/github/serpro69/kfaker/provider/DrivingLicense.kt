@@ -14,6 +14,6 @@ class DrivingLicense internal constructor(fakerService: FakerService) : Abstract
     override val localUniqueDataProvider = LocalUniqueDataProvider<DrivingLicense>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun license() = resolve("usa", "")
-    fun licenseByState(state: String) = resolve("usa", state)
+    fun license() = with(fakerService) { resolve("usa", "").numerify().letterify() }
+    fun licenseByState(state: String) = with(fakerService) { resolve("usa", state).numerify().letterify() }
 }

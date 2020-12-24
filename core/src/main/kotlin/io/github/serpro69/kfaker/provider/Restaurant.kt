@@ -14,7 +14,7 @@ class Restaurant internal constructor(fakerService: FakerService) : AbstractFake
     override val localUniqueDataProvider = LocalUniqueDataProvider<Restaurant>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun name() = resolve("name")
+    fun name() = with(fakerService) { resolve("name").numerify().letterify() }
     fun type() = resolve("type")
     fun description() = resolve("description")
     fun review() = resolve("review")

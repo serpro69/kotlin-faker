@@ -32,5 +32,8 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
 
     fun universityType() = resolve("tertiary", "university_type")
     fun tertiaryDegreeType() = resolve("tertiary", "degree", "type")
-    fun tertiaryDegreeCourseNumber() = resolve("tertiary", "degree", "course_number")
+    fun tertiaryDegreeCourseNumber() = with(fakerService) {
+        resolve("tertiary", "degree", "course_number")
+            .numerify()
+    }
 }

@@ -15,6 +15,6 @@ class App internal constructor(fakerService: FakerService) : AbstractFakeDataPro
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun name() = resolve("name")
-    fun version() = resolve("version")
+    fun version() = with(fakerService) { resolve("version").numerify() }
     fun author() = resolve("author")
 }

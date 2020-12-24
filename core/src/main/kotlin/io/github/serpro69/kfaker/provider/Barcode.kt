@@ -14,12 +14,12 @@ class Barcode internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val localUniqueDataProvider = LocalUniqueDataProvider<Barcode>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun ean8() = resolve("ean_8")
-    fun ean13() = resolve("ean_13")
-    fun upcA() = resolve("upc_a")
-    fun upcE() = resolve("upc_e")
-    fun compositeSymbol() = resolve("composite_symbol")
-    fun isbn() = resolve("isbn")
-    fun ismn() = resolve("ismn")
-    fun issn() = resolve("issn")
+    fun ean8() = with(fakerService) { resolve("ean_8").numerify() }
+    fun ean13() = with(fakerService) { resolve("ean_13").numerify() }
+    fun upcA() = with(fakerService) { resolve("upc_a").numerify() }
+    fun upcE() = with(fakerService) { resolve("upc_e").numerify() }
+    fun compositeSymbol() = with(fakerService) { resolve("composite_symbol").numerify().letterify() }
+    fun isbn() = with(fakerService) { resolve("isbn").numerify() }
+    fun ismn() = with(fakerService) { resolve("ismn").numerify() }
+    fun issn() = with(fakerService) { resolve("issn").numerify() }
 }

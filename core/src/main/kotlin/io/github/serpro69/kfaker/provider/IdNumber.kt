@@ -14,5 +14,5 @@ class IdNumber internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val localUniqueDataProvider = LocalUniqueDataProvider<IdNumber>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun invalid() = resolve("invalid")
+    fun invalid() = with(fakerService) { resolve("invalid").numerify() }
 }

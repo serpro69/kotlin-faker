@@ -1,7 +1,8 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.dictionary.*
-import io.github.serpro69.kfaker.dictionary.Dictionary
+import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.dictionary.getCategoryByName
+import io.github.serpro69.kfaker.dictionary.toLowerCase
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
@@ -353,7 +354,7 @@ internal class FakerServiceTest : DescribeSpec({
         context("resolving raw expression") {
             context("expression contains only # chars") {
                 val rawValue = "######"
-                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+                val resolvedValue = with(fakerService) { rawValue.numerify() }
 
                 it("all # chars are replaced with random digits") {
                     assertSoftly {
@@ -367,7 +368,7 @@ internal class FakerServiceTest : DescribeSpec({
 
             context("expression contains single # char") {
                 val rawValue = "#"
-                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+                val resolvedValue = with(fakerService) { rawValue.numerify() }
 
                 it("# char is replaced with random digit") {
                     assertSoftly {
@@ -378,21 +379,30 @@ internal class FakerServiceTest : DescribeSpec({
                 }
             }
 
-            context("expression contains a String and # chars") {
-                val rawValue = "Winter is coming ###"
-                val resolvedValue = fakerService.resolveExpressionWithNumerals(rawValue)
+            context("expression contains a String and '#' and '?' chars") {
+                val rawValue = "Winter is coming ###???"
+                val resolvedValue = with(fakerService) { rawValue.numerify().letterify() }
 
-                it("all # chars are replaced with random digits") {
+                it("all '#' chars are replaced with random digits") {
                     assertSoftly {
-                        resolvedValue.takeLast(3).all { it.isDigit() } shouldBe true
-                        resolvedValue.takeLast(3).all { it == resolvedValue[0] } shouldBe false
+                        resolvedValue.takeLast(6).take(3).all { it.isDigit() } shouldBe true
+                        resolvedValue.takeLast(6).take(3).all { it == resolvedValue[0] } shouldBe false
                         resolvedValue shouldNotContain "#"
                         resolvedValue shouldHaveSameLengthAs rawValue
                     }
                 }
 
+                it("all '?' chars are replaced with random letters") {
+                    assertSoftly {
+                        resolvedValue.takeLast(3).all { it.isLetter() } shouldBe true
+                        resolvedValue.takeLast(3).all { it == resolvedValue[0] } shouldBe false
+                        resolvedValue shouldNotContain "?"
+                        resolvedValue shouldHaveSameLengthAs rawValue
+                    }
+                }
+
                 it("String value is kept intact") {
-                    resolvedValue.dropLast(3) shouldBe rawValue.dropLast(3)
+                    resolvedValue.dropLast(6) shouldBe rawValue.dropLast(6)
                 }
             }
 

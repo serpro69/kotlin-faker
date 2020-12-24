@@ -19,19 +19,19 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun countryByName(countryName: String) = resolve("country_by_name", countryName)
     fun countryCode() = resolve("country_code")
     fun countryCodeLong() = resolve("country_code_long")
-    fun buildingNumber() = resolve("building_number")
+    fun buildingNumber() = with(fakerService) { resolve("building_number").numerify() }
     fun community() = resolve("community")
-    fun secondaryAddress() = resolve("secondary_address")
-    fun postcode() = resolve("postcode")
-    fun postcodeByState(state: String) = resolve("postcode_by_state", state)
+    fun secondaryAddress() = with(fakerService) { resolve("secondary_address").numerify() }
+    fun postcode() = with(fakerService) { resolve("postcode").numerify() }
+    fun postcodeByState(state: String) = with(fakerService) { resolve("postcode_by_state", state).numerify() }
     fun state() = resolve("state")
     fun stateAbbr() = resolve("state_abbr")
     fun timeZone() = resolve("time_zone")
     fun city() = resolve("city")
     fun cityWithState() = resolve("city_with_state")
     fun streetName() = resolve("street_name")
-    fun streetAddress() = resolve("street_address")
-    fun fullAddress() = resolve("full_address")
-    fun mailbox() = resolve("mail_box")
+    fun streetAddress() = with(fakerService) { resolve("street_address").numerify() }
+    fun fullAddress() = with(fakerService) { resolve("full_address").numerify() }
+    fun mailbox() = with(fakerService) { resolve("mail_box").numerify() }
     fun defaultCountry() = resolve("default_country")
 }
