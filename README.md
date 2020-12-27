@@ -39,43 +39,30 @@
 
 ## About
 
-Port of a popular ruby [faker](https://github.com/stympy/faker) gem written completely in kotlin. Generates
-realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing
-purposes during development and testing.
+Port of a popular ruby [faker](https://github.com/stympy/faker) gem written in kotlin. Generates realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing purposes during development and testing.
 
-## Comparison with other jvm-based faker libs
+## Comparison with similar jvm-based "faker libs"
 
-While there are several other libraries out there with similar functionalities, I had several reasons for creating this
-one:
-
+While there are several other libraries out there with similar functionalities, I had several reasons for creating this one:
 - most of the ones I've found are written in java and I wanted to use kotlin
-- none of them has the functionality I needed
-- I didn't feel like forking an existing kotlin-based lib and refactoring the entire codebase, especially with it not
-  being maintained for the past couple of years.
+- none of them had the functionality I needed
+- I didn't feel like forking an existing kotlin-based lib - fakeit - and refactoring the entire codebase, especially with it not being maintained for the past couple of years.
 
-So why use this one instead? I've decided to make a comparison between this lib and the others that have been out there
-for quite some time.
+So why use this one instead? I've decided to make a comparison between kotlin-faker, and others libs that have been out there for quite some time.
 
-<i>The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker
-instance and generating a 1_000_000 values with the function returning a person's full name.
+<i>The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name.
 
-Note:
-benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib,  
-benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
+Note: benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib, benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
 
-| | **
-kotlin-faker** | [DiUS/java-faker](https://github.com/DiUS/java-faker)
-| [Devskiller/jfairy](https://github.com/Devskiller/jfairy) | [blocoio/faker](https://github.com/blocoio/faker)
-| [moove-it/fakeit](https://github.com/moove-it/fakeit) |
+|                                                             | **kotlin-faker** | [DiUS/java-faker](https://github.com/DiUS/java-faker) | [Devskiller/jfairy](https://github.com/Devskiller/jfairy) | [blocoio/faker](https://github.com/blocoio/faker) | [moove-it/fakeit](https://github.com/moove-it/fakeit) |
 |-------------------------------------------------------------|------------------|-------------------------------------------------------|-----------------------------------------------------------|---------------------------------------------------|-------------------------------------------------------|
-| **
-language**                                                | kotlin | java | java | java | kotlin | | **number of
-available providers** (`address`, `name`, etc.) | 165 | 73 | 8 | 21 | 36 | | **number of available locales**
-| 55 | 47 | 10 | 46 | 44 | | **extra functionality** (i.e. `randomClassInstance` gen)    | &#9989; | &#10062; | &#10062;
-| &#10062; | &#10062; | | **actively maintained**                                     | &#9989; | &#9989; | &#9989; |
-&#9989; | &#10062; | | **[cli-bot app](cli-bot)**                                  | &#9989; | &#10062; | &#10062; |
-&#10062; | &#10062; | | **
-benchmarks**                                              | 5482ms | 17529.9ms | 15036.5ms | NA | NA |
+| **language**                                                | kotlin           | java                                                  | java                                                      | java                                              | kotlin                                                |
+| **number of available providers** (`address`, `name`, etc.) | 165              | 73                                                    | 8                                                         | 21                                                | 36                                                    |
+| **number of available locales**                             | 55               | 47                                                    | 10                                                        | 46                                                | 44                                                    |
+| **extra functionality** (i.e. `randomClassInstance` gen)    | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
+| **actively maintained**                                     | &#9989;          | &#9989;                                               | &#9989;                                                   | &#9989;                                           | &#10062;                                              |
+| **[cli-bot app](cli-bot)**                                  | &#9989;          | &#10062;                                              | &#10062;                                                  | &#10062;                                          | &#10062;                                              |
+| **benchmarks**                                              | 5482ms           | 17529.9ms                                             | 15036.5ms                                                 | NA                                                | NA                                                    |
 
 ## Usage
 
