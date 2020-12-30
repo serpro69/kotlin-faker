@@ -32,6 +32,8 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val beer: Beer
     val bigBangTheory: BigBangTheory
     val blood: Blood
+    @Deprecated(message = "Fix #50 - typo. Will be removed in 1.7.0", level = DeprecationLevel.WARNING, replaceWith = ReplaceWith("bojackHorseman"))
+    val bojackHoreseman: BojackHorseman
     val bojackHorseman: BojackHorseman
     val book: Book
     val bossaNova: BossaNova
@@ -202,6 +204,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         beer = Beer(fakerService)
         bigBangTheory = BigBangTheory(fakerService)
         blood = Blood(fakerService)
+        bojackHoreseman = BojackHorseman(fakerService)
         bojackHorseman = BojackHorseman(fakerService)
         book = Book(fakerService)
         bossaNova = BossaNova(fakerService)

@@ -36,6 +36,7 @@ class IntrospectorTest : DescribeSpec() {
                         "BigBangTheory",
                         "Blood",
                         "BojackHorseman",
+                        "BojackHorseman",
                         "Book",
                         "BossaNova",
                         "BreakingBad",
