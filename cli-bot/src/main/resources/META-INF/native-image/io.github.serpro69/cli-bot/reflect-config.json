@@ -1225,7 +1225,11 @@
 },
 {
   "name":"io.github.serpro69.kfaker.provider.PhoneNumber",
-  "methods":[{"name":"phoneNumber","parameterTypes":[] }]
+  "methods":[
+    {"name":"phoneNumber","parameterTypes":[] },
+    {"name":"cellPhone","parameterTypes":[] },
+    {"name":"countryCode","parameterTypes":[] }
+  ]
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Pokemon",
