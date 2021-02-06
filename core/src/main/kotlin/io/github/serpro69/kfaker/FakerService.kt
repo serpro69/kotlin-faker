@@ -30,7 +30,7 @@ internal class FakerService @JvmOverloads internal constructor(
     locale: String = "en",
     random: Random
 ) {
-    private val randomService = RandomService(random)
+    internal val randomService = RandomService(random)
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     val dictionary = load(locale.replace("_", "-"))
 
@@ -152,6 +152,7 @@ internal class FakerService @JvmOverloads internal constructor(
         val categories = defaultValues.entries.toList().map {
             val value = when (it.key) {
                 "separator" -> mapOf("separator" to it.value)
+                "currency_symbol" -> mapOf("currency_symbol" to it.value)
                 else -> it.value
             }
             Category(getCategoryName(it.key), value)

@@ -16,7 +16,10 @@ internal data class Category(val categoryName: CategoryName, val values: Map<Str
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
 internal enum class CategoryName {
+    // Special providers for locale-based symbols
     SEPARATOR,
+    CURRENCY_SYMBOL,
+    // Rest of providers
     ADDRESS,
     ANCIENT,
     APP,
@@ -111,6 +114,7 @@ internal enum class CategoryName {
     MEASUREMENT,
     MICHAEL_SCOTT,
     MILITARY,
+    MONEY,
     MOVIE,
     MUSIC,
     NAME,

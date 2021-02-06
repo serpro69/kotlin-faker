@@ -4,6 +4,10 @@ package io.github.serpro69.kfaker
  * Represents a list of provider names as found in dict yml files.
  */
 val dictionaryKeys = listOf(
+    // Special providers for locale-based symbols
+    "separator",
+    "currency_symbol",
+    // Rest of providers
     "address",
     "ancient",
     "creature",
@@ -153,8 +157,7 @@ val dictionaryKeys = listOf(
     "verbs",
     "v_for_vendetta",
     "world_cup",
-    "yoda",
-    "separator"
+    "yoda"
 )
 
 /**

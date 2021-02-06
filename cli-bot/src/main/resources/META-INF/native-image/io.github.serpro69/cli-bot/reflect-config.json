@@ -1,5 +1,8 @@
 [
 {
+  "name":"boolean[]"
+},
+{
   "name":"com.fasterxml.jackson.databind.deser.Deserializers[]"
 },
 {
@@ -11,6 +14,9 @@
 },
 {
   "name":"com.fasterxml.jackson.databind.ser.Serializers[]"
+},
+{
+  "name":"int[]"
 },
 {
   "name":"io.github.serpro69.kfaker.Faker",
@@ -28,9 +34,9 @@
     {"name":"getBasketball","parameterTypes":[] }, 
     {"name":"getBeer","parameterTypes":[] }, 
     {"name":"getBigBangTheory","parameterTypes":[] }, 
-    {"name":"getBlood","parameterTypes":[] },
-    {"name":"getBojackHoreseman","parameterTypes":[] },
-    {"name":"getBojackHorseman","parameterTypes":[] },
+    {"name":"getBlood","parameterTypes":[] }, 
+    {"name":"getBojackHoreseman","parameterTypes":[] }, 
+    {"name":"getBojackHorseman","parameterTypes":[] }, 
     {"name":"getBook","parameterTypes":[] }, 
     {"name":"getBossaNova","parameterTypes":[] }, 
     {"name":"getBreakingBad","parameterTypes":[] }, 
@@ -54,6 +60,7 @@
     {"name":"getCryptoCoin","parameterTypes":[] }, 
     {"name":"getCultureSeries","parameterTypes":[] }, 
     {"name":"getCurrency","parameterTypes":[] }, 
+    {"name":"getCurrencySymbol","parameterTypes":[] }, 
     {"name":"getDcComics","parameterTypes":[] }, 
     {"name":"getDemographic","parameterTypes":[] }, 
     {"name":"getDeparted","parameterTypes":[] }, 
@@ -115,6 +122,7 @@
     {"name":"getMichaelScott","parameterTypes":[] }, 
     {"name":"getMilitary","parameterTypes":[] }, 
     {"name":"getMinecraft","parameterTypes":[] }, 
+    {"name":"getMoney","parameterTypes":[] }, 
     {"name":"getMovie","parameterTypes":[] }, 
     {"name":"getMusic","parameterTypes":[] }, 
     {"name":"getMyst","parameterTypes":[] }, 
@@ -194,27 +202,23 @@
 {
   "name":"io.github.serpro69.kfaker.app.KFaker",
   "allDeclaredFields":true,
-  "allDeclaredMethods":true,
-  "allPublicMethods":true
+  "allDeclaredMethods":true
 },
 {
   "name":"io.github.serpro69.kfaker.app.subcommands.CommandOptions",
   "allDeclaredFields":true,
-  "allDeclaredMethods":true,
-  "allPublicMethods":true
+  "allDeclaredMethods":true
 },
 {
   "name":"io.github.serpro69.kfaker.app.subcommands.List",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
-  "allPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.app.subcommands.Lookup",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
-  "allPublicMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -553,6 +557,10 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.CurrencySymbol",
+  "methods":[{"name":"symbol","parameterTypes":[] }]
+},
+{
   "name":"io.github.serpro69.kfaker.provider.DcComics",
   "methods":[
     {"name":"hero","parameterTypes":[] }, 
@@ -853,12 +861,6 @@
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider"
-},
-{
-  "name":"io.github.serpro69.kfaker.provider.unique.UniqueProviderConfiguration"
-},
-{
   "name":"io.github.serpro69.kfaker.provider.GratefulDead",
   "methods":[
     {"name":"players","parameterTypes":[] }, 
@@ -1039,12 +1041,6 @@
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider"
-},
-{
-  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider[]"
-},
-{
   "name":"io.github.serpro69.kfaker.provider.LordOfTheRings",
   "methods":[
     {"name":"characters","parameterTypes":[] }, 
@@ -1116,6 +1112,15 @@
     {"name":"items","parameterTypes":[] }, 
     {"name":"mobs","parameterTypes":[] }
   ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Money",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Money[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Movie",
@@ -1227,9 +1232,9 @@
 {
   "name":"io.github.serpro69.kfaker.provider.PhoneNumber",
   "methods":[
-    {"name":"phoneNumber","parameterTypes":[] },
-    {"name":"cellPhone","parameterTypes":[] },
-    {"name":"countryCode","parameterTypes":[] }
+    {"name":"cellPhone","parameterTypes":[] }, 
+    {"name":"countryCode","parameterTypes":[] }, 
+    {"name":"phoneNumber","parameterTypes":[] }
   ]
 },
 {
@@ -1520,11 +1525,11 @@
 {
   "name":"io.github.serpro69.kfaker.provider.Superhero",
   "methods":[
-    {"name":"descriptor$core","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$core","parameterTypes":[] }, 
-    {"name":"suffix$core","parameterTypes":[] }
+    {"name":"descriptor$core","parameterTypes":[] },
+    {"name":"prefix$core","parameterTypes":[] },
+    {"name":"suffix$core","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"power","parameterTypes":[] }
   ]
 },
 {
@@ -1581,12 +1586,6 @@
 {
   "name":"io.github.serpro69.kfaker.provider.UmphreysMcgee",
   "methods":[{"name":"song","parameterTypes":[] }]
-},
-{
-  "name":"io.github.serpro69.kfaker.provider.unique.UniqueDataProvider"
-},
-{
-  "name":"io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.University",
@@ -1695,6 +1694,21 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider"
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider"
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider[]"
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.unique.UniqueDataProvider"
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate[]"
+},
+{
   "name":"java.lang.Object",
   "allDeclaredFields":true,
   "allDeclaredMethods":true
@@ -1703,7 +1717,14 @@
   "name":"java.lang.Object[]"
 },
 {
+  "name":"java.lang.String"
+},
+{
   "name":"java.lang.String[]"
+},
+{
+  "name":"java.lang.System",
+  "methods":[{"name":"console","parameterTypes":[] }]
 },
 {
   "name":"java.nio.file.Path"
@@ -1797,6 +1818,9 @@
   "allDeclaredMethods":true
 },
 {
+  "name":"kotlin.Lazy[]"
+},
+{
   "name":"kotlin.Metadata",
   "allDeclaredMethods":true
 },
@@ -1808,7 +1832,16 @@
   "name":"kotlin.Unit"
 },
 {
+  "name":"kotlin.jvm.functions.Function0"
+},
+{
   "name":"kotlin.jvm.internal.DefaultConstructorMarker"
+},
+{
+  "name":"kotlin.ranges.IntRange"
+},
+{
+  "name":"kotlin.ranges.IntRange[]"
 },
 {
   "name":"kotlin.reflect.KProperty[][]"

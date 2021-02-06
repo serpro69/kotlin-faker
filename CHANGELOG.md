@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [v1.7.0] - UNRELEASED
+### Added
+- [#59](https://github.com/serpro69/kotlin-faker/pull/59) [core] Random money amount
+
 ## [v1.6.0] - 2020-12-30
 ### Added
 - [#44](https://github.com/serpro69/kotlin-faker/pull/44) [core] Add support for random instance configuration.

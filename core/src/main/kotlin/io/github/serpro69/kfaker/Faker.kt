@@ -18,6 +18,8 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val randomProvider: RandomProvider = RandomProvider(fakerConfig.random)
 
     val separator: Separator
+    val currencySymbol: CurrencySymbol
+
     val address: Address
     val ancient: Ancient
     val animal: Animal
@@ -80,7 +82,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val fallout: Fallout
     val familyGuy: FamilyGuy
     val file: File
-    //    val finance: Finance
+//    val finance: Finance
     val food: Food
     val football: Football
     val freshPriceOfBelAir: FreshPriceOfBelAir
@@ -122,6 +124,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val michaelScott: MichaelScott
     val military: Military
     val minecraft: Minecraft
+    val money: Money
     val movie: Movie
     val music: Music
     val myst: Myst
@@ -189,7 +192,10 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
     val zelda: Zelda
 
     init {
+        // Special symbols
         separator = Separator(fakerService)
+        currencySymbol = CurrencySymbol(fakerService)
+
         address = Address(fakerService)
         ancient = Ancient(fakerService)
         animal = Animal(fakerService)
@@ -294,6 +300,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
         michaelScott = MichaelScott(fakerService)
         military = Military(fakerService)
         minecraft = Minecraft(fakerService)
+        money = Money(fakerService)
         movie = Movie(fakerService)
         music = Music(fakerService)
         myst = Myst(fakerService)

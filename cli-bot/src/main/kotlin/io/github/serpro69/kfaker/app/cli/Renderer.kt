@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker.app.cli
 
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.app.subcommands.CommandOptions
+import io.github.serpro69.kfaker.provider.Money
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.system.exitProcess
@@ -67,7 +68,15 @@ fun renderProvider(
                 1 -> it.call(provider.getter.call(faker)).toString()
                 2 -> it.call(provider.getter.call(faker), "").toString()
                 3 -> it.call(provider.getter.call(faker), "", "").toString()
-                else -> exitProcess(3)
+                else -> {
+                    when (it) {
+                        Money::amount -> it.call(provider.getter.call(faker), 100_000..1_000_000, true, ",", ".")
+                        else -> {
+                            println("Could not call the function $it")
+                            exitProcess(3)
+                        }
+                    }
+                }
             }
 
             Renderer("${it.name}() // => $value", emptyList())

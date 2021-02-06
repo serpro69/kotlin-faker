@@ -6,3 +6,4 @@ en:
     pm: "PM"
   faker:
     separator: ' & '
+    currency_symbol: '$'

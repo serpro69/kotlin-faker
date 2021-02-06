@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.Money
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
@@ -21,7 +22,9 @@ class FakerIT : DescribeSpec({
 
         // Get a list of all publicly visible providers
         val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
-            it.visibility == KVisibility.PUBLIC && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+            it.visibility == KVisibility.PUBLIC
+                && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+                && it.returnType.classifier != Money::class // Ignore Money provider as it's a special case
         }
 
         // Get a list of all publicly visible functions in each provider
@@ -82,6 +85,7 @@ class FakerIT : DescribeSpec({
                                 && value != "Hail Hail" // pearlJam#songs
                                 && value != "Help Help" // pearlJam#songs
                                 && value != "Mr. Mr." // kPop#thirdGroups
+                                && value != "Chitty Chitty Bang Bang" // show#adultMusical
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
