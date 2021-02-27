@@ -4,13 +4,13 @@ plugins {
     kotlin("jvm")
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.5"
-    id("org.jetbrains.dokka") version "1.4.0-rc"
+    id("org.jetbrains.dokka") version "1.4.20"
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.2")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
     implementation("com.github.mifmif:generex:1.0.2")
     runtimeOnly(kotlin("script-runtime"))
 }
@@ -49,7 +49,7 @@ val sourcesJar by tasks.creating(Jar::class) {
 
 val dokkaJavadocJar by tasks.creating(Jar::class) {
     dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.get().getOutputDirectoryAsFile())
+    from(tasks.dokkaJavadoc.get().outputDirectory.orNull)
     archiveClassifier.set("javadoc")
 }
 
