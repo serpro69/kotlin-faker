@@ -75,12 +75,17 @@ class RandomProvider internal constructor(random: Random) {
             } ?: throw NoSuchElementException("No suitable constructor found for $this")
 
             val params = constructor.parameters
-                .map { it.type.classifier as KClass<*> }
+                .map { it.type }
                 .map {
-                    it.predefinedTypeOrNull(config)
-                        ?: it.randomPrimitiveOrNull()
-                        ?: it.randomEnumOrNull()
-                        ?: it.randomClassInstance(config)
+                    val klass = it.classifier as KClass<*>
+                    if (it.isMarkedNullable && config.nullableGenerators.containsKey(klass)) {
+                        config.nullableGenerators[klass]?.invoke()
+                    } else {
+                        klass.predefinedTypeOrNull(config)
+                            ?: klass.randomPrimitiveOrNull()
+                            ?: klass.randomEnumOrNull()
+                            ?: klass.randomClassInstance(config)
+                    }
                 }
                 .toTypedArray()
 
@@ -140,11 +145,22 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     @PublishedApi
     internal val predefinedGenerators = mutableMapOf<KClass<*>, () -> Any>()
 
+    @PublishedApi
+    internal val nullableGenerators = mutableMapOf<KClass<*>, () -> Any?>()
+
     /**
      * Configures generation for a specific type. It can override internal generators (for primitives, for example)
      */
     inline fun <reified K : Any> typeGenerator(noinline generator: () -> K) {
         predefinedGenerators[K::class] = generator
+    }
+
+    /**
+     * Configures generation for a specific nullable type. It can override internal generators (for primitives, for example)
+     */
+    @JvmName("typeGenerator_null")
+    inline fun <reified K : Any?> typeGenerator(noinline generator: () -> K?) {
+        nullableGenerators[K::class] = generator
     }
 }
 
