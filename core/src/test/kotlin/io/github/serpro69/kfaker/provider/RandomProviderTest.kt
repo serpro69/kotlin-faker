@@ -173,7 +173,8 @@ class RandomProviderTest : DescribeSpec({
             val testClass: TestClass = randomProvider.randomClassInstance {
                 @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<UUID> { givenUuid }
-                typeGenerator<Int?> { givenInt }
+                @Suppress("RemoveExplicitTypeArguments")
+                typeGenerator<Int> { givenInt } // use the not-null type generator and verify it is used for Int?
                 typeGenerator<Long?> { givenNullableLong }
                 @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Long> { givenLong }
