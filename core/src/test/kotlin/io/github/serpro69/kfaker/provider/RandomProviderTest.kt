@@ -175,7 +175,7 @@ class RandomProviderTest : DescribeSpec({
                 typeGenerator<UUID> { givenUuid }
                 @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Int> { givenInt } // use the not-null type generator and verify it is used for Int?
-                typeGenerator<Long?> { givenNullableLong }
+                nullableTypeGenerator<Long?> { givenNullableLong }
                 @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Long> { givenLong }
             }

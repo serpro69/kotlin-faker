@@ -158,8 +158,7 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     /**
      * Configures generation for a specific nullable type. It can override internal generators (for primitives, for example)
      */
-    @JvmName("typeGenerator_null")
-    inline fun <reified K : Any?> typeGenerator(noinline generator: () -> K?) {
+    inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: () -> K?) {
         nullableGenerators[K::class] = generator
     }
 }
