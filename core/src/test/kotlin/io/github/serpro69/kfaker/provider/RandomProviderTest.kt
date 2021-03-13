@@ -154,6 +154,45 @@ class RandomProviderTest : DescribeSpec({
         }
     }
 
+    describe("a TestClass with non-empty constructor for nullable custom type generators") {
+        class Foo(val int: Int?)
+        class TestClass(
+            val id: UUID,
+            val int: Int?,
+            val nullableLong: Long?,
+            val notNullLong: Long,
+            val foo: Foo
+        )
+
+        val givenUuid = UUID.fromString("00000000-0000-0000-0000-000000000000")
+        val givenInt = 1
+        val givenNullableLong: Long? = null
+        val givenLong = 1L
+
+        context("creating a random instance of the class with nullable custom generators") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                @Suppress("RemoveExplicitTypeArguments")
+                typeGenerator<UUID> { givenUuid }
+                @Suppress("RemoveExplicitTypeArguments")
+                typeGenerator<Int> { givenInt } // use the not-null type generator and verify it is used for Int?
+                nullableTypeGenerator<Long?> { givenNullableLong }
+                @Suppress("RemoveExplicitTypeArguments")
+                typeGenerator<Long> { givenLong }
+            }
+
+            it("it should be a predefined UUID and primitives with nulls") {
+                assertSoftly {
+                    testClass shouldBe instanceOf(TestClass::class)
+                    testClass.id shouldBe givenUuid
+                    testClass.int shouldBe givenInt
+                    testClass.nullableLong shouldBe givenNullableLong
+                    testClass.notNullLong shouldBe givenLong
+                    testClass.foo.int shouldBe givenInt
+                }
+            }
+        }
+    }
+
     describe("a TestClass with 3 non-default constructors") {
 
         class Foo
