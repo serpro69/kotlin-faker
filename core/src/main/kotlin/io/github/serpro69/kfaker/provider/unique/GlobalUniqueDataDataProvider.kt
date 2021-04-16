@@ -53,7 +53,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     @Deprecated(
         level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.7.0",
+        message = "This functionality is deprecated and will be removed in release 1.8.0",
         replaceWith = ReplaceWith("faker.unique.configuration { this.exclude<T>(funcName, values) }")
     )
     inline fun <reified T : FakeDataProvider> exclude(funcName: String, values: List<String>) {
@@ -62,7 +62,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     @Deprecated(
         level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.7.0",
+        message = "This functionality is deprecated and will be removed in release 1.8.0",
         replaceWith = ReplaceWith("faker.unique.configuration { this.exclude<T>(funcName, values) }")
     )
     inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg values: String) {
@@ -75,7 +75,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     @Deprecated(
         level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.7.0",
+        message = "This functionality is deprecated and will be removed in release 1.8.0",
         replaceWith = ReplaceWith("faker.unique.configuration { this.enable(providerProperty) }")
     )
     fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>) {
@@ -84,7 +84,7 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     @Deprecated(
         level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.7.0",
+        message = "This functionality is deprecated and will be removed in release 1.8.0",
         replaceWith = ReplaceWith("faker.unique.configuration { this.disable(providerProperty) }")
     )
     fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
