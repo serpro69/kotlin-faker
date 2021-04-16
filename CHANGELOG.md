@@ -7,7 +7,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ## [v1.7.0] - 2020-04-16
 ### Added
 - [#59](https://github.com/serpro69/kotlin-faker/pull/59) [core] Random money amount
-- [#69](https://github.com/serpro69/kotlin-faker/pull/69) [core] Add nullable types to random provider type generator
+- [#62](https://github.com/serpro69/kotlin-faker/pull/62) [core] Add nullable types to random provider type generator
 
 ## [v1.6.0] - 2020-12-30
 ### Added
