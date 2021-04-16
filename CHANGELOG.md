@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [v1.7.0] - UNRELEASED
+## [v1.7.0] - 2020-04-16
 ### Added
 - [#59](https://github.com/serpro69/kotlin-faker/pull/59) [core] Random money amount
+- [#69](https://github.com/serpro69/kotlin-faker/pull/69) [core] Add nullable types to random provider type generator
 
 ## [v1.6.0] - 2020-12-30
 ### Added
