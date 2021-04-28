@@ -28,6 +28,7 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun stateAbbr() = resolve("state_abbr")
     fun timeZone() = resolve("time_zone")
     fun city() = resolve("city")
+    fun cityName() = resolve("city_name")
     fun cityWithState() = resolve("city_with_state")
     fun streetName() = resolve("street_name")
     fun streetAddress() = with(fakerService) { resolve("street_address").numerify() }
