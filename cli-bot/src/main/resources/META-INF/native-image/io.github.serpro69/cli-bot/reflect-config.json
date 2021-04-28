@@ -237,8 +237,9 @@
   "name":"io.github.serpro69.kfaker.provider.Address",
   "methods":[
     {"name":"buildingNumber","parameterTypes":[] }, 
-    {"name":"city","parameterTypes":[] }, 
-    {"name":"cityWithState","parameterTypes":[] }, 
+    {"name":"city","parameterTypes":[] },
+    {"name":"cityName","parameterTypes":[] },
+    {"name":"cityWithState","parameterTypes":[] },
     {"name":"community","parameterTypes":[] }, 
     {"name":"country","parameterTypes":[] }, 
     {"name":"countryByCode","parameterTypes":["java.lang.String"] }, 
