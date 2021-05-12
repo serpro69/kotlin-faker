@@ -592,7 +592,7 @@ details see the particular `.md` file for each provider below.</i>
 * [StreetFighter](doc/street_fighter.md)
 * [Stripe](doc/stripe.md)
 * [Subscription](doc/subscription.md)
-* [Suits](doc/Suits.md
+* [Suits](doc/Suits.md)
 * [Superhero](doc/superhero.md)
 * [SuperSmashBros](doc/super_smash_bros.md)
 * [SwordArtOnline](doc/sword_art_online.md)
