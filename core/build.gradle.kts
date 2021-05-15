@@ -1,10 +1,8 @@
-import java.util.*
-
 plugins {
     kotlin("jvm")
-    `maven-publish`
-    id("com.jfrog.bintray") version "1.8.5"
     id("org.jetbrains.dokka") version "1.4.20"
+    `maven-publish`
+    signing
 }
 
 dependencies {
@@ -48,9 +46,14 @@ val sourcesJar by tasks.creating(Jar::class) {
 }
 
 val dokkaJavadocJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("javadoc")
     dependsOn(tasks.dokkaJavadoc)
     from(tasks.dokkaJavadoc.get().outputDirectory.orNull)
-    archiveClassifier.set("javadoc")
+}
+
+artifacts {
+    archives(sourcesJar)
+    archives(dokkaJavadocJar)
 }
 
 val artifactName = rootProject.name
@@ -76,7 +79,7 @@ val pomDeveloperName = "Sergii Prodanov"
 
 publishing {
     publications {
-        create<MavenPublication>("kotlin-faker") {
+        create<MavenPublication>("fakerCore") {
             groupId = artifactGroup
             artifactId = artifactName
             version = artifactVersion
@@ -112,36 +115,6 @@ publishing {
     }
 }
 
-bintray {
-    val baseReleasePattern = "v\\d+\\.\\d+\\.\\d+"
-
-    user = project.findProperty("bintrayUser").toString()
-    key = project.findProperty("bintrayKey").toString()
-    publish = releaseTagName.matches(Regex("^${baseReleasePattern}(-rc\\.\\d+)?$"))
-
-    setPublications("kotlin-faker")
-
-    pkg.apply {
-        val isRelease = releaseTagName.matches(Regex("^${baseReleasePattern}$"))
-
-        repo = if (isRelease) "maven" else "maven-release-candidates"
-        name = artifactName
-        userOrg = "serpro69"
-        githubRepo = ghRepo
-        vcsUrl = "$pomScmUrl.git"
-        description = "Port of ruby faker gem written in kotlin"
-        setLabels("kotlin", "faker", "testing", "test-automation", "data", "generation")
-        setLicenses("MIT")
-        desc = description
-        websiteUrl = pomUrl
-        issueTrackerUrl = pomIssueUrl
-        githubReleaseNotesFile = ghReadme
-
-        version.apply {
-            name = artifactVersion
-            desc = pomDesc
-            released = Date().toString()
-            vcsTag = releaseTagName
-        }
-    }
+signing {
+    sign(publishing.publications["fakerCore"])
 }

@@ -68,9 +68,7 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
 
 ### Downloading
 
-Latest releases are always available on [jcenter](https://bintray.com/bintray/jcenter).
-
-From `v1.4.1` onward releases are also published on maven central.
+Latest releases are always available on maven central.
 
 **With gradle**
 
@@ -83,7 +81,6 @@ dependencies {
 **With maven**
 
 ```xml
-
 <dependencies>
     <dependency>
         <groupId>io.github.serpro69</groupId>
@@ -93,34 +90,15 @@ dependencies {
 </dependencies>
 ```  
 
-**Using release candidate versions**
+***Snapshots are also available using the following repository: `https://oss.sonatype.org/content/repositories/snapshots/`***
 
-Release candidates contain the newest functionality before next version gets released and can be downloaded by adding
-the following repo:
-
-Gradle:
-
-```
+For example, to enable snapshots with gradle:
+```groovy
 repositories {
     maven {
-      url 'https://dl.bintray.com/serpro69/maven-release-candidates/'
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
 }
-```
-
-Maven:
-
-```
-<repositories>
-    <repository>
-        <id>serpro69-maven</id>
-        <url>https://dl.bintray.com/serpro69/maven-release-candidates/</url>
-        <layout>default</layout>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-    </repository>
-</repositories>
 ```
 
 **Downloading a jar**  
@@ -833,7 +811,15 @@ When adding a new dictionary yml file the following places need to reflect chang
 
 ## Build and Deploy
 
-Build/deploy to bintray and github release processes are automated with travis-ci through usage of git tags.
+To deploy to OSS Sonatype repo:
+
+- set the following properties in `~/.gradle/gradle.properties`
+    - `signing.keyId=<key_id>`
+    - `signing.password=<key_passphrase>`
+    - `signing.secretKeyRingFile=/home/user/.gnupg/secring.gpg`
+    - `sonatypeUsername=<oss_user_token>`
+    - `sonatypePassword=<oss_password_token>`
+- running `publishFakerCorePublicationToSonatypeRepository` will publish the artifacts to either staging release repo or to snapshots repo, depending on the current version
 
 ### Bumping versions
 
