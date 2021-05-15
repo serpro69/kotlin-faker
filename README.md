@@ -5,8 +5,8 @@
 > <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>
 
 [![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
-[![Version Badge](https://api.bintray.com/packages/serpro69/maven/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven/kotlin-faker/_latestVersion)
-[![RC Version Badge](https://api.bintray.com/packages/serpro69/maven-release-candidates/kotlin-faker/images/download.svg) ](https://bintray.com/serpro69/maven-release-candidates/kotlin-faker/_latestVersion)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?server=https%3A%2F%2Foss.sonatype.org)
 [![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
 [![Issues Badge](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg)](https://github.com/serpro69/kotlin-faker/issues)
 [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
