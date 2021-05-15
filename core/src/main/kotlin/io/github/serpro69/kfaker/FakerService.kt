@@ -12,9 +12,6 @@ import io.github.serpro69.kfaker.provider.Name
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
-import kotlin.NoSuchElementException
-import kotlin.collections.HashMap
-import kotlin.collections.LinkedHashMap
 import kotlin.collections.set
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.declaredFunctions

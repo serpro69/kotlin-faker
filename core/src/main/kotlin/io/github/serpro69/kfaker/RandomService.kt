@@ -5,7 +5,7 @@ import java.util.*
 /**
  * Wrapper around [Random] that contains some extra helper functions.
  */
-internal class RandomService(private val random: Random) {
+class RandomService internal constructor(private val random: Random) {
     private val alphabeticSource = "abcdefghijklmnopqrstuvwxyz"
 
     fun nextInt() = random.nextInt()
