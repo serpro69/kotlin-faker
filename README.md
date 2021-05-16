@@ -144,7 +144,7 @@ val faker = faker {
 Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to provide deterministic output of repeated function invocations.
 
 ```kotlin
-val fakerConfig = FakerConfig.builder().create {
+val fakerConfig = FakerConfig.create {
     random = Random(42)
 }
 
@@ -162,7 +162,7 @@ name1 == name2 // => true
 
 Alternatively a seed can be specified instead of passing an instance of `java.util.Random`:
 ```kotlin
-val fakerConfig = FakerConfig.builder().create {
+val fakerConfig = FakerConfig.create {
     randomSeed = 42
 }
 ```
@@ -224,7 +224,7 @@ then `RetryLimitException` will be thrown.
 It is possible to re-configure the default value through `FakerConfig`:
 
 ```kotlin
-val config = FakerConfig.builder().create {
+val config = FakerConfig.create {
     uniqueGeneratorRetryLimit = 1000
 }
 
@@ -298,7 +298,7 @@ faker.address.unique.country() // will still generate unique values, but won't c
 `Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
 
 ```kotlin
-val fakerConfig = FakerConfig.builder().create {
+val fakerConfig = FakerConfig.create {
     locale = "nb-NO"
 }
 
@@ -373,7 +373,7 @@ val city1 = faker.address.city() // => Oslo
 Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.
 
 ```kotlin
-val fakerConfig = FakerConfig.builder().create {
+val fakerConfig = FakerConfig.create {
     locale = "es"
 }
 val faker = Faker(fakerConfig)
@@ -387,7 +387,7 @@ that is present in the default locale, then non-localized value will be used ins
 val faker = Faker()
 faker.gameOfThrones.cities() // => Braavos
 
-val fakerConfig = FakerConfig.builder().create {
+val fakerConfig = FakerConfig.create {
     locale = "nb-NO"
 }
 val localizedFaker = Faker(fakerConfig)
@@ -403,20 +403,20 @@ Kotlin-to-Java interop.
 Configuring `Faker`:
 
 ```java
-FakerConfig fakerConfig=FakerConfigBuilder.create(FakerConfig.builder(),fromConsumer(builder->{
+FakerConfig fakerConfig = FakerConfig.create(fromConsumer(builder -> {
     builder.setRandom(new Random(42));
     builder.setLocale("en-AU");
-    }));
+}));
 ```
 
 If `builder` parameter is not called with help of `fromConsumer` method, then explicit return should be specified:
 
 ```java
-FakerConfig fakerConfig=FakerConfigBuilder.create(FakerConfig.builder(),builder->{
+FakerConfig fakerConfig = FakerConfig.create(builder -> {
     builder.setRandom(new Random(42));
     builder.setLocale("en-AU");
-    return Unit.INSTANCE;
-    });
+    return Unit.INSTANCE
+});
 ```
 
 Calling `Faker` methods:
