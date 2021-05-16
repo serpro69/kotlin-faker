@@ -13,12 +13,6 @@ class FakerConfig private constructor(
     val uniqueGeneratorRetryLimit: Int
 ) {
 
-    private constructor(
-        locale: String,
-        seed: Long,
-        uniqueGeneratorRetryLimit: Int
-    ) : this(locale, Random(seed), uniqueGeneratorRetryLimit)
-
     companion object {
         @JvmStatic
         @Deprecated(
@@ -59,7 +53,7 @@ class FakerConfig private constructor(
         var uniqueGeneratorRetryLimit = 100
 
         internal fun build() = randomSeed?.let {
-            FakerConfig(locale, it, uniqueGeneratorRetryLimit)
+            FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit)
         } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit)
     }
 }
