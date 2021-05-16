@@ -6,8 +6,6 @@ import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
-import io.github.serpro69.kfaker.app.subcommands.Lookup.functionName
-import io.github.serpro69.kfaker.create
 import picocli.CommandLine
 
 /**
@@ -36,7 +34,7 @@ object List : Runnable {
     var providerNames = arrayOf<String>()
 
     private fun printProvidersList() {
-        val fakerConfig = FakerConfig.builder().create {
+        val fakerConfig = FakerConfig.create {
             locale = options.locale
         }
 
