@@ -4,6 +4,9 @@ package io.github.serpro69.kfaker
 
 import java.util.*
 
+/**
+ * Configuration for [Faker].
+ */
 class FakerConfig private constructor(
     val locale: String,
     val random: Random,
@@ -18,7 +21,18 @@ class FakerConfig private constructor(
 
     companion object {
         @JvmStatic
+        @Deprecated(
+            message = "This function is deprecated and will be removed in future releases",
+            ReplaceWith("FakerConfig.create { }"),
+            level = DeprecationLevel.WARNING
+        )
         fun builder() = Builder()
+
+        /**
+         * Creates an instance of [FakerConfig] with the config properties that were passed to the function [block].
+         */
+        @JvmStatic
+        fun create(block: Builder.() -> Unit): FakerConfig = Builder().apply(block).build()
     }
 
     /**
@@ -50,6 +64,11 @@ class FakerConfig private constructor(
     }
 }
 
+@Deprecated(
+    message = "This function is deprecated and will be removed in future releases",
+    ReplaceWith("FakerConfig.create { }"),
+    level = DeprecationLevel.WARNING
+)
 fun FakerConfig.Builder.create(block: FakerConfig.Builder.() -> Unit) = this.apply(block).build()
 
 fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.Builder().apply(block).build()
