@@ -2,9 +2,8 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.adarshr.gradle.testlogger.theme.ThemeType
 
 plugins {
-    kotlin("jvm")
-    id("com.github.johnrengelman.shadow") version "6.1.0"
     application
+    kotlin("jvm")
     id("com.palantir.graal") version "0.7.2"
 }
 

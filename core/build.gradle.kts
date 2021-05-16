@@ -1,16 +1,20 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.dokka") version "1.4.20"
+    id("org.jetbrains.dokka") version "1.4.32"
     `maven-publish`
     signing
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.1")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
-    implementation("com.github.mifmif:generex:1.0.2")
-    runtimeOnly(kotlin("script-runtime"))
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
+    shadow(kotlin("stdlib-jdk8"))
+    shadow(kotlin("reflect"))
+    shadow("org.slf4j:slf4j-api:1.7.30")
+    shadow("com.github.mifmif:generex:1.0.2")
 }
 
 tasks.withType<Jar> {
@@ -22,6 +26,27 @@ tasks.withType<Jar> {
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version,
                 "Class-Path" to configurations.compileClasspath.get().joinToString(" ") { it.name }
+            )
+        )
+    }
+}
+
+val shadowJar by tasks.getting(ShadowJar::class) {
+    archiveBaseName.set(rootProject.name)
+    archiveClassifier.set("")
+    relocate("com.fasterxml", "faker.com.fasterxml")
+    dependencies {
+        include {
+            it.name.startsWith(project.group.toString()) ||
+                it.name.startsWith("com.fasterxml")
+        }
+    }
+    manifest {
+        attributes(
+            mapOf(
+                "Implementation-Title" to project.name,
+                "Implementation-Version" to project.version,
+                "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name }
             )
         )
     }
@@ -83,7 +108,8 @@ publishing {
             groupId = artifactGroup
             artifactId = artifactName
             version = artifactVersion
-            from(components["java"])
+//            from(components["java"])
+            project.shadow.component(this)
             artifact(sourcesJar)
             artifact(dokkaJavadocJar) //TODO configure dokka or use defaults?
 
@@ -117,4 +143,10 @@ publishing {
 
 signing {
     sign(publishing.publications["fakerCore"])
+}
+
+tasks {
+    assemble {
+        dependsOn(shadowJar)
+    }
 }
