@@ -12,7 +12,7 @@ class FakerConfigTest : DescribeSpec() {
 
     init {
         describe("random is set through FakerConfig") {
-            val fakerConfig = FakerConfig.builder().create {
+            val fakerConfig = FakerConfig.create {
                 random = Random(42)
             }
 
@@ -22,7 +22,7 @@ class FakerConfigTest : DescribeSpec() {
             val name1 = faker.name.name()
 
             context("random is seeded with the same value") {
-                val otherFakerConfig = FakerConfig.builder().create {
+                val otherFakerConfig = FakerConfig.create {
                     random = Random(42)
                 }
                 val otherFaker = Faker(otherFakerConfig)
@@ -55,6 +55,51 @@ class FakerConfigTest : DescribeSpec() {
                     }
                 }
             }*/
+        }
+
+        describe("randomSeed is set through FakerConfig") {
+            val fakerConfig = FakerConfig.create {
+                randomSeed = 42
+            }
+
+            val faker = Faker(fakerConfig)
+
+            val city1 = faker.address.city()
+            val name1 = faker.name.name()
+
+            context("another randomSeed is set with the same value") {
+                val otherFakerConfig = FakerConfig.create {
+                    randomSeed = 42
+                }
+                val otherFaker = Faker(otherFakerConfig)
+
+                it("the output of repeated function calls should be the same") {
+                    val city2 = otherFaker.address.city()
+                    val name2 = otherFaker.name.name()
+
+                    assertSoftly {
+                        city2 shouldBe city1
+                        name2 shouldBe name1
+                    }
+                }
+            }
+
+            context("random is seeded with the same value") {
+                val otherFakerConfig = FakerConfig.create {
+                    random = Random(42)
+                }
+                val otherFaker = Faker(otherFakerConfig)
+
+                it("the output of repeated function calls should be the same") {
+                    val city2 = otherFaker.address.city()
+                    val name2 = otherFaker.name.name()
+
+                    assertSoftly {
+                        city2 shouldBe city1
+                        name2 shouldBe name1
+                    }
+                }
+            }
         }
     }
 }
