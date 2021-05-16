@@ -10,7 +10,7 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
  *
  * Each category (generator) from this [Faker] is represented by a property that has the same name as the `.yml` file.
  */
-class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = FakerConfig.create { }) {
+class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = fakerConfig {  }) {
     private val fakerService: FakerService = FakerService(this, fakerConfig.locale, fakerConfig.random)
 
     val random = RandomService(fakerConfig.random)
@@ -201,7 +201,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = Fa
             this.config = fakerConfig(block)
         }
 
-        fun build() = Faker(config)
+        internal fun build() = Faker(config)
     }
 }
 
