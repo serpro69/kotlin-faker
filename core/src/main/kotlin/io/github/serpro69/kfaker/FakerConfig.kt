@@ -65,4 +65,4 @@ class FakerConfig private constructor(
 )
 fun FakerConfig.Builder.create(block: FakerConfig.Builder.() -> Unit) = this.apply(block).build()
 
-fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.Builder().apply(block).build()
+fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.create(block)

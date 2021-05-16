@@ -15,7 +15,7 @@ import io.kotest.matchers.shouldNotBe
 @Suppress("UNCHECKED_CAST")
 class UniqueDataProviderIT : DescribeSpec({
     describe("unique generation of values enabled for provider through configuration") {
-        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
+        val config = FakerConfig.create { uniqueGeneratorRetryLimit = 100 }
 
         // repeat 10 times to make sure values are not included in the collection
         repeat(10) {
@@ -38,7 +38,7 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("collection of values is used to exclude values from being generated for specific provider") {
-        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
+        val config = FakerConfig.create { uniqueGeneratorRetryLimit = 100 }
 
         // repeat 10 times to make sure values are not included in the collection
         repeat(10) {
@@ -196,7 +196,7 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("unique generation of values for category") {
-        val config = FakerConfig.builder().create { uniqueGeneratorRetryLimit = 100 }
+        val config = FakerConfig.create { uniqueGeneratorRetryLimit = 100 }
 
         context("collection of values is generated") {
             val faker = Faker(config)
@@ -400,7 +400,7 @@ class UniqueDataProviderIT : DescribeSpec({
     }
 
     describe("local unique generation") {
-        val config = FakerConfig.builder().create {
+        val config = FakerConfig.create {
             uniqueGeneratorRetryLimit = 100
         }
         val faker = Faker(config)
