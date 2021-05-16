@@ -6,9 +6,9 @@ import io.github.serpro69.kfaker.provider.*
 import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
 /**
- * Object provides functionality to generate fake data.
+ * Provides access to fake data generators.
  *
- * Each category from this [Faker] is represented by a property that has the same name as the `.yml` file.
+ * Each category (generator) from this [Faker] is represented by a property that has the same name as the `.yml` file.
  */
 class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = FakerConfig.builder().create { }) {
     private val fakerService: FakerService = FakerService(this, fakerConfig.locale, fakerConfig.random)
