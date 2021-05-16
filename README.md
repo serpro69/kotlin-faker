@@ -21,6 +21,7 @@
     - [Generating data](#generating-data)
     - [Configuring Faker](#configuring-faker)
         - [Default configuration](#default-configuration)
+        - [Using Kotlin DSL](#using-kotlin-dsl)
         - [Deterministic Random](#deterministic-random)
         - [Generating unique values](#generating-unique-values)
         - [Localized dictionary](#localized-dictionary)
@@ -123,6 +124,20 @@ If no `FakerConfig` instance is passed to `Faker` constructor then default confi
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
 - `uniqueGeneratorRetryLimit` is set to `100`
+
+#### Using Kotlin DSL
+
+Faker can use Kotlin DSL to create and configure Faker instances
+
+```kotlin
+val faker = faker { 
+    config { 
+        random = Random()
+        locale = "nl"
+        uniqueGeneratorRetryLimit = 111
+    }
+}
+```
 
 #### Deterministic Random
 
