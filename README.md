@@ -141,8 +141,7 @@ val faker = faker {
 
 #### Deterministic Random
 
-Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to provide deterministic
-output of repeated function invocations.
+Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to provide deterministic output of repeated function invocations.
 
 ```kotlin
 val fakerConfig = FakerConfig.builder().create {
@@ -159,6 +158,13 @@ val name1 = otherFaker.name.name()
 
 city1 == city2 // => true
 name1 == name2 // => true
+```
+
+Alternatively a seed can be specified instead of passing an instance of `java.util.Random`:
+```kotlin
+val fakerConfig = FakerConfig.builder().create {
+    randomSeed = 42
+}
 ```
 
 #### Generating unique values
