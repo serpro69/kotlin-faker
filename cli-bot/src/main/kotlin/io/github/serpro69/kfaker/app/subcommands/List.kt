@@ -44,7 +44,7 @@ object List : Runnable {
 
         val renderedProviders = if (providerNames.isNotEmpty()) {
             introspector.providerFunctions.filter { (provider, _) ->
-                providerNames.any { provider.name.toLowerCase().contains(it.toLowerCase() ) }
+                providerNames.any { provider.name.lowercase().contains(it.lowercase() ) }
             }.map { (provider, functions) ->
                 renderProvider(options, faker, provider, functions)
             }

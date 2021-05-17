@@ -17,8 +17,8 @@ class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun characters() = resolve("characters")
     fun titles() = resolve("titles")
     fun planets() = resolve("planets")
-    fun quotes(character: String) = resolve("quotes", character.toLowerCase().replace("_", " "))
-    fun sayings(origin: String) = resolve("sayings", origin.toLowerCase().replace("_", " "))
+    fun quotes(character: String) = resolve("quotes", character.lowercase().replace("_", " "))
+    fun sayings(origin: String) = resolve("sayings", origin.lowercase().replace("_", " "))
 
     // TODO: 3/10/2019 would it be better to have enums for functions such as `quotes` to offer constrained number of values for `character`
 }

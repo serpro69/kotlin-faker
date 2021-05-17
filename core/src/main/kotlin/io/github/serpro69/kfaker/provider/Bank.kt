@@ -18,7 +18,7 @@ class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun name() = resolve("name")
     fun swiftBic() = resolve("swift_bic")
     fun ibanDetails(countryCode: String): String {
-        val regex = resolve("iban_details", countryCode.toLowerCase())
+        val regex = resolve("iban_details", countryCode.lowercase())
             .drop(1)
             .dropLast(1)
             .split(", ")

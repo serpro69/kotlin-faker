@@ -22,7 +22,7 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
             fakerService.faker.name.name()
                 .replace(".", "")
                 .replace(" ", ".")
-                .toLowerCase()
+                .lowercase()
         } else name.replace(" ", "")
 
         return "$localName@${domain()}"
@@ -32,5 +32,5 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     fun safeEmail(name: String = "") = "${email(name).substringBeforeLast(".")}.test"
 
     fun domainSuffix() = resolve("domain_suffix")
-    fun userAgent(browserType: String) = resolve("user_agent", browserType.toLowerCase())
+    fun userAgent(browserType: String) = resolve("user_agent", browserType.lowercase())
 }

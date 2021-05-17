@@ -414,7 +414,7 @@ internal class FakerService @JvmOverloads internal constructor(
      */
     private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): KFunction<*> {
         val propertyName = rawString.split("_").mapIndexed { i: Int, s: String ->
-            if (i == 0) s else s.substring(0, 1).toUpperCase() + s.substring(1)
+            if (i == 0) s else s.substring(0, 1).uppercase() + s.substring(1)
         }.joinToString("")
 
         return this::class.declaredFunctions.first { it.name == propertyName }
@@ -425,7 +425,7 @@ internal class FakerService @JvmOverloads internal constructor(
      */
     private fun getProvider(simpleClassName: String): FakeDataProvider {
         val kProp = faker::class.declaredMemberProperties.first {
-            it.name.toLowerCase() == simpleClassName.toLowerCase()
+            it.name.lowercase() == simpleClassName.lowercase()
         }
 
         return kProp.call(faker) as FakeDataProvider

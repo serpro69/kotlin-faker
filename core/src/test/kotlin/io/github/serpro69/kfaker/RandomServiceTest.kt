@@ -100,7 +100,7 @@ internal class RandomServiceTest : DescribeSpec({
             context("upperCase is true") {
                 it("random upper-case letter is generated") {
                     val letter = randomService.nextLetter(true).toString()
-                    source.toUpperCase() shouldContain letter
+                    source.uppercase() shouldContain letter
                 }
             }
 

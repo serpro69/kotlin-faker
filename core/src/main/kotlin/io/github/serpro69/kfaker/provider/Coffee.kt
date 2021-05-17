@@ -15,7 +15,7 @@ class Coffee internal constructor(fakerService: FakerService) : AbstractFakeData
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun country() = resolve("country")
-    fun regions(country: String) = resolve("regions", country.toLowerCase())
+    fun regions(country: String) = resolve("regions", country.lowercase())
     fun variety() = resolve("variety")
     fun notes() = resolve("notes")
     fun blendName() = resolve("blend_name")
