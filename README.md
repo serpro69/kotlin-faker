@@ -93,13 +93,24 @@ dependencies {
 
 ***Snapshots are also available using the following repository: `https://oss.sonatype.org/content/repositories/snapshots/`***
 
-For example, to enable snapshots with gradle:
+**With gradle**
 ```groovy
 repositories {
     maven {
         url = 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
 }
+```
+
+**With maven**
+```xml
+<repositories>
+    <repository>
+        <id>sonatype-snapshot</id>
+        <name>Sonatype Snapshot</name>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
 ```
 
 **Downloading a jar**  
