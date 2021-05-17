@@ -54,7 +54,7 @@ class FakerConfig private constructor(
 
 @Deprecated(
     message = "This function is deprecated and will be removed in future releases",
-    ReplaceWith("fakerConfig { ]"),
+    ReplaceWith("fakerConfig { }"),
     level = DeprecationLevel.WARNING
 )
 fun FakerConfig.Builder.create(block: FakerConfig.Builder.() -> Unit) = this.apply(block).build()
