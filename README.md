@@ -863,9 +863,7 @@ Alternatively to the above targets from [Makefile](Makefile) can be used for the
 
 ## Contributing
 
-Feel free to submit a [pull request](https://github.com/serpro69/kotlin-faker/compare)
-and/or open a [new issue](https://github.com/serpro69/kotlin-faker/issues/new)
-if you would like to contribute.
+The [CONTRIBUTING](CONTRIBUTING.md) guidelines should help in getting you started on how to contribute to this project.
 
 ## Thanks
 

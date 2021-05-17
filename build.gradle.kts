@@ -5,12 +5,13 @@ import io.qameta.allure.gradle.task.AllureServe
 
 plugins {
 //    `kotlin-dsl` version "1.3.6" apply false
-    kotlin("jvm") version "1.4.31" apply false
+    kotlin("jvm") version "1.5.0" apply false
     id("net.vivin.gradle-semantic-build-versioning") apply false
     id("com.adarshr.test-logger") version "2.0.0" apply false
     id("com.github.ben-manes.versions") version "0.28.0" apply false
     id("io.qameta.allure") version "2.8.1"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0" apply false
 }
 
 repositories {
@@ -34,6 +35,7 @@ subprojects {
         plugin("com.adarshr.test-logger")
         plugin("com.github.ben-manes.versions")
         plugin("io.qameta.allure")
+        plugin("com.github.johnrengelman.shadow")
     }
 
     dependencies {
@@ -44,16 +46,17 @@ subprojects {
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
         implementation("org.slf4j:slf4j-api:1.7.30")
-        testImplementation("io.kotest:kotest-runner-junit5:4.4.1")
-        testImplementation("io.kotest:kotest-extensions-allure:4.4.1")
-        testImplementation("io.kotest:kotest-runner-junit5-jvm:4.4.1")
-        testImplementation("io.kotest:kotest-assertions-core-jvm:4.4.1")
-        testImplementation("io.kotest:kotest-property-jvm:4.4.1")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.1")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+        implementation("com.github.mifmif:generex:1.0.2")
+        testImplementation("io.kotest:kotest-runner-junit5:4.5.0")
+        testImplementation("io.kotest:kotest-extensions-allure:4.4.3")
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:4.5.0")
+        testImplementation("io.kotest:kotest-assertions-core-jvm:4.5.0")
+        testImplementation("io.kotest:kotest-property-jvm:4.5.0")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
         testRuntimeOnly("ch.qos.logback:logback-core:1.2.3")
         testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
-        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.7")
+        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.8")
     }
 
     configure<JavaPluginConvention> {
