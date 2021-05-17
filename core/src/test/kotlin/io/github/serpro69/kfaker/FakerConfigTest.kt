@@ -12,9 +12,7 @@ class FakerConfigTest : DescribeSpec() {
 
     init {
         describe("random is set through FakerConfig") {
-            val fakerConfig = FakerConfig.create {
-                random = Random(42)
-            }
+            val fakerConfig = fakerConfig { random = Random(42) }
 
             val faker = Faker(fakerConfig)
 
@@ -22,9 +20,7 @@ class FakerConfigTest : DescribeSpec() {
             val name1 = faker.name.name()
 
             context("random is seeded with the same value") {
-                val otherFakerConfig = FakerConfig.create {
-                    random = Random(42)
-                }
+                val otherFakerConfig = fakerConfig { random = Random(42) }
                 val otherFaker = Faker(otherFakerConfig)
 
                 it("the output of repeated function calls should be the same") {
@@ -58,9 +54,7 @@ class FakerConfigTest : DescribeSpec() {
         }
 
         describe("randomSeed is set through FakerConfig") {
-            val fakerConfig = FakerConfig.create {
-                randomSeed = 42
-            }
+            val fakerConfig = fakerConfig { random = Random(42) }
 
             val faker = Faker(fakerConfig)
 
@@ -68,9 +62,7 @@ class FakerConfigTest : DescribeSpec() {
             val name1 = faker.name.name()
 
             context("another randomSeed is set with the same value") {
-                val otherFakerConfig = FakerConfig.create {
-                    randomSeed = 42
-                }
+                val otherFakerConfig = fakerConfig { random = Random(42) }
                 val otherFaker = Faker(otherFakerConfig)
 
                 it("the output of repeated function calls should be the same") {
@@ -85,9 +77,7 @@ class FakerConfigTest : DescribeSpec() {
             }
 
             context("random is seeded with the same value") {
-                val otherFakerConfig = FakerConfig.create {
-                    random = Random(42)
-                }
+                val otherFakerConfig = fakerConfig { random = Random(42) }
                 val otherFaker = Faker(otherFakerConfig)
 
                 it("the output of repeated function calls should be the same") {

@@ -86,7 +86,7 @@ fun renderProvider(
     }
 
     return if (options.javaSyntax) {
-        val getterName = "get${provider.name.first().toUpperCase()}${provider.name.substring(1)}()"
+        val getterName = "get${provider.name.first().uppercase()}${provider.name.substring(1)}()"
         Renderer(getterName, renderedFunctions)
     } else {
         Renderer(provider.name, renderedFunctions)

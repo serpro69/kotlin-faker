@@ -120,7 +120,7 @@ this [link](https://dl.bintray.com/serpro69/maven/io/github/serpro69/kotlin-fake
 ### Generating data
 
 ```kotlin
-val faker = Faker()
+val faker = faker { }
 
 faker.name.firstName() // => Ana
 faker.address.city() // => New York
@@ -130,7 +130,7 @@ faker.address.city() // => New York
 
 #### Default configuration
 
-If no `FakerConfig` instance is passed to `Faker` constructor then default configuration will be used:
+If no `fakerConfig` instance is passed to `Faker` constructor, or to the `faker` builder DSL, then default configuration will be used:
 
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
@@ -155,15 +155,11 @@ val faker = faker {
 Faker supports seeding of it's PRNG (pseudo-random number generator) through configuration to provide deterministic output of repeated function invocations.
 
 ```kotlin
-val fakerConfig = FakerConfig.create {
-    random = Random(42)
-}
-
-val faker = Faker(fakerConfig)
+val faker = faker { config { random = Random(42) } }
 val city1 = faker.address.city()
 val name1 = faker.name.name()
 
-val otherFaker = Faker(fakerConfig)
+val otherFaker = faker { config { random = Random(42) } }
 val city1 = otherFaker.address.city()
 val name1 = otherFaker.name.name()
 
@@ -173,7 +169,7 @@ name1 == name2 // => true
 
 Alternatively a seed can be specified instead of passing an instance of `java.util.Random`:
 ```kotlin
-val fakerConfig = FakerConfig.create {
+val fakerConfig = fakerConfig {
     randomSeed = 42
 }
 ```
@@ -235,7 +231,7 @@ then `RetryLimitException` will be thrown.
 It is possible to re-configure the default value through `FakerConfig`:
 
 ```kotlin
-val config = FakerConfig.create {
+val config = fakerConfig {
     uniqueGeneratorRetryLimit = 1000
 }
 
@@ -309,7 +305,7 @@ faker.address.unique.country() // will still generate unique values, but won't c
 `Faker` can be configured to use a localized dictionary file instead of the default `en` locale.
 
 ```kotlin
-val fakerConfig = FakerConfig.create {
+val fakerConfig = fakerConfig {
     locale = "nb-NO"
 }
 
@@ -384,10 +380,7 @@ val city1 = faker.address.city() // => Oslo
 Using a non-default locale will replace the values in some of the providers with the values from localized dictionary.
 
 ```kotlin
-val fakerConfig = FakerConfig.create {
-    locale = "es"
-}
-val faker = Faker(fakerConfig)
+val faker = faker { config { locale = "es" } }
 faker.address.city() // => Barcelona
 ```
 
@@ -398,10 +391,7 @@ that is present in the default locale, then non-localized value will be used ins
 val faker = Faker()
 faker.gameOfThrones.cities() // => Braavos
 
-val fakerConfig = FakerConfig.create {
-    locale = "nb-NO"
-}
-val localizedFaker = Faker(fakerConfig)
+val localizedFaker = faker { config { locale = "nb-NO" } }
 // `game_of_thrones` category is not localized for `nb-NO` locale
 localizedFaker.gameOfThrones.cities() // => Braavos
 ```
@@ -414,19 +404,19 @@ Kotlin-to-Java interop.
 Configuring `Faker`:
 
 ```java
-FakerConfig fakerConfig = FakerConfig.create(fromConsumer(builder -> {
-    builder.setRandom(new Random(42));
+FakerConfig fakerConfig = FakerConfigBuilder.fakerConfig(fromConsumer(builder -> {
     builder.setLocale("en-AU");
+    builder.setRandom(new Random(42));
 }));
 ```
 
 If `builder` parameter is not called with help of `fromConsumer` method, then explicit return should be specified:
 
 ```java
-FakerConfig fakerConfig = FakerConfig.create(builder -> {
+FakerConfig fakerConfig = FakerConfigBuilder.fakerConfig(builder -> {
     builder.setRandom(new Random(42));
     builder.setLocale("en-AU");
-    return Unit.INSTANCE
+    return Unit.INSTANCE;
 });
 ```
 
