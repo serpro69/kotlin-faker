@@ -1,12 +1,12 @@
 package io.github.serpro69.kfaker.app.subcommands
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
 import io.github.serpro69.kfaker.app.subcommands.Lookup.functionName
+import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
 
 /**
@@ -29,7 +29,7 @@ object Lookup : Runnable {
     lateinit var functionName: String
 
     private fun printMatchingFunctions() {
-        val fakerConfig = FakerConfig.create {
+        val fakerConfig = fakerConfig {
             locale = options.locale
         }
 
