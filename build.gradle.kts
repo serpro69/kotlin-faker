@@ -11,7 +11,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.28.0" apply false
     id("io.qameta.allure") version "2.8.1"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("com.github.johnrengelman.shadow") version "6.1.0" apply false
+    id("com.github.johnrengelman.shadow") version "7.0.0" apply false
 }
 
 repositories {
@@ -24,7 +24,6 @@ subprojects {
     version = rootProject.version
 
     repositories {
-        jcenter()
         mavenCentral()
     }
 
@@ -131,6 +130,8 @@ subprojects {
         aspectjweaver = false
         aspectjVersion = "1.9.6"
         autoconfigure = true
+        // TODO check if fixed in future versions of allure
+        configuration = "testRuntimeOnly" // defaults to 'testCompile' which is incompatible with gradle 7.x
         allureJavaVersion = "2.13.8"
         useJUnit5 {
             version = "2.13.8"
