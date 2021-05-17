@@ -174,14 +174,15 @@ internal enum class CategoryName {
 }
 
 @Suppress("EXPERIMENTAL_FEATURE_WARNING")
-internal inline class RawExpression(val value: String)
+@JvmInline
+internal value class RawExpression(val value: String)
 
 /**
  * Returns [CategoryName] by [name] string (case-insensitive).
  */
-internal fun getCategoryName(name: String) = CategoryName.values().first { it.toLowerCase() == name.toLowerCase() }
+internal fun getCategoryName(name: String) = CategoryName.values().first { it.toLowerCase() == name.lowercase() }
 
-internal fun CategoryName.toLowerCase() = this.name.toLowerCase()
+internal fun CategoryName.toLowerCase() = this.name.lowercase()
 
 /**
  * Gets [Category] by its [name] from this [Dictionary].

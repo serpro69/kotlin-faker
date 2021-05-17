@@ -38,7 +38,7 @@ object Lookup : Runnable {
         val introspector = Introspector(faker)
 
         val filteredMap = introspector.providerFunctions.mapValuesTo(mutableMapOf()) { (_, v) ->
-            v.filter { it.name.toLowerCase().contains(functionName.toLowerCase()) }
+            v.filter { it.name.lowercase().contains(functionName.lowercase()) }
         }.filterValues { it.isNotEmpty() }
 
         val renderedProviders = filteredMap.map { (provider, functions) ->

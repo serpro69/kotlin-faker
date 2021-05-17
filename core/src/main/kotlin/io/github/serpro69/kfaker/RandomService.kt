@@ -26,7 +26,7 @@ class RandomService internal constructor(private val random: Random) {
     fun <T> randomValue(array: Array<T>) = array[nextInt(array.size)]
 
     fun nextLetter(upper: Boolean): Char {
-        val source = if (upper) alphabeticSource.toUpperCase() else alphabeticSource
+        val source = if (upper) alphabeticSource.uppercase() else alphabeticSource
 
         return source[nextInt(source.length)]
     }
