@@ -46,6 +46,7 @@ subprojects {
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
         implementation("org.slf4j:slf4j-api:1.7.30")
+        implementation("com.github.mifmif:generex:1.0.2")
         testImplementation("io.kotest:kotest-runner-junit5:4.5.0")
         testImplementation("io.kotest:kotest-extensions-allure:4.4.3")
         testImplementation("io.kotest:kotest-runner-junit5-jvm:4.5.0")
