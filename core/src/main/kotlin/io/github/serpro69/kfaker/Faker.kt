@@ -194,7 +194,7 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = fa
     val zelda: Zelda = Zelda(fakerService)
 
     @FakerDsl
-    class Builder {
+    class Builder internal constructor(){
         private var config = fakerConfig { }
 
         fun config(block: FakerConfig.Builder.() -> Unit) {

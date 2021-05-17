@@ -40,7 +40,7 @@ class FakerConfig private constructor(
      * Default: `100`.
      */
     @FakerDsl
-    class Builder {
+    class Builder internal constructor() {
         var locale = "en"
         var random = Random()
         var randomSeed: Long? = null
