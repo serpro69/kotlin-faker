@@ -119,7 +119,7 @@ faker.address.city() // => New York
 
 #### Default configuration
 
-If `config` instance is passed to the `faker` builder dsl then default configuration will be used:
+If no `fakerConfig` instance is passed to `Faker` constructor, or to the `faker` builder DSL, then default configuration will be used:
 
 - `locale` is set to `en`
 - `random` is seeded with a pseudo-randomly generated number.
