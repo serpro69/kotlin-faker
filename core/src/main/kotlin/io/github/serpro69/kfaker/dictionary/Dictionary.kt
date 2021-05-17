@@ -174,7 +174,8 @@ internal enum class CategoryName {
 }
 
 @Suppress("EXPERIMENTAL_FEATURE_WARNING")
-internal inline class RawExpression(val value: String)
+@JvmInline
+internal value class RawExpression(val value: String)
 
 /**
  * Returns [CategoryName] by [name] string (case-insensitive).
