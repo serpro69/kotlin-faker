@@ -107,9 +107,7 @@ class FakerIT : DescribeSpec({
         val peruOne = faker.address.countryByCode("PE")
 
         context("it is re-initialized with another locale value") {
-            val config = FakerConfig.create {
-                locale = "nb-NO"
-            }
+            val config = fakerConfig { locale = "nb-NO" }
             val otherFaker = Faker(config)
 
             it("matching keys should be overwritten in the re-initialized dictionary") {
@@ -154,9 +152,7 @@ class FakerIT : DescribeSpec({
         it("Faker should be initialized without exceptions") {
             assertSoftly {
                 locales?.forEach {
-                    val config = FakerConfig.create {
-                        locale = it
-                    }
+                    val config = fakerConfig { locale = it }
                     assertDoesNotThrow { Faker(config) }
                 }
             }

@@ -1,11 +1,11 @@
 package io.github.serpro69.kfaker.app.subcommands
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
+import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
 
 /**
@@ -34,7 +34,7 @@ object List : Runnable {
     var providerNames = arrayOf<String>()
 
     private fun printProvidersList() {
-        val fakerConfig = FakerConfig.create {
+        val fakerConfig = fakerConfig {
             locale = options.locale
         }
 
@@ -44,7 +44,7 @@ object List : Runnable {
 
         val renderedProviders = if (providerNames.isNotEmpty()) {
             introspector.providerFunctions.filter { (provider, _) ->
-                providerNames.any { provider.name.toLowerCase().contains(it.toLowerCase() ) }
+                providerNames.any { provider.name.toLowerCase().contains(it.toLowerCase()) }
             }.map { (provider, functions) ->
                 renderProvider(options, faker, provider, functions)
             }

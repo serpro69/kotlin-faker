@@ -11,7 +11,7 @@ class FakerConfigTestJava {
 
     @Test
     void testConfiguringFakerInJava() {
-        FakerConfig fakerConfig = FakerConfig.create(fromConsumer(builder -> {
+        FakerConfig fakerConfig = FakerConfigBuilder.fakerConfig(fromConsumer(builder -> {
             builder.setLocale("en-AU");
             builder.setRandom(new Random(42));
         }));

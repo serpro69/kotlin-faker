@@ -17,16 +17,10 @@ class FakerConfig private constructor(
         @JvmStatic
         @Deprecated(
             message = "This function is deprecated and will be removed in future releases",
-            ReplaceWith("FakerConfig.create { }"),
+            ReplaceWith("fakerConfig { }"),
             level = DeprecationLevel.WARNING
         )
         fun builder() = Builder()
-
-        /**
-         * Creates an instance of [FakerConfig] with the config properties that were passed to the function [block].
-         */
-        @JvmStatic
-        fun create(block: Builder.() -> Unit): FakerConfig = Builder().apply(block).build()
     }
 
     /**
@@ -60,9 +54,12 @@ class FakerConfig private constructor(
 
 @Deprecated(
     message = "This function is deprecated and will be removed in future releases",
-    ReplaceWith("FakerConfig.create { }"),
+    ReplaceWith("fakerConfig { }"),
     level = DeprecationLevel.WARNING
 )
 fun FakerConfig.Builder.create(block: FakerConfig.Builder.() -> Unit) = this.apply(block).build()
 
-fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.create(block)
+/**
+ * Creates an instance of [FakerConfig] with the config properties that were passed to the function [block].
+ */
+fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.Builder().apply(block).build()
