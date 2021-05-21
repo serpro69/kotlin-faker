@@ -3,16 +3,28 @@ package io.github.serpro69.kfaker
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldHave
 import io.kotest.matchers.string.shouldContain
+import io.kotest.matchers.types.beInstanceOf
 import java.util.*
 
 internal class RandomServiceTest : DescribeSpec({
     describe("RandomService instance") {
         val randomService = RandomService(Random())
 
-        context("calling nextInt(min, max)") {
+        context("nextInt(bound) fun") {
+            val values = List(100) { randomService.nextInt(10) }
+
+            it("return value should be within specified range") {
+                values.all { it < 10 } shouldBe true
+            }
+        }
+
+        context("nextInt(min, max) fun") {
             val values = List(100) { randomService.nextInt(6..8) }
 
             it("return value should be within specified range") {
@@ -20,7 +32,7 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("calling nextInt(intRange)") {
+        context("nextInt(intRange) fun") {
             val values = List(100) { randomService.nextInt(3..9) }
 
             it("return value should be within specified range") {
@@ -28,7 +40,7 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("calling randomValue<T>(list)") {
+        context("randomValue<T>(list) fun") {
             context("list is not empty") {
                 val values = List(100) { randomService.nextInt(3..9) }
                 val value = randomService.randomValue(values)
@@ -61,7 +73,7 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("calling randomValue<T>(array)") {
+        context("randomValue<T>(array) fun") {
             context("array is not empty") {
                 val values = Array(100) { randomService.nextInt(3..9) }
                 val value = randomService.randomValue(values)
@@ -94,22 +106,81 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("calling nextChar()") {
+        context("nextLetter() fun") {
             val source = "qwertyuiopasdfghjklzxcvbnm"
 
-            context("upperCase is true") {
-                it("random upper-case letter is generated") {
-                    val letter = randomService.nextLetter(true).toString()
-                    source.uppercase() shouldContain letter
+            context("upper is set to false") {
+                it("random lower-case letter is generated") {
+                    val chars = List(1000) { randomService.nextLetter(false) }
+                    chars.all { source.contains(it, ignoreCase = false) }
                 }
             }
 
-            context("upperCase is false") {
-                it("random lower-case letter is generated") {
-                    val letter = randomService.nextLetter(false).toString()
-                    source shouldContain letter
+            context("upper is set to true") {
+                it("random upper-case letter is generated") {
+                    val chars = List(1000) { randomService.nextLetter(true) }
+                    chars.all { source.contains(it, ignoreCase = false) }
                 }
+            }
+        }
+
+        context("nextLong(bound) fun") {
+            val values = List(100) { randomService.nextLong(10) }
+
+            it("return value should be within specified range") {
+                values.all { it < 10 } shouldBe true
+            }
+        }
+
+        context("nextString() fun") {
+            it("default generated string is 100 char length") {
+                randomService.nextString().length shouldBe 100
+            }
+        }
+
+        context("nextEnum() fun") {
+            it("should return a random enum entry of TestEnum type") {
+                val enum = randomService.nextEnum<TestEnum>()
+                enum shouldBeIn TestEnum.values()
+            }
+
+            it("should return a random enum entry of Class<TestEnum> type") {
+                val enum = randomService.nextEnum(TestEnum::class.java)
+                enum shouldBeIn TestEnum.values()
+            }
+
+            it("should return a random enum entry from an array of TestEnum types") {
+                val enum = randomService.nextEnum(TestEnum.values())
+                enum shouldBeIn TestEnum.values()
+            }
+
+            it("should return a random enum entry based on a predicate") {
+                val enum = randomService.nextEnum(TestEnum::class.java) {
+                    it == TestEnum.THREE || it == TestEnum.SIX
+                }
+                enum shouldBeIn listOf(TestEnum.THREE, TestEnum.SIX)
+            }
+
+            it("should return not return an enum entry if it's name is excluded") {
+                val enum = randomService.nextEnum<TestEnum>(TestEnum.ONE.name)
+                enum shouldBeIn listOf(TestEnum.TWO, TestEnum.THREE, TestEnum.FOUR, TestEnum.FIVE, TestEnum.SIX)
+            }
+        }
+
+        context("nextUUID() fun") {
+            val uuid = randomService.nextUUID()
+            it("random UUID is generated") {
+                UUID.fromString(uuid) should beInstanceOf(UUID::class)
             }
         }
     }
 })
+
+enum class TestEnum {
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX
+}
