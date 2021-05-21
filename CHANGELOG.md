@@ -9,8 +9,8 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
 - [#77](https://github.com/serpro69/kotlin-faker/pull/77) [core] Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
 - [#69](https://github.com/serpro69/kotlin-faker/pull/69) [core] Passing `seed` directly to `FakerConfig` instead of through `java.util.Random` instance
-- [#75](https://github.com/serpro69/kotlin-faker/pull/71) DSL for creating and configuring `Faker`
-- Support for Kotlin `1.5.x`
+- [#71](https://github.com/serpro69/kotlin-faker/pull/71) [core] DSL for creating and configuring `Faker`
+- [#78](https://github.com/serpro69/kotlin-faker/pull/78) [core] Support sealed classes in `RandomProvider#randomClassInstance` fun
 
 ### Changed
 - Configurable `length` of the string generated with `RandomService#nextString`
