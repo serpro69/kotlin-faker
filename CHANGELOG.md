@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [UNRELEASED]
+### Added
+- [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
+- [#77](https://github.com/serpro69/kotlin-faker/pull/77) [core] Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
+- [#69](https://github.com/serpro69/kotlin-faker/pull/69) [core] Passing `seed` directly to `FakerConfig` instead of through `java.util.Random` instance
+- [#75](https://github.com/serpro69/kotlin-faker/pull/71) DSL for creating and configuring `Faker`
+- Support for Kotlin `1.5.x`
+
+### Changed
+- Configurable `length` of the string generated with `RandomService#nextString`
+
+### Fixed
+- [#65](https://github.com/serpro69/kotlin-faker/issues/65) [core] Could not initialize class `io.github.serpro69.kfaker.Mapper` with SpringBoot `2.4.x`
+- [#60](https://github.com/serpro69/kotlin-faker/issues/60) [core] Move out of Bintray/Jcenter
+
 ## [v1.7.1] - 2020-04-28
 ### Fixed
 - [#45](https://github.com/serpro69/kotlin-faker/pull/45) [core] Parameter 'city_name' not found in 'address'
