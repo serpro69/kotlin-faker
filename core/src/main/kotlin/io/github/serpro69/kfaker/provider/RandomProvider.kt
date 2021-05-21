@@ -84,6 +84,7 @@ class RandomProvider internal constructor(random: Random) {
                         klass.predefinedTypeOrNull(config)
                             ?: klass.randomPrimitiveOrNull()
                             ?: klass.randomEnumOrNull()
+                            ?: klass.randomSealedClassOrNull(config)
                             ?: klass.randomClassInstance(config)
                     }
                 }
@@ -117,9 +118,13 @@ class RandomProvider internal constructor(random: Random) {
     /**
      * Handles generation of enums types since they do not have a public constructor.
      */
-    private fun KClass<*>.randomEnumOrNull(): Any? =
-        if (this.java.isEnum) randomService.randomValue(this.java.enumConstants) else null
+    private fun KClass<*>.randomEnumOrNull(): Any? {
+        return if (this.java.isEnum) randomService.randomValue(this.java.enumConstants) else null
+    }
 
+    private fun KClass<*>.randomSealedClassOrNull(config: RandomProviderConfig): Any? {
+        return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config) else null
+    }
 }
 
 /**

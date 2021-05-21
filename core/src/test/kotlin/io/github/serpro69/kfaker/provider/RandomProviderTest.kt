@@ -112,8 +112,20 @@ class RandomProviderTest : DescribeSpec({
         }
     }
 
-    describe("a TestClass with non-empty constructor with enum type") {
+    describe("a TestClass with non-empty constructor with enum type param") {
         class TestClass(val enum: TestEnum)
+
+        context("creating a random instance of the class") {
+            val testClass: TestClass = randomProvider.randomClassInstance()
+
+            it("it should be instance of TestClass") {
+                testClass shouldBe instanceOf(TestClass::class)
+            }
+        }
+    }
+
+    describe("a TestClass with non-empty constructor with sealed type param") {
+        class TestClass(val sealed: TestSealedCls)
 
         context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
@@ -302,4 +314,10 @@ enum class TestEnum {
     KOTLIN,
     JAVA,
     GO
+}
+
+sealed class TestSealedCls {
+    object Kotlin : TestSealedCls()
+    class Java : TestSealedCls()
+    class Go(val name: String) : TestSealedCls()
 }
