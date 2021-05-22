@@ -11,6 +11,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
+    implementation("org.yaml:snakeyaml:1.27")
     shadow(kotlin("stdlib-jdk8"))
     shadow(kotlin("reflect"))
     shadow("org.slf4j:slf4j-api:1.7.30")
@@ -35,10 +36,12 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     archiveBaseName.set(rootProject.name)
     archiveClassifier.set("")
     relocate("com.fasterxml", "faker.com.fasterxml")
+    relocate("org.yaml", "faker.org.yaml")
     dependencies {
         include {
             it.name.startsWith(project.group.toString()) ||
-                it.name.startsWith("com.fasterxml")
+                it.name.startsWith("com.fasterxml") ||
+                it.name.startsWith("org.yaml")
         }
     }
     manifest {
