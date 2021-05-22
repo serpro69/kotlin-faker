@@ -200,6 +200,11 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     class Builder internal constructor(){
         private var config = io.github.serpro69.kfaker.fakerConfig { }
 
+        @Deprecated(
+            message = "This API is unstable and might change in the final 1.8.0 release.",
+            level = DeprecationLevel.WARNING,
+            replaceWith = ReplaceWith(expression = "fakerConfig{ }")
+        )
         fun config(block: FakerConfig.Builder.() -> Unit) {
             config = io.github.serpro69.kfaker.fakerConfig(block)
         }
