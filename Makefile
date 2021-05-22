@@ -1,3 +1,11 @@
+snapshot-in-pre-release:
+	./gradlew clean test \
+	printVersion \
+	nativeImage \
+	publishToSonatype \
+	-PpromoteToRelease \
+	--info
+
 snapshot-major:
 	./gradlew clean test \
 	printVersion \
