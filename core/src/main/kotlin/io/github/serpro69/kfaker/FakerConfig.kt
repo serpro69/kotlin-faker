@@ -16,7 +16,7 @@ class FakerConfig private constructor(
     companion object {
         @JvmStatic
         @Deprecated(
-            message = "This function is deprecated and will be removed in future releases",
+            message = "This function is deprecated and will be removed in 1.9.0",
             ReplaceWith("fakerConfig { }"),
             level = DeprecationLevel.WARNING
         )
@@ -53,7 +53,7 @@ class FakerConfig private constructor(
 }
 
 @Deprecated(
-    message = "This function is deprecated and will be removed in future releases",
+    message = "This function is deprecated and will be removed in 1.9.0",
     ReplaceWith("fakerConfig { }"),
     level = DeprecationLevel.WARNING
 )

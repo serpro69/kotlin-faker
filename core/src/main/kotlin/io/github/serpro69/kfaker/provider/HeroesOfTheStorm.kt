@@ -15,12 +15,6 @@ class HeroesOfTheStorm internal constructor(fakerService: FakerService) : Abstra
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun battlegrounds() = resolve("battlegrounds")
-    @Deprecated(
-        message = "Deprecated since 1.5.0 due to changes in dict file. Will be removed in 1.6.0",
-        replaceWith = ReplaceWith("classNames()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun classes() = classNames()
     fun classNames() = resolve("class_names")
     fun heroes() = resolve("heroes")
     fun quotes() = resolve("quotes")
