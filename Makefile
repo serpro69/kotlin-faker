@@ -2,7 +2,7 @@ snapshot-major:
 	./gradlew clean test \
 	printVersion \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
 	-PbumpComponent=major \
 	--info
 
@@ -10,7 +10,7 @@ snapshot-minor:
 	./gradlew clean test \
 	printVersion \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
 	-PbumpComponent=minor \
 	--info
 
@@ -18,7 +18,7 @@ snapshot-patch:
 	./gradlew clean test \
 	printVersion \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
 	-PbumpComponent=patch \
 	--info
 
@@ -26,7 +26,8 @@ pre-release-major:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=major \
 	--info
 
@@ -36,7 +37,8 @@ pre-release-minor:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=minor \
 	--info
 
@@ -46,7 +48,8 @@ pre-release-patch:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=patch \
 	--info
 
@@ -56,7 +59,8 @@ next-pre-release:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PpreRelease \
 	--info
 
@@ -66,7 +70,8 @@ promote-to-release:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PpromoteToRelease \
 	--info
 
@@ -76,7 +81,8 @@ release-major:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=major \
 	--info
 
@@ -86,7 +92,8 @@ release-minor:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=minor \
 	--info
 
@@ -96,7 +103,8 @@ release-patch:
 	./gradlew clean test \
 	tag \
 	nativeImage \
-	publishFakerCorePublicationToSonatypeRepository \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=patch \
 	--info
 
