@@ -99,8 +99,7 @@ val pomLicenseUrl = "https://opensource.org/licenses/mit-license.php"
 val pomLicenseDist = "repo"
 
 val pomDeveloperId = "serpro69"
-val pomDeveloperName = "Sergii Prodanov"
-
+val pomDeveloperName = "Sergii Prodan"
 
 publishing {
     publications {

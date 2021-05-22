@@ -18,8 +18,10 @@ repositories {
     mavenCentral()
 }
 
+group = "io.github.serpro69"
+
 subprojects {
-    group = properties["GROUP"].toString()
+    group = parent?.group?.toString() ?: "io.github.serpro69"
 
     version = rootProject.version
 
@@ -173,6 +175,8 @@ val allureAggregatedServe by tasks.creating(AllureServe::class) {
 
 nexusPublishing {
     repositories {
-        sonatype()
+        sonatype {
+            stagingProfileId.set(properties["stagingProfileId"]?.toString())
+        }
     }
 }

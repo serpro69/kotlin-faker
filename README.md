@@ -841,6 +841,7 @@ To deploy to OSS Sonatype repo:
     - `signing.secretKeyRingFile=/home/user/.gnupg/secring.gpg`
     - `sonatypeUsername=<oss_user_token>`
     - `sonatypePassword=<oss_password_token>`
+    - `stagingProfileId=<oss_staging_profile_id>`
 - running `publishFakerCorePublicationToSonatypeRepository` will publish the artifacts to either staging release repo or to snapshots repo, depending on the current version
 
 ### Bumping versions
