@@ -18,7 +18,8 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ### Fixed
 - [#65](https://github.com/serpro69/kotlin-faker/issues/65) [core] Could not initialize class `io.github.serpro69.kfaker.Mapper` with SpringBoot `2.4.x`
 - [#60](https://github.com/serpro69/kotlin-faker/issues/60) [core] Move out of Bintray/Jcenter
-- [#79](https://github.com/serpro69/kotlin-faker/issues/79) [core] Exception in thread "main" java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
+- [#79](https://github.com/serpro69/kotlin-faker/issues/79) [core] java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
+- [#81](https://github.com/serpro69/kotlin-faker/issues/81) [core] `RandomProvider#randomClassInstance` fails for object types
 
 ## [v1.7.1] - 2020-04-28
 ### Fixed
