@@ -37,6 +37,18 @@ class RandomProviderTest : DescribeSpec({
         }
     }
 
+    describe("a TestClass with non-empty constructor with object type parameter") {
+        class TestClass(val testObject: TestObject)
+
+        context("creating a random instance of the class") {
+            val testClass: TestClass = randomProvider.randomClassInstance()
+
+            it("it should be instance of TestClass") {
+                testClass shouldBe instanceOf(TestClass::class)
+            }
+        }
+    }
+
     describe("a TestClass with non-empty constructor with primitive type parameters") {
         class TestClass(
             val double: Double,
@@ -127,11 +139,13 @@ class RandomProviderTest : DescribeSpec({
     describe("a TestClass with non-empty constructor with sealed type param") {
         class TestClass(val sealed: TestSealedCls)
 
-        context("creating a random instance of the class") {
-            val testClass: TestClass = randomProvider.randomClassInstance()
+        repeat(10) {
+            context("creating a random instance of the class run#$it") {
+                val testClass: TestClass = randomProvider.randomClassInstance()
 
-            it("it should be instance of TestClass") {
-                testClass shouldBe instanceOf(TestClass::class)
+                it("it should be instance of TestClass") {
+                    testClass shouldBe instanceOf(TestClass::class)
+                }
             }
         }
     }
@@ -316,8 +330,12 @@ enum class TestEnum {
     GO
 }
 
+@Suppress("CanSealedSubClassBeObject")
 sealed class TestSealedCls {
     object Kotlin : TestSealedCls()
     class Java : TestSealedCls()
-    class Go(val name: String) : TestSealedCls()
 }
+
+class Go(val name: String) : TestSealedCls()
+
+object TestObject

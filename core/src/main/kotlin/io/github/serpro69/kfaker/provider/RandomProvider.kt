@@ -54,7 +54,7 @@ class RandomProvider internal constructor(random: Random) {
             constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
         } else null
 
-        return if (defaultInstance != null) defaultInstance else {
+        return defaultInstance ?: objectInstance ?: run {
             val constructors = constructors
                 .filter { it.visibility == KVisibility.PUBLIC }
 
@@ -83,6 +83,7 @@ class RandomProvider internal constructor(random: Random) {
                     } else {
                         klass.predefinedTypeOrNull(config)
                             ?: klass.randomPrimitiveOrNull()
+                            ?: klass.objectInstance
                             ?: klass.randomEnumOrNull()
                             ?: klass.randomSealedClassOrNull(config)
                             ?: klass.randomClassInstance(config)
