@@ -5,7 +5,15 @@ import kotlin.experimental.and
 import kotlin.experimental.or
 
 /**
- * Wrapper around [Random] that contains some extra helper functions.
+ * Wrapper around [Random] that also contains some additional functions not covered by [Random].
+ *
+ * If two instances of this [RandomService] are created with the same seed,
+ * and the same sequence of method calls is made for each,
+ * then they will generate and return identical sequences of values.
+ *
+ * Instances of [RandomService] are not cryptographically secure by default.
+ * Consider passing [java.security.SecureRandom] to the constructor of this [RandomService]
+ * to get a cryptographically secure pseudo-random generator.
  */
 class RandomService internal constructor(private val random: Random) {
     private val alphabeticSource = "abcdefghijklmnopqrstuvwxyz"

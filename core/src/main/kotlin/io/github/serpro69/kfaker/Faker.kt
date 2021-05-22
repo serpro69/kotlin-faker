@@ -9,15 +9,20 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
  * Provides access to fake data generators.
  *
  * Each category (generator) from this [Faker] is represented by a property that has the same name as the `.yml` file.
+ *
+ * @property random provides public access to functions of [RandomService].
+ * @property randomProvider provides additional functionality that is not covered by other data providers
+ * such as [address], [name], [internet], and so on. See [RandomProvider] for more details.
+ * @property unique global provider for generation of unique values.
  */
-class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = fakerConfig {  }) {
-    private val fakerService: FakerService = FakerService(this, fakerConfig.locale, fakerConfig.random)
+class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerConfig { }) {
+    private val fakerService: FakerService = FakerService(this, config.locale, config.random)
 
-    val random = RandomService(fakerConfig.random)
+    val random = RandomService(config.random)
 
     val unique = GlobalUniqueDataDataProvider()
 
-    val randomProvider: RandomProvider = RandomProvider(fakerConfig.random)
+    val randomProvider: RandomProvider = RandomProvider(config.random)
 
     val separator: Separator = Separator(fakerService)
     val currencySymbol: CurrencySymbol = CurrencySymbol(fakerService)
@@ -193,10 +198,14 @@ class Faker @JvmOverloads constructor(internal val fakerConfig: FakerConfig = fa
 
     @FakerDsl
     class Builder internal constructor(){
-        private var config = fakerConfig { }
+        private var config = io.github.serpro69.kfaker.fakerConfig { }
 
         fun config(block: FakerConfig.Builder.() -> Unit) {
-            this.config = fakerConfig(block)
+            config = io.github.serpro69.kfaker.fakerConfig(block)
+        }
+
+        fun fakerConfig(block: FakerConfig.Builder.() -> Unit) {
+            config = io.github.serpro69.kfaker.fakerConfig(block)
         }
 
         internal fun build() = Faker(config)
