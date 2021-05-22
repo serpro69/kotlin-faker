@@ -54,7 +54,7 @@ class FakerConfigTest : DescribeSpec() {
         }
 
         describe("randomSeed is set through FakerConfig") {
-            val fakerConfig = fakerConfig { random = Random(42) }
+            val fakerConfig = fakerConfig { randomSeed = 42 }
 
             val faker = Faker(fakerConfig)
 
@@ -62,7 +62,7 @@ class FakerConfigTest : DescribeSpec() {
             val name1 = faker.name.name()
 
             context("another randomSeed is set with the same value") {
-                val otherFakerConfig = fakerConfig { random = Random(42) }
+                val otherFakerConfig = fakerConfig { randomSeed = 42 }
                 val otherFaker = Faker(otherFakerConfig)
 
                 it("the output of repeated function calls should be the same") {
@@ -90,6 +90,15 @@ class FakerConfigTest : DescribeSpec() {
                     }
                 }
             }
+        }
+
+        it("random is should be ignored if set in same config as randomSeed") {
+            val fakerConfig = fakerConfig {
+                random = Random(1234567890)
+                randomSeed = 42
+            }
+
+            fakerConfig.random.nextInt() shouldBe Random(42).nextInt()
         }
     }
 }
