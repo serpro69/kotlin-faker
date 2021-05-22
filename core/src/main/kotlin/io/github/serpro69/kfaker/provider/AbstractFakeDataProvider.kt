@@ -120,7 +120,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
         }
 
         val globalUniqueProvider = fakerService.faker.unique
-        val fakerConfig = fakerService.faker.fakerConfig
+        val fakerConfig = fakerService.faker.config
 
         val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
 
