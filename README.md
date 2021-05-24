@@ -4,14 +4,13 @@
 > Just like this fake-logo, but not quite so.  
 > <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>
 
-[![Build Status](https://travis-ci.org/serpro69/kotlin-faker.svg?branch=master)](https://travis-ci.org/serpro69/kotlin-faker)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org)](#downloading)
-[![Coverage Status](https://coveralls.io/repos/github/serpro69/kotlin-faker/badge.svg)](https://coveralls.io/github/serpro69/kotlin-faker)
-[![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg)](https://github.com/serpro69/kotlin-faker/issues)
-![GitHub Top Lang](https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&logoColor=white)
-[![Awesome Kotlin](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
-[![Licence](https://img.shields.io/github/license/serpro69/kotlin-faker.svg)](LICENCE.md)
+[![Build Status](https://img.shields.io/travis/serpro69/kotlin-faker/master?logo=Travis-CI&style=for-the-badge)](https://travis-ci.org/serpro69/kotlin-faker)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
+[![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&style=for-the-badge&color=lightblue)](https://github.com/serpro69/kotlin-faker/issues)
+![GitHub Top Lang](https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&logoColor=white&color=orange&style=for-the-badge)
+[![Awesome Kotlin](https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&style=for-the-badge)](https://github.com/KotlinBy/awesome-kotlin)
+[![Licence](https://img.shields.io/github/license/serpro69/kotlin-faker.svg?style=for-the-badge)](LICENCE.md)
 
 ## ToC
 
