@@ -33,13 +33,13 @@ class FakerTheme @Inject constructor(context: OrchidContext) : Theme(
 
     override fun loadAssets(delegate: AssetManagerDelegate) {
         delegate.addCss("assets/css/bulma.min.css")
-        delegate.addCss("assets/css/bulma-tooltip.css")
-        delegate.addCss("assets/css/bulma-accordion.min.css")
+//        delegate.addCss("assets/css/bulma-tooltip.css")
+//        delegate.addCss("assets/css/bulma-accordion.min.css")
 
         delegate.addJs("https://use.fontawesome.com/releases/v5.4.0/js/all.js").apply { defer = true }
-        delegate.addJs("assets/js/bulma.js")
-        delegate.addJs("assets/js/bulma-accordion.min.js")
-        delegate.addJs("assets/js/bulma-tabs.js")
+//        delegate.addJs("assets/js/bulma.js")
+//        delegate.addJs("assets/js/bulma-accordion.min.js")
+//        delegate.addJs("assets/js/bulma-tabs.js")
     }
 
     override fun getResourceSource(): OrchidResourceSource =

@@ -12,9 +12,6 @@ This project is licensed under the https://mit-license.org[MIT License].
 
 [%collapsible]
 ====
-[source]
-----
 include::{sourcedir}/LICENCE.adoc[]
-----
 ====
 
