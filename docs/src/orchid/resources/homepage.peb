@@ -20,7 +20,7 @@ layout: 'homepage'
 </section>
 
 <section class="columns is-centered">
-  <div class="column is-10">
+  <div class="column is-8">
     <div class="content is-medium">
       <img src="{{ 'assets/images/logo.png' | asset }}" alt="faker-logo" class="description-logo">
       <p class="description-text">
