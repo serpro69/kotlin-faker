@@ -15,7 +15,7 @@ contributors:
   link: https://github.com/johanvergeer
 
 homepageSections:
-  - title: '…a huge set of real-looking data in various domains:'
+  - title: '…a plethora of real-looking data in various domains:'
     snippets: ['data_provider_zero']
     lang: 'kotlin'
     tabs:
@@ -37,10 +37,10 @@ homepageSections:
       - title: 'Movies and TV'
         snippets: ['data_provider_six_a', 'data_provider_six_b']
         lang: 'kotlin'
-      - title: 'Any many more...'
+      - title: '…and many others'
         snippets: ['data_provider_seven']
         lang: 'kotlin'
-  - title: '…57 localized data dictionaries:'
+  - title: '…in 57 locales:'
     snippets: ['faker_locale_zero']
     lang: 'kotlin'
     tabs:
@@ -51,25 +51,19 @@ homepageSections:
         snippets: ['faker_locale_two']
         lang: 'kotlin'
   - title: '…“unique data generation”:'
-    snippets: ['unique_data_zero']
-    lang: 'kotlin'
+    snippets: []
+    lang: ''
     tabs:
-      - title: ''
+      - title: 'Generate unique values within a domain'
         snippets: ['unique_data_one']
         lang: 'kotlin'
-      - title: ''
+      - title: 'Generate unique values within a function'
         snippets: ['unique_data_two']
-        lang: 'text'
-      - title: ''
-        snippets: ['unique_data_three']
         lang: 'kotlin'
-  - title: '…cli application:'
-    snippets: []
-    lang: 'kotlin'
-    tabs:
-      - title: 'Quick function lookup'
-        snippets: ['cli_app_one']
-        lang: 'bash'
+  - title: '…cli native app for looking up data generators:'
+    snippets: ['cli_app_zero']
+    lang: 'bash'
+    tabs: []
   - title: '…and more:'
     snippets: []
     lang: 'kotlin'
@@ -78,6 +72,9 @@ homepageSections:
         snippets: ['random_class_instance_one']
         lang: 'kotlin'
       - title: '…with pre-configured type generation'
-        snippets: ['unique_data_two']
-        lang: 'text'
+        snippets: ['random_class_instance_two']
+        lang: 'kotlin'
+      - title: 'Random numbers, strings, enums, UUIDs, and more…'
+        snippets: ['random_service_one']
+        lang: 'kotlin'
 

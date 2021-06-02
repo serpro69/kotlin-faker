@@ -182,5 +182,6 @@ enum class TestEnum {
     THREE,
     FOUR,
     FIVE,
-    SIX
+    SIX,
+    SOME
 }
