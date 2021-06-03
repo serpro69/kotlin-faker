@@ -1,3 +1,4 @@
+# START provider_dune
 en:
   faker:
     dune:
@@ -157,3 +158,4 @@ en:
           - "When God hath ordained a creature to die in a particular place, He causeth that creature's wants to direct him to that place"
           - "Thou shalt not make a machine in the likeness of a man's mind"
           - "From water does all life begin."
+# END provider_dune

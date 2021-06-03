@@ -1,3 +1,4 @@
+# START provider_culture_series
 en:
   faker:
     culture_series:
@@ -305,3 +306,4 @@ en:
       - Telaturier
       - Xinth
       - Zunzil Ligature
+# END provider_culture_series

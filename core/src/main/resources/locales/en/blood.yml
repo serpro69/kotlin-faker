@@ -1,3 +1,4 @@
+# START provider_blood
 en:
   faker:
     blood:
@@ -11,3 +12,4 @@ en:
         - '-'
       group:
         - "#{type}#{rh_factor}"
+# END provider_blood

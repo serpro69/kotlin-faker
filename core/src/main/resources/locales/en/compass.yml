@@ -1,3 +1,4 @@
+# START provider_compass
 en:
   faker:
     compass:
@@ -32,3 +33,4 @@ en:
         - "#{ordinal_azimuth}"
         - "#{half_wind_azimuth}"
         - "#{quarter_wind_azimuth}"
+# END provider_compass

@@ -1,3 +1,4 @@
+# START provider_lorem
 en:
   faker:
     lorem:
@@ -9,3 +10,4 @@ en:
         space: ' '
         period: '.'
         question_mark: '?'
+# END provider_lorem

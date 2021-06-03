@@ -1,3 +1,4 @@
+# START provider_job
 en:
   faker:
     job:
@@ -13,3 +14,4 @@ en:
         - "#{field} #{position}"
         - "#{field} #{position}"
         - "#{seniority} #{position}"
+# END provider_job

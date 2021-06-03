@@ -1,5 +1,7 @@
+# START provider_id_number
 en:
   faker:
     id_number:
       valid: "#{IDNumber.ssn_valid}"
       invalid: ['000-##-####', '###-00-####', '###-##-0000', '666-##-####', '9##-##-####']
+# END provider_id_number

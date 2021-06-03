@@ -1,3 +1,4 @@
+# START provider_app
 en:
   faker:
     app:
@@ -6,3 +7,4 @@ en:
       author:
         - "#{Name.name}"
         - "#{Company.name}"
+# END provider_app

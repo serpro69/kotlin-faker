@@ -1,3 +1,4 @@
+# START provider_educator
 en:
   faker:
     educator:
@@ -72,3 +73,4 @@ en:
             - 3##
             - 4##
             - 5##
+# END provider_educator

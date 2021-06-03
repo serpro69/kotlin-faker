@@ -1,5 +1,7 @@
+# START provider_markdown
 en:
   faker:
     markdown:
       headers: ["#", "##", "###", "####", "#####", "######"]
       emphasis: ["_", "~", "*", "**"]
+# END provider_markdown

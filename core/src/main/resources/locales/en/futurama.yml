@@ -1,3 +1,4 @@
+# START provider_futurama
 en:
   faker:
     futurama:
@@ -342,3 +343,4 @@ en:
         - Sweet three-toed sloth of the ice planet Hoth!
         - Sweet topology of cosmology!
         - Sweet yeti of the Serengeti!
+# END provider_futurama

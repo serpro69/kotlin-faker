@@ -1,3 +1,4 @@
+# START provider_breaking_bad
 en:
   faker:
     breaking_bad:
@@ -26,3 +27,4 @@ en:
         "Buyout", "Say My Name", "Gliding Over All", "Blood Money", "Buried", "Confessions",
         "Rabid Dog", "To'hajiilee", "Ozymandias", "Granite State", "Felina"
       ]
+# END provider_breaking_bad

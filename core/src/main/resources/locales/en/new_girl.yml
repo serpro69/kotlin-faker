@@ -1,3 +1,4 @@
+# START provider_new_girl
 en:
   faker:
     new_girl:
@@ -38,3 +39,4 @@ en:
         "This place is fancy and I don't know which fork to kill myself with.",
         "If you need me, I'll be in my room, listening to some mainstream hip-hop."
       ]
+# END provider_new_girl

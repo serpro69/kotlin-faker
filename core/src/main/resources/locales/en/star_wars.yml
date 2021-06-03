@@ -1,3 +1,4 @@
+# START provider_star_wars
 en:
   faker:
     star_wars:
@@ -604,3 +605,4 @@ en:
         yoda:
         - master yoda
         - yoda
+# END provider_star_wars

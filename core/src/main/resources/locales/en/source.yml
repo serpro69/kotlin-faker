@@ -1,3 +1,4 @@
+# START provider_source
 en:
   faker:
     source:
@@ -14,3 +15,4 @@ en:
               for (let i=0; i<10; i++) {
                 console.log(i);
               }"
+# END provider_source

@@ -1,3 +1,4 @@
+# START provider_phish
 en:
   faker:
     phish:
@@ -393,3 +394,4 @@ en:
         - "You Enjoy Myself"
         - "You Never Know"
         - "Your Pet Cat"
+# END provider_phish

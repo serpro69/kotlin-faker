@@ -1,3 +1,4 @@
+# START provider_rupaul
 en:
   faker:
     rupaul:
@@ -123,3 +124,4 @@ en:
        "Must be jelly 'cause jam don't shake.",
        "She done already done had herses."
       ]
+# END provider_rupaul

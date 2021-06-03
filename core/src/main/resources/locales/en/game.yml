@@ -1,3 +1,4 @@
+# START provider_game
 en:
   faker:
     game:
@@ -281,3 +282,4 @@ en:
         - 'Sega Saturn'
         - 'Sega Dreamcast'
         - 'Virtual Boy'
+# END provider_game

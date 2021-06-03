@@ -1,3 +1,4 @@
+# START provider_show
 en:
   faker:
     show:
@@ -595,3 +596,4 @@ en:
         - "The Adventures of Tom Sawyer TYA"
         - "Roald Dahl's Willy Wonka TYA"
         - "A Year with Frog and Toad TYA"
+# END provider_show

@@ -1,3 +1,4 @@
+# START provider_bank
 # Most of the iban details and the idea were copied from: https://github.com/iulianu/iban-tools
 #
 # Copyright (c) 2009 Iulian Dogariu
@@ -300,3 +301,4 @@ en:
           # Kosovo, Republic of
           length: 20
           bban_pattern: '\d{16}'
+# END provider_bank

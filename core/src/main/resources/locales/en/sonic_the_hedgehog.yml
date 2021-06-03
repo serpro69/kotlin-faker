@@ -1,3 +1,4 @@
+# START provider_sonic_the_hedgehog
 en:
   faker:
     games:
@@ -408,3 +409,4 @@ en:
           - Team Sonic Racing
           - Super Smash Bros. Ultimate
           - Sega Heroes
+# END provider_sonic_the_hedgehog

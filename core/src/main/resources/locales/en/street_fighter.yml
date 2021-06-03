@@ -1,3 +1,4 @@
+# START provider_street_fighter
 en:
   faker:
     games:
@@ -1522,3 +1523,4 @@ en:
           - Zonk Knuckle
           - Zugai Hasatsu
           - Zuri Fugaku
+# END provider_street_fighter

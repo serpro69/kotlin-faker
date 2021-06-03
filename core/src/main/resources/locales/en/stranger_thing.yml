@@ -1,3 +1,4 @@
+# START provider_stranger_thing
 en:
   faker:
     stranger_things:
@@ -34,3 +35,4 @@ en:
       "So, Jonathan, how was the pull-out?",
       "I don’t want you to get hurt at all. And I don’t wanna lose you. Just make sure you heat up some real food. Not just Eggos."
       ]
+# END provider_stranger_thing

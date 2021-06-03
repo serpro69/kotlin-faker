@@ -1,6 +1,8 @@
+# START provider_coin
 en:
   faker:
     coin:
       flip:
         - Heads
         - Tails
+# END provider_coin

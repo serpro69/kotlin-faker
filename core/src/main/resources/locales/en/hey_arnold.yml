@@ -1,3 +1,4 @@
+# START provider_hey_arnold
 en:
   faker:
     hey_arnold:
@@ -22,3 +23,4 @@ en:
        "Never eat raspberries.",
        "I'm okay!"
       ]
+# END provider_hey_arnold

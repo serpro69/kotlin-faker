@@ -1,3 +1,4 @@
+# START provider_simpsons
 en:
   faker:
     simpsons:
@@ -692,3 +693,4 @@ en:
         "Treehouse of Horror XXX",
         "Gorillas on the Mast"
       ]
+# END provider_simpsons

@@ -1,3 +1,4 @@
+# START provider_super_smash_bros
 en:
   faker:
     games:
@@ -204,3 +205,4 @@ en:
           - Wuhu Island
           - Yoshi's Island
           - Yoshi's Story
+# END provider_super_smash_bros

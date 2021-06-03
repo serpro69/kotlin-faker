@@ -1,3 +1,4 @@
+# START provider_prince
 en:
   faker:
     prince:
@@ -225,3 +226,4 @@ en:
         - "Vanity 6"
         - "Apollonia 6"
         - "The Family"
+# END provider_prince

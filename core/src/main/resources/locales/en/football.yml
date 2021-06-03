@@ -1,3 +1,4 @@
+# START provider_football
 en:
   faker:
     football:
@@ -6,3 +7,4 @@ en:
       coaches: ["Ernesto Valverde", "Zinedine Zidane", "Jose Mourinho", "Antonio Conte", "Jurgen Klopp", "Mauricio Pochettino", "Diego Simeone", "Massimiliano Allegri", "Jupp Heyneckes", "Arsene Wenger", "Jorge Sampaoli", "Fernando Santos", "Didier Deschamps", "Joachim Low", "Julen Lopetegui", "Mauricio Pochettino", "Unai Emery", "Massimiliano Allegri" ]
       competitions: ["UEFA European Championship", "Asian Cup", "African Cup of Nations", "Copa America", "UEFA Champions League", "FIFA World Cup", "UEFA Europa League", "Serie A", "Barclays Premier League", "Bundesliga", "Liga Santander", "FA Cup", "Ligue 1", "Primeira Liga", "Eredivisie", "Super League", "Major League Soccer", "Coppa Italia", "DFB Pokal", "CONCACAF Gold Cup", "Nations Cup", "Copa del Rey"]
       positions: ["Goalkeeper", "Full Back", "Right Back", "Left Back", "Defensive Midfielder", "Midfielder", "Attacking Midfielder", "Right Midfielder", "Left Midfielder", "Right Wing", "Left Wing", "Second Striker", "Centre Forward"]
+# END provider_football

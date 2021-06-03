@@ -1,3 +1,4 @@
+# START provider_sword_art_online
 en:
   faker:
     sword_art_online:
@@ -332,3 +333,4 @@ en:
         "Time Piercing Sword",
         "Twin Edged Wings"
       ]
+# END provider_sword_art_online

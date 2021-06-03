@@ -1,3 +1,4 @@
+# START provider_dc_comics
 en:
   faker:
     dc_comics:
@@ -50,3 +51,4 @@ en:
       "Multiversity", "Gotham Central", "Grant Morrison's Animal Man",
       "Doom Patrol", "Action Comics", "Detective Comics"
       ]
+# END provider_dc_comics

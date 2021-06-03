@@ -1,3 +1,4 @@
+# START provider_warhammer_fantasy
 en:
   faker:
     games:
@@ -580,3 +581,4 @@ en:
         - Kroxigor
         - Stegadon
         - Carnosaur
+# END provider_warhammer_fantasy

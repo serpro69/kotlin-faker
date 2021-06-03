@@ -1,3 +1,4 @@
+# START provider_driving_license
 en:
   faker:
     driving_licence:
@@ -176,3 +177,4 @@ en:
         wyoming:
           - '#########'
           - '##########'
+# END provider_driving_license

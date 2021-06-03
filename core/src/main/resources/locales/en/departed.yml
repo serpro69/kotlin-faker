@@ -1,3 +1,4 @@
+# START provider_departed
 en:
   faker:
     departed:
@@ -48,3 +49,4 @@ en:
         - One of you mugs got a light?
         - Do you want to be a cop or do you want to appear to be a cop?
         - Yeah, it's working... Overtime!
+# END provider_departed

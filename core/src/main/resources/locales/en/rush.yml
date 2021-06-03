@@ -1,3 +1,4 @@
+# START provider_rush
 en:
   faker:
     rush:
@@ -30,3 +31,4 @@ en:
         - Exit...Stage Left
         - A Show of Hands
         - Different Stages
+# END provider_rush

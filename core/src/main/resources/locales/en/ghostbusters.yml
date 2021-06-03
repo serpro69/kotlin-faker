@@ -1,3 +1,4 @@
+# START provider_ghostbusters
 en:
   faker:
     ghostbusters:
@@ -89,3 +90,4 @@ en:
         "Is it just a mist, or does it have arms and legs?",
         "Nice doggy. Cute little pooch. Maybe I've got a Milk-Bone."
       ]
+# END provider_ghostbusters

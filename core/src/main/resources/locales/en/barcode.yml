@@ -1,3 +1,4 @@
+# START provider_barcode
 en:
   faker:
     barcode:
@@ -22,3 +23,4 @@ en:
         - '97912#######'
       ismn: '9790########'
       issn: '977#########'
+# END provider_barcode

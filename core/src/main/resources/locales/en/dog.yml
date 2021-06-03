@@ -1,3 +1,4 @@
+# START provider_dog
 en:
   faker:
     creature:
@@ -9,3 +10,4 @@ en:
         age: ["puppy", "young", "adult", "senior"]
         coat_length: ["hairless", "short", "medium", "long", "wire", "curly"]
         size: ["small", "medium", "large", "extra large"]
+# END provider_dog

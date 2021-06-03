@@ -1,3 +1,4 @@
+# START provider_control
 en:
   faker:
     games:
@@ -245,3 +246,4 @@ en:
           - 'The least a director can do is keep the lights on'
           - "I forgot fridge duty."
           - 'You must choose to be the chosen one.'
+# END provider_control

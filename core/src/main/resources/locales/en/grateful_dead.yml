@@ -1,3 +1,4 @@
+# START provider_grateful_dead
 en:
   faker:
     grateful_dead:
@@ -46,3 +47,4 @@ en:
               "Looks Like Rain",
               "Bird Song",
               "Cassidy"]
+# END provider_grateful_dead

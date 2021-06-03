@@ -1,3 +1,4 @@
+# START provider_michael_scott
 en:
   faker:
     michael_scott:
@@ -43,3 +44,4 @@ en:
         "It's a pimple, Phyllis. Avril Lavigne gets them all the time and she rocks harder than anyone alive.",
         "Wikipedia is the best thing ever. Anyone in the world can write anything they want about any subject. So you know you are getting the best possible information."
       ]
+# END provider_michael_scott

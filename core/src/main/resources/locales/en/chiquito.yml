@@ -1,3 +1,4 @@
+# START provider_chiquito
 en:
   faker:
     chiquito:
@@ -62,3 +63,4 @@ en:
         - ¿Qué quiere que dé dos viajes?",
         "Nació un niño tan feo tan feo que la madre en vez de darle el pecho le daba la espalda"
       ]
+# END provider_chiquito
