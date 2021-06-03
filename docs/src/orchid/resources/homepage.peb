@@ -6,10 +6,16 @@ layout: 'homepage'
 ---
 
 <section class="columns is-centered">
+  <div class="column is-one-quarter"></div>
   <div class="column is-half">
     <figure class="image">
       <img src="{{ 'assets/images/name.png' | asset }}" alt="kotlin-faker">
     </figure>
+  </div>
+  <div class="column is-one-quarter">
+    <a class="image is-96x96" href="https://github.com/serpro69/kotlin-faker">
+       <img src="{{ 'assets/images/forkme.png' | asset }}" alt="Fork me on GitHub">
+    </a>
   </div>
 </section>
 
