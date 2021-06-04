@@ -51,8 +51,8 @@ homepageSections:
         snippets: ['faker_locale_two']
         lang: 'kotlin'
   - title: '…“unique data generation”:'
-    snippets: []
-    lang: ''
+    snippets: ['unique_data_zero']
+    lang: 'kotlin'
     tabs:
       - title: 'Generate unique values within a domain'
         snippets: ['unique_data_one']
@@ -65,7 +65,7 @@ homepageSections:
     lang: 'bash'
     tabs: []
   - title: '…and more:'
-    snippets: []
+    snippets: ['and_more_zero']
     lang: 'kotlin'
     tabs:
       - title: 'Random instance of any class…'

@@ -78,9 +78,11 @@ class Homepage : DescribeSpec({
         }
 
         context("Unique data generation") {
+            // START unique_data_zero
+            val faker = Faker()
+            // END unique_data_zero
             it("should generate unique values in Address category") {
                 // START unique_data_one
-                val faker = Faker()
                 faker.unique.configuration {
                     // enable generation of unique values for address data provider
                     enable(faker::address)
@@ -91,7 +93,6 @@ class Homepage : DescribeSpec({
             }
             it("should generate unique countries, but not unique cities") {
                 // START unique_data_two
-                val faker = Faker()
                 val countries = List(100) { faker.address.unique.country() }
                 val cities = List(100) { faker.address.city() }
                 assert(countries.distinct().size == 100)
@@ -101,11 +102,14 @@ class Homepage : DescribeSpec({
         }
 
         context("RandomProvider") {
+            // START and_more_zero
+            val faker = Faker()
+            // END and_more_zero
+
             it("should generate random instance of a class") {
                 // START random_class_instance_one
                 class Foo(val a: String)
                 class Bar(val foo: Foo)
-                val faker = Faker()
                 val foo: Foo = faker.randomProvider.randomClassInstance()
                 val bar: Bar = faker.randomProvider.randomClassInstance()
                 // END random_class_instance_one
@@ -113,7 +117,6 @@ class Homepage : DescribeSpec({
             it("should generate types by configuration") {
                 // START random_class_instance_two
                 class Baz(val id: Int, val uuid: UUID, val name: String)
-                val faker = Faker()
                 val baz: Baz = faker.randomProvider.randomClassInstance {
                     typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
                     typeGenerator<Int> { faker.random.nextInt(min = 0, max = 9)  }
@@ -126,9 +129,9 @@ class Homepage : DescribeSpec({
         }
 
         context("Faker.random") {
+            val faker = Faker()
             it("should generate random stuff") {
                 // START random_service_one
-                val faker = Faker()
                 faker.random.nextInt(intRange = 0..1000)
                 faker.random.nextLong(bound = 999L)
                 faker.random.nextString(length = 99)
