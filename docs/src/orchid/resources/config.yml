@@ -94,8 +94,9 @@ snippets:
       adapter:
         type: 'embedded'
         baseDirs:
-          - '../../../../core/src/test/kotlin/'
           - '../../../../core/src/main/resources/locales/en/'
+          - '../../../../core/src/test/kotlin/'
+          - 'snippets'
         recursive: true
         startPattern: '^.*?[//|#].*?START(.+?)$'
         endPattern: '^.*?[//|#].*?END(.+?)$'

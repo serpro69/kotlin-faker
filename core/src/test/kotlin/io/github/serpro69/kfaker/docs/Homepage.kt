@@ -145,25 +145,3 @@ class Homepage : DescribeSpec({
         }
     }
 })
-
-private const val cli_snippet = """
-    // START cli_app_zero
-    faker-bot lookup name --verbose
-    #Faker()
-    #├── address
-    #│   ├── cityName() // => Port Olinstad
-    #│   ├── countryByName() // => NR
-    #│   └── streetName() // => Lance Roads
-    #├── animal
-    #│   └── name() // => gnat
-    #├── app
-    #│   └── name() // => Bamity
-    #├── artist
-    #│   └── names() // => Cezanne
-    #├── bank
-    #│   └── name() // => ABN AMRO HOARE GOVETT SECURITIES
-    #├── beer
-    #│   └── name() // => Oaked Arrogant Bastard Ale
-    # rest of output that matches query
-    // END cli_app_zero
-"""
