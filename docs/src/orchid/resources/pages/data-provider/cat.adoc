@@ -1,12 +1,26 @@
-# `Faker().cat`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/cat.yml)
+== `Faker().cat`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_cat' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().cat.name() // => Alfie
 
 Faker().cat.breed() // => Abyssinian
 
 Faker().cat.registry() // => American Cat Fanciers Association
-```
+----
+====

@@ -1,10 +1,24 @@
-# `Faker().gender`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/gender.yml)
+== `Faker().gender`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_gender' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().gender.types() // => Female
 Faker().gender.binaryTypes() // => Female
 Faker().gender.shortBinaryTypes() // => f
-```
+----
+====

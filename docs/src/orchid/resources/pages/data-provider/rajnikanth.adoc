@@ -1,8 +1,22 @@
-# `Faker().rajnikanth`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/rajnikanth.yml)
+== `Faker().rajnikanth`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_rajnikanth' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().rajnikanth.joke() // => The only time Rajini needed a body double was crying scene !
-```
+----
+====

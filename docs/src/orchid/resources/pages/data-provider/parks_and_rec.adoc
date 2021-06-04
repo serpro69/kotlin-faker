@@ -1,10 +1,24 @@
-# `Faker().parksAndRec`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/parks_and_rec.yml)
+== `Faker().parksAndRec`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_parks_and_rec' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().parksAndRec.characters() // => Leslie Knope
 
 Faker().parksAndRec.cities() // => Pawnee
-```
+----
+====

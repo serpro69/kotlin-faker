@@ -1,12 +1,26 @@
-# `Faker().chiquito`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/chiquito.yml)
+== `Faker().chiquito`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_chiquito' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().chiquito.expressions() // => ¡Aguaaa, aguaaa!
 Faker().chiquito.terms() // => ¡Cobarde!
 Faker().chiquito.sentences() // => ¡Siete caballos vienen de Bonanza!
 Faker().chiquito.jokes() // => - Papár papár llévame al circo!\n
                                - Noorl! El que quiera verte que venga a la casa
-```
+----
+====

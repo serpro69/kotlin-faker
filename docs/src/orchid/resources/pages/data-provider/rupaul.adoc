@@ -1,10 +1,24 @@
-# `Faker().rupaul`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/rupaul.yml)
+== `Faker().rupaul`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_rupaul' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().rupaul.queens() // => Tyra Sanchez
 
 Faker().rupaul.quotes() // => Glamazon!
-```
+----
+====

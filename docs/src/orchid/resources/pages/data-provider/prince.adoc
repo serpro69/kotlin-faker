@@ -1,11 +1,25 @@
-# `Faker().prince`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/prince.yml)
+== `Faker().prince`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_prince' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker.prince.lyric() // => Only want to see you laughing in the purple rain.
 Faker.prince.song() // => 1-800-Newfunk Ad
 Faker.prince.album() // => For You
 Faker.prince.band() // => The Revolution
-```
+----
+====

@@ -1,12 +1,26 @@
-# `Faker().twinPeaks`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/twin_peaks.yml)
+== `Faker().twinPeaks`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_twin_peaks' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().twinPeaks.characters() // => Albert Rosenfield
 
 Faker().twinPeaks.locations() // => Big Ed's Gas Farm
 
 Faker().twinPeaks.quotes() // => She's dead... Wrapped in plastic.
-```
+----
+====

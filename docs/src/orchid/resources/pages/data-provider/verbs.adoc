@@ -1,9 +1,22 @@
-# `Faker().verbs`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/verbs.yml)
+== `Faker().verbs`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_verbs' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().verbs.base() // => abash
 
 Faker().verbs.past() // => abashed
@@ -13,4 +26,5 @@ Faker().verbs.pastParticiple() // => abashed
 Faker().verbs.simplePresent() // => abashes
 
 Faker().verbs.ingForm() // => abashing
-```
+----
+====

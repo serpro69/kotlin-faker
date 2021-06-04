@@ -1,12 +1,26 @@
-# `Faker().computer`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/computer.yml)
+== `Faker().computer`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_computer' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().computer.type() // => server
 Faker().computer.platform() // => Linux
 Faker().computer.linux() // =>  Ubuntu Server 18.04
 Faker().computer.macOS() // => High Sierra (10.13)
 Faker().computer.windows() // =>  Windows Server 2012 R2
-```
+----
+====

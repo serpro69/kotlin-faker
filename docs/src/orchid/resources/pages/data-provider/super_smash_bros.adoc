@@ -1,10 +1,24 @@
-# `Faker().superSmashBros`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/super_smash_bros.yml)
+== `Faker().superSmashBros`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_super_smash_bros' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().superSmashBros.fighter() // => Bayonetta
 
 Faker().superSmashBros.stage() // => 3D Land
-```
+----
+====

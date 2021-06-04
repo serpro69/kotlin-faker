@@ -1,9 +1,22 @@
-# `Faker().gameOfThrones`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/game_of_thrones.yml)
+== `Faker().gameOfThrones`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_game_of_thrones' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().gameOfThrones.characters() // => Abelar Hightower
 
 Faker().gameOfThrones.houses() // => Flint of Flint's Finger
@@ -13,4 +26,5 @@ Faker().gameOfThrones.cities() // => Braavos
 Faker().gameOfThrones.quotes() // => There are no heroes...in life, the monsters win.
 
 Faker().gameOfThrones.dragons() // => Drogon
-```
+----
+====

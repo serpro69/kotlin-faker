@@ -1,9 +1,22 @@
-# `Faker().siliconValley`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/silicon_valley.yml)
+== `Faker().siliconValley`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_silicon_valley' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().siliconValley.characters() // => Richard Hendricks
 
 Faker().siliconValley.companies() // => Pied Piper
@@ -19,4 +32,5 @@ Faker().siliconValley.mottos() // => Cloud-based, disruptive systems
 Faker().siliconValley.urls() // => http://raviga.com
 
 Faker().siliconValley.email() // => ichard@piedpiper.test
-```
+----
+====

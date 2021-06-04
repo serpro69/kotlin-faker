@@ -1,9 +1,22 @@
-# `Faker().name`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/name.yml)
+== `Faker().name`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_name' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().name.maleFirstName() // => Aaron
 
 Faker().name.femaleFirstName() // => Abbey
@@ -22,4 +35,5 @@ Faker().name.nameWithMiddle() // => Dr. John Abrams Smith
 Faker().name.maleLastName() // => Adams
 
 Faker().name.femaleLastName() // => Adams
-```
+----
+====

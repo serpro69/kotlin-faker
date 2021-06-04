@@ -1,9 +1,22 @@
-# `Faker().cosmere`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/cosmere.yml)
+== `Faker().cosmere`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_cosmere' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().cosmere.aons() // => Aon
 
 Faker().cosmere.shardWorlds() // => Ashyn
@@ -23,4 +36,5 @@ Faker().cosmere.feruchemists() // => Feruchemist
 Faker().cosmere.heralds() // => Jezrien
 
 Faker().cosmere.sprens() // => Alespren
-```
+----
+====

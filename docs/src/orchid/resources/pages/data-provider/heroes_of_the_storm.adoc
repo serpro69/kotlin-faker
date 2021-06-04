@@ -1,9 +1,22 @@
-# `Faker().heroesOfTheStorm`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/heroes_of_the_storm.yml)
+== `Faker().heroesOfTheStorm`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_heroes_of_the_storm' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().heroesOfTheStorm.battlegrounds() // => Alterac Pass
 
 Faker().heroesOfTheStorm.classNames() // => Assasin
@@ -11,4 +24,5 @@ Faker().heroesOfTheStorm.classNames() // => Assasin
 Faker().heroesOfTheStorm.heroes() // => Abathur
 
 Faker().heroesOfTheStorm.quotes() // => Beat them like they owe you money!
-```
+----
+====

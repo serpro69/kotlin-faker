@@ -1,9 +1,22 @@
-# `Faker().stripe`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/stripe.yml)
+== `Faker().stripe`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_stripe' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().stripe.validCards("visa") // => 4242424242424242
 
 Faker().stripe.validCards("") // => 4000056655665556
@@ -15,4 +28,5 @@ Faker().stripe.validTokens("") // => tok_mastercard
 Faker().stripe.invalidCards("addressZipFail") // => 4000000000000010
 
 Faker().stripe.invalidCards("") // => 4000000000000036
-```
+----
+====

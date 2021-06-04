@@ -1,9 +1,22 @@
-# `Faker().demographic`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/demographic.yml)
+== `Faker().demographic`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_demographic' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().demographic.race() // => American Indian or Alaska Native
 
 Faker().demographic.sex() // => Male
@@ -13,4 +26,5 @@ Faker().demographic.demonym() // => Afghan
 Faker().demographic.educationalAttainment() // => No schooling completed
 
 Faker().demographic.maritalStatus() // => Married
-```
+----
+====

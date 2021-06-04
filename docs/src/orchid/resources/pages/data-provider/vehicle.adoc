@@ -1,9 +1,22 @@
-# `Faker().vehicle`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/vehicle.yml)
+== `Faker().vehicle`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_vehicle' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().vehicle.manufacture() // => Abarth
 
 Faker().vehicle.makes() // => BMW
@@ -41,4 +54,5 @@ Faker().vehicle.licensePlateByState("AL") // => #??#### where '?' is a random up
 Faker().vehicle.licensePlateByState("") // => ??? ### where '?' is a random upper-case letter, and '#' is a random digit
 
 Faker().vehicle.cylinderEngine() // => Cylinder Engine
-```
+----
+====

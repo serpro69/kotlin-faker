@@ -1,13 +1,27 @@
-# `Faker().freshPrinceOfBelAir`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/fresh_prince_of_bel_air.yml)
+== `Faker().freshPrinceOfBelAir`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_fresh_prince_of_bel_air' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().freshPrinceOfBelAir.characters() // => Will Smith
 
 Faker().freshPrinceOfBelAir.celebrities() // => Quincy Jones
 
 Faker().freshPrinceOfBelAir.quotes() // => Girl, you look so good, I would marry your brother just to get in your family.
 
-```
+----
+====

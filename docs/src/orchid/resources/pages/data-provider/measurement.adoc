@@ -1,9 +1,22 @@
-# `Faker().measurement`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/measurement.yml)
+== `Faker().measurement`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_measurement' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().measurement.height() // => inch
 
 Faker().measurement.length() // => yard
@@ -19,4 +32,5 @@ Faker().measurement.metricLength() // => millimeter
 Faker().measurement.metricVolume() // => milliliter
 
 Faker().measurement.metricWeight() // => milligram
-```
+----
+====

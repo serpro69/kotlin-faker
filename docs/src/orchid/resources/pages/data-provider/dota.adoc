@@ -1,9 +1,22 @@
-# `Faker().dota`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/dota.yml)
+== `Faker().dota`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_dota' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().dota.hero() // => Abaddon
 
 Faker().dota.item() // => Animal Courier
@@ -11,10 +24,16 @@ Faker().dota.item() // => Animal Courier
 Faker().dota.team() // => Evil Geniuses
 
 Faker().dota.player() // => Alliance.AdmiralBulldog
-```
+----
+====
 
-Non-implemented Functions:  
-```kotlin
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
 // Random hero quote
 Faker().dota.abaddon() // => You have called death upon yourself.
 Faker().dota.alchemist() // => Easy now, this stuff is explosive!
@@ -53,4 +72,5 @@ Faker().dota.tusk() // => They call me the Terror from the Barrier. They call me
 Faker().dota.underlord() // => I rule the Abyssal Horde.
 Faker().dota.undying() // => I bring the song of death.
 Faker().dota.wraithKing() // => King am I of all the wraiths.
-```
+----
+====

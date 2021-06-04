@@ -1,9 +1,22 @@
-# `Faker().device`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/device.yml)
+== `Faker().device`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_device' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().device.modelName() // => iPhone
 
 Faker().device.platform() // => Android OS
@@ -11,4 +24,5 @@ Faker().device.platform() // => Android OS
 Faker().device.manufacturer() // => Dell
 
 Faker().device.serial() // => pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
-```
+----
+====

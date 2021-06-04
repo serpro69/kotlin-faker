@@ -1,9 +1,23 @@
-# `Faker().basketball`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/basketball.yml)
+== `Faker().basketball`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_basketball' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+---kotlin
 Faker().basketball.teams() // => Los Angeles Lakers
 
 Faker().basketball.players() // => LeBron James
@@ -11,4 +25,5 @@ Faker().basketball.players() // => LeBron James
 Faker().basketball.coaches() // => Doc Rivers
 
 Faker().basketball.positions() // => Power Forward
-```
+----
+====

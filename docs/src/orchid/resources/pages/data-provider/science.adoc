@@ -1,12 +1,26 @@
-# `Faker().science`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/science.yml)
+== `Faker().science`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_science' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().science.element() // => Hydrogen
 
 Faker().science.elementSymbol() // => H
 
 Faker().science.scientist() // => Isaac Newton
-```
+----
+====

@@ -1,9 +1,22 @@
-# `Faker().leagueOfLegends`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/league_of_legends.yml)
+== `Faker().leagueOfLegends`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_league_of_legends' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().leagueOfLegends.champion() // => Aatrox
 
 Faker().leagueOfLegends.location() // => Demacia
@@ -15,4 +28,5 @@ Faker().leagueOfLegends.summonerSpell() // => Teleport
 Faker().leagueOfLegends.masteries() // => Battle Trance
 
 Faker().leagueOfLegends.rank() // => Bronze V
-```
+----
+====

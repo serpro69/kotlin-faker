@@ -1,14 +1,34 @@
-# `Faker().invoice`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/invoice.yml)
+== `Faker().invoice`
 
-Available Functions:  
-```kotlin
-```
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_invoice' %}
+----
+====
 
-Non-implemented Functions:  
-```kotlin
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+----
+====
+
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().invoice.checkDigitMethod() // method_731
 
 Faker().invoice.pattern() // '\d{3,19}#'
-```
+----
+====

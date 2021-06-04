@@ -1,9 +1,22 @@
-# `Faker().harryPotter`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/harry_potter.yml)
+== `Faker().harryPotter`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_harry_potter' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().harryPotter.characters() // => Hannah Abbott
 
 Faker().harryPotter.locations() // => The Burrow
@@ -15,4 +28,5 @@ Faker().harryPotter.books() // => Harry Potter and the Sorcerer's Stone
 Faker().harryPotter.houses() // => Gryffindor
 
 Faker().harryPotter.spells() // => Accio
-```
+----
+====

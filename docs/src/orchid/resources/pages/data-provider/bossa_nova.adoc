@@ -1,10 +1,24 @@
-# `Faker().bossaNova`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/bossa_nova.yml)
+== `Faker().bossaNova`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_bossa_nova' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().bossaNova.artists() // => Alaide Costa
 
 Faker().bossaNova.songs() // => A Banda
-```
+----
+====

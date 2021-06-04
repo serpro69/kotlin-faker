@@ -1,9 +1,22 @@
-# `Faker().dnd`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/dnd.yml)
+== `Faker().dnd`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_dnd' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().dnd.alignments() // => Chaotic Evil
 Faker().dnd.backgrounds() // => Acolyte
 Faker().dnd.cities() // => Almraiven
@@ -13,4 +26,5 @@ Faker().dnd.meleeWeapons() // => Battleaxe
 Faker().dnd.monsters() // => Aarakocra
 Faker().dnd.races() // => Aarakocra
 Faker().dnd.rangedWeapons() // => Blowgun
-```
+----
+====

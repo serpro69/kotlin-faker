@@ -1,9 +1,22 @@
-# `Faker().coffee`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/coffee.yml)
+== `Faker().coffee`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_coffee' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().coffee.country() // => Brazil
 
 // => Region by country (case-insensitive)
@@ -17,4 +30,5 @@ Faker().coffee.notes() // => mild silky mint sage dill
 
 Faker().coffee.blendName() // => Summer Solstice
 
-```
+----
+====

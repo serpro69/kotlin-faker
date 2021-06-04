@@ -1,10 +1,24 @@
-# `Faker().phish`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/phish.yml)
+== `Faker().phish`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_phish' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().phish.albums() // => Junta
 Faker().phish.musicians() // => Jon Fishman
 Faker().phish.songs() // => A Song I Heard the Ocean Sing
-```
+----
+====

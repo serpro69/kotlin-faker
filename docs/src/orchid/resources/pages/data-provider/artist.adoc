@@ -1,8 +1,22 @@
-# `Faker().artist`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/artist.yml)
+== `Faker().artist`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_artist' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().artist.names() // => Donatello
-```
+----
+====

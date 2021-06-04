@@ -1,8 +1,22 @@
-# `Faker().chuckNorris`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/chuck_norris.yml)
+== `Faker().chuckNorris`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_chuck_norris' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().chuckNorris.fact() // => All arrays Chuck Norris declares are of infinite size, because Chuck Norris knows no bounds.
-```
+----
+====

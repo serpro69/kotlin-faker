@@ -1,9 +1,22 @@
-# `Faker().cannabis`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/cannabis.yml)
+== `Faker().cannabis`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_cannabis' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().cannabis.strains() // => 24k
 
 Faker().cannabis.cannabinoidAbbreviations() // => THC
@@ -23,4 +36,5 @@ Faker().cannabis.types() // => hybrid
 Faker().cannabis.buzzwords() // => blunt wrap
 
 Faker().cannabis.brands() // => 8 | FOLD Cultivation
-```
+----
+====

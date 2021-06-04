@@ -1,11 +1,25 @@
-# `Faker().drivingLicense`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/driving_license.yml)
+== `Faker().drivingLicense`
 
-Available Functions:  
-```kotlin
-// `#` represents a random digit 
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_driving_license' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+// `#` represents a random digit
 // `?` represents a random letter
 Faker().drivingLicense.license() // => ######
 Faker().drivingLicense.licenseByState("district_of_columbia") // => #######
-```
+----
+====

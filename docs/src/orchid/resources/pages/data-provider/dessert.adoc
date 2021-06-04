@@ -1,9 +1,22 @@
-# `Faker().dessert`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/dessert.yml)
+== `Faker().dessert`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_dessert' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().dessert.variety() // => Cake
 
 Faker().dessert.topping() // => Rainbow Sprinkles
@@ -11,4 +24,5 @@ Faker().dessert.topping() // => Rainbow Sprinkles
 Faker().dessert.flavor() // => Vanilla
 
 Faker().dessert.dessert() // => Vanilla Cake with Rainbow Sprinkles
-```
+----
+====

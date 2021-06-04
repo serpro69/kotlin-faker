@@ -1,8 +1,22 @@
-# `Faker().color`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/color.yml)
+== `Faker().color`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_color' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().color.name() // => blue
-```
+----
+====

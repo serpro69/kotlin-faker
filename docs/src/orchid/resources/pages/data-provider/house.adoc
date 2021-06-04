@@ -1,10 +1,24 @@
-# `Faker().house`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/house.yml)
+== `Faker().house`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_house' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().house.furniture() // => chair
 
 Faker().house.rooms() // => kitchen
-```
+----
+====

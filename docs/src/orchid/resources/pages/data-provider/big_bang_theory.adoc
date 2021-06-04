@@ -1,9 +1,23 @@
-# `Faker().bigBangTheory`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/big_bang_theory.yml)
+== `Faker().bigBangTheory`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_big_bang_theory' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker.bigBangTheory.characters() // => Sheldon Cooper
 Faker.bigBangTheory.quotes() // => Bazinga!
-```
+----
+====

@@ -1,8 +1,22 @@
-# `Faker().natoPhoneticAlphabet`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/nato_phonetic_alphabet.yml)
+== `Faker().natoPhoneticAlphabet`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_nato_phonetic_alphabet' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Kotlin.natoPhoneticAlphabet.codeWord() // => Alpha
-```
+----
+====

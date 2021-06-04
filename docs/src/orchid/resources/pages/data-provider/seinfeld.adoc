@@ -1,12 +1,26 @@
-# `Faker().seinfeld`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/seinfeld.yml)
+== `Faker().seinfeld`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_seinfeld' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().seinfeld.character() // => George Costanza
 
 Faker().seinfeld.quote() // => I'm not a lesbian. I hate men, but I'm not a lesbian.
 
 Faker().seinfeld.business() // => Champagne Video
-```
+----
+====

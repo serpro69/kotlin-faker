@@ -1,9 +1,22 @@
-# `Faker().zelda`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/zelda.yml)
+== `Faker().zelda`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_zelda' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().zelda.games() // => A Link to the Past
 
 Faker().zelda.characters() // => Abe
@@ -11,4 +24,5 @@ Faker().zelda.characters() // => Abe
 Faker().zelda.locations() // => Akkala Ancient Tech Lab
 
 Faker().zelda.items() // => Blue Ring
-```
+----
+====

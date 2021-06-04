@@ -1,9 +1,22 @@
-# `Faker().elderScrolls`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/elder_scrolls.yml)
+== `Faker().elderScrolls`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_elder_scrolls' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().elderScrolls.race() // => Altmer
 
 Faker().elderScrolls.creature() // => Bear
@@ -17,4 +30,5 @@ Faker().elderScrolls.city() // => Solitude
 Faker().elderScrolls.firstName() // => Balgruuf
 
 Faker().elderScrolls.lastName() // => The Old
-```
+----
+====

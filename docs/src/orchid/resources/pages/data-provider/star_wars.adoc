@@ -1,9 +1,22 @@
-# `Faker().starWars`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/star_wars.yml)
+== `Faker().starWars`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_star_wars' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().starWars.characters() // => Padme Amidala
 
 Faker().starWars.callSquadrons() // => Rogue
@@ -37,4 +50,5 @@ Faker().starWars.alternateCharacterSpellings("admiral_ackbar") // => akbar
 Faker().starWars.alternateCharacterSpellings("admiral ackbar") // => akbar
 // or of any random character
 Faker().starWars.alternateCharacterSpellings() // => 'anakin'
-```
+----
+====

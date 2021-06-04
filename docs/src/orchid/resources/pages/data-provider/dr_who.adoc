@@ -1,9 +1,22 @@
-# `Faker().drWho`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/dr_who.yml)
+== `Faker().drWho`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_dr_who' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().drWho.character() // => Dr. Who
 
 Faker().drWho.the_doctors() // => First Doctor
@@ -17,4 +30,5 @@ Faker().drWho.quotes() // => Lots of planets have a north!
 Faker().drWho.villains() // => Helen A
 
 Faker().drWho.species() // => Time Lord
-```
+----
+====

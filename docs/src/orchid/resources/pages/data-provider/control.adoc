@@ -1,9 +1,22 @@
-# `Faker().control`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/control.yml)
+== `Faker().control`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_control' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().control.character() // => Ahti
 
 Faker().control.location() // => Access Corridor
@@ -19,4 +32,5 @@ Faker().control.hiss() // => You are a worm through time.
 Faker().control.theBoard() // => < Another crisis/workday resolved >
 
 Faker().control.quote() // => 'Let's get cleaning' she said, cocking her gun
-```
+----
+====

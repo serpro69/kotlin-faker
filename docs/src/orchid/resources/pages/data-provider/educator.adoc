@@ -1,9 +1,22 @@
-# `Faker().educator`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/educator.yml)
+== `Faker().educator`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_educator' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().educator.schoolName() // => Bluemeadow
 Faker().educator.secondary() // => High School
 Faker().educator.secondarySchool() // => Bluemeadow High School
@@ -12,11 +25,18 @@ Faker().educator.subject() // => Applied Science (Psychology)
 Faker().educator.universityType() // => College
 Faker().educator.tertiaryDegreeType() // => Master of
 Faker().educator.tertiaryDegreeCourseNumber() // => 306
-```
+----
+====
 
-Non-implemented Functions:  
-```kotlin
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().educator.university() // =>
-Faker().educator.degree() // => 
-Faker().educator.courseName() // => 
-```
+Faker().educator.degree() // =>
+Faker().educator.courseName() // =>
+----
+====

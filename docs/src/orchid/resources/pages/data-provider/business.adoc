@@ -1,10 +1,24 @@
-# `Faker().business`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/business.yml)
+== `Faker().business`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_business' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().business.creditCardNumbers() // => 1234-2121-1221-1211
 
 Faker().business.creditCardTypes() // => visa
-```
+----
+====

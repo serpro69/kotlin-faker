@@ -1,9 +1,22 @@
-# `Faker().myst`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/myst.yml)
+== `Faker().myst`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_myst' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().myst.games() // => Myst
 
 Faker().myst.creatures() // => squee
@@ -13,4 +26,5 @@ Faker().myst.characters() // => The Stranger
 Faker().myst.ages() // => Myst
 
 Faker().myst.quotes() // => The ending has not yet been written.
-```
+----
+====

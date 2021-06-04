@@ -1,10 +1,24 @@
-# `Faker().superhero`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/superhero.yml)
+== `Faker().superhero`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_superhero' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().superhero.power() // =>  Ability Shift
 
 Faker().superhero.name() // => Alien Man
-```
+----
+====

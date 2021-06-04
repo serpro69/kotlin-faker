@@ -1,10 +1,24 @@
-# `Faker().princessBride`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/princess_bride.yml)
+== `Faker().princessBride`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_princess_bride' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().princessBride.characters() // Buttercup
 
 Faker().princessBride.quotes() // Hello. My name is Inigo Montoya. You killed my father. Prepare to die!
-```
+----
+====

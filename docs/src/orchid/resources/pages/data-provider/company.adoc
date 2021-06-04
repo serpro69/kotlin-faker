@@ -1,9 +1,22 @@
-# `Faker().company`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/company.yml)
+== `Faker().company`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_company' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().company.buzzwords() // Advanced
 
 Faker().company.bs() // clicks-and-mortar
@@ -17,4 +30,5 @@ Faker().company.profession // teacher
 Faker().company.type() // Public Company
 
 Faker().company.sicCode() // 0112
-```
+----
+====

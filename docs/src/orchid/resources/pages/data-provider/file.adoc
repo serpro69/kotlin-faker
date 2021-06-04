@@ -1,9 +1,23 @@
-# `Faker().file`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/file.yml)
+== `Faker().file`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_file' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().file.extension() // => flac
 Faker().file.mimeType() // => application/atom+xml
-```
+----
+====

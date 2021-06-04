@@ -1,9 +1,23 @@
-# `Faker().animal`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/animal.yml)
+== `Faker().animal`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_animal' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 // Name
 Faker().animal.name() // => alpaca
-```
+----
+====

@@ -1,16 +1,36 @@
-# `Faker().compass`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/compass.yml)
+== `Faker().compass`
 
-Available Functions:  
-```kotlin
-```
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_compass' %}
+----
+====
 
-Non-implemented Functions:  
-```kotlin
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+----
+====
+
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().compass.direction() // => north
 
 Faker().compass.abbreviation() // => N
 
 Faker().compass.azimuth() // => 180
-```
+----
+====

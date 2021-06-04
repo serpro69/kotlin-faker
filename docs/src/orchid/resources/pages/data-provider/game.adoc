@@ -1,8 +1,22 @@
-# `Faker().game`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/game.yml)
+== `Faker().game`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_game' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().game.title() // => Half-Life
-```
+----
+====

@@ -1,12 +1,26 @@
-# `Faker().pokemon`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/pokemon.yml)
+== `Faker().pokemon`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_pokemon' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().pokemon.names() // => Bulbasaur
 
 Faker().pokemon.locations() // => Accumula Town
 
 Faker().pokemon.moves() // => Absorb
-```
+----
+====

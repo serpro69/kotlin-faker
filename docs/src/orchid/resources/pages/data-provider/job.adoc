@@ -1,9 +1,22 @@
-# `Faker().job`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/job.yml)
+== `Faker().job`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_job' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().job.field() // => Marketing
 
 Faker().job.seniority() // => Lead
@@ -17,4 +30,5 @@ Faker().job.employmentType() // => Full-time
 Faker().job.educationLevel() // => Associates
 
 Faker().job.title() // => IT Manager
-```
+----
+====

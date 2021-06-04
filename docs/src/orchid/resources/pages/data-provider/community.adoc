@@ -1,10 +1,24 @@
-# `Faker().community`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/community.yml)
+== `Faker().community`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_community' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().community.characters() // => Jeff Winger
 
 Faker().community.quotes() // => Harrison Ford is irradiating our testicles with microwave satellite transmissions!
-```
+----
+====

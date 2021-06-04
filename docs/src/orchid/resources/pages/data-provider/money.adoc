@@ -1,6 +1,13 @@
-# `Faker().money`
+---
+---
 
-Available Functions:  
-```kotlin
+== `Faker().money`
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().money.amount() // $1,257,242,389.48
-```
+----
+====

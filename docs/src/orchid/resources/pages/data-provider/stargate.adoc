@@ -1,12 +1,26 @@
-# `Faker().stargate`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/stargate.yml)
+== `Faker().stargate`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_stargate' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().stargate.characters() // => Jack O'Neill
 
 Faker().stargate.planets() // => Abydos
 
 Faker().stargate.quotes() // => What is an Oprah?
-```
+----
+====

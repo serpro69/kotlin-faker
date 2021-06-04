@@ -1,12 +1,26 @@
-# `Faker().commerce`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/commerce.yml)
+== `Faker().commerce`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_commerce' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().commerce.department() // => Books
 
 Faker().commerce.productName() // => Intelligent Steel Coat
 
 Faker().commerce.promotionCode() // => Amazing Deal
-```
+----
+====

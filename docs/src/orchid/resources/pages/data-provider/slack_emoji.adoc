@@ -1,9 +1,22 @@
-# `Faker().slackEmoji`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/slack_emoji.yml)
+== `Faker().slackEmoji`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_slack_emoji' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().slackEmoji.people() // => :grinning:
 
 Faker().slackEmoji.nature() // => :seedling:
@@ -22,4 +35,5 @@ Faker().slackEmoji.custom() // => :beryl:
 
 // random of the all above
 Faker().slackEmoji.emoji() // => :grin:
-``` 
+----
+====

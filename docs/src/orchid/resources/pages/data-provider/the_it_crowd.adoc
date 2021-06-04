@@ -1,9 +1,22 @@
-# `Faker().theITCrowd`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/the_it_crowd.yml)
+== `Faker().theITCrowd`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_the_it_crowd' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().theITCrowd.actors() // => Chris O'Dowd
 
 Faker().theITCrowd.characters() // => Roy Trenneman
@@ -11,4 +24,5 @@ Faker().theITCrowd.characters() // => Roy Trenneman
 Faker().theITCrowd.emails() // => roy.trenneman@reynholm.test
 
 Faker().theITCrowd.quotes() // => Hello, IT. Have you tried turning it off and on again?
-```
+----
+====

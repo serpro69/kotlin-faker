@@ -1,8 +1,22 @@
-# `Faker().rockBand`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/rock_band.yml)
+== `Faker().rockBand`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_rock_band' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().rockBand.name() // => Led Zeppelin
-```
+----
+====

@@ -1,10 +1,17 @@
-# `Faker().rajnikanth`
+---
+---
+
+== `Faker().rajnikanth`
 
 Provides functionality for creating a random instance of any (almost any) class.
 
-Available Functions:
-```kotlin
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().randomProvider.randomClassInstance<String>() // Random instance of a String class
 
 Faker().randomProvider.randomClassInstance<Foo>() // Random instance of a Foo class
-```
+----
+====

@@ -1,14 +1,28 @@
-# `Faker().book`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/book.yml)
+== `Faker().book`
 
-Available Functions:  
-```kotlin
-Faker().book.title() // => Absalom, Absalom! 
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_book' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().book.title() // => Absalom, Absalom!
 
 Faker().book.author() // => John Smith
 
-Faker().book.publisher() // => Academic Press 
+Faker().book.publisher() // => Academic Press
 
 Faker().book.genre() // => Classic
-```
+----
+====

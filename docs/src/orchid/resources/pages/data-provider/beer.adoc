@@ -1,9 +1,22 @@
-# `Faker().beer`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/beer.yml)
+== `Faker().beer`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_beer' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().beer.brand() // => Corona Extra
 
 Faker().beer.name() // => Pliny The Elder
@@ -15,4 +28,5 @@ Faker().beer.yeast() // => 1007 - German Ale
 Faker().beer.malt() // => Caramel
 
 Faker().beer.style() // => Light Lager
-```
+----
+====

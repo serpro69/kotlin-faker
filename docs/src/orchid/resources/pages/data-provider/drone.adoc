@@ -1,10 +1,23 @@
-# `Faker().drone`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/drone.yml)
+== `Faker().drone`
 
-Available Functions:  
-```kotlin
-// `#` represents a random digit 
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_drone' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+// `#` represents a random digit
 Faker().drone.name() // => DJI Mavic Air 2
 Faker().drone.weight() // => ### g
 Faker().drone.maxAscentSpeed() // => # m/s
@@ -30,4 +43,5 @@ Faker().drone.videoFormat() // => MP4
 Faker().drone.maxShutterSpeed() // => 60
 Faker().drone.minShutterSpeed() // => 1/8000
 Faker().drone.shutterSpeedUnits() // => s
-```
+----
+====

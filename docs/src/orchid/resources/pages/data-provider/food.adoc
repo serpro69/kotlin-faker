@@ -1,9 +1,22 @@
-# `Faker().food`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/food.yml)
+== `Faker().food`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_food' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().food.dish() // Arepas
 
 Faker().food.descriptions() // Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant.
@@ -23,4 +36,5 @@ Faker().food.measurementSizes() // 1/4
 Faker().food.metricMeasurements() // milliliter
 
 Faker().food.sushi() // Abalone
-```
+----
+====

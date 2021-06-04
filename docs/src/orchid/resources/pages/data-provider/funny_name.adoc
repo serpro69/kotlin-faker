@@ -1,8 +1,22 @@
-# `Faker().funnyName`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/funny_name.yml)
+== `Faker().funnyName`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_funny_name' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().funnyName.name() // => Aaron Thetires
-```
+----
+====

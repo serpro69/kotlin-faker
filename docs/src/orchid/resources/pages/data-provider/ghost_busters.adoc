@@ -1,12 +1,26 @@
-# `Faker().ghostBusters`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/ghostbusters.yml)
+== `Faker().ghostBusters`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_ghostbusters' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().ghostBusters.actors() // => Bill Murray
 
 Faker().ghostBusters.characters() // => Dr. Peter Venkman
 
 Faker().ghostBusters.quotes() // => This city is headed for a disaster of biblical proportions.
-```
+----
+====

@@ -1,9 +1,22 @@
-# `Faker().quote`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/quote.yml)
+== `Faker().quote`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_quote' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().quote.famousLastWords() // I don't know.
 
 Faker().quote.matz() // I believe consistency and orthogonality are tools of desig
@@ -15,4 +28,5 @@ Faker().quote.robin() // Holy Agility
 Faker().quote.singularSiegler() // Texas!
 
 Faker().quote.yoda() // Use your feelings, Obi-Wan, and find him you will.
-```
+----
+====

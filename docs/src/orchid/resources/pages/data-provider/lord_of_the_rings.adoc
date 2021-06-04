@@ -1,12 +1,26 @@
-# `Faker().lordOfTheRings`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/lord_of_the_rings.yml)
+== `Faker().lordOfTheRings`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_lord_of_the_rings' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().lordOfTheRings.characters() // => Frodo Baggins
 
 Faker().lordOfTheRings.locations() // => Aglarond
 
 Faker().lordOfTheRings.quotes() // => Often does hatred hurt itself!
-```
+----
+====

@@ -1,9 +1,22 @@
-# `Faker().hacker`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/hacker.yml)
+== `Faker().hacker`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_hacker' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().hacker.abbreviation() // => TCP
 
 Faker().hacker.adjective() // => auxiliary
@@ -13,4 +26,5 @@ Faker().hacker.noun() // => driver
 Faker().hacker.verb() // => back up
 
 Faker().hacker.ingverb() // => backing up
-```
+----
+====

@@ -1,9 +1,22 @@
-# `Faker().ventureBros`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/venture_bros.yml)
+== `Faker().ventureBros`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_venture_bros' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().ventureBros.character() // =>  Hank Venture
 
 Faker().ventureBros.organization() // =>  Team Venture
@@ -11,4 +24,5 @@ Faker().ventureBros.organization() // =>  Team Venture
 Faker().ventureBros.vehicle() // =>  Adrian
 
 Faker().ventureBros.quote() // =>  Monarchs..don't sting..
-```
+----
+====

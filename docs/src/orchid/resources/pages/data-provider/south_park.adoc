@@ -1,10 +1,24 @@
-# `Faker().southPark`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/south_park.yml)
+== `Faker().southPark`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_south_park' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().southPark.characters() // => Sharon Marsh
 
 Faker().southPark.quotes() // => Hippies. They're everywhere. They wanna save Earth, but all they do is smoke pot and smell bad
-```
+----
+====

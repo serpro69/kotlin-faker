@@ -1,9 +1,22 @@
-# `Faker().warhammerFantasy`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/warhammer_fantasy.yml)
+== `Faker().warhammerFantasy`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_warhammer_fantasy' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().warhammerFantasy.heroes() // => Alarielle the Radiant
 
 Faker().warhammerFantasy.quotes() // => Walls can't dodge!
@@ -13,4 +26,5 @@ Faker().warhammerFantasy.locations() // => Nordland
 Faker().warhammerFantasy.factions() // => The Empire
 
 Faker().warhammerFantasy.creatures() // => Chaos Beastman
-```
+----
+====

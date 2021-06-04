@@ -1,11 +1,25 @@
-# `Faker().greekPhilosophers`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/greek_philosophers.yml)
+== `Faker().greekPhilosophers`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_greek_philosophers' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().greekPhilosophers.names() // => Plato
 
 Faker().greekPhilosophers.quotes() // => Quality is not an act, it is a habit.
 
-```
+----
+====

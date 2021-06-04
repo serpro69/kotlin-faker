@@ -1,9 +1,22 @@
-# `Faker().ancient`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/ancient.yml)
+== `Faker().ancient`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_ancient' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().ancient.god() // => Apollo
 
 Faker().ancient.primordial() // => Chaos
@@ -11,4 +24,5 @@ Faker().ancient.primordial() // => Chaos
 Faker().ancient.titan() // => Atlas
 
 Faker().ancient.hero // => Achilles
-```
+----
+====

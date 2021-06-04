@@ -1,12 +1,26 @@
-# `Faker().lebowski`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/lebowski.yml)
+== `Faker().lebowski`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_lebowski' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().lebowski.actors() // => Jeff Bridges
 
 Faker().lebowski.characters() // => The Dude
 
 Faker().lebowski.quotes() // => He's a good man...and thorough.
-```
+----
+====

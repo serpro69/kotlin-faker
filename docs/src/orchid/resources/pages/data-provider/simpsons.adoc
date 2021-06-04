@@ -1,9 +1,22 @@
-# `Faker().simpsons`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/simpsons.yml)
+== `Faker().simpsons`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_simpsons' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().simpsons.characters() // => Homer Simpson
 
 Faker().simpsons.locations() // => Springfield
@@ -11,4 +24,5 @@ Faker().simpsons.locations() // => Springfield
 Faker().simpsons.quotes() // => Marriage is like a coffin and each kid is another nail.
 
 Faker().simpsons.episodeTitles() // => Simpsons Roasting on an Open Fire
-```
+----
+====

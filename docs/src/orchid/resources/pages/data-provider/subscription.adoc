@@ -1,9 +1,22 @@
-# `Faker().subscription`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/subscription.yml)
+== `Faker().subscription`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_subscription' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().subscription.plans() // => Free Trial
 
 Faker().subscription.statuses() // => Active
@@ -13,4 +26,5 @@ Faker().subscription.paymentMethods() // => Credit card
 Faker().subscription.subscriptionTerms() // => Daily
 
 Faker().subscription.paymentTerms() // => Payment in advance
-```
+----
+====

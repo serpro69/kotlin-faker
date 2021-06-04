@@ -1,11 +1,25 @@
-# `Faker().opera`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/horse.yml)
+== `Faker().opera`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_horse' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().opera.italian.byGiuseppeVerdi() // => Otello
 Faker().opera.italian.byGioacchinoRossini() // => Demetrio e Polibio
 Faker().opera.italian.byGaetanoDonizetti() // => Olimpiade
 Faker().opera.italian.byVincenzoBellini() // => Il pirata
-```
+----
+====

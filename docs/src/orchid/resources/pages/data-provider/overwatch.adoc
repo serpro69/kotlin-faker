@@ -1,12 +1,26 @@
-# `Faker().overwatch`
+---
+---
 
-[Dictionary file](../core/src/main/resources/locales/en/overwatch.yml)
+== `Faker().overwatch`
 
-Available Functions:  
-```kotlin
+.Dictionary file
+[%collapsible]
+====
+[source,kotlin]
+----
+{% snippet 'provider_overwatch' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
 Faker().overwatch.heroes() // => Ana
 
 Faker().overwatch.locations() // => Adlersbrunn
 
 Faker().overwatch.quotes() // => Activating Self Destruct Sequence.
-```
+----
+====
