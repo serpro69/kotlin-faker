@@ -1,0 +1,9 @@
+---
+title: Contributing
+---
+
+:sourcedir: ../../../../..
+
+== Contributing
+
+include::{sourcedir}/CONTRIBUTING.adoc[]

@@ -1,0 +1,67 @@
+---
+title: 'kotlin-faker'
+extraCss:
+- 'assets/css/homepage.scss'
+layout: 'homepage'
+---
+
+<section class="columns is-centered">
+  <div class="column is-half">
+    <figure class="image">
+      <img src="{{ 'assets/images/name.png' | asset }}" alt="kotlin-faker">
+    </figure>
+  </div>
+</section>
+
+<section class="columns is-centered">
+  <div class="column is-half">
+    <a class="is-block has-text-centered" href="{{ link('Changelog') }}">Version {{ site.version }}</a>
+  </div>
+</section>
+
+<section class="columns is-centered">
+  <div class="column is-10">
+    <div class="content is-medium">
+      <img src="{{ 'assets/images/logo.png' | asset }}" alt="faker-logo" class="description-logo">
+      <p class="description-text">
+        <b>kotlin-faker</b> is a data-generation library intended for use during development and testing,
+        as well as for data-anonymization purposes.
+        <br>
+        It generates realistically looking fake data within a variety of different domains such as names, addresses,
+        banking details, movies, games, and many more. Just like this fake logo, but not quite so.
+      </p>
+      <br>
+      <p style="clear:both;">kotlin-faker gives you…</p>
+    </div>
+  </div>
+</section>
+
+{% for section in data.homepageSections %}
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">{{ section.title }}</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+    <div class="notification is-dark"></div>
+  </div>
+
+  {% for snippet in section.tabs %}
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      {{ snippet.title }}
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-{{ snippet.lang }}">
+        {%- for name in snippet.snippets -%}
+          {%- set snip = snippet(name) -%}
+          {{ snip.content | escape }}&#13;
+        {%- endfor -%}
+      </code></pre>
+    </div>
+  {% endfor %}
+
+</section>
+{% endfor %}

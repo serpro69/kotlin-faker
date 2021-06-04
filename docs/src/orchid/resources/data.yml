@@ -1,0 +1,60 @@
+contributors:
+- name: Sylvain Corsini
+  link: https://github.com/scorsi
+- name: Benjamin Leber
+  link: https://github.com/Grisu118
+- name: Alexey Stepanov
+  link: https://github.com/Arsennikum
+- name: cvk77
+  link: https://github.com/cvk77
+- name: Vlad Minaev
+  link: https://github.com/web-devel
+- name: Andrew Kirkham
+  link: https://github.com/andrew-kirkham
+- name: Johan Vergeer
+  link: https://github.com/johanvergeer
+
+homepageSections:
+  - title: 'A powerful fluent API'
+    tabs:
+      - title: 'Type-safe fluent assertions'
+        snippets: ['homepage_one']
+        lang: 'kotlin'
+  - title: 'Collection handling'
+    tabs:
+      - title: 'Flexible assertions about collections'
+        snippets: ['homepage_two']
+        lang: 'kotlin'
+      - title: '“Narrow” the assertion to elements or ranges'
+        snippets: ['homepage_three']
+        lang: 'kotlin'
+      - title: 'Make grouping assertions'
+        snippets: ['homepage_four']
+        lang: 'kotlin'
+  - title: '“Soft” assertions'
+    tabs:
+      - title: 'Use lambdas to execute multiple assertions on a subject at once…'
+        snippets: ['homepage_five']
+        lang: 'kotlin'
+      - title: '…with structured diagnostics of those that fail'
+        snippets: ['homepage_six']
+        lang: 'text'
+      - title: 'Use lambdas to execute assertions on multiple subjects at once…'
+        snippets: ['homepage_seven']
+        lang: 'kotlin'
+  - title: 'Strong typing'
+    tabs:
+      - title: 'Assertion functions can "narrow" the type of the assertion'
+        snippets: ['homepage_eight']
+        lang: 'kotlin'
+      - title: 'Assertions can "map" to properties and method results in a type safe way:'
+        snippets: ['homepage_nine']
+        lang: 'kotlin'
+  - title: 'Extensibility'
+    tabs:
+      - title: 'Custom assertions are extension functions'
+        snippets: ['homepage_ten']
+        lang: 'kotlin'
+      - title: 'Custom mappings are extension properties'
+        snippets: ['homepage_eleven_a', 'homepage_eleven_b']
+        lang: 'kotlin'

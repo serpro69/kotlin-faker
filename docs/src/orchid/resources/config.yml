@@ -1,0 +1,105 @@
+site:
+  theme: 'StriktTheme'
+  baseUrl: 'http://localhost:8080'
+  about:
+    siteName: kotlin-faker
+    siteDescription: |-
+      kotlin-faker is data-generation library intended for use during development and testing, as well as for data-anonymization purposes.
+      It generates realistically looking fake data such as names, addresses, banking details, and many more.
+
+theme:
+  social:
+    other:
+      - label: 'GitHub'
+        icon: 'fa-github'
+        link: 'https://github.com/serpro69/kotlin-faker/'
+        buttonColor: 'dark'
+  menu:
+    - type: 'page'
+      title: 'Home'
+      itemId: 'home'
+      icon: 'home'
+    - type: 'wiki'
+      icon: 'graduation-cap'
+      asSubmenu: true
+      submenuTitle: 'User Guide'
+    - type: 'submenu'
+      title: 'API'
+      icon: 'book'
+      menu:
+        - type: 'sourcedocModules'
+          moduleType: 'kotlindoc'
+          moduleGroup: 'core'
+    - type: 'submenu'
+      title: 'Information'
+      icon: 'info-circle'
+      menu:
+        - type: 'page'
+          title: 'About'
+          itemId: 'About'
+        - type: 'page'
+          itemId: 'Changelog'
+        - type: 'page'
+          title: 'License'
+          itemId: 'License'
+        - type: 'page'
+          title: 'Thanks'
+          itemId: 'Ack'
+        - type: 'page'
+          title: 'Contributing'
+          itemId: 'Contributing'
+  metaComponents:
+    - type: 'orchidSearch'
+      extraCss: [ 'assets/css/orchidSearch.scss' ]
+    - type: 'prism'
+      extraCss: [ 'assets/css/prismFixes.scss' ]
+      theme: 'tomorrow'
+      languages:
+        - 'clike'
+        - 'kotlin'
+
+services:
+  publications:
+    stages:
+      - type: githubPages
+        branch: gh-pages
+        username: serpro69
+        repo: kotlin-faker
+
+kotlindoc:
+  # Uncomment `homePageOnly` line to temporarily disable Kotlin docs generation and only
+  #   generate module homepages. Dokka takes a few seconds to start up, which
+  #   makes rapid iteration a bit painful, so it may be helpful to disable it
+  #   when making changes to the site.
+  homePageOnly: true
+  homePagePermalink: 'modules/:module'
+  sourcePagePermalink: ':moduleType/:module/:sourceDocPath'
+  sourcePages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        itemTitleType: 'signature' # optional, one of [NAME, ID, SIGNATURE]
+        includeItems: true # optional
+  modules:
+    - name: 'Core API'
+      slug: 'core'
+      sourceDirs:
+        - './../../../../core/src/main/kotlin/'
+        - './../../../../core/src/main/java/'
+      moduleGroup: 'core'
+
+snippets:
+  sections:
+    - tags: [ 'code_snippets' ]
+      adapter:
+        type: 'embedded'
+        baseDirs:
+          - '../../../../core/src/test/kotlin/'
+        recursive: true
+        startPattern: '^.*?//.*?START(.+?)$'
+        endPattern: '^.*?//.*?END(.+?)$'
+        patternNameGroup: 1
+
+changelog:
+  adapter:
+    type: "file"
+    baseDir: "../../../../"

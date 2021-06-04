@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [1.8.0] - UNRELEASED
+## [UNRELEASED]
 ### Added
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
 - [#77](https://github.com/serpro69/kotlin-faker/pull/77) [core] Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
@@ -21,16 +21,16 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#79](https://github.com/serpro69/kotlin-faker/issues/79) [core] java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
 - [#81](https://github.com/serpro69/kotlin-faker/issues/81) [core] `RandomProvider#randomClassInstance` fails for object types
 
-## [v1.7.1] - 2020-04-28
+## [1.7.1] - 2020-04-28
 ### Fixed
 - [#45](https://github.com/serpro69/kotlin-faker/pull/45) [core] Parameter 'city_name' not found in 'address'
 
-## [v1.7.0] - 2020-04-16
+## [1.7.0] - 2020-04-16
 ### Added
 - [#59](https://github.com/serpro69/kotlin-faker/pull/59) [core] Random money amount
 - [#62](https://github.com/serpro69/kotlin-faker/pull/62) [core] Add nullable types to random provider type generator
 
-## [v1.6.0] - 2020-12-30
+## [1.6.0] - 2020-12-30
 ### Added
 - [#44](https://github.com/serpro69/kotlin-faker/pull/44) [core] Add support for random instance configuration.
 - [#47](https://github.com/serpro69/kotlin-faker/issues/47) [core] Publish release candidates to bintray
@@ -46,7 +46,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ### Changed
 - [core] Configuration for generation of unique values. Old functionality is deprecated and will be removed in future releases. This relates to changes in [#49](https://github.com/serpro69/kotlin-faker/issues/49)
 
-## [v1.5.0] - 2020-08-30
+## [1.5.0] - 2020-08-30
 ### Added
 - [#40](https://github.com/serpro69/kotlin-faker/issues/40) [core] Add enum support for `RandomProvider`
 - [#39](https://github.com/serpro69/kotlin-faker/issues/39) [core] Update dict files.
@@ -79,11 +79,11 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ### Changed
 - [#32](https://github.com/serpro69/kotlin-faker/issues/32) Upgrade kotlin to 1.4.0
 
-## [v1.4.1] - 2020-08-22
+## [1.4.1] - 2020-08-22
 ### Added
 - [#41](https://github.com/serpro69/kotlin-faker/issues/41) publish to maven central
 
-## [v1.4.0] - 2020-07-09
+## [1.4.0] - 2020-07-09
 ### Fixed
 - [#36](https://github.com/serpro69/kotlin-faker/issues/36) Build native-image before uploading to bintray
 
@@ -102,12 +102,12 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
   - `blood`
 - [#33](https://github.com/serpro69/kotlin-faker/issues/33) [faker-bot] partial matching for provider names
 
-## [v1.3.1] - 2020-06-07
+## [1.3.1] - 2020-06-07
 ### Fixed
 - [#27](https://github.com/serpro69/kotlin-faker/issues/27) Resolving partially-localized provider functions
 with secondary_key
 
-## [v1.3.0] - 2020-06-03
+## [1.3.0] - 2020-06-03
 ### Added
 - [#24](https://github.com/serpro69/kotlin-faker/issues/24) faker-bot cli application
 - Automated releases to github
@@ -116,7 +116,7 @@ with secondary_key
 - [#29](https://github.com/serpro69/kotlin-faker/issues/29) Remove classgraph dependency
 - Split core faker functionality and cli bot application into sub-projects.
 
-## [v1.2.0] - 2020-05-17
+## [1.2.0] - 2020-05-17
 ### Added
 - 3 new providers: `chiquito`, `computer`, and `rajnikanth`
 - New functions to existing providers:
@@ -132,7 +132,7 @@ with secondary_key
 in [RandomProvider](core/src/main/kotlin/io/github/serpro69/kfaker/provider/RandomProvider.kt) class
 - [#20](https://github.com/serpro69/kotlin-faker/issues/20) Issues with FasterXML Jackson 2.10.1
 
-## [v1.1.0] - 2019-11-30
+## [1.1.0] - 2019-11-30
 ### Added
 - 3 new providers: `game`, `horse`, and `opera` 
 - 2 new locales: `th` and `en-TH`
@@ -152,7 +152,7 @@ in [RandomProvider](core/src/main/kotlin/io/github/serpro69/kfaker/provider/Rand
 - [#15](https://github.com/serpro69/kotlin-faker/issues/15) Sources artifact is empty
 
 
-## [v1.0.0] - 2019-10-30 
+## [1.0.0] - 2019-10-30 
 ### Added
 - `FakerConfig` for configuration of `Faker` instance
 - [#7](https://github.com/serpro69/kotlin-faker/issues/7) Generation of unique values through `Faker` instance and separate providers
@@ -163,12 +163,12 @@ in [RandomProvider](core/src/main/kotlin/io/github/serpro69/kfaker/provider/Rand
 - Make `Faker` a class instead of singleton object
 - [#13](https://github.com/serpro69/kotlin-faker/issues/13) Rename `Internet.safeEmail` to `Internet.domain`
 
-## [v0.2.0] - 2019-09-30 
+## [0.2.0] - 2019-09-30 
 ### Added
 - [#1](https://github.com/serpro69/kotlin-faker/issues/1) Random class instance generator
 - [#2](https://github.com/serpro69/kotlin-faker/issues/2) Support for deterministic random
 
-## [v0.1.0] - 2019-04-16 
+## [0.1.0] - 2019-04-16 
 ### Added
 - Generator of fake data for the majority of .yml files
 - Readme containing installation and usage examples
