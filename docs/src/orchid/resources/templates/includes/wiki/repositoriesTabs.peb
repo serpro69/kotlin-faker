@@ -1,0 +1,41 @@
+{% tabs %}
+
+    {% kotlin "Kotlin" %}
+        {% filter compileAs('md') %}
+```kotlin
+repositories {
+    maven {
+        url = URI("https://oss.sonatype.org/content/repositories/snapshots/")
+    }
+}
+```
+        {% endfilter %}
+    {% endkotlin %}
+
+    {% gradle "Gradle" %}
+        {% filter compileAs('md') %}
+```groovy
+repositories {
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+}
+```
+        {% endfilter %}
+    {% endgradle %}
+
+    {% maven "Maven" %}
+        {% filter compileAs('md') %}
+```xml
+<repositories>
+    <repository>
+        <id>sonatype-snapshot</id>
+        <name>Sonatype Snapshot</name>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
+```
+        {% endfilter %}
+    {% endmaven %}
+
+{% endtabs %}
