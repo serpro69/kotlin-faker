@@ -34,10 +34,16 @@ theme:
     linkVisited: 'GREEN'
 
   extraCss:
-    - 'assets/css/bulma.min.css'
-    - 'assets/css/extras.scss'
-    - 'assets/css/homepage.scss'
-    - 'assets/css/plugins.scss'
+    - asset: 'assets/css/bulma.min.css'
+      download: false
+    - asset: 'assets/css/extras.scss'
+      download: false
+    - asset: 'assets/css/homepage.scss'
+      download: false
+    - asset: 'assets/css/plugins.scss'
+      download: false
+    - asset: 'https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css'
+      download: true
   extraJs:
     - "assets/js/simpleFilter.js"
 
