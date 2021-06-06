@@ -6,7 +6,7 @@
 ## Using Faker DSL
 
 Even though **kotlin-faker** was created with Kotlin in mind, it is still possible to use this library from a Java-based project thanks to great
-Kotlin-to-Java interop. (There are similar libraries written completely in Java, so you might consider those as well. Check out the {{ anchor(title='JVM-based Faker Libs Comparison', collectionType='wiki', collectionId='', itemId='JVM-based Faker Libs Comparison') }} for some comparison details if you're interested.)
+Kotlin-to-Java interop. (There are similar libraries written completely in Java, so you might consider those as well. Check out the {{ anchor(title='JVM-targeted Faker Libs Comparison', collectionType='pages', collectionId='', itemId='Faker Comparisons') }} for some comparison details with other faker libs if you're interested.)
 
 Kotlin faker comes with a DSL-like functions (see also {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }}), and while this works great with Kotlin with its type inferences and implicit returns from lambdas, "functional Kotlin-to-Java" interoperability is far from nice.
 

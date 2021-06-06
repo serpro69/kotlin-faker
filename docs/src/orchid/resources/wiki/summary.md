@@ -4,4 +4,3 @@
 - [Faker DSL](faker-dsl.md)
 - [Data Providers](data-providers.md)
 - [Java Interop](java-interop.md)
-- [JVM-based Faker Libs Comparison](faker-comparisons.md)
