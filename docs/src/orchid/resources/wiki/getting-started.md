@@ -51,7 +51,7 @@ faker.getAddress().city()
 
 <br>
 
-Or by using the faker dsl (Which also gives you access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
+Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }} (Which also gives you dsl-like access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
 .)
 
 {% note %}
@@ -64,6 +64,7 @@ Or by using the faker dsl (Which also gives you access to {{ anchor(title='Faker
     <div class="accordion-body">
       <div class="accordion-content">
 Notice usage of <code>FunctionalUtil.fromConsumer</code> method in "FunJava" tab. If this is not used, then an explicit return must be specified at the end of the lambda (See "Java" tab instead).
+See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
       </div>
     </div>
   </article>
@@ -111,4 +112,4 @@ faker.getAddress().city()
 
 <br>
 
-Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options. 
+Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.
