@@ -7,7 +7,7 @@
 
 #### Releases
 
-Installation is as simple as adding `kotlin-faker` dependency to your build file configuration.
+Installation is as simple as adding `kotlin-faker` dependency to your build configuration file:
 
 {% include 'includes/wiki/dependencyTabs.peb' %}
 
@@ -15,7 +15,7 @@ Release artifacts are available for download from maven central, and you usually
 
 #### Snapshots
 
-Snapshots are also available from sonatype snapshots repository, which needs to be added explicitly.
+Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
 {% include 'includes/wiki/repositoriesTabs.peb' %}
 
@@ -54,11 +54,12 @@ faker.getAddress().city()
 Or by using the faker dsl (Which also gives you access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
 .)
 
+{% note %}
 {% filter compileAs('html') %}
 <section class="accordions">
   <article class="accordion">
     <div class="accordion-header toggle">
-      <p>For Java users</p>
+      <p>For Java users (clickable)</p>
     </div>
     <div class="accordion-body">
       <div class="accordion-content">
@@ -68,11 +69,11 @@ Notice usage of <code>FunctionalUtil.fromConsumer</code> method in "FunJava" tab
   </article>
 </section>
 {% endfilter %}
+{% endnote %}
 
 {% tabs %}
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
+{% kotlin "Kotlin" %} {% filter compileAs('md') %}
 ```kotlin
 val faker = faker {
     // faker config
@@ -81,11 +82,9 @@ val faker = faker {
 faker.name.firstName()
 faker.address.city()
 ```
-{% endfilter %}
-{% endkotlin %}
+{% endfilter %} {% endkotlin %}
 
-{% fjava "FunJava" %}
-{% filter compileAs('md') %}
+{% fjava "FunJava" %} {% filter compileAs('md') %}
 ```java
 Faker faker = faker(fromConsumer(f -> {
     // faker config
@@ -94,11 +93,9 @@ Faker faker = faker(fromConsumer(f -> {
 faker.getName().firstName()
 faker.getAddress().city()
 ```
-{% endfilter %}
-{% endfjava %}
+{% endfilter %} {% endfjava %}
 
-{% java "Java" %}
-{% filter compileAs('md') %}
+{% java "Java" %} {% filter compileAs('md') %}
 ```java
 Faker faker = faker(f -> {
     // faker config
@@ -108,8 +105,7 @@ Faker faker = faker(f -> {
 faker.getName().firstName()
 faker.getAddress().city()
 ```
-{% endfilter %}
-{% endjava %}
+{% endfilter %} {% endjava %}
 
 {% endtabs %}
 

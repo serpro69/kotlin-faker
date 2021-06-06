@@ -9,9 +9,19 @@ import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.DisplayName
 import java.util.*
 
-// Wrap each code snippet in comments like "// START (snippet name)...// END (snippet name)"
-// Code snippets can be referenced from the docs using the {% snippet %} tag
-// (see https://orchid.run/plugins/orchidsnippets for snippets docs)
+/**
+ * Documentation code snippets for the docs website homepage.
+ *
+ * This approach has the benefit over using something like code-blocks in .md files directly in a way
+ * that this becomes a "live-documentation",
+ * and additionally it's also being tested since this is, after all, a test class.
+ *
+ * Usage:
+ * ❶ Wrap each code snippet in comments like `// START snippet_name` and `// END snippet_name`
+ * ❷ Code snippets can be referenced from the docs using the {% snippet snippet_name %} tag.
+ * ❸ (See https://orchid.run/plugins/orchidsnippets for snippets docs)
+ */
+@DisplayName("Snippets used in Orchid docs")
 class Homepage : DescribeSpec({
     describe("Faker") {
         context("Fake Data Provider") {
