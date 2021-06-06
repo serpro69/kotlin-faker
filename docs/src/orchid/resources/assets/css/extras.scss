@@ -1,0 +1,38 @@
+---
+---
+
+@import '/assets/css/orchid/base/index';
+@import '/assets/css/orchid/components/index';
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Source+Sans+Pro&display=swap');
+
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+}
+
+h1, h2, h3, h4, h5, h6, .header {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bolder;
+}
+
+::selection {
+  background: lighten({{theme.colors.purple}}, 25%) !important;
+}
+
+html.homepage {
+  overflow: auto !important;
+
+  .button {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: normal;
+  }
+  .gitter-open-chat-button {
+    background-color: $color_secondary;
+  }
+}
+
+/* Override bulma info color in theme config
+ */
+.has-text-info {
+  color: {{theme.infoColor}} !important;
+}

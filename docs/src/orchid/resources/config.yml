@@ -1,20 +1,46 @@
 site:
-  theme: 'StriktTheme'
-  baseUrl: 'http://localhost:8080'
+  theme: Copper
+  baseUrl: http://localhost:8080
   about:
     siteName: kotlin-faker
     siteDescription: |-
       kotlin-faker is a data-generation library intended for use during development and testing,
       as well as for data-anonymization purposes.
       It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.
+    social:
+      other:
+        - link: '/'
+          label: 'Home'
+          icon: 'fas fa-home'
+        - label: 'GitHub'
+          icon: 'fab fa-github'
+          link: 'https://github.com/serpro69/kotlin-faker/'
+          buttonColor: 'dark'
 
 theme:
-  social:
-    other:
-      - label: 'GitHub'
-        icon: 'fa-github'
-        link: 'https://github.com/serpro69/kotlin-faker/'
-        buttonColor: 'dark'
+  primaryColor: '#7E80CF'
+  bannerColor: '#444444'
+  linkColor: '#7E80CF'
+  infoColor: '#5c2bc7'
+
+  colors:
+    purple: '#7E83C4'
+    green: '#7EB394'
+    black: '#444444'
+  palette:
+    primary: 'PURPLE'
+    link: 'PURPLE'
+    secondary: 'GREEN'
+    linkVisited: 'GREEN'
+
+  extraCss:
+    - 'assets/css/bulma.min.css'
+    - 'assets/css/extras.scss'
+    - 'assets/css/homepage.scss'
+    - 'assets/css/plugins.scss'
+  extraJs:
+    - "assets/js/simpleFilter.js"
+
   menu:
     - type: 'page'
       title: 'Home'
@@ -51,13 +77,25 @@ theme:
           itemId: 'Ack'
   metaComponents:
     - type: 'orchidSearch'
-      extraCss: [ 'assets/css/orchidSearch.scss' ]
+      extraCss:
+        - 'assets/css/orchidSearch.scss'
     - type: 'prism'
-      extraCss: [ 'assets/css/prismFixes.scss' ]
       theme: 'tomorrow'
+#      scriptsOnly: 'true'
+      extraCss:
+        - 'assets/css/prism-duotone.css'
       languages:
-        - 'clike'
-        - 'kotlin'
+        - clike
+        - markup-templating
+        - kotlin
+        - java
+        - groovy
+        - yaml
+        - yml
+        - asciidoc
+        - markdown
+        - twig
+        - xml
 
 services:
   publications:
