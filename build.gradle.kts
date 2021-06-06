@@ -80,6 +80,9 @@ subprojects {
     tasks.withType<Test> {
         useJUnitPlatform {}
 
+        @Suppress("SimpleRedundantLet", "UNNECESSARY_SAFE_CALL")
+        jvmArgs?.let { it.plus("-ea") }
+
         // show standard out and standard error of the test JVM(s) on the console
         testLogging.showStandardStreams = true
 
