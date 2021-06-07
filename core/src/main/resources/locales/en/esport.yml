@@ -1,4 +1,4 @@
-# START provider_esport
+# START esport_provider_dict
 en:
   faker:
     esport:
@@ -7,4 +7,4 @@ en:
       events: ["ESL Cologne", "MLG Meadowlands", "GFinity London", "Worlds", "IEM Championship", "League All Stars", "International"]
       leagues: ["ESL", "IEM", "MLG", "GFinity", "Starladder"]
       games: ["CS:GO", "League of Legends", "Overwatch", "StarCraft II", "Dota 2", "Super Smash Bros. Melee", "Hearthstone", "PUBG"]
-# END provider_esport
+# END esport_provider_dict

@@ -1,4 +1,4 @@
-# START provider_overwatch
+# START overwatch_provider_dict
 en:
   faker:
     games:
@@ -2625,4 +2625,4 @@ en:
           "The Iris consumes you",
           "Trick or Treat"
         ]
-# END provider_overwatch
+# END overwatch_provider_dict

@@ -1,4 +1,4 @@
-# START provider_vehicle
+# START vehicle_provider_dict
 en:
   faker:
     vehicle:
@@ -79,4 +79,4 @@ en:
         WI: ['???-####', '#####K', '#####T']
         WY: ['#-#####', '1#-#####', '2[0-3]-#####', '99-#####', 'DV-####', '####', 'GS###', 'PHS-####', 'WYO-####', 'AF###', 'AR###', 'CG###', 'MC###', 'MM###', 'NA###']
       cylinder_engine: 'Cylinder Engine'
-# END provider_vehicle
+# END vehicle_provider_dict

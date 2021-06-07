@@ -1,4 +1,4 @@
-# START provider_rajnikanth
+# START rajnikanth_provider_dict
 en:
   faker:
     rajnikanth:
@@ -76,4 +76,4 @@ en:
         "Rajini was born on 30th Feb, since then that date was removed from calendar so that noone else gets the same birthday.",
         "Rajnikanth can run Windows 7 on 64KB memory.",
         "Rajni never tweets, he only roars."]
-# END provider_rajnikanth
+# END rajnikanth_provider_dict

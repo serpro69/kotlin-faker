@@ -1,4 +1,4 @@
-# START provider_opera
+# START opera_provider_dict
 en:
   faker:
     opera:
@@ -171,4 +171,4 @@ en:
           - Norma
           - Beatrice di Tenda
           - I puritani
-# END provider_opera
+# END opera_provider_dict

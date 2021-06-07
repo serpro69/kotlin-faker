@@ -1,4 +1,4 @@
-# START provider_how_i_met_your_mother
+# START how_i_met_your_mother_provider_dict
 en:
   faker:
     how_i_met_your_mother:
@@ -27,4 +27,4 @@ en:
        "Revenge fantasies never work out the way you want.",
        "Whether a gesture’s charming or alarming, depends on how it’s received."
       ]
-# END provider_how_i_met_your_mother
+# END how_i_met_your_mother_provider_dict

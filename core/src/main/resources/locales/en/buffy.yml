@@ -1,4 +1,4 @@
-# START provider_buffy
+# START buffy_provider_dict
 en:
   faker:
     buffy:
@@ -259,4 +259,4 @@ en:
         "End of Days",
         "Chosen"
       ]
-# END provider_buffy
+# END buffy_provider_dict

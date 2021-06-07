@@ -1,4 +1,4 @@
-# START provider_stripe
+# START stripe_provider_dict
 # https://stripe.com/docs/testing
 en:
   faker:
@@ -41,4 +41,4 @@ en:
         declineExpired:         "4000000000000069"  # Charge is declined with an expired_card code.
         declineProcessingError: "4000000000000119"  # Charge is declined with a processing_error code.
         declineIncorrectNumber: "4242424242424241"  # Charge is declined with an incorrect_number code as the card number fails the Luhn check.
-# END provider_stripe
+# END stripe_provider_dict

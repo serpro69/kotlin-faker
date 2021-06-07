@@ -1,4 +1,4 @@
-# START provider_fresh_prince_of_bel_air
+# START fresh_prince_of_bel_air_provider_dict
 en:
   faker:
     the_fresh_prince_of_bel_air:
@@ -72,4 +72,4 @@ en:
         "Well, it's got ceiling-to-floor doors, and wall-to-wall floors.",
         "I'm definitely gonna miss you, C."
       ]
-# END provider_fresh_prince_of_bel_air
+# END fresh_prince_of_bel_air_provider_dict

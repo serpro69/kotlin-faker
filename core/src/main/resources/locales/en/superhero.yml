@@ -1,4 +1,4 @@
-# START provider_superhero
+# START superhero_provider_dict
 en:
   faker:
     superhero:
@@ -11,4 +11,4 @@ en:
         - "#{Superhero.prefix} #{Superhero.descriptor}"
         - "#{Superhero.descriptor} #{Superhero.suffix}"
         - "#{Superhero.descriptor}"
-# END provider_superhero
+# END superhero_provider_dict

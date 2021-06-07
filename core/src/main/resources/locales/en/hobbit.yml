@@ -1,4 +1,4 @@
-# START provider_hobbit
+# START hobbit_provider_dict
 en:
   faker:
     hobbit:
@@ -18,4 +18,4 @@ en:
        "The road goes ever on and on",
        "Never laugh at live dragons, Bilbo you fool!" ]
       location: ["Bree", "The Shire", "Rivendell", "The Misty Mountains", "Beorn's Hall", "Mirkwood", "Esgaroth", "Erebor", "Bag-End", "Under-Hill", "Mount Gram", "Green Fields", "Last Desert", "Lonely Mountain", "Withered Heath", "Country Round", "Long Lake", "River Running", "Mines of Moria", "Green Dragon Inn", "Bywater", "The Great Mill", "Wilderland", "Gondolin", "Land Beyond", "Goblin Gate", "Carrock", "High Pass", "Great River", "Grey Mountains", "Land of the Necromancer", "Long Marshes", "Forest River", "Lake Town", "Dorwinion", "Ravenhill", "Iron Hills", "Mount Gundabad"]
-# END provider_hobbit
+# END hobbit_provider_dict

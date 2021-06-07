@@ -1,4 +1,4 @@
-# START provider_dumb_and_dumber
+# START dumb_and_dumber_provider_dict
 en:
   faker:
     dumb_and_dumber:
@@ -58,4 +58,4 @@ en:
         "You are in luck! There's a town about three miles that way. I'm sure you'll find a couple guys there. Okay, thanks. Do you realize what you've done?",
         "What is the Soup Du Jour? It's the Soup of the Day. Mmmm. That sounds good. I'll have that."
       ]
-# END provider_dumb_and_dumber
+# END dumb_and_dumber_provider_dict

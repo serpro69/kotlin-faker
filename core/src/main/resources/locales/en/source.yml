@@ -1,4 +1,4 @@
-# START provider_source
+# START source_provider_dict
 en:
   faker:
     source:
@@ -15,4 +15,4 @@ en:
               for (let i=0; i<10; i++) {
                 console.log(i);
               }"
-# END provider_source
+# END source_provider_dict

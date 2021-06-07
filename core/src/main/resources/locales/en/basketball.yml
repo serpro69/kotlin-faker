@@ -1,4 +1,4 @@
-# START provider_basketball
+# START basketball_provider_dict
 en:
   faker:
     basketball:
@@ -98,4 +98,4 @@ en:
         - Small Forward
         - Power Forward
         - Center
-# END provider_basketball
+# END basketball_provider_dict

@@ -1,4 +1,4 @@
-# START provider_sonic_the_hedgehog
+# START sonic_the_hedgehog_provider_dict
 en:
   faker:
     games:
@@ -315,7 +315,7 @@ en:
           - "Sonic Boom: Shattered Crystal"
           - "Sonic Boom: Fire & Ice"
           - Sonic Mania
-          - Sonic Mania Plus (2018) 
+          - Sonic Mania Plus (2018)
           - SegaSonic the Hedgehog
           - Sonic 3D Blast
           - Sonic Adventure
@@ -344,7 +344,7 @@ en:
           - Mario & Sonic at the Olympic Winter Games
           - Mario & Sonic at the London 2012 Olympic Games
           - Mario & Sonic at the Sochi 2014 Olympic Winter Games
-          - Mario & Sonic at the Rio 2016 Olympic Games (2016) 
+          - Mario & Sonic at the Rio 2016 Olympic Games (2016)
           - Waku Waku Sonic Patrol Car
           - SegaSonic Cosmo Fighter
           - Sonic Drift
@@ -409,4 +409,4 @@ en:
           - Team Sonic Racing
           - Super Smash Bros. Ultimate
           - Sega Heroes
-# END provider_sonic_the_hedgehog
+# END sonic_the_hedgehog_provider_dict

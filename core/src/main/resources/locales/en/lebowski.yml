@@ -1,4 +1,4 @@
-# START provider_lebowski
+# START lebowski_provider_dict
 en:
   faker:
     lebowski:
@@ -42,4 +42,4 @@ en:
         "Stay away from my special lady friend, man.",
         "I don't roll on Shabbos!"
       ]
-# END provider_lebowski
+# END lebowski_provider_dict

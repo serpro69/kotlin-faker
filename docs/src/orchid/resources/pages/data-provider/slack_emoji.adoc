@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_slack_emoji' %}
+{% snippet 'slack_emoji_provider_dict' %}
 ----
 ====
 

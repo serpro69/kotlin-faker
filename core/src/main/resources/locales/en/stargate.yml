@@ -1,4 +1,4 @@
-# START provider_stargate
+# START stargate_provider_dict
 en:
   faker:
     stargate:
@@ -20,4 +20,4 @@ en:
         "Indeed.",
         "You ended that sentence with a preposition. Bastard!"
         ]
-# END provider_stargate
+# END stargate_provider_dict

@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_bossa_nova' %}
+{% snippet 'bossa_nova_provider_dict' %}
 ----
 ====
 

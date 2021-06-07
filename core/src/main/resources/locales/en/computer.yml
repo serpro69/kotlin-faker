@@ -1,11 +1,11 @@
-# START provider_computer
+# START computer_provider_dict
 en:
   faker:
     computer:
       type:
         - server
         - workstation
-      platform: 
+      platform:
         - Linux
         - macOS
         - Windows
@@ -35,4 +35,4 @@ en:
           - Windows Server 2019
           - Windows Server 2016
           - Windows Server 2012 R2
-# END provider_computer
+# END computer_provider_dict

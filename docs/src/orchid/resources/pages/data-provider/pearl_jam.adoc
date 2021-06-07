@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_pearl_jam' %}
+{% snippet 'pearl_jam_provider_dict' %}
 ----
 ====
 

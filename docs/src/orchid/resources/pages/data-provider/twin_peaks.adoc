@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_twin_peaks' %}
+{% snippet 'twin_peaks_provider_dict' %}
 ----
 ====
 

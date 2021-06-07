@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_warhammer_fantasy' %}
+{% snippet 'warhammer_fantasy_provider_dict' %}
 ----
 ====
 

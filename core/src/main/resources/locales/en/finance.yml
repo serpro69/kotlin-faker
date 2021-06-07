@@ -1,4 +1,4 @@
-# START provider_finance
+# START finance_provider_dict
 en:
   faker:
     finance:
@@ -112,4 +112,4 @@ en:
         ZA:
         - "ZA##########"
         - "ZA###########"
-# END provider_finance
+# END finance_provider_dict

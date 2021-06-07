@@ -1,4 +1,4 @@
-# START provider_league_of_legends
+# START league_of_legends_provider_dict
 en:
   faker:
     games:
@@ -9,4 +9,4 @@ en:
         summoner_spell: ["Teleport", "Exhaust", "Barrier", "Smite", "Flash", "Ignite", "Clarity", "Mark", "To the King!", "Ghost", "Heal", "Poro Toss", "Cleanse"]
         masteries: ["Battle Trance", "Double Edged Sword", "Bounty Hunter", "Fresh Blood", "Expose Weakness", "Feast", "Warlord's Bloodlust", "Fervor of Battle", "Deathfire Touch", "Greenfather's Gift", "Dangerous Game", "Bandit", "Courage of the Colossus", "Stoneborn Pact", "Grasp of the Undying", "Siegemaster", "Tough Skin", "Explorer", "Assassin", "Secret Stash", "Runic Affinity", "Windspeaker's Blessing", "Thunderlord's Decree", "Stormraider's Surge", "Fearless", "Unyielding", "Meditation", "Battering Blows", "Piercing Thoughts", "Insight", "Perseverance", "Intelligence", "Precision", "Sorcery", "Vampirism", "Fury", "Natural Talent", "Savagery", "Wanderer", "Merciless", "Recovery", "Legendary Guardian", "Swiftness", "Runic Armor", "Veteran's Scars"]
         rank: ["Iron IV", "Iron III", "Iron II", "Iron I", "Bronze IV", "Bronze III", "Bronze II", "Bronze I", "Silver IV", "Silver III", "Silver II", "Silver I", "Gold IV", "Gold III", "Gold II", "Gold I", "Platinum IV", "Platinum III", "Platinum II", "Platinum I", "Diamond IV", "Diamond III", "Diamond II", "Diamond I", "Master", "Grandmaster", "Challenger"]
-# END provider_league_of_legends
+# END league_of_legends_provider_dict

@@ -1,4 +1,4 @@
-# START provider_rupaul
+# START rupaul_provider_dict
 en:
   faker:
     rupaul:
@@ -124,4 +124,4 @@ en:
        "Must be jelly 'cause jam don't shake.",
        "She done already done had herses."
       ]
-# END provider_rupaul
+# END rupaul_provider_dict

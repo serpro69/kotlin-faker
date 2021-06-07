@@ -1,4 +1,4 @@
-# START provider_commerce
+# START commerce_provider_dict
 en:
   faker:
     commerce:
@@ -10,4 +10,4 @@ en:
       promotion_code:
         adjective: ['Amazing', 'Awesome', 'Cool', 'Good', 'Great', 'Incredible', 'Killer', 'Premium', 'Special', 'Stellar', 'Sweet']
         noun: ['Code', 'Deal', 'Discount', 'Price', 'Promo', 'Promotion', 'Sale', 'Savings']
-# END provider_commerce
+# END commerce_provider_dict

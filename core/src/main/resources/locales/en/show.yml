@@ -1,8 +1,8 @@
-# START provider_show
+# START show_provider_dict
 en:
   faker:
     show:
-      adult_musical: 
+      adult_musical:
         - "Elton John and Tim Rice's Aida"
         - "Ain't Misbehavin'"
         - "Aladdin (Prince Street Players Version)"
@@ -332,7 +332,7 @@ en:
         - "A Year with Frog and Toad"
         - "You're Gonna Love Tomorrow"
         - "Young Frankenstein"
-      play: 
+      play:
         - "A-Haunting We Will Go"
         - "A Counterfeit Presentment"
         - "A Delicate Balance"
@@ -596,4 +596,4 @@ en:
         - "The Adventures of Tom Sawyer TYA"
         - "Roald Dahl's Willy Wonka TYA"
         - "A Year with Frog and Toad TYA"
-# END provider_show
+# END show_provider_dict

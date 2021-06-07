@@ -1,4 +1,4 @@
-# START provider_barcode
+# START barcode_provider_dict
 en:
   faker:
     barcode:
@@ -23,4 +23,4 @@ en:
         - '97912#######'
       ismn: '9790########'
       issn: '977#########'
-# END provider_barcode
+# END barcode_provider_dict

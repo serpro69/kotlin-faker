@@ -1,4 +1,4 @@
-# START provider_job
+# START job_provider_dict
 en:
   faker:
     job:
@@ -14,4 +14,4 @@ en:
         - "#{field} #{position}"
         - "#{field} #{position}"
         - "#{seniority} #{position}"
-# END provider_job
+# END job_provider_dict

@@ -1,4 +1,4 @@
-# START provider_drone
+# START drone_provider_dict
 en:
   faker:
     drone:
@@ -94,4 +94,4 @@ en:
         - '1/2'
       shutter_speed_units:
         - 's'
-# END provider_drone
+# END drone_provider_dict

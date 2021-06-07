@@ -1,4 +1,4 @@
-# START provider_myst
+# START myst_provider_dict
 en:
   faker:
     games:
@@ -47,4 +47,4 @@ en:
           # Ti'ana
           "Atrus... what do you see?",
         ]
-# END provider_myst
+# END myst_provider_dict

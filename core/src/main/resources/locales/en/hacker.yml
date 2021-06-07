@@ -1,4 +1,4 @@
-# START provider_hacker
+# START hacker_provider_dict
 en:
   faker:
     hacker:
@@ -7,4 +7,4 @@ en:
       noun: [driver,protocol,bandwidth,panel,microchip,program,port,card,array,interface,system,sensor,firewall,hard drive,pixel,alarm,feed,monitor,application,transmitter,bus,circuit,capacitor,matrix]
       verb: [back up,bypass,hack,override,compress,copy,navigate,index,connect,generate,quantify,calculate,synthesize,input,transmit,program,reboot,parse]
       ingverb: [backing up,bypassing,hacking,overriding,compressing,copying,navigating,indexing,connecting,generating,quantifying,calculating, synthesizing,transmitting,programming,parsing]
-# END provider_hacker
+# END hacker_provider_dict

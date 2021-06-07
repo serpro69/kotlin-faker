@@ -1,4 +1,4 @@
-# START provider_rush
+# START rush_provider_dict
 en:
   faker:
     rush:
@@ -31,4 +31,4 @@ en:
         - Exit...Stage Left
         - A Show of Hands
         - Different Stages
-# END provider_rush
+# END rush_provider_dict

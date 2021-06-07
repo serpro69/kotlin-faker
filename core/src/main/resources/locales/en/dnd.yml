@@ -1,4 +1,4 @@
-# START provider_dnd
+# START dnd_provider_dict
 en:
   faker:
     dnd:
@@ -450,4 +450,4 @@ en:
         - Net
         - Shortbow
         - Sling
-# END provider_dnd
+# END dnd_provider_dict

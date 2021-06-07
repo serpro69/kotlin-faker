@@ -1,4 +1,4 @@
-# START provider_sword_art_online
+# START sword_art_online_provider_dict
 en:
   faker:
     sword_art_online:
@@ -333,4 +333,4 @@ en:
         "Time Piercing Sword",
         "Twin Edged Wings"
       ]
-# END provider_sword_art_online
+# END sword_art_online_provider_dict

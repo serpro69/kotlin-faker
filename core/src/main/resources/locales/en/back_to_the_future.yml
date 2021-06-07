@@ -1,4 +1,4 @@
-# START provider_back_to_the_future
+# START back_to_the_future_provider_dict
 en:
   faker:
     back_to_the_future:
@@ -119,4 +119,4 @@ en:
         "You want a Pepsi, pal, you're gonna pay for it.",
         "You're late! Do you have no concept of time?"
       ]
-# END provider_back_to_the_future
+# END back_to_the_future_provider_dict

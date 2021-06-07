@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_vehicle' %}
+{% snippet 'vehicle_provider_dict' %}
 ----
 ====
 

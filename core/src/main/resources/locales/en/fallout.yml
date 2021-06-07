@@ -1,4 +1,4 @@
-# START provider_fallout
+# START fallout_provider_dict
 en:
   faker:
     games:
@@ -136,4 +136,4 @@ en:
           "You think I inject myself with all that shite and drink myself drunk because I’m a tough Irish gal?",
           "You'd be shocked how many people I've managed to convince I'm just a really sick ghoul."
         ]
-# END provider_fallout
+# END fallout_provider_dict

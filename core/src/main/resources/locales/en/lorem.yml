@@ -1,4 +1,4 @@
-# START provider_lorem
+# START lorem_provider_dict
 en:
   faker:
     lorem:
@@ -10,4 +10,4 @@ en:
         space: ' '
         period: '.'
         question_mark: '?'
-# END provider_lorem
+# END lorem_provider_dict

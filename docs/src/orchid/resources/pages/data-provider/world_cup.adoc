@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_world_cup' %}
+{% snippet 'world_cup_provider_dict' %}
 ----
 ====
 

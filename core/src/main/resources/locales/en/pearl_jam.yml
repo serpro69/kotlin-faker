@@ -1,4 +1,4 @@
-# START provider_pearl_jam
+# START pearl_jam_provider_dict
 en:
   faker:
     pearl_jam:
@@ -212,4 +212,4 @@ en:
         - Yellow Moon
         - You
         - You Are
-# END provider_pearl_jam
+# END pearl_jam_provider_dict

@@ -8,7 +8,7 @@
 ====
 [source,yaml]
 ----
-{% snippet 'provider_sword_art_online' %}
+{% snippet 'sword_art_online_provider_dict' %}
 ----
 ====
 

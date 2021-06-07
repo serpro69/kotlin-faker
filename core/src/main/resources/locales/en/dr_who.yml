@@ -1,4 +1,4 @@
-# START provider_dr_who
+# START dr_who_provider_dict
 en:
   faker:
     dr_who:
@@ -95,4 +95,4 @@ en:
         "Quill", "Shadow Kin", "Arn", "Lothan", "Leaf Dragon", "Lankin", "Killer petals", "Lorr", "Sentient oil",
         "Vardy", "Sea Creature", "Lure Fish", "Dryad", "The Monks"
       ]
-# END provider_dr_who
+# END dr_who_provider_dict

@@ -1,4 +1,4 @@
-# START provider_name
+# START name_provider_dict
 en:
   faker:
     name:
@@ -30,4 +30,4 @@ en:
       # See also https://github.com/serpro69/kotlin-faker/issues/89
       male_last_name: "#{last_name}"
       female_last_name: "#{last_name}"
-# END provider_name
+# END name_provider_dict

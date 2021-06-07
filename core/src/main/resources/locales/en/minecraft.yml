@@ -1,4 +1,4 @@
-# START provider_minecraft
+# START minecraft_provider_dict
 en:
   faker:
     games:
@@ -389,4 +389,4 @@ en:
           - Witch
           - Hoglin
           - Piglin
-# END provider_minecraft
+# END minecraft_provider_dict

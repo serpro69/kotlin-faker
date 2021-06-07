@@ -1,4 +1,4 @@
-# START provider_greek_philosophers
+# START greek_philosophers_provider_dict
 en:
   faker:
     greek_philosophers:
@@ -25,4 +25,4 @@ en:
         "The mind is not a vessel to be filled but a fire to be kindled.",
         "Good habits formed at youth make all the difference.",
       ]
-# END provider_greek_philosophers
+# END greek_philosophers_provider_dict

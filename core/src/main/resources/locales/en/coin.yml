@@ -1,8 +1,8 @@
-# START provider_coin
+# START coin_provider_dict
 en:
   faker:
     coin:
       flip:
         - Heads
         - Tails
-# END provider_coin
+# END coin_provider_dict
