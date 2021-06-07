@@ -31,7 +31,7 @@ layout: 'homepage'
         banking details, movies, games, and many more. Just like this fake logo, but not quite so.
       </p>
       <br>
-      <p style="clear:both;">kotlin-faker gives you…</p>
+      <p style="clear:both;">Some of the bits that kotlin-faker gives you are…</p>
     </div>
   </div>
 </section>
@@ -44,7 +44,12 @@ layout: 'homepage'
     </div>
   </header>
   <div class="column is-8 is-hidden-mobile">
-    <div class="notification is-dark"></div>
+      <pre class="notification content is-medium is-dark"><code class="language-{{ section.lang }}">
+        {%- for name in section.snippets -%}
+            {%- set snip = snippet(name) -%}
+            {{ snip.content | escape }}&#13;
+        {%- endfor -%}
+      </code></pre>
   </div>
 
   {% for snippet in section.tabs %}

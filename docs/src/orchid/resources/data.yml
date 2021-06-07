@@ -15,46 +15,69 @@ contributors:
   link: https://github.com/johanvergeer
 
 homepageSections:
-  - title: 'A powerful fluent API'
+  - title: '…a huge set of real-looking data in various domains:'
+    snippets: ['data_provider_zero']
+    lang: 'kotlin'
     tabs:
-      - title: 'Type-safe fluent assertions'
-        snippets: ['homepage_one']
+      - title: 'Names'
+        snippets: ['data_provider_one']
         lang: 'kotlin'
-  - title: 'Collection handling'
+      - title: 'Addresses'
+        snippets: ['data_provider_two']
+        lang: 'kotlin'
+      - title: 'Internet'
+        snippets: ['data_provider_three']
+        lang: 'kotlin'
+      - title: 'Banking'
+        snippets: ['data_provider_four']
+        lang: 'kotlin'
+      - title: 'Books'
+        snippets: ['data_provider_five']
+        lang: 'kotlin'
+      - title: 'Movies and TV'
+        snippets: ['data_provider_six_a', 'data_provider_six_b']
+        lang: 'kotlin'
+      - title: 'Any many more...'
+        snippets: ['data_provider_seven']
+        lang: 'kotlin'
+  - title: '…57 localized data dictionaries:'
+    snippets: ['faker_locale_zero']
+    lang: 'kotlin'
     tabs:
-      - title: 'Flexible assertions about collections'
-        snippets: ['homepage_two']
+      - title: 'nb_NO -> city'
+        snippets: ['faker_locale_one']
         lang: 'kotlin'
-      - title: '“Narrow” the assertion to elements or ranges'
-        snippets: ['homepage_three']
+      - title: 'nb_NO -> person‘s name'
+        snippets: ['faker_locale_two']
         lang: 'kotlin'
-      - title: 'Make grouping assertions'
-        snippets: ['homepage_four']
-        lang: 'kotlin'
-  - title: '“Soft” assertions'
+  - title: '…“unique data generation”:'
+    snippets: ['unique_data_zero']
+    lang: 'kotlin'
     tabs:
-      - title: 'Use lambdas to execute multiple assertions on a subject at once…'
-        snippets: ['homepage_five']
+      - title: ''
+        snippets: ['unique_data_one']
         lang: 'kotlin'
-      - title: '…with structured diagnostics of those that fail'
-        snippets: ['homepage_six']
+      - title: ''
+        snippets: ['unique_data_two']
         lang: 'text'
-      - title: 'Use lambdas to execute assertions on multiple subjects at once…'
-        snippets: ['homepage_seven']
+      - title: ''
+        snippets: ['unique_data_three']
         lang: 'kotlin'
-  - title: 'Strong typing'
+  - title: '…cli application:'
+    snippets: []
+    lang: 'kotlin'
     tabs:
-      - title: 'Assertion functions can "narrow" the type of the assertion'
-        snippets: ['homepage_eight']
-        lang: 'kotlin'
-      - title: 'Assertions can "map" to properties and method results in a type safe way:'
-        snippets: ['homepage_nine']
-        lang: 'kotlin'
-  - title: 'Extensibility'
+      - title: 'Quick function lookup'
+        snippets: ['cli_app_one']
+        lang: 'bash'
+  - title: '…and more:'
+    snippets: []
+    lang: 'kotlin'
     tabs:
-      - title: 'Custom assertions are extension functions'
-        snippets: ['homepage_ten']
+      - title: 'Random instance of any class…'
+        snippets: ['random_class_instance_one']
         lang: 'kotlin'
-      - title: 'Custom mappings are extension properties'
-        snippets: ['homepage_eleven_a', 'homepage_eleven_b']
-        lang: 'kotlin'
+      - title: '…with pre-configured type generation'
+        snippets: ['unique_data_two']
+        lang: 'text'
+

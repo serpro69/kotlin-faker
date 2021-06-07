@@ -40,14 +40,14 @@ theme:
         - type: 'page'
           itemId: 'Changelog'
         - type: 'page'
+          title: 'Contributing'
+          itemId: 'Contributing'
+        - type: 'page'
           title: 'License'
           itemId: 'License'
         - type: 'page'
           title: 'Thanks'
           itemId: 'Ack'
-        - type: 'page'
-          title: 'Contributing'
-          itemId: 'Contributing'
   metaComponents:
     - type: 'orchidSearch'
       extraCss: [ 'assets/css/orchidSearch.scss' ]
