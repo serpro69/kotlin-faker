@@ -6,7 +6,7 @@
 .Dictionary file
 [%collapsible]
 ====
-[source,kotlin]
+[source,yaml]
 ----
 {% snippet 'provider_chuck_norris' %}
 ----
