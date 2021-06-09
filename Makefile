@@ -1,3 +1,6 @@
+deploy-docs:
+	. ~/.ghtoken && ./gradlew :docs:orchidDeploy -PorchidEnvironment=prod
+
 snapshot-in-pre-release:
 	./gradlew clean test \
 	printVersion \

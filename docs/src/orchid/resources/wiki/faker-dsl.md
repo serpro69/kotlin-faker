@@ -25,7 +25,7 @@ val faker = faker { // ❶
 
 {% endfilter %} {% endfakerdsl %}
 
-{% configdsl "Config-only DSL" %} {% filter compileAs('md') %}
+{% configdsl "Config Builder" %} {% filter compileAs('md') %}
 
 ❶ Alternatively create `FakerConfig` instance with the top-level `fakerConfig` function.
 
