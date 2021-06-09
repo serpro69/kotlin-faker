@@ -1,5 +1,7 @@
 deploy-docs:
+	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./docs/src/orchid/resources/config.yml
 	. ~/.ghtoken && ./gradlew :docs:orchidDeploy -PorchidEnvironment=prod
+	sed -i 's/^\s\sbaseUrl:\shttps:\/\/serpro69.github.io\/kotlin-faker/  baseUrl: http:\/\/localhost:8080/' ./docs/src/orchid/resources/config.yml
 
 snapshot-in-pre-release:
 	./gradlew clean test \
