@@ -54,7 +54,7 @@ faker.getAddress().city()
 Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }} (Which also gives you dsl-like access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
 .)
 
-{% note %}
+{% tip %}
 {% filter compileAs('html') %}
 <section class="accordions">
   <article class="accordion">
@@ -70,7 +70,7 @@ See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='',
   </article>
 </section>
 {% endfilter %}
-{% endnote %}
+{% endtip %}
 
 {% tabs %}
 

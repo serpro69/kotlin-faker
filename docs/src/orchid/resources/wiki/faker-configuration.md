@@ -28,11 +28,11 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 
 ---
 
-{% note %}
+{% info %}
 {% filter compileAs('md') %}
 `randomSeed` config property has precedence over `random` property, and the latter will be ignored if `randomSeed` is specified.
 {% endfilter %}
-{% endnote %}
+{% endinfo %}
 
 ```kotlin
 {% snippet 'faker_config_three' %}

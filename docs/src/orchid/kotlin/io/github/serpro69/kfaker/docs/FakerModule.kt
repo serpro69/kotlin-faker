@@ -7,6 +7,8 @@ import com.eden.orchid.utilities.addToSet
 @Suppress("unused")
 class FakerModule : OrchidModule() {
     override fun configure() {
-        addToSet<TemplateTag, NoteTag>()
+        addToSet<TemplateTag, TipTag>()
+        addToSet<TemplateTag, InfoTag>()
+        addToSet<TemplateTag, WarnTag>()
     }
 }
