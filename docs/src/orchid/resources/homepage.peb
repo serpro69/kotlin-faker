@@ -121,3 +121,25 @@ layout: 'homepage'
 
 </section>
 {% endfor %}
+
+<section class="columns is-centered">
+  <div class="column">
+    <div class="box has-background-white-ter">
+    <div class="content is-medium">
+      <p class="description-text">
+        See the pages under the
+        <span class="icon-text">
+          <span class="icon">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>User Guide</span>
+        section, jump straight to the
+        {{ anchor(title='Getting Started', collectionType='wiki', collectionId='', itemId='Getting Started') }} page,
+        or explore the
+        {{ anchor(title='Core API', collectionType='kotlindoc', collectionId='modules-core', itemId='Core API') }}
+        documentation to learn more.
+      </p>
+    </div>
+    </div>
+  </div>
+</section>
