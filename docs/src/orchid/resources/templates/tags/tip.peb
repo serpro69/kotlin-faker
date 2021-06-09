@@ -7,7 +7,7 @@
         </svg>
       </span>tip</h5>
     </div>
-    <div class="tip-content">
+    <div class="tip-content has-text-white-ter">
       <p>{{ tag.content | raw }}</p>
     </div>
   </div>
