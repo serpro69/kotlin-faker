@@ -67,6 +67,10 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
 
 ## Usage
 
+To learn more about kotlin-faker visit [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
+The content there is ~86% complete and should contain most of the relevant documentation to get you started with kotlin-faker.
+Else proceed reading this readme, which will also be around until the github-pages site is completed.
+
 ### Downloading
 
 Latest releases are always available on maven central.
