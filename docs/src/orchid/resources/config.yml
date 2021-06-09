@@ -10,9 +10,10 @@ site:
       It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.
     social:
       other:
-        - link: '/'
+        - link: '/kotlin-faker'
           label: 'Home'
           icon: 'fas fa-home'
+          buttonColor: 'dark'
         - label: 'GitHub'
           icon: 'fab fa-github'
           link: 'https://github.com/serpro69/kotlin-faker/'
