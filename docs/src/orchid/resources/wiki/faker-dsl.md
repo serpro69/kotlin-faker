@@ -3,7 +3,9 @@
 
 # Faker DSL
 
-Faker comes with a DSL to create `Faker` and `FakerConfig` instances:
+Faker comes with a DSL to create `Faker` and `FakerConfig` instances.
+
+If you're using kotlin - chances are, you will want to use a DSL for creating and configuring `Faker` instances. An exception to this could be if you want to postpone creating the `FakerConfig` instance to a later point, in which case check out the "Non-DSL" way of configuring `Faker`s.
 
 {% tabs %}
 
@@ -68,3 +70,13 @@ val faker = Faker(config) // ❹
 {% endfilter %} {% endtraditional %}
 
 {% endtabs %}
+
+---
+
+{% tip %}
+{% filter compileAs('html') %}
+<p class="description-text">
+If you're interested in using the DSL from Java, check out the <a href="{{ link(collectionType='wiki', collectionId='', itemId='Java Interop') }}#using-faker-dsl">Java Interop - Using Faker DSL</a> for more details, else go to the {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page that also describes how to configure `Faker` in a more "traditional-java-way".
+</p>
+{% endfilter %}
+{% endtip %}
