@@ -21,7 +21,7 @@ theme:
   primaryColor: '#7E80CF'
   bannerColor: '#444444'
   linkColor: '#7E80CF'
-  infoColor: '#5c2bc7'
+  infoColor: '#A97BFF'
 
   colors:
     purple: '#7E83C4'
