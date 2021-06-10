@@ -91,3 +91,8 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 
 ---
 
+...
+
+## Locales
+
+...

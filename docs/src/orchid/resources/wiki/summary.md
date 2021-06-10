@@ -4,3 +4,4 @@
 - [Faker DSL](faker-dsl.md)
 - [Data Providers](data-providers.md)
 - [Java Interop](java-interop.md)
+- [Faker Bot CLI](faker-cli.md)
