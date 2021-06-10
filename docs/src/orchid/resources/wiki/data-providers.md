@@ -6,7 +6,7 @@
 Below is the list of available data providers (aka "categories" or "domains") that correspond to the yaml dictionary files found in [core/locales/en](https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/en)
 
 {% info %}
-Not all (although most) of the providers and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below.
+Not all (although most) of the providers and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below, or go to the {{ anchor(title='Core API', collectionType='kotlindoc', collectionId='modules-core', itemId='Core API') }} page to browse the API reference documentation.
 {% endinfo %}
 
 {% warn %}

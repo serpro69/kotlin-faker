@@ -17,14 +17,49 @@ If no `fakerConfig` instance is passed to `Faker` constructor, or to the `faker`
 
 Faker supports seeding of it's PRNG (pseudo-random number generator) through `FakerConfig` to provide deterministic output of repeated function invocations.
 
+{% tabs %}
+
+{% kotlin %}
+{% filter compileAs('md') %}
 ```kotlin
 {% snippet 'faker_config_one' %}
 ```
+{% endfilter %}
+{% endkotlin %}
+
+{% java %}
+{% filter compileAs('md') %}
+```java
+{% snippet 'faker_config_one_java' %}
+```
+{% endfilter %}
+{% endjava %}
+
+{% endtabs %}
+
+<br>
 
 Alternatively a `randomSeed` property can be used instead of passing an instance of `java.util.Random`:
+
+{% tabs %}
+
+{% kotlin %}
+{% filter compileAs('md') %}
 ```kotlin
 {% snippet 'faker_config_two' %}
 ```
+{% endfilter %}
+{% endkotlin %}
+
+{% java %}
+{% filter compileAs('md') %}
+```java
+{% snippet 'faker_config_two_java' %}
+```
+{% endfilter %}
+{% endjava %}
+
+{% endtabs %}
 
 ---
 
@@ -34,9 +69,25 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 {% endfilter %}
 {% endinfo %}
 
+{% tabs %}
+
+{% kotlin %}
+{% filter compileAs('md') %}
 ```kotlin
 {% snippet 'faker_config_three' %}
 ```
+{% endfilter %}
+{% endkotlin %}
+
+{% java %}
+{% filter compileAs('md') %}
+```java
+{% snippet 'faker_config_three_java' %}
+```
+{% endfilter %}
+{% endjava %}
+
+{% endtabs %}
 
 ---
 

@@ -1,9 +1,12 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.faker
+import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
+import org.junit.jupiter.api.Assertions.assertEquals
 import java.util.*
 
+@DisplayName("Snippets used in Orchid docs 'Faker Configuration' wiki page")
 class FakerConfiguration : DescribeSpec({
     describe("FakerConfig") {
         context("Deterministic Random") {
@@ -25,8 +28,8 @@ class FakerConfiguration : DescribeSpec({
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
 
-                assert(city1 == city2)
-                assert(name1 == name2)
+                assertEquals(city1, city2)
+                assertEquals(name1, name2)
                 // END faker_config_one
             }
 
@@ -49,8 +52,8 @@ class FakerConfiguration : DescribeSpec({
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
 
-                assert(city1 == city2)
-                assert(name1 == name2)
+                assertEquals(city1, city2)
+                assertEquals(name1, name2)
             }
 
             it("'random' should be ignored if 'randomSeed' is specified") {
@@ -70,7 +73,7 @@ class FakerConfiguration : DescribeSpec({
                 }
                 val city2 = otherFaker.address.city()
 
-                assert(city1 == city2)
+                assertEquals(city1, city2)
                 // END faker_config_three
             }
         }

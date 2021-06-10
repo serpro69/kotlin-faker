@@ -144,6 +144,7 @@ snippets:
         baseDirs:
           - '../../../../core/src/main/resources/locales/en/'
           - '../../../../core/src/test/kotlin/'
+          - '../../../../core/src/test/java/'
           - 'snippets'
         recursive: true
         startPattern: '^.*?[//|#].*?START(.+?)$'
