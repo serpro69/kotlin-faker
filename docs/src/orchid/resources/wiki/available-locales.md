@@ -10,5 +10,9 @@ Below pages contain code blocks with inlined yaml dictionaries, some of them can
 {% endwarn %}
 
 {% for page in findAll(collectionType='pages', collectionId='locales') %}
-- [{{ page.title }}]({{ page.link }})
+- [`{{ page.title }}`]({{ page.link }})
 {% endfor %}
+
+{% btc %}{% endbtc %}
+
+<br>

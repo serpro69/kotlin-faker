@@ -1,0 +1,14 @@
+---
+title: ja
+---
+
+== `ja.yml`
+
+.Localized dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{{ load('../../../../core/src/main/resources/locales/ja.yml') | raw }}
+----
+====
