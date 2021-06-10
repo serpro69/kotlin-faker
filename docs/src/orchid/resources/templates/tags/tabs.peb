@@ -1,7 +1,20 @@
 <div class="tabs">
   <ul data-tabs="{{ tag.id }}">
   {% for tab in tag.tabs %}
-    <li {% if loop.first %}class="is-active"{% endif %}><a>{{ tab.title }}</a></li>
+    <li {% if loop.first %}class="is-active"{% endif %}>
+      <a>
+      {% if tab.title | lower == 'kotlin' %}
+          <span class="icon"><i class="mdi mdi-language-kotlin"></i></span>
+      {% elseif tab.title | lower == 'java' %}
+          <span class="icon"><i class="mdi mdi-language-java"></i></span>
+      {% elseif tab.title | lower == 'xml' or tab.title | lower == 'maven' %}
+          <span class="icon"><i class="mdi mdi-xml"></i></span>
+      {# TODO add groovy once https://github.com/Templarian/MaterialDesign/issues/6022 is implemented #}
+      {% else %}
+          {{ tab.title }}
+      {% endif %}
+      </a>
+    </li>
   {% endfor %}
   </ul>
 </div>
