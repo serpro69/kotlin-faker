@@ -1,5 +1,5 @@
 ---
-title: uk locale
+title: uk
 ---
 
 == `uk.yml`

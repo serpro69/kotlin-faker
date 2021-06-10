@@ -3,9 +3,26 @@
 
 # Faker Bot CLI
 
+## ToC
+
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Commands](#commands)
+  * [`list`](#list)
+  * [`lookup`](#lookup)
+* [Options](#options)
+  * [`--verbose`](#--verbose)
+  * [`--locale`](#--locale)
+
+<br>
+
 ## Prerequisites
 
 `faker-bot` is released as a native linux image, and thus there are no additional pre-requisites for running the application.
+
+{% btc %}{% endbtc %}
+
+<br>
 
 ## Installation
 
@@ -14,6 +31,10 @@ The latest releases are available on github (link)
 == TODO ==
 
 [ ] add link
+
+{% btc %}{% endbtc %}
+
+<br>
 
 ## Commands
 
@@ -101,7 +122,7 @@ Faker()
 {% endtext %}
 {% endtabs %}
 
-<br>
+{% btc %}{% endbtc %}
 
 ### `lookup`
 
@@ -238,6 +259,8 @@ Faker()
 {% endtext %}
 {% endtabs %}
 
+{% btc %}{% endbtc %}
+
 <br>
 
 ## Options
@@ -306,7 +329,7 @@ Faker()
 {% endtext %}
 {% endtabs %}
 
-<br>
+{% btc %}{% endbtc %}
 
 ### `--locale`
 
@@ -342,8 +365,12 @@ Faker()
 
 {% info %}
 {% filter compileAs('md') %}
-Notice how some values are not translated because of a partially-localized {{ anchor(title='uk', collectionType='pages', collectionId='locales', itemId='uk locale') }} dictionary.
+Notice how some values are not translated because of a partially-localized {{ anchor(title='uk', collectionType='pages', collectionId='locales', itemId='uk') }} dictionary.
 <br>
 See also [Faker Configuration - Locales]({{ link(collectionType='wiki', collectionId='', itemId='Faker Configuration') }}#locales) for more information about generating values in another language.
 {% endfilter %}
 {% endinfo %}
+
+{% btc %}{% endbtc %}
+
+<br>
