@@ -1,7 +1,9 @@
 
 - [Getting Started](getting-started.md)
 - [Faker Configuration](faker-configuration.md)
+- [Generator of Unique Values](unique-generator.md)
 - [Faker DSL](faker-dsl.md)
 - [Data Providers](data-providers.md)
+- [Available Locales](available-locales.md)
 - [Java Interop](java-interop.md)
 - [Faker Bot CLI](faker-cli.md)

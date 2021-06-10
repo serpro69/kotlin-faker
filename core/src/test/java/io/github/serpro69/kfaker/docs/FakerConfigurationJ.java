@@ -54,6 +54,7 @@ class FakerConfigurationJ {
     }
 
     @DisplayName("random' should be ignored if 'randomSeed' is specified - java")
+    @Test
     void ignoreRandomIfRandomSeedIsSet() {
         // START faker_config_three_java
         FakerConfig config = FakerConfig.builder()
@@ -71,6 +72,18 @@ class FakerConfigurationJ {
 
         assertEquals(city1, city2);
         // END faker_config_three_java
+    }
+
+    @DisplayName("should be able to configure locale")
+    @Test
+    void configureLocale() {
+        // START faker_config_five_java
+        FakerConfig config = FakerConfig.builder()
+            .withLocale("nb-NO")
+            .build();
+        Faker faker = new Faker(config);
+        assertEquals(faker.getAddress().defaultCountry(), "Norge");
+        // END faker_config_five_java
     }
 }
 

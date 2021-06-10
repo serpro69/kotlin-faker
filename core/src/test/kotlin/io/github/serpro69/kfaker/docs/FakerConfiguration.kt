@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker.docs
 
-import io.github.serpro69.kfaker.faker
+import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -12,19 +13,17 @@ class FakerConfiguration : DescribeSpec({
         context("Deterministic Random") {
             it("two faker instances with same 'random' should output same values") {
                 // START faker_config_one
-                val faker = faker {
-                    fakerConfig {
-                        random = Random(42)
-                    }
+                val config = fakerConfig {
+                    random = Random(42)
                 }
+                val faker = Faker(config)
                 val city1 = faker.address.city()
                 val name1 = faker.name.name()
 
-                val otherFaker = faker {
-                    fakerConfig {
-                        random = Random(42)
-                    }
+                val otherConfig = fakerConfig {
+                    random = Random(42)
                 }
+                val otherFaker = Faker(otherConfig)
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
 
@@ -35,20 +34,18 @@ class FakerConfiguration : DescribeSpec({
 
             it("two faker instances with same 'randomSeed' should output same values") {
                 // START faker_config_two
-                val faker = faker {
-                    fakerConfig {
-                        randomSeed = 42
-                    }
+                val config = fakerConfig {
+                    randomSeed = 42
                 }
+                val faker = Faker(config)
                 // END faker_config_two
                 val city1 = faker.address.city()
                 val name1 = faker.name.name()
 
-                val otherFaker = faker {
-                    fakerConfig {
-                        randomSeed = 42
-                    }
+                val otherConfig = fakerConfig {
+                    randomSeed = 42
                 }
+                val otherFaker = Faker(otherConfig)
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
 
@@ -58,23 +55,41 @@ class FakerConfiguration : DescribeSpec({
 
             it("'random' should be ignored if 'randomSeed' is specified") {
                 // START faker_config_three
-                val faker = faker {
-                    fakerConfig {
-                        random = Random(123)
-                        randomSeed = 42
-                    }
+                val config = fakerConfig {
+                    random = Random(123)
+                    randomSeed = 42
                 }
+                val faker = Faker(config)
                 val city1 = faker.address.city()
 
-                val otherFaker = faker {
-                    fakerConfig {
-                        random = Random(42)
-                    }
+                val otherConfig = fakerConfig {
+                    random = Random(123)
+                    randomSeed = 42
                 }
+                val otherFaker = Faker(otherConfig)
                 val city2 = otherFaker.address.city()
 
                 assertEquals(city1, city2)
                 // END faker_config_three
+            }
+        }
+
+        context("Locale") {
+            it("should use a default 'en' locale") {
+                // START faker_config_four
+                val faker = Faker()
+                assertEquals(faker.address.defaultCountry(), "United States of America")
+                // END faker_config_four
+            }
+
+            it("should be able to configure locale") {
+                // START faker_config_five
+                val config = fakerConfig {
+                    locale = "nb-NO"
+                }
+                val faker = Faker(config)
+                assertEquals(faker.address.defaultCountry(), "Norge")
+                // END faker_config_five
             }
         }
     }
