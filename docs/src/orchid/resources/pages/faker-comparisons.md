@@ -4,34 +4,53 @@ title: Faker Comparisons
 
 # JVM-targeted Faker Libs Comparison
 
-On the surface **kotlin-faker** isn't "unique" by any means and there exist several other JVM-targeted libraries out there with similar functionalities, so you have several options to choose from. 
+On the surface <strong>kotlin-faker</strong> isn't "unique" by any means and there exist other JVM-targeted libraries out there with similar functionalities, so you have several options to choose from. 
 
-So why use this one instead? I've decided to make a comparison between kotlin-faker, and others libs that have been out there for quite some time.
+So why use this one instead? I've decided to make a comparison between <strong>kotlin-faker</strong>, and other JVM-based libs that have been out there for quite some time.
 
-<i>The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name.
+{% info %}
+The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name.
+<br>
+<br>
+<i>Note: benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib, benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
+{% endinfo %}
 
-Note: benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib, benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
 
 {% filter compileAs('html') %}
 <table class="table is-striped is-hoverable is-fullwidth">
   <thead>
     <tr>
-      <th><abbr></abbr></th>
-      <th><abbr><a href="https://github.com/serpro69/kotlin-faker"><strong>kotlin-faker</strong></a></abbr></th>
-      <th><abbr><a href="https://github.com/DiUS/java-faker">DiUS/java-faker</a></abbr></th>
-      <th><abbr><a href="https://github.com/Devskiller/jfairy">Devskiller/jfairy</a></abbr></th>
-      <th><abbr><a href="https://github.com/blocoio/faker">blocoico/faker</a></abbr></th>
-      <th><abbr><a href="https://github.com/moove-it/fakeit">moove-it/fakeit</a></abbr></th>
+      <th></th>
+      <th>
+        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <a href="https://github.com/serpro69/kotlin-faker"><strong>kotlin-faker</strong></a>
+      </th>
+      <th>
+        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <a href="https://github.com/DiUS/java-faker">DiUS/java-faker</a>
+      </th>
+      <th>
+        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <a href="https://github.com/Devskiller/jfairy">Devskiller/jfairy</a>
+      </th>
+      <th>
+        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <a href="https://github.com/blocoio/faker">blocoico/faker</a>
+      </th>
+      <th>
+        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <a href="https://github.com/moove-it/fakeit">moove-it/fakeit</a>
+      </th>
     </tr>
   </thead>
   <tfoot>
     <tr>
       <th></th>
-      <th><abbr>kotlin-faker</abbr></th>
-      <th><abbr>DiUS/java-faker</abbr></th>
-      <th><abbr>Devskiller/jfairy</abbr></th>
-      <th><abbr>blocoico/faker</abbr></th>
-      <th><abbr>moove-it/fakeit</abbr></th>
+      <th>kotlin-faker</th>
+      <th>DiUS/java-faker</th>
+      <th>Devskiller/jfairy</th>
+      <th>blocoico/faker</th>
+      <th>moove-it/fakeit</th>
     </tr>
   </tfoot>
   <tbody>
@@ -44,7 +63,7 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
       <td><span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span></td>
     </tr>
     <tr>
-      <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, <code>internet</code>, etc.)</td>
+      <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, etc.)</td>
       <td>171</td>
       <td>73</td>
       <td>8</td>
@@ -52,17 +71,42 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
       <td>36</td>
     </tr>
     <tr>
-      <td>{{ anchor(title='Available Locales', collectionType='wiki', collectionId='', itemId='Locales') }} (<code>nb-NO</code>, <code>uk</code>, <code>es</code>, <code>zh-CN</code>, etc.)</td>
+      <td>{{ anchor(title='Available Locales', collectionType='wiki', collectionId='', itemId='Available Locales') }} (<code>nb-NO</code>, <code>uk</code>, <code>es</code> etc.)</td>
       <td>55</td>
       <td>47</td>
       <td>10</td>
       <td>46</td>
       <td>44</td>
+    </tr>
     <tr>
-      <td>{{ anchor(title='Extra Functionality', collectionType='wiki', collectionId='', itemId='Extra Functionality') }}</td>
+      <td>{{ anchor(title='Generator of Unique Values', collectionType='wiki', collectionId='', itemId='Generator of Unique Values') }}</td>
+      <td>&#10004;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+    </tr>
+    <tr>
+      <td>{{ anchor(title='Extra Functionality', collectionType='wiki', collectionId='', itemId='Extras') }}</td>
       <td>&#10004;</td>
       <td>&#10007;</td>
       <td>&#10004;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+    </tr>
+    <tr>
+      <td>{{ anchor(title='Kotlin DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }}</td>
+      <td>&#10004;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
+    </tr>
+    <tr>
+      <td>{{ anchor(title='CLI App', collectionType='wiki', collectionId='', itemId='Faker Bot CLI') }}</td>
+      <td>&#10004;</td>
+      <td>&#10007;</td>
+      <td>&#10007;</td>
       <td>&#10007;</td>
       <td>&#10007;</td>
     </tr>
@@ -72,14 +116,6 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
       <td>&#10004;</td>
       <td>&#10004;</td>
       <td>&#10004;</td>
-      <td>&#10007;</td>
-    </tr>
-    <tr>
-      <td>{{ anchor(title='CLI App', collectionType='wiki', collectionId='', itemId='CLI Application') }}</td>
-      <td>&#10004;</td>
-      <td>&#10007;</td>
-      <td>&#10007;</td>
-      <td>&#10007;</td>
       <td>&#10007;</td>
     </tr>
     <tr>

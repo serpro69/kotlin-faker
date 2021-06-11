@@ -174,6 +174,7 @@ faker.address.city() // => Barcelona
 {% info %}
 Note that if the localized dictionary file does not contain a category (or a parameter in a category)
 that is present in the default locale, then non-localized (`en`) value will be generated instead.
+
 {% tabs %}
 {% kotlin %}
 {% filter compileAs('md') %}
