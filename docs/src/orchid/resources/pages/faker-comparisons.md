@@ -37,11 +37,11 @@ Note: benchmarks for `blocoio/faker` could not be done due to unexpected excepti
   <tbody>
     <tr>
       <td><strong>Language</strong></td>
-      <td><span class="icon"><i class="mdi mdi-language-kotlin"></i></span></td>
-      <td><span class="icon"><i class="mdi mdi-language-java"></i></span></td>
-      <td><span class="icon"><i class="mdi mdi-language-java"></i></span></td>
-      <td><span class="icon"><i class="mdi mdi-language-java"></i></span></td>
-      <td><span class="icon"><i class="mdi mdi-language-kotlin"></i></span></td>
+      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span></td>
+      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
+      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
+      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
+      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span></td>
     </tr>
     <tr>
       <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, <code>internet</code>, etc.)</td>
