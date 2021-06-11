@@ -50,11 +50,11 @@ layout: 'homepage'
   </div>
 </section>
 
-<section class="columns is-centered">
-  <div class="column is-half">
-    <a class="is-block has-text-centered" href="{{ link('Changelog') }}">Version {{ site.version }}</a>
-  </div>
-</section>
+{#<section class="columns is-centered">#}
+{#  <div class="column is-half">#}
+{#    <a class="is-block has-text-centered" href="{{ link('Changelog') }}">Version {{ site.version }}</a>#}
+{#  </div>#}
+{#</section>#}
 
 {#TODO remove once docs are merged with master#}
 <section class="columns is-centered">
