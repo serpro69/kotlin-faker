@@ -43,10 +43,11 @@ theme:
       download: false
     - asset: 'assets/css/plugins.scss'
       download: false
-    - asset: 'https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css'
-      download: true
   extraJs:
-    - "assets/js/simpleFilter.js"
+    - asset: 'assets/js/simpleFilter.js'
+      download: false
+    - asset: 'https://code.iconify.design/2/2.0.1/iconify.min.js'
+      download: true
 
   menu:
     - type: 'page'
