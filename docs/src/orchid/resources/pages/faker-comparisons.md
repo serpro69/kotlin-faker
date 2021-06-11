@@ -22,23 +22,23 @@ The benchmarks time is an average execution time of 10 consecutive runs. Each ru
     <tr>
       <th></th>
       <th>
-        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <span class="iconify-inline" data-icon="raphael:github"></span>
         <a href="https://github.com/serpro69/kotlin-faker"><strong>kotlin-faker</strong></a>
       </th>
       <th>
-        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <span class="iconify-inline" data-icon="raphael:github"></span>
         <a href="https://github.com/DiUS/java-faker">DiUS/java-faker</a>
       </th>
       <th>
-        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <span class="iconify-inline" data-icon="raphael:github"></span>
         <a href="https://github.com/Devskiller/jfairy">Devskiller/jfairy</a>
       </th>
       <th>
-        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <span class="iconify-inline" data-icon="raphael:github"></span>
         <a href="https://github.com/blocoio/faker">blocoico/faker</a>
       </th>
       <th>
-        <span class="iconify-inline" data-icon="logos:github-octocat"></span>
+        <span class="iconify-inline" data-icon="raphael:github"></span>
         <a href="https://github.com/moove-it/fakeit">moove-it/fakeit</a>
       </th>
     </tr>
@@ -56,11 +56,11 @@ The benchmarks time is an average execution time of 10 consecutive runs. Each ru
   <tbody>
     <tr>
       <td><strong>Language</strong></td>
-      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span></td>
-      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
-      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
-      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span></td>
-      <td><span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span></td>
+      <td><span class="iconify-inline" data-icon="simple-icons:kotlin"></span></td>
+      <td><span class="iconify-inline" data-icon="simple-icons:java"></span></td>
+      <td><span class="iconify-inline" data-icon="simple-icons:java"></span></td>
+      <td><span class="iconify-inline" data-icon="simple-icons:java"></span></td>
+      <td><span class="iconify-inline" data-icon="simple-icons:kotlin"></span></td>
     </tr>
     <tr>
       <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, etc.)</td>
