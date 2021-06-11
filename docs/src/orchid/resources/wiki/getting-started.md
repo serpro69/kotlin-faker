@@ -3,9 +3,16 @@
 
 # Getting Started
 
-### Installing
+## ToC
 
-#### Releases
+* [Installing](#installing)
+  * [Releases](#releases)
+  * [Snapshots](#snapshots)
+* [Generating Data](#generating-data)
+
+## Installing
+
+### Releases
 
 Installation is as simple as adding `kotlin-faker` dependency to your build configuration file:
 
@@ -13,13 +20,17 @@ Installation is as simple as adding `kotlin-faker` dependency to your build conf
 
 Release artifacts are available for download from maven central, and you usually don't need to add any additional repositories information.
 
-#### Snapshots
+### Snapshots
 
 Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
 {% include 'includes/wiki/repositoriesTabs.peb' %}
 
-### Generating Data
+{% btc %}{% endbtc %}
+
+<br>
+
+## Generating Data
 
 Creating a `Faker` instance can be done either by creating a class instance directly:
 
@@ -112,4 +123,8 @@ faker.getAddress().city()
 
 <br>
 
-Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.
+This concludes this short "getting started" guide. Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.
+
+{% btc %}{% endbtc %}
+
+<br>

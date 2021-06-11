@@ -3,10 +3,19 @@
 
 # Java Interop
 
+# ToC
+
+* [Using Faker DSL](#using-faker-dsl)
+* [Calling `Faker` methods](#calling-faker-methods)
+
 ## Using Faker DSL
 
 Even though **kotlin-faker** was created with Kotlin in mind, it is still possible to use this library from a Java-based project thanks to great
-Kotlin-to-Java interop. (There are similar libraries written completely in Java, so you might consider those as well. Check out the {{ anchor(title='JVM-targeted Faker Libs Comparison', collectionType='pages', collectionId='', itemId='Faker Comparisons') }} for some comparison details with other faker libs if you're interested.)
+Kotlin-to-Java interop. 
+
+{% info %}
+There are similar "faker" libraries written in Java for Java, so you might consider those as well. Check out the {{ anchor(title='JVM-targeted Faker Libs Comparison', collectionType='pages', collectionId='', itemId='Faker Comparisons') }} for some comparison details with other faker libs if you're interested.
+{% endinfo %}
 
 Kotlin faker comes with a DSL-like functions (see also {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }}), and while this works great with Kotlin with its type inferences and implicit returns from lambdas, "functional Kotlin-to-Java" interoperability is far from nice.
 
@@ -14,6 +23,9 @@ To somehow mitigate these limitations, kotlin faker comes with a `FunctionalUtil
 
 Consider the following example of creating and configuring a `Faker` instance with the DSL:
 
+{% tabs %}
+{% java "Java" %}
+{% filter compileAs('md') %}
 ```java
 Faker faker = faker(fromConsumer(f -> {
     f.config(fromConsumer(config -> {
@@ -21,11 +33,17 @@ Faker faker = faker(fromConsumer(f -> {
     }));
 }));
 ```
+{% endfilter %}
+{% endjava %}
+{% endtabs %}
 
 This of course doesn't look as good as Kotlin, but that's Java for you with its ugly lambdas.
 
-However, if `builder` parameters are not called with help of `fromConsumer` method, then explicit returns should be specified:
+However, if `builder` parameters are not called with the help of `fromConsumer` method, then explicit returns should be specified:
 
+{% tabs %}
+{% java "Java" %}
+{% filter compileAs('md') %}
 ```java
 Faker faker = faker(f -> {
     f.config(config -> {
@@ -35,8 +53,15 @@ Faker faker = faker(f -> {
     return Unit.INSTANCE;
 });
 ```
+{% endfilter %}
+{% endjava %}
+{% endtabs %}
 
 Fewer parentheses, but an explicit `return` statement for each lambda - the choice, as they say, is yours.
+
+{% btc %}{% endbtc %}
+
+<br>
 
 ## Calling `Faker` methods
 
@@ -63,3 +88,7 @@ faker.address.city()
 {% endkotlin %}
 
 {% endtabs %}
+
+{% btc %}{% endbtc %}
+
+<br>
