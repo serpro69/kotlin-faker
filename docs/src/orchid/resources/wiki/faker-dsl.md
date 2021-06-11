@@ -76,7 +76,7 @@ val faker = Faker(config) // ❹
 {% tip %}
 {% filter compileAs('html') %}
 <p class="description-text">
-If you're interested in using the DSL from Java, check out the <a href="{{ link(collectionType='wiki', collectionId='', itemId='Java Interop') }}#using-faker-dsl">Java Interop - Using Faker DSL</a> for more details, else go to the {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page that also describes how to configure `Faker` in a more "traditional-java-way".
+If you're interested in using the DSL from Java, check out the <a href="{{ link(collectionType='wiki', collectionId='', itemId='Java Interop') }}#using-faker-dsl">Java Interop - Using Faker DSL</a> for more details, else go to the {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page that also describes how to configure <code>Faker</code> in a more "traditional-java-way".
 </p>
 {% endfilter %}
 {% endtip %}
