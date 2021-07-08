@@ -21,4 +21,8 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun lastName() = resolve("last_name")
     fun name() = resolve("name")
     fun nameWithMiddle() = resolve("name_with_middle")
+    // NB! These are not part of original en.yml but are here to support some discrepancies with some localized dicts ('bg', 'ru', 'uk')
+    // See also https://github.com/serpro69/kotlin-faker/issues/89
+    fun maleLastName() = resolve("male_last_name")
+    fun femaleLastName() = resolve("female_last_name")
 }

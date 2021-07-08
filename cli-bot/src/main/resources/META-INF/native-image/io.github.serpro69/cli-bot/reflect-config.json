@@ -1157,7 +1157,9 @@
     {"name":"maleFirstName","parameterTypes":[] },
     {"name":"name","parameterTypes":[] },
     {"name":"nameWithMiddle","parameterTypes":[] },
-    {"name":"neutralFirstName","parameterTypes":[] }
+    {"name":"neutralFirstName","parameterTypes":[] },
+    {"name":"maleLastName","parameterTypes":[] },
+    {"name":"femaleLastName","parameterTypes":[] }
   ]
 },
 {

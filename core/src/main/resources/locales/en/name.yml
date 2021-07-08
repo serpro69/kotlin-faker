@@ -24,3 +24,7 @@ en:
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
+      # NB! These are not part of original en.yml but are here to support some discrepancies with some localized dicts ('bg', 'ru', 'uk')
+      # See also https://github.com/serpro69/kotlin-faker/issues/89
+      male_last_name: "#{last_name}"
+      female_last_name: "#{last_name}"
