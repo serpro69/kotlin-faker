@@ -20,7 +20,7 @@ import kotlin.reflect.full.declaredMemberProperties
 /**
  * Internal class used for resolving yaml expressions into values.
  *
- * @constructor creates an instance of this [FakerService] with the default 'en' locale if [locale] is not specified.
+ * @constructor creates an instance of this [FakerService] with the default 'en' locale if is not specified.
  */
 internal class FakerService @JvmOverloads internal constructor(
     internal val faker: Faker,
@@ -28,6 +28,8 @@ internal class FakerService @JvmOverloads internal constructor(
     random: Random
 ) {
     internal val randomService = RandomService(random)
+
+    @Suppress("RegExpRedundantEscape")
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
     val dictionary = load(locale.replace("_", "-"))
 
@@ -53,7 +55,7 @@ internal class FakerService @JvmOverloads internal constructor(
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
      *
-     * Additionally `if (locale != null && locale.isValid)`, reads the contents of the specified locale file
+     * Additionally, `if (locale != null && locale.isValid)`, reads the contents of the specified locale file
      * into this [dictionary] (Will overwrite all matching keys with values from specified locale file.)
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
@@ -63,9 +65,9 @@ internal class FakerService @JvmOverloads internal constructor(
 
         getDefaultFileStreams().forEach {
             readCategory(it, "en").entries.forEach { category ->
-                if (defaultValues.containsKey(category.key)) {
-                    defaultValues.merge(category.key, category.value) { t, u -> t.plus(u) }
-                } else defaultValues[category.key] = category.value
+                defaultValues[category.key]?.let { existing ->
+                    defaultValues[category.key] = existing.plus(category.value)
+                } ?: run { defaultValues[category.key] = category.value }
             }
 
 //             todo Add `separator` category from `locales/en.yml` file
@@ -90,8 +92,8 @@ internal class FakerService @JvmOverloads internal constructor(
          * Currently does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
          */
         fun merge(default: HashMap<String, Map<String, *>>, localized: HashMap<String, Map<String, *>>) {
-            localized.forEach { category ->
-                default.merge(category.key, category.value) { enMap, localizedMap ->
+            localized.forEach { (k, localizedMap) ->
+                default[k]?.let { enMap ->
                     /*
                      * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
                      * WHERE mapKey IS provider_name: [address, name, games, etc]
@@ -103,7 +105,7 @@ internal class FakerService @JvmOverloads internal constructor(
                      * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
                      * localizedMap["games"] == { pokemon={names=[...]} }
                      */
-                    enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
+                    default[k] = enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
                         /*
                          * This is provider_functions level access for default providers (enMap).
                          * The goal here is to find-and-replace any matching functions (v) for each provider (k).
@@ -146,7 +148,7 @@ internal class FakerService @JvmOverloads internal constructor(
             }
         }
 
-        val categories = defaultValues.entries.toList().map {
+        val categories = defaultValues.asSequence().map {
             val value = when (it.key) {
                 "separator" -> mapOf("separator" to it.value)
                 "currency_symbol" -> mapOf("currency_symbol" to it.value)
@@ -154,7 +156,7 @@ internal class FakerService @JvmOverloads internal constructor(
             }
             Category(getCategoryName(it.key), value)
         }
-        return Dictionary(categories)
+        return Dictionary(categories.toList())
     }
 
     /**
