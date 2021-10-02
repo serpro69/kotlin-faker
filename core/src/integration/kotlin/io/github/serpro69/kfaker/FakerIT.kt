@@ -91,6 +91,7 @@ class FakerIT : DescribeSpec({
                                 && value != "Acoustic #1" // pearlJam#songs
                                 && value != "I am downloading some NP# music." // michaelScott#quotes
                                 && value != "Ook Ook" // ventureBros#character
+                                && value != "Mahi Mahi" // food#ingredients
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {

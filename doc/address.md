@@ -39,9 +39,6 @@ Faker().address.timeZone() // => Pacific/Midway
 
 Faker().address.city() // => Bartville
 
-// This one is the same as 'city' and is added to fix discrepancies between localized and English dictionaries (see #45)
-Faker().address.cityName() // => Bartville
-
 Faker().address.cityWithState() // => Bartville, Indiana
 
 Faker().address.streetName() // => Adams Brook

@@ -28,11 +28,21 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun stateAbbr() = resolve("state_abbr")
     fun timeZone() = resolve("time_zone")
     fun city() = resolve("city")
-    fun cityName() = resolve("city_name")
     fun cityWithState() = resolve("city_with_state")
     fun streetName() = resolve("street_name")
     fun streetAddress() = with(fakerService) { resolve("street_address").numerify() }
     fun fullAddress() = with(fakerService) { resolve("full_address").numerify() }
     fun mailbox() = with(fakerService) { resolve("mail_box").numerify() }
     fun defaultCountry() = resolve("default_country")
+
+    // TODO make internal
+    @Deprecated(
+        message = "This function will become 'private' in 1.9.0",
+        replaceWith = ReplaceWith("city()"),
+        level = DeprecationLevel.WARNING
+    )
+    fun cityName() = resolve("city_name")
+
+    // fix #87
+    internal fun cityRoot() = resolve("city_root")
 }

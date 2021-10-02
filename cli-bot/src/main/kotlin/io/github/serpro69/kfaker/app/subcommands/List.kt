@@ -43,18 +43,18 @@ object List : Runnable {
         val introspector = Introspector(faker)
 
         val renderedProviders = if (providerNames.isNotEmpty()) {
-            introspector.providerFunctions.filter { (provider, _) ->
+            introspector.providerFunctions.asSequence().filter { (provider, _) ->
                 providerNames.any { provider.name.lowercase().contains(it.lowercase() ) }
             }.map { (provider, functions) ->
                 renderProvider(options, faker, provider, functions)
             }
         } else {
-            introspector.providerFunctions.map { (provider, functions) ->
+            introspector.providerFunctions.asSequence().map { (provider, functions) ->
                 renderProvider(options, faker, provider, functions)
             }
         }
 
-        val output = Renderer("Faker()", renderedProviders).toString()
+        val output = Renderer("Faker()", renderedProviders.toList()).toString()
 
         println(output)
     }

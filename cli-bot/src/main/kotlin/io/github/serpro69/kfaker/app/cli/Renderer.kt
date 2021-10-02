@@ -63,7 +63,7 @@ fun renderProvider(
     functions: List<KFunction<*>>
 ): Renderer {
     val renderedFunctions = if (options.verbose) {
-        functions.map {
+        functions.asSequence().map {
             val value = when (it.parameters.size) {
                 1 -> it.call(provider.getter.call(faker)).toString()
                 2 -> it.call(provider.getter.call(faker), "").toString()
@@ -82,13 +82,13 @@ fun renderProvider(
             Renderer("${it.name}() // => $value", emptyList())
         }
     } else {
-        functions.map { Renderer("${it.name}()", emptyList()) }
+        functions.asSequence().map { Renderer("${it.name}()", emptyList()) }
     }
 
     return if (options.javaSyntax) {
         val getterName = "get${provider.name.first().uppercase()}${provider.name.substring(1)}()"
-        Renderer(getterName, renderedFunctions)
+        Renderer(getterName, renderedFunctions.toList())
     } else {
-        Renderer(provider.name, renderedFunctions)
+        Renderer(provider.name, renderedFunctions.toList())
     }
 }

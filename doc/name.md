@@ -18,4 +18,8 @@ Faker().name.lastName() // => Abbott
 Faker().name.name() // => Mr. John Smith
 
 Faker().name.nameWithMiddle() // => Dr. John Abrams Smith
+
+Faker().name.maleLastName() // => Adams
+
+Faker().name.femaleLastName() // => Adams
 ```

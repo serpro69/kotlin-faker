@@ -182,6 +182,7 @@ val addressCategoryKeys = listOf(
     "state",
     "state_abbr",
     "time_zone",
+    "city_root",
     "city",
     "city_name",
     "city_with_state",

@@ -9,9 +9,7 @@ class NameIT : DescribeSpec({
     describe("Name provider") {
         context("ru locale") {
             val faker = faker {
-                fakerConfig {
-                    locale = "ru"
-                }
+                fakerConfig { locale = "ru" }
             }
             val name = faker.name
 
