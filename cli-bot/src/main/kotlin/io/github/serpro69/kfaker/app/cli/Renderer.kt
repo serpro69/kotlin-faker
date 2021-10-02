@@ -60,10 +60,10 @@ fun renderProvider(
     options: CommandOptions,
     faker: Faker,
     provider: KProperty<*>,
-    functions: List<KFunction<*>>
+    functions: Sequence<KFunction<*>>
 ): Renderer {
     val renderedFunctions = if (options.verbose) {
-        functions.asSequence().map {
+        functions.map {
             val value = when (it.parameters.size) {
                 1 -> it.call(provider.getter.call(faker)).toString()
                 2 -> it.call(provider.getter.call(faker), "").toString()

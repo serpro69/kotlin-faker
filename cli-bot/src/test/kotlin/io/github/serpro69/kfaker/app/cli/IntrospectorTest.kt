@@ -189,7 +189,7 @@ class IntrospectorTest : DescribeSpec() {
                         "Yoda",
                         "Zelda"
                     )
-                    providers shouldContainExactly expectedProviders
+                    providers.toList() shouldContainExactly expectedProviders
                 }
             }
 
@@ -399,7 +399,7 @@ class IntrospectorTest : DescribeSpec() {
                         "timeZone"
                     )
 
-                    addressFunctions shouldContainExactly expectedFunctions
+                    addressFunctions.toList() shouldContainExactly expectedFunctions
                 }
 
                 it("should not contain deprecated functions") {
@@ -409,7 +409,7 @@ class IntrospectorTest : DescribeSpec() {
 
                     val expectedFunctions = listOf("hero", "item", "player", "team")
 
-                    addressFunctions shouldContainExactly expectedFunctions
+                    addressFunctions.toList() shouldContainExactly expectedFunctions
                 }
             }
         }

@@ -8,6 +8,8 @@ import io.github.serpro69.kfaker.app.cli.renderProvider
 import io.github.serpro69.kfaker.app.subcommands.Lookup.functionName
 import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
+import kotlin.reflect.KFunction
+import kotlin.reflect.KProperty
 
 /**
  * [KFaker] command for looking up required functionality by [functionName]
@@ -37,9 +39,10 @@ object Lookup : Runnable {
 
         val introspector = Introspector(faker)
 
-        val filteredMap = introspector.providerFunctions.mapValuesTo(mutableMapOf()) { (_, v) ->
-            v.filter { it.name.lowercase().contains(functionName.lowercase()) }
-        }.filterValues { it.isNotEmpty() }
+        val filteredMap: Map<KProperty<*>, Sequence<KFunction<*>>> = introspector.providerFunctions
+            .mapValuesTo(mutableMapOf()) { (_, v) ->
+                v.filter { it.name.lowercase().contains(functionName.lowercase()) }
+            }.filterValues { it.count() > 0 }
 
         val renderedProviders = filteredMap.map { (provider, functions) ->
             renderProvider(options, faker, provider, functions)
