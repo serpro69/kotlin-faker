@@ -8,7 +8,7 @@ import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldStartWith
 
-class MoneyTestIT : DescribeSpec({
+class MoneyIT : DescribeSpec({
     describe("Money provider class") {
         val money = Faker().money
 

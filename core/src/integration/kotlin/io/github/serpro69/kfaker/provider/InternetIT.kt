@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldMatch
 
 @Suppress("unused")
-class InternetTest : DescribeSpec({
+class InternetIT : DescribeSpec({
     describe("Internet provider") {
         val faker = Faker()
         val internet = faker.internet

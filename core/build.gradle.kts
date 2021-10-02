@@ -1,3 +1,4 @@
+import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
@@ -16,6 +17,24 @@ dependencies {
     shadow(kotlin("reflect"))
     shadow("org.slf4j:slf4j-api:1.7.30")
     shadow("com.github.mifmif:generex:1.0.2")
+}
+
+configurations {
+    create("integrationImplementation") { extendsFrom(testImplementation.get()) }
+    create("integrationRuntime") { extendsFrom(testRuntime.get()) }
+}
+
+sourceSets {
+    create("integration") {
+        resources.srcDir("src/integration/resources")
+        compileClasspath += main.get().compileClasspath + test.get().compileClasspath
+        runtimeClasspath += main.get().runtimeClasspath + test.get().runtimeClasspath
+    }
+}
+
+val integrationTest by tasks.creating(Test::class) {
+    testClassesDirs = sourceSets["integration"].output.classesDirs
+    classpath = sourceSets["integration"].runtimeClasspath
 }
 
 tasks.withType<Jar> {
@@ -62,7 +81,7 @@ java {
 
 testlogger {
     showPassed = false
-    theme = com.adarshr.gradle.testlogger.theme.ThemeType.MOCHA
+    theme = ThemeType.MOCHA
 }
 
 val sourcesJar by tasks.creating(Jar::class) {

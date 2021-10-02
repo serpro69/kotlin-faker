@@ -8,7 +8,6 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.assertDoesNotThrow
 import java.io.File
-import java.util.*
 import kotlin.reflect.KProperty
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberFunctions
@@ -91,6 +90,7 @@ class FakerIT : DescribeSpec({
                                 && value != "etc. etc." // marketing#buzzwords
                                 && value != "Acoustic #1" // pearlJam#songs
                                 && value != "I am downloading some NP# music." // michaelScott#quotes
+                                && value != "Ook Ook" // ventureBros#character
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
@@ -159,32 +159,6 @@ class FakerIT : DescribeSpec({
                     val config = fakerConfig { locale = it }
                     assertDoesNotThrow { Faker(config) }
                 }
-            }
-        }
-    }
-
-    describe("faker{} DSL") {
-        it("should have default config if not explicitly configured") {
-            val faker = faker { }
-            assertSoftly {
-                faker.config.locale shouldBe "en"
-                faker.config.uniqueGeneratorRetryLimit shouldBe 100
-            }
-        }
-
-        it("should be able to provide custom configuration") {
-            val r = Random(42)
-            val faker = faker {
-                fakerConfig {
-                    locale = "uk"
-                    uniqueGeneratorRetryLimit = 42
-                    random = r
-                }
-            }
-            assertSoftly {
-                faker.config.locale shouldBe "uk"
-                faker.config.uniqueGeneratorRetryLimit shouldBe 42
-                faker.config.random shouldBe r
             }
         }
     }

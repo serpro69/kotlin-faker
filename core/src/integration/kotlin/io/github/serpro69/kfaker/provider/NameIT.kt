@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldNotContain
 
 @Suppress("unused")
-class NameTest : DescribeSpec({
+class NameIT : DescribeSpec({
     describe("Name provider") {
         context("ru locale") {
             val faker = faker {

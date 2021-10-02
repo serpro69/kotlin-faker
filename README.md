@@ -835,6 +835,12 @@ When adding a new dictionary yml file the following places need to reflect chang
   has to be updated to build the native image with graal.
 - And of course unit tests.
 
+## Test
+
+To run unit tests: `./gradlew clean test`
+
+To run integration tests: `./gradlew clean integrationTest`
+
 ## Build and Deploy
 
 To deploy to OSS Sonatype repo:
