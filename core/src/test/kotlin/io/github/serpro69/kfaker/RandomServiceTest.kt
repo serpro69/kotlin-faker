@@ -154,16 +154,26 @@ internal class RandomServiceTest : DescribeSpec({
                 enum shouldBeIn TestEnum.values()
             }
 
-            it("should return a random enum entry based on a predicate") {
-                val enum = randomService.nextEnum(TestEnum::class.java) {
-                    it == TestEnum.THREE || it == TestEnum.SIX
+            repeat (10) {
+                it("should return a random enum entry based on a predicate #$it") {
+                    val enum = randomService.nextEnum(TestEnum::class.java) { e ->
+                        e == TestEnum.THREE || e == TestEnum.SIX
+                    }
+                    enum shouldBeIn listOf(TestEnum.THREE, TestEnum.SIX)
                 }
-                enum shouldBeIn listOf(TestEnum.THREE, TestEnum.SIX)
             }
 
-            it("should return not return an enum entry if it's name is excluded") {
-                val enum = randomService.nextEnum<TestEnum>(TestEnum.ONE.name)
-                enum shouldBeIn listOf(TestEnum.TWO, TestEnum.THREE, TestEnum.FOUR, TestEnum.FIVE, TestEnum.SIX)
+            repeat (10) {
+                it("should not return an enum entry if it's name is excluded #$it") {
+                    val enum = randomService.nextEnum<TestEnum>(TestEnum.ONE.name)
+                    enum shouldBeIn listOf(
+                        TestEnum.TWO,
+                        TestEnum.THREE,
+                        TestEnum.FOUR,
+                        TestEnum.FIVE,
+                        TestEnum.SIX
+                    )
+                }
             }
         }
 
@@ -182,6 +192,5 @@ enum class TestEnum {
     THREE,
     FOUR,
     FIVE,
-    SIX,
-    SOME
+    SIX
 }
