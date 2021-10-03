@@ -15,11 +15,6 @@ class FakerConfig private constructor(
 
     companion object {
         @JvmStatic
-        @Deprecated(
-            message = "This function is deprecated and will be removed in 1.9.0",
-            ReplaceWith("fakerConfig { }"),
-            level = DeprecationLevel.WARNING
-        )
         fun builder() = Builder()
     }
 
@@ -46,7 +41,27 @@ class FakerConfig private constructor(
         var randomSeed: Long? = null
         var uniqueGeneratorRetryLimit = 100
 
-        internal fun build() = randomSeed?.let {
+        fun withLocale(locale: String): Builder {
+            this.locale = locale
+            return this
+        }
+
+        fun withRandom(random: Random): Builder {
+            this.random = random
+            return this
+        }
+
+        fun withRandomSeed(seed: Long): Builder {
+            this.randomSeed = seed
+            return this
+        }
+
+        fun withUniqueGeneratorRetryLimit(retryLimit: Int): Builder {
+            this.uniqueGeneratorRetryLimit = retryLimit
+            return this
+        }
+
+        fun build() = randomSeed?.let {
             FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit)
         } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit)
     }
