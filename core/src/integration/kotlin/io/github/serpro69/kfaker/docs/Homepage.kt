@@ -3,7 +3,6 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.TestEnum
 import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
@@ -90,10 +89,11 @@ class Homepage : DescribeSpec({
         }
 
         context("Unique data generation") {
-            // START unique_data_zero
-            val faker = Faker()
-            // END unique_data_zero
             it("should generate unique values in Address category") {
+                // START unique_data_zero
+                val faker = Faker()
+                // END unique_data_zero
+
                 // START unique_data_one
                 faker.unique.configuration {
                     // enable generation of unique values for address data provider
@@ -104,11 +104,12 @@ class Homepage : DescribeSpec({
                 // END unique_data_one
             }
             it("should generate unique countries, but not unique cities") {
+                val faker = Faker()
                 // START unique_data_two
                 val countries = List(100) { faker.address.unique.country() }
-                val cities = List(100) { faker.address.city() }
+                val cities = List(1000) { faker.address.city() }
                 assertEquals(countries.distinct().size, 100)
-                assertTrue(cities.distinct().size < 100)
+                assertTrue(cities.distinct().size < 1000)
                 // END unique_data_two
             }
         }
@@ -157,3 +158,13 @@ class Homepage : DescribeSpec({
         }
     }
 })
+
+enum class TestEnum {
+    ONE,
+    TWO,
+    THREE,
+    FOUR,
+    FIVE,
+    SIX,
+    SOME
+}
