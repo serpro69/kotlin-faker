@@ -197,24 +197,35 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val zelda: Zelda = Zelda(fakerService)
 
     @FakerDsl
+    /**
+     * DSL builder for creating instances of [Faker]
+     */
     class Builder internal constructor(){
-        private var config = io.github.serpro69.kfaker.fakerConfig { }
+        /**
+         * @property config faker configuration for the [Faker] instance
+         * which will be created with this [Faker.Builder].
+         */
+        private var config: FakerConfig = io.github.serpro69.kfaker.fakerConfig { }
 
-        @Deprecated(
-            message = "This API is unstable and might change in the final 1.8.0 release.",
-            level = DeprecationLevel.WARNING,
-            replaceWith = ReplaceWith(expression = "fakerConfig{ }")
-        )
-        fun config(block: FakerConfig.Builder.() -> Unit) {
+        /**
+         * Sets [config] configuration for this [Faker.Builder]
+         * using the results of the [block] function.
+         *
+         * This [config] will then be used when an instance of [Faker] is created using this [Faker.Builder]
+         */
+        fun fakerConfig(block: ConfigBuilder) {
             config = io.github.serpro69.kfaker.fakerConfig(block)
         }
 
-        fun fakerConfig(block: FakerConfig.Builder.() -> Unit) {
-            config = io.github.serpro69.kfaker.fakerConfig(block)
-        }
-
-        internal fun build() = Faker(config)
+        /**
+         * Builds an instance of [Faker] with this [config].
+         */
+        internal fun build(): Faker = Faker(config)
     }
 }
 
-fun faker(block: Faker.Builder.() -> Unit) = Faker.Builder().apply(block).build()
+/**
+ * Applies the the [block] function to [Faker.Builder]
+ * and returns as an instance of [Faker] from that builder.
+ */
+fun faker(block: Faker.Builder.() -> Unit): Faker = Faker.Builder().apply(block).build()

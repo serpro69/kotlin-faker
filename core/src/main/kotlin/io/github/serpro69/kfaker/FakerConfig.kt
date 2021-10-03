@@ -72,9 +72,18 @@ class FakerConfig private constructor(
     ReplaceWith("fakerConfig { }"),
     level = DeprecationLevel.WARNING
 )
-fun FakerConfig.Builder.create(block: FakerConfig.Builder.() -> Unit) = this.apply(block).build()
+fun FakerConfig.Builder.create(block: ConfigBuilder): FakerConfig = this.apply(block).build()
 
 /**
- * Creates an instance of [FakerConfig] with the config properties that were passed to the function [block].
+ * Applies the the [block] function to [ConfigBuilder]
+ * and returns as an instance of [FakerConfig] from that builder.
  */
-fun fakerConfig(block: FakerConfig.Builder.() -> Unit) = FakerConfig.Builder().apply(block).build()
+fun fakerConfig(block: ConfigBuilder): FakerConfig = FakerConfig.Builder().apply(block).build()
+
+/**
+ * Lambda with [FakerConfig.Builder] receiver type that returns a [Unit].
+ *
+ * Used with DSL functions to construct an instance of [FakerConfig]
+ * by applying the results of the function to the [FakerConfig.Builder].
+ */
+typealias ConfigBuilder = FakerConfig.Builder.() -> Unit
