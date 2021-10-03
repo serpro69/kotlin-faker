@@ -4,13 +4,14 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
-## [UNRELEASED]
+## [1.8.0] - 2021-10-03
 ### Added
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
 - [#77](https://github.com/serpro69/kotlin-faker/pull/77) [core] Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
 - [#69](https://github.com/serpro69/kotlin-faker/pull/69) [core] Passing `seed` directly to `FakerConfig` instead of through `java.util.Random` instance
 - [#71](https://github.com/serpro69/kotlin-faker/pull/71) [core] DSL for creating and configuring `Faker`
 - [#78](https://github.com/serpro69/kotlin-faker/pull/78) [core] Support sealed classes in `RandomProvider#randomClassInstance` fun
+- [#88](https://github.com/serpro69/kotlin-faker/pull/88) [core] Postpone initialization of FakerConfig through the Builder
 
 ### Changed
 - Configurable `length` of the string generated with `RandomService#nextString`
@@ -20,12 +21,15 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#60](https://github.com/serpro69/kotlin-faker/issues/60) [core] Move out of Bintray/Jcenter
 - [#79](https://github.com/serpro69/kotlin-faker/issues/79) [core] java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
 - [#81](https://github.com/serpro69/kotlin-faker/issues/81) [core] `RandomProvider#randomClassInstance` fails for object types
+- [#90](https://github.com/serpro69/kotlin-faker/pull/90) [core] Android `java.lang.NoClassDefFoundError: FakerService$$ExternalSyntheticLambda1`
+- [#87](https://github.com/serpro69/kotlin-faker/pull/87) [core] Parameter 'city_root' not found in 'address' category
+- [#89](https://github.com/serpro69/kotlin-faker/pull/89) [core] Parameter 'male_last_name' not found in 'name' category for "ru" locale
 
-## [1.7.1] - 2020-04-28
+## [1.7.1] - 2021-04-28
 ### Fixed
 - [#45](https://github.com/serpro69/kotlin-faker/pull/45) [core] Parameter 'city_name' not found in 'address'
 
-## [1.7.0] - 2020-04-16
+## [1.7.0] - 2021-04-16
 ### Added
 - [#59](https://github.com/serpro69/kotlin-faker/pull/59) [core] Random money amount
 - [#62](https://github.com/serpro69/kotlin-faker/pull/62) [core] Add nullable types to random provider type generator
