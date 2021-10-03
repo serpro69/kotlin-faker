@@ -144,8 +144,8 @@ snippets:
         type: 'embedded'
         baseDirs:
           - '../../../../core/src/main/resources/locales/en/'
-          - '../../../../core/src/test/kotlin/'
-          - '../../../../core/src/test/java/'
+          - '../../../../core/src/integration/kotlin/'
+          - '../../../../core/src/integration/java/'
           - 'snippets'
         recursive: true
         startPattern: '^.*?[//|#].*?START(.+?)$'

@@ -367,7 +367,7 @@ Faker()
 {% filter compileAs('md') %}
 Notice how some values are not translated because of a partially-localized {{ anchor(title='uk', collectionType='pages', collectionId='locales', itemId='uk') }} dictionary.
 <br>
-See also [Faker Configuration - Locales]({{ link(collectionType='wiki', collectionId='', itemId='Faker Configuration') }}#locales) for more information about generating values in another language.
+See also [Faker Configuration - Locale]({{ link(collectionType='wiki', collectionId='', itemId='Faker Configuration') }}#locale) for more information about generating values in another language.
 {% endfilter %}
 {% endinfo %}
 
