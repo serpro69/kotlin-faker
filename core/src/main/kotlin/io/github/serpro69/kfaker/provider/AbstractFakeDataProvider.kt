@@ -205,15 +205,16 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                                 counter = counter + 1
                             )
                         }
-                        usedValues == null -> {
-                            usedProviderFunctionsValuesMap[key] = mutableSetOf(result)
-                            result
+                        usedValues == null -> result.also {
+                            // Create 'usedValues' set with the returned value for the 'key'
+                            usedProviderFunctionsValuesMap[key] = mutableSetOf(it)
                         }
                         else -> {
                             if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                                 throw RetryLimitException("Retry limit of $counter exceeded")
-                            } else if (!usedValues.contains(result)) result.also {
-                                usedProviderFunctionsValuesMap[key] = mutableSetOf(result).also { it.addAll(usedValues) }
+                            } else if (!usedValues.contains(result)) result.also { r ->
+                                // Add returned value at the beginning of existing 'usedValues' set for the 'key'
+                                usedProviderFunctionsValuesMap[key] = mutableSetOf(r).also { it.addAll(usedValues) }
                             } else returnOrResolveUnique(
                                 primaryKey = primaryKey,
                                 secondaryKey = secondaryKey,
