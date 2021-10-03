@@ -52,6 +52,9 @@ class FakerIT : DescribeSpec({
                                 !value.contains("#chuck and #norris")
                                 && (provider.name != "invoice" && it.name != "pattern")
                                 && (provider.name != "markdown" && it.name != "headers")
+                                && value != "Visual J#" // programmingLanguage#name
+                                && value != "Acoustic #1" // pearlJam#songs
+                                && value != "I am downloading some NP# music." // michaelScott#quotes
                             ) {
                                 if (value.contains(regex)) {
                                     throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain regex '$regex'")
@@ -86,10 +89,7 @@ class FakerIT : DescribeSpec({
                                 && value != "Help Help" // pearlJam#songs
                                 && value != "Mr. Mr." // kPop#thirdGroups
                                 && value != "Chitty Chitty Bang Bang" // show#adultMusical
-                                && value != "Visual J#" // programmingLanguage#name
                                 && value != "etc. etc." // marketing#buzzwords
-                                && value != "Acoustic #1" // pearlJam#songs
-                                && value != "I am downloading some NP# music." // michaelScott#quotes
                                 && value != "Ook Ook" // ventureBros#character
                                 && value != "Mahi Mahi" // food#ingredients
                             ) {
