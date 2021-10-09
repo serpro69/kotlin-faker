@@ -7,8 +7,6 @@ import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldHave
-import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.types.beInstanceOf
 import java.util.*
 
@@ -154,7 +152,7 @@ internal class RandomServiceTest : DescribeSpec({
                 enum shouldBeIn TestEnum.values()
             }
 
-            repeat (10) {
+            repeat(10) {
                 it("should return a random enum entry based on a predicate #$it") {
                     val enum = randomService.nextEnum(TestEnum::class.java) { e ->
                         e == TestEnum.THREE || e == TestEnum.SIX
@@ -163,7 +161,7 @@ internal class RandomServiceTest : DescribeSpec({
                 }
             }
 
-            repeat (10) {
+            repeat(10) {
                 it("should not return an enum entry if it's name is excluded #$it") {
                     val enum = randomService.nextEnum<TestEnum>(TestEnum.ONE.name)
                     enum shouldBeIn listOf(
@@ -181,6 +179,30 @@ internal class RandomServiceTest : DescribeSpec({
             val uuid = randomService.nextUUID()
             it("random UUID is generated") {
                 UUID.fromString(uuid) should beInstanceOf(UUID::class)
+            }
+        }
+
+        context("randomAlphanumeric() fun") {
+            it("fun is generated") {
+                val sourceGenerated = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+                val listAlphanumeric = List(100) { randomService.randomAlphanumeric() }
+                listAlphanumeric.forEach { it -> it.all { it in sourceGenerated } }
+            }
+
+            it("default generated string is 10 char length") {
+                val defaultLength = 10
+                randomService.randomAlphanumeric().length shouldBe defaultLength
+            }
+
+            it("should return a specific length of the string") {
+                val expectedLength = 100
+                randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
+            }
+
+            it("exception is thrown") {
+                shouldThrow<IllegalArgumentException> {
+                    randomService.randomAlphanumeric(0)
+                }
             }
         }
     }

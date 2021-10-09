@@ -17,6 +17,7 @@ import kotlin.experimental.or
  */
 class RandomService internal constructor(private val random: Random) {
     private val alphabeticSource = "abcdefghijklmnopqrstuvwxyz"
+    private val alphanumericSource = ('A'..'Z') + ('a'..'z') + ('0'..'9')
 
     /**
      * Returns the next pseudorandom, uniformly distributed [Int] value from this [random] number generator's sequence.
@@ -67,6 +68,18 @@ class RandomService internal constructor(private val random: Random) {
         val source = if (upper) alphabeticSource.uppercase() else alphabeticSource
 
         return source[nextInt(source.length)]
+    }
+
+    /**
+     * Returns [String] with the specified [length] consisting of a randomly generated English alphabet and numbers
+     *
+     * @throws IllegalArgumentException if `length < 1`
+     */
+    fun randomAlphanumeric(length: Int = 10): String {
+        if (length < 1) throw IllegalArgumentException("Length must be greater than 0")
+        return (1..length)
+            .map { alphanumericSource.random() }
+            .joinToString("")
     }
 
     /**
@@ -179,5 +192,4 @@ class RandomService internal constructor(private val random: Random) {
         randomBytes[8] = randomBytes[8] or 0x80.toByte() // set to IETF variant
         return UUID.nameUUIDFromBytes(randomBytes).toString()
     }
-
 }
