@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker
 import java.util.*
 import kotlin.experimental.and
 import kotlin.experimental.or
+import kotlin.random.asKotlinRandom
 
 /**
  * Wrapper around [Random] that also contains some additional functions not covered by [Random].
@@ -71,14 +72,13 @@ class RandomService internal constructor(private val random: Random) {
     }
 
     /**
-     * Returns [String] with the specified [length] consisting of a randomly generated English alphabet and numbers
-     *
-     * @throws IllegalArgumentException if `length < 1`
+     * Returns [String] with the specified [length] consisting of a pseudo-randomly generated English alphabet and numbers.
+     * Returns an empty string for a `length < 1`.
      */
     fun randomAlphanumeric(length: Int = 10): String {
-        if (length < 1) throw IllegalArgumentException("Length must be greater than 0")
+        if (length < 1) return ""
         return (1..length)
-            .map { alphanumericSource.random() }
+            .map { alphanumericSource.random(this.random.asKotlinRandom()) }
             .joinToString("")
     }
 

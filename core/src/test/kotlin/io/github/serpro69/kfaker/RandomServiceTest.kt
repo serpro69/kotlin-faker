@@ -7,6 +7,7 @@ import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.beInstanceOf
 import java.util.*
 
@@ -189,6 +190,12 @@ internal class RandomServiceTest : DescribeSpec({
                 listAlphanumeric.forEach { it -> it.all { it in sourceGenerated } }
             }
 
+            it("returns different values") {
+                val one = randomService.randomAlphanumeric()
+                val two = randomService.randomAlphanumeric()
+                one shouldNotBe two
+            }
+
             it("default generated string is 10 char length") {
                 val defaultLength = 10
                 randomService.randomAlphanumeric().length shouldBe defaultLength
@@ -199,10 +206,9 @@ internal class RandomServiceTest : DescribeSpec({
                 randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
             }
 
-            it("exception is thrown") {
-                shouldThrow<IllegalArgumentException> {
-                    randomService.randomAlphanumeric(0)
-                }
+            it("employ string else null length") {
+                val expectedLength = 0
+                randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
             }
         }
     }
