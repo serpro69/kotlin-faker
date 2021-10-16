@@ -142,6 +142,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val overwatch: Overwatch = Overwatch(fakerService)
     val parksAndRec: ParksAndRec = ParksAndRec(fakerService)
     val pearlJam: PearlJam = PearlJam(fakerService)
+    val person: Person = Person(config.random)
     val phish: Phish = Phish(fakerService)
     val phoneNumber: PhoneNumber = PhoneNumber(fakerService)
     val pokemon: Pokemon = Pokemon(fakerService)
