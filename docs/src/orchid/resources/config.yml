@@ -4,8 +4,8 @@ site:
   about:
     siteName: kotlin-faker
     siteDescription: |-
-      kotlin-faker is a data-generation library intended for use during development and testing,
-      as well as for data-anonymization purposes.
+      kotlin-faker is a data-generation library intended for use during development and testing.
+      It can also be sucessfully used for data-anonymization purposes.
       It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.
     social:
       other:
