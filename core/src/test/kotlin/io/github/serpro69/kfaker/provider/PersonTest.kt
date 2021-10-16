@@ -1,14 +1,9 @@
 package io.github.serpro69.kfaker.provider
 
-import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.collections.shouldContain
-import io.kotest.matchers.comparables.shouldBeGreaterThanOrEqualTo
-import io.kotest.matchers.comparables.shouldBeLessThanOrEqualTo
 import io.kotest.matchers.shouldBe
 import java.time.LocalDate
-import java.time.Month
-import java.time.Month.DECEMBER
+import java.time.temporal.ChronoUnit
 import java.util.*
 
 class PersonTest : DescribeSpec({
@@ -16,9 +11,11 @@ class PersonTest : DescribeSpec({
         val person = Person(Random(42))
 
         context("birthDate(age) fun") {
+            val now = LocalDate.now()
+
             repeat(366) {
-                it("should generate a random birth-date based on the age run#$it") {
-                    assertAge(person.birthDate(age), LocalDate.now())
+                it("should generate a random birthDate based on the age run#$it") {
+                    ChronoUnit.YEARS.between(person.birthDate(36), now) shouldBe 36
                 }
             }
 
@@ -33,49 +30,18 @@ class PersonTest : DescribeSpec({
             val start = LocalDate.now().minusYears(25)
 
             repeat(366) {
-                it("should generate a random birth-date with explicit startDate run#$it") {
-                    assertAge(person.birthDate(age, start), start)
-                }
-            }
-        }
-
-        context("birthDate(age, month) fun") {
-            repeat(12) {
-                it("should generate a random birth-date for the given month run#$it") {
-                    val year = LocalDate.now().minusYears(age).year
-                    val month = DECEMBER
-                    val bd = person.birthDate(age, month)
-                    bd shouldBeGreaterThanOrEqualTo LocalDate.of(year, month, 1)
-                    bd shouldBeLessThanOrEqualTo LocalDate.of(year, month, 31)
+                it("should generate a random birthDate with age at certain date run#$it") {
+                    ChronoUnit.YEARS.between(person.birthDate(36, start), start) shouldBe 36
                 }
             }
 
-            repeat(91) {
-                it("should generate a random birth-date for one of the given months run#$it") {
-                    val year = LocalDate.now().minusYears(age).year
-                    val months = listOf(Month.SEPTEMBER, Month.OCTOBER, Month.NOVEMBER)
-                    val bd = person.birthDate(age, months)
-                    bd shouldBeGreaterThanOrEqualTo LocalDate.of(year, months.first(), 1)
-                    bd shouldBeLessThanOrEqualTo LocalDate.of(year, months.last(), 30)
+            repeat(366) {
+                it("should generate a random birthDate with age 0 run#$it") {
+                    val at = LocalDate.of(2021, 1, 1)
+                    val bd = person.birthDate(0, at)
+                    ChronoUnit.YEARS.between(bd, at) shouldBe 0
                 }
-            }
-
-            it("should take into account leap years for month of February") {
-                val leap = List(100) {
-                    person.birthDate(25, Month.FEBRUARY, at = LocalDate.now().withYear(2025))
-                }
-
-                leap shouldContain LocalDate.parse("2000-02-29")
             }
         }
     }
 })
-
-private const val age = 36L
-
-private fun assertAge(birthDate: LocalDate, start: LocalDate) {
-    assertSoftly {
-        birthDate shouldBeGreaterThanOrEqualTo start.minusYears(age)
-        birthDate shouldBeLessThanOrEqualTo start.minusYears(age - 1).minusDays(1)
-    }
-}
