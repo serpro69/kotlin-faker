@@ -15,5 +15,7 @@ jobs:
           distribution: 'adopt'
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.4
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew clean build
