@@ -5,6 +5,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -184,16 +185,24 @@ internal class RandomServiceTest : DescribeSpec({
         }
 
         context("randomAlphanumeric() fun") {
-            it("fun is generated") {
+            it("generates a string from the alphaNumeric source") {
                 val sourceGenerated = ('A'..'Z') + ('a'..'z') + ('0'..'9')
-                val listAlphanumeric = List(100) { randomService.randomAlphanumeric() }
-                listAlphanumeric.forEach { it -> it.all { it in sourceGenerated } }
+                val listAlphanumeric = List(100) { randomService.randomAlphanumeric(100) }
+                listAlphanumeric.forEach {
+                    sourceGenerated shouldContainAll it.map { c -> c }
+                }
             }
 
-            it("returns different values") {
+            it("consecutive runs return different values") {
                 val one = randomService.randomAlphanumeric()
                 val two = randomService.randomAlphanumeric()
                 one shouldNotBe two
+            }
+
+            it("using same seed returns same values") {
+                val r1 = RandomService(Random(42))
+                val r2 = RandomService(Random(42))
+                r1.randomAlphanumeric() shouldBe r2.randomAlphanumeric()
             }
 
             it("default generated string is 10 char length") {
@@ -206,9 +215,8 @@ internal class RandomServiceTest : DescribeSpec({
                 randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
             }
 
-            it("employ string else null length") {
-                val expectedLength = 0
-                randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
+            it("returns an empty string when length is 0") {
+                randomService.randomAlphanumeric(0) shouldBe ""
             }
         }
     }

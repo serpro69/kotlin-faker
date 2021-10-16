@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
 
+## [1.9.0] - UNRELEASED
+### Added
+- [#92](https://github.com/serpro69/kotlin-faker/issues/92) [core] Add `randomAlphanumeric` function to `RandomService`
+
 ## [1.8.0] - 2021-10-03
 ### Added
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
