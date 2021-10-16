@@ -4,7 +4,7 @@
 > Just like this fake-logo, but not quite so.  
 > <img src=./logo/kotlin_faker.png height="144" alt="fake-logo"/>
 
-[![Build Status](https://img.shields.io/travis/serpro69/kotlin-faker/master?logo=Travis-CI&style=for-the-badge)](https://travis-ci.org/serpro69/kotlin-faker)
+[![Build Status](https://img.shields.io/github/workflow/status/serpro69/kotlin-faker/Build?logo=github&style=for-the-badge)](https://github.com/serpro69/kotlin-faker/actions/workflows/build.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker)
 [![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
 [![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&style=for-the-badge&color=lightblue)](https://github.com/serpro69/kotlin-faker/issues)
