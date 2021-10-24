@@ -65,24 +65,6 @@ faker.getAddress().city()
 Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }} (Which also gives you dsl-like access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
 .)
 
-{% tip %}
-{% filter compileAs('html') %}
-<section class="accordions">
-  <article class="accordion">
-    <div class="accordion-header toggle">
-      <p>For Java users (clickable)</p>
-    </div>
-    <div class="accordion-body">
-      <div class="accordion-content">
-Notice usage of <code>FunctionalUtil.fromConsumer</code> method in "FunJava" tab. If this is not used, then an explicit return must be specified at the end of the lambda (See "Java" tab instead).
-See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
-      </div>
-    </div>
-  </article>
-</section>
-{% endfilter %}
-{% endtip %}
-
 {% tabs %}
 
 {% kotlin "Kotlin" %} {% filter compileAs('md') %}
@@ -120,6 +102,24 @@ faker.getAddress().city()
 {% endfilter %} {% endjava %}
 
 {% endtabs %}
+
+{% tip %}
+{% filter compileAs('html') %}
+<section class="accordions">
+  <article class="accordion">
+    <div class="accordion-header toggle">
+      <p>For Java users (clickable)</p>
+    </div>
+    <div class="accordion-body">
+      <div class="accordion-content">
+Notice usage of <code>FunctionalUtil.fromConsumer</code> method in "FunJava" tab. If this is not used, then an explicit return must be specified at the end of the lambda (See "Java" tab instead).
+See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
+      </div>
+    </div>
+  </article>
+</section>
+{% endfilter %}
+{% endtip %}
 
 <br>
 
