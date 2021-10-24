@@ -6,6 +6,7 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 
 ## [1.9.0] - UNRELEASED
 ### Added
+- [#96](https://github.com/serpro69/kotlin-faker/issues/96) [core] Add `randomSubset` and `randomSublist` to `RandomService`
 - [#92](https://github.com/serpro69/kotlin-faker/issues/92) [core] Add `randomAlphanumeric` function to `RandomService`
 - [#86](https://github.com/serpro69/kotlin-faker/issues/86) [core] Generate birth-date based on the age
 

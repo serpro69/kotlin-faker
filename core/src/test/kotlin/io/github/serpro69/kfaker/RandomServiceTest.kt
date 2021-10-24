@@ -4,8 +4,11 @@ import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
+import io.kotest.matchers.collections.shouldBeSortedWith
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldNotBeSortedWith
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -217,6 +220,69 @@ internal class RandomServiceTest : DescribeSpec({
 
             it("returns an empty string when length is 0") {
                 randomService.randomAlphanumeric(0) shouldBe ""
+            }
+        }
+
+        context("randomSublist() fun") {
+            val list = List(100) { it }
+
+            repeat(100) {
+                it("should return a random sublist run#$it") {
+                    val sublist = randomService.randomSublist(list)
+                    assertSoftly {
+                        list shouldContainAll sublist
+                        if (sublist.isNotEmpty()) sublist shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
+
+                it("should return a random sublist of a given size run#$it") {
+                    val sublist = randomService.randomSublist(list, size = 10)
+                    assertSoftly {
+                        list shouldContainAll sublist
+                        sublist shouldHaveSize 10
+                        if (sublist.isNotEmpty()) sublist shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
+            }
+
+            it("should return a random shuffled sublist") {
+                val sublist = randomService.randomSublist(list, shuffled = true)
+                assertSoftly {
+                    list shouldContainAll sublist
+                    if (sublist.isNotEmpty()) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                }
+            }
+        }
+
+        context("randomSubset() fun") {
+            val set = setOf(*List(100) { it }.toTypedArray())
+
+            repeat(100) {
+                it("should return a random subset run#$it") {
+                    val subset = randomService.randomSubset(set)
+                    assertSoftly {
+                        set shouldContainAll subset
+                        if (subset.isNotEmpty()) subset shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
+
+                it("should return a random subset of a given size run#$it") {
+                    val subset = randomService.randomSubset(set, size = 10)
+                    println(subset)
+                    assertSoftly {
+                        set shouldContainAll subset
+                        subset shouldHaveSize 10
+                        if (subset.isNotEmpty()) subset shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
+            }
+
+            it("should return a random shuffled subset") {
+                val sublist = randomService.randomSubset(set, shuffled = true)
+                assertSoftly {
+                    set shouldContainAll sublist
+                    if (sublist.isNotEmpty()) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                }
             }
         }
     }

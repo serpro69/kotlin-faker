@@ -192,4 +192,50 @@ class RandomService internal constructor(private val random: Random) {
         randomBytes[8] = randomBytes[8] or 0x80.toByte() // set to IETF variant
         return UUID.nameUUIDFromBytes(randomBytes).toString()
     }
+
+    /**
+     * Returns a view of the portion of the [list]
+     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
+     *
+     * @param size the desired size of the resulting list.
+     * If `size <= 0` then `toIndex` will also be randomly-generated.
+     * @param shuffled if `true` the [list] will be shuffled before extracting the sublist
+     */
+    @JvmOverloads
+    fun <T> randomSublist(list: List<T>, size: Int = 0, shuffled: Boolean = false): List<T> {
+        val (from, to) = list.randomFromToIndices(size)
+        return list.ifEmpty { emptyList() }
+            .let { if (shuffled) it.shuffled(random) else it }
+            .subList(from, to)
+    }
+
+    /**
+     * Returns a portion of the [set]
+     * with pseudo-randomly generated `fromIndex` and `toIndex` values.
+     *
+     * @param shuffled if `true` the [set] will be shuffled before extracting the subset
+     */
+    @JvmOverloads
+    fun <T> randomSubset(set: Set<T>, size: Int = 0, shuffled: Boolean = false): Set<T> {
+        val (from, to) = set.randomFromToIndices(size)
+        return set.ifEmpty { emptyList() }
+            .let { if (shuffled) it.shuffled(random) else it }
+            .mapIndexedNotNull { i, v -> if (i in from until to) v else null }
+            .toSet()
+    }
+
+    private fun <T> Collection<T>.randomFromToIndices(s: Int): Pair<Int, Int> {
+        val fromIndex = if (s > 0) {
+            (0..size - s).random(random.asKotlinRandom())
+        } else {
+            (indices).random(random.asKotlinRandom())
+        }
+        val toIndex = if (s > 0) {
+            fromIndex + s
+        } else {
+            (fromIndex..size).random(random.asKotlinRandom())
+        }
+
+        return fromIndex to toIndex
+    }
 }
