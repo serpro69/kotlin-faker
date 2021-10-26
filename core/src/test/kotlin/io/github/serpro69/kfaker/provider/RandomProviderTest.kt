@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
+import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
@@ -10,7 +11,8 @@ import java.util.*
 
 @Suppress("unused")
 class RandomProviderTest : DescribeSpec({
-    val randomProvider = RandomProvider(Random())
+    val config = fakerConfig { random = Random() }
+    val randomProvider = RandomProvider(config)
 
     describe("a TestClass with an empty constructor") {
         class TestClass

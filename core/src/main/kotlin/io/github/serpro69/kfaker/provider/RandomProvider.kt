@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
+import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
 import java.util.*
 import kotlin.Boolean
@@ -20,8 +21,8 @@ import kotlin.reflect.KVisibility
  * Inspired by [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
  */
 @Suppress("unused")
-class RandomProvider internal constructor(random: Random) {
-    private val randomService = RandomService(random)
+class RandomProvider internal constructor(fakerConfig: FakerConfig) {
+    private val randomService = RandomService(fakerConfig)
 
     /**
      * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,

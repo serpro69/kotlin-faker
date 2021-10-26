@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker
 
+import com.ibm.icu.text.UnicodeSet
+import com.ibm.icu.util.LocaleData
+import com.ibm.icu.util.ULocale
 import java.util.*
 import kotlin.experimental.and
 import kotlin.experimental.or
@@ -16,9 +19,11 @@ import kotlin.random.asKotlinRandom
  * Consider passing [java.security.SecureRandom] to the constructor of this [RandomService]
  * to get a cryptographically secure pseudo-random generator.
  */
-class RandomService internal constructor(private val random: Random) {
-    private val alphabeticSource = "abcdefghijklmnopqrstuvwxyz"
-    private val alphanumericSource = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+class RandomService internal constructor(private val config: FakerConfig) {
+    private val random = config.random
+    private val alphabeticLowerCharset = ('a'..'z')
+    private val alphabeticUpperCharset = ('A'..'Z')
+    private val numericCharset = ('0'..'9')
 
     /**
      * Returns the next pseudorandom, uniformly distributed [Int] value from this [random] number generator's sequence.
@@ -66,19 +71,25 @@ class RandomService internal constructor(private val random: Random) {
      * @param upper returns the [Char] in upper-case if set to `true`, and in lower-case otherwise
      */
     fun nextLetter(upper: Boolean): Char {
-        val source = if (upper) alphabeticSource.uppercase() else alphabeticSource
-
-        return source[nextInt(source.length)]
+        val source = if (upper) alphabeticUpperCharset else alphabeticLowerCharset
+        return source.random(config.random.asKotlinRandom())
     }
 
     /**
-     * Returns [String] with the specified [length] consisting of a pseudo-randomly generated English alphabet and numbers.
-     * Returns an empty string for a `length < 1`.
+     * Returns [String] with the specified [length] consisting of a pseudo-randomly generated
+     * English alphabet letters and optional [numericalChars],
+     * or an empty string for a `length < 1`.
+     *
+     * @param length the length of the resulting string
+     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
      */
-    fun randomAlphanumeric(length: Int = 10): String {
+    fun randomAlphanumeric(length: Int = 10, numericalChars: Boolean = true): String {
         if (length < 1) return ""
+        val charset = if (numericalChars) {
+            alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
+        } else alphabeticLowerCharset + alphabeticUpperCharset
         return (1..length)
-            .map { alphanumericSource.random(this.random.asKotlinRandom()) }
+            .map { charset.random(this.random.asKotlinRandom()) }
             .joinToString("")
     }
 
@@ -133,10 +144,45 @@ class RandomService internal constructor(private val random: Random) {
     fun nextChar() = nextInt().toChar()
 
     /**
-     * Returns [String] with the specified [length] consisting of pseudo-randomly generated characters.
+     * Returns [String] with the specified [length] (or an empty string for a `length < 1`)
+     * consisting of pseudo-randomly generated characters
+     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
+     *
+     * This function is intended to be used when [randomAlphanumeric] is not sufficient,
+     * i.e. when a non-English [locale] or additional chars are needed in the resulting string.
+     *
+     * @param length the length of the resulting string
+     * @param locale locale to use to generate the charset. Defaults to `locale` config value set for the `faker` instance
+     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements)
+     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
      */
     @JvmOverloads
-    fun nextString(length: Int = 100) = List(length) { nextChar().toString() }.joinToString("")
+    fun nextString(
+        length: Int = 100,
+        locale: Locale = Locale.forLanguageTag(config.locale),
+        auxiliaryChars: Boolean = false,
+        numericalChars: Boolean = false
+    ): String {
+        if (length < 1) return "" // base case
+        if (locale in listOf(Locale.ENGLISH, Locale.US, Locale.UK, Locale.CANADA)) return randomAlphanumeric(length, numericalChars)
+
+        val localeData = LocaleData.getInstance(ULocale.forLocale(locale))
+        val mainChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_STANDARD)
+            .ranges()
+            .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        val auxChars = if (auxiliaryChars) {
+            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_AUXILIARY)
+                .ranges()
+                .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        } else emptyList()
+        val indexChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_INDEX)
+            .ranges()
+            .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        val numChars = if (numericalChars) numericCharset else emptyList()
+
+        val chars = (mainChars + auxChars + indexChars + numChars)
+        return List(length) { chars.random(random.asKotlinRandom()) }.joinToString("")
+    }
 
     /**
      * Returns a randomly selected enum entry of type [E].

@@ -24,10 +24,9 @@ import kotlin.reflect.full.declaredMemberProperties
  */
 internal class FakerService @JvmOverloads internal constructor(
     internal val faker: Faker,
-    locale: String = "en",
-    random: Random
+    locale: String = "en", // TODO remove, this isn't really needed here since we can get locale from faker.config
 ) {
-    internal val randomService = RandomService(random)
+    internal val randomService = RandomService(faker.config)
 
     @Suppress("RegExpRedundantEscape")
     private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
@@ -36,7 +35,7 @@ internal class FakerService @JvmOverloads internal constructor(
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(faker: Faker, locale: Locale, random: Random) : this(faker, locale.toLanguageTag(), random)
+    internal constructor(faker: Faker, locale: Locale) : this(faker, locale.toLanguageTag())
 
     private fun getDefaultFileStreams(): List<InputStream> {
         val classLoader = this.javaClass.classLoader

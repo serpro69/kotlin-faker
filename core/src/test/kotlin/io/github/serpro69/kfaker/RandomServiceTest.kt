@@ -17,7 +17,8 @@ import java.util.*
 
 internal class RandomServiceTest : DescribeSpec({
     describe("RandomService instance") {
-        val randomService = RandomService(Random())
+        val config = fakerConfig { random = Random() }
+        val randomService = RandomService(config)
 
         context("nextInt(bound) fun") {
             val values = List(100) { randomService.nextInt(10) }
@@ -203,8 +204,10 @@ internal class RandomServiceTest : DescribeSpec({
             }
 
             it("using same seed returns same values") {
-                val r1 = RandomService(Random(42))
-                val r2 = RandomService(Random(42))
+                val c1 = fakerConfig { random = Random(42) }
+                val c2 = fakerConfig { random = Random(42) }
+                val r1 = RandomService(c1)
+                val r2 = RandomService(c2)
                 r1.randomAlphanumeric() shouldBe r2.randomAlphanumeric()
             }
 

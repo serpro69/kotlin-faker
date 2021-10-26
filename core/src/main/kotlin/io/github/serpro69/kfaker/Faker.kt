@@ -16,13 +16,13 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
  * @property unique global provider for generation of unique values.
  */
 class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerConfig { }) {
-    private val fakerService: FakerService = FakerService(this, config.locale, config.random)
+    private val fakerService: FakerService = FakerService(this, config.locale)
 
-    val random = RandomService(config.random)
+    val random = RandomService(config)
 
     val unique = GlobalUniqueDataDataProvider()
 
-    val randomProvider: RandomProvider = RandomProvider(config.random)
+    val randomProvider: RandomProvider = RandomProvider(config)
 
     val separator: Separator = Separator(fakerService)
     val currencySymbol: CurrencySymbol = CurrencySymbol(fakerService)

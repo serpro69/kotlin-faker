@@ -10,6 +10,9 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#92](https://github.com/serpro69/kotlin-faker/issues/92) [core] Add `randomAlphanumeric` function to `RandomService`
 - [#86](https://github.com/serpro69/kotlin-faker/issues/86) [core] Generate birth-date based on the age
 
+### Changed
+- [#97](https://github.com/serpro69/kotlin-faker/issues/97) [core] Change `RandomService#nextString` to generate strings only within given locale
+
 ## [1.8.0] - 2021-10-03
 ### Added
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
