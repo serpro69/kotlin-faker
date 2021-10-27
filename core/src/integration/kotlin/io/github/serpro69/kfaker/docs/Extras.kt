@@ -90,10 +90,85 @@ class Extras : DescribeSpec({
     }
 
     describe("Random Everything") {
+        it("should generate random stuff") {
+            // START extras_random_everything_one
+            faker.random.nextBoolean()
+            faker.random.nextChar()
+            faker.random.nextDouble()
+            faker.random.nextFloat()
+            faker.random.nextInt()
+            faker.random.nextInt(bound = 100)
+            faker.random.nextInt(min = 100, max = 999)
+            faker.random.nextInt(intRange = (0..99))
+            faker.random.nextLetter(upper = false)
+            // END extras_random_everything_one
+        }
+
+        it("should generate random enum") {
+            // START extras_random_everything_three
+            faker.random.nextEnum<Foo>()
+            faker.random.nextEnum(enum = Foo::class.java)
+            faker.random.nextEnum(values = Foo.values())
+            faker.random.nextEnum(enum = Foo::class.java) { it != Foo.ONE }
+            faker.random.nextEnum<Foo>(excludeName = "ONE")
+            // END extras_random_everything_three
+        }
+
+        it("should generate random string of English chars") {
+            // START extras_random_everything_four
+            faker.random.randomAlphanumeric(
+                length = 10,
+                numericalChars = false
+            )
+            // END extras_random_everything_four
+        }
+
+        it("should generate random string in a given locale") {
+            // START extras_random_everything_five
+            faker.random.nextString(
+                length = 21,
+                locale = Locale.forLanguageTag("nb-NO"),
+                auxiliaryChars = true,
+                numericalChars = true
+            )
+            // END extras_random_everything_five
+        }
+
+        it("should generate random sublist") {
+            // START extras_random_everything_six
+            val list = List(100) { it }
+            faker.random.randomSublist(list, size = 10, shuffled = true)
+            // END extras_random_everything_six
+        }
+
+        it("should generate random subset") {
+            // START extras_random_everything_seven
+            val set = setOf(*List(100) { it }.toTypedArray())
+            faker.random.randomSubset(set, size = 10, shuffled = true)
+            // END extras_random_everything_seven
+        }
+
+        it("should return random element from a list") {
+            // START extras_random_everything_eight
+            val list = listOf(1, 2, 3)
+            faker.random.randomValue(list)
+            // END extras_random_everything_eight
+        }
+
+        it("should generate random UUID") {
+            // START extras_random_everything_nine
+            faker.random.nextUUID()
+            // END extras_random_everything_nine
+        }
 
     }
-    // START extras_random_instance_
-    // END extras_random_instance_
-
 })
+
+// START extras_random_everything_two
+enum class Foo {
+    ONE,
+    TWO,
+    FORTY_TWO
+}
+// END extras_random_everything_two
 

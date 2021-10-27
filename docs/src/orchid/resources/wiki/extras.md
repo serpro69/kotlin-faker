@@ -166,7 +166,95 @@ The above has the following rules:
 
 Faker provides its wrapper functions around `java.util.Random` (with some additional functionality that is not covered by `java.util.Random`) through `Faker().random` property.
 
-==TODO examples==
+### Wrappers around `java.util.Random`
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_one' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+### Random Enum Instance
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_two' %}
+
+{% snippet 'extras_random_everything_three' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+### Random Strings
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_four' %}
+
+{% snippet 'extras_random_everything_five' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+### Random sub-lists and sub-sets
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_six' %}
+
+{% snippet 'extras_random_everything_seven' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+### Random element from a list/array
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_eight' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+### Random UUID
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_nine' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
 
 {% btc %}{% endbtc %}
 
