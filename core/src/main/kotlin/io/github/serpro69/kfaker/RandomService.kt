@@ -55,12 +55,12 @@ class RandomService internal constructor(private val config: FakerConfig) {
     fun nextInt(min: Int, max: Int) = random.nextInt(max - min + 1) + min
 
     /**
-     * Returns the a pseudo-randomly selected value from the [list] of values.
+     * Returns a pseudo-randomly selected value from the [list] of values.
      */
     fun <T> randomValue(list: List<T>) = list[nextInt(list.size)]
 
     /**
-     * Returns the a pseudo-randomly selected value from the [array] of values.
+     * Returns a pseudo-randomly selected value from the [array] of values.
      */
     fun <T> randomValue(array: Array<T>) = array[nextInt(array.size)]
 
@@ -80,10 +80,12 @@ class RandomService internal constructor(private val config: FakerConfig) {
      * English alphabet letters and optional [numericalChars],
      * or an empty string for a `length < 1`.
      *
-     * @param length the length of the resulting string
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
+     * @param length         the length of the resulting string.
+     *                       Default: `24`
+     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string.
+     *                       Default: `true`
      */
-    fun randomAlphanumeric(length: Int = 10, numericalChars: Boolean = true): String {
+    fun randomString(length: Int = 24, numericalChars: Boolean = true): String {
         if (length < 1) return ""
         val charset = if (numericalChars) {
             alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
@@ -148,23 +150,51 @@ class RandomService internal constructor(private val config: FakerConfig) {
      * consisting of pseudo-randomly generated characters
      * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
      *
-     * This function is intended to be used when [randomAlphanumeric] is not sufficient,
-     * i.e. when a non-English [locale] or additional chars are needed in the resulting string.
-     *
      * @param length the length of the resulting string
      * @param locale locale to use to generate the charset. Defaults to `locale` config value set for the `faker` instance
      * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements)
      * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
      */
-    @JvmOverloads
+    @Deprecated(
+        message = "This function is deprecated and will be removed in future releases.\n" +
+            "Note that default value for 'length' param has changed from '100' to '24' in the new 'randomString' function.",
+        replaceWith = ReplaceWith("randomString"),
+        level = DeprecationLevel.WARNING
+    )
     fun nextString(
         length: Int = 100,
         locale: Locale = Locale.forLanguageTag(config.locale),
         auxiliaryChars: Boolean = false,
         numericalChars: Boolean = false
+    ): String = randomString(length, locale, auxiliaryChars, numericalChars)
+
+    /**
+     * Returns [String] with the specified [length] (or an empty string for a `length < 1`)
+     * consisting of pseudo-randomly generated characters
+     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
+     *
+     * @param length         the length of the resulting string.
+     *                       Default: `24`
+     * @param locale         locale to use to generate the charset.
+     *                       Defaults to `locale` config value set for the `faker` instance.
+     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in
+     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
+     *                       Default: `false`
+     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
+     *                       Default: `false`
+     */
+    @JvmOverloads
+    fun randomString(
+        length: Int = 24,
+        locale: Locale = Locale.forLanguageTag(config.locale),
+        auxiliaryChars: Boolean = false,
+        numericalChars: Boolean = false
     ): String {
         if (length < 1) return "" // base case
-        if (locale in listOf(Locale.ENGLISH, Locale.US, Locale.UK, Locale.CANADA)) return randomAlphanumeric(length, numericalChars)
+        if (locale in listOf(Locale.ENGLISH, Locale.US, Locale.UK, Locale.CANADA)) return randomString(
+            length,
+            numericalChars
+        )
 
         val localeData = LocaleData.getInstance(ULocale.forLocale(locale))
         val mainChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_STANDARD)
