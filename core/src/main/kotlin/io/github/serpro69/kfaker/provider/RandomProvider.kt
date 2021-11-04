@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
+import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
 import kotlin.Boolean
@@ -8,10 +9,10 @@ import kotlin.Double
 import kotlin.Float
 import kotlin.Int
 import kotlin.Long
-import kotlin.NoSuchElementException
 import kotlin.Short
 import kotlin.String
 import kotlin.reflect.KClass
+import kotlin.reflect.KType
 import kotlin.reflect.KVisibility
 
 /**
@@ -88,6 +89,7 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
                             ?: klass.objectInstance
                             ?: klass.randomEnumOrNull()
                             ?: klass.randomSealedClassOrNull(config)
+                            ?: klass.randomCollectionOrNull(it, config)
                             ?: klass.randomClassInstance(config)
                     }
                 }
@@ -114,7 +116,6 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
         String::class -> randomService.randomString()
         Char::class -> randomService.nextChar()
         Boolean::class -> randomService.nextBoolean()
-        // TODO: 16.06.19 Arrays
         else -> null
     }
 
@@ -128,7 +129,27 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
     private fun KClass<*>.randomSealedClassOrNull(config: RandomProviderConfig): Any? {
         return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config) else null
     }
+
+    private fun KClass<*>.randomCollectionOrNull(kType: KType, config: RandomProviderConfig): Any? {
+        return when (this) {
+            List::class -> {
+                val elementType = kType.arguments[0].type?.classifier as KClass<*>
+                listOf(elementType.randomClassInstance(config))
+            }
+            Set::class -> {
+                val elementType = kType.arguments[0].type?.classifier as KClass<*>
+                setOf(elementType.randomClassInstance(config))
+            }
+            Map::class -> {
+                val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
+                val valElementType = kType.arguments[1].type?.classifier as KClass<*>
+                mapOf(keyElementType.randomClassInstance(config) to valElementType.randomClassInstance(config))
+            }
+            else -> null
+        }
+    }
 }
+
 
 /**
  * Configuration for [RandomProvider.randomClassInstance].

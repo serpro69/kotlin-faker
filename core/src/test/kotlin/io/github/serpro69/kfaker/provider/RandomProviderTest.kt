@@ -5,6 +5,8 @@ import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.maps.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
@@ -323,6 +325,24 @@ class RandomProviderTest : DescribeSpec({
                     testClass.baz shouldBe null
                 }
             }
+        }
+    }
+
+    describe("a TestClass with non-empty constructor with Collection-type parameters") {
+        class Foo
+        class Bar(val int: Int)
+        class Baz(val foo: Foo, val string: String)
+        class TestClass(
+            val list: List<Foo>,
+            val set: Set<Bar>,
+            val map: Map<String, Baz>
+        )
+
+        it("should generate a random instance of TestClass") {
+            val testClass = randomProvider.randomClassInstance<TestClass>()
+            testClass.list shouldHaveSize 1
+            testClass.set shouldHaveSize 1
+            testClass.map shouldHaveSize 1
         }
     }
 
