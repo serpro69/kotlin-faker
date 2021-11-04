@@ -4,7 +4,7 @@ deploy-docs:
 	sed -i 's/^\s\sbaseUrl:\shttps:\/\/serpro69.github.io\/kotlin-faker/  baseUrl: http:\/\/localhost:8080/' ./docs/src/orchid/resources/config.yml
 
 snapshot-in-pre-release:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
 	publishToSonatype \
@@ -12,7 +12,7 @@ snapshot-in-pre-release:
 	--info
 
 snapshot-major:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
 	publishToSonatype \
@@ -20,7 +20,7 @@ snapshot-major:
 	--info
 
 snapshot-minor:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
 	publishToSonatype \
@@ -28,7 +28,7 @@ snapshot-minor:
 	--info
 
 snapshot-patch:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
 	publishToSonatype \
@@ -36,7 +36,7 @@ snapshot-patch:
 	--info
 
 pre-release-major:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -47,7 +47,7 @@ pre-release-major:
 	git push origin --tags
 
 pre-release-minor:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -58,7 +58,7 @@ pre-release-minor:
 	git push origin --tags
 
 pre-release-patch:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -69,7 +69,7 @@ pre-release-patch:
 	git push origin --tags
 
 next-pre-release:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -80,7 +80,7 @@ next-pre-release:
 	git push origin --tags
 
 promote-to-release:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -91,7 +91,7 @@ promote-to-release:
 	git push origin --tags
 
 release-major:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -102,7 +102,7 @@ release-major:
 	git push origin --tags
 
 release-minor:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
@@ -113,7 +113,7 @@ release-minor:
 	git push origin --tags
 
 release-patch:
-	./gradlew clean test \
+	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
 	publishToSonatype \
