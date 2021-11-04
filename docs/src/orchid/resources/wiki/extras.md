@@ -10,6 +10,7 @@
 * [Random instance of any class](#random-instance-of-any-class)
   * [Pre-configuring type generation for constructor arguments](#pre-configuring-type-generation-for-constructor-arguments)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
+  * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
 * [Random Everything](#random-everything)
 
 <br>
@@ -21,7 +22,7 @@ It is possible to create a random instance of (almost) any class.
 There are some rules to keep in mind:
 
 - By default, the constructor with the least number of arguments is used (This can be configured - read on.)
-- `kotlin.collection.*` and `kolin.Array` types in the constructor are not supported at the moment
+- `kolin.Array` type in the constructor is not supported at the moment
 
 Random instance generation is available through `Faker().randomProvider`:
 
@@ -157,6 +158,88 @@ The above has the following rules:
 - `constructorParamSize` config property takes precedence over `constructorFilterStrategy`
 - both can be specified at the same time, though in most cases it probably makes more sense to use `fallbackStrategy` with `constructorParamSize` as it just makes things a bit more readable
 - configuration properties that are set in `randomClassInstance` block will be applied to all "children" classes. For example classes `Foo`, `Bar`, and `Baz` will use the same random instance configuration settings when instances of those classes are created in `FooBarBaz` class.
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Configuring the size of generated Collections
+
+Support for `kotlin.collections.Collection` parameter types - `List`, `Set` and `Map` has been added in version `1.9.0` and with that - a new configuration parameter to configure the size of the generated collection.
+
+By default, all collections will be generated with only 1 element:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_six' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+This can be configured using `collectionsSize` parameter:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_seven' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+{% info %}
+{% filter compileAs('md') %}
+Note that the `collectionsSize` configuration parameter affects all 3 types of Collections.
+{% endfilter %}
+{% endinfo %}
+
+<br>
+
+{% warn %}
+{% filter compileAs('md') %}
+It is also worth noting that `typeGenerator<Foo> { ... }` configuration, which was covered above, will not affect `Foo` typed elements in a generated collection.
+{% endfilter %}
+{% endwarn %}
+
+Consider the following example. If `typeGenerator<String> { "a string" }` would affect `String` typed elements of `Set`, the resulting generated set would be of size `1`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_eight' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+At the same time, `typeGenerator` configurator itself can be used with collections as well:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_nine' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
 
 {% btc %}{% endbtc %}
 
