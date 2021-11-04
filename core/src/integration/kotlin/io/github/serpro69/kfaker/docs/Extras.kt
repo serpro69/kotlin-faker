@@ -86,6 +86,77 @@ class Extras : DescribeSpec({
                 assertNotEquals(fooBarBaz.baz, null)
                 // END extras_random_instance_five
             }
+
+            it("should generate collections with size 1 be default") {
+                // START extras_random_instance_six
+                class Foo(
+                    val list: List<String>,
+                    val set: Set<String>,
+                    val map: Map<String, Int>
+                )
+
+                val foo = faker.randomProvider.randomClassInstance<Foo>()
+
+                assertEquals(foo.list.size, 1)
+                assertEquals(foo.set.size, 1)
+                assertEquals(foo.map.size, 1)
+                // END extras_random_instance_six
+            }
+
+            it("should generate collections with configured size") {
+                // START extras_random_instance_seven
+                class Foo(
+                    val list: List<String>,
+                    val set: Set<String>,
+                    val map: Map<String, Int>
+                )
+
+                val foo = faker.randomProvider.randomClassInstance<Foo> {
+                    collectionsSize = 6
+                }
+
+                assertEquals(foo.list.size, 6)
+                assertEquals(foo.set.size, 6)
+                assertEquals(foo.map.size, 6)
+                // END extras_random_instance_seven
+            }
+
+            it("should generate a set of size 10") {
+                // START extras_random_instance_eight
+                class TestClass(
+                    val string: String,
+                    val set: Set<String>
+                )
+
+                val testClass = faker.randomProvider.randomClassInstance<TestClass> {
+                    typeGenerator { "a string" }
+                    collectionsSize = 10
+                }
+
+                assertEquals(testClass.string, "a string")
+                assertEquals(testClass.set.size, 10)
+                // END extras_random_instance_eight
+            }
+
+            it("should generate Collections with pre-configured type generation") {
+                // START extras_random_instance_nine
+                class Foo
+                class Bar(
+                    val list: List<Foo>,
+                    val set: Set<String>,
+                    val map: Map<String, Int>
+                )
+
+                val bar = faker.randomProvider.randomClassInstance<Bar> {
+                    typeGenerator { emptyList<Foo>() }
+                    typeGenerator { setOf("one", "two", "fortytwo") }
+                    typeGenerator { mapOf("pwd" to 12177) }
+                }
+                assertEquals(bar.list, emptyList<Foo>())
+                assertEquals(bar.set, setOf("one", "two", "fortytwo"))
+                assertEquals(bar.map, mapOf("pwd" to 12177))
+                // END extras_random_instance_nine
+            }
         }
     }
 
