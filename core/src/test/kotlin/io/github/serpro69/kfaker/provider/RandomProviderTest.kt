@@ -338,11 +338,34 @@ class RandomProviderTest : DescribeSpec({
             val map: Map<String, Baz>
         )
 
-        it("should generate a random instance of TestClass") {
+        it("should generate Collections with default size 1") {
             val testClass = randomProvider.randomClassInstance<TestClass>()
-            testClass.list shouldHaveSize 1
-            testClass.set shouldHaveSize 1
-            testClass.map shouldHaveSize 1
+            assertSoftly {
+                testClass.list shouldHaveSize 1
+                testClass.set shouldHaveSize 1
+                testClass.map shouldHaveSize 1
+            }
+        }
+
+        it("should generate Collections with pre-configured size") {
+            val testClass = randomProvider.randomClassInstance<TestClass> {
+                collectionsSize = 10
+            }
+            assertSoftly {
+                testClass.list shouldHaveSize 10
+                testClass.set shouldHaveSize 10
+                testClass.map shouldHaveSize 10
+            }
+        }
+        it("should generate Collections with pre-configured type generation") {
+            val testClass = randomProvider.randomClassInstance<TestClass> {
+                typeGenerator<List<Foo>> { listOf() }
+            }
+            assertSoftly {
+                testClass.list shouldHaveSize 0
+                testClass.set shouldHaveSize 1
+                testClass.map shouldHaveSize 1
+            }
         }
     }
 

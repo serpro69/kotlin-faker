@@ -134,16 +134,18 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
         return when (this) {
             List::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                listOf(elementType.randomClassInstance(config))
+                List(config.collectionsSize) { elementType.randomClassInstance(config) }
             }
             Set::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                setOf(elementType.randomClassInstance(config))
+                List(config.collectionsSize) { elementType.randomClassInstance(config) }.toSet()
             }
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
-                mapOf(keyElementType.randomClassInstance(config) to valElementType.randomClassInstance(config))
+                val keys = List(config.collectionsSize) { keyElementType.randomClassInstance(config) }
+                val values = List(config.collectionsSize) { valElementType.randomClassInstance(config) }
+                keys.zip(values).associate { (k, v) -> k to v }
             }
             else -> null
         }
@@ -154,6 +156,9 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
 /**
  * Configuration for [RandomProvider.randomClassInstance].
  *
+ * @property collectionsSize the size of the generated [Collection] type arguments.
+ * Defaults to `1`.
+ *
  * @property constructorParamSize will try to look up the constructor with specified number of arguments,
  * and use that to create the instance of the class.
  * Defaults to `-1`, which ignores this configuration property.
@@ -161,12 +166,13 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
  *
  * @property constructorFilterStrategy default strategy for looking up a constructor
  * that is used to create the instance of a class.
- * By default a zero-args constructor will be used.
+ * By default, a zero-args constructor will be used.
  *
  * @property fallbackStrategy fallback strategy that is used to look up a constructor
  * if no constructor with [constructorParamSize] or [constructorFilterStrategy] was found.
  */
 class RandomProviderConfig @PublishedApi internal constructor() {
+    var collectionsSize: Int = 1
     var constructorParamSize: Int = -1
     var constructorFilterStrategy: ConstructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
     var fallbackStrategy: FallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
