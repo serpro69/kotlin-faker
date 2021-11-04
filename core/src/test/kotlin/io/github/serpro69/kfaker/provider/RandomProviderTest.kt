@@ -2,10 +2,12 @@ package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.assertSoftly
+import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
 import java.util.*
 
@@ -321,6 +323,25 @@ class RandomProviderTest : DescribeSpec({
                     testClass.baz shouldBe null
                 }
             }
+        }
+    }
+
+    describe("a primitive type") {
+        it("should not throw an exception when no suitable constructor exists") {
+            assertSoftly {
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Double>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Float>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Long>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Int>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Short>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Byte>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Boolean>() }
+                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Char>() }
+            }
+        }
+
+        it("should generate a random string") {
+            randomProvider.randomClassInstance<String>() shouldHaveLength 24
         }
     }
 })

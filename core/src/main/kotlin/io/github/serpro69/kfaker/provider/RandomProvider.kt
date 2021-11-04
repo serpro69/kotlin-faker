@@ -44,6 +44,7 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
         return T::class.randomClassInstance(config)
     }
 
+    @Suppress("UNCHECKED_CAST")
     @JvmSynthetic
     @PublishedApi
     internal fun <T : Any> KClass<T>.randomClassInstance(config: RandomProviderConfig): T {
@@ -51,7 +52,8 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
             config.constructorParamSize == -1
             && config.constructorFilterStrategy == ConstructorFilterStrategy.NO_ARGS
         ) {
-            constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+            randomPrimitiveOrNull() as T?
+                ?: constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
         } else null
 
         return defaultInstance ?: objectInstance ?: run {

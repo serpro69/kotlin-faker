@@ -14,6 +14,9 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#97](https://github.com/serpro69/kotlin-faker/issues/97) [core] Change `RandomService#nextString` to generate strings only within given locale
 - [#100](https://github.com/serpro69/kotlin-faker/issues/100) [core] Add deprecation warning for `RandomService#nextString` since it's going to be replaced with `RandomService#randomString`
 
+### Fixed
+- [#104](https://github.com/serpro69/kotlin-faker/issues/104) [core] `RandomProvider#randomClassInstance` : 'No suitable constructor found' for primitive classes
+
 ## [1.8.0] - 2021-10-03
 ### Added
 - [#67](https://github.com/serpro69/kotlin-faker/issues/67) [core] Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
