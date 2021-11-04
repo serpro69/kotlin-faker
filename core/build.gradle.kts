@@ -166,7 +166,9 @@ publishing {
 }
 
 signing {
-    sign(publishing.publications["fakerCore"])
+    if (!version.toString().endsWith("SNAPSHOT")) {
+        sign(publishing.publications["fakerCore"])
+    }
 }
 
 tasks {
