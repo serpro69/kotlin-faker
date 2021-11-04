@@ -2,7 +2,6 @@ package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
-import java.util.*
 import kotlin.Boolean
 import kotlin.Char
 import kotlin.Double
@@ -110,7 +109,7 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
         Int::class -> randomService.nextInt()
         Short::class -> randomService.nextInt().toShort()
         Byte::class -> randomService.nextInt().toByte()
-        String::class -> randomService.nextString()
+        String::class -> randomService.randomString()
         Char::class -> randomService.nextChar()
         Boolean::class -> randomService.nextBoolean()
         // TODO: 16.06.19 Arrays

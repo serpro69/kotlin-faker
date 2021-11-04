@@ -136,9 +136,9 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("nextString() fun") {
-            it("default generated string is 100 char length") {
-                randomService.nextString().length shouldBe 100
+        context("randomString() fun") {
+            it("default generated string is 24 char length") {
+                randomService.randomString().length shouldBe 24
             }
         }
 
@@ -191,15 +191,15 @@ internal class RandomServiceTest : DescribeSpec({
         context("randomAlphanumeric() fun") {
             it("generates a string from the alphaNumeric source") {
                 val sourceGenerated = ('A'..'Z') + ('a'..'z') + ('0'..'9')
-                val listAlphanumeric = List(100) { randomService.randomAlphanumeric(100) }
+                val listAlphanumeric = List(100) { randomService.randomString(100) }
                 listAlphanumeric.forEach {
                     sourceGenerated shouldContainAll it.map { c -> c }
                 }
             }
 
             it("consecutive runs return different values") {
-                val one = randomService.randomAlphanumeric()
-                val two = randomService.randomAlphanumeric()
+                val one = randomService.randomString()
+                val two = randomService.randomString()
                 one shouldNotBe two
             }
 
@@ -208,21 +208,21 @@ internal class RandomServiceTest : DescribeSpec({
                 val c2 = fakerConfig { random = Random(42) }
                 val r1 = RandomService(c1)
                 val r2 = RandomService(c2)
-                r1.randomAlphanumeric() shouldBe r2.randomAlphanumeric()
+                r1.randomString() shouldBe r2.randomString()
             }
 
-            it("default generated string is 10 char length") {
-                val defaultLength = 10
-                randomService.randomAlphanumeric().length shouldBe defaultLength
+            it("default generated string is 24 char length") {
+                val defaultLength = 24
+                randomService.randomString().length shouldBe defaultLength
             }
 
             it("should return a specific length of the string") {
                 val expectedLength = 100
-                randomService.randomAlphanumeric(expectedLength).length shouldBe expectedLength
+                randomService.randomString(expectedLength).length shouldBe expectedLength
             }
 
             it("returns an empty string when length is 0") {
-                randomService.randomAlphanumeric(0) shouldBe ""
+                randomService.randomString(0) shouldBe ""
             }
         }
 

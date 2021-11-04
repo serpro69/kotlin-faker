@@ -116,8 +116,8 @@ class Extras : DescribeSpec({
 
         it("should generate random string of English chars") {
             // START extras_random_everything_four
-            faker.random.randomAlphanumeric(
-                length = 10,
+            faker.random.randomString(
+                length = 42,
                 numericalChars = false
             )
             // END extras_random_everything_four
@@ -125,8 +125,8 @@ class Extras : DescribeSpec({
 
         it("should generate random string in a given locale") {
             // START extras_random_everything_five
-            faker.random.nextString(
-                length = 21,
+            faker.random.randomString(
+                length = 24,
                 locale = Locale.forLanguageTag("nb-NO"),
                 auxiliaryChars = true,
                 numericalChars = true

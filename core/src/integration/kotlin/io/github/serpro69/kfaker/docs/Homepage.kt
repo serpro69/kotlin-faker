@@ -147,7 +147,7 @@ class Homepage : DescribeSpec({
                 // START random_service_one
                 faker.random.nextInt(intRange = 0..1000)
                 faker.random.nextLong(bound = 999L)
-                faker.random.nextString(length = 99)
+                faker.random.randomString(length = 99)
                 faker.random.nextEnum<TestEnum>()
                 faker.random.nextEnum(TestEnum::class.java) {
                     it != TestEnum.SOME // Exclude 'SOME' enum
