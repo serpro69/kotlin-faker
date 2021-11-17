@@ -5,7 +5,7 @@ import io.qameta.allure.gradle.task.AllureServe
 
 plugins {
 //    `kotlin-dsl` version "1.3.6" apply false
-    kotlin("jvm") version "1.5.0" apply false
+    kotlin("jvm") version "1.6.0" apply false
     id("net.vivin.gradle-semantic-build-versioning") apply false
     id("com.adarshr.test-logger") version "2.0.0" apply false
     id("com.github.ben-manes.versions") version "0.28.0" apply false

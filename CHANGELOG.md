@@ -11,7 +11,8 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#92](https://github.com/serpro69/kotlin-faker/issues/92) [core] Add `randomString` function to `RandomService`
 - [#86](https://github.com/serpro69/kotlin-faker/issues/86) [core] Generate birth-date based on the age
 
-### Changed
+### Changed 
+- [#108](https://github.com/serpro69/kotlin-faker/issues/108) Update kotlin to 1.6.0
 - [#100](https://github.com/serpro69/kotlin-faker/issues/100) [core] Add deprecation warning for `RandomService#nextString` since it's going to be replaced with `RandomService#randomString`
 - [#97](https://github.com/serpro69/kotlin-faker/issues/97) [core] Change `RandomService#nextString` to generate strings only within given locale
 
