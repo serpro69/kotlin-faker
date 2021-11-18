@@ -190,6 +190,9 @@
   ]
 },
 {
+  "name":"io.github.serpro69.kfaker.Faker$Builder"
+},
+{
   "name":"io.github.serpro69.kfaker.FakerConfig"
 },
 {
@@ -197,6 +200,9 @@
 },
 {
   "name":"io.github.serpro69.kfaker.FakerService[]"
+},
+{
+  "name":"io.github.serpro69.kfaker.RandomService"
 },
 {
   "name":"io.github.serpro69.kfaker.app.KFaker",
@@ -1832,6 +1838,10 @@
 },
 {
   "name":"kotlin.Unit"
+},
+{
+  "name":"kotlin.internal.jdk8.JDK8PlatformImplementations",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"kotlin.jvm.functions.Function0"
