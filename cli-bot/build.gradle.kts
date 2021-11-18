@@ -4,7 +4,7 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 plugins {
     application
     kotlin("jvm")
-    id("com.palantir.graal") version "0.7.2"
+    id("com.palantir.graal") version "0.10.0"
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
@@ -12,7 +12,7 @@ val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
     implementation(project(":core"))
-    implementation("info.picocli:picocli:4.6.1")
+    implementation("info.picocli:picocli:4.6.2")
 }
 
 application {

@@ -46,18 +46,18 @@ subprojects {
 
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
-        implementation("org.slf4j:slf4j-api:1.7.30")
+        implementation("org.slf4j:slf4j-api:1.7.32")
         implementation("com.github.mifmif:generex:1.0.2")
-        testImplementation("io.kotest:kotest-runner-junit5:4.5.0")
+        testImplementation("io.kotest:kotest-runner-junit5:4.6.3")
         testImplementation("io.kotest:kotest-extensions-allure:4.4.3")
-        testImplementation("io.kotest:kotest-runner-junit5-jvm:4.5.0")
-        testImplementation("io.kotest:kotest-assertions-core-jvm:4.5.0")
-        testImplementation("io.kotest:kotest-property-jvm:4.5.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
-        testRuntimeOnly("ch.qos.logback:logback-core:1.2.3")
-        testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
-        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.8")
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:4.6.3")
+        testImplementation("io.kotest:kotest-assertions-core-jvm:4.6.3")
+        testImplementation("io.kotest:kotest-property-jvm:4.6.3")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+        testRuntimeOnly("ch.qos.logback:logback-core:1.2.7")
+        testRuntimeOnly("ch.qos.logback:logback-classic:1.2.7")
+        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.9")
     }
 
     configure<JavaPluginConvention> {
@@ -133,13 +133,13 @@ subprojects {
     allure {
         version = "2.8.1"
         aspectjweaver = false
-        aspectjVersion = "1.9.6"
+        aspectjVersion = "1.9.7"
         autoconfigure = true
         // TODO check if fixed in future versions of allure
         configuration = "testRuntimeOnly" // defaults to 'testCompile' which is incompatible with gradle 7.x
-        allureJavaVersion = "2.13.8"
+        allureJavaVersion = "2.16.1"
         useJUnit5 {
-            version = "2.13.8"
+            version = "2.16.1"
         }
     }
 }
