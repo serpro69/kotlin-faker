@@ -25,4 +25,12 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew clean test integrationTest build nativeImage
+      - name: Test native image
+        run: |
+          _app_path=$(find -type f -name faker-bot\*)
+          mv "$_app_path" ./faker-bot
+          ./faker-bot list --verbose >/dev/null 2>&1 || false
+          ./faker-bot lookup a --verbose >/dev/null 2>&1 || false
+
+
