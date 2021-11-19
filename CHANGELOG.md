@@ -2,16 +2,16 @@
 All notable changes to this project will be documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) 
+and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [1.9.0] - UNRELEASED
+## [1.9.0] - 2021-11-19
 ### Added
 - [#103](https://github.com/serpro69/kotlin-faker/issues/103) [core] Add support for `Collection` types in `RandomProvider#randomClassInstance`
 - [#96](https://github.com/serpro69/kotlin-faker/issues/96) [core] Add `randomSubset` and `randomSublist` to `RandomService`
 - [#92](https://github.com/serpro69/kotlin-faker/issues/92) [core] Add `randomString` function to `RandomService`
 - [#86](https://github.com/serpro69/kotlin-faker/issues/86) [core] Generate birth-date based on the age
 
-### Changed 
+### Changed
 - [#108](https://github.com/serpro69/kotlin-faker/issues/108) Update kotlin to 1.6.0
 - [#100](https://github.com/serpro69/kotlin-faker/issues/100) [core] Add deprecation warning for `RandomService#nextString` since it's going to be replaced with `RandomService#randomString`
 - [#97](https://github.com/serpro69/kotlin-faker/issues/97) [core] Change `RandomService#nextString` to generate strings only within given locale
