@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew clean test integrationTest build nativeImage
       - name: Test native image
         run: |
-          _app_path=$(find ./cli-bot/build/graal -type f -name faker-bot\*)
+          _app_path=$(find ./cli-bot/build/graal -type f -name faker-bot\* -not -name \*.txt)
           mv "$_app_path" ./faker-bot
           ./faker-bot list --verbose >/dev/null || false
           ./faker-bot lookup a --verbose >/dev/null || false
