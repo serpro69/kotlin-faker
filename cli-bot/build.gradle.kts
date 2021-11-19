@@ -52,7 +52,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
 }
 
 graal {
-    graalVersion("21.0.0")
+    graalVersion("21.2.0")
     javaVersion("8")
     mainClass(mainFunction)
     outputName("faker-bot_${project.version}")
