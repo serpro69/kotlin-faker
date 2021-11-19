@@ -22,7 +22,7 @@ dependencies {
 
 configurations {
     create("integrationImplementation") { extendsFrom(testImplementation.get()) }
-    create("integrationRuntime") { extendsFrom(testRuntime.get()) }
+    create("integrationRuntimeOnly") { extendsFrom(testRuntimeOnly.get()) }
 }
 
 sourceSets {
