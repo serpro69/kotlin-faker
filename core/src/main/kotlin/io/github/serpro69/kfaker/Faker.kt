@@ -63,6 +63,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val construction: Construction = Construction(fakerService)
     val control: Control = Control(fakerService)
     val cosmere: Cosmere = Cosmere(fakerService)
+    val crossfit: Crossfit = Crossfit(fakerService)
     val cryptoCoin: CryptoCoin = CryptoCoin(fakerService)
     val cultureSeries: CultureSeries = CultureSeries(fakerService)
     val currency: Currency = Currency(fakerService)

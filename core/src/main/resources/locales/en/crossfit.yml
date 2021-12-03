@@ -1,0 +1,112 @@
+# START crossfit_provider_dict
+en:
+  faker:
+    crossfit:
+      competition:
+        - CrossFit Fittest in Cape Town
+        - CrossFit® French Throwdown
+        - CrossFit West Coast Classic
+        - Dubai CrossFit® Championship
+        - Mid-Atlantic CrossFit Challenge
+        - NOBULL CrossFit Games
+        - The Granite Games
+        - Torian Pro
+        - Rogue Invitational
+        - Wodapalooza
+      athlete:
+        male:
+          - Adrian Mundwiler
+          - Alec Smith
+          - Ben Smith
+          - Björgvin Karl Guðmundsson
+          - Brent Fikowski
+          - Chandler Smith
+          - Cole Sager
+          - Dan Bailey
+          - Guilherme Malheiros
+          - Jonne Koski
+          - Justin Medeiros
+          - Luka Đukić
+          - Patrick Vellner
+          - Mat Fraser
+          - Noah Ohlsen
+          - Rich Froning Jr.
+          - Royce Dunne
+          - Saxon Panchik
+          - Scott Panchik
+          - Travis Mayer
+        female:
+          - Amanda Barnhart
+          - Annie Thorisdottir
+          - Bethany Shadburne
+          - Brooke Wells
+          - Camille Leblanc Bazinet
+          - Dani Speegle
+          - Danielle Brandon
+          - Emma Carry
+          - Emma McQuaid
+          - Gabriela Migała
+          - Haley Adams
+          - Jessica Griffith
+          - Kara Saunders
+          - Kari Pearce
+          - Katrin Tanja Davidsdottir
+          - Kristi Eramo O'Connell
+          - Kristin Holte
+          - Laura Horváth
+          - Mallory O'Brien
+          - Samantha Briggs
+          - Thuridur Erla Helgadottir
+          - Tia-Clair Toomey
+      movement:
+        - Air Squat
+        - Back Squat
+        - Bar Muscle-Up
+        - Burpee
+        - Chest-to-Bar
+        - Clean
+        - Deadlift
+        - Double-Under
+        - Front Squat
+        - Handstand Push-up
+        - Medicine-Ball Clean
+        - Overhead Squat
+        - Pistol
+        - Pull-up
+        - Push Press
+        - Push Jerk
+        - Ring Dips
+        - Ring Muscle-Up
+        - Rope Climb
+        - Snatch
+        - Shoulder Press
+        - Sumo Deadlift High Pull
+        - Thruster
+        - Toes-to-Bar
+        - Wall-Ball Shot
+      workout:
+        girl:
+          - Angie
+          - Annie
+          - Barbara
+          - Chelsea
+          - Cindy
+          - Diane
+          - Elizabeth
+          - Fran
+          - Grace
+          - Helen
+          - Isabel
+          - Jackie
+          - Karen
+          - Kelly
+          - Linda
+          - Mary
+          - Nancy
+          - Nicole
+        hero:
+          - DT
+          - Glen
+          - JT
+          - Murph
+# END crossfit_provider_dict

@@ -40,6 +40,7 @@ val defaultFileNames = listOf(
     "construction.yml",
     "control.yml",
     "cosmere.yml",
+    "crossfit.yml",
     "crypto_coin.yml",
     "culture_series.yml",
     "currency.yml",
