@@ -56,6 +56,7 @@ internal enum class CategoryName {
     COSMERE,
     COUNTRY_CODE,
     CREATURE,
+    CROSSFIT,
     CRYPTO_COIN,
     CULTURE_SERIES,
     CURRENCY,

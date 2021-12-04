@@ -42,6 +42,7 @@ val dictionaryKeys = listOf(
     "computer",
     "construction",
     "cosmere",
+    "crossfit",
     "crypto_coin",
     "culture_series",
     "currency",

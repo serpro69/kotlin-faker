@@ -56,6 +56,7 @@
     {"name":"getConstruction","parameterTypes":[] },
     {"name":"getControl","parameterTypes":[] },
     {"name":"getCosmere","parameterTypes":[] },
+    {"name":"getCrossfit","parameterTypes":[] },
     {"name":"getCryptoCoin","parameterTypes":[] },
     {"name":"getCultureSeries","parameterTypes":[] },
     {"name":"getCurrency","parameterTypes":[] },
