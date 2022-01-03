@@ -186,6 +186,38 @@ class RandomProviderTest : DescribeSpec({
         }
     }
 
+    describe("a TestClass with non-empty constructor for custom parameter generators") {
+        class TestClass(
+            val id: UUID,
+            val id2: UUID,
+            val nullableId: UUID?,
+            val nullableId2: UUID?
+        )
+
+        val typeGeneratedId = UUID.fromString("00000000-0000-0000-0000-000000000000")
+        val namedParameterGeneratedId = UUID.randomUUID()
+        val nullableNamedParameterGeneratedId = UUID.randomUUID()
+
+        context("creating a random instance of the class with custom parameter and type generators") {
+            val testClass: TestClass = randomProvider.randomClassInstance {
+                namedParameterGenerator("id") { namedParameterGeneratedId }
+                namedParameterGenerator("nullableId") { nullableNamedParameterGeneratedId }
+                namedParameterGenerator("nullableId2") { null }
+                typeGenerator<UUID> { typeGeneratedId }
+            }
+
+            it("should use predefined UUIDs with parameter generators taking precedence over type generators") {
+                assertSoftly {
+                    testClass shouldBe instanceOf(TestClass::class)
+                    testClass.id shouldBe namedParameterGeneratedId
+                    testClass.id2 shouldBe typeGeneratedId
+                    testClass.nullableId shouldBe nullableNamedParameterGeneratedId
+                    testClass.nullableId2 shouldBe null
+                }
+            }
+        }
+    }
+
     describe("a TestClass with non-empty constructor for nullable custom type generators") {
         class Foo(val int: Int?)
         class TestClass(

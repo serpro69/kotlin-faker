@@ -1,6 +1,5 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
 import kotlin.Boolean
@@ -78,19 +77,24 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
             } ?: throw NoSuchElementException("No suitable constructor found for $this")
 
             val params = constructor.parameters
-                .map { it.type }
                 .map {
-                    val klass = it.classifier as KClass<*>
-                    if (it.isMarkedNullable && config.nullableGenerators.containsKey(klass)) {
-                        config.nullableGenerators[klass]?.invoke()
-                    } else {
-                        klass.predefinedTypeOrNull(config)
-                            ?: klass.randomPrimitiveOrNull()
-                            ?: klass.objectInstance
-                            ?: klass.randomEnumOrNull()
-                            ?: klass.randomSealedClassOrNull(config)
-                            ?: klass.randomCollectionOrNull(it, config)
-                            ?: klass.randomClassInstance(config)
+                    val klass = it.type.classifier as KClass<*>
+                    when {
+                        config.namedParameterGenerators.containsKey(it.name) -> {
+                            config.namedParameterGenerators[it.name]?.invoke()
+                        }
+                        it.type.isMarkedNullable && config.nullableGenerators.containsKey(klass) -> {
+                            config.nullableGenerators[klass]?.invoke()
+                        }
+                        else -> {
+                            klass.predefinedTypeOrNull(config)
+                                ?: klass.randomPrimitiveOrNull()
+                                ?: klass.objectInstance
+                                ?: klass.randomEnumOrNull()
+                                ?: klass.randomSealedClassOrNull(config)
+                                ?: klass.randomCollectionOrNull(it.type, config)
+                                ?: klass.randomClassInstance(config)
+                        }
                     }
                 }
                 .toTypedArray()
@@ -178,10 +182,20 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     var fallbackStrategy: FallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
 
     @PublishedApi
+    internal val namedParameterGenerators = mutableMapOf<String, () -> Any?>()
+
+    @PublishedApi
     internal val predefinedGenerators = mutableMapOf<KClass<*>, () -> Any>()
 
     @PublishedApi
     internal val nullableGenerators = mutableMapOf<KClass<*>, () -> Any?>()
+
+    /**
+     * Configures generation for a specific named parameter. Overrides all other generators
+     */
+    inline fun <reified K : Any> namedParameterGenerator(parameterName: String, noinline generator: () -> K?) {
+        namedParameterGenerators[parameterName] = generator
+    }
 
     /**
      * Configures generation for a specific type. It can override internal generators (for primitives, for example)
