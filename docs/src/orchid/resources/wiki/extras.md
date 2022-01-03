@@ -44,7 +44,8 @@ Random instance generation is available through `Faker().randomProvider`:
 
 ### Pre-Configuring type generation for constructor arguments
 
-Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` function. Consider the following example:
+Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` or `namedParameterGenerator` functions. Consider the following example:
+
 
 {% tabs %}
 
@@ -61,9 +62,10 @@ Some, or all, of the constructor params can be instantiated with values followin
 <br>
 So for each instance of `Baz` the following will be true:
 
-```
+```kotlin
 baz.id == 0
 baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
+baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
 ```
 
 This example itself does not make that much sense, since we're using "static" values, but we could also do something like:

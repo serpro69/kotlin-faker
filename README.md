@@ -646,10 +646,10 @@ class Test {
 
 #### Pre-Configuring type generation for constructor params
 
-Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` function. Consider the following example:
+Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` or `namedParameterGenerator` functions. Consider the following example:
 
 ```kotlin
-class Baz(val id: Int, val uuid: UUID)
+class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID)
 
 class Test {
     @Test
@@ -659,17 +659,18 @@ class Test {
         val baz: Baz = faker.randomProvider.randomClassInstance {
             typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
             typeGenerator<Int> { 0 }
+            namedParameterGenerator("relatedUuid") { UUID.fromString("11111111-1111-1111-1111-111111111111") }
         }
-
     }
 }
 ```
 
 For each instance of `Baz` the following will be true:
 
-```
+```kotlin
 baz.id == 0
 baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
+baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
 ```
 
 The example itself does not make that much sense, since we're using "static" values, but we could also do something like:
