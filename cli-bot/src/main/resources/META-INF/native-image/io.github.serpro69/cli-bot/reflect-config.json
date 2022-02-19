@@ -82,6 +82,7 @@
     {"name":"getFallout","parameterTypes":[] },
     {"name":"getFamilyGuy","parameterTypes":[] },
     {"name":"getFile","parameterTypes":[] },
+    {"name":"getFinance","parameterTypes":[] },
     {"name":"getFood","parameterTypes":[] },
     {"name":"getFootball","parameterTypes":[] },
     {"name":"getFreshPriceOfBelAir","parameterTypes":[] },
@@ -790,6 +791,13 @@
   "methods":[
     {"name":"extension","parameterTypes":[] },
     {"name":"mimeType","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Finance",
+  "methods":[
+    {"name":"creditCard","parameterTypes":["java.lang.String"] },
+    {"name":"vatNumber","parameterTypes":["java.lang.String"] }
   ]
 },
 {

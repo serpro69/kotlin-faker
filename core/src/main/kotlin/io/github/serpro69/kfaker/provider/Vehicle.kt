@@ -27,12 +27,10 @@ class Vehicle internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun standardSpecs() = resolve("standard_specs")
     fun doors() = resolve("doors")
     fun engineSizes() = resolve("engine_sizes")
-    // TODO add `regexify` to fakerService and fix usages for license_plate(_by_state) functions
     fun licensePlate() = with(fakerService) { resolve("license_plate").numerify().letterify() }
     fun licencePlateByState(stateCode: String) = with(fakerService) {
-        resolve("license_plate_by_state", stateCode)
-            .numerify()
-            .letterify()
+        resolve("license_plate_by_state", stateCode).numerify().letterify().generexify()
     }
+
     fun cylinderEngine() = resolve("cylinder_engine")
 }

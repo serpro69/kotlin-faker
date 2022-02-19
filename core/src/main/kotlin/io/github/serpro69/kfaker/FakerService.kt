@@ -1,5 +1,7 @@
 package io.github.serpro69.kfaker
 
+import com.mifmif.common.regex.Generex
+import dk.brics.automaton.Automaton
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.CategoryName
 import io.github.serpro69.kfaker.dictionary.Dictionary
@@ -33,7 +35,7 @@ internal class FakerService @JvmOverloads internal constructor(
     internal val randomService = RandomService(faker.config)
 
     @Suppress("RegExpRedundantEscape")
-    private val curlyBraceRegex = Regex("""#\{(\p{L}+\.)?(.*?)\}""")
+    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)\}""")
     val dictionary = load(locale.replace("_", "-"))
 
     /**
@@ -396,6 +398,8 @@ internal class FakerService @JvmOverloads internal constructor(
         return map { if (it == '?') randomService.nextLetter(upper = true).toString() else "$it" }
             .joinToString("")
     }
+
+    fun String.generexify(): String = Generex(this, faker.config.random).random()
 
     /**
      * Calls the property of this [FakeDataProvider] receiver and returns the result as [String].
