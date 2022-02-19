@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [1.10.0] - UNRELEASED
+### Added
+- [#115](https://github.com/serpro69/kotlin-faker/pull/115) [core] Add Crossfit® provider to Faker
+- [#117](https://github.com/serpro69/kotlin-faker/pull/117) [core] Add namedParameterGenerator for RandomProvider#randomClassInstance
+- [#118](https://github.com/serpro69/kotlin-faker/pull/118) [core] Add support for chained parameter expressions in yml dicts
+- [#55](https://github.com/serpro69/kotlin-faker/pull/55) [core] Add missing 'Educator' functionality
+
 ## [1.9.0] - 2021-11-19
 ### Added
 - [#103](https://github.com/serpro69/kotlin-faker/issues/103) [core] Add support for `Collection` types in `RandomProvider#randomClassInstance`

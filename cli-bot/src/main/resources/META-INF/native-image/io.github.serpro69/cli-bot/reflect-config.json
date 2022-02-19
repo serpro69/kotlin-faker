@@ -567,6 +567,15 @@
   "methods":[{"name":"symbol","parameterTypes":[] }]
 },
 {
+  "name":"io.github.serpro69.kfaker.provider.Degree",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Degree[]"
+},
+{
   "name":"io.github.serpro69.kfaker.provider.DcComics",
   "methods":[
     {"name":"hero","parameterTypes":[] },
@@ -1556,6 +1565,15 @@
     {"name":"name","parameterTypes":[] },
     {"name":"sport","parameterTypes":[] }
   ]
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Tertiary",
+  "allDeclaredFields":true,
+  "allDeclaredMethods":true,
+  "allDeclaredConstructors":true
+},
+{
+  "name":"io.github.serpro69.kfaker.provider.Tertiary[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.TheExpanse",
