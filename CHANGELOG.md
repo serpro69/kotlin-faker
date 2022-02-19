@@ -10,6 +10,10 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 - [#117](https://github.com/serpro69/kotlin-faker/pull/117) [core] Add namedParameterGenerator for RandomProvider#randomClassInstance
 - [#118](https://github.com/serpro69/kotlin-faker/pull/118) [core] Add support for chained parameter expressions in yml dicts
 - [#55](https://github.com/serpro69/kotlin-faker/pull/55) [core] Add missing 'Educator' functionality
+- [#53](https://github.com/serpro69/kotlin-faker/pull/53) [core] Implement 'Finance' functions
+
+### Fixed
+- [#54](https://github.com/serpro69/kotlin-faker/pull/54) [core] Incorrect return values for `Vehicle#licence_plate(_by_state)`
 
 ## [1.9.0] - 2021-11-19
 ### Added

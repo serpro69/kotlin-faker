@@ -1,8 +1,7 @@
 package io.github.serpro69.kfaker.provider
 
-import com.mifmif.common.regex.*
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.CategoryName
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -17,15 +16,14 @@ class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataPr
 
     fun name() = resolve("name")
     fun swiftBic() = resolve("swift_bic")
-    fun ibanDetails(countryCode: String): String {
-        val regex = resolve("iban_details", countryCode.lowercase())
+    fun ibanDetails(countryCode: String): String = with(fakerService) {
+        resolve("iban_details", countryCode.lowercase())
             .drop(1)
             .dropLast(1)
             .split(", ")
             .last()
             .split("=")
             .last()
-
-        return Generex(regex).random()
+            .generexify()
     }
 }

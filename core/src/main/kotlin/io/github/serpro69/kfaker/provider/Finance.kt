@@ -14,10 +14,7 @@ class Finance internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val localUniqueDataProvider = LocalUniqueDataProvider<Finance>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    // TODO create and use extension functions in fakerService, similar to `numerify` and `letterify`
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun creditCard(type: String) = resolve("credit_card", type)
+    fun creditCard(type: String): String = with(fakerService) { resolve("credit_card", type).numerify().generexify() }
 
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun vatNumber(countryCode: String) = resolve("vat_number", countryCode)
+    fun vatNumber(countryCode: String): String = with(fakerService) { resolve("vat_number", countryCode).numerify() }
 }
