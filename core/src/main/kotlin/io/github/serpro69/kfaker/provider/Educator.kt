@@ -17,20 +17,24 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     fun schoolName() = resolve("school_name")
     fun secondary() = resolve("secondary")
 
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     fun university() = resolve("university")
 
     fun secondarySchool() = resolve("secondary_school")
     fun campus() = resolve("campus")
     fun subject() = resolve("subject")
 
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     fun degree() = resolve("degree")
 
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
     fun courseName() = resolve("course_name")
 
+    @Deprecated(
+        message = "This is deprecated and will be removed in future releases",
+        replaceWith = ReplaceWith("tertiaryUniversityType()"),
+        level = DeprecationLevel.WARNING
+    )
     fun universityType() = resolve("tertiary", "university_type")
+
+    fun tertiaryUniversityType() = resolve("tertiary", "university_type")
     fun tertiaryDegreeType() = resolve("tertiary", "degree", "type")
     fun tertiaryDegreeCourseNumber() = with(fakerService) {
         resolve("tertiary", "degree", "course_number")

@@ -7,11 +7,13 @@ import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.getCategoryName
 import io.github.serpro69.kfaker.dictionary.toLowerCase
 import io.github.serpro69.kfaker.provider.Address
+import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
+import kotlin.NoSuchElementException
 import kotlin.collections.set
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.declaredFunctions
@@ -407,22 +409,23 @@ internal class FakerService @JvmOverloads internal constructor(
      *
      * Examples:
      *
-     * Yaml expression in the form of `Name.first_name` would be translated to [Name.firstName] function.
-     *
-     * Yaml expression in the form of `Address.country` would be translated to [Address.country] function.
+     * - Yaml expression in the form of `Name.first_name` would return the [Name.firstName] function.
+     * - Yaml expression in the form of `Address.country` would return the [Address.country] function.
+     * - Yaml expression in the form of `Educator.tertiary.degree.course_number` would return the [Educator.tertiaryDegreeCourseNumber] function.
      *
      * @param T instance of [FakeDataProvider]
      */
     private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): KFunction<*> {
-        val propertyName = rawString.split("_").mapIndexed { i: Int, s: String ->
+        val funcName = rawString.split("_", ".").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).uppercase() + s.substring(1)
         }.joinToString("")
 
-        return this::class.declaredFunctions.first { it.name == propertyName }
+        return this::class.declaredFunctions.firstOrNull { it.name == funcName }
+            ?: throw NoSuchElementException("Function $funcName not found in $this")
     }
 
     /**
-     * Returns an instance of [FakeDataProvider] fetched by it's [simpleClassName] (case-insensitive).
+     * Returns an instance of [FakeDataProvider] fetched by its [simpleClassName] (case-insensitive).
      */
     private fun getProvider(simpleClassName: String): FakeDataProvider {
         val kProp = faker::class.declaredMemberProperties.first {
