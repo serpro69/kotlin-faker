@@ -14,6 +14,8 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val localUniqueDataProvider = LocalUniqueDataProvider<Educator>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
+    val tertiary = Tertiary(fakerService)
+
     fun schoolName() = resolve("school_name")
     fun secondary() = resolve("secondary")
 
@@ -29,14 +31,29 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
 
     @Deprecated(
         message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("tertiaryUniversityType()"),
+        replaceWith = ReplaceWith("tertiary.universityType()"),
         level = DeprecationLevel.WARNING
     )
     fun universityType() = resolve("tertiary", "university_type")
+}
 
-    fun tertiaryUniversityType() = resolve("tertiary", "university_type")
-    fun tertiaryDegreeType() = resolve("tertiary", "degree", "type")
-    fun tertiaryDegreeCourseNumber() = with(fakerService) {
+class Tertiary internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Tertiary>(fakerService) {
+    override val categoryName = CategoryName.EDUCATOR
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Tertiary>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    val degree = Degree(fakerService)
+
+    fun universityType() = resolve("tertiary", "university_type")
+}
+
+class Degree internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Degree>(fakerService) {
+    override val categoryName = CategoryName.EDUCATOR
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Degree>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    fun type() = resolve("tertiary", "degree", "type")
+    fun courseNumber() = with(fakerService) {
         resolve("tertiary", "degree", "course_number")
             .numerify()
     }
