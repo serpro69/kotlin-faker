@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.getCategoryName
 import io.github.serpro69.kfaker.dictionary.toLowerCase
+import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.FakeDataProvider
@@ -13,10 +14,9 @@ import io.github.serpro69.kfaker.provider.Name
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
-import kotlin.NoSuchElementException
 import kotlin.collections.set
 import kotlin.reflect.KFunction
-import kotlin.reflect.full.declaredFunctions
+import kotlin.reflect.full.declaredMemberFunctions
 import kotlin.reflect.full.declaredMemberProperties
 
 /**
@@ -356,9 +356,7 @@ internal class FakerService @JvmOverloads internal constructor(
 
                     val replacement = when (simpleClassName != null) {
                         true -> {
-                            val providerType = getProvider(simpleClassName)
-                            val propertyName = providerType.getFunctionName(it.group(2))
-
+                            val (providerType, propertyName) = getProvider(simpleClassName).getFunctionName(it.group(2))
                             providerType.callFunction(propertyName)
                         }
                         false -> getRawValue(category, it.group(2)).value
@@ -411,16 +409,23 @@ internal class FakerService @JvmOverloads internal constructor(
      *
      * - Yaml expression in the form of `Name.first_name` would return the [Name.firstName] function.
      * - Yaml expression in the form of `Address.country` would return the [Address.country] function.
-     * - Yaml expression in the form of `Educator.tertiary.degree.course_number` would return the [Educator.tertiaryDegreeCourseNumber] function.
+     * - Yaml expression in the form of `Educator.tertiary.degree.course_number` would return the [Educator.tertiary.degree.courseNumber] function.
      *
      * @param T instance of [FakeDataProvider]
      */
-    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): KFunction<*> {
-        val funcName = rawString.split("_", ".").mapIndexed { i: Int, s: String ->
+    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): Pair<FakeDataProvider, KFunction<*>> {
+        val funcName = rawString.split("_").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).uppercase() + s.substring(1)
         }.joinToString("")
 
-        return this::class.declaredFunctions.firstOrNull { it.name == funcName }
+        return this::class.declaredMemberFunctions.firstOrNull { it.name == funcName }
+            ?.let { this to it }
+            ?: run {
+                this::class.declaredMemberProperties.firstOrNull { it.name == funcName.substringBefore(".") }?.let {
+                    (it.getter.call(this) as AbstractFakeDataProvider<*>)
+                        .getFunctionName(funcName.substringAfter("."))
+                }
+            }
             ?: throw NoSuchElementException("Function $funcName not found in $this")
     }
 
