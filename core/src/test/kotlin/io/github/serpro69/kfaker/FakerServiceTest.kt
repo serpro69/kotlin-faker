@@ -6,8 +6,10 @@ import io.github.serpro69.kfaker.dictionary.toLowerCase
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldContainAnyOf
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldHaveAtMostSize
@@ -457,11 +459,24 @@ internal class FakerServiceTest : DescribeSpec({
                     val peru = fakerService.resolve(address, "country_by_code", "PE")
                     val norway = fakerService.resolve(address, "country_by_code", "NO")
 
-                    context("expression is resolved using secondary key") {
+                    it("expression is resolved using secondary key") {
                         assertSoftly {
                             peru shouldBe "Peru"
                             norway shouldBe "Norway"
                         }
+                    }
+                }
+
+                context("expression calls are chained with a dot '.' char") {
+                    val educator = fakerService.fetchCategory(CategoryName.EDUCATOR)
+                    val degreeType = fakerService.resolve(educator, "degree")
+
+                    it("is resolved by functionName") {
+                        degreeType.split(" ").take(2).joinToString(" ") shouldBeIn listOf(
+                            "Associate Degree",
+                            "Bachelor of",
+                            "Master of",
+                        )
                     }
                 }
             }
