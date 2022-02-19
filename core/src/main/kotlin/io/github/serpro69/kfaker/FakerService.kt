@@ -9,6 +9,8 @@ import io.github.serpro69.kfaker.dictionary.toLowerCase
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Educator
+import io.github.serpro69.kfaker.provider.Degree
+import io.github.serpro69.kfaker.provider.Tertiary
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import java.io.InputStream
@@ -303,6 +305,10 @@ internal class FakerService @JvmOverloads internal constructor(
      * For yaml expressions:
      * - `#{city_prefix}` from `en: faker: address` would be resolved to getting value from `address: city_prefix`
      * - `#{Name.first_name} from `en: faker: address` would be resolved to calling [Name.name] function.
+     * - `#{Educator.tertiary.degree.type}` from `en: faker: educator: degree` would be resolved to calling [Degree.type] function.
+     *   In this case the chained call needs to be implemented as a "class->property" hierarchy,
+     *   i.e. [Educator] class must declare a `tertiary` property of [Tertiary] type,
+     *   which in turn must declare a `degree` property of [Degree] type, and so on.
      *
      * Recursive expressions are also supported:
      * - `#{Name.name}` from `en: faker: book: author` that could be resolved to `#{first_name} #{last_name}` from `en: faker: name: name`
