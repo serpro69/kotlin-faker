@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [1.10.0] - UNRELEASED
+## [1.10.0] - 2022-02-20
 ### Added
 - [#115](https://github.com/serpro69/kotlin-faker/pull/115) [core] Add Crossfit® provider to Faker
 - [#117](https://github.com/serpro69/kotlin-faker/pull/117) [core] Add namedParameterGenerator for RandomProvider#randomClassInstance
