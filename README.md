@@ -15,7 +15,7 @@
 ## ToC
 
 - [About](#about)
-- [Comparison with other JVM-based faker libraries](#comparison-with-other-jvm-based-faker-libs)
+- [Comparison with other JVM-based faker libraries](#comparison-with-similar-jvm-based-faker-libs)
 - [Usage](#usage)
     - [Downloading](#downloading)
     - [Generating data](#generating-data)
