@@ -3,6 +3,7 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
 /**
@@ -23,6 +24,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val unique = GlobalUniqueDataDataProvider()
 
     val randomProvider: RandomProvider = RandomProvider(config)
+    val string: StringProvider = StringProvider(fakerService)
 
     val separator: Separator = Separator(fakerService)
     val currencySymbol: CurrencySymbol = CurrencySymbol(fakerService)

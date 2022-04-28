@@ -384,10 +384,11 @@ internal class FakerService @JvmOverloads internal constructor(
      * Replaces every `#` char for this [String] receiver with a random int from 0 to 9 inclusive
      * and returns the modified [String].
      */
-    fun String.numerify(): String {
-        return map { if (it == '#') randomService.nextInt(10).toString() else "$it" }
-            .joinToString("")
-    }
+    val String.numerify: () -> String
+        get() = {
+            map { if (it == '#') randomService.nextInt(10).toString() else "$it" }
+                .joinToString("")
+        }
 
     /**
      * Replaces every `?` char for this [String] receiver with a random letter from the English alphabet
@@ -395,10 +396,15 @@ internal class FakerService @JvmOverloads internal constructor(
      *
      * @param upper set to `true` or `false` to control the case of generated letters
      */
-    fun String.letterify(upper: Boolean? = null): String {
-        return map { if (it == '?') randomService.nextLetter(upper = upper ?: randomService.nextBoolean()).toString() else "$it" }
-            .joinToString("")
-    }
+    @Suppress("KDocUnresolvedReference")
+    val String.letterify: (upper: Boolean?) -> String
+        get() = { upper ->
+            map {
+                if (it == '?') {
+                    randomService.nextLetter(upper = upper ?: randomService.nextBoolean()).toString()
+                } else "$it"
+            }.joinToString("")
+        }
 
     /**
      * Replaces every `?` char for this [String] receiver with a random upper-case letter from the English alphabet
@@ -406,7 +412,8 @@ internal class FakerService @JvmOverloads internal constructor(
      */
     fun String.letterify() = letterify(true)
 
-    fun String.generexify(): String = Generex(this, faker.config.random).random()
+    val String.generexify: () -> String
+        get() = { Generex(this, faker.config.random).random() }
 
     /**
      * Calls the property of this [FakeDataProvider] receiver and returns the result as [String].

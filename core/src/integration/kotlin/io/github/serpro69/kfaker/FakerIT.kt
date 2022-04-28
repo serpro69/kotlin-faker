@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Money
+import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
@@ -25,6 +26,7 @@ class FakerIT : DescribeSpec({
             it.visibility == KVisibility.PUBLIC
                 && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
                 && it.returnType.classifier != Money::class // Ignore Money provider as it's a special case
+                && it.returnType.classifier != StringProvider::class // Ignore String provider
         }
 
         // Get a list of all publicly visible functions in each provider
