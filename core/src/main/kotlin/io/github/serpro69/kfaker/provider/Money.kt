@@ -1,12 +1,12 @@
 package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.FakerService
-import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 class Money internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Money>(fakerService) {
-    override val categoryName = CategoryName.MONEY
+    override val category = YamlCategory.MONEY
     override val localUniqueDataProvider = LocalUniqueDataProvider<Money>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
     private val currencySymbol by lazy { CurrencySymbol(fakerService).symbol() }

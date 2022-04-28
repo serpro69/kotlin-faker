@@ -1,20 +1,19 @@
 package io.github.serpro69.kfaker
 
 import com.mifmif.common.regex.Generex
-import dk.brics.automaton.Automaton
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.dictionary.DictEntry
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
-import io.github.serpro69.kfaker.dictionary.getCategoryName
-import io.github.serpro69.kfaker.dictionary.toLowerCase
+import io.github.serpro69.kfaker.dictionary.lowercase
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.Degree
-import io.github.serpro69.kfaker.provider.Tertiary
+import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
+import io.github.serpro69.kfaker.provider.Tertiary
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
@@ -68,18 +67,18 @@ internal class FakerService @JvmOverloads internal constructor(
     private fun load(locale: String): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
 
-        getDefaultFileStreams().forEach {
-            readCategory(it, "en").entries.forEach { category ->
-                defaultValues[category.key]?.let { existing ->
-                    defaultValues[category.key] = existing.plus(category.value)
-                } ?: run { defaultValues[category.key] = category.value }
+        getDefaultFileStreams().forEach { inStr ->
+            readCategory(inStr, "en").entries.forEach {
+                defaultValues[it.key]?.let { existing ->
+                    defaultValues[it.key] = existing.plus(it.value)
+                } ?: run { defaultValues[it.key] = it.value }
             }
 
 //             todo Add `separator` category from `locales/en.yml` file
             val enYml = requireNotNull(getLocalizedFileStream("en"))
 
-            readCategory(enYml, "en").entries.forEach { category ->
-                defaultValues[category.key] = category.value
+            readCategory(enYml, "en").entries.forEach {
+                defaultValues[it.key] = it.value
             }
         }
 
@@ -144,29 +143,29 @@ internal class FakerService @JvmOverloads internal constructor(
                 fileStream to localeLang
             }
 
-            readCategory(localeFileStream, localeString).forEach { cat ->
-                when (cat.key) {
+            readCategory(localeFileStream, localeString).forEach {
+                when (it.key) {
                     // 'separator' is a bit of a special case so needs to be handled separately
-                    "separator" -> defaultValues[cat.key] = cat.value
-                    else -> merge(defaultValues, hashMapOf(cat.key to cat.value))
+                    "separator" -> defaultValues[it.key] = it.value
+                    else -> merge(defaultValues, hashMapOf(it.key to it.value))
                 }
             }
         }
 
-        val categories = defaultValues.asSequence().map {
+        val entries = defaultValues.asSequence().map {
             val value = when (it.key) {
                 "separator" -> mapOf("separator" to it.value)
                 "currency_symbol" -> mapOf("currency_symbol" to it.value)
                 else -> it.value
             }
-            Category(getCategoryName(it.key), value)
+            DictEntry(YamlCategory.findByName(it.key), value)
         }
-        return Dictionary(categories.toList())
+        return Dictionary(entries.toList())
     }
 
     /**
      * Reads values from the [inputStream] for the given [locale] and returns as [LinkedHashMap]
-     * where `key` represents the category name, i.e. `address`,
+     * where `key` represents the [Category.name] in lowercase, i.e. `address`,
      * and `value` represents the [Map] of values from this category.
      */
     @Suppress("UNCHECKED_CAST")
@@ -176,19 +175,19 @@ internal class FakerService @JvmOverloads internal constructor(
     }
 
     /**
-     * Returns [Category] instance by its [categoryName]
+     * Returns [DictEntry] instance by its [category]
      */
-    fun fetchCategory(categoryName: CategoryName): Category {
-        return dictionary.categories.firstOrNull { it.categoryName == categoryName }
-            ?: throw NoSuchElementException("Category with name '$categoryName' not found")
+    fun fetchEntry(category: Category): DictEntry {
+        return dictionary.entries.firstOrNull { it.category.name == category.name }
+            ?: throw NoSuchElementException("Category with name '$category' not found")
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
+     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key]
      */
-    fun getRawValue(category: Category, key: String): RawExpression {
-        val parameterValue = category.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
+    fun getRawValue(dictEntry: DictEntry, key: String): RawExpression {
+        val parameterValue = dictEntry.values[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
 
         return when (parameterValue) {
             is List<*> -> {
@@ -205,11 +204,11 @@ internal class FakerService @JvmOverloads internal constructor(
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [category] fetched by its [key] and [secondaryKey]
+     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key] and [secondaryKey]
      */
-    fun getRawValue(category: Category, key: String, secondaryKey: String): RawExpression {
-        val parameterValue = category.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
+    fun getRawValue(dictEntry: DictEntry, key: String, secondaryKey: String): RawExpression {
+        val parameterValue = dictEntry.values[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -237,11 +236,11 @@ internal class FakerService @JvmOverloads internal constructor(
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [category] fetched by its [key], [secondaryKey], and [thirdKey]
+     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key], [secondaryKey], and [thirdKey]
      */
-    fun getRawValue(category: Category, key: String, secondaryKey: String, thirdKey: String): RawExpression {
-        val parameterValue = category.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${category.categoryName.toLowerCase()}' category")
+    fun getRawValue(dictEntry: DictEntry, key: String, secondaryKey: String, thirdKey: String): RawExpression {
+        val parameterValue = dictEntry.values[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -278,31 +277,31 @@ internal class FakerService @JvmOverloads internal constructor(
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] in this [category].
+     * Resolves [RawExpression] value of the [key] in this [dictEntry].
      */
-    fun resolve(category: Category, key: String): String {
-        val rawExpression = getRawValue(category, key)
-        return resolveExpression(category, rawExpression)
+    fun resolve(dictEntry: DictEntry, key: String): String {
+        val rawExpression = getRawValue(dictEntry, key)
+        return resolveExpression(dictEntry, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [category].
+     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [dictEntry].
      */
-    fun resolve(category: Category, key: String, secondaryKey: String): String {
-        val rawExpression = getRawValue(category, key, secondaryKey)
-        return resolveExpression(category, rawExpression)
+    fun resolve(dictEntry: DictEntry, key: String, secondaryKey: String): String {
+        val rawExpression = getRawValue(dictEntry, key, secondaryKey)
+        return resolveExpression(dictEntry, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [category].
+     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [dictEntry].
      */
-    fun resolve(category: Category, key: String, secondaryKey: String, thirdKey: String): String {
-        val rawExpression = getRawValue(category, key, secondaryKey, thirdKey)
-        return resolveExpression(category, rawExpression)
+    fun resolve(dictEntry: DictEntry, key: String, secondaryKey: String, thirdKey: String): String {
+        val rawExpression = getRawValue(dictEntry, key, secondaryKey, thirdKey)
+        return resolveExpression(dictEntry, rawExpression)
     }
 
     /**
-     * Resolves the [rawExpression] for this [category] and returns as [String].
+     * Resolves the [rawExpression] for this [dictEntry] and returns as [String].
      *
      * For yaml expressions:
      * - `#{city_prefix}` from `en: faker: address` would be resolved to getting value from `address: city_prefix`
@@ -332,8 +331,8 @@ internal class FakerService @JvmOverloads internal constructor(
      * }
      * ```
      *
-     * For recursive expressions, this must be used for function calls within the same [category],
-     * but can be omitted for calls to other [category]s.
+     * For recursive expressions, this must be used for function calls within the same [dictEntry],
+     * but can be omitted for calls to other [dictEntry]s.
      * For example:
      *
      * `address.yml`:
@@ -354,7 +353,7 @@ internal class FakerService @JvmOverloads internal constructor(
      * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
      * ```
      */
-    private tailrec fun resolveExpression(category: Category, rawExpression: RawExpression): String {
+    private tailrec fun resolveExpression(dictEntry: DictEntry, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
         val resolvedExpression = when {
@@ -367,7 +366,7 @@ internal class FakerService @JvmOverloads internal constructor(
                             val (providerType, propertyName) = getProvider(simpleClassName).getFunctionName(it.group(2))
                             providerType.callFunction(propertyName)
                         }
-                        false -> getRawValue(category, it.group(2)).value
+                        false -> getRawValue(dictEntry, it.group(2)).value
                     }
 
                     it.appendReplacement(sb, replacement)
@@ -378,7 +377,7 @@ internal class FakerService @JvmOverloads internal constructor(
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
-        } else resolveExpression(category, RawExpression(resolvedExpression))
+        } else resolveExpression(dictEntry, RawExpression(resolvedExpression))
     }
 
     /**
@@ -391,13 +390,21 @@ internal class FakerService @JvmOverloads internal constructor(
     }
 
     /**
+     * Replaces every `?` char for this [String] receiver with a random letter from the English alphabet
+     * and returns the modified [String].
+     *
+     * @param upper set to `true` or `false` to control the case of generated letters
+     */
+    fun String.letterify(upper: Boolean? = null): String {
+        return map { if (it == '?') randomService.nextLetter(upper = upper ?: randomService.nextBoolean()).toString() else "$it" }
+            .joinToString("")
+    }
+
+    /**
      * Replaces every `?` char for this [String] receiver with a random upper-case letter from the English alphabet
      * and returns the modified [String].
      */
-    fun String.letterify(): String {
-        return map { if (it == '?') randomService.nextLetter(upper = true).toString() else "$it" }
-            .joinToString("")
-    }
+    fun String.letterify() = letterify(true)
 
     fun String.generexify(): String = Generex(this, faker.config.random).random()
 
@@ -423,6 +430,7 @@ internal class FakerService @JvmOverloads internal constructor(
      *
      * @param T instance of [FakeDataProvider]
      */
+    @Suppress("KDocUnresolvedReference")
     private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): Pair<FakeDataProvider, KFunction<*>> {
         val funcName = rawString.split("_").mapIndexed { i: Int, s: String ->
             if (i == 0) s else s.substring(0, 1).uppercase() + s.substring(1)

@@ -6,11 +6,11 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [CategoryName.ANCIENT] category.
+ * [FakeDataProvider] implementation for [YamlCategory.ANCIENT] category.
  */
 @Suppress("unused")
 class Computer internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Computer>(fakerService) {
-    override val categoryName = CategoryName.COMPUTER
+    override val category = YamlCategory.COMPUTER
     override val localUniqueDataProvider = LocalUniqueDataProvider<Computer>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 

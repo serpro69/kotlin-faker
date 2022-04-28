@@ -1,21 +1,21 @@
 package io.github.serpro69.kfaker.dictionary
 
 /**
- * Represents a collection of [categories] (i.e. `address`, `book`, etc.)
+ * Represents a collection of [entries] (i.e. `address`, `book`, etc.)
  */
-internal data class Dictionary(val categories: List<Category>)
+internal data class Dictionary(val entries: List<DictEntry>)
 
 /**
- * Represents a single category that has a [categoryName] (i.e. `address`) and all [values] in this category
+ * Represents a single category that has a [category] (i.e. `address`) and all [values] in this category
  */
-internal data class Category(val categoryName: CategoryName, val values: Map<String, *>)
+internal data class DictEntry(val category: YamlCategory, val values: Map<String, *>)
 
 /**
  * This enum contains all default categories and matches with the names of the .yml files for 'en' locale.
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
-internal enum class CategoryName {
+internal enum class YamlCategory : Category {
     // Special providers for locale-based symbols
     SEPARATOR,
     CURRENCY_SYMBOL,
@@ -171,31 +171,23 @@ internal enum class CategoryName {
     VERBS,
     V_FOR_VENDETTA,
     WORLD_CUP,
-    YODA
+    YODA,
+    ;
+
+    companion object {
+
+        /**
+         * Returns [YamlCategory] by [name] string (case-insensitive).
+         */
+        internal fun findByName(name: String): YamlCategory {
+            return values().firstOrNull { it.lowercase() == name.lowercase() }
+                ?: throw NoSuchElementException("Category with name '$name' not found.")
+        }
+    }
 }
 
 @Suppress("EXPERIMENTAL_FEATURE_WARNING")
 @JvmInline
 internal value class RawExpression(val value: String)
 
-/**
- * Returns [CategoryName] by [name] string (case-insensitive).
- */
-internal fun getCategoryName(name: String) = CategoryName.values().first { it.toLowerCase() == name.lowercase() }
-
-internal fun CategoryName.toLowerCase() = this.name.lowercase()
-
-/**
- * Gets [Category] by its [name] from this [Dictionary].
- */
-internal fun Dictionary.getCategoryByName(name: String): Category {
-    return this.getCategoryByName(categoryName = getCategoryName(name))
-}
-
-/**
- * Gets [Category] by its [categoryName] from this [Dictionary].
- */
-internal fun Dictionary.getCategoryByName(categoryName: CategoryName): Category {
-    return this.categories.firstOrNull { it.categoryName.toLowerCase() == categoryName.toLowerCase() }
-        ?: throw NoSuchElementException("Category with name $categoryName not found")
-}
+internal fun Category.lowercase() = name.lowercase()
