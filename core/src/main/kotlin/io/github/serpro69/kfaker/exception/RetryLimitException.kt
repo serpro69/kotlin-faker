@@ -1,7 +1,7 @@
 package io.github.serpro69.kfaker.exception
 
 @Suppress("unused")
-internal class RetryLimitException : Exception {
+class RetryLimitException : Exception {
 
     constructor(message: String) : super(message)
 

@@ -106,38 +106,58 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      *
      * @throws RetryLimitException if exceeds number of retries to generate a unique value.
      */
-    private tailrec fun returnOrResolveUnique(
+    private fun returnOrResolveUnique(
         primaryKey: String,
         secondaryKey: String? = null,
         thirdKey: String? = null,
-        counter: Int = 0
     ): String {
-        val result = if (secondaryKey != null && thirdKey != null) {
-            resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
-        } else if (secondaryKey != null) {
-            resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
-        } else {
-            resolve { fakerService.resolve(it, primaryKey) }.invoke()
+        val result: () -> String = {
+            when {
+                secondaryKey != null && thirdKey != null -> {
+                    resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
+                }
+                secondaryKey != null -> resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
+                else -> resolve { fakerService.resolve(it, primaryKey) }.invoke()
+            }
         }
 
+        return resolveUniqueValue(result, primaryKey, secondaryKey, thirdKey)
+    }
+
+    internal fun resolveUniqueValue(
+        result: () -> String,
+        primaryKey: String,
+        secondaryKey: String? = null,
+        thirdKey: String? = null,
+    ): String = resolveUniqueValue(result, primaryKey, secondaryKey, thirdKey, 0)
+
+    private tailrec fun resolveUniqueValue(
+        result: () -> String,
+        primaryKey: String,
+        secondaryKey: String? = null,
+        thirdKey: String? = null,
+        counter: Int,
+    ): String {
         val globalUniqueProvider = fakerService.faker.unique
         val fakerConfig = fakerService.faker.config
 
         val key = listOfNotNull(primaryKey, secondaryKey, thirdKey).joinToString("$")
+        val resultString = result()
 
         return if (localUniqueDataProvider.markedUnique.contains(this)) {
             // if function is prefixed with `unique` -> try to resolve a unique value
             when (val set = localUniqueDataProvider.usedValues[key]) {
                 null -> {
-                    localUniqueDataProvider.usedValues[key] = mutableSetOf(result)
-                    result
+                    localUniqueDataProvider.usedValues[key] = mutableSetOf(resultString)
+                    resultString
                 }
                 else -> {
                     if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                         throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(result)) result.also {
-                        localUniqueDataProvider.usedValues[key] = mutableSetOf(result).also { it.addAll(set) }
-                    } else returnOrResolveUnique(
+                    } else if (!set.contains(resultString))resultString.also {
+                        localUniqueDataProvider.usedValues[key] = mutableSetOf(resultString).also { it.addAll(set) }
+                    } else resolveUniqueValue(
+                        result = result,
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
@@ -147,19 +167,23 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
             }
         } else if (!globalUniqueProvider.config.markedUnique.contains(this::class)) {
             // if global unique provider is not enabled for this category -> return result
-            result
+            resultString
         } else {
             val exclusionValues = globalUniqueProvider.config.excludedValues
             val exclusionPatterns = globalUniqueProvider.config.excludedPatterns
             val usedProviderValues = requireNotNull(globalUniqueProvider.config.usedProviderValues[this::class])
-            val providerExclusionPatterns = requireNotNull(globalUniqueProvider.config.providerExclusionPatterns[this::class])
-            val providerFunctionExclusionPatternsMap = requireNotNull(globalUniqueProvider.config.providerFunctionExclusionPatterns[this::class])
-            val usedProviderFunctionsValuesMap = requireNotNull(globalUniqueProvider.config.usedProviderFunctionValues[this::class])
+            val providerExclusionPatterns =
+                requireNotNull(globalUniqueProvider.config.providerExclusionPatterns[this::class])
+            val providerFunctionExclusionPatternsMap =
+                requireNotNull(globalUniqueProvider.config.providerFunctionExclusionPatterns[this::class])
+            val usedProviderFunctionsValuesMap =
+                requireNotNull(globalUniqueProvider.config.usedProviderFunctionValues[this::class])
 
             when {
                 // Globally excluded values
-                exclusionValues.isNotEmpty() && exclusionValues.contains(result) -> {
-                    returnOrResolveUnique(
+                exclusionValues.isNotEmpty() && exclusionValues.contains(resultString) -> {
+                    resolveUniqueValue(
+                        result = result,
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
@@ -167,8 +191,9 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
                 // Global exclusion patterns
-                exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(result) } -> {
-                    returnOrResolveUnique(
+                exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(resultString) } -> {
+                    resolveUniqueValue(
+                        result = result,
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
@@ -176,8 +201,9 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
                 // Provider-based excluded values for all functions
-                usedProviderValues.isNotEmpty() && usedProviderValues.contains(result) -> {
-                    returnOrResolveUnique(
+                usedProviderValues.isNotEmpty() && usedProviderValues.contains(resultString) -> {
+                    resolveUniqueValue(
+                        result = result,
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
@@ -185,8 +211,9 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
                 // Provider-based exclusion patterns for all functions
-                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any { it.containsMatchIn(result) } -> {
-                    returnOrResolveUnique(
+                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any { it.containsMatchIn(resultString) } -> {
+                    resolveUniqueValue(
+                        result = result,
                         primaryKey = primaryKey,
                         secondaryKey = secondaryKey,
                         thirdKey = thirdKey,
@@ -198,25 +225,27 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     val usedValues = usedProviderFunctionsValuesMap[key]
 
                     when {
-                        patterns != null && patterns.isNotEmpty() && patterns.any { r -> r.containsMatchIn(result) } -> {
-                            returnOrResolveUnique(
+                        patterns != null && patterns.isNotEmpty() && patterns.any { r -> r.containsMatchIn(resultString) } -> {
+                            resolveUniqueValue(
+                                result = result,
                                 primaryKey = primaryKey,
                                 secondaryKey = secondaryKey,
                                 thirdKey = thirdKey,
                                 counter = counter + 1
                             )
                         }
-                        usedValues == null -> result.also {
+                        usedValues == null -> resultString.also {
                             // Create 'usedValues' set with the returned value for the 'key'
                             usedProviderFunctionsValuesMap[key] = mutableSetOf(it)
                         }
                         else -> {
                             if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                                 throw RetryLimitException("Retry limit of $counter exceeded")
-                            } else if (!usedValues.contains(result)) result.also { r ->
+                            } else if (!usedValues.contains(resultString)) resultString.also { r ->
                                 // Add returned value at the beginning of existing 'usedValues' set for the 'key'
                                 usedProviderFunctionsValuesMap[key] = mutableSetOf(r).also { it.addAll(usedValues) }
-                            } else returnOrResolveUnique(
+                            } else resolveUniqueValue(
+                                result = result,
                                 primaryKey = primaryKey,
                                 secondaryKey = secondaryKey,
                                 thirdKey = thirdKey,

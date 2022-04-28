@@ -1,7 +1,10 @@
 package io.github.serpro69.kfaker
 
+import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.Address
+import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.kotest.assertions.assertSoftly
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.beUnique
 import io.kotest.matchers.collections.containDuplicates
@@ -447,5 +450,15 @@ class UniqueDataProviderIT : DescribeSpec({
                 }
             }
         }
+    }
+
+    it("should throw an exception when retry limit exceeds") {
+        val faker = faker { }
+        faker.unique.configuration {
+            enable(faker::string) {
+                excludeFromFunction<StringProvider>("numerify", "foo123bar")
+            }
+        }
+        shouldThrow<RetryLimitException> { faker.string.numerify("foo123bar") }
     }
 })
