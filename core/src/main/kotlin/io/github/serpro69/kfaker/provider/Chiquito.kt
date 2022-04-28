@@ -6,11 +6,11 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [CategoryName.ANCIENT] category.
+ * [FakeDataProvider] implementation for [YamlCategory.ANCIENT] category.
  */
 @Suppress("unused")
 class Chiquito internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Chiquito>(fakerService) {
-    override val categoryName = CategoryName.CHIQUITO
+    override val category = YamlCategory.CHIQUITO
     override val localUniqueDataProvider = LocalUniqueDataProvider<Chiquito>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 

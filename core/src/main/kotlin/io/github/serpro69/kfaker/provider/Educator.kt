@@ -6,11 +6,11 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [CategoryName.EDUCATOR] category.
+ * [FakeDataProvider] implementation for [YamlCategory.EDUCATOR] category.
  */
 @Suppress("unused")
 class Educator internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Educator>(fakerService) {
-    override val categoryName = CategoryName.EDUCATOR
+    override val category = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Educator>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
@@ -38,7 +38,7 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
 }
 
 class Tertiary internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Tertiary>(fakerService) {
-    override val categoryName = CategoryName.EDUCATOR
+    override val category = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tertiary>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
@@ -48,7 +48,7 @@ class Tertiary internal constructor(fakerService: FakerService) : AbstractFakeDa
 }
 
 class Degree internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Degree>(fakerService) {
-    override val categoryName = CategoryName.EDUCATOR
+    override val category = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Degree>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 

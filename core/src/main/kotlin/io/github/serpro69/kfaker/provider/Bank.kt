@@ -1,16 +1,16 @@
 package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.FakerService
-import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [CategoryName.BANK] category.
+ * [FakeDataProvider] implementation for [YamlCategory.BANK] category.
  */
 @Suppress("unused")
 class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Bank>(fakerService) {
-    override val categoryName = CategoryName.BANK
+    override val category = YamlCategory.BANK
     override val localUniqueDataProvider = LocalUniqueDataProvider<Bank>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 

@@ -3,7 +3,8 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.CategoryName
+import io.github.serpro69.kfaker.dictionary.DictEntry
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 
@@ -24,9 +25,9 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      * This is the key entry after the `faker` key in `.yml` locale file.
      *
      * For example `address.yml` file has the following structure - `en: faker: address:`,
-     * then the category name would be [CategoryName.ADDRESS]
+     * then the category name would be [YamlCategory.ADDRESS]
      */
-    internal abstract val categoryName: CategoryName
+    internal abstract val category: Category
 
     /**
      * A [LocalUniqueDataProvider] instance that is used with this [unique] provider.
@@ -49,12 +50,12 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
     fun clearAll() = localUniqueDataProvider.clearAll()
 
     /**
-     * Higher-order function that resolves the [block] expression for this [categoryName].
+     * Higher-order function that resolves the [block] expression for this [category].
      *
      * @return parameterless function that returns a [String]: `() -> String`
      */
-    private fun resolve(block: (Category) -> String): () -> String = {
-        block(fakerService.fetchCategory(categoryName))
+    private fun resolve(block: (DictEntry) -> String): () -> String = {
+        block(fakerService.fetchEntry(category))
     }
 
     /**
