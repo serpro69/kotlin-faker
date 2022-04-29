@@ -76,6 +76,9 @@ homepageSections:
       - title: '…with pre-configured type generation'
         snippets: ['random_class_instance_two']
         lang: 'kotlin'
+      - title: 'String templates'
+        snippets: ['string_provider_one']
+        lang: 'kotlin'
       - title: 'Random numbers, strings, enums, UUIDs, and more…'
         snippets: ['random_service_one']
         lang: 'kotlin'
