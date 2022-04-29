@@ -4,6 +4,8 @@ import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.provider.ConstructorFilterStrategy
 import io.github.serpro69.kfaker.provider.FallbackStrategy
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import java.util.*
@@ -234,6 +236,20 @@ class Extras : DescribeSpec({
             // END extras_random_everything_nine
         }
 
+    }
+
+    describe("Random Strings from Templates") {
+        it("should replace template chars with actual ones") {
+            // START extras_random_strings_from_templates_zero
+            faker.string.numerify("123###").all { it.isDigit() } shouldBe true
+            faker.string.letterify("foo???").all { it.isLetter() } shouldBe true
+            faker.string.letterify("???BAR", true).all { it.isUpperCase() } shouldBe true
+            faker.string.letterify("???bar", false).all { it.isLowerCase() } shouldBe true
+            faker.string.bothify("foo???bar###")
+            faker.string.regexify("""\d{42}""").all { it.isDigit() } shouldBe true
+            faker.string.regexify("""\d{42}""").length shouldBe 42
+            // END extras_random_strings_from_templates_zero
+        }
     }
 })
 

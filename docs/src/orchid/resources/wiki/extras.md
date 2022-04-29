@@ -12,6 +12,7 @@
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
 * [Random Everything](#random-everything)
+* [Random Strings from Templates](#random-strings-from-templates)
 
 <br>
 
@@ -344,3 +345,29 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 {% btc %}{% endbtc %}
 
 <br>
+
+## Random Strings from Templates
+
+Faker's `StringProvider` allows for replacing certain user-defined parts of strings with randomly generated chars (letters and digits), as well as generating strings from regex expressions. 
+The following functions are available withing the `Faker().string`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_strings_from_templates_zero' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+{% btc %}{% endbtc %}
+
+<br>
+
+
+
+
+

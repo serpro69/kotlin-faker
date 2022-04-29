@@ -1,7 +1,7 @@
 ---
 ---
 
-== `Faker().rajnikanth`
+== `Faker().randomProvider`
 
 Provides functionality for creating a random instance of any (almost any) class.
 
