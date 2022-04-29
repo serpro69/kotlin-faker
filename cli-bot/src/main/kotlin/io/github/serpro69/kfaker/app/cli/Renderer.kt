@@ -82,7 +82,7 @@ fun renderProvider(
             Renderer("${it.name}() // => $value", emptyList())
         }
     } else {
-        functions.asSequence().map { Renderer("${it.name}()", emptyList()) }
+        functions.map { Renderer("${it.name}()", emptyList()) }
     }
 
     return if (options.javaSyntax) {
