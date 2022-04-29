@@ -232,10 +232,16 @@
   "name":"io.github.serpro69.kfaker.dictionary.Category"
 },
 {
-  "name":"io.github.serpro69.kfaker.dictionary.CategoryName"
+  "name":"io.github.serpro69.kfaker.dictionary.DictEntry"
 },
 {
-  "name":"io.github.serpro69.kfaker.dictionary.CategoryName[]"
+  "name":"io.github.serpro69.kfaker.dictionary.DictEntry[]"
+},
+{
+  "name":"io.github.serpro69.kfaker.dictionary.YamlCategory"
+},
+{
+  "name":"io.github.serpro69.kfaker.dictionary.YamlCategory[]"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.AbstractFakeDataProvider"
