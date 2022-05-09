@@ -5,8 +5,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [1.11.0] - UNRELEASED
-###
+### Added
 - [#122](https://github.com/serpro69/kotlin-faker/pull/122) [core] Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
+
+### Fixed
+- [#125](https://github.com/serpro69/kotlin-faker/issues/125) [core] Generating postcode with locale "nl" gives back expression rather than result
 
 ## [1.10.0] - 2022-02-20
 ### Added

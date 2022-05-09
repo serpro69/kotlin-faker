@@ -22,7 +22,13 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun buildingNumber() = with(fakerService) { resolve("building_number").numerify() }
     fun community() = resolve("community")
     fun secondaryAddress() = with(fakerService) { resolve("secondary_address").numerify() }
-    fun postcode() = with(fakerService) { resolve("postcode").numerify() }
+    fun postcode() = with(fakerService) {
+        when (faker.config.locale) {
+            "nl" -> resolve("postcode").generexify().replace("/", "")
+            else -> resolve("postcode").numerify()
+        }
+    }
+
     fun postcodeByState(state: String) = with(fakerService) { resolve("postcode_by_state", state).numerify() }
     fun state() = resolve("state")
     fun stateAbbr() = resolve("state_abbr")
@@ -46,3 +52,4 @@ class Address internal constructor(fakerService: FakerService) : AbstractFakeDat
     // fix #87
     internal fun cityRoot() = resolve("city_root")
 }
+
