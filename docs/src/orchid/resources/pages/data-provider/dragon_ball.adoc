@@ -18,5 +18,7 @@
 [source,kotlin]
 ----
 Faker().dragonBall.characters() // => Goku
+Faker().dragonBall.races() // => Android
+Faker().dragonBall.planets() // => Alpha
 ----
 ====

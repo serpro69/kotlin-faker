@@ -18,15 +18,13 @@ class Educator internal constructor(fakerService: FakerService) : AbstractFakeDa
 
     fun schoolName() = resolve("school_name")
     fun secondary() = resolve("secondary")
-
+    fun primary() = resolve("primary")
     fun university() = resolve("university")
-
     fun secondarySchool() = resolve("secondary_school")
+    fun primarySchool() = resolve("primary_school")
     fun campus() = resolve("campus")
     fun subject() = resolve("subject")
-
     fun degree() = resolve("degree")
-
     fun courseName() = resolve("course_name")
 
     @Deprecated(

@@ -24,4 +24,5 @@ class Food internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun measurementSizes() = resolve("measurement_sizes")
     fun metricMeasurements() = resolve("metric_measurements")
     fun sushi() = resolve("sushi")
+    fun ethnicCategory() = resolve("ethnic_category")
 }

@@ -17,6 +17,8 @@
 ====
 [source,kotlin]
 ----
+Faker().dota.building() // => Fountain
+
 Faker().dota.hero() // => Abaddon
 
 Faker().dota.item() // => Animal Courier

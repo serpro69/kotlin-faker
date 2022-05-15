@@ -23,6 +23,8 @@ Faker().dune.titles() // => Master of Assassins
 
 Faker().dune.planets() // => Arrakis
 
+Faker().dune.cities() // => Arrakeen
+
 // Random quote from a character (case-insensitive)
 Faker().dune.quotes("guild_navigator") // => The spice must flow
 // string can have spaces instead of underscores

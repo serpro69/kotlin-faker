@@ -13,14 +13,61 @@ class Opera internal constructor(fakerService: FakerService) : AbstractFakeDataP
     override val category = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Opera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
-    val italian = Italian()
+
+    val italian = ItalianOpera(fakerService)
+
+    val german = GermanOpera(fakerService)
+
+    val french = FrenchOpera(fakerService)
 
     // TODO: 24.11.2019 fun italian() // resolves to a random italian opera
+    // TODO: fun german() // resolves to a random german opera
+    // TODO: fun french() // resolves to a random french opera
+}
 
-    inner class Italian internal constructor() {
-        fun byGiuseppeVerdi() = resolve("italian", "by_giuseppe_verdi")
-        fun byGioacchinoRossini() = resolve("italian", "by_gioacchino_rossini")
-        fun byGaetanoDonizetti() = resolve("italian", "by_gaetano_donizetti")
-        fun byVincenzoBellini() = resolve("italian", "by_vincenzo_bellini")
-    }
+class ItalianOpera internal constructor(
+    fakerService: FakerService
+) : AbstractFakeDataProvider<ItalianOpera>(fakerService) {
+    override val category = YamlCategory.OPERA
+    override val localUniqueDataProvider = LocalUniqueDataProvider<ItalianOpera>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    fun byGiuseppeVerdi() = resolve("italian", "by_giuseppe_verdi")
+    fun byGioacchinoRossini() = resolve("italian", "by_gioacchino_rossini")
+    fun byGaetanoDonizetti() = resolve("italian", "by_gaetano_donizetti")
+    fun byVincenzoBellini() = resolve("italian", "by_vincenzo_bellini")
+    fun byChristophWillibaldGluck() = resolve("italian", "by_christoph_willibald_gluck")
+    fun byWolfgangAmadeusMozart() = resolve("by_wolfgang_amadeus_mozart")
+}
+
+class GermanOpera internal constructor(
+    fakerService: FakerService
+) : AbstractFakeDataProvider<GermanOpera>(fakerService) {
+    override val category = YamlCategory.OPERA
+    override val localUniqueDataProvider = LocalUniqueDataProvider<GermanOpera>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    fun byWolfgangAmadeusMozart(): String = resolve("german", "by_wolfgang_amadeus_mozart")
+    fun byLudwigVanBeethoven(): String = resolve("german", "by_ludwig_van_beethoven")
+    fun byCarlMariaVonWeber(): String = resolve("german", "by_carl_maria_von_weber")
+    fun byRichardStrauss(): String = resolve("german", "by_richard_strauss")
+    fun byRichardWagner(): String = resolve("german", "by_richard_wagner")
+    fun byRobertSchumann(): String = resolve("german", "by_robert_schumann")
+    fun byFranzSchubert(): String = resolve("german", "by_franz_schubert")
+    fun byAlbanBerg(): String = resolve("german", "by_alban_berg")
+}
+
+class FrenchOpera internal constructor(
+    fakerService: FakerService
+) : AbstractFakeDataProvider<FrenchOpera>(fakerService) {
+    override val category = YamlCategory.OPERA
+    override val localUniqueDataProvider = LocalUniqueDataProvider<FrenchOpera>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    fun byChristophWillibaldGluck(): String = resolve("french", "by_christoph_willibald_gluck")
+    fun byMauriceRavel(): String = resolve("french", "by_maurice_ravel")
+    fun byHectorBerlioz(): String = resolve("french", "by_hector_berlioz")
+    fun byGeorgesBizet(): String = resolve("french", "by_georges_bizet")
+    fun byCharlesGounod(): String = resolve("french", "by_charles_gounod")
+    fun byCamilleSaintSaens(): String = resolve("french", "by_camille_saint_saëns")
 }

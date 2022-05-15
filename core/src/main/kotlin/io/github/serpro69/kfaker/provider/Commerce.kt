@@ -30,4 +30,8 @@ class Commerce internal constructor(fakerService: FakerService) : AbstractFakeDa
 
         return "$adjective $noun"
     }
+
+    fun brand() = resolve("brand")
+
+    fun vendor() = resolve("vendor")
 }

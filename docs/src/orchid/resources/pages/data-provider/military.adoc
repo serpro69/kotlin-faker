@@ -23,7 +23,11 @@ Faker().military.marinesRank() // => Private
 
 Faker().military.navyRank() // => Seaman Recruit
 
+Faker().military.coastGuardRank() // => Seaman Recruit
+
 Faker().military.airForceRank() // => Airman Basic
+
+Faker().military.spaceForceRank() // => Airman Basic
 
 Faker().military.dodPaygrade() // => E-1
 ----

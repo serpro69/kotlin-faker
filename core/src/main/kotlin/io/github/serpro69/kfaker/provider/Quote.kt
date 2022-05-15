@@ -20,4 +20,5 @@ class Quote internal constructor(fakerService: FakerService) : AbstractFakeDataP
     fun robin() = resolve("robin")
     fun singularSiegler() = resolve("singular_siegler")
     fun yoda() = resolve("yoda")
+    fun fortuneCookie() = resolve("fortune_cookie")
 }

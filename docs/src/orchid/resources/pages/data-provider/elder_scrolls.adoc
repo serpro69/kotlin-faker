@@ -30,5 +30,9 @@ Faker().elderScrolls.city() // => Solitude
 Faker().elderScrolls.firstName() // => Balgruuf
 
 Faker().elderScrolls.lastName() // => The Old
+
+Faker().elderScrolls.weapon() // => Alessandra's Dagger
+
+Faker().elderScrolls.jewelry() // => Copper and Moonstone Circlet
 ----
 ====

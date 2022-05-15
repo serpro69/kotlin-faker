@@ -17,4 +17,5 @@ class Heroes internal constructor(fakerService: FakerService) : AbstractFakeData
     fun names() = resolve("names")
     fun specialties() = resolve("specialties")
     fun klasses() = resolve("klasses")
+    fun artifacts() = resolve("artifacts")
 }

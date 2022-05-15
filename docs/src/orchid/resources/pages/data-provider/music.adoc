@@ -24,5 +24,13 @@ Faker().music.bands() // => AC/DC
 Faker().music.albums() // => Thriller
 
 Faker().music.genres() // => Rock
+
+Faker().music.mamboNo5 // => Angela
+
+Faker().music.hipHop.subgenres() // => Low Fi
+
+Faker().music.hipHop.groups() // => Outcast
+
+Faker().music.hipHop.artist() // => Drake
 ----
 ====
