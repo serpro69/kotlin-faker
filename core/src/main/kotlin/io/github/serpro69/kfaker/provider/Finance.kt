@@ -16,7 +16,9 @@ class Finance internal constructor(fakerService: FakerService) : AbstractFakeDat
 
     fun creditCard(type: String): String = with(fakerService) { resolve("credit_card", type).numerify().generexify() }
     fun vatNumber(countryCode: String): String = with(fakerService) { resolve("vat_number", countryCode).numerify() }
-    fun ticker(stockExchange: StockExchange): String = resolve("ticker", stockExchange.name.lowercase())
+    fun ticker(stockExchange: StockExchange = fakerService.randomService.nextEnum()): String =
+        resolve("ticker", stockExchange.name.lowercase())
+
     fun stockMarket(): String = resolve("stock_market")
 }
 

@@ -1,0 +1,31 @@
+---
+---
+
+== `Faker().touhou`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'touhou_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().touhou.games() // => Highly Responsive to Prayers
+
+Faker().touhou.characters() // => Alice Margatroid
+
+Faker().touhou.spell_cards() // => Spirit Sign "Yin-Yang Sign"
+
+Faker().touhou.locations() // => Abandon Pond
+
+Faker().touhou.songs() // => Welcome to the Moon Tour
+
+----
+====

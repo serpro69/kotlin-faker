@@ -53,13 +53,3 @@ class StringProvider internal constructor(
         resolveUniqueValue(template.generexify, "regexify")
     }
 }
-
-fun main() {
-    val f = faker { }
-
-    val l1 = List(1000) { f.string.letterify("foo???bar", false) }
-    val l2 = List(1000) { f.string.unique.letterify("foo???bar", false) }
-
-    println(l1.distinct().size)
-    println(l2.distinct().size)
-}

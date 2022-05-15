@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().finalSpace`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'final_space_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().final_space.characters() // => A.V.A
+
+Faker().final_space.vehicles() // => Crimson Light
+
+Faker().final_space.quotes() // => It's an alien on my face! It's an alien on my...It's a space alien!
+
+
+----
+====
