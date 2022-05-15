@@ -21,4 +21,6 @@ class ElderScrolls internal constructor(fakerService: FakerService) : AbstractFa
     fun city() = resolve("elder_scrolls", "city")
     fun firstName() = resolve("elder_scrolls", "first_name")
     fun lastName() = resolve("elder_scrolls", "last_name")
+    fun weapon() = resolve("elder_scrolls", "weapon")
+    fun jewelry() = resolve("elder_scrolls", "jewelry")
 }

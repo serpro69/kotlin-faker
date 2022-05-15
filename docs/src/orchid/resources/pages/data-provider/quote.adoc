@@ -28,5 +28,7 @@ Faker().quote.robin() // Holy Agility
 Faker().quote.singularSiegler() // Texas!
 
 Faker().quote.yoda() // Use your feelings, Obi-Wan, and find him you will.
+
+Faker().quote.fortuneCookie() // => This cookie senses that you are superstitious; it is an inclination that is bad for your mental health.
 ----
 ====

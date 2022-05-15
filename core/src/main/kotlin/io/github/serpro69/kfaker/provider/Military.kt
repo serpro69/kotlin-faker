@@ -17,6 +17,8 @@ class Military internal constructor(fakerService: FakerService) : AbstractFakeDa
     fun armyRank() = resolve("army_rank")
     fun marinesRank() = resolve("marines_rank")
     fun navyRank() = resolve("navy_rank")
+    fun coastGuardRank() = resolve("coast_guard_rank")
     fun airForceRank() = resolve("air_force_rank")
+    fun spaceForceRank() = resolve("space_force_rank")
     fun dodPaygrade() = resolve("dod_paygrade")
 }

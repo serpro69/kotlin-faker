@@ -10,4 +10,21 @@ en:
       promotion_code:
         adjective: ['Amazing', 'Awesome', 'Cool', 'Good', 'Great', 'Incredible', 'Killer', 'Premium', 'Special', 'Stellar', 'Sweet']
         noun: ['Code', 'Deal', 'Discount', 'Price', 'Promo', 'Promotion', 'Sale', 'Savings']
+      brand: ['Samsung',
+              'Dell',
+              'Nike',
+              'Apple',
+              'LG',
+              'Adidas',
+              'Nikon',
+              'Sony',
+              'Beats',
+              'GoPro'
+      ]
+      vendor: [
+        'Amazon',
+        'Dollar General',
+        'Walmart',
+        'Target'
+      ]
 # END commerce_provider_dict

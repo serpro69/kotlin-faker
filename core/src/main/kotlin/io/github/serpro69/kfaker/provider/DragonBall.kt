@@ -15,4 +15,6 @@ class DragonBall internal constructor(fakerService: FakerService) : AbstractFake
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
+    fun races() = resolve("races")
+    fun planets() = resolve("planets")
 }

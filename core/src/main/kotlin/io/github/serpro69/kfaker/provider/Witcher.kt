@@ -20,4 +20,7 @@ class Witcher internal constructor(fakerService: FakerService) : AbstractFakeDat
     fun locations() = resolve("witcher", "locations")
     fun quotes() = resolve("witcher", "quotes")
     fun monsters() = resolve("witcher", "monsters")
+    fun signs() = resolve("witcher", "signs")
+    fun potions() = resolve("witcher", "potions")
+    fun books() = resolve("witcher", "books")
 }

@@ -15,6 +15,13 @@ class Finance internal constructor(fakerService: FakerService) : AbstractFakeDat
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun creditCard(type: String): String = with(fakerService) { resolve("credit_card", type).numerify().generexify() }
-
     fun vatNumber(countryCode: String): String = with(fakerService) { resolve("vat_number", countryCode).numerify() }
+    fun ticker(stockExchange: StockExchange): String = resolve("ticker", stockExchange.name.lowercase())
+    fun stockMarket(): String = resolve("stock_market")
+}
+
+enum class StockExchange {
+    NASDAQ,
+    NYSE,
+    ;
 }

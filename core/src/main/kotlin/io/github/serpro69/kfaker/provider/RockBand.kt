@@ -15,4 +15,5 @@ class RockBand internal constructor(fakerService: FakerService) : AbstractFakeDa
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun name() = resolve("name")
+    fun song() = resolve("song")
 }

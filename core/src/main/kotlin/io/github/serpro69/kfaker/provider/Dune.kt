@@ -17,6 +17,7 @@ class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun characters() = resolve("characters")
     fun titles() = resolve("titles")
     fun planets() = resolve("planets")
+    fun cities() = resolve("cities")
     fun quotes(character: String) = resolve("quotes", character.lowercase().replace("_", " "))
     fun sayings(origin: String) = resolve("sayings", origin.lowercase().replace("_", " "))
 

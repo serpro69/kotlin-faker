@@ -14,6 +14,8 @@ class WorldOfWarcraft internal constructor(fakerService: FakerService) : Abstrac
     override val localUniqueDataProvider = LocalUniqueDataProvider<WorldOfWarcraft>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
-    fun hero() = resolve("world_of_warcraft", "hero")
+    fun hero() = resolve("world_of_warcraft", "heros")
     fun quotes() = resolve("world_of_warcraft", "quotes")
+    fun classNames() = resolve("world_of_warcraft", "class_names")
+    fun races() = resolve("world_of_warcraft", "races")
 }

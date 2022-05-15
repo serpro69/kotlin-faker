@@ -31,6 +31,8 @@ class Internet internal constructor(fakerService: FakerService) : AbstractFakeDa
     @JvmOverloads
     fun safeEmail(name: String = "") = "${email(name).substringBeforeLast(".")}.test"
 
+    fun slug(): String = resolve("slug")
+
     fun domainSuffix() = resolve("domain_suffix")
     fun userAgent(browserType: String) = resolve("user_agent", browserType.lowercase())
 }

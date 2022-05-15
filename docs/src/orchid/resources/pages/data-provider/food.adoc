@@ -36,5 +36,7 @@ Faker().food.measurementSizes() // 1/4
 Faker().food.metricMeasurements() // milliliter
 
 Faker().food.sushi() // Abalone
+
+Faker().food.ethnicCategory // => Peruvian
 ----
 ====

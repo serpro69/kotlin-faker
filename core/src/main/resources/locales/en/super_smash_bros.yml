@@ -4,10 +4,12 @@ en:
     games:
       super_smash_bros:
         fighter:
-          - Banjo-Kazooie
+          - Alex
+          - Banjo & Kazooie
           - Bayonetta
           - Bowser
           - Bowser Jr.
+          - Byleth
           - Captain Falcon
           - Charizard
           - Chrom
@@ -20,6 +22,7 @@ en:
           - Donkey Kong
           - Dr. Mario
           - Duck Hunt Duo
+          - Enderman
           - Falco
           - Fox
           - Ganondorf
@@ -33,6 +36,7 @@ en:
           - Ivysaur
           - Jigglypuff
           - Joker
+          - Kazuya
           - Ken
           - King Dedede
           - King K. Rool
@@ -51,6 +55,7 @@ en:
           - Mii Fighter
           - Mii Gunner
           - Mii Sword Fighter
+          - Min Min
           - Mr. Game & Watch
           - Ness
           - Olimar
@@ -63,20 +68,23 @@ en:
           - Pit
           - Pokémon Trainer
           - R.O.B.
-          - Richter Belmont
+          - Richter
           - Ridley
           - Robin
           - Rosalina
           - Roy
           - Ryu
           - Samus
+          - Sephiroth
           - Sheik
           - Shulk
-          - Simon Belmont
+          - Simon
           - Snake
           - Sonic
+          - Sora
           - Squirtle
-          - Terry Bogard
+          - Steve
+          - Terry
           - Toon Link
           - Villager
           - Wario
@@ -86,6 +94,7 @@ en:
           - Young Link
           - Zelda
           - Zero Suit Samus
+          - Zombie
         stage:
           - 3D Land
           - 75m
@@ -117,6 +126,7 @@ en:
           - Frigate Orpheon
           - Gamer
           - Garden of Hope
+          - Garreg Mach Monastery
           - Gaur Plain
           - Gerudo Valley
           - Golden Plains
@@ -127,11 +137,13 @@ en:
           - Green Hill Zone
           - Halberd
           - Hanenbow
+          - Hollow Bastion
           - Hyrule Castle
           - Icicle Mountain
           - Jungle Hijinxs
           - Jungle Japes
           - Kalos Pokémon League
+          - King of Fighters Stadium
           - Kongo Falls
           - Kongo Jungle
           - Living Room
@@ -144,6 +156,7 @@ en:
           - Mementos
           - Midgar
           - Miiverse
+          - Minecraft World
           - Moray Towers
           - Mushroom Kingdom
           - Mushroom Kingdom II
@@ -153,6 +166,7 @@ en:
           - New Donk City Hall
           - New Pork City
           - Norfair
+          - Northern Cave
           - Onett
           - Orbital Gate Assault
           - Pac-Land
@@ -181,10 +195,12 @@ en:
           - Shadow Moses Island
           - Skyloft
           - Skyworld
+          - Small Battlefield
           - Smashville
           - Spear Pillar
           - Spiral Mountain
           - Spirit Train
+          - Spring Stadium
           - Summit
           - Super Happy Tree
           - Super Mario Maker
@@ -205,4 +221,5 @@ en:
           - Wuhu Island
           - Yoshi's Island
           - Yoshi's Story
+          - Yggdrasil's Altar
 # END super_smash_bros_provider_dict

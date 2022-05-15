@@ -26,6 +26,8 @@ Faker().internet.email("john.doe") // => john.doe@gmail.com
 Faker().internet.safeEmail() // les.weissnat@gmail.test
 Faker().internet.safeEmail("jane.doe") // => jane.doe@yahoo.test
 
+Faker().internet.slug() // => report
+
 Faker().internet.domainSuffix() // => com
 
 // Random user agent by browser type (case-insensitive)

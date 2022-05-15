@@ -19,7 +19,9 @@
 ----
 Faker().educator.schoolName() // => Bluemeadow
 Faker().educator.secondary() // => High School
+Faker().educator.primary() // => Elementary School
 Faker().educator.secondarySchool() // => Bluemeadow High School
+Faker().educator.primarySchool() // => Bluemeadow Elementary School
 Faker().educator.campus() // => Bluemeadow Campus
 Faker().educator.subject() // => Applied Science (Psychology)
 Faker().educator.universityType() // => College

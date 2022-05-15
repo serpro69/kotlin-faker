@@ -15,6 +15,12 @@ class FreshPriceOfBelAir internal constructor(fakerService: FakerService) : Abst
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     fun characters() = resolve("characters")
-    fun celebrities() = resolve("celebrities")
+    fun actors() = resolve("actors")
+    @Deprecated(
+        message = "Renamed upstream and will be removed in future release.",
+        replaceWith = ReplaceWith("actors()"),
+        DeprecationLevel.WARNING
+    )
+    fun celebrities() = resolve("actors")
     fun quotes() = resolve("quotes")
 }

@@ -18,5 +18,6 @@
 [source,kotlin]
 ----
 Faker().rockBand.name() // => Led Zeppelin
+Faker().rockBand.song() // => Are You Gonna Be My Girl
 ----
 ====

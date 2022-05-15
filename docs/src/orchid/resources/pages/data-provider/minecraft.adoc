@@ -17,8 +17,13 @@
 ====
 [source,kotlin]
 ----
-Faker.minecraft.blocks() // => Stone
-Faker.minecraft.items() // => Iron Shovel
-Faker.minecraft.mobs() // => Sheep
+Faker().minecraft.achievement() // => Acquire Hardware
+Faker().minecraft.biome() // => Badlands
+Faker().minecraft.blocks() // => Stone
+Faker().minecraft.enchantment() // => Aqua Affinity
+Faker().minecraft.gameMode() // => Adventure
+Faker().minecraft.items() // => Iron Shovel
+Faker().minecraft.mobs() // => Sheep
+Faker().minecraft.statusEffect() // => Absorption
 ----
 ====

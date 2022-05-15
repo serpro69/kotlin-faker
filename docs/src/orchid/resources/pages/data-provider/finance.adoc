@@ -36,5 +36,9 @@ Faker().finance.credit_card("") // => /6771-89##-####-###L/
 Faker().finance.vat_number("AT") // => "ATU########"
 // or from a random country
 Faker().finance.vat_number("") // => "ATU########"
+
+Faker().finance.ticker(NASDAQ) // => AMZN
+Faker().finance.ticker(NYSE) // => XOM
+Faker().finance.stockMarket() // => NYSE
 ----
 ====

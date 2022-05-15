@@ -14,6 +14,8 @@ class Dota internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dota>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
+    fun building() = resolve("dota", "building")
+
     fun hero() = resolve("dota", "hero")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
