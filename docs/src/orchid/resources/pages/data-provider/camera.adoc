@@ -1,0 +1,27 @@
+---
+---
+
+== `Faker().camera`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'camera_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().camera.brand() // => Canon
+
+Faker().camera.model() // => 450D
+
+Faker().camera.brandWithModel() // => Benq G2F
+
+----
+====

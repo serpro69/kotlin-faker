@@ -1,0 +1,27 @@
+---
+---
+
+== `Faker().supernatural`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'supernatural_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().supernatural.character() // => Johnny
+
+Faker().supernatural.creature() // => Johnny's Place
+
+Faker().supernatural.weapon() // => "Oh hi, Denny"
+
+----
+====

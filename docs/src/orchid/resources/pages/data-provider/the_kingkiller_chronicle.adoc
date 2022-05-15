@@ -1,0 +1,29 @@
+---
+---
+
+== `Faker().theKingkillerChronicle`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'the_kingkiller_chronicle_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().theKingkillerChronicle.books() // => The Name of the Wind
+
+Faker().theKingkillerChronicle.characters() // => Auri
+
+Faker().theKingkillerChronicle.creatures() // => Angel
+
+Faker().theKingkillerChronicle.locations() // => Ademre
+
+----
+====

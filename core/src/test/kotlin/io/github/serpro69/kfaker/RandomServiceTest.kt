@@ -271,7 +271,6 @@ internal class RandomServiceTest : DescribeSpec({
 
                 it("should return a random subset of a given size run#$it") {
                     val subset = randomService.randomSubset(set, size = 10)
-                    println(subset)
                     assertSoftly {
                         set shouldContainAll subset
                         subset shouldHaveSize 10

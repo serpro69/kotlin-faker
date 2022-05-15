@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker
 
+import io.github.serpro69.kfaker.provider.Dune
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.misc.StringProvider
@@ -44,7 +45,11 @@ class FakerIT : DescribeSpec({
 
                         val value = when (it.parameters.size) {
                             1 -> it.call(provider.getter.call(faker)).toString()
-                            2 -> it.call(provider.getter.call(faker), "").toString()
+                            2 -> {
+                                if (it.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
+                                    it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
+                                } else it.call(provider.getter.call(faker), "").toString()
+                            }
                             3 -> it.call(provider.getter.call(faker), "", "").toString()
                             else -> throw IllegalArgumentException("")
                         }
@@ -76,25 +81,10 @@ class FakerIT : DescribeSpec({
                             // Accounting for some exceptional cases where values are repeated
                             // in resolved expression
                             if (
-                                value != "Tiger! Tiger!" // book#title
-                                && (provider.name != "coffee" && it.name != "notes")
+                                (provider.name != "coffee" && it.name != "notes")
                                 && (provider.name != "onePiece" && it.name != "akumasNoMi")
-                                && value != "Girls Girls" // kPop#girlsGroups
-                                && value != "Two Two" // kPop#firstGroups
-                                && value != "woof woof" // creature#dog#sound
                                 && (provider.name != "lorem" && it.name != "punctuation" && value != " ")
-                                && value != "Duran Duran" // rockBand#name
-                                && value != "Li Li"
-                                && value != "Dee Dee"
-                                && value != "Lola Lola" // cannabis#brands
-                                && value != "Hail Hail" // pearlJam#songs
-                                && value != "Help Help" // pearlJam#songs
-                                && value != "Mr. Mr." // kPop#thirdGroups
-                                && value != "Chitty Chitty Bang Bang" // show#adultMusical
-                                && value != "etc. etc." // marketing#buzzwords
-                                && value != "Ook Ook" // ventureBros#character
-                                && value != "Mahi Mahi" // food#ingredients
-                                && value != "Cous Cous" // food#ingredients
+                                && value !in excludedValues
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
@@ -175,3 +165,24 @@ private fun List<String>.odds() = this.mapIndexedNotNull { index, s ->
 private fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
     if (index % 2 != 0) s else null
 }
+
+private val excludedValues = listOf(
+    "Tiger! Tiger!", // book#title
+    "Girls Girls", // kPop#girlsGroups
+    "Two Two", // kPop#firstGroups
+    "woof woof", // creature#dog#sound
+    "Duran Duran", // rockBand#name
+    "Li Li",
+    "Dee Dee",
+    "Lola Lola", // cannabis#brands
+    "Hail Hail", // pearlJam#songs
+    "Help Help", // pearlJam#songs
+    "Mr. Mr.", // kPop#thirdGroups
+    "Chitty Chitty Bang Bang", // show#adultMusical
+    "etc. etc.", // marketing#buzzwords
+    "Ook Ook", // ventureBros#character
+    "Mahi Mahi", // food#ingredients
+    "Cous Cous", // food#ingredients
+    "Cooler #256", // dragonBall#planets
+    "Boom Boom", // superMario#characters
+)
