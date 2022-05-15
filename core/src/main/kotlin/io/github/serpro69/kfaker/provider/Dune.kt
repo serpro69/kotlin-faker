@@ -18,8 +18,57 @@ class Dune internal constructor(fakerService: FakerService) : AbstractFakeDataPr
     fun titles() = resolve("titles")
     fun planets() = resolve("planets")
     fun cities() = resolve("cities")
-    fun quotes(character: String) = resolve("quotes", character.lowercase().replace("_", " "))
-    fun sayings(origin: String) = resolve("sayings", origin.lowercase().replace("_", " "))
 
-    // TODO: 3/10/2019 would it be better to have enums for functions such as `quotes` to offer constrained number of values for `character`
+    fun quotes(character: DuneQuoteCharacter) = resolve("quotes", character.name.lowercase())
+
+    @Deprecated(
+        message = "Deprecated and will be removed in future releases.",
+        ReplaceWith("quotes(DuneQuoteCharacter.PAUL)", "io.github.serpro69.kfaker.provider.DuneQuoteCharacter"),
+        level = DeprecationLevel.WARNING,
+    )
+    fun quotes(character: String) = DuneQuoteCharacter.values().firstOrNull { it.name.equals(character, true) }?.let {
+        quotes(it)
+    } ?: throw IllegalArgumentException("Dune quote not found for '$character'")
+
+    fun sayings(origin: DuneSayingOrigin) = resolve("sayings", origin.name.lowercase())
+
+    @Deprecated(
+        message = "Deprecated and will be removed in future releases.",
+        ReplaceWith("sayings(DuneSayingOrigin.FREMEN)", "io.github.serpro69.kfaker.provider.DuneSayingOrigin"),
+        level = DeprecationLevel.WARNING,
+    )
+    fun sayings(origin: String) = DuneSayingOrigin.values().firstOrNull { it.name.equals(origin, true) }?.let {
+        sayings(it)
+    } ?: throw IllegalArgumentException("Dune saying not found for '$origin'")
+}
+
+enum class DuneQuoteCharacter {
+    GUILD_NAVIGATOR,
+    EMPEROR,
+    PAUL,
+    THUFIR,
+    JESSICA,
+    IRULAN,
+    MOHIAM,
+    GURNEY,
+    LETO,
+    STILGAR,
+    LIET_KYNES,
+    PARDOT_KYNES,
+    BARON_HARKONNEN,
+    PITER,
+    ALIA,
+    MAPES,
+    DUNCAN,
+    YUEH,
+    ;
+}
+
+enum class DuneSayingOrigin {
+    BENE_GESSERIT,
+    FREMEN,
+    MENTAT,
+    MUADDIB,
+    ORANGE_CATHOLIC_BIBLE,
+    ;
 }
