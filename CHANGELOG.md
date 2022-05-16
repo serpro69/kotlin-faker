@@ -7,6 +7,42 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
 ## [1.11.0] - UNRELEASED
 ### Added
 - [#122](https://github.com/serpro69/kotlin-faker/pull/122) [core] Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
+- [#129](https://github.com/serpro69/kotlin-faker/pull/129) [core] Update dictionary files, including:
+  - New data and functions in existing data providers
+  - New data providers:
+    - `adjective`
+    - `australia`
+    - `bible`
+    - `bird`
+    - `brooklynNineNine`
+    - `camera`
+    - `clashOfClans`
+    - `conan`
+    - `doraemon`
+    - `emotion`
+    - `finalSpace`
+    - `fmaBrotherhood`
+    - `hobby`
+    - `howToTrainYourDragon`
+    - `jackHandey`
+    - `kamenRIder`
+    - `mountain`
+    - `naruto`
+    - `room`
+    - `studioGhibli`
+    - `superMario`
+    - `supernatural`
+    - `tea`
+    - `theKingkillerChronicle`
+    - `theOffice`
+    - `tolkien`
+    - `touhou`
+    - `tron`
+    - `volleyball`
+
+### Changed
+- Some functions will now accept enum-typed parameters instead of strings
+- Add deprecation warnings to some functions due to upstream changes in yml dict files
 
 ### Fixed
 - [#125](https://github.com/serpro69/kotlin-faker/issues/125) [core] Generating postcode with locale "nl" gives back expression rather than result
