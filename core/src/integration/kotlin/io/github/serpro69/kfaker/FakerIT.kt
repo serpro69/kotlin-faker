@@ -1,6 +1,5 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.provider.Dune
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.misc.StringProvider
@@ -57,11 +56,8 @@ class FakerIT : DescribeSpec({
                         it("resolved value should not contain yaml expression") {
                             if (
                                 !value.contains("#chuck and #norris")
-                                && (provider.name != "invoice" && it.name != "pattern")
                                 && (provider.name != "markdown" && it.name != "headers")
-                                && value != "Visual J#" // programmingLanguage#name
-                                && value != "Acoustic #1" // pearlJam#songs
-                                && value != "I am downloading some NP# music." // michaelScott#quotes
+                                && value !in valuesWithHashKey
                             ) {
                                 if (value.contains(regex)) {
                                     throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain regex '$regex'")
@@ -84,7 +80,7 @@ class FakerIT : DescribeSpec({
                                 (provider.name != "coffee" && it.name != "notes")
                                 && (provider.name != "onePiece" && it.name != "akumasNoMi")
                                 && (provider.name != "lorem" && it.name != "punctuation" && value != " ")
-                                && value !in excludedValues
+                                && value !in duplicatedValues
                             ) {
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
@@ -165,7 +161,7 @@ private fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
     if (index % 2 != 0) s else null
 }
 
-private val excludedValues = listOf(
+private val duplicatedValues = listOf(
     "Tiger! Tiger!", // book#title
     "Girls Girls", // kPop#girlsGroups
     "Two Two", // kPop#firstGroups
@@ -182,12 +178,20 @@ private val excludedValues = listOf(
     "Ook Ook", // ventureBros#character
     "Mahi Mahi", // food#ingredients
     "Cous Cous", // food#ingredients
+    "Boom Boom", // superMario#characters
+    "Min Min", // superSmashBros#fighter
+)
+
+private val valuesWithHashKey = listOf(
+    "Visual J#", // programmingLanguage#name
+    "Acoustic #1", // pearlJam#songs
+    "I am downloading some NP# music.", // michaelScott#quotes
     "Cooler #6", // dragonBall#planets
     "Cooler #98", // dragonBall#planets
     "Cooler #256", // dragonBall#planets
     "Frieza #17", // dragonBall#planets
     "Frieza #79", // dragonBall#planets
     "Frieza #448", // dragonBall#planets
-    "Boom Boom", // superMario#characters
     "tL&^J@24CVF=zP46Lxixk`_a#=o6c5", // device#serial
+    "S#arp", // kPop#firstGroups
 )
