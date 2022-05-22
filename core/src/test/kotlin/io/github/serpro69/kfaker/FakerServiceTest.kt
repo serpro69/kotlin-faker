@@ -88,21 +88,24 @@ internal class FakerServiceTest : DescribeSpec({
             }
         }
 
-        context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
-            val frFRDict = FakerService(Faker(), "fr-FR").dictionary
-
-            it("localized dictionary for `lang` should be loaded") {
-                frFRDict shouldNotBe null
-            }
-        }
-
-        context("it is set as `lang_COUNTRY` String") {
-            val frFRDict = FakerService(Faker(), "fr_FR").dictionary
-
-            it("it should be set as `lang-COUNTRY` String") {
-                frFRDict shouldNotBe null
-            }
-        }
+        // TODO not supported since 1.11.0
+        //  see: https://github.com/serpro69/kotlin-faker/issues/131
+        //  Note: when implemented also add tests to check that existing `lang-COUNTRY` locale is actually loaded, e.g. `fr-CA`
+//        context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
+//            val frFRDict = FakerService(Faker(), "fr-FR").dictionary
+//
+//            it("localized dictionary for `lang` should be loaded") {
+//                frFRDict shouldNotBe null
+//            }
+//        }
+//
+//        context("it is set as `lang_COUNTRY` String") {
+//            val frFRDict = FakerService(Faker(), "fr_FR").dictionary
+//
+//            it("it should be set as `lang-COUNTRY` String") {
+//                frFRDict shouldNotBe null
+//            }
+//        }
     }
 
     describe("dictionary is loaded") {
