@@ -10,6 +10,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldHaveAtMostSize
@@ -479,6 +480,35 @@ internal class FakerServiceTest : DescribeSpec({
                         )
                     }
                 }
+            }
+        }
+    }
+
+    describe("multi-file localized dictionary") {
+        context("ja locale") {
+            val jaDictionary = FakerService(Faker(), Locale.forLanguageTag("ja")).dictionary
+            val defaultDictionary = FakerService(faker = Faker()).dictionary
+
+            it("matching keys should be overwritten in the localized dictionary") {
+                val jaCitySuffix = jaDictionary.getEntryByCategory("address").values["city_suffix"] as List<*>
+                jaCitySuffix shouldContainExactly listOf("市", "区", "町", "村", "郡")
+            }
+
+            it("non-matching default keys should be present in the localized dictionary") {
+                val jaApp = jaDictionary.getEntryByCategory("app")
+                val defaultApp = defaultDictionary.getEntryByCategory("app")
+                jaApp shouldBe defaultApp
+            }
+
+            it("partially localized provider should contain default values") {
+                val jaCommunityPrefix = jaDictionary.getEntryByCategory("address").values["community_prefix"] as List<*>
+                jaCommunityPrefix shouldContainExactly listOf(
+                    "Park", "Summer", "Autumn", "Paradise", "Eagle", "Pine", "Royal", "University", "Willow"
+                )
+            }
+
+            it("partially localized functions with secondary_key should contain non-localized default values ") {
+                // TODO not implemented yet due to missing data - requires file with partially-localized secondary keys
             }
         }
     }

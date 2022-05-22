@@ -42,18 +42,12 @@ internal class FakerService @JvmOverloads internal constructor(
      */
     internal constructor(faker: Faker, locale: Locale) : this(faker, locale.toLanguageTag())
 
-    private fun getDefaultFileStreams(): List<InputStream> {
-        val classLoader = this.javaClass.classLoader
-
-        return defaultFileNames.map {
-            requireNotNull(classLoader.getResourceAsStream("locales/en/${it}"))
-        }
+    private fun getLocaleFilesStreams(locale: String, fileNames: List<String>): List<InputStream> = fileNames.map {
+        requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it}.yml"))
     }
 
     private fun getLocalizedFileStream(locale: String = "en"): InputStream? {
-        val classLoader = this.javaClass.classLoader
-
-        return classLoader.getResourceAsStream("locales/$locale.yml")
+        return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
     }
 
     /**
@@ -67,7 +61,7 @@ internal class FakerService @JvmOverloads internal constructor(
     private fun load(locale: String): Dictionary {
         val defaultValues = LinkedHashMap<String, Map<String, *>>()
 
-        getDefaultFileStreams().forEach { inStr ->
+        getLocaleFilesStreams("en", fileNames("en")).forEach { inStr ->
             readCategory(inStr, "en").entries.forEach {
                 defaultValues[it.key]?.let { existing ->
                     defaultValues[it.key] = existing.plus(it.value)
@@ -133,21 +127,33 @@ internal class FakerService @JvmOverloads internal constructor(
             }
         }
 
-        if (locale != "en") {
-            val (localeFileStream, localeString) = getLocalizedFileStream(locale)?.let { it to locale } ?: let {
-                val localeLang = locale.substringBefore("-")
-
-                val fileStream = getLocalizedFileStream(localeLang)
-                    ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
-
-                fileStream to localeLang
+        when (locale) {
+            // these have multiple files per directory, as opposed to other localizations
+            "fr", "ja" -> getLocaleFilesStreams(locale, fileNames(locale)).forEach { localizedStream ->
+                readCategory(localizedStream, locale).forEach {
+                    when (it.key) {
+                        // 'separator' is a bit of a special case so needs to be handled separately
+                        "separator" -> defaultValues[it.key] = it.value
+                        else -> merge(defaultValues, hashMapOf(it.key to it.value))
+                    }
+                }
             }
+            else -> if (locale != "en") /*'en' is already processed at this point*/ {
+                val (localeFileStream, localeString) = getLocalizedFileStream(locale)?.let { it to locale } ?: let {
+                    val localeLang = locale.substringBefore("-")
 
-            readCategory(localeFileStream, localeString).forEach {
-                when (it.key) {
-                    // 'separator' is a bit of a special case so needs to be handled separately
-                    "separator" -> defaultValues[it.key] = it.value
-                    else -> merge(defaultValues, hashMapOf(it.key to it.value))
+                    val fileStream = getLocalizedFileStream(localeLang)
+                        ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
+
+                    fileStream to localeLang
+                }
+
+                readCategory(localeFileStream, localeString).forEach {
+                    when (it.key) {
+                        // 'separator' is a bit of a special case so needs to be handled separately
+                        "separator" -> defaultValues[it.key] = it.value
+                        else -> merge(defaultValues, hashMapOf(it.key to it.value))
+                    }
                 }
             }
         }
