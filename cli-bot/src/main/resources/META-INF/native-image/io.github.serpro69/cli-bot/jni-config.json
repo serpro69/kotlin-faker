@@ -4,6 +4,10 @@
   "methods":[{"name":"loadClass","parameterTypes":["java.lang.String"] }]
 },
 {
-  "name":"java.lang.ClassNotFoundException"
+  "name":"java.net.FactoryURLClassLoader"
+},
+{
+  "name":"org.graalvm.nativebridge.jni.JNIExceptionWrapperEntryPoints",
+  "methods":[{"name":"getClassName","parameterTypes":["java.lang.Class"] }]
 }
 ]
