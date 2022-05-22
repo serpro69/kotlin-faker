@@ -2,13 +2,8 @@
 title: ja
 ---
 
-== `ja.yml`
+== `ja`
 
-.Localized dictionary file
-[%collapsible]
-====
-[source,yaml]
-----
-{{ load('../../../../core/src/main/resources/locales/ja.yml') | raw }}
-----
-====
+This dictionary localization follows the same approach as default (`en`) and uses one file per data provider.
+
+The localized providers can be found in https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/ja[`ja`] resource directory.
