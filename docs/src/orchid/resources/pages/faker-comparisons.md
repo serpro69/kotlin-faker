@@ -10,7 +10,7 @@ So why use this one instead? I've decided to make a comparison between <strong>k
 
 {% info %}
 The benchmarks time is an average execution time of 10 consecutive runs on the system with the following specs: 
-<br>
+{% filter compileAs('md') %}
 ```text
 OS: Ubuntu 20.04.4 LTS x86_64
 Host: Precision 5530
@@ -20,9 +20,10 @@ GPU: NVIDIA Quadro P2000 Mobile
 GPU: Intel UHD Graphics 630
 Memory: 21277MiB / 31728MiB
 ```
-<br>
+{% endfilter %}
+
 Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name:
-<br>
+{% filter compileAs('md') %}
 ```kotlin
 fun main() {
     List(10) { it }.sumOf {
@@ -33,6 +34,7 @@ fun main() {
     } / 10
 }
 ```
+{% endfilter %}
 <br>
 <i>Note: benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib, benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
 {% endinfo %}
@@ -136,7 +138,7 @@ fun main() {
       <td><strong>Actively maintained</strong></td>
       <td>&#10004;</td>
       <td>&#10004;</td>
-      <td>&#10004;</td>
+      <td>&#10007;</td>
       <td>&#10004;</td>
       <td>&#10007;</td>
     </tr>

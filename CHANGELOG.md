@@ -4,12 +4,14 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [1.11.0] - UNRELEASED
+## [1.11.0] - 2022-05-22
 ### Added
 - [#122](https://github.com/serpro69/kotlin-faker/pull/122) [core] Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
 - [#129](https://github.com/serpro69/kotlin-faker/pull/129) [core] Update dictionary files, including:
   - New data and functions in existing data providers
-  - New data providers:
+  - <details><summary>New data providers:</summary>
+    <p>
+
     - `adjective`
     - `australia`
     - `bible`
@@ -39,6 +41,10 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `touhou`
     - `tron`
     - `volleyball`
+
+   </p> 
+   </details>
+
   - Updates to existing localized dictionaries 
     - Especially notable for `fr` and `ja` locales as they now, similarly to `en` locale, contain multiple dict files per locale
   - New localized dictionaries for `es-AR`, `lt` and `mi-NZ` locales
