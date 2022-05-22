@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.app.cli
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.app.subcommands.CommandOptions
 import io.github.serpro69.kfaker.provider.Money
+import io.github.serpro69.kfaker.provider.misc.StringProvider
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.system.exitProcess
@@ -66,7 +67,11 @@ fun renderProvider(
         functions.map {
             val value = when (it.parameters.size) {
                 1 -> it.call(provider.getter.call(faker)).toString()
-                2 -> it.call(provider.getter.call(faker), "").toString()
+                2 -> {
+                    if (it.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
+                        it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
+                    } else it.call(provider.getter.call(faker), "").toString()
+                }
                 3 -> it.call(provider.getter.call(faker), "", "").toString()
                 else -> {
                     when (it) {
