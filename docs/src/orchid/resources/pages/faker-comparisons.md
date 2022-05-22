@@ -9,8 +9,30 @@ On the surface <strong>kotlin-faker</strong> isn't "unique" by any means and the
 So why use this one instead? I've decided to make a comparison between <strong>kotlin-faker</strong>, and other JVM-based libs that have been out there for quite some time.
 
 {% info %}
-The benchmarks time is an average execution time of 10 consecutive runs. Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name.
+The benchmarks time is an average execution time of 10 consecutive runs on the system with the following specs: 
 <br>
+```text
+OS: Ubuntu 20.04.4 LTS x86_64
+Host: Precision 5530
+Kernel: 5.13.0-41-generic
+CPU: Intel i9-8950HK (12) @ 4.800GHz
+GPU: NVIDIA Quadro P2000 Mobile
+GPU: Intel UHD Graphics 630
+Memory: 21277MiB / 31728MiB
+```
+<br>
+Each run includes creating a new Faker instance and generating a 1_000_000 values with the function returning a person's full name:
+<br>
+```kotlin
+fun main() {
+    List(10) { it }.sumOf {
+        measureTimeMillis {
+            val f = Faker()
+            repeat(1_000_000) { f.name.name() }
+        }
+    } / 10
+}
+```
 <br>
 <i>Note: benchmarks for `blocoio/faker` could not be done due to unexpected exceptions coming from the lib, benchmarks for `moove-it/fakeit` could not be done due to android dependencies in the lib</i>
 {% endinfo %}
@@ -64,7 +86,7 @@ The benchmarks time is an average execution time of 10 consecutive runs. Each ru
     </tr>
     <tr>
       <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, etc.)</td>
-      <td>171</td>
+      <td>197</td>
       <td>73</td>
       <td>8</td>
       <td>21</td>
@@ -72,7 +94,7 @@ The benchmarks time is an average execution time of 10 consecutive runs. Each ru
     </tr>
     <tr>
       <td>{{ anchor(title='Available Locales', collectionType='wiki', collectionId='', itemId='Available Locales') }} (<code>nb-NO</code>, <code>uk</code>, <code>es</code> etc.)</td>
-      <td>55</td>
+      <td>58</td>
       <td>47</td>
       <td>10</td>
       <td>46</td>
@@ -120,9 +142,9 @@ The benchmarks time is an average execution time of 10 consecutive runs. Each ru
     </tr>
     <tr>
       <td><strong>Benchmarks</strong></td>
-      <td>5482ms</td>
-      <td>17529.9ms</td>
-      <td>15036.5ms</td>
+      <td>v1.11.0 - 2890ms</td>
+      <td>v1.0.2 - 12500ms</td>
+      <td>v0.6.5 - 10300ms</td>
       <td>NA</td>
       <td>NA</td>
     </tr>
