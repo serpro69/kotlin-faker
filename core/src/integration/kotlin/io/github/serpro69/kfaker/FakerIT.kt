@@ -172,8 +172,8 @@ private val excludedValues = listOf(
     "Two Two", // kPop#firstGroups
     "woof woof", // creature#dog#sound
     "Duran Duran", // rockBand#name
-    "Li Li",
-    "Dee Dee",
+    "Li Li", // heroesOfTheStorm#heroes
+    "Dee Dee", // theFreshPrinceOfBelAir#characters
     "Lola Lola", // cannabis#brands
     "Hail Hail", // pearlJam#songs
     "Help Help", // pearlJam#songs
@@ -183,6 +183,12 @@ private val excludedValues = listOf(
     "Ook Ook", // ventureBros#character
     "Mahi Mahi", // food#ingredients
     "Cous Cous", // food#ingredients
+    "Cooler #6", // dragonBall#planets
+    "Cooler #98", // dragonBall#planets
     "Cooler #256", // dragonBall#planets
+    "Frieza #17", // dragonBall#planets
+    "Frieza #79", // dragonBall#planets
+    "Frieza #448", // dragonBall#planets
     "Boom Boom", // superMario#characters
+    "tL&^J@24CVF=zP46Lxixk`_a#=o6c5", // device#serial
 )
