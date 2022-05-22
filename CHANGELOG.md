@@ -39,6 +39,9 @@ and the project versioning adheres to [Semantic Versioning](https://semver.org/s
     - `touhou`
     - `tron`
     - `volleyball`
+  - Updates to existing localized dictionaries 
+    - Especially notable for `fr` and `ja` locales as they now, similarly to `en` locale, contain multiple dict files per locale
+  - New localized dictionaries for `es-AR`, `lt` and `mi-NZ` locales
 
 ### Changed
 - Some functions will now accept enum-typed parameters instead of strings
