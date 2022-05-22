@@ -141,17 +141,16 @@ class FakerIT : DescribeSpec({
     describe("Faker instance is initialized with custom locale") {
         val localeDir = requireNotNull(this::class.java.classLoader.getResource("locales/"))
 
-        val locales = File(localeDir.toURI()).listFiles()?.mapNotNull {
-            if (it.isFile && it.extension == "yml") {
+        val locales = File(localeDir.toURI()).listFiles().mapNotNull {
+            if ((it.isFile && it.extension == "yml") || (it.isDirectory && it.name != "en")) {
                 it.nameWithoutExtension
             } else null
         }
 
-        it("Faker should be initialized without exceptions") {
-            assertSoftly {
-                locales?.forEach {
-                    val config = fakerConfig { locale = it }
-                    assertDoesNotThrow { Faker(config) }
+        locales.forEach {
+            it("Faker with locale '$it' should be initialized without exceptions") {
+                assertDoesNotThrow {
+                    faker { fakerConfig { locale = it } }
                 }
             }
         }

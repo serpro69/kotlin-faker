@@ -1,0 +1,12 @@
+fr:
+  faker:
+    phone_number:
+      formats: ['01########', '02########', '03########', '04########', '05########', '09########', '1########', '2########', '3########', '4########', '5########', '9########', '01 ## ## ## ##', '02 ## ## ## ##', '03 ## ## ## ##', '04 ## ## ## ##', '05 ## ## ## ##', '09 ## ## ## ##', '1 ## ## ## ##', '2 ## ## ## ##', '3 ## ## ## ##', '4 ## ## ## ##', '5 ## ## ## ##', '9 ## ## ## ##']
+
+    cell_phone:
+      formats: ['06########', '07########', '6########', '7########', '06 ## ## ## ##', '07 ## ## ## ##', '6 ## ## ## ##', '7 ## ## ## ##']
+
+    country_code:
+      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
+      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
+      codes: ['33']
