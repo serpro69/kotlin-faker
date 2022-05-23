@@ -886,7 +886,7 @@ Alternatively to the above targets from [Makefile](Makefile) can be used for the
 
 ## Contributing
 
-The [CONTRIBUTING](CONTRIBUTING.md) guidelines should help in getting you started on how to contribute to this project.
+The [CONTRIBUTING](CONTRIBUTING.adoc) guidelines should help in getting you started on how to contribute to this project.
 
 ## Thanks
 
