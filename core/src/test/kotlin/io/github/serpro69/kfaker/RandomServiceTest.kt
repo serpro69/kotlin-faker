@@ -9,6 +9,7 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeSortedWith
+import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -246,10 +247,19 @@ internal class RandomServiceTest : DescribeSpec({
                         if (sublist.isNotEmpty()) sublist shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
                     }
                 }
+
+                it("should return a random sublist of a size withing a given range run#$it") {
+                    val sublist = randomService.randomSublist(list, sizeRange = 12..42)
+                    assertSoftly {
+                        list shouldContainAll sublist
+                        sublist.size shouldBeInRange 12..42
+                        if (sublist.isNotEmpty()) sublist shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
             }
 
             it("should return a random shuffled sublist") {
-                val sublist = randomService.randomSublist(list, shuffled = true)
+                val sublist = randomService.randomSublist(list, size = 10, shuffled = true)
                 assertSoftly {
                     list shouldContainAll sublist
                     if (sublist.isNotEmpty()) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
@@ -274,6 +284,14 @@ internal class RandomServiceTest : DescribeSpec({
                     assertSoftly {
                         set shouldContainAll subset
                         subset shouldHaveSize 10
+                        if (subset.isNotEmpty()) subset shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    }
+                }
+                it("should return a random subset of a size witing a given range run#$it") {
+                    val subset = randomService.randomSubset(set, sizeRange = 10..20)
+                    assertSoftly {
+                        set shouldContainAll subset
+                        subset.size shouldBeInRange 10..20
                         if (subset.isNotEmpty()) subset shouldBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
                     }
                 }

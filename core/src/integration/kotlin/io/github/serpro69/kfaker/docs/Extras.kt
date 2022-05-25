@@ -213,6 +213,7 @@ class Extras : DescribeSpec({
             // START extras_random_everything_six
             val list = List(100) { it }
             faker.random.randomSublist(list, size = 10, shuffled = true)
+            faker.random.randomSublist(list, sizeRange = 6..42, shuffled = true)
             // END extras_random_everything_six
         }
 
@@ -220,6 +221,7 @@ class Extras : DescribeSpec({
             // START extras_random_everything_seven
             val set = setOf(*List(100) { it }.toTypedArray())
             faker.random.randomSubset(set, size = 10, shuffled = true)
+            faker.random.randomSubset(set, sizeRange = 66..99, shuffled = true)
             // END extras_random_everything_seven
         }
 

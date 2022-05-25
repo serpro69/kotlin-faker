@@ -286,9 +286,25 @@ class RandomService internal constructor(private val config: FakerConfig) {
     }
 
     /**
-     * Returns a portion of the [set]
-     * with pseudo-randomly generated `fromIndex` and `toIndex` values.
+     * Returns a view of the portion of the [list]
+     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
      *
+     * @param sizeRange the desired size range of the resulting list.
+     * The `size` of the returned list is the result of calling [nextInt] with the [sizeRange].
+     * IF `size <= 0` then `toIndex` will also be randomly-generated.
+     * @param shuffled if `true` the [list] will be shuffled before extracting the sublist
+     */
+    @JvmOverloads
+    fun <T> randomSublist(list: List<T>, sizeRange: IntRange, shuffled: Boolean = false): List<T> {
+        return randomSublist(list, nextInt(sizeRange), shuffled)
+    }
+
+    /**
+     * Returns a portion of the [set]
+     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
+     *
+     * @param size the desired size of the resulting set.
+     * If `size <= 0` then `toIndex` will also be randomly-generated.
      * @param shuffled if `true` the [set] will be shuffled before extracting the subset
      */
     @JvmOverloads
@@ -298,6 +314,19 @@ class RandomService internal constructor(private val config: FakerConfig) {
             .let { if (shuffled) it.shuffled(random) else it }
             .mapIndexedNotNull { i, v -> if (i in from until to) v else null }
             .toSet()
+    }
+
+    /**
+     * Returns a portion of the [set]
+     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
+     *
+     * @param sizeRange the desired size range of the resulting list.
+     * The `size` of the returned list is the result of calling [nextInt] with the [sizeRange].
+     * IF `size <= 0` then `toIndex` will also be randomly-generated.
+     * @param shuffled if `true` the [set] will be shuffled before extracting the subset
+     */
+    fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean = false): Set<T> {
+        return randomSubset(set, nextInt(sizeRange), shuffled)
     }
 
     private fun <T> Collection<T>.randomFromToIndices(s: Int): Pair<Int, Int> {
