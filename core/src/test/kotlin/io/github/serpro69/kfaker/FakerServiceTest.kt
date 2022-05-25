@@ -73,7 +73,7 @@ internal class FakerServiceTest : DescribeSpec({
 
         context("it is set with a valid String value") {
             it("localized dictionary should be loaded") {
-                val esDictionary = FakerService(Faker(), "es").dictionary
+                val esDictionary = FakerService(faker { fakerConfig { locale = "es" } }).dictionary
                 esDictionary shouldNotBe null
             }
         }
@@ -81,7 +81,7 @@ internal class FakerServiceTest : DescribeSpec({
         context("it is set with invalid String value") {
             it("an exception is thrown when loading the dictionary") {
                 val exception = shouldThrow<IllegalArgumentException> {
-                    FakerService(Faker(), "pe").dictionary
+                    FakerService(faker { fakerConfig { locale = "pe" } }).dictionary
                 }
 
                 exception.message shouldBe "Dictionary file not found for locale values: 'pe' or 'pe'"

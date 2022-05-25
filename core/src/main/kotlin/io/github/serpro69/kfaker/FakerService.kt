@@ -2,10 +2,10 @@ package io.github.serpro69.kfaker
 
 import com.mifmif.common.regex.Generex
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.dictionary.DictEntry
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.dictionary.lowercase
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.Address
@@ -27,20 +27,26 @@ import kotlin.reflect.full.declaredMemberProperties
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if is not specified.
  */
-internal class FakerService @JvmOverloads internal constructor(
-    internal val faker: Faker,
-    locale: String = "en", // TODO remove, this isn't really needed here since we can get locale from faker.config
-) {
-    internal val randomService = RandomService(faker.config)
+internal class FakerService {
+    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)}""")
+    internal val faker: Faker
+    internal val randomService: RandomService
+    internal val dictionary: Dictionary
 
-    @Suppress("RegExpRedundantEscape")
-    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)\}""")
-    val dictionary = load(locale.replace("_", "-"))
-
+    internal constructor(faker: Faker) {
+        this.faker = faker
+        val locale = faker.config.locale.replace("_", "-")
+        randomService = RandomService(faker.config)
+        dictionary = load(locale)
+    }
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(faker: Faker, locale: Locale) : this(faker, locale.toLanguageTag())
+    internal constructor(faker: Faker, locale: Locale) {
+        this.faker = faker
+        randomService = RandomService(faker.config)
+        dictionary = load(locale.toLanguageTag())
+    }
 
     private fun getLocaleFilesStreams(locale: String, fileNames: List<String>): List<InputStream> = fileNames.map {
         requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it}.yml"))
@@ -87,7 +93,7 @@ internal class FakerService @JvmOverloads internal constructor(
          * AND en.category.function.another_secondary_key2 IS ABSENT
          * THEN RETURN <locale>.category.function.secondary_key1 AND en.category.function.secondary_key2
          *
-         * Currently does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
+         * Currently, does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
          */
         fun merge(default: HashMap<String, Map<String, *>>, localized: HashMap<String, Map<String, *>>) {
             localized.forEach { (k, localizedMap) ->
