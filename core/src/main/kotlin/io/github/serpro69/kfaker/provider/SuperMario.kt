@@ -10,14 +10,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 /**
  * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
  */
-class SuperMario internal constructor(fakerService: FakerService) :
-    YamlFakeDataProvider<SuperMario>(fakerService) {
+class SuperMario internal constructor(fakerService: FakerService) : YamlFakeDataProvider<SuperMario>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
+    override val secondaryCategory: Category = Category.ofName("SUPER_MARIO")
     override val localUniqueDataProvider = LocalUniqueDataProvider<SuperMario>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     init {
-        fakerService.load(yamlCategory)
+        fakerService.load(yamlCategory, secondaryCategory)
     }
 
     fun characters(): String = resolve("super_mario", "characters")

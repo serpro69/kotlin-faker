@@ -11,11 +11,12 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 @Suppress("unused")
 class ElderScrolls internal constructor(fakerService: FakerService) : YamlFakeDataProvider<ElderScrolls>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
+    override val secondaryCategory: Category = Category.ofName("ELDER_SCROLLS")
     override val localUniqueDataProvider = LocalUniqueDataProvider<ElderScrolls>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     init {
-        fakerService.load(yamlCategory)
+        fakerService.load(yamlCategory, secondaryCategory)
     }
 
     fun race() = resolve("elder_scrolls", "race")

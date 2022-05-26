@@ -11,11 +11,12 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 @Suppress("unused")
 class SonicTheHedgehog internal constructor(fakerService: FakerService) : YamlFakeDataProvider<SonicTheHedgehog>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
+    override val secondaryCategory: Category = Category.ofName("SONIC_THE_HEDGEHOG")
     override val localUniqueDataProvider = LocalUniqueDataProvider<SonicTheHedgehog>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     init {
-        fakerService.load(yamlCategory)
+        fakerService.load(yamlCategory, secondaryCategory)
     }
 
     fun zone() = resolve("sonic_the_hedgehog", "zone")
