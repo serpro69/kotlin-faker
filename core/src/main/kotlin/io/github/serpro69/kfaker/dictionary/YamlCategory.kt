@@ -172,7 +172,7 @@ internal enum class YamlCategory : Category {
     TEA,
     TEAM,
     THE_EXPANSE,
-    THE_FRESH_PRINCE_OF_BEL_AIR,
+    FRESH_PRINCE_OF_BEL_AIR,
     THE_IT_CROWD,
     THE_OFFICE,
     THE_THICK_OF_IT,
