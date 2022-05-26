@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.INTERNET] category.
  */
 @Suppress("unused")
-class Internet internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Internet>(fakerService) {
-    override val category = YamlCategory.INTERNET
+class Internet internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Internet>(fakerService) {
+    override val yamlCategory = YamlCategory.INTERNET
     override val localUniqueDataProvider = LocalUniqueDataProvider<Internet>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun domain() = resolve("free_email")
 

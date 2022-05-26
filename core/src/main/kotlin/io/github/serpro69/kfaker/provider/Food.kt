@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.FOOD] category.
  */
 @Suppress("unused")
-class Food internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Food>(fakerService) {
-    override val category = YamlCategory.FOOD
+class Food internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Food>(fakerService) {
+    override val yamlCategory = YamlCategory.FOOD
     override val localUniqueDataProvider = LocalUniqueDataProvider<Food>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun dish() = resolve("dish")
     fun descriptions() = resolve("descriptions")

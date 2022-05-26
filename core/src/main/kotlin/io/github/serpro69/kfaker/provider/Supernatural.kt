@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.SUPERNATURAL] category.
  */
 class Supernatural internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<Supernatural>(fakerService) {
-    override val category = YamlCategory.SUPERNATURAL
+    YamlFakeDataProvider<Supernatural>(fakerService) {
+    override val yamlCategory = YamlCategory.SUPERNATURAL
     override val localUniqueDataProvider = LocalUniqueDataProvider<Supernatural>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun character(): String = resolve("character")
     fun creature(): String = resolve("creature")

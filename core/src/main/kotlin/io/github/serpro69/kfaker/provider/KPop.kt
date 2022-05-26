@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.KPOP] category.
  */
 @Suppress("unused")
-class KPop internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<KPop>(fakerService) {
-    override val category = YamlCategory.KPOP
+class KPop internal constructor(fakerService: FakerService) : YamlFakeDataProvider<KPop>(fakerService) {
+    override val yamlCategory = YamlCategory.KPOP
     override val localUniqueDataProvider = LocalUniqueDataProvider<KPop>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun firstGroups() = resolve("i_groups")
     fun secondGroups() = resolve("ii_groups")

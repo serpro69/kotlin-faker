@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
  */
 @Suppress("unused")
-class Minecraft internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Minecraft>(fakerService) {
-    override val category = YamlCategory.GAMES
+class Minecraft internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Minecraft>(fakerService) {
+    override val yamlCategory = YamlCategory.GAMES
     override val localUniqueDataProvider = LocalUniqueDataProvider<Minecraft>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun achievement() = resolve("minecraft", "achievement")
     fun biome() = resolve("minecraft", "biome")

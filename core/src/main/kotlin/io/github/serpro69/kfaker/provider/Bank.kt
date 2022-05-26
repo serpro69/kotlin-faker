@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.BANK] category.
  */
 @Suppress("unused")
-class Bank internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Bank>(fakerService) {
-    override val category = YamlCategory.BANK
+class Bank internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Bank>(fakerService) {
+    override val yamlCategory = YamlCategory.BANK
     override val localUniqueDataProvider = LocalUniqueDataProvider<Bank>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun name() = resolve("name")
     fun swiftBic() = resolve("swift_bic")

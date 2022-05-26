@@ -3,6 +3,6 @@ package io.github.serpro69.kfaker.provider
 /**
  * Interface for all fake data providers.
  *
- * Mostly used for upper-bound generic restrictions.
+ * Represents a single, standalone provider (generator) of fake data.
  */
 interface FakeDataProvider

@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.TRON] category.
  */
 class Tron internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<Tron>(fakerService) {
-    override val category = YamlCategory.TRON
+    YamlFakeDataProvider<Tron>(fakerService) {
+    override val yamlCategory = YamlCategory.TRON
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tron>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters(type: TronCharacterType = fakerService.randomService.nextEnum()): String =
         resolve("characters", type.name.lowercase())

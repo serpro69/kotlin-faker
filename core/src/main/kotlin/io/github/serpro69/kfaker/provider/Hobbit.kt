@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.HOBBIT] category.
  */
 @Suppress("unused")
-class Hobbit internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Hobbit>(fakerService) {
-    override val category = YamlCategory.HOBBIT
+class Hobbit internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Hobbit>(fakerService) {
+    override val yamlCategory = YamlCategory.HOBBIT
     override val localUniqueDataProvider = LocalUniqueDataProvider<Hobbit>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun character() = resolve("character")
     fun thorinsCompany() = resolve("thorins_company")

@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.NATION] category.
  */
 @Suppress("unused")
-class Nation internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Nation>(fakerService) {
-    override val category = YamlCategory.NATION
+class Nation internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Nation>(fakerService) {
+    override val yamlCategory = YamlCategory.NATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<Nation>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     // currently not supported due to logic for getting raw value for List<List<*>> types
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")

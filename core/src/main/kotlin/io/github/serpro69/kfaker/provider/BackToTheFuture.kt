@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.BACK_TO_THE_FUTURE] category.
  */
 @Suppress("unused")
-class BackToTheFuture internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<BackToTheFuture>(fakerService) {
-    override val category = YamlCategory.BACK_TO_THE_FUTURE
+class BackToTheFuture internal constructor(fakerService: FakerService) : YamlFakeDataProvider<BackToTheFuture>(fakerService) {
+    override val yamlCategory = YamlCategory.BACK_TO_THE_FUTURE
     override val localUniqueDataProvider = LocalUniqueDataProvider<BackToTheFuture>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters() = resolve("characters")
     fun dates() = resolve("dates")

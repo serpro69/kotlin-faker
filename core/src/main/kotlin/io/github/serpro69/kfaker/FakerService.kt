@@ -2,21 +2,25 @@ package io.github.serpro69.kfaker
 
 import com.mifmif.common.regex.Generex
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.DictEntry
+import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.dictionary.YamlCategory.CURRENCY_SYMBOL
+import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
 import io.github.serpro69.kfaker.dictionary.lowercase
-import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Degree
 import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import io.github.serpro69.kfaker.provider.Tertiary
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
+import kotlin.collections.component1
+import kotlin.collections.component2
 import kotlin.collections.set
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.declaredMemberFunctions
@@ -29,31 +33,112 @@ import kotlin.reflect.full.declaredMemberProperties
  */
 internal class FakerService {
     private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)}""")
+    private val locale: String
     internal val faker: Faker
     internal val randomService: RandomService
-    internal val dictionary: Dictionary
+    internal val dictionary: Dictionary = EnumMap(YamlCategory::class.java)
 
     internal constructor(faker: Faker) {
         this.faker = faker
-        val locale = faker.config.locale.replace("_", "-")
+        this.locale = faker.config.locale.replace("_", "-")
         randomService = RandomService(faker.config)
-        dictionary = load(locale)
     }
+
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
     internal constructor(faker: Faker, locale: Locale) {
         this.faker = faker
+        this.locale = locale.toLanguageTag()
         randomService = RandomService(faker.config)
-        dictionary = load(locale.toLanguageTag())
     }
 
-    private fun getLocaleFilesStreams(locale: String, fileNames: List<String>): List<InputStream> = fileNames.map {
-        requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it}.yml"))
+    private fun getCategoryFileStream(
+        locale: String,
+        category: YamlCategory,
+        secondaryCategory: Category?
+    ): InputStream {
+        return secondaryCategory?.let {
+            requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.yml"))
+        } ?: requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.yml"))
     }
 
-    private fun getLocalizedFileStream(locale: String = "en"): InputStream? {
+    private fun getCategoryFileStreamOrNull(
+        locale: String,
+        category: YamlCategory,
+        secondaryCategory: Category?
+    ): InputStream? {
+        return secondaryCategory?.let {
+            javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.yml")
+        } ?: javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.yml")
+    }
+
+    private fun getLocaleFileStream(locale: String): InputStream? {
         return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
+    }
+
+//    private fun getLocaleFilesStreams(locale: String, fileNames: List<String>): List<InputStream> = fileNames.map {
+//        requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it}.yml"))
+//    }
+//
+//    private fun getLocalizedFileStream(locale: String = "en"): InputStream? {
+//        return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
+//    }
+
+    /**
+     * Merges [default] and [localized] categories (providers) and values, using localized value if present.
+     *
+     * Will also handle partially-localized categories, including partially-localized functions with secondary_keys,
+     * for example:
+     *
+     * IF (en.category.function.secondary_key1 AND en.category.function.secondary_key2) IS PRESENT
+     * AND <locale>.category.function.secondary_key1 IS PRESENT
+     * AND en.category.function.another_secondary_key2 IS ABSENT
+     * THEN RETURN <locale>.category.function.secondary_key1 AND en.category.function.secondary_key2
+     *
+     * Currently, does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
+     */
+    // TODO make internal and add tests
+    private fun merge(
+        default: HashMap<String, Map<String, *>>,
+        localized: Map<String, Map<out String, *>>
+    ): Map<String, Map<String, *>> {
+        localized.forEach { (k, localizedMap) ->
+            default[k]?.let { enMap ->
+                /*
+                 * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
+                 * WHERE mapKey IS provider_name: [address, name, games, etc]
+                 * AND map[mapKey] (i.e. map["name") IS provider_functions: [name.first_name, name.last_name, etc]
+                 *
+                 * For example:
+                 * enMap.key == en.faker.games // 'games' provider for 'en' locale
+                 * localizedMap.key == de.faker.games // 'games' provider for 'de' locale
+                 * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
+                 * localizedMap["games"] == { pokemon={names=[...]} }
+                 */
+                default[k] = enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
+                    /*
+                     * This is provider_functions level access for default providers (enMap).
+                     * The goal here is to find-and-replace any matching functions (v) for each provider (k).
+                     * But since some functions may contain secondary_key the following is needed.
+                     */
+                    if (v is Map<*, *> && localizedMap.containsKey(k)) {
+                        // check if function has a secondary_key that is used to resolve the values
+                        // if true we assume that u[k] should also be a Map because the structure of dict files should match
+                        // v IS en.faker.games.<secondary_key> (i.e pokemon)
+                        v.plus(localizedMap[k] as Map<*, *>)
+                    } else if (localizedMap.containsKey(k)) {
+                        // check if the primary_key (function_name) matches with localized provider
+                        // if v is not a map, but localized key matches, then use the values for that key
+                        localizedMap[k]
+                    } else {
+                        // else just return the original value
+                        v
+                    }
+                }
+            }
+        }
+        return default
     }
 
     /**
@@ -64,142 +149,114 @@ internal class FakerService {
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
-    private fun load(locale: String): Dictionary {
-        val defaultValues = LinkedHashMap<String, Map<String, *>>()
+    internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
+        val defaultValues = hashMapOf<String, Any>()
 
-        getLocaleFilesStreams("en", fileNames("en")).forEach { inStr ->
-            readCategory(inStr, "en").entries.forEach {
-                defaultValues[it.key]?.let { existing ->
-                    defaultValues[it.key] = existing.plus(it.value)
-                } ?: run { defaultValues[it.key] = it.value }
+        fun computeSymbol(locale: String) {
+            val localeData = getLocaleFileStream(locale)?.use {
+                Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
+            } ?: requireNotNull(getLocaleFileStream("en")).use {
+                Mapper.readValue(it, Map::class.java)["en"] as Map<*, *>
             }
-
-//             todo Add `separator` category from `locales/en.yml` file
-            val enYml = requireNotNull(getLocalizedFileStream("en"))
-
-            readCategory(enYml, "en").entries.forEach {
-                defaultValues[it.key] = it.value
-            }
+            val fakerData = localeData["faker"] as Map<*, *>
+            defaultValues[category.lowercase()] = fakerData[category.lowercase()] as Any
         }
 
-        /**
-         * Merges [default] and [localized] categories (providers) and values, using localized value if present.
-         *
-         * Will also handle partially-localized categories, including partially-localized functions with secondary_keys,
-         * for example:
-         *
-         * IF (en.category.function.secondary_key1 AND en.category.function.secondary_key2) IS PRESENT
-         * AND <locale>.category.function.secondary_key1 IS PRESENT
-         * AND en.category.function.another_secondary_key2 IS ABSENT
-         * THEN RETURN <locale>.category.function.secondary_key1 AND en.category.function.secondary_key2
-         *
-         * Currently, does not handle missing <locale>.category.function.secondary_key.third_key scenarios.
-         */
-        fun merge(default: HashMap<String, Map<String, *>>, localized: HashMap<String, Map<String, *>>) {
-            localized.forEach { (k, localizedMap) ->
-                default[k]?.let { enMap ->
-                    /*
-                     * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
-                     * WHERE mapKey IS provider_name: [address, name, games, etc]
-                     * AND map[mapKey] (i.e. map["name") IS provider_functions: [name.first_name, name.last_name, etc]
-                     *
-                     * For example:
-                     * enMap.key == en.faker.games // 'games' provider for 'en' locale
-                     * localizedMap.key == de.faker.games // 'games' provider for 'de' locale
-                     * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
-                     * localizedMap["games"] == { pokemon={names=[...]} }
-                     */
-                    default[k] = enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
-                        /*
-                         * This is provider_functions level access for default providers (enMap).
-                         * The goal here is to find-and-replace any matching functions (v) for each provider (k).
-                         * But since some functions may contain secondary_key the following is needed.
-                         */
-                        if (v is Map<*, *> && localizedMap.containsKey(k)) {
-                            // check if function has a secondary_key that is used to resolve the values
-                            // if true we assume that u[k] should also be a Map because the structure of dict files should match
-                            // v IS en.faker.games.<secondary_key> (i.e pokemon)
-                            v.plus(localizedMap[k] as Map<*, *>)
-                        } else if (localizedMap.containsKey(k)) {
-                            // check if the primary_key (function_name) matches with localized provider
-                            // if v is not a map, but localized key matches, then use the values for that key
-                            localizedMap[k]
-                        } else {
-                            // else just return the original value
-                            v
+        dictionary.compute(category) { _, yamlCategoryData -> // i.e. compute data for 'address' category
+            when (category) {
+                SEPARATOR, CURRENCY_SYMBOL -> computeSymbol(locale)
+                else -> {
+                    // get 'en' values first
+                    getCategoryFileStream("en", category, secondaryCategory).use { instr ->
+                        defaultValues.putAll(readCategory(instr, "en", category))
+                    }
+
+                    // merge localized values
+                    val input = when (locale) {
+                        // these have multiple files per directory, as opposed to other localizations
+                        "fr", "ja" -> getCategoryFileStreamOrNull(locale, category, secondaryCategory)
+                        else -> if (locale != "en") /*'en' is already processed at this point*/ {
+                            getLocaleFileStream(locale)
+                                ?: getLocaleFileStream(locale.substringBefore("-"))
+                                ?: throw IllegalArgumentException(
+                                    "Dictionary file not found for locale values: '$locale' or '${
+                                        locale.substringBefore(
+                                            "-"
+                                        )
+                                    }'"
+                                )
+                        } else null
+                    }
+                    input?.use {
+                        readCategoryOrNull(it, locale, category)?.let {
+                            val localized = with(category.lowercase()) {
+                                val merged = merge(
+                                    hashMapOf(this to defaultValues),
+                                    hashMapOf(this to it)
+                                )
+                                merged[this]
+                            }
+                            localized?.forEach { m -> defaultValues.merge(m.key, m.value as Any) { orig, loc -> loc } }
                         }
                     }
                 }
             }
+            yamlCategoryData?.plus(defaultValues) ?: defaultValues
         }
-
-        when (locale) {
-            // these have multiple files per directory, as opposed to other localizations
-            "fr", "ja" -> getLocaleFilesStreams(locale, fileNames(locale)).forEach { localizedStream ->
-                readCategory(localizedStream, locale).forEach {
-                    when (it.key) {
-                        // 'separator' is a bit of a special case so needs to be handled separately
-                        "separator" -> defaultValues[it.key] = it.value
-                        else -> merge(defaultValues, hashMapOf(it.key to it.value))
-                    }
-                }
-            }
-            else -> if (locale != "en") /*'en' is already processed at this point*/ {
-                val (localeFileStream, localeString) = getLocalizedFileStream(locale)?.let { it to locale } ?: let {
-                    val localeLang = locale.substringBefore("-")
-
-                    val fileStream = getLocalizedFileStream(localeLang)
-                        ?: throw IllegalArgumentException("Dictionary file not found for locale values: '$locale' or '$localeLang'")
-
-                    fileStream to localeLang
-                }
-
-                readCategory(localeFileStream, localeString).forEach {
-                    when (it.key) {
-                        // 'separator' is a bit of a special case so needs to be handled separately
-                        "separator" -> defaultValues[it.key] = it.value
-                        else -> merge(defaultValues, hashMapOf(it.key to it.value))
-                    }
-                }
-            }
-        }
-
-        val entries = defaultValues.asSequence().map {
-            val value = when (it.key) {
-                "separator" -> mapOf("separator" to it.value)
-                "currency_symbol" -> mapOf("currency_symbol" to it.value)
-                else -> it.value
-            }
-            DictEntry(YamlCategory.findByName(it.key), value)
-        }
-        return Dictionary(entries.toList())
+        return dictionary
     }
 
     /**
-     * Reads values from the [inputStream] for the given [locale] and returns as [LinkedHashMap]
-     * where `key` represents the [Category.name] in lowercase, i.e. `address`,
-     * and `value` represents the [Map] of values from this category.
+     * Reads values from the [inputStream] for the given [locale] and returns as [YamlCategoryData]
+     * where each `key` represents a function in the data category, i.e. `address.country`,
+     * and `value` represents values (of unknown type) from this function.
+     *
+     * Given the following yaml data:
+     * ```
+     *  uk: # locale
+     *    faker: # dictionary -> Dictionary -> EnumMap<YamlCategory, YamlCategoryData>
+     *      address: # category -> YamlCategoryData -> Map<String, Any>
+     *        country: [Австралія, Австрія, Азербайджан] # data function
+     *        building_number: ['#', '##', '1##']
+     * ```
+     *
+     * The returned YamlCategoryData instance would equal to the following Map:
+     * ```
+     * {country=[Австралія, Австрія, Азербайджан], building_number: ['#', '##', '1##']}
+     * ```
      */
     @Suppress("UNCHECKED_CAST")
-    private fun readCategory(inputStream: InputStream, locale: String): LinkedHashMap<String, Map<String, *>> {
-        val localeValues = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
-        return localeValues["faker"] as LinkedHashMap<String, Map<String, *>>
+    private fun readCategory(inputStream: InputStream, locale: String, category: YamlCategory): YamlCategoryData {
+        val localeData = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
+        val fakerData = localeData["faker"] as LinkedHashMap<String, Map<String, *>>
+        return fakerData[category.lowercase()] as Map<String, Any>
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun readCategoryOrNull(
+        inputStream: InputStream,
+        locale: String,
+        category: YamlCategory
+    ): Map<String, Any>? {
+        val localeData = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
+        val fakerData = localeData["faker"] as LinkedHashMap<String, Map<String, *>>
+        return fakerData[category.lowercase()] as Map<String, Any>?
     }
 
     /**
-     * Returns [DictEntry] instance by its [category]
+     * Returns [YamlCategoryData] instance by its [category]
      */
-    fun fetchEntry(category: Category): DictEntry {
-        return dictionary.entries.firstOrNull { it.category.name == category.name }
+    fun fetchEntry(category: Category): YamlCategoryData {
+        return dictionary.entries.firstOrNull { it.key == category }?.value
             ?: throw NoSuchElementException("Category with name '$category' not found")
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key]
+     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key]
      */
-    fun getRawValue(dictEntry: DictEntry, key: String): RawExpression {
-        val parameterValue = dictEntry.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
+    fun getRawValue(yamlCategoryData: YamlCategoryData, key: String): RawExpression {
+        val parameterValue = yamlCategoryData[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
 
         return when (parameterValue) {
             is List<*> -> {
@@ -216,11 +273,11 @@ internal class FakerService {
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key] and [secondaryKey]
+     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key] and [secondaryKey]
      */
-    fun getRawValue(dictEntry: DictEntry, key: String, secondaryKey: String): RawExpression {
-        val parameterValue = dictEntry.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
+    fun getRawValue(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String): RawExpression {
+        val parameterValue = yamlCategoryData[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -248,11 +305,16 @@ internal class FakerService {
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [dictEntry] fetched by its [key], [secondaryKey], and [thirdKey]
+     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key], [secondaryKey], and [thirdKey]
      */
-    fun getRawValue(dictEntry: DictEntry, key: String, secondaryKey: String, thirdKey: String): RawExpression {
-        val parameterValue = dictEntry.values[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in '${dictEntry.category.lowercase()}' category")
+    fun getRawValue(
+        yamlCategoryData: YamlCategoryData,
+        key: String,
+        secondaryKey: String,
+        thirdKey: String
+    ): RawExpression {
+        val parameterValue = yamlCategoryData[key]
+            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -289,31 +351,31 @@ internal class FakerService {
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] in this [dictEntry].
+     * Resolves [RawExpression] value of the [key] in this [yamlCategoryData].
      */
-    fun resolve(dictEntry: DictEntry, key: String): String {
-        val rawExpression = getRawValue(dictEntry, key)
-        return resolveExpression(dictEntry, rawExpression)
+    fun resolve(yamlCategoryData: YamlCategoryData, key: String): String {
+        val rawExpression = getRawValue(yamlCategoryData, key)
+        return resolveExpression(yamlCategoryData, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [dictEntry].
+     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [yamlCategoryData].
      */
-    fun resolve(dictEntry: DictEntry, key: String, secondaryKey: String): String {
-        val rawExpression = getRawValue(dictEntry, key, secondaryKey)
-        return resolveExpression(dictEntry, rawExpression)
+    fun resolve(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String): String {
+        val rawExpression = getRawValue(yamlCategoryData, key, secondaryKey)
+        return resolveExpression(yamlCategoryData, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [dictEntry].
+     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [yamlCategoryData].
      */
-    fun resolve(dictEntry: DictEntry, key: String, secondaryKey: String, thirdKey: String): String {
-        val rawExpression = getRawValue(dictEntry, key, secondaryKey, thirdKey)
-        return resolveExpression(dictEntry, rawExpression)
+    fun resolve(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String, thirdKey: String): String {
+        val rawExpression = getRawValue(yamlCategoryData, key, secondaryKey, thirdKey)
+        return resolveExpression(yamlCategoryData, rawExpression)
     }
 
     /**
-     * Resolves the [rawExpression] for this [dictEntry] and returns as [String].
+     * Resolves the [rawExpression] for this [yamlCategoryData] and returns as [String].
      *
      * For yaml expressions:
      * - `#{city_prefix}` from `en: faker: address` would be resolved to getting value from `address: city_prefix`
@@ -343,8 +405,8 @@ internal class FakerService {
      * }
      * ```
      *
-     * For recursive expressions, this must be used for function calls within the same [dictEntry],
-     * but can be omitted for calls to other [dictEntry]s.
+     * For recursive expressions, this must be used for function calls within the same [yamlCategoryData],
+     * but can be omitted for calls to other [yamlCategoryData]s.
      * For example:
      *
      * `address.yml`:
@@ -365,7 +427,7 @@ internal class FakerService {
      * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
      * ```
      */
-    private tailrec fun resolveExpression(dictEntry: DictEntry, rawExpression: RawExpression): String {
+    private tailrec fun resolveExpression(yamlCategoryData: YamlCategoryData, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
         val resolvedExpression = when {
@@ -378,7 +440,7 @@ internal class FakerService {
                             val (providerType, propertyName) = getProvider(simpleClassName).getFunctionName(it.group(2))
                             providerType.callFunction(propertyName)
                         }
-                        false -> getRawValue(dictEntry, it.group(2)).value
+                        false -> getRawValue(yamlCategoryData, it.group(2)).value
                     }
 
                     it.appendReplacement(sb, replacement)
@@ -389,7 +451,7 @@ internal class FakerService {
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
-        } else resolveExpression(dictEntry, RawExpression(resolvedExpression))
+        } else resolveExpression(yamlCategoryData, RawExpression(resolvedExpression))
     }
 
     /**
@@ -459,7 +521,7 @@ internal class FakerService {
             ?.let { this to it }
             ?: run {
                 this::class.declaredMemberProperties.firstOrNull { it.name == funcName.substringBefore(".") }?.let {
-                    (it.getter.call(this) as AbstractFakeDataProvider<*>)
+                    (it.getter.call(this) as YamlFakeDataProvider<*>)
                         .getFunctionName(funcName.substringAfter("."))
                 }
             }

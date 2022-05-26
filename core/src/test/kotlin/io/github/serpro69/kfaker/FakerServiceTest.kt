@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.dictionary.DictEntry
+import io.github.serpro69.kfaker.dictionary.DictEntries
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.dictionary.lowercase
@@ -518,17 +518,17 @@ internal class FakerServiceTest : DescribeSpec({
 })
 
 /**
- * Gets [DictEntry] by its [category] from this [Dictionary].
+ * Gets [DictEntries] by its [category] from this [Dictionary].
  */
-internal fun Dictionary.getEntryByCategory(category: YamlCategory): DictEntry {
+internal fun Dictionary.getEntryByCategory(category: YamlCategory): DictEntries {
     return this.entries.firstOrNull { it.category.lowercase() == category.lowercase() }
         ?: throw NoSuchElementException("Category with name $category not found")
 }
 
 /**
- * Gets [DictEntry] by its [name] from this [Dictionary].
+ * Gets [DictEntries] by its [name] from this [Dictionary].
  */
-internal fun Dictionary.getEntryByCategory(name: String): DictEntry {
+internal fun Dictionary.getEntryByCategory(name: String): DictEntries {
     return this.getEntryByCategory(category = YamlCategory.findByName(name))
 }
 

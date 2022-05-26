@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.FINAL_SPACE] category.
  */
 class FinalSpace internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<FinalSpace>(fakerService) {
-    override val category = YamlCategory.FINAL_SPACE
+    YamlFakeDataProvider<FinalSpace>(fakerService) {
+    override val yamlCategory = YamlCategory.FINAL_SPACE
     override val localUniqueDataProvider = LocalUniqueDataProvider<FinalSpace>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters(): String = resolve("characters")
     fun vehicles(): String = resolve("vehicles")

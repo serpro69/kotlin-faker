@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
  */
 class ClashOfClans internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<ClashOfClans>(fakerService) {
-    override val category = YamlCategory.GAMES
+    YamlFakeDataProvider<ClashOfClans>(fakerService) {
+    override val yamlCategory = YamlCategory.GAMES
     override val localUniqueDataProvider = LocalUniqueDataProvider<ClashOfClans>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun troops(): String = resolve("clash_of_clans", "troops")
     fun ranks(): String = resolve("clash_of_clans", "ranks")
