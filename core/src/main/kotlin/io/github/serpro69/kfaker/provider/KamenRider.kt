@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.KAMEN_RIDER] category.
  */
 class KamenRider internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<KamenRider>(fakerService) {
-    override val category = YamlCategory.KAMEN_RIDER
+    YamlFakeDataProvider<KamenRider>(fakerService) {
+    override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRider>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     val showa = KamenRiderShowa(fakerService)
     val heisei = KamenRiderHeisei(fakerService)
@@ -22,10 +26,14 @@ class KamenRider internal constructor(fakerService: FakerService) :
 }
 
 class KamenRiderShowa internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<KamenRiderShowa>(fakerService) {
-    override val category = YamlCategory.KAMEN_RIDER
+    YamlFakeDataProvider<KamenRiderShowa>(fakerService) {
+    override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderShowa>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun series(): String = resolve("showa", "series")
     fun kamenRiders(): String = resolve("showa", "kamen_riders")
@@ -34,10 +42,14 @@ class KamenRiderShowa internal constructor(fakerService: FakerService) :
 }
 
 class KamenRiderHeisei internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<KamenRiderHeisei>(fakerService) {
-    override val category = YamlCategory.KAMEN_RIDER
+    YamlFakeDataProvider<KamenRiderHeisei>(fakerService) {
+    override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderHeisei>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun series(): String = resolve("heisei", "series")
     fun kamenRiders(): String = resolve("heisei", "kamen_riders")
@@ -47,10 +59,14 @@ class KamenRiderHeisei internal constructor(fakerService: FakerService) :
 }
 
 class KamenRiderReiwa internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<KamenRiderReiwa>(fakerService) {
-    override val category = YamlCategory.KAMEN_RIDER
+    YamlFakeDataProvider<KamenRiderReiwa>(fakerService) {
+    override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderReiwa>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun series(): String = resolve("reiwa", "series")
     fun kamenRiders(): String = resolve("reiwa", "kamen_riders")

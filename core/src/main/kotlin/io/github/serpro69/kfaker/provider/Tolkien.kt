@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.TOLKIEN] category.
  */
 class Tolkien internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<Tolkien>(fakerService) {
-    override val category = YamlCategory.TOLKIEN
+    YamlFakeDataProvider<Tolkien>(fakerService) {
+    override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tolkien>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     val lordOfTheRings = TolkienLordOfTheRings(fakerService)
 
@@ -27,10 +31,14 @@ class Tolkien internal constructor(fakerService: FakerService) :
 }
 
 class TolkienLordOfTheRings internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<TolkienLordOfTheRings>(fakerService) {
-    override val category = YamlCategory.TOLKIEN
+    YamlFakeDataProvider<TolkienLordOfTheRings>(fakerService) {
+    override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<TolkienLordOfTheRings>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters(): String = resolve("characters")
     fun locations(): String = resolve("locations")
@@ -38,10 +46,14 @@ class TolkienLordOfTheRings internal constructor(fakerService: FakerService) :
 }
 
 class TolkienHobbit internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<TolkienHobbit>(fakerService) {
-    override val category = YamlCategory.TOLKIEN
+    YamlFakeDataProvider<TolkienHobbit>(fakerService) {
+    override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<TolkienHobbit>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun character(): String = resolve("character")
     fun thorinsCompany(): String = resolve("thorins_company")

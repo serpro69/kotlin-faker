@@ -8,10 +8,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 /**
  * [FakeDataProvider] implementation for [YamlCategory.CROSSFIT] category.
  */
-class Crossfit internal constructor(fakerService: FakerService): AbstractFakeDataProvider<Crossfit>(fakerService){
-    override val category= YamlCategory.CROSSFIT
+class Crossfit internal constructor(fakerService: FakerService): YamlFakeDataProvider<Crossfit>(fakerService){
+    override val yamlCategory = YamlCategory.CROSSFIT
     override val localUniqueDataProvider= LocalUniqueDataProvider<Crossfit>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun competitions() = resolve("competition")
     fun maleAthletes() = resolve("athlete", "male")

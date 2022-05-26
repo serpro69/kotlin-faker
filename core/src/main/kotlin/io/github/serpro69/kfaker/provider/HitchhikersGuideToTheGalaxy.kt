@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 @Suppress("unused")
 class HitchhikersGuideToTheGalaxy internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider<HitchhikersGuideToTheGalaxy>(fakerService) {
-    override val category = YamlCategory.HITCHHIKERS_GUIDE_TO_THE_GALAXY
+) : YamlFakeDataProvider<HitchhikersGuideToTheGalaxy>(fakerService) {
+    override val yamlCategory = YamlCategory.HITCHHIKERS_GUIDE_TO_THE_GALAXY
     override val localUniqueDataProvider = LocalUniqueDataProvider<HitchhikersGuideToTheGalaxy>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters() = resolve("characters")
     fun locations() = resolve("locations")

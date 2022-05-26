@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.WORLD_CUP] category.
  */
 @Suppress("unused")
-class WorldCup internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<WorldCup>(fakerService) {
-    override val category = YamlCategory.WORLD_CUP
+class WorldCup internal constructor(fakerService: FakerService) : YamlFakeDataProvider<WorldCup>(fakerService) {
+    override val yamlCategory = YamlCategory.WORLD_CUP
     override val localUniqueDataProvider = LocalUniqueDataProvider<WorldCup>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun teams() = resolve("teams")
     fun stadiums() = resolve("stadiums")

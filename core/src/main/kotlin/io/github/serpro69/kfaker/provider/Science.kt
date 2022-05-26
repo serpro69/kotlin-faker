@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.SCIENCE] category.
  */
 @Suppress("unused")
-class Science internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Science>(fakerService) {
-    override val category = YamlCategory.SCIENCE
+class Science internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Science>(fakerService) {
+    override val yamlCategory = YamlCategory.SCIENCE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Science>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     val branch = ScienceBranch(fakerService)
 
@@ -27,10 +31,14 @@ class Science internal constructor(fakerService: FakerService) : AbstractFakeDat
 
 class ScienceBranch internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider<ScienceBranch>(fakerService) {
-    override val category = YamlCategory.SCIENCE
+) : YamlFakeDataProvider<ScienceBranch>(fakerService) {
+    override val yamlCategory = YamlCategory.SCIENCE
     override val localUniqueDataProvider = LocalUniqueDataProvider<ScienceBranch>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun empiricalNaturalBasic(): String = resolve("branch", "empirical_natural_basic")
     fun empiricalNaturalApplied(): String = resolve("branch", "empirical_natural_applied")

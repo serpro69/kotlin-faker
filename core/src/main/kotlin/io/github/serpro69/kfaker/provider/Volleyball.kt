@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.VOLLEYBALL] category.
  */
 class Volleyball internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<Volleyball>(fakerService) {
-    override val category = YamlCategory.VOLLEYBALL
+    YamlFakeDataProvider<Volleyball>(fakerService) {
+    override val yamlCategory = YamlCategory.VOLLEYBALL
     override val localUniqueDataProvider = LocalUniqueDataProvider<Volleyball>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun team(): String = resolve("team")
     fun player(): String = resolve("player")

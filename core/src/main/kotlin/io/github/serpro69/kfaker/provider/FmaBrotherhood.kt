@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.FMA_BROTHERHOOD] category.
  */
 class FmaBrotherhood internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<FmaBrotherhood>(fakerService) {
-    override val category = YamlCategory.FMA_BROTHERHOOD
+    YamlFakeDataProvider<FmaBrotherhood>(fakerService) {
+    override val yamlCategory = YamlCategory.FMA_BROTHERHOOD
     override val localUniqueDataProvider = LocalUniqueDataProvider<FmaBrotherhood>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters(): String = resolve("characters")
     fun cities(): String = resolve("cities")

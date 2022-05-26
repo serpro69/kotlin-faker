@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.OPERA] category.
  */
 @Suppress("unused")
-class Opera internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Opera>(fakerService) {
-    override val category = YamlCategory.OPERA
+class Opera internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Opera>(fakerService) {
+    override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Opera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     val italian = ItalianOpera(fakerService)
 
@@ -27,10 +31,14 @@ class Opera internal constructor(fakerService: FakerService) : AbstractFakeDataP
 
 class ItalianOpera internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider<ItalianOpera>(fakerService) {
-    override val category = YamlCategory.OPERA
+) : YamlFakeDataProvider<ItalianOpera>(fakerService) {
+    override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<ItalianOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun byGiuseppeVerdi() = resolve("italian", "by_giuseppe_verdi")
     fun byGioacchinoRossini() = resolve("italian", "by_gioacchino_rossini")
@@ -42,10 +50,14 @@ class ItalianOpera internal constructor(
 
 class GermanOpera internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider<GermanOpera>(fakerService) {
-    override val category = YamlCategory.OPERA
+) : YamlFakeDataProvider<GermanOpera>(fakerService) {
+    override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<GermanOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun byWolfgangAmadeusMozart(): String = resolve("german", "by_wolfgang_amadeus_mozart")
     fun byLudwigVanBeethoven(): String = resolve("german", "by_ludwig_van_beethoven")
@@ -59,10 +71,14 @@ class GermanOpera internal constructor(
 
 class FrenchOpera internal constructor(
     fakerService: FakerService
-) : AbstractFakeDataProvider<FrenchOpera>(fakerService) {
-    override val category = YamlCategory.OPERA
+) : YamlFakeDataProvider<FrenchOpera>(fakerService) {
+    override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<FrenchOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun byChristophWillibaldGluck(): String = resolve("french", "by_christoph_willibald_gluck")
     fun byMauriceRavel(): String = resolve("french", "by_maurice_ravel")

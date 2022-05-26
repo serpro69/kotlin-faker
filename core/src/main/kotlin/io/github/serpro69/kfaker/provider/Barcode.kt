@@ -9,10 +9,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.BARCODE] category.
  */
 @Suppress("unused")
-class Barcode internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Barcode>(fakerService) {
-    override val category = YamlCategory.BARCODE
+class Barcode internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Barcode>(fakerService) {
+    override val yamlCategory = YamlCategory.BARCODE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Barcode>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun ean8() = with(fakerService) { resolve("ean_8").numerify() }
     fun ean13() = with(fakerService) { resolve("ean_13").numerify() }

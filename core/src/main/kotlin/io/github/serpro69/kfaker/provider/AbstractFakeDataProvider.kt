@@ -1,31 +1,22 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.DictEntry
-import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
+import io.github.serpro69.kfaker.provider.misc.StringProvider
 
 /**
- * Abstract class for all concrete [FakeDataProvider]'s.
+ * Abstract class for all concrete [FakeDataProvider]'s that do not use yml files as data source.
  *
- * All data providers should implement this class.
- *
- * @param T type of data provider (i.e. [Address])
+ * @param T type of data provider (i.e. [StringProvider])
  */
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
     internal val fakerService: FakerService
 ) : FakeDataProvider {
 
     /**
-     * Name of the category for `this` fake data provider class.
-     *
-     * This is the key entry after the `faker` key in `.yml` locale file.
-     *
-     * For example `address.yml` file has the following structure - `en: faker: address:`,
-     * then the category name would be [YamlCategory.ADDRESS]
+     * Category of `this` fake data provider class.
      */
     internal abstract val category: Category
 
@@ -49,82 +40,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
      */
     fun clearAll() = localUniqueDataProvider.clearAll()
 
-    /**
-     * Higher-order function that resolves the [block] expression for this [category].
-     *
-     * @return parameterless function that returns a [String]: `() -> String`
-     */
-    private fun resolve(block: (DictEntry) -> String): () -> String = {
-        block(fakerService.fetchEntry(category))
-    }
-
-    /**
-     * Returns resolved (unique) value for the parameter with the specified [key].
-     *
-     * Will return a unique value if the call to the function is prefixed with `unique` property.
-     * Example:
-     * ```
-     * faker.address.unique.city() => will return a unique value for the `city` parameter
-     * ```
-     */
-    protected fun resolve(key: String): String {
-        return returnOrResolveUnique(key)
-    }
-
-    /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
-     *
-     * Will return a unique value if the call to the function is prefixed with `unique` property.
-     * Example:
-     * ```
-     * faker.address.unique.countryByCode(countryCode) => will return a unique value for the `city` parameter
-     * ```
-     */
-    protected fun resolve(primaryKey: String, secondaryKey: String): String {
-        return returnOrResolveUnique(primaryKey, secondaryKey)
-    }
-
-    /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey], [secondaryKey] and [thirdKey]
-     *
-     * Will return a unique value if the call to the function is prefixed with `unique` property.
-     * Example:
-     * ```
-     * faker.educator.tertiaryDegree(type) => will return a unique value for the `tertiaryDegree` parameter
-     * ```
-     */
-    protected fun resolve(primaryKey: String, secondaryKey: String, thirdKey: String): String {
-        return returnOrResolveUnique(primaryKey, secondaryKey, thirdKey)
-    }
-
-    /**
-     * Returns the result of this [resolve] function.
-     *
-     * IF [Faker.unique] is enabled for this [T] provider type
-     * OR this [unique] is used
-     * THEN will attempt to return a unique value.
-     *
-     * @throws RetryLimitException if exceeds number of retries to generate a unique value.
-     */
-    private fun returnOrResolveUnique(
-        primaryKey: String,
-        secondaryKey: String? = null,
-        thirdKey: String? = null,
-    ): String {
-        val result: () -> String = {
-            when {
-                secondaryKey != null && thirdKey != null -> {
-                    resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
-                }
-                secondaryKey != null -> resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
-                else -> resolve { fakerService.resolve(it, primaryKey) }.invoke()
-            }
-        }
-
-        return resolveUniqueValue(result, primaryKey, secondaryKey, thirdKey)
-    }
-
-    internal fun resolveUniqueValue(
+    protected fun resolveUniqueValue(
         result: () -> String,
         primaryKey: String,
         secondaryKey: String? = null,
@@ -154,7 +70,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                 else -> {
                     if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                         throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(resultString))resultString.also {
+                    } else if (!set.contains(resultString)) resultString.also {
                         localUniqueDataProvider.usedValues[key] = mutableSetOf(resultString).also { it.addAll(set) }
                     } else resolveUniqueValue(
                         result = result,
@@ -211,7 +127,11 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
                 // Provider-based exclusion patterns for all functions
-                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any { it.containsMatchIn(resultString) } -> {
+                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any {
+                    it.containsMatchIn(
+                        resultString
+                    )
+                } -> {
                     resolveUniqueValue(
                         result = result,
                         primaryKey = primaryKey,

@@ -11,10 +11,14 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON] category.
  */
 class HowToTrainYourDragon internal constructor(fakerService: FakerService) :
-    AbstractFakeDataProvider<HowToTrainYourDragon>(fakerService) {
-    override val category = YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON
+    YamlFakeDataProvider<HowToTrainYourDragon>(fakerService) {
+    override val yamlCategory = YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON
     override val localUniqueDataProvider = LocalUniqueDataProvider<HowToTrainYourDragon>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
 
     fun characters(): String = resolve("characters")
     fun dragons(): String = resolve("dragons")
