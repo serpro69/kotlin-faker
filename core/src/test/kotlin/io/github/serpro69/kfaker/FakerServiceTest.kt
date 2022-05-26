@@ -533,7 +533,16 @@ internal class FakerServiceTest : DescribeSpec({
             }
 
             it("partially localized functions with secondary_key should contain non-localized default values ") {
-                // TODO not implemented yet due to missing data - requires file with partially-localized secondary keys
+                val jaCat = fakerService("ja", YamlCategory.CREATURE, "cat")
+                    .dictionary
+                    .getEntryByCategory("creature")["cat"] as Map<*, *>
+                val defaultCat = fakerService(YamlCategory.CREATURE, "cat")
+                    .dictionary
+                    .getEntryByCategory("creature")["cat"] as Map<*, *>
+
+                jaCat["name"] shouldBe defaultCat["name"]
+                jaCat["registry"] shouldBe defaultCat["registry"]
+                jaCat["breed"] shouldNotBe defaultCat["breed"]
             }
         }
     }
@@ -553,8 +562,16 @@ private fun Dictionary.getEntryByCategory(name: String): YamlCategoryData {
     return getEntryByCategory(category = YamlCategory.findByName(name))
 }
 
+private fun fakerService(category: YamlCategory, secondaryCategory: String): FakerService {
+    return fakerService("en", category, Category.ofName(secondaryCategory))
+}
+
 private fun fakerService(category: YamlCategory, vararg secondaryCategory: Category): FakerService {
     return fakerService("en", category, *secondaryCategory)
+}
+
+private fun fakerService(locale: String, category: YamlCategory, secondaryCategory: String): FakerService {
+    return fakerService(locale, category, Category.ofName(secondaryCategory))
 }
 
 private fun fakerService(locale: String, category: YamlCategory, vararg secondaryCategory: Category): FakerService {

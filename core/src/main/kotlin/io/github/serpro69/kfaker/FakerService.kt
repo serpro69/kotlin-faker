@@ -191,8 +191,8 @@ internal class FakerService {
                                 )
                         } else null
                     }
-                    input?.use {
-                        readCategoryOrNull(it, locale, category)?.let {
+                    input?.use { instr ->
+                        readCategoryOrNull(instr, locale, category)?.let {
                             val localized = with(category.lowercase()) {
                                 val merged = merge(
                                     hashMapOf(this to defaultValues),
