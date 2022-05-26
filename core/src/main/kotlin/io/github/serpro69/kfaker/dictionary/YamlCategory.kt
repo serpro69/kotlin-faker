@@ -68,7 +68,7 @@ internal enum class YamlCategory : Category {
     DORAEMON,
     GAMES,
     DRAGON_BALL,
-    DRIVING_LICENCE,
+    DRIVING_LICENSE,
     DRONE,
     DR_WHO,
     DUMB_AND_DUMBER,
