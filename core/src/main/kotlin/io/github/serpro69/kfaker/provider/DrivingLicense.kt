@@ -6,11 +6,11 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [YamlCategory.DRIVING_LICENCE] category.
+ * [FakeDataProvider] implementation for [YamlCategory.DRIVING_LICENSE] category.
  */
 @Suppress("unused")
 class DrivingLicense internal constructor(fakerService: FakerService) : YamlFakeDataProvider<DrivingLicense>(fakerService) {
-    override val yamlCategory = YamlCategory.DRIVING_LICENCE
+    override val yamlCategory = YamlCategory.DRIVING_LICENSE
     override val localUniqueDataProvider = LocalUniqueDataProvider<DrivingLicense>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
