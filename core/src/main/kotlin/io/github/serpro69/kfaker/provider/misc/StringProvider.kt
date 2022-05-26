@@ -12,9 +12,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class StringProvider internal constructor(
     fakerService: FakerService
 ) : AbstractFakeDataProvider<StringProvider>(fakerService) {
-    override val category: Category = object : Category {
-        override val name: String = "STRING_PROVIDER"
-    }
+    override val category: Category = Category.ofName("STRING")
     override val localUniqueDataProvider = LocalUniqueDataProvider<StringProvider>()
     override val unique: StringProvider by UniqueProviderDelegate(localUniqueDataProvider)
 
