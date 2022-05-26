@@ -2,12 +2,12 @@ package io.github.serpro69.kfaker
 
 import com.mifmif.common.regex.Generex
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.dictionary.YamlCategory.CURRENCY_SYMBOL
 import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
+import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.lowercase
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Degree
@@ -77,14 +77,6 @@ internal class FakerService {
         return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
     }
 
-//    private fun getLocaleFilesStreams(locale: String, fileNames: List<String>): List<InputStream> = fileNames.map {
-//        requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it}.yml"))
-//    }
-//
-//    private fun getLocalizedFileStream(locale: String = "en"): InputStream? {
-//        return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
-//    }
-
     /**
      * Merges [default] and [localized] categories (providers) and values, using localized value if present.
      *
@@ -141,6 +133,18 @@ internal class FakerService {
         return default
     }
 
+    internal fun unload(category: YamlCategory, vararg secondaryCategory: Category): Dictionary {
+        if (secondaryCategory.isNotEmpty()) {
+            secondaryCategory.forEach { dictionary[category]?.remove(it.lowercase()) }
+        } else dictionary.remove(category)
+        return dictionary
+    }
+
+    internal fun unloadAll(): Dictionary {
+        YamlCategory.values().forEach { unload(it) }
+        return dictionary
+    }
+
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
      *
@@ -150,7 +154,7 @@ internal class FakerService {
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
     internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
-        val defaultValues = hashMapOf<String, Any>()
+        val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
         fun computeSymbol(locale: String) {
             val localeData = getLocaleFileStream(locale)?.use {
@@ -201,7 +205,10 @@ internal class FakerService {
                     }
                 }
             }
-            yamlCategoryData?.plus(defaultValues) ?: defaultValues
+            yamlCategoryData?.let {
+                defaultValues.forEach { (k, v) -> it.merge(k, v) { _, b -> b } }
+                it
+            } ?: defaultValues
         }
         return dictionary
     }
@@ -229,7 +236,7 @@ internal class FakerService {
     private fun readCategory(inputStream: InputStream, locale: String, category: YamlCategory): YamlCategoryData {
         val localeData = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
         val fakerData = localeData["faker"] as LinkedHashMap<String, Map<String, *>>
-        return fakerData[category.lowercase()] as Map<String, Any>
+        return fakerData[category.lowercase()] as LinkedHashMap<String, Any>
     }
 
     @Suppress("UNCHECKED_CAST")
