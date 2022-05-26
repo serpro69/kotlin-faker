@@ -11,11 +11,12 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 @Suppress("unused")
 class Control internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Control>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
+    override val secondaryCategory: Category = Category.ofName("CONTROL")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Control>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
     init {
-        fakerService.load(yamlCategory)
+        fakerService.load(yamlCategory, secondaryCategory)
     }
 
     fun character() = resolve("control", "character")

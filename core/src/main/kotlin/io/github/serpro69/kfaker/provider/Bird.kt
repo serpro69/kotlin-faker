@@ -12,9 +12,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  */
 class Bird internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Bird>(fakerService) {
     override val yamlCategory = YamlCategory.CREATURE
-    override val secondaryCategory: Category = object : Category {
-        override val name: String = "BIRD"
-    }
+    override val secondaryCategory: Category = Category.ofName("BIRD")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Bird>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
@@ -22,7 +20,7 @@ class Bird internal constructor(fakerService: FakerService) : YamlFakeDataProvid
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    val orderCommonMap = BirdOrderCommonMap(fakerService)
+    val orderCommonMap by lazy { BirdOrderCommonMap(fakerService) }
 
     fun anatomy(): String = resolve("bird", "anatomy")
     fun anatomyPastTense(): String = resolve("bird", "anatomy_past_tense")
@@ -42,10 +40,6 @@ class BirdOrderCommonMap internal constructor(
     override val yamlCategory = YamlCategory.CREATURE
     override val localUniqueDataProvider = LocalUniqueDataProvider<BirdOrderCommonMap>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
-
-    init {
-        fakerService.load(yamlCategory)
-    }
 
     fun accipitriformes(): String = resolve("bird", "order_common_map", "Accipitriformes")
     fun anseriformes(): String = resolve("bird", "order_common_map", "Anseriformes")
