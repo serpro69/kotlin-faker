@@ -145,6 +145,16 @@ internal class FakerService {
         return dictionary
     }
 
+    private fun computeSymbol(category: YamlCategory, locale: String): Any {
+        val localeData = getLocaleFileStream(locale)?.use {
+            Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
+        } ?: requireNotNull(getLocaleFileStream("en")).use {
+            Mapper.readValue(it, Map::class.java)["en"] as Map<*, *>
+        }
+        val fakerData = localeData["faker"] as Map<*, *>
+        return fakerData[category.lowercase()] as Any
+    }
+
     /**
      * Reads values of the default 'en' locale files into this [dictionary].
      *
@@ -156,19 +166,10 @@ internal class FakerService {
     internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
         val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
-        fun computeSymbol(locale: String) {
-            val localeData = getLocaleFileStream(locale)?.use {
-                Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
-            } ?: requireNotNull(getLocaleFileStream("en")).use {
-                Mapper.readValue(it, Map::class.java)["en"] as Map<*, *>
-            }
-            val fakerData = localeData["faker"] as Map<*, *>
-            defaultValues[category.lowercase()] = fakerData[category.lowercase()] as Any
-        }
-
         dictionary.compute(category) { _, yamlCategoryData -> // i.e. compute data for 'address' category
+            // TODO can this be improved by doing smth along the lines of yamlCategoryData.computeIfAbsent()
             when (category) {
-                SEPARATOR, CURRENCY_SYMBOL -> computeSymbol(locale)
+                SEPARATOR, CURRENCY_SYMBOL -> defaultValues[category.lowercase()] = computeSymbol(category, locale)
                 else -> {
                     // get 'en' values first
                     getCategoryFileStream("en", category, secondaryCategory).use { instr ->
