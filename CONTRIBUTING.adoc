@@ -110,10 +110,6 @@ en:
 
 For more details and examples take a look at some of existing `.yml` files.
 
-==== Update the list of default filenames
-
-- the list of `defaultFileNames` needs to be updated in the link:core/src/main/kotlin/io/github/serpro69/kfaker/Constants.kt[Constants] file
-
 ==== Create the new data provider class under link:core/src/main/kotlin/io/github/serpro69/kfaker/provider[provider] directory.
 
 The class needs to implement `YamlFakeDataProvider`, and override a few properties. Expanding on the same data provider example, let's look at the `Name` class implementation:
