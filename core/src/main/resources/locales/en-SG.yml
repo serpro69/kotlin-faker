@@ -29,10 +29,7 @@ en-SG:
       street_address:
         - "#{building_number} #{street_name}"
       default_country: [Singapore]
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['65']
+    country_code: ['65']
     phone_number:
       formats: ['6### ####', '9### ####', '8### ####']
     vehicle:

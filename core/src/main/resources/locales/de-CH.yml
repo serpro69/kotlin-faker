@@ -1708,10 +1708,7 @@ de-CH:
     internet:
       domain_suffix: [com, net, biz, ch, de, li, at, ch, ch]
 
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['41']
+    country_code: ['41']
 
     phone_number:
       formats: ['0800 ### ###', '0800 ## ## ##', '0## ### ## ##', '0## ### ## ##', '## ### ## ##', '0900 ### ###', '076 ### ## ##', '78 ### ## ##', '0041 79 ### ## ##']

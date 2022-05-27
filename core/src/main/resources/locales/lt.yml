@@ -13,10 +13,7 @@ lt:
       street_address:
         - "#{street_name} #{street_suffix} #{building_number}"
       country_code: ['LT']
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['370']
+    country_code: ['370']
 
     company:
       suffix: [AB, UAB, IĮ, KB, VŠĮ, MB]
