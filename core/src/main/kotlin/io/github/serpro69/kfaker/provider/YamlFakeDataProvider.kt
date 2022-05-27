@@ -3,7 +3,6 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.exception.RetryLimitException
 
@@ -49,15 +48,6 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
 
     final override val category: YamlCategory
         get() = yamlCategory
-
-    /**
-     * Higher-order function that resolves the [block] expression for this [category].
-     *
-     * @return parameterless function that returns a [String]: `() -> String`
-     */
-    private fun resolve(block: (YamlCategoryData) -> String): () -> String = {
-        block(fakerService.fetchEntry(category))
-    }
 
     /**
      * Returns resolved (unique) value for the parameter with the specified [key].
@@ -115,10 +105,10 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
         val result: () -> String = {
             when {
                 secondaryKey != null && thirdKey != null -> {
-                    resolve { fakerService.resolve(it, primaryKey, secondaryKey, thirdKey) }.invoke()
+                    fakerService.resolve(yamlCategory, primaryKey, secondaryKey, thirdKey)
                 }
-                secondaryKey != null -> resolve { fakerService.resolve(it, primaryKey, secondaryKey) }.invoke()
-                else -> resolve { fakerService.resolve(it, primaryKey) }.invoke()
+                secondaryKey != null -> fakerService.resolve(yamlCategory, primaryKey, secondaryKey)
+                else -> fakerService.resolve(yamlCategory, primaryKey)
             }
         }
 
