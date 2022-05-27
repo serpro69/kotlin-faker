@@ -19,6 +19,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
+import kotlin.collections.LinkedHashMap
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.set
@@ -166,8 +167,8 @@ internal class FakerService {
     internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
         val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
-        dictionary.compute(category) { _, yamlCategoryData -> // i.e. compute data for 'address' category
-            // TODO can this be improved by doing smth along the lines of yamlCategoryData.computeIfAbsent()
+        dictionary.compute(category) { _, categoryData -> // i.e. compute data for 'address' category
+            // TODO can this be improved by doing smth along the lines of categoryData.computeIfAbsent()
             when (category) {
                 SEPARATOR, CURRENCY_SYMBOL -> defaultValues[category.lowercase()] = computeSymbol(category, locale)
                 else -> {
@@ -206,7 +207,7 @@ internal class FakerService {
                     }
                 }
             }
-            yamlCategoryData?.let {
+            categoryData?.let {
                 defaultValues.forEach { (k, v) -> it.merge(k, v) { _, b -> b } }
                 it
             } ?: defaultValues
@@ -252,19 +253,11 @@ internal class FakerService {
     }
 
     /**
-     * Returns [YamlCategoryData] instance by its [category]
+     * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
      */
-    fun fetchEntry(category: Category): YamlCategoryData {
-        return dictionary.entries.firstOrNull { it.key == category }?.value
-            ?: throw NoSuchElementException("Category with name '$category' not found")
-    }
-
-    /**
-     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key]
-     */
-    fun getRawValue(yamlCategoryData: YamlCategoryData, key: String): RawExpression {
-        val parameterValue = yamlCategoryData[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
+    fun getRawValue(category: YamlCategory, key: String): RawExpression {
+        val parameterValue = dictionary[category]?.get(key)
+            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
             is List<*> -> {
@@ -281,11 +274,11 @@ internal class FakerService {
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key] and [secondaryKey]
+     * Returns raw value as [RawExpression] from a given [category] fetched by its [key] and [secondaryKey]
      */
-    fun getRawValue(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String): RawExpression {
-        val parameterValue = yamlCategoryData[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
+    fun getRawValue(category: YamlCategory, key: String, secondaryKey: String): RawExpression {
+        val parameterValue = dictionary[category]?.get(key)
+            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -313,16 +306,16 @@ internal class FakerService {
     }
 
     /**
-     * Returns raw value as [RawExpression] from a given [yamlCategoryData] fetched by its [key], [secondaryKey], and [thirdKey]
+     * Returns raw value as [RawExpression] for a given [category] fetched from the [dictionary] by its [key], [secondaryKey], and [thirdKey].
      */
     fun getRawValue(
-        yamlCategoryData: YamlCategoryData,
+        category: YamlCategory,
         key: String,
         secondaryKey: String,
-        thirdKey: String
+        thirdKey: String,
     ): RawExpression {
-        val parameterValue = yamlCategoryData[key]
-            ?: throw NoSuchElementException("Parameter '$key' not found in 'XXX' category")
+        val parameterValue = dictionary[category]?.get(key)
+            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -359,31 +352,31 @@ internal class FakerService {
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] in this [yamlCategoryData].
+     * Resolves [RawExpression] value of the [key] in this [category].
      */
-    fun resolve(yamlCategoryData: YamlCategoryData, key: String): String {
-        val rawExpression = getRawValue(yamlCategoryData, key)
-        return resolveExpression(yamlCategoryData, rawExpression)
+    fun resolve(category: YamlCategory, key: String): String {
+        val rawExpression = getRawValue(category, key)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [yamlCategoryData].
+     * Resolves [RawExpression] value of the [key] and [secondaryKey] in this [category].
      */
-    fun resolve(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String): String {
-        val rawExpression = getRawValue(yamlCategoryData, key, secondaryKey)
-        return resolveExpression(yamlCategoryData, rawExpression)
+    fun resolve(category: YamlCategory, key: String, secondaryKey: String): String {
+        val rawExpression = getRawValue(category, key, secondaryKey)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
-     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [yamlCategoryData].
+     * Resolves [RawExpression] value of the [key], [secondaryKey], and [thirdKey] in this [category].
      */
-    fun resolve(yamlCategoryData: YamlCategoryData, key: String, secondaryKey: String, thirdKey: String): String {
-        val rawExpression = getRawValue(yamlCategoryData, key, secondaryKey, thirdKey)
-        return resolveExpression(yamlCategoryData, rawExpression)
+    fun resolve(category: YamlCategory, key: String, secondaryKey: String, thirdKey: String): String {
+        val rawExpression = getRawValue(category, key, secondaryKey, thirdKey)
+        return resolveExpression(category, rawExpression)
     }
 
     /**
-     * Resolves the [rawExpression] for this [yamlCategoryData] and returns as [String].
+     * Resolves the [rawExpression] for this [category] and returns as [String].
      *
      * For yaml expressions:
      * - `#{city_prefix}` from `en: faker: address` would be resolved to getting value from `address: city_prefix`
@@ -413,8 +406,8 @@ internal class FakerService {
      * }
      * ```
      *
-     * For recursive expressions, this must be used for function calls within the same [yamlCategoryData],
-     * but can be omitted for calls to other [yamlCategoryData]s.
+     * For recursive expressions, this must be used for function calls within the same [category],
+     * but can be omitted for calls to other [category]s.
      * For example:
      *
      * `address.yml`:
@@ -435,7 +428,7 @@ internal class FakerService {
      * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
      * ```
      */
-    private tailrec fun resolveExpression(yamlCategoryData: YamlCategoryData, rawExpression: RawExpression): String {
+    private tailrec fun resolveExpression(category: YamlCategory, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
         val resolvedExpression = when {
@@ -448,7 +441,7 @@ internal class FakerService {
                             val (providerType, propertyName) = getProvider(simpleClassName).getFunctionName(it.group(2))
                             providerType.callFunction(propertyName)
                         }
-                        false -> getRawValue(yamlCategoryData, it.group(2)).value
+                        false -> getRawValue(category, it.group(2)).value
                     }
 
                     it.appendReplacement(sb, replacement)
@@ -459,7 +452,7 @@ internal class FakerService {
 
         return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
             resolvedExpression
-        } else resolveExpression(yamlCategoryData, RawExpression(resolvedExpression))
+        } else resolveExpression(category, RawExpression(resolvedExpression))
     }
 
     /**
