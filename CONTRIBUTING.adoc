@@ -139,7 +139,13 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
 
 ==== Update native-image link:cli-bot/src/main/resources/META-INF/native-image/io.github.serpro69/cli-bot/reflect-config.json[`reflect-config.json`]
 
-- this is used when building the native-image of the `faker-bot` CLI application and thus needs to be updated, otherwise the `nativeImage` gradle task will fail
+* this is used when building the native-image of the `faker-bot` CLI application and thus needs to be updated, otherwise the `nativeImage` gradle task will fail
+* it is easy to auto-update the configuration by using `native-image-agent` (requires the `native-image` binary to be installed):
+** first create the jar of the app with `./gradlew clean shadowJar`
+** then run each of the cli commands (include the verbose mode since that requires additional calls):
+*** `java -agentlib:native-image-agent=config-merge-dir=temp_resources -jar cli-bot/build/libs/cli-bot-1.11.1-SNAPSHOT-fat.jar list --verbose`
+*** `java -agentlib:native-image-agent=config-merge-dir=temp_resources -jar cli-bot/build/libs/cli-bot-1.11.1-SNAPSHOT-fat.jar lookup name --verbose`
+** then copy the generated `reflect-config.json` from `temp_resources` dir (other json files usually don't need to be updated and can be ignored)
 
 ==== Next step is to update the documentation
 
