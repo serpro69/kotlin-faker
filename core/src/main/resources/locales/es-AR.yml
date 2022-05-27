@@ -3394,10 +3394,7 @@ es-AR:
         - "2### 6#####"
         - "3### 6#####"
         - "11-7###-####"
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: [ "54" ]
+    country_code: [ "54" ]
 
     bank:
       name:

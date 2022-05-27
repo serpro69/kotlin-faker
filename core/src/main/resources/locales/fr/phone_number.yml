@@ -6,7 +6,4 @@ fr:
     cell_phone:
       formats: ['06########', '07########', '6########', '7########', '06 ## ## ## ##', '07 ## ## ## ##', '6 ## ## ## ##', '7 ## ## ## ##']
 
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['33']
+    country_code: ['33']

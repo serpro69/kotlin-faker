@@ -5,7 +5,10 @@ import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.dictionary.YamlCategory.CELL_PHONE
+import io.github.serpro69.kfaker.dictionary.YamlCategory.COUNTRY_CODE
 import io.github.serpro69.kfaker.dictionary.YamlCategory.CURRENCY_SYMBOL
+import io.github.serpro69.kfaker.dictionary.YamlCategory.PHONE_NUMBER
 import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
 import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.lowercase
@@ -134,6 +137,7 @@ internal class FakerService {
         return default
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     internal fun unload(category: YamlCategory, vararg secondaryCategory: Category): Dictionary {
         if (secondaryCategory.isNotEmpty()) {
             secondaryCategory.forEach { dictionary[category]?.remove(it.lowercase()) }
@@ -141,9 +145,32 @@ internal class FakerService {
         return dictionary
     }
 
+    @Suppress("unused")
     internal fun unloadAll(): Dictionary {
         YamlCategory.values().forEach { unload(it) }
         return dictionary
+    }
+
+    private fun computePhoneNumber(category: YamlCategory): Any {
+        return computePhoneNumber(category, "en") as Any
+    }
+
+    private fun computePhoneNumber(category: YamlCategory, locale: String): Any? {
+        val instr = when (locale) {
+            "en", "ja", "fr" -> getCategoryFileStream(locale, PHONE_NUMBER, null)
+            else -> getLocaleFileStream(locale)
+        }
+        return instr?.use {
+            when (category) {
+                PHONE_NUMBER, CELL_PHONE -> readCategoryOrNull(it, locale, category)
+                COUNTRY_CODE -> {
+                    val localeData = Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
+                    val fakerData = localeData["faker"] as Map<*, *>
+                    fakerData[category.lowercase()]
+                }
+                else -> null
+            }
+        }
     }
 
     private fun computeSymbol(category: YamlCategory, locale: String): Any {
@@ -164,12 +191,21 @@ internal class FakerService {
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
+    @Suppress("UNCHECKED_CAST", "UNUSED_ANONYMOUS_PARAMETER")
     internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
         val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
         dictionary.compute(category) { _, categoryData -> // i.e. compute data for 'address' category
             // TODO can this be improved by doing smth along the lines of categoryData.computeIfAbsent()
             when (category) {
+                PHONE_NUMBER, CELL_PHONE -> {
+                    computePhoneNumber(category, locale)?.let { defaultValues.putAll(it as Map<out String, Any>) }
+                        ?: defaultValues.putAll(computePhoneNumber(category) as Map<String, Any>)
+                }
+                COUNTRY_CODE -> {
+                    computePhoneNumber(category, locale)?.let { defaultValues[category.lowercase()] = it }
+                        ?: run { defaultValues[category.lowercase()] = computePhoneNumber(category) }
+                }
                 SEPARATOR, CURRENCY_SYMBOL -> defaultValues[category.lowercase()] = computeSymbol(category, locale)
                 else -> {
                     // get 'en' values first
@@ -234,7 +270,7 @@ internal class FakerService {
      * {country=[Австралія, Австрія, Азербайджан], building_number: ['#', '##', '1##']}
      * ```
      */
-    @Suppress("UNCHECKED_CAST")
+    @Suppress("UNCHECKED_CAST", "SameParameterValue")
     private fun readCategory(inputStream: InputStream, locale: String, category: YamlCategory): YamlCategoryData {
         val localeData = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
         val fakerData = localeData["faker"] as LinkedHashMap<String, Map<String, *>>

@@ -74,10 +74,7 @@ sk:
         - "#{male_first_name}"
         - "#{female_first_name}"
 
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['421']
+    country_code: ['421']
 
     phone_number:
       formats: ['09## ### ###', '0## #### ####', '0# #### ####', '### ### ###']

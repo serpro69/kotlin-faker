@@ -41,10 +41,7 @@ en-MS:
       street_address:
         - "No. #{building_number}, #{street_name}"
       default_country: [Malaysia]
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['603-56', '603-80']
+    country_code: ['603-56', '603-80']
     phone_number:
       formats: ['03#######', '01########']
     bank:

@@ -37,10 +37,7 @@ en-AU:
       country_code: AU
       default_country: [Australia, Aus]
       time_zone: [Australia/Sydney, Australia/Brisbane, Australia/Melbourne, Australia/Hobart, Australia/Adelaide, Australia/Perth, Australia/Darwin, Australia/Canberra]
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['61']
+    country_code: ['61']
     phone_number:
       area_code: ['02', '03', '07', '08']
       subscriber_number: ['####']

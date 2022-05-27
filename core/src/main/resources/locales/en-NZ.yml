@@ -151,10 +151,7 @@ en-NZ:
         - "#{mail_box} #{community} #{postcode}"
         - "#{mail_box}, #{community}, #{city} #{postcode}"
 
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['64']
+    country_code: ['64']
     phone_number:
       formats: ['0# ### ####', '# ### ####']
     cell_phone:

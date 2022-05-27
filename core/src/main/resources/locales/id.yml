@@ -21,9 +21,6 @@ id:
       street_address:
         - "#{street_name} No. #{building_number}"
       state_abbr: [AC, BA, BT, BE, GO, JK, JA, JW, JB, JT, JI, KA, KB, KS, KT, KI, KU, BB, KR, LA, ML, MA, MU, NU, NB, NT, PP, PA, PB, RI, SL, SR, SN, ST, SG, SA, SM, SB, SS, SU, YO]
-    country_code:
-      # DO NOT MODIFY. This is different from original file in a way that `country_codes` was an Array, not a Map.
-      # Added `codes` key to make it a Map and avoid overhead of accounting for this case when reading values.
-      codes: ['62']
+    country_code: ['62']
     phone_number:
       formats: ['08##########', '08##-####-####', '8#########']
