@@ -4,7 +4,18 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the project versioning adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [1.12.0] - UNRELEASED
+
+### Added
+
+- [#134](https://github.com/serpro69/kotlin-faker/pull/134) Overload `RandomService#randomSublist` and `RandomService#randomSubset` with `sizeRange` parameter
+
+### Changed
+
+- [#135](https://github.com/serpro69/kotlin-faker/pull/135) Initialize Faker data providers lazily
+
 ## [1.11.0] - 2022-05-22
+
 ### Added
 - [#122](https://github.com/serpro69/kotlin-faker/pull/122) [core] Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
 - [#129](https://github.com/serpro69/kotlin-faker/pull/129) [core] Update dictionary files, including:
