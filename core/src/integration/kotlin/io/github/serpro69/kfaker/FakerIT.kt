@@ -183,6 +183,14 @@ private val duplicatedValues = listOf(
 )
 
 private val valuesWithHashKey = listOf(
+    "A# .NET", // programmingLanguage#name
+    "A# (Axiom)", // programmingLanguage#name
+    "C# – ISO/I EC 23270", //programmingLanguage#name
+    "F#", // programmingLanguage#name
+    "J#", // programmingLanguage#name
+    "M#", // programmingLanguage#name
+    "P#", // programmingLanguage#name
+    "Q# (Microsoft programming language)", // programmingLanguage#name
     "Visual J#", // programmingLanguage#name
     "Acoustic #1", // pearlJam#songs
     "I am downloading some NP# music.", // michaelScott#quotes
