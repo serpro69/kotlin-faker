@@ -173,14 +173,16 @@ internal class FakerService {
         }
     }
 
-    private fun computeSymbol(category: YamlCategory, locale: String): Any {
+    private fun computeSymbol(category: YamlCategory) = computeSymbol(category, "en") as Any
+
+    private fun computeSymbol(category: YamlCategory, locale: String): Any? {
         val localeData = getLocaleFileStream(locale)?.use {
             Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
         } ?: requireNotNull(getLocaleFileStream("en")).use {
             Mapper.readValue(it, Map::class.java)["en"] as Map<*, *>
         }
         val fakerData = localeData["faker"] as Map<*, *>
-        return fakerData[category.lowercase()] as Any
+        return fakerData[category.lowercase()]
     }
 
     /**
@@ -206,7 +208,11 @@ internal class FakerService {
                     computePhoneNumber(category, locale)?.let { defaultValues[category.lowercase()] = it }
                         ?: run { defaultValues[category.lowercase()] = computePhoneNumber(category) }
                 }
-                SEPARATOR, CURRENCY_SYMBOL -> defaultValues[category.lowercase()] = computeSymbol(category, locale)
+                SEPARATOR, CURRENCY_SYMBOL -> {
+                    computeSymbol(category, locale)?.let {
+                        defaultValues[category.lowercase()] = it
+                    } ?: run { defaultValues[category.lowercase()] = computeSymbol(category) }
+                }
                 else -> {
                     // get 'en' values first
                     getCategoryFileStream("en", category, secondaryCategory).use { instr ->
