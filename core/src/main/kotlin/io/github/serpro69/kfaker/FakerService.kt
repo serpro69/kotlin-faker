@@ -99,8 +99,8 @@ internal class FakerService {
         default: HashMap<String, Map<String, *>>,
         localized: Map<String, Map<out String, *>>
     ): Map<String, Map<String, *>> {
-        localized.forEach { (k, localizedMap) ->
-            default[k]?.let { enMap ->
+        localized.forEach { (key, localizedMap) ->
+            default[key]?.let { enMap ->
                 /*
                  * This is a provider level access for default providers (enMap) and localized providers (localizedMap),
                  * WHERE mapKey IS provider_name: [address, name, games, etc]
@@ -112,18 +112,19 @@ internal class FakerService {
                  * enMap["games"] == { {...}, {...}, pokemon={names=[...],locations=[...],moves=[...]} }
                  * localizedMap["games"] == { pokemon={names=[...]} }
                  */
-                default[k] = enMap.mapValuesTo(linkedMapOf()) { (k, v) ->
+                default[key] = localizedMap.mapValuesTo(linkedMapOf()) { (k, v) ->
+                    println("{$k=$v}")
                     /*
                      * This is provider_functions level access for default providers (enMap).
                      * The goal here is to find-and-replace any matching functions (v) for each provider (k).
                      * But since some functions may contain secondary_key the following is needed.
                      */
-                    if (v is Map<*, *> && localizedMap.containsKey(k)) {
+                    if (v is Map<*, *> && enMap.containsKey(k)) {
                         // check if function has a secondary_key that is used to resolve the values
                         // if true we assume that u[k] should also be a Map because the structure of dict files should match
                         // v IS en.faker.games.<secondary_key> (i.e pokemon)
-                        v.plus(localizedMap[k] as Map<*, *>)
-                    } else if (localizedMap.containsKey(k)) {
+                        (enMap[k] as Map<*, *>).plus(v)
+                    } else if (enMap.containsKey(k)) {
                         // check if the primary_key (function_name) matches with localized provider
                         // if v is not a map, but localized key matches, then use the values for that key
                         localizedMap[k]

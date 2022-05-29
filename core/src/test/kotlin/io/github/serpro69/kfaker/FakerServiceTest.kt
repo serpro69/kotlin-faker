@@ -11,6 +11,7 @@ import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldContainExactly
+import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldHaveAtMostSize
 import io.kotest.matchers.collections.shouldHaveSize
@@ -59,9 +60,33 @@ internal class FakerServiceTest : DescribeSpec({
                 val cats = listOf("elder_scrolls", "fallout", "half_life", "super_mario", "witcher", "zelda").map {
                     Category.ofName(it)
                 }.toTypedArray()
-                    val esGames = fakerService("es", YamlCategory.GAMES, *cats).dictionary.getEntryByCategory("games")
+                val esGames = fakerService("es", YamlCategory.GAMES, *cats).dictionary.getEntryByCategory("games")
                 val defaultGames = fakerService(YamlCategory.GAMES, *cats).dictionary.getEntryByCategory("games")
                 esGames shouldBe defaultGames
+            }
+
+            it("non-matching localized keys should be present in the localized dictionary") {
+                val enMsService = fakerService("en-MS", YamlCategory.NAME)
+                enMsService.dictionary[YamlCategory.NAME]?.keys shouldContainExactlyInAnyOrder listOf(
+                    // localized w/ unique keys
+                    "prefix",
+                    "malay_male_first_name", // unique key
+                    "malay_female_first_name", // unique key
+                    "chinese_male_first_name", // unique key
+                    "chinese_male_last_name", // unique key
+                    "chinese_female_first_name", // unique key
+                    "male_first_name",
+                    "female_first_name",
+                    "first_name",
+                    "name",
+                    // non-localized
+                    "neutral_first_name",
+                    "last_name",
+                    "suffix",
+                    "name_with_middle",
+                    "male_last_name",
+                    "female_last_name"
+                )
             }
 
             it("partially localized functions with secondary_key should contain non-localized default values ") {
