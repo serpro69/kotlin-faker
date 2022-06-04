@@ -120,7 +120,9 @@ layout: 'homepage'
     section, jump straight to the
     {{ anchor(title='Getting Started', collectionType='wiki', collectionId='', itemId='Getting Started') }} page,
     or explore the
-    {{ anchor(title='Core API', collectionType='kotlindoc', collectionId='modules-core', itemId='Core API') }}
+    {{ anchor(title='Data Provider API', collectionType='kotlindoc', collectionId='modules-data-provider', itemId='Data Provider API') }}
+    or the
+    {{ anchor(title='Full Core API', collectionType='kotlindoc', collectionId='modules-full', itemId='Full Core API') }}
     documentation to learn more.
     {% endbox %}
   </div>
