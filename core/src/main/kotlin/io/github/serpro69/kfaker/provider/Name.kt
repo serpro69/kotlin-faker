@@ -28,6 +28,14 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
     // NB! These are not part of original name.yml
     // but are here to support some discrepancies with some localized dicts ('bg', 'ru', 'uk')
     // See also https://github.com/serpro69/kotlin-faker/issues/89
-    fun maleLastName() = resolve("male_last_name")
-    fun femaleLastName() = resolve("female_last_name")
+    @Deprecated(
+        message = "This function is deprecated and will be removed in future releases",
+        ReplaceWith("lastName()")
+    )
+    fun maleLastName() = lastName()
+    @Deprecated(
+        message = "This function is deprecated and will be removed in future releases",
+        ReplaceWith("lastName()")
+    )
+    fun femaleLastName() = lastName()
 }

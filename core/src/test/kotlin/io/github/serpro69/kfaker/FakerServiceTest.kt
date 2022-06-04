@@ -84,8 +84,6 @@ internal class FakerServiceTest : DescribeSpec({
                     "last_name",
                     "suffix",
                     "name_with_middle",
-                    "male_last_name",
-                    "female_last_name"
                 )
             }
 

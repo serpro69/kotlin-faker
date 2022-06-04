@@ -19,12 +19,12 @@ class NameIT : DescribeSpec({
             }
 
             it("generates maleLastName") {
-                val maleLastNames = List(42) { name.maleLastName() }
+                val maleLastNames = List(42) { name.lastName() }
                 maleLastNames shouldNotContain ""
             }
 
             it("generates femaleLastName") {
-                val femaleLastNames = List(42) { name.femaleLastName() }
+                val femaleLastNames = List(42) { name.lastName() }
                 femaleLastNames shouldNotContain ""
             }
         }

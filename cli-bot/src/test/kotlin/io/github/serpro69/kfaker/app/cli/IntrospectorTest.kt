@@ -439,8 +439,12 @@ class IntrospectorTest : DescribeSpec() {
                     val expectedFunctions = listOf(
                         "buildingNumber",
                         "city",
+                        "cityPrefix",
+                        "citySuffix",
                         "cityWithState",
                         "community",
+                        "communityPrefix",
+                        "communitySuffix",
                         "country",
                         "countryByCode",
                         "countryByName",
@@ -456,6 +460,7 @@ class IntrospectorTest : DescribeSpec() {
                         "stateAbbr",
                         "streetAddress",
                         "streetName",
+                        "streetSuffix",
                         "timeZone"
                     )
 
