@@ -56,20 +56,6 @@ layout: 'homepage'
 {#  </div>#}
 {#</section>#}
 
-{#TODO remove once docs are merged with master#}
-<section class="columns is-centered">
-  <div class="column is-centered is-two-thirds">
-{% warn %}
-    <p class="description-text is-centered">
-       This website is under development and some documentation could still be missing.
-       <br>
-       Refer to <span><a href="https://github.com/serpro69/kotlin-faker#readme">GitHub Readme</a></span>
-       if you don't find some parts of documentation yet.
-    </p>
-{% endwarn %}
-  </div>
-</section>
-
 <section class="columns is-centered">
   <div class="column is-8">
     <div class="content is-medium">
