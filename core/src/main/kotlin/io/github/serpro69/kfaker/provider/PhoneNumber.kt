@@ -69,13 +69,3 @@ class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDat
 
     fun code() = resolve("country_code")
 }
-
-fun main() {
-    val f = faker {
-        fakerConfig { locale = "ja" }
-    }
-
-    println(f.phoneNumber.cellPhone())
-    println(f.phoneNumber.countryCode())
-    println(f.phoneNumber.phoneNumber())
-}

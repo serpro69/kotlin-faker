@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.faker
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldMatch
 
@@ -33,6 +34,13 @@ class PhoneNumberIT : DescribeSpec({
             }
             it("country code is resolved using default format") {
                 phone.countryCode.code() shouldBeIn defaultCountryCodes
+            }
+        }
+
+        context("fr") {
+            val phone = phoneNumber("fr")
+            it("country code is resolved using default format") {
+                phone.countryCode.code() shouldBe "33"
             }
         }
     }
