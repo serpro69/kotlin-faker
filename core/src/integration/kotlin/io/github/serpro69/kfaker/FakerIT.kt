@@ -179,6 +179,7 @@ private val duplicatedValues = listOf(
     "Mahi Mahi", // food#ingredients
     "Cous Cous", // food#ingredients
     "Boom Boom", // superMario#characters
+    "Pom Pom", // superMario#characters
     "Min Min", // superSmashBros#fighter
 )
 
