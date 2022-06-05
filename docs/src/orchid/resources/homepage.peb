@@ -40,7 +40,7 @@ layout: 'homepage'
         <img src="https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&amp;style=for-the-badge&amp;color=lightblue" alt="Issues">
       </a>
       <img src="https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&amp;logoColor=white&amp;color=a97bff&amp;style=for-the-badge" alt="GitHub Top Lang">
-      <a href="https://github.com/KotlinBy/awesome-kotlin">
+      <a href="https://kotlin.link/resources?q=kotlin-faker">
         <img src="https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&amp;style=for-the-badge" alt="Awesome Kotlin">
       </a>
       <a href="{{ link(collectionType='pages', collectionId='allPages', itemId='License') }}">
