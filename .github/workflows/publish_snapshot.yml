@@ -18,6 +18,8 @@ jobs:
           filters: |
             core:
               - 'core/**'
+              - '*gradle*'
+
   build:
     needs: changes
     if: ${{ needs.changes.outputs.core == 'true' }}
