@@ -108,16 +108,11 @@ layout: 'homepage'
 </section>
 {% endfor %}
 
-<section class="columns is-centered">
+<section class="columns is-centered is-multiline">
   <div class="column">
     {% box %}
-    See the pages under the
-    <span class="icon-text">
-      <span class="icon">
-        <i class="fas fa-graduation-cap"></i>
-      </span>
-      <span>User Guide</span>
-    section, jump straight to the
+    See the pages under the <span class="icon"><i class="fas fa-graduation-cap"></i></span> User Guide section,
+    jump straight to the
     {{ anchor(title='Getting Started', collectionType='wiki', collectionId='', itemId='Getting Started') }} page,
     or explore the
     {{ anchor(title='Data Provider API', collectionType='kotlindoc', collectionId='modules-data-provider', itemId='Data Provider API') }}
