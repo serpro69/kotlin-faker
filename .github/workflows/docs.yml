@@ -19,6 +19,10 @@ jobs:
           filters: |
             docs:
               - 'docs/**'
+              - 'CHANGELOG.adoc'
+              - 'CONTRIBUTING.adoc'
+              - 'LICENCE.adoc'
+              - 'README.md'
 
   deploy-docs:
     needs: changes
