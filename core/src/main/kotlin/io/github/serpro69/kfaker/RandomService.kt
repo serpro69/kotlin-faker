@@ -177,6 +177,9 @@ class RandomService internal constructor(private val config: FakerConfig) {
      *                       Default: `24`
      * @param locale         locale to use to generate the charset.
      *                       Defaults to `locale` config value set for the `faker` instance.
+     * @param indexChars     add additional index chars to the resulting string, as defined in
+     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
+     *                       Default: `true`
      * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in
      *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
      *                       Default: `false`
@@ -193,10 +196,6 @@ class RandomService internal constructor(private val config: FakerConfig) {
         numericalChars: Boolean = false,
     ): String {
         if (length < 1) return "" // base case
-        if (locale in listOf(Locale.ENGLISH, Locale.US, Locale.UK, Locale.CANADA)) return randomString(
-            length,
-            numericalChars
-        )
 
         val localeData = LocaleData.getInstance(ULocale.forLocale(locale))
         val mainChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_STANDARD)
@@ -222,6 +221,25 @@ class RandomService internal constructor(private val config: FakerConfig) {
         return List(length) { chars.random(random.asKotlinRandom()) }.joinToString("")
     }
 
+    /**
+     * Returns [String] with a randomLength withing the specified [min] and [max] boundaries
+     * (or an empty string for if `randomLength < 1`)
+     * consisting of pseudo-randomly generated characters
+     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
+     *
+     * @param min            the minimum length of the resulting string.
+     * @param max            the maximum length of the resulting string.
+     * @param locale         locale to use to generate the charset.
+     *                       Defaults to `locale` config value set for the `faker` instance.
+     * @param indexChars     add additional index chars to the resulting string, as defined in
+     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
+     *                       Default: `true`
+     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in
+     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
+     *                       Default: `false`
+     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
+     *                       Default: `false`
+     */
     @JvmOverloads
     fun randomString(
         min: Int,
