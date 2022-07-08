@@ -187,8 +187,10 @@ class RandomService internal constructor(private val config: FakerConfig) {
     fun randomString(
         length: Int = 24,
         locale: Locale = Locale.forLanguageTag(config.locale),
+        indexChars: Boolean = true,
         auxiliaryChars: Boolean = false,
-        numericalChars: Boolean = false
+        punctuationChars: Boolean = false,
+        numericalChars: Boolean = false,
     ): String {
         if (length < 1) return "" // base case
         if (locale in listOf(Locale.ENGLISH, Locale.US, Locale.UK, Locale.CANADA)) return randomString(
@@ -205,13 +207,40 @@ class RandomService internal constructor(private val config: FakerConfig) {
                 .ranges()
                 .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
         } else emptyList()
-        val indexChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_INDEX)
-            .ranges()
-            .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        val idxChars = if (indexChars) {
+            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_INDEX)
+                .ranges()
+                .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        } else emptyList()
+        val punctChars = if (punctuationChars) {
+            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_PUNCTUATION)
+                .ranges()
+                .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+        } else emptyList()
         val numChars = if (numericalChars) numericCharset else emptyList()
-
-        val chars = (mainChars + auxChars + indexChars + numChars)
+        val chars = (mainChars + auxChars + idxChars + punctChars + numChars)
         return List(length) { chars.random(random.asKotlinRandom()) }.joinToString("")
+    }
+
+    @JvmOverloads
+    fun randomString(
+        min: Int,
+        max: Int,
+        locale: Locale = Locale.forLanguageTag(config.locale),
+        indexChars: Boolean = true,
+        auxiliaryChars: Boolean = false,
+        punctuationChars: Boolean = false,
+        numericalChars: Boolean = false,
+    ): String {
+        val len = nextInt(min, max)
+        return randomString(
+            len,
+            locale,
+            indexChars = indexChars,
+            auxiliaryChars = auxiliaryChars,
+            punctuationChars = punctuationChars,
+            numericalChars = numericalChars,
+        )
     }
 
     /**

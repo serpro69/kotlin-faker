@@ -203,8 +203,10 @@ class Extras : DescribeSpec({
             faker.random.randomString(
                 length = 24,
                 locale = Locale.forLanguageTag("nb-NO"),
+                indexChars = true,
                 auxiliaryChars = true,
-                numericalChars = true
+                punctuationChars = true,
+                numericalChars = true,
             )
             // END extras_random_everything_five
         }
