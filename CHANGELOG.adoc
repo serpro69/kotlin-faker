@@ -5,11 +5,24 @@
 === Added
 
 * https://github.com/serpro69/kotlin-faker/pull/134[#134] Overload `RandomService#randomSublist` and `RandomService#randomSubset` with `sizeRange` parameter
+* https://github.com/serpro69/kotlin-faker/pull/144[#144] Add index and punctuation chars support to `RandomService#randomString`
 
 [discrete]
 === Changed
 
 * https://github.com/serpro69/kotlin-faker/pull/135[#135] Initialize Faker data providers lazily
+
+[discrete]
+=== Fixed
+* https://github.com/serpro69/kotlin-faker/issues/140[#140] Fix NPE when generating CurrencySymbol with non 'en' locale
+* https://github.com/serpro69/kotlin-faker/pull/142[#142] Fix unique localized category keys missing from dictionary
+* https://github.com/serpro69/kotlin-faker/issues/136[#136] Parameter 'streets' not found in 'ADDRESS' category
+* https://github.com/serpro69/kotlin-faker/issues/137[#137] Parameter 'category' not found in 'COMPANY' category for 'ja' locale
+* https://github.com/serpro69/kotlin-faker/pull/146[#146] Fix `RandomService#randomString` for some eng-lang locales
+
+[discrete]
+=== Docs
+* https://github.com/serpro69/kotlin-faker/pull/130[#130] Document how to add new data providers
 ====
 
 .[1.11.0] - 2022-05-22
