@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldNotBe
 
 class CrossfitTest : DescribeSpec({
     describe("Crossfit provider") {
-        val crossfit = Crossfit( FakerService(faker = Faker()))
+        val crossfit = Crossfit(FakerService(faker = Faker()))
 
         context("competition fun") {
             it("should returns a Crossfit® competition name") {
