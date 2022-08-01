@@ -27,7 +27,7 @@ class StarWars internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun species() = resolve("species")
     fun vehicles() = resolve("vehicles")
     fun wookieeWords() = resolve("wookiee_words")
-    fun quotes(character: String) = resolve("quotes", character.lowercase().replace("_", " "))
+    fun quotes(character: String) = resolve("quotes", character.lowercase().replace(" ", "_"))
     fun quote() = resolve("quotes", "")
     fun alternateCharacterSpellings(character: String) = resolve("alternate_character_spellings", character)
 }
