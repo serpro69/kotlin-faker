@@ -3,6 +3,7 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
@@ -23,6 +24,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
 
     val unique by lazy { GlobalUniqueDataDataProvider() }
 
+    val crypto: CryptographyProvider by lazy { CryptographyProvider(fakerService) }
     val randomProvider: RandomProvider by lazy { RandomProvider(config) }
     val string: StringProvider by lazy { StringProvider(fakerService) }
 
@@ -67,6 +69,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val commerce: Commerce by lazy { Commerce(fakerService) }
     val community: Community by lazy { Community(fakerService) }
     val company: Company by lazy { Company(fakerService) }
+
     //    val compass: Compass by lazy {Compass(fakerService) }
     val computer: Computer by lazy { Computer(fakerService) }
     val conan: Conan by lazy { Conan(fakerService) }
@@ -132,6 +135,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
     val internet: Internet by lazy { Internet(fakerService) }
+
     //    val invoice: Invoice by lazy {Invoice(fakerService }
     val jackHandey: JackHandey by lazy { JackHandey(fakerService) }
     val job: Job by lazy { Job(fakerService) }
@@ -187,6 +191,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val simpsons: Simpsons by lazy { Simpsons(fakerService) }
     val slackEmoji: SlackEmoji by lazy { SlackEmoji(fakerService) }
     val sonicTheHedgehog: SonicTheHedgehog by lazy { SonicTheHedgehog(fakerService) }
+
     //    val source: Source by lazy {Source(fakerService }
     val southPark: SouthPark by lazy { SouthPark(fakerService) }
     val space: Space by lazy { Space(fakerService) }
@@ -233,7 +238,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     /**
      * DSL builder for creating instances of [Faker]
      */
-    class Builder internal constructor(){
+    class Builder internal constructor() {
         /**
          * @property config faker configuration for the [Faker] instance
          * which will be created with this [Faker.Builder].
