@@ -3,7 +3,7 @@ package io.github.serpro69.kfaker
 /**
  * Represents a list of address category keys as found in `locales/en/address.yml` file.
  */
-val addressCategoryKeys = listOf(
+val addressCategoryKeys = setOf(
     "city_prefix",
     "city_suffix",
     "country",

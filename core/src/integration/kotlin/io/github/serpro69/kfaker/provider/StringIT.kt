@@ -21,7 +21,7 @@ class StringIT : DescribeSpec() {
     }
     private val sourceString = "foo###bar???"
 
-    override fun beforeEach(testCase: TestCase) {
+    override suspend fun beforeEach(testCase: TestCase) {
         faker.unique.clearAll()
         faker.string.unique.clearAll()
     }
