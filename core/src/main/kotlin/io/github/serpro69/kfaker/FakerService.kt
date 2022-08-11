@@ -36,7 +36,8 @@ import kotlin.reflect.full.declaredMemberProperties
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if is not specified.
  */
 internal class FakerService {
-    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)}""")
+    @Suppress("RegExpRedundantEscape")
+    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)\}""")
     private val locale: String
     internal val faker: Faker
     internal val randomService: RandomService
