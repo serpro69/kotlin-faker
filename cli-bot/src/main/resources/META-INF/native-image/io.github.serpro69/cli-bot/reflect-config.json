@@ -197,6 +197,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getCrypto",
+        "parameterTypes": []
+      },
+      {
         "name": "getCryptoCoin",
         "parameterTypes": []
       },
@@ -4969,6 +4973,35 @@
       },
       {
         "name": "locations",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.misc.CryptographyProvider",
+    "methods": [
+      {
+        "name": "md5",
+        "parameterTypes": []
+      },
+      {
+        "name": "sha1",
+        "parameterTypes": []
+      },
+      {
+        "name": "sha224",
+        "parameterTypes": []
+      },
+      {
+        "name": "sha256",
+        "parameterTypes": []
+      },
+      {
+        "name": "sha384",
+        "parameterTypes": []
+      },
+      {
+        "name": "sha512",
         "parameterTypes": []
       }
     ]

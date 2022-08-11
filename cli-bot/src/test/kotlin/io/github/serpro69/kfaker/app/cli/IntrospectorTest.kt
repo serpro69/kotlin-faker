@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker.app.cli
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Dota
 import io.kotest.core.spec.style.DescribeSpec
@@ -65,6 +66,7 @@ class IntrospectorTest : DescribeSpec() {
                         "Control",
                         "Cosmere",
                         "Crossfit",
+                        "CryptographyProvider",
                         "CryptoCoin",
                         "CultureSeries",
                         "Currency",
@@ -273,6 +275,7 @@ class IntrospectorTest : DescribeSpec() {
                         "control",
                         "cosmere",
                         "crossfit",
+                        "crypto",
                         "cryptoCoin",
                         "cultureSeries",
                         "currency",
@@ -479,4 +482,15 @@ class IntrospectorTest : DescribeSpec() {
             }
         }
     }
+}
+
+fun main() {
+    val f = faker { }
+
+    println(f.crypto.md5())
+    println(f.crypto.sha1())
+    println(f.crypto.sha224())
+    println(f.crypto.sha256())
+    println(f.crypto.sha384())
+    println(f.crypto.sha512())
 }
