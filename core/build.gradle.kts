@@ -36,6 +36,7 @@ sourceSets {
 val integrationTest by tasks.creating(Test::class) {
     testClassesDirs = sourceSets["integration"].output.classesDirs
     classpath = sourceSets["integration"].runtimeClasspath
+    dependsOn(tasks.test)
 }
 
 tasks.withType<Jar> {
@@ -76,6 +77,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
             )
         )
     }
+    dependsOn(tasks.jar)
 }
 
 java {

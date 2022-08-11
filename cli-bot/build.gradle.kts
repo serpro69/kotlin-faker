@@ -16,7 +16,7 @@ dependencies {
 }
 
 application {
-    mainClass.set(mainFunction)
+    mainClassName = mainFunction
 }
 
 java {
@@ -47,8 +47,6 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from(project.configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) })
     with(tasks.jar.get() as CopySpec)
     dependsOn(project.configurations.runtimeClasspath)
-
-
 }
 
 graal {
@@ -78,6 +76,7 @@ tasks {
                 commandLine("sh", "-c", "git checkout *KFaker.kt")
             }
         }
+        dependsOn(":core:assemble")
     }
 
     nativeImage {
