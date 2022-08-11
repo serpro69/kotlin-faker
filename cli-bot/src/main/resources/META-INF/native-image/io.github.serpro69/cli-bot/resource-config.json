@@ -1,11 +1,16 @@
 {
   "resources": {
     "includes": [
-      {"pattern": "META-INF/services/jdk.vm.ci.hotspot.HotSpotJVMCIBackendFactory"},
-      {"pattern": "META-INF/services/jdk.vm.ci.services.JVMCIServiceLocator"},
-      {"pattern": "META-INF/services/kotlin.reflect.jvm.internal.impl.resolve.ExternalOverridabilityCondition"},
-      {"pattern": "kotlin/kotlin.kotlin_builtins"},
-      {"pattern":"kotlin/ranges/ranges.kotlin_builtins"},
+      {"pattern":"\\QMETA-INF/services/kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoader\\E"},
+      {"pattern":"\\QMETA-INF/services/kotlin.reflect.jvm.internal.impl.resolve.ExternalOverridabilityCondition\\E"},
+      {"pattern":"\\Qkotlin/annotation/annotation.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/collections/collections.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/coroutines/coroutines.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/internal/internal.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/kotlin.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/ranges/ranges.kotlin_builtins\\E"},
+      {"pattern":"\\Qkotlin/reflect/reflect.kotlin_builtins\\E"},
+      {"pattern":"\\Qsun/text/resources/LineBreakIteratorData\\E"},
       {"pattern": ".*/*.yml$"}
     ]
   }
