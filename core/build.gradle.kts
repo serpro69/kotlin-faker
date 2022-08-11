@@ -59,6 +59,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     relocate("org.yaml", "faker.org.yaml")
     relocate("com.ibm.icu", "faker.com.ibm.icu")
     dependencies {
+        exclude("module-info.class")
         include {
             it.name.startsWith(project.group.toString()) ||
                 it.name.startsWith("com.fasterxml") ||
