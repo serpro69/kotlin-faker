@@ -170,9 +170,3 @@ signing {
         sign(publishing.publications["fakerCore"])
     }
 }
-
-tasks {
-    assemble {
-        dependsOn(shadowJar)
-    }
-}
