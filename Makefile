@@ -1,13 +1,30 @@
 SHELL  := env ORCHID_DIAGNOSE=$(ORCHID_DIAGNOSE) $(SHELL)
 ORCHID_DIAGNOSE ?= false
+.DEFAULT_GOAL := help
 
-deploy-docs:
+# https://stackoverflow.com/a/10858332
+# Check that given variables are set and all have non-empty values,
+# die with an error otherwise.
+#
+# Params:
+#   1. Variable name(s) to test.
+#   2. (optional) Error message to print.
+check_defined = \
+    $(strip $(foreach 1,$1, \
+        $(call __check_defined,$1,$(strip $(value 2)))))
+__check_defined = \
+    $(if $(value $1),, \
+      $(error Undefined $1$(if $2, ($2))))
+
+.PHONY: deploy-docs
+deploy-docs: ## deploys documentation with orchid
 	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./docs/src/orchid/resources/config.yml
 	sed -i 's/^\s\shomePageOnly:.*/#/' ./docs/src/orchid/resources/config.yml
 	./gradlew :docs:orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE)
 	git checkout ./docs/src/orchid/resources/config.yml
 
-snapshot-in-pre-release:
+.PHONY: snapshot-in-pre-release
+snapshot-in-pre-release: ## publishes next snapshot in current pre-release version
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -15,7 +32,8 @@ snapshot-in-pre-release:
 	-PpromoteToRelease \
 	--info
 
-snapshot-major:
+.PHONY: snapshot-major
+snapshot-major: ## publishes next snapshot with a major version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -23,7 +41,8 @@ snapshot-major:
 	-PbumpComponent=major \
 	--info
 
-snapshot-minor:
+.PHONY: snapshot-minor
+snapshot-minor: ## publishes next snapshot with a minor version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -31,7 +50,8 @@ snapshot-minor:
 	-PbumpComponent=minor \
 	--info
 
-snapshot-patch:
+.PHONY: snapshot-patch
+snapshot-patch: ## publishes next snapshot with a patch version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -39,7 +59,8 @@ snapshot-patch:
 	-PbumpComponent=patch \
 	--info
 
-pre-release-major:
+.PHONY: pre-release-major
+pre-release-major: ## publishes next pre-release version with a major version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -50,7 +71,8 @@ pre-release-major:
 
 	git push origin --tags
 
-pre-release-minor:
+.PHONY: pre-release-minor
+pre-release-minor: ## publishes next pre-release with a minor version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -61,7 +83,8 @@ pre-release-minor:
 
 	git push origin --tags
 
-pre-release-patch:
+.PHONY: pre-release-patch
+pre-release-patch: ## publishes next pre-release with a patch version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -72,7 +95,8 @@ pre-release-patch:
 
 	git push origin --tags
 
-next-pre-release:
+.PHONY: next-pre-release
+next-pre-release: ## publishes next pre-release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -83,7 +107,8 @@ next-pre-release:
 
 	git push origin --tags
 
-promote-to-release:
+.PHONY: promote-to-release
+promote-to-release: ## publishes next release from the current pre-release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -94,7 +119,8 @@ promote-to-release:
 
 	git push origin --tags
 
-release-major:
+.PHONY: release-major
+release-major: ## publishes next major release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -105,7 +131,8 @@ release-major:
 
 	git push origin --tags
 
-release-minor:
+.PHONY: release-minor
+release-minor: ## publishes next minor release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -116,7 +143,8 @@ release-minor:
 
 	git push origin --tags
 
-release-patch:
+.PHONY: release-patch
+release-patch: ## publishes next patch release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -126,3 +154,21 @@ release-patch:
 	--info
 
 	git push origin --tags
+
+.PHONY: release
+release: ## publishes the next release with a specified VERSION
+	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
+
+	./gradlew clean test integrationTest \
+	nativeImage \
+	publishToSonatype \
+	closeSonatypeStagingRepository \
+	-Pversion=$(VERSION) \
+	--info
+
+	git tag v$(VERSION)
+	git push origin --tags
+
+.PHONY: help
+help: ## Displays this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
