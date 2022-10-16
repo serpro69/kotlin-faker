@@ -119,6 +119,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val gratefulDead: GratefulDead by lazy { GratefulDead(fakerService) }
     val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
     val hacker: Hacker by lazy { Hacker(fakerService) }
+    val hackers: Hackers by lazy { Hackers(fakerService) }
     val halfLife: HalfLife by lazy { HalfLife(fakerService) }
     val harryPotter: HarryPotter by lazy { HarryPotter(fakerService) }
     val heroes: Heroes by lazy { Heroes(fakerService) }
@@ -154,6 +155,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val minecraft: Minecraft by lazy { Minecraft(fakerService) }
     val money: Money by lazy { Money(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
+    val mountaineering: Mountaineering by lazy { Mountaineering(fakerService) }
     val movie: Movie by lazy { Movie(fakerService) }
     val music: Music by lazy { Music(fakerService) }
     val myst: Myst by lazy { Myst(fakerService) }
@@ -195,6 +197,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     //    val source: Source by lazy {Source(fakerService }
     val southPark: SouthPark by lazy { SouthPark(fakerService) }
     val space: Space by lazy { Space(fakerService) }
+    val sport: Sport by lazy { Sport(fakerService) }
     val stargate: Stargate by lazy { Stargate(fakerService) }
     val starTrek: StarTrek by lazy { StarTrek(fakerService) }
     val starWars: StarWars by lazy { StarWars(fakerService) }
@@ -209,6 +212,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val supernatural: Supernatural by lazy { Supernatural(fakerService) }
     val superSmashBros: SuperSmashBros by lazy { SuperSmashBros(fakerService) }
     val swordArtOnline: SwordArtOnline by lazy { SwordArtOnline(fakerService) }
+    val tarkov: Tarkov by lazy { Tarkov(fakerService) }
     val tea: Tea by lazy { Tea(fakerService) }
     val team: Team by lazy { Team(fakerService) }
     val theExpanse: TheExpanse by lazy { TheExpanse(fakerService) }
