@@ -34,5 +34,10 @@ Faker().internet.domainSuffix() // => com
 Faker().internet.userAgent("firefox") // => Mozilla/5.0 (Windows NT x.y; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0
 // or by a random browser type
 Faker().internet.userAgent("") // => Opera/9.80 (X11; Linux i686; Ubuntu/14.10) Presto/2.12.388 Version/12.16
+
+// Random bot user agent by type (case-insensitive)
+Faker().botUserAgent("duckduckbot") // => DuckDuckBot-Https/1.1; (+https://duckduckgo.com/duckduckbot)
+// or by a random type
+Faker().botUserAgent("") // => Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/83.0.4103.122 Safari/537.36
 ----
 ====
