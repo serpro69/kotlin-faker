@@ -10,6 +10,7 @@ en:
         python: "print('Hello World!')"
         java: "System.out.println('Hello World!');"
         elixir: "IO.puts 'Hello World!'"
+        clojure: "(print 'Hello World!')"
       print:
         ruby: "puts 'faker_string_to_print'"
         javascript: "console.log('faker_string_to_print');"
@@ -18,6 +19,7 @@ en:
         python: "print('faker_string_to_print')"
         java: "System.out.println('faker_string_to_print');"
         elixir: "IO.puts 'faker_string_to_print'"
+        clojure: "(print 'faker_string_to_print')"
       print_1_to_10:
         ruby: "
               (1..10).each { |i| puts i }"
@@ -45,4 +47,7 @@ en:
                 Enum.each(1..10, fn(x) ->
                   IO.puts x
                 end)"
+        clojure: "
+                (for [i (range 1 11)]
+                  (println i))"
 # END source_provider_dict
