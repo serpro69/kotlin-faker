@@ -1,12 +1,15 @@
 [
   {
-    "name": "com.fasterxml.jackson.databind.deser.Deserializers[]"
+    "name": "faker.com.fasterxml.jackson.databind.deser.Deserializers[]"
   },
   {
-    "name": "com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
+    "name": "faker.com.fasterxml.jackson.databind.deser.KeyDeserializers[]"
   },
   {
-    "name": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+    "name": "faker.com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
+  },
+  {
+    "name": "faker.com.fasterxml.jackson.databind.ext.Java7SupportImpl",
     "methods": [
       {
         "name": "<init>",
@@ -15,7 +18,7 @@
     ]
   },
   {
-    "name": "com.fasterxml.jackson.databind.ser.Serializers[]"
+    "name": "faker.com.fasterxml.jackson.databind.ser.Serializers[]"
   },
   {
     "name": "io.github.serpro69.kfaker.Faker",
@@ -373,6 +376,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getHackers",
+        "parameterTypes": []
+      },
+      {
         "name": "getHalfLife",
         "parameterTypes": []
       },
@@ -502,6 +509,10 @@
       },
       {
         "name": "getMountain",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMountaineering",
         "parameterTypes": []
       },
       {
@@ -661,6 +672,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getSport",
+        "parameterTypes": []
+      },
+      {
         "name": "getStarTrek",
         "parameterTypes": []
       },
@@ -714,6 +729,10 @@
       },
       {
         "name": "getSwordArtOnline",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTarkov",
         "parameterTypes": []
       },
       {
@@ -1551,28 +1570,12 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Computer",
-    "methods": [
-      {
-        "name": "linux",
-        "parameterTypes": []
-      },
-      {
-        "name": "macOS",
-        "parameterTypes": []
-      },
-      {
-        "name": "platform",
-        "parameterTypes": []
-      },
-      {
-        "name": "type",
-        "parameterTypes": []
-      },
-      {
-        "name": "windows",
-        "parameterTypes": []
-      }
-    ]
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.ComputerOS"
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Conan",
@@ -2344,16 +2347,12 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.File",
-    "methods": [
-      {
-        "name": "extension",
-        "parameterTypes": []
-      },
-      {
-        "name": "mimeType",
-        "parameterTypes": []
-      }
-    ]
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.FileMimeType"
   },
   {
     "name": "io.github.serpro69.kfaker.provider.FinalSpace",
@@ -2375,6 +2374,10 @@
   {
     "name": "io.github.serpro69.kfaker.provider.Finance",
     "methods": [
+      {
+        "name": "condominiumFiscalCode",
+        "parameterTypes": []
+      },
       {
         "name": "creditCard",
         "parameterTypes": [
@@ -2673,6 +2676,23 @@
       },
       {
         "name": "verb",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Hackers",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "handles",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
         "parameterTypes": []
       }
     ]
@@ -3295,6 +3315,15 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.Mountaineering",
+    "methods": [
+      {
+        "name": "mountaineer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.Movie",
     "methods": [
       {
@@ -3359,44 +3388,9 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Name",
-    "methods": [
-      {
-        "name": "femaleFirstName",
-        "parameterTypes": []
-      },
-      {
-        "name": "femaleLastName",
-        "parameterTypes": []
-      },
-      {
-        "name": "firstName",
-        "parameterTypes": []
-      },
-      {
-        "name": "lastName",
-        "parameterTypes": []
-      },
-      {
-        "name": "maleFirstName",
-        "parameterTypes": []
-      },
-      {
-        "name": "maleLastName",
-        "parameterTypes": []
-      },
-      {
-        "name": "name",
-        "parameterTypes": []
-      },
-      {
-        "name": "nameWithMiddle",
-        "parameterTypes": []
-      },
-      {
-        "name": "neutralFirstName",
-        "parameterTypes": []
-      }
-    ]
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Naruto",
@@ -3449,32 +3443,9 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.OnePiece",
-    "methods": [
-      {
-        "name": "akumasNoMi",
-        "parameterTypes": []
-      },
-      {
-        "name": "characters",
-        "parameterTypes": []
-      },
-      {
-        "name": "islands",
-        "parameterTypes": []
-      },
-      {
-        "name": "locations",
-        "parameterTypes": []
-      },
-      {
-        "name": "quotes",
-        "parameterTypes": []
-      },
-      {
-        "name": "seas",
-        "parameterTypes": []
-      }
-    ]
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Opera"
@@ -4083,6 +4054,35 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.Sport",
+    "methods": [
+      {
+        "name": "ancientOlympics",
+        "parameterTypes": []
+      },
+      {
+        "name": "summerOlympics",
+        "parameterTypes": []
+      },
+      {
+        "name": "summerParalympics",
+        "parameterTypes": []
+      },
+      {
+        "name": "unusual",
+        "parameterTypes": []
+      },
+      {
+        "name": "winterOlympics",
+        "parameterTypes": []
+      },
+      {
+        "name": "winterParalympics",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.StarTrek",
     "methods": [
       {
@@ -4384,6 +4384,38 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Tarkov",
+    "methods": [
+      {
+        "name": "bosses",
+        "parameterTypes": []
+      },
+      {
+        "name": "factions",
+        "parameterTypes": []
+      },
+      {
+        "name": "items",
+        "parameterTypes": []
+      },
+      {
+        "name": "locations",
+        "parameterTypes": []
+      },
+      {
+        "name": "traders",
+        "parameterTypes": []
+      },
+      {
+        "name": "weapons",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TarkovQuests"
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Tea",
@@ -5025,6 +5057,15 @@
   },
   {
     "name": "java.lang.String"
+  },
+  {
+    "name": "java.lang.System",
+    "methods": [
+      {
+        "name": "console",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "java.nio.file.Path"
