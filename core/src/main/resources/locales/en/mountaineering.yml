@@ -1,0 +1,16 @@
+# START mountaineering_provider_dict
+en:
+  faker:
+    mountaineering:
+      mountaineer:
+        - Junko Tabei
+        - Catherine Destivelle
+        - Sasha DiGiulian
+        - Priti Wright
+        - Caroline Gleich
+        - Conrad Anker
+        - Edmund Hillary
+        - George Mallory
+        - Steve House
+        - Fred Beckey
+# END mountaineering_provider_dict
