@@ -262,7 +262,7 @@ internal class RandomServiceTest : DescribeSpec({
                 val sublist = randomService.randomSublist(list, size = 10, shuffled = true)
                 assertSoftly {
                     list shouldContainAll sublist
-                    if (sublist.isNotEmpty()) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    if (sublist.size > 1) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
                 }
             }
         }
@@ -298,10 +298,10 @@ internal class RandomServiceTest : DescribeSpec({
             }
 
             it("should return a random shuffled subset") {
-                val sublist = randomService.randomSubset(set, shuffled = true)
+                val subset = randomService.randomSubset(set, shuffled = true)
                 assertSoftly {
-                    set shouldContainAll sublist
-                    if (sublist.isNotEmpty()) sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    set shouldContainAll subset
+                    if (subset.size > 1) subset shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
                 }
             }
         }
