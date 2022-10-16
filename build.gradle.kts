@@ -54,8 +54,8 @@ subprojects {
         testImplementation("io.kotest.extensions:kotest-extensions-allure:1.2.0")
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-        testRuntimeOnly("ch.qos.logback:logback-core:1.4.4")
-        testRuntimeOnly("ch.qos.logback:logback-classic:1.4.4")
+        testRuntimeOnly("ch.qos.logback:logback-core:1.3.4")
+        testRuntimeOnly("ch.qos.logback:logback-classic:1.3.4")
         testRuntimeOnly("org.codehaus.groovy:groovy:3.0.13")
     }
 
