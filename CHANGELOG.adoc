@@ -1,4 +1,29 @@
-.[1.12.0] - UNRELEASED
+.[1.13.0] - UNRELEASED
+[%collapsible]
+====
+[discrete]
+=== Breaking Change
+
+*
+
+[discrete]
+=== Added
+
+*
+
+[discrete]
+=== Changed
+
+*
+
+[discrete]
+=== Fixed
+
+*
+
+====
+
+.[1.12.0] - 2022-10-16
 [%collapsible]
 ====
 [discrete]
@@ -30,10 +55,20 @@
 * https://github.com/serpro69/kotlin-faker/pull/135[#135] Initialize Faker data providers lazily
 
 [discrete]
-=== Fixed * https://github.com/serpro69/kotlin-faker/issues/136[#136] Parameter 'streets' not found in 'ADDRESS' category * https://github.com/serpro69/kotlin-faker/issues/137[#137] Parameter 'category' not found in 'COMPANY' category for 'ja' locale * https://github.com/serpro69/kotlin-faker/issues/138[#138] Parameter 'zip_code' not found in 'ADDRESS' category for 'fr' locale * https://github.com/serpro69/kotlin-faker/issues/140[#140] Fix NPE when generating CurrencySymbol with non 'en' locale * https://github.com/serpro69/kotlin-faker/pull/142[#142] Fix unique localized category keys missing from dictionary * https://github.com/serpro69/kotlin-faker/pull/146[#146] Fix `RandomService#randomString` for some eng-lang locales * https://github.com/serpro69/kotlin-faker/issues/148[#148] Fix StarWars quotes by character
+=== Fixed
+
+* https://github.com/serpro69/kotlin-faker/issues/136[#136] Parameter 'streets' not found in 'ADDRESS' category
+* https://github.com/serpro69/kotlin-faker/issues/137[#137] Parameter 'category' not found in 'COMPANY' category for 'ja' locale
+* https://github.com/serpro69/kotlin-faker/issues/138[#138] Parameter 'zip_code' not found in 'ADDRESS' category for 'fr' locale
+* https://github.com/serpro69/kotlin-faker/issues/140[#140] Fix NPE when generating CurrencySymbol with non 'en' locale
+* https://github.com/serpro69/kotlin-faker/pull/142[#142] Fix unique localized category keys missing from dictionary
+* https://github.com/serpro69/kotlin-faker/pull/146[#146] Fix `RandomService#randomString` for some eng-lang locales
+* https://github.com/serpro69/kotlin-faker/issues/148[#148] Fix StarWars quotes by character
 
 [discrete]
-=== Docs * https://github.com/serpro69/kotlin-faker/pull/130[#130] Document how to add new data providers
+=== Docs
+
+* https://github.com/serpro69/kotlin-faker/pull/130[#130] Document how to add new data providers
 ====
 
 .[1.11.0] - 2022-05-22
