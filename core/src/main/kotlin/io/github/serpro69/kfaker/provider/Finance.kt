@@ -19,6 +19,7 @@ class Finance internal constructor(fakerService: FakerService) : YamlFakeDataPro
     }
 
     fun creditCard(type: String): String = with(fakerService) { resolve("credit_card", type).numerify().generexify() }
+    fun condominiumFiscalCode(): String = with(fakerService) { resolve("condominium_fiscal_code", "IT").numerify() }
     fun vatNumber(countryCode: String): String = with(fakerService) { resolve("vat_number", countryCode).numerify() }
     fun ticker(stockExchange: StockExchange = fakerService.randomService.nextEnum()): String =
         resolve("ticker", stockExchange.name.lowercase())

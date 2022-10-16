@@ -37,6 +37,7 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
 
     fun slug(): String = resolve("slug")
 
-    fun domainSuffix() = resolve("domain_suffix")
-    fun userAgent(browserType: String) = resolve("user_agent", browserType.lowercase())
+    fun domainSuffix(): String = resolve("domain_suffix")
+    fun userAgent(browserType: String): String = resolve("user_agent", browserType.lowercase())
+    fun botUserAgent(type: String): String = resolve("bot_user_agent", type.lowercase())
 }

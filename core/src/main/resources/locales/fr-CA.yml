@@ -56,7 +56,7 @@ fr-CA:
         - "#{PhoneNumber.area_code}.#{PhoneNumber.exchange_code}.#{PhoneNumber.subscriber_number}"
 
     country_code:
-        - '1'
+      - '1'
 
     company:
       suffix: [SARL, SA, EURL, SAS, SEM, SCOP, GIE, EI]

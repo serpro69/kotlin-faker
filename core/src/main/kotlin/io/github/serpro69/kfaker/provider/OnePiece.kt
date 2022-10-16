@@ -23,5 +23,11 @@ class OnePiece internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun islands() = resolve("islands")
     fun locations() = resolve("locations")
     fun quotes() = resolve("quotes")
-    fun akumasNoMi() = resolve("akumas_no_mi")
+    @Deprecated(
+        message = "This is deprecated and will be removed in future releases",
+        replaceWith = ReplaceWith("akumaNoMi"),
+        level = DeprecationLevel.WARNING
+    )
+    fun akumasNoMi() = akumaNoMi()
+    fun akumaNoMi() = resolve("akuma_no_mi")
 }
