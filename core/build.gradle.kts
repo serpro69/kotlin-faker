@@ -179,3 +179,9 @@ tasks {
         dependsOn(shadowJar)
     }
 }
+
+tasks.withType<PublishToMavenRepository>().configureEach {
+    doFirst {
+        if (version == "0.0.0") throw IllegalArgumentException("Unable to publish version 0.0.0")
+    }
+}

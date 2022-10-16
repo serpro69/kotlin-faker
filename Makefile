@@ -24,7 +24,7 @@ deploy-docs: ## deploys documentation with orchid
 	git checkout ./docs/src/orchid/resources/config.yml
 
 .PHONY: snapshot-in-pre-release
-snapshot-in-pre-release: ## publishes next snapshot in current pre-release version
+_snapshot-in-pre-release: ## (DEPRECATED) publishes next snapshot in current pre-release version
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -33,7 +33,7 @@ snapshot-in-pre-release: ## publishes next snapshot in current pre-release versi
 	--info
 
 .PHONY: snapshot-major
-snapshot-major: ## publishes next snapshot with a major version bump
+_snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -42,7 +42,7 @@ snapshot-major: ## publishes next snapshot with a major version bump
 	--info
 
 .PHONY: snapshot-minor
-snapshot-minor: ## publishes next snapshot with a minor version bump
+_snapshot-minor: ## (DEPRECATED) publishes next snapshot with a minor version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -51,7 +51,7 @@ snapshot-minor: ## publishes next snapshot with a minor version bump
 	--info
 
 .PHONY: snapshot-patch
-snapshot-patch: ## publishes next snapshot with a patch version bump
+_snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bump
 	./gradlew clean test integrationTest \
 	printVersion \
 	nativeImage \
@@ -60,7 +60,7 @@ snapshot-patch: ## publishes next snapshot with a patch version bump
 	--info
 
 .PHONY: pre-release-major
-pre-release-major: ## publishes next pre-release version with a major version bump
+_pre-release-major: ## (DEPRECATED) publishes next pre-release version with a major version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -72,7 +72,7 @@ pre-release-major: ## publishes next pre-release version with a major version bu
 	git push origin --tags
 
 .PHONY: pre-release-minor
-pre-release-minor: ## publishes next pre-release with a minor version bump
+_pre-release-minor: ## (DEPRECATED) publishes next pre-release with a minor version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -84,7 +84,7 @@ pre-release-minor: ## publishes next pre-release with a minor version bump
 	git push origin --tags
 
 .PHONY: pre-release-patch
-pre-release-patch: ## publishes next pre-release with a patch version bump
+_pre-release-patch: ## (DEPRECATED) publishes next pre-release with a patch version bump
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -96,7 +96,7 @@ pre-release-patch: ## publishes next pre-release with a patch version bump
 	git push origin --tags
 
 .PHONY: next-pre-release
-next-pre-release: ## publishes next pre-release version
+_next-pre-release: ## (DEPRECATED) publishes next pre-release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -108,7 +108,7 @@ next-pre-release: ## publishes next pre-release version
 	git push origin --tags
 
 .PHONY: promote-to-release
-promote-to-release: ## publishes next release from the current pre-release version
+_promote-to-release: ## (DEPRECATED) publishes next release from the current pre-release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -120,7 +120,7 @@ promote-to-release: ## publishes next release from the current pre-release versi
 	git push origin --tags
 
 .PHONY: release-major
-release-major: ## publishes next major release version
+_release-major: ## (DEPRECATED) publishes next major release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -132,7 +132,7 @@ release-major: ## publishes next major release version
 	git push origin --tags
 
 .PHONY: release-minor
-release-minor: ## publishes next minor release version
+_release-minor: ## (DEPRECATED) publishes next minor release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
@@ -144,7 +144,7 @@ release-minor: ## publishes next minor release version
 	git push origin --tags
 
 .PHONY: release-patch
-release-patch: ## publishes next patch release version
+_release-patch: ## (DEPRECATED) publishes next patch release version
 	./gradlew clean test integrationTest \
 	tag \
 	nativeImage \
