@@ -3,7 +3,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.dokka") version "1.7.10"
+    id("org.jetbrains.dokka") version "1.7.20"
     `maven-publish`
     signing
 }
@@ -12,11 +12,11 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
-    implementation("org.yaml:snakeyaml:1.30")
+    implementation("org.yaml:snakeyaml:1.33")
     implementation("com.ibm.icu:icu4j:71.1")
     shadow(kotlin("stdlib-jdk8"))
     shadow(kotlin("reflect"))
-    shadow("org.slf4j:slf4j-api:1.7.36")
+    shadow("org.slf4j:slf4j-api:2.0.3")
     shadow("com.github.mifmif:generex:1.0.2")
 }
 
