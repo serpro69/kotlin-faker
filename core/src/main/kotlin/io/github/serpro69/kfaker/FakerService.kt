@@ -64,8 +64,8 @@ internal class FakerService {
         secondaryCategory: Category?
     ): InputStream {
         return secondaryCategory?.let {
-            requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.yml"))
-        } ?: requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.yml"))
+            requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.json"))
+        } ?: requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.json"))
     }
 
     private fun getCategoryFileStreamOrNull(
@@ -74,12 +74,12 @@ internal class FakerService {
         secondaryCategory: Category?
     ): InputStream? {
         return secondaryCategory?.let {
-            javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.yml")
-        } ?: javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.yml")
+            javaClass.classLoader.getResourceAsStream("locales/$locale/${it.lowercase()}.json")
+        } ?: javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.json")
     }
 
     private fun getLocaleFileStream(locale: String): InputStream? {
-        return javaClass.classLoader.getResourceAsStream("locales/$locale.yml")
+        return javaClass.classLoader.getResourceAsStream("locales/$locale.json")
     }
 
     /**

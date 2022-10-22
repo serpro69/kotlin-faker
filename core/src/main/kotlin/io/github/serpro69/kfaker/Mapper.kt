@@ -1,15 +1,14 @@
 package io.github.serpro69.kfaker
 
-import com.fasterxml.jackson.databind.*
-import com.fasterxml.jackson.dataformat.yaml.*
-import com.fasterxml.jackson.module.kotlin.*
-import java.io.*
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.KotlinModule
+import java.io.InputStream
 
 internal object Mapper {
-    private val mapper = ObjectMapper(YAMLFactory())
+    private val mapper = ObjectMapper()
 
     init {
-        mapper.registerModule(KotlinModule())
+        mapper.registerModule(KotlinModule.Builder().build())
     }
 
     fun <T> readValue(inputStream: InputStream, type: Class<T>): T = mapper.readerFor(type).readValue(inputStream)
