@@ -57,6 +57,7 @@ graal {
     option("--no-fallback")
     option("--no-server")
     option("--report-unsupported-elements-at-runtime")
+    option("--allow-incomplete-classpath")
 }
 
 tasks {
