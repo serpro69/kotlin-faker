@@ -7,6 +7,9 @@ import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
+/**
+ * Provides functions for generating random hash sum strings.
+ */
 class CryptographyProvider internal constructor(
     fakerService: FakerService
 ) : AbstractFakeDataProvider<CryptographyProvider>(fakerService) {
