@@ -27,9 +27,11 @@ dependencies {
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block
 configure<Yaml2JsonPluginExtension> {
-    input.set(File("ar.yml"))
-    output.set(File("test.json"))
+    input.set(File("core/src/main/resources/locales"))
+    output.set(File("core/build/generated/src/main/resources"))
 }
+
+tasks.processResources.get().dependsOn(tasks["yaml2json"])
 
 configurations {
     create("integrationImplementation") { extendsFrom(testImplementation.get()) }
@@ -41,6 +43,11 @@ sourceSets {
         resources.srcDir("src/integration/resources")
         compileClasspath += main.get().compileClasspath + test.get().compileClasspath
         runtimeClasspath += main.get().runtimeClasspath + test.get().runtimeClasspath
+    }
+    main {
+        resources {
+            this.srcDir("build/generated/src/main/resources")
+        }
     }
 }
 
