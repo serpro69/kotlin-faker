@@ -19,6 +19,7 @@ import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import io.github.serpro69.kfaker.provider.Tertiary
 import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
+import org.w3c.dom.ranges.RangeException
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
@@ -304,8 +305,10 @@ internal class FakerService {
 
         return when (parameterValue) {
             is List<*> -> {
-                when (val value = randomService.randomValue(parameterValue)) {
-                    is List<*> -> RawExpression(randomService.randomValue(value) as String)
+                if (parameterValue.isEmpty()) RawExpression("") else when (val value = randomService.randomValue(parameterValue)) {
+                    is List<*> -> {
+                        if (value.isEmpty()) RawExpression("") else RawExpression(randomService.randomValue(value) as String)
+                    }
                     is String -> RawExpression(value)
                     is Int -> RawExpression(value.toString())
                     else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
