@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.faker
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldMatch
@@ -10,6 +11,17 @@ import io.kotest.matchers.string.shouldMatch
 class AddressIT : DescribeSpec({
     describe("Address Provider") {
         val address: (locale: String) -> Address = { faker { fakerConfig { locale = it } }.address }
+
+        context("uk locale") {
+            context("empty list as a parameter value") {
+                it("cityPrefix() should return empty string") {
+                    address("uk").cityPrefix() shouldBe ""
+                }
+                it("citySuffix() should return empty string") {
+                    address("uk").citySuffix() shouldBe ""
+                }
+            }
+        }
 
         context("nb-NO locale") {
             it("city() does NOT throw NoSuchElementException") {
