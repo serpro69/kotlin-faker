@@ -1,11 +1,16 @@
+import Yaml_to_json_gradle.Yaml2JsonPlugin
+import Yaml_to_json_gradle.Yaml2JsonPluginExtension
 import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+//import io.github.serpro69.YamlToJsonPlugin
 
 plugins {
     kotlin("jvm")
     id("org.jetbrains.dokka") version "1.7.20"
     `maven-publish`
     signing
+    `yaml-to-json`
 }
 
 dependencies {
@@ -18,6 +23,12 @@ dependencies {
     shadow(kotlin("reflect"))
     shadow("org.slf4j:slf4j-api:2.0.3")
     shadow("com.github.mifmif:generex:1.0.2")
+}
+
+apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block
+configure<Yaml2JsonPluginExtension> {
+    input.set(File("ar.yml"))
+    output.set(File("test.json"))
 }
 
 configurations {
