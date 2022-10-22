@@ -11,7 +11,7 @@
       {"pattern":"\\Qkotlin/ranges/ranges.kotlin_builtins\\E"},
       {"pattern":"\\Qkotlin/reflect/reflect.kotlin_builtins\\E"},
       {"pattern":"\\Qsun/text/resources/LineBreakIteratorData\\E"},
-      {"pattern": ".*/*.yml$"}
+      {"pattern": ".*/*.json$"}
     ]
   }
 }
