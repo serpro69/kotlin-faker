@@ -1,5 +1,6 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.provider.misc
 
+import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldNotThrow
@@ -14,9 +15,11 @@ import io.kotest.matchers.types.instanceOf
 import java.util.*
 
 @Suppress("unused")
-class RandomProviderTest : DescribeSpec({
+class RandomClassProviderTest : DescribeSpec({
+    assertSoftly = true
+
     val config = fakerConfig { random = Random() }
-    val randomProvider = RandomProvider(config)
+    val randomProvider = RandomClassProvider(config)
 
     describe("a TestClass with an empty constructor") {
         class TestClass
@@ -417,6 +420,167 @@ class RandomProviderTest : DescribeSpec({
 
         it("should generate a random string") {
             randomProvider.randomClassInstance<String>() shouldHaveLength 24
+        }
+    }
+
+    describe("RandomClassProvider configuration") {
+        class Foo(val int: Int)
+        class Bar(val foo: Foo)
+        class Baz(val foo: Foo, val bar: Bar, val test: Int, val nullable: String?)
+
+        val cfg: () -> FakerConfig = {
+            fakerConfig {
+                randomProvider {
+                    typeGenerator { Foo(0) }
+                    nullableTypeGenerator { "nn" }
+                    namedParameterGenerator("test") { 1 }
+                }
+            }
+        }
+
+        it("should configure all random instances") {
+            with(RandomClassProvider(config)) {
+                configure {
+                    typeGenerator { Foo(42) }
+                    nullableTypeGenerator { "nn" }
+                    namedParameterGenerator("test") { 32167 }
+                }
+                randomClassInstance<Bar>().foo.int shouldBe 42
+                randomClassInstance<Baz>().foo.int shouldBe 42
+                randomClassInstance<Baz>().bar.foo.int shouldBe 42
+                randomClassInstance<Baz>().test shouldBe 32167
+                randomClassInstance<Baz>().nullable shouldBe "nn"
+            }
+        }
+
+        context("precedence") {
+            it("should configure random providers from fakerConfig") {
+                with(RandomClassProvider(cfg())) {
+                    randomClassInstance<Bar>().foo.int shouldBe 0
+                    randomClassInstance<Baz>().foo.int shouldBe 0
+                    randomClassInstance<Baz>().bar.foo.int shouldBe 0
+                    randomClassInstance<Baz>().test shouldBe 1
+                    randomClassInstance<Baz>().nullable shouldBe "nn"
+                }
+            }
+            it("should have defaults if not configured on fakerConfig level") {
+                with(RandomClassProvider(fakerConfig { })) {
+                    randomClassInstance<Bar>().foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().bar.foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().test shouldNotBe 1
+                    randomClassInstance<Baz>().nullable shouldNotBe "nn"
+                }
+            }
+            it("should override configuration from RandomProvider level") {
+                with(RandomClassProvider(cfg())) {
+                    configure {
+                        typeGenerator { Foo(42) }
+                        nullableTypeGenerator { "just a string" }
+                        namedParameterGenerator("test") { 32167 }
+                    }
+                    randomClassInstance<Bar>().foo.int shouldBe 42
+                    randomClassInstance<Baz>().foo.int shouldBe 42
+                    randomClassInstance<Baz>().bar.foo.int shouldBe 42
+                    randomClassInstance<Baz>().test shouldBe 32167
+                    randomClassInstance<Baz>().nullable shouldBe "just a string"
+                }
+            }
+            it("should re-configure random providers") {
+                with(RandomClassProvider(cfg())) {
+                    configure {
+                        typeGenerator { Foo(42) }
+                        nullableTypeGenerator { "just a string" }
+                        namedParameterGenerator("test") { 32167 }
+                    }
+                    randomClassInstance<Bar>().foo.int shouldBe 42
+                    randomClassInstance<Baz>().foo.int shouldBe 42
+                    randomClassInstance<Baz>().bar.foo.int shouldBe 42
+                    randomClassInstance<Baz>().test shouldBe 32167
+                    randomClassInstance<Baz>().nullable shouldBe "just a string"
+
+                    configure {
+                        typeGenerator { Foo(12177) }
+                        nullableTypeGenerator<String> { null }
+                    }
+                    randomClassInstance<Bar>().foo.int shouldBe 12177
+                    randomClassInstance<Baz>().foo.int shouldBe 12177
+                    randomClassInstance<Baz>().bar.foo.int shouldBe 12177
+                    randomClassInstance<Baz>().test shouldBe 32167
+                    randomClassInstance<Baz>().nullable shouldBe null
+                }
+            }
+            it("should use own configuration on function level") {
+                with(RandomClassProvider(cfg())) {
+                    configure {
+                        typeGenerator { Foo(12177) }
+                        namedParameterGenerator("test") { 32167 }
+                        nullableTypeGenerator<String> { null }
+                    }
+                    randomClassInstance<Baz> { typeGenerator { Foo(36) } }.also {
+                        it.foo.int shouldBe 36
+                        it.bar.foo.int shouldBe 36
+                        it.test shouldNotBe 1
+                        it.test shouldNotBe 32167
+                        it.nullable shouldNotBe "nn"
+                        it.nullable shouldNotBe null
+                    }
+                }
+            }
+        }
+
+        context("resetting to defaults") {
+            it("should reset configuration to defaults on RandomProvider level") {
+                with(RandomClassProvider(cfg())) {
+                    configure { reset() }
+                    randomClassInstance<Bar>().foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().bar.foo.int shouldNotBe 0
+                    randomClassInstance<Baz>().test shouldNotBe 1
+                    randomClassInstance<Baz>().nullable shouldNotBe "nn"
+                }
+            }
+            it("should re-configure random providers") {
+                with(RandomClassProvider(cfg())) {
+                    configure {
+                        reset()
+                        typeGenerator { Foo(12177) }
+                        nullableTypeGenerator<String> { null }
+                    }
+                    randomClassInstance<Bar>().foo.int shouldBe 12177
+                    randomClassInstance<Baz>().foo.int shouldBe 12177
+                    randomClassInstance<Baz>().bar.foo.int shouldBe 12177
+                    randomClassInstance<Baz>().test shouldNotBe 1
+                    randomClassInstance<Baz>().nullable shouldBe null
+                }
+            }
+            it("should reset configuration to defaults on fakerConfig level") {
+                val c = cfg()
+                with(RandomClassProvider(c)) {
+                    configure {
+                        typeGenerator { Foo(12177) }
+                        nullableTypeGenerator<String> { null }
+                    }
+                    c.randomProviderConfig?.reset()
+                    randomClassInstance<Bar>().foo.int shouldNotBe 12177
+                    randomClassInstance<Baz>().foo.int shouldNotBe 12177
+                    randomClassInstance<Baz>().bar.foo.int shouldNotBe 12177
+                    randomClassInstance<Baz>().test shouldNotBe 1
+                    randomClassInstance<Baz>().nullable shouldNotBe null
+                }
+            }
+        }
+
+        context("new instance of RandomClassProvider") {
+            it("should have same configuration as defined on fakerConfig level") {
+
+            }
+        }
+
+        context("copy of RandomClassProvider") {
+            it("should have same configuration as defined on RandomClassProvider level") {
+
+            }
         }
     }
 })
