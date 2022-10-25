@@ -2,6 +2,7 @@
 
 package io.github.serpro69.kfaker
 
+import io.github.serpro69.kfaker.provider.misc.RandomProviderConfig
 import java.util.*
 
 /**
@@ -12,6 +13,17 @@ class FakerConfig private constructor(
     val random: Random,
     val uniqueGeneratorRetryLimit: Int
 ) {
+    internal var randomProviderConfig: RandomProviderConfig? = null
+        private set
+
+    private constructor(
+        locale: String,
+        random: Random,
+        uniqueGeneratorRetryLimit: Int,
+        randomProviderConfig: RandomProviderConfig
+    ) : this(locale, random, uniqueGeneratorRetryLimit) {
+        this.randomProviderConfig = randomProviderConfig
+    }
 
     companion object {
         @JvmStatic
@@ -40,6 +52,7 @@ class FakerConfig private constructor(
         var random = Random()
         var randomSeed: Long? = null
         var uniqueGeneratorRetryLimit = 100
+        private var randomProviderConfig: RandomProviderConfig = RandomProviderConfig()
 
         fun withLocale(locale: String): Builder {
             this.locale = locale
@@ -62,8 +75,12 @@ class FakerConfig private constructor(
         }
 
         fun build() = randomSeed?.let {
-            FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit)
-        } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit)
+            FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit, randomProviderConfig)
+        } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit, randomProviderConfig)
+
+        fun randomProvider(configurator: RandomProviderConfig.() -> Unit) {
+            randomProviderConfig.apply(configurator)
+        }
     }
 }
 

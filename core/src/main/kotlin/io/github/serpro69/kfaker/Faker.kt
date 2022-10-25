@@ -4,6 +4,7 @@ package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
+import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
@@ -14,7 +15,8 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
  *
  * @property random provides public access to the functions of [RandomService].
  * @property randomProvider provides additional functionality that is not covered by other data providers
- * such as [address], [name], [internet], and so on. See [RandomProvider] for more details.
+ * such as [address], [name], [internet], and so on. See [RandomClassProvider] for more details.
+ * @property string provides functionality to generate strings from expressions/templates
  * @property unique global provider for generation of unique values.
  */
 class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerConfig { }) {
@@ -24,13 +26,15 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
 
     val unique by lazy { GlobalUniqueDataDataProvider() }
 
+    // misc providers
     val crypto: CryptographyProvider by lazy { CryptographyProvider(fakerService) }
-    val randomProvider: RandomProvider by lazy { RandomProvider(config) }
+    val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
     val string: StringProvider by lazy { StringProvider(fakerService) }
 
     val separator: Separator by lazy { Separator(fakerService) }
     val currencySymbol: CurrencySymbol by lazy { CurrencySymbol(fakerService) }
 
+    // dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
     val adjective: Adjective by lazy { Adjective(fakerService) }
     val ancient: Ancient by lazy { Ancient(fakerService) }

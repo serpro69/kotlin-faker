@@ -1,10 +1,9 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.provider.ConstructorFilterStrategy
-import io.github.serpro69.kfaker.provider.FallbackStrategy
+import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy
+import io.github.serpro69.kfaker.provider.misc.FallbackStrategy
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals

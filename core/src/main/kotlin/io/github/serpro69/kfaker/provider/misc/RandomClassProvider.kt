@@ -1,4 +1,4 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
@@ -15,13 +15,34 @@ import kotlin.reflect.KType
 import kotlin.reflect.KVisibility
 
 /**
- * Provider for functionality not covered by the standard dictionary files.
+ * Provider functionality for generating random class instances.
  *
  * Inspired by [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
  */
 @Suppress("unused")
-class RandomProvider internal constructor(fakerConfig: FakerConfig) {
-    private val randomService = RandomService(fakerConfig)
+class RandomClassProvider {
+    private val fakerConfig: FakerConfig
+    private val randomService: RandomService
+
+    @PublishedApi
+    @JvmSynthetic
+    internal val config: RandomProviderConfig
+
+    internal constructor(fakerConfig: FakerConfig) {
+        this.fakerConfig = fakerConfig
+        randomService = RandomService(fakerConfig)
+        config = fakerConfig.randomProviderConfig ?: RandomProviderConfig()
+    }
+
+    private constructor(fakerConfig: FakerConfig, config: RandomProviderConfig) {
+        this.fakerConfig = fakerConfig
+        this.config = config
+        randomService = RandomService(fakerConfig)
+    }
+
+    fun configure(configurator: RandomProviderConfig.() -> Unit) {
+        config.apply(configurator)
+    }
 
     /**
      * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
@@ -29,7 +50,7 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
      *
      * @throws NoSuchElementException if [T] has no public constructor.
      */
-    inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance(RandomProviderConfig())
+    inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance(config)
 
     /**
      * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
@@ -40,8 +61,7 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
      * @throws NoSuchElementException if [T] has no public constructor.
      */
     inline fun <reified T : Any> randomClassInstance(configurator: RandomProviderConfig.() -> Unit): T {
-        val config = RandomProviderConfig().apply(configurator)
-        return T::class.randomClassInstance(config)
+        return T::class.randomClassInstance(RandomProviderConfig().apply(configurator))
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -156,9 +176,8 @@ class RandomProvider internal constructor(fakerConfig: FakerConfig) {
     }
 }
 
-
 /**
- * Configuration for [RandomProvider.randomClassInstance].
+ * Configuration for [RandomClassProvider.randomClassInstance].
  *
  * @property collectionsSize the size of the generated [Collection] type arguments.
  * Defaults to `1`.
@@ -209,6 +228,16 @@ class RandomProviderConfig @PublishedApi internal constructor() {
      */
     inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: () -> K?) {
         nullableGenerators[K::class] = generator
+    }
+
+    fun reset() {
+        collectionsSize = 1
+        constructorParamSize = -1
+        constructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
+        fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+        namedParameterGenerators.clear()
+        predefinedGenerators.clear()
+        nullableGenerators.clear()
     }
 }
 
