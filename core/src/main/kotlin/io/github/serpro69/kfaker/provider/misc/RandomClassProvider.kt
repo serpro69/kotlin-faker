@@ -18,6 +18,8 @@ import kotlin.reflect.KVisibility
  * Provider functionality for generating random class instances.
  *
  * Inspired by [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
+ *
+ * @property config configuration for this [RandomClassProvider]
  */
 @Suppress("unused")
 class RandomClassProvider {
@@ -28,21 +30,52 @@ class RandomClassProvider {
     @JvmSynthetic
     internal val config: RandomProviderConfig
 
+    /**
+     * Creates an instance of this [RandomClassProvider] with the given [fakerConfig].
+     */
     internal constructor(fakerConfig: FakerConfig) {
         this.fakerConfig = fakerConfig
         randomService = RandomService(fakerConfig)
-        config = fakerConfig.randomProviderConfig ?: RandomProviderConfig()
+        config = fakerConfig.randomProviderConfig?.copy() ?: RandomProviderConfig()
     }
 
+    /**
+     * Private constructor that is only used for [new] and [copy] functions.
+     */
     private constructor(fakerConfig: FakerConfig, config: RandomProviderConfig) {
         this.fakerConfig = fakerConfig
-        this.config = config
+        this.config = config.copy()
         randomService = RandomService(fakerConfig)
     }
 
+    /**
+     * Applies [configurator] to this [RandomClassProvider].
+     */
     fun configure(configurator: RandomProviderConfig.() -> Unit) {
         config.apply(configurator)
     }
+
+    /**
+     * Creates a new instance of this [RandomClassProvider].
+     *
+     * IF [FakerConfig.randomProviderConfig] was configured
+     * THEN new instance will be created with a copy of that configuration,
+     * ELSE a new instance is created with a new instance of default configuration as defined in [RandomProviderConfig].
+     */
+    fun new(): RandomClassProvider = RandomClassProvider(
+        fakerConfig,
+        fakerConfig.randomProviderConfig ?: RandomProviderConfig()
+    )
+
+    /**
+     * Creates a copy of this [RandomClassProvider] instance with a copy of its [config].
+     */
+    fun copy(): RandomClassProvider = RandomClassProvider(fakerConfig, config)
+
+    /**
+     * Resets [config] to defaults for this [RandomClassProvider] instance.
+     */
+    fun reset() = config.reset()
 
     /**
      * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
@@ -230,15 +263,34 @@ class RandomProviderConfig @PublishedApi internal constructor() {
         nullableGenerators[K::class] = generator
     }
 
-    fun reset() {
-        collectionsSize = 1
-        constructorParamSize = -1
-        constructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
-        fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
-        namedParameterGenerators.clear()
-        predefinedGenerators.clear()
-        nullableGenerators.clear()
-    }
+}
+
+private fun RandomProviderConfig.reset() {
+    collectionsSize = 1
+    constructorParamSize = -1
+    constructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
+    fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+    namedParameterGenerators.clear()
+    predefinedGenerators.clear()
+    nullableGenerators.clear()
+}
+
+private fun RandomProviderConfig.copy(
+    collectionsSize: Int? = null,
+    constructorParamSize: Int? = null,
+    constructorFilterStrategy: ConstructorFilterStrategy? = null,
+    fallbackStrategy: FallbackStrategy? = null,
+    namedParameterGenerators: Map<String, () -> Any?>? = null,
+    predefinedGenerators: Map<KClass<*>, () -> Any>? = null,
+    nullableGenerators: Map<KClass<*>, () -> Any?>? = null
+): RandomProviderConfig = RandomProviderConfig().apply {
+    this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
+    this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
+    this@apply.constructorFilterStrategy = constructorFilterStrategy ?: this@copy.constructorFilterStrategy
+    this@apply.fallbackStrategy = fallbackStrategy ?: this@copy.fallbackStrategy
+    this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
+    this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
+    this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
 }
 
 enum class FallbackStrategy {

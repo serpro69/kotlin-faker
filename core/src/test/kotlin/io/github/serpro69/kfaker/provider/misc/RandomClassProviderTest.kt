@@ -12,7 +12,9 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import java.util.*
+import kotlin.reflect.full.declaredMemberProperties
 
 @Suppress("unused")
 class RandomClassProviderTest : DescribeSpec({
@@ -430,7 +432,7 @@ class RandomClassProviderTest : DescribeSpec({
 
         val cfg: () -> FakerConfig = {
             fakerConfig {
-                randomProvider {
+                randomClassInstance {
                     typeGenerator { Foo(0) }
                     nullableTypeGenerator { "nn" }
                     namedParameterGenerator("test") { 1 }
@@ -554,7 +556,7 @@ class RandomClassProviderTest : DescribeSpec({
                     randomClassInstance<Baz>().nullable shouldBe null
                 }
             }
-            it("should reset configuration to defaults on fakerConfig level") {
+/*            it("should reset configuration to defaults on fakerConfig level") {
                 val c = cfg()
                 with(RandomClassProvider(c)) {
                     configure {
@@ -568,18 +570,107 @@ class RandomClassProviderTest : DescribeSpec({
                     randomClassInstance<Baz>().test shouldNotBe 1
                     randomClassInstance<Baz>().nullable shouldNotBe null
                 }
+            }*/
+        }
+    }
+
+    describe("new instance of RandomClassProvider") {
+        val cfg: () -> FakerConfig = {
+            fakerConfig {
+                randomClassInstance {
+                    collectionsSize = random.nextInt()
+                    constructorParamSize = random.nextInt()
+                    constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+                    fallbackStrategy = FallbackStrategy.FAIL_IF_NOT_FOUND
+                }
             }
         }
-
-        context("new instance of RandomClassProvider") {
-            it("should have same configuration as defined on fakerConfig level") {
-
+        val configProperties: (RandomProviderConfig) -> List<Any?> = {
+            it::class.declaredMemberProperties.map { p -> p.call(it) }
+        }
+        it("should create a new instance") {
+            val rcp = RandomClassProvider(cfg())
+            rcp shouldNotBeSameInstanceAs rcp.new()
+        }
+        it("should have same configuration as defined on fakerConfig level") {
+            val c = cfg()
+            with(RandomClassProvider(c)) {
+                configure {
+                    reset()
+                    collectionsSize = 100
+                    constructorParamSize = 10
+                    constructorFilterStrategy = ConstructorFilterStrategy.MIN_NUM_OF_ARGS
+                    fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+                    typeGenerator { "42" }
+                    typeGenerator { 42 }
+                    typeGenerator { 42.0 }
+                }
+                val new = new()
+                configProperties(new.config) shouldBe configProperties(c.randomProviderConfig!!)
+                new.config shouldNotBeSameInstanceAs c.randomProviderConfig
+                new.config shouldNotBeSameInstanceAs this@with.config
             }
         }
+        it("should have default configuration if none was defined on fakerConfig level") {
+            val c = fakerConfig { }
+            with(RandomClassProvider(c)) {
+                configure {
+                    reset()
+                    collectionsSize = 100
+                    constructorParamSize = 10
+                    constructorFilterStrategy = ConstructorFilterStrategy.MIN_NUM_OF_ARGS
+                    fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+                    typeGenerator { "42" }
+                    typeGenerator { 42 }
+                    typeGenerator { 42.0 }
+                }
+                val new = new()
+                configProperties(new.config) shouldBe configProperties(RandomProviderConfig())
+                new.config shouldNotBeSameInstanceAs this@with.config
+                new.config shouldNotBeSameInstanceAs c.randomProviderConfig
+            }
+        }
+    }
 
-        context("copy of RandomClassProvider") {
-            it("should have same configuration as defined on RandomClassProvider level") {
-
+    context("copy of RandomClassProvider") {
+        val cfg: () -> FakerConfig = {
+            fakerConfig {
+                randomClassInstance {
+                    collectionsSize = random.nextInt()
+                    constructorParamSize = random.nextInt()
+                    constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+                    fallbackStrategy = FallbackStrategy.FAIL_IF_NOT_FOUND
+                }
+            }
+        }
+        val configProperties: (RandomProviderConfig) -> List<Any?> = {
+            it::class.declaredMemberProperties.map { p -> p.call(it) }
+        }
+        it("should have same configuration as defined on RandomClassProvider level") {
+            val c = cfg()
+            with(RandomClassProvider(c)) {
+                configure {
+                    collectionsSize = 100
+                    constructorParamSize = 10
+                    constructorFilterStrategy = ConstructorFilterStrategy.MIN_NUM_OF_ARGS
+                    fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+                    typeGenerator { "42" }
+                    typeGenerator { 42 }
+                    typeGenerator { 42.0 }
+                }
+                val copy = copy()
+                configProperties(copy.config) shouldBe configProperties(this@with.config)
+                copy.config shouldNotBeSameInstanceAs this@with.config
+                copy.config shouldNotBeSameInstanceAs c.randomProviderConfig
+            }
+        }
+        it("should have same configuration as defined on fakerConfig level if not defined on RandomClassProvider level") {
+            val c = cfg()
+            with(RandomClassProvider(c)) {
+                val copy = copy()
+                configProperties(copy.config) shouldBe configProperties(c.randomProviderConfig!!)
+                copy.config shouldNotBeSameInstanceAs c.randomProviderConfig
+                copy.config shouldNotBeSameInstanceAs this@with.config
             }
         }
     }
@@ -592,12 +683,13 @@ enum class TestEnum {
     GO
 }
 
-@Suppress("CanSealedSubClassBeObject")
+@Suppress("CanSealedSubClassBeObject", "unused")
 sealed class TestSealedCls {
     object Kotlin : TestSealedCls()
     class Java : TestSealedCls()
 }
 
+@Suppress("unused")
 class Go(val name: String) : TestSealedCls()
 
 object TestObject

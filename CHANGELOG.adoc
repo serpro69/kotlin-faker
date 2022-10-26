@@ -9,7 +9,8 @@
 [discrete]
 === Added
 
-*
+* https://github.com/serpro69/kotlin-faker/pull/164[#164] Add possibility to configure `RandomClassProvider` on higher levels
+* https://github.com/serpro69/kotlin-faker/pull/165[#165] Add `copy` and `new` functions to `RandomClassProvider`
 
 [discrete]
 === Changed

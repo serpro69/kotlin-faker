@@ -20,7 +20,7 @@ class FakerConfig private constructor(
         locale: String,
         random: Random,
         uniqueGeneratorRetryLimit: Int,
-        randomProviderConfig: RandomProviderConfig
+        randomProviderConfig: RandomProviderConfig?
     ) : this(locale, random, uniqueGeneratorRetryLimit) {
         this.randomProviderConfig = randomProviderConfig
     }
@@ -52,7 +52,7 @@ class FakerConfig private constructor(
         var random = Random()
         var randomSeed: Long? = null
         var uniqueGeneratorRetryLimit = 100
-        private var randomProviderConfig: RandomProviderConfig = RandomProviderConfig()
+        private var randomProviderConfig: RandomProviderConfig? = null
 
         fun withLocale(locale: String): Builder {
             this.locale = locale
@@ -78,8 +78,10 @@ class FakerConfig private constructor(
             FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit, randomProviderConfig)
         } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit, randomProviderConfig)
 
-        fun randomProvider(configurator: RandomProviderConfig.() -> Unit) {
-            randomProviderConfig.apply(configurator)
+        fun randomClassInstance(configurator: RandomProviderConfig.() -> Unit) {
+            randomProviderConfig?.apply(configurator) ?: run {
+                randomProviderConfig = RandomProviderConfig().also(configurator)
+            }
         }
     }
 }
