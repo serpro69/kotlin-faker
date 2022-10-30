@@ -14,12 +14,12 @@
 [discrete]
 === Changed
 
-*
+* https://github.com/serpro69/kotlin-faker/pull/159[#159] Change format of dictionary files from yml to json
 
 [discrete]
 === Fixed
 
-*
+* https://github.com/serpro69/kotlin-faker/pull/161[#161] Fix empty lists as parameter values
 
 ====
 
