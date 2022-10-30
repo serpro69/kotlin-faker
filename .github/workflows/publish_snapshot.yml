@@ -17,8 +17,10 @@ jobs:
         with:
           filters: |
             core:
+              - '.github/workflows/**'
               - 'core/**'
               - '*gradle*'
+              - 'set-version.sh'
 
   build:
     needs: changes
@@ -36,10 +38,15 @@ jobs:
           distribution: 'adopt'
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.4
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Grant execute permission to scripts
+        run: |
+          chmod +x gradlew
+          chmod +x set-version.sh
+      - name: Set version
+        id: semver
+        run: ./set-version.sh -t minor
       - name: Publish snapshot for next minor release
-        run: make _snapshot-minor
+        run: VERSION=${{ steps.semver.outputs.SEMVER }} make snapshot-minor
         env:
           ORG_GRADLE_PROJECT_sonatypeUsername: ${{ secrets.SONATYPEUSERNAME }}
           ORG_GRADLE_PROJECT_sonatypePassword: ${{ secrets.SONATYPEPASSWORD }}

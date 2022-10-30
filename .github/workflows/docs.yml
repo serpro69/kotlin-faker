@@ -32,6 +32,7 @@ jobs:
               - 'CONTRIBUTING.adoc'
               - 'LICENCE.adoc'
               - 'README.md'
+              - 'prepare-dicts-for-docs.sh'
 
   deploy-docs:
     needs: changes

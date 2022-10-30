@@ -42,13 +42,12 @@ _snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bu
 	--info
 
 .PHONY: snapshot-minor
-_snapshot-minor: ## (DEPRECATED) publishes next snapshot with a minor version bump
-	./gradlew clean test integrationTest \
-	printVersion \
-	nativeImage \
-	publishToSonatype \
-	-PbumpComponent=minor \
-	--info
+snapshot-minor: ## publishes next snapshot with a minor version bump
+	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
+
+	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
+	./gradlew nativeImage -Pversion='$(VERSION)-SNAPSHOT' --info
+	./gradlew publishToSonatype -Pversion='$(VERSION)-SNAPSHOT' --info
 
 .PHONY: snapshot-patch
 _snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bump
@@ -159,12 +158,9 @@ _release-patch: ## (DEPRECATED) publishes next patch release version
 release: ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
-	./gradlew clean test integrationTest \
-	nativeImage \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
-	-Pversion=$(VERSION) \
-	--info
+	./gradlew clean test integrationTest -Pversion=$(VERSION)
+	./gradlew nativeImage -Pversion=$(VERSION) --info
+	./gradlew publishToSonatype closeSonatypeStagingRepository -Pversion=$(VERSION) --info
 
 	git tag v$(VERSION)
 	git push origin --tags
