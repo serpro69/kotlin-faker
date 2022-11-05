@@ -8,6 +8,7 @@
 * [Default Configuration](#default-configuration)
 * [Deterministic Random](#deterministic-random)
 * [Locale](#locale)
+* [Random Class Instance](#random-class-instance)
 
 <br>
 
@@ -202,6 +203,19 @@ localizedFaker.gameOfThrones.cities() // => Braavos
 {% box %}
 A list of all locales, and their corresponding dictionary files, can be found on the {{ anchor(title='Available Locales', collectionType='wiki', collectionId='', itemId='Available Locales') }} page.
 {% endbox %}
+
+{% btc %}{% endbtc %}
+
+<br>
+
+## Random Class Instance
+
+[RandomClassInstance]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#random-instance-of-any-class) can also be configured both from the `FakerConfig` level.
+
+{% info %}
+This configuration takes the least precedence and will be overridden by config set on the `faker.randomProvider` level or on the `randomClassInstance` function level.
+See [Random Class Instance Configuration]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#random-class-instance-configuration) for more details. 
+{% endinfo %}
 
 {% btc %}{% endbtc %}
 
