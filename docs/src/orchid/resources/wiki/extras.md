@@ -8,9 +8,11 @@
 ## ToC
 
 * [Random instance of any class](#random-instance-of-any-class)
+  * [Random Class Instance Configuration](#random-class-instance-configuration)
   * [Pre-configuring type generation for constructor arguments](#pre-configuring-type-generation-for-constructor-arguments)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
+  * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
 * [Random Everything](#random-everything)
 * [Random Strings from Templates](#random-strings-from-templates)
 
@@ -33,6 +35,80 @@ Random instance generation is available through `Faker().randomProvider`:
 {% filter compileAs('md') %}
 ```kotlin
 {% snippet 'extras_random_instance_one' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Random Class Instance Configuration
+
+Random Class Instance configuration can be applied on several levels. Consider the following classes:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_ten' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+#### Configuration via `FakerConfig`
+
+This takes the least precedence and applies to all instances (see [Making a copy/new instance of RandomClassProvider]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#making-a-new-instance-of-random-class-provider)) of `RandomClassProvider` if set.
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_eleven' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+#### Configuration via `Faker#randomProvider`
+
+This takes higher precedence and will also merge any configuration that was set on the previous level.
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_twelve' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+#### Configuration via `randomClassInstance` function
+
+This configuration takes the most precedence and does not take into account configurations applied on other levels.
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_thirteen' %}
 ```
 {% endfilter %}
 {% endkotlin %}
@@ -96,7 +172,7 @@ val baz: Baz = faker.randomProvider.randomClassInstance {
 class Person(val id: Int, val name: String)
 
 val person: Person = faker.randomProvider.randomClassInstance {
-    typeGenerator<String> { faker.name.fullName() }
+    typeGenerator<String> { faker.name.name() }
 }
 ```
 {% endfilter %}
@@ -243,6 +319,68 @@ At the same time, `typeGenerator` configurator itself can be used with collectio
 {% endkotlin %}
 
 {% endtabs %}
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Making a new instance of Random Class Provider
+
+`RandomClassProvider` has two functions: `new` and `copy`, that allow you to create another instance of the class, for example, a one that has a different type generation configuration.
+
+#### New Instance
+
+To make a new instance of `randomProvider`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_fourteen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+
+<br>
+
+{% info %}
+{% filter compileAs('md') %}
+Any configuration set via `fakerConfig` ( ❶ ), will be applied to the `new` instance ( ❸ ) as well.
+Any configuration set via `faker.randomProvider` instance ( ❷ ) is NOT applied to the `new` instance.
+{% endfilter %}
+{% endinfo %}
+
+<br>
+
+#### Instance Copy
+
+To make a copy of an existing instance of `randomProvider`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_fifteen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+{% info %}
+{% filter compileAs('md') %}
+Any configuration that was already applied to `faker.randomProvider` ( ❶ and ❷ ), will be applied to the `copy` ( ❸ ) as well.
+
+The `copy`, just as `new` instance, can of course be reconfigured ( ❹ ) as needed, which does not affect the configuration of the `faker.randomProvider` or configurations of other "copies".
+{% endfilter %}
+{% endinfo %}
 
 {% btc %}{% endbtc %}
 

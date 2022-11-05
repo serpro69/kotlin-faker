@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy
 import io.kotest.core.spec.style.DescribeSpec
@@ -159,6 +160,113 @@ class Extras : DescribeSpec({
                 assertEquals(bar.set, setOf("one", "two", "fortytwo"))
                 assertEquals(bar.map, mapOf("pwd" to 12177))
                 // END extras_random_instance_nine
+            }
+        }
+
+        context("Configuration levels") {
+            // START extras_random_instance_ten
+            class Foo
+            data class Bar(val int: Int, val uuid: UUID)
+            data class Baz(val foo: Foo, val bar: Bar, val string: String)
+            // END extras_random_instance_ten
+
+            it("should configure random class instance from fakerConfig") {
+                // START extras_random_instance_eleven
+                val cfg = fakerConfig {
+                    randomClassInstance {
+                        typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
+                    }
+                }
+                val f = Faker(cfg)
+                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                assertEquals(baz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
+                val anotherBaz = f.randomProvider.new().randomClassInstance<Baz>()
+                assertEquals(anotherBaz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
+                // END extras_random_instance_eleven
+            }
+
+            it("should configure random class instance from randomProvider") {
+                // START extras_random_instance_twelve
+                val cfg = fakerConfig {
+                    randomClassInstance {
+                        typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
+                    }
+                }
+                val f = Faker(cfg).also {
+                    it.randomProvider.configure {
+                        typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
+                    }
+                }
+
+                val bar: Bar = f.randomProvider.randomClassInstance()
+                val baz: Baz = f.randomProvider.randomClassInstance()
+                assertEquals(bar.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
+                assertEquals(baz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
+                // END extras_random_instance_twelve
+            }
+
+            it("should configure random class instance from function") {
+                // START extras_random_instance_thirteen
+                faker.randomProvider.configure {
+                    typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
+                }
+                val baz: Baz = faker.randomProvider.randomClassInstance {
+                    typeGenerator<Bar> { Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")) }
+                }
+                assertEquals(baz.bar, Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")))
+                // END extras_random_instance_thirteen
+            }
+        }
+
+        context("New instances and copies") {
+            class Foo
+            data class Bar(val int: Int, val uuid: UUID)
+            data class Baz(val foo: Foo, val bar: Bar, val string: String)
+
+            it("should create a new instance") {
+                // START extras_random_instance_fourteen
+                val cfg = fakerConfig {
+                    randomClassInstance { // ❶
+                        typeGenerator<Bar> { Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")) }
+                    }
+                }
+                val f = Faker(cfg)
+                f.randomProvider.configure { // ❷
+                    typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
+                }
+                val new = f.randomProvider.new() // ❸
+                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val newBaz: Baz = new.randomClassInstance<Baz>()
+                assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), baz.bar)
+                assertEquals(Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")), newBaz.bar)
+                // END extras_random_instance_fourteen
+            }
+
+            it("should make a copy") {
+                // START extras_random_instance_fifteen
+                val cfg = fakerConfig { // ❶
+                    randomClassInstance {
+                        typeGenerator<Bar> { Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")) }
+                    }
+                }
+                val f = Faker(cfg)
+                f.randomProvider.configure { // ❷
+                    typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
+                }
+                val copy = f.randomProvider.copy() // ❸
+                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val bazCopy: Baz = copy.randomClassInstance<Baz>()
+                assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), baz.bar)
+                assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), bazCopy.bar)
+
+                copy.configure { // ❹
+                    typeGenerator<Bar> { Bar(0, UUID.fromString("22222222-2222-2222-2222-222222222222")) }
+                }
+                val originalBaz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val reconfiguredBazCopy = copy.randomClassInstance<Baz>()
+                assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), originalBaz.bar)
+                assertEquals(Bar(0, UUID.fromString("22222222-2222-2222-2222-222222222222")), reconfiguredBazCopy.bar)
+                // END extras_random_instance_fifteen
             }
         }
     }

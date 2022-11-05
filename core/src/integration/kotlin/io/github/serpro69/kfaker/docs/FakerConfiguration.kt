@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
@@ -90,6 +91,26 @@ class FakerConfiguration : DescribeSpec({
                 val faker = Faker(config)
                 assertEquals(faker.address.defaultCountry(), "Norge")
                 // END faker_config_five
+            }
+        }
+
+        context("RandomClassProvider") {
+            it("should configure RandomClassProvider") {
+                // START faker_config_six
+                class Test(
+                    val uuid: UUID,
+                    val name: String,
+                )
+                val config = fakerConfig {
+                    randomClassInstance {
+                        collectionsSize = 6
+                        typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
+                        namedParameterGenerator("name") { faker {}.name.name() }
+                    }
+                }
+                val test = Faker(config).randomProvider.randomClassInstance<Test>()
+                assertEquals(test.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
+                // END faker_config_six
             }
         }
     }
