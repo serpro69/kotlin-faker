@@ -2,6 +2,9 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.qameta.allure.gradle.task.AllureReport
 import io.qameta.allure.gradle.task.AllureServe
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.gradle.api.tasks.testing.TestResult.ResultType
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     kotlin("jvm") version "1.7.20" apply false
@@ -76,43 +79,64 @@ subprojects {
     }
 
     tasks.withType<Test> {
-        useJUnitPlatform {}
-
         @Suppress("SimpleRedundantLet", "UNNECESSARY_SAFE_CALL")
         jvmArgs?.let { it.plus("-ea") }
 
-        // show standard out and standard error of the test JVM(s) on the console
-        testLogging.showStandardStreams = true
-
-        // Always run tests, even when nothing changed.
-        dependsOn("cleanTest")
+        useJUnitPlatform()
+        maxParallelForks = 1
 
         testLogging {
-            showStandardStreams = true
-            events(
-                org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
-                org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
-                org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
-                org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+            // set options for log level LIFECYCLE
+            events = setOf(
+                TestLogEvent.FAILED,
+                TestLogEvent.PASSED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_OUT
             )
-            exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+            exceptionFormat = TestExceptionFormat.FULL
             showExceptions = true
             showCauses = true
             showStackTraces = true
-
+            // set options for log level DEBUG and INFO
             debug {
-                events(
-                    org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
-                    org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
-                    org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
-                    org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+                events = setOf(
+                    TestLogEvent.STARTED,
+                    TestLogEvent.FAILED,
+                    TestLogEvent.PASSED,
+                    TestLogEvent.SKIPPED,
+                    TestLogEvent.STANDARD_ERROR,
+                    TestLogEvent.STANDARD_OUT
                 )
-                exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+                exceptionFormat = TestExceptionFormat.FULL
             }
-
             info.events = debug.events
             info.exceptionFormat = debug.exceptionFormat
+
+            afterSuite(KotlinClosure2({ desc: TestDescriptor, result: TestResult ->
+                if (desc.parent == null) { // will match the outermost suite
+                    val pass = "${Color.GREEN}${result.successfulTestCount} passed${Color.NONE}"
+                    val fail = "${Color.RED}${result.failedTestCount} failed${Color.NONE}"
+                    val skip = "${Color.YELLOW}${result.skippedTestCount} skipped${Color.NONE}"
+                    val type = when (val r: ResultType = result.resultType) {
+                        ResultType.SUCCESS -> "${Color.GREEN}$r${Color.NONE}"
+                        ResultType.FAILURE -> "${Color.RED}$r${Color.NONE}"
+                        ResultType.SKIPPED -> "${Color.YELLOW}$r${Color.NONE}"
+                    }
+                    val output = "Results: $type (${result.testCount} tests, $pass, $fail, $skip)"
+                    val startItem = "|   "
+                    val endItem = "   |"
+                    val repeatLength = startItem.length + output.length + endItem.length - 36
+                    println("")
+                    println("\n" + ("-" * repeatLength) + "\n" + startItem + output + endItem + "\n" + ("-" * repeatLength))
+                }
+            }))
         }
+
+        onOutput(KotlinClosure2({ _: TestDescriptor, event: TestOutputEvent ->
+            if (event.destination == TestOutputEvent.Destination.StdOut) {
+                logger.lifecycle(event.message.replace(Regex("""\s+$"""), ""))
+            }
+        }))
     }
 
     tasks.withType<DependencyUpdatesTask> {
@@ -179,5 +203,27 @@ nexusPublishing {
         sonatype {
             stagingProfileId.set(properties["stagingProfileId"]?.toString())
         }
+    }
+}
+
+operator fun String.times(x: Int): String {
+    return List(x) { this }.joinToString("")
+}
+
+internal enum class Color(ansiCode: Int) {
+    NONE(0),
+    BLACK(30),
+    RED(31),
+    GREEN(32),
+    YELLOW(33),
+    BLUE(34),
+    PURPLE(35),
+    CYAN(36),
+    WHITE(37);
+
+    private val ansiString: String = "\u001B[${ansiCode}m"
+
+    override fun toString(): String {
+        return ansiString
     }
 }
