@@ -22,6 +22,11 @@
 
 * https://github.com/serpro69/kotlin-faker/pull/161[#161] Fix empty lists as parameter values
 
+[discrete]
+=== Other
+
+* https://github.com/serpro69/kotlin-faker/pull/168[#168] Reduce faker's shadowed jar size
+
 ====
 
 .[1.12.0] - 2022-10-16
