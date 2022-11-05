@@ -34,7 +34,7 @@ tasks.processResources.get().dependsOn(tasks["yaml2json"])
 
 configurations {
     create("integrationImplementation") { extendsFrom(testImplementation.get()) }
-    create("integrationRuntimeOnly") { extendsFrom(testRuntimeOnly.get()) }
+    create("integrationRuntimeOnly") { extendsFrom(testRuntimeOnly.get(), configurations.getByName("shadow")) }
 }
 
 sourceSets {
