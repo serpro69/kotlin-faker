@@ -16,6 +16,14 @@ __check_defined = \
     $(if $(value $1),, \
       $(error Undefined $1$(if $2, ($2))))
 
+__java_version_ok := $(shell java -version 2>&1|grep 1.8.0 >/dev/null; printf $$?)
+
+.PHONE: check_java
+check_java: ## check current java version (mostly used in other targets)
+ifneq ($(__java_version_ok),$(shell echo 0))
+	$(error "Expected java 1.8")
+endif
+
 .PHONY: deploy-docs
 deploy-docs: ## deploys documentation with orchid
 	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./docs/src/orchid/resources/config.yml
@@ -42,7 +50,7 @@ _snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bu
 	--info
 
 .PHONY: snapshot-minor
-snapshot-minor: ## publishes next snapshot with a minor version bump
+snapshot-minor: check_java ## publishes next snapshot with a minor version bump
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
 	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
@@ -155,7 +163,7 @@ _release-patch: ## (DEPRECATED) publishes next patch release version
 	git push origin --tags
 
 .PHONY: release
-release: ## publishes the next release with a specified VERSION
+release: check_java ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
 	./gradlew clean test integrationTest -Pversion=$(VERSION)
