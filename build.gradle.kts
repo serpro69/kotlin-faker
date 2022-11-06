@@ -31,7 +31,6 @@ subprojects {
     }
 
     apply {
-//        plugin("org.gradle.kotlin.kotlin-dsl")
         plugin("java")
         plugin("org.jetbrains.kotlin.jvm")
         plugin("com.adarshr.test-logger")
@@ -49,15 +48,15 @@ subprojects {
         implementation(kotlin("reflect"))
         implementation("org.slf4j:slf4j-api:2.0.3")
         implementation("com.github.mifmif:generex:1.0.2")
-        testImplementation("io.kotest:kotest-runner-junit5:5.5.1")
-        testImplementation("io.kotest:kotest-runner-junit5-jvm:5.5.1")
-        testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.1")
-        testImplementation("io.kotest:kotest-property-jvm:5.5.1")
+        testImplementation("io.kotest:kotest-runner-junit5:5.5.4")
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:5.5.4")
+        testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
+        testImplementation("io.kotest:kotest-property-jvm:5.5.4")
         testImplementation("io.kotest.extensions:kotest-extensions-allure:1.2.0")
         testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
         testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
-        testRuntimeOnly("ch.qos.logback:logback-core:1.3.4")
-        testRuntimeOnly("ch.qos.logback:logback-classic:1.3.4")
+        testRuntimeOnly("ch.qos.logback:logback-core:1.4.4")
+        testRuntimeOnly("ch.qos.logback:logback-classic:1.4.4")
         testRuntimeOnly("org.codehaus.groovy:groovy:3.0.13")
     }
 
@@ -159,9 +158,9 @@ subprojects {
         autoconfigure = true
         // TODO check if fixed in future versions of allure
         configuration = "testRuntimeOnly" // defaults to 'testCompile' which is incompatible with gradle 7.x
-        allureJavaVersion = "2.19.0"
+        allureJavaVersion = "2.20.0"
         useJUnit5 {
-            version = "2.19.0"
+            version = "2.20.0"
         }
     }
 }
