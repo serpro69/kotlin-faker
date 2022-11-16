@@ -21,6 +21,7 @@
 === Fixed
 
 * https://github.com/serpro69/kotlin-faker/pull/161[#161] Fix empty lists as parameter values
+* https://github.com/serpro69/kotlin-faker/pull/171[#171] Fix locale fallback
 
 [discrete]
 === Other

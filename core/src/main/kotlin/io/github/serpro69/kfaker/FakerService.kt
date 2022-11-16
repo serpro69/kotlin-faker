@@ -19,11 +19,9 @@ import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
 import io.github.serpro69.kfaker.provider.Tertiary
 import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
-import org.w3c.dom.ranges.RangeException
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
-import kotlin.collections.LinkedHashMap
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.set
@@ -81,6 +79,7 @@ internal class FakerService {
 
     private fun getLocaleFileStream(locale: String): InputStream? {
         return javaClass.classLoader.getResourceAsStream("locales/$locale.json")
+            ?: javaClass.classLoader.getResourceAsStream("locales/${locale.substringBefore("-")}.json")
     }
 
     /**
@@ -226,15 +225,9 @@ internal class FakerService {
                         // these have multiple files per directory, as opposed to other localizations
                         "fr", "ja" -> getCategoryFileStreamOrNull(locale, category, secondaryCategory)
                         else -> if (locale != "en") /*'en' is already processed at this point*/ {
-                            getLocaleFileStream(locale)
-                                ?: getLocaleFileStream(locale.substringBefore("-"))
-                                ?: throw IllegalArgumentException(
-                                    "Dictionary file not found for locale values: '$locale' or '${
-                                        locale.substringBefore(
-                                            "-"
-                                        )
-                                    }'"
-                                )
+                            getLocaleFileStream(locale) ?: throw IllegalArgumentException(
+                                "Dictionary file not found for locale values: '$locale' or '${locale.substringBefore("-")}'"
+                            )
                         } else null
                     }
                     input?.use { instr ->
@@ -291,7 +284,9 @@ internal class FakerService {
         locale: String,
         category: YamlCategory
     ): Map<String, Any>? {
-        val localeData = Mapper.readValue(inputStream, Map::class.java)[locale] as Map<*, *>
+        val localeData: Map<*, *> = with(Mapper.readValue(inputStream, Map::class.java)) {
+            (get(locale) ?: get(locale.substringBefore("-"))) as Map<*, *>
+        }
         val fakerData = localeData["faker"] as LinkedHashMap<String, Map<String, *>>
         return fakerData[category.lowercase()] as Map<String, Any>?
     }
@@ -300,22 +295,22 @@ internal class FakerService {
      * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
      */
     fun getRawValue(category: YamlCategory, key: String): RawExpression {
-        val parameterValue = dictionary[category]?.get(key)
+        val paramValue = dictionary[category]?.get(key)
             ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
 
-        return when (parameterValue) {
+        return when (paramValue) {
             is List<*> -> {
-                if (parameterValue.isEmpty()) RawExpression("") else when (val value = randomService.randomValue(parameterValue)) {
+                if (paramValue.isEmpty()) RawExpression("") else when (val value = randomService.randomValue(paramValue)) {
                     is List<*> -> {
                         if (value.isEmpty()) RawExpression("") else RawExpression(randomService.randomValue(value) as String)
                     }
                     is String -> RawExpression(value)
                     is Int -> RawExpression(value.toString())
-                    else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+                    else -> throw UnsupportedOperationException("Unsupported type of raw value: ${paramValue::class.simpleName}")
                 }
             }
-            is String -> RawExpression(parameterValue)
-            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
+            is String -> RawExpression(paramValue)
+            else -> throw UnsupportedOperationException("Unsupported type of raw value: ${paramValue::class.simpleName}")
         }
     }
 
@@ -470,7 +465,7 @@ internal class FakerService {
      * fun street_number() = with(fakerService) { resolveExpression().numerify() }
      * fun street_name() = with(fakerService) { resolveExpression().letterify() }
      * // Explicitly numerify and letterify returned value, even though we are doing that above as well
-     * // because the functions are in the same categry
+     * // because the functions are in the same category
      * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
      * ```
      */
@@ -542,7 +537,6 @@ internal class FakerService {
      * @param T instance of [FakeDataProvider]
      * @param kFunction the [KFunction] of [T]
      */
-    @Suppress("UNCHECKED_CAST")
     private fun <T : FakeDataProvider> T.callFunction(kFunction: KFunction<*>): String {
         return kFunction.call(this) as String
     }

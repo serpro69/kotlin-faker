@@ -15,6 +15,7 @@ import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldHaveAtMostSize
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.maps.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
@@ -26,7 +27,7 @@ val random = Random()
 
 internal class FakerServiceTest : DescribeSpec({
     describe("locale for the dictionary") {
-        context("it is set to default value") {
+        context("is set to default value") {
             it("it should load the category for 'en' locale") {
                 fakerService(YamlCategory.ADDRESS)
                     .dictionary
@@ -49,7 +50,7 @@ internal class FakerServiceTest : DescribeSpec({
             }
         }
 
-        context("it is set to custom value") {
+        context("is set to custom value") {
             it("matching keys should be overwritten in the localized dictionary") {
                 val esAddress = fakerService("es", YamlCategory.ADDRESS).dictionary.getEntryByCategory("address")
                 val defaultAddress = fakerService(YamlCategory.ADDRESS).dictionary.getEntryByCategory("address")
@@ -98,13 +99,13 @@ internal class FakerServiceTest : DescribeSpec({
             }
         }
 
-        context("it is set with a valid String value") {
+        context("is set with a valid String value") {
             it("localized category should be loaded") {
                 fakerService("es", YamlCategory.ADDRESS).dictionary shouldNotBe emptyMap<YamlCategory, Map<*, *>>()
             }
         }
 
-        context("it is set with invalid String value") {
+        context("is set with invalid String value") {
             it("an exception is thrown when loading the category") {
                 val exception = shouldThrow<IllegalArgumentException> {
                     fakerService("pe", YamlCategory.ADDRESS)
@@ -114,24 +115,17 @@ internal class FakerServiceTest : DescribeSpec({
             }
         }
 
-        // TODO not supported since 1.11.0
-        //  see: https://github.com/serpro69/kotlin-faker/issues/131
-        //  Note: when implemented also add tests to check that existing `lang-COUNTRY` locale is actually loaded, e.g. `fr-CA`
-//        context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
-//            val frFRDict = FakerService(Faker(), "fr-FR").dictionary
-//
-//            it("localized dictionary for `lang` should be loaded") {
-//                frFRDict shouldNotBe null
-//            }
-//        }
-//
-//        context("it is set as `lang_COUNTRY` String") {
-//            val frFRDict = FakerService(Faker(), "fr_FR").dictionary
-//
-//            it("it should be set as `lang-COUNTRY` String") {
-//                frFRDict shouldNotBe null
-//            }
-//        }
+        context("is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
+            val service = FakerService(Faker(), Locale.forLanguageTag("de-DE"))
+
+            @Suppress("LocalVariableName")
+            val `de-DE Dictionary` = service.load(YamlCategory.ADDRESS)
+
+            it("localized dictionary for `lang` should be loaded") {
+                `de-DE Dictionary` shouldContainExactly FakerService(Faker(), Locale.forLanguageTag("de"))
+                    .load(YamlCategory.ADDRESS)
+            }
+        }
     }
 
     describe("dictionary is loaded") {
@@ -549,6 +543,29 @@ internal class FakerServiceTest : DescribeSpec({
                 jaCat["breed"] shouldNotBe defaultCat["breed"]
             }
         }
+
+//        context("fr locale") { // also applicable for ja and any other multi-file localized data
+//            // TODO not supported since 1.11.0
+//            //  see: https://github.com/serpro69/kotlin-faker/issues/131
+//            //  Note: when implemented also add tests to check that existing `lang-COUNTRY` locale is actually loaded, e.g. `fr-CA`
+//            context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
+//                val frFRDict = FakerService(Faker(), Locale.forLanguageTag("fr-FR")).dictionary
+//
+//                it("localized dictionary for `lang` should be loaded") {
+//                    frFRDict shouldNotBe null
+//                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
+//                }
+//            }
+//
+//            context("it is set as `lang_COUNTRY` String") {
+//                val frFRDict = FakerService(Faker(), Locale.forLanguageTag("fr_FR")).dictionary
+//
+//                it("it should be set as `lang-COUNTRY` String") {
+//                    frFRDict shouldNotBe null
+//                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
+//                }
+//            }
+//        }
     }
 })
 

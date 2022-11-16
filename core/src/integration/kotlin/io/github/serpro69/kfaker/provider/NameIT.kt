@@ -7,25 +7,29 @@ import io.kotest.matchers.collections.shouldNotContain
 @Suppress("unused")
 class NameIT : DescribeSpec({
     describe("Name provider") {
-        context("ru locale") {
-            val faker = faker {
-                fakerConfig { locale = "ru" }
-            }
-            val name = faker.name
+        val name: (locale: String) -> Name = { faker { fakerConfig { locale = it } }.name }
 
+        context("ru locale") {
             it("generates lastName") {
-                val lastNames = List(42) { name.lastName() }
+                val lastNames = List(42) { name("ru").lastName() }
                 lastNames shouldNotContain ""
             }
 
             it("generates maleLastName") {
-                val maleLastNames = List(42) { name.lastName() }
+                val maleLastNames = List(42) { name("ru").lastName() }
                 maleLastNames shouldNotContain ""
             }
 
             it("generates femaleLastName") {
-                val femaleLastNames = List(42) { name.lastName() }
+                val femaleLastNames = List(42) { name("ru").lastName() }
                 femaleLastNames shouldNotContain ""
+            }
+        }
+
+        context("de-DE locale") {
+            it("generates firstsName") {
+                val firstNames = List(42) { name("de-DE").firstName() }
+                firstNames shouldNotContain ""
             }
         }
     }
