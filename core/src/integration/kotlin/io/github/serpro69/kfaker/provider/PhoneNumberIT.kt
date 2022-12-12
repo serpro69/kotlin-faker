@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.faker
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldMatch
 
@@ -41,6 +42,21 @@ class PhoneNumberIT : DescribeSpec({
             val phone = phoneNumber("fr")
             it("country code is resolved using default format") {
                 phone.countryCode.code() shouldBe "33"
+            }
+        }
+
+        context("en-US") {
+            val phone = phoneNumber("en-US")
+            repeat(100) {
+                it("should generate a phoneNumber run#$it") {
+                    phone.phoneNumber().filter { c -> c.isDigit() } shouldNotBe ""
+                }
+                it("should generate a cellPhone.number run#$it") {
+                    phone.cellPhone.number().filter { c -> c.isDigit() } shouldNotBe ""
+                }
+                it("should generate a countryCode.code run#$it") {
+                    phone.countryCode.code() shouldNotBe ""
+                }
             }
         }
     }
