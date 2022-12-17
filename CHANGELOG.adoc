@@ -1,11 +1,6 @@
-.[1.13.0] - UNRELEASED
+.[1.13.0] - 2022-12-18
 [%collapsible]
 ====
-[discrete]
-=== Breaking Change
-
-*
-
 [discrete]
 === Added
 
