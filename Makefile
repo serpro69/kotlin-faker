@@ -18,7 +18,7 @@ __check_defined = \
 
 __java_version_ok := $(shell java -version 2>&1|grep 1.8.0 >/dev/null; printf $$?)
 
-.PHONE: check_java
+.PHONY: check_java
 check_java: ## check current java version (mostly used in other targets)
 ifneq ($(__java_version_ok),$(shell echo 0))
 	$(error "Expected java 1.8")
@@ -166,10 +166,15 @@ _release-patch: ## (DEPRECATED) publishes next patch release version
 release: check_java ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
+	# run tests
 	./gradlew clean test integrationTest -Pversion=$(VERSION)
+	# build and test native image
 	./gradlew nativeImage -Pversion=$(VERSION) --info
+	./cli-bot/build/graal/faker-bot_$(VERSION) list --verbose >/dev/null || false
+	./cli-bot/build/graal/faker-bot_$(VERSION) lookup a --verbose >/dev/null || false
+	# publish to sonatype and close staging repo
 	./gradlew publishToSonatype closeSonatypeStagingRepository -Pversion=$(VERSION) --info
-
+	# create and push git tag
 	git tag v$(VERSION)
 	git push origin --tags
 
