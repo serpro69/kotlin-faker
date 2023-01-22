@@ -9,15 +9,6 @@
     "name": "faker.com.fasterxml.jackson.databind.deser.ValueInstantiators[]"
   },
   {
-    "name": "faker.com.fasterxml.jackson.databind.ext.Java7SupportImpl",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
     "name": "faker.com.fasterxml.jackson.databind.ser.Serializers[]"
   },
   {
@@ -29,6 +20,10 @@
       },
       {
         "name": "getAdjective",
+        "parameterTypes": []
+      },
+      {
+        "name": "getAirport",
         "parameterTypes": []
       },
       {
@@ -193,6 +188,10 @@
       },
       {
         "name": "getCosmere",
+        "parameterTypes": []
+      },
+      {
+        "name": "getCowboyBebop",
         "parameterTypes": []
       },
       {
@@ -672,6 +671,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getSpongebob",
+        "parameterTypes": []
+      },
+      {
         "name": "getSport",
         "parameterTypes": []
       },
@@ -904,6 +907,9 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Airport"
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Ancient",
@@ -1681,6 +1687,27 @@
     "name": "io.github.serpro69.kfaker.provider.CountryCode"
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.CowboyBebop",
+    "methods": [
+      {
+        "name": "character",
+        "parameterTypes": []
+      },
+      {
+        "name": "episode",
+        "parameterTypes": []
+      },
+      {
+        "name": "quote",
+        "parameterTypes": []
+      },
+      {
+        "name": "song",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.Crossfit",
     "methods": [
       {
@@ -2303,6 +2330,9 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.EuropeanUnion"
   },
   {
     "name": "io.github.serpro69.kfaker.provider.FakeDataProvider"
@@ -3630,9 +3660,6 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.RandomProvider"
-  },
-  {
     "name": "io.github.serpro69.kfaker.provider.Relationship",
     "methods": [
       {
@@ -4049,6 +4076,23 @@
       },
       {
         "name": "starCluster",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Spongebob",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "episodes",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
         "parameterTypes": []
       }
     ]
@@ -4706,6 +4750,9 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.UnitedStates"
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.University",
     "methods": [
       {
@@ -5039,6 +5086,9 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.misc.RandomClassProvider"
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.misc.StringProvider"
   },
   {
@@ -5059,15 +5109,6 @@
     "name": "java.lang.String"
   },
   {
-    "name": "java.lang.System",
-    "methods": [
-      {
-        "name": "console",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
     "name": "java.nio.file.Path"
   },
   {
@@ -5084,9 +5125,6 @@
   },
   {
     "name": "java.sql.Connection"
-  },
-  {
-    "name": "java.sql.Date"
   },
   {
     "name": "java.sql.Driver"
