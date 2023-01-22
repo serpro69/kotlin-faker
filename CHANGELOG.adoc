@@ -1,3 +1,42 @@
+.[1.14.0] - UNRELEASED
+[%collapsible]
+====
+[discrete]
+=== Added
+
+* https://github.com/serpro69/kotlin-faker/pull/176[#176] [core] Update dictionary files, including:
+** Data and functions in existing data providers
+** Updates to existing localized dictionaries
+
+++++
+<details><summary><h3>New Data Providers</h3></summary>
+<p>
+++++
+* `airport`
+* `cowboy_bebop`
+* `spongebob`
+++++
+</p>
+</details>
+++++
+
+[discrete]
+=== Changed
+
+* ...
+
+[discrete]
+=== Fixed
+
+* ...
+
+[discrete]
+=== Other
+
+* ...
+
+====
+
 .[1.13.0] - 2022-12-18
 [%collapsible]
 ====
