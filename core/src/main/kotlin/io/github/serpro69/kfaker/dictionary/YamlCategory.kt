@@ -14,6 +14,7 @@ internal enum class YamlCategory : Category {
     // Rest of providers
     ADDRESS,
     ADJECTIVE,
+    AIRPORT,
     ANCIENT,
     APP,
     APPLIANCE,
@@ -53,6 +54,7 @@ internal enum class YamlCategory : Category {
     CONAN,
     CONSTRUCTION,
     COSMERE,
+    COWBOY_BEBOP,
     COUNTRY_CODE,
     CREATURE,
     CROSSFIT,
@@ -160,6 +162,7 @@ internal enum class YamlCategory : Category {
     SOURCE,
     SOUTH_PARK,
     SPACE,
+    SPONGEBOB,
     SPORT,
     STARGATE,
     STAR_TREK,

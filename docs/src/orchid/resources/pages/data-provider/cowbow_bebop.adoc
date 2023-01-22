@@ -1,0 +1,29 @@
+---
+---
+
+== `Faker().cowboyBebop`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'cowboy_bebop_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().cowboyBebop.character() // => Edward
+
+Faker().cowboyBebop.episode() // => Asteroid Blues
+
+Faker().cowboyBebop.song() // => Tank!
+
+Faker().cowboyBebop.quote() // => "Men always seem to think about their past before they die, as though they were frantically searching for proof that they truly lived."
+
+----
+====

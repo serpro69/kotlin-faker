@@ -37,6 +37,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     // dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
     val adjective: Adjective by lazy { Adjective(fakerService) }
+    val airport: Airport by lazy { Airport(fakerService) }
     val ancient: Ancient by lazy { Ancient(fakerService) }
     val animal: Animal by lazy { Animal(fakerService) }
     val app: App by lazy { App(fakerService) }
@@ -80,6 +81,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val construction: Construction by lazy { Construction(fakerService) }
     val control: Control by lazy { Control(fakerService) }
     val cosmere: Cosmere by lazy { Cosmere(fakerService) }
+    val cowboyBebop: CowboyBebop by lazy { CowboyBebop(fakerService) }
     val crossfit: Crossfit by lazy { Crossfit(fakerService) }
     val cryptoCoin: CryptoCoin by lazy { CryptoCoin(fakerService) }
     val cultureSeries: CultureSeries by lazy { CultureSeries(fakerService) }
@@ -201,6 +203,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     //    val source: Source by lazy {Source(fakerService }
     val southPark: SouthPark by lazy { SouthPark(fakerService) }
     val space: Space by lazy { Space(fakerService) }
+    val spongebob: Spongebob by lazy { Spongebob(fakerService) }
     val sport: Sport by lazy { Sport(fakerService) }
     val stargate: Stargate by lazy { Stargate(fakerService) }
     val starTrek: StarTrek by lazy { StarTrek(fakerService) }
