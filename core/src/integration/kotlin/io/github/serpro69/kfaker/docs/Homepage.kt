@@ -134,7 +134,7 @@ class Homepage : DescribeSpec({
                 class Baz(val id: Int, val uuid: UUID, val username: String)
 
                 val baz: Baz = faker.randomProvider.randomClassInstance {
-                    // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameters with parameter name.
+                    // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameter values with parameter name!
                     typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
                     typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
                     typeGenerator<Int> { faker.random.nextInt(min = 0, max = 9) }
