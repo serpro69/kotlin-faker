@@ -132,12 +132,7 @@ class RandomClassProvider {
             val params = constructor.parameters
                 .map {
 
-                    val pInfo = ParameterInfo(
-                        index = it.index,
-                        name = it.name.toString(),
-                        isOptional = it.isOptional,
-                        isVararg = it.isVararg
-                    )
+                    val pInfo = it.toParameterInfo()
 
                     val klass = it.type.classifier as KClass<*>
                     when {
