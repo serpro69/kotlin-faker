@@ -141,6 +141,7 @@ So for each instance of `Baz` the following will be true:
 
 ```kotlin
 baz.id == 0
+baz.user == "user_X3a8s813dcb"
 baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
 baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
 ```
@@ -504,8 +505,3 @@ The following functions are available withing the `Faker().string`:
 {% btc %}{% endbtc %}
 
 <br>
-
-
-
-
-
