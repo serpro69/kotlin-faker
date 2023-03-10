@@ -164,6 +164,7 @@ class RandomClassProviderTest : DescribeSpec({
     describe("a TestClass with non-empty constructor for custom type generators") {
         class Foo(val int: Int)
         class TestClass(
+            val bar: String,
             val id: UUID,
             val int: Int,
             val long: Long,
@@ -178,6 +179,8 @@ class RandomClassProviderTest : DescribeSpec({
                 typeGenerator<UUID> { givenUuid }
                 @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Int> { givenInt }
+                @Suppress("RemoveExplicitTypeArguments")
+                typeGenerator<String> { pInfo -> pInfo.toString() }
             }
 
             it("it should be a predefined UUID and primitives") {
@@ -186,6 +189,7 @@ class RandomClassProviderTest : DescribeSpec({
                     testClass.id shouldBe givenUuid
                     testClass.int shouldBe givenInt
                     testClass.foo.int shouldBe givenInt
+                    testClass.bar shouldBe "ParameterInfo(index=0, name=bar, isOptional=false, isVararg=false)"
                 }
             }
         }
@@ -196,7 +200,8 @@ class RandomClassProviderTest : DescribeSpec({
             val id: UUID,
             val id2: UUID,
             val nullableId: UUID?,
-            val nullableId2: UUID?
+            val nullableId2: UUID?,
+            val foo: String?,
         )
 
         val typeGeneratedId = UUID.fromString("00000000-0000-0000-0000-000000000000")
@@ -209,6 +214,7 @@ class RandomClassProviderTest : DescribeSpec({
                 namedParameterGenerator("nullableId") { nullableNamedParameterGeneratedId }
                 namedParameterGenerator("nullableId2") { null }
                 typeGenerator<UUID> { typeGeneratedId }
+                namedParameterGenerator("bar") { pInfo -> pInfo.toString() }
             }
 
             it("should use predefined UUIDs with parameter generators taking precedence over type generators") {
@@ -218,6 +224,7 @@ class RandomClassProviderTest : DescribeSpec({
                     testClass.id2 shouldBe typeGeneratedId
                     testClass.nullableId shouldBe nullableNamedParameterGeneratedId
                     testClass.nullableId2 shouldBe null
+                    testClass.foo shouldBe "ParameterInfo(index=4, name=foo, isOptional=true, isVararg=false)"
                 }
             }
         }
