@@ -201,7 +201,7 @@ class RandomClassProviderTest : DescribeSpec({
             val id2: UUID,
             val nullableId: UUID?,
             val nullableId2: UUID?,
-            val foo: String?,
+            val foo: String? = " "
         )
 
         val typeGeneratedId = UUID.fromString("00000000-0000-0000-0000-000000000000")
@@ -214,7 +214,7 @@ class RandomClassProviderTest : DescribeSpec({
                 namedParameterGenerator("nullableId") { nullableNamedParameterGeneratedId }
                 namedParameterGenerator("nullableId2") { null }
                 typeGenerator<UUID> { typeGeneratedId }
-                namedParameterGenerator("bar") { pInfo -> pInfo.toString() }
+                namedParameterGenerator("foo") { pInfo -> pInfo.toString() }
             }
 
             it("should use predefined UUIDs with parameter generators taking precedence over type generators") {
