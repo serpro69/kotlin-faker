@@ -131,16 +131,19 @@ class RandomClassProvider {
 
             val params = constructor.parameters
                 .map {
+
+                    val pInfo = it.toParameterInfo()
+
                     val klass = it.type.classifier as KClass<*>
                     when {
                         config.namedParameterGenerators.containsKey(it.name) -> {
-                            config.namedParameterGenerators[it.name]?.invoke()
+                            config.namedParameterGenerators[it.name]?.invoke(pInfo)
                         }
                         it.type.isMarkedNullable && config.nullableGenerators.containsKey(klass) -> {
-                            config.nullableGenerators[klass]?.invoke()
+                            config.nullableGenerators[klass]?.invoke(pInfo)
                         }
                         else -> {
-                            klass.predefinedTypeOrNull(config)
+                            klass.predefinedTypeOrNull(config, pInfo)
                                 ?: klass.randomPrimitiveOrNull()
                                 ?: klass.objectInstance
                                 ?: klass.randomEnumOrNull()
@@ -156,8 +159,8 @@ class RandomClassProvider {
         }
     }
 
-    private fun <T : Any> KClass<T>.predefinedTypeOrNull(config: RandomProviderConfig): Any? {
-        return config.predefinedGenerators[this]?.invoke()
+    private fun <T : Any> KClass<T>.predefinedTypeOrNull(config: RandomProviderConfig, pInfo: ParameterInfo): Any? {
+        return config.predefinedGenerators[this]?.invoke(pInfo)
     }
 
     /**
@@ -234,32 +237,32 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     var fallbackStrategy: FallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
 
     @PublishedApi
-    internal val namedParameterGenerators = mutableMapOf<String, () -> Any?>()
+    internal val namedParameterGenerators = mutableMapOf<String, (pInfo: ParameterInfo) -> Any?>()
 
     @PublishedApi
-    internal val predefinedGenerators = mutableMapOf<KClass<*>, () -> Any>()
+    internal val predefinedGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any>()
 
     @PublishedApi
-    internal val nullableGenerators = mutableMapOf<KClass<*>, () -> Any?>()
+    internal val nullableGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any?>()
 
     /**
      * Configures generation for a specific named parameter. Overrides all other generators
      */
-    inline fun <reified K : Any> namedParameterGenerator(parameterName: String, noinline generator: () -> K?) {
+    inline fun <reified K : Any> namedParameterGenerator(parameterName: String, noinline generator: (pInfo: ParameterInfo) -> K?) {
         namedParameterGenerators[parameterName] = generator
     }
 
     /**
      * Configures generation for a specific type. It can override internal generators (for primitives, for example)
      */
-    inline fun <reified K : Any> typeGenerator(noinline generator: () -> K) {
+    inline fun <reified K : Any> typeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
         predefinedGenerators[K::class] = generator
     }
 
     /**
      * Configures generation for a specific nullable type. It can override internal generators (for primitives, for example)
      */
-    inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: () -> K?) {
+    inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
         nullableGenerators[K::class] = generator
     }
 
@@ -280,9 +283,9 @@ private fun RandomProviderConfig.copy(
     constructorParamSize: Int? = null,
     constructorFilterStrategy: ConstructorFilterStrategy? = null,
     fallbackStrategy: FallbackStrategy? = null,
-    namedParameterGenerators: Map<String, () -> Any?>? = null,
-    predefinedGenerators: Map<KClass<*>, () -> Any>? = null,
-    nullableGenerators: Map<KClass<*>, () -> Any?>? = null
+    namedParameterGenerators: Map<String, (pInfo: ParameterInfo) -> Any?>? = null,
+    predefinedGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any>? = null,
+    nullableGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any?>? = null
 ): RandomProviderConfig = RandomProviderConfig().apply {
     this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
     this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize

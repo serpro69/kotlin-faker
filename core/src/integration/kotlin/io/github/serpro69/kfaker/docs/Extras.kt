@@ -25,17 +25,21 @@ class Extras : DescribeSpec({
 
         context("configurable constructor arg type generation") {
             it("should generate pre-configured constructor params") {
+                fun randomString() = "X3a8s813dcb";
+
                 // START extras_random_instance_two
-                class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID)
+                class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID, val user: String)
 
                 val baz: Baz = faker.randomProvider.randomClassInstance {
                     typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
                     typeGenerator<Int> { 0 }
+                    typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
                     namedParameterGenerator("relatedUuid") { UUID.fromString("11111111-1111-1111-1111-111111111111") }
                 }
                 // END extras_random_instance_two
 
                 assertEquals(baz.id, 0)
+                assertEquals(baz.user, "user_X3a8s813dcb")
                 assertEquals(baz.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
                 assertEquals(baz.relatedUuid, UUID.fromString("11111111-1111-1111-1111-111111111111"))
             }
@@ -371,4 +375,3 @@ enum class Foo {
     FORTY_TWO
 }
 // END extras_random_everything_two
-
