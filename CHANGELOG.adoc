@@ -35,7 +35,7 @@
 [discrete]
 === Other
 
-* ...
+* https://github.com/serpro69/kotlin-faker/pull/181[#181] [core] Add context to exception when `randomClassInstance` fails
 
 ====
 

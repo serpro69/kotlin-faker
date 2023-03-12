@@ -105,8 +105,12 @@ class RandomClassProvider {
             config.constructorParamSize == -1
             && config.constructorFilterStrategy == ConstructorFilterStrategy.NO_ARGS
         ) {
-            randomPrimitiveOrNull() as T?
-                ?: constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+            randomPrimitiveOrNull() as T? ?: try {
+                constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                throw InstantiationException("Failed to instantiate $this")
+            }
         } else null
 
         return defaultInstance ?: objectInstance ?: run {
@@ -155,7 +159,12 @@ class RandomClassProvider {
                 }
                 .toTypedArray()
 
-            constructor.call(*params)
+            try {
+                constructor.call(*params)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                throw InstantiationException("Failed to instantiate $this with $params")
+            }
         }
     }
 
@@ -248,7 +257,10 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     /**
      * Configures generation for a specific named parameter. Overrides all other generators
      */
-    inline fun <reified K : Any> namedParameterGenerator(parameterName: String, noinline generator: (pInfo: ParameterInfo) -> K?) {
+    inline fun <reified K : Any> namedParameterGenerator(
+        parameterName: String,
+        noinline generator: (pInfo: ParameterInfo) -> K?
+    ) {
         namedParameterGenerators[parameterName] = generator
     }
 
