@@ -55,6 +55,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getAvatar",
+        "parameterTypes": []
+      },
+      {
         "name": "getBackToTheFuture",
         "parameterTypes": []
       },
@@ -128,6 +132,10 @@
       },
       {
         "name": "getCat",
+        "parameterTypes": []
+      },
+      {
+        "name": "getChess",
         "parameterTypes": []
       },
       {
@@ -1011,6 +1019,23 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.Avatar",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "dates",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.BackToTheFuture",
     "methods": [
       {
@@ -1401,6 +1426,27 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.CellPhone"
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Chess",
+    "methods": [
+      {
+        "name": "players",
+        "parameterTypes": []
+      },
+      {
+        "name": "tournaments",
+        "parameterTypes": []
+      },
+      {
+        "name": "openings",
+        "parameterTypes": []
+      },
+      {
+        "name": "titles",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Chiquito",

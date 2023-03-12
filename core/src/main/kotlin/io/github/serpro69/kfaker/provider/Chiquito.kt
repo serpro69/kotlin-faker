@@ -6,7 +6,7 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [YamlCategory.ANCIENT] category.
+ * [FakeDataProvider] implementation for [YamlCategory.CHIQUITO] category.
  */
 @Suppress("unused")
 class Chiquito internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Chiquito>(fakerService) {
