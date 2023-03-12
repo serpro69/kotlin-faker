@@ -2462,6 +2462,10 @@
     "name": "io.github.serpro69.kfaker.provider.Food",
     "methods": [
       {
+        "name": "allergens",
+        "parameterTypes": []
+      },
+      {
         "name": "descriptions",
         "parameterTypes": []
       },
