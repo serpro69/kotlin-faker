@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().chess`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'chess_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().chess.players() // => Alexander Alekhine
+
+Faker().chess.tournaments() // => Wijk aan Zee
+
+Faker().chess.openings() // => Alekhine’s Defense
+
+Faker().chess.titles() // => GM
+----
+====

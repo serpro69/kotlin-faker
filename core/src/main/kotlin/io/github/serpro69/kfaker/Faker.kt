@@ -45,6 +45,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val aquaTeenHungerForce: AquaTeenHungerForce by lazy { AquaTeenHungerForce(fakerService) }
     val artist: Artist by lazy { Artist(fakerService) }
     val australia: Australia by lazy { Australia(fakerService) }
+    val avatar: Avatar by lazy { Avatar(fakerService) }
     val backToTheFuture: BackToTheFuture by lazy { BackToTheFuture(fakerService) }
     val bank: Bank by lazy { Bank(fakerService) }
     val barcode: Barcode by lazy { Barcode(fakerService) }
@@ -65,6 +66,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val cannabis: Cannabis by lazy { Cannabis(fakerService) }
     val cat: Cat by lazy { Cat(fakerService) }
     val chiquito: Chiquito by lazy { Chiquito(fakerService) }
+    val chess: Chess by lazy { Chess(fakerService) }
     val chuckNorris: ChuckNorris by lazy { ChuckNorris(fakerService) }
     val clashOfClans: ClashOfClans by lazy { ClashOfClans(fakerService) }
     val code: Code by lazy { Code(fakerService) }
