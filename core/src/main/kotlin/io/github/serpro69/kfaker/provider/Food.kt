@@ -18,6 +18,7 @@ class Food internal constructor(fakerService: FakerService) : YamlFakeDataProvid
         fakerService.load(yamlCategory)
     }
 
+    fun allergens() = resolve("allergens")
     fun dish() = resolve("dish")
     fun descriptions() = resolve("descriptions")
     fun ingredients() = resolve("ingredients")
