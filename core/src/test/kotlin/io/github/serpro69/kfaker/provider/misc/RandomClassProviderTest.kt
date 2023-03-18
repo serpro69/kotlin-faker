@@ -12,6 +12,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
+import io.kotest.matchers.types.shouldBeSameInstanceAs
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import java.util.*
 import kotlin.reflect.full.declaredMemberProperties
@@ -410,6 +411,31 @@ class RandomClassProviderTest : DescribeSpec({
                 testClass.set shouldHaveSize 1
                 testClass.map shouldHaveSize 1
             }
+        }
+    }
+
+    describe("a TestClass with with abstract type constructor parameter") {
+        class Foo
+        class Bar(val foo: Foo)
+        class Baz(val foo: Foo, val bar: Bar)
+        class TestClass(
+            val foo: Foo,
+            val bar: Bar,
+            val baz: Baz,
+            val number: Number,
+        )
+
+        it("should throw exception for Number type") {
+            val ex = shouldThrow<InstantiationException> { randomProvider.randomClassInstance<TestClass>() }
+            ex.message shouldBe "Failed to instantiate class kotlin.Number"
+            ex.cause shouldBe InstantiationException()
+        }
+
+        it("should custom typeGenerator for Number") {
+            val testClass = randomProvider.randomClassInstance<TestClass> {
+                typeGenerator<Number> { 42 }
+            }
+            testClass.number shouldBe 42
         }
     }
 
