@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
+import java.util.*
 import kotlin.Boolean
 import kotlin.Char
 import kotlin.Double
@@ -108,8 +109,8 @@ class RandomClassProvider {
             randomPrimitiveOrNull() as T? ?: try {
                 constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
             } catch (e: Exception) {
-                e.printStackTrace()
                 throw InstantiationException("Failed to instantiate $this")
+                    .initCause(e)
             }
         } else null
 
@@ -157,13 +158,12 @@ class RandomClassProvider {
                         }
                     }
                 }
-                .toTypedArray()
 
             try {
-                constructor.call(*params)
+                constructor.call(*params.toTypedArray())
             } catch (e: Exception) {
-                e.printStackTrace()
                 throw InstantiationException("Failed to instantiate $this with $params")
+                    .initCause(e)
             }
         }
     }
