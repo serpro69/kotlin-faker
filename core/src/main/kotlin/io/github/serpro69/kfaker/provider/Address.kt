@@ -33,7 +33,7 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun secondaryAddress() = with(fakerService) { resolve("secondary_address").numerify() }
     fun postcode() = with(fakerService) {
         when (faker.config.locale) {
-            "nl" -> resolve("postcode").generexify().replace("/", "")
+            "nl", "en-GB" -> resolve("postcode").generexify().replace("/", "")
             else -> resolve("postcode").numerify()
         }
     }
