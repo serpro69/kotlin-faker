@@ -65,5 +65,11 @@ class AddressIT : DescribeSpec({
                 address("fr").fullAddress() shouldContain Regex("""\d{5}""")
             }
         }
+
+        context("en-GB locale") {
+            it("should generate a valid postcode") {
+                address("en-GB").postcode() shouldMatch Regex("""[A-Z]{1,2}\d{1,2}[A-Z]* [\d][A-Z][A-Z]""")
+            }
+        }
     }
 })
