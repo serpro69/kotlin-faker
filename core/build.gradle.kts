@@ -19,7 +19,6 @@ dependencies {
     shadow("com.ibm.icu:icu4j:72.1")
     shadow(kotlin("stdlib-jdk8"))
     shadow(kotlin("reflect"))
-    shadow("org.slf4j:slf4j-api:2.0.6")
     shadow("com.github.mifmif:generex:1.0.2")
 }
 
