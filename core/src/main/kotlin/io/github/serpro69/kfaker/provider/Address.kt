@@ -32,9 +32,10 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun streetSuffix() = resolve("street_suffix")
     fun secondaryAddress() = with(fakerService) { resolve("secondary_address").numerify() }
     fun postcode() = with(fakerService) {
-        when (faker.config.locale) {
-            "nl", "en-GB" -> resolve("postcode").generexify().replace("/", "")
-            else -> resolve("postcode").numerify()
+        val pattern = resolve("postcode")
+        when {
+            pattern.contains('#') -> pattern.numerify()
+            else -> pattern.generexify().replace("/", "")
         }
     }
 
@@ -64,4 +65,3 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     )
     internal fun cityRoot() = cityPrefix()
 }
-

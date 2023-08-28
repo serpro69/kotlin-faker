@@ -68,7 +68,13 @@ class AddressIT : DescribeSpec({
 
         context("en-GB locale") {
             it("should generate a valid postcode") {
-                address("en-GB").postcode() shouldMatch Regex("""[A-Z]{1,2}\d{1,2}[A-Z]* [\d][A-Z][A-Z]""")
+                address("en-GB").postcode() shouldMatch Regex("""[A-Z]{1,2}\d{1,2}[A-Z]* \d[A-Z][A-Z]""")
+            }
+        }
+
+        context("en-CA locale") {
+            it("should generate a valid postcode") {
+                address("en-CA").postcode() shouldMatch Regex("""[A-CEGHJ-NPR-TVXY][0-9][A-CEJ-NPR-TV-Z] ?[0-9][A-CEJ-NPR-TV-Z][0-9]""")
             }
         }
     }
