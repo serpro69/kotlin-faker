@@ -14,7 +14,8 @@
 [discrete]
 === Fixed
 
-* ...
+* https://github.com/serpro69/kotlin-faker/pull/188[#188] [core] Fix postcode for en-GB locale
+* https://github.com/serpro69/kotlin-faker/pull/193[#193] [core] Fix localized postcodes with regex patterns
 
 [discrete]
 === Other

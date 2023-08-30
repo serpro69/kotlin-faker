@@ -13,6 +13,9 @@
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
   * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
+    * [New Instance](#new-instance)
+    * [Instance Copy](#instance-copy)
+  * [Dealing with Generic Types](#dealing-with-generic-types)
 * [Random Everything](#random-everything)
 * [Random Strings from Templates](#random-strings-from-templates)
 
@@ -382,6 +385,14 @@ Any configuration that was already applied to `faker.randomProvider` ( ❶ and �
 The `copy`, just as `new` instance, can of course be reconfigured ( ❹ ) as needed, which does not affect the configuration of the `faker.randomProvider` or configurations of other "copies".
 {% endfilter %}
 {% endinfo %}
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Dealing with Generic Types
+
+Generic parameter types are not fully supported at this moment due to type-erasure on the JVM (See also https://github.com/serpro69/kotlin-faker/issues/191)
 
 {% btc %}{% endbtc %}
 
