@@ -917,7 +917,17 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.Airport"
+    "name": "io.github.serpro69.kfaker.provider.Airport",
+    "methods": [
+      {
+        "name": "getEuropeanUnion",
+        "parameterTypes": []
+      },
+      {
+        "name": "getUnitedStates",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Ancient",
@@ -1220,6 +1230,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getOrderCommonMap",
+        "parameterTypes": []
+      },
+      {
         "name": "implausibleCommonNames",
         "parameterTypes": []
       },
@@ -1234,7 +1248,169 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.BirdOrderCommonMap"
+    "name": "io.github.serpro69.kfaker.provider.BirdOrderCommonMap",
+    "methods": [
+      {
+        "name": "accipitriformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "anseriformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "apterygiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "bucerotiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "caprimulgiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "cariamiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "casuariiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "cathartiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "charadriiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "ciconiiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "coliiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "columbiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "coraciiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "cuculiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "eurypygiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "falconiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "galbuliformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "galliformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "gaviiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "gruiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "mesitornithiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "musophagiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "opisthocomiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "otidiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "passeriformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "pelecaniformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "phaethontiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "phoenicopteriformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "piciformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "podicipediformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "procellariiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "psittaciformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "pterocliformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "rheiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "sphenisciformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "strigiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "struthioniformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "suliformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "tinamiformes",
+        "parameterTypes": []
+      },
+      {
+        "name": "trogoniformes",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Blood",
@@ -1425,25 +1601,31 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.CellPhone"
+    "name": "io.github.serpro69.kfaker.provider.CellPhone",
+    "methods": [
+      {
+        "name": "number",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Chess",
     "methods": [
       {
-        "name": "players",
-        "parameterTypes": []
-      },
-      {
-        "name": "tournaments",
-        "parameterTypes": []
-      },
-      {
         "name": "openings",
         "parameterTypes": []
       },
       {
+        "name": "players",
+        "parameterTypes": []
+      },
+      {
         "name": "titles",
+        "parameterTypes": []
+      },
+      {
+        "name": "tournaments",
         "parameterTypes": []
       }
     ]
@@ -1599,6 +1781,10 @@
         "parameterTypes": []
       },
       {
+        "name": "department",
+        "parameterTypes": []
+      },
+      {
         "name": "industry",
         "parameterTypes": []
       },
@@ -1617,10 +1803,6 @@
       {
         "name": "type",
         "parameterTypes": []
-      },
-      {
-        "name": "department",
-        "parameterTypes": []
       }
     ]
   },
@@ -1631,7 +1813,33 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.ComputerOS"
+    "name": "io.github.serpro69.kfaker.provider.ComputerOS",
+    "methods": [
+      {
+        "name": "linux",
+        "parameterTypes": []
+      },
+      {
+        "name": "macOS",
+        "parameterTypes": []
+      },
+      {
+        "name": "openBsd",
+        "parameterTypes": []
+      },
+      {
+        "name": "plan9",
+        "parameterTypes": []
+      },
+      {
+        "name": "templeOS",
+        "parameterTypes": []
+      },
+      {
+        "name": "windows",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Conan",
@@ -1734,7 +1942,13 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.CountryCode"
+    "name": "io.github.serpro69.kfaker.provider.CountryCode",
+    "methods": [
+      {
+        "name": "code",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.CowboyBebop",
@@ -1974,9 +2188,65 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.DnD",
-    "allDeclaredFields": true,
-    "allDeclaredMethods": true,
-    "allDeclaredConstructors": true
+    "methods": [
+      {
+        "name": "alignments",
+        "parameterTypes": []
+      },
+      {
+        "name": "backgrounds",
+        "parameterTypes": []
+      },
+      {
+        "name": "cities",
+        "parameterTypes": []
+      },
+      {
+        "name": "getName",
+        "parameterTypes": []
+      },
+      {
+        "name": "klasses",
+        "parameterTypes": []
+      },
+      {
+        "name": "languages",
+        "parameterTypes": []
+      },
+      {
+        "name": "meleeWeapons",
+        "parameterTypes": []
+      },
+      {
+        "name": "monsters",
+        "parameterTypes": []
+      },
+      {
+        "name": "races",
+        "parameterTypes": []
+      },
+      {
+        "name": "rangedWeapons",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.DndName",
+    "methods": [
+      {
+        "name": "firstName",
+        "parameterTypes": []
+      },
+      {
+        "name": "lastName",
+        "parameterTypes": []
+      },
+      {
+        "name": "title",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Dog",
@@ -2347,7 +2617,17 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.EuropeanUnion"
+    "name": "io.github.serpro69.kfaker.provider.EuropeanUnion",
+    "methods": [
+      {
+        "name": "large",
+        "parameterTypes": []
+      },
+      {
+        "name": "medium",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.FakeDataProvider"
@@ -2397,7 +2677,41 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.FileMimeType"
+    "name": "io.github.serpro69.kfaker.provider.FileMimeType",
+    "methods": [
+      {
+        "name": "application",
+        "parameterTypes": []
+      },
+      {
+        "name": "audio",
+        "parameterTypes": []
+      },
+      {
+        "name": "image",
+        "parameterTypes": []
+      },
+      {
+        "name": "message",
+        "parameterTypes": []
+      },
+      {
+        "name": "model",
+        "parameterTypes": []
+      },
+      {
+        "name": "multipart",
+        "parameterTypes": []
+      },
+      {
+        "name": "text",
+        "parameterTypes": []
+      },
+      {
+        "name": "video",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.FinalSpace",
@@ -2552,7 +2866,33 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.FrenchOpera"
+    "name": "io.github.serpro69.kfaker.provider.FrenchOpera",
+    "methods": [
+      {
+        "name": "byCamilleSaintSaens",
+        "parameterTypes": []
+      },
+      {
+        "name": "byCharlesGounod",
+        "parameterTypes": []
+      },
+      {
+        "name": "byChristophWillibaldGluck",
+        "parameterTypes": []
+      },
+      {
+        "name": "byGeorgesBizet",
+        "parameterTypes": []
+      },
+      {
+        "name": "byHectorBerlioz",
+        "parameterTypes": []
+      },
+      {
+        "name": "byMauriceRavel",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.FreshPriceOfBelAir",
@@ -2659,7 +2999,41 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.GermanOpera"
+    "name": "io.github.serpro69.kfaker.provider.GermanOpera",
+    "methods": [
+      {
+        "name": "byAlbanBerg",
+        "parameterTypes": []
+      },
+      {
+        "name": "byCarlMariaVonWeber",
+        "parameterTypes": []
+      },
+      {
+        "name": "byFranzSchubert",
+        "parameterTypes": []
+      },
+      {
+        "name": "byLudwigVanBeethoven",
+        "parameterTypes": []
+      },
+      {
+        "name": "byRichardStrauss",
+        "parameterTypes": []
+      },
+      {
+        "name": "byRichardWagner",
+        "parameterTypes": []
+      },
+      {
+        "name": "byRobertSchumann",
+        "parameterTypes": []
+      },
+      {
+        "name": "byWolfgangAmadeusMozart",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.GhostBusters",
@@ -2852,7 +3226,21 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.HipHop"
+    "name": "io.github.serpro69.kfaker.provider.HipHop",
+    "methods": [
+      {
+        "name": "artist",
+        "parameterTypes": []
+      },
+      {
+        "name": "groups",
+        "parameterTypes": []
+      },
+      {
+        "name": "subgenres",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Hipster",
@@ -2991,6 +3379,9 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.IataCode"
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.IdNumber",
     "methods": [
       {
@@ -3027,7 +3418,33 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.ItalianOpera"
+    "name": "io.github.serpro69.kfaker.provider.ItalianOpera",
+    "methods": [
+      {
+        "name": "byChristophWillibaldGluck",
+        "parameterTypes": []
+      },
+      {
+        "name": "byGaetanoDonizetti",
+        "parameterTypes": []
+      },
+      {
+        "name": "byGioacchinoRossini",
+        "parameterTypes": []
+      },
+      {
+        "name": "byGiuseppeVerdi",
+        "parameterTypes": []
+      },
+      {
+        "name": "byVincenzoBellini",
+        "parameterTypes": []
+      },
+      {
+        "name": "byWolfgangAmadeusMozart",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.JackHandey",
@@ -3101,16 +3518,92 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.KamenRider"
+    "name": "io.github.serpro69.kfaker.provider.KamenRider",
+    "methods": [
+      {
+        "name": "getHeisei",
+        "parameterTypes": []
+      },
+      {
+        "name": "getReiwa",
+        "parameterTypes": []
+      },
+      {
+        "name": "getShowa",
+        "parameterTypes": []
+      }
+    ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.KamenRiderHeisei"
+    "name": "io.github.serpro69.kfaker.provider.KamenRiderHeisei",
+    "methods": [
+      {
+        "name": "collectibleDevices",
+        "parameterTypes": []
+      },
+      {
+        "name": "kamenRiders",
+        "parameterTypes": []
+      },
+      {
+        "name": "series",
+        "parameterTypes": []
+      },
+      {
+        "name": "transformationDevices",
+        "parameterTypes": []
+      },
+      {
+        "name": "users",
+        "parameterTypes": []
+      }
+    ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.KamenRiderReiwa"
+    "name": "io.github.serpro69.kfaker.provider.KamenRiderReiwa",
+    "methods": [
+      {
+        "name": "collectibleDevices",
+        "parameterTypes": []
+      },
+      {
+        "name": "kamenRiders",
+        "parameterTypes": []
+      },
+      {
+        "name": "series",
+        "parameterTypes": []
+      },
+      {
+        "name": "transformationDevices",
+        "parameterTypes": []
+      },
+      {
+        "name": "users",
+        "parameterTypes": []
+      }
+    ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.KamenRiderShowa"
+    "name": "io.github.serpro69.kfaker.provider.KamenRiderShowa",
+    "methods": [
+      {
+        "name": "kamenRiders",
+        "parameterTypes": []
+      },
+      {
+        "name": "series",
+        "parameterTypes": []
+      },
+      {
+        "name": "transformationDevices",
+        "parameterTypes": []
+      },
+      {
+        "name": "users",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.LeagueOfLegends",
@@ -3401,6 +3894,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getHipHop",
+        "parameterTypes": []
+      },
+      {
         "name": "instruments",
         "parameterTypes": []
       },
@@ -3497,7 +3994,21 @@
     "allDeclaredConstructors": true
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.Opera"
+    "name": "io.github.serpro69.kfaker.provider.Opera",
+    "methods": [
+      {
+        "name": "getFrench",
+        "parameterTypes": []
+      },
+      {
+        "name": "getGerman",
+        "parameterTypes": []
+      },
+      {
+        "name": "getItalian",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Overwatch",
@@ -3829,6 +4340,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getBranch",
+        "parameterTypes": []
+      },
+      {
         "name": "modifier",
         "parameterTypes": []
       },
@@ -3843,7 +4358,33 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.ScienceBranch"
+    "name": "io.github.serpro69.kfaker.provider.ScienceBranch",
+    "methods": [
+      {
+        "name": "empiricalNaturalApplied",
+        "parameterTypes": []
+      },
+      {
+        "name": "empiricalNaturalBasic",
+        "parameterTypes": []
+      },
+      {
+        "name": "empiricalSocialApplied",
+        "parameterTypes": []
+      },
+      {
+        "name": "empiricalSocialBasic",
+        "parameterTypes": []
+      },
+      {
+        "name": "formalApplied",
+        "parameterTypes": []
+      },
+      {
+        "name": "formalBasic",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Seinfeld",
@@ -4033,11 +4574,11 @@
         "parameterTypes": []
       },
       {
-        "name": "quotes",
+        "name": "episodes",
         "parameterTypes": []
       },
       {
-        "name": "episodes",
+        "name": "quotes",
         "parameterTypes": []
       }
     ]
@@ -4464,6 +5005,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getQuests",
+        "parameterTypes": []
+      },
+      {
         "name": "items",
         "parameterTypes": []
       },
@@ -4482,11 +5027,49 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.TarkovQuests"
+    "name": "io.github.serpro69.kfaker.provider.TarkovQuests",
+    "methods": [
+      {
+        "name": "fence",
+        "parameterTypes": []
+      },
+      {
+        "name": "jaeger",
+        "parameterTypes": []
+      },
+      {
+        "name": "mechanic",
+        "parameterTypes": []
+      },
+      {
+        "name": "peacekeeper",
+        "parameterTypes": []
+      },
+      {
+        "name": "prapor",
+        "parameterTypes": []
+      },
+      {
+        "name": "ragman",
+        "parameterTypes": []
+      },
+      {
+        "name": "skier",
+        "parameterTypes": []
+      },
+      {
+        "name": "therapist",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Tea",
     "methods": [
+      {
+        "name": "getVariety",
+        "parameterTypes": []
+      },
       {
         "name": "type",
         "parameterTypes": []
@@ -4494,7 +5077,29 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.TeaVariety"
+    "name": "io.github.serpro69.kfaker.provider.TeaVariety",
+    "methods": [
+      {
+        "name": "black",
+        "parameterTypes": []
+      },
+      {
+        "name": "green",
+        "parameterTypes": []
+      },
+      {
+        "name": "herbal",
+        "parameterTypes": []
+      },
+      {
+        "name": "oolong",
+        "parameterTypes": []
+      },
+      {
+        "name": "white",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Team",
@@ -4627,6 +5232,14 @@
         "parameterTypes": []
       },
       {
+        "name": "getHobbit",
+        "parameterTypes": []
+      },
+      {
+        "name": "getLordOfTheRings",
+        "parameterTypes": []
+      },
+      {
         "name": "locations",
         "parameterTypes": []
       },
@@ -4641,10 +5254,42 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.TolkienHobbit"
+    "name": "io.github.serpro69.kfaker.provider.TolkienHobbit",
+    "methods": [
+      {
+        "name": "character",
+        "parameterTypes": []
+      },
+      {
+        "name": "location",
+        "parameterTypes": []
+      },
+      {
+        "name": "quote",
+        "parameterTypes": []
+      },
+      {
+        "name": "thorinsCompany",
+        "parameterTypes": []
+      }
+    ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.TolkienLordOfTheRings"
+    "name": "io.github.serpro69.kfaker.provider.TolkienLordOfTheRings",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "locations",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Touhou",
@@ -4773,7 +5418,21 @@
     ]
   },
   {
-    "name": "io.github.serpro69.kfaker.provider.UnitedStates"
+    "name": "io.github.serpro69.kfaker.provider.UnitedStates",
+    "methods": [
+      {
+        "name": "large",
+        "parameterTypes": []
+      },
+      {
+        "name": "medium",
+        "parameterTypes": []
+      },
+      {
+        "name": "small",
+        "parameterTypes": []
+      }
+    ]
   },
   {
     "name": "io.github.serpro69.kfaker.provider.University",
@@ -5124,6 +5783,9 @@
     "name": "io.github.serpro69.kfaker.provider.unique.UniqueDataProvider"
   },
   {
+    "name": "java.lang.ClassValue"
+  },
+  {
     "name": "java.lang.Object",
     "allDeclaredFields": true,
     "allDeclaredMethods": true
@@ -5386,6 +6048,10 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "kotlin.reflect.jvm.internal.impl.renderer.DescriptorRendererOptionsImpl",
+    "allDeclaredFields": true
   },
   {
     "name": "kotlin.reflect.jvm.internal.impl.resolve.scopes.DescriptorKindFilter",
