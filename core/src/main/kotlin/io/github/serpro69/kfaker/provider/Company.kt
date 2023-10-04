@@ -25,4 +25,5 @@ class Company internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun profession() = resolve("profession")
     fun type() = resolve("type")
     fun sicCode() = resolve("sic_code")
+    fun department() = resolve("department")
 }

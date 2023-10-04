@@ -18,6 +18,8 @@ class DnD internal constructor(fakerService: FakerService) : YamlFakeDataProvide
         fakerService.load(yamlCategory)
     }
 
+    val name by lazy { DndName(fakerService) }
+
     fun alignments() = resolve("alignments")
     fun backgrounds() = resolve("backgrounds")
     fun cities() = resolve("cities")
@@ -27,4 +29,21 @@ class DnD internal constructor(fakerService: FakerService) : YamlFakeDataProvide
     fun monsters() = resolve("monsters")
     fun races() = resolve("races")
     fun rangedWeapons() = resolve("ranged_weapons")
+}
+
+/**
+ * [FakeDataProvider] implementation for [YamlCategory.DND] category.
+ */
+class DndName internal constructor(fakerService: FakerService) : YamlFakeDataProvider<DndName>(fakerService) {
+    override val yamlCategory = YamlCategory.DND
+    override val localUniqueDataProvider = LocalUniqueDataProvider<DndName>()
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+
+    init {
+        fakerService.load(yamlCategory)
+    }
+
+    fun firstName() = resolve("name", "first_name")
+    fun lastName() = resolve("name", "last_name")
+    fun title() = resolve("name", "title")
 }

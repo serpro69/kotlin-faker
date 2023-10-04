@@ -2480,7 +2480,8 @@ es-AR:
         yemen: YE
         zambia: ZM
         zimbabwe: ZW
-      default_country: [ Argentina ]
+      default_country: [Argentina]
+      default_country_code: ["AR"]
 
     football:
       teams:
@@ -3394,7 +3395,7 @@ es-AR:
         - "2### 6#####"
         - "3### 6#####"
         - "11-7###-####"
-    country_code: [ "54" ]
+    country_code: ["54"]
 
     bank:
       name:

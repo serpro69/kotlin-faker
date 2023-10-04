@@ -20,4 +20,5 @@ class SouthPark internal constructor(fakerService: FakerService) : YamlFakeDataP
 
     fun characters() = resolve("characters")
     fun quotes() = resolve("quotes")
+    fun episodes() = resolve("episodes")
 }
