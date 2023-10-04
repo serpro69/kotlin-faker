@@ -12,10 +12,12 @@
 *** `Faker().southPark.episodes()`
 ** Updates to existing localized dictionaries
 
+* https://github.com/serpro69/kotlin-faker/pull/197[#197] [cli] Render sub-providers functions in cli output
+
 [discrete]
 === Changed
 
-* ...
+* https://github.com/serpro69/kotlin-faker/pull/197[#197] [cli] Change cli `lookup` command to return matching providers by name
 
 [discrete]
 === Fixed
