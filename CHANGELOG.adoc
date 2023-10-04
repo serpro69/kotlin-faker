@@ -4,7 +4,13 @@
 [discrete]
 === Added
 
-* ...
+* https://github.com/serpro69/kotlin-faker/pull/195[#195] [core] Update dictionary files, including:
+** Data and functions in existing data providers, including new functions:
+*** `Faker().company.department()`
+*** `Faker().dnd.name...`
+*** `Faker().internet.safeDomainSuffix()`
+*** `Faker().southPark.episodes()`
+** Updates to existing localized dictionaries
 
 [discrete]
 === Changed
