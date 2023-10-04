@@ -20,9 +20,9 @@ class Tolkien internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    val lordOfTheRings = TolkienLordOfTheRings(fakerService)
+    val lordOfTheRings by lazy { TolkienLordOfTheRings(fakerService) }
 
-    val hobbit = TolkienHobbit(fakerService)
+    val hobbit by lazy { TolkienHobbit(fakerService) }
 
     fun poems(): String = resolve("poems")
     fun locations(): String = resolve("locations")
@@ -40,9 +40,9 @@ class TolkienLordOfTheRings internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    fun characters(): String = resolve("characters")
-    fun locations(): String = resolve("locations")
-    fun quotes(): String = resolve("quotes")
+    fun characters(): String = resolve("lord_of_the_rings", "characters")
+    fun locations(): String = resolve("lord_of_the_rings", "locations")
+    fun quotes(): String = resolve("lord_of_the_rings", "quotes")
 }
 
 class TolkienHobbit internal constructor(fakerService: FakerService) :
@@ -55,8 +55,8 @@ class TolkienHobbit internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    fun character(): String = resolve("character")
-    fun thorinsCompany(): String = resolve("thorins_company")
-    fun quote(): String = resolve("quote")
-    fun location(): String = resolve("location")
+    fun character(): String = resolve("hobbit", "character")
+    fun thorinsCompany(): String = resolve("hobbit", "thorins_company")
+    fun quote(): String = resolve("hobbit", "quote")
+    fun location(): String = resolve("hobbit", "location")
 }

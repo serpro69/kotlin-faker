@@ -18,7 +18,7 @@ class Educator internal constructor(fakerService: FakerService) : YamlFakeDataPr
         fakerService.load(yamlCategory)
     }
 
-    val tertiary = Tertiary(fakerService)
+    val tertiary by lazy { Tertiary(fakerService) }
 
     fun schoolName() = resolve("school_name")
     fun secondary() = resolve("secondary")
@@ -48,7 +48,7 @@ class Tertiary internal constructor(fakerService: FakerService) : YamlFakeDataPr
         fakerService.load(yamlCategory)
     }
 
-    val degree = Degree(fakerService)
+    val degree by lazy { Degree(fakerService) }
 
     fun universityType() = resolve("tertiary", "university_type")
 }

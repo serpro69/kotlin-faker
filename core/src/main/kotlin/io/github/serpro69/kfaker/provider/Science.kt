@@ -18,7 +18,7 @@ class Science internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory)
     }
 
-    val branch = ScienceBranch(fakerService)
+    val branch by lazy { ScienceBranch(fakerService) }
 
     fun element() = resolve("element")
     fun elementSymbol() = resolve("element_symbol")

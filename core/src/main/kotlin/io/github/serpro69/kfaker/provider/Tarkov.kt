@@ -20,7 +20,7 @@ class Tarkov internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    val quests = TarkovQuests(fakerService)
+    val quests by lazy { TarkovQuests(fakerService) }
 
     fun locations() = resolve("locations")
     fun traders() = resolve("traders")

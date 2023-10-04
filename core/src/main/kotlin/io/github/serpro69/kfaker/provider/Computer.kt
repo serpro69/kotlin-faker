@@ -56,7 +56,7 @@ class ComputerOS internal constructor(fakerService: FakerService) : YamlFakeData
     }
 
     fun linux() = resolve("os", "linux")
-    fun openBsd() = resolve("os", "obenbsd")
+    fun openBsd() = resolve("os", "openbsd")
     fun templeOS() = resolve("os", "templeos")
     fun plan9() = resolve("os", "plan 9")
     fun macOS() = resolve("os", "macos")

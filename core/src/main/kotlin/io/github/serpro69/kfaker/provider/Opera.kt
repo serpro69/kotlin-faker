@@ -18,11 +18,11 @@ class Opera internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory)
     }
 
-    val italian = ItalianOpera(fakerService)
+    val italian by lazy { ItalianOpera(fakerService) }
 
-    val german = GermanOpera(fakerService)
+    val german by lazy { GermanOpera(fakerService) }
 
-    val french = FrenchOpera(fakerService)
+    val french by lazy { FrenchOpera(fakerService) }
 
     // TODO: 24.11.2019 fun italian() // resolves to a random italian opera
     // TODO: fun german() // resolves to a random german opera
@@ -45,7 +45,7 @@ class ItalianOpera internal constructor(
     fun byGaetanoDonizetti() = resolve("italian", "by_gaetano_donizetti")
     fun byVincenzoBellini() = resolve("italian", "by_vincenzo_bellini")
     fun byChristophWillibaldGluck() = resolve("italian", "by_christoph_willibald_gluck")
-    fun byWolfgangAmadeusMozart() = resolve("by_wolfgang_amadeus_mozart")
+    fun byWolfgangAmadeusMozart() = resolve("italian", "by_wolfgang_amadeus_mozart")
 }
 
 class GermanOpera internal constructor(
@@ -85,5 +85,5 @@ class FrenchOpera internal constructor(
     fun byHectorBerlioz(): String = resolve("french", "by_hector_berlioz")
     fun byGeorgesBizet(): String = resolve("french", "by_georges_bizet")
     fun byCharlesGounod(): String = resolve("french", "by_charles_gounod")
-    fun byCamilleSaintSaens(): String = resolve("french", "by_camille_saint_saëns")
+    fun byCamilleSaintSaens(): String = resolve("french", "by_camille_saint_saens")
 }
