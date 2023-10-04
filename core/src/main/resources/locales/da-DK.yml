@@ -22,6 +22,7 @@ da-DK:
       street_address:
         - "#{street_name} #{building_number}"
       default_country: [Danmark]
+      default_country_code: ["DK"]
 
     company:
       suffix: ["A/S", "ApS", "I/S", "IVS", "Holding", "SMBA", "K/S", "SPW"]
@@ -50,6 +51,8 @@ da-DK:
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
+
+    country_code: ['45']
 
     phone_number:
       formats:
