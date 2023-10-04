@@ -39,13 +39,21 @@ object Lookup : Runnable {
 
         val introspector = Introspector(faker)
 
-        val filteredMap: Map<KProperty<*>, Sequence<KFunction<*>>> = introspector.providerFunctions
-            .mapValuesTo(mutableMapOf()) { (_, v) ->
-                v.filter { it.name.lowercase().contains(functionName.lowercase()) }
-            }.filterValues { it.count() > 0 }
+        val filteredMap = introspector.providerData
+            .mapValuesTo(mutableMapOf()) { (_, fpPair) ->
+                val (functions, properties) = fpPair
+                functions.filter { it.name.lowercase().contains(functionName.lowercase()) } to
+                    properties.filter { (sub, funcs) ->
+                        sub.name.lowercase().contains(functionName.lowercase()) ||
+                            funcs.any { f -> f.name.lowercase().contains(functionName.lowercase()) }
+                    }
+            }.filterValues { (funcs, subFuncs) ->
+                funcs.count() > 0 || subFuncs.isNotEmpty()
+            }
 
-        val renderedProviders = filteredMap.map { (provider, functions) ->
-            renderProvider(options, faker, provider, functions)
+        val renderedProviders = filteredMap.map { (provider, fpPair) ->
+            val (functions, properties) = fpPair
+            renderProvider(options, faker, provider, null, functions, properties)
         }
 
         val output = Renderer("Faker()", renderedProviders).toString()

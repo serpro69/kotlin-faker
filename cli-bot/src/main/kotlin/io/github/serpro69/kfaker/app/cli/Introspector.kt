@@ -22,10 +22,23 @@ class Introspector(private val faker: Faker) {
             && it.returnType.classifier != StringProvider::class // Ignore this one as it's "special"
     }
 
-    // Get a list of all publicly visible functions in each provider
-    val providerFunctions: Map<KProperty<*>, Sequence<KFunction<*>>> = providers.associateBy { provider ->
-        provider.getter.call(faker)!!::class.declaredMemberFunctions.asSequence().filter {
+    // Get a list of all publicly visible functions and sub-provider properties in each provider
+    val providerData: Map<KProperty<*>, Pair<Sequence<KFunction<*>>, Map<KProperty<*>, Sequence<KFunction<*>>>>> = providers.associateBy { provider ->
+        val providerInstance = provider.getter.call(faker)!!
+
+        val functions = providerInstance::class.declaredMemberFunctions.asSequence().filter {
             it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
         }
+        val properties = providerInstance::class.declaredMemberProperties.asSequence().filter {
+            it.visibility == KVisibility.PUBLIC
+                && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+                && !it.annotations.any { ann -> ann is Deprecated }
+                && it.name != "unique"
+        }.associateBy { sub: KProperty<*> ->
+            sub.getter.call(providerInstance)!!::class.declaredMemberFunctions.asSequence().filter {
+                it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
+            }
+        }.map { it.value as KProperty<*> to it.key }.toMap()
+        (functions to properties)
     }.map { it.value to it.key }.toMap()
 }

@@ -3,7 +3,6 @@ package io.github.serpro69.kfaker.app.cli
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.app.subcommands.CommandOptions
 import io.github.serpro69.kfaker.provider.Money
-import io.github.serpro69.kfaker.provider.misc.StringProvider
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.system.exitProcess
@@ -61,18 +60,25 @@ fun renderProvider(
     options: CommandOptions,
     faker: Faker,
     provider: KProperty<*>,
-    functions: Sequence<KFunction<*>>
+    subProvider: KProperty<*>?,
+    functions: Sequence<KFunction<*>>,
+    properties: Map<KProperty<*>, Sequence<KFunction<*>>>,
 ): Renderer {
     val renderedFunctions = if (options.verbose) {
+        val instance = if (subProvider != null) {
+            subProvider.getter.call(provider.getter.call(faker))
+        } else {
+            provider.getter.call(faker)
+        }
         functions.map {
             val value = when (it.parameters.size) {
-                1 -> it.call(provider.getter.call(faker)).toString()
+                1 -> it.call(instance).toString()
                 2 -> {
                     if (it.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
-                        it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
-                    } else it.call(provider.getter.call(faker), "").toString()
+                        it.callBy(mapOf(it.parameters[0] to instance)).toString()
+                    } else it.call(instance, "").toString()
                 }
-                3 -> it.call(provider.getter.call(faker), "", "").toString()
+                3 -> it.call(instance, "", "").toString()
                 else -> {
                     when (it) {
                         Money::amount -> it.call(provider.getter.call(faker), 100_000..1_000_000, true, ",", ".")
@@ -89,11 +95,17 @@ fun renderProvider(
     } else {
         functions.map { Renderer("${it.name}()", emptyList()) }
     }
+    val subFunctions = properties.map { (sub, funcs) ->
+        renderProvider(options, faker, provider, sub, funcs, emptyMap())
+    }
+
+    val name = subProvider?.name ?: provider.name
+    val allFunctions = renderedFunctions.toList().plus(subFunctions)
 
     return if (options.javaSyntax) {
-        val getterName = "get${provider.name.first().uppercase()}${provider.name.substring(1)}()"
-        Renderer(getterName, renderedFunctions.toList())
+        val getterName = "get${name.first().uppercase()}${name.substring(1)}()"
+        Renderer(getterName, allFunctions)
     } else {
-        Renderer(provider.name, renderedFunctions.toList())
+        Renderer(name, allFunctions)
     }
 }
