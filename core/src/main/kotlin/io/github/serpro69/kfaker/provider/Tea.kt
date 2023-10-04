@@ -20,7 +20,7 @@ class Tea internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    val variety = TeaVariety(fakerService)
+    val variety by lazy { TeaVariety(fakerService) }
 
     fun type(): String = resolve("type")
 }
@@ -35,9 +35,9 @@ class TeaVariety internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    fun black(): String = resolve("black")
-    fun oolong(): String = resolve("oolong")
-    fun green(): String = resolve("green")
-    fun white(): String = resolve("white")
-    fun herbal(): String = resolve("herbal")
+    fun black(): String = resolve("variety", "black")
+    fun oolong(): String = resolve("variety", "oolong")
+    fun green(): String = resolve("variety", "green")
+    fun white(): String = resolve("variety", "white")
+    fun herbal(): String = resolve("variety", "herbal")
 }

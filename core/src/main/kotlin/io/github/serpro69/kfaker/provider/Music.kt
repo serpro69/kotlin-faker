@@ -18,7 +18,7 @@ class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory)
     }
 
-    val hipHop = HipHop(fakerService)
+    val hipHop by lazy { HipHop(fakerService) }
 
     fun instruments() = resolve("instruments")
     fun bands() = resolve("bands")
@@ -36,7 +36,7 @@ class HipHop internal constructor(fakerService: FakerService) : YamlFakeDataProv
         fakerService.load(yamlCategory)
     }
 
-    fun subgenres() = resolve("subgenres")
-    fun groups() = resolve("groups")
-    fun artist() = resolve("artist")
+    fun subgenres() = resolve("hiphop", "subgenres")
+    fun groups() = resolve("hiphop", "groups")
+    fun artist() = resolve("hiphop", "artist")
 }

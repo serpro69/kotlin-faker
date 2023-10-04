@@ -20,9 +20,9 @@ class KamenRider internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    val showa = KamenRiderShowa(fakerService)
-    val heisei = KamenRiderHeisei(fakerService)
-    val reiwa = KamenRiderReiwa(fakerService)
+    val showa by lazy { KamenRiderShowa(fakerService) }
+    val heisei by lazy { KamenRiderHeisei(fakerService) }
+    val reiwa by lazy { KamenRiderReiwa(fakerService) }
 }
 
 class KamenRiderShowa internal constructor(fakerService: FakerService) :

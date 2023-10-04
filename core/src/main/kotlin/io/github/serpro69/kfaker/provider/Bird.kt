@@ -82,4 +82,3 @@ class BirdOrderCommonMap internal constructor(
     fun tinamiformes(): String = resolve("bird", "order_common_map", "Tinamiformes")
     fun trogoniformes(): String = resolve("bird", "order_common_map", "Trogoniformes")
 }
-
