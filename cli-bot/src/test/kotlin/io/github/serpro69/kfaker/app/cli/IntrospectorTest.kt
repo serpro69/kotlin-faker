@@ -1,11 +1,12 @@
 package io.github.serpro69.kfaker.app.cli
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.provider.Address
+import io.github.serpro69.kfaker.provider.Airport
 import io.github.serpro69.kfaker.provider.Dota
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldContainExactly
+import io.kotest.matchers.sequences.shouldContainExactly
 import kotlin.reflect.KClass
 
 class IntrospectorTest : DescribeSpec() {
@@ -235,10 +236,10 @@ class IntrospectorTest : DescribeSpec() {
             }
 
             context("list available functions for each provider") {
-                val providerFunctions = introspector.providerFunctions
+                val providerData = introspector.providerData
 
                 it("should contain all providers") {
-                    val providers = providerFunctions.map { it.key.name }
+                    val providers = providerData.map { it.key.name }
                     val expectedProviders = listOf(
                         "address",
                         "adjective",
@@ -453,9 +454,9 @@ class IntrospectorTest : DescribeSpec() {
                 }
 
                 it("should contain all functions of the provider") {
-                    val addressFunctions = providerFunctions.entries.first {
-                        (it.key.returnType.classifier as KClass<*>) == Address::class
-                    }.value.map { it.name }
+                    val addressFunctions = providerData.entries.first { (provider, _) ->
+                        (provider.returnType.classifier as KClass<*>) == Address::class
+                    }.value.first.map { it.name }
 
                     val expectedFunctions = listOf(
                         "buildingNumber",
@@ -489,26 +490,23 @@ class IntrospectorTest : DescribeSpec() {
                 }
 
                 it("should not contain deprecated functions") {
-                    val addressFunctions = providerFunctions.entries.first {
-                        (it.key.returnType.classifier as KClass<*>) == Dota::class
-                    }.value.map { it.name }
+                    val addressFunctions = providerData.entries.first { (provider, _) ->
+                        (provider.returnType.classifier as KClass<*>) == Dota::class
+                    }.value.first.map { it.name }
 
                     val expectedFunctions = listOf("building", "hero", "item", "player", "team")
 
                     addressFunctions.toList() shouldContainExactly expectedFunctions
                 }
+
+                it("should contain all sub-providers of the provider") {
+                    val subProviders = providerData.entries.first { (provider, _) ->
+                        (provider.returnType.classifier as KClass<*>) == Airport::class
+                    }.value.second
+
+                    subProviders.map { it.key.name } shouldContainExactly listOf("europeanUnion", "unitedStates")
+                }
             }
         }
     }
-}
-
-fun main() {
-    val f = faker { }
-
-    println(f.crypto.md5())
-    println(f.crypto.sha1())
-    println(f.crypto.sha224())
-    println(f.crypto.sha256())
-    println(f.crypto.sha384())
-    println(f.crypto.sha512())
 }
