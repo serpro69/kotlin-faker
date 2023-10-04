@@ -42,10 +42,10 @@ object Lookup : Runnable {
         val filteredMap = introspector.providerData
             .mapValuesTo(mutableMapOf()) { (_, fpPair) ->
                 val (functions, properties) = fpPair
-                functions.filter { it.name.lowercase().contains(functionName.lowercase()) } to
+                functions.filter { it.toString().lowercase().contains(functionName.lowercase()) } to
                     properties.filter { (sub, funcs) ->
-                        sub.name.lowercase().contains(functionName.lowercase()) ||
-                            funcs.any { f -> f.name.lowercase().contains(functionName.lowercase()) }
+                        sub.toString().lowercase().contains(functionName.lowercase()) ||
+                            funcs.any { f -> f.toString().lowercase().contains(functionName.lowercase()) }
                     }
             }.filterValues { (funcs, subFuncs) ->
                 funcs.count() > 0 || subFuncs.isNotEmpty()
