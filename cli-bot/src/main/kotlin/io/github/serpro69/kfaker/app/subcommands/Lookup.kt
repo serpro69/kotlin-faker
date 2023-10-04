@@ -5,18 +5,18 @@ import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
-import io.github.serpro69.kfaker.app.subcommands.Lookup.functionName
+import io.github.serpro69.kfaker.app.subcommands.Lookup.name
 import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 
 /**
- * [KFaker] command for looking up required functionality by [functionName]
+ * [KFaker] command for looking up required functionality by [name]
  */
 @CommandLine.Command(
     name = "lookup",
-    description = ["lookup functions by name"],
+    description = ["lookup providers and functions by name"],
     mixinStandardHelpOptions = true
 )
 object Lookup : Runnable {
@@ -26,9 +26,9 @@ object Lookup : Runnable {
 
     @CommandLine.Parameters(
         index = "0",
-        description = ["function name to find in each provider", "case-insensitive"]
+        description = ["name of the provider and/or provider function(s)", "partial name matching, case-insensitive"]
     )
-    lateinit var functionName: String
+    lateinit var name: String
 
     private fun printMatchingFunctions() {
         val fakerConfig = fakerConfig {
@@ -42,10 +42,10 @@ object Lookup : Runnable {
         val filteredMap = introspector.providerData
             .mapValuesTo(mutableMapOf()) { (_, fpPair) ->
                 val (functions, properties) = fpPair
-                functions.filter { it.toString().lowercase().contains(functionName.lowercase()) } to
+                functions.filter { it.toString().lowercase().contains(name.lowercase()) } to
                     properties.filter { (sub, funcs) ->
-                        sub.toString().lowercase().contains(functionName.lowercase()) ||
-                            funcs.any { f -> f.toString().lowercase().contains(functionName.lowercase()) }
+                        sub.toString().lowercase().contains(name.lowercase()) ||
+                            funcs.any { f -> f.toString().lowercase().contains(name.lowercase()) }
                     }
             }.filterValues { (funcs, subFuncs) ->
                 funcs.count() > 0 || subFuncs.isNotEmpty()
