@@ -1617,6 +1617,10 @@
       {
         "name": "type",
         "parameterTypes": []
+      },
+      {
+        "name": "department",
+        "parameterTypes": []
       }
     ]
   },
@@ -1970,44 +1974,9 @@
   },
   {
     "name": "io.github.serpro69.kfaker.provider.DnD",
-    "methods": [
-      {
-        "name": "alignments",
-        "parameterTypes": []
-      },
-      {
-        "name": "backgrounds",
-        "parameterTypes": []
-      },
-      {
-        "name": "cities",
-        "parameterTypes": []
-      },
-      {
-        "name": "klasses",
-        "parameterTypes": []
-      },
-      {
-        "name": "languages",
-        "parameterTypes": []
-      },
-      {
-        "name": "meleeWeapons",
-        "parameterTypes": []
-      },
-      {
-        "name": "monsters",
-        "parameterTypes": []
-      },
-      {
-        "name": "races",
-        "parameterTypes": []
-      },
-      {
-        "name": "rangedWeapons",
-        "parameterTypes": []
-      }
-    ]
+    "allDeclaredFields": true,
+    "allDeclaredMethods": true,
+    "allDeclaredConstructors": true
   },
   {
     "name": "io.github.serpro69.kfaker.provider.Dog",
@@ -4065,6 +4034,10 @@
       },
       {
         "name": "quotes",
+        "parameterTypes": []
+      },
+      {
+        "name": "episodes",
         "parameterTypes": []
       }
     ]
