@@ -43,6 +43,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val app: App by lazy { App(fakerService) }
     val appliance: Appliance by lazy { Appliance(fakerService) }
     val aquaTeenHungerForce: AquaTeenHungerForce by lazy { AquaTeenHungerForce(fakerService) }
+    val archer: Archer by lazy { Archer(fakerService) }
     val artist: Artist by lazy { Artist(fakerService) }
     val australia: Australia by lazy { Australia(fakerService) }
     val avatar: Avatar by lazy { Avatar(fakerService) }
@@ -111,6 +112,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val fallout: Fallout by lazy { Fallout(fakerService) }
     val familyGuy: FamilyGuy by lazy { FamilyGuy(fakerService) }
     val file: File by lazy { File(fakerService) }
+    val finalFantasyXIV: FinalFantasyXIV by lazy { FinalFantasyXIV(fakerService) }
     val finalSpace: FinalSpace by lazy { FinalSpace(fakerService) }
     val finance: Finance by lazy { Finance(fakerService) }
     val fmaBrotherhood: FmaBrotherhood by lazy { FmaBrotherhood(fakerService) }
@@ -161,6 +163,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val michaelScott: MichaelScott by lazy { MichaelScott(fakerService) }
     val military: Military by lazy { Military(fakerService) }
     val minecraft: Minecraft by lazy { Minecraft(fakerService) }
+    val mitchHedberg: MitchHedberg by lazy { MitchHedberg(fakerService) }
     val money: Money by lazy { Money(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
     val mountaineering: Mountaineering by lazy { Mountaineering(fakerService) }
@@ -231,6 +234,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val theThickOfIt: TheThickOfIt by lazy { TheThickOfIt(fakerService) }
     val tolkien: Tolkien by lazy { Tolkien(fakerService) }
     val touhou: Touhou by lazy { Touhou(fakerService) }
+    val trainStation: TrainStation by lazy { TrainStation(fakerService) }
     val tron: Tron by lazy { Tron(fakerService) }
     val twinPeaks: TwinPeaks by lazy { TwinPeaks(fakerService) }
     val umphreysMcgee: UmphreysMcgee by lazy { UmphreysMcgee(fakerService) }

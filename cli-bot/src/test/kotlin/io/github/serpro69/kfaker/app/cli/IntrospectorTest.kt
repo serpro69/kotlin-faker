@@ -6,7 +6,6 @@ import io.github.serpro69.kfaker.provider.Airport
 import io.github.serpro69.kfaker.provider.Dota
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldContainExactly
-import io.kotest.matchers.sequences.shouldContainExactly
 import kotlin.reflect.KClass
 
 class IntrospectorTest : DescribeSpec() {
@@ -31,6 +30,7 @@ class IntrospectorTest : DescribeSpec() {
                         "App",
                         "Appliance",
                         "AquaTeenHungerForce",
+                        "Archer",
                         "Artist",
                         "Australia",
                         "Avatar",
@@ -99,6 +99,7 @@ class IntrospectorTest : DescribeSpec() {
                         "Fallout",
                         "FamilyGuy",
                         "File",
+                        "FinalFantasyXIV",
                         "FinalSpace",
                         "Finance",
                         "FmaBrotherhood",
@@ -147,6 +148,7 @@ class IntrospectorTest : DescribeSpec() {
                         "MichaelScott",
                         "Military",
                         "Minecraft",
+                        "MitchHedberg",
                         "Money",
                         "Mountain",
                         "Mountaineering",
@@ -215,6 +217,7 @@ class IntrospectorTest : DescribeSpec() {
                         "TheThickOfIt",
                         "Tolkien",
                         "Touhou",
+                        "TrainStation",
                         "Tron",
                         "TwinPeaks",
                         "UmphreysMcgee",
@@ -249,6 +252,7 @@ class IntrospectorTest : DescribeSpec() {
                         "app",
                         "appliance",
                         "aquaTeenHungerForce",
+                        "archer",
                         "artist",
                         "australia",
                         "avatar",
@@ -317,6 +321,7 @@ class IntrospectorTest : DescribeSpec() {
                         "fallout",
                         "familyGuy",
                         "file",
+                        "finalFantasyXIV",
                         "finalSpace",
                         "finance",
                         "fmaBrotherhood",
@@ -365,6 +370,7 @@ class IntrospectorTest : DescribeSpec() {
                         "michaelScott",
                         "military",
                         "minecraft",
+                        "mitchHedberg",
                         "money",
                         "mountain",
                         "mountaineering",
@@ -433,6 +439,7 @@ class IntrospectorTest : DescribeSpec() {
                         "theThickOfIt",
                         "tolkien",
                         "touhou",
+                        "trainStation",
                         "tron",
                         "twinPeaks",
                         "umphreysMcgee",
