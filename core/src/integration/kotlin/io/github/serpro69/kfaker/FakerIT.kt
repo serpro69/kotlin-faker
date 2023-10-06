@@ -16,7 +16,6 @@ import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.full.isSubtypeOf
 import kotlin.reflect.full.starProjectedType
 
-@Suppress("UNCHECKED_CAST")
 class FakerIT : DescribeSpec({
     describe("every public function in each provider is invoked without exceptions") {
         val faker = Faker()

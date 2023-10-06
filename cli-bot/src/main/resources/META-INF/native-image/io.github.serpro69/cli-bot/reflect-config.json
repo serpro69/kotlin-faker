@@ -47,6 +47,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getArcher",
+        "parameterTypes": []
+      },
+      {
         "name": "getArtist",
         "parameterTypes": []
       },
@@ -319,6 +323,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getFinalFantasyXIV",
+        "parameterTypes": []
+      },
+      {
         "name": "getFinalSpace",
         "parameterTypes": []
       },
@@ -508,6 +516,10 @@
       },
       {
         "name": "getMinecraft",
+        "parameterTypes": []
+      },
+      {
+        "name": "getMitchHedberg",
         "parameterTypes": []
       },
       {
@@ -783,6 +795,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getTrainStation",
+        "parameterTypes": []
+      },
+      {
         "name": "getTron",
         "parameterTypes": []
       },
@@ -998,6 +1014,23 @@
       },
       {
         "name": "quote",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.Archer",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "locations",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
         "parameterTypes": []
       }
     ]
@@ -2714,6 +2747,31 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.FinalFantasyXIV",
+    "methods": [
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "dataCenters",
+        "parameterTypes": []
+      },
+      {
+        "name": "jobs",
+        "parameterTypes": []
+      },
+      {
+        "name": "races",
+        "parameterTypes": []
+      },
+      {
+        "name": "zones",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.FinalSpace",
     "methods": [
       {
@@ -3833,6 +3891,15 @@
       },
       {
         "name": "statusEffect",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.MitchHedberg",
+    "methods": [
+      {
+        "name": "quote",
         "parameterTypes": []
       }
     ]
@@ -5312,6 +5379,79 @@
       },
       {
         "name": "spellCards",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TrainStation",
+    "methods": [
+      {
+        "name": "getGermany",
+        "parameterTypes": []
+      },
+      {
+        "name": "getSpain",
+        "parameterTypes": []
+      },
+      {
+        "name": "getUnitedKingdom",
+        "parameterTypes": []
+      },
+      {
+        "name": "getUnitedStates",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TrainStationGermany",
+    "methods": [
+      {
+        "name": "metro",
+        "parameterTypes": []
+      },
+      {
+        "name": "railway",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TrainStationSpain",
+    "methods": [
+      {
+        "name": "metro",
+        "parameterTypes": []
+      },
+      {
+        "name": "railway",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TrainStationUnitedKingdom",
+    "methods": [
+      {
+        "name": "metro",
+        "parameterTypes": []
+      },
+      {
+        "name": "railway",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TrainStationUnitedStates",
+    "methods": [
+      {
+        "name": "metro",
+        "parameterTypes": []
+      },
+      {
+        "name": "railway",
         "parameterTypes": []
       }
     ]
