@@ -122,7 +122,7 @@ class RandomClassProvider {
         val predefinedInstance: T? by lazy {
             predefinedTypeOrNull(
                 config,
-                // it's not a constructor parameter, so set some hardcoded values instead for ParameterInfo
+                // it's not a constructor parameter, so set some hardcoded values for ParameterInfo
                 ParameterInfo(index = -1, name = jvmName, isOptional = false, isVararg = false)
             ) as T?
         }

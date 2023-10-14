@@ -12,7 +12,6 @@ import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
-import java.time.Instant
 import java.util.*
 import kotlin.reflect.full.declaredMemberProperties
 
@@ -136,8 +135,8 @@ class RandomClassProviderTest : DescribeSpec({
         }
     }
 
-    describe("a TestClass with no public constructors") {
-        context("creating a random instance of the class") {
+    describe("no public constructors") {
+        context("creating a random instance of a class") {
             it("should return a predefined instance via typeGenerator") {
                 val testClassMin = randomProvider.randomClassInstance<TestClassNoPublic> {
                     typeGenerator<TestClassNoPublic> { TestClassNoPublic.MIN }
@@ -153,6 +152,21 @@ class RandomClassProviderTest : DescribeSpec({
                     randomProvider.randomClassInstance<TestClassNoPublic>()
                 }
                 exception.message shouldBe "No suitable constructor or predefined instance found for ${TestClassNoPublic::class}"
+            }
+        }
+        context("creating a random instance of an interface") {
+            it("should return a predefined interface instance via typeGenerator") {
+                val testInterface = randomProvider.randomClassInstance<TestInterface> {
+                    typeGenerator<TestInterface> {
+                        object : TestInterface {
+                            override val id: Int = 42
+                            override val name: String = "Deep Thought"
+                        }
+                    }
+                }
+
+                testInterface.id shouldBe 42
+                testInterface.name shouldBe "Deep Thought"
             }
         }
     }
@@ -724,4 +738,9 @@ class TestClassNoPublic private constructor(val id: Int) {
         val MIN = TestClassNoPublic(Int.MIN_VALUE)
         val MAX = TestClassNoPublic(Int.MAX_VALUE)
     }
+}
+
+interface TestInterface {
+    val id: Int
+    val name: String
 }

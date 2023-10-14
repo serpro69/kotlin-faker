@@ -205,6 +205,35 @@ faker.randomProvider.randomClassInstance<Instant> {
 
 {% endtabs %}
 
+You could also use the same approach to create interfaces, for example:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+interface TestInterface {
+  val id: Int
+  val name: String
+}
+
+val testInterface = randomProvider.randomClassInstance<TestInterface> {
+  typeGenerator<TestInterface> {
+    object : TestInterface {
+      override val id: Int = 42
+      override val name: String = "Deep Thought"
+    }
+  }
+}
+
+testInterface.id shouldBe 42
+testInterface.name shouldBe "Deep Thought"
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
 A random class instance will be generated using the following precedence rules:
 
 - object instance
