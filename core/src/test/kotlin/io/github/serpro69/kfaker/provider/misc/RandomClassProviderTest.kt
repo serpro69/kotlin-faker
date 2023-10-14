@@ -2,7 +2,6 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.fakerConfig
-import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
@@ -12,8 +11,8 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
-import io.kotest.matchers.types.shouldBeSameInstanceAs
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
+import java.time.Instant
 import java.util.*
 import kotlin.reflect.full.declaredMemberProperties
 
@@ -43,8 +42,23 @@ class RandomClassProviderTest : DescribeSpec({
         context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
 
-            it("it should be instance of TestClass") {
+            it("should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
+            }
+            it("should follow precedence rules and try to generate a 'default instance' before using 'predefined instance'") {
+                class Bar(val id: Int)
+                class Baz(val bar: Bar)
+
+                val bar = randomProvider.randomClassInstance<Bar> {
+                    typeGenerator<Bar> { Bar(0) }
+                }
+
+                val baz = randomProvider.randomClassInstance<Baz> {
+                    typeGenerator<Baz> { Baz(Bar(1)) }
+                }
+
+                bar.id shouldNotBe 0
+                baz.bar.id shouldNotBe 1
             }
         }
     }
@@ -122,16 +136,23 @@ class RandomClassProviderTest : DescribeSpec({
         }
     }
 
-    describe("a TestClass with private constructor") {
-        class TestClass private constructor()
-
+    describe("a TestClass with no public constructors") {
         context("creating a random instance of the class") {
+            it("should return a predefined instance via typeGenerator") {
+                val testClassMin = randomProvider.randomClassInstance<TestClassNoPublic> {
+                    typeGenerator<TestClassNoPublic> { TestClassNoPublic.MIN }
+                }
+                val testClassMax = randomProvider.randomClassInstance<TestClassNoPublic> {
+                    typeGenerator<TestClassNoPublic> { TestClassNoPublic.MAX }
+                }
+                testClassMin.id shouldBe Int.MIN_VALUE
+                testClassMax.id shouldBe Int.MAX_VALUE
+            }
             it("exception is thrown") {
                 val exception = shouldThrow<NoSuchElementException> {
-                    randomProvider.randomClassInstance<TestClass>()
+                    randomProvider.randomClassInstance<TestClassNoPublic>()
                 }
-
-                exception.message shouldBe "No suitable constructor found for ${TestClass::class}"
+                exception.message shouldBe "No suitable constructor or predefined instance found for ${TestClassNoPublic::class}"
             }
         }
     }
@@ -178,20 +199,16 @@ class RandomClassProviderTest : DescribeSpec({
         context("creating a random instance of the class with custom generators") {
             val testClass: TestClass = randomProvider.randomClassInstance {
                 typeGenerator<UUID> { givenUuid }
-                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Int> { givenInt }
-                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<String> { pInfo -> pInfo.toString() }
             }
 
             it("it should be a predefined UUID and primitives") {
-                assertSoftly {
-                    testClass shouldBe instanceOf(TestClass::class)
-                    testClass.id shouldBe givenUuid
-                    testClass.int shouldBe givenInt
-                    testClass.foo.int shouldBe givenInt
-                    testClass.bar shouldBe "ParameterInfo(index=0, name=bar, isOptional=false, isVararg=false)"
-                }
+                testClass shouldBe instanceOf(TestClass::class)
+                testClass.id shouldBe givenUuid
+                testClass.int shouldBe givenInt
+                testClass.foo.int shouldBe givenInt
+                testClass.bar shouldBe "ParameterInfo(index=0, name=bar, isOptional=false, isVararg=false)"
             }
         }
     }
@@ -219,14 +236,12 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("should use predefined UUIDs with parameter generators taking precedence over type generators") {
-                assertSoftly {
-                    testClass shouldBe instanceOf(TestClass::class)
-                    testClass.id shouldBe namedParameterGeneratedId
-                    testClass.id2 shouldBe typeGeneratedId
-                    testClass.nullableId shouldBe nullableNamedParameterGeneratedId
-                    testClass.nullableId2 shouldBe null
-                    testClass.foo shouldBe "ParameterInfo(index=4, name=foo, isOptional=true, isVararg=false)"
-                }
+                testClass shouldBe instanceOf(TestClass::class)
+                testClass.id shouldBe namedParameterGeneratedId
+                testClass.id2 shouldBe typeGeneratedId
+                testClass.nullableId shouldBe nullableNamedParameterGeneratedId
+                testClass.nullableId2 shouldBe null
+                testClass.foo shouldBe "ParameterInfo(index=4, name=foo, isOptional=true, isVararg=false)"
             }
         }
     }
@@ -248,24 +263,19 @@ class RandomClassProviderTest : DescribeSpec({
 
         context("creating a random instance of the class with nullable custom generators") {
             val testClass: TestClass = randomProvider.randomClassInstance {
-                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<UUID> { givenUuid }
-                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Int> { givenInt } // use the not-null type generator and verify it is used for Int?
                 nullableTypeGenerator<Long?> { givenNullableLong }
-                @Suppress("RemoveExplicitTypeArguments")
                 typeGenerator<Long> { givenLong }
             }
 
             it("it should be a predefined UUID and primitives with nulls") {
-                assertSoftly {
-                    testClass shouldBe instanceOf(TestClass::class)
-                    testClass.id shouldBe givenUuid
-                    testClass.int shouldBe givenInt
-                    testClass.nullableLong shouldBe givenNullableLong
-                    testClass.notNullLong shouldBe givenLong
-                    testClass.foo.int shouldBe givenInt
-                }
+                testClass shouldBe instanceOf(TestClass::class)
+                testClass.id shouldBe givenUuid
+                testClass.int shouldBe givenInt
+                testClass.nullableLong shouldBe givenNullableLong
+                testClass.notNullLong shouldBe givenLong
+                testClass.foo.int shouldBe givenInt
             }
         }
     }
@@ -305,11 +315,9 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("constructor with specified args size is used") {
-                assertSoftly {
-                    testClass.foo shouldNotBe null
-                    testClass.bar shouldNotBe null
-                    testClass.baz shouldNotBe null
-                }
+                testClass.foo shouldNotBe null
+                testClass.bar shouldNotBe null
+                testClass.baz shouldNotBe null
             }
         }
 
@@ -319,11 +327,9 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("constructor with specified filter is used") {
-                assertSoftly {
-                    testClass.foo shouldNotBe null
-                    testClass.bar shouldNotBe null
-                    testClass.baz shouldNotBe null
-                }
+                testClass.foo shouldNotBe null
+                testClass.bar shouldNotBe null
+                testClass.baz shouldNotBe null
             }
         }
 
@@ -334,11 +340,9 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("constructor with specified fallback is used") {
-                assertSoftly {
-                    testClass.foo shouldNotBe null
-                    testClass.bar shouldNotBe null
-                    testClass.baz shouldNotBe null
-                }
+                testClass.foo shouldNotBe null
+                testClass.bar shouldNotBe null
+                testClass.baz shouldNotBe null
             }
         }
 
@@ -349,11 +353,9 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("constructor with specified fallback is used") {
-                assertSoftly {
-                    testClass.foo shouldNotBe null
-                    testClass.bar shouldNotBe null
-                    testClass.baz shouldNotBe null
-                }
+                testClass.foo shouldNotBe null
+                testClass.bar shouldNotBe null
+                testClass.baz shouldNotBe null
             }
         }
 
@@ -364,11 +366,9 @@ class RandomClassProviderTest : DescribeSpec({
             }
 
             it("constructor with specified fallback is used") {
-                assertSoftly {
-                    testClass.foo shouldNotBe null
-                    testClass.bar shouldNotBe null
-                    testClass.baz shouldBe null
-                }
+                testClass.foo shouldNotBe null
+                testClass.bar shouldNotBe null
+                testClass.baz shouldBe null
             }
         }
     }
@@ -385,32 +385,26 @@ class RandomClassProviderTest : DescribeSpec({
 
         it("should generate Collections with default size 1") {
             val testClass = randomProvider.randomClassInstance<TestClass>()
-            assertSoftly {
-                testClass.list shouldHaveSize 1
-                testClass.set shouldHaveSize 1
-                testClass.map shouldHaveSize 1
-            }
+            testClass.list shouldHaveSize 1
+            testClass.set shouldHaveSize 1
+            testClass.map shouldHaveSize 1
         }
 
         it("should generate Collections with pre-configured size") {
             val testClass = randomProvider.randomClassInstance<TestClass> {
                 collectionsSize = 10
             }
-            assertSoftly {
-                testClass.list shouldHaveSize 10
-                testClass.set shouldHaveSize 10
-                testClass.map shouldHaveSize 10
-            }
+            testClass.list shouldHaveSize 10
+            testClass.set shouldHaveSize 10
+            testClass.map shouldHaveSize 10
         }
         it("should generate Collections with pre-configured type generation") {
             val testClass = randomProvider.randomClassInstance<TestClass> {
                 typeGenerator<List<Foo>> { listOf() }
             }
-            assertSoftly {
-                testClass.list shouldHaveSize 0
-                testClass.set shouldHaveSize 1
-                testClass.map shouldHaveSize 1
-            }
+            testClass.list shouldHaveSize 0
+            testClass.set shouldHaveSize 1
+            testClass.map shouldHaveSize 1
         }
     }
 
@@ -441,16 +435,14 @@ class RandomClassProviderTest : DescribeSpec({
 
     describe("a primitive type") {
         it("should not throw an exception when no suitable constructor exists") {
-            assertSoftly {
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Double>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Float>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Long>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Int>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Short>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Byte>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Boolean>() }
-                shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Char>() }
-            }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Double>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Float>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Long>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Int>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Short>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Byte>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Boolean>() }
+            shouldNotThrow<NoSuchElementException> { randomProvider.randomClassInstance<Char>() }
         }
 
         it("should generate a random string") {
@@ -589,21 +581,21 @@ class RandomClassProviderTest : DescribeSpec({
                     randomClassInstance<Baz>().nullable shouldBe null
                 }
             }
-/*            it("should reset configuration to defaults on fakerConfig level") {
-                val c = cfg()
-                with(RandomClassProvider(c)) {
-                    configure {
-                        typeGenerator { Foo(12177) }
-                        nullableTypeGenerator<String> { null }
-                    }
-                    c.randomProviderConfig?.reset()
-                    randomClassInstance<Bar>().foo.int shouldNotBe 12177
-                    randomClassInstance<Baz>().foo.int shouldNotBe 12177
-                    randomClassInstance<Baz>().bar.foo.int shouldNotBe 12177
-                    randomClassInstance<Baz>().test shouldNotBe 1
-                    randomClassInstance<Baz>().nullable shouldNotBe null
-                }
-            }*/
+            /*            it("should reset configuration to defaults on fakerConfig level") {
+                            val c = cfg()
+                            with(RandomClassProvider(c)) {
+                                configure {
+                                    typeGenerator { Foo(12177) }
+                                    nullableTypeGenerator<String> { null }
+                                }
+                                c.randomProviderConfig?.reset()
+                                randomClassInstance<Bar>().foo.int shouldNotBe 12177
+                                randomClassInstance<Baz>().foo.int shouldNotBe 12177
+                                randomClassInstance<Baz>().bar.foo.int shouldNotBe 12177
+                                randomClassInstance<Baz>().test shouldNotBe 1
+                                randomClassInstance<Baz>().nullable shouldNotBe null
+                            }
+                        }*/
         }
     }
 
@@ -726,3 +718,10 @@ sealed class TestSealedCls {
 class Go(val name: String) : TestSealedCls()
 
 object TestObject
+
+class TestClassNoPublic private constructor(val id: Int) {
+    companion object {
+        val MIN = TestClassNoPublic(Int.MIN_VALUE)
+        val MAX = TestClassNoPublic(Int.MAX_VALUE)
+    }
+}
