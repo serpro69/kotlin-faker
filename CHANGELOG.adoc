@@ -1,3 +1,28 @@
+.[1.16.0] - UNRELEASED
+[%collapsible]
+====
+[discrete]
+=== Added
+
+* https://github.com/serpro69/kotlin-faker/pull/202[#202] [core] Allow `randomClassInstance` to directly use predefined generators
+
+[discrete]
+=== Changed
+
+* ...
+
+[discrete]
+=== Fixed
+
+* ...
+
+[discrete]
+=== Other
+
+* ...
+
+====
+
 .[1.15.0] - 2023-10-06
 [%collapsible]
 ====
