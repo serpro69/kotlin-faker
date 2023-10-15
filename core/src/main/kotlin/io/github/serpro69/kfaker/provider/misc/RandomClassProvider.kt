@@ -2,7 +2,12 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
-import java.util.*
+import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MAX_NUM_OF_ARGS
+import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MIN_NUM_OF_ARGS
+import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.NO_ARGS
+import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.FAIL_IF_NOT_FOUND
+import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MAX_NUM_OF_ARGS
+import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MIN_NUM_OF_ARGS
 import kotlin.Boolean
 import kotlin.Char
 import kotlin.Double
@@ -14,6 +19,7 @@ import kotlin.String
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.KVisibility
+import kotlin.reflect.jvm.jvmName
 
 /**
  * Provider functionality for generating random class instances.
@@ -102,62 +108,67 @@ class RandomClassProvider {
     @JvmSynthetic
     @PublishedApi
     internal fun <T : Any> KClass<T>.randomClassInstance(config: RandomProviderConfig): T {
-        val defaultInstance: T? = if (
-            config.constructorParamSize == -1
-            && config.constructorFilterStrategy == ConstructorFilterStrategy.NO_ARGS
-        ) {
-            randomPrimitiveOrNull() as T? ?: try {
-                constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
-            } catch (e: Exception) {
-                throw InstantiationException("Failed to instantiate $this")
-                    .initCause(e)
-            }
-        } else null
+        val defaultInstance: T? by lazy {
+            if (config.constructorParamSize == -1 && config.constructorFilterStrategy == NO_ARGS) {
+                randomPrimitiveOrNull() as T? ?: try {
+                    constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+                } catch (e: Exception) {
+                    throw InstantiationException("Failed to instantiate $this")
+                        .initCause(e)
+                }
+            } else null
+        }
 
-        return defaultInstance ?: objectInstance ?: run {
-            val constructors = constructors
-                .filter { it.visibility == KVisibility.PUBLIC }
+        val predefinedInstance: T? by lazy {
+            predefinedTypeOrNull(
+                config,
+                // it's not a constructor parameter, so set some hardcoded values for ParameterInfo
+                ParameterInfo(index = -1, name = jvmName, isOptional = false, isVararg = false)
+            ) as T?
+        }
+
+        return objectInstance ?: defaultInstance ?: run {
+            val constructors = constructors.filter { it.visibility == KVisibility.PUBLIC }
 
             val constructor = constructors.firstOrNull {
                 it.parameters.size == config.constructorParamSize
             } ?: when (config.constructorFilterStrategy) {
-                ConstructorFilterStrategy.MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
-                ConstructorFilterStrategy.MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
+                MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
+                MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
                 else -> {
                     when (config.fallbackStrategy) {
-                        FallbackStrategy.FAIL_IF_NOT_FOUND -> {
+                        FAIL_IF_NOT_FOUND -> {
                             throw NoSuchElementException("Constructor with 'parameters.size == ${config.constructorParamSize}' not found for $this")
                         }
-                        FallbackStrategy.USE_MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
-                        FallbackStrategy.USE_MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
+                        USE_MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
+                        USE_MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
                     }
                 }
-            } ?: throw NoSuchElementException("No suitable constructor found for $this")
+            }
+            ?: predefinedInstance?.let { return@run it }
+            ?: throw NoSuchElementException("No suitable constructor or predefined instance found for $this")
 
-            val params = constructor.parameters
-                .map {
-
-                    val pInfo = it.toParameterInfo()
-
-                    val klass = it.type.classifier as KClass<*>
-                    when {
-                        config.namedParameterGenerators.containsKey(it.name) -> {
-                            config.namedParameterGenerators[it.name]?.invoke(pInfo)
-                        }
-                        it.type.isMarkedNullable && config.nullableGenerators.containsKey(klass) -> {
-                            config.nullableGenerators[klass]?.invoke(pInfo)
-                        }
-                        else -> {
-                            klass.predefinedTypeOrNull(config, pInfo)
-                                ?: klass.randomPrimitiveOrNull()
-                                ?: klass.objectInstance
-                                ?: klass.randomEnumOrNull()
-                                ?: klass.randomSealedClassOrNull(config)
-                                ?: klass.randomCollectionOrNull(it.type, config)
-                                ?: klass.randomClassInstance(config)
-                        }
+            val params = constructor.parameters.map {
+                val pInfo = it.toParameterInfo()
+                val klass = it.type.classifier as KClass<*>
+                when {
+                    config.namedParameterGenerators.containsKey(it.name) -> {
+                        config.namedParameterGenerators[it.name]?.invoke(pInfo)
+                    }
+                    it.type.isMarkedNullable && config.nullableGenerators.containsKey(klass) -> {
+                        config.nullableGenerators[klass]?.invoke(pInfo)
+                    }
+                    else -> {
+                        klass.objectInstance
+                            ?: klass.predefinedTypeOrNull(config, pInfo)
+                            ?: klass.randomPrimitiveOrNull()
+                            ?: klass.randomEnumOrNull()
+                            ?: klass.randomSealedClassOrNull(config)
+                            ?: klass.randomCollectionOrNull(it.type, config)
+                            ?: klass.randomClassInstance(config)
                     }
                 }
+            }
 
             try {
                 constructor.call(*params.toTypedArray())
@@ -242,8 +253,8 @@ class RandomClassProvider {
 class RandomProviderConfig @PublishedApi internal constructor() {
     var collectionsSize: Int = 1
     var constructorParamSize: Int = -1
-    var constructorFilterStrategy: ConstructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
-    var fallbackStrategy: FallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+    var constructorFilterStrategy: ConstructorFilterStrategy = NO_ARGS
+    var fallbackStrategy: FallbackStrategy = USE_MIN_NUM_OF_ARGS
 
     @PublishedApi
     internal val namedParameterGenerators = mutableMapOf<String, (pInfo: ParameterInfo) -> Any?>()
@@ -277,14 +288,13 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
         nullableGenerators[K::class] = generator
     }
-
 }
 
 private fun RandomProviderConfig.reset() {
     collectionsSize = 1
     constructorParamSize = -1
-    constructorFilterStrategy = ConstructorFilterStrategy.NO_ARGS
-    fallbackStrategy = FallbackStrategy.USE_MIN_NUM_OF_ARGS
+    constructorFilterStrategy = NO_ARGS
+    fallbackStrategy = USE_MIN_NUM_OF_ARGS
     namedParameterGenerators.clear()
     predefinedGenerators.clear()
     nullableGenerators.clear()

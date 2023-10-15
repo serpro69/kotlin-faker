@@ -9,7 +9,7 @@
 
 * [Random instance of any class](#random-instance-of-any-class)
   * [Random Class Instance Configuration](#random-class-instance-configuration)
-  * [Pre-configuring type generation for constructor arguments](#pre-configuring-type-generation-for-constructor-arguments)
+  * [Pre-configuring type generation](#pre-configuring-type-generation)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
   * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
@@ -122,10 +122,11 @@ This configuration takes the most precedence and does not take into account conf
 
 <br>
 
-### Pre-Configuring type generation for constructor arguments
+### Pre-Configuring type generation
+
+#### Predefined types for constructor parameters
 
 Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` or `namedParameterGenerator` functions. Consider the following example:
-
 
 {% tabs %}
 
@@ -183,6 +184,63 @@ val person: Person = faker.randomProvider.randomClassInstance {
 {% endkotlin %}
 
 {% endtabs %}
+
+<br>
+
+#### Pre-defined instance for classes with no public constructors
+
+By default, `randomClassInstance` can't generate classes with no public constructors, but this can be worked around by using `typeGenerator`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+faker.randomProvider.randomClassInstance<Instant> {
+    typeGenerator<Instant> { Instant.now() }
+}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+You could also use the same approach to create interfaces, for example:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+interface TestInterface {
+  val id: Int
+  val name: String
+}
+
+val testInterface = randomProvider.randomClassInstance<TestInterface> {
+  typeGenerator<TestInterface> {
+    object : TestInterface {
+      override val id: Int = 42
+      override val name: String = "Deep Thought"
+    }
+  }
+}
+
+testInterface.id shouldBe 42
+testInterface.name shouldBe "Deep Thought"
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+A random class instance will be generated using the following precedence rules:
+
+- object instance
+- "default instance" of a class
+  - uses the public constructor with the least number of arguments, unless otherwise configured (see [Random Class Instance Configuration]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#random-class-instance-configuration))
+- "predefined instance" of a class if no public constructors are found
+- failing all of the above, `NoSuchElementException` will be thrown
 
 {% btc %}{% endbtc %}
 
