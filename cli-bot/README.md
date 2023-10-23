@@ -20,18 +20,25 @@ Quickly find required kotlin-faker functionality from your terminal
 
 ## Installation
 
-The native images are available on [releases](https://github.com/serpro69/kotlin-faker/releases) page.  
+Zero-dependencies native images are available on [releases](https://github.com/serpro69/kotlin-faker/releases) page.  
 Download the image to a desired location and make it executable or use below script (Depends on [jq](https://stedolan.github.io/jq/))
 
-```
+```bash
 cd ~
 wget $(curl -s https://api.github.com/repos/serpro69/kotlin-faker/releases/latest | jq -r '.assets[].browser_download_url') -O faker-bot
 chmod a+x ~/faker-bot
 ``` 
 
+If you prefer a .jar instead of a native image, these are also available for each release. Just download the jar and run it with `java -jar`:
+
+```bash
+java -jar ./faker-bot.jar --help
+```
+
 ## Usage
 
 Usage details are also available with the `--help` option:  
+
 `./faker-bot --help`  
 `./faker-bot list --help`  
 `./faker-bot lookup --help`
