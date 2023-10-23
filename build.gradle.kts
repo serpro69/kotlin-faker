@@ -7,7 +7,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm") version "1.8.10" apply false
+    kotlin("jvm") version "1.9.10" apply false
     id("com.adarshr.test-logger") version "2.0.0" apply false
     id("com.github.ben-manes.versions") version "0.28.0" apply false
     id("io.qameta.allure") version "2.8.1"
@@ -47,13 +47,13 @@ subprojects {
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
         implementation("com.github.mifmif:generex:1.0.2")
-        testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
-        testImplementation("io.kotest:kotest-runner-junit5-jvm:5.5.5")
-        testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.5")
-        testImplementation("io.kotest:kotest-property-jvm:5.5.5")
-        testImplementation("io.kotest.extensions:kotest-extensions-allure:1.2.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+        testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:5.7.2")
+        testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
+        testImplementation("io.kotest:kotest-property-jvm:5.7.2")
+        testImplementation("io.kotest.extensions:kotest-extensions-allure:1.3.0")
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
         testRuntimeOnly("ch.qos.logback:logback-core:1.3.4") {
             version {
                 strictly("1.3.4") // last stable for java 8
@@ -64,7 +64,7 @@ subprojects {
                 strictly("1.3.4") // last stable for java 8
             }
         }
-        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.16")
+        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.19")
     }
 
     configure<JavaPluginExtension> {
@@ -161,13 +161,13 @@ subprojects {
     allure {
         version = "2.8.1"
         aspectjweaver = false
-        aspectjVersion = "1.9.19"
+        aspectjVersion = "1.9.20.1"
         autoconfigure = true
         // TODO check if fixed in future versions of allure
         configuration = "testRuntimeOnly" // defaults to 'testCompile' which is incompatible with gradle 7.x
-        allureJavaVersion = "2.21.0"
+        allureJavaVersion = "2.24.0"
         useJUnit5 {
-            version = "2.21.0"
+            version = "2.24.0"
         }
     }
 }

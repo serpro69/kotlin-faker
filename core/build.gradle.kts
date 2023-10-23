@@ -7,16 +7,16 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.dokka") version "1.8.10"
+    id("org.jetbrains.dokka") version "1.9.10"
     `maven-publish`
     signing
     `yaml-to-json`
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.2")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
-    shadow("com.ibm.icu:icu4j:72.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
+    shadow("com.ibm.icu:icu4j:73.2")
     shadow(kotlin("stdlib-jdk8"))
     shadow(kotlin("reflect"))
     shadow("com.github.mifmif:generex:1.0.2")
