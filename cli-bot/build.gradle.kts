@@ -16,7 +16,8 @@ dependencies {
 }
 
 application {
-    mainClassName = mainFunction
+//    mainClassName = mainFunction
+    mainClass.set(mainFunction)
 }
 
 java {
