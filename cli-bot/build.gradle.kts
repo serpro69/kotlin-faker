@@ -12,7 +12,7 @@ val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
     implementation(project(":core"))
-    implementation("info.picocli:picocli:4.7.1")
+    implementation("info.picocli:picocli:4.7.5")
 }
 
 application {
