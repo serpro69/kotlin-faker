@@ -34,7 +34,8 @@ class Person internal constructor(private val random: Random) {
     fun birthDate(age: Long, at: LocalDate = LocalDate.now()): LocalDate {
         val startDate = at.minusYears(age + 1)
         val endDate = startDate.plusYears(1).minusDays(1)
-        val lower = LocalDate.ofYearDay(startDate.year, (startDate.dayOfYear..365).random(random.asKotlinRandom()))
+        val startMaxDays = if (startDate.isLeapYear) 366 else 365
+        val lower = LocalDate.ofYearDay(startDate.year, (startDate.dayOfYear..startMaxDays).random(random.asKotlinRandom()))
         val upper = LocalDate.ofYearDay(endDate.year, (1..endDate.dayOfYear).random(random.asKotlinRandom()))
         val dates = if (lower.month == at.month && lower.dayOfMonth == at.dayOfMonth) {
             lower.plusDays(1) to upper
