@@ -130,10 +130,10 @@ internal class RandomServiceTest : DescribeSpec({
         }
 
         context("nextLong(bound) fun") {
-            val values = List(100) { randomService.nextLong(10) }
+            val values = List(100000) { randomService.nextLong(100) }
 
-            it("return value should be within specified range") {
-                values.all { it < 10 } shouldBe true
+            it("return value should be within 0 until 'bound' range") {
+                values.all { it in 0 until 100 } shouldBe true
             }
         }
 
