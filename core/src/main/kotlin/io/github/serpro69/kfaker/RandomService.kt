@@ -19,73 +19,35 @@ import kotlin.random.asKotlinRandom
  * Consider passing [java.security.SecureRandom] to the constructor of this [RandomService]
  * to get a cryptographically secure pseudo-random generator.
  */
-class RandomService internal constructor(private val config: FakerConfig) {
+internal class RandomService internal constructor(override val config: FakerConfig) : IRandom {
     private val random = config.random
     private val alphabeticLowerCharset = ('a'..'z')
     private val alphabeticUpperCharset = ('A'..'Z')
     private val numericCharset = ('0'..'9')
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Int] value from this [random] number generator's sequence.
-     */
-    fun nextInt() = random.nextInt()
+    override fun nextInt() = random.nextInt()
 
-    /**
-     * Returns a pseudorandom, uniformly distributed [Int] value between `0` (inclusive)
-     * and the specified [bound] (exclusive),
-     * drawn from this [random] number generator's sequence.
-     */
-    fun nextInt(bound: Int) = random.nextInt(bound)
+    override fun nextInt(bound: Int) = random.nextInt(bound)
 
-    /**
-     * Returns a pseudorandom, uniformly distributed [Int] value within the specified int [range] (inclusive),
-     * drawn from this [random] number generator's sequence.
-     */
-    fun nextInt(intRange: IntRange): Int {
+    override fun nextInt(intRange: IntRange): Int {
         val lowerBound = requireNotNull(intRange.minOrNull())
         val upperBound = requireNotNull(intRange.maxOrNull())
 
         return nextInt(lowerBound, upperBound)
     }
 
-    /**
-     * Returns a pseudorandom, uniformly distributed [Int] value between [min] (inclusive) and [max] (inclusive),
-     * drawn from this [random] number generator's sequence.
-     */
-    fun nextInt(min: Int, max: Int) = random.nextInt(max - min + 1) + min
+    override fun nextInt(min: Int, max: Int) = random.nextInt(max - min + 1) + min
 
-    /**
-     * Returns a pseudo-randomly selected value from the [list] of values.
-     */
-    fun <T> randomValue(list: List<T>) = list[nextInt(list.size)]
+    override fun <T> randomValue(list: List<T>) = list[nextInt(list.size)]
 
-    /**
-     * Returns a pseudo-randomly selected value from the [array] of values.
-     */
-    fun <T> randomValue(array: Array<T>) = array[nextInt(array.size)]
+    override fun <T> randomValue(array: Array<T>) = array[nextInt(array.size)]
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Char] value
-     * that corresponds to a letter in the English alphabet.
-     *
-     * @param upper returns the [Char] in upper-case if set to `true`, and in lower-case otherwise
-     */
-    fun nextLetter(upper: Boolean): Char {
+    override fun nextLetter(upper: Boolean): Char {
         val source = if (upper) alphabeticUpperCharset else alphabeticLowerCharset
         return source.random(config.random.asKotlinRandom())
     }
 
-    /**
-     * Returns [String] with the specified [length] consisting of a pseudo-randomly generated
-     * English alphabet letters and optional [numericalChars],
-     * or an empty string for a `length < 1`.
-     *
-     * @param length         the length of the resulting string.
-     *                       Default: `24`
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string.
-     *                       Default: `true`
-     */
-    fun randomString(length: Int = 24, numericalChars: Boolean = true): String {
+    override fun randomString(length: Int, numericalChars: Boolean): String {
         if (length < 1) return ""
         val charset = if (numericalChars) {
             alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
@@ -95,27 +57,11 @@ class RandomService internal constructor(private val config: FakerConfig) {
             .joinToString("")
     }
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Boolean] value
-     * from this random number generator's sequence.
-     *
-     * The values `true` and `false` are produced with (approximately) equal probability.
-     */
-    fun nextBoolean() = random.nextBoolean()
+    override fun nextBoolean() = random.nextBoolean()
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Long] value from this [random] number generator's sequence.
-     */
-    fun nextLong() = random.nextLong()
+    override fun nextLong() = random.nextLong()
 
-    /**
-     * Returns a pseudorandom, uniformly distributed [Long] value between `0` (inclusive),
-     * and the specified [bound] value (exclusive),
-     * drawn from this [random] number generator's sequence.
-     *
-     * @throws IllegalArgumentException if `bound < 0`
-     */
-    fun nextLong(bound: Long): Long {
+    override fun nextLong(bound: Long): Long {
         return if (bound > 0) {
             var value: Long
 
@@ -127,73 +73,32 @@ class RandomService internal constructor(private val config: FakerConfig) {
         } else throw IllegalArgumentException("Bound bound must be greater than 0")
     }
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Float] value between `0.0` and `1.0`
-     * from this [random] number generator's sequence.
-     */
-    fun nextFloat() = random.nextFloat()
+    override fun nextFloat() = random.nextFloat()
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Double] value between `0.0` and `1.0`
-     * from this [random] number generator's sequence.
-     */
-    fun nextDouble() = random.nextDouble()
+    override fun nextDouble() = random.nextDouble()
 
-    /**
-     * Returns the next pseudorandom, uniformly distributed [Char] value,
-     * from this [random] number generator's sequence.
-     */
-    fun nextChar() = nextInt().toChar()
+    override fun nextChar() = nextInt().toChar()
 
-    /**
-     * Returns [String] with the specified [length] (or an empty string for a `length < 1`)
-     * consisting of pseudo-randomly generated characters
-     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
-     *
-     * @param length the length of the resulting string
-     * @param locale locale to use to generate the charset. Defaults to `locale` config value set for the `faker` instance
-     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements)
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
-     */
     @Deprecated(
         message = "This function is deprecated and will be removed in future releases.\n" +
             "Note that default value for 'length' param has changed from '100' to '24' in the new 'randomString' function.",
         replaceWith = ReplaceWith("randomString"),
         level = DeprecationLevel.WARNING
     )
-    fun nextString(
-        length: Int = 100,
-        locale: Locale = Locale.forLanguageTag(config.locale),
-        auxiliaryChars: Boolean = false,
-        numericalChars: Boolean = false
+    override fun nextString(
+        length: Int,
+        locale: Locale,
+        auxiliaryChars: Boolean,
+        numericalChars: Boolean
     ): String = randomString(length, locale, auxiliaryChars, numericalChars)
 
-    /**
-     * Returns [String] with the specified [length] (or an empty string for a `length < 1`)
-     * consisting of pseudo-randomly generated characters
-     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
-     *
-     * @param length         the length of the resulting string.
-     *                       Default: `24`
-     * @param locale         locale to use to generate the charset.
-     *                       Defaults to `locale` config value set for the `faker` instance.
-     * @param indexChars     add additional index chars to the resulting string, as defined in
-     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
-     *                       Default: `true`
-     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in
-     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
-     *                       Default: `false`
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
-     *                       Default: `false`
-     */
-    @JvmOverloads
-    fun randomString(
-        length: Int = 24,
-        locale: Locale = Locale.forLanguageTag(config.locale),
-        indexChars: Boolean = true,
-        auxiliaryChars: Boolean = false,
-        punctuationChars: Boolean = false,
-        numericalChars: Boolean = false,
+    override fun randomString(
+        length: Int,
+        locale: Locale,
+        indexChars: Boolean,
+        auxiliaryChars: Boolean,
+        punctuationChars: Boolean,
+        numericalChars: Boolean,
     ): String {
         if (length < 1) return "" // base case
 
@@ -221,34 +126,14 @@ class RandomService internal constructor(private val config: FakerConfig) {
         return List(length) { chars.random(random.asKotlinRandom()) }.joinToString("")
     }
 
-    /**
-     * Returns [String] with a randomLength withing the specified [min] and [max] boundaries
-     * (or an empty string for if `randomLength < 1`)
-     * consisting of pseudo-randomly generated characters
-     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
-     *
-     * @param min            the minimum length of the resulting string.
-     * @param max            the maximum length of the resulting string.
-     * @param locale         locale to use to generate the charset.
-     *                       Defaults to `locale` config value set for the `faker` instance.
-     * @param indexChars     add additional index chars to the resulting string, as defined in
-     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
-     *                       Default: `true`
-     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in
-     *                       [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements).
-     *                       Default: `false`
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
-     *                       Default: `false`
-     */
-    @JvmOverloads
-    fun randomString(
+    override fun randomString(
         min: Int,
         max: Int,
-        locale: Locale = Locale.forLanguageTag(config.locale),
-        indexChars: Boolean = true,
-        auxiliaryChars: Boolean = false,
-        punctuationChars: Boolean = false,
-        numericalChars: Boolean = false,
+        locale: Locale,
+        indexChars: Boolean,
+        auxiliaryChars: Boolean,
+        punctuationChars: Boolean,
+        numericalChars: Boolean,
     ): String {
         val len = nextInt(min, max)
         return randomString(
@@ -269,30 +154,21 @@ class RandomService internal constructor(private val config: FakerConfig) {
         return enumValues<E>()[x]
     }
 
-    /**
-     * Returns a pseudo-randomly selected enum entry of type [E].
-     */
-    fun <E : Enum<E>> nextEnum(enum: Class<E>): E {
+    override fun <E : Enum<E>> nextEnum(enum: Class<E>): E {
         return randomValue(enum.enumConstants)
     }
 
-    /**
-     * Returns a pseudo-randomly selected enum entry from an [Array] of [E] type [values].
-     */
-    fun <E : Enum<E>> nextEnum(values: Array<E>): E {
+    override fun <E : Enum<E>> nextEnum(values: Array<E>): E {
         return randomValue(values)
     }
 
-    /**
-     * Returns a pseudo-randomly selected [enum] class of type [E] based on [predicate] for [E].
-     */
-    tailrec fun <E : Enum<E>> nextEnum(enum: Class<E>, predicate: (E) -> Boolean): E {
+    override tailrec fun <E : Enum<E>> nextEnum(enum: Class<E>, predicate: (E) -> Boolean): E {
         val enumClass = nextEnum(enum)
         return if (predicate(enumClass)) enumClass else nextEnum(enum, predicate)
     }
 
     /**
-     * Returns a randomly selected enum entry of type [E] excluding a particular class by it's className.
+     * Returns a randomly selected enum entry of type [E] excluding a particular enum class by its name.
      */
     inline fun <reified E : Enum<E>> nextEnum(excludeName: String): E {
         do {
@@ -303,10 +179,7 @@ class RandomService internal constructor(private val config: FakerConfig) {
         } while (true)
     }
 
-    /**
-     * Returns the next pseudorandom [UUID] as [String] taking the seed of this [random].
-     */
-    fun nextUUID(): String {
+    override fun nextUUID(): String {
         val randomBytes = ByteArray(16)
         random.nextBytes(randomBytes)
         randomBytes[6] = randomBytes[6] and 0x0f // clear version
@@ -316,46 +189,18 @@ class RandomService internal constructor(private val config: FakerConfig) {
         return UUID.nameUUIDFromBytes(randomBytes).toString()
     }
 
-    /**
-     * Returns a view of the portion of the [list]
-     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
-     *
-     * @param size the desired size of the resulting list.
-     * If `size <= 0` then `toIndex` will also be randomly-generated.
-     * @param shuffled if `true` the [list] will be shuffled before extracting the sublist
-     */
-    @JvmOverloads
-    fun <T> randomSublist(list: List<T>, size: Int = 0, shuffled: Boolean = false): List<T> {
+    override fun <T> randomSublist(list: List<T>, size: Int, shuffled: Boolean): List<T> {
         val (from, to) = list.randomFromToIndices(size)
         return list.ifEmpty { emptyList() }
             .let { if (shuffled) it.shuffled(random) else it }
             .subList(from, to)
     }
 
-    /**
-     * Returns a view of the portion of the [list]
-     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
-     *
-     * @param sizeRange the desired size range of the resulting list.
-     * The `size` of the returned list is the result of calling [nextInt] with the [sizeRange].
-     * IF `size <= 0` then `toIndex` will also be randomly-generated.
-     * @param shuffled if `true` the [list] will be shuffled before extracting the sublist
-     */
-    @JvmOverloads
-    fun <T> randomSublist(list: List<T>, sizeRange: IntRange, shuffled: Boolean = false): List<T> {
+    override fun <T> randomSublist(list: List<T>, sizeRange: IntRange, shuffled: Boolean): List<T> {
         return randomSublist(list, nextInt(sizeRange), shuffled)
     }
 
-    /**
-     * Returns a portion of the [set]
-     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
-     *
-     * @param size the desired size of the resulting set.
-     * If `size <= 0` then `toIndex` will also be randomly-generated.
-     * @param shuffled if `true` the [set] will be shuffled before extracting the subset
-     */
-    @JvmOverloads
-    fun <T> randomSubset(set: Set<T>, size: Int = 0, shuffled: Boolean = false): Set<T> {
+    override fun <T> randomSubset(set: Set<T>, size: Int, shuffled: Boolean): Set<T> {
         val (from, to) = set.randomFromToIndices(size)
         return set.ifEmpty { emptyList() }
             .let { if (shuffled) it.shuffled(random) else it }
@@ -363,16 +208,7 @@ class RandomService internal constructor(private val config: FakerConfig) {
             .toSet()
     }
 
-    /**
-     * Returns a portion of the [set]
-     * with pseudo-randomly generated `fromIndex` and (possibly) `toIndex` values.
-     *
-     * @param sizeRange the desired size range of the resulting list.
-     * The `size` of the returned list is the result of calling [nextInt] with the [sizeRange].
-     * IF `size <= 0` then `toIndex` will also be randomly-generated.
-     * @param shuffled if `true` the [set] will be shuffled before extracting the subset
-     */
-    fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean = false): Set<T> {
+    override fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean): Set<T> {
         return randomSubset(set, nextInt(sizeRange), shuffled)
     }
 

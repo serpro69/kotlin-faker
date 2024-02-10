@@ -4,6 +4,7 @@ package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.*
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
+import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
@@ -22,7 +23,7 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerConfig { }) {
     private val fakerService: FakerService = FakerService(this)
 
-    val random by lazy { RandomService(config) }
+    val random: RandomProvider by lazy { RandomProvider(fakerService) }
 
     val unique by lazy { GlobalUniqueDataDataProvider() }
 

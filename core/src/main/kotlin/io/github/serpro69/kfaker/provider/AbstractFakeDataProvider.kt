@@ -3,8 +3,8 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.exception.RetryLimitException
-import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
+import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s that do not use yml files as data source.
@@ -127,11 +127,8 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     )
                 }
                 // Provider-based exclusion patterns for all functions
-                providerExclusionPatterns.isNotEmpty() && providerExclusionPatterns.any {
-                    it.containsMatchIn(
-                        resultString
-                    )
-                } -> {
+                providerExclusionPatterns.isNotEmpty()
+                    && providerExclusionPatterns.any { it.containsMatchIn(resultString) } -> {
                     resolveUniqueValue(
                         result = result,
                         primaryKey = primaryKey,
@@ -145,7 +142,7 @@ abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal construct
                     val usedValues = usedProviderFunctionsValuesMap[key]
 
                     when {
-                        patterns != null && patterns.isNotEmpty() && patterns.any { r -> r.containsMatchIn(resultString) } -> {
+                        !patterns.isNullOrEmpty() && patterns.any { r -> r.containsMatchIn(resultString) } -> {
                             resolveUniqueValue(
                                 result = result,
                                 primaryKey = primaryKey,
