@@ -74,8 +74,11 @@ class StringIT : DescribeSpec() {
                 }
             }
             context("regexify") {
-                it("should resolve the regex to a string") {
+                it("should resolve the regex template to a string") {
                     faker.string.regexify("""\d{6}""").all { it.isDigit() } shouldBe true
+                }
+                it("should resolve the regex to a string") {
+                    faker.string.regexify(Regex("""\d{6}""")).all { it.isDigit() } shouldBe true
                 }
                 it("can have duplicates") {
                     val list = List(1000) { faker.string.regexify("""\d\w""") }

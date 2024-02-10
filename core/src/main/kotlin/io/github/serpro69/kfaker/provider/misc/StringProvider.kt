@@ -49,4 +49,12 @@ class StringProvider internal constructor(
     fun regexify(template: String) = with(fakerService) {
         resolveUniqueValue(template.generexify, "regexify")
     }
+
+    /**
+     * Returns a string of generated values based on the [regex],
+     * for example `regexify(Regex("""\d{3}"""))` will return a string consisting of 3 random digits.
+     */
+    fun regexify(regex: Regex) = with(fakerService) {
+        resolveUniqueValue(regex.toString().generexify, "regexify")
+    }
 }
