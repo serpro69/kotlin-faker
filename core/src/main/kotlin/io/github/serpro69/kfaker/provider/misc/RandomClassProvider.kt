@@ -108,6 +108,9 @@ class RandomClassProvider {
     @JvmSynthetic
     @PublishedApi
     internal fun <T : Any> KClass<T>.randomClassInstance(config: RandomProviderConfig): T {
+        // https://github.com/serpro69/kotlin-faker/issues/212
+        if (this.isInner) throw UnsupportedOperationException("Inner classes are not yet supported")
+
         val defaultInstance: T? by lazy {
             if (config.constructorParamSize == -1 && config.constructorFilterStrategy == NO_ARGS) {
                 randomPrimitiveOrNull() as T? ?: try {
@@ -126,6 +129,12 @@ class RandomClassProvider {
                 ParameterInfo(index = -1, name = jvmName, isOptional = false, isVararg = false)
             ) as T?
         }
+
+        // Handle cases where "constructor-less" type is not a direct parameter of the generated class,
+        // but is a collection type, for example
+        // https://github.com/serpro69/kotlin-faker/issues/204
+        if (this.java.isEnum) return randomEnumOrNull() as T
+        if (this.java.isPrimitive) return randomPrimitiveOrNull() as T
 
         return objectInstance ?: defaultInstance ?: run {
             val constructors = constructors.filter { it.visibility == KVisibility.PUBLIC }

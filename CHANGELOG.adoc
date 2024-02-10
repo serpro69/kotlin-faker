@@ -4,6 +4,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/issues/208[#208] [core] Allow `StringProvider#regexify` to take Regex as input
 * https://github.com/serpro69/kotlin-faker/pull/202[#202] [core] Allow `randomClassInstance` to directly use predefined generators
 
 [discrete]
@@ -14,7 +15,7 @@
 [discrete]
 === Fixed
 
-* ...
+* https://github.com/serpro69/kotlin-faker/issues/204[#204] [core] Fix RandomClassProvider handling "constructor-less" types in collections
 
 [discrete]
 === Other

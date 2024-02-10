@@ -6,12 +6,14 @@ import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.maps.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
+import org.junit.jupiter.api.assertThrows
 import java.util.*
 import kotlin.reflect.full.declaredMemberProperties
 
@@ -394,7 +396,15 @@ class RandomClassProviderTest : DescribeSpec({
         class TestClass(
             val list: List<Foo>,
             val set: Set<Bar>,
-            val map: Map<String, Baz>
+            val map: Map<String, Baz>,
+            // "primitives" (see https://github.com/serpro69/kotlin-faker/issues/204 )
+            val charList: List<Char>,
+            val intSet: Set<Int>,
+            val boolMap: Map<Boolean, Byte>,
+            // enums (see https://github.com/serpro69/kotlin-faker/issues/204 )
+            val enumList: List<TestEnum>,
+            val enumSet: Set<TestEnum>,
+            val enumMap: Map<TestEnum, TestEnum>,
         )
 
         it("should generate Collections with default size 1") {
@@ -402,6 +412,12 @@ class RandomClassProviderTest : DescribeSpec({
             testClass.list shouldHaveSize 1
             testClass.set shouldHaveSize 1
             testClass.map shouldHaveSize 1
+            testClass.charList shouldHaveSize 1
+            testClass.intSet shouldHaveSize 1
+            testClass.boolMap shouldHaveSize 1
+            testClass.enumList shouldHaveSize 1
+            testClass.enumSet shouldHaveSize 1
+            testClass.enumMap shouldHaveSize 1
         }
 
         it("should generate Collections with pre-configured size") {
@@ -411,14 +427,31 @@ class RandomClassProviderTest : DescribeSpec({
             testClass.list shouldHaveSize 10
             testClass.set shouldHaveSize 10
             testClass.map shouldHaveSize 10
+            testClass.charList shouldHaveSize 10
+            testClass.intSet shouldHaveSize 10
+            // boolean-key based map can only have 1 or 2 entries, depending on the randomness of the generated key
+            testClass.boolMap.size shouldBeInRange 1..2
+            testClass.enumList shouldHaveSize 10
+            // we only have 3 enum classes, so a set can't have more values total than that
+            testClass.enumSet.size shouldBeInRange 1..3
+            // enum-key based map can only have up to 3 entries in this case, depending on the randomness of the generated key
+            testClass.enumMap.size shouldBeInRange 1..3
         }
         it("should generate Collections with pre-configured type generation") {
             val testClass = randomProvider.randomClassInstance<TestClass> {
                 typeGenerator<List<Foo>> { listOf() }
+                typeGenerator<List<Char>> { listOf() }
+                typeGenerator<List<TestEnum>> { listOf() }
             }
             testClass.list shouldHaveSize 0
             testClass.set shouldHaveSize 1
             testClass.map shouldHaveSize 1
+            testClass.charList shouldHaveSize 0
+            testClass.intSet shouldHaveSize 1
+            testClass.boolMap shouldHaveSize 1
+            testClass.enumList shouldHaveSize 0
+            testClass.enumSet shouldHaveSize 1
+            testClass.enumMap shouldHaveSize 1
         }
     }
 
@@ -461,6 +494,16 @@ class RandomClassProviderTest : DescribeSpec({
 
         it("should generate a random string") {
             randomProvider.randomClassInstance<String>() shouldHaveLength 24
+        }
+    }
+
+    describe("an inner class") {
+        it("should throw exception when generated directly") {
+            assertThrows<UnsupportedOperationException> { randomProvider.randomClassInstance<Go.BuildNum>() }
+        }
+        it("should throw exception when included as constructor parameter") {
+            class Test(val goBuild: Go.BuildNum)
+            assertThrows<UnsupportedOperationException> { randomProvider.randomClassInstance<Test>() }
         }
     }
 
@@ -724,12 +767,19 @@ enum class TestEnum {
 
 @Suppress("CanSealedSubClassBeObject", "unused")
 sealed class TestSealedCls {
-    object Kotlin : TestSealedCls()
+    data object Kotlin : TestSealedCls()
     class Java : TestSealedCls()
 }
 
 @Suppress("unused")
-class Go(val name: String) : TestSealedCls()
+class Go(val name: String) : TestSealedCls() {
+
+    class Version(val ver: String)
+
+    inner class BuildNum(v: Version, i: Int) {
+        val innerVersion = "${v.ver}+$i"
+    }
+}
 
 object TestObject
 

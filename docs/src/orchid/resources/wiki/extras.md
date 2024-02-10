@@ -29,6 +29,7 @@ There are some rules to keep in mind:
 
 - By default, the constructor with the least number of arguments is used (This can be configured - read on.)
 - `kolin.Array` type in the constructor is not supported at the moment
+- Inner classes (either direct generation or as class parameter type) are not supported at the moment
 
 Random instance generation is available through `Faker().randomProvider`:
 
