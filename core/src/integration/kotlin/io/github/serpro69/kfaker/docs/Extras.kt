@@ -296,7 +296,7 @@ class Extras : DescribeSpec({
             faker.random.nextEnum(enum = Foo::class.java)
             faker.random.nextEnum(values = Foo.values())
             faker.random.nextEnum(enum = Foo::class.java) { it != Foo.ONE }
-            faker.random.nextEnum<Foo>(excludeName = "ONE")
+            faker.random.nextEnum<Foo>("ONE")
             // END extras_random_everything_three
         }
 

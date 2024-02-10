@@ -11,10 +11,8 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotBeSortedWith
-import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.collections.shouldNotContainAnyOf
 import io.kotest.matchers.ints.shouldBeInRange
-import io.kotest.matchers.ints.shouldBeLessThan
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -312,7 +310,7 @@ internal class RandomProviderTest : DescribeSpec({
             }
         }
 
-        context("unique values") {
+        context("local unique provider") {
             repeat(10) {
                 it("should generate unique primitive values run#$it") {
                     val ints = List(21) {
@@ -387,6 +385,84 @@ internal class RandomProviderTest : DescribeSpec({
                     // cleanup
                     random.unique.clear(RandomProvider.Key.NEXT_INT)
                     random.unique.clear(RandomProvider.Key.RANDOM_SUBLIST)
+                }
+            }
+        }
+
+        context("global unique provider") {
+            val faker = faker {}
+            faker.unique.configuration {
+                enable(faker::random)
+            }
+            repeat(10) {
+                it("should generate unique primitive values run#$it") {
+                    val ints = List(21) {
+                        random.nextInt(42)
+                    }
+                    ints.distinct() shouldHaveSize 21
+                    // cleanup
+                    faker.unique.clear(faker::random)
+                }
+
+                it("should generate unique values from a list run#$it") {
+                    // arrange
+                    val ints = List(21) {
+                        random.nextInt(42)
+                    }
+                    // act
+                    val randomInts = List(10) {
+                        random.randomValue(ints)
+                    }
+                    // assert
+                    ints shouldContainAll randomInts
+                    randomInts.distinct() shouldHaveSize 10
+                    // cleanup
+                    faker.unique.clear(faker::random)
+                }
+
+                it("should return unique enums run#$it") {
+                    val enums = List(9) {
+                        random.nextEnum<TestEnumRandom>()
+                    }
+                    enums.distinct().size shouldBe 9
+                    faker.unique.clear(faker::random)
+                }
+
+                it("shouldn return unique enums with predicate run#$it") {
+                    val excluded = listOf(TestEnumRandom.ONE, TestEnumRandom.TWO, TestEnumRandom.THREE)
+                    val enums = List(6) {
+                        random.nextEnum(TestEnumRandom::class.java) { e -> e !in excluded }
+                    }
+                    enums.distinct().size shouldBe 6
+                    enums shouldNotContainAnyOf excluded
+                    faker.unique.clear(faker::random)
+                }
+
+
+                it("shouldn return unique enums excluding some names run#$it") {
+                    val excluded = listOf(TestEnumRandom.ONE, TestEnumRandom.TWO, TestEnumRandom.THREE)
+                    val enums = List(6) {
+                        random.nextEnum<TestEnumRandom>(*excluded.map { e -> e.name }.toTypedArray())
+                    }
+                    enums.distinct().size shouldBe 6
+                    enums shouldNotContainAnyOf excluded
+                    faker.unique.clear(faker::random)
+                }
+
+                it("should return unique sublits run#$it") {
+                    // arrange
+                    val ints = List(21) {
+                        random.nextInt(42)
+                    }
+                    // act
+                    val randomInts = List(10) {
+                        random.randomSublist(ints, 6)
+                    }
+                    // assert
+                    ints shouldContainAll randomInts.flatten()
+                    randomInts.distinct() shouldHaveSize 10
+                    // cleanup
+                    faker.unique.clear(faker::random)
                 }
             }
         }

@@ -19,7 +19,6 @@ import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_SUBLIST
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_SUBSET
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_VALUE
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
-import io.github.serpro69.kfaker.provider.unique.UniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 import java.util.*
 
@@ -189,42 +188,75 @@ class RandomProvider internal constructor(
         return resolveUnique(RANDOM_SUBSET, { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) })
     }
 
-    fun <T : Any> key(f: () -> T): String {
-        return f.toString()
-    }
-
+    @Suppress("DuplicatedCode")
     @PublishedApi
     internal tailrec fun <T> resolveUnique(key: Key, f: () -> T, counter: Int = 0): T {
-        val globalUniqueProvider = fakerService.faker.unique
         val fakerConfig = fakerService.faker.config
 
-        val result = f.invoke()
+        val result: T = f.invoke()
+        val resultString: String = result.toString()
 
         return if (localUniqueDataProvider.markedUnique.contains(this)) {
-            println(localUniqueDataProvider.usedValues)
             // if function is prefixed with `unique` -> try to resolve a unique value
             when (val set = localUniqueDataProvider.usedValues[key.name]) {
                 null -> {
-                    localUniqueDataProvider.usedValues[key.name] = mutableSetOf(result.toString())
+                    localUniqueDataProvider.usedValues[key.name] = mutableSetOf(resultString)
                     result
                 }
                 else -> {
                     if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                         throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(result.toString())) result.also {
-                        localUniqueDataProvider.usedValues[key.name] = mutableSetOf(result.toString())
+                    } else if (!set.contains(resultString)) result.also {
+                        localUniqueDataProvider.usedValues[key.name] = mutableSetOf(resultString)
                             .also { it.addAll(set) }
                     } else resolveUnique(key, f, counter + 1)
                 }
             }
-        } else { //if (!globalUniqueProvider.config.markedUnique.contains(this::class)) {
+        } else if (!glUniqueProvider.config.markedUnique.contains(this::class)) {
             // if global unique provider is not enabled for this category -> return result
             result
+        } else when {
+            // Globally excluded values
+            (exclusionValues.isNotEmpty() && exclusionValues.contains(resultString))
+                // Global exclusion patterns
+                || (exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(resultString) })
+                // Provider-based excluded values for all functions
+                || (usedProviderValues.isNotEmpty() && usedProviderValues.contains(resultString))
+                // Provider-based exclusion patterns for all functions
+                || (providerExclusionPatterns.isNotEmpty()
+                    && providerExclusionPatterns.any { it.containsMatchIn(resultString) }) -> {
+                resolveUnique(key, f, counter + 1)
+            }
+            else -> {
+                val patterns = providerFunctionExclusionPatternsMap[key.name]
+                val usedValues = usedProviderFunctionsValuesMap[key.name]
+
+                when {
+                    !patterns.isNullOrEmpty() && patterns.any { r -> r.containsMatchIn(resultString) } -> {
+                        resolveUnique(key, f, counter + 1)
+                    }
+                    usedValues == null -> run {
+                        // Create 'usedValues' set with the returned value for the 'key'
+                        usedProviderFunctionsValuesMap[key.name] = mutableSetOf(resultString)
+                        return@run result
+                    }
+                    else -> {
+                        if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
+                            throw RetryLimitException("Retry limit of $counter exceeded")
+                        } else if (!usedValues.contains(resultString)) run {
+                            // Add returned value at the beginning of existing 'usedValues' set for the 'key'
+                            usedProviderFunctionsValuesMap[key.name] = mutableSetOf(resultString)
+                                .also { it.addAll(usedValues) }
+                            return@run result
+                        } else resolveUnique(key, f, counter + 1)
+                    }
+                }
+            }
         }
     }
 
     /**
-     * Keys for [UniqueDataProvider] to simplify resetting unique values via [clear] function.
+     * Keys for [unique] data provider to simplify resetting unique values via [RandomProvider.clear] function.
      */
     enum class Key {
         /**
