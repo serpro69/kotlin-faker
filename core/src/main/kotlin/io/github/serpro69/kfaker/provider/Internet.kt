@@ -1,7 +1,8 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.helper.prepare
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -18,7 +19,24 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
         fakerService.load(yamlCategory)
     }
 
-    fun domain() = resolve("free_email")
+    fun domain(subdomain: Boolean = false, domain: String? = null): String {
+        val name: () -> String = {
+            prepare(fakerService.faker.company.name().split(" ").first(), fakerService.faker.config)
+        }
+        return domain?.let {
+            domain.split(".")
+                .map { domainPart -> prepare(domainPart, fakerService.faker.config) }
+                .toMutableList()
+                .also {
+                    if (it.size < 2) it.add(safeDomainSuffix())
+                    if (subdomain && it.size < 3) it.add(0, prepare(name(), fakerService.faker.config))
+                }.joinToString(".")
+        } ?: run {
+            mutableListOf(name(), safeDomainSuffix())
+                .also { if (subdomain) it.add(0, prepare(name(), fakerService.faker.config)) }
+                .joinToString(".")
+        }
+    }
 
     @JvmOverloads
     fun email(name: String = ""): String {

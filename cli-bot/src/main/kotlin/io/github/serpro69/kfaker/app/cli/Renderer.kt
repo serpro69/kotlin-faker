@@ -78,7 +78,11 @@ fun renderProvider(
                         it.callBy(mapOf(it.parameters[0] to instance)).toString()
                     } else it.call(instance, "").toString()
                 }
-                3 -> it.call(instance, "", "").toString()
+                3 -> {
+                    if (it.parameters[1].isOptional && it.parameters[2].isOptional) {
+                        it.callBy(mapOf(it.parameters[0] to instance)).toString()
+                    } else it.call(instance, "", "").toString()
+                }
                 else -> {
                     when (it) {
                         Money::amount -> it.call(provider.getter.call(faker), 100_000..1_000_000, true, ",", ".")

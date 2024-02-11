@@ -17,7 +17,11 @@
 ====
 [source,kotlin]
 ----
-Faker().internet.domain() // => gmail.com
+Faker().internet.domain() // => cartwright-lesch.test
+Faker().internet.domain(subdomain = true) // => mraz.mills.test
+Faker().internet.domain(domain = "foo") // => foo.test
+Faker().internet.domain(subdomain = true, domain = "bar") // => doyle.bar.test
+Faker().internet.domain(domain = "kotlin-faker.test") // => kotlin-faker.test
 
 Faker().internet.email() // les.weissnat@gmail.com
 Faker().internet.email("john.doe") // => john.doe@gmail.com
