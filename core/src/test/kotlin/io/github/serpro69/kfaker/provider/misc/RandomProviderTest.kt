@@ -1,12 +1,11 @@
 package io.github.serpro69.kfaker.provider.misc
 
-import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.faker
-import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.beUnique
 import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldBeSortedWith
 import io.kotest.matchers.collections.shouldContain
@@ -26,12 +25,12 @@ class RandomProviderTest : DescribeSpec({
         val fakerService = FakerService(faker {
             fakerConfig {
                 random = Random()
-                uniqueGeneratorRetryLimit = 1000000
+                uniqueGeneratorRetryLimit = 1000
             }
         })
-        val random = RandomProvider(fakerService)
 
         context("nextInt(bound) fun") {
+            val random = RandomProvider(fakerService)
             val values = List(100) { random.nextInt(10) }
 
             it("return value should be within specified range") {
@@ -40,6 +39,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("nextInt(min, max) fun") {
+            val random = RandomProvider(fakerService)
             val values = List(100) { random.nextInt(6..8) }
 
             it("return value should be within specified range") {
@@ -48,6 +48,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("nextInt(intRange) fun") {
+            val random = RandomProvider(fakerService)
             val values = List(100) { random.nextInt(3..9) }
 
             it("return value should be within specified range") {
@@ -56,6 +57,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomValue<T>(list) fun") {
+            val random = RandomProvider(fakerService)
             context("list is not empty") {
                 val values = List(100) { random.nextInt(3..9) }
                 val value = random.randomValue(values)
@@ -89,6 +91,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomValue<T>(array) fun") {
+            val random = RandomProvider(fakerService)
             context("array is not empty") {
                 val values = Array(100) { random.nextInt(3..9) }
                 val value = random.randomValue(values)
@@ -122,6 +125,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("nextLetter() fun") {
+            val random = RandomProvider(fakerService)
             val source = "qwertyuiopasdfghjklzxcvbnm"
 
             context("upper is set to false") {
@@ -140,6 +144,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("nextLong(bound) fun") {
+            val random = RandomProvider(fakerService)
             val values = List(100000) { random.nextLong(100) }
 
             it("return value should be within 0 until 'bound' range") {
@@ -148,12 +153,14 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomString() fun") {
+            val random = RandomProvider(fakerService)
             it("default generated string is 24 char length") {
                 random.randomString().length shouldBe 24
             }
         }
 
         context("nextEnum() fun") {
+            val random = RandomProvider(fakerService)
             it("should return a random enum entry of TestEnum type") {
                 val enum = random.nextEnum<TestEnumRandom>()
                 enum shouldBeIn TestEnumRandom.values()
@@ -189,6 +196,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("nextUUID() fun") {
+            val random = RandomProvider(fakerService)
             val uuid = random.nextUUID()
             it("random UUID is generated") {
                 UUID.fromString(uuid) should beInstanceOf(UUID::class)
@@ -196,6 +204,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomAlphanumeric() fun") {
+            val random = RandomProvider(fakerService)
             it("generates a string from the alphaNumeric source") {
                 val sourceGenerated = ('A'..'Z') + ('a'..'z') + ('0'..'9')
                 val listAlphanumeric = List(100) { random.randomString(100) }
@@ -234,6 +243,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomSublist() fun") {
+            val random = RandomProvider(fakerService)
             val list = List(100) { it }
 
             repeat(100) {
@@ -274,6 +284,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("randomSubset() fun") {
+            val random = RandomProvider(fakerService)
             val set = setOf(*List(100) { it }.toTypedArray())
 
             repeat(100) {
@@ -313,6 +324,7 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("local unique provider") {
+            val random = RandomProvider(fakerService)
             repeat(10) {
                 it("should generate unique primitive values run#$it") {
                     val ints = List(21) {
@@ -392,17 +404,12 @@ class RandomProviderTest : DescribeSpec({
         }
 
         context("global unique provider") {
-            val config = fakerConfig { uniqueGeneratorRetryLimit = 100 }
-            val faker = Faker(config)
-            faker.unique.configuration {
-                enable(faker::random)
-            }
+            val faker = faker { fakerConfig { uniqueGeneratorRetryLimit = 100 } }
+            faker.unique.configuration { enable(faker::random) }
             repeat(10) {
                 it("should generate unique primitive values run#$it") {
-                    val ints = List(21) {
-                        random.nextInt(42)
-                    }
-                    ints.distinct() shouldHaveSize 21
+                    val ints = List(21) { faker.random.nextInt(42) }
+                    ints should beUnique()
                     // cleanup
                     faker.unique.clear(faker::random)
                 }
@@ -410,44 +417,43 @@ class RandomProviderTest : DescribeSpec({
                 it("should generate unique values from a list run#$it") {
                     // arrange
                     val ints = List(21) {
-                        random.nextInt(42)
+                        faker.random.nextInt(42)
                     }
                     // act
                     val randomInts = List(10) {
-                        random.randomValue(ints)
+                        faker.random.randomValue(ints)
                     }
                     // assert
                     ints shouldContainAll randomInts
-                    randomInts.distinct() shouldHaveSize 10
+                    randomInts should beUnique()
                     // cleanup
                     faker.unique.clear(faker::random)
                 }
 
                 it("should return unique enums run#$it") {
                     val enums = List(9) {
-                        random.nextEnum<TestEnumRandom>()
+                        faker.random.nextEnum<TestEnumRandom>()
                     }
-                    enums.distinct().size shouldBe 9
+                    enums should beUnique()
                     faker.unique.clear(faker::random)
                 }
 
                 it("shouldn return unique enums with predicate run#$it") {
                     val excluded = listOf(TestEnumRandom.ONE, TestEnumRandom.TWO, TestEnumRandom.THREE)
                     val enums = List(6) {
-                        random.nextEnum(TestEnumRandom::class.java) { e -> e !in excluded }
+                        faker.random.nextEnum(TestEnumRandom::class.java) { e -> e !in excluded }
                     }
-                    enums.distinct().size shouldBe 6
+                    enums should beUnique()
                     enums shouldNotContainAnyOf excluded
                     faker.unique.clear(faker::random)
                 }
 
-
                 it("shouldn return unique enums excluding some names run#$it") {
                     val excluded = listOf(TestEnumRandom.ONE, TestEnumRandom.TWO, TestEnumRandom.THREE)
                     val enums = List(6) {
-                        random.nextEnum<TestEnumRandom>(*excluded.map { e -> e.name }.toTypedArray())
+                        faker.random.nextEnum<TestEnumRandom>(*excluded.map { e -> e.name }.toTypedArray())
                     }
-                    enums.distinct().size shouldBe 6
+                    enums should beUnique()
                     enums shouldNotContainAnyOf excluded
                     faker.unique.clear(faker::random)
                 }
@@ -455,15 +461,13 @@ class RandomProviderTest : DescribeSpec({
                 it("should return unique sublits run#$it") {
                     // arrange
                     val ints = List(21) {
-                        random.nextInt(42)
+                        faker.random.nextInt(42)
                     }
                     // act
-                    val randomInts = List(10) {
-                        random.randomSublist(ints, 6)
-                    }
+                    val randomInts = List(10) { faker.random.randomSublist(ints, 6) }
                     // assert
                     ints shouldContainAll randomInts.flatten()
-                    randomInts.distinct() shouldHaveSize 10
+                    randomInts should beUnique()
                     // cleanup
                     faker.unique.clear(faker::random)
                 }
