@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy
+import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -25,7 +26,7 @@ class Extras : DescribeSpec({
 
         context("configurable constructor arg type generation") {
             it("should generate pre-configured constructor params") {
-                fun randomString() = "X3a8s813dcb";
+                fun randomString() = "X3a8s813dcb"
 
                 // START extras_random_instance_two
                 class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID, val user: String)
@@ -351,6 +352,34 @@ class Extras : DescribeSpec({
             // END extras_random_everything_nine
         }
 
+        it("should generate unique integers via local-unique-provider") {
+            // START extras_random_everything_ten
+            val ints = List(21) {
+                faker.random.unique.nextInt(42)
+            }
+            assert(ints.distinct().size == 21)
+            // cleanup of unique values via enum key for nextInt function
+            faker.random.unique.clear(RandomProvider.Key.NEXT_INT)
+            // END extras_random_everything_ten
+        }
+
+        it("should generate unique integers via global-unique-provider") {
+            // START extras_random_everything_eleven
+            faker.unique.configuration { enable(faker::random) }
+            val uniqueInts = List(21) {
+                faker.random.nextInt(42)
+            }
+            assert(uniqueInts.distinct().size == 21)
+            // cleanup global unique values for Random provider
+            faker.unique.clear(faker::random)
+            // disable global unique values for Random provider
+            faker.unique.configuration { disable(faker::random) }
+            val ints = List(21) {
+                faker.random.nextInt(42)
+            }
+            assert(ints.distinct().size < 21)
+            // END extras_random_everything_eleven
+        }
     }
 
     describe("Random Strings from Templates") {
