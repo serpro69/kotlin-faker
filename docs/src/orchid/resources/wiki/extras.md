@@ -551,6 +551,28 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 
 {% endtabs %}
 
+### Unique Random Values
+
+Just like most data providers, `Faker#random` supports generation of unique values. See {{ anchor(title='Generator of Unique Values', collectionType='wiki', collectionId='', itemId='Generator of Unique Values') }} page for usage details.
+
+Both "local" (provider level) and "global" (faker level) generation of unique values are supported for `RandomProvider`:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_everything_ten' %}
+```
+
+```kotlin
+{% snippet 'extras_random_everything_eleven' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
 {% btc %}{% endbtc %}
 
 <br>

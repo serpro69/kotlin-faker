@@ -20,6 +20,7 @@
 [discrete]
 === Fixed
 
+* https://github.com/serpro69/kotlin-faker/pull/205[#205] [core] Fix `Person.birthDate` range error during leap year
 * https://github.com/serpro69/kotlin-faker/issues/204[#204] [core] Fix RandomClassProvider handling "constructor-less" types in collections
 
 [discrete]
