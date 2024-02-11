@@ -1,7 +1,9 @@
 package io.github.serpro69.kfaker.provider.misc
 
+import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.faker
+import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
@@ -19,7 +21,7 @@ import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.beInstanceOf
 import java.util.*
 
-internal class RandomProviderTest : DescribeSpec({
+class RandomProviderTest : DescribeSpec({
     describe("RandomProvider instance") {
         val fakerService = FakerService(faker {
             fakerConfig {
@@ -390,7 +392,8 @@ internal class RandomProviderTest : DescribeSpec({
         }
 
         context("global unique provider") {
-            val faker = faker {}
+            val config = fakerConfig { uniqueGeneratorRetryLimit = 100 }
+            val faker = Faker(config)
             faker.unique.configuration {
                 enable(faker::random)
             }

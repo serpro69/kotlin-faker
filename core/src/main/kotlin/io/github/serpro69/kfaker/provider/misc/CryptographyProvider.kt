@@ -2,7 +2,6 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
@@ -48,6 +47,6 @@ class CryptographyProvider internal constructor(
     fun sha512(): String = sha(128)
 
     private fun sha(len: Int): String = with(fakerService) {
-        resolveUniqueValue({ """[a-f0-9]{$len}""".generexify() }, "generexify")
+        resolveUniqueValue("generexify") { """[a-f0-9]{$len}""".generexify() }
     }
 }

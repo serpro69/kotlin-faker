@@ -4,7 +4,6 @@ import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.IRandom
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_CHAR
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_DOUBLE
@@ -36,22 +35,22 @@ class RandomProvider internal constructor(
      */
     fun clear(key: Key) = localUniqueDataProvider.clear(key.name)
 
-    override fun nextInt(): Int = resolveUnique(NEXT_INT, { rs.nextInt() })
+    override fun nextInt(): Int = resolveUnique(NEXT_INT) { rs.nextInt() }
 
-    override fun nextInt(bound: Int): Int = resolveUnique(NEXT_INT, { rs.nextInt(bound) })
+    override fun nextInt(bound: Int): Int = resolveUnique(NEXT_INT) { rs.nextInt(bound) }
 
-    override fun nextInt(intRange: IntRange): Int = resolveUnique(NEXT_INT, { rs.nextInt(intRange) })
+    override fun nextInt(intRange: IntRange): Int = resolveUnique(NEXT_INT) { rs.nextInt(intRange) }
 
-    override fun nextInt(min: Int, max: Int): Int = resolveUnique(NEXT_INT, { rs.nextInt(min = min, max = max) })
+    override fun nextInt(min: Int, max: Int): Int = resolveUnique(NEXT_INT) { rs.nextInt(min = min, max = max) }
 
-    override fun <T> randomValue(list: List<T>): T = resolveUnique(RANDOM_VALUE, { rs.randomValue(list) })
+    override fun <T> randomValue(list: List<T>): T = resolveUnique(RANDOM_VALUE) { rs.randomValue(list) }
 
-    override fun <T> randomValue(array: Array<T>): T = resolveUnique(RANDOM_VALUE, { rs.randomValue(array) })
+    override fun <T> randomValue(array: Array<T>): T = resolveUnique(RANDOM_VALUE) { rs.randomValue(array) }
 
-    override fun nextLetter(upper: Boolean): Char = resolveUnique(NEXT_LETTER, { rs.nextLetter(upper) })
+    override fun nextLetter(upper: Boolean): Char = resolveUnique(NEXT_LETTER) { rs.nextLetter(upper) }
 
     override fun randomString(length: Int, numericalChars: Boolean): String {
-        return resolveUnique(RANDOM_STRING, { rs.randomString(length = length, numericalChars = numericalChars) })
+        return resolveUnique(RANDOM_STRING) { rs.randomString(length = length, numericalChars = numericalChars) }
     }
 
     /**
@@ -64,15 +63,15 @@ class RandomProvider internal constructor(
      */
     override fun nextBoolean(): Boolean = rs.nextBoolean()
 
-    override fun nextLong(): Long = resolveUnique(NEXT_LONG, { rs.nextLong() })
+    override fun nextLong(): Long = resolveUnique(NEXT_LONG) { rs.nextLong() }
 
-    override fun nextLong(bound: Long): Long = resolveUnique(NEXT_LONG, { rs.nextLong(bound) })
+    override fun nextLong(bound: Long): Long = resolveUnique(NEXT_LONG) { rs.nextLong(bound) }
 
-    override fun nextFloat(): Float = resolveUnique(NEXT_FLOAT, { rs.nextFloat() })
+    override fun nextFloat(): Float = resolveUnique(NEXT_FLOAT) { rs.nextFloat() }
 
-    override fun nextDouble(): Double = resolveUnique(NEXT_DOUBLE, { rs.nextDouble() })
+    override fun nextDouble(): Double = resolveUnique(NEXT_DOUBLE) { rs.nextDouble() }
 
-    override fun nextChar(): Char = resolveUnique(NEXT_CHAR, { rs.nextChar() })
+    override fun nextChar(): Char = resolveUnique(NEXT_CHAR) { rs.nextChar() }
 
     @Deprecated(
         message = "This function is deprecated and will be removed in future releases.\n" +
@@ -85,14 +84,14 @@ class RandomProvider internal constructor(
         locale: Locale,
         auxiliaryChars: Boolean,
         numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING, {
+    ): String = resolveUnique(RANDOM_STRING) {
         rs.randomString(
             length = length,
             locale = locale,
             indexChars = auxiliaryChars,
             auxiliaryChars = numericalChars
         )
-    })
+    }
 
     override fun randomString(
         length: Int,
@@ -101,7 +100,7 @@ class RandomProvider internal constructor(
         auxiliaryChars: Boolean,
         punctuationChars: Boolean,
         numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING, {
+    ): String = resolveUnique(RANDOM_STRING) {
         rs.randomString(
             length = length,
             locale = locale,
@@ -110,7 +109,7 @@ class RandomProvider internal constructor(
             punctuationChars = punctuationChars,
             numericalChars = numericalChars
         )
-    })
+    }
 
     override fun randomString(
         min: Int,
@@ -120,7 +119,7 @@ class RandomProvider internal constructor(
         auxiliaryChars: Boolean,
         punctuationChars: Boolean,
         numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING, {
+    ): String = resolveUnique(RANDOM_STRING) {
         rs.randomString(
             min = min,
             max = max,
@@ -130,7 +129,7 @@ class RandomProvider internal constructor(
             punctuationChars = punctuationChars,
             numericalChars = numericalChars
         )
-    })
+    }
 
     // copy-pasta from RandomService due to need for reified
     /**
@@ -139,17 +138,17 @@ class RandomProvider internal constructor(
      * _NB! when used with [unique], the [nextInt], which is used to get a random index of the [enumValues] of [E]
      * will also use unique generation and will need to be reset via [clear] as well when needed._
      */
-    inline fun <reified E : Enum<E>> nextEnum(): E = resolveUnique(NEXT_ENUM, {
+    inline fun <reified E : Enum<E>> nextEnum(): E = resolveUnique(NEXT_ENUM) {
         val x: Int = nextInt(enumValues<E>().size)
         enumValues<E>()[x]
-    })
+    }
 
-    override fun <E : Enum<E>> nextEnum(enum: Class<E>): E = resolveUnique(NEXT_ENUM, { rs.nextEnum(enum) })
+    override fun <E : Enum<E>> nextEnum(enum: Class<E>): E = resolveUnique(NEXT_ENUM) { rs.nextEnum(enum) }
 
-    override fun <E : Enum<E>> nextEnum(values: Array<E>): E = resolveUnique(NEXT_ENUM, { rs.nextEnum(values) })
+    override fun <E : Enum<E>> nextEnum(values: Array<E>): E = resolveUnique(NEXT_ENUM) { rs.nextEnum(values) }
 
     override fun <E : Enum<E>> nextEnum(enum: Class<E>, predicate: (E) -> Boolean): E {
-        return resolveUnique(NEXT_ENUM, { rs.nextEnum(enum, predicate) })
+        return resolveUnique(NEXT_ENUM) { rs.nextEnum(enum, predicate) }
     }
 
     // copy-pasta from RandomService due to need for reified
@@ -168,92 +167,26 @@ class RandomProvider internal constructor(
         } while (true)
     }
 
-    override fun nextUUID(): String = resolveUnique(NEXT_UUID, { rs.nextUUID() })
+    override fun nextUUID(): String = resolveUnique(NEXT_UUID) { rs.nextUUID() }
 
     override fun <T> randomSublist(list: List<T>, size: Int, shuffled: Boolean): List<T> {
-        return resolveUnique(RANDOM_SUBLIST, { rs.randomSublist(list = list, size = size, shuffled = shuffled) })
+        return resolveUnique(RANDOM_SUBLIST) { rs.randomSublist(list = list, size = size, shuffled = shuffled) }
     }
 
     override fun <T> randomSublist(list: List<T>, sizeRange: IntRange, shuffled: Boolean): List<T> {
-        return resolveUnique(RANDOM_SUBLIST, {
-            rs.randomSublist(list = list, sizeRange = sizeRange, shuffled = shuffled)
-        })
+        return resolveUnique(RANDOM_SUBLIST) { rs.randomSublist(list = list, sizeRange = sizeRange, shuffled = shuffled) }
     }
 
     override fun <T> randomSubset(set: Set<T>, size: Int, shuffled: Boolean): Set<T> {
-        return resolveUnique(RANDOM_SUBSET, { rs.randomSubset(set = set, size = size, shuffled = shuffled) })
+        return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, size = size, shuffled = shuffled) }
     }
 
     override fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean): Set<T> {
-        return resolveUnique(RANDOM_SUBSET, { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) })
+        return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) }
     }
 
-    @Suppress("DuplicatedCode")
     @PublishedApi
-    internal tailrec fun <T> resolveUnique(key: Key, f: () -> T, counter: Int = 0): T {
-        val fakerConfig = fakerService.faker.config
-
-        val result: T = f.invoke()
-        val resultString: String = result.toString()
-
-        return if (localUniqueDataProvider.markedUnique.contains(this)) {
-            // if function is prefixed with `unique` -> try to resolve a unique value
-            when (val set = localUniqueDataProvider.usedValues[key.name]) {
-                null -> {
-                    localUniqueDataProvider.usedValues[key.name] = mutableSetOf(resultString)
-                    result
-                }
-                else -> {
-                    if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                        throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(resultString)) result.also {
-                        localUniqueDataProvider.usedValues[key.name] = mutableSetOf(resultString)
-                            .also { it.addAll(set) }
-                    } else resolveUnique(key, f, counter + 1)
-                }
-            }
-        } else if (!glUniqueProvider.config.markedUnique.contains(this::class)) {
-            // if global unique provider is not enabled for this category -> return result
-            result
-        } else when {
-            // Globally excluded values
-            (exclusionValues.isNotEmpty() && exclusionValues.contains(resultString))
-                // Global exclusion patterns
-                || (exclusionPatterns.isNotEmpty() && exclusionPatterns.any { r -> r.containsMatchIn(resultString) })
-                // Provider-based excluded values for all functions
-                || (usedProviderValues.isNotEmpty() && usedProviderValues.contains(resultString))
-                // Provider-based exclusion patterns for all functions
-                || (providerExclusionPatterns.isNotEmpty()
-                    && providerExclusionPatterns.any { it.containsMatchIn(resultString) }) -> {
-                resolveUnique(key, f, counter + 1)
-            }
-            else -> {
-                val patterns = providerFunctionExclusionPatternsMap[key.name]
-                val usedValues = usedProviderFunctionsValuesMap[key.name]
-
-                when {
-                    !patterns.isNullOrEmpty() && patterns.any { r -> r.containsMatchIn(resultString) } -> {
-                        resolveUnique(key, f, counter + 1)
-                    }
-                    usedValues == null -> run {
-                        // Create 'usedValues' set with the returned value for the 'key'
-                        usedProviderFunctionsValuesMap[key.name] = mutableSetOf(resultString)
-                        return@run result
-                    }
-                    else -> {
-                        if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                            throw RetryLimitException("Retry limit of $counter exceeded")
-                        } else if (!usedValues.contains(resultString)) run {
-                            // Add returned value at the beginning of existing 'usedValues' set for the 'key'
-                            usedProviderFunctionsValuesMap[key.name] = mutableSetOf(resultString)
-                                .also { it.addAll(usedValues) }
-                            return@run result
-                        } else resolveUnique(key, f, counter + 1)
-                    }
-                }
-            }
-        }
-    }
+    internal fun <T> resolveUnique(key: Key, f: () -> T): T = resolveUniqueValue(key.name, f)
 
     /**
      * Keys for [unique] data provider to simplify resetting unique values via [RandomProvider.clear] function.

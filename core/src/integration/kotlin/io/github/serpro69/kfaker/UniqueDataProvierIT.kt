@@ -15,7 +15,6 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
 import io.kotest.matchers.shouldNotBe
 
-@Suppress("UNCHECKED_CAST")
 class UniqueDataProviderIT : DescribeSpec({
     describe("unique generation of values enabled for provider through configuration") {
         val config = fakerConfig { uniqueGeneratorRetryLimit = 100 }

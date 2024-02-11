@@ -102,7 +102,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
         secondaryKey: String? = null,
         thirdKey: String? = null,
     ): String {
-        val result: () -> String = {
+        return resolveUniqueValue(primaryKey, secondaryKey, thirdKey) {
             when {
                 secondaryKey != null && thirdKey != null -> {
                     fakerService.resolve(yamlCategory, primaryKey, secondaryKey, thirdKey)
@@ -111,7 +111,5 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
                 else -> fakerService.resolve(yamlCategory, primaryKey)
             }
         }
-
-        return resolveUniqueValue(result, primaryKey, secondaryKey, thirdKey)
     }
 }
