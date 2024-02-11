@@ -20,7 +20,7 @@ class StringProvider internal constructor(
      * Replaces every `#` char for this [template] string with a random int from 0 to 9 inclusive,
      * and returns the modified [String].
      */
-    fun numerify(template: String) = with(fakerService) { resolveUniqueValue(template.numerify, "numerify") }
+    fun numerify(template: String) = with(fakerService) { resolveUniqueValue("numerify", template.numerify) }
 
     /**
      * Replaces every `?` char for this [template] string with a random letter from the English alphabet,
@@ -29,7 +29,7 @@ class StringProvider internal constructor(
      * @param upper set to `true` or `false` to control the case of generated letters.
      */
     fun letterify(template: String, upper: Boolean? = null) = with(fakerService) {
-        resolveUniqueValue({ template.letterify(upper) }, "letterify")
+        resolveUniqueValue("letterify") { template.letterify(upper) }
     }
 
     /**
@@ -39,7 +39,7 @@ class StringProvider internal constructor(
      * @param upper set to `true` or `false` to control the case of generated letters.
      */
     fun bothify(template: String, upper: Boolean? = null) = with(fakerService) {
-        resolveUniqueValue({ template.numerify().letterify(upper) }, "bothify")
+        resolveUniqueValue("bothify") { template.numerify().letterify(upper) }
     }
 
     /**
@@ -47,7 +47,7 @@ class StringProvider internal constructor(
      * for example `regexify("""\d{3}""")` will return a string consisting of 3 random digits.
      */
     fun regexify(template: String) = with(fakerService) {
-        resolveUniqueValue(template.generexify, "regexify")
+        resolveUniqueValue("regexify", template.generexify)
     }
 
     /**
@@ -55,6 +55,6 @@ class StringProvider internal constructor(
      * for example `regexify(Regex("""\d{3}"""))` will return a string consisting of 3 random digits.
      */
     fun regexify(regex: Regex) = with(fakerService) {
-        resolveUniqueValue(regex.toString().generexify, "regexify")
+        resolveUniqueValue("regexify", regex.toString().generexify)
     }
 }

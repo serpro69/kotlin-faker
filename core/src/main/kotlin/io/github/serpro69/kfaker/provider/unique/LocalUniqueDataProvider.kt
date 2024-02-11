@@ -20,7 +20,6 @@ import kotlin.reflect.jvm.javaField
  * Faker().address.unique().country()
  * ```
  */
-@Suppress("UNCHECKED_CAST", "unused")
 class LocalUniqueDataProvider<T : FakeDataProvider> internal constructor() : UniqueDataProvider() {
 //    override val config: UniqueProviderConfiguration
 //        get() = TODO("Not yet implemented")
