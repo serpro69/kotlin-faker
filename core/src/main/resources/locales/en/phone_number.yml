@@ -75,6 +75,12 @@ en:
         - "(###) ### ####"
         - "###-###-####"
         - "###.###.####"
+      # NB! copy-pasta from locale/en-US.yml to make it compatible
+      subscriber_number:
+        - "####"
+      extension:
+        - "####"
+      # END
     cell_phone:
       formats:
         - "###-###-####"

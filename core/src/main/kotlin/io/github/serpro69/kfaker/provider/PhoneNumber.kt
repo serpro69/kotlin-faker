@@ -2,8 +2,8 @@
 
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -32,6 +32,9 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
     fun countryCode() = resolve("country_code")
     fun exchangeCode() = resolve("exchange_code")
     fun phoneNumber() = with(fakerService) { resolve("formats").numerify() }
+    // part of locales/en-US.yml and some others but not in locales/en/phone.yml
+    fun extension() = with(fakerService) { resolve("extension").numerify() }
+    fun subscriberNumber() = with(fakerService) { resolve("subscriber_number").numerify() }
 
     @Deprecated(
         message = "This function is deprecated and will be removed in future releases",
@@ -57,14 +60,14 @@ class CellPhone internal constructor(fakerService: FakerService) : YamlFakeDataP
 }
 
 /**
- * [FakeDataProvider] implementation for [YamlCategory.COUNTRY_CODE] category.
+ * [FakeDataProvider] implementation for [YamlCategory.PHONE_NUMBER] category.
  */
 @Deprecated(
     message = "This functionality is deprecated and will be removed in future releases",
     level = DeprecationLevel.WARNING
 )
 class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CountryCode>(fakerService) {
-    override val yamlCategory = YamlCategory.COUNTRY_CODE
+    override val yamlCategory = YamlCategory.PHONE_NUMBER
     override val localUniqueDataProvider = LocalUniqueDataProvider<CountryCode>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
 
@@ -73,8 +76,4 @@ class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDat
     }
 
     fun code() = resolve("country_code")
-}
-
-fun main() {
-    faker{}.phoneNumber.countryCode.code()
 }

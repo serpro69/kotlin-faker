@@ -6,7 +6,6 @@ import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.dictionary.YamlCategory.CELL_PHONE
-import io.github.serpro69.kfaker.dictionary.YamlCategory.COUNTRY_CODE
 import io.github.serpro69.kfaker.dictionary.YamlCategory.CURRENCY_SYMBOL
 import io.github.serpro69.kfaker.dictionary.YamlCategory.PHONE_NUMBER
 import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
@@ -164,11 +163,6 @@ internal class FakerService {
         return instr?.use {
             when (category) {
                 PHONE_NUMBER, CELL_PHONE -> readCategoryOrNull(it, locale, category)
-                COUNTRY_CODE -> {
-                    val localeData = Mapper.readValue(it, Map::class.java)[locale] as Map<*, *>
-                    val fakerData = localeData["faker"] as Map<*, *>
-                    fakerData[category.lowercase()]
-                }
                 else -> null
             }
         }
@@ -204,10 +198,6 @@ internal class FakerService {
                 PHONE_NUMBER, CELL_PHONE -> {
                     computePhoneNumber(category, locale)?.let { defaultValues.putAll(it as Map<out String, Any>) }
                         ?: defaultValues.putAll(computePhoneNumber(category) as Map<String, Any>)
-                }
-                COUNTRY_CODE -> {
-                    computePhoneNumber(category, locale)?.let { defaultValues[category.lowercase()] = it }
-                        ?: run { defaultValues[category.lowercase()] = computePhoneNumber(category) }
                 }
                 SEPARATOR, CURRENCY_SYMBOL -> {
                     computeSymbol(category, locale)?.let {

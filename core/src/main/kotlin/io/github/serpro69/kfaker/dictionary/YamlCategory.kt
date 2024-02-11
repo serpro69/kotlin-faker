@@ -58,7 +58,6 @@ internal enum class YamlCategory : Category {
     CONSTRUCTION,
     COSMERE,
     COWBOY_BEBOP,
-    COUNTRY_CODE,
     CREATURE,
     CROSSFIT,
     CRYPTO_COIN,

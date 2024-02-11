@@ -21,7 +21,7 @@ class PhoneNumberIT : DescribeSpec({
                 phone.cellPhone.number() shouldMatch Regex("""^\(\d{3}\) \d{3}-\d{2}-\d{2}$""")
             }
             it("country code is resolved using default format") {
-                phone.countryCode.code() shouldBeIn defaultCountryCodes
+                phone.countryCode() shouldBeIn defaultCountryCodes
             }
         }
 
@@ -34,14 +34,14 @@ class PhoneNumberIT : DescribeSpec({
                 phone.cellPhone.number() shouldContain Regex("""^0[987]0""")
             }
             it("country code is resolved using default format") {
-                phone.countryCode.code() shouldBeIn defaultCountryCodes
+                phone.countryCode() shouldBeIn defaultCountryCodes
             }
         }
 
         context("fr") {
             val phone = phoneNumber("fr")
             it("country code is resolved using default format") {
-                phone.countryCode.code() shouldBe "33"
+                phone.countryCode() shouldBe "33"
             }
         }
 
@@ -54,7 +54,9 @@ class PhoneNumberIT : DescribeSpec({
                 it("should generate a cellPhone.number run#$it") {
                     phone.cellPhone.number().filter { c -> c.isDigit() } shouldNotBe ""
                 }
-                it("should generate a countryCode.code run#$it") {
+                it("should generate a countryCode run#$it") {
+                    phone.countryCode() shouldNotBe ""
+                    // test deprecated function until it's removed
                     phone.countryCode.code() shouldNotBe ""
                 }
             }
