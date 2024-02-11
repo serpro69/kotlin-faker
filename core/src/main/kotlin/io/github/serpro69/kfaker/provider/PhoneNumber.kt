@@ -21,8 +21,16 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
 
     val cellPhone by lazy { CellPhone(fakerService) }
 
+    @Deprecated(
+        message = "This functionality is deprecated and will be removed in future releases",
+        ReplaceWith("countryCode()"),
+        level = DeprecationLevel.WARNING
+    )
     val countryCode by lazy { CountryCode(fakerService) }
 
+    fun areaCode() = resolve("area_code")
+    fun countryCode() = resolve("country_code")
+    fun exchangeCode() = resolve("exchange_code")
     fun phoneNumber() = with(fakerService) { resolve("formats").numerify() }
 
     @Deprecated(
@@ -31,13 +39,6 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
         level = DeprecationLevel.WARNING
     )
     fun cellPhone() = cellPhone.number()
-
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases",
-        ReplaceWith("countryCode.code()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun countryCode() = countryCode.code()
 }
 
 /**
@@ -58,6 +59,10 @@ class CellPhone internal constructor(fakerService: FakerService) : YamlFakeDataP
 /**
  * [FakeDataProvider] implementation for [YamlCategory.COUNTRY_CODE] category.
  */
+@Deprecated(
+    message = "This functionality is deprecated and will be removed in future releases",
+    level = DeprecationLevel.WARNING
+)
 class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CountryCode>(fakerService) {
     override val yamlCategory = YamlCategory.COUNTRY_CODE
     override val localUniqueDataProvider = LocalUniqueDataProvider<CountryCode>()
@@ -68,4 +73,8 @@ class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDat
     }
 
     fun code() = resolve("country_code")
+}
+
+fun main() {
+    faker{}.phoneNumber.countryCode.code()
 }
