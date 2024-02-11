@@ -2,6 +2,11 @@
 [%collapsible]
 ====
 [discrete]
+=== Breaking Change
+
+* https://github.com/serpro69/kotlin-faker/pull/213[#213] [core] Add support for unique data generation to `Faker#random`
+
+[discrete]
 === Added
 
 * https://github.com/serpro69/kotlin-faker/issues/208[#208] [core] Allow `StringProvider#regexify` to take Regex as input
