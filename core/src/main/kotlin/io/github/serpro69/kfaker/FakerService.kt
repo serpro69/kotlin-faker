@@ -151,18 +151,18 @@ internal class FakerService {
         return dictionary
     }
 
-    private fun computePhoneNumber(category: YamlCategory): Any {
-        return computePhoneNumber(category, "en") as Any
+    private fun computePhoneNumber(category: YamlCategory): HashMap<String, Any>? {
+        return computePhoneNumber(category, "en")
     }
 
-    private fun computePhoneNumber(category: YamlCategory, locale: String): Any? {
+    private fun computePhoneNumber(category: YamlCategory, locale: String): HashMap<String, Any>? {
         val instr = when (locale) {
             "en", "ja", "fr" -> getCategoryFileStream(locale, PHONE_NUMBER, null)
             else -> getLocaleFileStream(locale)
         }
         return instr?.use {
             when (category) {
-                PHONE_NUMBER, CELL_PHONE -> readCategoryOrNull(it, locale, category)
+                PHONE_NUMBER, CELL_PHONE -> readCategoryOrNull(it, locale, category) as HashMap?
                 else -> null
             }
         }
@@ -188,16 +188,33 @@ internal class FakerService {
      *
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
-    @Suppress("UNCHECKED_CAST", "UNUSED_ANONYMOUS_PARAMETER")
+    @Suppress("UNUSED_ANONYMOUS_PARAMETER")
     internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
         val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
         dictionary.compute(category) { _, categoryData -> // i.e. compute data for 'address' category
             // TODO can this be improved by doing smth along the lines of categoryData.computeIfAbsent()
             when (category) {
-                PHONE_NUMBER, CELL_PHONE -> {
-                    computePhoneNumber(category, locale)?.let { defaultValues.putAll(it as Map<out String, Any>) }
-                        ?: defaultValues.putAll(computePhoneNumber(category) as Map<String, Any>)
+                /* Some keys are missing in localized phone.yml files,
+                 * e.g. compare locales/en/phone.yml with locales/fr/phone.yml or locales/ja/phone.yml.
+                 * So we merge the 'en/phone' keys with localized ones
+                 * to avoid "Parameter '...' not found in 'phone_number' category" exceptions
+                 *
+                 * NB! We also needed to split-out handling of CELL_PHONE category into own branch
+                 * because otherwise it would get merged with PHONE_NUMBER, and we would get
+                 * "Parameter '...' not found in 'cell_phone' category" exceptions
+                 */
+                PHONE_NUMBER -> {
+                    computePhoneNumber(category, locale)?.let { localePhones ->
+                        computePhoneNumber(category)?.let { enPhones ->
+                            enPhones.forEach { (k, v) -> localePhones.computeIfAbsent(k) { v } }
+                        }
+                        defaultValues.putAll(localePhones)
+                    }
+                }
+                CELL_PHONE -> {
+                    computePhoneNumber(category, locale)?.let { defaultValues.putAll(it) }
+                        ?: computePhoneNumber(category)?.let { defaultValues.putAll(it) }
                 }
                 SEPARATOR, CURRENCY_SYMBOL -> {
                     computeSymbol(category, locale)?.let {
