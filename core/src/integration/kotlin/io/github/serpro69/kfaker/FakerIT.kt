@@ -50,7 +50,11 @@ class FakerIT : DescribeSpec({
                                     it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
                                 } else it.call(provider.getter.call(faker), "").toString()
                             }
-                            3 -> it.call(provider.getter.call(faker), "", "").toString()
+                            3 -> {
+                                if (it.parameters[1].isOptional && it.parameters[2].isOptional) {
+                                    it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
+                                } else it.call(provider.getter.call(faker), "", "").toString()
+                            }
                             else -> throw IllegalArgumentException("")
                         }
 
