@@ -204,6 +204,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val siliconValley: SiliconValley by lazy { SiliconValley(fakerService) }
     val simpsons: Simpsons by lazy { Simpsons(fakerService) }
     val slackEmoji: SlackEmoji by lazy { SlackEmoji(fakerService) }
+    val smashingPumpkins: SmashingPumpkins by lazy { SmashingPumpkins(fakerService) }
     val sonicTheHedgehog: SonicTheHedgehog by lazy { SonicTheHedgehog(fakerService) }
 
     //    val source: Source by lazy {Source(fakerService }
@@ -232,6 +233,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val theITCrowd: TheITCrowd by lazy { TheITCrowd(fakerService) }
     val theKingkillerChronicle: TheKingkillerChronicle by lazy { TheKingkillerChronicle(fakerService) }
     val theOffice: TheOffice by lazy { TheOffice(fakerService) }
+    val theRoom: TheRoom by lazy { TheRoom(fakerService) }
     val theThickOfIt: TheThickOfIt by lazy { TheThickOfIt(fakerService) }
     val tolkien: Tolkien by lazy { Tolkien(fakerService) }
     val touhou: Touhou by lazy { Touhou(fakerService) }

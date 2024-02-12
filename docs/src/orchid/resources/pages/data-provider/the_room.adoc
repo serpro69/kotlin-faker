@@ -1,0 +1,29 @@
+---
+---
+
+== `Faker().theRoom`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'the_room_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().theRoom.actors() // => Tommy Wiseau
+
+Faker().theRoom.characters() // => Johnny
+
+Faker().theRoom.locations() // => Johnny's Place
+
+Faker().theRoom.quotes() // => "Oh hi, Denny"
+
+----
+====
