@@ -29,7 +29,10 @@ Faker().internet.privateIPv4Address() // => 192.168.82.243
 Faker().internet.publicIPv4Address() // => 25.162.239.133
 Faker().internet.iPv4Address() // => 230.168.182.77
 
-// Mac Addresses
+// IPv6 addresses
+Faker().internet.iPv6Address() // => 176f:cfec:c73b:e0cb:534d:4b3e:db4e:3b53
+
+// Mac addresses
 Faker().internet.macAddress() // => 17:12:d9:fc:fe:f6
 Faker().internet.macAddress("a") // => 0a:11:ed:7c:b5:af
 Faker().internet.macAddress("aa") // => aa:ec:eb:54:b9:f5

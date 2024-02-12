@@ -1,6 +1,5 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.helper.isReservedNet
@@ -42,18 +41,36 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     /**
-     * Returns an IPv4 address
+     * Returns a random IPv4 address
      */
     fun iPv4Address() = List(4) { fakerService.randomService.nextInt(0, 255) }
         .joinToString(".")
 
     /**
-     * Returns a private IPv4 address
+     * Returns a random private IPv4 address
      */
     fun privateIPv4Address(): String {
         val ranges = fakerService.randomService.randomValue(privateIpv4Ranges)
         return ranges.map { fakerService.randomService.nextInt(it) }.joinToString(".")
     }
+
+    /**
+     * Returns a random public IPv4 address
+     */
+    fun publicIPv4Address(): String = with(iPv4Address()) {
+        if (isReservedNet(this)) publicIPv4Address() else this
+    }
+
+    /**
+     * Returns a random IPv6 address
+     *
+     * Example:
+     * ```
+     * Faker().internet.iPv6Address() // => 176f:cfec:c73b:e0cb:534d:4b3e:db4e:3b53
+     * ```
+     */
+    fun iPv6Address(): String = List(8) { fakerService.randomService.nextInt(65_536).toString(16) }
+        .joinToString(":")
 
     /**
      * Returns a random mac-address with an optional [prefix]
@@ -72,13 +89,6 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
         val pref = prefix.split(":").mapNotNull { if (it.isNotBlank()) it.hexToInt() else null }
         val addr = List(6 - pref.size) { fakerService.randomService.nextInt(256) }
         return listOf(pref, addr).flatten().joinToString(":") { format("%02x", it) }
-    }
-
-    /**
-     * Returns a public IPv4 address
-     */
-    fun publicIPv4Address(): String = with(iPv4Address()) {
-        if (isReservedNet(this)) publicIPv4Address() else this
     }
 
     @JvmOverloads
