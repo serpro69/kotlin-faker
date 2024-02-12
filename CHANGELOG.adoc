@@ -4,13 +4,39 @@
 [discrete]
 === Breaking Change
 
+* https://github.com/serpro69/kotlin-faker/pull/214[#214] [core] Update `Faker#internet#domain` function which affects returned values
 * https://github.com/serpro69/kotlin-faker/pull/213[#213] [core] Add support for unique data generation to `Faker#random`
 
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/214[#214] [core] Update dictionary files, including:
+** Data and functions in existing data providers
+** `Faker().internet.domain()` now takes optional argument and produces a "safe-domain" (ending with `.example` or `.test`)
+** Updates to existing localized dictionaries + one new locale
 * https://github.com/serpro69/kotlin-faker/issues/208[#208] [core] Allow `StringProvider#regexify` to take Regex as input
 * https://github.com/serpro69/kotlin-faker/pull/202[#202] [core] Allow `randomClassInstance` to directly use predefined generators
+
+++++
+<details><summary><h3>New Data Providers</h3></summary>
+<p>
+++++
+* `smashing_pumpkins`
+* `the_room`
+++++
+</p>
+</details>
+++++
+
+++++
+<details><summary><h3>New Locales</h3></summary>
+<p>
+++++
+* `en-KE`
+++++
+</p>
+</details>
+++++
 
 [discrete]
 === Changed
