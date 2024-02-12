@@ -679,6 +679,10 @@
         "parameterTypes": []
       },
       {
+        "name": "getSmashingPumpkins",
+        "parameterTypes": []
+      },
+      {
         "name": "getSonicTheHedgehog",
         "parameterTypes": []
       },
@@ -780,6 +784,10 @@
       },
       {
         "name": "getTheOffice",
+        "parameterTypes": []
+      },
+      {
+        "name": "getTheRoom",
         "parameterTypes": []
       },
       {
@@ -4617,6 +4625,27 @@
     ]
   },
   {
+    "name": "io.github.serpro69.kfaker.provider.SmashingPumpkins",
+    "methods": [
+      {
+        "name": "musicians",
+        "parameterTypes": []
+      },
+      {
+        "name": "albums",
+        "parameterTypes": []
+      },
+      {
+        "name": "lyric",
+        "parameterTypes": []
+      },
+      {
+        "name": "songs",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.github.serpro69.kfaker.provider.SonicTheHedgehog",
     "methods": [
       {
@@ -5266,6 +5295,27 @@
     "methods": [
       {
         "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "quotes",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "io.github.serpro69.kfaker.provider.TheRoom",
+    "methods": [
+      {
+        "name": "actors",
+        "parameterTypes": []
+      },
+      {
+        "name": "characters",
+        "parameterTypes": []
+      },
+      {
+        "name": "locations",
         "parameterTypes": []
       },
       {
