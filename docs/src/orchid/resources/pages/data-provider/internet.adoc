@@ -17,11 +17,17 @@
 ====
 [source,kotlin]
 ----
+// "Safe" internet domain
 Faker().internet.domain() // => cartwright-lesch.test
 Faker().internet.domain(subdomain = true) // => mraz.mills.test
 Faker().internet.domain(domain = "foo") // => foo.test
 Faker().internet.domain(subdomain = true, domain = "bar") // => doyle.bar.test
 Faker().internet.domain(domain = "kotlin-faker.test") // => kotlin-faker.test
+
+// IPv4 addresses, public and private
+Faker().internet.privateIPv4Address() // => 192.168.82.243
+Faker().internet.publicIPv4Address() // => 25.162.239.133
+Faker().internet.iPv4Address() // => 230.168.182.77
 
 Faker().internet.email() // les.weissnat@gmail.com
 Faker().internet.email("john.doe") // => john.doe@gmail.com
