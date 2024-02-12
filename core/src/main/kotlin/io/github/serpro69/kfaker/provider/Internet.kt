@@ -1,11 +1,13 @@
 package io.github.serpro69.kfaker.provider
 
+import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.helper.isReservedNet
 import io.github.serpro69.kfaker.helper.prepare
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
+import java.lang.String.format
 
 /**
  * [FakeDataProvider] implementation for [YamlCategory.INTERNET] category.
@@ -51,6 +53,25 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun privateIPv4Address(): String {
         val ranges = fakerService.randomService.randomValue(privateIpv4Ranges)
         return ranges.map { fakerService.randomService.nextInt(it) }.joinToString(".")
+    }
+
+    /**
+     * Returns a random mac-address with an optional [prefix]
+     *
+     * Examples:
+     * ```
+     * Faker().internet.macAddress() // => 17:12:d9:fc:fe:f6
+     * Faker().internet.macAddress("a") // => 0a:11:ed:7c:b5:af
+     * Faker().internet.macAddress("aa") // => aa:ec:eb:54:b9:f5
+     * Faker().internet.macAddress("aa:ce") // => aa:ce:e3:e1:83:c4
+     *
+     * ```
+     */
+    @OptIn(ExperimentalStdlibApi::class)
+    fun macAddress(prefix: String = ""): String {
+        val pref = prefix.split(":").mapNotNull { if (it.isNotBlank()) it.hexToInt() else null }
+        val addr = List(6 - pref.size) { fakerService.randomService.nextInt(256) }
+        return listOf(pref, addr).flatten().joinToString(":") { format("%02x", it) }
     }
 
     /**

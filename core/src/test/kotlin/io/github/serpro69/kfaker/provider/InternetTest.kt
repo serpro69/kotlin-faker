@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.helper.isPrivateNet
 import io.github.serpro69.kfaker.helper.isReservedNet
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldMatch
 
 class InternetTest: DescribeSpec({
     describe("Internet provider") {
@@ -24,6 +25,20 @@ class InternetTest: DescribeSpec({
                 it("should generate a random IPv4 address run#$it") {
                     internet.iPv4Address().split(".").all { s -> s.toInt() in 0..255 } shouldBe true
                 }
+            }
+        }
+
+        @OptIn(ExperimentalStdlibApi::class)
+        context("MacAddress generation") {
+            it("should generate a valid mac-address") {
+                internet.macAddress() shouldMatch Regex("^([0-9a-f]{2}:){5}[0-9a-f]{2}$")
+                internet.macAddress().split(":").all { it.hexToInt() in 0..255 }
+            }
+            it("should generate a valid mac-address with prefix") {
+                internet.macAddress("a").split(":").all { it.hexToInt() in 0..255 }
+                internet.macAddress("aa").split(":").all { it.hexToInt() in 0..255 }
+                internet.macAddress("aa:ce").split(":").all { it.hexToInt() in 0..255 }
+                internet.macAddress("aa:ce:").split(":").all { it.hexToInt() in 0..255 }
             }
         }
     }
