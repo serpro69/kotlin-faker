@@ -1,18 +1,19 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.qameta.allure.gradle.task.AllureReport
 import io.qameta.allure.gradle.task.AllureServe
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 plugins {
-    kotlin("jvm") version "1.9.10" apply false
-    id("com.adarshr.test-logger") version "2.0.0" apply false
+    // NB! some versions are on the classpath from dependency declared in buildSrc/build.gradle.kts
+    kotlin("jvm") apply false
+    id("com.adarshr.test-logger") apply false
     id("com.github.ben-manes.versions") version "0.28.0" apply false
     id("io.qameta.allure") version "2.8.1"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+    id("com.github.johnrengelman.shadow") apply false
 }
 
 repositories {
@@ -22,9 +23,8 @@ repositories {
 group = "io.github.serpro69"
 
 subprojects {
-    group = parent?.group?.toString() ?: "io.github.serpro69"
-
-    version = rootProject.version
+    group = rootProject.group.toString()
+    version = rootProject.version.toString()
 
     repositories {
         mavenCentral()
@@ -68,20 +68,19 @@ subprojects {
     }
 
     configure<JavaPluginExtension> {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(8)
+        }
+    }
+
+    configure<KotlinJvmProjectExtension> {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(8))
+        }
     }
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
-    }
-
-    tasks.withType<KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-        }
     }
 
     tasks.withType<Test> {
@@ -147,7 +146,7 @@ subprojects {
 
     tasks.withType<DependencyUpdatesTask> {
         fun isNonStable(version: String): Boolean {
-            val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+            val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
             val regex = "^[0-9,.v-]+(-r|-jre)?$".toRegex()
             val isStable = stableKeyword || regex.matches(version)
             return isStable.not()
