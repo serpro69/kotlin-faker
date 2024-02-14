@@ -16,3 +16,9 @@ include(
     "cli-bot",
     "docs"
 )
+
+val providers = listOf(
+    "books",
+)
+
+providers.forEach { include("provider:$it") }
