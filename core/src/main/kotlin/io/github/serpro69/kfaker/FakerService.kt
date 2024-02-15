@@ -578,13 +578,26 @@ class FakerService {
 
     /**
      * Returns an instance of [FakeDataProvider] fetched by its [simpleClassName] (case-insensitive).
+     *
+     * The function will attempt a [FakeDataProvider] in this [faker]'s declared member properties.
+     * Failing that, the core [Faker] implementation will be used to do the same.
+     *
+     * @throws NoSuchElementException if neither this [faker] nor the core [Faker] implementation
+     * has declared a provider that matches the [simpleClassName] parameter.
      */
     private fun getProvider(simpleClassName: String): FakeDataProvider {
-        val kProp = faker::class.declaredMemberProperties.first {
+        val kProp = faker::class.declaredMemberProperties.firstOrNull {
             it.name.lowercase() == simpleClassName.lowercase()
         }
 
-        return kProp.call(faker) as FakeDataProvider
+        return kProp?.let { it.call(faker) as FakeDataProvider } ?: run {
+            val core = Faker(faker.config)
+            val prop = core::class.declaredMemberProperties.firstOrNull { p ->
+                p.name.lowercase() == simpleClassName.lowercase()
+            }
+            prop?.let { p -> p.call(core) as FakeDataProvider }
+                ?: throw NoSuchElementException("Faker provider '$simpleClassName' not found in $core or $faker")
+        }
     }
 
     private fun findMatchesAndAppendTail(
