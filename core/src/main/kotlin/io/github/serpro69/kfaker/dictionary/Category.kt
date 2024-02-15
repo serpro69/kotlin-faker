@@ -13,7 +13,7 @@ interface Category {
         /**
          * Creates a new [Category] with the given [name].
          */
-        internal fun ofName(name: String): Category = object : Category {
+        fun ofName(name: String): Category = object : Category {
             override val name: String = name.uppercase()
         }
     }

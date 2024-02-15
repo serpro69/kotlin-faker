@@ -33,15 +33,15 @@ import kotlin.reflect.full.declaredMemberProperties
  *
  * @constructor creates an instance of this [FakerService] with the default 'en' locale if is not specified.
  */
-internal class FakerService {
+class FakerService {
     @Suppress("RegExpRedundantEscape")
     private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)\}""")
     private val locale: String
-    internal val faker: Faker
+    internal val faker: AbstractFaker
     internal val randomService: RandomService
     internal val dictionary: Dictionary = EnumMap(YamlCategory::class.java)
 
-    internal constructor(faker: Faker) {
+    internal constructor(faker: AbstractFaker) {
         this.faker = faker
         this.locale = faker.config.locale.replace("_", "-")
         randomService = RandomService(faker.config)
@@ -50,7 +50,7 @@ internal class FakerService {
     /**
      * @constructor creates an instance of this [FakerService] with the given [locale]
      */
-    internal constructor(faker: Faker, locale: Locale) {
+    internal constructor(faker: AbstractFaker, locale: Locale) {
         this.faker = faker
         this.locale = locale.toLanguageTag()
         randomService = RandomService(faker.config)
@@ -189,7 +189,7 @@ internal class FakerService {
      * @throws IllegalArgumentException if the [locale] is invalid or locale dictionary file is not present on the classpath.
      */
     @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-    internal fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
+    fun load(category: YamlCategory, secondaryCategory: Category? = null): Dictionary {
         val defaultValues: LinkedHashMap<String, Any> = linkedMapOf()
 
         dictionary.compute(category) { _, categoryData -> // i.e. compute data for 'address' category

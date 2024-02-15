@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.YamlCategory
@@ -11,7 +11,7 @@ import io.github.serpro69.kfaker.exception.RetryLimitException
  *
  * @param T type of data provider (i.e. [Address])
  */
-abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
+abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     fakerService: FakerService
 ) : AbstractFakeDataProvider<T>(fakerService) {
 
@@ -28,7 +28,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
      * ```
      * then the category name would be [YamlCategory.ADDRESS]
      */
-    internal abstract val yamlCategory: YamlCategory
+    protected abstract val yamlCategory: YamlCategory
 
     /**
      * Secondary category for `this` fake yaml data provider class.
@@ -44,7 +44,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
      * ```
      * then the category name would be `"dog"`
      */
-    internal open val secondaryCategory: Category? = null
+    protected open val secondaryCategory: Category? = null
 
     final override val category: YamlCategory
         get() = yamlCategory
@@ -91,7 +91,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider> internal constructor(
     /**
      * Returns the result of this [resolve] function.
      *
-     * IF [Faker.unique] is enabled for this [T] provider type
+     * IF [AbstractFaker.unique] is enabled for this [T] provider type
      * OR this [unique] is used
      * THEN will attempt to return a unique value.
      *

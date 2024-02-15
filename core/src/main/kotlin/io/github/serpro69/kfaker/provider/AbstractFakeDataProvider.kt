@@ -12,18 +12,18 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
  * @param T type of data provider (i.e. [StringProvider])
  */
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
-    internal val fakerService: FakerService
+    val fakerService: FakerService
 ) : FakeDataProvider {
 
     /**
      * Category of `this` fake data provider class.
      */
-    internal abstract val category: Category
+    protected abstract val category: Category
 
     /**
      * A [LocalUniqueDataProvider] instance that is used with this [unique] provider.
      */
-    internal abstract val localUniqueDataProvider: LocalUniqueDataProvider<T>
+    protected abstract val localUniqueDataProvider: LocalUniqueDataProvider<T>
 
     /**
      * An instance of [T] for generating unique values

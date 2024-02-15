@@ -2,12 +2,218 @@
 
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.provider.*
+import io.github.serpro69.kfaker.provider.Address
+import io.github.serpro69.kfaker.provider.Adjective
+import io.github.serpro69.kfaker.provider.Airport
+import io.github.serpro69.kfaker.provider.Ancient
+import io.github.serpro69.kfaker.provider.Animal
+import io.github.serpro69.kfaker.provider.App
+import io.github.serpro69.kfaker.provider.Appliance
+import io.github.serpro69.kfaker.provider.AquaTeenHungerForce
+import io.github.serpro69.kfaker.provider.Archer
+import io.github.serpro69.kfaker.provider.Artist
+import io.github.serpro69.kfaker.provider.Australia
+import io.github.serpro69.kfaker.provider.Avatar
+import io.github.serpro69.kfaker.provider.BackToTheFuture
+import io.github.serpro69.kfaker.provider.Bank
+import io.github.serpro69.kfaker.provider.Barcode
+import io.github.serpro69.kfaker.provider.Basketball
+import io.github.serpro69.kfaker.provider.Beer
+import io.github.serpro69.kfaker.provider.Bible
+import io.github.serpro69.kfaker.provider.BigBangTheory
+import io.github.serpro69.kfaker.provider.Bird
+import io.github.serpro69.kfaker.provider.Blood
+import io.github.serpro69.kfaker.provider.BojackHorseman
+import io.github.serpro69.kfaker.provider.BossaNova
+import io.github.serpro69.kfaker.provider.BreakingBad
+import io.github.serpro69.kfaker.provider.BrooklynNineNine
+import io.github.serpro69.kfaker.provider.Buffy
+import io.github.serpro69.kfaker.provider.Business
+import io.github.serpro69.kfaker.provider.Camera
+import io.github.serpro69.kfaker.provider.Cannabis
+import io.github.serpro69.kfaker.provider.Cat
+import io.github.serpro69.kfaker.provider.Chess
+import io.github.serpro69.kfaker.provider.Chiquito
+import io.github.serpro69.kfaker.provider.ChuckNorris
+import io.github.serpro69.kfaker.provider.ClashOfClans
+import io.github.serpro69.kfaker.provider.Code
+import io.github.serpro69.kfaker.provider.Coffee
+import io.github.serpro69.kfaker.provider.Coin
+import io.github.serpro69.kfaker.provider.Color
+import io.github.serpro69.kfaker.provider.Commerce
+import io.github.serpro69.kfaker.provider.Community
+import io.github.serpro69.kfaker.provider.Company
+import io.github.serpro69.kfaker.provider.Computer
+import io.github.serpro69.kfaker.provider.Conan
+import io.github.serpro69.kfaker.provider.Construction
+import io.github.serpro69.kfaker.provider.Control
+import io.github.serpro69.kfaker.provider.Cosmere
+import io.github.serpro69.kfaker.provider.CowboyBebop
+import io.github.serpro69.kfaker.provider.Crossfit
+import io.github.serpro69.kfaker.provider.CryptoCoin
+import io.github.serpro69.kfaker.provider.Currency
+import io.github.serpro69.kfaker.provider.CurrencySymbol
+import io.github.serpro69.kfaker.provider.DcComics
+import io.github.serpro69.kfaker.provider.Demographic
+import io.github.serpro69.kfaker.provider.Departed
+import io.github.serpro69.kfaker.provider.Dessert
+import io.github.serpro69.kfaker.provider.Device
+import io.github.serpro69.kfaker.provider.DnD
+import io.github.serpro69.kfaker.provider.Dog
+import io.github.serpro69.kfaker.provider.Doraemon
+import io.github.serpro69.kfaker.provider.Dota
+import io.github.serpro69.kfaker.provider.DrWho
+import io.github.serpro69.kfaker.provider.DragonBall
+import io.github.serpro69.kfaker.provider.DrivingLicense
+import io.github.serpro69.kfaker.provider.Drone
+import io.github.serpro69.kfaker.provider.DumbAndDumber
+import io.github.serpro69.kfaker.provider.ESport
+import io.github.serpro69.kfaker.provider.Educator
+import io.github.serpro69.kfaker.provider.ElderScrolls
+import io.github.serpro69.kfaker.provider.ElectricalComponents
+import io.github.serpro69.kfaker.provider.Emotion
+import io.github.serpro69.kfaker.provider.Fallout
+import io.github.serpro69.kfaker.provider.FamilyGuy
+import io.github.serpro69.kfaker.provider.File
+import io.github.serpro69.kfaker.provider.FinalFantasyXIV
+import io.github.serpro69.kfaker.provider.FinalSpace
+import io.github.serpro69.kfaker.provider.Finance
+import io.github.serpro69.kfaker.provider.FmaBrotherhood
+import io.github.serpro69.kfaker.provider.Food
+import io.github.serpro69.kfaker.provider.Football
+import io.github.serpro69.kfaker.provider.FreshPriceOfBelAir
+import io.github.serpro69.kfaker.provider.Friends
+import io.github.serpro69.kfaker.provider.FunnyName
+import io.github.serpro69.kfaker.provider.Futurama
+import io.github.serpro69.kfaker.provider.Game
+import io.github.serpro69.kfaker.provider.GameOfThrones
+import io.github.serpro69.kfaker.provider.Gender
+import io.github.serpro69.kfaker.provider.GhostBusters
+import io.github.serpro69.kfaker.provider.GratefulDead
+import io.github.serpro69.kfaker.provider.GreekPhilosophers
+import io.github.serpro69.kfaker.provider.Hacker
+import io.github.serpro69.kfaker.provider.Hackers
+import io.github.serpro69.kfaker.provider.HalfLife
+import io.github.serpro69.kfaker.provider.HarryPotter
+import io.github.serpro69.kfaker.provider.Heroes
+import io.github.serpro69.kfaker.provider.HeroesOfTheStorm
+import io.github.serpro69.kfaker.provider.HeyArnold
+import io.github.serpro69.kfaker.provider.Hipster
+import io.github.serpro69.kfaker.provider.HitchhikersGuideToTheGalaxy
+import io.github.serpro69.kfaker.provider.Hobbit
+import io.github.serpro69.kfaker.provider.Hobby
+import io.github.serpro69.kfaker.provider.Horse
+import io.github.serpro69.kfaker.provider.House
+import io.github.serpro69.kfaker.provider.HowIMetYourMother
+import io.github.serpro69.kfaker.provider.HowToTrainYourDragon
+import io.github.serpro69.kfaker.provider.IdNumber
+import io.github.serpro69.kfaker.provider.IndustrySegments
+import io.github.serpro69.kfaker.provider.Internet
+import io.github.serpro69.kfaker.provider.JackHandey
+import io.github.serpro69.kfaker.provider.Job
+import io.github.serpro69.kfaker.provider.KPop
+import io.github.serpro69.kfaker.provider.KamenRider
+import io.github.serpro69.kfaker.provider.LeagueOfLegends
+import io.github.serpro69.kfaker.provider.Lebowski
+import io.github.serpro69.kfaker.provider.LordOfTheRings
+import io.github.serpro69.kfaker.provider.Lorem
+import io.github.serpro69.kfaker.provider.Markdown
+import io.github.serpro69.kfaker.provider.Marketing
+import io.github.serpro69.kfaker.provider.Measurement
+import io.github.serpro69.kfaker.provider.MichaelScott
+import io.github.serpro69.kfaker.provider.Military
+import io.github.serpro69.kfaker.provider.Minecraft
+import io.github.serpro69.kfaker.provider.MitchHedberg
+import io.github.serpro69.kfaker.provider.Money
+import io.github.serpro69.kfaker.provider.Mountain
+import io.github.serpro69.kfaker.provider.Mountaineering
+import io.github.serpro69.kfaker.provider.Movie
+import io.github.serpro69.kfaker.provider.Music
+import io.github.serpro69.kfaker.provider.Myst
+import io.github.serpro69.kfaker.provider.Name
+import io.github.serpro69.kfaker.provider.Naruto
+import io.github.serpro69.kfaker.provider.Nation
+import io.github.serpro69.kfaker.provider.NatoPhoneticAlphabet
+import io.github.serpro69.kfaker.provider.NewGirl
+import io.github.serpro69.kfaker.provider.OnePiece
+import io.github.serpro69.kfaker.provider.Opera
+import io.github.serpro69.kfaker.provider.Overwatch
+import io.github.serpro69.kfaker.provider.ParksAndRec
+import io.github.serpro69.kfaker.provider.PearlJam
+import io.github.serpro69.kfaker.provider.Person
+import io.github.serpro69.kfaker.provider.Phish
+import io.github.serpro69.kfaker.provider.PhoneNumber
+import io.github.serpro69.kfaker.provider.Pokemon
+import io.github.serpro69.kfaker.provider.Prince
+import io.github.serpro69.kfaker.provider.PrincessBride
+import io.github.serpro69.kfaker.provider.ProgrammingLanguage
+import io.github.serpro69.kfaker.provider.Quote
+import io.github.serpro69.kfaker.provider.Rajnikanth
+import io.github.serpro69.kfaker.provider.Relationship
+import io.github.serpro69.kfaker.provider.Restaurant
+import io.github.serpro69.kfaker.provider.RickAndMorty
+import io.github.serpro69.kfaker.provider.RockBand
+import io.github.serpro69.kfaker.provider.Room
+import io.github.serpro69.kfaker.provider.Rupaul
+import io.github.serpro69.kfaker.provider.Rush
+import io.github.serpro69.kfaker.provider.Science
+import io.github.serpro69.kfaker.provider.Seinfeld
+import io.github.serpro69.kfaker.provider.Separator
+import io.github.serpro69.kfaker.provider.Shakespeare
+import io.github.serpro69.kfaker.provider.Show
+import io.github.serpro69.kfaker.provider.SiliconValley
+import io.github.serpro69.kfaker.provider.Simpsons
+import io.github.serpro69.kfaker.provider.SlackEmoji
+import io.github.serpro69.kfaker.provider.SmashingPumpkins
+import io.github.serpro69.kfaker.provider.SonicTheHedgehog
+import io.github.serpro69.kfaker.provider.SouthPark
+import io.github.serpro69.kfaker.provider.Space
+import io.github.serpro69.kfaker.provider.Spongebob
+import io.github.serpro69.kfaker.provider.Sport
+import io.github.serpro69.kfaker.provider.StarTrek
+import io.github.serpro69.kfaker.provider.StarWars
+import io.github.serpro69.kfaker.provider.Stargate
+import io.github.serpro69.kfaker.provider.StrangerThings
+import io.github.serpro69.kfaker.provider.StreetFighter
+import io.github.serpro69.kfaker.provider.Stripe
+import io.github.serpro69.kfaker.provider.StudioGhibli
+import io.github.serpro69.kfaker.provider.Subscription
+import io.github.serpro69.kfaker.provider.Suits
+import io.github.serpro69.kfaker.provider.SuperMario
+import io.github.serpro69.kfaker.provider.SuperSmashBros
+import io.github.serpro69.kfaker.provider.Superhero
+import io.github.serpro69.kfaker.provider.Supernatural
+import io.github.serpro69.kfaker.provider.SwordArtOnline
+import io.github.serpro69.kfaker.provider.Tarkov
+import io.github.serpro69.kfaker.provider.Tea
+import io.github.serpro69.kfaker.provider.Team
+import io.github.serpro69.kfaker.provider.TheExpanse
+import io.github.serpro69.kfaker.provider.TheITCrowd
+import io.github.serpro69.kfaker.provider.TheOffice
+import io.github.serpro69.kfaker.provider.TheRoom
+import io.github.serpro69.kfaker.provider.TheThickOfIt
+import io.github.serpro69.kfaker.provider.Tolkien
+import io.github.serpro69.kfaker.provider.Touhou
+import io.github.serpro69.kfaker.provider.TrainStation
+import io.github.serpro69.kfaker.provider.Tron
+import io.github.serpro69.kfaker.provider.TwinPeaks
+import io.github.serpro69.kfaker.provider.UmphreysMcgee
+import io.github.serpro69.kfaker.provider.University
+import io.github.serpro69.kfaker.provider.VForVendetta
+import io.github.serpro69.kfaker.provider.Vehicle
+import io.github.serpro69.kfaker.provider.VentureBros
+import io.github.serpro69.kfaker.provider.Verbs
+import io.github.serpro69.kfaker.provider.Volleyball
+import io.github.serpro69.kfaker.provider.WarhammerFantasy
+import io.github.serpro69.kfaker.provider.Witcher
+import io.github.serpro69.kfaker.provider.WorldCup
+import io.github.serpro69.kfaker.provider.WorldOfWarcraft
+import io.github.serpro69.kfaker.provider.Yoda
+import io.github.serpro69.kfaker.provider.Zelda
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
-import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
+import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
-import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
 
 /**
  * Provides access to fake data generators.
@@ -20,15 +226,13 @@ import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
  * @property string provides functionality to generate strings from expressions/templates
  * @property unique global provider for generation of unique values.
  */
-class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerConfig { }) {
-    private val fakerService: FakerService = FakerService(this)
-
-    val random: RandomProvider by lazy { RandomProvider(fakerService) }
-
-    val unique by lazy { GlobalUniqueDataDataProvider() }
+@Suppress("unused")
+class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
 
     // misc providers
     val crypto: CryptographyProvider by lazy { CryptographyProvider(fakerService) }
+    val random: RandomProvider by lazy { RandomProvider(fakerService) }
+    // TODO rename to randomClass
     val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
     val string: StringProvider by lazy { StringProvider(fakerService) }
 
@@ -58,7 +262,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val bird: Bird by lazy { Bird(fakerService) }
     val blood: Blood by lazy { Blood(fakerService) }
     val bojackHorseman: BojackHorseman by lazy { BojackHorseman(fakerService) }
-    val book: Book by lazy { Book(fakerService) }
+//    val book: Book by lazy { Book(fakerService) }
     val bossaNova: BossaNova by lazy { BossaNova(fakerService) }
     val breakingBad: BreakingBad by lazy { BreakingBad(fakerService) }
     val brooklynNineNine: BrooklynNineNine by lazy { BrooklynNineNine(fakerService) }
@@ -88,7 +292,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val cowboyBebop: CowboyBebop by lazy { CowboyBebop(fakerService) }
     val crossfit: Crossfit by lazy { Crossfit(fakerService) }
     val cryptoCoin: CryptoCoin by lazy { CryptoCoin(fakerService) }
-    val cultureSeries: CultureSeries by lazy { CultureSeries(fakerService) }
+//    val cultureSeries: CultureSeries by lazy { CultureSeries(fakerService) }
     val currency: Currency by lazy { Currency(fakerService) }
     val dcComics: DcComics by lazy { DcComics(fakerService) }
     val demographic: Demographic by lazy { Demographic(fakerService) }
@@ -104,7 +308,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val drone: Drone by lazy { Drone(fakerService) }
     val drWho: DrWho by lazy { DrWho(fakerService) }
     val dumbAndDumber: DumbAndDumber by lazy { DumbAndDumber(fakerService) }
-    val dune: Dune by lazy { Dune(fakerService) }
+//    val dune: Dune by lazy { Dune(fakerService) }
     val educator: Educator by lazy { Educator(fakerService) }
     val elderScrolls: ElderScrolls by lazy { ElderScrolls(fakerService) }
     val electricalComponents: ElectricalComponents by lazy { ElectricalComponents(fakerService) }
@@ -146,7 +350,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val howToTrainYourDragon: HowToTrainYourDragon by lazy { HowToTrainYourDragon(fakerService) }
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
-    val internet: Internet by lazy { Internet(fakerService) }
+    val internet: Internet by lazy { Internet(fakerService, company, name) }
 
     //    val invoice: Invoice by lazy {Invoice(fakerService }
     val jackHandey: JackHandey by lazy { JackHandey(fakerService) }
@@ -157,7 +361,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val lebowski: Lebowski by lazy { Lebowski(fakerService) }
     val lordOfTheRings: LordOfTheRings by lazy { LordOfTheRings(fakerService) }
     val lorem: Lorem by lazy { Lorem(fakerService) }
-    val lovecraft: Lovecraft by lazy { Lovecraft(fakerService) }
+//    val lovecraft: Lovecraft by lazy { Lovecraft(fakerService) }
     val markdown: Markdown by lazy { Markdown(fakerService) }
     val marketing: Marketing by lazy { Marketing(fakerService) }
     val measurement: Measurement by lazy { Measurement(fakerService) }
@@ -231,7 +435,7 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     val team: Team by lazy { Team(fakerService) }
     val theExpanse: TheExpanse by lazy { TheExpanse(fakerService) }
     val theITCrowd: TheITCrowd by lazy { TheITCrowd(fakerService) }
-    val theKingkillerChronicle: TheKingkillerChronicle by lazy { TheKingkillerChronicle(fakerService) }
+//    val theKingkillerChronicle: TheKingkillerChronicle by lazy { TheKingkillerChronicle(fakerService) }
     val theOffice: TheOffice by lazy { TheOffice(fakerService) }
     val theRoom: TheRoom by lazy { TheRoom(fakerService) }
     val theThickOfIt: TheThickOfIt by lazy { TheThickOfIt(fakerService) }
@@ -258,32 +462,17 @@ class Faker @JvmOverloads constructor(internal val config: FakerConfig = fakerCo
     /**
      * DSL builder for creating instances of [Faker]
      */
-    class Builder internal constructor() {
-        /**
-         * @property config faker configuration for the [Faker] instance
-         * which will be created with this [Faker.Builder].
-         */
-        private var config: FakerConfig = io.github.serpro69.kfaker.fakerConfig { }
-
-        /**
-         * Sets [config] configuration for this [Faker.Builder]
-         * using the results of the [block] function.
-         *
-         * This [config] will then be used when an instance of [Faker] is created using this [Faker.Builder]
-         */
-        fun fakerConfig(block: ConfigBuilder) {
-            config = io.github.serpro69.kfaker.fakerConfig(block)
-        }
+    class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
         /**
          * Builds an instance of [Faker] with this [config].
          */
-        internal fun build(): Faker = Faker(config)
+        override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the the [block] function to [Faker.Builder]
+ * Applies the [block] function to [Faker.Builder]
  * and returns as an instance of [Faker] from that builder.
  */
 fun faker(block: Faker.Builder.() -> Unit): Faker = Faker.Builder().apply(block).build()

@@ -11,7 +11,13 @@ val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
 val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
+    val providers = listOf(
+        "books"
+    )
     implementation(project(":core"))
+    providers.forEach {
+//        implementation(project(":provider:$it"))
+    }
     implementation("info.picocli:picocli:4.7.5")
 }
 
