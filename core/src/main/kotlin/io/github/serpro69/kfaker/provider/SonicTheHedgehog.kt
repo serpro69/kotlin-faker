@@ -19,7 +19,7 @@ class SonicTheHedgehog internal constructor(fakerService: FakerService) : YamlFa
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun zone() = resolve("sonic_the_hedgehog", "zone")
-    fun character() = resolve("sonic_the_hedgehog", "character")
-    fun game() = resolve("sonic_the_hedgehog", "game")
+    fun zone() = resolve(secondaryCategory, "zone")
+    fun character() = resolve(secondaryCategory, "character")
+    fun game() = resolve(secondaryCategory, "game")
 }

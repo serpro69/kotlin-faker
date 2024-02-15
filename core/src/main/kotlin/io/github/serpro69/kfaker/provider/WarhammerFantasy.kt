@@ -19,9 +19,9 @@ class WarhammerFantasy internal constructor(fakerService: FakerService) : YamlFa
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun heroes() = resolve("warhammer_fantasy", "heros")
-    fun quotes() = resolve("warhammer_fantasy", "quotes")
-    fun locations() = resolve("warhammer_fantasy", "locations")
-    fun factions() = resolve("warhammer_fantasy", "factions")
-    fun creatures() = resolve("warhammer_fantasy", "creatures")
+    fun heroes() = resolve(secondaryCategory, "heros") // key typo in the yml file
+    fun quotes() = resolve(secondaryCategory, "quotes")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun factions() = resolve(secondaryCategory, "factions")
+    fun creatures() = resolve(secondaryCategory, "creatures")
 }

@@ -19,9 +19,9 @@ class Myst internal constructor(fakerService: FakerService) : YamlFakeDataProvid
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun games() = resolve("myst", "games")
-    fun creatures() = resolve("myst", "creatures")
-    fun characters() = resolve("myst", "characters")
-    fun ages() = resolve("myst", "ages")
-    fun quotes() = resolve("myst", "quotes")
+    fun games() = resolve(secondaryCategory, "games")
+    fun creatures() = resolve(secondaryCategory, "creatures")
+    fun characters() = resolve(secondaryCategory, "characters")
+    fun ages() = resolve(secondaryCategory, "ages")
+    fun quotes() = resolve(secondaryCategory, "quotes")
 }

@@ -19,127 +19,127 @@ class Dota internal constructor(fakerService: FakerService) : YamlFakeDataProvid
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun building() = resolve("dota", "building")
+    fun building() = resolve(secondaryCategory, "building")
 
-    fun hero() = resolve("dota", "hero")
-
-    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun abaddon() = resolve("dota", "abaddon", "quote")
+    fun hero() = resolve(secondaryCategory, "hero")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun alchemist() = resolve("dota", "alchemist", "quote")
+    fun abaddon() = resolve(secondaryCategory, "abaddon", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun axe() = resolve("dota", "axe", "quote")
+    fun alchemist() = resolve(secondaryCategory, "alchemist", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun beastmaster() = resolve("dota", "beastmaster", "quote")
+    fun axe() = resolve(secondaryCategory, "axe", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun brewmaster() = resolve("dota", "brewmaster", "quote")
+    fun beastmaster() = resolve(secondaryCategory, "beastmaster", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun bristleback() = resolve("dota", "bristleback", "quote")
+    fun brewmaster() = resolve(secondaryCategory, "brewmaster", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun centaur() = resolve("dota", "centaur", "quote")
+    fun bristleback() = resolve(secondaryCategory, "bristleback", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun chaosKnight() = resolve("dota", "chaos_knight", "quote")
+    fun centaur() = resolve(secondaryCategory, "centaur", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun clockwerk() = resolve("dota", "clockwerk", "quote")
+    fun chaosKnight() = resolve(secondaryCategory, "chaos_knight", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun doom() = resolve("dota", "doom", "quote")
+    fun clockwerk() = resolve(secondaryCategory, "clockwerk", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun dragonKnight() = resolve("dota", "dragon_knight", "quote")
+    fun doom() = resolve(secondaryCategory, "doom", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun earthSpirit() = resolve("dota", "earth_spirit", "quote")
+    fun dragonKnight() = resolve(secondaryCategory, "dragon_knight", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun earthshaker() = resolve("dota", "earthshaker", "quote")
+    fun earthSpirit() = resolve(secondaryCategory, "earth_spirit", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun elderTitan() = resolve("dota", "elder_titan", "quote")
+    fun earthshaker() = resolve(secondaryCategory, "earthshaker", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun huskar() = resolve("dota", "huskar", "quote")
+    fun elderTitan() = resolve(secondaryCategory, "elder_titan", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun io() = resolve("dota", "io", "quote")
+    fun huskar() = resolve(secondaryCategory, "huskar", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun kunkka() = resolve("dota", "kunkka", "quote")
+    fun io() = resolve(secondaryCategory, "io", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun legionCommander() = resolve("dota", "legion_commander", "quote")
+    fun kunkka() = resolve(secondaryCategory, "kunkka", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun lifestealer() = resolve("dota", "lifestealer", "quote")
+    fun legionCommander() = resolve(secondaryCategory, "legion_commander", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun lycan() = resolve("dota", "lycan", "quote")
+    fun lifestealer() = resolve(secondaryCategory, "lifestealer", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun magnus() = resolve("dota", "magnus", "quote")
+    fun lycan() = resolve(secondaryCategory, "lycan", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun meepo() = resolve("dota", "meepo", "quote")
+    fun magnus() = resolve(secondaryCategory, "magnus", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun nightStalker() = resolve("dota", "night_stalker", "quote")
+    fun meepo() = resolve(secondaryCategory, "meepo", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun omniknight() = resolve("dota", "omniknight", "quote")
+    fun nightStalker() = resolve(secondaryCategory, "night_stalker", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun phoenix() = resolve("dota", "phoenix", "quote")
+    fun omniknight() = resolve(secondaryCategory, "omniknight", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun pudge() = resolve("dota", "pudge", "quote")
+    fun phoenix() = resolve(secondaryCategory, "phoenix", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun sandKing() = resolve("dota", "sand_king", "quote")
+    fun pudge() = resolve(secondaryCategory, "pudge", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun slardar() = resolve("dota", "slardar", "quote")
+    fun sandKing() = resolve(secondaryCategory, "sand_king", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun spiritBreaker() = resolve("dota", "spirit_breaker", "quote")
+    fun slardar() = resolve(secondaryCategory, "slardar", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun sven() = resolve("dota", "sven", "quote")
+    fun spiritBreaker() = resolve(secondaryCategory, "spirit_breaker", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun tidehunter() = resolve("dota", "tidehunter", "quote")
+    fun sven() = resolve(secondaryCategory, "sven", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun timbersaw() = resolve("dota", "timbersaw", "quote")
+    fun tidehunter() = resolve(secondaryCategory, "tidehunter", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun tiny() = resolve("dota", "tiny", "quote")
+    fun timbersaw() = resolve(secondaryCategory, "timbersaw", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun treantProtector() = resolve("dota", "treant_protector", "quote")
+    fun tiny() = resolve(secondaryCategory, "tiny", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun tusk() = resolve("dota", "tusk", "quote")
+    fun treantProtector() = resolve(secondaryCategory, "treant_protector", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun underlord() = resolve("dota", "underlord", "quote")
+    fun tusk() = resolve(secondaryCategory, "tusk", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun undying() = resolve("dota", "undying", "quote")
+    fun underlord() = resolve(secondaryCategory, "underlord", "quote")
 
     @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
-    fun wraithKing() = resolve("dota", "wraith_king", "quote")
+    fun undying() = resolve(secondaryCategory, "undying", "quote")
 
-    fun item() = resolve("dota", "item")
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Not fully implemented")
+    fun wraithKing() = resolve(secondaryCategory, "wraith_king", "quote")
 
-    fun team() = resolve("dota", "team")
+    fun item() = resolve(secondaryCategory, "item")
 
-    fun player() = resolve("dota", "player")
+    fun team() = resolve(secondaryCategory, "team")
+
+    fun player() = resolve(secondaryCategory, "player")
 }

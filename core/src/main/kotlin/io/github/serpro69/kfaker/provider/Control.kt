@@ -19,12 +19,12 @@ class Control internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun character() = resolve("control", "character")
-    fun location() = resolve("control", "location")
-    fun objectOfPower() = resolve("control", "object_of_power")
-    fun alteredItem() = resolve("control", "altered_item")
-    fun alteredWorldEvent() = resolve("control", "altered_world_event")
-    fun hiss() = resolve("control", "hiss")
-    fun theBoard() = resolve("control", "the_board")
-    fun quote() = resolve("control", "quote")
+    fun character() = resolve(secondaryCategory, "character")
+    fun location() = resolve(secondaryCategory, "location")
+    fun objectOfPower() = resolve(secondaryCategory, "object_of_power")
+    fun alteredItem() = resolve(secondaryCategory, "altered_item")
+    fun alteredWorldEvent() = resolve(secondaryCategory, "altered_world_event")
+    fun hiss() = resolve(secondaryCategory, "hiss")
+    fun theBoard() = resolve(secondaryCategory, "the_board")
+    fun quote() = resolve(secondaryCategory, "quote")
 }

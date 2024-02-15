@@ -19,6 +19,6 @@ class SuperSmashBros internal constructor(fakerService: FakerService) : YamlFake
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun fighter() = resolve("super_smash_bros", "fighter")
-    fun stage() = resolve("super_smash_bros", "stage")
+    fun fighter() = resolve(secondaryCategory, "fighter")
+    fun stage() = resolve(secondaryCategory, "stage")
 }

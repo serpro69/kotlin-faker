@@ -19,7 +19,7 @@ class HalfLife internal constructor(fakerService: FakerService) : YamlFakeDataPr
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun character() = resolve("half_life", "character")
-    fun enemy() = resolve("half_life", "enemy")
-    fun location() = resolve("half_life", "location")
+    fun character() = resolve(secondaryCategory, "character")
+    fun enemy() = resolve(secondaryCategory, "enemy")
+    fun location() = resolve(secondaryCategory, "location")
 }

@@ -19,8 +19,8 @@ class Fallout internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun characters() = resolve("fallout", "characters")
-    fun factions() = resolve("fallout", "factions")
-    fun locations() = resolve("fallout", "locations")
-    fun quotes() = resolve("fallout", "quotes")
+    fun characters() = resolve(secondaryCategory, "characters")
+    fun factions() = resolve(secondaryCategory, "factions")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun quotes() = resolve(secondaryCategory, "quotes")
 }

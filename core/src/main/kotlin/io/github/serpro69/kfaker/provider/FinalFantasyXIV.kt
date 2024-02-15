@@ -22,9 +22,9 @@ class FinalFantasyXIV internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun characters(): String = resolve("final_fantasy_xiv", "characters")
-    fun jobs(): String = resolve("final_fantasy_xiv", "jobs")
-    fun races(): String = resolve("final_fantasy_xiv", "races")
-    fun dataCenters(): String = resolve("final_fantasy_xiv", "data_centers")
-    fun zones(): String = resolve("final_fantasy_xiv", "zones")
+    fun characters(): String = resolve(secondaryCategory, "characters")
+    fun jobs(): String = resolve(secondaryCategory, "jobs")
+    fun races(): String = resolve(secondaryCategory, "races")
+    fun dataCenters(): String = resolve(secondaryCategory, "data_centers")
+    fun zones(): String = resolve(secondaryCategory, "zones")
 }

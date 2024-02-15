@@ -19,7 +19,7 @@ class Cat internal constructor(fakerService: FakerService) : YamlFakeDataProvide
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun name() = resolve("cat", "name")
-    fun breed() = resolve("cat", "breed")
-    fun registry() = resolve("cat", "registry")
+    fun name() = resolve(secondaryCategory, "name")
+    fun breed() = resolve(secondaryCategory, "breed")
+    fun registry() = resolve(secondaryCategory, "registry")
 }

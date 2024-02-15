@@ -19,13 +19,13 @@ class ElderScrolls internal constructor(fakerService: FakerService) : YamlFakeDa
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun race() = resolve("elder_scrolls", "race")
-    fun creature() = resolve("elder_scrolls", "creature")
-    fun region() = resolve("elder_scrolls", "region")
-    fun dragon() = resolve("elder_scrolls", "dragon")
-    fun city() = resolve("elder_scrolls", "city")
-    fun firstName() = resolve("elder_scrolls", "first_name")
-    fun lastName() = resolve("elder_scrolls", "last_name")
-    fun weapon() = resolve("elder_scrolls", "weapon")
-    fun jewelry() = resolve("elder_scrolls", "jewelry")
+    fun race() = resolve(secondaryCategory, "race")
+    fun creature() = resolve(secondaryCategory, "creature")
+    fun region() = resolve(secondaryCategory, "region")
+    fun dragon() = resolve(secondaryCategory, "dragon")
+    fun city() = resolve(secondaryCategory, "city")
+    fun firstName() = resolve(secondaryCategory, "first_name")
+    fun lastName() = resolve(secondaryCategory, "last_name")
+    fun weapon() = resolve(secondaryCategory, "weapon")
+    fun jewelry() = resolve(secondaryCategory, "jewelry")
 }

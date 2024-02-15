@@ -19,7 +19,7 @@ class Pokemon internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun names() = resolve("pokemon", "names")
-    fun locations() = resolve("pokemon", "locations")
-    fun moves() = resolve("pokemon", "moves")
+    fun names() = resolve(secondaryCategory, "names")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun moves() = resolve(secondaryCategory, "moves")
 }

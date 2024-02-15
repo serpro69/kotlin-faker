@@ -19,7 +19,7 @@ class Overwatch internal constructor(fakerService: FakerService) : YamlFakeDataP
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun heroes() = resolve("overwatch", "heroes")
-    fun locations() = resolve("overwatch", "locations")
-    fun quotes() = resolve("overwatch", "quotes")
+    fun heroes() = resolve(secondaryCategory, "heroes")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun quotes() = resolve(secondaryCategory, "quotes")
 }

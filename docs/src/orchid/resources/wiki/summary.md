@@ -5,6 +5,7 @@
 * [Extras](extras.md)
 * [Faker DSL](faker-dsl.md)
 * [Data Providers](data-providers.md)
+* [Custom Data Provider](custom-data-provider.md)
 * [Available Locales](available-locales.md)
 * [Java Interop](java-interop.md)
 * [Faker Bot CLI](faker-cli.md)

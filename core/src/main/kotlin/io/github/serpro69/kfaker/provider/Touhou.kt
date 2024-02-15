@@ -20,9 +20,9 @@ class Touhou internal constructor(fakerService: FakerService) : YamlFakeDataProv
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun games(): String = resolve("touhou", "games")
-    fun characters(): String = resolve("touhou", "characters")
-    fun spellCards(): String = resolve("touhou", "spell_cards")
-    fun locations(): String = resolve("touhou", "locations")
-    fun songs(): String = resolve("touhou", "songs")
+    fun games(): String = resolve(secondaryCategory, "games")
+    fun characters(): String = resolve(secondaryCategory, "characters")
+    fun spellCards(): String = resolve(secondaryCategory, "spell_cards")
+    fun locations(): String = resolve(secondaryCategory, "locations")
+    fun songs(): String = resolve(secondaryCategory, "songs")
 }

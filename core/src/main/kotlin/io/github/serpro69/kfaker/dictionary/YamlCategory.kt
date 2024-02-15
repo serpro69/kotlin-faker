@@ -6,9 +6,15 @@ package io.github.serpro69.kfaker.dictionary
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
 enum class YamlCategory : Category {
+    /**
+     * [YamlCategory] for custom yml-based data providers
+     */
+    CUSTOM,
+
     // Special providers for locale-based symbols
     SEPARATOR,
     CURRENCY_SYMBOL,
+
     // Rest of providers
     ADDRESS,
     ADJECTIVE,

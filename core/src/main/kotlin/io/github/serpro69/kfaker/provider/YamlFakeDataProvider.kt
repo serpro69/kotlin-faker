@@ -26,7 +26,11 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      *   faker:
      *     address:
      * ```
-     * then the category name would be [YamlCategory.ADDRESS]
+     * then the [yamlCategory] would be [YamlCategory.ADDRESS]
+     *
+     * _NB! If the [secondaryCategory] is NOT set,
+     * the dictionary filename should match the [yamlCategory] name,
+     * i.e. the file name should be `address.yml` for the [YamlCategory.ADDRESS]._
      */
     protected abstract val yamlCategory: YamlCategory
 
@@ -42,10 +46,20 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      *     creature:
      *       dog:
      * ```
-     * then the category name would be `"dog"`
+     * then the [yamlCategory] would be [YamlCategory.CREATURE], and the  secondary [Category.name] would be `"dog"`
+     *
+     * _TIP: Use [Category.ofName] helper function when needed._
+     *
+     * _NB! If the [secondaryCategory] is set,
+     * the dictionary filename should match the [Category.name] of this [secondaryCategory],
+     * i.e. the file name should be `dog.yml` for the `[Category.ofName]` dog._
      */
     protected open val secondaryCategory: Category? = null
 
+    /*
+     * FYI, we override the [category] from the super class
+     * so that we don't need to do it in each of this [YamlFakeDataProvider] implementations
+     */
     final override val category: YamlCategory
         get() = yamlCategory
 
@@ -65,6 +79,35 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     /**
      * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
      *
+     * TIP: Can be useful for providers that override this [secondaryCategory]
+     * to use a compile-safe object instead of a string for the [primaryKey].
+     *
+     * Example:
+     * ```diff
+     * class Minecraft internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Minecraft>(fakerService) {
+     *   override val yamlCategory = YamlCategory.GAMES
+     *   override val secondaryCategory: Category = Category.ofName("MINECRAFT")
+     *   override val localUniqueDataProvider = LocalUniqueDataProvider<Minecraft>()
+     *   override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+     *
+     *   fun achievement() = resolve("minecraft", "achievement")
+     *   fun biome() = resolve(secondaryCategory, "biome")
+     * }
+     * ```
+     *
+     * Will return a unique value if the call to the function is prefixed with `unique` property.
+     * Example:
+     * ```
+     * faker.address.unique.countryByCode(countryCode) => will return a unique value for the `city` parameter
+     * ```
+     */
+    protected fun resolve(primaryKey: Category, secondaryKey: String): String {
+        return resolve(primaryKey.name.lowercase(), secondaryKey)
+    }
+
+    /**
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
+     *
      * Will return a unique value if the call to the function is prefixed with `unique` property.
      * Example:
      * ```
@@ -73,6 +116,19 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      */
     protected fun resolve(primaryKey: String, secondaryKey: String): String {
         return returnOrResolveUnique(primaryKey, secondaryKey)
+    }
+
+    /**
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey], [secondaryKey] and [thirdKey]
+     *
+     * Will return a unique value if the call to the function is prefixed with `unique` property.
+     * Example:
+     * ```
+     * faker.educator.tertiaryDegree(type) => will return a unique value for the `tertiaryDegree` parameter
+     * ```
+     */
+    protected fun resolve(primaryKey: Category, secondaryKey: String, thirdKey: String): String {
+        return resolve(primaryKey.name.lowercase(), secondaryKey, thirdKey)
     }
 
     /**
