@@ -19,7 +19,7 @@ import kotlin.random.asKotlinRandom
  * Consider passing [java.security.SecureRandom] to the constructor of this [RandomService]
  * to get a cryptographically secure pseudo-random generator.
  */
-internal class RandomService internal constructor(override val config: FakerConfig) : IRandom {
+class RandomService internal constructor(override val config: FakerConfig) : IRandom {
     private val random = config.random
     private val alphabeticLowerCharset = ('a'..'z')
     private val alphabeticUpperCharset = ('A'..'Z')

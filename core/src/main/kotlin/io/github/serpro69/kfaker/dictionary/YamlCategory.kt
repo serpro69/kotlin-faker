@@ -1,13 +1,11 @@
 package io.github.serpro69.kfaker.dictionary
 
-import java.util.NoSuchElementException
-
 /**
  * This enum contains all default categories and matches with the names of the .yml files for 'en' locale.
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
-internal enum class YamlCategory : Category {
+enum class YamlCategory : Category {
     // Special providers for locale-based symbols
     SEPARATOR,
     CURRENCY_SYMBOL,

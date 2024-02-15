@@ -6,7 +6,7 @@ import io.github.serpro69.kfaker.provider.misc.RandomProviderConfig
 import java.util.*
 
 /**
- * Configuration for [Faker].
+ * Configuration for implementations of [AbstractFaker].
  */
 class FakerConfig private constructor(
     val locale: String,

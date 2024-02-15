@@ -1,14 +1,14 @@
 package io.github.serpro69.kfaker.provider.unique
 
 import io.github.serpro69.kfaker.provider.FakeDataProvider
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty0
 
 /**
  * Global provider for unique values.
  *
- * This provider is used in [Faker] class to control global unique generation configuration of faker providers.
+ * This provider is used in [AbstractFaker] class implementations to control global unique generation configuration of faker providers.
  *
  * Example usage:
  * ```

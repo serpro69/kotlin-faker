@@ -12,7 +12,11 @@ import java.lang.String.format
  * [FakeDataProvider] implementation for [YamlCategory.INTERNET] category.
  */
 @Suppress("unused")
-class Internet internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Internet>(fakerService) {
+class Internet internal constructor(
+    fakerService: FakerService,
+    private val companyProvider: Company,
+    private val nameProvider: Name,
+) : YamlFakeDataProvider<Internet>(fakerService) {
     override val yamlCategory = YamlCategory.INTERNET
     override val localUniqueDataProvider = LocalUniqueDataProvider<Internet>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
@@ -22,9 +26,7 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     fun domain(subdomain: Boolean = false, domain: String? = null): String {
-        val name: () -> String = {
-            prepare(fakerService.faker.company.name().split(" ").first(), fakerService.faker.config)
-        }
+        val name: () -> String = { prepare(companyProvider.name().split(" ").first(), fakerService.faker.config) }
         return domain?.let {
             domain.split(".")
                 .map { domainPart -> prepare(domainPart, fakerService.faker.config) }
@@ -94,7 +96,7 @@ class Internet internal constructor(fakerService: FakerService) : YamlFakeDataPr
     @JvmOverloads
     fun email(name: String = ""): String {
         val localName = if (name.trim() == "") {
-            fakerService.faker.name.name()
+            nameProvider.name()
                 .replace(".", "")
                 .replace(" ", ".")
                 .lowercase()

@@ -20,7 +20,7 @@ import kotlin.reflect.jvm.javaField
  * Faker().address.unique().country()
  * ```
  */
-class LocalUniqueDataProvider<T : FakeDataProvider> internal constructor() : UniqueDataProvider() {
+class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
 //    override val config: UniqueProviderConfiguration
 //        get() = TODO("Not yet implemented")
 //    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()

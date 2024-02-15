@@ -1,7 +1,10 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.books.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.RandomService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -9,7 +12,10 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.DUNE] category.
  */
 @Suppress("unused")
-class Dune internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Dune>(fakerService) {
+class Dune internal constructor(
+    fakerService: FakerService,
+    private val randomService: RandomService,
+) : YamlFakeDataProvider<Dune>(fakerService) {
     override val yamlCategory = YamlCategory.DUNE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dune>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
@@ -23,7 +29,7 @@ class Dune internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 //    fun planets() = resolve("planets")
 //    fun cities() = resolve("cities")
 
-    fun quotes(character: DuneQuoteCharacter = fakerService.randomService.nextEnum()) =
+    fun quotes(character: QuoteCharacter = randomService.nextEnum()) =
         resolve("quotes", character.name.lowercase())
 
 //    @Deprecated(
@@ -46,35 +52,35 @@ class Dune internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 //    fun sayings(origin: String) = DuneSayingOrigin.values().firstOrNull { it.name.equals(origin, true) }?.let {
 //        sayings(it)
 //    } ?: throw IllegalArgumentException("Dune saying not found for '$origin'")
-}
 
-enum class DuneQuoteCharacter {
-    GUILD_NAVIGATOR,
-    EMPEROR,
-    PAUL,
-    THUFIR,
-    JESSICA,
-    IRULAN,
-    MOHIAM,
-    GURNEY,
-    LETO,
-    STILGAR,
-    LIET_KYNES,
-    PARDOT_KYNES,
-    BARON_HARKONNEN,
-    PITER,
-    ALIA,
-    MAPES,
-    DUNCAN,
-    YUEH,
-    ;
-}
+    enum class QuoteCharacter {
+        GUILD_NAVIGATOR,
+        EMPEROR,
+        PAUL,
+        THUFIR,
+        JESSICA,
+        IRULAN,
+        MOHIAM,
+        GURNEY,
+        LETO,
+        STILGAR,
+        LIET_KYNES,
+        PARDOT_KYNES,
+        BARON_HARKONNEN,
+        PITER,
+        ALIA,
+        MAPES,
+        DUNCAN,
+        YUEH,
+        ;
+    }
 
-enum class DuneSayingOrigin {
-    BENE_GESSERIT,
-    FREMEN,
-    MENTAT,
-    MUADDIB,
-    ORANGE_CATHOLIC_BIBLE,
-    ;
+    enum class SayingOrigin {
+        BENE_GESSERIT,
+        FREMEN,
+        MENTAT,
+        MUADDIB,
+        ORANGE_CATHOLIC_BIBLE,
+        ;
+    }
 }
