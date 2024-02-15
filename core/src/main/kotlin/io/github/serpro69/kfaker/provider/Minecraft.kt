@@ -19,12 +19,12 @@ class Minecraft internal constructor(fakerService: FakerService) : YamlFakeDataP
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun achievement() = resolve("minecraft", "achievement")
-    fun biome() = resolve("minecraft", "biome")
-    fun blocks() = resolve("minecraft", "blocks")
-    fun enchantment() = resolve("minecraft", "enchantment")
-    fun gameMode() = resolve("minecraft", "game_mode")
-    fun items() = resolve("minecraft", "items")
-    fun mobs() = resolve("minecraft", "mobs")
-    fun statusEffect() = resolve("minecraft", "status_effect")
+    fun achievement() = resolve(secondaryCategory, "achievement")
+    fun biome() = resolve(secondaryCategory, "biome")
+    fun blocks() = resolve(secondaryCategory, "blocks")
+    fun enchantment() = resolve(secondaryCategory, "enchantment")
+    fun gameMode() = resolve(secondaryCategory, "game_mode")
+    fun items() = resolve(secondaryCategory, "items")
+    fun mobs() = resolve(secondaryCategory, "mobs")
+    fun statusEffect() = resolve(secondaryCategory, "status_effect")
 }

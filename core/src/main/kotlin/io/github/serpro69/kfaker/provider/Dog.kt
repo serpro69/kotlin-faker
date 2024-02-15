@@ -19,11 +19,11 @@ class Dog internal constructor(fakerService: FakerService) : YamlFakeDataProvide
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun name() = resolve("dog", "name")
-    fun breed() = resolve("dog", "breed")
-    fun sound() = resolve("dog", "sound")
-    fun memePhrase() = resolve("dog", "meme_phrase")
-    fun age() = resolve("dog", "age")
-    fun coatLength() = resolve("dog", "coat_length")
-    fun size() = resolve("dog", "size")
+    fun name() = resolve(secondaryCategory, "name")
+    fun breed() = resolve(secondaryCategory, "breed")
+    fun sound() = resolve(secondaryCategory, "sound")
+    fun memePhrase() = resolve(secondaryCategory, "meme_phrase")
+    fun age() = resolve(secondaryCategory, "age")
+    fun coatLength() = resolve(secondaryCategory, "coat_length")
+    fun size() = resolve(secondaryCategory, "size")
 }

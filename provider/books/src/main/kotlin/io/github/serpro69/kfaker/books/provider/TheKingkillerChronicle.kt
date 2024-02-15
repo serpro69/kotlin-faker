@@ -23,8 +23,8 @@ class TheKingkillerChronicle internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun books(): String = resolve("the_kingkiller_chronicle", "books")
-    fun characters(): String = resolve("the_kingkiller_chronicle", "characters")
-    fun creatures(): String = resolve("the_kingkiller_chronicle", "creatures")
-    fun locations(): String = resolve("the_kingkiller_chronicle", "locations")
+    fun books(): String = resolve(secondaryCategory, "books")
+    fun characters(): String = resolve(secondaryCategory, "characters")
+    fun creatures(): String = resolve(secondaryCategory, "creatures")
+    fun locations(): String = resolve(secondaryCategory, "locations")
 }

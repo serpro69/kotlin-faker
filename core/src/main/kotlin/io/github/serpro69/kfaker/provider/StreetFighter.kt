@@ -19,8 +19,8 @@ class StreetFighter internal constructor(fakerService: FakerService) : YamlFakeD
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun characters() = resolve("street_fighter", "characters")
-    fun stages() = resolve("street_fighter", "stages")
-    fun quotes() = resolve("street_fighter", "quotes")
-    fun moves() = resolve("street_fighter", "moves")
+    fun characters() = resolve(secondaryCategory, "characters")
+    fun stages() = resolve(secondaryCategory, "stages")
+    fun quotes() = resolve(secondaryCategory, "quotes")
+    fun moves() = resolve(secondaryCategory, "moves")
 }

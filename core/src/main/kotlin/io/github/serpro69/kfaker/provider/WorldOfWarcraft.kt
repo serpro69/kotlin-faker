@@ -19,8 +19,8 @@ class WorldOfWarcraft internal constructor(fakerService: FakerService) : YamlFak
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun hero() = resolve("world_of_warcraft", "heros")
-    fun quotes() = resolve("world_of_warcraft", "quotes")
-    fun classNames() = resolve("world_of_warcraft", "class_names")
-    fun races() = resolve("world_of_warcraft", "races")
+    fun hero() = resolve(secondaryCategory, "heros") // key typo in the yml file
+    fun quotes() = resolve(secondaryCategory, "quotes")
+    fun classNames() = resolve(secondaryCategory, "class_names")
+    fun races() = resolve(secondaryCategory, "races")
 }

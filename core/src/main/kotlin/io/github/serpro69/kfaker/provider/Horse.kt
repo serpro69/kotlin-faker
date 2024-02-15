@@ -19,6 +19,6 @@ class Horse internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun name() = resolve("horse", "name")
-    fun breed() = resolve("horse", "breed")
+    fun name() = resolve(secondaryCategory, "name")
+    fun breed() = resolve(secondaryCategory, "breed")
 }

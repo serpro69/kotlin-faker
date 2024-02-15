@@ -19,5 +19,5 @@ class Animal internal constructor(fakerService: FakerService) : YamlFakeDataProv
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun name() = resolve("animal", "name")
+    fun name() = resolve(secondaryCategory, "name")
 }

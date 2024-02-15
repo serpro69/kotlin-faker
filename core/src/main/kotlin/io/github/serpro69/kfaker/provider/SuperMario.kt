@@ -20,7 +20,7 @@ class SuperMario internal constructor(fakerService: FakerService) : YamlFakeData
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun characters(): String = resolve("super_mario", "characters")
-    fun games(): String = resolve("super_mario", "games")
-    fun locations(): String = resolve("super_mario", "locations")
+    fun characters(): String = resolve(secondaryCategory, "characters")
+    fun games(): String = resolve(secondaryCategory, "games")
+    fun locations(): String = resolve(secondaryCategory, "locations")
 }

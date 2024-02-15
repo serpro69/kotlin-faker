@@ -19,10 +19,10 @@ class LeagueOfLegends internal constructor(fakerService: FakerService) : YamlFak
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun champion() = resolve("league_of_legends", "champion")
-    fun location() = resolve("league_of_legends", "location")
-    fun quote() = resolve("league_of_legends", "quote")
-    fun summonerSpell() = resolve("league_of_legends", "summoner_spell")
-    fun masteries() = resolve("league_of_legends", "masteries")
-    fun rank() = resolve("league_of_legends", "rank")
+    fun champion() = resolve(secondaryCategory, "champion")
+    fun location() = resolve(secondaryCategory, "location")
+    fun quote() = resolve(secondaryCategory, "quote")
+    fun summonerSpell() = resolve(secondaryCategory, "summoner_spell")
+    fun masteries() = resolve(secondaryCategory, "masteries")
+    fun rank() = resolve(secondaryCategory, "rank")
 }

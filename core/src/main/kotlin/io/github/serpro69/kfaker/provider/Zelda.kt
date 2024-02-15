@@ -19,8 +19,8 @@ class Zelda internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun games() = resolve("zelda", "games")
-    fun characters() = resolve("zelda", "characters")
-    fun locations() = resolve("zelda", "locations")
-    fun items() = resolve("zelda", "items")
+    fun games() = resolve(secondaryCategory, "games")
+    fun characters() = resolve(secondaryCategory, "characters")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun items() = resolve(secondaryCategory, "items")
 }

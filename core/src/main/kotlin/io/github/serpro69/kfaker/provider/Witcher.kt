@@ -19,13 +19,13 @@ class Witcher internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun characters() = resolve("witcher", "characters")
-    fun witchers() = resolve("witcher", "witchers")
-    fun schools() = resolve("witcher", "schools")
-    fun locations() = resolve("witcher", "locations")
-    fun quotes() = resolve("witcher", "quotes")
-    fun monsters() = resolve("witcher", "monsters")
-    fun signs() = resolve("witcher", "signs")
-    fun potions() = resolve("witcher", "potions")
-    fun books() = resolve("witcher", "books")
+    fun characters() = resolve(secondaryCategory, "characters")
+    fun witchers() = resolve(secondaryCategory, "witchers")
+    fun schools() = resolve(secondaryCategory, "schools")
+    fun locations() = resolve(secondaryCategory, "locations")
+    fun quotes() = resolve(secondaryCategory, "quotes")
+    fun monsters() = resolve(secondaryCategory, "monsters")
+    fun signs() = resolve(secondaryCategory, "signs")
+    fun potions() = resolve(secondaryCategory, "potions")
+    fun books() = resolve(secondaryCategory, "books")
 }
