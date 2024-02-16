@@ -1,6 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
-import org.gradle.kotlin.dsl.create
+import org.yaml.snakeyaml.Yaml
 
 interface Yaml2JsonPluginExtension {
     val input: Property<File>
@@ -9,7 +8,13 @@ interface Yaml2JsonPluginExtension {
 
 class Yaml2JsonPlugin : Plugin<Project> {
     val jsonMapper = ObjectMapper()
-    val yamlMapper = ObjectMapper(YAMLFactory())
+    // https://github.com/FasterXML/jackson-dataformats-text/issues/98
+    /* We use snakeyaml since it can handle Anchors and References (Aliases) in yml files, which jackson can't apparently.
+     * We still can use jackson to write to json, because at that time,
+     * the Map we created from yaml will contain proper values and not simply anchor names,
+     * like it happens when using jackson to read yaml.
+     */
+    val yamlMapper = Yaml()
 
     override fun apply(p: Project) {
         val ext = p.extensions.create<Yaml2JsonPluginExtension>("yaml2jsonExt")
@@ -50,8 +55,7 @@ class Yaml2JsonPlugin : Plugin<Project> {
     }
 
     private fun writeYamlToJson(src: File, dest: File) {
-        val map = yamlMapper.readValue(src.inputStream(), Map::class.java)
+        val map = yamlMapper.loadAs(src.inputStream(), Map::class.java)
         jsonMapper.writeValue(dest, map)
     }
 }
-

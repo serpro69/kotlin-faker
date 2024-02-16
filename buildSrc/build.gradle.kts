@@ -16,5 +16,6 @@ dependencies {
     implementation("com.adarshr:gradle-test-logger-plugin:4.0.0")
     // used by yaml-to-json buildSrc plugin
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.3")
+    // use snakeyaml instead of jackson-dataformat-yaml to properly handle yaml anchors and write them as actual values to json
+    implementation("org.yaml:snakeyaml:2.2")
 }
