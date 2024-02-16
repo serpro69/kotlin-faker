@@ -16,6 +16,7 @@ dependencies {
     // NB! only add providers that are needed
     val integrationImplementation by configurations
     integrationImplementation(project(":provider:movies"))
+    integrationImplementation(project(":provider:tvshows"))
 }
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block
