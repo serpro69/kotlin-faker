@@ -31,10 +31,8 @@ import io.github.serpro69.kfaker.provider.Color
 import io.github.serpro69.kfaker.provider.Commerce
 import io.github.serpro69.kfaker.provider.Company
 import io.github.serpro69.kfaker.provider.Computer
-import io.github.serpro69.kfaker.provider.Conan
 import io.github.serpro69.kfaker.provider.Construction
 import io.github.serpro69.kfaker.provider.Cosmere
-import io.github.serpro69.kfaker.provider.CowboyBebop
 import io.github.serpro69.kfaker.provider.CryptoCoin
 import io.github.serpro69.kfaker.provider.Currency
 import io.github.serpro69.kfaker.provider.CurrencySymbol
@@ -43,8 +41,6 @@ import io.github.serpro69.kfaker.provider.Demographic
 import io.github.serpro69.kfaker.provider.Dessert
 import io.github.serpro69.kfaker.provider.Device
 import io.github.serpro69.kfaker.provider.Dog
-import io.github.serpro69.kfaker.provider.Doraemon
-import io.github.serpro69.kfaker.provider.DragonBall
 import io.github.serpro69.kfaker.provider.DrivingLicense
 import io.github.serpro69.kfaker.provider.Drone
 import io.github.serpro69.kfaker.provider.Educator
@@ -52,7 +48,6 @@ import io.github.serpro69.kfaker.provider.ElectricalComponents
 import io.github.serpro69.kfaker.provider.Emotion
 import io.github.serpro69.kfaker.provider.File
 import io.github.serpro69.kfaker.provider.Finance
-import io.github.serpro69.kfaker.provider.FmaBrotherhood
 import io.github.serpro69.kfaker.provider.Food
 import io.github.serpro69.kfaker.provider.FunnyName
 import io.github.serpro69.kfaker.provider.Gender
@@ -78,10 +73,8 @@ import io.github.serpro69.kfaker.provider.MitchHedberg
 import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.Mountain
 import io.github.serpro69.kfaker.provider.Name
-import io.github.serpro69.kfaker.provider.Naruto
 import io.github.serpro69.kfaker.provider.Nation
 import io.github.serpro69.kfaker.provider.NatoPhoneticAlphabet
-import io.github.serpro69.kfaker.provider.OnePiece
 import io.github.serpro69.kfaker.provider.Person
 import io.github.serpro69.kfaker.provider.PhoneNumber
 import io.github.serpro69.kfaker.provider.ProgrammingLanguage
@@ -98,10 +91,8 @@ import io.github.serpro69.kfaker.provider.SlackEmoji
 import io.github.serpro69.kfaker.provider.Space
 import io.github.serpro69.kfaker.provider.Sport
 import io.github.serpro69.kfaker.provider.Stripe
-import io.github.serpro69.kfaker.provider.StudioGhibli
 import io.github.serpro69.kfaker.provider.Subscription
 import io.github.serpro69.kfaker.provider.Superhero
-import io.github.serpro69.kfaker.provider.SwordArtOnline
 import io.github.serpro69.kfaker.provider.Tarkov
 import io.github.serpro69.kfaker.provider.Tea
 import io.github.serpro69.kfaker.provider.Team
@@ -173,10 +164,8 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
 
     //    val compass: Compass by lazy {Compass(fakerService) }
     val computer: Computer by lazy { Computer(fakerService) }
-    val conan: Conan by lazy { Conan(fakerService) }
     val construction: Construction by lazy { Construction(fakerService) }
     val cosmere: Cosmere by lazy { Cosmere(fakerService) }
-    val cowboyBebop: CowboyBebop by lazy { CowboyBebop(fakerService) }
     val cryptoCoin: CryptoCoin by lazy { CryptoCoin(fakerService) }
     val currency: Currency by lazy { Currency(fakerService) }
     val dcComics: DcComics by lazy { DcComics(fakerService) }
@@ -184,8 +173,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val dessert: Dessert by lazy { Dessert(fakerService) }
     val device: Device by lazy { Device(fakerService) }
     val dog: Dog by lazy { Dog(fakerService) }
-    val doraemon: Doraemon by lazy { Doraemon(fakerService) }
-    val dragonBall: DragonBall by lazy { DragonBall(fakerService) }
     val drivingLicense: DrivingLicense by lazy { DrivingLicense(fakerService) }
     val drone: Drone by lazy { Drone(fakerService) }
     val educator: Educator by lazy { Educator(fakerService) }
@@ -193,7 +180,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val emotion: Emotion by lazy { Emotion(fakerService) }
     val file: File by lazy { File(fakerService) }
     val finance: Finance by lazy { Finance(fakerService) }
-    val fmaBrotherhood: FmaBrotherhood by lazy { FmaBrotherhood(fakerService) }
     val food: Food by lazy { Food(fakerService) }
     val funnyName: FunnyName by lazy { FunnyName(fakerService) }
     val gender: Gender by lazy { Gender(fakerService) }
@@ -221,10 +207,8 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val money: Money by lazy { Money(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
     val name: Name by lazy { Name(fakerService) }
-    val naruto: Naruto by lazy { Naruto(fakerService) }
     val nation: Nation by lazy { Nation(fakerService) }
     val natoPhoneticAlphabet: NatoPhoneticAlphabet by lazy { NatoPhoneticAlphabet(fakerService) }
-    val onePiece: OnePiece by lazy { OnePiece(fakerService) }
     val person: Person by lazy { Person(config.random) }
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
     val programmingLanguage: ProgrammingLanguage by lazy { ProgrammingLanguage(fakerService) }
@@ -242,10 +226,8 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val space: Space by lazy { Space(fakerService) }
     val sport: Sport by lazy { Sport(fakerService) }
     val stripe: Stripe by lazy { Stripe(fakerService) }
-    val studioGhibli: StudioGhibli by lazy { StudioGhibli(fakerService) }
     val subscription: Subscription by lazy { Subscription(fakerService) }
     val superhero: Superhero by lazy { Superhero(fakerService) }
-    val swordArtOnline: SwordArtOnline by lazy { SwordArtOnline(fakerService) }
     val tarkov: Tarkov by lazy { Tarkov(fakerService) }
     val tea: Tea by lazy { Tea(fakerService) }
     val team: Team by lazy { Team(fakerService) }
