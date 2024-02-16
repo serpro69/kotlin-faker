@@ -21,6 +21,7 @@ val providers = listOf(
     "books",
     "games",
     "movies",
+    "music",
     "tvshows",
 )
 
