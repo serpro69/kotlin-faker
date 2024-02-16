@@ -4,6 +4,7 @@ package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
+import io.github.serpro69.kfaker.movies.MoviesFaker
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -57,7 +58,7 @@ class Homepage : DescribeSpec({
             }
             it("should print a Star Wars character name") {
                 // START data_provider_six_a
-                faker.starWars.characters() // => Darth Vader
+                MoviesFaker().starWars.characters() // => Darth Vader
                 // END data_provider_six_a
             }
             it("should print a character name from Friends") {

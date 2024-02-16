@@ -13,8 +13,6 @@ import io.github.serpro69.kfaker.provider.AquaTeenHungerForce
 import io.github.serpro69.kfaker.provider.Archer
 import io.github.serpro69.kfaker.provider.Artist
 import io.github.serpro69.kfaker.provider.Australia
-import io.github.serpro69.kfaker.provider.Avatar
-import io.github.serpro69.kfaker.provider.BackToTheFuture
 import io.github.serpro69.kfaker.provider.Bank
 import io.github.serpro69.kfaker.provider.Barcode
 import io.github.serpro69.kfaker.provider.Basketball
@@ -53,7 +51,6 @@ import io.github.serpro69.kfaker.provider.Currency
 import io.github.serpro69.kfaker.provider.CurrencySymbol
 import io.github.serpro69.kfaker.provider.DcComics
 import io.github.serpro69.kfaker.provider.Demographic
-import io.github.serpro69.kfaker.provider.Departed
 import io.github.serpro69.kfaker.provider.Dessert
 import io.github.serpro69.kfaker.provider.Device
 import io.github.serpro69.kfaker.provider.Dog
@@ -62,7 +59,6 @@ import io.github.serpro69.kfaker.provider.DrWho
 import io.github.serpro69.kfaker.provider.DragonBall
 import io.github.serpro69.kfaker.provider.DrivingLicense
 import io.github.serpro69.kfaker.provider.Drone
-import io.github.serpro69.kfaker.provider.DumbAndDumber
 import io.github.serpro69.kfaker.provider.ESport
 import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.ElectricalComponents
@@ -80,21 +76,16 @@ import io.github.serpro69.kfaker.provider.FunnyName
 import io.github.serpro69.kfaker.provider.Futurama
 import io.github.serpro69.kfaker.provider.GameOfThrones
 import io.github.serpro69.kfaker.provider.Gender
-import io.github.serpro69.kfaker.provider.GhostBusters
 import io.github.serpro69.kfaker.provider.GratefulDead
 import io.github.serpro69.kfaker.provider.GreekPhilosophers
 import io.github.serpro69.kfaker.provider.Hacker
 import io.github.serpro69.kfaker.provider.Hackers
-import io.github.serpro69.kfaker.provider.HarryPotter
 import io.github.serpro69.kfaker.provider.HeyArnold
 import io.github.serpro69.kfaker.provider.Hipster
-import io.github.serpro69.kfaker.provider.HitchhikersGuideToTheGalaxy
-import io.github.serpro69.kfaker.provider.Hobbit
 import io.github.serpro69.kfaker.provider.Hobby
 import io.github.serpro69.kfaker.provider.Horse
 import io.github.serpro69.kfaker.provider.House
 import io.github.serpro69.kfaker.provider.HowIMetYourMother
-import io.github.serpro69.kfaker.provider.HowToTrainYourDragon
 import io.github.serpro69.kfaker.provider.IdNumber
 import io.github.serpro69.kfaker.provider.IndustrySegments
 import io.github.serpro69.kfaker.provider.Internet
@@ -102,8 +93,6 @@ import io.github.serpro69.kfaker.provider.JackHandey
 import io.github.serpro69.kfaker.provider.Job
 import io.github.serpro69.kfaker.provider.KPop
 import io.github.serpro69.kfaker.provider.KamenRider
-import io.github.serpro69.kfaker.provider.Lebowski
-import io.github.serpro69.kfaker.provider.LordOfTheRings
 import io.github.serpro69.kfaker.provider.Lorem
 import io.github.serpro69.kfaker.provider.Markdown
 import io.github.serpro69.kfaker.provider.Marketing
@@ -114,7 +103,6 @@ import io.github.serpro69.kfaker.provider.MitchHedberg
 import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.Mountain
 import io.github.serpro69.kfaker.provider.Mountaineering
-import io.github.serpro69.kfaker.provider.Movie
 import io.github.serpro69.kfaker.provider.Music
 import io.github.serpro69.kfaker.provider.Name
 import io.github.serpro69.kfaker.provider.Naruto
@@ -129,7 +117,6 @@ import io.github.serpro69.kfaker.provider.Person
 import io.github.serpro69.kfaker.provider.Phish
 import io.github.serpro69.kfaker.provider.PhoneNumber
 import io.github.serpro69.kfaker.provider.Prince
-import io.github.serpro69.kfaker.provider.PrincessBride
 import io.github.serpro69.kfaker.provider.ProgrammingLanguage
 import io.github.serpro69.kfaker.provider.Quote
 import io.github.serpro69.kfaker.provider.Rajnikanth
@@ -154,7 +141,6 @@ import io.github.serpro69.kfaker.provider.Space
 import io.github.serpro69.kfaker.provider.Spongebob
 import io.github.serpro69.kfaker.provider.Sport
 import io.github.serpro69.kfaker.provider.StarTrek
-import io.github.serpro69.kfaker.provider.StarWars
 import io.github.serpro69.kfaker.provider.Stargate
 import io.github.serpro69.kfaker.provider.StrangerThings
 import io.github.serpro69.kfaker.provider.Stripe
@@ -170,15 +156,12 @@ import io.github.serpro69.kfaker.provider.Team
 import io.github.serpro69.kfaker.provider.TheExpanse
 import io.github.serpro69.kfaker.provider.TheITCrowd
 import io.github.serpro69.kfaker.provider.TheOffice
-import io.github.serpro69.kfaker.provider.TheRoom
 import io.github.serpro69.kfaker.provider.TheThickOfIt
 import io.github.serpro69.kfaker.provider.Tolkien
 import io.github.serpro69.kfaker.provider.TrainStation
-import io.github.serpro69.kfaker.provider.Tron
 import io.github.serpro69.kfaker.provider.TwinPeaks
 import io.github.serpro69.kfaker.provider.UmphreysMcgee
 import io.github.serpro69.kfaker.provider.University
-import io.github.serpro69.kfaker.provider.VForVendetta
 import io.github.serpro69.kfaker.provider.Vehicle
 import io.github.serpro69.kfaker.provider.VentureBros
 import io.github.serpro69.kfaker.provider.Verbs
@@ -226,8 +209,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val archer: Archer by lazy { Archer(fakerService) }
     val artist: Artist by lazy { Artist(fakerService) }
     val australia: Australia by lazy { Australia(fakerService) }
-    val avatar: Avatar by lazy { Avatar(fakerService) }
-    val backToTheFuture: BackToTheFuture by lazy { BackToTheFuture(fakerService) }
     val bank: Bank by lazy { Bank(fakerService) }
     val barcode: Barcode by lazy { Barcode(fakerService) }
     val basketball: Basketball by lazy { Basketball(fakerService) }
@@ -267,7 +248,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val currency: Currency by lazy { Currency(fakerService) }
     val dcComics: DcComics by lazy { DcComics(fakerService) }
     val demographic: Demographic by lazy { Demographic(fakerService) }
-    val departed: Departed by lazy { Departed(fakerService) }
     val dessert: Dessert by lazy { Dessert(fakerService) }
     val device: Device by lazy { Device(fakerService) }
     val dog: Dog by lazy { Dog(fakerService) }
@@ -276,7 +256,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val drivingLicense: DrivingLicense by lazy { DrivingLicense(fakerService) }
     val drone: Drone by lazy { Drone(fakerService) }
     val drWho: DrWho by lazy { DrWho(fakerService) }
-    val dumbAndDumber: DumbAndDumber by lazy { DumbAndDumber(fakerService) }
     val educator: Educator by lazy { Educator(fakerService) }
     val electricalComponents: ElectricalComponents by lazy { ElectricalComponents(fakerService) }
     val emotion: Emotion by lazy { Emotion(fakerService) }
@@ -294,21 +273,16 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val futurama: Futurama by lazy { Futurama(fakerService) }
     val gameOfThrones: GameOfThrones by lazy { GameOfThrones(fakerService) }
     val gender: Gender by lazy { Gender(fakerService) }
-    val ghostBusters: GhostBusters by lazy { GhostBusters(fakerService) }
     val gratefulDead: GratefulDead by lazy { GratefulDead(fakerService) }
     val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
     val hacker: Hacker by lazy { Hacker(fakerService) }
     val hackers: Hackers by lazy { Hackers(fakerService) }
-    val harryPotter: HarryPotter by lazy { HarryPotter(fakerService) }
     val heyArnold: HeyArnold by lazy { HeyArnold(fakerService) }
     val hipster: Hipster by lazy { Hipster(fakerService) }
-    val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy by lazy { HitchhikersGuideToTheGalaxy(fakerService) }
-    val hobbit: Hobbit by lazy { Hobbit(fakerService) }
     val hobby: Hobby by lazy { Hobby(fakerService) }
     val horse: Horse by lazy { Horse(fakerService) }
     val house: House by lazy { House(fakerService) }
     val howIMetYourMother: HowIMetYourMother by lazy { HowIMetYourMother(fakerService) }
-    val howToTrainYourDragon: HowToTrainYourDragon by lazy { HowToTrainYourDragon(fakerService) }
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, company, name) }
@@ -318,8 +292,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val job: Job by lazy { Job(fakerService) }
     val kamenRider: KamenRider by lazy { KamenRider(fakerService) }
     val kPop: KPop by lazy { KPop(fakerService) }
-    val lebowski: Lebowski by lazy { Lebowski(fakerService) }
-    val lordOfTheRings: LordOfTheRings by lazy { LordOfTheRings(fakerService) }
     val lorem: Lorem by lazy { Lorem(fakerService) }
     val markdown: Markdown by lazy { Markdown(fakerService) }
     val marketing: Marketing by lazy { Marketing(fakerService) }
@@ -330,7 +302,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val money: Money by lazy { Money(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
     val mountaineering: Mountaineering by lazy { Mountaineering(fakerService) }
-    val movie: Movie by lazy { Movie(fakerService) }
     val music: Music by lazy { Music(fakerService) }
     val name: Name by lazy { Name(fakerService) }
     val naruto: Naruto by lazy { Naruto(fakerService) }
@@ -345,7 +316,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val phish: Phish by lazy { Phish(fakerService) }
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
     val prince: Prince by lazy { Prince(fakerService) }
-    val princessBride: PrincessBride by lazy { PrincessBride(fakerService) }
     val programmingLanguage: ProgrammingLanguage by lazy { ProgrammingLanguage(fakerService) }
     val quote: Quote by lazy { Quote(fakerService) }
     val rajnikanth: Rajnikanth by lazy { Rajnikanth(fakerService) }
@@ -372,7 +342,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val sport: Sport by lazy { Sport(fakerService) }
     val stargate: Stargate by lazy { Stargate(fakerService) }
     val starTrek: StarTrek by lazy { StarTrek(fakerService) }
-    val starWars: StarWars by lazy { StarWars(fakerService) }
     val strangerThings: StrangerThings by lazy { StrangerThings(fakerService) }
     val stripe: Stripe by lazy { Stripe(fakerService) }
     val studioGhibli: StudioGhibli by lazy { StudioGhibli(fakerService) }
@@ -387,11 +356,9 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val theExpanse: TheExpanse by lazy { TheExpanse(fakerService) }
     val theITCrowd: TheITCrowd by lazy { TheITCrowd(fakerService) }
     val theOffice: TheOffice by lazy { TheOffice(fakerService) }
-    val theRoom: TheRoom by lazy { TheRoom(fakerService) }
     val theThickOfIt: TheThickOfIt by lazy { TheThickOfIt(fakerService) }
     val tolkien: Tolkien by lazy { Tolkien(fakerService) }
     val trainStation: TrainStation by lazy { TrainStation(fakerService) }
-    val tron: Tron by lazy { Tron(fakerService) }
     val twinPeaks: TwinPeaks by lazy { TwinPeaks(fakerService) }
     val umphreysMcgee: UmphreysMcgee by lazy { UmphreysMcgee(fakerService) }
     val university: University by lazy { University(fakerService) }
@@ -399,7 +366,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val ventureBros: VentureBros by lazy { VentureBros(fakerService) }
     val verbs: Verbs by lazy { Verbs(fakerService) }
     val volleyball: Volleyball by lazy { Volleyball(fakerService) }
-    val vForVendetta: VForVendetta by lazy { VForVendetta(fakerService) }
     val worldCup: WorldCup by lazy { WorldCup(fakerService) }
     val yoda: Yoda by lazy { Yoda(fakerService) }
 
