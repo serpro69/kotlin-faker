@@ -1,7 +1,9 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.japmedia.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -23,6 +25,7 @@ class OnePiece internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun islands() = resolve("islands")
     fun locations() = resolve("locations")
     fun quotes() = resolve("quotes")
+
     @Deprecated(
         message = "This is deprecated and will be removed in future releases",
         replaceWith = ReplaceWith("akumaNoMi"),

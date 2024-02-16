@@ -20,6 +20,7 @@ include(
 val providers = listOf(
     "books",
     "games",
+    "japmedia",
     "movies",
     "music",
     "sports",

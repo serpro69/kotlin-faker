@@ -1,17 +1,17 @@
-@file:Suppress("unused")
+package io.github.serpro69.kfaker.japmedia.provider
 
-package io.github.serpro69.kfaker.provider
-
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
  * [FakeDataProvider] implementation for [YamlCategory.DORAEMON] category.
  */
-class Doraemon internal constructor(fakerService: FakerService) :
-    YamlFakeDataProvider<Doraemon>(fakerService) {
+@Suppress("unused")
+class Doraemon internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Doraemon>(fakerService) {
     override val yamlCategory = YamlCategory.DORAEMON
     override val localUniqueDataProvider = LocalUniqueDataProvider<Doraemon>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
