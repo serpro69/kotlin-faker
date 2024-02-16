@@ -1,7 +1,9 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.commerce.provider
 
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 

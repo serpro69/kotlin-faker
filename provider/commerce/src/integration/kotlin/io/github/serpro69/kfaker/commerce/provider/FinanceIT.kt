@@ -1,10 +1,8 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.commerce.provider
 
-import io.github.serpro69.kfaker.faker
+import io.github.serpro69.kfaker.commerce.faker
 import io.kotest.assertions.assertSoftly
-import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.shouldNotHave
 import io.kotest.matchers.string.shouldNotContain
 
 class FinanceIT : DescribeSpec({

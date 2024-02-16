@@ -12,7 +12,7 @@ import sun.net.util.IPAddressUtil
 class InternetTest: DescribeSpec({
     describe("Internet provider") {
         val s = FakerService(Faker())
-        val internet = Internet(s, Company(s), Name(s))
+        val internet = Internet(s, Name(s))
 
         context("IPv4 address generation") {
             repeat(100) {

@@ -3,6 +3,7 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.commerce.CommerceFaker
 import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.movies.MoviesFaker
 import io.github.serpro69.kfaker.tv.TvShowsFaker
@@ -44,7 +45,7 @@ class Homepage : DescribeSpec({
             }
             it("should print a SWIFT BIC code") {
                 // START data_provider_four
-                faker.bank.swiftBic() // => AACCGB21
+                CommerceFaker().bank.swiftBic() // => AACCGB21
                 // END data_provider_four
             }
             it("should print a safe email address") {
