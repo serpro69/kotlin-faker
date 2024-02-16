@@ -2,6 +2,7 @@ package io.github.serpro69.kfaker.provider
 
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.helper.isReservedNet
 import io.github.serpro69.kfaker.helper.prepare
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
@@ -14,7 +15,6 @@ import java.lang.String.format
 @Suppress("unused")
 class Internet internal constructor(
     fakerService: FakerService,
-    private val companyProvider: Company,
     private val nameProvider: Name,
 ) : YamlFakeDataProvider<Internet>(fakerService) {
     override val yamlCategory = YamlCategory.INTERNET
@@ -26,7 +26,7 @@ class Internet internal constructor(
     }
 
     fun domain(subdomain: Boolean = false, domain: String? = null): String {
-        val name: () -> String = { prepare(companyProvider.name().split(" ").first(), fakerService.faker.config) }
+        val name: () -> String = { prepare(nameProvider.lastName().split(" ").first(), fakerService.faker.config) }
         return domain?.let {
             domain.split(".")
                 .map { domainPart -> prepare(domainPart, fakerService.faker.config) }
@@ -135,3 +135,10 @@ private val privateIpv4Ranges = listOf(
     // 198.18.0.0/15  - Used for benchmark testing of inter-network communications between subnets
     listOf(198..198, 18..19, 0..255, 1..255)
 )
+
+fun main() {
+    val f = faker {  }
+    repeat(100) {
+        println(f.internet.domain())
+    }
+}

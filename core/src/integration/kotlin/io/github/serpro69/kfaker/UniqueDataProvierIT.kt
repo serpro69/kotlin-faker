@@ -109,12 +109,8 @@ class UniqueDataProviderIT : DescribeSpec({
                 "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle",
                 "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge"
             )
-            val excludedBicCodes = listOf(
-                "AACCGB21", "AACNGB21", "AAFMGB21", "AAHOGB21", "AAHVGB21", "AANLGB21",
-                "AANLGB2L", "AAOGGB21", "AAPEGB21", "AAPUGB21", "AAQIGB21", "ABBYGB2L",
-                "BCYPGB2LCBB", "BCYPGB2LHGB", "BCYPGB2LHHB", "BCYPGB2LPGB", "BCYPGB2LSSB", "BCYPGB2LMBB"
-            )
-            val excludeAll = listOf(excludedCountries, excludedNames, excludedBicCodes).flatten()
+            val excludedDomains = listOf("com", "biz", "info")
+            val excludeAll = listOf(excludedCountries, excludedNames, excludedDomains).flatten()
 
             faker.unique.configuration {
                 enable(faker::address)
@@ -125,16 +121,16 @@ class UniqueDataProviderIT : DescribeSpec({
             context("collection of unique values is generated run#$it") {
                 val countries = (0..30).map { faker.address.country() }
                 val names = (0..30).map { faker.name.lastName() }
-                // Unique generation not enabled for Bank
-                val bicCodes = (0..30).map { faker.bank.swiftBic() }
+                // Unique generation not enabled for Internet
+                val domainSuffixes = (0..30).map { faker.internet.domainSuffix() }
 
                 it("should not contain excluded values") {
                     assertSoftly {
                         countries shouldNotContainAnyOf excludeAll
                         names shouldNotContainAnyOf excludeAll
-                        // Unique generation not enabled for Bank
-                        bicCodes shouldNot beUnique()
-                        bicCodes shouldContainAnyOf excludedBicCodes
+                        // Unique generation not enabled for Internet
+                        domainSuffixes shouldNot beUnique()
+                        domainSuffixes shouldContainAnyOf excludedDomains
                     }
                 }
             }
@@ -150,23 +146,23 @@ class UniqueDataProviderIT : DescribeSpec({
                 enable(faker::address)
                 enable(faker::name)
                 // Exclude all values starting with "A"
-                exclude { listOf(Regex("^A")) }
+                exclude { listOf(Regex("^[Cc]")) }
             }
 
             it("should not contain values matching pattern run#$it") {
                 val countries = (0..30).map { faker.address.country() }
                 val names = (0..30).map { faker.name.lastName() }
                 // Unique generation not enabled for Bank
-                val bicCodes = (0..30).map { faker.bank.swiftBic() }
+                val domainSuffixes = (0..30).map { faker.internet.domainSuffix() }
 
                 assertSoftly {
-                    countries.none { s -> s.startsWith("A") } shouldBe true
+                    countries.none { s -> s.startsWith("C") } shouldBe true
                     countries should beUnique()
-                    names.none { s -> s.startsWith("A") } shouldBe true
+                    names.none { s -> s.startsWith("C") } shouldBe true
                     names should beUnique()
-                    // Unique generation not enabled for Bank
-                    bicCodes.any { s -> s.startsWith("A") } shouldBe true
-                    bicCodes shouldNot beUnique()
+                    // Unique generation not enabled for Internet
+                    domainSuffixes.any { s -> s.startsWith("c") } shouldBe true
+                    domainSuffixes shouldNot beUnique()
                 }
             }
         }

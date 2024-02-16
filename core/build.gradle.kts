@@ -15,6 +15,7 @@ dependencies {
     // integration dependencies for classes in docs package, e.g. Homepage.kt
     // NB! only add providers that are needed
     val integrationImplementation by configurations
+    integrationImplementation(project(":provider:commerce"))
     integrationImplementation(project(":provider:movies"))
     integrationImplementation(project(":provider:tvshows"))
 }
