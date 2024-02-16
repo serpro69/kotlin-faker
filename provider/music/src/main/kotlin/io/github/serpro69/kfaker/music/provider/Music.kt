@@ -1,7 +1,9 @@
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.music.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -18,6 +20,11 @@ class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory)
     }
 
+    @Deprecated(
+        message = "This property is deprecated and will be removed in future releases",
+        replaceWith = ReplaceWith("MusicFaker().hipHop"),
+        level = DeprecationLevel.WARNING
+    )
     val hipHop by lazy { HipHop(fakerService) }
 
     fun instruments() = resolve("instruments")
