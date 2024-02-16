@@ -20,6 +20,7 @@ include(
 val providers = listOf(
     "books",
     "games",
+    "movies",
 )
 
 providers.forEach { include("provider:$it") }

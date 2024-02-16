@@ -1,17 +1,22 @@
 @file:Suppress("unused")
 
-package io.github.serpro69.kfaker.provider
+package io.github.serpro69.kfaker.movies.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.RandomService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.provider.FakeDataProvider
+import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
  * [FakeDataProvider] implementation for [YamlCategory.TRON] category.
  */
-class Tron internal constructor(fakerService: FakerService) :
-    YamlFakeDataProvider<Tron>(fakerService) {
+class Tron internal constructor(
+    fakerService: FakerService,
+    private val randomService: RandomService
+) : YamlFakeDataProvider<Tron>(fakerService) {
     override val yamlCategory = YamlCategory.TRON
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tron>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider)
@@ -20,19 +25,19 @@ class Tron internal constructor(fakerService: FakerService) :
         fakerService.load(yamlCategory)
     }
 
-    fun characters(type: TronCharacterType = fakerService.randomService.nextEnum()): String =
+    fun characters(type: TronCharacterType = randomService.nextEnum()): String =
         resolve("characters", type.name.lowercase())
 
     fun games(): String = resolve("games")
     fun locations(): String = resolve("locations")
 
-    fun quotes(character: TronCharacter = fakerService.randomService.nextEnum()): String =
+    fun quotes(character: TronCharacter = randomService.nextEnum()): String =
         resolve("quotes", character.name.lowercase())
 
     fun taglines(): String = resolve("taglines")
     fun vehicles(): String = resolve("vehicles")
 
-    fun alternateCharacterSpellings(character: TronAlternateCharacter = fakerService.randomService.nextEnum()): String =
+    fun alternateCharacterSpellings(character: TronAlternateCharacter = randomService.nextEnum()): String =
         resolve("alternate_character_spellings", character.name.lowercase())
 
     // todo functions with enum type parameters should by default return a random value?
