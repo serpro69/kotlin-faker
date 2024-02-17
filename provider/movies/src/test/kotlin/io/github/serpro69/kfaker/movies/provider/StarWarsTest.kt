@@ -9,6 +9,7 @@ class StarWarsTest : DescribeSpec({
         // TODO is there a better way to test a provider directly w/o exposing constructors of FakerService?
         //  StarWars(FakerService(MoviesFaker()) won't work because the constructor in FakerService is internal,
         //  and we should try not to expose it to public
+        //  We could expose FakerService via custom AbstractFaker implementation (e.g. see edu/FakerServiceTest)
         val starWars = MoviesFaker().starWars
 
         context("any quote") {

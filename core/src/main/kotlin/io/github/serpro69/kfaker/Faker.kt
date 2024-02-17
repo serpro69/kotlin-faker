@@ -15,7 +15,6 @@ import io.github.serpro69.kfaker.provider.CurrencySymbol
 import io.github.serpro69.kfaker.provider.Demographic
 import io.github.serpro69.kfaker.provider.Dog
 import io.github.serpro69.kfaker.provider.DrivingLicense
-import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.Emotion
 import io.github.serpro69.kfaker.provider.File
 import io.github.serpro69.kfaker.provider.Gender
@@ -25,7 +24,6 @@ import io.github.serpro69.kfaker.provider.Hobby
 import io.github.serpro69.kfaker.provider.Horse
 import io.github.serpro69.kfaker.provider.IdNumber
 import io.github.serpro69.kfaker.provider.Internet
-import io.github.serpro69.kfaker.provider.Job
 import io.github.serpro69.kfaker.provider.Measurement
 import io.github.serpro69.kfaker.provider.Military
 import io.github.serpro69.kfaker.provider.Money
@@ -35,9 +33,7 @@ import io.github.serpro69.kfaker.provider.PhoneNumber
 import io.github.serpro69.kfaker.provider.Quote
 import io.github.serpro69.kfaker.provider.Rajnikanth
 import io.github.serpro69.kfaker.provider.Relationship
-import io.github.serpro69.kfaker.provider.Science
 import io.github.serpro69.kfaker.provider.Separator
-import io.github.serpro69.kfaker.provider.University
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
 import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
 import io.github.serpro69.kfaker.provider.misc.RandomProvider
@@ -101,9 +97,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     // misc
     val drivingLicense: DrivingLicense by lazy { DrivingLicense(fakerService) }
 
-    // edu
-    val educator: Educator by lazy { Educator(fakerService) }
-
     // lorem
     val emotion: Emotion by lazy { Emotion(fakerService) }
     val file: File by lazy { File(fakerService) }
@@ -123,8 +116,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, name) }
 
-    // edu
-    val job: Job by lazy { Job(fakerService) }
     val measurement: Measurement by lazy { Measurement(fakerService) }
 
     // misc
@@ -143,12 +134,7 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     // misc
     val relationship: Relationship by lazy { Relationship(fakerService) }
 
-    // edu
-    val science: Science by lazy { Science(fakerService) }
-
     //    val source: Source by lazy { Source(fakerService) }
-    // edu
-    val university: University by lazy { University(fakerService) }
 
     @FakerDsl
     /**
