@@ -26,6 +26,8 @@ subprojects {
     group = rootProject.group.toString()
     version = rootProject.version.toString()
 
+    val isTestHelper = this@subprojects.name == "test"
+
     repositories {
         mavenCentral()
     }
@@ -36,7 +38,7 @@ subprojects {
         plugin("com.adarshr.test-logger")
         plugin("com.github.ben-manes.versions")
         plugin("io.qameta.allure")
-        plugin("com.github.johnrengelman.shadow")
+        if (!isTestHelper) plugin("com.github.johnrengelman.shadow")
     }
 
     dependencies {
@@ -44,6 +46,7 @@ subprojects {
         val testRuntimeOnly by configurations
         val testImplementation by configurations
 
+        // TODO move dependencies to conventions plugin(s)
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
         implementation("com.github.mifmif:generex:1.0.2")

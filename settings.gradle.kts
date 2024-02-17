@@ -36,3 +36,6 @@ val providers = listOf(
 )
 
 providers.forEach { include("provider:$it") }
+
+// helpers for integration tests
+include("test")
