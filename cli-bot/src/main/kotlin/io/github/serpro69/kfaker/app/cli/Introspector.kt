@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker.app.cli
 
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
@@ -13,9 +13,9 @@ import kotlin.reflect.full.isSubtypeOf
 import kotlin.reflect.full.starProjectedType
 
 /**
- * Introspects [Faker] and it's descendants.
+ * Introspects [faker] and it's descendants.
  */
-class Introspector(private val faker: Faker) {
+class Introspector(private val faker: AbstractFaker) {
     // Get a list of all publicly visible providers
     val providers: Sequence<KProperty<*>> = faker::class.declaredMemberProperties.asSequence().filter {
         it.visibility == KVisibility.PUBLIC

@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker.app.cli
 
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.app.subcommands.CommandOptions
 import io.github.serpro69.kfaker.provider.Money
 import kotlin.reflect.KFunction
@@ -58,7 +58,7 @@ class Renderer(private val name: String, private val children: List<Renderer>) {
  */
 fun renderProvider(
     options: CommandOptions,
-    faker: Faker,
+    faker: AbstractFaker,
     provider: KProperty<*>,
     subProvider: KProperty<*>?,
     functions: Sequence<KFunction<*>>,

@@ -12,12 +12,25 @@ val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
     val providers = listOf(
-        "books"
+        "books",
+        "commerce",
+        "creature",
+        "edu",
+        "games",
+        "humor",
+        "japmedia",
+        "lorem",
+        "misc",
+        "movies",
+        "music",
+        "sports",
+        "tech",
+        "travel",
+        "tvshows",
     )
+
     implementation(project(":core"))
-    providers.forEach {
-//        implementation(project(":provider:$it"))
-    }
+    providers.forEach { implementation(project(":provider:$it")) }
     implementation("info.picocli:picocli:4.7.5")
 }
 
