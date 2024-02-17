@@ -12,11 +12,8 @@ import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
 import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.lowercase
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Degree
-import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
-import io.github.serpro69.kfaker.provider.Tertiary
 import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import java.io.InputStream
 import java.util.*
@@ -476,6 +473,7 @@ class FakerService {
      * fun street() = with(fakerService) { resolveExpression().numerify().letterify()
      * ```
      */
+    @Suppress("KDocUnresolvedReference")
     private tailrec fun resolveExpression(category: YamlCategory, rawExpression: RawExpression): String {
         val sb = StringBuffer()
 
