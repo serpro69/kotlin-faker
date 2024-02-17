@@ -21,9 +21,10 @@ import io.github.serpro69.kfaker.sports.provider.WorldCup
 typealias Faker = SportsFaker
 
 /**
- * Provides access to fake data generators withing the Books domain.
+ * Provides access to fake data generators within the Sports domain.
  *
- * Each category (generator) from this [SportsFaker] is represented by a property that has the same name as the `.yml` file.
+ * Each category (generator) from this [SportsFaker] is represented by a property
+ * that (usually) has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
