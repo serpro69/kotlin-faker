@@ -1,15 +1,14 @@
 package io.github.serpro69.kfaker.app.subcommands
 
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
+import io.github.serpro69.kfaker.app.fakers
 import io.github.serpro69.kfaker.app.subcommands.Lookup.name
 import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
-import kotlin.reflect.KFunction
-import kotlin.reflect.KProperty
 
 /**
  * [KFaker] command for looking up required functionality by [name]
@@ -30,13 +29,7 @@ object Lookup : Runnable {
     )
     lateinit var name: String
 
-    private fun printMatchingFunctions() {
-        val fakerConfig = fakerConfig {
-            locale = options.locale
-        }
-
-        val faker = Faker(fakerConfig)
-
+    private fun printMatchingFunctions(faker: AbstractFaker) {
         val introspector = Introspector(faker)
 
         val filteredMap = introspector.providerData
@@ -56,12 +49,18 @@ object Lookup : Runnable {
             renderProvider(options, faker, provider, null, functions, properties)
         }
 
-        val output = Renderer("Faker()", renderedProviders).toString()
+        val output = if (renderedProviders.isNotEmpty()) {
+            Renderer("${faker::class.simpleName}()", renderedProviders).toString()
+        } else null
 
-        println(output)
+        output?.let {
+            println(it)
+            println("\n")
+        }
     }
 
     override fun run() {
-        printMatchingFunctions()
+        val fakerConfig = fakerConfig { locale = options.locale }
+        fakers(fakerConfig).forEach(::printMatchingFunctions)
     }
 }

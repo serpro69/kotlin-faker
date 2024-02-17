@@ -1,10 +1,11 @@
 package io.github.serpro69.kfaker.app.subcommands
 
-import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.app.KFaker
 import io.github.serpro69.kfaker.app.cli.Introspector
 import io.github.serpro69.kfaker.app.cli.Renderer
 import io.github.serpro69.kfaker.app.cli.renderProvider
+import io.github.serpro69.kfaker.app.fakers
 import io.github.serpro69.kfaker.fakerConfig
 import picocli.CommandLine
 
@@ -33,13 +34,7 @@ object List : Runnable {
     )
     var providerNames = arrayOf<String>()
 
-    private fun printProvidersList() {
-        val fakerConfig = fakerConfig {
-            locale = options.locale
-        }
-
-        val faker = Faker(fakerConfig)
-
+    private fun printProvidersList(faker: AbstractFaker) {
         val introspector = Introspector(faker)
 
         val renderedProviders = if (providerNames.isNotEmpty()) {
@@ -56,9 +51,10 @@ object List : Runnable {
             }
         }
 
-        val output = Renderer("Faker()", renderedProviders.toList()).toString()
+        val output = Renderer("${faker::class.simpleName}()", renderedProviders.toList()).toString()
 
         println(output)
+        println("\n")
     }
 
     private fun printAvailableLocales() {
@@ -71,6 +67,7 @@ object List : Runnable {
     }
 
     override fun run() {
-        if (listLocales) printAvailableLocales() else printProvidersList()
+        val fakerConfig = fakerConfig { locale = options.locale }
+        if (listLocales) printAvailableLocales() else fakers(fakerConfig).forEach(::printProvidersList)
     }
 }

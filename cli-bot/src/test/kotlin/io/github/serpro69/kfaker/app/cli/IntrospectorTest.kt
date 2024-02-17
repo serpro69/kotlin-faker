@@ -2,8 +2,8 @@ package io.github.serpro69.kfaker.app.cli
 
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Airport
-import io.github.serpro69.kfaker.provider.Dota
+import io.github.serpro69.kfaker.travel.provider.Airport
+import io.github.serpro69.kfaker.games.provider.Dota
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldContainExactly
 import kotlin.reflect.KClass
