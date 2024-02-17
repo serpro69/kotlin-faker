@@ -29,6 +29,13 @@ object List : Runnable {
     )
     var listLocales: Boolean = false
 
+    @CommandLine.Option(
+        names = ["--list-fakers"],
+        description = ["list available fakers", "if used other options will be ignored"],
+        required = false
+    )
+    var listFakers: Boolean = false
+
     @CommandLine.Parameters(
         description = ["limit output to specified provider(s)", "case-insensitive"]
     )
@@ -68,6 +75,10 @@ object List : Runnable {
 
     override fun run() {
         val fakerConfig = fakerConfig { locale = options.locale }
-        if (listLocales) printAvailableLocales() else fakers(fakerConfig).forEach(::printProvidersList)
+        when {
+            listLocales -> printAvailableLocales()
+            listFakers -> fakers(fakerConfig).forEach { println(it::class.qualifiedName) }
+            else -> fakers(fakerConfig).forEach(::printProvidersList)
+        }
     }
 }

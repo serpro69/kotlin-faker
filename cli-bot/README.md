@@ -78,6 +78,10 @@ using `de` locale.
 
 `./faker-bot list --list-locales` - prints all available locales
 
+#### List available fakers
+
+`./faker-bot list --list-fakers` - prints all available faker implementations
+
 ## Thanks
 
 Inspired by [faker-ruby/faker-bot](https://github.com/faker-ruby/faker-bot)
