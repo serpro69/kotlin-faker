@@ -12,8 +12,6 @@ import io.github.serpro69.kfaker.provider.Australia
 import io.github.serpro69.kfaker.provider.Bird
 import io.github.serpro69.kfaker.provider.Blood
 import io.github.serpro69.kfaker.provider.Cat
-import io.github.serpro69.kfaker.provider.Chiquito
-import io.github.serpro69.kfaker.provider.ChuckNorris
 import io.github.serpro69.kfaker.provider.Color
 import io.github.serpro69.kfaker.provider.Currency
 import io.github.serpro69.kfaker.provider.CurrencySymbol
@@ -23,7 +21,6 @@ import io.github.serpro69.kfaker.provider.DrivingLicense
 import io.github.serpro69.kfaker.provider.Educator
 import io.github.serpro69.kfaker.provider.Emotion
 import io.github.serpro69.kfaker.provider.File
-import io.github.serpro69.kfaker.provider.FunnyName
 import io.github.serpro69.kfaker.provider.Gender
 import io.github.serpro69.kfaker.provider.GreekPhilosophers
 import io.github.serpro69.kfaker.provider.Hipster
@@ -31,13 +28,11 @@ import io.github.serpro69.kfaker.provider.Hobby
 import io.github.serpro69.kfaker.provider.Horse
 import io.github.serpro69.kfaker.provider.IdNumber
 import io.github.serpro69.kfaker.provider.Internet
-import io.github.serpro69.kfaker.provider.JackHandey
 import io.github.serpro69.kfaker.provider.Job
 import io.github.serpro69.kfaker.provider.Lorem
 import io.github.serpro69.kfaker.provider.Markdown
 import io.github.serpro69.kfaker.provider.Measurement
 import io.github.serpro69.kfaker.provider.Military
-import io.github.serpro69.kfaker.provider.MitchHedberg
 import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.Mountain
 import io.github.serpro69.kfaker.provider.Name
@@ -93,9 +88,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val bird: Bird by lazy { Bird(fakerService) }
     val blood: Blood by lazy { Blood(fakerService) }
     val cat: Cat by lazy { Cat(fakerService) }
-    // humor?
-    val chiquito: Chiquito by lazy { Chiquito(fakerService) }
-    val chuckNorris: ChuckNorris by lazy { ChuckNorris(fakerService) }
     //
     val color: Color by lazy { Color(fakerService) }
 
@@ -107,8 +99,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val educator: Educator by lazy { Educator(fakerService) }
     val emotion: Emotion by lazy { Emotion(fakerService) }
     val file: File by lazy { File(fakerService) }
-    // humor?
-    val funnyName: FunnyName by lazy { FunnyName(fakerService) }
     val gender: Gender by lazy { Gender(fakerService) }
     // books?
     val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
@@ -117,15 +107,11 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): Ab
     val horse: Horse by lazy { Horse(fakerService) }
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, name) }
-    // humor
-    val jackHandey: JackHandey by lazy { JackHandey(fakerService) }
     val job: Job by lazy { Job(fakerService) }
     val lorem: Lorem by lazy { Lorem(fakerService) }
     val markdown: Markdown by lazy { Markdown(fakerService) }
     val measurement: Measurement by lazy { Measurement(fakerService) }
     val military: Military by lazy { Military(fakerService) }
-    // humor
-    val mitchHedberg: MitchHedberg by lazy { MitchHedberg(fakerService) }
     val money: Money by lazy { Money(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
     val name: Name by lazy { Name(fakerService) }
