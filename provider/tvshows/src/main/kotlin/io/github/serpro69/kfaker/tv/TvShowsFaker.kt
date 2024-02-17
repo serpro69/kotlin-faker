@@ -39,6 +39,7 @@ import io.github.serpro69.kfaker.tv.provider.Supernatural
 import io.github.serpro69.kfaker.tv.provider.TheExpanse
 import io.github.serpro69.kfaker.tv.provider.TheITCrowd
 import io.github.serpro69.kfaker.tv.provider.TheOffice
+import io.github.serpro69.kfaker.tv.provider.TheThickOfIt
 import io.github.serpro69.kfaker.tv.provider.TwinPeaks
 import io.github.serpro69.kfaker.tv.provider.VentureBros
 
@@ -92,6 +93,7 @@ class TvShowsFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {
     val theExpanse: TheExpanse by lazy { TheExpanse(fakerService) }
     val theITCrowd: TheITCrowd by lazy { TheITCrowd(fakerService) }
     val theOffice: TheOffice by lazy { TheOffice(fakerService) }
+    val theThickOfIt: TheThickOfIt by lazy { TheThickOfIt(fakerService) }
     val twinPeaks: TwinPeaks by lazy { TwinPeaks(fakerService) }
     val ventureBros: VentureBros by lazy { VentureBros(fakerService) }
 

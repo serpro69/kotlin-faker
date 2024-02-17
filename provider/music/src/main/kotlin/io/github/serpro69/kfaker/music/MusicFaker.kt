@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerDsl
 import io.github.serpro69.kfaker.fakerConfig
+import io.github.serpro69.kfaker.music.provider.BossaNova
 import io.github.serpro69.kfaker.music.provider.GratefulDead
 import io.github.serpro69.kfaker.music.provider.HipHop
 import io.github.serpro69.kfaker.music.provider.KPop
@@ -14,6 +15,7 @@ import io.github.serpro69.kfaker.music.provider.Phish
 import io.github.serpro69.kfaker.music.provider.Prince
 import io.github.serpro69.kfaker.music.provider.RockBand
 import io.github.serpro69.kfaker.music.provider.Rush
+import io.github.serpro69.kfaker.music.provider.Show
 import io.github.serpro69.kfaker.music.provider.SmashingPumpkins
 import io.github.serpro69.kfaker.music.provider.UmphreysMcgee
 
@@ -32,6 +34,7 @@ typealias Faker = MusicFaker
 @Suppress("unused")
 class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
+    val bossaNova: BossaNova by lazy { BossaNova(fakerService) }
     val gratefulDead: GratefulDead by lazy { GratefulDead(fakerService) }
     val hipHop: HipHop by lazy { HipHop(fakerService) }
     val kPop: KPop by lazy { KPop(fakerService) }
@@ -42,6 +45,7 @@ class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val prince: Prince by lazy { Prince(fakerService) }
     val rockBand: RockBand by lazy { RockBand(fakerService) }
     val rush: Rush by lazy { Rush(fakerService) }
+    val show: Show by lazy { Show(fakerService) }
     val smashingPumpkins: SmashingPumpkins by lazy { SmashingPumpkins(fakerService) }
     val umphreysMcgee: UmphreysMcgee by lazy { UmphreysMcgee(fakerService) }
 

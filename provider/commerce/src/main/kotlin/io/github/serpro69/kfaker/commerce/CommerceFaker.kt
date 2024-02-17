@@ -8,16 +8,18 @@ import io.github.serpro69.kfaker.commerce.provider.Barcode
 import io.github.serpro69.kfaker.commerce.provider.Beer
 import io.github.serpro69.kfaker.commerce.provider.Business
 import io.github.serpro69.kfaker.commerce.provider.Cannabis
+import io.github.serpro69.kfaker.commerce.provider.Code
 import io.github.serpro69.kfaker.commerce.provider.Coffee
 import io.github.serpro69.kfaker.commerce.provider.Commerce
 import io.github.serpro69.kfaker.commerce.provider.Company
 import io.github.serpro69.kfaker.commerce.provider.Construction
+import io.github.serpro69.kfaker.commerce.provider.Dessert
 import io.github.serpro69.kfaker.commerce.provider.Finance
 import io.github.serpro69.kfaker.commerce.provider.Food
 import io.github.serpro69.kfaker.commerce.provider.IndustrySegments
 import io.github.serpro69.kfaker.commerce.provider.Marketing
-import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.commerce.provider.Restaurant
+import io.github.serpro69.kfaker.commerce.provider.Stripe
 import io.github.serpro69.kfaker.commerce.provider.Subscription
 import io.github.serpro69.kfaker.commerce.provider.Tea
 import io.github.serpro69.kfaker.fakerConfig
@@ -42,10 +44,12 @@ class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
     val beer: Beer by lazy { Beer(fakerService) }
     val business: Business by lazy { Business(fakerService) }
     val cannabis: Cannabis by lazy { Cannabis(fakerService) }
+    val code: Code by lazy { Code(fakerService) }
     val coffee: Coffee by lazy { Coffee(fakerService) }
     val commerce: Commerce by lazy { Commerce(fakerService) }
     val company: Company by lazy { Company(fakerService) }
     val construction: Construction by lazy { Construction(fakerService) }
+    val dessert: Dessert by lazy { Dessert(fakerService) }
     val finance: Finance by lazy { Finance(fakerService, randomService) }
     val food: Food by lazy { Food(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
@@ -53,6 +57,7 @@ class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
     //  val invoice: Invoice by lazy { Invoice(fakerService }
     val marketing: Marketing by lazy { Marketing(fakerService) }
     val restaurant: Restaurant by lazy { Restaurant(fakerService) }
+    val stripe: Stripe by lazy { Stripe(fakerService) }
     val subscription: Subscription by lazy { Subscription(fakerService) }
     val tea: Tea by lazy { Tea(fakerService) }
 

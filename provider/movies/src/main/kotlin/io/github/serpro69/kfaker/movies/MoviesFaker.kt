@@ -9,6 +9,7 @@ import io.github.serpro69.kfaker.movies.provider.BackToTheFuture
 import io.github.serpro69.kfaker.movies.provider.Departed
 import io.github.serpro69.kfaker.movies.provider.DumbAndDumber
 import io.github.serpro69.kfaker.movies.provider.GhostBusters
+import io.github.serpro69.kfaker.movies.provider.Hackers
 import io.github.serpro69.kfaker.movies.provider.HarryPotter
 import io.github.serpro69.kfaker.movies.provider.HitchhikersGuideToTheGalaxy
 import io.github.serpro69.kfaker.movies.provider.Hobbit
@@ -21,6 +22,7 @@ import io.github.serpro69.kfaker.movies.provider.StarWars
 import io.github.serpro69.kfaker.movies.provider.TheRoom
 import io.github.serpro69.kfaker.movies.provider.Tron
 import io.github.serpro69.kfaker.movies.provider.VForVendetta
+import io.github.serpro69.kfaker.movies.provider.Yoda
 
 /**
  * Typealias for the [MoviesFaker]
@@ -42,6 +44,7 @@ class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val departed: Departed by lazy { Departed(fakerService) }
     val dumbAndDumber: DumbAndDumber by lazy { DumbAndDumber(fakerService) }
     val ghostBusters: GhostBusters by lazy { GhostBusters(fakerService) }
+    val hackers: Hackers by lazy { Hackers(fakerService) }
     val harryPotter: HarryPotter by lazy { HarryPotter(fakerService) }
     val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy by lazy { HitchhikersGuideToTheGalaxy(fakerService) }
     val hobbit: Hobbit by lazy { Hobbit(fakerService) }
@@ -54,6 +57,7 @@ class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val theRoom: TheRoom by lazy { TheRoom(fakerService) }
     val tron: Tron by lazy { Tron(fakerService, randomService) }
     val vForVendetta: VForVendetta by lazy { VForVendetta(fakerService) }
+    val yoda: Yoda by lazy { Yoda(fakerService) }
 
     @FakerDsl
     /**
