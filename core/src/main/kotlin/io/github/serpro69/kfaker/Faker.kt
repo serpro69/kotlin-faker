@@ -3,11 +3,9 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Airport
 import io.github.serpro69.kfaker.provider.Ancient
 import io.github.serpro69.kfaker.provider.Animal
 import io.github.serpro69.kfaker.provider.Artist
-import io.github.serpro69.kfaker.provider.Australia
 import io.github.serpro69.kfaker.provider.Bird
 import io.github.serpro69.kfaker.provider.Blood
 import io.github.serpro69.kfaker.provider.Cat
@@ -31,9 +29,7 @@ import io.github.serpro69.kfaker.provider.Job
 import io.github.serpro69.kfaker.provider.Measurement
 import io.github.serpro69.kfaker.provider.Military
 import io.github.serpro69.kfaker.provider.Money
-import io.github.serpro69.kfaker.provider.Mountain
 import io.github.serpro69.kfaker.provider.Name
-import io.github.serpro69.kfaker.provider.Nation
 import io.github.serpro69.kfaker.provider.Person
 import io.github.serpro69.kfaker.provider.PhoneNumber
 import io.github.serpro69.kfaker.provider.Quote
@@ -41,7 +37,6 @@ import io.github.serpro69.kfaker.provider.Rajnikanth
 import io.github.serpro69.kfaker.provider.Relationship
 import io.github.serpro69.kfaker.provider.Science
 import io.github.serpro69.kfaker.provider.Separator
-import io.github.serpro69.kfaker.provider.TrainStation
 import io.github.serpro69.kfaker.provider.University
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
 import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
@@ -60,62 +55,99 @@ import io.github.serpro69.kfaker.provider.misc.StringProvider
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
+class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
     // misc providers
     val crypto: CryptographyProvider by lazy { CryptographyProvider(fakerService) }
     val random: RandomProvider by lazy { RandomProvider(fakerService) }
-    // TODO rename to randomClass
-    val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
+    val randomClass: RandomClassProvider by lazy { RandomClassProvider(config) }
     val string: StringProvider by lazy { StringProvider(fakerService) }
+
+    @Deprecated(
+        message = "This property is deprecated and will be removed in future releases",
+        level = DeprecationLevel.WARNING,
+        replaceWith = ReplaceWith("randomClass")
+    )
+    val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
 
     val separator: Separator by lazy { Separator(fakerService) }
     val currencySymbol: CurrencySymbol by lazy { CurrencySymbol(fakerService) }
 
     // dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
-    val airport: Airport by lazy { Airport(fakerService) }
+
+    // creature
     val ancient: Ancient by lazy { Ancient(fakerService) }
+
+    // creature
     val animal: Animal by lazy { Animal(fakerService) }
     val artist: Artist by lazy { Artist(fakerService) }
-    val australia: Australia by lazy { Australia(fakerService) }
+
+    // creature
     val bird: Bird by lazy { Bird(fakerService) }
     val blood: Blood by lazy { Blood(fakerService) }
+
+    // creature
     val cat: Cat by lazy { Cat(fakerService) }
     val color: Color by lazy { Color(fakerService) }
-
-    //    val compass: Compass by lazy {Compass(fakerService) }
     val currency: Currency by lazy { Currency(fakerService) }
+
+    // misc
     val demographic: Demographic by lazy { Demographic(fakerService) }
+
+    // creature
     val dog: Dog by lazy { Dog(fakerService) }
+
+    // misc
     val drivingLicense: DrivingLicense by lazy { DrivingLicense(fakerService) }
+
+    // edu
     val educator: Educator by lazy { Educator(fakerService) }
+
+    // lorem
     val emotion: Emotion by lazy { Emotion(fakerService) }
     val file: File by lazy { File(fakerService) }
     val gender: Gender by lazy { Gender(fakerService) }
-    // books?
+
+    // books
     val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
+
+    // lorem
     val hipster: Hipster by lazy { Hipster(fakerService) }
+
+    // lorem
     val hobby: Hobby by lazy { Hobby(fakerService) }
+
+    // creature
     val horse: Horse by lazy { Horse(fakerService) }
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, name) }
+
+    // edu
     val job: Job by lazy { Job(fakerService) }
     val measurement: Measurement by lazy { Measurement(fakerService) }
+
+    // misc
     val military: Military by lazy { Military(fakerService) }
     val money: Money by lazy { Money(fakerService) }
-    val mountain: Mountain by lazy { Mountain(fakerService) }
     val name: Name by lazy { Name(fakerService) }
-    val nation: Nation by lazy { Nation(fakerService) }
     val person: Person by lazy { Person(config.random) }
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
+
+    // lorem
     val quote: Quote by lazy { Quote(fakerService) }
+
+    // movie
     val rajnikanth: Rajnikanth by lazy { Rajnikanth(fakerService) }
+
+    // misc
     val relationship: Relationship by lazy { Relationship(fakerService) }
+
+    // edu
     val science: Science by lazy { Science(fakerService) }
 
-    //    val source: Source by lazy {Source(fakerService }
-    val trainStation: TrainStation by lazy { TrainStation(fakerService) }
+    //    val source: Source by lazy { Source(fakerService) }
+    // edu
     val university: University by lazy { University(fakerService) }
 
     @FakerDsl

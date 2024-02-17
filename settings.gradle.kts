@@ -28,6 +28,7 @@ val providers = listOf(
     "music",
     "sports",
     "tech",
+    "travel",
     "tvshows",
 )
 
