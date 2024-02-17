@@ -23,6 +23,7 @@ val providers = listOf(
     "games",
     "humor",
     "japmedia",
+    "lorem",
     "movies",
     "music",
     "sports",
