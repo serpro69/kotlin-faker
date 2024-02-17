@@ -20,12 +20,6 @@ plugins {
  */
 private val fullName: String = if (project.name == "core") rootProject.name else "${rootProject.name}-${project.name}"
 
-dependencies {
-    val shadow by configurations
-    shadow(kotlin("stdlib-jdk8"))
-    shadow(kotlin("reflect"))
-}
-
 configurations {
     create("integrationImplementation") { extendsFrom(configurations.getByName("testImplementation")) }
     create("integrationRuntimeOnly") {
@@ -49,6 +43,15 @@ configure<SourceSetContainer> {
             this.srcDir("build/generated/src/main/resources")
         }
     }
+}
+
+dependencies {
+    val shadow by configurations
+    val integrationImplementation by configurations
+    shadow(kotlin("stdlib-jdk8"))
+    shadow(kotlin("reflect"))
+    // provides helpers for integration tests
+    integrationImplementation(project(":test", "testHelper"))
 }
 
 val integrationTest by tasks.creating(Test::class) {
