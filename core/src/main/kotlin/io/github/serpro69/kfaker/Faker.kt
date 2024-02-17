@@ -6,12 +6,8 @@ import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Color
 import io.github.serpro69.kfaker.provider.Currency
 import io.github.serpro69.kfaker.provider.CurrencySymbol
-import io.github.serpro69.kfaker.provider.Emotion
 import io.github.serpro69.kfaker.provider.File
 import io.github.serpro69.kfaker.provider.Gender
-import io.github.serpro69.kfaker.provider.GreekPhilosophers
-import io.github.serpro69.kfaker.provider.Hipster
-import io.github.serpro69.kfaker.provider.Hobby
 import io.github.serpro69.kfaker.provider.IdNumber
 import io.github.serpro69.kfaker.provider.Internet
 import io.github.serpro69.kfaker.provider.Measurement
@@ -19,8 +15,6 @@ import io.github.serpro69.kfaker.provider.Money
 import io.github.serpro69.kfaker.provider.Name
 import io.github.serpro69.kfaker.provider.Person
 import io.github.serpro69.kfaker.provider.PhoneNumber
-import io.github.serpro69.kfaker.provider.Quote
-import io.github.serpro69.kfaker.provider.Rajnikanth
 import io.github.serpro69.kfaker.provider.Separator
 import io.github.serpro69.kfaker.provider.misc.CryptographyProvider
 import io.github.serpro69.kfaker.provider.misc.RandomClassProvider
@@ -54,29 +48,13 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     )
     val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
 
-    val separator: Separator by lazy { Separator(fakerService) }
-    val currencySymbol: CurrencySymbol by lazy { CurrencySymbol(fakerService) }
-
-    // dictionary-based providers
+    // yml dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
     val color: Color by lazy { Color(fakerService) }
     val currency: Currency by lazy { Currency(fakerService) }
-
-    // lorem
-    val emotion: Emotion by lazy { Emotion(fakerService) }
-
+    val currencySymbol: CurrencySymbol by lazy { CurrencySymbol(fakerService) }
     val file: File by lazy { File(fakerService) }
     val gender: Gender by lazy { Gender(fakerService) }
-
-    // books
-    val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
-
-    // lorem
-    val hipster: Hipster by lazy { Hipster(fakerService) }
-
-    // lorem
-    val hobby: Hobby by lazy { Hobby(fakerService) }
-
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, name) }
     val measurement: Measurement by lazy { Measurement(fakerService) }
@@ -84,13 +62,7 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     val name: Name by lazy { Name(fakerService) }
     val person: Person by lazy { Person(config.random) }
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
-
-    // lorem
-    val quote: Quote by lazy { Quote(fakerService) }
-
-    // movie
-    val rajnikanth: Rajnikanth by lazy { Rajnikanth(fakerService) }
-
+    val separator: Separator by lazy { Separator(fakerService) }
     // TODO val source: Source by lazy { Source(fakerService) }
 
     @FakerDsl

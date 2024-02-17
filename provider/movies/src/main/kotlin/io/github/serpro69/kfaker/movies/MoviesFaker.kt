@@ -18,6 +18,7 @@ import io.github.serpro69.kfaker.movies.provider.Lebowski
 import io.github.serpro69.kfaker.movies.provider.LordOfTheRings
 import io.github.serpro69.kfaker.movies.provider.Movie
 import io.github.serpro69.kfaker.movies.provider.PrincessBride
+import io.github.serpro69.kfaker.movies.provider.Rajnikanth
 import io.github.serpro69.kfaker.movies.provider.StarWars
 import io.github.serpro69.kfaker.movies.provider.TheRoom
 import io.github.serpro69.kfaker.movies.provider.Tron
@@ -54,6 +55,7 @@ class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val lordOfTheRings: LordOfTheRings by lazy { LordOfTheRings(fakerService) }
     val movie: Movie by lazy { Movie(fakerService) }
     val princessBride: PrincessBride by lazy { PrincessBride(fakerService) }
+    val rajnikanth: Rajnikanth by lazy { Rajnikanth(fakerService) }
     val starWars: StarWars by lazy { StarWars(fakerService) }
     val theRoom: TheRoom by lazy { TheRoom(fakerService) }
     val tron: Tron by lazy { Tron(fakerService, randomService) }

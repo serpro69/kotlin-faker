@@ -5,9 +5,12 @@ import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerDsl
 import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.lorem.provider.Adjective
+import io.github.serpro69.kfaker.lorem.provider.Emotion
+import io.github.serpro69.kfaker.lorem.provider.Hipster
 import io.github.serpro69.kfaker.lorem.provider.Lorem
 import io.github.serpro69.kfaker.lorem.provider.Markdown
 import io.github.serpro69.kfaker.lorem.provider.NatoPhoneticAlphabet
+import io.github.serpro69.kfaker.lorem.provider.Quote
 import io.github.serpro69.kfaker.lorem.provider.Verbs
 
 /**
@@ -27,9 +30,12 @@ typealias Faker = LoremFaker
 class LoremFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
     val adjective: Adjective by lazy { Adjective(fakerService) }
+    val emotion: Emotion by lazy { Emotion(fakerService) }
+    val hipster: Hipster by lazy { Hipster(fakerService) }
     val lorem: Lorem by lazy { Lorem(fakerService) }
     val markdown: Markdown by lazy { Markdown(fakerService) }
     val natoPhoneticAlphabet: NatoPhoneticAlphabet by lazy { NatoPhoneticAlphabet(fakerService) }
+    val quote: Quote by lazy { Quote(fakerService) }
     val verbs: Verbs by lazy { Verbs(fakerService) }
 
     @FakerDsl

@@ -8,6 +8,8 @@ import io.github.serpro69.kfaker.misc.provider.Artist
 import io.github.serpro69.kfaker.misc.provider.Blood
 import io.github.serpro69.kfaker.misc.provider.Demographic
 import io.github.serpro69.kfaker.misc.provider.DrivingLicense
+import io.github.serpro69.kfaker.misc.provider.GreekPhilosophers
+import io.github.serpro69.kfaker.misc.provider.Hobby
 import io.github.serpro69.kfaker.misc.provider.Military
 import io.github.serpro69.kfaker.misc.provider.Relationship
 import io.github.serpro69.kfaker.Faker as CoreFaker
@@ -33,6 +35,8 @@ class MiscFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { })
     val blood: Blood by lazy { Blood(fakerService) }
     val demographic: Demographic by lazy { Demographic(fakerService) }
     val drivingLicense: DrivingLicense by lazy { DrivingLicense(fakerService) }
+    val greekPhilosophers: GreekPhilosophers by lazy { GreekPhilosophers(fakerService) }
+    val hobby: Hobby by lazy { Hobby(fakerService) }
     val military: Military by lazy { Military(fakerService) }
     val relationship: Relationship by lazy { Relationship(fakerService) }
 
