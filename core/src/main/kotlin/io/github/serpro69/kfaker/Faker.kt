@@ -3,21 +3,15 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Ancient
-import io.github.serpro69.kfaker.provider.Animal
-import io.github.serpro69.kfaker.provider.Bird
-import io.github.serpro69.kfaker.provider.Cat
 import io.github.serpro69.kfaker.provider.Color
 import io.github.serpro69.kfaker.provider.Currency
 import io.github.serpro69.kfaker.provider.CurrencySymbol
-import io.github.serpro69.kfaker.provider.Dog
 import io.github.serpro69.kfaker.provider.Emotion
 import io.github.serpro69.kfaker.provider.File
 import io.github.serpro69.kfaker.provider.Gender
 import io.github.serpro69.kfaker.provider.GreekPhilosophers
 import io.github.serpro69.kfaker.provider.Hipster
 import io.github.serpro69.kfaker.provider.Hobby
-import io.github.serpro69.kfaker.provider.Horse
 import io.github.serpro69.kfaker.provider.IdNumber
 import io.github.serpro69.kfaker.provider.Internet
 import io.github.serpro69.kfaker.provider.Measurement
@@ -65,24 +59,8 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
 
     // dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
-
-    // creature
-    val ancient: Ancient by lazy { Ancient(fakerService) }
-
-    // creature
-    val animal: Animal by lazy { Animal(fakerService) }
-
-    // creature
-    val bird: Bird by lazy { Bird(fakerService) }
-
-    // creature
-    val cat: Cat by lazy { Cat(fakerService) }
-
     val color: Color by lazy { Color(fakerService) }
     val currency: Currency by lazy { Currency(fakerService) }
-
-    // creature
-    val dog: Dog by lazy { Dog(fakerService) }
 
     // lorem
     val emotion: Emotion by lazy { Emotion(fakerService) }
@@ -98,9 +76,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
 
     // lorem
     val hobby: Hobby by lazy { Hobby(fakerService) }
-
-    // creature
-    val horse: Horse by lazy { Horse(fakerService) }
 
     val idNumber: IdNumber by lazy { IdNumber(fakerService) }
     val internet: Internet by lazy { Internet(fakerService, name) }

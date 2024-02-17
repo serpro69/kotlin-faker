@@ -200,7 +200,7 @@ class UniqueDataProviderIT : DescribeSpec({
             val faker = Faker(config)
 
             faker.unique.enable(faker::address)
-            faker.unique.enable(faker::ancient)
+            faker.unique.enable(faker::color)
 
             val countries = (0..20).map { faker.address.country() }
 
@@ -317,10 +317,10 @@ class UniqueDataProviderIT : DescribeSpec({
             val faker = Faker(config)
             faker.unique.enable(faker::address)
 
-            val animalNames = (0..100).map { faker.animal.name() }
+            val colors = (0..100).map { faker.color.name() }
 
             it("collection can have duplicates") {
-                animalNames shouldNot beUnique()
+                colors shouldNot beUnique()
             }
         }
 
@@ -343,18 +343,18 @@ class UniqueDataProviderIT : DescribeSpec({
         context("unique generation is disabled for all categories") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
-            faker.unique.enable(faker::ancient)
+            faker.unique.enable(faker::color)
 
             faker.unique.disableAll()
 
             context("collections of values are generated") {
                 val countries = (0..100).map { faker.address.country() }
-                val gods = (0..100).map { faker.ancient.god() }
+                val colors = (0..100).map { faker.color.name() }
 
                 it("collection can have duplicates") {
                     assertSoftly {
                         countries shouldNot beUnique()
-                        gods shouldNot beUnique()
+                        colors shouldNot beUnique()
                     }
                 }
             }
@@ -375,22 +375,22 @@ class UniqueDataProviderIT : DescribeSpec({
         context("unique generation is cleared for all categories") {
             val faker = Faker(config)
             faker.unique.enable(faker::address)
-            faker.unique.enable(faker::ancient)
+            faker.unique.enable(faker::color)
 
             // Generate some values first
             (0..20).map { faker.address.country() }
-            (0..20).map { faker.ancient.hero() }
+            (0..20).map { faker.color.name() }
 
             faker.unique.clearAll()
 
             context("collections of values are generated") {
                 val countries = (0..20).map { faker.address.country() }
-                val heroes = (0..20).map { faker.ancient.hero() }
+                val colors = (0..20).map { faker.color.name() }
 
                 it("collections should be unique") {
                     assertSoftly {
                         countries should beUnique()
-                        heroes should beUnique()
+                        colors should beUnique()
                     }
                 }
             }
