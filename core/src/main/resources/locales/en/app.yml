@@ -6,5 +6,14 @@ en:
       version: ['0.#.#', '0.##', '#.##', '#.#', '#.#.#']
       author:
         - "#{Name.name}"
-        - "#{Company.name}"
+      #  - "#{Company.name}"
+      ### NB! workaround for #{Company.name} call,
+      # which is broken because Company is part of another faker (:provider:commerce),
+      # and we don't support calls between different faker providers
+      # Copied 'name' key values and 'suffix' as-is from company.yml
+        - "#{Name.last_name} #{suffix}"
+        - "#{Name.last_name}-#{Name.last_name}"
+        - "#{Name.last_name}, #{Name.last_name} and #{Name.last_name}"
+      suffix: [Inc, and Sons, LLC, Group]
+      ### end
 # END app_provider_dict
