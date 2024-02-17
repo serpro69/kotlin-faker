@@ -25,9 +25,10 @@ import io.github.serpro69.kfaker.music.provider.UmphreysMcgee
 typealias Faker = MusicFaker
 
 /**
- * Provides access to fake data generators withing the Books domain.
+ * Provides access to fake data generators within the Music domain.
  *
- * Each category (generator) from this [MusicFaker] is represented by a property that has the same name as the `.yml` file.
+ * Each category (generator) from this [MusicFaker] is represented by a property
+ * that (usually) has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
