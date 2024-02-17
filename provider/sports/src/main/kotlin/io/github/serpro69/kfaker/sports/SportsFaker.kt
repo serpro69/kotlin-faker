@@ -10,6 +10,8 @@ import io.github.serpro69.kfaker.sports.provider.Crossfit
 import io.github.serpro69.kfaker.sports.provider.ESport
 import io.github.serpro69.kfaker.sports.provider.Football
 import io.github.serpro69.kfaker.sports.provider.Mountaineering
+import io.github.serpro69.kfaker.sports.provider.Sport
+import io.github.serpro69.kfaker.sports.provider.Team
 import io.github.serpro69.kfaker.sports.provider.Volleyball
 import io.github.serpro69.kfaker.sports.provider.WorldCup
 
@@ -34,6 +36,8 @@ class SportsFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val eSport: ESport by lazy { ESport(fakerService) }
     val football: Football by lazy { Football(fakerService) }
     val mountaineering: Mountaineering by lazy { Mountaineering(fakerService) }
+    val sport: Sport by lazy { Sport(fakerService) }
+    val team: Team by lazy { Team(fakerService) }
     val volleyball: Volleyball by lazy { Volleyball(fakerService) }
     val worldCup: WorldCup by lazy { WorldCup(fakerService) }
 

@@ -155,7 +155,6 @@ enum class YamlCategory : Category {
     RESTAURANT,
     RICK_AND_MORTY,
     ROCK_BAND,
-    ROOM,
     RUPAUL,
     RUSH,
     SCIENCE,

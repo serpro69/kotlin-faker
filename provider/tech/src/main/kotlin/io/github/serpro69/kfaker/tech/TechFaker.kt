@@ -14,6 +14,7 @@ import io.github.serpro69.kfaker.tech.provider.Drone
 import io.github.serpro69.kfaker.tech.provider.ElectricalComponents
 import io.github.serpro69.kfaker.tech.provider.Hacker
 import io.github.serpro69.kfaker.tech.provider.ProgrammingLanguage
+import io.github.serpro69.kfaker.tech.provider.SlackEmoji
 import io.github.serpro69.kfaker.tech.provider.Space
 import io.github.serpro69.kfaker.tech.provider.Vehicle
 
@@ -42,6 +43,7 @@ class TechFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { })
     val electricalComponents: ElectricalComponents by lazy { ElectricalComponents(fakerService) }
     val hacker: Hacker by lazy { Hacker(fakerService) }
     val programmingLanguage: ProgrammingLanguage by lazy { ProgrammingLanguage(fakerService) }
+    val slackEmoji: SlackEmoji by lazy { SlackEmoji(fakerService) }
     val space: Space by lazy { Space(fakerService) }
     val vehicle: Vehicle by lazy { Vehicle(fakerService) }
 

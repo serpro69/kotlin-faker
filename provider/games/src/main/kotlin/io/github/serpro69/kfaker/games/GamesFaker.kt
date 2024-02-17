@@ -5,6 +5,7 @@ import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerDsl
 import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.games.provider.ClashOfClans
+import io.github.serpro69.kfaker.games.provider.Coin
 import io.github.serpro69.kfaker.games.provider.Control
 import io.github.serpro69.kfaker.games.provider.DnD
 import io.github.serpro69.kfaker.games.provider.Dota
@@ -24,6 +25,8 @@ import io.github.serpro69.kfaker.games.provider.SonicTheHedgehog
 import io.github.serpro69.kfaker.games.provider.StreetFighter
 import io.github.serpro69.kfaker.games.provider.SuperMario
 import io.github.serpro69.kfaker.games.provider.SuperSmashBros
+import io.github.serpro69.kfaker.games.provider.Superhero
+import io.github.serpro69.kfaker.games.provider.Tarkov
 import io.github.serpro69.kfaker.games.provider.Touhou
 import io.github.serpro69.kfaker.games.provider.WarhammerFantasy
 import io.github.serpro69.kfaker.games.provider.Witcher
@@ -46,6 +49,7 @@ typealias Faker = GamesFaker
 class GamesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
 
     val clashOfClans: ClashOfClans by lazy { ClashOfClans(fakerService) }
+    val coin: Coin by lazy { Coin(fakerService) }
     val control: Control by lazy { Control(fakerService) }
     val dnd: DnD by lazy { DnD(fakerService) }
     val dota: Dota by lazy { Dota(fakerService) }
@@ -63,8 +67,10 @@ class GamesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val pokemon: Pokemon by lazy { Pokemon(fakerService) }
     val sonicTheHedgehog: SonicTheHedgehog by lazy { SonicTheHedgehog(fakerService) }
     val streetFighter: StreetFighter by lazy { StreetFighter(fakerService) }
+    val superhero: Superhero by lazy { Superhero(fakerService) }
     val superMario: SuperMario by lazy { SuperMario(fakerService) }
     val superSmashBros: SuperSmashBros by lazy { SuperSmashBros(fakerService) }
+    val tarkov: Tarkov by lazy { Tarkov(fakerService) }
     val touhou: Touhou by lazy { Touhou(fakerService) }
     val warhammerFantasy: WarhammerFantasy by lazy { WarhammerFantasy(fakerService) }
     val witcher: Witcher by lazy { Witcher(fakerService) }
