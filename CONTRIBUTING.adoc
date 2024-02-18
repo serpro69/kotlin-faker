@@ -70,6 +70,7 @@ This repository consists of the following modules:
 * `link:cli-bot[cli-bot]` - a CLI application that helps to quickly find required kotlin-faker functions right from the terminal
 * `link:core[core]` - contains the core functionality of kotlin-faker
 * `link:docs[docs]` - documentation for this project, published @ https://serpro69.github.io/kotlin-faker/
+* `link:faker[faker]` - submodules with faker implementations in various domains, like "books", "music", and so on.
 
 == Adding new functionality
 
@@ -162,3 +163,13 @@ class Name internal constructor(fakerService: FakerService) : AbstractFakeDataPr
 ==== Example commit
 
 In addition to the above instructions, you can also take a look at https://github.com/serpro69/kotlin-faker/commit/0b34d19d77aa728ed87382444908c90a63cc5f52[`0b34d1`] commit, which can be used as an MVP example of all of the above steps.
+
+==== Which Faker implementation to use?
+
+Since kotlin-faker 2.0, the functionality has been split between various "faker implementations", according to some generic "domains".
+
+link:core[CoreFaker] (or just Faker) contains the most commonly used data providers, like names, addresses, internet and others, while the rest has been split between various other link:faker[faker submodules].
+
+There's no "even split" between each faker implementation and in some cases you could easily argue for a data provider to belong to more than one domain, so use your best judgement when deciding where to place a new data provider implementation. If there's no good fit, use link:faker/misc[MiscFaker].
+
+One can also consider creating a new faker submodule altogether, however, a general rule should be that any faker implementation should have at least 3 data providers.
