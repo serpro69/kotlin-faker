@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider.misc
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.IRandom
+import io.github.serpro69.kfaker.RandomService
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_CHAR
@@ -21,6 +22,9 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 import java.util.*
 
+/**
+ * Provides data-generator-like functionality for the functions of [RandomService].
+ */
 class RandomProvider internal constructor(
     fakerService: FakerService
 ) : IRandom, AbstractFakeDataProvider<RandomProvider>(fakerService) {

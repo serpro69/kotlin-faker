@@ -16,6 +16,7 @@ import io.github.serpro69.kfaker.commerce.provider.Construction
 import io.github.serpro69.kfaker.commerce.provider.Dessert
 import io.github.serpro69.kfaker.commerce.provider.Finance
 import io.github.serpro69.kfaker.commerce.provider.Food
+import io.github.serpro69.kfaker.commerce.provider.House
 import io.github.serpro69.kfaker.commerce.provider.IndustrySegments
 import io.github.serpro69.kfaker.commerce.provider.Marketing
 import io.github.serpro69.kfaker.commerce.provider.Restaurant
@@ -53,6 +54,7 @@ class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
     val dessert: Dessert by lazy { Dessert(fakerService) }
     val finance: Finance by lazy { Finance(fakerService, randomService) }
     val food: Food by lazy { Food(fakerService) }
+    val house: House by lazy { House(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
     // TODO not implemented
     //  val invoice: Invoice by lazy { Invoice(fakerService }

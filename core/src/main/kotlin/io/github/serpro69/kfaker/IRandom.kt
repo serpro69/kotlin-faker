@@ -2,6 +2,9 @@ package io.github.serpro69.kfaker
 
 import java.util.*
 
+/**
+ * Provides functionality similar to [Random]
+ */
 interface IRandom {
     val config: FakerConfig
 
