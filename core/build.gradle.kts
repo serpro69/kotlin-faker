@@ -13,11 +13,11 @@ dependencies {
     shadow("com.ibm.icu:icu4j:73.2")
     shadow("com.github.mifmif:generex:1.0.2")
     // integration dependencies for classes in docs package, e.g. Homepage.kt
-    // NB! only add providers that are needed
+    // NB! only add fakers that are needed
     val integrationImplementation by configurations
-    integrationImplementation(project(":provider:commerce"))
-    integrationImplementation(project(":provider:movies"))
-    integrationImplementation(project(":provider:tvshows"))
+    integrationImplementation(project(":faker:commerce"))
+    integrationImplementation(project(":faker:movies"))
+    integrationImplementation(project(":faker:tvshows"))
 }
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block

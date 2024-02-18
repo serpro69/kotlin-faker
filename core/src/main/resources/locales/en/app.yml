@@ -8,7 +8,7 @@ en:
         - "#{Name.name}"
       #  - "#{Company.name}"
       ### NB! workaround for #{Company.name} call,
-      # which is broken because Company is part of another faker (:provider:commerce),
+      # which is broken because Company is part of another faker (:faker:commerce),
       # and we don't support calls between different faker providers
       # Copied 'name' key values and 'suffix' as-is from company.yml
         - "#{Name.last_name} #{suffix}"
