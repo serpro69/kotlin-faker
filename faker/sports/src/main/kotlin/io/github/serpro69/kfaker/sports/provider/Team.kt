@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Team internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Team>(fakerService) {
     override val yamlCategory = YamlCategory.TEAM
     override val localUniqueDataProvider = LocalUniqueDataProvider<Team>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

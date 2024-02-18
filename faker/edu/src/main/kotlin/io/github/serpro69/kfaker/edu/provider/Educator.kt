@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Educator internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Educator>(fakerService) {
     override val yamlCategory = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Educator>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -44,7 +44,7 @@ class Educator internal constructor(fakerService: FakerService) : YamlFakeDataPr
 class Tertiary internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Tertiary>(fakerService) {
     override val yamlCategory = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tertiary>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -58,7 +58,7 @@ class Tertiary internal constructor(fakerService: FakerService) : YamlFakeDataPr
 class Degree internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Degree>(fakerService) {
     override val yamlCategory = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Degree>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

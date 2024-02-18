@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class RockBand internal constructor(fakerService: FakerService) : YamlFakeDataProvider<RockBand>(fakerService) {
     override val yamlCategory = YamlCategory.ROCK_BAND
     override val localUniqueDataProvider = LocalUniqueDataProvider<RockBand>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

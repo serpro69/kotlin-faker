@@ -18,7 +18,7 @@ class Dune internal constructor(
 ) : YamlFakeDataProvider<Dune>(fakerService) {
     override val yamlCategory = YamlCategory.DUNE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dune>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

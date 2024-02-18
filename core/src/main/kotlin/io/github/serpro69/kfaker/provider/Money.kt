@@ -8,7 +8,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Money internal constructor(fakerService: FakerService) : AbstractFakeDataProvider<Money>(fakerService) {
     override val category = Category.ofName("MONEY")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Money>()
-    override val unique: Money by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique: Money by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     private val currencySymbol by lazy { CurrencySymbol(fakerService).symbol() }
 

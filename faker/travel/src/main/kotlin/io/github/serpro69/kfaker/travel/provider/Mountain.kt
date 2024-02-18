@@ -16,7 +16,7 @@ class Mountain internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Mountain>(fakerService) {
     override val yamlCategory = YamlCategory.MOUNTAIN
     override val localUniqueDataProvider = LocalUniqueDataProvider<Mountain>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

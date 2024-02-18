@@ -16,7 +16,7 @@ class Volleyball internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Volleyball>(fakerService) {
     override val yamlCategory = YamlCategory.VOLLEYBALL
     override val localUniqueDataProvider = LocalUniqueDataProvider<Volleyball>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

@@ -16,7 +16,7 @@ class SonicTheHedgehog internal constructor(fakerService: FakerService) : YamlFa
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("SONIC_THE_HEDGEHOG")
     override val localUniqueDataProvider = LocalUniqueDataProvider<SonicTheHedgehog>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

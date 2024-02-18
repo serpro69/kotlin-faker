@@ -16,7 +16,7 @@ class Zelda internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("ZELDA")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Zelda>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

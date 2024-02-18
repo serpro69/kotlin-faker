@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Stripe internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Stripe>(fakerService) {
     override val yamlCategory = YamlCategory.STRIPE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Stripe>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

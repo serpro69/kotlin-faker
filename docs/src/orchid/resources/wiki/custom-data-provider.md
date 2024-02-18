@@ -43,7 +43,7 @@ class FooBar(fakerService: FakerService) : YamlFakeDataProvider<FooBar>(fakerSer
     override val yamlCategory: YamlCategory = YamlCategory.CUSTOM // ❶
     override val secondaryCategory: Category = Category.ofName("FOOBAR") // ❷
     override val localUniqueDataProvider = LocalUniqueDataProvider<FooBar>()
-    override val unique: FooBar by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique: FooBar by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory) // ❸

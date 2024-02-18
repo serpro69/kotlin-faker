@@ -16,7 +16,7 @@ class TheOffice internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TheOffice>(fakerService) {
     override val yamlCategory = YamlCategory.THE_OFFICE
     override val localUniqueDataProvider = LocalUniqueDataProvider<TheOffice>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

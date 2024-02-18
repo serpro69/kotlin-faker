@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class DcComics internal constructor(fakerService: FakerService) : YamlFakeDataProvider<DcComics>(fakerService) {
     override val yamlCategory = YamlCategory.DC_COMICS
     override val localUniqueDataProvider = LocalUniqueDataProvider<DcComics>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

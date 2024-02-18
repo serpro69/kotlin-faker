@@ -16,7 +16,7 @@ class Tarkov internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Tarkov>(fakerService) {
     override val yamlCategory = YamlCategory.TARKOV
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tarkov>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -36,7 +36,7 @@ class TarkovQuests internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TarkovQuests>(fakerService) {
     override val yamlCategory = YamlCategory.TARKOV
     override val localUniqueDataProvider = LocalUniqueDataProvider<TarkovQuests>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

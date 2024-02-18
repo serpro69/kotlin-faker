@@ -30,7 +30,7 @@ class RandomProvider internal constructor(
 ) : IRandom, AbstractFakeDataProvider<RandomProvider>(fakerService) {
     override val category: Category = Category.ofName("RANDOM")
     override val localUniqueDataProvider = LocalUniqueDataProvider<RandomProvider>()
-    override val unique: RandomProvider by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique: RandomProvider by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
     override val config: FakerConfig = fakerService.faker.config
     private val rs = fakerService.randomService
 

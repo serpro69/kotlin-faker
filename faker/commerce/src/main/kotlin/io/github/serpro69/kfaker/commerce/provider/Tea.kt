@@ -15,7 +15,7 @@ class Tea internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Tea>(fakerService) {
     override val yamlCategory = YamlCategory.TEA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tea>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -30,7 +30,7 @@ class TeaVariety internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TeaVariety>(fakerService) {
     override val yamlCategory = YamlCategory.TEA
     override val localUniqueDataProvider = LocalUniqueDataProvider<TeaVariety>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

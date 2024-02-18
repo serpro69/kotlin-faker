@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class LordOfTheRings internal constructor(fakerService: FakerService) : YamlFakeDataProvider<LordOfTheRings>(fakerService) {
     override val yamlCategory = YamlCategory.LORD_OF_THE_RINGS
     override val localUniqueDataProvider = LocalUniqueDataProvider<LordOfTheRings>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

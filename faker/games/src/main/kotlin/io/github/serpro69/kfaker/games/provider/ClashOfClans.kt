@@ -17,7 +17,7 @@ class ClashOfClans internal constructor(fakerService: FakerService) : YamlFakeDa
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("CLASH_OF_CLAN") // name due to yaml filename typo
     override val localUniqueDataProvider = LocalUniqueDataProvider<ClashOfClans>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

@@ -13,7 +13,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDataProvider<PhoneNumber>(fakerService) {
     override val yamlCategory = YamlCategory.PHONE_NUMBER
     override val localUniqueDataProvider = LocalUniqueDataProvider<PhoneNumber>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -50,7 +50,7 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
 class CellPhone internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CellPhone>(fakerService) {
     override val yamlCategory = YamlCategory.CELL_PHONE
     override val localUniqueDataProvider = LocalUniqueDataProvider<CellPhone>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -69,7 +69,7 @@ class CellPhone internal constructor(fakerService: FakerService) : YamlFakeDataP
 class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CountryCode>(fakerService) {
     override val yamlCategory = YamlCategory.PHONE_NUMBER
     override val localUniqueDataProvider = LocalUniqueDataProvider<CountryCode>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

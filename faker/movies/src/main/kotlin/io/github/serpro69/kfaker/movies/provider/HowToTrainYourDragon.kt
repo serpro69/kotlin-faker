@@ -16,7 +16,7 @@ class HowToTrainYourDragon internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<HowToTrainYourDragon>(fakerService) {
     override val yamlCategory = YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON
     override val localUniqueDataProvider = LocalUniqueDataProvider<HowToTrainYourDragon>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

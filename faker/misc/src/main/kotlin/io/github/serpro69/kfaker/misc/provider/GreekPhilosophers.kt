@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class GreekPhilosophers internal constructor(fakerService: FakerService) : YamlFakeDataProvider<GreekPhilosophers>(fakerService) {
     override val yamlCategory = YamlCategory.GREEK_PHILOSOPHERS
     override val localUniqueDataProvider = LocalUniqueDataProvider<GreekPhilosophers>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

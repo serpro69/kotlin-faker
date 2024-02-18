@@ -16,7 +16,7 @@ class TrainStation internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TrainStation>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<TrainStation>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -32,7 +32,7 @@ class TrainStationGermany internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TrainStationGermany>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<TrainStationGermany>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -47,7 +47,7 @@ class TrainStationSpain internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TrainStationSpain>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<TrainStationSpain>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -61,7 +61,7 @@ class TrainStationUnitedKingdom internal constructor(fakerService: FakerService)
     YamlFakeDataProvider<TrainStationUnitedKingdom>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<TrainStationUnitedKingdom>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -75,7 +75,7 @@ class TrainStationUnitedStates internal constructor(fakerService: FakerService) 
     YamlFakeDataProvider<TrainStationUnitedStates>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
     override val localUniqueDataProvider = LocalUniqueDataProvider<TrainStationUnitedStates>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

@@ -16,7 +16,7 @@ class Overwatch internal constructor(fakerService: FakerService) : YamlFakeDataP
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("OVERWATCH")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Overwatch>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

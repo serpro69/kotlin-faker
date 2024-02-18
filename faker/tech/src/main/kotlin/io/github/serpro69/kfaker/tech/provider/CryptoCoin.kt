@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class CryptoCoin internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CryptoCoin>(fakerService) {
     override val yamlCategory = YamlCategory.CRYPTO_COIN
     override val localUniqueDataProvider = LocalUniqueDataProvider<CryptoCoin>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class SwordArtOnline internal constructor(fakerService: FakerService) : YamlFakeDataProvider<SwordArtOnline>(fakerService) {
     override val yamlCategory = YamlCategory.SWORD_ART_ONLINE
     override val localUniqueDataProvider = LocalUniqueDataProvider<SwordArtOnline>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

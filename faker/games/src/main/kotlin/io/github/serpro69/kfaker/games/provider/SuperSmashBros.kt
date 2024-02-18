@@ -16,7 +16,7 @@ class SuperSmashBros internal constructor(fakerService: FakerService) : YamlFake
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("SUPER_SMASH_BROS")
     override val localUniqueDataProvider = LocalUniqueDataProvider<SuperSmashBros>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

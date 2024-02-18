@@ -15,7 +15,7 @@ class Hobby internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Hobby>(fakerService) {
     override val yamlCategory = YamlCategory.HOBBY
     override val localUniqueDataProvider = LocalUniqueDataProvider<Hobby>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

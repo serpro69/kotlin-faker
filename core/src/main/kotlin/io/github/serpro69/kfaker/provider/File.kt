@@ -13,7 +13,7 @@ import kotlin.reflect.full.declaredMemberFunctions
 class File internal constructor(fakerService: FakerService) : YamlFakeDataProvider<File>(fakerService) {
     override val yamlCategory = YamlCategory.FILE
     override val localUniqueDataProvider = LocalUniqueDataProvider<File>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -35,7 +35,7 @@ class File internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 class FileMimeType internal constructor(fakerService: FakerService) : YamlFakeDataProvider<FileMimeType>(fakerService) {
     override val yamlCategory = YamlCategory.FILE
     override val localUniqueDataProvider = LocalUniqueDataProvider<FileMimeType>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

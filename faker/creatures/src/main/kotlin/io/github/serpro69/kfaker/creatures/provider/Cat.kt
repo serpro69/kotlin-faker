@@ -16,7 +16,7 @@ class Cat internal constructor(fakerService: FakerService) : YamlFakeDataProvide
     override val yamlCategory = YamlCategory.CREATURE
     override val secondaryCategory: Category = Category.ofName("CAT")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Cat>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

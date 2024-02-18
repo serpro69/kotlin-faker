@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class ESport internal constructor(fakerService: FakerService) : YamlFakeDataProvider<ESport>(fakerService) {
     override val yamlCategory = YamlCategory.ESPORT
     override val localUniqueDataProvider = LocalUniqueDataProvider<ESport>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

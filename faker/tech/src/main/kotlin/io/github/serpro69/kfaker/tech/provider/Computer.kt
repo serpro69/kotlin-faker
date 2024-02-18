@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Computer internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Computer>(fakerService) {
     override val yamlCategory = YamlCategory.COMPUTER
     override val localUniqueDataProvider = LocalUniqueDataProvider<Computer>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -51,7 +51,7 @@ class Computer internal constructor(fakerService: FakerService) : YamlFakeDataPr
 class ComputerOS internal constructor(fakerService: FakerService) : YamlFakeDataProvider<ComputerOS>(fakerService) {
     override val yamlCategory = YamlCategory.COMPUTER
     override val localUniqueDataProvider = LocalUniqueDataProvider<ComputerOS>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

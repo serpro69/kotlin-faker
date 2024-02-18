@@ -15,7 +15,7 @@ class Emotion internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Emotion>(fakerService) {
     override val yamlCategory = YamlCategory.EMOTION
     override val localUniqueDataProvider = LocalUniqueDataProvider<Emotion>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

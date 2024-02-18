@@ -16,7 +16,7 @@ class HitchhikersGuideToTheGalaxy internal constructor(
 ) : YamlFakeDataProvider<HitchhikersGuideToTheGalaxy>(fakerService) {
     override val yamlCategory = YamlCategory.HITCHHIKERS_GUIDE_TO_THE_GALAXY
     override val localUniqueDataProvider = LocalUniqueDataProvider<HitchhikersGuideToTheGalaxy>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

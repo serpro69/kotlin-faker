@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class StudioGhibli internal constructor(fakerService: FakerService) : YamlFakeDataProvider<StudioGhibli>(fakerService) {
     override val yamlCategory = YamlCategory.STUDIO_GHIBLI
     override val localUniqueDataProvider = LocalUniqueDataProvider<StudioGhibli>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

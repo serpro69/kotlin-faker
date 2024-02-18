@@ -12,7 +12,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class CurrencySymbol internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CurrencySymbol>(fakerService) {
     override val yamlCategory = YamlCategory.CURRENCY_SYMBOL
     override val localUniqueDataProvider = LocalUniqueDataProvider<CurrencySymbol>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

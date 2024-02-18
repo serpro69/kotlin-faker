@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Yoda internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Yoda>(fakerService) {
     override val yamlCategory = YamlCategory.YODA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Yoda>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

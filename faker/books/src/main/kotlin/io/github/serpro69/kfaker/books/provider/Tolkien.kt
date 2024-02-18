@@ -16,7 +16,7 @@ class Tolkien internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Tolkien>(fakerService) {
     override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tolkien>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -36,7 +36,7 @@ class TolkienLordOfTheRings internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TolkienLordOfTheRings>(fakerService) {
     override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<TolkienLordOfTheRings>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -51,7 +51,7 @@ class TolkienHobbit internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TolkienHobbit>(fakerService) {
     override val yamlCategory = YamlCategory.TOLKIEN
     override val localUniqueDataProvider = LocalUniqueDataProvider<TolkienHobbit>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

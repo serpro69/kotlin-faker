@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class DragonBall internal constructor(fakerService: FakerService) : YamlFakeDataProvider<DragonBall>(fakerService) {
     override val yamlCategory = YamlCategory.DRAGON_BALL
     override val localUniqueDataProvider = LocalUniqueDataProvider<DragonBall>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

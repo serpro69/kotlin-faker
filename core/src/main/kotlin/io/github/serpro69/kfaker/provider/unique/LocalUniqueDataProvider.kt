@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider.unique
 
+import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import kotlin.properties.ReadOnlyProperty
@@ -64,7 +65,8 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
  */
 @Suppress("UNCHECKED_CAST")
 class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
-    private val uniqueDataProvider: LocalUniqueDataProvider<T>
+    private val uniqueDataProvider: LocalUniqueDataProvider<T>,
+    private val fakerService: FakerService,
 ) : ReadOnlyProperty<T, T> {
 
     override fun getValue(thisRef: T, property: KProperty<*>): T {
@@ -73,7 +75,7 @@ class UniqueProviderDelegate<T : AbstractFakeDataProvider<*>>(
         } else {
             val cls = property.returnType.classifier as KClass<T>
             val prop = cls.memberProperties.first { it.name == "localUniqueDataProvider" }
-            val newRef = requireNotNull(cls.primaryConstructor?.call(thisRef.fakerService))
+            val newRef = requireNotNull(cls.primaryConstructor?.call(fakerService))
             prop.javaField?.let {
                 it.isAccessible = true
                 it.set(newRef, uniqueDataProvider)

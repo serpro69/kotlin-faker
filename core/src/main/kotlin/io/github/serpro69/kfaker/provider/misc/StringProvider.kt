@@ -14,7 +14,7 @@ class StringProvider internal constructor(
 ) : AbstractFakeDataProvider<StringProvider>(fakerService) {
     override val category: Category = Category.ofName("STRING")
     override val localUniqueDataProvider = LocalUniqueDataProvider<StringProvider>()
-    override val unique: StringProvider by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique: StringProvider by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     /**
      * Replaces every `#` char for this [template] string with a random int from 0 to 9 inclusive,

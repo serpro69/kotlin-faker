@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Airport internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Airport>(fakerService) {
     override val yamlCategory = YamlCategory.AIRPORT
     override val localUniqueDataProvider = LocalUniqueDataProvider<Airport>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -30,7 +30,7 @@ class Airport internal constructor(fakerService: FakerService) : YamlFakeDataPro
 class UnitedStates internal constructor(fakerService: FakerService) : YamlFakeDataProvider<UnitedStates>(fakerService) {
     override val yamlCategory = YamlCategory.AIRPORT
     override val localUniqueDataProvider = LocalUniqueDataProvider<UnitedStates>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -50,7 +50,7 @@ class EuropeanUnion internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<EuropeanUnion>(fakerService) {
     override val yamlCategory = YamlCategory.AIRPORT
     override val localUniqueDataProvider = LocalUniqueDataProvider<EuropeanUnion>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -75,7 +75,7 @@ open class IataCode internal constructor(fakerService: FakerService, private val
     YamlFakeDataProvider<IataCode>(fakerService) {
     final override val yamlCategory = YamlCategory.AIRPORT
     final override val localUniqueDataProvider = LocalUniqueDataProvider<IataCode>()
-    final override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    final override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

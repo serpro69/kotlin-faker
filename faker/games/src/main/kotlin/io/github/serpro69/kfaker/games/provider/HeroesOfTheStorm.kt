@@ -13,7 +13,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class HeroesOfTheStorm internal constructor(fakerService: FakerService) : YamlFakeDataProvider<HeroesOfTheStorm>(fakerService) {
     override val yamlCategory = YamlCategory.HEROES_OF_THE_STORM
     override val localUniqueDataProvider = LocalUniqueDataProvider<HeroesOfTheStorm>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

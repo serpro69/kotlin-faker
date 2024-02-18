@@ -12,7 +12,7 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
  * @param T type of data provider (i.e. [StringProvider])
  */
 abstract class AbstractFakeDataProvider<T : FakeDataProvider> internal constructor(
-    val fakerService: FakerService
+    protected val fakerService: FakerService
 ) : FakeDataProvider {
 
     /**

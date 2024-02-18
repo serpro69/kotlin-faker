@@ -16,7 +16,7 @@ class LeagueOfLegends internal constructor(fakerService: FakerService) : YamlFak
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("LEAGUE_OF_LEGENDS")
     override val localUniqueDataProvider = LocalUniqueDataProvider<LeagueOfLegends>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

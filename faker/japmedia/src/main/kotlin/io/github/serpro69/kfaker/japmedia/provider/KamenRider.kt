@@ -15,7 +15,7 @@ class KamenRider internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<KamenRider>(fakerService) {
     override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRider>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -30,7 +30,7 @@ class KamenRiderShowa internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<KamenRiderShowa>(fakerService) {
     override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderShowa>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -46,7 +46,7 @@ class KamenRiderHeisei internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<KamenRiderHeisei>(fakerService) {
     override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderHeisei>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -63,7 +63,7 @@ class KamenRiderReiwa internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<KamenRiderReiwa>(fakerService) {
     override val yamlCategory = YamlCategory.KAMEN_RIDER
     override val localUniqueDataProvider = LocalUniqueDataProvider<KamenRiderReiwa>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

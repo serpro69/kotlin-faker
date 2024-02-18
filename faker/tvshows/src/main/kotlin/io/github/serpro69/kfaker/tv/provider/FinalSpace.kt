@@ -16,7 +16,7 @@ class FinalSpace internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<FinalSpace>(fakerService) {
     override val yamlCategory = YamlCategory.FINAL_SPACE
     override val localUniqueDataProvider = LocalUniqueDataProvider<FinalSpace>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

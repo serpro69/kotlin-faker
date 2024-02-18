@@ -17,7 +17,7 @@ class TheKingkillerChronicle internal constructor(fakerService: FakerService) :
     override val yamlCategory = YamlCategory.BOOKS
     override val secondaryCategory: Category = Category.ofName("THE_KINGKILLER_CHRONICLE")
     override val localUniqueDataProvider = LocalUniqueDataProvider<TheKingkillerChronicle>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

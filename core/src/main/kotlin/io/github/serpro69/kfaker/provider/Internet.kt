@@ -19,7 +19,7 @@ class Internet internal constructor(
 ) : YamlFakeDataProvider<Internet>(fakerService) {
     override val yamlCategory = YamlCategory.INTERNET
     override val localUniqueDataProvider = LocalUniqueDataProvider<Internet>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

@@ -16,7 +16,7 @@ class WarhammerFantasy internal constructor(fakerService: FakerService) : YamlFa
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("WARHAMMER_FANTASY")
     override val localUniqueDataProvider = LocalUniqueDataProvider<WarhammerFantasy>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

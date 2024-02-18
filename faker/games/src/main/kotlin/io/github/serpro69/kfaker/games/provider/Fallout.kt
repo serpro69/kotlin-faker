@@ -16,7 +16,7 @@ class Fallout internal constructor(fakerService: FakerService) : YamlFakeDataPro
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("FALLOUT")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Fallout>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

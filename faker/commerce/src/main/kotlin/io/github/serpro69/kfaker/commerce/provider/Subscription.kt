@@ -13,7 +13,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Subscription internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Subscription>(fakerService) {
     override val yamlCategory = YamlCategory.SUBSCRIPTION
     override val localUniqueDataProvider = LocalUniqueDataProvider<Subscription>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

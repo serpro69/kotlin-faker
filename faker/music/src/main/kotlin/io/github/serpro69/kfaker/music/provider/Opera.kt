@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Opera internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Opera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Opera>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -36,7 +36,7 @@ class ItalianOpera internal constructor(
 ) : YamlFakeDataProvider<ItalianOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<ItalianOpera>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -55,7 +55,7 @@ class GermanOpera internal constructor(
 ) : YamlFakeDataProvider<GermanOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<GermanOpera>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -76,7 +76,7 @@ class FrenchOpera internal constructor(
 ) : YamlFakeDataProvider<FrenchOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<FrenchOpera>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

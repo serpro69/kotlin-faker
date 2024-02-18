@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Spongebob internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Spongebob>(fakerService) {
     override val yamlCategory = YamlCategory.SPONGEBOB
     override val localUniqueDataProvider = LocalUniqueDataProvider<Spongebob>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

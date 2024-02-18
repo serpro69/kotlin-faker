@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Music>(fakerService) {
     override val yamlCategory = YamlCategory.MUSIC
     override val localUniqueDataProvider = LocalUniqueDataProvider<Music>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
@@ -37,7 +37,7 @@ class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvi
 class HipHop internal constructor(fakerService: FakerService) : YamlFakeDataProvider<HipHop>(fakerService) {
     override val yamlCategory = YamlCategory.MUSIC
     override val localUniqueDataProvider = LocalUniqueDataProvider<HipHop>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

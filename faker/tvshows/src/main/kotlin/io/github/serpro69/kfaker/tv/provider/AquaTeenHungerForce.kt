@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class AquaTeenHungerForce internal constructor(fakerService: FakerService) : YamlFakeDataProvider<AquaTeenHungerForce>(fakerService) {
     override val yamlCategory = YamlCategory.AQUA_TEEN_HUNGER_FORCE
     override val localUniqueDataProvider = LocalUniqueDataProvider<AquaTeenHungerForce>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

@@ -17,7 +17,7 @@ class Finance internal constructor(
 ) : YamlFakeDataProvider<Finance>(fakerService) {
     override val yamlCategory = YamlCategory.FINANCE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Finance>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

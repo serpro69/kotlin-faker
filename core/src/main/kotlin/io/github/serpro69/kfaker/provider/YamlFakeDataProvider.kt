@@ -88,7 +88,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      *   override val yamlCategory = YamlCategory.GAMES
      *   override val secondaryCategory: Category = Category.ofName("MINECRAFT")
      *   override val localUniqueDataProvider = LocalUniqueDataProvider<Minecraft>()
-     *   override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+     *   override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
      *
      *   fun achievement() = resolve("minecraft", "achievement")
      *   fun biome() = resolve(secondaryCategory, "biome")

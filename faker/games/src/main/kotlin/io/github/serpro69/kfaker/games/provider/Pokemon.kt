@@ -16,7 +16,7 @@ class Pokemon internal constructor(fakerService: FakerService) : YamlFakeDataPro
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("POKEMON")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Pokemon>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

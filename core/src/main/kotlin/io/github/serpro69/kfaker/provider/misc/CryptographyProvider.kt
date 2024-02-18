@@ -14,7 +14,7 @@ class CryptographyProvider internal constructor(
 ) : AbstractFakeDataProvider<CryptographyProvider>(fakerService) {
     override val category: Category = Category.ofName("CRYPTOGRAPHY")
     override val localUniqueDataProvider = LocalUniqueDataProvider<CryptographyProvider>()
-    override val unique: CryptographyProvider by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique: CryptographyProvider by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     /**
      * Generates and returns a pseudo-randomly generated md5 hash value, 32 digits long.

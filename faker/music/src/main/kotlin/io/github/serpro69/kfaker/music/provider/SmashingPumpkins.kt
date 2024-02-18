@@ -15,7 +15,7 @@ class SmashingPumpkins internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<SmashingPumpkins>(fakerService) {
     override val yamlCategory = YamlCategory.SMASHING_PUMPKINS
     override val localUniqueDataProvider = LocalUniqueDataProvider<SmashingPumpkins>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

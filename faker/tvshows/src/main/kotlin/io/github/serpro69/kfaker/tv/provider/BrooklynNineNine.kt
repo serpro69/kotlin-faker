@@ -16,7 +16,7 @@ class BrooklynNineNine internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<BrooklynNineNine>(fakerService) {
     override val yamlCategory = YamlCategory.BROOKLYN_NINE_NINE
     override val localUniqueDataProvider = LocalUniqueDataProvider<BrooklynNineNine>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

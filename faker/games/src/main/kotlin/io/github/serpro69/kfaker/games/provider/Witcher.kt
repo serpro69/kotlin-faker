@@ -16,7 +16,7 @@ class Witcher internal constructor(fakerService: FakerService) : YamlFakeDataPro
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("WITCHER")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Witcher>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)

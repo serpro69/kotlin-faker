@@ -14,7 +14,7 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 class RickAndMorty internal constructor(fakerService: FakerService) : YamlFakeDataProvider<RickAndMorty>(fakerService) {
     override val yamlCategory = YamlCategory.RICK_AND_MORTY
     override val localUniqueDataProvider = LocalUniqueDataProvider<RickAndMorty>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)

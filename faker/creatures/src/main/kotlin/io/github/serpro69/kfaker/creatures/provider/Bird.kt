@@ -17,7 +17,7 @@ class Bird internal constructor(fakerService: FakerService) : YamlFakeDataProvid
     override val yamlCategory = YamlCategory.CREATURE
     override val secondaryCategory: Category = Category.ofName("BIRD")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Bird>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory, secondaryCategory)
@@ -43,7 +43,7 @@ class BirdOrderCommonMap internal constructor(
 ) : YamlFakeDataProvider<BirdOrderCommonMap>(fakerService) {
     override val yamlCategory = YamlCategory.CREATURE
     override val localUniqueDataProvider = LocalUniqueDataProvider<BirdOrderCommonMap>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider)
+    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     fun accipitriformes(): String = resolve(secondaryCategory, "order_common_map", "Accipitriformes")
     fun anseriformes(): String = resolve(secondaryCategory, "order_common_map", "Anseriformes")
