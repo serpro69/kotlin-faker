@@ -1,4 +1,4 @@
-package io.github.serpro69.kfaker.tech.provider
+package io.github.serpro69.kfaker.lorem.provider
 
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory

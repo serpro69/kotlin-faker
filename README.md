@@ -68,6 +68,10 @@ repositories {
 </repositories>
 ```
 
+#### Additional Fakers
+
+Extra fakers covering a wide range of domains are available as separate dependencies. See [faker](faker) submodules in this repo for more details about each faker.
+
 ### Generating data
 
 ```kotlin

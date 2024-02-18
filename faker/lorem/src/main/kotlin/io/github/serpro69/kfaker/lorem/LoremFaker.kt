@@ -11,6 +11,7 @@ import io.github.serpro69.kfaker.lorem.provider.Lorem
 import io.github.serpro69.kfaker.lorem.provider.Markdown
 import io.github.serpro69.kfaker.lorem.provider.NatoPhoneticAlphabet
 import io.github.serpro69.kfaker.lorem.provider.Quote
+import io.github.serpro69.kfaker.lorem.provider.SlackEmoji
 import io.github.serpro69.kfaker.lorem.provider.Verbs
 
 /**
@@ -35,6 +36,7 @@ class LoremFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val lorem: Lorem by lazy { Lorem(fakerService) }
     val markdown: Markdown by lazy { Markdown(fakerService) }
     val natoPhoneticAlphabet: NatoPhoneticAlphabet by lazy { NatoPhoneticAlphabet(fakerService) }
+    val slackEmoji: SlackEmoji by lazy { SlackEmoji(fakerService) }
     val quote: Quote by lazy { Quote(fakerService) }
     val verbs: Verbs by lazy { Verbs(fakerService) }
 
