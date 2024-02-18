@@ -20,7 +20,7 @@ include(
 val fakers = listOf(
     "books",
     "commerce",
-    "creature",
+    "creatures",
     "edu",
     "games",
     "humor",

@@ -1,31 +1,31 @@
-package io.github.serpro69.kfaker.creature
+package io.github.serpro69.kfaker.creatures
 
 import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.FakerDsl
-import io.github.serpro69.kfaker.creature.provider.Ancient
-import io.github.serpro69.kfaker.creature.provider.Animal
-import io.github.serpro69.kfaker.creature.provider.Bird
-import io.github.serpro69.kfaker.creature.provider.Cat
-import io.github.serpro69.kfaker.creature.provider.Dog
-import io.github.serpro69.kfaker.creature.provider.Horse
+import io.github.serpro69.kfaker.creatures.provider.Ancient
+import io.github.serpro69.kfaker.creatures.provider.Animal
+import io.github.serpro69.kfaker.creatures.provider.Bird
+import io.github.serpro69.kfaker.creatures.provider.Cat
+import io.github.serpro69.kfaker.creatures.provider.Dog
+import io.github.serpro69.kfaker.creatures.provider.Horse
 import io.github.serpro69.kfaker.fakerConfig
 
 /**
- * Typealias for the [CreatureFaker]
+ * Typealias for the [CreaturesFaker]
  */
-typealias Faker = CreatureFaker
+typealias Faker = CreaturesFaker
 
 /**
  * Provides access to fake data generators within the Creature domain.
  *
- * Each category (generator) from this [CreatureFaker] is represented by a property
+ * Each category (generator) from this [CreaturesFaker] is represented by a property
  * that (usually) has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class CreatureFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class CreaturesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
     val ancient: Ancient by lazy { Ancient(fakerService) }
     val animal: Animal by lazy { Animal(fakerService) }
@@ -48,7 +48,7 @@ class CreatureFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
 }
 
 /**
- * Applies the [block] function to [CreatureFaker.Builder]
- * and returns as an instance of [CreatureFaker] from that builder.
+ * Applies the [block] function to [CreaturesFaker.Builder]
+ * and returns as an instance of [CreaturesFaker] from that builder.
  */
-fun faker(block: CreatureFaker.Builder.() -> Unit): CreatureFaker = CreatureFaker.Builder().apply(block).build()
+fun faker(block: CreaturesFaker.Builder.() -> Unit): CreaturesFaker = CreaturesFaker.Builder().apply(block).build()
