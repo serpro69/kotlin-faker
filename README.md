@@ -22,6 +22,13 @@ Port of a popular ruby [faker](https://github.com/stympy/faker) gem written in k
 
 Documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
 
+> [!WARNING]
+> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
+> 
+> Presently this will affect users of snapshot versions, which are built from 'master'.
+> 
+> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
+
 ### Downloading
 
 Latest releases are always available on maven central.

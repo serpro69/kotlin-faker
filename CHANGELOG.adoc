@@ -1,3 +1,28 @@
+.[2.0.0] - unreleased
+[%collapsible]
+====
+[discrete]
+=== Breaking Change
+
+* https://github.com/serpro69/kotlin-faker/pull/219[#219] [core] Extract faker's providers into several submodules of their own
+
+[discrete]
+=== Added
+
+* https://github.com/serpro69/kotlin-faker/issues/218[#218] [core] Allow creating custom fakers / generators
+
+[discrete]
+=== Fixed
+
+* ...
+
+[discrete]
+=== Other
+
+* ...
+
+====
+
 .[1.16.0] - 2024-02-12
 [%collapsible]
 ====
