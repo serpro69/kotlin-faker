@@ -10,28 +10,34 @@ plugins {
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
 val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
-dependencies {
-    val fakers = listOf(
-        "books",
-        "commerce",
-        "creature",
-        "edu",
-        "games",
-        "humor",
-        "japmedia",
-        "lorem",
-        "misc",
-        "movies",
-        "music",
-        "sports",
-        "tech",
-        "travel",
-        "tvshows",
-    )
+val fakers = listOf(
+    "books",
+    "commerce",
+    "creature",
+    "edu",
+    "games",
+    "humor",
+    "japmedia",
+    "lorem",
+    "misc",
+    "movies",
+    "music",
+    "sports",
+    "tech",
+    "travel",
+    "tvshows",
+)
 
+dependencies {
     implementation(project(":core"))
     fakers.forEach { implementation(project(":faker:$it")) }
     implementation("info.picocli:picocli:4.7.5")
+}
+
+// Test tasks must run after we've built the dependencies
+tasks.withType<Test> {
+    dependsOn(":core:shadowJar")
+    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
 }
 
 application {
@@ -67,6 +73,10 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from(project.configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) })
     with(tasks.jar.get() as CopySpec)
     dependsOn(project.configurations.runtimeClasspath)
+    // since we're adding :core and :faker:* as implementation dependencies
+    // we also need to make sure ShadowJar task depend on core having been built
+    dependsOn(":core:shadowJar")
+    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
 }
 
 graal {
