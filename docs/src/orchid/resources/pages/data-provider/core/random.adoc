@@ -1,0 +1,35 @@
+---
+---
+
+== `Faker().random`
+
+Provides data-generator-like functionality for the functions of `RandomService`, which is a "wrapper" around `java.util.Random`.
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().random.nextInt()
+
+Faker().random.nextLong(bound = 42)
+
+Faker().random.nextDouble()
+
+Faker().random.nextChar()
+
+Faker().random.nextEnum(MyEnum::class)
+
+Faker().random.nextBoolean()
+
+Faker().random.randomValue(listOf(1, 2, 3))
+
+Faker().random.randomString()
+
+Faker().random.nextUUID()
+
+Faker().random.randomSublist(listOf(1, 2, 3, 4, 5, 6))
+
+// and more
+----
+====
