@@ -30,7 +30,7 @@ jobs:
               - 'docs/**'
               - 'CHANGELOG.adoc'
               - 'CONTRIBUTING.adoc'
-              - 'LICENCE.adoc'
+              - 'LICENSE.adoc'
               - 'README.md'
               - 'prepare-dicts-for-docs.sh'
 

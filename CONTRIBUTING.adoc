@@ -22,7 +22,7 @@ Please first open the issue, though, so we can discuss the feature before you ha
 === License
 
 Any contributions you make will be under the MIT Software License.
-In short, when you submit code changes, your submissions are understood to be under the same link:LICENCE.adoc[LICENCE] that covers the project.
+In short, when you submit code changes, your submissions are understood to be under the same link:LICENSE.adoc[LICENSE] that covers the project.
 Feel free to contact the maintainers if that's a concern.
 
 === Rules

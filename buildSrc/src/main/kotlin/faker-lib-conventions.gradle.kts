@@ -113,13 +113,16 @@ val shadowJar by tasks.getting(ShadowJar::class) {
             )
         )
     }
+    from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
+        into("META-INF")
+    }
     dependsOn(tasks.jar)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
     archiveClassifier.set("sources")
     from(sourceSets.getByName("main").allSource)
-    from("LICENCE.md") {
+    from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
         into("META-INF")
     }
 }
