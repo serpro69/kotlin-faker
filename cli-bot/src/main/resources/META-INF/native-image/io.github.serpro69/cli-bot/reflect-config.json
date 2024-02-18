@@ -1128,6 +1128,7 @@
     {"name":"getLorem","parameterTypes":[] }, 
     {"name":"getMarkdown","parameterTypes":[] }, 
     {"name":"getNatoPhoneticAlphabet","parameterTypes":[] }, 
+    {"name":"getSlackEmoji","parameterTypes":[] }, 
     {"name":"getQuote","parameterTypes":[] }, 
     {"name":"getVerbs","parameterTypes":[] }
   ]
@@ -1169,6 +1170,20 @@
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.NatoPhoneticAlphabet",
   "methods":[{"name":"codeWord","parameterTypes":[] }]
+},
+{
+  "name":"io.github.serpro69.kfaker.lorem.provider.SlackEmoji",
+  "methods":[
+    {"name":"activity","parameterTypes":[] }, 
+    {"name":"celebration","parameterTypes":[] }, 
+    {"name":"custom","parameterTypes":[] }, 
+    {"name":"emoji","parameterTypes":[] }, 
+    {"name":"foodAndDrink","parameterTypes":[] }, 
+    {"name":"nature","parameterTypes":[] }, 
+    {"name":"objectsAndSymbols","parameterTypes":[] }, 
+    {"name":"people","parameterTypes":[] }, 
+    {"name":"travelAndPlaces","parameterTypes":[] }
+  ]
 },
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Quote",
@@ -1906,7 +1921,6 @@
     {"name":"getElectricalComponents","parameterTypes":[] }, 
     {"name":"getHacker","parameterTypes":[] }, 
     {"name":"getProgrammingLanguage","parameterTypes":[] }, 
-    {"name":"getSlackEmoji","parameterTypes":[] }, 
     {"name":"getSpace","parameterTypes":[] }, 
     {"name":"getVehicle","parameterTypes":[] }
   ]
@@ -2020,20 +2034,6 @@
   "methods":[
     {"name":"creator","parameterTypes":[] }, 
     {"name":"name","parameterTypes":[] }
-  ]
-},
-{
-  "name":"io.github.serpro69.kfaker.tech.provider.SlackEmoji",
-  "methods":[
-    {"name":"activity","parameterTypes":[] }, 
-    {"name":"celebration","parameterTypes":[] }, 
-    {"name":"custom","parameterTypes":[] }, 
-    {"name":"emoji","parameterTypes":[] }, 
-    {"name":"foodAndDrink","parameterTypes":[] }, 
-    {"name":"nature","parameterTypes":[] }, 
-    {"name":"objectsAndSymbols","parameterTypes":[] }, 
-    {"name":"people","parameterTypes":[] }, 
-    {"name":"travelAndPlaces","parameterTypes":[] }
   ]
 },
 {
