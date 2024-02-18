@@ -20,6 +20,13 @@ dependencies {
     integrationImplementation(project(":faker:tvshows"))
 }
 
+// integrationTest task must run after we've built the dependencies
+tasks.getByName("integrationTest") {
+    dependsOn(":faker:commerce:shadowJar")
+    dependsOn(":faker:movies:shadowJar")
+    dependsOn(":faker:tvshows:shadowJar")
+}
+
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block
 configure<Yaml2JsonPluginExtension> {
     val cwd = project.projectDir.absolutePath
