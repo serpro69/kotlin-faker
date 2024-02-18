@@ -29,7 +29,10 @@ jobs:
         run: |
           _app_path=$(find ./cli-bot/build/graal -type f -name faker-bot\* -not -name \*.txt)
           mv "$_app_path" ./faker-bot
-          ./faker-bot list --verbose >/dev/null || false
-          ./faker-bot lookup a --verbose >/dev/null || false
+          # run several iterations to test various pathways when generating data
+          for i in {0..10}; do
+            ./faker-bot list --verbose >/dev/null || false
+            ./faker-bot lookup a --verbose >/dev/null || false
+          done
 
 

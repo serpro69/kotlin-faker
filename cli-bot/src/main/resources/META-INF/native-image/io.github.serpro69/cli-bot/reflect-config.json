@@ -864,7 +864,8 @@
     {"name":"descriptor$games","parameterTypes":[] }, 
     {"name":"name","parameterTypes":[] }, 
     {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$games","parameterTypes":[] }
+    {"name":"prefix$games","parameterTypes":[] },
+    {"name":"suffix$games","parameterTypes":[] }
   ]
 },
 {
