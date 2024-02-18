@@ -224,6 +224,7 @@
     {"name":"getDessert","parameterTypes":[] }, 
     {"name":"getFinance","parameterTypes":[] }, 
     {"name":"getFood","parameterTypes":[] }, 
+    {"name":"getHouse","parameterTypes":[] }, 
     {"name":"getIndustrySegments","parameterTypes":[] }, 
     {"name":"getMarketing","parameterTypes":[] }, 
     {"name":"getRestaurant","parameterTypes":[] }, 
@@ -364,6 +365,13 @@
     {"name":"spices","parameterTypes":[] }, 
     {"name":"sushi","parameterTypes":[] }, 
     {"name":"vegetables","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.commerce.provider.House",
+  "methods":[
+    {"name":"furniture","parameterTypes":[] }, 
+    {"name":"rooms","parameterTypes":[] }
   ]
 },
 {
@@ -864,7 +872,7 @@
     {"name":"descriptor$games","parameterTypes":[] }, 
     {"name":"name","parameterTypes":[] }, 
     {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$games","parameterTypes":[] },
+    {"name":"prefix$games","parameterTypes":[] }, 
     {"name":"suffix$games","parameterTypes":[] }
   ]
 },
@@ -991,6 +999,7 @@
     {"name":"getDoraemon","parameterTypes":[] }, 
     {"name":"getDragonBall","parameterTypes":[] }, 
     {"name":"getFmaBrotherhood","parameterTypes":[] }, 
+    {"name":"getKamenRider","parameterTypes":[] }, 
     {"name":"getNaruto","parameterTypes":[] }, 
     {"name":"getOnePiece","parameterTypes":[] }, 
     {"name":"getStudioGhibli","parameterTypes":[] }, 
@@ -1039,6 +1048,43 @@
     {"name":"characters","parameterTypes":[] }, 
     {"name":"cities","parameterTypes":[] }, 
     {"name":"countries","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRider",
+  "methods":[
+    {"name":"getHeisei","parameterTypes":[] }, 
+    {"name":"getReiwa","parameterTypes":[] }, 
+    {"name":"getShowa","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderHeisei",
+  "methods":[
+    {"name":"collectibleDevices","parameterTypes":[] }, 
+    {"name":"kamenRiders","parameterTypes":[] }, 
+    {"name":"series","parameterTypes":[] }, 
+    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"users","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderReiwa",
+  "methods":[
+    {"name":"collectibleDevices","parameterTypes":[] }, 
+    {"name":"kamenRiders","parameterTypes":[] }, 
+    {"name":"series","parameterTypes":[] }, 
+    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"users","parameterTypes":[] }
+  ]
+},
+{
+  "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderShowa",
+  "methods":[
+    {"name":"kamenRiders","parameterTypes":[] }, 
+    {"name":"series","parameterTypes":[] }, 
+    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"users","parameterTypes":[] }
   ]
 },
 {

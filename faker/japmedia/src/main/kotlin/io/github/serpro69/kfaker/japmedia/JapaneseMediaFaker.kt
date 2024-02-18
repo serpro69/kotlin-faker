@@ -9,6 +9,7 @@ import io.github.serpro69.kfaker.japmedia.provider.CowboyBebop
 import io.github.serpro69.kfaker.japmedia.provider.Doraemon
 import io.github.serpro69.kfaker.japmedia.provider.DragonBall
 import io.github.serpro69.kfaker.japmedia.provider.FmaBrotherhood
+import io.github.serpro69.kfaker.japmedia.provider.KamenRider
 import io.github.serpro69.kfaker.japmedia.provider.Naruto
 import io.github.serpro69.kfaker.japmedia.provider.OnePiece
 import io.github.serpro69.kfaker.japmedia.provider.StudioGhibli
@@ -28,13 +29,14 @@ typealias Faker = JapaneseMediaFaker
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class JapaneseMediaFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
+class JapaneseMediaFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
     val conan: Conan by lazy { Conan(fakerService) }
     val cowboyBebop: CowboyBebop by lazy { CowboyBebop(fakerService) }
     val doraemon: Doraemon by lazy { Doraemon(fakerService) }
     val dragonBall: DragonBall by lazy { DragonBall(fakerService) }
     val fmaBrotherhood: FmaBrotherhood by lazy { FmaBrotherhood(fakerService) }
+    val kamenRider: KamenRider by lazy { KamenRider(fakerService) }
     val naruto: Naruto by lazy { Naruto(fakerService) }
     val onePiece: OnePiece by lazy { OnePiece(fakerService) }
     val studioGhibli: StudioGhibli by lazy { StudioGhibli(fakerService) }
