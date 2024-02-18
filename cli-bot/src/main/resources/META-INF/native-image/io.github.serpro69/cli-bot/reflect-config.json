@@ -17,19 +17,19 @@
 {
   "name":"io.github.serpro69.kfaker.Faker",
   "methods":[
-    {"name":"getAddress","parameterTypes":[] }, 
-    {"name":"getColor","parameterTypes":[] }, 
-    {"name":"getCrypto","parameterTypes":[] }, 
-    {"name":"getCurrency","parameterTypes":[] }, 
-    {"name":"getCurrencySymbol","parameterTypes":[] }, 
-    {"name":"getFile","parameterTypes":[] }, 
-    {"name":"getGender","parameterTypes":[] }, 
-    {"name":"getIdNumber","parameterTypes":[] }, 
-    {"name":"getInternet","parameterTypes":[] }, 
-    {"name":"getMeasurement","parameterTypes":[] }, 
-    {"name":"getMoney","parameterTypes":[] }, 
-    {"name":"getName","parameterTypes":[] }, 
-    {"name":"getPhoneNumber","parameterTypes":[] }, 
+    {"name":"getAddress","parameterTypes":[] },
+    {"name":"getColor","parameterTypes":[] },
+    {"name":"getCrypto","parameterTypes":[] },
+    {"name":"getCurrency","parameterTypes":[] },
+    {"name":"getCurrencySymbol","parameterTypes":[] },
+    {"name":"getFile","parameterTypes":[] },
+    {"name":"getGender","parameterTypes":[] },
+    {"name":"getIdNumber","parameterTypes":[] },
+    {"name":"getInternet","parameterTypes":[] },
+    {"name":"getMeasurement","parameterTypes":[] },
+    {"name":"getMoney","parameterTypes":[] },
+    {"name":"getName","parameterTypes":[] },
+    {"name":"getPhoneNumber","parameterTypes":[] },
     {"name":"getSeparator","parameterTypes":[] }
   ]
 },
@@ -73,15 +73,15 @@
 {
   "name":"io.github.serpro69.kfaker.books.BooksFaker",
   "methods":[
-    {"name":"getBible","parameterTypes":[] }, 
-    {"name":"getBook","parameterTypes":[] }, 
-    {"name":"getCosmere","parameterTypes":[] }, 
-    {"name":"getCultureSeries","parameterTypes":[] }, 
-    {"name":"getDcComics","parameterTypes":[] }, 
-    {"name":"getDune","parameterTypes":[] }, 
-    {"name":"getLovecraft","parameterTypes":[] }, 
-    {"name":"getShakespeare","parameterTypes":[] }, 
-    {"name":"getTheKingkillerChronicle","parameterTypes":[] }, 
+    {"name":"getBible","parameterTypes":[] },
+    {"name":"getBook","parameterTypes":[] },
+    {"name":"getCosmere","parameterTypes":[] },
+    {"name":"getCultureSeries","parameterTypes":[] },
+    {"name":"getDcComics","parameterTypes":[] },
+    {"name":"getDune","parameterTypes":[] },
+    {"name":"getLovecraft","parameterTypes":[] },
+    {"name":"getShakespeare","parameterTypes":[] },
+    {"name":"getTheKingkillerChronicle","parameterTypes":[] },
     {"name":"getTolkien","parameterTypes":[] }
   ]
 },
@@ -91,58 +91,58 @@
 {
   "name":"io.github.serpro69.kfaker.books.provider.Bible",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Book",
   "methods":[
-    {"name":"author","parameterTypes":[] }, 
-    {"name":"genre","parameterTypes":[] }, 
-    {"name":"publisher","parameterTypes":[] }, 
+    {"name":"author","parameterTypes":[] },
+    {"name":"genre","parameterTypes":[] },
+    {"name":"publisher","parameterTypes":[] },
     {"name":"title","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Cosmere",
   "methods":[
-    {"name":"allomancers","parameterTypes":[] }, 
-    {"name":"aons","parameterTypes":[] }, 
-    {"name":"feruchemists","parameterTypes":[] }, 
-    {"name":"knightsRadiant","parameterTypes":[] }, 
-    {"name":"metals","parameterTypes":[] }, 
-    {"name":"shardWorlds","parameterTypes":[] }, 
-    {"name":"shards","parameterTypes":[] }, 
+    {"name":"allomancers","parameterTypes":[] },
+    {"name":"aons","parameterTypes":[] },
+    {"name":"feruchemists","parameterTypes":[] },
+    {"name":"knightsRadiant","parameterTypes":[] },
+    {"name":"metals","parameterTypes":[] },
+    {"name":"shardWorlds","parameterTypes":[] },
+    {"name":"shards","parameterTypes":[] },
     {"name":"surges","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.CultureSeries",
   "methods":[
-    {"name":"books","parameterTypes":[] }, 
-    {"name":"civs","parameterTypes":[] }, 
-    {"name":"cultureShipClassAbvs","parameterTypes":[] }, 
-    {"name":"cultureShipClasses","parameterTypes":[] }, 
-    {"name":"cultureShips","parameterTypes":[] }, 
+    {"name":"books","parameterTypes":[] },
+    {"name":"civs","parameterTypes":[] },
+    {"name":"cultureShipClassAbvs","parameterTypes":[] },
+    {"name":"cultureShipClasses","parameterTypes":[] },
+    {"name":"cultureShips","parameterTypes":[] },
     {"name":"planets","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.DcComics",
   "methods":[
-    {"name":"hero","parameterTypes":[] }, 
-    {"name":"heroine","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"title","parameterTypes":[] }, 
+    {"name":"hero","parameterTypes":[] },
+    {"name":"heroine","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"title","parameterTypes":[] },
     {"name":"villain","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Dune",
   "methods":[
-    {"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter"] }, 
+    {"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter"] },
     {"name":"quotes$default","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune","io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter","int","java.lang.Object"] }
   ]
 },
@@ -155,81 +155,81 @@
 {
   "name":"io.github.serpro69.kfaker.books.provider.Lovecraft",
   "methods":[
-    {"name":"deity","parameterTypes":[] }, 
-    {"name":"fhtagn","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"tome","parameterTypes":[] }, 
+    {"name":"deity","parameterTypes":[] },
+    {"name":"fhtagn","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"tome","parameterTypes":[] },
     {"name":"words","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Shakespeare",
   "methods":[
-    {"name":"asYouLikeIt","parameterTypes":[] }, 
-    {"name":"hamlet","parameterTypes":[] }, 
-    {"name":"kingRichardTheThird","parameterTypes":[] }, 
+    {"name":"asYouLikeIt","parameterTypes":[] },
+    {"name":"hamlet","parameterTypes":[] },
+    {"name":"kingRichardTheThird","parameterTypes":[] },
     {"name":"romeoAndJuliet","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.TheKingkillerChronicle",
   "methods":[
-    {"name":"books","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"creatures","parameterTypes":[] }, 
+    {"name":"books","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"creatures","parameterTypes":[] },
     {"name":"locations","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Tolkien",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"getHobbit","parameterTypes":[] }, 
-    {"name":"getLordOfTheRings","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"poems","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"getHobbit","parameterTypes":[] },
+    {"name":"getLordOfTheRings","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"poems","parameterTypes":[] },
     {"name":"races","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.TolkienHobbit",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
     {"name":"thorinsCompany","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.TolkienLordOfTheRings",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.CommerceFaker",
   "methods":[
-    {"name":"getBank","parameterTypes":[] }, 
-    {"name":"getBarcode","parameterTypes":[] }, 
-    {"name":"getBeer","parameterTypes":[] }, 
-    {"name":"getBusiness","parameterTypes":[] }, 
-    {"name":"getCannabis","parameterTypes":[] }, 
-    {"name":"getCode","parameterTypes":[] }, 
-    {"name":"getCoffee","parameterTypes":[] }, 
-    {"name":"getCommerce","parameterTypes":[] }, 
-    {"name":"getCompany","parameterTypes":[] }, 
-    {"name":"getConstruction","parameterTypes":[] }, 
-    {"name":"getDessert","parameterTypes":[] }, 
-    {"name":"getFinance","parameterTypes":[] }, 
-    {"name":"getFood","parameterTypes":[] }, 
-    {"name":"getHouse","parameterTypes":[] }, 
-    {"name":"getIndustrySegments","parameterTypes":[] }, 
-    {"name":"getMarketing","parameterTypes":[] }, 
-    {"name":"getRestaurant","parameterTypes":[] }, 
-    {"name":"getStripe","parameterTypes":[] }, 
-    {"name":"getSubscription","parameterTypes":[] }, 
+    {"name":"getBank","parameterTypes":[] },
+    {"name":"getBarcode","parameterTypes":[] },
+    {"name":"getBeer","parameterTypes":[] },
+    {"name":"getBusiness","parameterTypes":[] },
+    {"name":"getCannabis","parameterTypes":[] },
+    {"name":"getCode","parameterTypes":[] },
+    {"name":"getCoffee","parameterTypes":[] },
+    {"name":"getCommerce","parameterTypes":[] },
+    {"name":"getCompany","parameterTypes":[] },
+    {"name":"getConstruction","parameterTypes":[] },
+    {"name":"getDessert","parameterTypes":[] },
+    {"name":"getFinance","parameterTypes":[] },
+    {"name":"getFood","parameterTypes":[] },
+    {"name":"getHouse","parameterTypes":[] },
+    {"name":"getIndustrySegments","parameterTypes":[] },
+    {"name":"getMarketing","parameterTypes":[] },
+    {"name":"getRestaurant","parameterTypes":[] },
+    {"name":"getStripe","parameterTypes":[] },
+    {"name":"getSubscription","parameterTypes":[] },
     {"name":"getTea","parameterTypes":[] }
   ]
 },
@@ -239,53 +239,53 @@
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Bank",
   "methods":[
-    {"name":"ibanDetails","parameterTypes":["java.lang.String"] }, 
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"ibanDetails","parameterTypes":["java.lang.String"] },
+    {"name":"name","parameterTypes":[] },
     {"name":"swiftBic","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Barcode",
   "methods":[
-    {"name":"compositeSymbol","parameterTypes":[] }, 
-    {"name":"ean13","parameterTypes":[] }, 
-    {"name":"ean8","parameterTypes":[] }, 
-    {"name":"isbn","parameterTypes":[] }, 
-    {"name":"ismn","parameterTypes":[] }, 
-    {"name":"issn","parameterTypes":[] }, 
-    {"name":"upcA","parameterTypes":[] }, 
+    {"name":"compositeSymbol","parameterTypes":[] },
+    {"name":"ean13","parameterTypes":[] },
+    {"name":"ean8","parameterTypes":[] },
+    {"name":"isbn","parameterTypes":[] },
+    {"name":"ismn","parameterTypes":[] },
+    {"name":"issn","parameterTypes":[] },
+    {"name":"upcA","parameterTypes":[] },
     {"name":"upcE","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Beer",
   "methods":[
-    {"name":"brand","parameterTypes":[] }, 
-    {"name":"hop","parameterTypes":[] }, 
-    {"name":"malt","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"style","parameterTypes":[] }, 
+    {"name":"brand","parameterTypes":[] },
+    {"name":"hop","parameterTypes":[] },
+    {"name":"malt","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"style","parameterTypes":[] },
     {"name":"yeast","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Business",
   "methods":[
-    {"name":"creditCardNumbers","parameterTypes":[] }, 
+    {"name":"creditCardNumbers","parameterTypes":[] },
     {"name":"creditCardTypes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Cannabis",
   "methods":[
-    {"name":"brands","parameterTypes":[] }, 
-    {"name":"cannabinoidAbbreviations","parameterTypes":[] }, 
-    {"name":"cannabinoids","parameterTypes":[] }, 
-    {"name":"categories","parameterTypes":[] }, 
-    {"name":"healthBenefits","parameterTypes":[] }, 
-    {"name":"medicalUses","parameterTypes":[] }, 
-    {"name":"strains","parameterTypes":[] }, 
-    {"name":"terpenes","parameterTypes":[] }, 
+    {"name":"brands","parameterTypes":[] },
+    {"name":"cannabinoidAbbreviations","parameterTypes":[] },
+    {"name":"cannabinoids","parameterTypes":[] },
+    {"name":"categories","parameterTypes":[] },
+    {"name":"healthBenefits","parameterTypes":[] },
+    {"name":"medicalUses","parameterTypes":[] },
+    {"name":"strains","parameterTypes":[] },
+    {"name":"terpenes","parameterTypes":[] },
     {"name":"types","parameterTypes":[] }
   ]
 },
@@ -296,33 +296,33 @@
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Coffee",
   "methods":[
-    {"name":"blendName","parameterTypes":[] }, 
-    {"name":"country","parameterTypes":[] }, 
-    {"name":"notes","parameterTypes":[] }, 
-    {"name":"regions","parameterTypes":["java.lang.String"] }, 
+    {"name":"blendName","parameterTypes":[] },
+    {"name":"country","parameterTypes":[] },
+    {"name":"notes","parameterTypes":[] },
+    {"name":"regions","parameterTypes":["java.lang.String"] },
     {"name":"variety","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Commerce",
   "methods":[
-    {"name":"brand","parameterTypes":[] }, 
-    {"name":"department","parameterTypes":[] }, 
-    {"name":"productName","parameterTypes":[] }, 
-    {"name":"promotionCode","parameterTypes":[] }, 
+    {"name":"brand","parameterTypes":[] },
+    {"name":"department","parameterTypes":[] },
+    {"name":"productName","parameterTypes":[] },
+    {"name":"promotionCode","parameterTypes":[] },
     {"name":"vendor","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Company",
   "methods":[
-    {"name":"bs","parameterTypes":[] }, 
-    {"name":"buzzwords","parameterTypes":[] }, 
-    {"name":"department","parameterTypes":[] }, 
-    {"name":"industry","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"profession","parameterTypes":[] }, 
-    {"name":"sicCode","parameterTypes":[] }, 
+    {"name":"bs","parameterTypes":[] },
+    {"name":"buzzwords","parameterTypes":[] },
+    {"name":"department","parameterTypes":[] },
+    {"name":"industry","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"profession","parameterTypes":[] },
+    {"name":"sicCode","parameterTypes":[] },
     {"name":"type","parameterTypes":[] }
   ]
 },
@@ -333,53 +333,53 @@
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Dessert",
   "methods":[
-    {"name":"dessert","parameterTypes":[] }, 
-    {"name":"flavor","parameterTypes":[] }, 
-    {"name":"topping","parameterTypes":[] }, 
+    {"name":"dessert","parameterTypes":[] },
+    {"name":"flavor","parameterTypes":[] },
+    {"name":"topping","parameterTypes":[] },
     {"name":"variety","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Finance",
   "methods":[
-    {"name":"condominiumFiscalCode","parameterTypes":[] }, 
-    {"name":"creditCard","parameterTypes":["java.lang.String"] }, 
-    {"name":"stockMarket","parameterTypes":[] }, 
-    {"name":"ticker","parameterTypes":["io.github.serpro69.kfaker.commerce.provider.StockExchange"] }, 
-    {"name":"ticker$default","parameterTypes":["io.github.serpro69.kfaker.commerce.provider.Finance","io.github.serpro69.kfaker.commerce.provider.StockExchange","int","java.lang.Object"] }, 
+    {"name":"condominiumFiscalCode","parameterTypes":[] },
+    {"name":"creditCard","parameterTypes":["java.lang.String"] },
+    {"name":"stockMarket","parameterTypes":[] },
+    {"name":"ticker","parameterTypes":["io.github.serpro69.kfaker.commerce.provider.StockExchange"] },
+    {"name":"ticker$default","parameterTypes":["io.github.serpro69.kfaker.commerce.provider.Finance","io.github.serpro69.kfaker.commerce.provider.StockExchange","int","java.lang.Object"] },
     {"name":"vatNumber","parameterTypes":["java.lang.String"] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Food",
   "methods":[
-    {"name":"allergens","parameterTypes":[] }, 
-    {"name":"descriptions","parameterTypes":[] }, 
-    {"name":"dish","parameterTypes":[] }, 
-    {"name":"ethnicCategory","parameterTypes":[] }, 
-    {"name":"fruits","parameterTypes":[] }, 
-    {"name":"ingredients","parameterTypes":[] }, 
-    {"name":"measurementSizes","parameterTypes":[] }, 
-    {"name":"measurements","parameterTypes":[] }, 
-    {"name":"metricMeasurements","parameterTypes":[] }, 
-    {"name":"spices","parameterTypes":[] }, 
-    {"name":"sushi","parameterTypes":[] }, 
+    {"name":"allergens","parameterTypes":[] },
+    {"name":"descriptions","parameterTypes":[] },
+    {"name":"dish","parameterTypes":[] },
+    {"name":"ethnicCategory","parameterTypes":[] },
+    {"name":"fruits","parameterTypes":[] },
+    {"name":"ingredients","parameterTypes":[] },
+    {"name":"measurementSizes","parameterTypes":[] },
+    {"name":"measurements","parameterTypes":[] },
+    {"name":"metricMeasurements","parameterTypes":[] },
+    {"name":"spices","parameterTypes":[] },
+    {"name":"sushi","parameterTypes":[] },
     {"name":"vegetables","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.House",
   "methods":[
-    {"name":"furniture","parameterTypes":[] }, 
+    {"name":"furniture","parameterTypes":[] },
     {"name":"rooms","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.IndustrySegments",
   "methods":[
-    {"name":"industry","parameterTypes":[] }, 
-    {"name":"sector","parameterTypes":[] }, 
-    {"name":"subSector","parameterTypes":[] }, 
+    {"name":"industry","parameterTypes":[] },
+    {"name":"sector","parameterTypes":[] },
+    {"name":"subSector","parameterTypes":[] },
     {"name":"superSector","parameterTypes":[] }
   ]
 },
@@ -390,9 +390,9 @@
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Restaurant",
   "methods":[
-    {"name":"description","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"review","parameterTypes":[] }, 
+    {"name":"description","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"review","parameterTypes":[] },
     {"name":"type","parameterTypes":[] }
   ]
 },
@@ -402,150 +402,150 @@
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Stripe",
   "methods":[
-    {"name":"invalidCards","parameterTypes":["java.lang.String"] }, 
-    {"name":"validCards","parameterTypes":["java.lang.String"] }, 
+    {"name":"invalidCards","parameterTypes":["java.lang.String"] },
+    {"name":"validCards","parameterTypes":["java.lang.String"] },
     {"name":"validTokens","parameterTypes":["java.lang.String"] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Subscription",
   "methods":[
-    {"name":"paymentMethods","parameterTypes":[] }, 
-    {"name":"paymentTerms","parameterTypes":[] }, 
-    {"name":"plans","parameterTypes":[] }, 
-    {"name":"statuses","parameterTypes":[] }, 
+    {"name":"paymentMethods","parameterTypes":[] },
+    {"name":"paymentTerms","parameterTypes":[] },
+    {"name":"plans","parameterTypes":[] },
+    {"name":"statuses","parameterTypes":[] },
     {"name":"subscriptionTerms","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.Tea",
   "methods":[
-    {"name":"getVariety","parameterTypes":[] }, 
+    {"name":"getVariety","parameterTypes":[] },
     {"name":"type","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.commerce.provider.TeaVariety",
   "methods":[
-    {"name":"black","parameterTypes":[] }, 
-    {"name":"green","parameterTypes":[] }, 
-    {"name":"herbal","parameterTypes":[] }, 
-    {"name":"oolong","parameterTypes":[] }, 
+    {"name":"black","parameterTypes":[] },
+    {"name":"green","parameterTypes":[] },
+    {"name":"herbal","parameterTypes":[] },
+    {"name":"oolong","parameterTypes":[] },
     {"name":"white","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.CreatureFaker",
+  "name":"io.github.serpro69.kfaker.creatures.CreaturesFaker",
   "methods":[
-    {"name":"getAncient","parameterTypes":[] }, 
-    {"name":"getAnimal","parameterTypes":[] }, 
-    {"name":"getBird","parameterTypes":[] }, 
-    {"name":"getCat","parameterTypes":[] }, 
-    {"name":"getDog","parameterTypes":[] }, 
+    {"name":"getAncient","parameterTypes":[] },
+    {"name":"getAnimal","parameterTypes":[] },
+    {"name":"getBird","parameterTypes":[] },
+    {"name":"getCat","parameterTypes":[] },
+    {"name":"getDog","parameterTypes":[] },
     {"name":"getHorse","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.CreatureFaker$Builder"
+  "name":"io.github.serpro69.kfaker.creatures.CreaturesFaker$Builder"
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Ancient",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Ancient",
   "methods":[
-    {"name":"god","parameterTypes":[] }, 
-    {"name":"hero","parameterTypes":[] }, 
-    {"name":"primordial","parameterTypes":[] }, 
+    {"name":"god","parameterTypes":[] },
+    {"name":"hero","parameterTypes":[] },
+    {"name":"primordial","parameterTypes":[] },
     {"name":"titan","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Animal",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Animal",
   "methods":[{"name":"name","parameterTypes":[] }]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Bird",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Bird",
   "methods":[
-    {"name":"adjectives","parameterTypes":[] }, 
-    {"name":"anatomy","parameterTypes":[] }, 
-    {"name":"anatomyPastTense","parameterTypes":[] }, 
-    {"name":"colors","parameterTypes":[] }, 
-    {"name":"commonFamilyName","parameterTypes":[] }, 
-    {"name":"emotionalAdjectives","parameterTypes":[] }, 
-    {"name":"geo","parameterTypes":[] }, 
-    {"name":"getOrderCommonMap","parameterTypes":[] }, 
-    {"name":"implausibleCommonNames","parameterTypes":[] }, 
-    {"name":"plausibleCommonNames","parameterTypes":[] }, 
+    {"name":"adjectives","parameterTypes":[] },
+    {"name":"anatomy","parameterTypes":[] },
+    {"name":"anatomyPastTense","parameterTypes":[] },
+    {"name":"colors","parameterTypes":[] },
+    {"name":"commonFamilyName","parameterTypes":[] },
+    {"name":"emotionalAdjectives","parameterTypes":[] },
+    {"name":"geo","parameterTypes":[] },
+    {"name":"getOrderCommonMap","parameterTypes":[] },
+    {"name":"implausibleCommonNames","parameterTypes":[] },
+    {"name":"plausibleCommonNames","parameterTypes":[] },
     {"name":"sillyAdjectives","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.BirdOrderCommonMap",
+  "name":"io.github.serpro69.kfaker.creatures.provider.BirdOrderCommonMap",
   "methods":[
-    {"name":"accipitriformes","parameterTypes":[] }, 
-    {"name":"anseriformes","parameterTypes":[] }, 
-    {"name":"apterygiformes","parameterTypes":[] }, 
-    {"name":"bucerotiformes","parameterTypes":[] }, 
-    {"name":"caprimulgiformes","parameterTypes":[] }, 
-    {"name":"cariamiformes","parameterTypes":[] }, 
-    {"name":"casuariiformes","parameterTypes":[] }, 
-    {"name":"cathartiformes","parameterTypes":[] }, 
-    {"name":"charadriiformes","parameterTypes":[] }, 
-    {"name":"ciconiiformes","parameterTypes":[] }, 
-    {"name":"coliiformes","parameterTypes":[] }, 
-    {"name":"columbiformes","parameterTypes":[] }, 
-    {"name":"coraciiformes","parameterTypes":[] }, 
-    {"name":"cuculiformes","parameterTypes":[] }, 
-    {"name":"eurypygiformes","parameterTypes":[] }, 
-    {"name":"falconiformes","parameterTypes":[] }, 
-    {"name":"galbuliformes","parameterTypes":[] }, 
-    {"name":"galliformes","parameterTypes":[] }, 
-    {"name":"gaviiformes","parameterTypes":[] }, 
-    {"name":"gruiformes","parameterTypes":[] }, 
-    {"name":"mesitornithiformes","parameterTypes":[] }, 
-    {"name":"musophagiformes","parameterTypes":[] }, 
-    {"name":"opisthocomiformes","parameterTypes":[] }, 
-    {"name":"otidiformes","parameterTypes":[] }, 
-    {"name":"passeriformes","parameterTypes":[] }, 
-    {"name":"pelecaniformes","parameterTypes":[] }, 
-    {"name":"phaethontiformes","parameterTypes":[] }, 
-    {"name":"phoenicopteriformes","parameterTypes":[] }, 
-    {"name":"piciformes","parameterTypes":[] }, 
-    {"name":"podicipediformes","parameterTypes":[] }, 
-    {"name":"procellariiformes","parameterTypes":[] }, 
-    {"name":"psittaciformes","parameterTypes":[] }, 
-    {"name":"pterocliformes","parameterTypes":[] }, 
-    {"name":"rheiformes","parameterTypes":[] }, 
-    {"name":"sphenisciformes","parameterTypes":[] }, 
-    {"name":"strigiformes","parameterTypes":[] }, 
-    {"name":"struthioniformes","parameterTypes":[] }, 
-    {"name":"suliformes","parameterTypes":[] }, 
-    {"name":"tinamiformes","parameterTypes":[] }, 
+    {"name":"accipitriformes","parameterTypes":[] },
+    {"name":"anseriformes","parameterTypes":[] },
+    {"name":"apterygiformes","parameterTypes":[] },
+    {"name":"bucerotiformes","parameterTypes":[] },
+    {"name":"caprimulgiformes","parameterTypes":[] },
+    {"name":"cariamiformes","parameterTypes":[] },
+    {"name":"casuariiformes","parameterTypes":[] },
+    {"name":"cathartiformes","parameterTypes":[] },
+    {"name":"charadriiformes","parameterTypes":[] },
+    {"name":"ciconiiformes","parameterTypes":[] },
+    {"name":"coliiformes","parameterTypes":[] },
+    {"name":"columbiformes","parameterTypes":[] },
+    {"name":"coraciiformes","parameterTypes":[] },
+    {"name":"cuculiformes","parameterTypes":[] },
+    {"name":"eurypygiformes","parameterTypes":[] },
+    {"name":"falconiformes","parameterTypes":[] },
+    {"name":"galbuliformes","parameterTypes":[] },
+    {"name":"galliformes","parameterTypes":[] },
+    {"name":"gaviiformes","parameterTypes":[] },
+    {"name":"gruiformes","parameterTypes":[] },
+    {"name":"mesitornithiformes","parameterTypes":[] },
+    {"name":"musophagiformes","parameterTypes":[] },
+    {"name":"opisthocomiformes","parameterTypes":[] },
+    {"name":"otidiformes","parameterTypes":[] },
+    {"name":"passeriformes","parameterTypes":[] },
+    {"name":"pelecaniformes","parameterTypes":[] },
+    {"name":"phaethontiformes","parameterTypes":[] },
+    {"name":"phoenicopteriformes","parameterTypes":[] },
+    {"name":"piciformes","parameterTypes":[] },
+    {"name":"podicipediformes","parameterTypes":[] },
+    {"name":"procellariiformes","parameterTypes":[] },
+    {"name":"psittaciformes","parameterTypes":[] },
+    {"name":"pterocliformes","parameterTypes":[] },
+    {"name":"rheiformes","parameterTypes":[] },
+    {"name":"sphenisciformes","parameterTypes":[] },
+    {"name":"strigiformes","parameterTypes":[] },
+    {"name":"struthioniformes","parameterTypes":[] },
+    {"name":"suliformes","parameterTypes":[] },
+    {"name":"tinamiformes","parameterTypes":[] },
     {"name":"trogoniformes","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Cat",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Cat",
   "methods":[
-    {"name":"breed","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"breed","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
     {"name":"registry","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Dog",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Dog",
   "methods":[
-    {"name":"age","parameterTypes":[] }, 
-    {"name":"breed","parameterTypes":[] }, 
-    {"name":"coatLength","parameterTypes":[] }, 
-    {"name":"memePhrase","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"size","parameterTypes":[] }, 
+    {"name":"age","parameterTypes":[] },
+    {"name":"breed","parameterTypes":[] },
+    {"name":"coatLength","parameterTypes":[] },
+    {"name":"memePhrase","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"size","parameterTypes":[] },
     {"name":"sound","parameterTypes":[] }
   ]
 },
 {
-  "name":"io.github.serpro69.kfaker.creature.provider.Horse",
+  "name":"io.github.serpro69.kfaker.creatures.provider.Horse",
   "methods":[
-    {"name":"breed","parameterTypes":[] }, 
+    {"name":"breed","parameterTypes":[] },
     {"name":"name","parameterTypes":[] }
   ]
 },
@@ -558,9 +558,9 @@
 {
   "name":"io.github.serpro69.kfaker.edu.EduFaker",
   "methods":[
-    {"name":"getEducator","parameterTypes":[] }, 
-    {"name":"getJob","parameterTypes":[] }, 
-    {"name":"getScience","parameterTypes":[] }, 
+    {"name":"getEducator","parameterTypes":[] },
+    {"name":"getJob","parameterTypes":[] },
+    {"name":"getScience","parameterTypes":[] },
     {"name":"getUniversity","parameterTypes":[] }
   ]
 },
@@ -570,7 +570,7 @@
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Degree",
   "methods":[
-    {"name":"courseNumber","parameterTypes":[] }, 
+    {"name":"courseNumber","parameterTypes":[] },
     {"name":"type","parameterTypes":[] }
   ]
 },
@@ -583,84 +583,84 @@
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Job",
   "methods":[
-    {"name":"educationLevel","parameterTypes":[] }, 
-    {"name":"employmentType","parameterTypes":[] }, 
-    {"name":"field","parameterTypes":[] }, 
-    {"name":"keySkills","parameterTypes":[] }, 
-    {"name":"position","parameterTypes":[] }, 
-    {"name":"seniority","parameterTypes":[] }, 
+    {"name":"educationLevel","parameterTypes":[] },
+    {"name":"employmentType","parameterTypes":[] },
+    {"name":"field","parameterTypes":[] },
+    {"name":"keySkills","parameterTypes":[] },
+    {"name":"position","parameterTypes":[] },
+    {"name":"seniority","parameterTypes":[] },
     {"name":"title","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Science",
   "methods":[
-    {"name":"element","parameterTypes":[] }, 
-    {"name":"elementState","parameterTypes":[] }, 
-    {"name":"elementSubcategory","parameterTypes":[] }, 
-    {"name":"elementSymbol","parameterTypes":[] }, 
-    {"name":"getBranch","parameterTypes":[] }, 
-    {"name":"modifier","parameterTypes":[] }, 
-    {"name":"scientist","parameterTypes":[] }, 
+    {"name":"element","parameterTypes":[] },
+    {"name":"elementState","parameterTypes":[] },
+    {"name":"elementSubcategory","parameterTypes":[] },
+    {"name":"elementSymbol","parameterTypes":[] },
+    {"name":"getBranch","parameterTypes":[] },
+    {"name":"modifier","parameterTypes":[] },
+    {"name":"scientist","parameterTypes":[] },
     {"name":"tool","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.ScienceBranch",
   "methods":[
-    {"name":"empiricalNaturalApplied","parameterTypes":[] }, 
-    {"name":"empiricalNaturalBasic","parameterTypes":[] }, 
-    {"name":"empiricalSocialApplied","parameterTypes":[] }, 
-    {"name":"empiricalSocialBasic","parameterTypes":[] }, 
-    {"name":"formalApplied","parameterTypes":[] }, 
+    {"name":"empiricalNaturalApplied","parameterTypes":[] },
+    {"name":"empiricalNaturalBasic","parameterTypes":[] },
+    {"name":"empiricalSocialApplied","parameterTypes":[] },
+    {"name":"empiricalSocialBasic","parameterTypes":[] },
+    {"name":"formalApplied","parameterTypes":[] },
     {"name":"formalBasic","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Tertiary",
   "methods":[
-    {"name":"getDegree","parameterTypes":[] }, 
+    {"name":"getDegree","parameterTypes":[] },
     {"name":"universityType","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.University",
   "methods":[
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"prefix","parameterTypes":[] }, 
+    {"name":"name","parameterTypes":[] },
+    {"name":"prefix","parameterTypes":[] },
     {"name":"suffix","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.GamesFaker",
   "methods":[
-    {"name":"getClashOfClans","parameterTypes":[] }, 
-    {"name":"getCoin","parameterTypes":[] }, 
-    {"name":"getControl","parameterTypes":[] }, 
-    {"name":"getDnd","parameterTypes":[] }, 
-    {"name":"getDota","parameterTypes":[] }, 
-    {"name":"getElderScrolls","parameterTypes":[] }, 
-    {"name":"getFallout","parameterTypes":[] }, 
-    {"name":"getFinalFantasyXIV","parameterTypes":[] }, 
-    {"name":"getGame","parameterTypes":[] }, 
-    {"name":"getHalfLife","parameterTypes":[] }, 
-    {"name":"getHeroes","parameterTypes":[] }, 
-    {"name":"getHeroesOfTheStorm","parameterTypes":[] }, 
-    {"name":"getLeagueOfLegends","parameterTypes":[] }, 
-    {"name":"getMinecraft","parameterTypes":[] }, 
-    {"name":"getMyst","parameterTypes":[] }, 
-    {"name":"getOverwatch","parameterTypes":[] }, 
-    {"name":"getPokemon","parameterTypes":[] }, 
-    {"name":"getSonicTheHedgehog","parameterTypes":[] }, 
-    {"name":"getStreetFighter","parameterTypes":[] }, 
-    {"name":"getSuperMario","parameterTypes":[] }, 
-    {"name":"getSuperSmashBros","parameterTypes":[] }, 
-    {"name":"getSuperhero","parameterTypes":[] }, 
-    {"name":"getTarkov","parameterTypes":[] }, 
-    {"name":"getTouhou","parameterTypes":[] }, 
-    {"name":"getWarhammerFantasy","parameterTypes":[] }, 
-    {"name":"getWitcher","parameterTypes":[] }, 
-    {"name":"getWorldOfWarcraft","parameterTypes":[] }, 
+    {"name":"getClashOfClans","parameterTypes":[] },
+    {"name":"getCoin","parameterTypes":[] },
+    {"name":"getControl","parameterTypes":[] },
+    {"name":"getDnd","parameterTypes":[] },
+    {"name":"getDota","parameterTypes":[] },
+    {"name":"getElderScrolls","parameterTypes":[] },
+    {"name":"getFallout","parameterTypes":[] },
+    {"name":"getFinalFantasyXIV","parameterTypes":[] },
+    {"name":"getGame","parameterTypes":[] },
+    {"name":"getHalfLife","parameterTypes":[] },
+    {"name":"getHeroes","parameterTypes":[] },
+    {"name":"getHeroesOfTheStorm","parameterTypes":[] },
+    {"name":"getLeagueOfLegends","parameterTypes":[] },
+    {"name":"getMinecraft","parameterTypes":[] },
+    {"name":"getMyst","parameterTypes":[] },
+    {"name":"getOverwatch","parameterTypes":[] },
+    {"name":"getPokemon","parameterTypes":[] },
+    {"name":"getSonicTheHedgehog","parameterTypes":[] },
+    {"name":"getStreetFighter","parameterTypes":[] },
+    {"name":"getSuperMario","parameterTypes":[] },
+    {"name":"getSuperSmashBros","parameterTypes":[] },
+    {"name":"getSuperhero","parameterTypes":[] },
+    {"name":"getTarkov","parameterTypes":[] },
+    {"name":"getTouhou","parameterTypes":[] },
+    {"name":"getWarhammerFantasy","parameterTypes":[] },
+    {"name":"getWitcher","parameterTypes":[] },
+    {"name":"getWorldOfWarcraft","parameterTypes":[] },
     {"name":"getZelda","parameterTypes":[] }
   ]
 },
@@ -670,8 +670,8 @@
 {
   "name":"io.github.serpro69.kfaker.games.provider.ClashOfClans",
   "methods":[
-    {"name":"defensiveBuildings","parameterTypes":[] }, 
-    {"name":"ranks","parameterTypes":[] }, 
+    {"name":"defensiveBuildings","parameterTypes":[] },
+    {"name":"ranks","parameterTypes":[] },
     {"name":"troops","parameterTypes":[] }
   ]
 },
@@ -682,36 +682,36 @@
 {
   "name":"io.github.serpro69.kfaker.games.provider.Control",
   "methods":[
-    {"name":"alteredItem","parameterTypes":[] }, 
-    {"name":"alteredWorldEvent","parameterTypes":[] }, 
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"hiss","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"objectOfPower","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"alteredItem","parameterTypes":[] },
+    {"name":"alteredWorldEvent","parameterTypes":[] },
+    {"name":"character","parameterTypes":[] },
+    {"name":"hiss","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"objectOfPower","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
     {"name":"theBoard","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.DnD",
   "methods":[
-    {"name":"alignments","parameterTypes":[] }, 
-    {"name":"backgrounds","parameterTypes":[] }, 
-    {"name":"cities","parameterTypes":[] }, 
-    {"name":"getName","parameterTypes":[] }, 
-    {"name":"klasses","parameterTypes":[] }, 
-    {"name":"languages","parameterTypes":[] }, 
-    {"name":"meleeWeapons","parameterTypes":[] }, 
-    {"name":"monsters","parameterTypes":[] }, 
-    {"name":"races","parameterTypes":[] }, 
+    {"name":"alignments","parameterTypes":[] },
+    {"name":"backgrounds","parameterTypes":[] },
+    {"name":"cities","parameterTypes":[] },
+    {"name":"getName","parameterTypes":[] },
+    {"name":"klasses","parameterTypes":[] },
+    {"name":"languages","parameterTypes":[] },
+    {"name":"meleeWeapons","parameterTypes":[] },
+    {"name":"monsters","parameterTypes":[] },
+    {"name":"races","parameterTypes":[] },
     {"name":"rangedWeapons","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.DndName",
   "methods":[
-    {"name":"firstName","parameterTypes":[] }, 
-    {"name":"lastName","parameterTypes":[] }, 
+    {"name":"firstName","parameterTypes":[] },
+    {"name":"lastName","parameterTypes":[] },
     {"name":"title","parameterTypes":[] }
   ]
 },
@@ -724,33 +724,33 @@
 {
   "name":"io.github.serpro69.kfaker.games.provider.ElderScrolls",
   "methods":[
-    {"name":"city","parameterTypes":[] }, 
-    {"name":"creature","parameterTypes":[] }, 
-    {"name":"dragon","parameterTypes":[] }, 
-    {"name":"firstName","parameterTypes":[] }, 
-    {"name":"jewelry","parameterTypes":[] }, 
-    {"name":"lastName","parameterTypes":[] }, 
-    {"name":"race","parameterTypes":[] }, 
-    {"name":"region","parameterTypes":[] }, 
+    {"name":"city","parameterTypes":[] },
+    {"name":"creature","parameterTypes":[] },
+    {"name":"dragon","parameterTypes":[] },
+    {"name":"firstName","parameterTypes":[] },
+    {"name":"jewelry","parameterTypes":[] },
+    {"name":"lastName","parameterTypes":[] },
+    {"name":"race","parameterTypes":[] },
+    {"name":"region","parameterTypes":[] },
     {"name":"weapon","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Fallout",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"factions","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"factions","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.FinalFantasyXIV",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"dataCenters","parameterTypes":[] }, 
-    {"name":"jobs","parameterTypes":[] }, 
-    {"name":"races","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"dataCenters","parameterTypes":[] },
+    {"name":"jobs","parameterTypes":[] },
+    {"name":"races","parameterTypes":[] },
     {"name":"zones","parameterTypes":[] }
   ]
 },
@@ -761,205 +761,205 @@
 {
   "name":"io.github.serpro69.kfaker.games.provider.HalfLife",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"enemy","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"enemy","parameterTypes":[] },
     {"name":"location","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Heroes",
   "methods":[
-    {"name":"artifacts","parameterTypes":[] }, 
-    {"name":"klasses","parameterTypes":[] }, 
-    {"name":"names","parameterTypes":[] }, 
+    {"name":"artifacts","parameterTypes":[] },
+    {"name":"klasses","parameterTypes":[] },
+    {"name":"names","parameterTypes":[] },
     {"name":"specialties","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.HeroesOfTheStorm",
   "methods":[
-    {"name":"battlegrounds","parameterTypes":[] }, 
-    {"name":"classNames","parameterTypes":[] }, 
-    {"name":"heroes","parameterTypes":[] }, 
+    {"name":"battlegrounds","parameterTypes":[] },
+    {"name":"classNames","parameterTypes":[] },
+    {"name":"heroes","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.LeagueOfLegends",
   "methods":[
-    {"name":"champion","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"masteries","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
-    {"name":"rank","parameterTypes":[] }, 
+    {"name":"champion","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"masteries","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
+    {"name":"rank","parameterTypes":[] },
     {"name":"summonerSpell","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Minecraft",
   "methods":[
-    {"name":"achievement","parameterTypes":[] }, 
-    {"name":"biome","parameterTypes":[] }, 
-    {"name":"blocks","parameterTypes":[] }, 
-    {"name":"enchantment","parameterTypes":[] }, 
-    {"name":"gameMode","parameterTypes":[] }, 
-    {"name":"items","parameterTypes":[] }, 
-    {"name":"mobs","parameterTypes":[] }, 
+    {"name":"achievement","parameterTypes":[] },
+    {"name":"biome","parameterTypes":[] },
+    {"name":"blocks","parameterTypes":[] },
+    {"name":"enchantment","parameterTypes":[] },
+    {"name":"gameMode","parameterTypes":[] },
+    {"name":"items","parameterTypes":[] },
+    {"name":"mobs","parameterTypes":[] },
     {"name":"statusEffect","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Myst",
   "methods":[
-    {"name":"ages","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"creatures","parameterTypes":[] }, 
-    {"name":"games","parameterTypes":[] }, 
+    {"name":"ages","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"creatures","parameterTypes":[] },
+    {"name":"games","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Overwatch",
   "methods":[
-    {"name":"heroes","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"heroes","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Pokemon",
   "methods":[
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"moves","parameterTypes":[] }, 
+    {"name":"locations","parameterTypes":[] },
+    {"name":"moves","parameterTypes":[] },
     {"name":"names","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.SonicTheHedgehog",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"game","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"game","parameterTypes":[] },
     {"name":"zone","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.StreetFighter",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"moves","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"moves","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"stages","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.SuperMario",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"games","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"games","parameterTypes":[] },
     {"name":"locations","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.SuperSmashBros",
   "methods":[
-    {"name":"fighter","parameterTypes":[] }, 
+    {"name":"fighter","parameterTypes":[] },
     {"name":"stage","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Superhero",
   "methods":[
-    {"name":"descriptor$games","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"power","parameterTypes":[] }, 
-    {"name":"prefix$games","parameterTypes":[] }, 
+    {"name":"descriptor$games","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"power","parameterTypes":[] },
+    {"name":"prefix$games","parameterTypes":[] },
     {"name":"suffix$games","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Tarkov",
   "methods":[
-    {"name":"bosses","parameterTypes":[] }, 
-    {"name":"factions","parameterTypes":[] }, 
-    {"name":"getQuests","parameterTypes":[] }, 
-    {"name":"items","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"traders","parameterTypes":[] }, 
+    {"name":"bosses","parameterTypes":[] },
+    {"name":"factions","parameterTypes":[] },
+    {"name":"getQuests","parameterTypes":[] },
+    {"name":"items","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"traders","parameterTypes":[] },
     {"name":"weapons","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.TarkovQuests",
   "methods":[
-    {"name":"fence","parameterTypes":[] }, 
-    {"name":"jaeger","parameterTypes":[] }, 
-    {"name":"mechanic","parameterTypes":[] }, 
-    {"name":"peacekeeper","parameterTypes":[] }, 
-    {"name":"prapor","parameterTypes":[] }, 
-    {"name":"ragman","parameterTypes":[] }, 
-    {"name":"skier","parameterTypes":[] }, 
+    {"name":"fence","parameterTypes":[] },
+    {"name":"jaeger","parameterTypes":[] },
+    {"name":"mechanic","parameterTypes":[] },
+    {"name":"peacekeeper","parameterTypes":[] },
+    {"name":"prapor","parameterTypes":[] },
+    {"name":"ragman","parameterTypes":[] },
+    {"name":"skier","parameterTypes":[] },
     {"name":"therapist","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Touhou",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"games","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"songs","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"games","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"songs","parameterTypes":[] },
     {"name":"spellCards","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.WarhammerFantasy",
   "methods":[
-    {"name":"creatures","parameterTypes":[] }, 
-    {"name":"factions","parameterTypes":[] }, 
-    {"name":"heroes","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"creatures","parameterTypes":[] },
+    {"name":"factions","parameterTypes":[] },
+    {"name":"heroes","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Witcher",
   "methods":[
-    {"name":"books","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"monsters","parameterTypes":[] }, 
-    {"name":"potions","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
-    {"name":"schools","parameterTypes":[] }, 
-    {"name":"signs","parameterTypes":[] }, 
+    {"name":"books","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"monsters","parameterTypes":[] },
+    {"name":"potions","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
+    {"name":"schools","parameterTypes":[] },
+    {"name":"signs","parameterTypes":[] },
     {"name":"witchers","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.WorldOfWarcraft",
   "methods":[
-    {"name":"classNames","parameterTypes":[] }, 
-    {"name":"hero","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"classNames","parameterTypes":[] },
+    {"name":"hero","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"races","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Zelda",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"games","parameterTypes":[] }, 
-    {"name":"items","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"games","parameterTypes":[] },
+    {"name":"items","parameterTypes":[] },
     {"name":"locations","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.humor.HumorFaker",
   "methods":[
-    {"name":"getChiquito","parameterTypes":[] }, 
-    {"name":"getChuckNorris","parameterTypes":[] }, 
-    {"name":"getFunnyName","parameterTypes":[] }, 
-    {"name":"getJackHandey","parameterTypes":[] }, 
+    {"name":"getChiquito","parameterTypes":[] },
+    {"name":"getChuckNorris","parameterTypes":[] },
+    {"name":"getFunnyName","parameterTypes":[] },
+    {"name":"getJackHandey","parameterTypes":[] },
     {"name":"getMitchHedberg","parameterTypes":[] }
   ]
 },
@@ -969,9 +969,9 @@
 {
   "name":"io.github.serpro69.kfaker.humor.provider.Chiquito",
   "methods":[
-    {"name":"expressions","parameterTypes":[] }, 
-    {"name":"jokes","parameterTypes":[] }, 
-    {"name":"sentences","parameterTypes":[] }, 
+    {"name":"expressions","parameterTypes":[] },
+    {"name":"jokes","parameterTypes":[] },
+    {"name":"sentences","parameterTypes":[] },
     {"name":"terms","parameterTypes":[] }
   ]
 },
@@ -994,15 +994,15 @@
 {
   "name":"io.github.serpro69.kfaker.japmedia.JapaneseMediaFaker",
   "methods":[
-    {"name":"getConan","parameterTypes":[] }, 
-    {"name":"getCowboyBebop","parameterTypes":[] }, 
-    {"name":"getDoraemon","parameterTypes":[] }, 
-    {"name":"getDragonBall","parameterTypes":[] }, 
-    {"name":"getFmaBrotherhood","parameterTypes":[] }, 
-    {"name":"getKamenRider","parameterTypes":[] }, 
-    {"name":"getNaruto","parameterTypes":[] }, 
-    {"name":"getOnePiece","parameterTypes":[] }, 
-    {"name":"getStudioGhibli","parameterTypes":[] }, 
+    {"name":"getConan","parameterTypes":[] },
+    {"name":"getCowboyBebop","parameterTypes":[] },
+    {"name":"getDoraemon","parameterTypes":[] },
+    {"name":"getDragonBall","parameterTypes":[] },
+    {"name":"getFmaBrotherhood","parameterTypes":[] },
+    {"name":"getKamenRider","parameterTypes":[] },
+    {"name":"getNaruto","parameterTypes":[] },
+    {"name":"getOnePiece","parameterTypes":[] },
+    {"name":"getStudioGhibli","parameterTypes":[] },
     {"name":"getSwordArtOnline","parameterTypes":[] }
   ]
 },
@@ -1012,87 +1012,87 @@
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.Conan",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"gadgets","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"gadgets","parameterTypes":[] },
     {"name":"vehicles","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.CowboyBebop",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"episode","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"episode","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
     {"name":"song","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.Doraemon",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"gadgets","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"gadgets","parameterTypes":[] },
     {"name":"locations","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.DragonBall",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"planets","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"planets","parameterTypes":[] },
     {"name":"races","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.FmaBrotherhood",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"cities","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"cities","parameterTypes":[] },
     {"name":"countries","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRider",
   "methods":[
-    {"name":"getHeisei","parameterTypes":[] }, 
-    {"name":"getReiwa","parameterTypes":[] }, 
+    {"name":"getHeisei","parameterTypes":[] },
+    {"name":"getReiwa","parameterTypes":[] },
     {"name":"getShowa","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderHeisei",
   "methods":[
-    {"name":"collectibleDevices","parameterTypes":[] }, 
-    {"name":"kamenRiders","parameterTypes":[] }, 
-    {"name":"series","parameterTypes":[] }, 
-    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"collectibleDevices","parameterTypes":[] },
+    {"name":"kamenRiders","parameterTypes":[] },
+    {"name":"series","parameterTypes":[] },
+    {"name":"transformationDevices","parameterTypes":[] },
     {"name":"users","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderReiwa",
   "methods":[
-    {"name":"collectibleDevices","parameterTypes":[] }, 
-    {"name":"kamenRiders","parameterTypes":[] }, 
-    {"name":"series","parameterTypes":[] }, 
-    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"collectibleDevices","parameterTypes":[] },
+    {"name":"kamenRiders","parameterTypes":[] },
+    {"name":"series","parameterTypes":[] },
+    {"name":"transformationDevices","parameterTypes":[] },
     {"name":"users","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.KamenRiderShowa",
   "methods":[
-    {"name":"kamenRiders","parameterTypes":[] }, 
-    {"name":"series","parameterTypes":[] }, 
-    {"name":"transformationDevices","parameterTypes":[] }, 
+    {"name":"kamenRiders","parameterTypes":[] },
+    {"name":"series","parameterTypes":[] },
+    {"name":"transformationDevices","parameterTypes":[] },
     {"name":"users","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.Naruto",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"demons","parameterTypes":[] }, 
-    {"name":"eyes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"demons","parameterTypes":[] },
+    {"name":"eyes","parameterTypes":[] },
     {"name":"villages","parameterTypes":[] }
   ]
 },
@@ -1105,31 +1105,31 @@
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.StudioGhibli",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"movies","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"movies","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.SwordArtOnline",
   "methods":[
-    {"name":"gameName","parameterTypes":[] }, 
-    {"name":"item","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
+    {"name":"gameName","parameterTypes":[] },
+    {"name":"item","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
     {"name":"realName","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.lorem.LoremFaker",
   "methods":[
-    {"name":"getAdjective","parameterTypes":[] }, 
-    {"name":"getEmotion","parameterTypes":[] }, 
-    {"name":"getHipster","parameterTypes":[] }, 
-    {"name":"getLorem","parameterTypes":[] }, 
-    {"name":"getMarkdown","parameterTypes":[] }, 
-    {"name":"getNatoPhoneticAlphabet","parameterTypes":[] }, 
-    {"name":"getSlackEmoji","parameterTypes":[] }, 
-    {"name":"getQuote","parameterTypes":[] }, 
+    {"name":"getAdjective","parameterTypes":[] },
+    {"name":"getEmotion","parameterTypes":[] },
+    {"name":"getHipster","parameterTypes":[] },
+    {"name":"getLorem","parameterTypes":[] },
+    {"name":"getMarkdown","parameterTypes":[] },
+    {"name":"getNatoPhoneticAlphabet","parameterTypes":[] },
+    {"name":"getSlackEmoji","parameterTypes":[] },
+    {"name":"getQuote","parameterTypes":[] },
     {"name":"getVerbs","parameterTypes":[] }
   ]
 },
@@ -1139,14 +1139,14 @@
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Adjective",
   "methods":[
-    {"name":"negative","parameterTypes":[] }, 
+    {"name":"negative","parameterTypes":[] },
     {"name":"positive","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Emotion",
   "methods":[
-    {"name":"adjective","parameterTypes":[] }, 
+    {"name":"adjective","parameterTypes":[] },
     {"name":"noun","parameterTypes":[] }
   ]
 },
@@ -1163,7 +1163,7 @@
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Markdown",
   "methods":[
-    {"name":"emphasis","parameterTypes":[] }, 
+    {"name":"emphasis","parameterTypes":[] },
     {"name":"headers","parameterTypes":[] }
   ]
 },
@@ -1174,49 +1174,49 @@
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.SlackEmoji",
   "methods":[
-    {"name":"activity","parameterTypes":[] }, 
-    {"name":"celebration","parameterTypes":[] }, 
-    {"name":"custom","parameterTypes":[] }, 
-    {"name":"emoji","parameterTypes":[] }, 
-    {"name":"foodAndDrink","parameterTypes":[] }, 
-    {"name":"nature","parameterTypes":[] }, 
-    {"name":"objectsAndSymbols","parameterTypes":[] }, 
-    {"name":"people","parameterTypes":[] }, 
+    {"name":"activity","parameterTypes":[] },
+    {"name":"celebration","parameterTypes":[] },
+    {"name":"custom","parameterTypes":[] },
+    {"name":"emoji","parameterTypes":[] },
+    {"name":"foodAndDrink","parameterTypes":[] },
+    {"name":"nature","parameterTypes":[] },
+    {"name":"objectsAndSymbols","parameterTypes":[] },
+    {"name":"people","parameterTypes":[] },
     {"name":"travelAndPlaces","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Quote",
   "methods":[
-    {"name":"famousLastWords","parameterTypes":[] }, 
-    {"name":"fortuneCookie","parameterTypes":[] }, 
-    {"name":"matz","parameterTypes":[] }, 
-    {"name":"mostInterestingManInTheWorld","parameterTypes":[] }, 
-    {"name":"robin","parameterTypes":[] }, 
-    {"name":"singularSiegler","parameterTypes":[] }, 
+    {"name":"famousLastWords","parameterTypes":[] },
+    {"name":"fortuneCookie","parameterTypes":[] },
+    {"name":"matz","parameterTypes":[] },
+    {"name":"mostInterestingManInTheWorld","parameterTypes":[] },
+    {"name":"robin","parameterTypes":[] },
+    {"name":"singularSiegler","parameterTypes":[] },
     {"name":"yoda","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.lorem.provider.Verbs",
   "methods":[
-    {"name":"base","parameterTypes":[] }, 
-    {"name":"ingForm","parameterTypes":[] }, 
-    {"name":"past","parameterTypes":[] }, 
-    {"name":"pastParticiple","parameterTypes":[] }, 
+    {"name":"base","parameterTypes":[] },
+    {"name":"ingForm","parameterTypes":[] },
+    {"name":"past","parameterTypes":[] },
+    {"name":"pastParticiple","parameterTypes":[] },
     {"name":"simplePresent","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.misc.MiscFaker",
   "methods":[
-    {"name":"getArtist","parameterTypes":[] }, 
-    {"name":"getBlood","parameterTypes":[] }, 
-    {"name":"getDemographic","parameterTypes":[] }, 
-    {"name":"getDrivingLicense","parameterTypes":[] }, 
-    {"name":"getGreekPhilosophers","parameterTypes":[] }, 
-    {"name":"getHobby","parameterTypes":[] }, 
-    {"name":"getMilitary","parameterTypes":[] }, 
+    {"name":"getArtist","parameterTypes":[] },
+    {"name":"getBlood","parameterTypes":[] },
+    {"name":"getDemographic","parameterTypes":[] },
+    {"name":"getDrivingLicense","parameterTypes":[] },
+    {"name":"getGreekPhilosophers","parameterTypes":[] },
+    {"name":"getHobby","parameterTypes":[] },
+    {"name":"getMilitary","parameterTypes":[] },
     {"name":"getRelationship","parameterTypes":[] }
   ]
 },
@@ -1230,32 +1230,32 @@
 {
   "name":"io.github.serpro69.kfaker.misc.provider.Blood",
   "methods":[
-    {"name":"group","parameterTypes":[] }, 
-    {"name":"rhFactor","parameterTypes":[] }, 
+    {"name":"group","parameterTypes":[] },
+    {"name":"rhFactor","parameterTypes":[] },
     {"name":"type","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.misc.provider.Demographic",
   "methods":[
-    {"name":"demonym","parameterTypes":[] }, 
-    {"name":"educationalAttainment","parameterTypes":[] }, 
-    {"name":"maritalStatus","parameterTypes":[] }, 
-    {"name":"race","parameterTypes":[] }, 
+    {"name":"demonym","parameterTypes":[] },
+    {"name":"educationalAttainment","parameterTypes":[] },
+    {"name":"maritalStatus","parameterTypes":[] },
+    {"name":"race","parameterTypes":[] },
     {"name":"sex","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.misc.provider.DrivingLicense",
   "methods":[
-    {"name":"license","parameterTypes":[] }, 
+    {"name":"license","parameterTypes":[] },
     {"name":"licenseByState","parameterTypes":["java.lang.String"] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.misc.provider.GreekPhilosophers",
   "methods":[
-    {"name":"names","parameterTypes":[] }, 
+    {"name":"names","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
@@ -1266,49 +1266,49 @@
 {
   "name":"io.github.serpro69.kfaker.misc.provider.Military",
   "methods":[
-    {"name":"airForceRank","parameterTypes":[] }, 
-    {"name":"armyRank","parameterTypes":[] }, 
-    {"name":"coastGuardRank","parameterTypes":[] }, 
-    {"name":"dodPaygrade","parameterTypes":[] }, 
-    {"name":"marinesRank","parameterTypes":[] }, 
-    {"name":"navyRank","parameterTypes":[] }, 
+    {"name":"airForceRank","parameterTypes":[] },
+    {"name":"armyRank","parameterTypes":[] },
+    {"name":"coastGuardRank","parameterTypes":[] },
+    {"name":"dodPaygrade","parameterTypes":[] },
+    {"name":"marinesRank","parameterTypes":[] },
+    {"name":"navyRank","parameterTypes":[] },
     {"name":"spaceForceRank","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.misc.provider.Relationship",
   "methods":[
-    {"name":"familial","parameterTypes":[] }, 
-    {"name":"familialDirect","parameterTypes":[] }, 
-    {"name":"familialExtended","parameterTypes":[] }, 
-    {"name":"inLaw","parameterTypes":[] }, 
-    {"name":"parent","parameterTypes":[] }, 
-    {"name":"sibling","parameterTypes":[] }, 
+    {"name":"familial","parameterTypes":[] },
+    {"name":"familialDirect","parameterTypes":[] },
+    {"name":"familialExtended","parameterTypes":[] },
+    {"name":"inLaw","parameterTypes":[] },
+    {"name":"parent","parameterTypes":[] },
+    {"name":"sibling","parameterTypes":[] },
     {"name":"spouse","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.MoviesFaker",
   "methods":[
-    {"name":"getAvatar","parameterTypes":[] }, 
-    {"name":"getBackToTheFuture","parameterTypes":[] }, 
-    {"name":"getDeparted","parameterTypes":[] }, 
-    {"name":"getDumbAndDumber","parameterTypes":[] }, 
-    {"name":"getGhostBusters","parameterTypes":[] }, 
-    {"name":"getHackers","parameterTypes":[] }, 
-    {"name":"getHarryPotter","parameterTypes":[] }, 
-    {"name":"getHitchhikersGuideToTheGalaxy","parameterTypes":[] }, 
-    {"name":"getHobbit","parameterTypes":[] }, 
-    {"name":"getHowToTrainYourDragon","parameterTypes":[] }, 
-    {"name":"getLebowski","parameterTypes":[] }, 
-    {"name":"getLordOfTheRings","parameterTypes":[] }, 
-    {"name":"getMovie","parameterTypes":[] }, 
-    {"name":"getPrincessBride","parameterTypes":[] }, 
-    {"name":"getRajnikanth","parameterTypes":[] }, 
-    {"name":"getStarWars","parameterTypes":[] }, 
-    {"name":"getTheRoom","parameterTypes":[] }, 
-    {"name":"getTron","parameterTypes":[] }, 
-    {"name":"getVForVendetta","parameterTypes":[] }, 
+    {"name":"getAvatar","parameterTypes":[] },
+    {"name":"getBackToTheFuture","parameterTypes":[] },
+    {"name":"getDeparted","parameterTypes":[] },
+    {"name":"getDumbAndDumber","parameterTypes":[] },
+    {"name":"getGhostBusters","parameterTypes":[] },
+    {"name":"getHackers","parameterTypes":[] },
+    {"name":"getHarryPotter","parameterTypes":[] },
+    {"name":"getHitchhikersGuideToTheGalaxy","parameterTypes":[] },
+    {"name":"getHobbit","parameterTypes":[] },
+    {"name":"getHowToTrainYourDragon","parameterTypes":[] },
+    {"name":"getLebowski","parameterTypes":[] },
+    {"name":"getLordOfTheRings","parameterTypes":[] },
+    {"name":"getMovie","parameterTypes":[] },
+    {"name":"getPrincessBride","parameterTypes":[] },
+    {"name":"getRajnikanth","parameterTypes":[] },
+    {"name":"getStarWars","parameterTypes":[] },
+    {"name":"getTheRoom","parameterTypes":[] },
+    {"name":"getTron","parameterTypes":[] },
+    {"name":"getVForVendetta","parameterTypes":[] },
     {"name":"getYoda","parameterTypes":[] }
   ]
 },
@@ -1318,118 +1318,118 @@
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Avatar",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"dates","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"dates","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.BackToTheFuture",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"dates","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"dates","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Departed",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.DumbAndDumber",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.GhostBusters",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Hackers",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"handles","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"handles","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.HarryPotter",
   "methods":[
-    {"name":"books","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"houses","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"books","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"houses","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"spells","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.HitchhikersGuideToTheGalaxy",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"marvinQuote","parameterTypes":[] }, 
-    {"name":"planets","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
-    {"name":"species","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"marvinQuote","parameterTypes":[] },
+    {"name":"planets","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
+    {"name":"species","parameterTypes":[] },
     {"name":"starships","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Hobbit",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
     {"name":"thorinsCompany","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.HowToTrainYourDragon",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"dragons","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"dragons","parameterTypes":[] },
     {"name":"locations","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Lebowski",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.LordOfTheRings",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Movie",
   "methods":[
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"quote","parameterTypes":[] },
     {"name":"title","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.PrincessBride",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
@@ -1440,41 +1440,41 @@
 {
   "name":"io.github.serpro69.kfaker.movies.provider.StarWars",
   "methods":[
-    {"name":"alternateCharacterSpellings","parameterTypes":["java.lang.String"] }, 
-    {"name":"callNumbers","parameterTypes":[] }, 
-    {"name":"callSign","parameterTypes":[] }, 
-    {"name":"callSquadrons","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"droids","parameterTypes":[] }, 
-    {"name":"planets","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":["java.lang.String"] }, 
-    {"name":"species","parameterTypes":[] }, 
-    {"name":"vehicles","parameterTypes":[] }, 
+    {"name":"alternateCharacterSpellings","parameterTypes":["java.lang.String"] },
+    {"name":"callNumbers","parameterTypes":[] },
+    {"name":"callSign","parameterTypes":[] },
+    {"name":"callSquadrons","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"droids","parameterTypes":[] },
+    {"name":"planets","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":["java.lang.String"] },
+    {"name":"species","parameterTypes":[] },
+    {"name":"vehicles","parameterTypes":[] },
     {"name":"wookieeWords","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.TheRoom",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.movies.provider.Tron",
   "methods":[
-    {"name":"alternateCharacterSpellings","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronAlternateCharacter"] }, 
-    {"name":"alternateCharacterSpellings$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronAlternateCharacter","int","java.lang.Object"] }, 
-    {"name":"characters","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronCharacterType"] }, 
-    {"name":"characters$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronCharacterType","int","java.lang.Object"] }, 
-    {"name":"games","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronCharacter"] }, 
-    {"name":"quotes$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronCharacter","int","java.lang.Object"] }, 
-    {"name":"taglines","parameterTypes":[] }, 
+    {"name":"alternateCharacterSpellings","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronAlternateCharacter"] },
+    {"name":"alternateCharacterSpellings$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronAlternateCharacter","int","java.lang.Object"] },
+    {"name":"characters","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronCharacterType"] },
+    {"name":"characters$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronCharacterType","int","java.lang.Object"] },
+    {"name":"games","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.movies.provider.TronCharacter"] },
+    {"name":"quotes$default","parameterTypes":["io.github.serpro69.kfaker.movies.provider.Tron","io.github.serpro69.kfaker.movies.provider.TronCharacter","int","java.lang.Object"] },
+    {"name":"taglines","parameterTypes":[] },
     {"name":"vehicles","parameterTypes":[] }
   ]
 },
@@ -1490,8 +1490,8 @@
 {
   "name":"io.github.serpro69.kfaker.movies.provider.VForVendetta",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"speeches","parameterTypes":[] }
   ]
 },
@@ -1502,19 +1502,19 @@
 {
   "name":"io.github.serpro69.kfaker.music.MusicFaker",
   "methods":[
-    {"name":"getBossaNova","parameterTypes":[] }, 
-    {"name":"getGratefulDead","parameterTypes":[] }, 
-    {"name":"getHipHop","parameterTypes":[] }, 
-    {"name":"getKPop","parameterTypes":[] }, 
-    {"name":"getMusic","parameterTypes":[] }, 
-    {"name":"getOpera","parameterTypes":[] }, 
-    {"name":"getPearlJam","parameterTypes":[] }, 
-    {"name":"getPhish","parameterTypes":[] }, 
-    {"name":"getPrince","parameterTypes":[] }, 
-    {"name":"getRockBand","parameterTypes":[] }, 
-    {"name":"getRush","parameterTypes":[] }, 
-    {"name":"getShow","parameterTypes":[] }, 
-    {"name":"getSmashingPumpkins","parameterTypes":[] }, 
+    {"name":"getBossaNova","parameterTypes":[] },
+    {"name":"getGratefulDead","parameterTypes":[] },
+    {"name":"getHipHop","parameterTypes":[] },
+    {"name":"getKPop","parameterTypes":[] },
+    {"name":"getMusic","parameterTypes":[] },
+    {"name":"getOpera","parameterTypes":[] },
+    {"name":"getPearlJam","parameterTypes":[] },
+    {"name":"getPhish","parameterTypes":[] },
+    {"name":"getPrince","parameterTypes":[] },
+    {"name":"getRockBand","parameterTypes":[] },
+    {"name":"getRush","parameterTypes":[] },
+    {"name":"getShow","parameterTypes":[] },
+    {"name":"getSmashingPumpkins","parameterTypes":[] },
     {"name":"getUmphreysMcgee","parameterTypes":[] }
   ]
 },
@@ -1524,68 +1524,68 @@
 {
   "name":"io.github.serpro69.kfaker.music.provider.BossaNova",
   "methods":[
-    {"name":"artists","parameterTypes":[] }, 
+    {"name":"artists","parameterTypes":[] },
     {"name":"songs","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.FrenchOpera",
   "methods":[
-    {"name":"byCamilleSaintSaens","parameterTypes":[] }, 
-    {"name":"byCharlesGounod","parameterTypes":[] }, 
-    {"name":"byChristophWillibaldGluck","parameterTypes":[] }, 
-    {"name":"byGeorgesBizet","parameterTypes":[] }, 
-    {"name":"byHectorBerlioz","parameterTypes":[] }, 
+    {"name":"byCamilleSaintSaens","parameterTypes":[] },
+    {"name":"byCharlesGounod","parameterTypes":[] },
+    {"name":"byChristophWillibaldGluck","parameterTypes":[] },
+    {"name":"byGeorgesBizet","parameterTypes":[] },
+    {"name":"byHectorBerlioz","parameterTypes":[] },
     {"name":"byMauriceRavel","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.GermanOpera",
   "methods":[
-    {"name":"byAlbanBerg","parameterTypes":[] }, 
-    {"name":"byCarlMariaVonWeber","parameterTypes":[] }, 
-    {"name":"byFranzSchubert","parameterTypes":[] }, 
-    {"name":"byLudwigVanBeethoven","parameterTypes":[] }, 
-    {"name":"byRichardStrauss","parameterTypes":[] }, 
-    {"name":"byRichardWagner","parameterTypes":[] }, 
-    {"name":"byRobertSchumann","parameterTypes":[] }, 
+    {"name":"byAlbanBerg","parameterTypes":[] },
+    {"name":"byCarlMariaVonWeber","parameterTypes":[] },
+    {"name":"byFranzSchubert","parameterTypes":[] },
+    {"name":"byLudwigVanBeethoven","parameterTypes":[] },
+    {"name":"byRichardStrauss","parameterTypes":[] },
+    {"name":"byRichardWagner","parameterTypes":[] },
+    {"name":"byRobertSchumann","parameterTypes":[] },
     {"name":"byWolfgangAmadeusMozart","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.GratefulDead",
   "methods":[
-    {"name":"players","parameterTypes":[] }, 
+    {"name":"players","parameterTypes":[] },
     {"name":"songs","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.HipHop",
   "methods":[
-    {"name":"artist","parameterTypes":[] }, 
-    {"name":"groups","parameterTypes":[] }, 
+    {"name":"artist","parameterTypes":[] },
+    {"name":"groups","parameterTypes":[] },
     {"name":"subgenres","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.ItalianOpera",
   "methods":[
-    {"name":"byChristophWillibaldGluck","parameterTypes":[] }, 
-    {"name":"byGaetanoDonizetti","parameterTypes":[] }, 
-    {"name":"byGioacchinoRossini","parameterTypes":[] }, 
-    {"name":"byGiuseppeVerdi","parameterTypes":[] }, 
-    {"name":"byVincenzoBellini","parameterTypes":[] }, 
+    {"name":"byChristophWillibaldGluck","parameterTypes":[] },
+    {"name":"byGaetanoDonizetti","parameterTypes":[] },
+    {"name":"byGioacchinoRossini","parameterTypes":[] },
+    {"name":"byGiuseppeVerdi","parameterTypes":[] },
+    {"name":"byVincenzoBellini","parameterTypes":[] },
     {"name":"byWolfgangAmadeusMozart","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.KPop",
   "methods":[
-    {"name":"boyBands","parameterTypes":[] }, 
-    {"name":"firstGroups","parameterTypes":[] }, 
-    {"name":"girlGroups","parameterTypes":[] }, 
-    {"name":"secondGroups","parameterTypes":[] }, 
-    {"name":"solo","parameterTypes":[] }, 
+    {"name":"boyBands","parameterTypes":[] },
+    {"name":"firstGroups","parameterTypes":[] },
+    {"name":"girlGroups","parameterTypes":[] },
+    {"name":"secondGroups","parameterTypes":[] },
+    {"name":"solo","parameterTypes":[] },
     {"name":"thirdGroups","parameterTypes":[] }
   ]
 },
@@ -1598,64 +1598,64 @@
 {
   "name":"io.github.serpro69.kfaker.music.provider.Opera",
   "methods":[
-    {"name":"getFrench","parameterTypes":[] }, 
-    {"name":"getGerman","parameterTypes":[] }, 
+    {"name":"getFrench","parameterTypes":[] },
+    {"name":"getGerman","parameterTypes":[] },
     {"name":"getItalian","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.PearlJam",
   "methods":[
-    {"name":"albums","parameterTypes":[] }, 
-    {"name":"musicians","parameterTypes":[] }, 
+    {"name":"albums","parameterTypes":[] },
+    {"name":"musicians","parameterTypes":[] },
     {"name":"songs","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.Phish",
   "methods":[
-    {"name":"albums","parameterTypes":[] }, 
-    {"name":"musicians","parameterTypes":[] }, 
+    {"name":"albums","parameterTypes":[] },
+    {"name":"musicians","parameterTypes":[] },
     {"name":"songs","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.Prince",
   "methods":[
-    {"name":"album","parameterTypes":[] }, 
-    {"name":"band","parameterTypes":[] }, 
-    {"name":"lyric","parameterTypes":[] }, 
+    {"name":"album","parameterTypes":[] },
+    {"name":"band","parameterTypes":[] },
+    {"name":"lyric","parameterTypes":[] },
     {"name":"song","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.RockBand",
   "methods":[
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"name","parameterTypes":[] },
     {"name":"song","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.Rush",
   "methods":[
-    {"name":"albums","parameterTypes":[] }, 
+    {"name":"albums","parameterTypes":[] },
     {"name":"players","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.Show",
   "methods":[
-    {"name":"adultMusical","parameterTypes":[] }, 
-    {"name":"kidsMusical","parameterTypes":[] }, 
+    {"name":"adultMusical","parameterTypes":[] },
+    {"name":"kidsMusical","parameterTypes":[] },
     {"name":"play","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.SmashingPumpkins",
   "methods":[
-    {"name":"albums","parameterTypes":[] }, 
-    {"name":"lyric","parameterTypes":[] }, 
-    {"name":"musicians","parameterTypes":[] }, 
+    {"name":"albums","parameterTypes":[] },
+    {"name":"lyric","parameterTypes":[] },
+    {"name":"musicians","parameterTypes":[] },
     {"name":"songs","parameterTypes":[] }
   ]
 },
@@ -1686,8 +1686,8 @@
 {
   "name":"io.github.serpro69.kfaker.provider.Currency",
   "methods":[
-    {"name":"code","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"code","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
     {"name":"symbol","parameterTypes":[] }
   ]
 },
@@ -1707,21 +1707,21 @@
 {
   "name":"io.github.serpro69.kfaker.provider.FileMimeType",
   "methods":[
-    {"name":"application","parameterTypes":[] }, 
-    {"name":"audio","parameterTypes":[] }, 
-    {"name":"image","parameterTypes":[] }, 
-    {"name":"message","parameterTypes":[] }, 
-    {"name":"model","parameterTypes":[] }, 
-    {"name":"multipart","parameterTypes":[] }, 
-    {"name":"text","parameterTypes":[] }, 
+    {"name":"application","parameterTypes":[] },
+    {"name":"audio","parameterTypes":[] },
+    {"name":"image","parameterTypes":[] },
+    {"name":"message","parameterTypes":[] },
+    {"name":"model","parameterTypes":[] },
+    {"name":"multipart","parameterTypes":[] },
+    {"name":"text","parameterTypes":[] },
     {"name":"video","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Gender",
   "methods":[
-    {"name":"binaryTypes","parameterTypes":[] }, 
-    {"name":"shortBinaryTypes","parameterTypes":[] }, 
+    {"name":"binaryTypes","parameterTypes":[] },
+    {"name":"shortBinaryTypes","parameterTypes":[] },
     {"name":"types","parameterTypes":[] }
   ]
 },
@@ -1738,13 +1738,13 @@
 {
   "name":"io.github.serpro69.kfaker.provider.Measurement",
   "methods":[
-    {"name":"height","parameterTypes":[] }, 
-    {"name":"length","parameterTypes":[] }, 
-    {"name":"metricHeight","parameterTypes":[] }, 
-    {"name":"metricLength","parameterTypes":[] }, 
-    {"name":"metricVolume","parameterTypes":[] }, 
-    {"name":"metricWeight","parameterTypes":[] }, 
-    {"name":"volume","parameterTypes":[] }, 
+    {"name":"height","parameterTypes":[] },
+    {"name":"length","parameterTypes":[] },
+    {"name":"metricHeight","parameterTypes":[] },
+    {"name":"metricLength","parameterTypes":[] },
+    {"name":"metricVolume","parameterTypes":[] },
+    {"name":"metricWeight","parameterTypes":[] },
+    {"name":"volume","parameterTypes":[] },
     {"name":"weight","parameterTypes":[] }
   ]
 },
@@ -1779,11 +1779,11 @@
 {
   "name":"io.github.serpro69.kfaker.provider.misc.CryptographyProvider",
   "methods":[
-    {"name":"md5","parameterTypes":[] }, 
-    {"name":"sha1","parameterTypes":[] }, 
-    {"name":"sha224","parameterTypes":[] }, 
-    {"name":"sha256","parameterTypes":[] }, 
-    {"name":"sha384","parameterTypes":[] }, 
+    {"name":"md5","parameterTypes":[] },
+    {"name":"sha1","parameterTypes":[] },
+    {"name":"sha224","parameterTypes":[] },
+    {"name":"sha256","parameterTypes":[] },
+    {"name":"sha384","parameterTypes":[] },
     {"name":"sha512","parameterTypes":[] }
   ]
 },
@@ -1805,15 +1805,15 @@
 {
   "name":"io.github.serpro69.kfaker.sports.SportsFaker",
   "methods":[
-    {"name":"getBasketball","parameterTypes":[] }, 
-    {"name":"getChess","parameterTypes":[] }, 
-    {"name":"getCrossfit","parameterTypes":[] }, 
-    {"name":"getESport","parameterTypes":[] }, 
-    {"name":"getFootball","parameterTypes":[] }, 
-    {"name":"getMountaineering","parameterTypes":[] }, 
-    {"name":"getSport","parameterTypes":[] }, 
-    {"name":"getTeam","parameterTypes":[] }, 
-    {"name":"getVolleyball","parameterTypes":[] }, 
+    {"name":"getBasketball","parameterTypes":[] },
+    {"name":"getChess","parameterTypes":[] },
+    {"name":"getCrossfit","parameterTypes":[] },
+    {"name":"getESport","parameterTypes":[] },
+    {"name":"getFootball","parameterTypes":[] },
+    {"name":"getMountaineering","parameterTypes":[] },
+    {"name":"getSport","parameterTypes":[] },
+    {"name":"getTeam","parameterTypes":[] },
+    {"name":"getVolleyball","parameterTypes":[] },
     {"name":"getWorldCup","parameterTypes":[] }
   ]
 },
@@ -1823,49 +1823,49 @@
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Basketball",
   "methods":[
-    {"name":"coaches","parameterTypes":[] }, 
-    {"name":"players","parameterTypes":[] }, 
-    {"name":"positions","parameterTypes":[] }, 
+    {"name":"coaches","parameterTypes":[] },
+    {"name":"players","parameterTypes":[] },
+    {"name":"positions","parameterTypes":[] },
     {"name":"teams","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Chess",
   "methods":[
-    {"name":"openings","parameterTypes":[] }, 
-    {"name":"players","parameterTypes":[] }, 
-    {"name":"titles","parameterTypes":[] }, 
+    {"name":"openings","parameterTypes":[] },
+    {"name":"players","parameterTypes":[] },
+    {"name":"titles","parameterTypes":[] },
     {"name":"tournaments","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Crossfit",
   "methods":[
-    {"name":"competitions","parameterTypes":[] }, 
-    {"name":"femaleAthletes","parameterTypes":[] }, 
-    {"name":"girlWorkouts","parameterTypes":[] }, 
-    {"name":"heroWorkouts","parameterTypes":[] }, 
-    {"name":"maleAthletes","parameterTypes":[] }, 
+    {"name":"competitions","parameterTypes":[] },
+    {"name":"femaleAthletes","parameterTypes":[] },
+    {"name":"girlWorkouts","parameterTypes":[] },
+    {"name":"heroWorkouts","parameterTypes":[] },
+    {"name":"maleAthletes","parameterTypes":[] },
     {"name":"movements","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.ESport",
   "methods":[
-    {"name":"events","parameterTypes":[] }, 
-    {"name":"games","parameterTypes":[] }, 
-    {"name":"leagues","parameterTypes":[] }, 
-    {"name":"players","parameterTypes":[] }, 
+    {"name":"events","parameterTypes":[] },
+    {"name":"games","parameterTypes":[] },
+    {"name":"leagues","parameterTypes":[] },
+    {"name":"players","parameterTypes":[] },
     {"name":"teams","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Football",
   "methods":[
-    {"name":"coaches","parameterTypes":[] }, 
-    {"name":"competitions","parameterTypes":[] }, 
-    {"name":"players","parameterTypes":[] }, 
-    {"name":"positions","parameterTypes":[] }, 
+    {"name":"coaches","parameterTypes":[] },
+    {"name":"competitions","parameterTypes":[] },
+    {"name":"players","parameterTypes":[] },
+    {"name":"positions","parameterTypes":[] },
     {"name":"teams","parameterTypes":[] }
   ]
 },
@@ -1876,29 +1876,29 @@
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Sport",
   "methods":[
-    {"name":"ancientOlympics","parameterTypes":[] }, 
-    {"name":"summerOlympics","parameterTypes":[] }, 
-    {"name":"summerParalympics","parameterTypes":[] }, 
-    {"name":"unusual","parameterTypes":[] }, 
-    {"name":"winterOlympics","parameterTypes":[] }, 
+    {"name":"ancientOlympics","parameterTypes":[] },
+    {"name":"summerOlympics","parameterTypes":[] },
+    {"name":"summerParalympics","parameterTypes":[] },
+    {"name":"unusual","parameterTypes":[] },
+    {"name":"winterOlympics","parameterTypes":[] },
     {"name":"winterParalympics","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Team",
   "methods":[
-    {"name":"mascot","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"mascot","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
     {"name":"sport","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.sports.provider.Volleyball",
   "methods":[
-    {"name":"coach","parameterTypes":[] }, 
-    {"name":"formation","parameterTypes":[] }, 
-    {"name":"player","parameterTypes":[] }, 
-    {"name":"position","parameterTypes":[] }, 
+    {"name":"coach","parameterTypes":[] },
+    {"name":"formation","parameterTypes":[] },
+    {"name":"player","parameterTypes":[] },
+    {"name":"position","parameterTypes":[] },
     {"name":"team","parameterTypes":[] }
   ]
 },
@@ -1911,17 +1911,17 @@
 {
   "name":"io.github.serpro69.kfaker.tech.TechFaker",
   "methods":[
-    {"name":"getApp","parameterTypes":[] }, 
-    {"name":"getAppliance","parameterTypes":[] }, 
-    {"name":"getCamera","parameterTypes":[] }, 
-    {"name":"getComputer","parameterTypes":[] }, 
-    {"name":"getCryptoCoin","parameterTypes":[] }, 
-    {"name":"getDevice","parameterTypes":[] }, 
-    {"name":"getDrone","parameterTypes":[] }, 
-    {"name":"getElectricalComponents","parameterTypes":[] }, 
-    {"name":"getHacker","parameterTypes":[] }, 
-    {"name":"getProgrammingLanguage","parameterTypes":[] }, 
-    {"name":"getSpace","parameterTypes":[] }, 
+    {"name":"getApp","parameterTypes":[] },
+    {"name":"getAppliance","parameterTypes":[] },
+    {"name":"getCamera","parameterTypes":[] },
+    {"name":"getComputer","parameterTypes":[] },
+    {"name":"getCryptoCoin","parameterTypes":[] },
+    {"name":"getDevice","parameterTypes":[] },
+    {"name":"getDrone","parameterTypes":[] },
+    {"name":"getElectricalComponents","parameterTypes":[] },
+    {"name":"getHacker","parameterTypes":[] },
+    {"name":"getProgrammingLanguage","parameterTypes":[] },
+    {"name":"getSpace","parameterTypes":[] },
     {"name":"getVehicle","parameterTypes":[] }
   ]
 },
@@ -1931,23 +1931,23 @@
 {
   "name":"io.github.serpro69.kfaker.tech.provider.App",
   "methods":[
-    {"name":"author","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"author","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
     {"name":"version","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Appliance",
   "methods":[
-    {"name":"brand","parameterTypes":[] }, 
+    {"name":"brand","parameterTypes":[] },
     {"name":"equipment","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Camera",
   "methods":[
-    {"name":"brand","parameterTypes":[] }, 
-    {"name":"brandWithModel","parameterTypes":[] }, 
+    {"name":"brand","parameterTypes":[] },
+    {"name":"brandWithModel","parameterTypes":[] },
     {"name":"model","parameterTypes":[] }
   ]
 },
@@ -1960,11 +1960,11 @@
 {
   "name":"io.github.serpro69.kfaker.tech.provider.ComputerOS",
   "methods":[
-    {"name":"linux","parameterTypes":[] }, 
-    {"name":"macOS","parameterTypes":[] }, 
-    {"name":"openBsd","parameterTypes":[] }, 
-    {"name":"plan9","parameterTypes":[] }, 
-    {"name":"templeOS","parameterTypes":[] }, 
+    {"name":"linux","parameterTypes":[] },
+    {"name":"macOS","parameterTypes":[] },
+    {"name":"openBsd","parameterTypes":[] },
+    {"name":"plan9","parameterTypes":[] },
+    {"name":"templeOS","parameterTypes":[] },
     {"name":"windows","parameterTypes":[] }
   ]
 },
@@ -1975,114 +1975,114 @@
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Device",
   "methods":[
-    {"name":"manufacturer","parameterTypes":[] }, 
-    {"name":"modelName","parameterTypes":[] }, 
-    {"name":"platform","parameterTypes":[] }, 
+    {"name":"manufacturer","parameterTypes":[] },
+    {"name":"modelName","parameterTypes":[] },
+    {"name":"platform","parameterTypes":[] },
     {"name":"serial","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Drone",
   "methods":[
-    {"name":"batteryCapacity","parameterTypes":[] }, 
-    {"name":"batteryType","parameterTypes":[] }, 
-    {"name":"batteryVoltage","parameterTypes":[] }, 
-    {"name":"batteryWeight","parameterTypes":[] }, 
-    {"name":"chargingTemperature","parameterTypes":[] }, 
-    {"name":"flightTime","parameterTypes":[] }, 
-    {"name":"iso","parameterTypes":[] }, 
-    {"name":"maxAltitude","parameterTypes":[] }, 
-    {"name":"maxAngularVelocity","parameterTypes":[] }, 
-    {"name":"maxAscentSpeed","parameterTypes":[] }, 
-    {"name":"maxChargingPower","parameterTypes":[] }, 
-    {"name":"maxDescentSpeed","parameterTypes":[] }, 
-    {"name":"maxFlightDistance","parameterTypes":[] }, 
-    {"name":"maxResolution","parameterTypes":[] }, 
-    {"name":"maxShutterSpeed","parameterTypes":[] }, 
-    {"name":"maxSpeed","parameterTypes":[] }, 
-    {"name":"maxTiltAngle","parameterTypes":[] }, 
-    {"name":"maxWindResistance","parameterTypes":[] }, 
-    {"name":"minShutterSpeed","parameterTypes":[] }, 
-    {"name":"name","parameterTypes":[] }, 
-    {"name":"operatingTemperature","parameterTypes":[] }, 
-    {"name":"photoFormat","parameterTypes":[] }, 
-    {"name":"shutterSpeedUnits","parameterTypes":[] }, 
-    {"name":"videoFormat","parameterTypes":[] }, 
+    {"name":"batteryCapacity","parameterTypes":[] },
+    {"name":"batteryType","parameterTypes":[] },
+    {"name":"batteryVoltage","parameterTypes":[] },
+    {"name":"batteryWeight","parameterTypes":[] },
+    {"name":"chargingTemperature","parameterTypes":[] },
+    {"name":"flightTime","parameterTypes":[] },
+    {"name":"iso","parameterTypes":[] },
+    {"name":"maxAltitude","parameterTypes":[] },
+    {"name":"maxAngularVelocity","parameterTypes":[] },
+    {"name":"maxAscentSpeed","parameterTypes":[] },
+    {"name":"maxChargingPower","parameterTypes":[] },
+    {"name":"maxDescentSpeed","parameterTypes":[] },
+    {"name":"maxFlightDistance","parameterTypes":[] },
+    {"name":"maxResolution","parameterTypes":[] },
+    {"name":"maxShutterSpeed","parameterTypes":[] },
+    {"name":"maxSpeed","parameterTypes":[] },
+    {"name":"maxTiltAngle","parameterTypes":[] },
+    {"name":"maxWindResistance","parameterTypes":[] },
+    {"name":"minShutterSpeed","parameterTypes":[] },
+    {"name":"name","parameterTypes":[] },
+    {"name":"operatingTemperature","parameterTypes":[] },
+    {"name":"photoFormat","parameterTypes":[] },
+    {"name":"shutterSpeedUnits","parameterTypes":[] },
+    {"name":"videoFormat","parameterTypes":[] },
     {"name":"weight","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.ElectricalComponents",
   "methods":[
-    {"name":"active","parameterTypes":[] }, 
-    {"name":"electromechanical","parameterTypes":[] }, 
+    {"name":"active","parameterTypes":[] },
+    {"name":"electromechanical","parameterTypes":[] },
     {"name":"passive","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Hacker",
   "methods":[
-    {"name":"abbreviation","parameterTypes":[] }, 
-    {"name":"adjective","parameterTypes":[] }, 
-    {"name":"ingverb","parameterTypes":[] }, 
-    {"name":"noun","parameterTypes":[] }, 
+    {"name":"abbreviation","parameterTypes":[] },
+    {"name":"adjective","parameterTypes":[] },
+    {"name":"ingverb","parameterTypes":[] },
+    {"name":"noun","parameterTypes":[] },
     {"name":"verb","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.ProgrammingLanguage",
   "methods":[
-    {"name":"creator","parameterTypes":[] }, 
+    {"name":"creator","parameterTypes":[] },
     {"name":"name","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Space",
   "methods":[
-    {"name":"agency","parameterTypes":[] }, 
-    {"name":"agencyAbv","parameterTypes":[] }, 
-    {"name":"company","parameterTypes":[] }, 
-    {"name":"constellation","parameterTypes":[] }, 
-    {"name":"distanceMeasurement","parameterTypes":[] }, 
-    {"name":"galaxy","parameterTypes":[] }, 
-    {"name":"launchVehicle","parameterTypes":[] }, 
-    {"name":"meteorite","parameterTypes":[] }, 
-    {"name":"moon","parameterTypes":[] }, 
-    {"name":"nasaSpaceCraft","parameterTypes":[] }, 
-    {"name":"nebula","parameterTypes":[] }, 
-    {"name":"planet","parameterTypes":[] }, 
-    {"name":"star","parameterTypes":[] }, 
+    {"name":"agency","parameterTypes":[] },
+    {"name":"agencyAbv","parameterTypes":[] },
+    {"name":"company","parameterTypes":[] },
+    {"name":"constellation","parameterTypes":[] },
+    {"name":"distanceMeasurement","parameterTypes":[] },
+    {"name":"galaxy","parameterTypes":[] },
+    {"name":"launchVehicle","parameterTypes":[] },
+    {"name":"meteorite","parameterTypes":[] },
+    {"name":"moon","parameterTypes":[] },
+    {"name":"nasaSpaceCraft","parameterTypes":[] },
+    {"name":"nebula","parameterTypes":[] },
+    {"name":"planet","parameterTypes":[] },
+    {"name":"star","parameterTypes":[] },
     {"name":"starCluster","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Vehicle",
   "methods":[
-    {"name":"carOptions","parameterTypes":[] }, 
-    {"name":"carTypes","parameterTypes":[] }, 
-    {"name":"colors","parameterTypes":[] }, 
-    {"name":"cylinderEngine","parameterTypes":[] }, 
-    {"name":"doors","parameterTypes":[] }, 
-    {"name":"driveTypes","parameterTypes":[] }, 
-    {"name":"engineSizes","parameterTypes":[] }, 
-    {"name":"fuelTypes","parameterTypes":[] }, 
-    {"name":"licencePlateByState","parameterTypes":["java.lang.String"] }, 
-    {"name":"licensePlate","parameterTypes":[] }, 
-    {"name":"makes","parameterTypes":[] }, 
-    {"name":"manufacture","parameterTypes":[] }, 
-    {"name":"modelsByMake","parameterTypes":["java.lang.String"] }, 
-    {"name":"standardSpecs","parameterTypes":[] }, 
-    {"name":"styles","parameterTypes":[] }, 
+    {"name":"carOptions","parameterTypes":[] },
+    {"name":"carTypes","parameterTypes":[] },
+    {"name":"colors","parameterTypes":[] },
+    {"name":"cylinderEngine","parameterTypes":[] },
+    {"name":"doors","parameterTypes":[] },
+    {"name":"driveTypes","parameterTypes":[] },
+    {"name":"engineSizes","parameterTypes":[] },
+    {"name":"fuelTypes","parameterTypes":[] },
+    {"name":"licencePlateByState","parameterTypes":["java.lang.String"] },
+    {"name":"licensePlate","parameterTypes":[] },
+    {"name":"makes","parameterTypes":[] },
+    {"name":"manufacture","parameterTypes":[] },
+    {"name":"modelsByMake","parameterTypes":["java.lang.String"] },
+    {"name":"standardSpecs","parameterTypes":[] },
+    {"name":"styles","parameterTypes":[] },
     {"name":"transmissions","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.TravelFaker",
   "methods":[
-    {"name":"getAirport","parameterTypes":[] }, 
-    {"name":"getAustralia","parameterTypes":[] }, 
-    {"name":"getMountain","parameterTypes":[] }, 
-    {"name":"getNation","parameterTypes":[] }, 
+    {"name":"getAirport","parameterTypes":[] },
+    {"name":"getAustralia","parameterTypes":[] },
+    {"name":"getMountain","parameterTypes":[] },
+    {"name":"getNation","parameterTypes":[] },
     {"name":"getTrainStation","parameterTypes":[] }
   ]
 },
@@ -2092,22 +2092,22 @@
 {
   "name":"io.github.serpro69.kfaker.travel.provider.Airport",
   "methods":[
-    {"name":"getEuropeanUnion","parameterTypes":[] }, 
+    {"name":"getEuropeanUnion","parameterTypes":[] },
     {"name":"getUnitedStates","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.Australia",
   "methods":[
-    {"name":"animals","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"animals","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"states","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.EuropeanUnion",
   "methods":[
-    {"name":"large","parameterTypes":[] }, 
+    {"name":"large","parameterTypes":[] },
     {"name":"medium","parameterTypes":[] }
   ]
 },
@@ -2117,7 +2117,7 @@
 {
   "name":"io.github.serpro69.kfaker.travel.provider.Mountain",
   "methods":[
-    {"name":"name","parameterTypes":[] }, 
+    {"name":"name","parameterTypes":[] },
     {"name":"range","parameterTypes":[] }
   ]
 },
@@ -2130,88 +2130,88 @@
 {
   "name":"io.github.serpro69.kfaker.travel.provider.TrainStation",
   "methods":[
-    {"name":"getGermany","parameterTypes":[] }, 
-    {"name":"getSpain","parameterTypes":[] }, 
-    {"name":"getUnitedKingdom","parameterTypes":[] }, 
+    {"name":"getGermany","parameterTypes":[] },
+    {"name":"getSpain","parameterTypes":[] },
+    {"name":"getUnitedKingdom","parameterTypes":[] },
     {"name":"getUnitedStates","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.TrainStationGermany",
   "methods":[
-    {"name":"metro","parameterTypes":[] }, 
+    {"name":"metro","parameterTypes":[] },
     {"name":"railway","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.TrainStationSpain",
   "methods":[
-    {"name":"metro","parameterTypes":[] }, 
+    {"name":"metro","parameterTypes":[] },
     {"name":"railway","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.TrainStationUnitedKingdom",
   "methods":[
-    {"name":"metro","parameterTypes":[] }, 
+    {"name":"metro","parameterTypes":[] },
     {"name":"railway","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.TrainStationUnitedStates",
   "methods":[
-    {"name":"metro","parameterTypes":[] }, 
+    {"name":"metro","parameterTypes":[] },
     {"name":"railway","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.provider.UnitedStates",
   "methods":[
-    {"name":"large","parameterTypes":[] }, 
-    {"name":"medium","parameterTypes":[] }, 
+    {"name":"large","parameterTypes":[] },
+    {"name":"medium","parameterTypes":[] },
     {"name":"small","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.TvShowsFaker",
   "methods":[
-    {"name":"getAquaTeenHungerForce","parameterTypes":[] }, 
-    {"name":"getArcher","parameterTypes":[] }, 
-    {"name":"getBigBangTheory","parameterTypes":[] }, 
-    {"name":"getBojackHorseman","parameterTypes":[] }, 
-    {"name":"getBreakingBad","parameterTypes":[] }, 
-    {"name":"getBrooklynNineNine","parameterTypes":[] }, 
-    {"name":"getBuffy","parameterTypes":[] }, 
-    {"name":"getCommunity","parameterTypes":[] }, 
-    {"name":"getDrWho","parameterTypes":[] }, 
-    {"name":"getFamilyGuy","parameterTypes":[] }, 
-    {"name":"getFinalSpace","parameterTypes":[] }, 
-    {"name":"getFreshPriceOfBelAir","parameterTypes":[] }, 
-    {"name":"getFriends","parameterTypes":[] }, 
-    {"name":"getFuturama","parameterTypes":[] }, 
-    {"name":"getGameOfThrones","parameterTypes":[] }, 
-    {"name":"getHeyArnold","parameterTypes":[] }, 
-    {"name":"getHowIMetYourMother","parameterTypes":[] }, 
-    {"name":"getMichaelScott","parameterTypes":[] }, 
-    {"name":"getNewGirl","parameterTypes":[] }, 
-    {"name":"getParksAndRec","parameterTypes":[] }, 
-    {"name":"getRickAndMorty","parameterTypes":[] }, 
-    {"name":"getRupaul","parameterTypes":[] }, 
-    {"name":"getSeinfeld","parameterTypes":[] }, 
-    {"name":"getSiliconValley","parameterTypes":[] }, 
-    {"name":"getSimpsons","parameterTypes":[] }, 
-    {"name":"getSouthPark","parameterTypes":[] }, 
-    {"name":"getSpongebob","parameterTypes":[] }, 
-    {"name":"getStarTrek","parameterTypes":[] }, 
-    {"name":"getStargate","parameterTypes":[] }, 
-    {"name":"getStrangerThings","parameterTypes":[] }, 
-    {"name":"getSuits","parameterTypes":[] }, 
-    {"name":"getSupernatural","parameterTypes":[] }, 
-    {"name":"getTheExpanse","parameterTypes":[] }, 
-    {"name":"getTheITCrowd","parameterTypes":[] }, 
-    {"name":"getTheOffice","parameterTypes":[] }, 
-    {"name":"getTheThickOfIt","parameterTypes":[] }, 
-    {"name":"getTwinPeaks","parameterTypes":[] }, 
+    {"name":"getAquaTeenHungerForce","parameterTypes":[] },
+    {"name":"getArcher","parameterTypes":[] },
+    {"name":"getBigBangTheory","parameterTypes":[] },
+    {"name":"getBojackHorseman","parameterTypes":[] },
+    {"name":"getBreakingBad","parameterTypes":[] },
+    {"name":"getBrooklynNineNine","parameterTypes":[] },
+    {"name":"getBuffy","parameterTypes":[] },
+    {"name":"getCommunity","parameterTypes":[] },
+    {"name":"getDrWho","parameterTypes":[] },
+    {"name":"getFamilyGuy","parameterTypes":[] },
+    {"name":"getFinalSpace","parameterTypes":[] },
+    {"name":"getFreshPriceOfBelAir","parameterTypes":[] },
+    {"name":"getFriends","parameterTypes":[] },
+    {"name":"getFuturama","parameterTypes":[] },
+    {"name":"getGameOfThrones","parameterTypes":[] },
+    {"name":"getHeyArnold","parameterTypes":[] },
+    {"name":"getHowIMetYourMother","parameterTypes":[] },
+    {"name":"getMichaelScott","parameterTypes":[] },
+    {"name":"getNewGirl","parameterTypes":[] },
+    {"name":"getParksAndRec","parameterTypes":[] },
+    {"name":"getRickAndMorty","parameterTypes":[] },
+    {"name":"getRupaul","parameterTypes":[] },
+    {"name":"getSeinfeld","parameterTypes":[] },
+    {"name":"getSiliconValley","parameterTypes":[] },
+    {"name":"getSimpsons","parameterTypes":[] },
+    {"name":"getSouthPark","parameterTypes":[] },
+    {"name":"getSpongebob","parameterTypes":[] },
+    {"name":"getStarTrek","parameterTypes":[] },
+    {"name":"getStargate","parameterTypes":[] },
+    {"name":"getStrangerThings","parameterTypes":[] },
+    {"name":"getSuits","parameterTypes":[] },
+    {"name":"getSupernatural","parameterTypes":[] },
+    {"name":"getTheExpanse","parameterTypes":[] },
+    {"name":"getTheITCrowd","parameterTypes":[] },
+    {"name":"getTheOffice","parameterTypes":[] },
+    {"name":"getTheThickOfIt","parameterTypes":[] },
+    {"name":"getTwinPeaks","parameterTypes":[] },
     {"name":"getVentureBros","parameterTypes":[] }
   ]
 },
@@ -2221,44 +2221,44 @@
 {
   "name":"io.github.serpro69.kfaker.tv.provider.AquaTeenHungerForce",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Archer",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.BigBangTheory",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.BojackHorseman",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"tongueTwisters","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.BreakingBad",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
     {"name":"episode","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.BrooklynNineNine",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
@@ -2271,35 +2271,35 @@
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Community",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.DrWho",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"catchPhrases","parameterTypes":[] }, 
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
-    {"name":"species","parameterTypes":[] }, 
-    {"name":"theDoctors","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"catchPhrases","parameterTypes":[] },
+    {"name":"character","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
+    {"name":"species","parameterTypes":[] },
+    {"name":"theDoctors","parameterTypes":[] },
     {"name":"villains","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.FamilyGuy",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.FinalSpace",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"vehicles","parameterTypes":[] }
   ]
 },
@@ -2312,44 +2312,44 @@
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Friends",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Futurama",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"hermesCatchphrases","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"hermesCatchphrases","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.GameOfThrones",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"cities","parameterTypes":[] }, 
-    {"name":"dragons","parameterTypes":[] }, 
-    {"name":"houses","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"cities","parameterTypes":[] },
+    {"name":"dragons","parameterTypes":[] },
+    {"name":"houses","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.HeyArnold",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.HowIMetYourMother",
   "methods":[
-    {"name":"catchPhrase","parameterTypes":[] }, 
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"highFive","parameterTypes":[] }, 
+    {"name":"catchPhrase","parameterTypes":[] },
+    {"name":"character","parameterTypes":[] },
+    {"name":"highFive","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
@@ -2360,164 +2360,164 @@
 {
   "name":"io.github.serpro69.kfaker.tv.provider.NewGirl",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.ParksAndRec",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"cities","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.RickAndMorty",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Rupaul",
   "methods":[
-    {"name":"queens","parameterTypes":[] }, 
+    {"name":"queens","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Seinfeld",
   "methods":[
-    {"name":"business","parameterTypes":[] }, 
-    {"name":"character","parameterTypes":[] }, 
+    {"name":"business","parameterTypes":[] },
+    {"name":"character","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.SiliconValley",
   "methods":[
-    {"name":"apps","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"companies","parameterTypes":[] }, 
-    {"name":"email","parameterTypes":[] }, 
-    {"name":"inventions","parameterTypes":[] }, 
-    {"name":"mottos","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"apps","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"companies","parameterTypes":[] },
+    {"name":"email","parameterTypes":[] },
+    {"name":"inventions","parameterTypes":[] },
+    {"name":"mottos","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"urls","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Simpsons",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"episodeTitles","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"episodeTitles","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.SouthPark",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"episodes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"episodes","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Spongebob",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"episodes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"episodes","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.StarTrek",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"location","parameterTypes":[] }, 
-    {"name":"specie","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"location","parameterTypes":[] },
+    {"name":"specie","parameterTypes":[] },
     {"name":"villain","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Stargate",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"planets","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"planets","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.StrangerThings",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
     {"name":"quote","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Suits",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Supernatural",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"creature","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"creature","parameterTypes":[] },
     {"name":"weapon","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.TheExpanse",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
-    {"name":"quotes","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
+    {"name":"quotes","parameterTypes":[] },
     {"name":"ships","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.TheITCrowd",
   "methods":[
-    {"name":"actors","parameterTypes":[] }, 
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"emails","parameterTypes":[] }, 
+    {"name":"actors","parameterTypes":[] },
+    {"name":"characters","parameterTypes":[] },
+    {"name":"emails","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.TheOffice",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.TheThickOfIt",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"departments","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"departments","parameterTypes":[] },
     {"name":"positions","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.TwinPeaks",
   "methods":[
-    {"name":"characters","parameterTypes":[] }, 
-    {"name":"locations","parameterTypes":[] }, 
+    {"name":"characters","parameterTypes":[] },
+    {"name":"locations","parameterTypes":[] },
     {"name":"quotes","parameterTypes":[] }
   ]
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.VentureBros",
   "methods":[
-    {"name":"character","parameterTypes":[] }, 
-    {"name":"organization","parameterTypes":[] }, 
-    {"name":"quote","parameterTypes":[] }, 
+    {"name":"character","parameterTypes":[] },
+    {"name":"organization","parameterTypes":[] },
+    {"name":"quote","parameterTypes":[] },
     {"name":"vehicle","parameterTypes":[] }
   ]
 },
@@ -2548,7 +2548,7 @@
 {
   "name":"java.sql.DriverManager",
   "methods":[
-    {"name":"getConnection","parameterTypes":["java.lang.String"] }, 
+    {"name":"getConnection","parameterTypes":["java.lang.String"] },
     {"name":"getDriver","parameterTypes":["java.lang.String"] }
   ]
 },

@@ -13,7 +13,7 @@ val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 val fakers = listOf(
     "books",
     "commerce",
-    "creature",
+    "creatures",
     "edu",
     "games",
     "humor",
