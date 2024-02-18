@@ -488,7 +488,7 @@ internal class FakerServiceTest : DescribeSpec({
                     }
                 }
 
-/* TODO - remove, the test was moved to ':provider:edu' module
+/* TODO - remove, the test was moved to ':faker:edu' module
                 context("expression calls are chained with a dot '.' char") {
                     val fakerService = fakerService(YamlCategory.EDUCATOR)
                     val degreeType = fakerService.resolve(YamlCategory.EDUCATOR, "degree")

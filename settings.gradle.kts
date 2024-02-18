@@ -17,7 +17,7 @@ include(
     "docs"
 )
 
-val providers = listOf(
+val fakers = listOf(
     "books",
     "commerce",
     "creature",
@@ -35,7 +35,7 @@ val providers = listOf(
     "tvshows",
 )
 
-providers.forEach { include("provider:$it") }
+fakers.forEach { include("faker:$it") }
 
 // helpers for integration tests
 include("test")

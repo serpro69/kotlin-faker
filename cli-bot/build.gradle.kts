@@ -11,7 +11,7 @@ val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
 val mainAppClass = "io.github.serpro69.kfaker.app.KFaker"
 
 dependencies {
-    val providers = listOf(
+    val fakers = listOf(
         "books",
         "commerce",
         "creature",
@@ -30,7 +30,7 @@ dependencies {
     )
 
     implementation(project(":core"))
-    providers.forEach { implementation(project(":provider:$it")) }
+    fakers.forEach { implementation(project(":faker:$it")) }
     implementation("info.picocli:picocli:4.7.5")
 }
 
