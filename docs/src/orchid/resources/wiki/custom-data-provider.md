@@ -3,7 +3,7 @@
 
 # Custom Data Provider
 
-Kotlin-faker allows you to easily create your own custom fake data generators (providers).
+Kotlin-faker allows you to easily create your own custom fake data generators (providers), and even new fakers.
 
 Let's assume you want to create a `FooBar` data generator with support for the default `en` locale.
 
@@ -55,10 +55,15 @@ class FooBar(fakerService: FakerService) : YamlFakeDataProvider<FooBar>(fakerSer
 }
 ```
 
-❶ The `yamlCategory` should always use `YamlCategory.CUSTOM` enum class
+❶ The `yamlCategory` should generally use `YamlCategory.CUSTOM` enum class. Although you could also use one of the existing categories if you like, one should be careful not to override existing functionality in a given data provider.
 ❷ If our json file is named `foobar.json`, the `secondaryKey` needs to override the category name
 ❸ In this case we also need to pass the `secondaryCategory` argument to `fakerService.load` function
 ❹ You have access to all default faker functionality, i.e. `FakerService#numerify` to replace all `#` placeholders with a random digit, and `FakerService#letterify` to replace all `?` with a random letter
+
+{% info %}
+It's totally understandable if you're confused about the naming of the `YamlFakeDataProvider` and `YamlCategory` classes, especially since we use json files to read data from.
+The reason for this is that the source of the data that faker uses comes in yml files, but faker converts them to json files at build time and uses those instead.
+{% endinfo %}
 
 Last, we need to add a very simple implementation of the `AbstractFaker`:
 
