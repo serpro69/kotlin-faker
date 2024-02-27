@@ -1,0 +1,39 @@
+# START mariadb_provider_dict
+en:
+  faker:
+    databases:
+      mariadb:
+        type:
+          - INT
+          - BIGINT
+          - DECIMAL
+          - FLOAT
+          - DOUBLE
+          - CHAR
+          - VARCHAR
+          - TEXT
+          - DATE
+          - DATETIME
+          - TIMESTAMP
+          - TIME
+          - YEAR
+          - BOOLEAN
+          - JSON
+          - BINARY
+          - VARBINARY
+          - BLOB
+          - ENUM
+          - SET
+        engine:
+          - InnoDB
+          - MyISAM
+          - Aria
+          - MEMORY
+          - CSV
+          - ARCHIVE
+          - BLACKHOLE
+          - MERGE
+          - FEDERATED
+          - TokuDB
+          - Spider
+# END mariadb_provider_dict

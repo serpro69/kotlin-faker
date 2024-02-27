@@ -67,6 +67,7 @@ enum class YamlCategory : Category {
     CRYPTO_COIN,
     CULTURE_SERIES,
     CURRENCY,
+    DATABASES,
     DC_COMICS,
     DEMOGRAPHIC,
     DEPARTED,

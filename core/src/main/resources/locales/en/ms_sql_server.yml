@@ -1,0 +1,27 @@
+# START ms_sql_server_provider_dict
+en:
+  faker:
+    databases:
+      ms_sql_server:
+        type:
+          - INT
+          - BIGINT
+          - DECIMAL
+          - FLOAT
+          - DOUBLE
+          - CHAR
+          - VARCHAR
+          - TEXT
+          - DATE
+          - DATETIME
+          - TIMESTAMP
+          - TIME
+          - YEAR
+          - BOOLEAN
+          - JSON
+          - BINARY
+          - VARBINARY
+          - BLOB
+          - ENUM
+          - SET
+# END ms_sql_server_provider_dict

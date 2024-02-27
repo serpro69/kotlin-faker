@@ -1,0 +1,28 @@
+# START oracledb_provider_dict
+en:
+  faker:
+    databases:
+      oracledb:
+        type:
+          - INTEGER
+          - BIGINT
+          - DECIMAL
+          - NUMERIC
+          - REAL
+          - DOUBLE PRECISION
+          - SERIAL
+          - BIGSERIAL
+          - CHAR
+          - VARCHAR
+          - TEXT
+          - DATE
+          - TIMESTAMP
+          - TIMESTAMP WITH TIME ZONE
+          - BOOLEAN
+          - JSON
+          - JSONB
+          - BYTEA
+          - ARRAY
+          - UUID
+          - ENUM
+# END oracledb_provider_dict

@@ -1,0 +1,36 @@
+# START mysql_provider_dict
+en:
+  faker:
+    databases:
+      mysql:
+        type:
+          - INT
+          - BIGINT
+          - DECIMAL
+          - FLOAT
+          - DOUBLE
+          - CHAR
+          - VARCHAR
+          - TEXT
+          - DATE
+          - DATETIME
+          - TIMESTAMP
+          - TIME
+          - YEAR
+          - BOOLEAN
+          - JSON
+          - BINARY
+          - VARBINARY
+          - BLOB
+          - ENUM
+          - SET
+        engine:
+          - InnoDB
+          - MyISAM
+          - MEMORY
+          - CSV
+          - ARCHIVE
+          - BLACKHOLE
+          - MERGE
+          - FEDERATED
+# END mysql_provider_dict
