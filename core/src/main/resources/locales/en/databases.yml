@@ -1,0 +1,11 @@
+# START databases_provider_dict
+en:
+  faker:
+    databases:
+      column:
+        - id
+        - name
+        - email
+        - created_at
+        - updated_at
+# END databases_provider_dict

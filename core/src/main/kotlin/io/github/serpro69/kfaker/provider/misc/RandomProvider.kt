@@ -14,12 +14,16 @@ import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_INT
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_LETTER
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_LONG
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.NEXT_UUID
+import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_DATE
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_STRING
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_SUBLIST
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_SUBSET
 import io.github.serpro69.kfaker.provider.misc.RandomProvider.Key.RANDOM_VALUE
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 /**
@@ -70,6 +74,10 @@ class RandomProvider internal constructor(
     override fun nextLong(): Long = resolveUnique(NEXT_LONG) { rs.nextLong() }
 
     override fun nextLong(bound: Long): Long = resolveUnique(NEXT_LONG) { rs.nextLong(bound) }
+
+    override fun nextLong(longRange: LongRange): Long = resolveUnique(NEXT_LONG) { rs.nextLong(longRange) }
+
+    override fun nextLong(min: Long, max: Long): Long = resolveUnique(NEXT_LONG) { rs.nextLong(min, max) }
 
     override fun nextFloat(): Float = resolveUnique(NEXT_FLOAT) { rs.nextFloat() }
 
@@ -189,6 +197,13 @@ class RandomProvider internal constructor(
         return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) }
     }
 
+    override fun nextPastDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.nextPastDate() }
+
+    override fun nextFutureDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.nextFutureDate() }
+
+    override fun nextDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime =
+        resolveUnique(RANDOM_SUBSET) { rs.nextDate(min, max, zoneOffset) }
+
     @PublishedApi
     internal fun <T> resolveUnique(key: Key, f: () -> T): T = resolveUniqueValue(key.name, f)
 
@@ -255,6 +270,11 @@ class RandomProvider internal constructor(
          * Key for [randomSubset] function
          */
         RANDOM_SUBSET,
+
+        /**
+         * Key for [randomDate] function
+         */
+        RANDOM_DATE,
         ;
     }
 }

@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker
 
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 /**
@@ -80,9 +83,27 @@ interface IRandom {
      * and the specified [bound] value (exclusive),
      * drawn from this [random] number generator's sequence.
      *
+     * @param bound the exclusive maximum value
      * @throws IllegalArgumentException if `bound < 0`
      */
     fun nextLong(bound: Long): Long
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [Long] value within the specified long [range] (inclusive),
+     * drawn from this [random] number generator's sequence.
+     *
+     * @param longRange the range between minimum and maximum value
+     */
+    fun nextLong(longRange: LongRange): Long
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [Long] value between [min] (inclusive) and [max] (inclusive),
+     * drawn from this [random] number generator's sequence.
+     *
+     * @param min the minimum (inclusive) value
+     * @param max the maximum (exclusive) value
+     */
+    fun nextLong(min: Long, max: Long): Long
 
     /**
      * Returns the next pseudorandom, uniformly distributed [Float] value between `0.0` and `1.0`
@@ -242,4 +263,26 @@ interface IRandom {
      * @param shuffled if `true` the [set] will be shuffled before extracting the subset
      */
     fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean = false): Set<T>
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between Unix epoch (1970-01-01T00:00:00Z) (inclusive) and now (exclusive)
+     */
+    fun nextPastDate(): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between now (inclusive) and now + 50 years (exclusive)
+     */
+    fun nextFutureDate(): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between [Instant] (inclusive) and [Instant] (exclusive)
+     *
+     * @param min minimum inclusive instant
+     * @param max maximum exclusive instant
+     * @param zoneOffset used ZoneOffset for generated date
+     */
+    fun nextDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime
 }
