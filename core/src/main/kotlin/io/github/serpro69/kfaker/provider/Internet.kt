@@ -135,10 +135,3 @@ private val privateIpv4Ranges = listOf(
     // 198.18.0.0/15  - Used for benchmark testing of inter-network communications between subnets
     listOf(198..198, 18..19, 0..255, 1..255)
 )
-
-fun main() {
-    val f = faker {  }
-    repeat(100) {
-        println(f.internet.domain())
-    }
-}
