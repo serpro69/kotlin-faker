@@ -97,7 +97,6 @@ subprojects {
             // set options for log level LIFECYCLE
             events = setOf(
                 TestLogEvent.FAILED,
-                TestLogEvent.PASSED,
                 TestLogEvent.SKIPPED,
                 TestLogEvent.STANDARD_OUT
             )
