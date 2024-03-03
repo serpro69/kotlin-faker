@@ -64,10 +64,14 @@ theme:
       menu:
         - type: 'sourcedocModules'
           moduleType: 'kotlindoc'
-          moduleGroup: 'full'
+          moduleGroup: 'core-api'
         - type: 'sourcedocModules'
           moduleType: 'kotlindoc'
-          moduleGroup: 'data-provider'
+          moduleGroup: 'core-provider'
+        - type: separator
+        - type: 'sourcedocModules'
+          moduleType: 'kotlindoc'
+          moduleGroup: 'faker-module'
     - type: 'submenu'
       title: 'Information'
       icon: 'info-circle'
@@ -133,17 +137,23 @@ kotlindoc:
         itemTitleType: 'signature' # optional, one of [NAME, ID, SIGNATURE]
         includeItems: true # optional
   modules:
-    - name: 'Full Core API'
-      slug: 'full'
-      sourceDirs:
-        - './../../../../core/src/main/kotlin/'
-        - './../../../../core/src/main/java/'
-      moduleGroup: 'full'
-    - name: 'Data Provider API'
-      slug: 'data-provider'
-      sourceDirs:
-        - './../../../../core/src/main/kotlin/io/github/serpro69/kfaker/provider'
-      moduleGroup: 'data-provider'
+    - { name: 'Full Core API',          slug: 'core-api',                 sourceDirs: [ './../../../../core/src/main/kotlin/', './../../../../core/src/main/java/' ],          moduleGroup: 'core-api'      },
+    - { name: 'Core Data Provider API', slug: 'core-data-provider',       sourceDirs: [ './../../../../core/src/main/kotlin/io/github/serpro69/kfaker/provider' ],             moduleGroup: 'core-provider' },
+    - { name: 'Books Provider API',     slug: 'books-data-provider',      sourceDirs: [ './../../../../faker/books/src/main/kotlin/io/github/serpro69/kfaker/books' ],         moduleGroup: 'faker-module'  },
+    - { name: 'Commerce Provider API',  slug: 'commerce-data-provider',   sourceDirs: [ './../../../../faker/commerce/src/main/kotlin/io/github/serpro69/kfaker/commerce' ],   moduleGroup: 'faker-module'  },
+    - { name: 'Creatures Provider API', slug: 'creatures-data-provider',  sourceDirs: [ './../../../../faker/creatures/src/main/kotlin/io/github/serpro69/kfaker/creatures' ], moduleGroup: 'faker-module'  },
+    - { name: 'Edu Provider API',       slug: 'edu-data-provider',        sourceDirs: [ './../../../../faker/edu/src/main/kotlin/io/github/serpro69/kfaker/edu' ],             moduleGroup: 'faker-module'  },
+    - { name: 'Games Provider API',     slug: 'games-data-provider',      sourceDirs: [ './../../../../faker/games/src/main/kotlin/io/github/serpro69/kfaker/games' ],         moduleGroup: 'faker-module'  },
+    - { name: 'Humor Provider API',     slug: 'humor-data-provider',      sourceDirs: [ './../../../../faker/humor/src/main/kotlin/io/github/serpro69/kfaker/humor' ],         moduleGroup: 'faker-module'  },
+    - { name: 'JapMedia Provider API',  slug: 'japmedia-data-provider',   sourceDirs: [ './../../../../faker/japmedia/src/main/kotlin/io/github/serpro69/kfaker/japmedia' ],   moduleGroup: 'faker-module'  },
+    - { name: 'Lorem Provider API',     slug: 'lorem-data-provider',      sourceDirs: [ './../../../../faker/lorem/src/main/kotlin/io/github/serpro69/kfaker/lorem' ],         moduleGroup: 'faker-module'  },
+    - { name: 'Misc Provider API',      slug: 'misc-data-provider',       sourceDirs: [ './../../../../faker/misc/src/main/kotlin/io/github/serpro69/kfaker/misc' ],           moduleGroup: 'faker-module'  },
+    - { name: 'Movies Provider API',    slug: 'movies-data-provider',     sourceDirs: [ './../../../../faker/movies/src/main/kotlin/io/github/serpro69/kfaker/movies' ],       moduleGroup: 'faker-module'  },
+    - { name: 'Music Provider API',     slug: 'music-data-provider',      sourceDirs: [ './../../../../faker/music/src/main/kotlin/io/github/serpro69/kfaker/music' ],         moduleGroup: 'faker-module'  },
+    - { name: 'Sports Provider API',    slug: 'sports-data-provider',     sourceDirs: [ './../../../../faker/sports/src/main/kotlin/io/github/serpro69/kfaker/sports' ],       moduleGroup: 'faker-module'  },
+    - { name: 'Tech Provider API',      slug: 'tech-data-provider',       sourceDirs: [ './../../../../faker/tech/src/main/kotlin/io/github/serpro69/kfaker/tech' ],           moduleGroup: 'faker-module'  },
+    - { name: 'Travel Provider API',    slug: 'travel-data-provider',     sourceDirs: [ './../../../../faker/travel/src/main/kotlin/io/github/serpro69/kfaker/travel' ],       moduleGroup: 'faker-module'  },
+    - { name: 'TvShows Provider API',   slug: 'tvshows-data-provider',    sourceDirs: [ './../../../../faker/tvshows/src/main/kotlin/io/github/serpro69/kfaker/tvshows' ],     moduleGroup: 'faker-module'  }
 
 snippets:
   sections:
