@@ -16,7 +16,7 @@ class DatabasesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig
     val msSQLServer: MSSQLServer by lazy { MSSQLServer(fakerService) }
     val mySQL: MySQL by lazy { MySQL(fakerService) }
     val oracleDB: OracleDB by lazy { OracleDB(fakerService) }
-    val postgreSQL: PostgreSQL by lazy { PostgreSQL(fakerService) }
+    val postgreSQL: PostgreSQL by lazy { PostgreSQL(fakerService, config) }
 
     @FakerDsl
     /**
