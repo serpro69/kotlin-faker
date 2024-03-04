@@ -4,25 +4,35 @@ en:
     databases:
       oracledb:
         type:
+          # Numeric
+          - NUMBER
           - INTEGER
-          - BIGINT
-          - DECIMAL
-          - NUMERIC
-          - REAL
-          - DOUBLE PRECISION
-          - SERIAL
-          - BIGSERIAL
-          - CHAR
-          - VARCHAR
-          - TEXT
+          - FLOAT
+          - BINARY_FLOAT
+          - BINARY_DOUBLE
+
+          # Date and Time
           - DATE
           - TIMESTAMP
           - TIMESTAMP WITH TIME ZONE
-          - BOOLEAN
-          - JSON
-          - JSONB
-          - BYTEA
-          - ARRAY
-          - UUID
-          - ENUM
+          - TIMESTAMP WITH LOCAL TIME ZONE
+
+          # Character Strings
+          - CHAR
+          - VARCHAR2
+          - VARCHAR
+          - NCHAR
+          - NVARCHAR2
+          - CLOB
+          - NCLOB
+
+          # Binary
+          - RAW
+          - BLOB
+
+          # Other
+          - XMLTYPE
+          - ROWID
+          - UROWID
+          - BFILE
 # END oracledb_provider_dict

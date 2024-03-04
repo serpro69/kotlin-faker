@@ -4,26 +4,57 @@ en:
     databases:
       mariadb:
         type:
+          # Numeric
+          - TINYINT
+          - SMALLINT
+          - MEDIUMINT
           - INT
+          - INTEGER
           - BIGINT
           - DECIMAL
+          - DEC
+          - NUMERIC
+          - FIXED
           - FLOAT
           - DOUBLE
-          - CHAR
-          - VARCHAR
-          - TEXT
+          - REAL
+
+          # Date and Time
           - DATE
+          - TIME
           - DATETIME
           - TIMESTAMP
-          - TIME
-          - YEAR
-          - BOOLEAN
-          - JSON
-          - BINARY
-          - VARBINARY
-          - BLOB
+
+          # Character Strings
+          - CHAR
+          - VARCHAR
+          - TINYTEXT
+          - TEXT
+          - MEDIUMTEXT
+          - LONGTEXT
           - ENUM
           - SET
+
+          # Binary
+          - BINARY
+          - VARBINARY
+          - TINYBLOB
+          - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
+
+          # JSON
+          - JSON
+
+          # Spatial
+          - GEOMETRY
+          - POINT
+          - LINESTRING
+          - POLYGON
+          - MULTIPOINT
+          - MULTILINESTRING
+          - MULTIPOLYGON
+          - GEOMETRYCOLLECTION
         engine:
           - InnoDB
           - MyISAM

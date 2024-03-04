@@ -4,24 +4,41 @@ en:
     databases:
       ms_sql_server:
         type:
+          # Exact Numeric
+          - BIT
+          - TINYINT
+          - SMALLINT
           - INT
           - BIGINT
           - DECIMAL
+
+          # Approximative Numeric
           - FLOAT
-          - DOUBLE
+          - REAL
+          - DATE
+          - TIME
+
+          # Date and Time
+          - DATETIME
+          - DATETIME2
+          - SMALLDATETIME
+          - DATETIMEOFFSET
+
+          # Character Strings
           - CHAR
           - VARCHAR
           - TEXT
-          - DATE
-          - DATETIME
-          - TIMESTAMP
-          - TIME
-          - YEAR
-          - BOOLEAN
-          - JSON
+
+          # Binary
           - BINARY
           - VARBINARY
-          - BLOB
-          - ENUM
-          - SET
+          - IMAGE
+
+          # Other
+          - UNIQUEIDENTIFIER
+          - XML
+          - CURSOR
+          - SQL_VARIANT
+          - TABLE
+          - GEOMETRY
 # END ms_sql_server_provider_dict

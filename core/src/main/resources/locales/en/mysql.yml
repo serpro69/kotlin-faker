@@ -4,26 +4,57 @@ en:
     databases:
       mysql:
         type:
+          # Numeric
+          - TINYINT
+          - SMALLINT
+          - MEDIUMINT
           - INT
           - BIGINT
           - DECIMAL
           - FLOAT
           - DOUBLE
-          - CHAR
-          - VARCHAR
-          - TEXT
+          - REAL
+
+          # Date and Time
           - DATE
+          - TIME
           - DATETIME
           - TIMESTAMP
-          - TIME
           - YEAR
-          - BOOLEAN
-          - JSON
+
+          # Character Strings
+          - CHAR
+          - VARCHAR
+          - TINYTEXT
+          - TEXT
+          - MEDIUMTEXT
+          - LONGTEXT
           - BINARY
           - VARBINARY
+          - TINYBLOB
           - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
           - ENUM
           - SET
+
+          # Binary
+          - BINARY
+          - VARBINARY
+          - TINYBLOB
+          - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
+
+          # Spatial
+          - GEOMETRY
+          - POINT
+          - LINESTRING
+          - POLYGON
+          - MULTIPOINT
+          - MULTILINESTRING
+          - MULTIPOLYGON
+          - GEOMETRYCOLLECTION
         engine:
           - InnoDB
           - MyISAM

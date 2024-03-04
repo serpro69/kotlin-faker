@@ -4,25 +4,52 @@ en:
     databases:
       postgresql:
         type:
+          # Numeric
+          - SMALLINT
           - INTEGER
           - BIGINT
           - DECIMAL
           - NUMERIC
           - REAL
           - DOUBLE PRECISION
-          - SERIAL
-          - BIGSERIAL
-          - CHAR
-          - VARCHAR
-          - TEXT
-          - DATE
+          - BOOLEAN
+
+          # Date and Time
           - TIMESTAMP
           - TIMESTAMP WITH TIME ZONE
-          - BOOLEAN
+          - DATE
+          - TIME
+          - TIME WITH TIME ZONE
+
+          # Character Strings
+          - CHARACTER
+          - CHARACTER VARYING
+          - TEXT
+          - ENUM
+
+          # Binary
+          - BYTEA
+
+          # Spatial
+          - POINT
+          - LINE
+          - LSEG
+          - BOX
+          - PATH
+          - POLYGON
+          - CIRCLE
+
+          # JSON
           - JSON
           - JSONB
-          - BYTEA
+
+          # Network Address
+          - INET
+          - CIDR
+          - MACADDR
+          - MACADDR8
+
+          # Other
           - ARRAY
           - UUID
-          - ENUM
 # END postgresql_provider_dict
