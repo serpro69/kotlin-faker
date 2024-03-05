@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().databases`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'databases_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().databases.column() // => id
+
+Faker().databases.mongodbObjectId() // => 65e652700000000000000000
+----
+====

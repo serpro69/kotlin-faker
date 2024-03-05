@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().msSQLServer`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'ms_sql_server_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().msSQLServer.type() // => VARCHAR
+----
+====

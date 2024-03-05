@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().mySQL`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'mysql_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().mySQL.type() // => VARCHAR
+
+Faker().mySQL.engine() // => InnoDB
+----
+====

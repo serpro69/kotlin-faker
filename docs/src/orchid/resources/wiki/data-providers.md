@@ -47,6 +47,14 @@ Below pages contain code blocks with inlined yaml dictionaries, some of them can
 {% endif %}
 {% endfor %}
 
+[`DatabasesFaker`]({{ link(collectionType='pages', collectionId='fakers', itemId='Databases') }})
+
+{% for page in pages %}
+{% if page.link | split('/') contains "databases" %}
+- [{{ page.title }}]({{ page.link }})
+  {% endif %}
+  {% endfor %}
+
 [`EduFaker`]({{ link(collectionType='pages', collectionId='fakers', itemId='Edu') }})
 
 {% for page in pages %}
