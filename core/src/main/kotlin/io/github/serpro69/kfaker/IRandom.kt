@@ -266,9 +266,21 @@ interface IRandom {
 
     /**
      * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between [min] (inclusive) and now (exclusive) using UTC zone offset
+     */
+    fun randomPastDate(min: Instant): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
      * between now (exclusive) and now + 50 years (inclusive) using UTC zone offset
      */
     fun randomFutureDate(): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between now (exclusive) and [max] (inclusive) using UTC zone offset
+     */
+    fun randomFutureDate(max: Instant): OffsetDateTime
 
     /**
      * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value

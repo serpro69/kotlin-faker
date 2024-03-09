@@ -199,7 +199,11 @@ class RandomProvider internal constructor(
 
     override fun randomPastDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomPastDate() }
 
+    override fun randomPastDate(min: Instant): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomPastDate(min) }
+
     override fun randomFutureDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomFutureDate() }
+
+    override fun randomFutureDate(max: Instant): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomFutureDate(max) }
 
     override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime =
         resolveUnique(RANDOM_SUBSET) { rs.randomDate(min, max, zoneOffset) }

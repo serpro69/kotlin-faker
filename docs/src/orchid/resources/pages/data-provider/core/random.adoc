@@ -44,7 +44,11 @@ Faker().random.randomSublist(listOf(1, 2, 3, 4, 5, 6))
 
 Faker().random.randomPastDate()
 
+Faker().random.randomPastDate(min = Instant.ofEpochSecond(0))
+
 Faker().random.randomFutureDate()
+
+Faker().random.randomFutureDate(max = Instant.now().plus(Duration.ofDays(7)))
 
 Faker().random.randomDate(min = Instant.ofEpochSecond(0), max = Instant.now(), zoneOffset = ZoneOffset.UTC)
 

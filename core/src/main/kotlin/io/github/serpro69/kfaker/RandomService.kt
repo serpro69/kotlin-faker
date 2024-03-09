@@ -226,13 +226,26 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
     }
 
     override fun randomPastDate(): OffsetDateTime {
-        return randomDate(Instant.ofEpochSecond(0), Instant.now().minusMillis(1), ZoneOffset.UTC)
+        return randomPastDate(Instant.ofEpochSecond(0))
+    }
+
+    override fun randomPastDate(min: Instant): OffsetDateTime {
+        val now = Instant.now()
+        require(min.isBefore(now))
+
+        return randomDate(min, now.minusMillis(1), ZoneOffset.UTC)
     }
 
     override fun randomFutureDate(): OffsetDateTime {
+        val maxInstant = Instant.now().plus(Duration.ofDays(50 * 365))
+        return randomFutureDate(maxInstant)
+    }
+
+    override fun randomFutureDate(max: Instant): OffsetDateTime {
         val now = Instant.now()
-        val maxInstant = now.plus(Duration.ofDays(50 * 365))
-        return randomDate(now.plusMillis(1), maxInstant, ZoneOffset.UTC)
+        require(max.isAfter(now))
+
+        return randomDate(now.plusMillis(1), max, ZoneOffset.UTC)
     }
 
     override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime {
