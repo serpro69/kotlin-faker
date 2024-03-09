@@ -26,7 +26,7 @@ class Database internal constructor(
     fun columnName() = resolve("column_name")
 
     fun mongodbObjectId() = resolveUniqueValue("objectId") {
-        val date = randomService.nextPastDate()
+        val date = randomService.randomPastDate()
         val epochSeconds = date.toInstant().toEpochMilli() / 1000
         val epochSecondsInHexa = epochSeconds.toString(16)
 

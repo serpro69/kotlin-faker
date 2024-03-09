@@ -83,25 +83,19 @@ interface IRandom {
      * and the specified [bound] value (exclusive),
      * drawn from this [random] number generator's sequence.
      *
-     * @param bound the exclusive maximum value
      * @throws IllegalArgumentException if `bound < 0`
      */
     fun nextLong(bound: Long): Long
 
     /**
-     * Returns a pseudorandom, uniformly distributed [Long] value within the specified long [range] (inclusive),
+     * Returns a pseudorandom, uniformly distributed [Long] value within the specified [longRange] (inclusive),
      * drawn from this [random] number generator's sequence.
-     *
-     * @param longRange the range between minimum and maximum value
      */
     fun nextLong(longRange: LongRange): Long
 
     /**
      * Returns a pseudorandom, uniformly distributed [Long] value between [min] (inclusive) and [max] (inclusive),
      * drawn from this [random] number generator's sequence.
-     *
-     * @param min the minimum (inclusive) value
-     * @param max the maximum (exclusive) value
      */
     fun nextLong(min: Long, max: Long): Long
 
@@ -266,23 +260,19 @@ interface IRandom {
 
     /**
      * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
-     * between Unix epoch (1970-01-01T00:00:00Z) (inclusive) and now (exclusive)
+     * between Unix epoch (1970-01-01T00:00:00Z) (inclusive) and now (exclusive) using UTC zone offset
      */
-    fun nextPastDate(): OffsetDateTime
+    fun randomPastDate(): OffsetDateTime
 
     /**
      * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
-     * between now (inclusive) and now + 50 years (exclusive)
+     * between now (exclusive) and now + 50 years (inclusive) using UTC zone offset
      */
-    fun nextFutureDate(): OffsetDateTime
+    fun randomFutureDate(): OffsetDateTime
 
     /**
      * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
-     * between [Instant] (inclusive) and [Instant] (exclusive)
-     *
-     * @param min minimum inclusive instant
-     * @param max maximum exclusive instant
-     * @param zoneOffset used ZoneOffset for generated date
+     * between [min] (inclusive) and [max] (inclusive) using the defined [zoneOffset]
      */
-    fun nextDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime
+    fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime
 }

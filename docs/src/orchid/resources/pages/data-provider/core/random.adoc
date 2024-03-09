@@ -10,9 +10,6 @@ Provides data-generator-like functionality for the functions of `RandomService`,
 ====
 [source,kotlin]
 ----
-import java.time.Instant
-import java.time.ZoneOffset
-
 Faker().random.nextInt()
 
 Faker().random.nextInt(bound = 42)
@@ -45,11 +42,11 @@ Faker().random.nextUUID()
 
 Faker().random.randomSublist(listOf(1, 2, 3, 4, 5, 6))
 
-Faker().random.nextPastDate()
+Faker().random.randomPastDate()
 
-Faker().random.nextFutureDate()
+Faker().random.randomFutureDate()
 
-Faker().random.nextDate(min = Instant.ofEpochSecond(0), max = Instant.now(), zoneOffset = ZoneOffset.UTC)
+Faker().random.randomDate(min = Instant.ofEpochSecond(0), max = Instant.now(), zoneOffset = ZoneOffset.UTC)
 
 // and more
 ----

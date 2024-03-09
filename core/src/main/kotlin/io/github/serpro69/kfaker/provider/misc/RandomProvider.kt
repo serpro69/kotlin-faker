@@ -197,12 +197,12 @@ class RandomProvider internal constructor(
         return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) }
     }
 
-    override fun nextPastDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.nextPastDate() }
+    override fun randomPastDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomPastDate() }
 
-    override fun nextFutureDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.nextFutureDate() }
+    override fun randomFutureDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomFutureDate() }
 
-    override fun nextDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime =
-        resolveUnique(RANDOM_SUBSET) { rs.nextDate(min, max, zoneOffset) }
+    override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime =
+        resolveUnique(RANDOM_SUBSET) { rs.randomDate(min, max, zoneOffset) }
 
     @PublishedApi
     internal fun <T> resolveUnique(key: Key, f: () -> T): T = resolveUniqueValue(key.name, f)

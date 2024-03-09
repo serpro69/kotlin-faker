@@ -12,7 +12,6 @@ import kotlin.experimental.and
 import kotlin.experimental.or
 import kotlin.random.asKotlinRandom
 
-
 /**
  * Wrapper around [Random] that also contains some additional functions not covered by [Random].
  *
@@ -226,17 +225,17 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
         return randomSubset(set, nextInt(sizeRange), shuffled)
     }
 
-    override fun nextPastDate(): OffsetDateTime {
-        return nextDate(Instant.ofEpochSecond(0), Instant.now(), ZoneOffset.UTC)
+    override fun randomPastDate(): OffsetDateTime {
+        return randomDate(Instant.ofEpochSecond(0), Instant.now().minusMillis(1), ZoneOffset.UTC)
     }
 
-    override fun nextFutureDate(): OffsetDateTime {
+    override fun randomFutureDate(): OffsetDateTime {
         val now = Instant.now()
         val maxInstant = now.plus(Duration.ofDays(50 * 365))
-        return nextDate(now, maxInstant, ZoneOffset.UTC)
+        return randomDate(now.plusMillis(1), maxInstant, ZoneOffset.UTC)
     }
 
-    override fun nextDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime {
+    override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime {
         val randomSeconds = nextLong(min.epochSecond, max.epochSecond)
         val randomInstant = Instant.ofEpochSecond(randomSeconds)
 

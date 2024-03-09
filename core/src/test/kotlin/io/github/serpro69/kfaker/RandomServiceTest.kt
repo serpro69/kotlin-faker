@@ -14,6 +14,7 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.beInstanceOf
+import java.time.Duration
 import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
@@ -325,16 +326,19 @@ internal class RandomServiceTest : DescribeSpec({
             }
         }
 
-        context("nexDate(min, max, zoneOffset) fun") {
-            val min = Instant.ofEpochSecond(0)
+        context("randomDate(min, max, zoneOffset) fun") {
             val max = Instant.parse("2019-02-15T12:59:00Z") // Date of the first commit of kotlin-faker
+            val min = max.minus(Duration.ofDays(31))
             val zoneOffset = ZoneOffset.UTC
-            val values = List(100) { randomService.nextDate(min, max, zoneOffset) }
+            val values = List(100) { randomService.randomDate(min, max, zoneOffset) }
 
             it("return value should be within specified range") {
                 val minOffsetDateTime = OffsetDateTime.ofInstant(min, zoneOffset)
                 val maxOffsetDateTime = OffsetDateTime.ofInstant(max, zoneOffset)
-                values.all { (it.isEqual(minOffsetDateTime) || it.isAfter(minOffsetDateTime)) && it.isBefore(maxOffsetDateTime) } shouldBe true
+                values.all {
+                    it.isEqual(minOffsetDateTime) || it.isEqual(maxOffsetDateTime) ||
+                            (it.isAfter(minOffsetDateTime) && it.isBefore(maxOffsetDateTime))
+                } shouldBe true
             }
         }
     }
