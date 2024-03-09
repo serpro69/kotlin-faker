@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().oracleDB`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'oracledb_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().oracleDB.dataType() // => VARCHAR
+----
+====

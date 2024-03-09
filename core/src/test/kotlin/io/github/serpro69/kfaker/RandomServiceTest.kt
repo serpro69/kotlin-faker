@@ -14,6 +14,10 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.beInstanceOf
+import java.time.Duration
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 internal class RandomServiceTest : DescribeSpec({
@@ -30,7 +34,7 @@ internal class RandomServiceTest : DescribeSpec({
         }
 
         context("nextInt(min, max) fun") {
-            val values = List(100) { randomService.nextInt(6..8) }
+            val values = List(100) { randomService.nextInt(6, 8) }
 
             it("return value should be within specified range") {
                 values.all { it in 6..8 } shouldBe true
@@ -134,6 +138,22 @@ internal class RandomServiceTest : DescribeSpec({
 
             it("return value should be within 0 until 'bound' range") {
                 values.all { it in 0 until 100 } shouldBe true
+            }
+        }
+
+        context("nextLong(min, max) fun") {
+            val values = List(100) { randomService.nextLong(6L, 8L) }
+
+            it("return value should be within specified range") {
+                values.all { it in 6L..8L } shouldBe true
+            }
+        }
+
+        context("nextLong(longRange) fun") {
+            val values = List(100) { randomService.nextLong(3L..9L) }
+
+            it("return value should be within specified range") {
+                values.all { it in 3..9 } shouldBe true
             }
         }
 
@@ -303,6 +323,22 @@ internal class RandomServiceTest : DescribeSpec({
                     set shouldContainAll subset
                     if (subset.size > 1) subset shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
                 }
+            }
+        }
+
+        context("randomDate(min, max, zoneOffset) fun") {
+            val max = Instant.parse("2019-02-15T12:59:00Z") // Date of the first commit of kotlin-faker
+            val min = max.minus(Duration.ofDays(31))
+            val zoneOffset = ZoneOffset.UTC
+            val values = List(100) { randomService.randomDate(min, max, zoneOffset) }
+
+            it("return value should be within specified range") {
+                val minOffsetDateTime = OffsetDateTime.ofInstant(min, zoneOffset)
+                val maxOffsetDateTime = OffsetDateTime.ofInstant(max, zoneOffset)
+                values.all {
+                    it.isEqual(minOffsetDateTime) || it.isEqual(maxOffsetDateTime) ||
+                            (it.isAfter(minOffsetDateTime) && it.isBefore(maxOffsetDateTime))
+                } shouldBe true
             }
         }
     }

@@ -1,0 +1,67 @@
+# START mysql_provider_dict
+en:
+  faker:
+    database:
+      mysql:
+        data_type:
+          # Numeric
+          - TINYINT
+          - SMALLINT
+          - MEDIUMINT
+          - INT
+          - BIGINT
+          - DECIMAL
+          - FLOAT
+          - DOUBLE
+          - REAL
+
+          # Date and Time
+          - DATE
+          - TIME
+          - DATETIME
+          - TIMESTAMP
+          - YEAR
+
+          # Character Strings
+          - CHAR
+          - VARCHAR
+          - TINYTEXT
+          - TEXT
+          - MEDIUMTEXT
+          - LONGTEXT
+          - BINARY
+          - VARBINARY
+          - TINYBLOB
+          - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
+          - ENUM
+          - SET
+
+          # Binary
+          - BINARY
+          - VARBINARY
+          - TINYBLOB
+          - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
+
+          # Spatial
+          - GEOMETRY
+          - POINT
+          - LINESTRING
+          - POLYGON
+          - MULTIPOINT
+          - MULTILINESTRING
+          - MULTIPOLYGON
+          - GEOMETRYCOLLECTION
+        engine:
+          - InnoDB
+          - MyISAM
+          - MEMORY
+          - CSV
+          - ARCHIVE
+          - BLACKHOLE
+          - MERGE
+          - FEDERATED
+# END mysql_provider_dict

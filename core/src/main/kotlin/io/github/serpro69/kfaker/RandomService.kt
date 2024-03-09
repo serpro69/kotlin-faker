@@ -3,6 +3,10 @@ package io.github.serpro69.kfaker
 import com.ibm.icu.text.UnicodeSet
 import com.ibm.icu.util.LocaleData
 import com.ibm.icu.util.ULocale
+import java.time.Duration
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.util.*
 import kotlin.experimental.and
 import kotlin.experimental.or
@@ -72,6 +76,15 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
             value
         } else throw IllegalArgumentException("Bound bound must be greater than 0")
     }
+
+    override fun nextLong(longRange: LongRange): Long {
+        val lowerBound = requireNotNull(longRange.minOrNull())
+        val upperBound = requireNotNull(longRange.maxOrNull())
+
+        return nextLong(lowerBound, upperBound)
+    }
+
+    override fun nextLong(min: Long, max: Long) = nextLong(max - min + 1) + min
 
     override fun nextFloat() = random.nextFloat()
 
@@ -210,6 +223,36 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean): Set<T> {
         return randomSubset(set, nextInt(sizeRange), shuffled)
+    }
+
+    override fun randomPastDate(): OffsetDateTime {
+        return randomPastDate(Instant.ofEpochSecond(0))
+    }
+
+    override fun randomPastDate(min: Instant): OffsetDateTime {
+        val now = Instant.now()
+        require(min.isBefore(now))
+
+        return randomDate(min, now.minusMillis(1), ZoneOffset.UTC)
+    }
+
+    override fun randomFutureDate(): OffsetDateTime {
+        val maxInstant = Instant.now().plus(Duration.ofDays(50 * 365))
+        return randomFutureDate(maxInstant)
+    }
+
+    override fun randomFutureDate(max: Instant): OffsetDateTime {
+        val now = Instant.now()
+        require(max.isAfter(now))
+
+        return randomDate(now.plusMillis(1), max, ZoneOffset.UTC)
+    }
+
+    override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime {
+        val randomSeconds = nextLong(min.epochSecond, max.epochSecond)
+        val randomInstant = Instant.ofEpochSecond(randomSeconds)
+
+        return OffsetDateTime.ofInstant(randomInstant, zoneOffset)
     }
 
     private fun <T> Collection<T>.randomFromToIndices(s: Int): Pair<Int, Int> {

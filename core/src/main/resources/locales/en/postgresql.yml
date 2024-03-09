@@ -1,0 +1,55 @@
+# START postgresql_provider_dict
+en:
+  faker:
+    database:
+      postgresql:
+        data_type:
+          # Numeric
+          - SMALLINT
+          - INTEGER
+          - BIGINT
+          - DECIMAL
+          - NUMERIC
+          - REAL
+          - DOUBLE PRECISION
+          - BOOLEAN
+
+          # Date and Time
+          - TIMESTAMP
+          - TIMESTAMP WITH TIME ZONE
+          - DATE
+          - TIME
+          - TIME WITH TIME ZONE
+
+          # Character Strings
+          - CHARACTER
+          - CHARACTER VARYING
+          - TEXT
+          - ENUM
+
+          # Binary
+          - BYTEA
+
+          # Spatial
+          - POINT
+          - LINE
+          - LSEG
+          - BOX
+          - PATH
+          - POLYGON
+          - CIRCLE
+
+          # JSON
+          - JSON
+          - JSONB
+
+          # Network Address
+          - INET
+          - CIDR
+          - MACADDR
+          - MACADDR8
+
+          # Other
+          - ARRAY
+          - UUID
+# END postgresql_provider_dict

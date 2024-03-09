@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker
 
+import java.time.Instant
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 /**
@@ -83,6 +86,18 @@ interface IRandom {
      * @throws IllegalArgumentException if `bound < 0`
      */
     fun nextLong(bound: Long): Long
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [Long] value within the specified [longRange] (inclusive),
+     * drawn from this [random] number generator's sequence.
+     */
+    fun nextLong(longRange: LongRange): Long
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [Long] value between [min] (inclusive) and [max] (inclusive),
+     * drawn from this [random] number generator's sequence.
+     */
+    fun nextLong(min: Long, max: Long): Long
 
     /**
      * Returns the next pseudorandom, uniformly distributed [Float] value between `0.0` and `1.0`
@@ -242,4 +257,34 @@ interface IRandom {
      * @param shuffled if `true` the [set] will be shuffled before extracting the subset
      */
     fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean = false): Set<T>
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between Unix epoch (1970-01-01T00:00:00Z) (inclusive) and now (exclusive) using UTC zone offset
+     */
+    fun randomPastDate(): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between [min] (inclusive) and now (exclusive) using UTC zone offset
+     */
+    fun randomPastDate(min: Instant): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between now (exclusive) and now + 50 years (inclusive) using UTC zone offset
+     */
+    fun randomFutureDate(): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between now (exclusive) and [max] (inclusive) using UTC zone offset
+     */
+    fun randomFutureDate(max: Instant): OffsetDateTime
+
+    /**
+     * Returns a pseudorandom, uniformly distributed [OffsetDateTime] value
+     * between [min] (inclusive) and [max] (inclusive) using the defined [zoneOffset]
+     */
+    fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime
 }

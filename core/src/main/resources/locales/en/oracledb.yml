@@ -1,0 +1,38 @@
+# START oracledb_provider_dict
+en:
+  faker:
+    database:
+      oracledb:
+        data_type:
+          # Numeric
+          - NUMBER
+          - INTEGER
+          - FLOAT
+          - BINARY_FLOAT
+          - BINARY_DOUBLE
+
+          # Date and Time
+          - DATE
+          - TIMESTAMP
+          - TIMESTAMP WITH TIME ZONE
+          - TIMESTAMP WITH LOCAL TIME ZONE
+
+          # Character Strings
+          - CHAR
+          - VARCHAR2
+          - VARCHAR
+          - NCHAR
+          - NVARCHAR2
+          - CLOB
+          - NCLOB
+
+          # Binary
+          - RAW
+          - BLOB
+
+          # Other
+          - XMLTYPE
+          - ROWID
+          - UROWID
+          - BFILE
+# END oracledb_provider_dict

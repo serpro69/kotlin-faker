@@ -1,0 +1,70 @@
+# START mariadb_provider_dict
+en:
+  faker:
+    database:
+      mariadb:
+        data_type:
+          # Numeric
+          - TINYINT
+          - SMALLINT
+          - MEDIUMINT
+          - INT
+          - INTEGER
+          - BIGINT
+          - DECIMAL
+          - DEC
+          - NUMERIC
+          - FIXED
+          - FLOAT
+          - DOUBLE
+          - REAL
+
+          # Date and Time
+          - DATE
+          - TIME
+          - DATETIME
+          - TIMESTAMP
+
+          # Character Strings
+          - CHAR
+          - VARCHAR
+          - TINYTEXT
+          - TEXT
+          - MEDIUMTEXT
+          - LONGTEXT
+          - ENUM
+          - SET
+
+          # Binary
+          - BINARY
+          - VARBINARY
+          - TINYBLOB
+          - BLOB
+          - MEDIUMBLOB
+          - LONGBLOB
+
+          # JSON
+          - JSON
+
+          # Spatial
+          - GEOMETRY
+          - POINT
+          - LINESTRING
+          - POLYGON
+          - MULTIPOINT
+          - MULTILINESTRING
+          - MULTIPOLYGON
+          - GEOMETRYCOLLECTION
+        engine:
+          - InnoDB
+          - MyISAM
+          - Aria
+          - MEMORY
+          - CSV
+          - ARCHIVE
+          - BLACKHOLE
+          - MERGE
+          - FEDERATED
+          - TokuDB
+          - Spider
+# END mariadb_provider_dict
