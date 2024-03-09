@@ -17,7 +17,7 @@
 ====
 [source,kotlin]
 ----
-Faker().mySQL.type() // => VARCHAR
+Faker().mySQL.dataType() // => VARCHAR
 
 Faker().mySQL.engine() // => InnoDB
 ----

@@ -11,7 +11,7 @@ typealias Faker = DatabasesFaker
 @Suppress("unused")
 class DatabasesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
-    val databases: Databases by lazy { Databases(fakerService, randomService) }
+    val database: Database by lazy { Database(fakerService, randomService) }
     val mariaDB: MariaDB by lazy { MariaDB(fakerService) }
     val msSQLServer: MSSQLServer by lazy { MSSQLServer(fakerService) }
     val mySQL: MySQL by lazy { MySQL(fakerService) }

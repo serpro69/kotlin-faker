@@ -1,9 +1,9 @@
 # START ms_sql_server_provider_dict
 en:
   faker:
-    databases:
+    database:
       ms_sql_server:
-        type:
+        data_type:
           # Exact Numeric
           - BIT
           - TINYINT

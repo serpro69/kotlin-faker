@@ -17,6 +17,6 @@
 ====
 [source,kotlin]
 ----
-Faker().oracleDB.type() // => VARCHAR
+Faker().oracleDB.dataType() // => VARCHAR
 ----
 ====

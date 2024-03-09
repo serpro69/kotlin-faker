@@ -1,9 +1,9 @@
 # START postgresql_provider_dict
 en:
   faker:
-    databases:
+    database:
       postgresql:
-        type:
+        data_type:
           # Numeric
           - SMALLINT
           - INTEGER

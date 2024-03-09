@@ -1,7 +1,7 @@
 ## `DatabasesFaker`
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-creatures?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker-creatures)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-creatures?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-databases?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker-databases)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-databases?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
 
 Provides access to fake data generators within the Databases domain.
 

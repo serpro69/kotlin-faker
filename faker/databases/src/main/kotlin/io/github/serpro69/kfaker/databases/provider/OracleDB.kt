@@ -8,11 +8,11 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASES] category.
+ * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
  */
 @Suppress("unused")
 class OracleDB internal constructor(fakerService: FakerService) : YamlFakeDataProvider<OracleDB>(fakerService) {
-    override val yamlCategory = YamlCategory.DATABASES
+    override val yamlCategory = YamlCategory.DATABASE
     override val secondaryCategory: Category = Category.ofName("ORACLEDB")
     override val localUniqueDataProvider = LocalUniqueDataProvider<OracleDB>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,5 +21,5 @@ class OracleDB internal constructor(fakerService: FakerService) : YamlFakeDataPr
         fakerService.load(yamlCategory, secondaryCategory)
     }
 
-    fun type() = resolve(secondaryCategory, "type")
+    fun dataType() = resolve(secondaryCategory, "data_type")
 }

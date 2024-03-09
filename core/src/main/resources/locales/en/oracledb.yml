@@ -1,9 +1,9 @@
 # START oracledb_provider_dict
 en:
   faker:
-    databases:
+    database:
       oracledb:
-        type:
+        data_type:
           # Numeric
           - NUMBER
           - INTEGER

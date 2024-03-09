@@ -17,6 +17,6 @@
 ====
 [source,kotlin]
 ----
-Faker().msSQLServer.type() // => VARCHAR
+Faker().msSQLServer.dataType() // => VARCHAR
 ----
 ====

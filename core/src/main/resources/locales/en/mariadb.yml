@@ -1,9 +1,9 @@
 # START mariadb_provider_dict
 en:
   faker:
-    databases:
+    database:
       mariadb:
-        type:
+        data_type:
           # Numeric
           - TINYINT
           - SMALLINT

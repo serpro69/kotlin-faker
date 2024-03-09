@@ -8,22 +8,22 @@ import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
 /**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASES] category.
+ * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
  */
 @Suppress("unused")
-class Databases internal constructor(
+class Database internal constructor(
     fakerService: FakerService,
     private val randomService: RandomService,
-) : YamlFakeDataProvider<Databases>(fakerService) {
-    override val yamlCategory = YamlCategory.DATABASES
-    override val localUniqueDataProvider = LocalUniqueDataProvider<Databases>()
+) : YamlFakeDataProvider<Database>(fakerService) {
+    override val yamlCategory = YamlCategory.DATABASE
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Database>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {
         fakerService.load(yamlCategory)
     }
 
-    fun column() = resolve("column")
+    fun columnName() = resolve("column_name")
 
     fun mongodbObjectId() = resolveUniqueValue("objectId") {
         val date = randomService.nextPastDate()

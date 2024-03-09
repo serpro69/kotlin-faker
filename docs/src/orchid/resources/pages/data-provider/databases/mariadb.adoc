@@ -17,7 +17,7 @@
 ====
 [source,kotlin]
 ----
-Faker().mariaDB.type() // => VARCHAR
+Faker().mariaDB.dataType() // => VARCHAR
 
 Faker().mariaDB.engine() // => InnoDB
 ----
