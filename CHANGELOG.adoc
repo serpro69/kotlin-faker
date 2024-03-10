@@ -9,6 +9,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/issues/222[#222] [core] Create new Databases faker module
 * https://github.com/serpro69/kotlin-faker/issues/218[#218] [core] Allow creating custom fakers / generators
 
 [discrete]
