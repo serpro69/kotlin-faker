@@ -12,19 +12,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
     shadow("com.ibm.icu:icu4j:73.2")
     shadow("com.github.mifmif:generex:1.0.2")
-    // integration dependencies for classes in docs package, e.g. Homepage.kt
-    // NB! only add fakers that are needed
-    val integrationImplementation by configurations
-    integrationImplementation(project(":faker:commerce"))
-    integrationImplementation(project(":faker:movies"))
-    integrationImplementation(project(":faker:tvshows"))
-}
-
-// integrationTest task must run after we've built the dependencies
-tasks.getByName("integrationTest") {
-    dependsOn(":faker:commerce:shadowJar")
-    dependsOn(":faker:movies:shadowJar")
-    dependsOn(":faker:tvshows:shadowJar")
 }
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block

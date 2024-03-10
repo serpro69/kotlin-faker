@@ -469,7 +469,9 @@ internal class FakerServiceTest : DescribeSpec({
 
                         assertSoftly {
                             resolvedValue.split(" ") shouldHaveAtLeastSize 2
-                            resolvedValue.split(" ") shouldHaveAtMostSize 3
+                            // prefix 'The Hon.' is single value,
+                            // but will be split into two strings and will result in size 4
+                            resolvedValue.split(" ") shouldHaveAtMostSize 4
                             resolvedValue shouldNotContain Regex("""#\{\p{all}+?}""")
                         }
                     }

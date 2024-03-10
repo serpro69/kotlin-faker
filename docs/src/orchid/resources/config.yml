@@ -164,6 +164,10 @@ snippets:
         baseDirs:
           - '../../../../core/src/main/resources/locales/en/'
           - '../../../../core/src/integration/kotlin/'
+          - '../../../../faker/books/src/integration/kotlin/'
+          - '../../../../faker/commerce/src/integration/kotlin/'
+          - '../../../../faker/movies/src/integration/kotlin/'
+          - '../../../../faker/tvshows/src/integration/kotlin/'
           - '../../../../core/src/integration/java/'
           - 'snippets'
         recursive: true

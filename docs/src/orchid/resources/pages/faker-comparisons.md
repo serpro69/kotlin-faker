@@ -94,7 +94,7 @@ fun main() {
     </tr>
     <tr>
       <td>{{ anchor(title='Available Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} (<code>address</code>, <code>name</code>, etc.)</td>
-      <td>197</td>
+      <td>213</td>
       <td><a href="https://github.com/datafaker-net/datafaker/blob/a3f8509537e2c9eb0c2e28daa416cc4c1bb8a3fa/README.md?plain=1#L154-L268">115</a></td>
       <td>73</td>
       <td>8</td>
@@ -103,7 +103,7 @@ fun main() {
     </tr>
     <tr>
       <td>{{ anchor(title='Available Locales', collectionType='wiki', collectionId='', itemId='Available Locales') }} (<code>nb-NO</code>, <code>uk</code>, <code>es</code> etc.)</td>
-      <td>58</td>
+      <td>60</td>
       <td><a href="https://github.com/datafaker-net/datafaker/blob/a3f8509537e2c9eb0c2e28daa416cc4c1bb8a3fa/README.md?plain=1#L285-L335">51</a></td>
       <td>47</td>
       <td>10</td>

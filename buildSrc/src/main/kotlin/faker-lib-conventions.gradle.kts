@@ -116,6 +116,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
         into("META-INF")
     }
+    dependsOn(integrationTest)
     dependsOn(tasks.jar)
 }
 

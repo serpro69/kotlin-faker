@@ -12,8 +12,8 @@ import kotlin.system.exitProcess
         "see https://github.com/serpro69/kotlin-faker/README.md for more installation and usage examples"
     ],
     version = [
-        "faker: {FAKER_VER}", // {FAKER_VER} is a placeholder that will be temporarily replaced during compilation
-        "faker-bot: {FAKER_VER}",
+        "faker: 0.0.0", // 0.0.0 is a placeholder that will be temporarily replaced during compilation
+        "faker-bot: 0.0.0",
         "Built with picocli ${CommandLine.VERSION}",
         "JVM: \${java.version} (\${java.vendor} \${java.vm.name} \${java.vm.version})",
         "OS: \${os.name} \${os.version} \${os.arch}"

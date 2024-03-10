@@ -3,10 +3,7 @@
 package io.github.serpro69.kfaker.docs
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.commerce.CommerceFaker
 import io.github.serpro69.kfaker.fakerConfig
-import io.github.serpro69.kfaker.movies.MoviesFaker
-import io.github.serpro69.kfaker.tv.TvShowsFaker
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -43,33 +40,13 @@ class Homepage : DescribeSpec({
                 faker.address.streetAddress() // => 474 Kilback Manor
                 // END data_provider_two
             }
-            it("should print a SWIFT BIC code") {
-                // START data_provider_four
-                CommerceFaker().bank.swiftBic() // => AACCGB21
-                // END data_provider_four
-            }
             it("should print a safe email address") {
                 // START data_provider_three
                 faker.internet.safeEmail() // => chance.marvin@yahoo.test
                 // END data_provider_three
             }
-            it("should print a ship name from The Expanse") {
-                // START data_provider_five
-                TvShowsFaker().theExpanse.ships() // => Rocinante
-                // END data_provider_five
-            }
-            it("should print a Star Wars character name") {
-                // START data_provider_six_a
-                MoviesFaker().starWars.characters() // => Darth Vader
-                // END data_provider_six_a
-            }
-            it("should print a character name from Friends") {
-                // START data_provider_six_b
-                TvShowsFaker().friends.characters() // => Phoebe Buffay
-                // END data_provider_six_b
-            }
             // START data_provider_seven
-            // a total of 171 different data providers
+            // a total of 213 different data providers
             // END data_provider_seven
         }
 

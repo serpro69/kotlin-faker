@@ -49,18 +49,18 @@ homepageSections:
         snippets: ['data_provider_three']
         lang: 'kotlin'
       - title: 'Banking'
-        snippets: ['data_provider_four']
+        snippets: ['commerce_faker_one']
         lang: 'kotlin'
       - title: 'Books'
-        snippets: ['data_provider_five']
+        snippets: ['books_faker_one']
         lang: 'kotlin'
       - title: 'Movies and TV'
-        snippets: ['data_provider_six_a', 'data_provider_six_b']
+        snippets: ['movies_faker_one', 'tvshows_faker_one']
         lang: 'kotlin'
       - title: '…and many others'
         snippets: ['data_provider_seven']
         lang: 'kotlin'
-  - title: '…in 57 locales:'
+  - title: '…in 60 locales:'
     snippets: ['faker_locale_zero']
     lang: 'kotlin'
     tabs:
