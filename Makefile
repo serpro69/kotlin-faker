@@ -16,12 +16,14 @@ __check_defined = \
     $(if $(value $1),, \
       $(error Undefined $1$(if $2, ($2))))
 
-__java_version_ok := $(shell java -version 2>&1|grep 1.8.0 >/dev/null; printf $$?)
+# use java 17 to build because 'org.graalvm.buildtools.native' in cli-bot requires java version >= 11
+# both the libs and the cli app use java toolchains and will be built with java compatibility of version 8
+__java_version_ok := $(shell java -version 2>&1|grep '17.0' >/dev/null; printf $$?)
 
 .PHONY: check_java
 check_java: ## check current java version (mostly used in other targets)
 ifneq ($(__java_version_ok),$(shell echo 0))
-	$(error "Expected java 1.8")
+	$(error "Expected java 17")
 endif
 
 .PHONY: deploy-docs
