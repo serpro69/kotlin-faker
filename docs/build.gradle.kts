@@ -49,9 +49,3 @@ orchid {
         System.getenv("GITHUB_TOKEN")
     }
 }
-
-val compileOrchidKotlin by tasks.getting(KotlinCompile::class) {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-}

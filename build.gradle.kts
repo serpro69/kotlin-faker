@@ -73,14 +73,12 @@ subprojects {
     configure<JavaPluginExtension> {
         toolchain {
             languageVersion = JavaLanguageVersion.of(8)
-            vendor.set(JvmVendorSpec.matching("Temurin"))
         }
     }
 
     configure<KotlinJvmProjectExtension> {
         jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(8))
-            vendor.set(JvmVendorSpec.matching("Temurin"))
         }
     }
 

@@ -22,7 +22,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 8 and 17 # we need both because graal plugin in cli-bot requires jdk version >= 11
+      # we need both because graal plugin in cli-bot requires jdk version >= 11
+      # more details in CONTRIBUTING
+      - name: Set up JDK 8 and 17
         uses: actions/setup-java@v4
         with:
           java-version: |
