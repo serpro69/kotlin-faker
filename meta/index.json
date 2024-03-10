@@ -1,0 +1,140 @@
+{
+  "ownKey": "index",
+  "childrenPages": {"meta": {
+    "ownKey": "meta",
+    "ownPages": [
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "assets.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/assets.index.json"
+        },
+        "description": "",
+        "title": "Assets . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "changelog.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/changelog.index.json"
+        },
+        "description": "",
+        "title": "Changelog . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "forms.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/forms.index.json"
+        },
+        "description": "",
+        "title": "Forms . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "home.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/home.index.json"
+        },
+        "description": "",
+        "title": "Home . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "kotlindoc.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/kotlindoc.index.json"
+        },
+        "description": "",
+        "title": "Kotlindoc . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "pages.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/pages.index.json"
+        },
+        "description": "",
+        "title": "Pages . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "snippets.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/snippets.index.json"
+        },
+        "description": "",
+        "title": "Snippets . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "wiki.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/wiki.index.json"
+        },
+        "description": "",
+        "title": "Wiki . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "sitemap.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/sitemap.index.json"
+        },
+        "description": "",
+        "title": "Sitemap . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "indices.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/indices.index.json"
+        },
+        "description": "",
+        "title": "Indices . Index"
+      },
+      {
+        "reference": {
+          "path": "meta",
+          "baseUrl": "https://serpro69.github.io/kotlin-faker",
+          "fileName": "all.index",
+          "extension": "json",
+          "usePrettyUrl": false,
+          "link": "https://serpro69.github.io/kotlin-faker/meta/all.index.json"
+        },
+        "description": "",
+        "title": "All . Index"
+      }
+    ]
+  }}
+}
