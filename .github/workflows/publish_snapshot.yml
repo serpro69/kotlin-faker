@@ -17,8 +17,8 @@ jobs:
     outputs:
       core: ${{ steps.filter.outputs.core }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: dorny/paths-filter@v2
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
@@ -65,7 +65,7 @@ jobs:
           mvn-toolchain-vendor: GraalVM
           mvn-toolchain-id: graalce-${{ env.GRAALCE_JDK_VERSION }}
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1.0.4
+        uses: gradle/wrapper-validation-action@v2
       - name: Grant execute permission to scripts
         run: |
           chmod +x gradlew
