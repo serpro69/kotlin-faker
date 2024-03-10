@@ -140,7 +140,7 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 
 ==== Update cli-bot fakers
 
-* cli-bot/src/main/kotlin/io/github/serpro69/kfaker/app/Constants.kt[`Constants.kt`] is used to provide all faker implementations to the faker command line application. If a new faker implementation is added, this needs to be updated
+* link:cli-bot/src/main/kotlin/io/github/serpro69/kfaker/app/Constants.kt[`Constants.kt`] is used to provide all faker implementations to the faker command line application. If a new faker implementation is added, this needs to be updated
 
 ==== Update native-image link:cli-bot/src/main/resources/META-INF/native-image/io.github.serpro69/cli-bot/reflect-config.json[`reflect-config.json`]
 
@@ -156,6 +156,9 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 
 * create a new `.adoc` file under link:docs/src/orchid/resources/pages/data-provider[data-provider] directory
 ** copy an existing file from that directory and replace the H2 header to reflect the correct faker provider property name, update the code snippet name (should be in the form of `<yml_filename>_provider_dict`) in the `[source,yaml]` section, and update the "available functions" code section as well
+
+* if adding a new link:faker[faker] module, update the docs link:docs/src/orchid/resources/config.yml[`config.yml`] file to include the API documentation
+** make sure to update the link:docs/src/orchid/resources/pages/fakers[fakers] with a new page as well
 
 ==== Add tests
 

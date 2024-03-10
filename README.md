@@ -18,6 +18,14 @@
 
 Port of a popular ruby [faker](https://github.com/stympy/faker) gem written in kotlin. Generates realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data-anonymization purposes.
 
+## Prerequisites
+
+- Faker libraries depend on java 8 and kotlin 1.9.x for runtime
+- Building faker from source requires both jdk 8 (temurin is recommended, but any vendor should work) and jdk 17 (graalvm-ce). The latter is needed to build the [cli-bot](cli-bot) application, but since it's a module in the project and therefore is part of the project's build process, the dependency on graalvm-ce jdk is only partially optional:
+  - To build faker, jdk version 11 or higher has to be used with gradle due to [`org.graalvm.buildtools.native`](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html) plugin requirements that is used in the [`cli-bot`](cli-bot/build.gradle.kts) build file. 
+  - GraalVM CE jdk distribution can be omitted if one does not want to build the native image of the `cli-bot` application, but any other jdk with version >= 11 is still mandatory to build the rest of the project as mentioned above.
+  - GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the [graalvm-ce-builds releases](https://github.com/graalvm/graalvm-ce-builds/releases)
+
 ## Usage
 
 Documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
