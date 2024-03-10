@@ -47,8 +47,10 @@ application {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+        vendor.set(JvmVendorSpec.matching("Temurin"))
+    }
 }
 
 testlogger {
@@ -91,7 +93,12 @@ graalvmNative {
     toolchainDetection = true
     binaries {
         named("main") {
-            imageName = "faker-bot"
+            imageName = "faker-bot_${project.version}"
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(17)
+                vendor.set(JvmVendorSpec.GRAAL_VM)
+            }
+            mainClass.set(mainFunction)
         }
     }
 }

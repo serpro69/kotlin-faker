@@ -41,9 +41,7 @@ jobs:
       - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
-          java-version: |
-            8
-            17
+          java-version: 8
           distribution: 'temurin'
       # loosely based on https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#installing-java-from-local-file
       - name: Fetch latest graalce JDK

@@ -80,9 +80,11 @@ jobs:
         run: ./gradlew nativeCompile
       - name: Test native image
         run: |
+          _app_path=$(find ./cli-bot/build/native/nativeCompile/ -type f -name faker-bot\* -not -name \*.txt)
+          mv "$_app_path" $RUNNER_TEMP/faker-bot
           # run several iterations to test various pathways when generating data
           for i in {0..10}; do
-            ./cli-bot/build/native/nativeCompile/faker-bot list --verbose >/dev/null || false
-            ./cli-bot/build/native/nativeCompile/faker-bot lookup a --verbose >/dev/null || false
+            ${{ runner.temp }}/faker-bot list --verbose >/dev/null || false
+            ${{ runner.temp }}/faker-bot lookup a --verbose >/dev/null || false
           done
 
