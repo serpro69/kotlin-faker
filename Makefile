@@ -172,8 +172,8 @@ release: check_java ## publishes the next release with a specified VERSION
 	./gradlew clean test integrationTest -Pversion=$(VERSION)
 	# build and test native image
 	./gradlew nativeCompile -Pversion=$(VERSION) --info
-	./cli-bot/build/graal/faker-bot_$(VERSION) list --verbose >/dev/null || false
-	./cli-bot/build/graal/faker-bot_$(VERSION) lookup a --verbose >/dev/null || false
+	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) list --verbose >/dev/null || false
+	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) lookup a --verbose >/dev/null || false
 	# publish to sonatype and close staging repo
 	./gradlew publishToSonatype closeSonatypeStagingRepository -Pversion=$(VERSION) --info
 	# create and push git tag
