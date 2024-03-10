@@ -35,7 +35,7 @@ deploy-docs: ## deploys documentation with orchid
 _snapshot-in-pre-release: ## (DEPRECATED) publishes next snapshot in current pre-release version
 	./gradlew clean test integrationTest \
 	printVersion \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	-PpromoteToRelease \
 	--info
@@ -44,7 +44,7 @@ _snapshot-in-pre-release: ## (DEPRECATED) publishes next snapshot in current pre
 _snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bump
 	./gradlew clean test integrationTest \
 	printVersion \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	-PbumpComponent=major \
 	--info
@@ -54,14 +54,14 @@ snapshot-minor: check_java ## publishes next snapshot with a minor version bump
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
 	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
-	./gradlew nativeImage -Pversion='$(VERSION)-SNAPSHOT' --info
+	./gradlew nativeCompile -Pversion='$(VERSION)-SNAPSHOT' --info
 	./gradlew publishToSonatype -Pversion='$(VERSION)-SNAPSHOT' --info
 
 .PHONY: snapshot-patch
 _snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bump
 	./gradlew clean test integrationTest \
 	printVersion \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	-PbumpComponent=patch \
 	--info
@@ -70,7 +70,7 @@ _snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bu
 _pre-release-major: ## (DEPRECATED) publishes next pre-release version with a major version bump
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=major \
@@ -82,7 +82,7 @@ _pre-release-major: ## (DEPRECATED) publishes next pre-release version with a ma
 _pre-release-minor: ## (DEPRECATED) publishes next pre-release with a minor version bump
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=minor \
@@ -94,7 +94,7 @@ _pre-release-minor: ## (DEPRECATED) publishes next pre-release with a minor vers
 _pre-release-patch: ## (DEPRECATED) publishes next pre-release with a patch version bump
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PnewPreRelease -PbumpComponent=patch \
@@ -106,7 +106,7 @@ _pre-release-patch: ## (DEPRECATED) publishes next pre-release with a patch vers
 _next-pre-release: ## (DEPRECATED) publishes next pre-release version
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PpreRelease \
@@ -118,7 +118,7 @@ _next-pre-release: ## (DEPRECATED) publishes next pre-release version
 _promote-to-release: ## (DEPRECATED) publishes next release from the current pre-release version
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PpromoteToRelease \
@@ -130,7 +130,7 @@ _promote-to-release: ## (DEPRECATED) publishes next release from the current pre
 _release-major: ## (DEPRECATED) publishes next major release version
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=major \
@@ -142,7 +142,7 @@ _release-major: ## (DEPRECATED) publishes next major release version
 _release-minor: ## (DEPRECATED) publishes next minor release version
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=minor \
@@ -154,7 +154,7 @@ _release-minor: ## (DEPRECATED) publishes next minor release version
 _release-patch: ## (DEPRECATED) publishes next patch release version
 	./gradlew clean test integrationTest \
 	tag \
-	nativeImage \
+	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
 	-Prelease -PbumpComponent=patch \
@@ -169,7 +169,7 @@ release: check_java ## publishes the next release with a specified VERSION
 	# run tests
 	./gradlew clean test integrationTest -Pversion=$(VERSION)
 	# build and test native image
-	./gradlew nativeImage -Pversion=$(VERSION) --info
+	./gradlew nativeCompile -Pversion=$(VERSION) --info
 	./cli-bot/build/graal/faker-bot_$(VERSION) list --verbose >/dev/null || false
 	./cli-bot/build/graal/faker-bot_$(VERSION) lookup a --verbose >/dev/null || false
 	# publish to sonatype and close staging repo

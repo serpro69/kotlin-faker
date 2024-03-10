@@ -4,7 +4,7 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 plugins {
     application
     kotlin("jvm")
-    id("com.palantir.graal") version "0.10.0" // 0.12.0+ requires java11+
+    id("org.graalvm.buildtools.native") version "0.10.1"
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
@@ -86,15 +86,25 @@ tasks.startScripts {
     fakers.forEach { dependsOn(":faker:$it:shadowJar") }
 }
 
-graal {
-    graalVersion("21.2.0")
-    javaVersion("8")
-    mainClass(mainFunction)
-    outputName("faker-bot_${project.version}")
-    option("--no-fallback")
-    option("--no-server")
-    option("--report-unsupported-elements-at-runtime")
+graalvmNative {
+    testSupport = false
+    toolchainDetection = true
+    binaries {
+        named("main") {
+            imageName = "faker-bot"
+        }
+    }
 }
+
+//graalvmNative {
+//    graalVersion("21.2.0")
+//    javaVersion("8")
+//    mainClass(mainFunction)
+//    outputName("faker-bot_${project.version}")
+//    option("--no-fallback")
+//    option("--no-server")
+//    option("--report-unsupported-elements-at-runtime")
+//}
 
 tasks {
     compileKotlin {
@@ -116,7 +126,11 @@ tasks {
         dependsOn(":core:assemble")
     }
 
-    nativeImage {
+    nativeCompile {
         dependsOn(shadowJar)
+    }
+
+    generateResourcesConfigFile {
+        fakers.forEach { dependsOn(":faker:$it:shadowJar") }
     }
 }

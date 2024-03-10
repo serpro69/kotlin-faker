@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.books.BooksFaker
 import io.github.serpro69.kfaker.commerce.CommerceFaker
 import io.github.serpro69.kfaker.creatures.CreaturesFaker
+import io.github.serpro69.kfaker.databases.DatabasesFaker
 import io.github.serpro69.kfaker.edu.EduFaker
 import io.github.serpro69.kfaker.games.GamesFaker
 import io.github.serpro69.kfaker.humor.HumorFaker
@@ -25,6 +26,7 @@ val fakers: (config: FakerConfig) -> List<AbstractFaker> = {
         BooksFaker(it),
         CommerceFaker(it),
         CreaturesFaker(it),
+        DatabasesFaker(it),
         EduFaker(it),
         GamesFaker(it),
         HumorFaker(it),

@@ -11,5 +11,5 @@ if [[ "${_tag}" == *"No names found, cannot describe anything"* ]] || [[ "${_tag
     echo 2>&1 "$_tag"
     exit 1
 else
-    ./gradlew clean printVersion build nativeImage bintrayUpload -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
+    ./gradlew clean printVersion build nativeCompile bintrayUpload -Prelease -PbintrayUser=${BINTRAY_USER} -PbintrayKey=${BINTRAY_KEY}
 fi

@@ -138,9 +138,13 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 
 * the entry point for all data generation is the link:core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt[`Faker`] class, so a new property needs to be added there that calls the data provider class
 
+==== Update cli-bot fakers
+
+* cli-bot/src/main/kotlin/io/github/serpro69/kfaker/app/Constants.kt[`Constants.kt`] is used to provide all faker implementations to the faker command line application. If a new faker implementation is added, this needs to be updated
+
 ==== Update native-image link:cli-bot/src/main/resources/META-INF/native-image/io.github.serpro69/cli-bot/reflect-config.json[`reflect-config.json`]
 
-* this is used when building the native-image of the `faker-bot` CLI application and thus needs to be updated, otherwise the `nativeImage` gradle task will fail
+* this is used when building the native-image of the `faker-bot` CLI application and thus needs to be updated, otherwise the `nativeCompile` gradle task will fail
 * it is easy to auto-update the configuration by using `native-image-agent` (requires the `native-image` binary to be installed):
 ** first create the jar of the app with `./gradlew clean shadowJar`
 ** then run each of the cli commands (include the verbose mode since that requires additional calls):
@@ -160,9 +164,11 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 ** the link:cli-bot/src/test/kotlin/io/github/serpro69/kfaker/app/cli/IntrospectorTest.kt[`IntrospectorTest`] needs to be updated in the `cli-bot` module
 ** the link:core/src/test/kotlin/io/github/serpro69/kfaker/TestConstants.kt[`TestConstants`] need to be updated as well
 
-==== Example commit
+==== Examples
 
-In addition to the above instructions, you can also take a look at https://github.com/serpro69/kotlin-faker/commit/0b34d19d77aa728ed87382444908c90a63cc5f52[`0b34d1`] commit, which can be used as an MVP example of all of the above steps.
+* In addition to the above instructions, you can also take a look at https://github.com/serpro69/kotlin-faker/commit/0b34d19d77aa728ed87382444908c90a63cc5f52[`0b34d1`] commit, which can be used as an MVP example of all of the above steps.
+
+* Also see https://github.com/serpro69/kotlin-faker/pull/222[#222] for an example of adding a completely new faker implementation module
 
 ==== Which Faker implementation to use?
 
