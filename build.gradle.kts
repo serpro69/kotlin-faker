@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import io.qameta.allure.gradle.task.AllureReport
 import io.qameta.allure.gradle.task.AllureServe
 import org.gradle.api.tasks.testing.TestResult.ResultType
@@ -14,6 +15,7 @@ plugins {
     id("io.qameta.allure") version "2.8.1"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("com.github.johnrengelman.shadow") apply false
+    id("io.github.serpro69.semantic-versioning") apply false
 }
 
 repositories {
@@ -24,7 +26,6 @@ group = "io.github.serpro69"
 
 subprojects {
     group = rootProject.group.toString()
-    version = rootProject.version.toString()
 
     val isTestHelper = this@subprojects.name == "test"
 
@@ -232,5 +233,13 @@ internal enum class Color(ansiCode: Int) {
 
     override fun toString(): String {
         return ansiString
+    }
+}
+
+// Run :tag only after we've published artifacts to sonatype
+tasks.withType<TagTask>().configureEach {
+    // don't apply when "dryRun"
+    findProperty("dryRun") ?: run {
+        dependsOn("closeSonatypeStagingRepository")
     }
 }

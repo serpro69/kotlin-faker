@@ -35,131 +35,131 @@ deploy-docs: ## deploys documentation with orchid
 
 .PHONY: snapshot-in-pre-release
 _snapshot-in-pre-release: ## (DEPRECATED) publishes next snapshot in current pre-release version
-	./gradlew clean test integrationTest \
+	./gradlew test integrationTest \
 	printVersion \
 	nativeCompile \
 	publishToSonatype \
-	-PpromoteToRelease \
+	-PpromoteRelease \
 	--info
 
 .PHONY: snapshot-major
 _snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bump
-	./gradlew clean test integrationTest \
+	./gradlew test integrationTest \
 	printVersion \
 	nativeCompile \
 	publishToSonatype \
-	-PbumpComponent=major \
+	-Pincrement=major \
 	--info
 
 .PHONY: snapshot-minor
-snapshot-minor: check_java ## publishes next snapshot with a minor version bump
+_snapshot-minor: check_java ## (DEPRECATED) publishes next snapshot with a minor version bump
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
-	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
+	./gradlew test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
 	./gradlew nativeCompile -Pversion='$(VERSION)-SNAPSHOT' --info
 	./gradlew publishToSonatype -Pversion='$(VERSION)-SNAPSHOT' --info
 
 .PHONY: snapshot-patch
 _snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bump
-	./gradlew clean test integrationTest \
+	./gradlew test integrationTest \
 	printVersion \
 	nativeCompile \
 	publishToSonatype \
-	-PbumpComponent=patch \
+	-Pincrement=patch \
 	--info
 
 .PHONY: pre-release-major
-_pre-release-major: ## (DEPRECATED) publishes next pre-release version with a major version bump
-	./gradlew clean test integrationTest \
-	tag \
+pre-release-major: ## publishes next pre-release version with a major version bump
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PnewPreRelease -PbumpComponent=major \
+	tag \
+	-Prelease -PpreRelease -Pincrement=major \
 	--info
 
 	git push origin --tags
 
 .PHONY: pre-release-minor
-_pre-release-minor: ## (DEPRECATED) publishes next pre-release with a minor version bump
-	./gradlew clean test integrationTest \
-	tag \
+pre-release-minor: ## publishes next pre-release with a minor version bump
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PnewPreRelease -PbumpComponent=minor \
+	tag \
+	-Prelease -PpreRelease -Pincrement=minor \
 	--info
 
 	git push origin --tags
 
 .PHONY: pre-release-patch
-_pre-release-patch: ## (DEPRECATED) publishes next pre-release with a patch version bump
-	./gradlew clean test integrationTest \
-	tag \
+pre-release-patch: ## publishes next pre-release with a patch version bump
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PnewPreRelease -PbumpComponent=patch \
+	tag \
+	-Prelease -PpreRelease -Pincrement=patch \
 	--info
 
 	git push origin --tags
 
 .PHONY: next-pre-release
-_next-pre-release: ## (DEPRECATED) publishes next pre-release version
-	./gradlew clean test integrationTest \
-	tag \
+next-pre-release: ## publishes next pre-release version
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PpreRelease \
+	tag \
+	-Prelease -Pincrement=pre_release \
 	--info
 
 	git push origin --tags
 
 .PHONY: promote-to-release
-_promote-to-release: ## (DEPRECATED) publishes next release from the current pre-release version
-	./gradlew clean test integrationTest \
-	tag \
+promote-to-release: ## publishes next release from the current pre-release version
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PpromoteToRelease \
+	tag \
+	-Prelease -PpromoteRelease \
 	--info
 
 	git push origin --tags
 
 .PHONY: release-major
-_release-major: ## (DEPRECATED) publishes next major release version
-	./gradlew clean test integrationTest \
-	tag \
+release-major: ## publishes next major release version
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PbumpComponent=major \
+	tag \
+	-Prelease -Pincrement=major \
 	--info
 
 	git push origin --tags
 
 .PHONY: release-minor
-_release-minor: ## (DEPRECATED) publishes next minor release version
-	./gradlew clean test integrationTest \
-	tag \
+release-minor: ## publishes next minor release version
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PbumpComponent=minor \
+	tag \
+	-Prelease -Pincrement=minor \
 	--info
 
 	git push origin --tags
 
 .PHONY: release-patch
-_release-patch: ## (DEPRECATED) publishes next patch release version
-	./gradlew clean test integrationTest \
-	tag \
+release-patch: ## publishes next patch release version
+	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	-Prelease -PbumpComponent=patch \
+	tag \
+	-Prelease -Pincrement=patch \
 	--info
 
 	git push origin --tags
@@ -169,7 +169,7 @@ release: check_java ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
 	# run tests
-	./gradlew clean test integrationTest -Pversion=$(VERSION)
+	./gradlew test integrationTest -Pversion=$(VERSION)
 	# build and test native image
 	./gradlew nativeCompile -Pversion=$(VERSION) --info
 	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) list --verbose >/dev/null || false

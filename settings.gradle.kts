@@ -1,12 +1,15 @@
-plugins {
-    id("com.gradle.enterprise") version "3.1"
+import io.github.serpro69.semverkt.gradle.plugin.SemverPluginExtension
+import io.github.serpro69.semverkt.release.configuration.TagPrefix
+
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }
 
-gradleEnterprise {
-    buildScan {
-        termsOfServiceUrl = "https://gradle.com/terms-of-service"
-        termsOfServiceAgree = "yes"
-    }
+plugins {
+    id("io.github.serpro69.semantic-versioning") version "0.10.0"
 }
 
 rootProject.name = "kotlin-faker"
@@ -40,3 +43,21 @@ fakers.forEach { include("faker:$it") }
 
 // helpers for integration tests
 include("test")
+
+settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
+    git {
+        message {
+            preRelease = "[rc]"
+            ignoreCase = true
+        }
+    }
+    monorepo {
+        fakers.forEach { f ->
+            module(":faker:$f") {
+                tag {
+                    prefix = TagPrefix("faker-$f-v")
+                }
+            }
+        }
+    }
+}
