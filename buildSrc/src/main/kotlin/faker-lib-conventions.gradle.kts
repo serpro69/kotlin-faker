@@ -145,35 +145,15 @@ artifacts {
     archives(dokkaJavadocJar)
 }
 
-val artifactName = fullName
-val artifactGroup = project.group.toString()
-val artifactVersion = project.version.toString()
-val releaseTagName = "v$artifactVersion"
-
-val pomUrl = "https://github.com/serpro69/kotlin-faker"
-val pomScmUrl = "https://github.com/serpro69/kotlin-faker"
-val pomIssueUrl = "https://github.com/serpro69/kotlin-faker/issues"
-val pomDesc = "https://github.com/serpro69/kotlin-faker"
-
-val ghRepo = "serpro69/kotlin-faker"
-val ghReadme = "README.md"
-
-val pomLicenseName = "MIT"
-val pomLicenseUrl = "https://opensource.org/licenses/mit-license.php"
-val pomLicenseDist = "repo"
-
-val pomDeveloperId = "serpro69"
-val pomDeveloperName = "Serhii Prodan"
-
 val publicationName =
     "faker${project.name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}"
 
 publishing {
     publications {
         create<MavenPublication>(publicationName) {
-            groupId = artifactGroup
-            artifactId = artifactName
-            version = artifactVersion
+            groupId = project.group.toString()
+            artifactId = fullName
+            version = project.version.toString()
 //            from(components["java"])
             ShadowExtension(project).component(this)
             artifact(sourcesJar)
@@ -182,24 +162,26 @@ publishing {
             pom {
                 packaging = "jar"
                 name.set(fullName)
-                description.set(pomDesc)
-                url.set(pomUrl)
+                description.set("Generate realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data anonymization purposes.")
+                url.set("https://github.com/serpro69/kotlin-faker")
                 scm {
-                    url.set(pomScmUrl)
+                    connection.set("scm:git:https://github.com/serpro69/kotlin-faker")
+                    developerConnection.set("scm:git:https://github.com/serpro69")
+                    url.set("https://github.com/serpro69/kotlin-faker")
                 }
                 issueManagement {
-                    url.set(pomIssueUrl)
+                    url.set("https://github.com/serpro69/kotlin-faker/issues")
                 }
                 licenses {
                     license {
-                        name.set(pomLicenseName)
-                        url.set(pomLicenseUrl)
+                        name.set("MIT")
+                        url.set("https://opensource.org/licenses/mit-license.php")
                     }
                 }
                 developers {
                     developer {
-                        id.set(pomDeveloperId)
-                        name.set(pomDeveloperName)
+                        id.set("serpro69")
+                        name.set("Serhii Prodan")
                     }
                 }
             }

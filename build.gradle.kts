@@ -27,9 +27,15 @@ subprojects {
     }
 
     apply {
+        plugin("com.github.ben-manes.versions")
+    }
+
+    // don't apply the rest to bom subproject
+    if (this@subprojects.name == "bom") return@subprojects
+
+    apply {
         plugin("java")
         plugin("org.jetbrains.kotlin.jvm")
-        plugin("com.github.ben-manes.versions")
     }
 
     dependencies {

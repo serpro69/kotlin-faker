@@ -15,7 +15,7 @@ plugins {
 rootProject.name = "kotlin-faker"
 
 include(
-//    "bom",
+    "bom",
     "core",
     "cli-bot",
     "docs",
