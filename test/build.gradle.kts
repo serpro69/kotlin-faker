@@ -2,7 +2,7 @@ plugins {
 }
 
 dependencies {
-    testImplementation(project(":core"))
+    testImplementation(project(path = ":core", configuration = "shadow"))
 }
 
 configurations.create("testHelper")
