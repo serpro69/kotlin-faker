@@ -15,9 +15,10 @@ plugins {
 rootProject.name = "kotlin-faker"
 
 include(
+//    "bom",
     "core",
     "cli-bot",
-    "docs"
+    "docs",
 )
 
 val fakers = listOf(

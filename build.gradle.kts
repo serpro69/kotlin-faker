@@ -1,7 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-import io.qameta.allure.gradle.task.AllureReport
-import io.qameta.allure.gradle.task.AllureServe
 import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
@@ -10,12 +8,9 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 plugins {
     // NB! some versions are on the classpath from dependency declared in buildSrc/build.gradle.kts
     kotlin("jvm") apply false
-    id("com.adarshr.test-logger") apply false
-    id("com.github.ben-manes.versions") version "0.28.0" apply false
-    id("io.qameta.allure") version "2.8.1"
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("com.github.johnrengelman.shadow") apply false
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     id("io.github.serpro69.semantic-versioning") apply false
+    id("com.github.ben-manes.versions") version "0.51.0" apply false
 }
 
 repositories {
@@ -27,8 +22,6 @@ group = "io.github.serpro69"
 subprojects {
     group = rootProject.group.toString()
 
-    val isTestHelper = this@subprojects.name == "test"
-
     repositories {
         mavenCentral()
     }
@@ -36,39 +29,20 @@ subprojects {
     apply {
         plugin("java")
         plugin("org.jetbrains.kotlin.jvm")
-        plugin("com.adarshr.test-logger")
         plugin("com.github.ben-manes.versions")
-        plugin("io.qameta.allure")
-        if (!isTestHelper) plugin("com.github.johnrengelman.shadow")
     }
 
     dependencies {
         val implementation by configurations
-        val testRuntimeOnly by configurations
         val testImplementation by configurations
-
-        // TODO move dependencies to conventions plugin(s)
+        val testRuntimeOnly by configurations
+        // common-for-all dependencies go here
+        platform(kotlin("bom"))
         implementation(kotlin("stdlib-jdk8"))
         implementation(kotlin("reflect"))
-        implementation("com.github.mifmif:generex:1.0.2")
         testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
-        testImplementation("io.kotest:kotest-runner-junit5-jvm:5.7.2")
-        testImplementation("io.kotest:kotest-assertions-core-jvm:5.7.2")
+        testImplementation("io.kotest:kotest-assertions-core:5.7.2")
         testImplementation("io.kotest:kotest-property-jvm:5.7.2")
-        testImplementation("io.kotest.extensions:kotest-extensions-allure:1.3.0")
-        testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.0")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.0")
-        testRuntimeOnly("ch.qos.logback:logback-core:1.3.4") {
-            version {
-                strictly("1.3.4") // last stable for java 8
-            }
-        }
-        testRuntimeOnly("ch.qos.logback:logback-classic:1.3.4") {
-            version {
-                strictly("1.3.4") // last stable for java 8
-            }
-        }
-        testRuntimeOnly("org.codehaus.groovy:groovy:3.0.19")
     }
 
     configure<JavaPluginExtension> {
@@ -158,51 +132,6 @@ subprojects {
         rejectVersionIf {
             isNonStable(candidate.version)
         }
-    }
-
-    allure {
-        version = "2.8.1"
-        aspectjweaver = false
-        aspectjVersion = "1.9.20.1"
-        autoconfigure = true
-        // TODO check if fixed in future versions of allure
-        configuration = "testRuntimeOnly" // defaults to 'testCompile' which is incompatible with gradle 7.x
-        allureJavaVersion = "2.24.0"
-        useJUnit5 {
-            version = "2.24.0"
-        }
-    }
-}
-
-rootProject.allure {
-    version = "2.8.1"
-}
-
-val allureAggregatedReport by tasks.creating(AllureReport::class) {
-    doFirst {
-        val results = mutableListOf<File>()
-
-        subprojects.stream().forEach {
-            it.allure.resultsDir?.let { dir ->
-                results.add(dir)
-            }
-        }
-
-        resultsDirs = results
-    }
-}
-
-val allureAggregatedServe by tasks.creating(AllureServe::class) {
-    doFirst {
-        val results = mutableListOf<File>()
-
-        subprojects.stream().forEach {
-            it.allure.resultsDir?.let { dir ->
-                results.add(dir)
-            }
-        }
-
-        resultsDirs = results
     }
 }
 
