@@ -1,10 +1,10 @@
-import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     application
     kotlin("jvm")
     id("org.graalvm.buildtools.native") version "0.10.1"
+    id("com.github.johnrengelman.shadow")
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
@@ -30,8 +30,8 @@ val fakers = listOf(
 )
 
 dependencies {
-    implementation(project(":core"))
-    fakers.forEach { implementation(project(":faker:$it")) }
+    implementation(project(path = ":core", configuration = "shadow"))
+    fakers.forEach { implementation(project(path = ":faker:$it", configuration = "shadow")) }
     implementation("info.picocli:picocli:4.7.5")
 }
 
@@ -51,11 +51,6 @@ java {
         languageVersion = JavaLanguageVersion.of(8)
         vendor.set(JvmVendorSpec.matching("Temurin"))
     }
-}
-
-testlogger {
-    showPassed = false
-    theme = ThemeType.MOCHA
 }
 
 val shadowJar by tasks.getting(ShadowJar::class) {

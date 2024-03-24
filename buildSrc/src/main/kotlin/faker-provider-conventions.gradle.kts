@@ -6,12 +6,16 @@ plugins {
 dependencies {
     val compileOnly by configurations
     val testImplementation by configurations
+    val testRuntimeOnly by configurations
+    val integrationImplementation by configurations
     // In order to use an additional fake data provider,
     // core faker needs to be on the classpath.
     // Don't add it as transitive dependency to each faker provider
-    compileOnly(project(":core"))
+    compileOnly(project(path = ":core", configuration = "shadow"))
     // we need implementation dependency for tests to be able to access 'core' functionality
-    testImplementation(project(":core"))
+    testImplementation(project(path = ":core", configuration = "shadow"))
+    // provides helpers for integration tests
+    integrationImplementation(project(":test", "testHelper"))
 }
 
 // we have a dependency on :core,
