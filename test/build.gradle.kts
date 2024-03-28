@@ -1,3 +1,5 @@
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
+
 plugins {
 }
 
@@ -31,5 +33,9 @@ tasks.withType<PublishToMavenRepository> {
 // nothing to test in this module yet,
 // and we use test sources to produce artifacts...
 tasks.withType<Test> {
+    enabled = false
+}
+
+tasks.withType<TagTask> {
     enabled = false
 }
