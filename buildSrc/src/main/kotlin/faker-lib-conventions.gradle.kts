@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.jetbrains.dokka.gradle.DokkaTask
 import java.util.*
 
@@ -21,13 +22,17 @@ plugins {
 private val fullName: String =
     if (project.name == "core") rootProject.name else "${rootProject.name}-${project.name}"
 
-val isSnapshot by lazy {
-    provider {
-        version.toString().startsWith("0.0.0")
-            || version.toString().endsWith("SNAPSHOT")
-    }
+val isSnapshot = provider {
+    version.toString().startsWith("0.0.0")
+        || version.toString().endsWith("SNAPSHOT")
 }
-val newTag by lazy { provider { project.tasks.getByName("tag").didWork } }
+val newTag = provider {
+    val tag = project.tasks.getByName("tag", TagTask::class)
+    /* all fakers have their own tags, so checking if tag.didWork is enough for them,
+       ':core' shares the tag with 'root', ':bom' and ':cli-bot' modules,
+       and hence the tag might already exist and didWork will return false for ':core' */
+    if (project.name != "core") tag.didWork else tag.didWork || tag.tagExists
+}
 
 configurations {
     create("integrationImplementation") { extendsFrom(configurations.getByName("testImplementation")) }

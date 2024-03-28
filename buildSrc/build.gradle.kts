@@ -18,5 +18,5 @@ dependencies {
     // use snakeyaml instead of jackson-dataformat-yaml to properly handle yaml anchors and write them as actual values to json
     implementation("org.yaml:snakeyaml:2.2")
     // NB! remember to set same version in settings.gradle.kts:13
-    implementation("io.github.serpro69:semantic-versioning:0.12.0")
+    implementation("io.github.serpro69:semantic-versioning:0.13.0")
 }
