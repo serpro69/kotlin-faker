@@ -9,7 +9,8 @@ pluginManagement {
 }
 
 plugins {
-    id("io.github.serpro69.semantic-versioning") version "0.10.0"
+    // NB! remember to set same version in buildSrc/build.gradle.kts:20
+    id("io.github.serpro69.semantic-versioning") version "0.12.0"
 }
 
 rootProject.name = "kotlin-faker"

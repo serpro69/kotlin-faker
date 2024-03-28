@@ -5,6 +5,13 @@ plugins {
 }
 
 val bom = project
+val isSnapshot by lazy {
+    provider {
+        version.toString().startsWith("0.0.0")
+            || version.toString().endsWith("SNAPSHOT")
+    }
+}
+val newTag by lazy { provider { project.tasks.getByName("tag").didWork } }
 
 // Exclude subprojects that will never be published so that when configuring this project
 // we don't force their configuration and do unnecessary work
@@ -26,6 +33,7 @@ dependencies {
         }.forEach { project ->
             project.publishing.publications.forEach { publication: Publication ->
                 if (publication is MavenPublication) {
+                    // use publication coordinates rather than project because they could differ
                     api("${publication.groupId}:${publication.artifactId}:${publication.version}")
                 }
             }
@@ -34,13 +42,10 @@ dependencies {
 }
 
 /**
- * For additional providers, use a combination of rootProject and subproject names for artifact name and similar things.
- * i.e. kotlin-faker-books, kotlin-faker-movies, kotlin-faker-tv, ...
- *
- * The "core" lib retains the same name as before: kotlin-faker
+ * For additional modules, we use a combination of rootProject and subproject names for artifact name and similar things,
+ * i.e. kotlin-faker-bom
  */
-private val fullName: String =
-    if (project.name == "core") rootProject.name else "${rootProject.name}-${project.name}"
+private val fullName: String = "${rootProject.name}-${project.name}"
 
 publishing {
     publications {
@@ -80,7 +85,22 @@ publishing {
 }
 
 signing {
-    if (!version.toString().endsWith("SNAPSHOT")) {
-        sign(publishing.publications["FakerBom"])
-    }
+    sign(publishing.publications["FakerBom"])
+}
+
+tasks.withType<PublishToMavenRepository>().configureEach {
+    dependsOn(project.tasks.getByName("tag"))
+    dependsOn(tasks.withType(Sign::class.java))
+    onlyIf("Not snapshot") { !isSnapshot.get() }
+    onlyIf("New tag") { newTag.get() }
+}
+
+tasks.withType<PublishToMavenLocal>().configureEach {
+    onlyIf("In development") { isSnapshot.get() }
+}
+
+tasks.withType<Sign>().configureEach {
+    dependsOn(project.tasks.getByName("tag"))
+    onlyIf("Not snapshot") { !isSnapshot.get() }
+    onlyIf("New tag") { newTag.get() }
 }
