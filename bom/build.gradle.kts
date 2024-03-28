@@ -1,3 +1,5 @@
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
+
 plugins {
     `java-platform`
     `maven-publish`
@@ -5,13 +7,16 @@ plugins {
 }
 
 val bom = project
-val isSnapshot by lazy {
-    provider {
-        version.toString().startsWith("0.0.0")
-            || version.toString().endsWith("SNAPSHOT")
-    }
+val isSnapshot = provider {
+    version.toString().startsWith("0.0.0")
+        || version.toString().endsWith("SNAPSHOT")
 }
-val newTag by lazy { provider { project.tasks.getByName("tag").didWork } }
+val newTag = provider {
+    val tag = project.tasks.getByName("tag", TagTask::class)
+    /* ':bom' shares the tag with 'root', ':cli-bot' and ':core' modules,
+       and hence the tag might already exist and didWork will return false for ':bom' */
+    tag.didWork || tag.tagExists
+}
 
 // Exclude subprojects that will never be published so that when configuring this project
 // we don't force their configuration and do unnecessary work
