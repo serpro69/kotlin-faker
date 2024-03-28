@@ -143,10 +143,10 @@ release-major: ## publishes next major release version
 .PHONY: release-minor
 release-minor: ## publishes next minor release version
 	./gradlew test integrationTest \
+	tag \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
-	tag \
 	-Prelease -Pincrement=minor \
 	--info
 

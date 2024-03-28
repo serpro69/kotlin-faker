@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.dokka.gradle.DokkaTask
 import java.util.*
 
 plugins {
@@ -19,6 +20,14 @@ plugins {
  */
 private val fullName: String =
     if (project.name == "core") rootProject.name else "${rootProject.name}-${project.name}"
+
+val isSnapshot by lazy {
+    provider {
+        version.toString().startsWith("0.0.0")
+            || version.toString().endsWith("SNAPSHOT")
+    }
+}
+val newTag by lazy { provider { project.tasks.getByName("tag").didWork } }
 
 configurations {
     create("integrationImplementation") { extendsFrom(configurations.getByName("testImplementation")) }
@@ -189,20 +198,33 @@ publishing {
     }
 }
 
-signing {
-    if (!version.toString().endsWith("SNAPSHOT")) {
-        sign(publishing.publications[publicationName])
-    }
-}
-
 tasks {
     assemble {
         dependsOn(shadowJar)
     }
 }
 
+signing {
+    sign(publishing.publications[publicationName])
+}
+
 tasks.withType<PublishToMavenRepository>().configureEach {
-    doFirst {
-        if (version == "0.0.0") throw IllegalArgumentException("Unable to publish version 0.0.0")
-    }
+    dependsOn(project.tasks.getByName("tag"))
+    dependsOn(project.tasks.withType(Sign::class.java))
+    onlyIf("Not snapshot") { !isSnapshot.get() }
+    onlyIf("New tag") { newTag.get() }
+}
+
+tasks.withType<PublishToMavenLocal>().configureEach {
+    onlyIf("In development") { isSnapshot.get() }
+}
+
+tasks.withType<DokkaTask>().configureEach {
+    onlyIf("Not snapshot") { !isSnapshot.get() }
+}
+
+tasks.withType<Sign>().configureEach {
+    dependsOn(project.tasks.getByName("tag"))
+    onlyIf("Not snapshot") { !isSnapshot.get() }
+    onlyIf("New tag") { newTag.get() }
 }
