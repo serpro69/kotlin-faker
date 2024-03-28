@@ -75,6 +75,7 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     // we also need to make sure ShadowJar task depend on core having been built
     dependsOn(":core:shadowJar")
     fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+    dependsOn(tasks.test)
 }
 
 // dunno why, but gradle is complaining that 'startScripts' may run before dependencies have been built
