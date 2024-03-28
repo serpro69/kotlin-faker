@@ -78,8 +78,6 @@ pre-release-major: ## publishes next pre-release version with a major version bu
 	-Prelease -PpreRelease -Pincrement=major \
 	--info
 
-	git push origin --tags
-
 .PHONY: pre-release-minor
 pre-release-minor: ## publishes next pre-release with a minor version bump
 	./gradlew test integrationTest \
@@ -89,8 +87,6 @@ pre-release-minor: ## publishes next pre-release with a minor version bump
 	tag \
 	-Prelease -PpreRelease -Pincrement=minor \
 	--info
-
-	git push origin --tags
 
 .PHONY: pre-release-patch
 pre-release-patch: ## publishes next pre-release with a patch version bump
@@ -102,8 +98,6 @@ pre-release-patch: ## publishes next pre-release with a patch version bump
 	-Prelease -PpreRelease -Pincrement=patch \
 	--info
 
-	git push origin --tags
-
 .PHONY: next-pre-release
 next-pre-release: ## publishes next pre-release version
 	./gradlew test integrationTest \
@@ -113,8 +107,6 @@ next-pre-release: ## publishes next pre-release version
 	tag \
 	-Prelease -Pincrement=pre_release \
 	--info
-
-	git push origin --tags
 
 .PHONY: promote-to-release
 promote-to-release: ## publishes next release from the current pre-release version
@@ -126,8 +118,6 @@ promote-to-release: ## publishes next release from the current pre-release versi
 	-Prelease -PpromoteRelease \
 	--info
 
-	git push origin --tags
-
 .PHONY: release-major
 release-major: ## publishes next major release version
 	./gradlew test integrationTest \
@@ -137,8 +127,6 @@ release-major: ## publishes next major release version
 	tag \
 	-Prelease -Pincrement=major \
 	--info
-
-	git push origin --tags
 
 .PHONY: release-minor
 release-minor: ## publishes next minor release version
@@ -150,8 +138,6 @@ release-minor: ## publishes next minor release version
 	-Prelease -Pincrement=minor \
 	--info
 
-	git push origin --tags
-
 .PHONY: release-patch
 release-patch: ## publishes next patch release version
 	./gradlew test integrationTest \
@@ -161,8 +147,6 @@ release-patch: ## publishes next patch release version
 	tag \
 	-Prelease -Pincrement=patch \
 	--info
-
-	git push origin --tags
 
 .PHONY: release
 release: check_java ## publishes the next release with a specified VERSION
@@ -178,7 +162,6 @@ release: check_java ## publishes the next release with a specified VERSION
 	./gradlew publishToSonatype closeSonatypeStagingRepository -Pversion=$(VERSION) --info
 	# create and push git tag
 	git tag v$(VERSION)
-	git push origin --tags
 
 .PHONY: help
 help: ## Displays this help
