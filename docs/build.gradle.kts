@@ -1,5 +1,6 @@
 @file:Suppress("KDocMissingDocumentation")
 
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /*
@@ -48,4 +49,8 @@ orchid {
     } else {
         System.getenv("GITHUB_TOKEN")
     }
+}
+
+tasks.withType<TagTask> {
+    enabled = false
 }
