@@ -1,0 +1,53 @@
+public final class io/github/serpro69/kfaker/humor/HumorFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getChiquito ()Lio/github/serpro69/kfaker/humor/provider/Chiquito;
+	public final fun getChuckNorris ()Lio/github/serpro69/kfaker/humor/provider/ChuckNorris;
+	public final fun getFunnyName ()Lio/github/serpro69/kfaker/humor/provider/FunnyName;
+	public final fun getJackHandey ()Lio/github/serpro69/kfaker/humor/provider/JackHandey;
+	public final fun getMitchHedberg ()Lio/github/serpro69/kfaker/humor/provider/MitchHedberg;
+}
+
+public final class io/github/serpro69/kfaker/humor/HumorFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/humor/HumorFaker;
+}
+
+public final class io/github/serpro69/kfaker/humor/HumorFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/humor/HumorFaker;
+}
+
+public final class io/github/serpro69/kfaker/humor/provider/Chiquito : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun expressions ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/humor/provider/Chiquito;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun jokes ()Ljava/lang/String;
+	public final fun sentences ()Ljava/lang/String;
+	public final fun terms ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/humor/provider/ChuckNorris : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun fact ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/humor/provider/ChuckNorris;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/humor/provider/FunnyName : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/humor/provider/FunnyName;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/humor/provider/JackHandey : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/humor/provider/JackHandey;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/humor/provider/MitchHedberg : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/humor/provider/MitchHedberg;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun quote ()Ljava/lang/String;
+}
+

@@ -1,0 +1,179 @@
+public final class io/github/serpro69/kfaker/tech/TechFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getApp ()Lio/github/serpro69/kfaker/tech/provider/App;
+	public final fun getAppliance ()Lio/github/serpro69/kfaker/tech/provider/Appliance;
+	public final fun getCamera ()Lio/github/serpro69/kfaker/tech/provider/Camera;
+	public final fun getComputer ()Lio/github/serpro69/kfaker/tech/provider/Computer;
+	public final fun getCryptoCoin ()Lio/github/serpro69/kfaker/tech/provider/CryptoCoin;
+	public final fun getDevice ()Lio/github/serpro69/kfaker/tech/provider/Device;
+	public final fun getDrone ()Lio/github/serpro69/kfaker/tech/provider/Drone;
+	public final fun getElectricalComponents ()Lio/github/serpro69/kfaker/tech/provider/ElectricalComponents;
+	public final fun getHacker ()Lio/github/serpro69/kfaker/tech/provider/Hacker;
+	public final fun getProgrammingLanguage ()Lio/github/serpro69/kfaker/tech/provider/ProgrammingLanguage;
+	public final fun getSpace ()Lio/github/serpro69/kfaker/tech/provider/Space;
+	public final fun getVehicle ()Lio/github/serpro69/kfaker/tech/provider/Vehicle;
+}
+
+public final class io/github/serpro69/kfaker/tech/TechFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/tech/TechFaker;
+}
+
+public final class io/github/serpro69/kfaker/tech/TechFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/tech/TechFaker;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/App : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun author ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/App;
+	public final fun name ()Ljava/lang/String;
+	public final fun version ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Appliance : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun brand ()Ljava/lang/String;
+	public final fun equipment ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Appliance;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Camera : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun brand ()Ljava/lang/String;
+	public final fun brandWithModel ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Camera;
+	public final fun model ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Computer : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getOs ()Lio/github/serpro69/kfaker/tech/provider/ComputerOS;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Computer;
+	public final fun platform ()Ljava/lang/String;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/ComputerOS : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/ComputerOS;
+	public final fun linux ()Ljava/lang/String;
+	public final fun macOS ()Ljava/lang/String;
+	public final fun openBsd ()Ljava/lang/String;
+	public final fun plan9 ()Ljava/lang/String;
+	public final fun templeOS ()Ljava/lang/String;
+	public final fun windows ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/CryptoCoin : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun coin ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/CryptoCoin;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Device : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Device;
+	public final fun manufacturer ()Ljava/lang/String;
+	public final fun modelName ()Ljava/lang/String;
+	public final fun platform ()Ljava/lang/String;
+	public final fun serial ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Drone : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun batteryCapacity ()Ljava/lang/String;
+	public final fun batteryType ()Ljava/lang/String;
+	public final fun batteryVoltage ()Ljava/lang/String;
+	public final fun batteryWeight ()Ljava/lang/String;
+	public final fun chargingTemperature ()Ljava/lang/String;
+	public final fun flightTime ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Drone;
+	public final fun iso ()Ljava/lang/String;
+	public final fun maxAltitude ()Ljava/lang/String;
+	public final fun maxAngularVelocity ()Ljava/lang/String;
+	public final fun maxAscentSpeed ()Ljava/lang/String;
+	public final fun maxChargingPower ()Ljava/lang/String;
+	public final fun maxDescentSpeed ()Ljava/lang/String;
+	public final fun maxFlightDistance ()Ljava/lang/String;
+	public final fun maxResolution ()Ljava/lang/String;
+	public final fun maxShutterSpeed ()Ljava/lang/String;
+	public final fun maxSpeed ()Ljava/lang/String;
+	public final fun maxTiltAngle ()Ljava/lang/String;
+	public final fun maxWindResistance ()Ljava/lang/String;
+	public final fun minShutterSpeed ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun operatingTemperature ()Ljava/lang/String;
+	public final fun photoFormat ()Ljava/lang/String;
+	public final fun shutterSpeedUnits ()Ljava/lang/String;
+	public final fun videoFormat ()Ljava/lang/String;
+	public final fun weight ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/ElectricalComponents : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun active ()Ljava/lang/String;
+	public final fun electromechanical ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/ElectricalComponents;
+	public final fun passive ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Hacker : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun abbreviation ()Ljava/lang/String;
+	public final fun adjective ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Hacker;
+	public final fun ingverb ()Ljava/lang/String;
+	public final fun noun ()Ljava/lang/String;
+	public final fun verb ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/ProgrammingLanguage : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun creator ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/ProgrammingLanguage;
+	public final fun name ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Space : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun agency ()Ljava/lang/String;
+	public final fun agencyAbv ()Ljava/lang/String;
+	public final fun company ()Ljava/lang/String;
+	public final fun constellation ()Ljava/lang/String;
+	public final fun distanceMeasurement ()Ljava/lang/String;
+	public final fun galaxy ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Space;
+	public final fun launchVehicle ()Ljava/lang/String;
+	public final fun meteorite ()Ljava/lang/String;
+	public final fun moon ()Ljava/lang/String;
+	public final fun nasaSpaceCraft ()Ljava/lang/String;
+	public final fun nebula ()Ljava/lang/String;
+	public final fun planet ()Ljava/lang/String;
+	public final fun star ()Ljava/lang/String;
+	public final fun starCluster ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tech/provider/Vehicle : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun carOptions ()Ljava/lang/String;
+	public final fun carTypes ()Ljava/lang/String;
+	public final fun colors ()Ljava/lang/String;
+	public final fun cylinderEngine ()Ljava/lang/String;
+	public final fun doors ()Ljava/lang/String;
+	public final fun driveTypes ()Ljava/lang/String;
+	public final fun engineSizes ()Ljava/lang/String;
+	public final fun fuelTypes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tech/provider/Vehicle;
+	public final fun licencePlateByState (Ljava/lang/String;)Ljava/lang/String;
+	public final fun licensePlate ()Ljava/lang/String;
+	public final fun makes ()Ljava/lang/String;
+	public final fun manufacture ()Ljava/lang/String;
+	public final fun modelsByMake (Ljava/lang/String;)Ljava/lang/String;
+	public final fun standardSpecs ()Ljava/lang/String;
+	public final fun styles ()Ljava/lang/String;
+	public final fun transmissions ()Ljava/lang/String;
+}
+

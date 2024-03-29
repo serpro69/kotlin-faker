@@ -1,0 +1,102 @@
+public final class io/github/serpro69/kfaker/lorem/LoremFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAdjective ()Lio/github/serpro69/kfaker/lorem/provider/Adjective;
+	public final fun getEmotion ()Lio/github/serpro69/kfaker/lorem/provider/Emotion;
+	public final fun getHipster ()Lio/github/serpro69/kfaker/lorem/provider/Hipster;
+	public final fun getLorem ()Lio/github/serpro69/kfaker/lorem/provider/Lorem;
+	public final fun getMarkdown ()Lio/github/serpro69/kfaker/lorem/provider/Markdown;
+	public final fun getNatoPhoneticAlphabet ()Lio/github/serpro69/kfaker/lorem/provider/NatoPhoneticAlphabet;
+	public final fun getQuote ()Lio/github/serpro69/kfaker/lorem/provider/Quote;
+	public final fun getSlackEmoji ()Lio/github/serpro69/kfaker/lorem/provider/SlackEmoji;
+	public final fun getVerbs ()Lio/github/serpro69/kfaker/lorem/provider/Verbs;
+}
+
+public final class io/github/serpro69/kfaker/lorem/LoremFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/lorem/LoremFaker;
+}
+
+public final class io/github/serpro69/kfaker/lorem/LoremFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/lorem/LoremFaker;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Adjective : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Adjective;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun negative ()Ljava/lang/String;
+	public final fun positive ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Emotion : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun adjective ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Emotion;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun noun ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Hipster : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Hipster;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun words ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Lorem : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Lorem;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun multibyte ()Ljava/lang/String;
+	public final fun punctuation ()Ljava/lang/String;
+	public final fun supplemental ()Ljava/lang/String;
+	public final fun words ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Markdown : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun emphasis ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Markdown;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun headers ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/NatoPhoneticAlphabet : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun codeWord ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/NatoPhoneticAlphabet;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Quote : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun famousLastWords ()Ljava/lang/String;
+	public final fun fortuneCookie ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Quote;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun matz ()Ljava/lang/String;
+	public final fun mostInterestingManInTheWorld ()Ljava/lang/String;
+	public final fun robin ()Ljava/lang/String;
+	public final fun singularSiegler ()Ljava/lang/String;
+	public final fun yoda ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/SlackEmoji : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun activity ()Ljava/lang/String;
+	public final fun celebration ()Ljava/lang/String;
+	public final fun custom ()Ljava/lang/String;
+	public final fun emoji ()Ljava/lang/String;
+	public final fun foodAndDrink ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/SlackEmoji;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun nature ()Ljava/lang/String;
+	public final fun objectsAndSymbols ()Ljava/lang/String;
+	public final fun people ()Ljava/lang/String;
+	public final fun travelAndPlaces ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/lorem/provider/Verbs : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun base ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/lorem/provider/Verbs;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun ingForm ()Ljava/lang/String;
+	public final fun past ()Ljava/lang/String;
+	public final fun pastParticiple ()Ljava/lang/String;
+	public final fun simplePresent ()Ljava/lang/String;
+}
+

@@ -1,0 +1,251 @@
+public final class io/github/serpro69/kfaker/commerce/CommerceFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBank ()Lio/github/serpro69/kfaker/commerce/provider/Bank;
+	public final fun getBarcode ()Lio/github/serpro69/kfaker/commerce/provider/Barcode;
+	public final fun getBeer ()Lio/github/serpro69/kfaker/commerce/provider/Beer;
+	public final fun getBusiness ()Lio/github/serpro69/kfaker/commerce/provider/Business;
+	public final fun getCannabis ()Lio/github/serpro69/kfaker/commerce/provider/Cannabis;
+	public final fun getCode ()Lio/github/serpro69/kfaker/commerce/provider/Code;
+	public final fun getCoffee ()Lio/github/serpro69/kfaker/commerce/provider/Coffee;
+	public final fun getCommerce ()Lio/github/serpro69/kfaker/commerce/provider/Commerce;
+	public final fun getCompany ()Lio/github/serpro69/kfaker/commerce/provider/Company;
+	public final fun getConstruction ()Lio/github/serpro69/kfaker/commerce/provider/Construction;
+	public final fun getDessert ()Lio/github/serpro69/kfaker/commerce/provider/Dessert;
+	public final fun getFinance ()Lio/github/serpro69/kfaker/commerce/provider/Finance;
+	public final fun getFood ()Lio/github/serpro69/kfaker/commerce/provider/Food;
+	public final fun getHouse ()Lio/github/serpro69/kfaker/commerce/provider/House;
+	public final fun getIndustrySegments ()Lio/github/serpro69/kfaker/commerce/provider/IndustrySegments;
+	public final fun getMarketing ()Lio/github/serpro69/kfaker/commerce/provider/Marketing;
+	public final fun getRestaurant ()Lio/github/serpro69/kfaker/commerce/provider/Restaurant;
+	public final fun getStripe ()Lio/github/serpro69/kfaker/commerce/provider/Stripe;
+	public final fun getSubscription ()Lio/github/serpro69/kfaker/commerce/provider/Subscription;
+	public final fun getTea ()Lio/github/serpro69/kfaker/commerce/provider/Tea;
+}
+
+public final class io/github/serpro69/kfaker/commerce/CommerceFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/commerce/CommerceFaker;
+}
+
+public final class io/github/serpro69/kfaker/commerce/CommerceFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/commerce/CommerceFaker;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Bank : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Bank;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun ibanDetails (Ljava/lang/String;)Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun swiftBic ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Barcode : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun compositeSymbol ()Ljava/lang/String;
+	public final fun ean13 ()Ljava/lang/String;
+	public final fun ean8 ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Barcode;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun isbn ()Ljava/lang/String;
+	public final fun ismn ()Ljava/lang/String;
+	public final fun issn ()Ljava/lang/String;
+	public final fun upcA ()Ljava/lang/String;
+	public final fun upcE ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Beer : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun brand ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Beer;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hop ()Ljava/lang/String;
+	public final fun malt ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun style ()Ljava/lang/String;
+	public final fun yeast ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Business : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun creditCardNumbers ()Ljava/lang/String;
+	public final fun creditCardTypes ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Business;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Cannabis : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun brands ()Ljava/lang/String;
+	public final fun cannabinoidAbbreviations ()Ljava/lang/String;
+	public final fun cannabinoids ()Ljava/lang/String;
+	public final fun categories ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Cannabis;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun healthBenefits ()Ljava/lang/String;
+	public final fun medicalUses ()Ljava/lang/String;
+	public final fun strains ()Ljava/lang/String;
+	public final fun terpenes ()Ljava/lang/String;
+	public final fun types ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Code : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun asin ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Code;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Coffee : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun blendName ()Ljava/lang/String;
+	public final fun country ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Coffee;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun notes ()Ljava/lang/String;
+	public final fun regions (Ljava/lang/String;)Ljava/lang/String;
+	public final fun variety ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Commerce : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun brand ()Ljava/lang/String;
+	public final fun department ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Commerce;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun productName ()Ljava/lang/String;
+	public final fun promotionCode ()Ljava/lang/String;
+	public final fun vendor ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Company : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun bs ()Ljava/lang/String;
+	public final fun buzzwords ()Ljava/lang/String;
+	public final fun department ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Company;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun industry ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun profession ()Ljava/lang/String;
+	public final fun sicCode ()Ljava/lang/String;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Construction : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Construction;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun materials ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Dessert : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun dessert ()Lkotlin/jvm/functions/Function0;
+	public final fun flavor ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Dessert;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun topping ()Ljava/lang/String;
+	public final fun variety ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Finance : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun condominiumFiscalCode ()Ljava/lang/String;
+	public final fun creditCard (Ljava/lang/String;)Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Finance;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun stockMarket ()Ljava/lang/String;
+	public final fun ticker (Lio/github/serpro69/kfaker/commerce/provider/StockExchange;)Ljava/lang/String;
+	public static synthetic fun ticker$default (Lio/github/serpro69/kfaker/commerce/provider/Finance;Lio/github/serpro69/kfaker/commerce/provider/StockExchange;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun vatNumber (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Food : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun allergens ()Ljava/lang/String;
+	public final fun descriptions ()Ljava/lang/String;
+	public final fun dish ()Ljava/lang/String;
+	public final fun ethnicCategory ()Ljava/lang/String;
+	public final fun fruits ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Food;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun ingredients ()Ljava/lang/String;
+	public final fun measurementSizes ()Ljava/lang/String;
+	public final fun measurements ()Ljava/lang/String;
+	public final fun metricMeasurements ()Ljava/lang/String;
+	public final fun spices ()Ljava/lang/String;
+	public final fun sushi ()Ljava/lang/String;
+	public final fun vegetables ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/House : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun furniture ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/House;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun rooms ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/IndustrySegments : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/IndustrySegments;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun industry ()Ljava/lang/String;
+	public final fun sector ()Ljava/lang/String;
+	public final fun subSector ()Ljava/lang/String;
+	public final fun superSector ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Invoice : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun checkDigitMethod ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Invoice;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun pattern ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Marketing : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun buzzwords ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Marketing;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Restaurant : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun description ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Restaurant;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun review ()Ljava/lang/String;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/StockExchange : java/lang/Enum {
+	public static final field NASDAQ Lio/github/serpro69/kfaker/commerce/provider/StockExchange;
+	public static final field NYSE Lio/github/serpro69/kfaker/commerce/provider/StockExchange;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/commerce/provider/StockExchange;
+	public static fun values ()[Lio/github/serpro69/kfaker/commerce/provider/StockExchange;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Stripe : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Stripe;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun invalidCards (Ljava/lang/String;)Ljava/lang/String;
+	public final fun validCards (Ljava/lang/String;)Ljava/lang/String;
+	public final fun validTokens (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Subscription : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Subscription;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun paymentMethods ()Ljava/lang/String;
+	public final fun paymentTerms ()Ljava/lang/String;
+	public final fun plans ()Ljava/lang/String;
+	public final fun statuses ()Ljava/lang/String;
+	public final fun subscriptionTerms ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/Tea : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/Tea;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun getVariety ()Lio/github/serpro69/kfaker/commerce/provider/TeaVariety;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/commerce/provider/TeaVariety : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun black ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/commerce/provider/TeaVariety;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun green ()Ljava/lang/String;
+	public final fun herbal ()Ljava/lang/String;
+	public final fun oolong ()Ljava/lang/String;
+	public final fun white ()Ljava/lang/String;
+}
+
