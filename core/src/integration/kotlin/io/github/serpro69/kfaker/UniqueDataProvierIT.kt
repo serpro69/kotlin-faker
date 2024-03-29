@@ -199,8 +199,10 @@ class UniqueDataProviderIT : DescribeSpec({
         context("collection of values is generated") {
             val faker = Faker(config)
 
-            faker.unique.enable(faker::address)
-            faker.unique.enable(faker::color)
+            faker.unique.configuration {
+                enable(faker::address)
+                enable(faker::color)
+            }
 
             val countries = (0..20).map { faker.address.country() }
 
@@ -211,7 +213,7 @@ class UniqueDataProviderIT : DescribeSpec({
 
         context("used values are cleared") {
             val faker = Faker(config).also {
-                it.unique.enable(it::address)
+                it.unique.configuration { enable(it::address) }
             }
             val countries = (0..20).map { faker.address.country() }
 
@@ -231,7 +233,7 @@ class UniqueDataProviderIT : DescribeSpec({
             // repeat 10 times to make sure values are not included in the collection
             repeat(10) {
                 val faker = Faker(config)
-                faker.unique.enable(faker::address)
+                faker.unique.configuration { enable(faker::address) }
 
                 val countries = (0..5).map { faker.address.country() }
 
@@ -245,7 +247,7 @@ class UniqueDataProviderIT : DescribeSpec({
                         "Angola"
                     )
 
-                    faker.unique.exclude<Address>("country", excludedCountries)
+                    faker.unique.configuration { excludeFromFunction<Address>("country", excludedCountries) }
 
                     val newCountries = (0..20).map { faker.address.country() }
 
@@ -299,7 +301,7 @@ class UniqueDataProviderIT : DescribeSpec({
                     "Bouvet Island"
                 )
 
-                faker.unique.exclude<Address>("country", excludedCountries)
+                faker.unique.configuration { excludeFromFunction<Address>("country", excludedCountries) }
 
                 val countries = (0..100).map { faker.address.country() }
 
@@ -315,7 +317,7 @@ class UniqueDataProviderIT : DescribeSpec({
 
         context("values are generated for another category that is not marked for unique generation") {
             val faker = Faker(config)
-            faker.unique.enable(faker::address)
+            faker.unique.configuration { enable(faker::address) }
 
             val colors = (0..100).map { faker.color.name() }
 
@@ -326,10 +328,10 @@ class UniqueDataProviderIT : DescribeSpec({
 
         context("unique generation for category is disabled") {
             val faker = Faker(config)
-            faker.unique.enable(faker::address)
+            faker.unique.configuration { enable(faker::address) }
             (0..20).map { faker.address.country() }
 
-            faker.unique.disable(faker::address)
+            faker.unique.configuration { disable(faker::address) }
 
             context("collection of values is generated") {
                 val countries = (0..100).map { faker.address.country() }
@@ -342,8 +344,10 @@ class UniqueDataProviderIT : DescribeSpec({
 
         context("unique generation is disabled for all categories") {
             val faker = Faker(config)
-            faker.unique.enable(faker::address)
-            faker.unique.enable(faker::color)
+            faker.unique.configuration {
+                enable(faker::address)
+                enable(faker::color)
+            }
 
             faker.unique.disableAll()
 
@@ -360,7 +364,7 @@ class UniqueDataProviderIT : DescribeSpec({
             }
 
             context("unique generation for a category is re-enabled") {
-                faker.unique.enable(faker::address)
+                faker.unique.configuration { enable(faker::address) }
 
                 context("collection of values is generated") {
                     val countries = (0..20).map { faker.address.country() }
@@ -374,8 +378,10 @@ class UniqueDataProviderIT : DescribeSpec({
 
         context("unique generation is cleared for all categories") {
             val faker = Faker(config)
-            faker.unique.enable(faker::address)
-            faker.unique.enable(faker::color)
+            faker.unique.configuration {
+                enable(faker::address)
+                enable(faker::color)
+            }
 
             // Generate some values first
             (0..20).map { faker.address.country() }

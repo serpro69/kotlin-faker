@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider
+import io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataProvider
 
 abstract class AbstractFaker(internal val config: FakerConfig) {
     protected val fakerService: FakerService
@@ -8,7 +8,7 @@ abstract class AbstractFaker(internal val config: FakerConfig) {
     protected val randomService: RandomService
         get() = fakerService.randomService
 
-    val unique by lazy { GlobalUniqueDataDataProvider() }
+    val unique by lazy { GlobalUniqueDataProvider() }
 
     @FakerDsl
     /**
