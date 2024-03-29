@@ -21,13 +21,6 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
 
     val cellPhone by lazy { CellPhone(fakerService) }
 
-    @Deprecated(
-        message = "This functionality is deprecated and will be removed in future releases",
-        ReplaceWith("countryCode()"),
-        level = DeprecationLevel.WARNING
-    )
-    val countryCode by lazy { CountryCode(fakerService) }
-
     fun areaCode() = resolve("area_code")
     fun countryCode() = resolve("country_code")
     fun exchangeCode() = resolve("exchange_code")
@@ -35,13 +28,6 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
     // part of locales/en-US.yml and some others but not in locales/en/phone.yml
     fun extension() = with(fakerService) { resolve("extension").numerify() }
     fun subscriberNumber() = with(fakerService) { resolve("subscriber_number").numerify() }
-
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases",
-        ReplaceWith("cellPhone.number()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun cellPhone() = cellPhone.number()
 }
 
 /**
@@ -57,23 +43,4 @@ class CellPhone internal constructor(fakerService: FakerService) : YamlFakeDataP
     }
 
     fun number() = with(fakerService) { resolve("formats").numerify() }
-}
-
-/**
- * [FakeDataProvider] implementation for [YamlCategory.PHONE_NUMBER] category.
- */
-@Deprecated(
-    message = "This functionality is deprecated and will be removed in future releases",
-    level = DeprecationLevel.WARNING
-)
-class CountryCode internal constructor(fakerService: FakerService) : YamlFakeDataProvider<CountryCode>(fakerService) {
-    override val yamlCategory = YamlCategory.PHONE_NUMBER
-    override val localUniqueDataProvider = LocalUniqueDataProvider<CountryCode>()
-    override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
-
-    init {
-        fakerService.load(yamlCategory)
-    }
-
-    fun code() = resolve("country_code")
 }

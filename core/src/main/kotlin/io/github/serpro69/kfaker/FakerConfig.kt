@@ -86,13 +86,6 @@ class FakerConfig private constructor(
     }
 }
 
-@Deprecated(
-    message = "This function is deprecated and will be removed in 1.9.0",
-    ReplaceWith("fakerConfig { }"),
-    level = DeprecationLevel.WARNING
-)
-fun FakerConfig.Builder.create(block: ConfigBuilder): FakerConfig = this.apply(block).build()
-
 /**
  * Applies the the [block] function to [ConfigBuilder]
  * and returns as an instance of [FakerConfig] from that builder.

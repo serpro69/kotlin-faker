@@ -1,10 +1,9 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
-import kotlin.reflect.full.declaredMemberFunctions
 
 /**
  * [FakeDataProvider] implementation for [YamlCategory.FILE] category.
@@ -22,13 +21,6 @@ class File internal constructor(fakerService: FakerService) : YamlFakeDataProvid
     val mimeType by lazy { FileMimeType(fakerService) }
 
     fun extension() = resolve("extension")
-
-    @Deprecated(
-        message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("mimeType.application()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun mimeType() = mimeType::class.declaredMemberFunctions.random().call(mimeType) as String
 }
 
 @Suppress("unused")

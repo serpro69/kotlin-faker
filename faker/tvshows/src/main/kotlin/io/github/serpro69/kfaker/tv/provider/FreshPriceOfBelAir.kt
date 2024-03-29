@@ -22,11 +22,5 @@ class FreshPriceOfBelAir internal constructor(fakerService: FakerService) : Yaml
 
     fun characters() = resolve("characters")
     fun actors() = resolve("actors")
-    @Deprecated(
-        message = "Renamed upstream and will be removed in future release.",
-        replaceWith = ReplaceWith("actors()"),
-        DeprecationLevel.WARNING
-    )
-    fun celebrities() = resolve("actors")
     fun quotes() = resolve("quotes")
 }

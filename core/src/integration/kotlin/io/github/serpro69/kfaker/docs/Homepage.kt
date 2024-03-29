@@ -104,8 +104,8 @@ class Homepage : DescribeSpec({
                 class Foo(val a: String)
                 class Bar(val foo: Foo)
 
-                val foo: Foo = faker.randomProvider.randomClassInstance()
-                val bar: Bar = faker.randomProvider.randomClassInstance()
+                val foo: Foo = faker.randomClass.randomClassInstance()
+                val bar: Bar = faker.randomClass.randomClassInstance()
                 // END random_class_instance_one
             }
             it("should generate types by configuration") {
@@ -113,7 +113,7 @@ class Homepage : DescribeSpec({
                 // START random_class_instance_two
                 class Baz(val id: Int, val uuid: UUID, val username: String)
 
-                val baz: Baz = faker.randomProvider.randomClassInstance {
+                val baz: Baz = faker.randomClass.randomClassInstance {
                     // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameter values with parameter name!
                     typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
                     typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }

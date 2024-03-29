@@ -32,15 +32,9 @@ class Educator internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun subject() = resolve("subject")
     fun degree() = resolve("degree")
     fun courseName() = resolve("course_name")
-
-    @Deprecated(
-        message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("tertiary.universityType()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun universityType() = resolve("tertiary", "university_type")
 }
 
+@Suppress("unused")
 class Tertiary internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Tertiary>(fakerService) {
     override val yamlCategory = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Tertiary>()
@@ -55,6 +49,7 @@ class Tertiary internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun universityType() = resolve("tertiary", "university_type")
 }
 
+@Suppress("unused")
 class Degree internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Degree>(fakerService) {
     override val yamlCategory = YamlCategory.EDUCATOR
     override val localUniqueDataProvider = LocalUniqueDataProvider<Degree>()

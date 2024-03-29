@@ -108,7 +108,7 @@ class FakerConfiguration : DescribeSpec({
                         namedParameterGenerator("name") { faker {}.name.name() }
                     }
                 }
-                val test = Faker(config).randomProvider.randomClassInstance<Test>()
+                val test = Faker(config).randomClass.randomClassInstance<Test>()
                 assertEquals(test.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
                 // END faker_config_six
             }
