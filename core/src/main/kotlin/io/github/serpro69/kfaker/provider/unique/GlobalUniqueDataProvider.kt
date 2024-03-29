@@ -25,7 +25,7 @@ import kotlin.reflect.KProperty0
  * ```
  */
 @Suppress("UNCHECKED_CAST")
-class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider() {
+class GlobalUniqueDataProvider internal constructor() : UniqueDataProvider() {
 
     @JvmSynthetic
     @PublishedApi
@@ -49,46 +49,6 @@ class GlobalUniqueDataDataProvider internal constructor() : UniqueDataProvider()
 
     fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
         config.clear(providerProperty.returnType.classifier as KClass<T>)
-    }
-
-    @Deprecated(
-        level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.8.0",
-        replaceWith = ReplaceWith("faker.unique.configuration { this.exclude<T>(funcName, values) }")
-    )
-    inline fun <reified T : FakeDataProvider> exclude(funcName: String, values: List<String>) {
-        exclude<T>(funcName, *values.toTypedArray())
-    }
-
-    @Deprecated(
-        level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.8.0",
-        replaceWith = ReplaceWith("faker.unique.configuration { this.exclude<T>(funcName, values) }")
-    )
-    inline fun <reified T : FakeDataProvider> exclude(funcName: String, vararg values: String) {
-        if (config.markedUnique.contains(T::class)) {
-            config.usedProviderFunctionValues[T::class]?.merge(funcName, values.toMutableSet()) { oldSet, newSet ->
-                oldSet.apply { addAll(newSet) }
-            }
-        }
-    }
-
-    @Deprecated(
-        level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.8.0",
-        replaceWith = ReplaceWith("faker.unique.configuration { this.enable(providerProperty) }")
-    )
-    fun <T : FakeDataProvider> enable(providerProperty: KProperty0<T>) {
-        config.enable(providerProperty.returnType.classifier as KClass<T>)
-    }
-
-    @Deprecated(
-        level = DeprecationLevel.WARNING,
-        message = "This functionality is deprecated and will be removed in release 1.8.0",
-        replaceWith = ReplaceWith("faker.unique.configuration { this.disable(providerProperty) }")
-    )
-    fun <T : FakeDataProvider> disable(providerProperty: KProperty0<T>) {
-        config.disable(providerProperty.returnType.classifier as KClass<T>)
     }
 
     /**
