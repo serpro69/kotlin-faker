@@ -20,13 +20,6 @@ class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvi
         fakerService.load(yamlCategory)
     }
 
-    @Deprecated(
-        message = "This property is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("MusicFaker().hipHop"),
-        level = DeprecationLevel.WARNING
-    )
-    val hipHop by lazy { HipHop(fakerService) }
-
     fun instruments() = resolve("instruments")
     fun bands() = resolve("bands")
     fun albums() = resolve("albums")
@@ -34,6 +27,7 @@ class Music internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     fun mamboNo5() = resolve("mambo_no_5")
 }
 
+@Suppress("unused")
 class HipHop internal constructor(fakerService: FakerService) : YamlFakeDataProvider<HipHop>(fakerService) {
     override val yamlCategory = YamlCategory.MUSIC
     override val localUniqueDataProvider = LocalUniqueDataProvider<HipHop>()

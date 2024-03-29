@@ -24,27 +24,6 @@ class Computer internal constructor(fakerService: FakerService) : YamlFakeDataPr
 
     fun type() = resolve("type")
     fun platform() = resolve("platform")
-
-    @Deprecated(
-        message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("os.linus()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun linux() = resolve("os", "linux")
-
-    @Deprecated(
-        message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("os.macOS()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun macOS() = resolve("os", "macos")
-
-    @Deprecated(
-        message = "This is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("os.windows()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun windows() = resolve("os", "windows")
 }
 
 @Suppress("unused")

@@ -56,8 +56,6 @@ class PhoneNumberIT : DescribeSpec({
                 }
                 it("should generate a countryCode run#$it") {
                     phone.countryCode() shouldNotBe ""
-                    // test deprecated function until it's removed
-                    phone.countryCode.code() shouldNotBe ""
                 }
             }
         }

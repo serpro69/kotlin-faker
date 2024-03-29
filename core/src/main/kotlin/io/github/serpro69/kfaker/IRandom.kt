@@ -122,29 +122,6 @@ interface IRandom {
      * consisting of pseudo-randomly generated characters
      * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
      *
-     * @param length the length of the resulting string
-     * @param locale locale to use to generate the charset. Defaults to `locale` config value set for the `faker` instance
-     * @param auxiliaryChars add additional auxiliary chars to the resulting string as defined in [Character_Elements](https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements)
-     * @param numericalChars add additional numerical chars from 0 to 9 to the resulting string
-     */
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases.\n" +
-            "Note that default value for 'length' param has changed from '100' to '24' in the new 'randomString' function.",
-        replaceWith = ReplaceWith("randomString"),
-        level = DeprecationLevel.WARNING
-    )
-    fun nextString(
-        length: Int = 100,
-        locale: Locale = Locale.forLanguageTag(config.locale),
-        auxiliaryChars: Boolean = false,
-        numericalChars: Boolean = false
-    ): String
-
-    /**
-     * Returns [String] with the specified [length] (or an empty string for a `length < 1`)
-     * consisting of pseudo-randomly generated characters
-     * in a given [locale] with optional [auxiliaryChars] and [numericalChars]
-     *
      * @param length         the length of the resulting string.
      *                       Default: `24`
      * @param locale         locale to use to generate the charset.

@@ -23,12 +23,6 @@ class Buffy internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     fun characters() = resolve("characters")
     fun quotes() = resolve("quotes")
     fun actors() = resolve("actors")
-    @Deprecated(
-        message = "Renamed upstream and will be removed in future release.",
-        replaceWith = ReplaceWith("actors()"),
-        DeprecationLevel.WARNING
-    )
-    fun celebrities() = resolve("actors")
     fun bigBads() = resolve("big_bads")
     fun episodes() = resolve("episodes")
 }

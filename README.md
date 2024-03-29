@@ -80,6 +80,12 @@ repositories {
 </repositories>
 ```
 
+#### BOM
+
+Kotlin-faker provides a [Bill-of-Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms) that simplifies dependency management.
+
+See [bom/README.md](bom/README.md) for more details.
+
 #### Additional Fakers
 
 Extra fakers covering a wide range of domains are available as separate dependencies. See [faker](faker) submodules in this repo for more details about each faker.

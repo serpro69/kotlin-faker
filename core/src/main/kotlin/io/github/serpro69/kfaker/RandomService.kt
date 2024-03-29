@@ -92,19 +92,6 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun nextChar() = nextInt().toChar()
 
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases.\n" +
-            "Note that default value for 'length' param has changed from '100' to '24' in the new 'randomString' function.",
-        replaceWith = ReplaceWith("randomString"),
-        level = DeprecationLevel.WARNING
-    )
-    override fun nextString(
-        length: Int,
-        locale: Locale,
-        auxiliaryChars: Boolean,
-        numericalChars: Boolean
-    ): String = randomString(length, locale, auxiliaryChars, numericalChars)
-
     override fun randomString(
         length: Int,
         locale: Locale,

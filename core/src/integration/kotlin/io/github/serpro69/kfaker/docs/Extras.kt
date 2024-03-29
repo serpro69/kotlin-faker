@@ -19,8 +19,8 @@ class Extras : DescribeSpec({
             class Foo(val a: String)
             class Bar(val foo: Foo)
 
-            val foo: Foo = faker.randomProvider.randomClassInstance()
-            val bar: Bar = faker.randomProvider.randomClassInstance()
+            val foo: Foo = faker.randomClass.randomClassInstance()
+            val bar: Bar = faker.randomClass.randomClassInstance()
             // END extras_random_instance_one
         }
 
@@ -31,7 +31,7 @@ class Extras : DescribeSpec({
                 // START extras_random_instance_two
                 class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID, val user: String)
 
-                val baz: Baz = faker.randomProvider.randomClassInstance {
+                val baz: Baz = faker.randomClass.randomClassInstance {
                     typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
                     typeGenerator<Int> { 0 }
                     typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
@@ -75,7 +75,7 @@ class Extras : DescribeSpec({
 
             it("should generate class with configured number of constructor args") {
                 // START extras_random_instance_four
-                val fooBarBaz: FooBarBaz = faker.randomProvider.randomClassInstance {
+                val fooBarBaz: FooBarBaz = faker.randomClass.randomClassInstance {
                     constructorParamSize = 3
                     fallbackStrategy = FallbackStrategy.USE_MAX_NUM_OF_ARGS
                 }
@@ -87,7 +87,7 @@ class Extras : DescribeSpec({
 
             it("should use constructor filter strategy") {
                 // START extras_random_instance_five
-                val fooBarBaz: FooBarBaz = faker.randomProvider.randomClassInstance {
+                val fooBarBaz: FooBarBaz = faker.randomClass.randomClassInstance {
                     constructorFilterStrategy = ConstructorFilterStrategy.MAX_NUM_OF_ARGS
                 }
                 assertNotEquals(fooBarBaz.foo, null)
@@ -104,7 +104,7 @@ class Extras : DescribeSpec({
                     val map: Map<String, Int>
                 )
 
-                val foo = faker.randomProvider.randomClassInstance<Foo>()
+                val foo = faker.randomClass.randomClassInstance<Foo>()
 
                 assertEquals(foo.list.size, 1)
                 assertEquals(foo.set.size, 1)
@@ -120,7 +120,7 @@ class Extras : DescribeSpec({
                     val map: Map<String, Int>
                 )
 
-                val foo = faker.randomProvider.randomClassInstance<Foo> {
+                val foo = faker.randomClass.randomClassInstance<Foo> {
                     collectionsSize = 6
                 }
 
@@ -137,7 +137,7 @@ class Extras : DescribeSpec({
                     val set: Set<String>
                 )
 
-                val testClass = faker.randomProvider.randomClassInstance<TestClass> {
+                val testClass = faker.randomClass.randomClassInstance<TestClass> {
                     typeGenerator { "a string" }
                     collectionsSize = 10
                 }
@@ -156,7 +156,7 @@ class Extras : DescribeSpec({
                     val map: Map<String, Int>
                 )
 
-                val bar = faker.randomProvider.randomClassInstance<Bar> {
+                val bar = faker.randomClass.randomClassInstance<Bar> {
                     typeGenerator { emptyList<Foo>() }
                     typeGenerator { setOf("one", "two", "fortytwo") }
                     typeGenerator { mapOf("pwd" to 12177) }
@@ -183,14 +183,14 @@ class Extras : DescribeSpec({
                     }
                 }
                 val f = Faker(cfg)
-                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val baz: Baz = f.randomClass.randomClassInstance<Baz>()
                 assertEquals(baz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
-                val anotherBaz = f.randomProvider.new().randomClassInstance<Baz>()
+                val anotherBaz = f.randomClass.new().randomClassInstance<Baz>()
                 assertEquals(anotherBaz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
                 // END extras_random_instance_eleven
             }
 
-            it("should configure random class instance from randomProvider") {
+            it("should configure random class instance from randomClass") {
                 // START extras_random_instance_twelve
                 val cfg = fakerConfig {
                     randomClassInstance {
@@ -198,13 +198,13 @@ class Extras : DescribeSpec({
                     }
                 }
                 val f = Faker(cfg).also {
-                    it.randomProvider.configure {
+                    it.randomClass.configure {
                         typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
                     }
                 }
 
-                val bar: Bar = f.randomProvider.randomClassInstance()
-                val baz: Baz = f.randomProvider.randomClassInstance()
+                val bar: Bar = f.randomClass.randomClassInstance()
+                val baz: Baz = f.randomClass.randomClassInstance()
                 assertEquals(bar.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
                 assertEquals(baz.bar, Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")))
                 // END extras_random_instance_twelve
@@ -212,10 +212,10 @@ class Extras : DescribeSpec({
 
             it("should configure random class instance from function") {
                 // START extras_random_instance_thirteen
-                faker.randomProvider.configure {
+                faker.randomClass.configure {
                     typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
                 }
-                val baz: Baz = faker.randomProvider.randomClassInstance {
+                val baz: Baz = faker.randomClass.randomClassInstance {
                     typeGenerator<Bar> { Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")) }
                 }
                 assertEquals(baz.bar, Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")))
@@ -236,11 +236,11 @@ class Extras : DescribeSpec({
                     }
                 }
                 val f = Faker(cfg)
-                f.randomProvider.configure { // ❷
+                f.randomClass.configure { // ❷
                     typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
                 }
-                val new = f.randomProvider.new() // ❸
-                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val new = f.randomClass.new() // ❸
+                val baz: Baz = f.randomClass.randomClassInstance<Baz>()
                 val newBaz: Baz = new.randomClassInstance<Baz>()
                 assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), baz.bar)
                 assertEquals(Bar(1, UUID.fromString("00000000-0000-0000-0000-000000000000")), newBaz.bar)
@@ -255,11 +255,11 @@ class Extras : DescribeSpec({
                     }
                 }
                 val f = Faker(cfg)
-                f.randomProvider.configure { // ❷
+                f.randomClass.configure { // ❷
                     typeGenerator<Bar> { Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")) }
                 }
-                val copy = f.randomProvider.copy() // ❸
-                val baz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val copy = f.randomClass.copy() // ❸
+                val baz: Baz = f.randomClass.randomClassInstance<Baz>()
                 val bazCopy: Baz = copy.randomClassInstance<Baz>()
                 assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), baz.bar)
                 assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), bazCopy.bar)
@@ -267,7 +267,7 @@ class Extras : DescribeSpec({
                 copy.configure { // ❹
                     typeGenerator<Bar> { Bar(0, UUID.fromString("22222222-2222-2222-2222-222222222222")) }
                 }
-                val originalBaz: Baz = f.randomProvider.randomClassInstance<Baz>()
+                val originalBaz: Baz = f.randomClass.randomClassInstance<Baz>()
                 val reconfiguredBazCopy = copy.randomClassInstance<Baz>()
                 assertEquals(Bar(42, UUID.fromString("11111111-1111-1111-1111-111111111111")), originalBaz.bar)
                 assertEquals(Bar(0, UUID.fromString("22222222-2222-2222-2222-222222222222")), reconfiguredBazCopy.bar)

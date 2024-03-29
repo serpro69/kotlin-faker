@@ -93,7 +93,7 @@
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Dune",
-  "methods":[{"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter"] }, {"name":"quotes$default","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune","io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter","int","java.lang.Object"] }]
+  "methods":[{"name":"characters","parameterTypes":[] }, {"name":"cities","parameterTypes":[] }, {"name":"planets","parameterTypes":[] }, {"name":"quotes","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter"] }, {"name":"quotes$default","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune","io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter","int","java.lang.Object"] }, {"name":"sayings","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune$SayingOrigin"] }, {"name":"sayings$default","parameterTypes":["io.github.serpro69.kfaker.books.provider.Dune","io.github.serpro69.kfaker.books.provider.Dune$SayingOrigin","int","java.lang.Object"] }, {"name":"titles","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.books.provider.Dune$QuoteCharacter"
@@ -304,9 +304,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Educator",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"campus","parameterTypes":[] }, {"name":"courseName","parameterTypes":[] }, {"name":"degree","parameterTypes":[] }, {"name":"getTertiary","parameterTypes":[] }, {"name":"primary","parameterTypes":[] }, {"name":"primarySchool","parameterTypes":[] }, {"name":"schoolName","parameterTypes":[] }, {"name":"secondary","parameterTypes":[] }, {"name":"secondarySchool","parameterTypes":[] }, {"name":"subject","parameterTypes":[] }, {"name":"university","parameterTypes":[] }]
 },
 {
@@ -535,9 +532,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.japmedia.provider.OnePiece",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"akumaNoMi","parameterTypes":[] }, {"name":"characters","parameterTypes":[] }, {"name":"islands","parameterTypes":[] }, {"name":"locations","parameterTypes":[] }, {"name":"quotes","parameterTypes":[] }, {"name":"seas","parameterTypes":[] }]
 },
 {
@@ -766,9 +760,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.Music",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"albums","parameterTypes":[] }, {"name":"bands","parameterTypes":[] }, {"name":"genres","parameterTypes":[] }, {"name":"instruments","parameterTypes":[] }, {"name":"mamboNo5","parameterTypes":[] }]
 },
 {
@@ -812,9 +803,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Address",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"buildingNumber","parameterTypes":[] }, {"name":"city","parameterTypes":[] }, {"name":"cityPrefix","parameterTypes":[] }, {"name":"citySuffix","parameterTypes":[] }, {"name":"cityWithState","parameterTypes":[] }, {"name":"community","parameterTypes":[] }, {"name":"communityPrefix","parameterTypes":[] }, {"name":"communitySuffix","parameterTypes":[] }, {"name":"country","parameterTypes":[] }, {"name":"countryByCode","parameterTypes":["java.lang.String"] }, {"name":"countryByName","parameterTypes":["java.lang.String"] }, {"name":"countryCode","parameterTypes":[] }, {"name":"countryCodeLong","parameterTypes":[] }, {"name":"defaultCountry","parameterTypes":[] }, {"name":"fullAddress","parameterTypes":[] }, {"name":"mailbox","parameterTypes":[] }, {"name":"postcode","parameterTypes":[] }, {"name":"postcodeByState","parameterTypes":["java.lang.String"] }, {"name":"secondaryAddress","parameterTypes":[] }, {"name":"state","parameterTypes":[] }, {"name":"stateAbbr","parameterTypes":[] }, {"name":"streetAddress","parameterTypes":[] }, {"name":"streetName","parameterTypes":[] }, {"name":"streetSuffix","parameterTypes":[] }, {"name":"timeZone","parameterTypes":[] }]
 },
 {
@@ -824,9 +812,6 @@
 {
   "name":"io.github.serpro69.kfaker.provider.Color",
   "methods":[{"name":"name","parameterTypes":[] }]
-},
-{
-  "name":"io.github.serpro69.kfaker.provider.CountryCode"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Currency",
@@ -841,9 +826,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.provider.File",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"extension","parameterTypes":[] }, {"name":"getMimeType","parameterTypes":[] }]
 },
 {
@@ -878,9 +860,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.provider.Name",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"femaleFirstName","parameterTypes":[] }, {"name":"firstName","parameterTypes":[] }, {"name":"lastName","parameterTypes":[] }, {"name":"maleFirstName","parameterTypes":[] }, {"name":"name","parameterTypes":[] }, {"name":"nameWithMiddle","parameterTypes":[] }, {"name":"neutralFirstName","parameterTypes":[] }]
 },
 {
@@ -888,9 +867,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.provider.PhoneNumber",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"areaCode","parameterTypes":[] }, {"name":"countryCode","parameterTypes":[] }, {"name":"exchangeCode","parameterTypes":[] }, {"name":"extension","parameterTypes":[] }, {"name":"getCellPhone","parameterTypes":[] }, {"name":"phoneNumber","parameterTypes":[] }, {"name":"subscriberNumber","parameterTypes":[] }]
 },
 {
@@ -990,9 +966,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Computer",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"getOs","parameterTypes":[] }, {"name":"platform","parameterTypes":[] }, {"name":"type","parameterTypes":[] }]
 },
 {
@@ -1121,9 +1094,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.Buffy",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"actors","parameterTypes":[] }, {"name":"bigBads","parameterTypes":[] }, {"name":"characters","parameterTypes":[] }, {"name":"episodes","parameterTypes":[] }, {"name":"quotes","parameterTypes":[] }]
 },
 {
@@ -1144,9 +1114,6 @@
 },
 {
   "name":"io.github.serpro69.kfaker.tv.provider.FreshPriceOfBelAir",
-  "allDeclaredFields":true,
-  "queryAllDeclaredMethods":true,
-  "queryAllDeclaredConstructors":true,
   "methods":[{"name":"actors","parameterTypes":[] }, {"name":"characters","parameterTypes":[] }, {"name":"quotes","parameterTypes":[] }]
 },
 {
@@ -1254,6 +1221,10 @@
   "methods":[{"name":"character","parameterTypes":[] }, {"name":"organization","parameterTypes":[] }, {"name":"quote","parameterTypes":[] }, {"name":"vehicle","parameterTypes":[] }]
 },
 {
+  "name":"java.io.Console",
+  "methods":[{"name":"isTerminal","parameterTypes":[] }]
+},
+{
   "name":"java.lang.ClassValue"
 },
 {
@@ -1263,6 +1234,10 @@
 },
 {
   "name":"java.lang.String"
+},
+{
+  "name":"java.lang.System",
+  "methods":[{"name":"console","parameterTypes":[] }]
 },
 {
   "name":"java.nio.file.Path"

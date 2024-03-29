@@ -41,13 +41,6 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     val randomClass: RandomClassProvider by lazy { RandomClassProvider(config) }
     val string: StringProvider by lazy { StringProvider(fakerService) }
 
-    @Deprecated(
-        message = "This property is deprecated and will be removed in future releases",
-        level = DeprecationLevel.WARNING,
-        replaceWith = ReplaceWith("randomClass")
-    )
-    val randomProvider: RandomClassProvider by lazy { RandomClassProvider(config) }
-
     // yml dictionary-based providers
     val address: Address by lazy { Address(fakerService) }
     val color: Color by lazy { Color(fakerService) }

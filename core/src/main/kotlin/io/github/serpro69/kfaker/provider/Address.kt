@@ -50,18 +50,4 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun fullAddress() = with(fakerService) { resolve("full_address").numerify() }
     fun mailbox() = with(fakerService) { resolve("mail_box").numerify() }
     fun defaultCountry() = resolve("default_country")
-
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("city()"),
-        level = DeprecationLevel.WARNING
-    )
-    fun cityName() = city()
-
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases",
-        replaceWith = ReplaceWith("cityPrefix()"),
-        level = DeprecationLevel.WARNING
-    )
-    internal fun cityRoot() = cityPrefix()
 }

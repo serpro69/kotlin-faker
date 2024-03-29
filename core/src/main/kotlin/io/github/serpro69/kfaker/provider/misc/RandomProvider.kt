@@ -85,26 +85,6 @@ class RandomProvider internal constructor(
 
     override fun nextChar(): Char = resolveUnique(NEXT_CHAR) { rs.nextChar() }
 
-    @Deprecated(
-        message = "This function is deprecated and will be removed in future releases.\n" +
-            "Note that default value for 'length' param has changed from '100' to '24' in the new 'randomString' function.",
-        replaceWith = ReplaceWith("randomString"),
-        level = DeprecationLevel.WARNING
-    )
-    override fun nextString(
-        length: Int,
-        locale: Locale,
-        auxiliaryChars: Boolean,
-        numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING) {
-        rs.randomString(
-            length = length,
-            locale = locale,
-            indexChars = auxiliaryChars,
-            auxiliaryChars = numericalChars
-        )
-    }
-
     override fun randomString(
         length: Int,
         locale: Locale,
