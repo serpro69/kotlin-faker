@@ -52,10 +52,10 @@ _snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bu
 	--info
 
 .PHONY: snapshot-minor
-_snapshot-minor: check_java ## (DEPRECATED) publishes next snapshot with a minor version bump
+snapshot-minor: check_java ## publishes next snapshot with a minor version bump
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
-	./gradlew test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
+	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
 	./gradlew nativeCompile -Pversion='$(VERSION)-SNAPSHOT' --info
 	./gradlew publishToSonatype -Pversion='$(VERSION)-SNAPSHOT' --info
 
