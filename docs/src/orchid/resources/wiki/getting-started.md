@@ -8,6 +8,7 @@
 * [Installing](#installing)
   * [Releases](#releases)
   * [Snapshots](#snapshots)
+  * [Faker BOM](#faker-bom)
 * [Generating Data](#generating-data)
 
 ## Installing
@@ -25,6 +26,10 @@ Release artifacts are available for download from maven central, and you usually
 Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
 {% include 'includes/wiki/repositoriesTabs.peb' %}
+
+### Faker BOM
+
+See {{ anchor(title='Kotlin-faker BOM', collectionType='wiki', collectionId='', itemId='Kotlin-faker BOM') }} page for details on how to use a Bill-of-Materials to simplify dependency management.
 
 {% btc %}{% endbtc %}
 

@@ -1,5 +1,6 @@
 
 * [Getting Started](getting-started.md)
+* [Kotlin-faker BOM](faker-bom.md)
 * [Faker Configuration](faker-configuration.md)
 * [Generator of Unique Values](unique-generator.md)
 * [Extras](extras.md)
