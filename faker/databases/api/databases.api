@@ -1,0 +1,61 @@
+public final class io/github/serpro69/kfaker/databases/DatabasesFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getDatabase ()Lio/github/serpro69/kfaker/databases/provider/Database;
+	public final fun getMariaDB ()Lio/github/serpro69/kfaker/databases/provider/MariaDB;
+	public final fun getMsSQLServer ()Lio/github/serpro69/kfaker/databases/provider/MSSQLServer;
+	public final fun getMySQL ()Lio/github/serpro69/kfaker/databases/provider/MySQL;
+	public final fun getOracleDB ()Lio/github/serpro69/kfaker/databases/provider/OracleDB;
+	public final fun getPostgreSQL ()Lio/github/serpro69/kfaker/databases/provider/PostgreSQL;
+}
+
+public final class io/github/serpro69/kfaker/databases/DatabasesFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/databases/DatabasesFaker;
+}
+
+public final class io/github/serpro69/kfaker/databases/DatabasesFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/databases/DatabasesFaker;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/Database : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun columnName ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/Database;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun mongodbObjectId ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/MSSQLServer : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun dataType ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/MSSQLServer;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/MariaDB : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun dataType ()Ljava/lang/String;
+	public final fun engine ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/MariaDB;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/MySQL : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun dataType ()Ljava/lang/String;
+	public final fun engine ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/MySQL;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/OracleDB : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun dataType ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/OracleDB;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/databases/provider/PostgreSQL : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun collation ()Ljava/lang/String;
+	public final fun dataType ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/databases/provider/PostgreSQL;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+

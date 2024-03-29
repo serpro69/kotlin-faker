@@ -1,0 +1,177 @@
+public final class io/github/serpro69/kfaker/music/MusicFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBossaNova ()Lio/github/serpro69/kfaker/music/provider/BossaNova;
+	public final fun getGratefulDead ()Lio/github/serpro69/kfaker/music/provider/GratefulDead;
+	public final fun getHipHop ()Lio/github/serpro69/kfaker/music/provider/HipHop;
+	public final fun getKPop ()Lio/github/serpro69/kfaker/music/provider/KPop;
+	public final fun getMusic ()Lio/github/serpro69/kfaker/music/provider/Music;
+	public final fun getOpera ()Lio/github/serpro69/kfaker/music/provider/Opera;
+	public final fun getPearlJam ()Lio/github/serpro69/kfaker/music/provider/PearlJam;
+	public final fun getPhish ()Lio/github/serpro69/kfaker/music/provider/Phish;
+	public final fun getPrince ()Lio/github/serpro69/kfaker/music/provider/Prince;
+	public final fun getRockBand ()Lio/github/serpro69/kfaker/music/provider/RockBand;
+	public final fun getRush ()Lio/github/serpro69/kfaker/music/provider/Rush;
+	public final fun getShow ()Lio/github/serpro69/kfaker/music/provider/Show;
+	public final fun getSmashingPumpkins ()Lio/github/serpro69/kfaker/music/provider/SmashingPumpkins;
+	public final fun getUmphreysMcgee ()Lio/github/serpro69/kfaker/music/provider/UmphreysMcgee;
+}
+
+public final class io/github/serpro69/kfaker/music/MusicFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/music/MusicFaker;
+}
+
+public final class io/github/serpro69/kfaker/music/MusicFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/music/MusicFaker;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/BossaNova : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun artists ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/BossaNova;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun songs ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/FrenchOpera : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun byCamilleSaintSaens ()Ljava/lang/String;
+	public final fun byCharlesGounod ()Ljava/lang/String;
+	public final fun byChristophWillibaldGluck ()Ljava/lang/String;
+	public final fun byGeorgesBizet ()Ljava/lang/String;
+	public final fun byHectorBerlioz ()Ljava/lang/String;
+	public final fun byMauriceRavel ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/FrenchOpera;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/GermanOpera : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun byAlbanBerg ()Ljava/lang/String;
+	public final fun byCarlMariaVonWeber ()Ljava/lang/String;
+	public final fun byFranzSchubert ()Ljava/lang/String;
+	public final fun byLudwigVanBeethoven ()Ljava/lang/String;
+	public final fun byRichardStrauss ()Ljava/lang/String;
+	public final fun byRichardWagner ()Ljava/lang/String;
+	public final fun byRobertSchumann ()Ljava/lang/String;
+	public final fun byWolfgangAmadeusMozart ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/GermanOpera;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/GratefulDead : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/GratefulDead;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun players ()Ljava/lang/String;
+	public final fun songs ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/HipHop : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun artist ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/HipHop;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun groups ()Ljava/lang/String;
+	public final fun subgenres ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/ItalianOpera : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun byChristophWillibaldGluck ()Ljava/lang/String;
+	public final fun byGaetanoDonizetti ()Ljava/lang/String;
+	public final fun byGioacchinoRossini ()Ljava/lang/String;
+	public final fun byGiuseppeVerdi ()Ljava/lang/String;
+	public final fun byVincenzoBellini ()Ljava/lang/String;
+	public final fun byWolfgangAmadeusMozart ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/ItalianOpera;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/KPop : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun boyBands ()Ljava/lang/String;
+	public final fun firstGroups ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/KPop;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun girlGroups ()Ljava/lang/String;
+	public final fun secondGroups ()Ljava/lang/String;
+	public final fun solo ()Ljava/lang/String;
+	public final fun thirdGroups ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Music : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun albums ()Ljava/lang/String;
+	public final fun bands ()Ljava/lang/String;
+	public final fun genres ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Music;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun instruments ()Ljava/lang/String;
+	public final fun mamboNo5 ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Opera : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getFrench ()Lio/github/serpro69/kfaker/music/provider/FrenchOpera;
+	public final fun getGerman ()Lio/github/serpro69/kfaker/music/provider/GermanOpera;
+	public final fun getItalian ()Lio/github/serpro69/kfaker/music/provider/ItalianOpera;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Opera;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/PearlJam : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun albums ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/PearlJam;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun musicians ()Ljava/lang/String;
+	public final fun songs ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Phish : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun albums ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Phish;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun musicians ()Ljava/lang/String;
+	public final fun songs ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Prince : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun album ()Ljava/lang/String;
+	public final fun band ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Prince;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun lyric ()Ljava/lang/String;
+	public final fun song ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/RockBand : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/RockBand;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun song ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Rush : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun albums ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Rush;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun players ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/Show : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun adultMusical ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/Show;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun kidsMusical ()Ljava/lang/String;
+	public final fun play ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/SmashingPumpkins : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun albums ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/SmashingPumpkins;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun lyric ()Ljava/lang/String;
+	public final fun musicians ()Ljava/lang/String;
+	public final fun songs ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/music/provider/UmphreysMcgee : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/music/provider/UmphreysMcgee;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun song ()Ljava/lang/String;
+}
+

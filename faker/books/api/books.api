@@ -1,0 +1,180 @@
+public final class io/github/serpro69/kfaker/books/BooksFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBible ()Lio/github/serpro69/kfaker/books/provider/Bible;
+	public final fun getBook ()Lio/github/serpro69/kfaker/books/provider/Book;
+	public final fun getCosmere ()Lio/github/serpro69/kfaker/books/provider/Cosmere;
+	public final fun getCultureSeries ()Lio/github/serpro69/kfaker/books/provider/CultureSeries;
+	public final fun getDcComics ()Lio/github/serpro69/kfaker/books/provider/DcComics;
+	public final fun getDune ()Lio/github/serpro69/kfaker/books/provider/Dune;
+	public final fun getLovecraft ()Lio/github/serpro69/kfaker/books/provider/Lovecraft;
+	public final fun getShakespeare ()Lio/github/serpro69/kfaker/books/provider/Shakespeare;
+	public final fun getTheKingkillerChronicle ()Lio/github/serpro69/kfaker/books/provider/TheKingkillerChronicle;
+	public final fun getTolkien ()Lio/github/serpro69/kfaker/books/provider/Tolkien;
+}
+
+public final class io/github/serpro69/kfaker/books/BooksFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/books/BooksFaker;
+}
+
+public final class io/github/serpro69/kfaker/books/BooksFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/books/BooksFaker;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Bible : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Bible;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun location ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Book : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun author ()Ljava/lang/String;
+	public final fun genre ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Book;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun publisher ()Ljava/lang/String;
+	public final fun title ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Cosmere : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun allomancers ()Ljava/lang/String;
+	public final fun aons ()Ljava/lang/String;
+	public final fun feruchemists ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Cosmere;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun knightsRadiant ()Ljava/lang/String;
+	public final fun metals ()Ljava/lang/String;
+	public final fun shardWorlds ()Ljava/lang/String;
+	public final fun shards ()Ljava/lang/String;
+	public final fun surges ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/CultureSeries : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun books ()Ljava/lang/String;
+	public final fun civs ()Ljava/lang/String;
+	public final fun cultureShipClassAbvs ()Ljava/lang/String;
+	public final fun cultureShipClasses ()Ljava/lang/String;
+	public final fun cultureShips ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/CultureSeries;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun planets ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/DcComics : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/DcComics;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hero ()Ljava/lang/String;
+	public final fun heroine ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun title ()Ljava/lang/String;
+	public final fun villain ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Dune : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun cities ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Dune;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun planets ()Ljava/lang/String;
+	public final fun quotes (Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;)Ljava/lang/String;
+	public static synthetic fun quotes$default (Lio/github/serpro69/kfaker/books/provider/Dune;Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun sayings (Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;)Ljava/lang/String;
+	public static synthetic fun sayings$default (Lio/github/serpro69/kfaker/books/provider/Dune;Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun titles ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter : java/lang/Enum {
+	public static final field ALIA Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field BARON_HARKONNEN Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field DUNCAN Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field EMPEROR Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field GUILD_NAVIGATOR Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field GURNEY Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field IRULAN Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field JESSICA Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field LETO Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field LIET_KYNES Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field MAPES Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field MOHIAM Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field PARDOT_KYNES Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field PAUL Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field PITER Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field STILGAR Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field THUFIR Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static final field YUEH Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+	public static fun values ()[Lio/github/serpro69/kfaker/books/provider/Dune$QuoteCharacter;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Dune$SayingOrigin : java/lang/Enum {
+	public static final field BENE_GESSERIT Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static final field FREMEN Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static final field MENTAT Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static final field MUADDIB Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static final field ORANGE_CATHOLIC_BIBLE Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+	public static fun values ()[Lio/github/serpro69/kfaker/books/provider/Dune$SayingOrigin;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Lovecraft : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun deity ()Ljava/lang/String;
+	public final fun fhtagn ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Lovecraft;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun location ()Ljava/lang/String;
+	public final fun tome ()Ljava/lang/String;
+	public final fun words ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Shakespeare : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun asYouLikeIt ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Shakespeare;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hamlet ()Ljava/lang/String;
+	public final fun kingRichardTheThird ()Ljava/lang/String;
+	public final fun romeoAndJuliet ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/TheKingkillerChronicle : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun books ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public final fun creatures ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/TheKingkillerChronicle;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/Tolkien : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun getHobbit ()Lio/github/serpro69/kfaker/books/provider/TolkienHobbit;
+	public final fun getLordOfTheRings ()Lio/github/serpro69/kfaker/books/provider/TolkienLordOfTheRings;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/Tolkien;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun poems ()Ljava/lang/String;
+	public final fun races ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/TolkienHobbit : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/TolkienHobbit;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun location ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+	public final fun thorinsCompany ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/books/provider/TolkienLordOfTheRings : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/books/provider/TolkienLordOfTheRings;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+

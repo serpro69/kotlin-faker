@@ -11,6 +11,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     id("io.github.serpro69.semantic-versioning") apply false
     id("com.github.ben-manes.versions") version "0.51.0" apply false
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.15.0-Beta.1"
 }
 
 repositories {
@@ -177,4 +178,8 @@ tasks.withType<TagTask>().configureEach {
     findProperty("dryRun") ?: run {
         dependsOn("closeSonatypeStagingRepository")
     }
+}
+
+apiValidation {
+    ignoredProjects += listOf("bom", "cli-bot", "docs", "test")
 }
