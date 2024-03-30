@@ -1,99 +1,64 @@
 package io.github.serpro69.kfaker
 
-import io.github.serpro69.kfaker.provider.FakeDataProvider
-import io.github.serpro69.kfaker.provider.Money
-import io.github.serpro69.kfaker.provider.misc.RandomProvider
-import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.kotest.assertions.assertSoftly
-import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.assertDoesNotThrow
 import java.io.File
+import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
-import kotlin.reflect.KVisibility
-import kotlin.reflect.full.declaredMemberFunctions
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.full.isSubtypeOf
-import kotlin.reflect.full.starProjectedType
 
-class FakerIT : DescribeSpec({
-    describe("every public function in each provider is invoked without exceptions") {
-        val faker = Faker()
+class FakerIT : AbstractIT({ t ->
+    `describe all public generators` { faker, provider: KProperty<*>, f: KFunction<*> ->
+        val regex = Regex("""#\{.*}|#++""")
 
-        // Get a list of all publicly visible providers
-        val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
-            it.visibility == KVisibility.PUBLIC
-                && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
-                && it.returnType.classifier != Money::class // Ignore Money provider as it's a special case
-                && it.returnType.classifier != StringProvider::class // Ignore String provider
-                && it.returnType.classifier != RandomProvider::class // Ignore String provider
+        val value = when (f.parameters.size) {
+            1 -> f.call(provider.getter.call(faker)).toString()
+            2 -> {
+                if (f.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
+                    f.callBy(mapOf(f.parameters[0] to provider.getter.call(faker))).toString()
+                } else f.call(provider.getter.call(faker), "").toString()
+            }
+            3 -> {
+                if (f.parameters[1].isOptional && f.parameters[2].isOptional) {
+                    f.callBy(mapOf(f.parameters[0] to provider.getter.call(faker))).toString()
+                } else f.call(provider.getter.call(faker), "", "").toString()
+            }
+            else -> throw IllegalArgumentException("")
         }
 
-        // Get a list of all publicly visible functions in each provider
-        val providerFunctions = providers.associateBy { provider ->
-            provider.getter.call(faker)!!::class.declaredMemberFunctions.filter {
-                it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
+        it("resolved value should not contain yaml expression") {
+            if (
+                !value.contains("#chuck and #norris")
+                && (provider.name != "markdown" && f.name != "headers")
+                && value !in t.valuesWithHashKey
+            ) {
+                if (value.contains(regex)) {
+                    throw AssertionError("Value '$value' for '${provider.name} ${f.name}' should not contain regex '$regex'")
+                }
             }
         }
 
-        assertSoftly {
-            providerFunctions.forEach { (functions, provider) ->
-                functions.forEach {
-                    context("result value for ${provider.name} ${it.name} is resolved correctly") {
-                        val regex = Regex("""#\{.*}|#++""")
+        it("resolved value should not be empty string") {
+            if (value == "") {
+                throw AssertionError("Value for '${provider.name} ${f.name}' should not be empty string")
+            }
+        }
 
-                        val value = when (it.parameters.size) {
-                            1 -> it.call(provider.getter.call(faker)).toString()
-                            2 -> {
-                                if (it.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
-                                    it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
-                                } else it.call(provider.getter.call(faker), "").toString()
-                            }
-                            3 -> {
-                                if (it.parameters[1].isOptional && it.parameters[2].isOptional) {
-                                    it.callBy(mapOf(it.parameters[0] to provider.getter.call(faker))).toString()
-                                } else it.call(provider.getter.call(faker), "", "").toString()
-                            }
-                            else -> throw IllegalArgumentException("")
-                        }
+        it("resolved value should not contain duplicates") {
+            val values = value.split(" ")
 
-                        it("resolved value should not contain yaml expression") {
-                            if (
-                                !value.contains("#chuck and #norris")
-                                && (provider.name != "markdown" && it.name != "headers")
-                                && value !in valuesWithHashKey
-                            ) {
-                                if (value.contains(regex)) {
-                                    throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain regex '$regex'")
-                                }
-                            }
-                        }
-
-                        it("resolved value should not be empty string") {
-                            if (value == "") {
-                                throw AssertionError("Value for '${provider.name} ${it.name}' should not be empty string")
-                            }
-                        }
-
-                        it("resolved value should not contain duplicates") {
-                            val values = value.split(" ")
-
-                            // Accounting for some exceptional cases where values are repeated
-                            // in resolved expression
-                            if (
-                                (provider.name != "coffee" && it.name != "notes")
-                                && (provider.name != "onePiece" && it.name != "akumasNoMi")
-                                && (provider.name != "lorem" && it.name != "punctuation" && value != " ")
-                                && value !in duplicatedValues
-                            ) {
-                                // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
-                                if (values.odds() == values.evens()) {
-                                    throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain duplicates")
-                                }
-                            }
-                        }
-                    }
+            // Accounting for some exceptional cases where values are repeated
+            // in resolved expression
+            if (
+                (provider.name != "coffee" && f.name != "notes")
+                && (provider.name != "onePiece" && f.name != "akumasNoMi")
+                && (provider.name != "lorem" && f.name != "punctuation" && value != " ")
+                && value !in t.duplicatedValues
+            ) {
+                // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
+                if (values.odds() == values.evens()) {
+                    throw AssertionError("Value '$value' for '${provider.name} ${f.name}' should not contain duplicates")
                 }
             }
         }
@@ -124,19 +89,19 @@ class FakerIT : DescribeSpec({
             }
         }
 
-/*        context("it is again re-initialized with default locale") {
-            Faker.init()
+        /*        context("it is again re-initialized with default locale") {
+                    Faker.init()
 
-            it("matching keys should be overwritten back to defaults") {
-                val defaultCountry = Faker.address.defaultCountry()
-                val peruThree = Faker.address.countryByCode("PE")
+                    it("matching keys should be overwritten back to defaults") {
+                        val defaultCountry = Faker.address.defaultCountry()
+                        val peruThree = Faker.address.countryByCode("PE")
 
-                assertSoftly {
-                    defaultCountry shouldBe defaultCountryUS
-                    peruThree shouldBe peruOne
-                }
-            }
-        }*/
+                        assertSoftly {
+                            defaultCountry shouldBe defaultCountryUS
+                            peruThree shouldBe peruOne
+                        }
+                    }
+                }*/
     }
 
     describe("Faker instance is initialized with custom locale") {
@@ -166,46 +131,3 @@ private fun List<String>.evens() = this.mapIndexedNotNull { index, s ->
     if (index % 2 != 0) s else null
 }
 
-private val duplicatedValues = listOf(
-    "Tiger! Tiger!", // book#title
-    "Girls Girls", // kPop#girlsGroups
-    "Two Two", // kPop#firstGroups
-    "woof woof", // creature#dog#sound
-    "Duran Duran", // rockBand#name
-    "Li Li", // heroesOfTheStorm#heroes
-    "Dee Dee", // theFreshPrinceOfBelAir#characters
-    "Lola Lola", // cannabis#brands
-    "Hail Hail", // pearlJam#songs
-    "Help Help", // pearlJam#songs
-    "Mr. Mr.", // kPop#thirdGroups
-    "Chitty Chitty Bang Bang", // show#adultMusical
-    "etc. etc.", // marketing#buzzwords
-    "Ook Ook", // ventureBros#character
-    "Mahi Mahi", // food#ingredients
-    "Cous Cous", // food#ingredients
-    "Boom Boom", // superMario#characters
-    "Pom Pom", // superMario#characters
-    "Min Min", // superSmashBros#fighter
-)
-
-private val valuesWithHashKey = listOf(
-    "A# .NET", // programmingLanguage#name
-    "A# (Axiom)", // programmingLanguage#name
-    "C# – ISO/I EC 23270", //programmingLanguage#name
-    "F#", // programmingLanguage#name
-    "J#", // programmingLanguage#name
-    "M#", // programmingLanguage#name
-    "P#", // programmingLanguage#name
-    "Q# (Microsoft programming language)", // programmingLanguage#name
-    "Visual J#", // programmingLanguage#name
-    "Acoustic #1", // pearlJam#songs
-    "I am downloading some NP# music.", // michaelScott#quotes
-    "Cooler #6", // dragonBall#planets
-    "Cooler #98", // dragonBall#planets
-    "Cooler #256", // dragonBall#planets
-    "Frieza #17", // dragonBall#planets
-    "Frieza #79", // dragonBall#planets
-    "Frieza #448", // dragonBall#planets
-    "tL&^J@24CVF=zP46Lxixk`_a#=o6c5", // device#serial
-    "S#arp", // kPop#firstGroups
-)
