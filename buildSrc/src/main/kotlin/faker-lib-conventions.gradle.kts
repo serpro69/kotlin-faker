@@ -22,16 +22,20 @@ plugins {
 private val fullName: String =
     if (project.name == "core") rootProject.name else "${rootProject.name}-${project.name}"
 
+val isDev = provider { version.toString().startsWith("0.0.0") }
 val isSnapshot = provider {
-    version.toString().startsWith("0.0.0")
-        || version.toString().endsWith("SNAPSHOT")
+    // QUESTION do we need to check if rootProject is also set to snapshot?
+    //  Likely not, since "isRelease" will not just check for the version, but also for the actual tag creation
+    //    rootProject.version.toString().endsWith("SNAPSHOT") &&
+        version.toString().endsWith("SNAPSHOT")
 }
-val newTag = provider {
+val isRelease = provider {
     val tag = project.tasks.getByName("tag", TagTask::class)
     /* all fakers have their own tags, so checking if tag.didWork is enough for them,
        ':core' shares the tag with 'root', ':bom' and ':cli-bot' modules,
        and hence the tag might already exist and didWork will return false for ':core' */
-    if (project.name != "core") tag.didWork else tag.didWork || tag.tagExists
+    val tagCreated = if (project.name != "core") tag.didWork else tag.didWork || tag.tagExists
+    !isDev.get() && !isSnapshot.get() && tagCreated
 }
 
 configurations {
@@ -213,23 +217,24 @@ signing {
     sign(publishing.publications[publicationName])
 }
 
+tasks.withType<DokkaTask>().configureEach {
+    onlyIf("Not dev") { !isDev.get() }
+    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
+}
+
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
     dependsOn(project.tasks.withType(Sign::class.java))
-    onlyIf("Not snapshot") { !isSnapshot.get() }
-    onlyIf("New tag") { newTag.get() }
+    onlyIf("Not dev") { !isDev.get() }
+    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }
 
 tasks.withType<PublishToMavenLocal>().configureEach {
-    onlyIf("In development") { isSnapshot.get() }
-}
-
-tasks.withType<DokkaTask>().configureEach {
-    onlyIf("Not snapshot") { !isSnapshot.get() }
+    onlyIf("In development") { isDev.get() || isSnapshot.get() }
 }
 
 tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
-    onlyIf("Not snapshot") { !isSnapshot.get() }
-    onlyIf("New tag") { newTag.get() }
+    onlyIf("Not dev") { !isDev.get() }
+    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }

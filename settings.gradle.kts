@@ -1,4 +1,5 @@
 import io.github.serpro69.semverkt.gradle.plugin.SemverPluginExtension
+import io.github.serpro69.semverkt.release.configuration.CleanRule
 import io.github.serpro69.semverkt.release.configuration.TagPrefix
 
 pluginManagement {
@@ -52,6 +53,9 @@ settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
             preRelease = "[rc]"
             ignoreCase = true
         }
+    }
+    version {
+        useSnapshots = true
     }
     monorepo {
         fakers.forEach { f ->

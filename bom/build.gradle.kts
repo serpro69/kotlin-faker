@@ -9,15 +9,21 @@ plugins {
 }
 
 val bom = project
+
+val isDev = provider { version.toString().startsWith("0.0.0") }
 val isSnapshot = provider {
-    version.toString().startsWith("0.0.0")
-        || version.toString().endsWith("SNAPSHOT")
+    // QUESTION do we need to check if rootProject is also set to snapshot?
+    //  Likely not, since "isRelease" will not just check for the version, but also for the actual tag creation
+    //    rootProject.version.toString().endsWith("SNAPSHOT") &&
+    version.toString().endsWith("SNAPSHOT")
 }
-val newTag = provider {
+val isRelease = provider {
     val tag = project.tasks.getByName("tag", TagTask::class)
-    /* ':bom' shares the tag with 'root', ':cli-bot' and ':core' modules,
-       and hence the tag might already exist and didWork will return false for ':bom' */
-    tag.didWork || tag.tagExists
+    /* all fakers have their own tags, so checking if tag.didWork is enough for them,
+       ':core' shares the tag with 'root', ':bom' and ':cli-bot' modules,
+       and hence the tag might already exist and didWork will return false for ':core' */
+    val tagCreated = if (project.name != "core") tag.didWork else tag.didWork || tag.tagExists
+    !isDev.get() && !isSnapshot.get() && tagCreated
 }
 
 // Exclude subprojects that will never be published so that when configuring this project
@@ -95,19 +101,28 @@ signing {
     sign(publishing.publications["FakerBom"])
 }
 
+/*
+ * copy from faker-lib-conventions.gradle.kts:219
+ */
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
-    dependsOn(tasks.withType(Sign::class.java))
-    onlyIf("Not snapshot") { !isSnapshot.get() }
-    onlyIf("New tag") { newTag.get() }
+    dependsOn(project.tasks.withType(Sign::class.java))
+    onlyIf("Not dev") { !isDev.get() }
+    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }
 
+/*
+ * copy from faker-lib-conventions.gradle.kts:226
+ */
 tasks.withType<PublishToMavenLocal>().configureEach {
-    onlyIf("In development") { isSnapshot.get() }
+    onlyIf("In development") { isDev.get() || isSnapshot.get() }
 }
 
+/*
+ * copy from faker-lib-conventions.gradle.kts:230
+ */
 tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
-    onlyIf("Not snapshot") { !isSnapshot.get() }
-    onlyIf("New tag") { newTag.get() }
+    onlyIf("Not dev") { !isDev.get() }
+    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }

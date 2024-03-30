@@ -33,40 +33,11 @@ deploy-docs: ## deploys documentation with orchid
 	./gradlew :docs:orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE)
 	git checkout ./docs/src/orchid/resources/config.yml
 
-.PHONY: snapshot-in-pre-release
-_snapshot-in-pre-release: ## (DEPRECATED) publishes next snapshot in current pre-release version
-	./gradlew test integrationTest \
-	printVersion \
-	nativeCompile \
-	publishToSonatype \
-	-PpromoteRelease \
-	--info
-
-.PHONY: snapshot-major
-_snapshot-major: ## (DEPRECATED) publishes next snapshot with a major version bump
-	./gradlew test integrationTest \
-	printVersion \
-	nativeCompile \
-	publishToSonatype \
-	-Pincrement=major \
-	--info
-
 .PHONY: snapshot-minor
-snapshot-minor: check_java ## publishes next snapshot with a minor version bump
-	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
-
-	./gradlew clean test integrationTest -Pversion='$(VERSION)-SNAPSHOT'
-	./gradlew nativeCompile -Pversion='$(VERSION)-SNAPSHOT' --info
-	./gradlew publishToSonatype -Pversion='$(VERSION)-SNAPSHOT' --info
-
-.PHONY: snapshot-patch
-_snapshot-patch: ## (DEPRECATED) publishes next snapshot with a patch version bump
-	./gradlew test integrationTest \
-	printVersion \
-	nativeCompile \
-	publishToSonatype \
-	-Pincrement=patch \
-	--info
+snapshot-minor: ## publishes next snapshot with a minor version bump
+	./gradlew clean test integrationTest
+	./gradlew nativeCompile
+	./gradlew publishToSonatype --info
 
 .PHONY: pre-release-major
 pre-release-major: ## publishes next pre-release version with a major version bump
