@@ -14,6 +14,24 @@
 [![Awesome Kotlin](https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&style=for-the-badge)](https://kotlin.link/resources?q=kotlin-faker)
 [![Licence](https://img.shields.io/github/license/serpro69/kotlin-faker.svg?style=for-the-badge)](LICENSE.adoc)
 
+## ToC
+
+- [About](#about)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Install with Gradle](#install-with-gradle)
+  - [Install with Maven](#install-with-maven)
+  - [BOM](#bom)
+  - [Additional Fakers](#additional-fakers)
+- [Usage](#usage)
+  - [Generating Data](#generating-data)
+- [CLI](#cli)
+- [Test](#test)
+- [Build and Deploy](#build-and-deploy)
+- [Contributing](#contributing)
+- [Thanks](#thanks)
+- [License](#license)
+
 ## About
 
 Port of a popular ruby [faker](https://github.com/stympy/faker) gem written in kotlin. Generates realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data-anonymization purposes.
@@ -23,22 +41,11 @@ Port of a popular ruby [faker](https://github.com/stympy/faker) gem written in k
 - Faker libraries depend on java 8 and kotlin 1.9.x for runtime
 - Building faker from source requires 3 jdk distributions: jdk 8 (temurin is recommended, but any vendor should work), jdk 11 (for [`docs`](docs) module) and jdk 17 (graalvm-ce distribution, for [`cli-bot`](cli-bot) module). See [CONTRIBUTING](CONTRIBUTING.adoc) for more details.
 
-## Usage
-
-Documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
-
-_NB! The documentation website is currently not versioned and always reflects `master` rather than the last stable version._
-
-> [!WARNING]
-> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
-> 
-> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
-
-### Downloading
+## Installation
 
 Latest releases are always available on maven central.
 
-**With gradle**
+### Install with Gradle
 
 ```groovy
 dependencies {
@@ -46,7 +53,7 @@ dependencies {
 }
 ```  
 
-**With maven**
+### Install with Maven
 
 ```xml
 <dependencies>
@@ -80,15 +87,26 @@ repositories {
 </repositories>
 ```
 
-#### BOM
+### BOM
 
 Kotlin-faker provides a [Bill-of-Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms) that simplifies dependency management.
 
 See [bom/README.md](bom/README.md) for more details.
 
-#### Additional Fakers
+### Additional Fakers
 
 Extra fakers covering a wide range of domains are available as separate dependencies. See [faker](faker) submodules in this repo for more details about each faker.
+
+## Usage
+
+Full usage documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
+
+_NB! The documentation website is currently not versioned and always reflects `master` rather than the last stable version._
+
+> [!WARNING]
+> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
+>
+> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
 
 ### Generating data
 
@@ -162,6 +180,6 @@ Many thanks to these awesome tools that help us in creating open-source software
 [![Intellij IDEA](https://cloud.google.com/tools/images/icon_IntelliJIDEA.png)](http://www.jetbrains.com/idea)
 [![YourKit Java profiler](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/features/)
 
-## Licence
+## License
 
-This code is free to use under the terms of the MIT licence. See [LICENSE](LICENSE.adoc).
+This code is free to use under the terms of the MIT license. See [LICENSE](LICENSE.adoc).
