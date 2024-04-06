@@ -1,0 +1,45 @@
+[versions]
+kotlin = "1.9.21"
+jackson = "2.15.3"
+icu4j = "73.2"
+generex = "1.0.2"
+# buildsrc and plugins
+snakeyaml = "2.2"
+plugin-dokka = "1.9.10"
+plugin-shadow = "8.1.1"
+plugin-semantic-versioning = "0.13.0"
+# test
+kotest = "5.8.0"
+
+[libraries]
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+icu4j = { module = "com.ibm.icu:icu4j", version.ref = "icu4j" }
+generex = { module = "com.github.mifmif:generex", version.ref = "generex" }
+
+# Plugins and dependencies for use in buildSrc/build.gradle.kts
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
+# Plugins are the *Maven coodinates* of Gradle plugins.
+gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+#gradlePlugin-ktLint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
+gradle-plugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "plugin-dokka" }
+gradle-plugin-semantic-versioning = { module = "io.github.serpro69:semantic-versioning", version.ref = "plugin-semantic-versioning" }
+gradle-plugin-shadow = { module = "com.github.johnrengelman:shadow", version.ref = "plugin-shadow" }
+
+# Test
+kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property-jvm", version.ref = "kotest" }
+
+[bundles]
+kotlin = ["kotlin-stdlib-common", "kotlin-stdlib-jdk8", "kotlin-reflect"]
+gradle-plugins = ["gradle-plugin-kotlin", "gradle-plugin-dokka", "gradle-plugin-semantic-versioning", "gradle-plugin-shadow"]
+test-kotest = ["kotest-runner", "kotest-assertions-core", "kotest-property"]
+jackson = ["jackson-databind", "jackson-module-kotlin"]
+
+[plugins]
+# import plugins using Maven coordinates (see above), not the Gradle plugin ID

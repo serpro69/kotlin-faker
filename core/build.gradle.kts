@@ -8,10 +8,9 @@ plugins {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.3")
-    shadow("com.ibm.icu:icu4j:73.2")
-    shadow("com.github.mifmif:generex:1.0.2")
+    implementation(libs.bundles.jackson)
+    shadow(libs.icu4j)
+    shadow(libs.generex)
 }
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block

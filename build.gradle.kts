@@ -14,18 +14,12 @@ plugins {
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.15.0-Beta.1"
 }
 
-repositories {
-    mavenCentral()
-}
-
 group = "io.github.serpro69"
+
+val lib = project.libs
 
 subprojects {
     group = rootProject.group.toString()
-
-    repositories {
-        mavenCentral()
-    }
 
     apply {
         plugin("com.github.ben-manes.versions")
@@ -44,12 +38,9 @@ subprojects {
         val testImplementation by configurations
         val testRuntimeOnly by configurations
         // common-for-all dependencies go here
-        platform(kotlin("bom"))
-        implementation(kotlin("stdlib-jdk8"))
-        implementation(kotlin("reflect"))
-        testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
-        testImplementation("io.kotest:kotest-assertions-core:5.7.2")
-        testImplementation("io.kotest:kotest-property-jvm:5.7.2")
+        implementation(platform(lib.kotlin.bom))
+        implementation(lib.bundles.kotlin)
+        testImplementation(lib.bundles.test.kotest)
     }
 
     configure<JavaPluginExtension> {

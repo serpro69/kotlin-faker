@@ -1,16 +1,12 @@
 import io.github.serpro69.semverkt.gradle.plugin.SemverPluginExtension
-import io.github.serpro69.semverkt.release.configuration.CleanRule
 import io.github.serpro69.semverkt.release.configuration.TagPrefix
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+apply(from = "./buildSrc/repositories.settings.gradle.kts")
 
 plugins {
-    // NB! remember to set same version in buildSrc/build.gradle.kts:20
+    // NB! remember to set same version in gradle/libs.versions.toml:10
     id("io.github.serpro69.semantic-versioning") version "0.13.0"
 }
 
