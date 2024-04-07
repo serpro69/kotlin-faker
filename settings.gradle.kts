@@ -17,7 +17,11 @@ include(
     "core",
     "cli-bot",
     "docs",
+    "kotest-property",
+    "kotest-property-test",
 )
+
+include("")
 
 val fakers = listOf(
     "books",
