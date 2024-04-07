@@ -8,9 +8,8 @@ import com.google.devtools.ksp.processing.SymbolProcessorProvider
  * [SymbolProcessorProvider] implementation for kotlin-faker Arbs generators
  * to use with [kotest property testing](https://kotest.io/docs/proptest/property-based-testing.html).
  */
-class KotestArbsProvider : SymbolProcessorProvider {
-
+class KotestArbProvider : SymbolProcessorProvider {
     override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
-        return KotestArbsProcessor(ProcessorScope(environment))
+        return KotestArbProcessor(ProcessorScope(environment))
     }
 }

@@ -53,6 +53,7 @@ test-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = 
 gradle-plugins = ["gradle-plugin-kotlin", "gradle-plugin-dokka", "gradle-plugin-semantic-versioning", "gradle-plugin-shadow"]
 jackson = ["jackson-databind", "jackson-module-kotlin"]
 kotlin = ["kotlin-stdlib-common", "kotlin-stdlib-jdk8", "kotlin-reflect"]
+kotlinpoet = ["kotlinpoet", "kotlinpoet-ksp"]
 test-kotest = ["test-kotest-runner", "test-kotest-assertions-core", "test-kotest-property"]
 
 [plugins]

@@ -12,6 +12,7 @@ dependencies {
     implementation(libs.ksp)
 //    implementation(projects.utils.kotlinPoet)
 //    implementation(projects.kopykatAnnotations)
+    api(libs.bundles.kotlinpoet)
     implementation(libs.commons.io)
     // test
 //    testImplementation(projects.utils.compiletesting)

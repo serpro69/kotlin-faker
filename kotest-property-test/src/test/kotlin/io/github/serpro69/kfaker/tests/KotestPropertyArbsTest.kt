@@ -5,14 +5,12 @@ import io.github.serpro69.kfaker.books.BooksFaker
 import io.github.serpro69.kfaker.books.provider.Bible
 import io.github.serpro69.kfaker.kotest.FakerArb
 import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Color
 import io.github.serpro69.kfaker.provider.Name
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.arbitrary
-import io.kotest.property.arbitrary.bind
 import io.kotest.property.arbitrary.int
-import io.kotest.property.arbitrary.take
 import io.kotest.property.forAll
 
 class KotestPropertyArbsTest : DescribeSpec({
@@ -51,8 +49,21 @@ class KotestPropertyArbsTest : DescribeSpec({
                 q.isNotBlank()
             }
         }
+        it("test copy") {
+            val foo = Foo(1, 2)
+            val c = foo.copy {
+                b++
+            }
+            c.b shouldBe 3
+//            foo.copyMap {
+//
+//            }
+        }
     }
 })
+
+@FakerArb
+data class Foo(val a: Int, val b: Int)
 
 // pseudo-generated code below this line
 // core faker
