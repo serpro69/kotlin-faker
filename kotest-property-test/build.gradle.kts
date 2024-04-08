@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     kotlin("jvm")
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
@@ -16,9 +19,37 @@ dependencies {
     testImplementation(projects.faker.books)
     testImplementation(projects.kotestProperty)
     testImplementation(libs.bundles.test.kotest)
-    ksp(projects.kotestProperty)
+    kspTest(projects.kotestProperty)
+    kspTest(projects.core)
+    kspTest(projects.faker.books)
 }
 
 tasks.test {
+    testLogging {
+        // set options for log level LIFECYCLE
+        events = setOf(
+            TestLogEvent.FAILED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.STANDARD_OUT
+        )
+        exceptionFormat = TestExceptionFormat.FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+        // set options for log level DEBUG and INFO
+        debug {
+            events = setOf(
+                TestLogEvent.STARTED,
+                TestLogEvent.FAILED,
+                TestLogEvent.PASSED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_ERROR,
+                TestLogEvent.STANDARD_OUT
+            )
+            exceptionFormat = TestExceptionFormat.FULL
+        }
+        info.events = debug.events
+        info.exceptionFormat = debug.exceptionFormat
+    }
     useJUnitPlatform()
 }

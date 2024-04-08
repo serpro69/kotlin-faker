@@ -1,3 +1,5 @@
+@file:FakerArb(Faker::class, BooksFaker::class)
+
 package io.github.serpro69.kfaker.tests
 
 import io.github.serpro69.kfaker.Faker
@@ -7,7 +9,6 @@ import io.github.serpro69.kfaker.kotest.FakerArb
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.Name
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.int
@@ -31,15 +32,15 @@ class KotestPropertyArbsTest : DescribeSpec({
     describe("Custom kotlin-faker Arbs") {
         it("should generate quotes from annotated local variable") {
             // TODO should maybe configure code-generation via FakerConfig instead of using annotation?
-            @FakerArb val b = BooksFaker()
+            val b = BooksFaker()
             forAll(b.arb.bible.quote()) { q: String ->
                 q.isNotBlank()
             }
         }
         it("should generate quotes from annotated expression") {
-            forAll(@FakerArb BooksFaker().arb.bible.quote()) { q: String ->
-                q.isNotBlank()
-            }
+//            forAll(@FakerArb BooksFaker().arb.bible.quote()) { q: String ->
+//                q.isNotBlank()
+//            }
         }
         it("should generate quotes from companion object") {
             forAll(Arb.booksFaker.bible.quote()) { q: String ->
@@ -49,21 +50,8 @@ class KotestPropertyArbsTest : DescribeSpec({
                 q.isNotBlank()
             }
         }
-        it("test copy") {
-            val foo = Foo(1, 2)
-            val c = foo.copy {
-                b++
-            }
-            c.b shouldBe 3
-//            foo.copyMap {
-//
-//            }
-        }
     }
 })
-
-@FakerArb
-data class Foo(val a: Int, val b: Int)
 
 // pseudo-generated code below this line
 // core faker

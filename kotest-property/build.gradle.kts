@@ -9,6 +9,8 @@ repositories {
 }
 
 dependencies {
+    // used in FakerArb annotation (compileOnly so that we don't bring the transitive dependency)
+    compileOnly(projects.core)
     implementation(libs.ksp)
 //    implementation(projects.utils.kotlinPoet)
 //    implementation(projects.kopykatAnnotations)

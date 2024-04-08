@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker.kotest
 
+import io.github.serpro69.kfaker.AbstractFaker
+import kotlin.reflect.KClass
+
 @Retention(AnnotationRetention.SOURCE)
-@Target(AnnotationTarget.CLASS, AnnotationTarget.PROPERTY, AnnotationTarget.LOCAL_VARIABLE, AnnotationTarget.EXPRESSION)
-annotation class FakerArb
+@Target(AnnotationTarget.PROPERTY, AnnotationTarget.FILE)
+annotation class FakerArb(vararg val fakers: KClass<out AbstractFaker>)
