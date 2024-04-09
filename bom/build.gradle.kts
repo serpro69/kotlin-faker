@@ -123,6 +123,6 @@ tasks.withType<PublishToMavenLocal>().configureEach {
  */
 tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
-    onlyIf("Not dev") { !isDev.get() }
-    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
+    onlyIf("Not dev and snapshot") { !isDev.get() && !isSnapshot.get() }
+    onlyIf("Release") { isRelease.get() }
 }
