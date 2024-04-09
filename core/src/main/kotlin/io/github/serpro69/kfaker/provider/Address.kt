@@ -1,7 +1,8 @@
 package io.github.serpro69.kfaker.provider
 
-import io.github.serpro69.kfaker.*
-import io.github.serpro69.kfaker.dictionary.*
+import io.github.serpro69.kfaker.FakerService
+import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.extension.or
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -23,7 +24,7 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun country() = resolve("country")
     fun countryByCode(countryCode: String) = resolve("country_by_code", countryCode)
     fun countryByName(countryName: String) = resolve("country_by_name", countryName)
-    fun countryCode() = resolve("country_code")
+    fun countryCode() = resolve("default_country_code" or "country_code")
     fun countryCodeLong() = resolve("country_code_long")
     fun buildingNumber() = with(fakerService) { resolve("building_number").numerify() }
     fun communityPrefix() = resolve("community_prefix")

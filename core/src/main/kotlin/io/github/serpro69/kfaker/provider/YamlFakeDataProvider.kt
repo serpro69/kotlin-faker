@@ -5,6 +5,7 @@ import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.exception.RetryLimitException
+import io.github.serpro69.kfaker.extension.AltKey
 
 /**
  * Abstract class for all concrete [FakeDataProvider]'s that use yml files as data source.
@@ -76,6 +77,10 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
         return returnOrResolveUnique(key)
     }
 
+    protected fun resolve(keys: AltKey<String, String>): String {
+        return returnOrResolveUnique(keys)
+    }
+
     /**
      * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
      *
@@ -142,6 +147,37 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      */
     protected fun resolve(primaryKey: String, secondaryKey: String, thirdKey: String): String {
         return returnOrResolveUnique(primaryKey, secondaryKey, thirdKey)
+    }
+
+    /**
+     * Returns the result of this [resolve] function using a pair of [AltKey]s,
+     * where `first` is the "altKey" and `second` is the "primaryKey".
+     *
+     * This function can be used to resolve locale-specific keys that are not present in the default 'en' dictionaries.
+     *
+     * An example usage (taken from [Address.countryCode]) looks something like this:
+     *
+     * ```
+     * fun countryCode() = resolve("default_country_code" or "country_code")
+     * ```
+     *
+     * Here, the `"default_country_code"` is the key that is only present in the localized dictionaries,
+     * which may or may not be present in the default 'en' dictionary,
+     * and `"country_code"` is the default key for this function which is defined in `en/address.yml` dict file.
+     *
+     * IF [AbstractFaker.unique] is enabled for this [T] provider type
+     * OR this [unique] is used
+     * THEN will attempt to return a unique value.
+     *
+     * @throws RetryLimitException if exceeds number of retries to generate a unique value.
+     */
+    private fun returnOrResolveUnique(keys: AltKey<String, String>): String {
+        val (altKey, primaryKey) = keys
+        return try {
+            resolveUniqueValue(altKey) { fakerService.resolve(yamlCategory, altKey) }
+        } catch (e: NoSuchElementException) {
+            resolveUniqueValue(primaryKey) { fakerService.resolve(yamlCategory, primaryKey) }
+        }
     }
 
     /**
