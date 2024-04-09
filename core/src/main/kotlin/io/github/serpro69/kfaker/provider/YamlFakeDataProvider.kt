@@ -67,8 +67,7 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     /**
      * Returns resolved (unique) value for the parameter with the specified [key].
      *
-     * Will return a unique value if the call to the function is prefixed with `unique` property.
-     * Example:
+     * Will return a unique value if the call to the function is prefixed with `unique` property. Example:
      * ```
      * faker.address.unique.city() => will return a unique value for the `city` parameter
      * ```
@@ -77,6 +76,27 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
         return returnOrResolveUnique(key)
     }
 
+    /**
+     * Returns resolved (unique) value for the parameter with the specified pair of [keys],
+     * where `first` is the "altKey" and `second` is the "primaryKey".
+     *
+     * This function can be used to resolve locale-specific keys that are not present in the default 'en' dictionaries.
+     *
+     * An example usage (taken from [Address.countryCode]) looks something like this:
+     *
+     * ```
+     * fun countryCode() = resolve("default_country_code" or "country_code")
+     * ```
+     *
+     * Here, the `"default_country_code"` is the key that is only present in the localized dictionaries,
+     * which may or may not be present in the default 'en' dictionary,
+     * and `"country_code"` is the default key for this function which is defined in `en/address.yml` dict file.
+     *
+     * Will attempt to return a unique value if the call to the function is prefixed with `unique` property. Example:
+     * ```
+     * faker.address.unique.countryCode() => will return a unique value for the `country_code` parameter.
+     * ```
+     */
     protected fun resolve(keys: AltKey<String, String>): String {
         return returnOrResolveUnique(keys)
     }
