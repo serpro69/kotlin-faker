@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.exception.DictionaryKeyNotFoundException
 import io.github.serpro69.kfaker.exception.RetryLimitException
 import io.github.serpro69.kfaker.extension.AltKey
 
@@ -195,8 +196,11 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
         val (altKey, primaryKey) = keys
         return try {
             resolveUniqueValue(altKey) { fakerService.resolve(yamlCategory, altKey) }
-        } catch (e: NoSuchElementException) {
+        } catch (e: DictionaryKeyNotFoundException) {
             resolveUniqueValue(primaryKey) { fakerService.resolve(yamlCategory, primaryKey) }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            throw e
         }
     }
 
