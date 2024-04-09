@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.exception.DictionaryKeyNotFoundException
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
@@ -219,13 +220,13 @@ internal class FakerServiceTest : DescribeSpec({
                 val fakerService = fakerService(YamlCategory.ADDRESS)
 
                 it("exception is thrown") {
-                    shouldThrow<NoSuchElementException> {
+                    shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.ADDRESS, "postcode_by_state", "invalid")
                     }
                 }
 
                 it("exceptions contains message") {
-                    val message = shouldThrow<NoSuchElementException> {
+                    val message = shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.ADDRESS, "postcode_by_state", "invalid")
                     }.message
 
@@ -291,13 +292,13 @@ internal class FakerServiceTest : DescribeSpec({
                 val fakerService = fakerService(YamlCategory.EDUCATOR)
 
                 it("exception is thrown") {
-                    shouldThrow<NoSuchElementException> {
+                    shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.EDUCATOR, "tertiary", "invalid", "type")
                     }
                 }
 
                 it("exception contains message") {
-                    val exception = shouldThrow<NoSuchElementException> {
+                    val exception = shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.EDUCATOR, "tertiary", "invalid", "type")
                     }
 
@@ -309,13 +310,13 @@ internal class FakerServiceTest : DescribeSpec({
                 val fakerService = fakerService(YamlCategory.EDUCATOR)
 
                 it("exception is thrown") {
-                    shouldThrow<NoSuchElementException> {
+                    shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.EDUCATOR, "tertiary", "degree", "invalid")
                     }
                 }
 
                 it("exception contains message") {
-                    val exception = shouldThrow<NoSuchElementException> {
+                    val exception = shouldThrow<DictionaryKeyNotFoundException> {
                         fakerService.getRawValue(YamlCategory.EDUCATOR, "tertiary", "degree", "invalid")
                     }
 

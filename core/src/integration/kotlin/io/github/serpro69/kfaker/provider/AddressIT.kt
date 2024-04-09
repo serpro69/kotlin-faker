@@ -77,5 +77,13 @@ class AddressIT : DescribeSpec({
                 address("en-CA").postcode() shouldMatch Regex("""[A-CEGHJ-NPR-TVXY][0-9][A-CEJ-NPR-TV-Z] ?[0-9][A-CEJ-NPR-TV-Z][0-9]""")
             }
         }
+
+        context("default country code") {
+            listOf("en-US", "en-GB", "en-CA").forEach { locale ->
+                it("should generate a default country code for $locale") {
+                    address(locale).countryCode() shouldBe locale.replaceFirst("en-", "")
+                }
+            }
+        }
     }
 })

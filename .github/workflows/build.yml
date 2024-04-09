@@ -79,7 +79,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile native image
-        run: ./gradlew nativeCompile
+        run: ./gradlew nativeCompile -x test -x integrationTest
       - name: Test native image
         run: |
           _app_path=$(find ./cli-bot/build/native/nativeCompile/ -type f -name faker-bot\* -not -name \*.txt)

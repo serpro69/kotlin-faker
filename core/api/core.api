@@ -408,6 +408,12 @@ public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang
 public final class io/github/serpro69/kfaker/dictionary/YamlCategory$Companion {
 }
 
+public final class io/github/serpro69/kfaker/exception/DictionaryKeyNotFoundException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
 public final class io/github/serpro69/kfaker/exception/RetryLimitException : java/lang/Exception {
 	public fun <init> (Ljava/lang/String;)V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -620,6 +626,7 @@ public abstract class io/github/serpro69/kfaker/provider/YamlFakeDataProvider : 
 	protected final fun resolve (Ljava/lang/String;)Ljava/lang/String;
 	protected final fun resolve (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	protected final fun resolve (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Lkotlin/Pair;)Ljava/lang/String;
 }
 
 public final class io/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy : java/lang/Enum {

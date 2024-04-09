@@ -11,6 +11,7 @@ import io.github.serpro69.kfaker.dictionary.YamlCategory.PHONE_NUMBER
 import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
 import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.lowercase
+import io.github.serpro69.kfaker.exception.DictionaryKeyNotFoundException
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
@@ -297,10 +298,12 @@ class FakerService {
 
     /**
      * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
+     *
+     * @throws DictionaryKeyNotFoundException IF the [dictionary] [category] does not contain the [key]
      */
     fun getRawValue(category: YamlCategory, key: String): RawExpression {
         val paramValue = dictionary[category]?.get(key)
-            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
+            ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (paramValue) {
             is List<*> -> {
@@ -320,10 +323,13 @@ class FakerService {
 
     /**
      * Returns raw value as [RawExpression] from a given [category] fetched by its [key] and [secondaryKey]
+     *
+     * @throws DictionaryKeyNotFoundException IF the [dictionary] [category] does not contain the [key],
+     * OR the primary [key] does not contain the [secondaryKey]
      */
     fun getRawValue(category: YamlCategory, key: String, secondaryKey: String): RawExpression {
         val parameterValue = dictionary[category]?.get(key)
-            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
+            ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -343,7 +349,7 @@ class FakerService {
                             is Map<*, *> -> RawExpression(secondaryValue.toString())
                             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                         }
-                    } ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                    } ?: throw DictionaryKeyNotFoundException("Secondary key '$secondaryKey' not found.")
                 }
             }
             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
@@ -352,6 +358,10 @@ class FakerService {
 
     /**
      * Returns raw value as [RawExpression] for a given [category] fetched from the [dictionary] by its [key], [secondaryKey], and [thirdKey].
+     *
+     * @throws DictionaryKeyNotFoundException IF the [dictionary] [category] does not contain the [key],
+     * OR the primary [key] does not contain the [secondaryKey],
+     * OR the [secondaryKey] does not contain the [thirdKey]
      */
     fun getRawValue(
         category: YamlCategory,
@@ -360,7 +370,7 @@ class FakerService {
         thirdKey: String,
     ): RawExpression {
         val parameterValue = dictionary[category]?.get(key)
-            ?: throw NoSuchElementException("Parameter '$key' not found in '$category' category")
+            ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
             is Map<*, *> -> {
@@ -382,12 +392,12 @@ class FakerService {
                                             is String -> RawExpression(thirdValue)
                                             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                                         }
-                                    } ?: throw NoSuchElementException("Third key '$thirdKey' not found.")
+                                    } ?: throw DictionaryKeyNotFoundException("Third key '$thirdKey' not found.")
                                 }
                             }
                             else -> throw UnsupportedOperationException("Unsupported type of raw value: ${parameterValue::class.simpleName}")
                         }
-                    } ?: throw NoSuchElementException("Secondary key '$secondaryKey' not found.")
+                    } ?: throw DictionaryKeyNotFoundException("Secondary key '$secondaryKey' not found.")
                 } else {
                     throw IllegalArgumentException("Secondary key can not be empty string.")
                 }
