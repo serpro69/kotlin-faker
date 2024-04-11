@@ -7,6 +7,8 @@ import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSTypeAlias
 import com.google.devtools.ksp.symbol.Modifier
 import com.google.devtools.ksp.symbol.Modifier.SEALED
+import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.ksp.toClassName
 import io.github.serpro69.kfaker.kotest.utils.TypeCategory.Known
 import io.github.serpro69.kfaker.kotest.utils.TypeCategory.Unknown
 
@@ -20,10 +22,8 @@ internal val KSDeclaration.typeCategory: TypeCategory
                 }
             is KSClassDeclaration ->
                 when {
-                    isDataClass() -> Known.Data
-                    isValueClass() -> Known.Value
-                    isSealedDataHierarchy() -> Known.Sealed
-                    isConstructable() -> Known.Class
+                    isFaker() -> Known.Faker
+                    isDataProvider() -> Known.Provider
                     else -> Unknown(this)
                 }
             else -> Unknown(this)
@@ -43,10 +43,9 @@ internal inline fun TypeCompileScope.onKnownCategory(block: (Known) -> Unit) {
 
 internal sealed interface TypeCategory {
     sealed interface Known : TypeCategory {
-        object Sealed : Known
-        object Value : Known
-        object Data : Known
-        object Class : Known
+        data object Faker : Known
+
+        data object Provider : Known
     }
 
     @JvmInline
@@ -55,12 +54,23 @@ internal sealed interface TypeCategory {
 
 internal fun KSClassDeclaration.isConstructable() = primaryConstructor?.isPublic() == true
 
+private fun KSClassDeclaration.isFaker(): Boolean {
+    return isConstructable() &&
+        superTypes.any {
+            it.resolve().toClassName() == ClassName("io.github.serpro69.kfaker", "AbstractFaker")
+        }
+}
+
+private fun KSClassDeclaration.isDataProvider(): Boolean {
+    return superTypes.any {
+        it.resolve().toClassName() == ClassName("io.github.serpro69.kfaker.provider", "FakeDataProvider")
+    }
+}
+
 private fun KSClassDeclaration.isDataClass() = isConstructable() && Modifier.DATA in modifiers
 
 private fun KSClassDeclaration.isValueClass() = isConstructable() && Modifier.VALUE in modifiers
 
-private fun KSClassDeclaration.isSealedDataHierarchy() =
-    SEALED in modifiers && isAbstract() && hasOnlyDataClassChildren()
+private fun KSClassDeclaration.isSealedDataHierarchy() = SEALED in modifiers && isAbstract() && hasOnlyDataClassChildren()
 
-private fun KSClassDeclaration.hasOnlyDataClassChildren() =
-    sealedTypes.any() && sealedTypes.all { it.isDataClass() || it.isValueClass() }
+private fun KSClassDeclaration.hasOnlyDataClassChildren() = sealedTypes.any() && sealedTypes.all { it.isDataClass() || it.isValueClass() }

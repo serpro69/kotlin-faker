@@ -1,5 +1,8 @@
 package io.github.serpro69.kfaker.kotest
 
+import com.google.devtools.ksp.KspExperimental
+import com.google.devtools.ksp.getAnnotationsByType
+import com.google.devtools.ksp.getClassDeclarationByName
 import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
@@ -27,22 +30,34 @@ internal class ProcessorScope(environment: SymbolProcessorEnvironment) : LoggerS
 }
 
 internal class KotestArbProcessor(private val scope: ProcessorScope) : SymbolProcessor {
-
+    @OptIn(KspExperimental::class)
     override fun process(resolver: Resolver): List<KSAnnotated> {
         scope.processFiles(resolver) {
+            scope.logger.warn("FileCompileScope: $this")
+            files.forEachRun {
+                scope.logger.warn("File: $this", this)
+                getAnnotationsByType(FakerArb::class).forEach { a ->
+                    scope.logger.warn("Found Annotation: $a", this)
+                    a.fakers.asSequence()
+                        .mapRun { resolver.getClassDeclarationByName(qualifiedName!!) }
+                        .forEachRun {
+                            scope.logger.warn("Processing Faker: $this", this)
+                            this?.classScope?.copyMapFunctionKt?.write()
+//                            copyMapFunctionKt.write()
+//                            mutableCopyKt.write()
+                        }
+                }
+            }
             // add Arb extensions
             (classes.mapRun { classScope } + typeAliases.mapRun { typealiasScope })
-                .filter { it.canHaveCopyFunctions(true) }
+                .filter { it.canHaveArbs() }
                 .onEachRun { logger.logging("Processing ${simpleName.asString()}") }
                 .forEachRun {
                     copyMapFunctionKt.write()
-                    mutableCopyKt.write()
                 }
         }
         return emptyList()
     }
 
-    private fun TypeCompileScope.canHaveCopyFunctions(hierarchyCopy: Boolean) =
-        typeCategory in listOf(TypeCategory.Known.Data, TypeCategory.Known.Value)
-            || typeCategory is TypeCategory.Known.Sealed && hierarchyCopy
+    private fun TypeCompileScope.canHaveArbs() = typeCategory in listOf(TypeCategory.Known.Faker)
 }

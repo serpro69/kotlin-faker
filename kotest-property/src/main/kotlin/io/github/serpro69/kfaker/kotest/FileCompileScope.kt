@@ -30,13 +30,14 @@ internal fun ProcessorScope.processFiles(
 }
 
 internal class FileCompileScope(
-    files: Sequence<KSFile>,
+    val files: Sequence<KSFile>,
     scope: ProcessorScope,
 ) : LoggerScope by scope, OptionsScope by scope {
     private val codegen: CodeGenerator = scope.codegen
 
-    val declarations = files.flatMap { it.allNestedDeclarations() }.onEach { it.isKnownWithCopyExtension() }
-        .onEach { it.checkRedundantAnnotation() }.filter { it.typeCategory is TypeCategory.Known }
+    val declarations =
+        files.flatMap { it.allNestedDeclarations() }.onEach { it.isKnownWithCopyExtension() }
+            .onEach { it.checkRedundantAnnotation() }.filter { it.typeCategory is TypeCategory.Known }
 
     val typeAliases = declarations.filterIsInstance<KSTypeAlias> { isKnownWithCopyExtension() }
 
@@ -48,17 +49,18 @@ internal class FileCompileScope(
     val KSTypeAlias.typealiasScope: TypeAliasCompileScope
         get() = TypeAliasCompileScope(this, classes, logger)
 
-    private fun KSDeclaration.isKnownWithCopyExtension() = hasAnnotation<FakerArb>().also { isCopyExtension ->
-        if (isCopyExtension && (typeCategory !is TypeCategory.Known || typeCategory is TypeCategory.Known.Class)) {
-            logger.error(
-                """
-            '@CopyExtensions' may only be used in data or value classes,
-            sealed hierarchies of those, or type aliases of those.
-            """.trimIndent(),
-                this,
-            )
+    private fun KSDeclaration.isKnownWithCopyExtension() =
+        hasAnnotation<FakerArb>().also { isCopyExtension ->
+            if (isCopyExtension && (typeCategory !is TypeCategory.Known || typeCategory is TypeCategory.Known.Faker)) {
+                logger.error(
+                    """
+                    '@CopyExtensions' may only be used in data or value classes,
+                    sealed hierarchies of those, or type aliases of those.
+                    """.trimIndent(),
+                    this,
+                )
+            }
         }
-    }
 
     fun FileSpec.write() {
         writeTo(codegen)
@@ -79,15 +81,16 @@ internal class FileCompileScope(
     }
 
     @OptIn(KspExperimental::class)
-    private fun KSDeclaration.shouldGenerate(): Boolean = when (options.generate) {
-        is KotestArbGenerate.Error -> false
-        is KotestArbGenerate.All -> true
-        is KotestArbGenerate.Annotated -> isAnnotationPresent(FakerArb::class)
-        is KotestArbGenerate.Packages -> {
-            val pkg = packageName.asString()
-            options.generate.patterns.any { pattern ->
-                FilenameUtils.wildcardMatch(pkg, pattern)
+    private fun KSDeclaration.shouldGenerate(): Boolean =
+        when (options.generate) {
+            is KotestArbGenerate.Error -> false
+            is KotestArbGenerate.All -> true
+            is KotestArbGenerate.Annotated -> isAnnotationPresent(FakerArb::class)
+            is KotestArbGenerate.Packages -> {
+                val pkg = packageName.asString()
+                options.generate.patterns.any { pattern ->
+                    FilenameUtils.wildcardMatch(pkg, pattern)
+                }
             }
         }
-    }
 }

@@ -1,18 +1,17 @@
-@file:FakerArb(Faker::class, BooksFaker::class)
+@file:FakerArb(Faker::class, BFaker::class)
 
 package io.github.serpro69.kfaker.tests
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.arb
 import io.github.serpro69.kfaker.books.BooksFaker
-import io.github.serpro69.kfaker.books.provider.Bible
+import io.github.serpro69.kfaker.books.arb
 import io.github.serpro69.kfaker.kotest.FakerArb
-import io.github.serpro69.kfaker.provider.Address
-import io.github.serpro69.kfaker.provider.Name
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.arbitrary
 import io.kotest.property.arbitrary.int
 import io.kotest.property.forAll
+import io.github.serpro69.kfaker.books.Faker as BFaker
 
 class KotestPropertyArbsTest : DescribeSpec({
 
@@ -43,16 +42,19 @@ class KotestPropertyArbsTest : DescribeSpec({
 //            }
         }
         it("should generate quotes from companion object") {
-            forAll(Arb.booksFaker.bible.quote()) { q: String ->
+            val b = BooksFaker()
+            forAll(b.arb.bible.quote()) { q: String ->
                 q.isNotBlank()
             }
-            forAll(Arb.faker.address.city()) { q: String ->
+            val f = Faker()
+            forAll(f.arb.address.city()) { q: String ->
                 q.isNotBlank()
             }
         }
     }
 })
 
+/*
 // pseudo-generated code below this line
 // core faker
 val Arb.Companion.faker get() = ArbFaker(Faker())
@@ -81,6 +83,10 @@ class ArbBooks(booksFaker: BooksFaker) {
 
 class ArbBible(private val bible: Bible) {
     fun character(): Arb<String> = arbitrary { bible.character() }
+
     fun location(): Arb<String> = arbitrary { bible.location() }
+
     fun quote(): Arb<String> = arbitrary { bible.quote() }
 }
+
+*/

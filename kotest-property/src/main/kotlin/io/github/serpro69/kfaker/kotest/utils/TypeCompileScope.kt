@@ -1,25 +1,26 @@
 package io.github.serpro69.kfaker.kotest.utils
 
-import com.google.devtools.ksp.closestClassDeclaration
+import com.google.devtools.ksp.getAllSuperTypes
+import com.google.devtools.ksp.getDeclaredFunctions
+import com.google.devtools.ksp.getDeclaredProperties
 import com.google.devtools.ksp.getVisibility
 import com.google.devtools.ksp.processing.KSPLogger
+import com.google.devtools.ksp.symbol.FunctionKind
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSPropertyDeclaration
 import com.google.devtools.ksp.symbol.KSType
 import com.google.devtools.ksp.symbol.KSTypeAlias
-import com.google.devtools.ksp.symbol.KSTypeParameter
 import com.google.devtools.ksp.symbol.KSTypeReference
 import com.google.devtools.ksp.symbol.Visibility
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.LIST
-import com.squareup.kotlinpoet.MAP
-import com.squareup.kotlinpoet.ParameterizedTypeName
-import com.squareup.kotlinpoet.SET
+import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeName
+import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.TypeVariableName
 import com.squareup.kotlinpoet.ksp.TypeParameterResolver
 import com.squareup.kotlinpoet.ksp.toClassName
@@ -27,17 +28,12 @@ import com.squareup.kotlinpoet.ksp.toTypeName
 import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
 import com.squareup.kotlinpoet.ksp.toTypeVariableName
 import io.github.serpro69.kfaker.kotest.LoggerScope
+import io.github.serpro69.kfaker.kotest.poet.addClass
 import io.github.serpro69.kfaker.kotest.poet.className
 import io.github.serpro69.kfaker.kotest.poet.makeInvariant
 import io.github.serpro69.kfaker.kotest.poet.parameterizedWhenNotEmpty
 import io.github.serpro69.kfaker.kotest.utils.lang.orElse
 import io.github.serpro69.kfaker.kotest.utils.lang.takeIfInstanceOf
-
-internal data class MutationInfo<out T : TypeName>(
-    val className: T,
-    val toMutable: (String) -> String,
-    val freeze: (String) -> String,
-)
 
 internal sealed interface TypeCompileScope : KSDeclaration, LoggerScope {
     val typeVariableNames: List<TypeVariableName>
@@ -46,22 +42,9 @@ internal sealed interface TypeCompileScope : KSDeclaration, LoggerScope {
     val target: ClassName
     val sealedTypes: Sequence<KSClassDeclaration>
     val properties: Sequence<KSPropertyDeclaration>
-    val mutationInfo: Sequence<Pair<KSPropertyDeclaration, MutationInfo<TypeName>>>
-        get() = properties.map { it to mutationInfo(it.type.resolve()) }
 
     val ClassName.parameterized: TypeName
     val KSPropertyDeclaration.typeName: TypeName
-
-    fun KSType.hasMutableCopy(): Boolean
-
-    fun KSPropertyDeclaration.toAssignment(
-        wrapper: (String) -> String,
-        source: String? = null,
-    ): String = "$baseName = ${wrapper("${source ?: ""}$baseName")}"
-
-    fun Sequence<Pair<KSPropertyDeclaration, MutationInfo<TypeName>>>.joinAsAssignmentsWithMutation(
-        wrapper: MutationInfo<TypeName>.(String) -> String,
-    ) = joinToString { (prop, mut) -> prop.toAssignment({ wrapper(mut, it) }) }
 
     fun buildFile(
         fileName: String,
@@ -73,6 +56,7 @@ internal sealed interface TypeCompileScope : KSDeclaration, LoggerScope {
     fun KSClassDeclaration.asScope(): ClassCompileScope
 
     val KSClassDeclaration.properties: Sequence<KSPropertyDeclaration> get() = asScope().properties
+    val classDeclaration: KSClassDeclaration
 }
 
 internal fun TypeParameterResolver.invariant() =
@@ -84,7 +68,7 @@ internal fun TypeParameterResolver.invariant() =
     }
 
 internal class ClassCompileScope(
-    val classDeclaration: KSClassDeclaration,
+    override val classDeclaration: KSClassDeclaration,
     private val mutableCandidates: Sequence<KSDeclaration>,
     override val logger: KSPLogger,
 ) : TypeCompileScope, KSClassDeclaration by classDeclaration {
@@ -100,12 +84,6 @@ internal class ClassCompileScope(
 
     override val ClassName.parameterized
         get() = parameterizedWhenNotEmpty(typeVariableNames.map { it.makeInvariant() })
-
-    override fun KSType.hasMutableCopy(): Boolean {
-        if (declaration is KSTypeParameter) return false
-        val closestDecl = declaration.closestClassDeclaration()
-        return closestDecl != null && closestDecl in mutableCandidates
-    }
 
     override val KSPropertyDeclaration.typeName: TypeName
         get() = type.toTypeName(typeParameterResolver).makeInvariant()
@@ -125,6 +103,8 @@ internal class TypeAliasCompileScope(
     init {
         requireNotNull(aliasDeclaration.ultimateDeclaration)
     }
+
+    override val classDeclaration: KSClassDeclaration = aliasDeclaration.type as KSClassDeclaration
 
     override val typeVariableNames: List<TypeVariableName> =
         aliasDeclaration.typeParameters.map { it.toTypeVariableName() }
@@ -151,11 +131,6 @@ internal class TypeAliasCompileScope(
 
     override val ClassName.parameterized
         get() = parameterizedWhenNotEmpty(typeVariableNames.map { it.makeInvariant() })
-
-    override fun KSType.hasMutableCopy(): Boolean {
-        val closestDecl = aliasDeclaration.type.resolve().declaration.closestClassDeclaration()
-        return closestDecl != null && closestDecl in mutableCandidates
-    }
 
     override val KSPropertyDeclaration.typeName: TypeName
         get() = type.toTypeName(typeParameterResolver).makeInvariant()
@@ -186,16 +161,146 @@ internal class FileCompilerScope(
         )
     }
 
-    fun addInlinedFunction(
-        name: String,
-        receives: TypeName?,
-        returns: TypeName,
-        block: FunSpec.Builder.() -> Unit = {},
+    fun addArbFakerClass(
+        type: ClassName,
+        faker: KSClassDeclaration,
     ) {
-        addFunction(name, receives, returns) {
-            addModifiers(KModifier.INLINE)
-            block()
+        file.addClass(type) {
+            primaryConstructor(
+                FunSpec.constructorBuilder()
+                    .addParameter(ParameterSpec.builder("faker", faker.className).build())
+                    .addCode(
+                        """
+                        this.faker = faker
+                        """.trimIndent(),
+                    )
+                    .build(),
+            )
+            addProperty("faker", faker.className, KModifier.PRIVATE)
+            val providers = addProviders(faker)
+            providers.forEach { addArbProviderClass(it) }
         }
+    }
+
+    private fun TypeSpec.Builder.addProviders(faker: KSClassDeclaration): Sequence<Pair<KSPropertyDeclaration, KSClassDeclaration>> {
+        val props =
+            faker.getDeclaredProperties()
+                .mapNotNull {
+                    val ksClass = it.type.resolve().declaration as KSClassDeclaration
+                    element.logger.warn("ksclass: $ksClass", ksClass)
+                    val isFakeDataProvider =
+                        ksClass.getAllSuperTypes().any { r ->
+                            element.logger.warn("Provider: $r")
+                            r.toClassName() == ClassName("io.github.serpro69.kfaker.provider", "FakeDataProvider")
+                        }
+                    // exclude misc providers because they're mostly "special cases" that don't make much sense here
+                    val excluded = ksClass.packageName.asString() == "io.github.serpro69.kfaker.provider.misc"
+                    if (isFakeDataProvider && !excluded) it to ksClass else null
+                }
+        props.forEach { (ksProp, ksClass) ->
+            val providerClassName = ksClass.simpleName.asString()
+            val className = ClassName(ksProp.packageName.asString(), "Arb$providerClassName")
+            addProperty(
+                PropertySpec.builder(ksProp.baseName, className)
+                    .delegate(
+                        """
+                        lazy { ${className.simpleName}(faker.${ksProp.simpleName.asString()}) }
+                        """.trimIndent(),
+                    )
+                    .build(),
+            )
+        }
+        return props
+    }
+
+    private fun addArbProviderClass(provider: Pair<KSPropertyDeclaration, KSClassDeclaration>) {
+        val (prop, type) = provider
+        element.logger.warn("prop: $prop, type: $type")
+        val className = ClassName(type.packageName.asString(), "Arb${type.simpleName.asString()}")
+        file.addImport("io.kotest.property.arbitrary", "arbitrary")
+        file.addClass(className) {
+            primaryConstructor(
+                FunSpec.constructorBuilder()
+                    .addParameter(ParameterSpec.builder(prop.baseName, type.className).build())
+                    .addCode(
+                        """
+                        this.${prop.baseName} = ${prop.baseName}
+                        """.trimIndent(),
+                    )
+                    .build(),
+            )
+            addProperty(
+                PropertySpec.builder(prop.baseName, type.className)
+                    .build(),
+            )
+            type.getDeclaredFunctions()
+                .filter {
+                    it.functionKind == FunctionKind.MEMBER &&
+                        it.getVisibility() == Visibility.PUBLIC
+                }
+                .forEach {
+                    element.logger.warn("function: $it")
+                    element.logger.warn("type params: ${it.typeParameters}")
+                    // filter out generics via typeParameters
+                    val returnTypeName = if (it.typeParameters.isEmpty()) it.returnType?.toTypeName() else null
+                    element.logger.warn("returnTypeName: $returnTypeName")
+                    val functionParams =
+                        it.parameters.map { p ->
+                            ParameterSpec.builder(p.name?.asString() ?: "noname", p.type.toTypeName())
+                                .build()
+                        }
+                    addFunction(
+                        FunSpec.builder(it.baseName)
+                            .addParameters(functionParams)
+                            .returns(
+                                ClassName(
+                                    "io.kotest.property",
+                                    "Arb",
+                                ).parameterizedWhenNotEmpty(
+                                    returnTypeName?.let { t -> listOf(t) } ?: emptyList(),
+                                ),
+                            )
+                            .addCode(
+                                """
+                                return arbitrary { ${prop.baseName}.${it.baseName}(${
+                                    if (functionParams.isNotEmpty()) {
+                                        functionParams.joinToString(
+                                            ", ",
+                                        ) { p -> p.name }
+                                    } else {
+                                        ""
+                                    }
+                                }) }
+                                """.trimIndent(),
+                            )
+                            .build(),
+                    )
+                }
+        }
+    }
+
+    fun addPropertyWithGetter(
+        name: String,
+        receives: TypeName,
+        returns: ClassName,
+        block: PropertySpec.Builder.() -> Unit = {},
+    ) {
+        file.addProperty(
+            PropertySpec.builder(name, returns).apply {
+                receiver(receives)
+                getter(
+                    FunSpec.getterBuilder().apply {
+                        addTypeVariables(element.typeVariableNames.map { it.makeInvariant() })
+                        addCode(
+                            """
+                            return ${returns.simpleName}(this)
+                            """.trimIndent(),
+                        )
+                    }.build(),
+                )
+                addTypeVariables(element.typeVariableNames.map { it.makeInvariant() })
+            }.apply(block).build(),
+        )
     }
 }
 
@@ -207,83 +312,10 @@ internal class FileCompilerScope(
  * issue #62, this meant that [String?] was for example mapped
  * (incorrectly) to [String] when generating mutation info.
  */
-internal fun KSType.toClassNameRespectingNullability(): ClassName =
-    toClassName().copy(this.isMarkedNullable, emptyList(), emptyMap())
+internal fun KSType.toClassNameRespectingNullability(): ClassName = toClassName().copy(this.isMarkedNullable, emptyList(), emptyMap())
 
 internal fun KSType.toTypeNameRespectingNullability(typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY): TypeName =
     toTypeName(typeParamResolver).copy(this.isMarkedNullable, emptyList(), emptyMap())
-
-internal fun TypeCompileScope.mutationInfo(ty: KSType): MutationInfo<TypeName> =
-    when (ty.declaration) {
-        is KSClassDeclaration -> {
-            val typeName: TypeName = ty.toTypeNameRespectingNullability(typeParameterResolver)
-            val className =
-                when (typeName) {
-                    is ClassName -> typeName
-                    is ParameterizedTypeName -> typeName.rawType
-                    else -> ty.toClassNameRespectingNullability()
-                }
-            val nullableLessClassName = className.copy(nullable = false)
-
-            infix fun String.dot(function: String) = dot(ty, function)
-            when {
-                nullableLessClassName == LIST -> mutationInfoOfCollection(ty, className, className.simpleName)
-                nullableLessClassName == MAP -> mutationInfoOfCollection(ty, className, className.simpleName)
-                nullableLessClassName == SET -> mutationInfoOfCollection(ty, className, className.simpleName)
-                ty.hasMutableCopy() ->
-                    MutationInfo(
-                        className.mutable,
-                        { it dot "toMutable" },
-                        { it dot "freeze" },
-                    )
-                else ->
-                    MutationInfo(
-                        className.parameterizedWhenNotEmpty(
-                            ty.arguments.map { it.toTypeName(typeParameterResolver) },
-                        ),
-                        { it },
-                        { it },
-                    )
-            }
-        }
-        else ->
-            MutationInfo(ty.toTypeName(typeParameterResolver), { it }, { it })
-    }
-
-internal fun TypeCompileScope.mutationInfoOfCollection(
-    ty: KSType,
-    className: ClassName,
-    collectionType: String,
-): MutationInfo<TypeName> {
-    infix fun String.dot(function: String) = dot(ty, function)
-
-    infix fun String.dotMap(map: String) = dotMap(ty, map)
-    val type = ty.arguments[0].type?.resolve()
-    val isMutableCollection =
-        (ty.arguments.size == 1 && type?.hasMutableCopy() == true)
-    val transform: (String) -> String =
-        if (isMutableCollection) {
-            { it dotMap "it.toMutable()" dot "toMutable$collectionType" }
-        } else {
-            { it dot "toMutable$collectionType" }
-        }
-    val freeze: (String) -> String =
-        if (isMutableCollection) {
-            { it dotMap "it.freeze()" }
-        } else {
-            { it }
-        }
-    return MutationInfo(
-        ClassName(className.packageName, "Mutable$collectionType")
-            .copy(nullable = ty.isMarkedNullable, annotations = emptyList(), tags = emptyMap())
-            .parameterizedWhenNotEmpty(
-                type?.takeIf { isMutableCollection }?.toTypeName(typeParameterResolver)?.mutable?.let(::listOf)
-                    ?: ty.arguments.map { it.toTypeName(typeParameterResolver) },
-            ),
-        transform,
-        freeze,
-    )
-}
 
 internal fun String.dot(
     ty: KSType,
