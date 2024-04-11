@@ -17,35 +17,39 @@ dependencies {
     testImplementation(libs.ksp)
     testImplementation(projects.core)
     testImplementation(projects.faker.books)
+    testImplementation(projects.faker.edu)
     testImplementation(projects.kotestProperty)
     testImplementation(libs.bundles.test.kotest)
     kspTest(projects.kotestProperty)
     kspTest(projects.core)
     kspTest(projects.faker.books)
+    kspTest(projects.faker.edu)
 }
 
 tasks.test {
     testLogging {
         // set options for log level LIFECYCLE
-        events = setOf(
-            TestLogEvent.FAILED,
-            TestLogEvent.SKIPPED,
-            TestLogEvent.STANDARD_OUT
-        )
+        events =
+            setOf(
+                TestLogEvent.FAILED,
+                TestLogEvent.SKIPPED,
+                TestLogEvent.STANDARD_OUT,
+            )
         exceptionFormat = TestExceptionFormat.FULL
         showExceptions = true
         showCauses = true
         showStackTraces = true
         // set options for log level DEBUG and INFO
         debug {
-            events = setOf(
-                TestLogEvent.STARTED,
-                TestLogEvent.FAILED,
-                TestLogEvent.PASSED,
-                TestLogEvent.SKIPPED,
-                TestLogEvent.STANDARD_ERROR,
-                TestLogEvent.STANDARD_OUT
-            )
+            events =
+                setOf(
+                    TestLogEvent.STARTED,
+                    TestLogEvent.FAILED,
+                    TestLogEvent.PASSED,
+                    TestLogEvent.SKIPPED,
+                    TestLogEvent.STANDARD_ERROR,
+                    TestLogEvent.STANDARD_OUT,
+                )
             exceptionFormat = TestExceptionFormat.FULL
         }
         info.events = debug.events

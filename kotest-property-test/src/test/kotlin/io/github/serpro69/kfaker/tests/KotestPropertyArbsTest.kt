@@ -1,11 +1,14 @@
-@file:FakerArb(Faker::class, BFaker::class)
+@file:FakerArb(Faker::class, BFaker::class, EduFaker::class)
 
 package io.github.serpro69.kfaker.tests
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.arb
 import io.github.serpro69.kfaker.books.BooksFaker
 import io.github.serpro69.kfaker.books.arb
 import io.github.serpro69.kfaker.books.booksFaker
+import io.github.serpro69.kfaker.edu.EduFaker
+import io.github.serpro69.kfaker.edu.arb
 import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.kotest.FakerArb
 import io.kotest.core.spec.style.DescribeSpec
@@ -34,6 +37,15 @@ class KotestPropertyArbsTest : DescribeSpec({
             // TODO should maybe configure code-generation via FakerConfig instead of using annotation?
             val b = BooksFaker()
             forAll(b.arb.bible.quote()) { q: String ->
+                q.isNotBlank()
+            }
+            val f = Faker()
+            forAll(f.arb.address.city()) { q ->
+                q.isNotBlank()
+            }
+            // TODO support secondary providers via property, like educator.tertiary
+            val e = EduFaker()
+            forAll(e.arb.educator.campus()) { q ->
                 q.isNotBlank()
             }
         }
