@@ -9,10 +9,8 @@ repositories {
 }
 
 dependencies {
-    // used in FakerArb annotation (compileOnly so that we don't bring the transitive dependency)
-    compileOnly(projects.core)
+    compileOnly(projects.extension.kotestProperty)
     implementation(libs.ksp)
-    implementation(libs.test.kotest.property)
     api(libs.bundles.kotlinpoet)
     implementation(libs.commons.io)
     // test

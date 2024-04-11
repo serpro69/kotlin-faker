@@ -17,31 +17,35 @@ include(
     "core",
     "cli-bot",
     "docs",
-    "kotest-property",
-    "kotest-property-test",
 )
 
-include("")
+val extensions =
+    listOf(
+        "kotest-property",
+        "kotest-property-ksp",
+        "kotest-property-test",
+    )
+extensions.forEach { include("extension:$it") }
 
-val fakers = listOf(
-    "books",
-    "commerce",
-    "creatures",
-    "databases",
-    "edu",
-    "games",
-    "humor",
-    "japmedia",
-    "lorem",
-    "misc",
-    "movies",
-    "music",
-    "sports",
-    "tech",
-    "travel",
-    "tvshows",
-)
-
+val fakers =
+    listOf(
+        "books",
+        "commerce",
+        "creatures",
+        "databases",
+        "edu",
+        "games",
+        "humor",
+        "japmedia",
+        "lorem",
+        "misc",
+        "movies",
+        "music",
+        "sports",
+        "tech",
+        "travel",
+        "tvshows",
+    )
 fakers.forEach { include("faker:$it") }
 
 // helpers for integration tests
