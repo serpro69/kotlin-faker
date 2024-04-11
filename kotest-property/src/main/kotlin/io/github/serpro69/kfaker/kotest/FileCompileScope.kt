@@ -9,14 +9,14 @@ import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSFile
 import com.google.devtools.ksp.symbol.KSTypeAlias
 import com.squareup.kotlinpoet.FileSpec
+import io.github.serpro69.kfaker.kotest.extensions.ClassCompileScope
+import io.github.serpro69.kfaker.kotest.extensions.TypeAliasCompileScope
+import io.github.serpro69.kfaker.kotest.extensions.TypeCategory
+import io.github.serpro69.kfaker.kotest.extensions.allNestedDeclarations
+import io.github.serpro69.kfaker.kotest.extensions.hasGeneratedMarker
+import io.github.serpro69.kfaker.kotest.extensions.lang.filterIsInstance
+import io.github.serpro69.kfaker.kotest.extensions.typeCategory
 import io.github.serpro69.kfaker.kotest.poet.writeTo
-import io.github.serpro69.kfaker.kotest.utils.ClassCompileScope
-import io.github.serpro69.kfaker.kotest.utils.TypeAliasCompileScope
-import io.github.serpro69.kfaker.kotest.utils.TypeCategory
-import io.github.serpro69.kfaker.kotest.utils.allNestedDeclarations
-import io.github.serpro69.kfaker.kotest.utils.hasGeneratedMarker
-import io.github.serpro69.kfaker.kotest.utils.lang.filterIsInstance
-import io.github.serpro69.kfaker.kotest.utils.typeCategory
 import org.apache.commons.io.FilenameUtils
 
 internal fun ProcessorScope.processFiles(

@@ -1,4 +1,4 @@
-package io.github.serpro69.kfaker.kotest.utils
+package io.github.serpro69.kfaker.kotest.extensions
 
 import com.google.devtools.ksp.symbol.Visibility
 

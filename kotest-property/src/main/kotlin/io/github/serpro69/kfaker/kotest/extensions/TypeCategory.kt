@@ -1,16 +1,13 @@
-package io.github.serpro69.kfaker.kotest.utils
+package io.github.serpro69.kfaker.kotest.extensions
 
-import com.google.devtools.ksp.isAbstract
 import com.google.devtools.ksp.isPublic
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSTypeAlias
-import com.google.devtools.ksp.symbol.Modifier
-import com.google.devtools.ksp.symbol.Modifier.SEALED
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.ksp.toClassName
-import io.github.serpro69.kfaker.kotest.utils.TypeCategory.Known
-import io.github.serpro69.kfaker.kotest.utils.TypeCategory.Unknown
+import io.github.serpro69.kfaker.kotest.extensions.TypeCategory.Known
+import io.github.serpro69.kfaker.kotest.extensions.TypeCategory.Unknown
 
 internal val KSDeclaration.typeCategory: TypeCategory
     get() =
@@ -37,10 +34,6 @@ internal val KSTypeAlias.ultimateDeclaration: KSClassDeclaration?
             else -> null
         }
 
-internal inline fun TypeCompileScope.onKnownCategory(block: (Known) -> Unit) {
-    (typeCategory as? Known)?.apply(block) ?: logger.error("Type $fullName is not supported by faker")
-}
-
 internal sealed interface TypeCategory {
     sealed interface Known : TypeCategory {
         data object Faker : Known
@@ -66,11 +59,3 @@ private fun KSClassDeclaration.isDataProvider(): Boolean {
         it.resolve().toClassName() == ClassName("io.github.serpro69.kfaker.provider", "FakeDataProvider")
     }
 }
-
-private fun KSClassDeclaration.isDataClass() = isConstructable() && Modifier.DATA in modifiers
-
-private fun KSClassDeclaration.isValueClass() = isConstructable() && Modifier.VALUE in modifiers
-
-private fun KSClassDeclaration.isSealedDataHierarchy() = SEALED in modifiers && isAbstract() && hasOnlyDataClassChildren()
-
-private fun KSClassDeclaration.hasOnlyDataClassChildren() = sealedTypes.any() && sealedTypes.all { it.isDataClass() || it.isValueClass() }

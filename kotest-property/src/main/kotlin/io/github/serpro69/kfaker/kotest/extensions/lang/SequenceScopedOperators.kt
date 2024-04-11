@@ -1,4 +1,4 @@
-package io.github.serpro69.kfaker.kotest.utils.lang
+package io.github.serpro69.kfaker.kotest.extensions.lang
 
 /**
  * Alias of [forEach] with the item as the receiver.
@@ -6,16 +6,6 @@ package io.github.serpro69.kfaker.kotest.utils.lang
 internal inline fun <A> Sequence<A>.forEachRun(block: A.() -> Unit) {
     forEach(block)
 }
-
-/**
- * Alias of [flatMap] with the item as the receiver.
- */
-internal inline fun <A, R> Sequence<A>.flatMapRun(crossinline block: A.() -> Sequence<R>) = flatMap { it.block() }
-
-/**
- * Alias of [onEach] with the item as the receiver.
- */
-internal fun <A> Sequence<A>.onEachRun(block: A.() -> Unit) = onEach(block)
 
 /**
  * Alias of [map] with the item as the receiver.

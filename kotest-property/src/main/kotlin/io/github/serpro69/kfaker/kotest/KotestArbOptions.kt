@@ -21,16 +21,17 @@ internal sealed interface KotestArbGenerate {
         fun fromKspOptions(
             logger: KSPLogger,
             generate: String?,
-        ): KotestArbGenerate = when {
-            generate == null -> All
-            generate == ALL -> All
-            generate == ANNOTATED -> Annotated
-            generate.startsWith(PACKAGES_PREFIX) -> Packages(generate.split(':').drop(1))
-            else -> {
-                logger.error("Unrecognized value for 'generate'", null)
-                Error // return something, although the error is reported
+        ): KotestArbGenerate =
+            when {
+                generate == null -> All
+                generate == ALL -> All
+                generate == ANNOTATED -> Annotated
+                generate.startsWith(PACKAGES_PREFIX) -> Packages(generate.split(':').drop(1))
+                else -> {
+                    logger.error("Unrecognized value for 'generate'", null)
+                    Error // return something, although the error is reported
+                }
             }
-        }
     }
 }
 
@@ -38,10 +39,11 @@ internal data class KotestArbOptions(
     val generate: KotestArbGenerate,
 )
 
-internal fun KotestArbOptions(logger: KSPLogger, options: Map<String, String>) = KotestArbOptions(
+internal fun KotestArbOptions(
+    logger: KSPLogger,
+    options: Map<String, String>,
+) = KotestArbOptions(
     generate = KotestArbGenerate.fromKspOptions(logger, options[GENERATE]),
 )
 
 private const val GENERATE = "generate"
-
-private fun Map<String, String>.boolOrTrue(key: String) = this[key]?.lowercase()?.toBooleanStrictOrNull() ?: true

@@ -1,4 +1,4 @@
-package io.github.serpro69.kfaker.kotest.utils
+package io.github.serpro69.kfaker.kotest.extensions
 
 import com.google.devtools.ksp.getAllSuperTypes
 import com.google.devtools.ksp.getDeclaredFunctions
@@ -9,7 +9,6 @@ import com.google.devtools.ksp.symbol.FunctionKind
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSPropertyDeclaration
-import com.google.devtools.ksp.symbol.KSType
 import com.google.devtools.ksp.symbol.KSTypeAlias
 import com.google.devtools.ksp.symbol.KSTypeReference
 import com.google.devtools.ksp.symbol.Visibility
@@ -28,12 +27,12 @@ import com.squareup.kotlinpoet.ksp.toTypeName
 import com.squareup.kotlinpoet.ksp.toTypeParameterResolver
 import com.squareup.kotlinpoet.ksp.toTypeVariableName
 import io.github.serpro69.kfaker.kotest.LoggerScope
+import io.github.serpro69.kfaker.kotest.extensions.lang.orElse
+import io.github.serpro69.kfaker.kotest.extensions.lang.takeIfInstanceOf
 import io.github.serpro69.kfaker.kotest.poet.addClass
 import io.github.serpro69.kfaker.kotest.poet.className
 import io.github.serpro69.kfaker.kotest.poet.makeInvariant
 import io.github.serpro69.kfaker.kotest.poet.parameterizedWhenNotEmpty
-import io.github.serpro69.kfaker.kotest.utils.lang.orElse
-import io.github.serpro69.kfaker.kotest.utils.lang.takeIfInstanceOf
 
 internal sealed interface TypeCompileScope : KSDeclaration, LoggerScope {
     val typeVariableNames: List<TypeVariableName>
@@ -55,7 +54,6 @@ internal sealed interface TypeCompileScope : KSDeclaration, LoggerScope {
 
     fun KSClassDeclaration.asScope(): ClassCompileScope
 
-    val KSClassDeclaration.properties: Sequence<KSPropertyDeclaration> get() = asScope().properties
     val classDeclaration: KSClassDeclaration
 }
 
@@ -143,24 +141,9 @@ internal class TypeAliasCompileScope(
 }
 
 internal class FileCompilerScope(
-    val element: TypeCompileScope,
+    private val element: TypeCompileScope,
     val file: FileSpec.Builder,
 ) {
-    fun addFunction(
-        name: String,
-        receives: TypeName?,
-        returns: TypeName,
-        block: FunSpec.Builder.() -> Unit = {},
-    ) {
-        file.addFunction(
-            FunSpec.builder(name).apply {
-                if (receives != null) receiver(receives)
-                returns(returns)
-                addTypeVariables(element.typeVariableNames.map { it.makeInvariant() })
-            }.apply(block).build(),
-        )
-    }
-
     fun addArbFakerClass(
         type: ClassName,
         faker: KSClassDeclaration,
@@ -301,35 +284,4 @@ internal class FileCompilerScope(
             }.apply(block).build(),
         )
     }
-}
-
-/**
- * Obtains the [ClassName] corresponding to a [KSType].
- *
- * We need this function because [KSType.toClassName] doesn't
- * keep the nullability information correctly. As seen in
- * issue #62, this meant that [String?] was for example mapped
- * (incorrectly) to [String] when generating mutation info.
- */
-internal fun KSType.toClassNameRespectingNullability(): ClassName = toClassName().copy(this.isMarkedNullable, emptyList(), emptyMap())
-
-internal fun KSType.toTypeNameRespectingNullability(typeParamResolver: TypeParameterResolver = TypeParameterResolver.EMPTY): TypeName =
-    toTypeName(typeParamResolver).copy(this.isMarkedNullable, emptyList(), emptyMap())
-
-internal fun String.dot(
-    ty: KSType,
-    function: String,
-) = if (ty.isMarkedNullable) {
-    "$this?.$function()"
-} else {
-    "$this.$function()"
-}
-
-internal fun String.dotMap(
-    ty: KSType,
-    map: String,
-) = if (ty.isMarkedNullable) {
-    "$this?.map { $map }"
-} else {
-    "$this.map { $map }"
 }

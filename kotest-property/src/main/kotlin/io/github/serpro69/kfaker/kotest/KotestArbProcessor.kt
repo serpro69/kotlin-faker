@@ -8,12 +8,8 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.symbol.KSAnnotated
-import io.github.serpro69.kfaker.kotest.utils.TypeCategory
-import io.github.serpro69.kfaker.kotest.utils.TypeCompileScope
-import io.github.serpro69.kfaker.kotest.utils.lang.forEachRun
-import io.github.serpro69.kfaker.kotest.utils.lang.mapRun
-import io.github.serpro69.kfaker.kotest.utils.lang.onEachRun
-import io.github.serpro69.kfaker.kotest.utils.typeCategory
+import io.github.serpro69.kfaker.kotest.extensions.lang.forEachRun
+import io.github.serpro69.kfaker.kotest.extensions.lang.mapRun
 
 internal interface LoggerScope {
     val logger: KSPLogger
@@ -42,22 +38,11 @@ internal class KotestArbProcessor(private val scope: ProcessorScope) : SymbolPro
                         .mapRun { resolver.getClassDeclarationByName(qualifiedName!!) }
                         .forEachRun {
                             scope.logger.warn("Processing Faker: $this", this)
-                            this?.classScope?.copyMapFunctionKt?.write()
-//                            copyMapFunctionKt.write()
-//                            mutableCopyKt.write()
+                            this?.classScope?.arbExtensions?.write()
                         }
                 }
             }
-            // add Arb extensions
-            (classes.mapRun { classScope } + typeAliases.mapRun { typealiasScope })
-                .filter { it.canHaveArbs() }
-                .onEachRun { logger.logging("Processing ${simpleName.asString()}") }
-                .forEachRun {
-                    copyMapFunctionKt.write()
-                }
         }
         return emptyList()
     }
-
-    private fun TypeCompileScope.canHaveArbs() = typeCategory in listOf(TypeCategory.Known.Faker)
 }
