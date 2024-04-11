@@ -13,6 +13,7 @@ dependencies {
     compileOnly(projects.core)
     implementation(libs.test.kotest.property)
     // test
+    testImplementation(projects.core) // needed for tests since we have compileOnly dependency
     testImplementation(libs.bundles.test.kotest)
 }
 
