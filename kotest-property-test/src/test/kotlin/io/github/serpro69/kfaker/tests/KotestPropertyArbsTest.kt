@@ -3,9 +3,10 @@
 package io.github.serpro69.kfaker.tests
 
 import io.github.serpro69.kfaker.Faker
-import io.github.serpro69.kfaker.arb
 import io.github.serpro69.kfaker.books.BooksFaker
 import io.github.serpro69.kfaker.books.arb
+import io.github.serpro69.kfaker.books.booksFaker
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.kotest.FakerArb
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.property.Arb
@@ -37,17 +38,16 @@ class KotestPropertyArbsTest : DescribeSpec({
             }
         }
         it("should generate quotes from annotated expression") {
+            // this won't be supported since KSP doesn't support symbols from expressions
 //            forAll(@FakerArb BooksFaker().arb.bible.quote()) { q: String ->
 //                q.isNotBlank()
 //            }
         }
         it("should generate quotes from companion object") {
-            val b = BooksFaker()
-            forAll(b.arb.bible.quote()) { q: String ->
+            forAll(Arb.booksFaker.bible.quote()) { q: String ->
                 q.isNotBlank()
             }
-            val f = Faker()
-            forAll(f.arb.address.city()) { q: String ->
+            forAll(Arb.faker.address.city()) { q: String ->
                 q.isNotBlank()
             }
         }

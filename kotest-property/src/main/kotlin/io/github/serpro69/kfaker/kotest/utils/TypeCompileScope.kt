@@ -227,10 +227,12 @@ internal class FileCompilerScope(
                         this.${prop.baseName} = ${prop.baseName}
                         """.trimIndent(),
                     )
+                    .addModifiers(KModifier.INTERNAL)
                     .build(),
             )
             addProperty(
                 PropertySpec.builder(prop.baseName, type.className)
+                    .addModifiers(KModifier.PRIVATE)
                     .build(),
             )
             type.getDeclaredFunctions()
@@ -283,6 +285,7 @@ internal class FileCompilerScope(
         name: String,
         receives: TypeName,
         returns: ClassName,
+        code: String,
         block: PropertySpec.Builder.() -> Unit = {},
     ) {
         file.addProperty(
@@ -291,11 +294,7 @@ internal class FileCompilerScope(
                 getter(
                     FunSpec.getterBuilder().apply {
                         addTypeVariables(element.typeVariableNames.map { it.makeInvariant() })
-                        addCode(
-                            """
-                            return ${returns.simpleName}(this)
-                            """.trimIndent(),
-                        )
+                        addCode(code)
                     }.build(),
                 )
                 addTypeVariables(element.typeVariableNames.map { it.makeInvariant() })

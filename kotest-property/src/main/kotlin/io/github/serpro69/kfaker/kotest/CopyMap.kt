@@ -8,6 +8,7 @@ import io.github.serpro69.kfaker.kotest.utils.TypeCompileScope
 import io.github.serpro69.kfaker.kotest.utils.addGeneratedMarker
 import io.github.serpro69.kfaker.kotest.utils.fullName
 import io.github.serpro69.kfaker.kotest.utils.typeCategory
+import java.util.Locale
 
 internal val TypeCompileScope.copyMapFunctionKt: FileSpec
     get() =
@@ -15,7 +16,13 @@ internal val TypeCompileScope.copyMapFunctionKt: FileSpec
             val parameterized = target.parameterized
             val arbClassName = ClassName(file.packageName, "Arb${target.simpleName}")
             addGeneratedMarker()
-            addPropertyWithGetter("arb", parameterized, arbClassName)
+            addPropertyWithGetter("arb", parameterized, arbClassName, "return ${arbClassName.simpleName}(this)")
+            addPropertyWithGetter(
+                target.simpleName.replaceFirstChar { if (it.isUpperCase()) it.lowercase(Locale.getDefault()) else it.toString() },
+                ClassName("io.kotest.property", "Arb", "Companion"),
+                arbClassName,
+                "return $arbClassName(${target.simpleName}())",
+            )
             addArbFakerClass(arbClassName, classDeclaration)
             /* generate the following code
             val Arb.Companion.booksFaker get() = ArbBooks(BooksFaker())
