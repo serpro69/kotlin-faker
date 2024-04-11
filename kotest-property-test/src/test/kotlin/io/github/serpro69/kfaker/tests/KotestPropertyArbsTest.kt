@@ -9,32 +9,16 @@ import io.github.serpro69.kfaker.books.arb
 import io.github.serpro69.kfaker.books.booksFaker
 import io.github.serpro69.kfaker.edu.EduFaker
 import io.github.serpro69.kfaker.edu.arb
-import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.kotest.FakerArb
+import io.github.serpro69.kfaker.randomClass
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.int
 import io.kotest.property.forAll
 import io.github.serpro69.kfaker.books.Faker as BFaker
 
 class KotestPropertyArbsTest : DescribeSpec({
-
-    describe("Standard kotest Arbs") {
-        it("is allowed to drink in US") {
-            forAll(Arb.int(21..150)) { a ->
-                a in 21..150
-            }
-        }
-        it("is allowed to drink in London") {
-            forAll(Arb.int(18..150)) { a ->
-                a in 18..150
-            }
-        }
-    }
-
     describe("Custom kotlin-faker Arbs") {
         it("should generate quotes from annotated local variable") {
-            // TODO should maybe configure code-generation via FakerConfig instead of using annotation?
             val b = BooksFaker()
             forAll(b.arb.bible.quote()) { q: String ->
                 q.isNotBlank()
@@ -43,28 +27,67 @@ class KotestPropertyArbsTest : DescribeSpec({
             forAll(f.arb.address.city()) { q ->
                 q.isNotBlank()
             }
+            forAll(f.arb.address.city(), f.arb.address.streetName()) { city, street ->
+                city.isNotBlank()
+                street.isNotBlank()
+            }
+//            forAll(f.arb.randomClass.randomInstance<String>()) { q ->
+//                q.isNotBlank()
+//            }
             // TODO support secondary providers via property, like educator.tertiary
             val e = EduFaker()
             forAll(e.arb.educator.campus()) { q ->
                 q.isNotBlank()
             }
         }
-        it("should generate quotes from annotated expression") {
-            // this won't be supported since KSP doesn't support symbols from expressions
-//            forAll(@FakerArb BooksFaker().arb.bible.quote()) { q: String ->
-//                q.isNotBlank()
-//            }
-        }
         it("should generate quotes from companion object") {
             forAll(Arb.booksFaker.bible.quote()) { q: String ->
                 q.isNotBlank()
             }
-            forAll(Arb.faker.address.city()) { q: String ->
-                q.isNotBlank()
+        }
+        it("should generate random class instance") {
+            forAll(Arb.randomClass.instance()) { foo: Foo -> foo.bar.s.isNotBlank() }
+            forAll(
+                Arb.randomClass.instance<Foo> {
+                    typeGenerator { "hello faker" }
+                },
+            ) {
+                it.bar.s == "hello faker"
+            }
+        }
+        it("should generate person with address") {
+            val f = Faker()
+            val person: () -> Arb<Person> = {
+                Arb.randomClass.instance<Person> {
+                    namedParameterGenerator("name") { f.name.name() }
+                    namedParameterGenerator("age") { f.random.nextInt(20, 30) }
+                }
+            }
+            val address: () -> Arb<Address> = {
+                Arb.randomClass.instance<Address> {
+                    namedParameterGenerator("city") { f.address.city() }
+                    namedParameterGenerator("streetName") { f.address.streetName() }
+                    namedParameterGenerator("streetAddress") { f.address.streetAddress() }
+                }
+            }
+            forAll(person(), address()) { p: Person, a: Address ->
+                p.name.isNotBlank()
+                p.age in 20..30
+                a.city.isNotBlank()
+                a.streetName.isNotBlank()
+                a.streetAddress.isNotBlank()
             }
         }
     }
 })
+
+class Foo(val bar: Bar)
+
+class Bar(val s: String)
+
+class Person(val name: String, val age: Int)
+
+class Address(val city: String, val streetName: String, val streetAddress: String)
 
 /*
 // pseudo-generated code below this line

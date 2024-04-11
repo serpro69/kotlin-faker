@@ -12,15 +12,12 @@ dependencies {
     // used in FakerArb annotation (compileOnly so that we don't bring the transitive dependency)
     compileOnly(projects.core)
     implementation(libs.ksp)
-//    implementation(projects.utils.kotlinPoet)
-//    implementation(projects.kopykatAnnotations)
+    implementation(libs.test.kotest.property)
     api(libs.bundles.kotlinpoet)
     implementation(libs.commons.io)
     // test
-//    testImplementation(projects.utils.compiletesting)
     testImplementation(kotlin("test"))
     testImplementation(libs.test.junit.jupiter.params)
-//    testRuntimeOnly(projects.kopykatKsp)
 }
 
 tasks.test {
