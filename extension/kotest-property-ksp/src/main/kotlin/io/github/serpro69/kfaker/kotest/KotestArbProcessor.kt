@@ -15,30 +15,28 @@ internal interface LoggerScope {
     val logger: KSPLogger
 }
 
-internal interface OptionsScope {
-    val options: KotestArbOptions
-}
+internal interface OptionsScope
 
 internal class ProcessorScope(environment: SymbolProcessorEnvironment) : LoggerScope, OptionsScope {
     val codegen = environment.codeGenerator
     override val logger = environment.logger
-    override val options = KotestArbOptions(environment.logger, environment.options)
 }
 
 internal class KotestArbProcessor(private val scope: ProcessorScope) : SymbolProcessor {
     @OptIn(KspExperimental::class)
     override fun process(resolver: Resolver): List<KSAnnotated> {
         scope.processFiles(resolver) {
-            scope.logger.warn("FileCompileScope: $this")
+            scope.logger.logging("FileCompileScope: $this")
             files.forEachRun {
-                scope.logger.warn("File: $this", this)
+                scope.logger.logging("Processing file: $this", this)
                 getAnnotationsByType(FakerArb::class).forEach { a ->
-                    scope.logger.warn("Found Annotation: $a", this)
+                    scope.logger.logging("Found Annotation: $a", this)
                     a.fakers.asSequence()
-                        .mapRun { resolver.getClassDeclarationByName(qualifiedName!!) }
+                        .mapRun { qualifiedName?.let { resolver.getClassDeclarationByName(it) } }
+                        .filterNotNull()
                         .forEachRun {
-                            scope.logger.warn("Processing Faker: $this", this)
-                            this?.classScope?.arbExtensions?.write()
+                            scope.logger.logging("Processing Faker: $this", this)
+                            classScope.arbExtensions.write()
                         }
                 }
             }

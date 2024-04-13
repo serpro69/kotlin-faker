@@ -6,7 +6,6 @@ import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSName
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
-import com.squareup.kotlinpoet.ParameterizedTypeName
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.ksp.writeTo
@@ -20,6 +19,7 @@ fun FileSpec.writeTo(codeGenerator: CodeGenerator) {
 
 fun ClassName.append(name: String): ClassName = ClassName(packageName, simpleNames + name)
 
+@Suppress("RecursivePropertyAccessor")
 val KSDeclaration.className: ClassName
     get() =
         when (val parent = parentDeclaration) {
@@ -30,26 +30,13 @@ val KSDeclaration.className: ClassName
 fun KSName.asStringQuoted(): String =
     asString().split('.').joinToString(separator = ".") {
         when (it) {
-            in KEYWORDS -> "`$it`"
+            in KOTLIN_KEYWORDS -> "`$it`"
             else -> it
         }
     }
 
-fun ClassName.flattenWithSuffix(suffix: String): ClassName {
-    val mutableSimpleName = (simpleNames + suffix).joinToString(separator = "$")
-    return ClassName(packageName, mutableSimpleName).copy(this.isNullable, emptyList(), emptyMap())
-}
-
-fun ParameterizedTypeName.flattenWithSuffix(suffix: String): ParameterizedTypeName {
-    val mutableSimpleName = (rawType.simpleNames + suffix).joinToString(separator = "$")
-    return ClassName(
-        rawType.packageName,
-        mutableSimpleName,
-    ).copy(this.isNullable, emptyList(), emptyMap()).parameterizedBy(this.typeArguments)
-}
-
 // https://kotlinlang.org/docs/reference/keyword-reference.html
-private val KEYWORDS =
+internal val KOTLIN_KEYWORDS =
     setOf(
         // Hard keywords
         "as",
@@ -129,7 +116,8 @@ private val KEYWORDS =
         "tailrec",
         "value",
         "vararg",
-        // These aren't keywords anymore but still break some code if unescaped. https://youtrack.jetbrains.com/issue/KT-52315
+        // These aren't keywords anymore but still break some code if unescaped.
+        // https://youtrack.jetbrains.com/issue/KT-52315
         "header",
         "impl",
         // Other reserved keywords

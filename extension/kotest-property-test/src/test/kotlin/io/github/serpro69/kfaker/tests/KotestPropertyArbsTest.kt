@@ -9,6 +9,7 @@ import io.github.serpro69.kfaker.books.arb
 import io.github.serpro69.kfaker.books.booksFaker
 import io.github.serpro69.kfaker.edu.EduFaker
 import io.github.serpro69.kfaker.edu.arb
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.kotest.FakerArb
 import io.github.serpro69.kfaker.randomClass
 import io.kotest.core.spec.style.DescribeSpec
@@ -43,6 +44,14 @@ class KotestPropertyArbsTest : DescribeSpec({
         it("should generate quotes from companion object") {
             forAll(Arb.booksFaker.bible.quote()) { q: String ->
                 q.isNotBlank()
+            }
+        }
+        it("should generate addresses from companion object") {
+            class Address(val city: String, val state: String) {
+                fun isValid() = city.isNotBlank() && state.isNotBlank()
+            }
+            forAll(Arb.faker.address.city(), Arb.faker.address.state()) { city, state ->
+                Address(city, state).isValid()
             }
         }
         it("should generate random class instance") {

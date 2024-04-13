@@ -13,12 +13,15 @@ internal val TypeCompileScope.arbExtensions: FileSpec
             val parameterized = target.parameterized
             val arbClassName = ClassName(file.packageName, "Arb${target.simpleName}")
             addGeneratedMarker()
-            addPropertyWithGetter("arb", parameterized, arbClassName, "return ${arbClassName.simpleName}(this)")
+            addPropertyWithGetter("arb", parameterized, arbClassName) { _ ->
+                addCode("return ${arbClassName.simpleName}(this)")
+            }
             addPropertyWithGetter(
                 target.simpleName.replaceFirstChar { if (it.isUpperCase()) it.lowercase(Locale.getDefault()) else it.toString() },
                 ClassName("io.kotest.property", "Arb", "Companion"),
                 arbClassName,
-                "return $arbClassName(${target.simpleName}())",
-            )
+            ) { _ ->
+                addCode("return $arbClassName(${target.simpleName}())")
+            }
             addArbFakerClass(arbClassName, classDeclaration)
         }
