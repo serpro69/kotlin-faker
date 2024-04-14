@@ -1,3 +1,4 @@
+import com.google.devtools.ksp.gradle.KspTaskJvm
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
@@ -28,6 +29,9 @@ dependencies {
 }
 
 tasks.test {
+    dependsOn(":core:shadowJar")
+    dependsOn(":faker:books:shadowJar")
+    dependsOn(":faker:edu:shadowJar")
     testLogging {
         // set options for log level LIFECYCLE
         events =
@@ -57,4 +61,10 @@ tasks.test {
         info.exceptionFormat = debug.exceptionFormat
     }
     useJUnitPlatform()
+}
+
+tasks.withType(KspTaskJvm::class.java).configureEach {
+    dependsOn(":core:shadowJar")
+    dependsOn(":faker:books:shadowJar")
+    dependsOn(":faker:edu:shadowJar")
 }
