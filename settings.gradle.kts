@@ -69,5 +69,12 @@ settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
                 }
             }
         }
+        extensions.filter { !it.endsWith("-test") }.forEach { e ->
+            module(":extension:$e") {
+                tag {
+                    prefix = TagPrefix("ext-$e-v")
+                }
+            }
+        }
     }
 }
