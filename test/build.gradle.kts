@@ -1,6 +1,4 @@
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-import kotlinx.validation.KotlinApiBuildTask
-import kotlinx.validation.KotlinApiCompareTask
 
 plugins {
 }

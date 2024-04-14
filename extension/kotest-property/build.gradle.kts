@@ -1,4 +1,5 @@
 plugins {
+    `faker-ext-conventions`
 }
 
 dependencies {

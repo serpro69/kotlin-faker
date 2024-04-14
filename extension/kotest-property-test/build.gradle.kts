@@ -3,6 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
+    kotlin("jvm")
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
 }
 
@@ -60,4 +61,14 @@ tasks.withType(KspTaskJvm::class.java).configureEach {
     dependsOn(":core:shadowJar")
     dependsOn(":faker:books:shadowJar")
     dependsOn(":faker:edu:shadowJar")
+}
+
+// disable the default jar task
+tasks.jar {
+    enabled = false
+}
+
+// never publish
+tasks.withType<PublishToMavenRepository> {
+    enabled = false
 }
