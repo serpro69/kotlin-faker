@@ -3,14 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-    kotlin("jvm")
     id("com.google.devtools.ksp") version "1.9.21-1.0.15"
-}
-
-group = "io.github.serpro69"
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {

@@ -1,11 +1,4 @@
 plugins {
-    kotlin("jvm")
-}
-
-group = "io.github.serpro69"
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {
