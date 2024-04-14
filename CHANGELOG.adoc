@@ -9,6 +9,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/234[#234] (:extension) Add extension module for kotest property testing
 * https://github.com/serpro69/kotlin-faker/pull/232[#232] (:core) Add support for alternative primary key when resolving values
 * https://github.com/serpro69/kotlin-faker/pull/227[#227] Add BOM to manage faker versions
 * https://github.com/serpro69/kotlin-faker/issues/222[#222] (:faker:databases) Create new Databases faker module
