@@ -19,4 +19,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    dependsOn(":core:shadowJar")
+    dependsOn(":faker:books:shadowJar")
+    dependsOn(":faker:edu:shadowJar")
 }
