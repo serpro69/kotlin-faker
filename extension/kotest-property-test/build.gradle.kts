@@ -1,4 +1,5 @@
 import com.google.devtools.ksp.gradle.KspTaskJvm
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 
 plugins {
     kotlin("jvm")
@@ -87,15 +88,15 @@ val integrationTest by tasks.creating(Test::class) {
 tasks.withType(KspTaskJvm::class.java).configureEach {
     dependsOn(":core:shadowJar")
     fakers.forEach { dependsOn(":faker:$it:shadowJar") }
-    dependsOn(":extension:kotest-property-ksp:shadowJar")
 }
 
+// disable api validation tasks
+tasks.apiBuild { enabled = false }
+tasks.apiCheck { enabled = false }
+tasks.apiDump { enabled = false }
 // disable the default jar task
-tasks.jar {
-    enabled = false
-}
-
+tasks.withType<Jar> { enabled = false }
 // never publish
-tasks.withType<PublishToMavenRepository> {
-    enabled = false
-}
+tasks.withType<PublishToMavenRepository> { enabled = false }
+// disable tag
+tasks.withType<TagTask> { enabled = false }

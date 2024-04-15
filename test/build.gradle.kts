@@ -20,22 +20,16 @@ artifacts {
     add(testHelper.name, testJar)
 }
 
+// disable api validation tasks
+tasks.apiBuild { enabled = false }
+tasks.apiCheck { enabled = false }
+tasks.apiDump { enabled = false }
 // disable the default jar task
-tasks.jar {
-    enabled = false
-}
-
+tasks.jar { enabled = false }
 // never publish
-tasks.withType<PublishToMavenRepository> {
-    enabled = false
-}
-
+tasks.withType<PublishToMavenRepository> { enabled = false }
 // nothing to test in this module yet,
 // and we use test sources to produce artifacts...
-tasks.withType<Test> {
-    enabled = false
-}
-
-tasks.withType<TagTask> {
-    enabled = false
-}
+tasks.withType<Test> { enabled = false }
+// disable tag
+tasks.withType<TagTask> { enabled = false }
