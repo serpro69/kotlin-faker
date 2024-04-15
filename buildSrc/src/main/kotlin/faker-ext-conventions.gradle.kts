@@ -1,5 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.jetbrains.dokka.gradle.DokkaTask
@@ -9,7 +7,6 @@ plugins {
     base
     kotlin("jvm")
     id("org.jetbrains.dokka")
-    id("com.github.johnrengelman.shadow")
     `maven-publish`
     signing
 }
@@ -45,7 +42,6 @@ configurations {
     create("integrationRuntimeOnly") {
         extendsFrom(
             configurations.getByName("testRuntimeOnly"),
-            configurations.getByName("shadow")
         )
     }
 }
@@ -66,8 +62,8 @@ configure<SourceSetContainer> {
 }
 
 dependencies {
-    val shadow by configurations
-    shadow(libs.bundles.kotlin)
+    val implementation by configurations
+    implementation(libs.bundles.kotlin)
 }
 
 val integrationTest by tasks.creating(Test::class) {
@@ -94,35 +90,8 @@ tasks.withType<Jar> {
             )
         )
     }
-}
 
-val shadowJar by tasks.getting(ShadowJar::class) {
-    minimize()
-    archiveBaseName.set(fullName)
-    archiveClassifier.set("")
-    dependencies {
-        exclude("module-info.class")
-    }
-    manifest {
-        attributes(
-            mapOf(
-                "Implementation-Title" to fullName,
-                "Implementation-Version" to project.version,
-                /*
-                 * We can't add this here because this resolves the configuration,
-                 * after which it effectively becomes read-only and we'll get an error
-                 * Cannot change dependencies of dependency configuration ':core:implementation' after it has been included in dependency resolution
-                 * if we try to add more dependencies in the module's build.gradle file directly
-                 */
-                // "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name }
-            )
-        )
-    }
-    from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
-        into("META-INF")
-    }
     dependsOn(integrationTest)
-    dependsOn(tasks.jar)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {
@@ -153,8 +122,7 @@ publishing {
             groupId = project.group.toString()
             artifactId = fullName
             version = project.version.toString()
-//            from(components["java"])
-            ShadowExtension(project).component(this)
+            from(components["java"])
             artifact(sourcesJar)
             artifact(dokkaJavadocJar) //TODO configure dokka or use defaults?
 
@@ -190,7 +158,8 @@ publishing {
 
 tasks {
     assemble {
-        dependsOn(shadowJar)
+        dependsOn(integrationTest)
+        dependsOn(jar)
     }
 }
 
