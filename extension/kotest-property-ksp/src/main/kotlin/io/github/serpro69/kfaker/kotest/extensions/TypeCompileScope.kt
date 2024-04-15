@@ -157,7 +157,8 @@ internal class FileCompilerScope(
             type.getDeclaredFunctions()
                 .filter {
                     it.functionKind == FunctionKind.MEMBER &&
-                        it.getVisibility() == Visibility.PUBLIC
+                        it.getVisibility() == Visibility.PUBLIC &&
+                        !it.hasAnnotation<Deprecated> { a -> a.level == DeprecationLevel.ERROR }
                 }
                 .forEach {
                     element.logger.logging("function: $it")
