@@ -171,30 +171,20 @@ internal class FileCompilerScope(
                                 .build()
                         }
                     addFunction(
-                        FunSpec.builder(it.baseName)
-                            .addParameters(functionParams)
-                            .returns(
-                                ClassName(
-                                    "io.kotest.property",
-                                    "Arb",
-                                ).parameterizedWhenNotEmpty(
-                                    returnTypeName?.let { t -> listOf(t) } ?: emptyList(),
-                                ),
+                        FunSpec.builder(it.baseName).apply {
+                            addParameters(functionParams)
+                            val typeArgs = returnTypeName?.let { t -> listOf(t) } ?: emptyList()
+                            returns(
+                                ClassName("io.kotest.property", "Arb")
+                                    .parameterizedWhenNotEmpty(typeArgs)
                             )
-                            .addCode(
-                                """
-                                return arbitrary { ${prop.baseName}.${it.baseName}(${
-                                    if (functionParams.isNotEmpty()) {
-                                        functionParams.joinToString(
-                                            ", ",
-                                        ) { p -> p.name }
-                                    } else {
-                                        ""
-                                    }
-                                }) }
-                                """.trimIndent(),
-                            )
-                            .build(),
+                            val params = if (functionParams.isNotEmpty()) {
+                                functionParams.joinToString(", ") { p -> p.name }
+                            } else {
+                                ""
+                            }
+                            addCode("return arbitrary·{·${prop.baseName}.${it.baseName}($params)·}")
+                        }.build()
                     )
                 }
         }
