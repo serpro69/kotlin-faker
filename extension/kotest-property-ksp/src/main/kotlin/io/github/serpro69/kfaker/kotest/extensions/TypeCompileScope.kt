@@ -1,6 +1,8 @@
 package io.github.serpro69.kfaker.kotest.extensions
 
+import com.google.devtools.ksp.KspExperimental
 import com.google.devtools.ksp.getAllSuperTypes
+import com.google.devtools.ksp.getAnnotationsByType
 import com.google.devtools.ksp.getDeclaredFunctions
 import com.google.devtools.ksp.getDeclaredProperties
 import com.google.devtools.ksp.getVisibility
@@ -10,6 +12,7 @@ import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSDeclaration
 import com.google.devtools.ksp.symbol.KSPropertyDeclaration
 import com.google.devtools.ksp.symbol.Visibility
+import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
@@ -88,6 +91,7 @@ internal class ClassCompileScope(
 /**
  * Represents a compile scope of an [element] in a given [file].
  */
+@OptIn(KspExperimental::class)
 internal class FileCompilerScope(
     private val element: TypeCompileScope,
     val file: FileSpec.Builder,
@@ -185,6 +189,20 @@ internal class FileCompilerScope(
                                 ""
                             }
                             addCode("return arbitrary·{·${prop.baseName}.${it.baseName}($params)·}")
+                            // handle non-ERROR level annotations
+                            it.getAnnotationsByType(Deprecated::class).firstOrNull()?.let { a ->
+                                addAnnotation(
+                                    AnnotationSpec
+                                        .builder(ClassName("kotlin", "Deprecated"))
+                                        .addMember(
+                                            "level = %L, message = %S, replaceWith = %L",
+                                            "DeprecationLevel.${a.level}",
+                                            a.message,
+                                            "ReplaceWith(\"${a.replaceWith.expression}\")",
+                                        )
+                                        .build()
+                                )
+                            }
                         }.build()
                     )
                 }
