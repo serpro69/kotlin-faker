@@ -13,10 +13,10 @@ plugins {
 rootProject.name = "kotlin-faker"
 
 include(
-    "bom",
-    "core",
-    "cli-bot",
-    "docs",
+    ":bom",
+    ":core",
+    ":cli-bot",
+    ":docs",
 )
 
 val extensions =
@@ -25,7 +25,7 @@ val extensions =
         "kotest-property-ksp",
         "kotest-property-test",
     )
-extensions.forEach { include("extension:$it") }
+extensions.forEach { include(":extension:$it") }
 
 val fakers =
     listOf(
@@ -46,10 +46,10 @@ val fakers =
         "travel",
         "tvshows",
     )
-fakers.forEach { include("faker:$it") }
+fakers.forEach { include(":faker:$it") }
 
 // helpers for integration tests
-include("test")
+include(":test")
 
 settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
     git {
