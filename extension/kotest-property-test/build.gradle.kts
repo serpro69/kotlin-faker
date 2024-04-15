@@ -1,6 +1,4 @@
 import com.google.devtools.ksp.gradle.KspTaskJvm
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     kotlin("jvm")
@@ -47,15 +45,6 @@ configure<SourceSetContainer> {
     }
 }
 
-val integrationTest by tasks.creating(Test::class) {
-    testClassesDirs = sourceSets["integration"].output.classesDirs
-    classpath = sourceSets["integration"].runtimeClasspath
-    dependsOn(tasks.test)
-    fakers.forEach {
-        dependsOn(":faker:$it:shadowJar")
-    }
-}
-
 dependencies {
     testImplementation(libs.kotlin.stdlib.jdk8)
     testImplementation(libs.ksp)
@@ -84,40 +73,21 @@ tasks.test {
     dependsOn(":core:shadowJar")
     dependsOn(":faker:books:shadowJar")
     dependsOn(":faker:edu:shadowJar")
-    testLogging {
-        // set options for log level LIFECYCLE
-        events =
-            setOf(
-                TestLogEvent.FAILED,
-                TestLogEvent.SKIPPED,
-                TestLogEvent.STANDARD_OUT,
-            )
-        exceptionFormat = TestExceptionFormat.FULL
-        showExceptions = true
-        showCauses = true
-        showStackTraces = true
-        // set options for log level DEBUG and INFO
-        debug {
-            events =
-                setOf(
-                    TestLogEvent.STARTED,
-                    TestLogEvent.FAILED,
-                    TestLogEvent.PASSED,
-                    TestLogEvent.SKIPPED,
-                    TestLogEvent.STANDARD_ERROR,
-                    TestLogEvent.STANDARD_OUT,
-                )
-            exceptionFormat = TestExceptionFormat.FULL
-        }
-        info.events = debug.events
-        info.exceptionFormat = debug.exceptionFormat
-    }
     useJUnitPlatform()
+}
+
+val integrationTest by tasks.creating(Test::class) {
+    testClassesDirs = sourceSets["integration"].output.classesDirs
+    classpath = sourceSets["integration"].runtimeClasspath
+    dependsOn(tasks.test)
+    dependsOn(":core:shadowJar")
+    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
 }
 
 tasks.withType(KspTaskJvm::class.java).configureEach {
     dependsOn(":core:shadowJar")
     fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+    dependsOn(":extension:kotest-property-ksp:shadowJar")
 }
 
 // disable the default jar task
