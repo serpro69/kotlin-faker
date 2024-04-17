@@ -1,6 +1,4 @@
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-import kotlinx.validation.KotlinApiBuildTask
-import kotlinx.validation.KotlinApiCompareTask
 
 plugins {
     `java-platform`
@@ -28,10 +26,10 @@ val isRelease = provider {
 
 // Exclude subprojects that will never be published so that when configuring this project
 // we don't force their configuration and do unnecessary work
-val excludeFromBom = listOf("test")
+val excludeFromBom = listOf(":cli-bot", ":docs", ":extension", ":faker", ":test", ":extension:kotest-property-test")
 fun projectsFilter(candidateProject: Project) =
-    excludeFromBom.all { !candidateProject.name.contains(it) } &&
-        candidateProject.name != bom.name
+    excludeFromBom.none { candidateProject.path == it }
+        && candidateProject.name != bom.name
 
 // Declare that this subproject depends on all subprojects matching the filter
 // When this subproject is configured, it will force configuration of all subprojects
@@ -41,6 +39,7 @@ rootProject.subprojects.filter(::projectsFilter).forEach { bom.evaluationDepends
 dependencies {
     constraints {
         rootProject.subprojects.filter { project ->
+            logger.info("Include {} in bom: {}", project, project.tasks.findByName("publish")?.enabled ?: false)
             // Only declare dependencies on projects that will have publications
             projectsFilter(project) && project.tasks.findByName("publish")?.enabled == true
         }.forEach { project ->
