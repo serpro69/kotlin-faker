@@ -10,3 +10,4 @@
 * [Available Locales](available-locales.md)
 * [Java Interop](java-interop.md)
 * [Faker Bot CLI](faker-cli.md)
+* [Extensions](extensions.md)

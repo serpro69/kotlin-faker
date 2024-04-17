@@ -97,6 +97,10 @@ See [bom/README.md](bom/README.md) for more details.
 
 Extra fakers covering a wide range of domains are available as separate dependencies. See [faker](faker) submodules in this repo for more details about each faker.
 
+### Third-Party Extensions
+
+Faker provides extensions for some third-party testing libraries. See [extension](extension) submodules in this repo for more details about each extension.
+
 ## Usage
 
 Full usage documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).

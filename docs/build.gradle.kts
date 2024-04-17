@@ -25,8 +25,7 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
-    jcenter()
+    jcenter() // orchid...
 }
 
 dependencies {

@@ -1,51 +1,55 @@
 import io.github.serpro69.semverkt.gradle.plugin.SemverPluginExtension
-import io.github.serpro69.semverkt.release.configuration.CleanRule
 import io.github.serpro69.semverkt.release.configuration.TagPrefix
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+apply(from = "./buildSrc/repositories.settings.gradle.kts")
 
 plugins {
-    // NB! remember to set same version in buildSrc/build.gradle.kts:20
+    // NB! remember to set same version in gradle/libs.versions.toml:10
     id("io.github.serpro69.semantic-versioning") version "0.13.0"
 }
 
 rootProject.name = "kotlin-faker"
 
 include(
-    "bom",
-    "core",
-    "cli-bot",
-    "docs",
+    ":bom",
+    ":core",
+    ":cli-bot",
+    ":docs",
 )
 
-val fakers = listOf(
-    "books",
-    "commerce",
-    "creatures",
-    "databases",
-    "edu",
-    "games",
-    "humor",
-    "japmedia",
-    "lorem",
-    "misc",
-    "movies",
-    "music",
-    "sports",
-    "tech",
-    "travel",
-    "tvshows",
-)
+val extensions =
+    listOf(
+        "kotest-property",
+        "kotest-property-ksp",
+        "kotest-property-test",
+    )
+extensions.forEach { include(":extension:$it") }
 
-fakers.forEach { include("faker:$it") }
+val fakers =
+    listOf(
+        "books",
+        "commerce",
+        "creatures",
+        "databases",
+        "edu",
+        "games",
+        "humor",
+        "japmedia",
+        "lorem",
+        "misc",
+        "movies",
+        "music",
+        "sports",
+        "tech",
+        "travel",
+        "tvshows",
+    )
+fakers.forEach { include(":faker:$it") }
 
 // helpers for integration tests
-include("test")
+include(":test")
 
 settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
     git {
@@ -62,6 +66,13 @@ settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
             module(":faker:$f") {
                 tag {
                     prefix = TagPrefix("faker-$f-v")
+                }
+            }
+        }
+        extensions.filter { !it.endsWith("-test") }.forEach { e ->
+            module(":extension:$e") {
+                tag {
+                    prefix = TagPrefix("ext-$e-v")
                 }
             }
         }

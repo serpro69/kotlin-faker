@@ -1,8 +1,11 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import io.github.serpro69.semverkt.spec.Semver
+import gradle.kotlin.dsl.accessors._067c47cd6494f88dd357c9f02a8ec86e.assemble
+import org.gradle.accessors.dm.LibrariesForLibs
 
 plugins {
 }
+
+val libs = the<LibrariesForLibs>()
 
 val core = rootProject.subprojects.first { it.path == ":core" }
     ?: throw GradleException(":core project not found")
@@ -22,9 +25,9 @@ dependencies {
     OR a project-type dependency on the :core submodule */
     // In order to use an additional fake data provider, core faker needs to be on the classpath.
     // Don't add it as transitive dependency to each faker provider
-    compileOnly(project(path = ":core", configuration = "shadow"))
+    compileOnly(project(path = core.path, configuration = "shadow"))
     // we need implementation dependency for tests to be able to access 'core' functionality
-    testImplementation(project(path = ":core", configuration = "shadow"))
+    testImplementation(project(path = core.path, configuration = "shadow"))
     // provides helpers for integration tests
     integrationImplementation(project(":test", "testHelper"))
 }
@@ -32,11 +35,11 @@ dependencies {
 // we have a dependency on :core,
 // hence we also need to make sure ShadowJar tasks depend on core having been built
 val shadowJar by tasks.getting(ShadowJar::class) {
-    dependsOn(":core:assemble")
+    dependsOn(core.tasks.assemble)
 }
 
 // since we're adding :core as implementation dependency, and effectively testImplementation
 // we also need to make sure Test tasks depend on core having been built
 tasks.withType<Test> {
-    dependsOn(":core:assemble")
+    dependsOn(core.tasks.assemble)
 }

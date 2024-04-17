@@ -1,10 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
+import org.gradle.accessors.dm.LibrariesForLibs
 import org.jetbrains.dokka.gradle.DokkaTask
 import java.util.*
 
 plugins {
+    base
     `java-library`
     kotlin("jvm")
     id("org.jetbrains.dokka")
@@ -12,6 +14,8 @@ plugins {
     `maven-publish`
     signing
 }
+
+val libs = the<LibrariesForLibs>()
 
 /**
  * For additional providers, use a combination of rootProject and subproject names for artifact name and similar things.
@@ -69,8 +73,7 @@ dependencies {
     val testImplementation by configurations
     val testRuntimeOnly by configurations
     val integrationImplementation by configurations
-    shadow(kotlin("stdlib-jdk8"))
-    shadow(kotlin("reflect"))
+    shadow(libs.bundles.kotlin)
     testRuntimeOnly("ch.qos.logback:logback-core:1.3.4") {
         version { strictly("1.3.4") /* last stable for java 8 */ }
     }
@@ -79,8 +82,8 @@ dependencies {
     }
     testRuntimeOnly("org.codehaus.groovy:groovy:3.0.19")
     // we're shadowing these so they need to be available for test runtime
-    testRuntimeOnly("com.ibm.icu:icu4j:73.2")
-    testRuntimeOnly("com.github.mifmif:generex:1.0.2")
+    testRuntimeOnly(libs.icu4j)
+    testRuntimeOnly(libs.generex)
 }
 
 val integrationTest by tasks.creating(Test::class) {

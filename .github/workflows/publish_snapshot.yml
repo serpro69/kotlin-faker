@@ -24,8 +24,12 @@ jobs:
           filters: |
             core:
               - '.github/workflows/**'
+              - 'bom/**'
+              - 'buildSrc/**'
               - 'core/**'
+              - 'extension/**'
               - 'faker/**'
+              - 'gradle/**'
               - '*gradle*'
               - 'set-version.sh'
 
