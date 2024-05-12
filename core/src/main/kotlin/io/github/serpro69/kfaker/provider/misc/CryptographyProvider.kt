@@ -47,6 +47,6 @@ class CryptographyProvider internal constructor(
     fun sha512(): String = sha(128)
 
     private fun sha(len: Int): String = with(fakerService) {
-        resolveUniqueValue("generexify") { """[a-f0-9]{$len}""".generexify() }
+        resolveUniqueValue("regexify") { """[a-f0-9]{$len}""".regexify() }
     }
 }

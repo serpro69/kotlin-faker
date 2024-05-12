@@ -9,7 +9,7 @@ class VehicleIT : DescribeSpec({
     describe("Vehicle Provider") {
         val vehicle = faker { }.vehicle
 
-        context("generexifying strings") {
+        context("regexifying strings") {
             repeat(10) {
                 it("licensePlateByState() does NOT contain regex expressions run#$it") {
                     assertSoftly {

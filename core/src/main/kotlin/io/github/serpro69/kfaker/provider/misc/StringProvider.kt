@@ -47,7 +47,7 @@ class StringProvider internal constructor(
      * for example `regexify("""\d{3}""")` will return a string consisting of 3 random digits.
      */
     fun regexify(template: String) = with(fakerService) {
-        resolveUniqueValue("regexify", template.generexify)
+        resolveUniqueValue("regexify", template.regexify)
     }
 
     /**
@@ -55,6 +55,6 @@ class StringProvider internal constructor(
      * for example `regexify(Regex("""\d{3}"""))` will return a string consisting of 3 random digits.
      */
     fun regexify(regex: Regex) = with(fakerService) {
-        resolveUniqueValue("regexify", regex.toString().generexify)
+        resolveUniqueValue("regexify", regex.toString().regexify)
     }
 }

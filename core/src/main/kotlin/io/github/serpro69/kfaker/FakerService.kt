@@ -1,6 +1,6 @@
 package io.github.serpro69.kfaker
 
-import com.mifmif.common.regex.Generex
+import com.github.curiousoddman.rgxgen.RgxGen
 import io.github.serpro69.kfaker.dictionary.Category
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.RawExpression
@@ -543,8 +543,8 @@ class FakerService {
      */
     fun String.letterify() = letterify(true)
 
-    val String.generexify: () -> String
-        get() = { Generex(this, faker.config.random).random() }
+    val String.regexify: () -> String
+        get() = { RgxGen.parse(this).generate(faker.config.random) }
 
     /**
      * Calls the property of this [FakeDataProvider] receiver and returns the result as [String].

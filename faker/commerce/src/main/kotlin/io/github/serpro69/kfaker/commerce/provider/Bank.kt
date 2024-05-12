@@ -30,6 +30,6 @@ class Bank internal constructor(fakerService: FakerService) : YamlFakeDataProvid
             .last()
             .split("=")
             .last()
-            .generexify()
+            .regexify()
     }
 }
