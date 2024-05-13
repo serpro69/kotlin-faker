@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.scopes.DescribeSpecContainerScope
+import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.reflect.KVisibility
@@ -69,6 +70,7 @@ abstract class AbstractIT : DescribeSpec {
     )
 }
 
+@Suppress("FunctionName")
 fun DescribeSpec.`describe all public generators`(
     test: suspend DescribeSpecContainerScope.(Faker, KProperty<*>, KFunction<*>) -> Unit
 ) {
@@ -92,8 +94,64 @@ fun DescribeSpec.`describe all public generators`(
     describe("all public functions in each provider") {
         providerFunctions.forEach { (functions, provider) ->
             functions.forEach {
-                context("result value for ${provider.name} ${it.name} is resolved correctly") {
+                context("result value for ${provider.name}#${it.name} is resolved correctly") {
                     test(this, faker, provider, it)
+                }
+            }
+        }
+    }
+}
+
+
+@Suppress("FunctionName")
+fun DescribeSpec.`describe all public sub-providers`(
+    test: suspend DescribeSpecContainerScope.(FakeDataProvider, KProperty<*>, KFunction<*>) -> Unit
+) {
+    val faker = Faker()
+
+    // Get a list of all publicly visible providers
+    val providers: List<KProperty<*>> = faker::class.declaredMemberProperties.filter {
+        it.visibility == KVisibility.PUBLIC
+            && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+            && it.returnType.classifier != Money::class // Ignore Money provider as it's a special case
+            && it.returnType.classifier != StringProvider::class // Ignore String provider
+            && it.returnType.classifier != RandomProvider::class // Ignore String provider
+    }
+
+    // Get a list of all publicly visible sub-providers in each provider
+    val subProviders: List<Pair<FakeDataProvider, List<KProperty<*>>>> = providers.mapNotNull { p ->
+        val provider = p.getter.call(faker)!! as FakeDataProvider
+        val subs = provider::class.declaredMemberProperties.filter {
+            it.visibility == KVisibility.PUBLIC
+                && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+                && it.returnType.classifier as KClass<*> != provider::class // exclude 'unique' properties
+        }
+        if (subs.isNotEmpty()) provider to subs else null
+    }
+
+    // Get a list of all publicly visible functions in each provider
+    val providerFunctions: GeneratorFunctions = providers.associateBy { provider ->
+        provider.getter.call(faker)!!::class.declaredMemberFunctions.filter {
+            it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
+        }
+    }
+
+    // Get all publicly visible functions in each sub-provider
+    val subProviderFunctions = subProviders.map { (provider, subs) ->
+        provider to subs.associateBy { sub ->
+            sub.getter.call(provider)!!::class.declaredMemberFunctions.filter {
+                it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
+            }
+        }
+    }
+
+    describe("all public functions in each sub-provider") {
+        subProviderFunctions.forEach { (provider, subs) ->
+            subs.forEach { (functions, sub) ->
+                functions.forEach {
+                    context("result value for ${sub.name}#${it.name} is resolved correctly") {
+                        test(this, provider, sub, it)
+                    }
                 }
             }
         }
