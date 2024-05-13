@@ -84,6 +84,10 @@ dependencies {
     // we're shadowing these, so they need to be available for test runtime
     testRuntimeOnly(libs.icu4j)
     testRuntimeOnly(libs.rgxgen)
+    // needed to be able to run tests in intellij, no idea why... (gradle tests work fine from cli)
+    // clearly a bug with idea...
+    // maybe something related to https://youtrack.jetbrains.com/issue/IDEA-163411
+    testRuntimeOnly(libs.bundles.jackson)
 }
 
 val integrationTest by tasks.creating(Test::class) {

@@ -8,6 +8,7 @@ import io.github.serpro69.kfaker.provider.misc.StringProvider
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.assertDoesNotThrow
+import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 import kotlin.reflect.KVisibility
 import kotlin.reflect.full.declaredMemberFunctions
@@ -26,6 +27,17 @@ fun DescribeSpec.`every public function in each provider is invoked without exce
                 && it.returnType.classifier != RandomProvider::class // Ignore String provider
         }
 
+        // get sub-providers
+        val subProviders: List<Pair<Any, List<KProperty<*>>>> = providers.mapNotNull { p ->
+            val provider = p.getter.call(faker)!!
+            val subs = provider::class.declaredMemberProperties.filter {
+                it.visibility == KVisibility.PUBLIC
+                    && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+                    && it.returnType.classifier as KClass<*> != provider::class
+            }
+            if (subs.isNotEmpty()) provider to subs else null
+        }
+
         // Get a list of all publicly visible functions in each provider
         val providerFunctions = providers.associateBy { provider ->
             provider.getter.call(faker)!!::class.declaredMemberFunctions.filter {
@@ -33,10 +45,18 @@ fun DescribeSpec.`every public function in each provider is invoked without exce
             }
         }
 
+        val subProviderFunctions = subProviders.map { (provider, subs) ->
+            provider to subs.associateBy { sub ->
+                sub.getter.call(provider)!!::class.declaredMemberFunctions.filter {
+                    it.visibility == KVisibility.PUBLIC && !it.annotations.any { ann -> ann is Deprecated }
+                }
+            }
+        }
+
         assertSoftly {
             providerFunctions.forEach { (functions, provider) ->
                 functions.forEach {
-                    context("result value for ${provider.name} ${it.name} is resolved correctly") {
+                    context("result value for ${provider.name}#${it.name} is resolved correctly") {
                         val regex = Regex("""#\{.*}|#++""")
 
                         val value = when (it.parameters.size) {
@@ -86,6 +106,57 @@ fun DescribeSpec.`every public function in each provider is invoked without exce
                                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                                 if (values.odds() == values.evens()) {
                                     throw AssertionError("Value '$value' for '${provider.name} ${it.name}' should not contain duplicates")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            subProviderFunctions.forEach { (p, subs) ->
+                subs.forEach { (functions, sub) ->
+                    functions.forEach {
+                        context("result value for ${sub.name}#${it.name} is resolved correctly") {
+                            val regex = Regex("""#\{.*}|#++""")
+
+                            val value = when (it.parameters.size) {
+                                1 -> it.call(sub.getter.call(p)).toString()
+                                2 -> {
+                                    if (it.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
+                                        it.callBy(mapOf(it.parameters[0] to sub.getter.call(p))).toString()
+                                    } else it.call(sub.getter.call(p), "").toString()
+                                }
+                                3 -> {
+                                    if (it.parameters[1].isOptional && it.parameters[2].isOptional) {
+                                        it.callBy(mapOf(it.parameters[0] to sub.getter.call(p))).toString()
+                                    } else it.call(sub.getter.call(p), "", "").toString()
+                                }
+                                else -> throw IllegalArgumentException("")
+                            }
+
+                            it("resolved value should not contain yaml expression") {
+                                if (
+                                    !value.contains("#chuck and #norris")
+                                    && (sub.name != "markdown" && it.name != "headers")
+                                    && value !in valuesWithHashKey
+                                ) {
+                                    if (value.contains(regex)) {
+                                        throw AssertionError("Value '$value' for '${sub.name} ${it.name}' should not contain regex '$regex'")
+                                    }
+                                }
+                            }
+
+                            it("resolved value should not be empty string") {
+                                if (value == "") {
+                                    throw AssertionError("Value for '${sub.name} ${it.name}' should not be empty string")
+                                }
+                            }
+
+                            it("resolved value should not contain duplicates") {
+                                val values = value.split(" ")
+                                // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
+                                if (values.odds() == values.evens()) {
+                                    throw AssertionError("Value '$value' for '${sub.name} ${it.name}' should not contain duplicates")
                                 }
                             }
                         }
