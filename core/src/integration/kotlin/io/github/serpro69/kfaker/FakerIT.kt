@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker
 
+import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.kotest.assertions.assertSoftly
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -12,20 +13,7 @@ class FakerIT : AbstractIT({ t ->
     `describe all public generators` { faker, provider: KProperty<*>, f: KFunction<*> ->
         val regex = Regex("""#\{.*}|#++""")
 
-        val value = when (f.parameters.size) {
-            1 -> f.call(provider.getter.call(faker)).toString()
-            2 -> {
-                if (f.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
-                    f.callBy(mapOf(f.parameters[0] to provider.getter.call(faker))).toString()
-                } else f.call(provider.getter.call(faker), "").toString()
-            }
-            3 -> {
-                if (f.parameters[1].isOptional && f.parameters[2].isOptional) {
-                    f.callBy(mapOf(f.parameters[0] to provider.getter.call(faker))).toString()
-                } else f.call(provider.getter.call(faker), "", "").toString()
-            }
-            else -> throw IllegalArgumentException("")
-        }
+        val value = value(f, provider, faker)
 
         it("resolved value should not contain yaml expression") {
             if (
@@ -59,6 +47,48 @@ class FakerIT : AbstractIT({ t ->
                 // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
                 if (values.odds() == values.evens()) {
                     throw AssertionError("Value '$value' for '${provider.name} ${f.name}' should not contain duplicates")
+                }
+            }
+        }
+    }
+
+    `describe all public sub-providers` { provider: FakeDataProvider, sub: KProperty<*>, f: KFunction<*> ->
+        val regex = Regex("""#\{.*}|#++""")
+
+        val value = value(f, sub, provider)
+
+        it("resolved value should not contain yaml expression") {
+            if (
+                !value.contains("#chuck and #norris")
+                && (sub.name != "markdown" && f.name != "headers")
+                && value !in t.valuesWithHashKey
+            ) {
+                if (value.contains(regex)) {
+                    throw AssertionError("Value '$value' for '${sub.name} ${f.name}' should not contain regex '$regex'")
+                }
+            }
+        }
+
+        it("resolved value should not be empty string") {
+            if (value == "") {
+                throw AssertionError("Value for '${sub.name} ${f.name}' should not be empty string")
+            }
+        }
+
+        it("resolved value should not contain duplicates") {
+            val values = value.split(" ")
+
+            // Accounting for some exceptional cases where values are repeated
+            // in resolved expression
+            if (
+                (sub.name != "coffee" && f.name != "notes")
+                && (sub.name != "onePiece" && f.name != "akumasNoMi")
+                && (sub.name != "lorem" && f.name != "punctuation" && value != " ")
+                && value !in t.duplicatedValues
+            ) {
+                // Since there's no way to modify assertion message in KotlinTest it's better to throw a custom error
+                if (values.odds() == values.evens()) {
+                    throw AssertionError("Value '$value' for '${sub.name} ${f.name}' should not contain duplicates")
                 }
             }
         }
@@ -122,6 +152,26 @@ class FakerIT : AbstractIT({ t ->
         }
     }
 })
+
+/**
+ * Return the value from the [f] member function of [p] property.
+ *
+ * @param args arguments to call [p] property getter
+ */
+private fun value(f: KFunction<*>, p: KProperty<*>, vararg args: Any?) = when (f.parameters.size) {
+    1 -> f.call(p.getter.call(*args)).toString()
+    2 -> {
+        if (f.parameters[1].isOptional) { // optional params are enum typed (see functions in Dune, Finance or Tron, for example)
+            f.callBy(mapOf(f.parameters[0] to p.getter.call(*args))).toString()
+        } else f.call(p.getter.call(*args), "").toString()
+    }
+    3 -> {
+        if (f.parameters[1].isOptional && f.parameters[2].isOptional) {
+            f.callBy(mapOf(f.parameters[0] to p.getter.call(*args))).toString()
+        } else f.call(p.getter.call(*args), "", "").toString()
+    }
+    else -> throw IllegalArgumentException("")
+}
 
 private fun List<String>.odds() = this.mapIndexedNotNull { index, s ->
     if (index % 2 == 0) s else null
