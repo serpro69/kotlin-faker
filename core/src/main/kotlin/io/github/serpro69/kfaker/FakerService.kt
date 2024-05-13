@@ -543,6 +543,9 @@ class FakerService {
      */
     fun String.letterify() = letterify(true)
 
+    /**
+     * Returns a random string generated from this [String] receiver pattern.
+     */
     val String.regexify: () -> String
         get() = { RgxGen.parse(this).generate(faker.config.random) }
 

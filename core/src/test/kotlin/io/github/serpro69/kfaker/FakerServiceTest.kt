@@ -1,14 +1,13 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.dictionary.Category
-import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.Dictionary
 import io.github.serpro69.kfaker.dictionary.YamlCategory
+import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.exception.DictionaryKeyNotFoundException
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.collections.shouldBeIn
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldContainExactly
@@ -21,8 +20,10 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldHaveSameLengthAs
+import io.kotest.matchers.string.shouldMatch
 import io.kotest.matchers.string.shouldNotContain
-import java.util.*
+import java.util.Locale
+import java.util.Random
 
 val random = Random()
 
@@ -570,6 +571,25 @@ internal class FakerServiceTest : DescribeSpec({
 //                }
 //            }
 //        }
+    }
+
+    describe("regexify a string") {
+        val s = FakerService(Faker())
+        it("should match the provided pattern - gh #207") {
+            val rr = listOf(
+                // NB! lookahead and lookbehind has limited support in RgxGen
+                // (https://github.com/curious-odd-man/RgxGen/issues/63)
+                // """^[a-zA-Z\d](?:[a-zA-Z\d]|-(?!-)){0,38}${'$'}""",
+                """^AKIA\S{16}${'$'}""",
+                """^\S{40}${'$'}""",
+                """^i-0[\da-f]{16}${'$'}"""
+            )
+            rr.forEach { with(s) { it.regexify() shouldMatch Regex(it) } }
+        }
+        it("should not throw SO - gh #209") {
+            val r = """^arn:.+:.+:.*:([0-9]{12}):(.+)${'$'}"""
+            with(s) { r.regexify() shouldMatch Regex(r) }
+        }
     }
 })
 
