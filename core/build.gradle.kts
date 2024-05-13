@@ -10,7 +10,7 @@ plugins {
 dependencies {
     implementation(libs.bundles.jackson)
     shadow(libs.icu4j)
-    shadow(libs.generex)
+    shadow(libs.rgxgen)
 }
 
 apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block

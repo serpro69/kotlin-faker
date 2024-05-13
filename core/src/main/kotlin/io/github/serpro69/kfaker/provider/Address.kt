@@ -36,7 +36,7 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
         val pattern = resolve("postcode")
         when {
             pattern.contains('#') -> pattern.numerify()
-            else -> pattern.generexify().replace("/", "")
+            else -> pattern.regexify().replace("/", "")
         }
     }
 

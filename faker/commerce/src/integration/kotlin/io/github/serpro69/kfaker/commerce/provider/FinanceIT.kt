@@ -9,7 +9,7 @@ class FinanceIT : DescribeSpec({
     describe("Finance Provider") {
         val finance = faker { }.finance
 
-        context("generexifying strings") {
+        context("regexifying strings") {
             repeat(10) {
                 it("creditCard() does NOT contain regex expressions run#$it") {
                     assertSoftly {

@@ -81,9 +81,9 @@ dependencies {
         version { strictly("1.3.4") /* last stable for java 8 */ }
     }
     testRuntimeOnly("org.codehaus.groovy:groovy:3.0.19")
-    // we're shadowing these so they need to be available for test runtime
+    // we're shadowing these, so they need to be available for test runtime
     testRuntimeOnly(libs.icu4j)
-    testRuntimeOnly(libs.generex)
+    testRuntimeOnly(libs.rgxgen)
 }
 
 val integrationTest by tasks.creating(Test::class) {

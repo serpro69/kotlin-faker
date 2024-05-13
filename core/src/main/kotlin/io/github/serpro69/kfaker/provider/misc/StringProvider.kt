@@ -45,16 +45,22 @@ class StringProvider internal constructor(
     /**
      * Returns a string of generated values based on the regex expressions in the [template] input,
      * for example `regexify("""\d{3}""")` will return a string consisting of 3 random digits.
+     *
+     * _Refer to [RgxGen's Supported Syntax](https://github.com/curious-odd-man/RgxGen?tab=readme-ov-file#supported-syntax)
+     * documentation for details on what regex syntax is supported._
      */
     fun regexify(template: String) = with(fakerService) {
-        resolveUniqueValue("regexify", template.generexify)
+        resolveUniqueValue("regexify", template.regexify)
     }
 
     /**
      * Returns a string of generated values based on the [regex],
      * for example `regexify(Regex("""\d{3}"""))` will return a string consisting of 3 random digits.
+     *
+     * _Refer to [RgxGen's Supported Syntax](https://github.com/curious-odd-man/RgxGen?tab=readme-ov-file#supported-syntax)
+     * documentation for details on what regex syntax is supported._
      */
     fun regexify(regex: Regex) = with(fakerService) {
-        resolveUniqueValue("regexify", regex.toString().generexify)
+        resolveUniqueValue("regexify", regex.toString().regexify)
     }
 }

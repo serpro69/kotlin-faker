@@ -18,7 +18,8 @@
 [discrete]
 === Fixed
 
-* ...
+* https://github.com/serpro69/kotlin-faker/issues/207[#207] (:core) Regexify generates invalid value 
+* https://github.com/serpro69/kotlin-faker/issues/208[#208] (:core) Regexify fails with StackOverflowError
 
 [discrete]
 === Other

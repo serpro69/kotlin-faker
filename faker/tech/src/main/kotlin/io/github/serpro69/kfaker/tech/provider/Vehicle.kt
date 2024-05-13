@@ -35,7 +35,7 @@ class Vehicle internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun engineSizes() = resolve("engine_sizes")
     fun licensePlate() = with(fakerService) { resolve("license_plate").numerify().letterify() }
     fun licencePlateByState(stateCode: String) = with(fakerService) {
-        resolve("license_plate_by_state", stateCode).numerify().letterify().generexify()
+        resolve("license_plate_by_state", stateCode).numerify().letterify().regexify()
     }
 
     fun cylinderEngine() = resolve("cylinder_engine")
