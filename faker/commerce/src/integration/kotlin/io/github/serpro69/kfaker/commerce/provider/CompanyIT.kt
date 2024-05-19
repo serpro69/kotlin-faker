@@ -10,8 +10,10 @@ class CompanyIT : DescribeSpec({
         val company: (locale: String) -> Company = { faker { fakerConfig { locale = it } }.company }
 
         context("uk locale") {
-            it("should generate a valid name") {
-                shouldNotThrow<NoSuchElementException> { company("uk").name() shouldNotBe "" }
+            repeat(10) {
+                it("should generate a valid name run#$it") {
+                    shouldNotThrow<NoSuchElementException> { company("uk").name() shouldNotBe "" }
+                }
             }
         }
 
@@ -22,3 +24,13 @@ class CompanyIT : DescribeSpec({
         }
     }
 })
+
+fun main() {
+    val f = io.github.serpro69.kfaker.faker { fakerConfig { locale = "uk" } }
+    repeat(100) {
+        println("""
+        ${f.name.firstName()} ${f.name.lastName()}
+        """
+        )
+    }
+}

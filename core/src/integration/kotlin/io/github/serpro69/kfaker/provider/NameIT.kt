@@ -9,6 +9,13 @@ class NameIT : DescribeSpec({
     describe("Name provider") {
         val name: (locale: String) -> Name = { faker { fakerConfig { locale = it } }.name }
 
+        context("uk locale") {
+            it("generates a name") {
+                val names = List(42) { name("uk").name() }
+                names shouldNotContain ""
+            }
+        }
+
         context("ru locale") {
             it("generates lastName") {
                 val lastNames = List(42) { name("ru").lastName() }
