@@ -24,13 +24,3 @@ class CompanyIT : DescribeSpec({
         }
     }
 })
-
-fun main() {
-    val f = io.github.serpro69.kfaker.faker { fakerConfig { locale = "uk" } }
-    repeat(100) {
-        println("""
-        ${f.name.firstName()} ${f.name.lastName()}
-        """
-        )
-    }
-}
