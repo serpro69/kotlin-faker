@@ -417,7 +417,7 @@ uk:
         - zt.ua
         - укр
     name:
-      male_first_name: &1
+      male_first_name: &male_first_name # NB! do not change anchor name
         - Августин
         - Аврелій
         - Адам
@@ -730,7 +730,7 @@ uk:
         - Юрійович
         - Юхимович
         - Ярославович
-      male_last_name: &2
+      male_last_name: &male_last_name # NB! do not change anchor name
         - Андрухович
         - Бабух
         - Балабан
@@ -970,7 +970,7 @@ uk:
         - Яцишин
         - Яцьків
         - Ящук
-      female_first_name:
+      female_first_name: &female_first_name # NB! do not change anchor name
         - Аврелія
         - Аврора
         - Агапія
@@ -1281,7 +1281,7 @@ uk:
         - Юріївна
         - Юхимівна
         - Ярославівна
-      female_last_name:
+      female_last_name: &female_last_name # NB! do not change anchor name
         - Андрухович
         - Бабух
         - Балабан
@@ -1512,8 +1512,12 @@ uk:
         - Яцишина
         - Яцьків
         - Ящук
-      first_name: *1
-      last_name: *2
+      first_name: # NB! do not change anchor references, we should include both female and male first names here
+        - *male_first_name
+        - *female_first_name
+      last_name: # NB! do not change anchor references, we should include both female and male last names here
+        - *male_last_name
+        - *female_last_name
       name:
         - "#{male_first_name} #{male_last_name}"
         - "#{male_last_name} #{male_first_name}"
@@ -1781,11 +1785,10 @@ uk:
         - скло
         - дерево
       name:
-        - "#{prefix} #{Name.female_first_name}"
-        - "#{prefix} #{Name.male_first_name}"
-        - "#{prefix} #{Name.male_last_name}"
-        - "#{prefix} #{Address.city_name}#{product}#{suffix}"
-        - "#{prefix} #{Address.city_name}#{suffix}"
+        - "#{prefix} #{Name.first_name}" # NB! do not change, see #239
+        - "#{prefix} #{Name.last_name}" # NB! do not change, see #239
+        - "#{prefix} #{Address.city}#{product}#{suffix}" # NB! do not change, see #239
+        - "#{prefix} #{Address.city}#{suffix}" # NB! do not change, see #239
     music:
       instruments:
         - Електрична гітара

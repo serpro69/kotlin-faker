@@ -9,6 +9,14 @@ class CompanyIT : DescribeSpec({
     describe("Company Provider") {
         val company: (locale: String) -> Company = { faker { fakerConfig { locale = it } }.company }
 
+        context("uk locale") {
+            repeat(10) {
+                it("should generate a valid name run#$it") {
+                    shouldNotThrow<NoSuchElementException> { company("uk").name() shouldNotBe "" }
+                }
+            }
+        }
+
         context("ja locale") {
             it("should generate a valid name") {
                 shouldNotThrow<NoSuchElementException> { company("ja").name() shouldNotBe "" }

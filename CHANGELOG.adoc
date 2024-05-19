@@ -18,7 +18,9 @@
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/issues/207[#207] (:core) Regexify generates invalid value 
+* https://github.com/serpro69/kotlin-faker/pull/240[#240] (:core) Fix NoSuchElementException in `uk.company.name`
+** Also fixes `uk.name.first_name` and `uk.name.last_name` to return both male and female names.
+* https://github.com/serpro69/kotlin-faker/issues/207[#207] (:core) Regexify generates invalid value
 * https://github.com/serpro69/kotlin-faker/issues/208[#208] (:core) Regexify fails with StackOverflowError
 
 [discrete]
