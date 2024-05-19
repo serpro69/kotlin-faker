@@ -51,7 +51,6 @@ application {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
-        vendor.set(JvmVendorSpec.matching("Temurin"))
     }
 }
 
