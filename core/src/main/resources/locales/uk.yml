@@ -281,9 +281,7 @@ uk:
         - Стрийська
         - Вузька
         - Староміська
-      # NB! don't remove city_name anchor
-      # See https://github.com/serpro69/kotlin-faker/issues/239
-      city_name: &city_name
+      city_name:
         - Алчевськ
         - Артемівськ
         - Бердичів
@@ -343,9 +341,8 @@ uk:
         - Ялта
       city_prefix: []
       city_suffix: []
-      # NB! don't change anchor reference
-      # See https://github.com/serpro69/kotlin-faker/issues/239
-      city: *city_name
+      city:
+        - "#{city_name}"
       street_name:
         - "#{feminine_street_prefix} #{feminine_street_title}"
         - "#{masculine_street_prefix} #{masculine_street_title}"
