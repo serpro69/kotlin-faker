@@ -21,6 +21,14 @@ class AddressIT : DescribeSpec({
                     address("uk").citySuffix() shouldBe ""
                 }
             }
+
+            context("non-default key reference - gh #239") {
+                repeat(10) {
+                    it("city() does NOT throw NoSuchElementException run#$it") {
+                        shouldNotThrow<NoSuchElementException> { address("uk").city() }
+                    }
+                }
+            }
         }
 
         context("nb-NO locale") {

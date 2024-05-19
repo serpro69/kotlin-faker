@@ -281,7 +281,9 @@ uk:
         - Стрийська
         - Вузька
         - Староміська
-      city_name:
+      # NB! don't remove city_name anchor
+      # See https://github.com/serpro69/kotlin-faker/issues/239
+      city_name: &city_name
         - Алчевськ
         - Артемівськ
         - Бердичів
@@ -341,8 +343,9 @@ uk:
         - Ялта
       city_prefix: []
       city_suffix: []
-      city:
-        - "#{city_name}"
+      # NB! don't change anchor reference
+      # See https://github.com/serpro69/kotlin-faker/issues/239
+      city: *city_name
       street_name:
         - "#{feminine_street_prefix} #{feminine_street_title}"
         - "#{masculine_street_prefix} #{masculine_street_title}"
@@ -1784,8 +1787,8 @@ uk:
         - "#{prefix} #{Name.female_first_name}"
         - "#{prefix} #{Name.male_first_name}"
         - "#{prefix} #{Name.male_last_name}"
-        - "#{prefix} #{Address.city_name}#{product}#{suffix}"
-        - "#{prefix} #{Address.city_name}#{suffix}"
+        - "#{prefix} #{Address.city}#{product}#{suffix}" # NB! do not change, see #239
+        - "#{prefix} #{Address.city}#{suffix}" # NB! do not change, see #239
     music:
       instruments:
         - Електрична гітара
