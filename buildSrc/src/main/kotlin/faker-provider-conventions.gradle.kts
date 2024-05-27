@@ -1,11 +1,8 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import gradle.kotlin.dsl.accessors._067c47cd6494f88dd357c9f02a8ec86e.assemble
-import org.gradle.accessors.dm.LibrariesForLibs
+import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.assemble
 
 plugins {
 }
-
-val libs = the<LibrariesForLibs>()
 
 val core = rootProject.subprojects.first { it.path == ":core" }
     ?: throw GradleException(":core project not found")
