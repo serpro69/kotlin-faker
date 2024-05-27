@@ -5,7 +5,7 @@ plugins {
 
 publishing {
     publications {
-        create<MavenPublication>(publicationName) {
+        create<MavenPublication>("maven") {
             groupId = project.group.toString()
             artifactId = fullName
             version = project.version.toString()
@@ -53,7 +53,7 @@ publishing {
 }
 
 signing {
-    sign(publishing.publications[publicationName])
+    sign(publishing.publications["maven"])
 }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
