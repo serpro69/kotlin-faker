@@ -37,11 +37,11 @@ dependencies {
 // we have a dependency on :core,
 // hence we also need to make sure ShadowJar tasks depend on core having been built
 val shadowJar by tasks.getting(ShadowJar::class) {
-    dependsOn(core.tasks.assemble)
+    dependsOn(core.tasks.shadowJar)
 }
 
 // since we're adding :core as implementation dependency, and effectively testImplementation
 // we also need to make sure Test tasks depend on core having been built
 tasks.withType<Test> {
-    dependsOn(core.tasks.assemble)
+    dependsOn(core.tasks.shadowJar)
 }

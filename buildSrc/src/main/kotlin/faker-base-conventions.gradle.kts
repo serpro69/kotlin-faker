@@ -51,10 +51,9 @@ configure<SourceSetContainer> {
     }
 }
 
-val integrationTest by tasks.creating(Test::class) {
+val integrationTest: Test by tasks.creating(Test::class) {
     testClassesDirs = sourceSets["integration"].output.classesDirs
     classpath = sourceSets["integration"].runtimeClasspath
-    dependsOn(tasks.test)
 }
 
 tasks.withType<Jar> {
@@ -78,18 +77,9 @@ tasks.withType<Jar> {
 }
 
 tasks {
-    assemble {
-        dependsOn(jar)
-    }
-}
-
-tasks {
-    jar {
-        dependsOn(integrationTest)
-    }
-    assemble {
-        dependsOn(integrationTest)
-    }
+    getByName(integrationTest.name).dependsOn(test)
+    jar { dependsOn(integrationTest) }
+    assemble { dependsOn(jar) }
 }
 
 tasks.withType<DokkaTask>().configureEach {

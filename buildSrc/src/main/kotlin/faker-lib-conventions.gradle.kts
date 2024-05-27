@@ -68,8 +68,6 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
         into("META-INF")
     }
-    dependsOn(tasks["integrationTest"])
-    dependsOn(tasks.jar)
 }
 
 publishing {
@@ -83,7 +81,6 @@ publishing {
 }
 
 tasks {
-    assemble {
-        dependsOn(shadowJar)
-    }
+    getByName(shadowJar.name).dependsOn(jar)
+    assemble { dependsOn(shadowJar) }
 }
