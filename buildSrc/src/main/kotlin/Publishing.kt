@@ -16,9 +16,6 @@ val Project.fullName: String
     get() = if (name == "core") rootProject.name
     else "${rootProject.name}-${name}"
 
-val Project.publicationName: String
-    get() = "Faker${path.split(":").joinToString("") { it.capitalized() }}"
-
 private fun createSourcesJarTask(p: Project): Jar {
     val sourcesJar by p.tasks.creating(Jar::class) {
         archiveClassifier.set("sources")
