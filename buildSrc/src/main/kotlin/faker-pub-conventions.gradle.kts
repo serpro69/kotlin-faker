@@ -1,3 +1,9 @@
+import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.archives
+
+/**
+ * Plugin for publishing conventions
+ */
+
 plugins {
     `maven-publish`
     signing
@@ -49,6 +55,13 @@ publishing {
                 }
             }
         }
+    }
+}
+
+if (!isBomModule) {
+    artifacts {
+        archives(sourcesJar)
+        archives(dokkaJavadocJar)
     }
 }
 

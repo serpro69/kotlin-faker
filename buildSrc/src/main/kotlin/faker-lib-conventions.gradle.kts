@@ -2,38 +2,16 @@ import com.github.jengelman.gradle.plugins.shadow.ShadowExtension
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.dokka.gradle.DokkaTask
 
+/**
+ * Plugin for "faker libraries"
+ */
+
 plugins {
-    base
     `java-library`
-    kotlin("jvm")
     id("org.jetbrains.dokka")
     id("com.github.johnrengelman.shadow")
+    id("faker-base-conventions")
     id("faker-pub-conventions")
-}
-
-configurations {
-    create("integrationImplementation") { extendsFrom(configurations.getByName("testImplementation")) }
-    create("integrationRuntimeOnly") {
-        extendsFrom(
-            configurations.getByName("testRuntimeOnly"),
-            configurations.getByName("shadow")
-        )
-    }
-}
-
-// configure sourceSets as extension since it's not available here as `sourceSets` is an extension on `Project`
-// https://docs.gradle.org/current/userguide/kotlin_dsl.html#project_extensions_and_conventions
-configure<SourceSetContainer> {
-    create("integration") {
-        resources.srcDir("src/integration/resources")
-        compileClasspath += main.get().compileClasspath + test.get().compileClasspath
-        runtimeClasspath += main.get().runtimeClasspath + test.get().runtimeClasspath
-    }
-    main {
-        resources {
-            this.srcDir("build/generated/src/main/resources")
-        }
-    }
 }
 
 dependencies {
@@ -57,32 +35,6 @@ dependencies {
     // clearly a bug with idea...
     // maybe something related to https://youtrack.jetbrains.com/issue/IDEA-163411
     testRuntimeOnly(libs.bundles.jackson)
-}
-
-val integrationTest by tasks.creating(Test::class) {
-    testClassesDirs = sourceSets["integration"].output.classesDirs
-    classpath = sourceSets["integration"].runtimeClasspath
-    dependsOn(tasks.test)
-}
-
-tasks.withType<Jar> {
-    archiveBaseName.set(fullName)
-
-    manifest {
-        attributes(
-            mapOf(
-                "Implementation-Title" to fullName,
-                "Implementation-Version" to project.version,
-                /*
-                 * We can't add this here because this resolves the configuration,
-                 * after which it effectively becomes read-only and we'll get an error
-                 * Cannot change dependencies of dependency configuration ':core:implementation' after it has been included in dependency resolution
-                 * if we try to add more dependencies in the module's build.gradle file directly
-                 */
-                // "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name }
-            )
-        )
-    }
 }
 
 val shadowJar by tasks.getting(ShadowJar::class) {
@@ -116,13 +68,8 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     from("${rootProject.rootDir.resolve("LICENSE.adoc")}") {
         into("META-INF")
     }
-    dependsOn(integrationTest)
+    dependsOn(tasks["integrationTest"])
     dependsOn(tasks.jar)
-}
-
-artifacts {
-    archives(sourcesJar)
-    archives(dokkaJavadocJar)
 }
 
 publishing {
@@ -139,9 +86,4 @@ tasks {
     assemble {
         dependsOn(shadowJar)
     }
-}
-
-tasks.withType<DokkaTask>().configureEach {
-    onlyIf("Not dev") { !isDev.get() }
-    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }

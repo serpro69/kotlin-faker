@@ -6,6 +6,10 @@ interface Yaml2JsonPluginExtension {
     val output: Property<File>
 }
 
+/**
+ * This plugin takes in yaml input files and outputs json files.
+ * It's primarily used to convert the faker source dictionaries from yml to json format.
+ */
 class Yaml2JsonPlugin : Plugin<Project> {
     val jsonMapper = ObjectMapper()
     // https://github.com/FasterXML/jackson-dataformats-text/issues/98

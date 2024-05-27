@@ -1,7 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.assemble
 
+/**
+ * Plugin for :faker:* modules
+ */
+
 plugins {
+    id("faker-lib-conventions")
 }
 
 val core = rootProject.subprojects.first { it.path == ":core" }
