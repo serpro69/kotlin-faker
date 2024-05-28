@@ -82,5 +82,5 @@ publishing {
 
 tasks {
     getByName(shadowJar.name).dependsOn(jar)
-    assemble { dependsOn(shadowJar) }
+    build { dependsOn(shadowJar) }
 }

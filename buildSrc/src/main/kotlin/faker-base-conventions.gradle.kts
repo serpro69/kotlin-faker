@@ -79,7 +79,6 @@ tasks.withType<Jar> {
 tasks {
     getByName(integrationTest.name).dependsOn(test)
     jar { dependsOn(integrationTest) }
-    assemble { dependsOn(jar) }
 }
 
 tasks.withType<DokkaTask>().configureEach {
