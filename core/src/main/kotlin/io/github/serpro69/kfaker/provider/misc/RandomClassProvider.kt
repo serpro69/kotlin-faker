@@ -173,7 +173,7 @@ class RandomClassProvider {
                             ?: klass.randomPrimitiveOrNull()
                             ?: klass.randomEnumOrNull()
                             ?: klass.randomSealedClassOrNull(config)
-                            ?: klass.randomCollectionOrNull(it.type, config)
+                            ?: klass.randomCollectionOrNull(it.type, config, pInfo)
                             ?: klass.randomClassInstance(config)
                     }
                 }
@@ -219,21 +219,27 @@ class RandomClassProvider {
         return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config) else null
     }
 
-    private fun KClass<*>.randomCollectionOrNull(kType: KType, config: RandomProviderConfig): Any? {
+    private fun KClass<*>.randomCollectionOrNull(kType: KType, config: RandomProviderConfig, pInfo: ParameterInfo): Any? {
+        val instance: (el: KClass<*>) -> Any? = {
+            when {
+                config.collectionTypeGenerators.containsKey(it) -> config.collectionTypeGenerators[it]?.invoke(pInfo)
+                else -> it.randomClassInstance(config)
+            }
+        }
         return when (this) {
             List::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                List(config.collectionsSize) { elementType.randomClassInstance(config) }
+                List(config.collectionsSize) { instance(elementType) }
             }
             Set::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                List(config.collectionsSize) { elementType.randomClassInstance(config) }.toSet()
+                List(config.collectionsSize) { instance(elementType) }.toSet()
             }
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
                 val keys = List(config.collectionsSize) { keyElementType.randomClassInstance(config) }
-                val values = List(config.collectionsSize) { valElementType.randomClassInstance(config) }
+                val values = List(config.collectionsSize) { instance(valElementType) }
                 keys.zip(values).associate { (k, v) -> k to v }
             }
             else -> null
@@ -274,8 +280,12 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     @PublishedApi
     internal val nullableGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any?>()
 
+    @PublishedApi
+    internal val collectionTypeGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any?>()
+
     /**
-     * Configures generation for a specific named parameter. Overrides all other generators
+     * Configures generation for a specific named constructor parameter.
+     * Overrides all other generators.
      */
     inline fun <reified K : Any> namedParameterGenerator(
         parameterName: String,
@@ -285,17 +295,23 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     }
 
     /**
-     * Configures generation for a specific type. It can override internal generators (for primitives, for example)
+     * Configures generation for a specific type of constructor parameter.
+     * It can override internal generators (for primitives, for example)
      */
     inline fun <reified K : Any> typeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
         predefinedGenerators[K::class] = generator
     }
 
     /**
-     * Configures generation for a specific nullable type. It can override internal generators (for primitives, for example)
+     * Configures generation for a specific nullable type of constructor parameter.
+     * It can override internal generators (for primitives, for example)
      */
     inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
         nullableGenerators[K::class] = generator
+    }
+
+    inline fun <reified K : Any?> collectionTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+        collectionTypeGenerators[K::class] = generator
     }
 }
 

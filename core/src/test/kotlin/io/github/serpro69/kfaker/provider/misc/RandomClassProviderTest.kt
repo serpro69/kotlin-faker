@@ -14,7 +14,8 @@ import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.assertThrows
-import java.util.*
+import java.util.Random
+import java.util.UUID
 import kotlin.reflect.full.declaredMemberProperties
 
 @Suppress("unused")
@@ -437,6 +438,7 @@ class RandomClassProviderTest : DescribeSpec({
             // enum-key based map can only have up to 3 entries in this case, depending on the randomness of the generated key
             testClass.enumMap.size shouldBeInRange 1..3
         }
+
         it("should generate Collections with pre-configured type generation") {
             val testClass = randomProvider.randomClassInstance<TestClass> {
                 typeGenerator<List<Foo>> { listOf() }
@@ -452,6 +454,35 @@ class RandomClassProviderTest : DescribeSpec({
             testClass.enumList shouldHaveSize 0
             testClass.enumSet shouldHaveSize 1
             testClass.enumMap shouldHaveSize 1
+        }
+
+        it("should generate elements in a collection with predefined collection generator") {
+            val foo = Foo()
+            val bar = Bar(42)
+            val baz = Baz(foo, "foo")
+            val testClass = randomProvider.randomClassInstance<TestClass> {
+                collectionTypeGenerator<Foo> { foo }
+                collectionTypeGenerator<Bar> { bar }
+                collectionTypeGenerator<Baz> { baz }
+                collectionTypeGenerator<String> { "string" }
+                collectionTypeGenerator<Char> { 'c' }
+                collectionTypeGenerator<Boolean> { true }
+                collectionTypeGenerator<Int> { 42 }
+                collectionTypeGenerator<Byte> { Byte.MAX_VALUE }
+                collectionTypeGenerator<TestEnum> { TestEnum.GO }
+            }
+            testClass.set shouldHaveSize 1
+            testClass.set.first() shouldBe bar
+            testClass.map.all { it.value == baz } shouldBe true
+            testClass.charList.all { it == 'c' } shouldBe true
+            testClass.intSet shouldHaveSize 1
+            testClass.intSet.first() shouldBe 42
+            testClass.boolMap.all { it.value == Byte.MAX_VALUE } shouldBe true
+            testClass.enumList.all { it == TestEnum.GO } shouldBe true
+            testClass.enumSet shouldHaveSize 1
+            testClass.enumSet.all { it == TestEnum.GO } shouldBe true
+            testClass.enumMap shouldHaveSize 1
+            testClass.enumMap.all { it.value == TestEnum.GO } shouldBe true
         }
     }
 
