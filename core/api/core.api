@@ -744,6 +744,7 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomProvider$Key : 
 
 public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig {
 	public fun <init> ()V
+	public final fun getCollectionTypeGenerators ()Ljava/util/Map;
 	public final fun getCollectionsSize ()I
 	public final fun getConstructorFilterStrategy ()Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
 	public final fun getConstructorParamSize ()I
