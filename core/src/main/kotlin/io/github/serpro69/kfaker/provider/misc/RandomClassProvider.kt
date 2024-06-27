@@ -17,8 +17,10 @@ import kotlin.Long
 import kotlin.Short
 import kotlin.String
 import kotlin.reflect.KClass
+import kotlin.reflect.KParameter
 import kotlin.reflect.KType
 import kotlin.reflect.KVisibility
+import kotlin.reflect.full.starProjectedType
 import kotlin.reflect.jvm.jvmName
 
 /**
@@ -126,7 +128,14 @@ class RandomClassProvider {
             predefinedTypeOrNull(
                 config,
                 // it's not a constructor parameter, so set some hardcoded values for ParameterInfo
-                ParameterInfo(index = -1, name = jvmName, isOptional = false, isVararg = false)
+                ParameterInfo(
+                    index = -1,
+                    name = jvmName,
+                    isOptional = false,
+                    isVararg = false,
+                    type = starProjectedType,
+                    kind = KParameter.Kind.INSTANCE
+                )
             ) as T?
         }
 

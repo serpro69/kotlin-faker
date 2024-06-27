@@ -1,6 +1,7 @@
 package io.github.serpro69.kfaker.provider.misc
 
 import kotlin.reflect.KParameter
+import kotlin.reflect.KType
 
 /**
  * Provides additional information about Class parameter to custom defined generators.
@@ -11,7 +12,9 @@ data class ParameterInfo(
     val index: Int,
     val name: String,
     val isOptional: Boolean,
-    val isVararg: Boolean
+    val isVararg: Boolean,
+    val type: KType,
+    val kind: KParameter.Kind,
 )
 
 /**
@@ -21,5 +24,7 @@ internal fun KParameter.toParameterInfo() = ParameterInfo(
     index = index,
     name = name.toString(),
     isOptional = isOptional,
-    isVararg = isVararg
+    isVararg = isVararg,
+    type = type,
+    kind = kind,
 )
