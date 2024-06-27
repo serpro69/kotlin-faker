@@ -225,7 +225,7 @@ class RandomClassProviderTest : DescribeSpec({
                 testClass.id shouldBe givenUuid
                 testClass.int shouldBe givenInt
                 testClass.foo.int shouldBe givenInt
-                testClass.bar shouldBe "ParameterInfo(index=0, name=bar, isOptional=false, isVararg=false)"
+                testClass.bar shouldBe "ParameterInfo(index=0, name=bar, isOptional=false, isVararg=false, type=kotlin.String, kind=VALUE)"
             }
         }
     }
@@ -258,7 +258,7 @@ class RandomClassProviderTest : DescribeSpec({
                 testClass.id2 shouldBe typeGeneratedId
                 testClass.nullableId shouldBe nullableNamedParameterGeneratedId
                 testClass.nullableId2 shouldBe null
-                testClass.foo shouldBe "ParameterInfo(index=4, name=foo, isOptional=true, isVararg=false)"
+                testClass.foo shouldBe "ParameterInfo(index=4, name=foo, isOptional=true, isVararg=false, type=kotlin.String?, kind=VALUE)"
             }
         }
     }
