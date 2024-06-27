@@ -10,6 +10,7 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import java.util.*
+import kotlin.reflect.KClass
 
 class Extras : DescribeSpec({
     val faker = Faker()
@@ -43,6 +44,34 @@ class Extras : DescribeSpec({
                 assertEquals(baz.user, "user_X3a8s813dcb")
                 assertEquals(baz.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
                 assertEquals(baz.relatedUuid, UUID.fromString("11111111-1111-1111-1111-111111111111"))
+            }
+
+            context("collection element generation") {
+                it("should generate pre-configured collection elements for constructor params") {
+                    // START extras_random_instance_sixteen
+                    fun randomListString() = "list"
+                    fun randomString() = "string"
+
+                    class Baz(val list: List<String>, val set: Set<String>)
+
+                    val baz: Baz = faker.randomClass.randomClassInstance {
+                        collectionTypeGenerator<String> {
+                            // customize generators for different collection types
+                            if ((it.type.classifier as KClass<*>) == List::class) {
+                                // generate random string elements for parameters of List<String> type
+                                randomListString()
+                            } else {
+                                // generate random string elements for parameters of other Collection types (Set, Map)
+                                randomString()
+                            }
+                        }
+                    }
+                    // END extras_random_instance_sixteen
+
+                    assertEquals(baz.list.all { it == "list" }, true)
+                    assertEquals(baz.set.all { it == "string" }, true)
+                }
+
             }
         }
 
@@ -274,6 +303,7 @@ class Extras : DescribeSpec({
                 // END extras_random_instance_fifteen
             }
         }
+
     }
 
     describe("Random Everything") {

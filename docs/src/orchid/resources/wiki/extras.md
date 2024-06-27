@@ -10,6 +10,9 @@
 * [Random instance of any class](#random-instance-of-any-class)
   * [Random Class Instance Configuration](#random-class-instance-configuration)
   * [Pre-configuring type generation](#pre-configuring-type-generation)
+    * [Predefined types for constructor parameters](#predefined-types-for-constructor-parameters)
+    * [Pre-defined instance for classes with no public constructors](#pre-defined-instance-for-classes-with-no-public-constructors)
+    * [Predefined collection element types](#predefined-collection-element-types)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
   * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
@@ -244,6 +247,43 @@ A random class instance will be generated using the following precedence rules:
 - failing all of the above, `NoSuchElementException` will be thrown
 
 {% btc %}{% endbtc %}
+
+<br>
+
+#### Predefined collection element types
+
+It may be desirable to define how elements in a collection parameter are generated, for this `collectionTypeGenerator` function can be used:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_sixteen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+So for each instance of `Baz` the following will be true:
+
+```kotlin
+baz.list.all { it == "list" }
+baz.set.all {it == "string" }
+```
+
+This example kind of makes little sense, since we're using "static" values, so it's just for example purposes.
+
+{% info %}
+{% filter compileAs('md') %}
+Note how we can use `it.type.classifier` to figure out the parameter classifier and further customize generation for different collection types.
+
+Explore other properties of `it`, which exposes more details about the [parameter](https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/parameterinfo/) that is being customized.
+{% endfilter %}
+{% endinfo %}
 
 <br>
 
