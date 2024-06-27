@@ -5,6 +5,7 @@ import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.channels.beEmpty
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.maps.shouldHaveSize
@@ -483,6 +484,14 @@ class RandomClassProviderTest : DescribeSpec({
             testClass.enumSet.all { it == TestEnum.GO } shouldBe true
             testClass.enumMap shouldHaveSize 1
             testClass.enumMap.all { it.value == TestEnum.GO } shouldBe true
+        }
+
+        it("typeGenerator should have precedence over collectionTypeGenerator") {
+            val testClass = randomProvider.randomClassInstance<TestClass> {
+                collectionTypeGenerator<Char> { 'c' }
+                typeGenerator<List<Char>> { listOf() }
+            }
+            testClass.charList shouldBe emptyList()
         }
     }
 
