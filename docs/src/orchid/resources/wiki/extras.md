@@ -252,7 +252,7 @@ A random class instance will be generated using the following precedence rules:
 
 #### Predefined collection element types
 
-It may be desirable to define how elements in a collection parameter are generated, for this `collectionTypeGenerator` function can be used:
+It may be desirable to define how elements in a collection parameter are generated, for this `collectionElementTypeGenerator` function can be used:
 
 {% tabs %}
 

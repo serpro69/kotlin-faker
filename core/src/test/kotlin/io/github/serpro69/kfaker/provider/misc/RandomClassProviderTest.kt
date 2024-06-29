@@ -461,36 +461,47 @@ class RandomClassProviderTest : DescribeSpec({
             val bar = Bar(42)
             val baz = Baz(foo, "foo")
             val testClass = randomProvider.randomClassInstance<TestClass> {
-                collectionTypeGenerator<Foo> { foo }
-                collectionTypeGenerator<Bar> { bar }
-                collectionTypeGenerator<Baz> { baz }
-                collectionTypeGenerator<String> { "string" }
-                collectionTypeGenerator<Char> { 'c' }
-                collectionTypeGenerator<Boolean> { true }
-                collectionTypeGenerator<Int> { 42 }
-                collectionTypeGenerator<Byte> { Byte.MAX_VALUE }
-                collectionTypeGenerator<TestEnum> { TestEnum.GO }
+                collectionElementTypeGenerator<Foo> { foo }
+                collectionElementTypeGenerator<Bar> { bar }
+                mapEntryKeyTypeGenerator<String> { "map" }
+                mapEntryValueTypeGenerator<Baz> { baz }
+                collectionElementTypeGenerator<String> { "string" }
+                collectionElementTypeGenerator<Char> { 'c' }
+                collectionElementTypeGenerator<Boolean> { true }
+                collectionElementTypeGenerator<Int> { 42 }
+                collectionElementTypeGenerator<Byte> { Byte.MAX_VALUE }
+                mapEntryKeyTypeGenerator<Boolean> { false }
+                mapEntryValueTypeGenerator<Byte> { Byte.MAX_VALUE }
+                collectionElementTypeGenerator<TestEnum> { TestEnum.GO }
+                mapEntryKeyTypeGenerator<TestEnum> { TestEnum.JAVA }
+                mapEntryValueTypeGenerator<TestEnum> { TestEnum.KOTLIN }
             }
             testClass.set shouldHaveSize 1
             testClass.set.first() shouldBe bar
-            testClass.map.all { it.value == baz } shouldBe true
+            testClass.map.all { it.key == "map" && it.value == baz } shouldBe true
             testClass.charList.all { it == 'c' } shouldBe true
             testClass.intSet shouldHaveSize 1
             testClass.intSet.first() shouldBe 42
-            testClass.boolMap.all { it.value == Byte.MAX_VALUE } shouldBe true
+            testClass.boolMap.all { !it.key && it.value == Byte.MAX_VALUE } shouldBe true
             testClass.enumList.all { it == TestEnum.GO } shouldBe true
             testClass.enumSet shouldHaveSize 1
             testClass.enumSet.all { it == TestEnum.GO } shouldBe true
-            testClass.enumMap shouldHaveSize 1
-            testClass.enumMap.all { it.value == TestEnum.GO } shouldBe true
+            testClass.enumMap.keys.all { it == TestEnum.JAVA } shouldBe true
+            testClass.enumMap.values.all { it == TestEnum.KOTLIN } shouldBe true
         }
 
-        it("typeGenerator should have precedence over collectionTypeGenerator") {
+        it("typeGenerator should have precedence over collection and map generators") {
             val testClass = randomProvider.randomClassInstance<TestClass> {
-                collectionTypeGenerator<Char> { 'c' }
-                typeGenerator<List<Char>> { listOf() }
+                collectionElementTypeGenerator<TestEnum> { TestEnum.JAVA }
+                mapEntryKeyTypeGenerator<TestEnum> { TestEnum.KOTLIN }
+                mapEntryValueTypeGenerator<TestEnum> { TestEnum.GO }
+                typeGenerator<List<TestEnum>> { TestEnum.entries }
+                typeGenerator<Set<TestEnum>> { emptySet() }
+                typeGenerator<Map<TestEnum, TestEnum>> { mapOf(TestEnum.JAVA to TestEnum.KOTLIN) }
             }
-            testClass.charList shouldBe emptyList()
+            testClass.enumList shouldBe TestEnum.entries
+            testClass.enumSet shouldBe emptySet()
+            testClass.enumMap shouldBe mapOf(TestEnum.JAVA to TestEnum.KOTLIN)
         }
     }
 

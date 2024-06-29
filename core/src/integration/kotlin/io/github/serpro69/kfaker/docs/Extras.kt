@@ -55,7 +55,7 @@ class Extras : DescribeSpec({
                     class Baz(val list: List<String>, val set: Set<String>)
 
                     val baz: Baz = faker.randomClass.randomClassInstance {
-                        collectionTypeGenerator<String> {
+                        collectionElementTypeGenerator<String> {
                             // customize generators for different collection types
                             if ((it.type.classifier as KClass<*>) == List::class) {
                                 // generate random string elements for parameters of List<String> type
