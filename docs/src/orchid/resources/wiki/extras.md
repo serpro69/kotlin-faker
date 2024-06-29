@@ -252,7 +252,7 @@ A random class instance will be generated using the following precedence rules:
 
 #### Predefined collection element types
 
-It may be desirable to define how elements in a collection parameter are generated, for this `collectionElementTypeGenerator` function can be used:
+It may be desirable to define how elements of a `Collection` (currently supports `List`s and `Set`s) constructor parameter type are generated, for this `collectionElementTypeGenerator` function can be used:
 
 {% tabs %}
 
@@ -284,6 +284,20 @@ Note how we can use `it.type.classifier` to figure out the parameter classifier 
 Explore other properties of `it`, which exposes more details about the [parameter](https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/parameterinfo/) that is being customized.
 {% endfilter %}
 {% endinfo %}
+
+There are also two similar methods for map entries: `mapEntryKeyTypeGenerator` and `mapEntryValueTypeGenerator`, which can be used to configure how keys and values are generated in `Map` constructor parameter types:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_seventeen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
 
 <br>
 

@@ -61,7 +61,7 @@ class Extras : DescribeSpec({
                                 // generate random string elements for parameters of List<String> type
                                 randomListString()
                             } else {
-                                // generate random string elements for parameters of other Collection types (Set, Map)
+                                // generate random string elements for parameters of Set type
                                 randomString()
                             }
                         }
@@ -72,6 +72,21 @@ class Extras : DescribeSpec({
                     assertEquals(baz.set.all { it == "string" }, true)
                 }
 
+                it("should generate pre-configured map key/value pairs for constructor params") {
+                    fun randomKey() = "key"
+                    fun randomValue() = "value"
+                    // START extras_random_instance_seventeen
+                    class Baz(val map: Map<String, String>)
+
+                    val baz: Baz = faker.randomClass.randomClassInstance {
+                        mapEntryKeyTypeGenerator { randomKey() }
+                        mapEntryValueTypeGenerator { randomValue() }
+                    }
+                    // END extras_random_instance_seventeen
+
+                    assertEquals(baz.map.keys.all { it == "key" }, true)
+                    assertEquals(baz.map.values.all { it == "value" }, true)
+                }
             }
         }
 
