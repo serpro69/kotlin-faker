@@ -659,16 +659,20 @@ public final class io/github/serpro69/kfaker/provider/misc/FallbackStrategy : ja
 }
 
 public final class io/github/serpro69/kfaker/provider/misc/ParameterInfo {
-	public fun <init> (ILjava/lang/String;ZZ)V
+	public fun <init> (ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;)V
 	public final fun component1 ()I
 	public final fun component2 ()Ljava/lang/String;
 	public final fun component3 ()Z
 	public final fun component4 ()Z
-	public final fun copy (ILjava/lang/String;ZZ)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
-	public static synthetic fun copy$default (Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;ILjava/lang/String;ZZILjava/lang/Object;)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
+	public final fun component5 ()Lkotlin/reflect/KType;
+	public final fun component6 ()Lkotlin/reflect/KParameter$Kind;
+	public final fun copy (ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
+	public static synthetic fun copy$default (Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;ILjava/lang/Object;)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
 	public fun equals (Ljava/lang/Object;)Z
 	public final fun getIndex ()I
+	public final fun getKind ()Lkotlin/reflect/KParameter$Kind;
 	public final fun getName ()Ljava/lang/String;
+	public final fun getType ()Lkotlin/reflect/KType;
 	public fun hashCode ()I
 	public final fun isOptional ()Z
 	public final fun isVararg ()Z
@@ -744,13 +748,15 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomProvider$Key : 
 
 public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig {
 	public fun <init> ()V
+	public final fun getCollectionElementTypeGenerators ()Ljava/util/HashMap;
 	public final fun getCollectionsSize ()I
 	public final fun getConstructorFilterStrategy ()Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
 	public final fun getConstructorParamSize ()I
 	public final fun getFallbackStrategy ()Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public final fun getMapEntriesTypeGenerators ()Lkotlin/Pair;
 	public final fun getNamedParameterGenerators ()Ljava/util/Map;
-	public final fun getNullableGenerators ()Ljava/util/Map;
-	public final fun getPredefinedGenerators ()Ljava/util/Map;
+	public final fun getNullableGenerators ()Ljava/util/HashMap;
+	public final fun getPredefinedGenerators ()Ljava/util/HashMap;
 	public final fun setCollectionsSize (I)V
 	public final fun setConstructorFilterStrategy (Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;)V
 	public final fun setConstructorParamSize (I)V

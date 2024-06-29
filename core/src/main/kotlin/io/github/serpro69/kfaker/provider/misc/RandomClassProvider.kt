@@ -17,8 +17,10 @@ import kotlin.Long
 import kotlin.Short
 import kotlin.String
 import kotlin.reflect.KClass
+import kotlin.reflect.KParameter
 import kotlin.reflect.KType
 import kotlin.reflect.KVisibility
+import kotlin.reflect.full.starProjectedType
 import kotlin.reflect.jvm.jvmName
 
 /**
@@ -126,7 +128,14 @@ class RandomClassProvider {
             predefinedTypeOrNull(
                 config,
                 // it's not a constructor parameter, so set some hardcoded values for ParameterInfo
-                ParameterInfo(index = -1, name = jvmName, isOptional = false, isVararg = false)
+                ParameterInfo(
+                    index = -1,
+                    name = jvmName,
+                    isOptional = false,
+                    isVararg = false,
+                    type = starProjectedType,
+                    kind = KParameter.Kind.INSTANCE
+                )
             ) as T?
         }
 
@@ -173,7 +182,7 @@ class RandomClassProvider {
                             ?: klass.randomPrimitiveOrNull()
                             ?: klass.randomEnumOrNull()
                             ?: klass.randomSealedClassOrNull(config)
-                            ?: klass.randomCollectionOrNull(it.type, config)
+                            ?: klass.randomCollectionOrNull(it.type, config, pInfo)
                             ?: klass.randomClassInstance(config)
                     }
                 }
@@ -219,21 +228,50 @@ class RandomClassProvider {
         return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config) else null
     }
 
-    private fun KClass<*>.randomCollectionOrNull(kType: KType, config: RandomProviderConfig): Any? {
+    private fun KClass<*>.randomCollectionOrNull(
+        kType: KType,
+        config: RandomProviderConfig,
+        pInfo: ParameterInfo
+    ): Any? {
         return when (this) {
-            List::class -> {
+            List::class, Set::class -> {
+                val instance: (el: KClass<*>) -> Any? = {
+                    when {
+                        config.collectionElementTypeGenerators.containsKey(it) -> {
+                            config.collectionElementTypeGenerators[it]?.invoke(pInfo)
+                        }
+                        else -> it.randomClassInstance(config)
+                    }
+                }
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                List(config.collectionsSize) { elementType.randomClassInstance(config) }
-            }
-            Set::class -> {
-                val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                List(config.collectionsSize) { elementType.randomClassInstance(config) }.toSet()
+                val r = List(config.collectionsSize) { instance(elementType) }
+                when (this) {
+                    List::class -> r
+                    Set::class -> r.toSet()
+                    else -> throw UnsupportedOperationException("Collection type $this is not supported")
+                }
             }
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
-                val keys = List(config.collectionsSize) { keyElementType.randomClassInstance(config) }
-                val values = List(config.collectionsSize) { valElementType.randomClassInstance(config) }
+                val keys = List(config.collectionsSize) {
+                    when {
+                        // TODO this should be optimized to not look up key presence on each invocation
+                        config.mapEntriesTypeGenerators.first.containsKey(keyElementType) -> {
+                            config.mapEntriesTypeGenerators.first[keyElementType]?.invoke(pInfo)
+                        }
+                        else -> keyElementType.randomClassInstance(config)
+                    }
+                }
+                val values = List(config.collectionsSize) {
+                    when {
+                        // TODO this should be optimized to not look up key presence on each invocation
+                        config.mapEntriesTypeGenerators.second.containsKey(valElementType) -> {
+                            config.mapEntriesTypeGenerators.second[valElementType]?.invoke(pInfo)
+                        }
+                        else -> valElementType.randomClassInstance(config)
+                    }
+                }
                 keys.zip(values).associate { (k, v) -> k to v }
             }
             else -> null
@@ -265,17 +303,39 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     var constructorFilterStrategy: ConstructorFilterStrategy = NO_ARGS
     var fallbackStrategy: FallbackStrategy = USE_MIN_NUM_OF_ARGS
 
+    /**
+     * @property namedParameterGenerators Named constructor parameter type generators.
+     */
     @PublishedApi
     internal val namedParameterGenerators = mutableMapOf<String, (pInfo: ParameterInfo) -> Any?>()
 
+    /**
+     * @property predefinedGenerators Constructor parameter type generators.
+     */
     @PublishedApi
-    internal val predefinedGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any>()
-
-    @PublishedApi
-    internal val nullableGenerators = mutableMapOf<KClass<*>, (pInfo: ParameterInfo) -> Any?>()
+    internal val predefinedGenerators: TypeGenMap = hashMapOf()
 
     /**
-     * Configures generation for a specific named parameter. Overrides all other generators
+     * @property nullableGenerators Nullable constructor parameter type generators.
+     */
+    @PublishedApi
+    internal val nullableGenerators: NullableTypeGenMap = hashMapOf()
+
+    /**
+     * @property collectionElementTypeGenerators Type generators for [Collection] element types.
+     */
+    @PublishedApi
+    internal val collectionElementTypeGenerators: NullableTypeGenMap = hashMapOf()
+
+    /**
+     * @property mapEntriesTypeGenerators Type generators for [Map] key/value pair types.
+     */
+    @PublishedApi
+    internal val mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap> = Pair(hashMapOf(), hashMapOf())
+
+    /**
+     * Configures generation for a specific named constructor parameter.
+     * Overrides all other generators.
      */
     inline fun <reified K : Any> namedParameterGenerator(
         parameterName: String,
@@ -285,17 +345,40 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     }
 
     /**
-     * Configures generation for a specific type. It can override internal generators (for primitives, for example)
+     * Configures generation for a specific type of constructor parameter.
+     * It can override internal generators (for primitives, for example)
      */
     inline fun <reified K : Any> typeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
         predefinedGenerators[K::class] = generator
     }
 
     /**
-     * Configures generation for a specific nullable type. It can override internal generators (for primitives, for example)
+     * Configures generation for a specific nullable type of constructor parameter.
+     * It can override internal generators (for primitives, for example)
      */
     inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
         nullableGenerators[K::class] = generator
+    }
+
+    /**
+     * Configures generation of elements of constructor parameters of [Collection] types.
+     */
+    inline fun <reified K : Any?> collectionElementTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+        collectionElementTypeGenerators[K::class] = generator
+    }
+
+    /**
+     * Configures generation of non-null keys of constructor parameters of [Map] types.
+     */
+    inline fun <reified K : Any> mapEntryKeyTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
+        mapEntriesTypeGenerators.first[K::class] = generator
+    }
+
+    /**
+     * Configures generation of values of constructor parameters of [Map] types.
+     */
+    inline fun <reified K : Any?> mapEntryValueTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+        mapEntriesTypeGenerators.second[K::class] = generator
     }
 }
 
@@ -315,8 +398,10 @@ private fun RandomProviderConfig.copy(
     constructorFilterStrategy: ConstructorFilterStrategy? = null,
     fallbackStrategy: FallbackStrategy? = null,
     namedParameterGenerators: Map<String, (pInfo: ParameterInfo) -> Any?>? = null,
-    predefinedGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any>? = null,
-    nullableGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any?>? = null
+    predefinedGenerators: TypeGenMap? = null,
+    nullableGenerators: NullableTypeGenMap? = null,
+    collectionElementTypeGenerators: NullableTypeGenMap? = null,
+    mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap>? = null,
 ): RandomProviderConfig = RandomProviderConfig().apply {
     this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
     this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
@@ -325,6 +410,9 @@ private fun RandomProviderConfig.copy(
     this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
     this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
     this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
+    this@apply.collectionElementTypeGenerators.putAll(collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators)
+    this@apply.mapEntriesTypeGenerators.first.putAll(mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first)
+    this@apply.mapEntriesTypeGenerators.second.putAll(mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second)
 }
 
 enum class FallbackStrategy {
@@ -338,3 +426,6 @@ enum class ConstructorFilterStrategy {
     MIN_NUM_OF_ARGS,
     MAX_NUM_OF_ARGS
 }
+
+internal typealias TypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any>
+internal typealias NullableTypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any?>
