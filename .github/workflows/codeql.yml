@@ -85,5 +85,4 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3.25.6
       with:
-        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.17.3/codeql-bundle-linux64.tar.gz
         category: "/language:${{matrix.language}}"
