@@ -789,6 +789,11 @@ class RandomClassProviderTest : DescribeSpec({
                     typeGenerator { "42" }
                     typeGenerator { 42 }
                     typeGenerator { 42.0 }
+                    nullableTypeGenerator<String> { null }
+                    namedParameterGenerator("foo") { "bar" }
+                    collectionElementTypeGenerator { 36 }
+                    mapEntryKeyTypeGenerator { 0 }
+                    mapEntryValueTypeGenerator { 1 }
                 }
                 val copy = copy()
                 configProperties(copy.config) shouldBe configProperties(this@with.config)

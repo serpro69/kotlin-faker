@@ -398,8 +398,10 @@ private fun RandomProviderConfig.copy(
     constructorFilterStrategy: ConstructorFilterStrategy? = null,
     fallbackStrategy: FallbackStrategy? = null,
     namedParameterGenerators: Map<String, (pInfo: ParameterInfo) -> Any?>? = null,
-    predefinedGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any>? = null,
-    nullableGenerators: Map<KClass<*>, (pInfo: ParameterInfo) -> Any?>? = null
+    predefinedGenerators: TypeGenMap? = null,
+    nullableGenerators: NullableTypeGenMap? = null,
+    collectionElementTypeGenerators: NullableTypeGenMap? = null,
+    mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap>? = null,
 ): RandomProviderConfig = RandomProviderConfig().apply {
     this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
     this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
@@ -408,6 +410,9 @@ private fun RandomProviderConfig.copy(
     this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
     this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
     this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
+    this@apply.collectionElementTypeGenerators.putAll(collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators)
+    this@apply.mapEntriesTypeGenerators.first.putAll(mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first)
+    this@apply.mapEntriesTypeGenerators.second.putAll(mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second)
 }
 
 enum class FallbackStrategy {
@@ -422,5 +427,5 @@ enum class ConstructorFilterStrategy {
     MAX_NUM_OF_ARGS
 }
 
-typealias TypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any>
-typealias NullableTypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any?>
+internal typealias TypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any>
+internal typealias NullableTypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any?>

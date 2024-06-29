@@ -748,14 +748,15 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomProvider$Key : 
 
 public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig {
 	public fun <init> ()V
-	public final fun getCollectionTypeGenerators ()Ljava/util/Map;
+	public final fun getCollectionElementTypeGenerators ()Ljava/util/HashMap;
 	public final fun getCollectionsSize ()I
 	public final fun getConstructorFilterStrategy ()Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
 	public final fun getConstructorParamSize ()I
 	public final fun getFallbackStrategy ()Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public final fun getMapEntriesTypeGenerators ()Lkotlin/Pair;
 	public final fun getNamedParameterGenerators ()Ljava/util/Map;
-	public final fun getNullableGenerators ()Ljava/util/Map;
-	public final fun getPredefinedGenerators ()Ljava/util/Map;
+	public final fun getNullableGenerators ()Ljava/util/HashMap;
+	public final fun getPredefinedGenerators ()Ljava/util/HashMap;
 	public final fun setCollectionsSize (I)V
 	public final fun setConstructorFilterStrategy (Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;)V
 	public final fun setConstructorParamSize (I)V
