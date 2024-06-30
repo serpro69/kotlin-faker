@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider.misc
 
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MAX_NUM_OF_ARGS
@@ -233,13 +234,13 @@ class RandomClassProvider {
         config: RandomProviderConfig,
         pInfo: ParameterInfo
     ): Any? {
+        val instance: (gen: Map<KClass<*>, (ParameterInfo) -> Any?>, el: KClass<*>) -> Any = { gen, el ->
+            gen[el]?.invoke(pInfo) ?: el.randomClassInstance(config)
+        }
         return when (this) {
             List::class, Set::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                val r = List(config.collectionsSize) {
-                    config.collectionElementTypeGenerators[elementType]?.invoke(pInfo)
-                        ?: elementType.randomClassInstance(config)
-                }
+                val r = List(config.collectionsSize) { instance(config.collectionElementTypeGenerators, elementType) }
                 when (this) {
                     List::class -> r
                     Set::class -> r.toSet()
@@ -249,14 +250,8 @@ class RandomClassProvider {
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
-                val keys = List(config.collectionsSize) {
-                    config.mapEntriesTypeGenerators.first[keyElementType]?.invoke(pInfo)
-                        ?: keyElementType.randomClassInstance(config)
-                }
-                keys.associateWith {
-                    config.mapEntriesTypeGenerators.second[valElementType]?.invoke(pInfo)
-                        ?: valElementType.randomClassInstance(config)
-                }
+                val keys = List(config.collectionsSize) { instance(config.mapEntriesTypeGenerators.first, keyElementType) }
+                keys.associateWith { instance(config.mapEntriesTypeGenerators.second, valElementType) }
             }
             else -> null
         }

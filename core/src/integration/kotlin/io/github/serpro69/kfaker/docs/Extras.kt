@@ -6,7 +6,12 @@ import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy
 import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.containOnly
+import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainAnyOf
+import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNot
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import java.util.*
@@ -86,6 +91,36 @@ class Extras : DescribeSpec({
 
                     assertEquals(baz.map.keys.all { it == "key" }, true)
                     assertEquals(baz.map.values.all { it == "value" }, true)
+                }
+
+                it("should allow nullable element types in collections") {
+                    // START extras_random_instance_eighteen
+                    data class Nullable(val ints: List<Int?>, val longs: Set<Long?>, val map: Map<Char?, String?>)
+                    val nullable = faker.randomClass.randomClassInstance<Nullable> {
+                        collectionsSize = 10
+                        collectionElementTypeGenerator<Int?> { if (faker.random.nextBoolean()) null else 42 }
+                        collectionElementTypeGenerator<Long?> { if (!faker.random.nextBoolean()) 0L else null }
+                        mapEntryKeyTypeGenerator<Char> { faker.random.randomValue(listOf('a', 'b', 'c', 'd', 'e', 'f')) }
+                        mapEntryValueTypeGenerator<String?> { if (faker.random.nextBoolean()) null else "foo" }
+                    }
+                    nullable.ints shouldContain 42
+                    // we allow nullable values, but `null` as a value will never be returned
+                    nullable.ints shouldNotContain null
+                    // with above config, if nextBoolean returns false, we say "return null",
+                    // but since nulls are never returned as value, all nulls will be returned as random instance,
+                    // hence we won't have all 42's
+                    nullable.ints shouldNot containOnly(42)
+
+                    nullable.longs shouldContain 0L
+                    nullable.longs shouldNotContain null
+                    nullable.longs shouldNot containOnly(0L)
+
+                    nullable.map.keys shouldNotContain null
+                    nullable.map.keys shouldContainAnyOf listOf('a', 'b', 'c', 'd', 'e', 'f')
+                    nullable.map.values shouldNotContain null
+                    nullable.map.values shouldContain "foo"
+                    nullable.map.values shouldNot containOnly("foo")
+                    // END extras_random_instance_eighteen
                 }
             }
         }

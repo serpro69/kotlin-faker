@@ -299,6 +299,20 @@ There are also two similar methods for map entries: `mapEntryKeyTypeGenerator` a
 
 {% endtabs %}
 
+Nullable collection element types are also supported (but note that `null`s as values are never returned):
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_eighteen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
 <br>
 
 ### Deterministic constructor selection

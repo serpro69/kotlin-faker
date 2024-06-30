@@ -2,13 +2,21 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.fakerConfig
+import io.github.serpro69.kfaker.random
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.matchers.collections.containOnly
+import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainAnyOf
+import io.kotest.matchers.collections.shouldContainOnly
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldNotContain
+import io.kotest.matchers.collections.shouldNotContainOnly
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.maps.shouldHaveSize
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNot
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
@@ -503,6 +511,34 @@ class RandomClassProviderTest : DescribeSpec({
             testClass.enumSet shouldBe emptySet()
             testClass.enumMap shouldBe mapOf(TestEnum.JAVA to TestEnum.KOTLIN)
         }
+
+        it("should generate null elements in collections") {
+            data class Nullable(val ints: List<Int?>, val longs: Set<Long?>, val map: Map<Char?, String?>)
+            val nullable = randomProvider.randomClassInstance<Nullable> {
+                collectionsSize = 10
+                collectionElementTypeGenerator<Int?> { if (random.nextBoolean()) null else 42 }
+                collectionElementTypeGenerator<Long?> { if (!random.nextBoolean()) 0L else null }
+                mapEntryKeyTypeGenerator<Char> { listOf('a', 'b', 'c', 'd', 'e', 'f').random() }
+                mapEntryValueTypeGenerator<String?> { if (random.nextBoolean()) null else "foo" }
+            }
+            nullable.ints shouldContain 42
+            // we allow nullable values, but `null` as a value will never be returned
+            nullable.ints shouldNotContain null
+            // with above config, if nextBoolean returns false, we say "return null",
+            // but since nulls are never returned as value, all nulls will be returned as random instance,
+            // hence we won't have all 42's
+            nullable.ints shouldNot containOnly(42)
+
+            nullable.longs shouldContain 0L
+            nullable.longs shouldNotContain null
+            nullable.longs shouldNot containOnly(0L)
+
+            nullable.map.keys shouldNotContain null
+            nullable.map.keys shouldContainAnyOf listOf('a', 'b', 'c', 'd', 'e', 'f')
+            nullable.map.values shouldNotContain null
+            nullable.map.values shouldContain "foo"
+            nullable.map.values shouldNot containOnly("foo")
+        }
     }
 
     describe("a TestClass with with abstract type constructor parameter") {
@@ -801,6 +837,7 @@ class RandomClassProviderTest : DescribeSpec({
                 copy.config shouldNotBeSameInstanceAs c.randomProviderConfig
             }
         }
+
         it("should have same configuration as defined on fakerConfig level if not defined on RandomClassProvider level") {
             val c = cfg()
             with(RandomClassProvider(c)) {
