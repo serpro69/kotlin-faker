@@ -235,44 +235,28 @@ class RandomClassProvider {
     ): Any? {
         return when (this) {
             List::class, Set::class -> {
-                val instance: (el: KClass<*>) -> Any? = {
-                    when {
-                        config.collectionElementTypeGenerators.containsKey(it) -> {
-                            config.collectionElementTypeGenerators[it]?.invoke(pInfo)
-                        }
-                        else -> it.randomClassInstance(config)
-                    }
-                }
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                val r = List(config.collectionsSize) { instance(elementType) }
+                val r = List(config.collectionsSize) {
+                    config.collectionElementTypeGenerators[elementType]?.invoke(pInfo)
+                        ?: elementType.randomClassInstance(config)
+                }
                 when (this) {
                     List::class -> r
                     Set::class -> r.toSet()
-                    else -> throw UnsupportedOperationException("Collection type $this is not supported")
+                    else -> throw UnsupportedOperationException("$this collection type is not supported")
                 }
             }
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
                 val keys = List(config.collectionsSize) {
-                    when {
-                        // TODO this should be optimized to not look up key presence on each invocation
-                        config.mapEntriesTypeGenerators.first.containsKey(keyElementType) -> {
-                            config.mapEntriesTypeGenerators.first[keyElementType]?.invoke(pInfo)
-                        }
-                        else -> keyElementType.randomClassInstance(config)
-                    }
+                    config.mapEntriesTypeGenerators.first[keyElementType]?.invoke(pInfo)
+                        ?: keyElementType.randomClassInstance(config)
                 }
-                val values = List(config.collectionsSize) {
-                    when {
-                        // TODO this should be optimized to not look up key presence on each invocation
-                        config.mapEntriesTypeGenerators.second.containsKey(valElementType) -> {
-                            config.mapEntriesTypeGenerators.second[valElementType]?.invoke(pInfo)
-                        }
-                        else -> valElementType.randomClassInstance(config)
-                    }
+                keys.associateWith {
+                    config.mapEntriesTypeGenerators.second[valElementType]?.invoke(pInfo)
+                        ?: valElementType.randomClassInstance(config)
                 }
-                keys.zip(values).associate { (k, v) -> k to v }
             }
             else -> null
         }
