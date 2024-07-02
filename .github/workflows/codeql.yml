@@ -55,9 +55,8 @@ jobs:
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3.25.6
+      uses: github/codeql-action/init@v3
       with:
-        tools: https://github.com/github/codeql-action/releases/download/codeql-bundle-v2.17.3/codeql-bundle-linux64.tar.gz
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
         # If you wish to specify custom queries, you can do so here or in a config file.
@@ -82,7 +81,16 @@ jobs:
         echo '  make release'
         exit 1
 
+    # In codeql-cli 2.17.6, they're recognising the configuration in the root build.gradle.kts file to compile against Java 8. 
+    # The best way to override this is to use a setup-java step to install the JDK version that your project requires.
+    # Ref: https://github.com/github/codeql-action/issues/2360#issuecomment-2199969007    
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'temurin'
+
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3.25.6
+      uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
