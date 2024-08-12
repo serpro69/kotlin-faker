@@ -21,6 +21,7 @@ include(
 
 val extensions =
     listOf(
+        "blns",
         "kotest-property",
     )
 extensions.forEach { include(":extension:$it") }
