@@ -25,18 +25,24 @@ plugins {
 }
 
 repositories {
+    maven {
+        url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
+    }
+    mavenCentral()
     jcenter() // orchid...
 }
 
 dependencies {
-    orchidImplementation("io.github.javaeden.orchid:OrchidCore:0.21.1")
-    orchidImplementation("io.github.javaeden.orchid:OrchidCopper:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidDocs:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidPluginDocs:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidKotlindoc:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidGithub:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidSnippets:0.21.1")
-    orchidRuntimeOnly("io.github.javaeden.orchid:OrchidAsciidoc:0.21.1")
+    // Looks like a snapshot version was published to central before active development stopped
+    // https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/copper-leaf/orchid/
+    orchidImplementation("io.github.copper-leaf.orchid:orchid-core:1.0.0-SNAPSHOT")
+    orchidImplementation("io.github.copper-leaf.orchid:orchid-copper-theme:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-docs-bundle:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-plugin-docs-feature:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-kotlindoc-feature:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-github-feature:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-snippets-feature:1.0.0-SNAPSHOT")
+    orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-asciidoc-feature:1.0.0-SNAPSHOT")
 }
 
 project.version = "${project.version}"
