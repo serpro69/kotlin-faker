@@ -1,0 +1,23 @@
+public final class io/github/serpro69/kfaker/blns/Blns : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAll ()Ljava/util/List;
+	public final fun getAllBase64 ()Ljava/util/List;
+	public final fun random (Z)Ljava/lang/String;
+	public static synthetic fun random$default (Lio/github/serpro69/kfaker/blns/Blns;ZILjava/lang/Object;)Ljava/lang/String;
+	public final fun sublist (IZ)Ljava/util/List;
+	public final fun sublist (Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public static synthetic fun sublist$default (Lio/github/serpro69/kfaker/blns/Blns;IZILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun sublist$default (Lio/github/serpro69/kfaker/blns/Blns;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class io/github/serpro69/kfaker/blns/Blns$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/blns/Blns;
+}
+
+public final class io/github/serpro69/kfaker/blns/BlnsKt {
+	public static final fun blns (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/blns/Blns;
+}
+
