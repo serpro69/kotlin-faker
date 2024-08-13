@@ -1,12 +1,4 @@
-public final class io/github/serpro69/kfaker/ArbExtensionsKt {
-	public static final fun getRandomClass (Lio/kotest/property/Arb$Companion;)Lio/github/serpro69/kfaker/RandomClassFaker;
-}
-
-public final class io/github/serpro69/kfaker/RandomClassFaker {
-	public final fun getFaker ()Lio/github/serpro69/kfaker/Faker;
-}
-
-public abstract interface annotation class io/github/serpro69/kfaker/kotest/FakerArb : java/lang/annotation/Annotation {
-	public abstract fun fakers ()[Ljava/lang/Class;
+public final class io/github/serpro69/kfaker/kotest/ArbExtensionsKt {
+	public static final fun of (Lio/kotest/property/Arb$Companion;Lkotlin/jvm/functions/Function0;)Lio/kotest/property/Arb;
 }
 
