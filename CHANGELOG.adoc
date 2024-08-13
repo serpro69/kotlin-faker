@@ -4,6 +4,7 @@
 [discrete]
 === Breaking Change
 
+* https://github.com/serpro69/kotlin-faker/pull/246[#246] (:extension) Remove KSP from kotest-property extension
 * https://github.com/serpro69/kotlin-faker/pull/219[#219] (:core) Extract faker's providers into several submodules of their own
 
 [discrete]
