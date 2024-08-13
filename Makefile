@@ -1,5 +1,6 @@
 SHELL  := env ORCHID_DIAGNOSE=$(ORCHID_DIAGNOSE) $(SHELL)
 ORCHID_DIAGNOSE ?= false
+.SHELLFLAGS := -ec
 .DEFAULT_GOAL := help
 
 # https://stackoverflow.com/a/10858332
@@ -28,10 +29,11 @@ endif
 
 .PHONY: deploy-docs
 deploy-docs: ## deploys documentation with orchid
-	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./docs/src/orchid/resources/config.yml
-	sed -i 's/^\s\shomePageOnly:.*/#/' ./docs/src/orchid/resources/config.yml
-	./gradlew :docs:orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE)
-	git checkout ./docs/src/orchid/resources/config.yml
+	cd docs; \
+	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./src/orchid/resources/config.yml; \
+	sed -i 's/^\s\shomePageOnly:.*/#/' ./src/orchid/resources/config.yml; \
+	./gradlew orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE); \
+	git checkout ./src/orchid/resources/config.yml
 
 .PHONY: snapshot-minor
 snapshot-minor: ## publishes next snapshot with a minor version bump

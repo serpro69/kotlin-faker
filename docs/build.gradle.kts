@@ -1,8 +1,3 @@
-@file:Suppress("KDocMissingDocumentation")
-
-import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-import kotlinx.validation.KotlinApiBuildTask
-import kotlinx.validation.KotlinApiCompareTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /*
@@ -20,7 +15,7 @@ Commands:
 */
 
 plugins {
-    kotlin("jvm")
+    kotlin("jvm") version "1.4.31"
     id("com.eden.orchidPlugin") version "0.21.1"
 }
 
@@ -45,7 +40,26 @@ dependencies {
     orchidRuntimeOnly("io.github.copper-leaf.orchid:orchid-asciidoc-feature:1.0.0-SNAPSHOT")
 }
 
-project.version = "${project.version}"
+// TODO: there should be a better way to handle version here?
+// Maybe it doesn't matter much, I really should get rid of Orchid...
+project.version = "2.1.0-SNAPSHOT"
+
+configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
 
 orchid {
     environment = if (findProperty("env") == "prod") "prod" else "debug"
@@ -56,8 +70,4 @@ orchid {
     } else {
         System.getenv("GITHUB_TOKEN")
     }
-}
-
-tasks.withType<TagTask> {
-    enabled = false
 }

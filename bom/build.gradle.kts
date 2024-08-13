@@ -9,7 +9,7 @@ val bom = project
 
 // Exclude subprojects that will never be published so that when configuring this project
 // we don't force their configuration and do unnecessary work
-val excludeFromBom = listOf(":cli-bot", ":docs", ":extension", ":faker", ":test", ":extension:kotest-property-test")
+val excludeFromBom = listOf(":cli-bot", /*":docs",*/ ":extension", ":faker", ":test", ":extension:kotest-property-test")
 fun projectsFilter(candidateProject: Project) =
     excludeFromBom.none { candidateProject.path == it }
         && candidateProject.name != bom.name

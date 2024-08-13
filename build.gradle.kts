@@ -172,5 +172,5 @@ tasks.withType<TagTask>().configureEach {
 }
 
 apiValidation {
-    ignoredProjects += listOf("bom", "cli-bot", "docs", "test")
+    ignoredProjects += listOf("bom", "cli-bot", /*"docs",*/ "test")
 }

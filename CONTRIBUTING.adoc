@@ -66,8 +66,8 @@ _If this is your first pull request - please add yourself to the "contributors s
 == Prerequisites
 
 * JDK 8 (temurin or any other distribution; mandatory)
-* JDK 11 (temurin or any other distribution; mandatory)
-* JDK 17 (GraalVM CE distribution; optional)
+* JDK 11 (temurin or any other distribution; mandatory due to plugin dependencies)
+* JDK 17 (GraalVM CE distribution; optional; needed for building `cli-bot` image)
 
 Some details for the above requirements are as follows:
 
@@ -76,7 +76,7 @@ Some details for the above requirements are as follows:
 ** GraalVM CE is needed to build the native image of the link:cli-bot[`cli-bot`] application. But since it's a module in the project and therefore is part of the project's build configuration process, it introduces a hard dependency on jdk version 11 or higher
 *** GraalVM CE jdk distribution can be omitted if one does not want to build the native image of the `cli-bot` application, but any other jdk with version >= 11 is still mandatory to build the rest of the project as mentioned above.
 *** GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the link:https://github.com/graalvm/graalvm-ce-builds/releases[graalvm-ce-builds releases]
-** To build link:docs[`docs`] module, only jdk 11 works currently. This is again due to the fact that gradle configuration stage for `cli-bot` module will simply fail with a lower version, but at the same time jdk 17 also doesn't work for `docs` module itself due to `module java.base does not "opens java.lang" to unnamed module` error...
+** The link:docs[`docs`] module is currently built outside of the main kotlin-faker gradle proccesses. It depends on kotlin 1.4.31 and for this reason, the `docs` module has been removed from the kotlin-faker gradle build processes and should now be treated as a standalone project, with all gradle commands needing to be executed inside the `docs` directory. One can use either java 8 or 11 to build the documentation.
 
 == Code Structure
 

@@ -28,7 +28,7 @@
 [discrete]
 === Other
 
-* ...
+* (:docs) Convert `docs` submodule to a standalone gradle project
 
 ====
 

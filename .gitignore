@@ -7,3 +7,4 @@ out/
 build/
 logs/
 !gradle/wrapper/gradle-wrapper.jar
+!docs/gradle/wrapper/gradle-wrapper.jar
