@@ -10,6 +10,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/245[#245] (:extension) Add extension for testing with BLNS
 * https://github.com/serpro69/kotlin-faker/pull/243[#243] (:core) Add collection element and map k/v type gen for random class instance
 * https://github.com/serpro69/kotlin-faker/pull/234[#234] (:extension) Add extension module for kotest property testing
 * https://github.com/serpro69/kotlin-faker/pull/232[#232] (:core) Add support for alternative primary key when resolving values

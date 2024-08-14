@@ -1,0 +1,73 @@
+public final class io/github/serpro69/kfaker/blns/Blns : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun get (Lio/github/serpro69/kfaker/blns/Category;)Ljava/util/List;
+	public final fun get ([Lio/github/serpro69/kfaker/blns/Category;)Ljava/util/Map;
+	public final fun getAll ()Ljava/util/List;
+	public final fun getAllBase64 ()Ljava/util/List;
+	public final fun random (Z)Ljava/lang/String;
+	public static synthetic fun random$default (Lio/github/serpro69/kfaker/blns/Blns;ZILjava/lang/Object;)Ljava/lang/String;
+	public final fun sublist (IZ)Ljava/util/List;
+	public final fun sublist (Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public static synthetic fun sublist$default (Lio/github/serpro69/kfaker/blns/Blns;IZILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun sublist$default (Lio/github/serpro69/kfaker/blns/Blns;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class io/github/serpro69/kfaker/blns/Blns$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/blns/Blns;
+}
+
+public final class io/github/serpro69/kfaker/blns/BlnsKt {
+	public static final fun blns (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/blns/Blns;
+}
+
+public final class io/github/serpro69/kfaker/blns/Category : java/lang/Enum {
+	public static final field BYTE_ORDER_MARKS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field C0_CONTROLS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field C1_CONTROLS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field EMOJI Lio/github/serpro69/kfaker/blns/Category;
+	public static final field FILE_INCLUSION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field HUMAN_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field IOS_VULNERABILITIES Lio/github/serpro69/kfaker/blns/Category;
+	public static final field IRC_STRINGS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field JINJA_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field KAOMOJI Lio/github/serpro69/kfaker/blns/Category;
+	public static final field KNOWN_CVE Lio/github/serpro69/kfaker/blns/Category;
+	public static final field NUMERIC Lio/github/serpro69/kfaker/blns/Category;
+	public static final field OGHAM_TEXT Lio/github/serpro69/kfaker/blns/Category;
+	public static final field PERSIAN_SPECIAL_CHARS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field QUOTATION_MARKS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field REGIONAL_SYMBOLS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field RESERVED Lio/github/serpro69/kfaker/blns/Category;
+	public static final field RIGHT_TO_LEFT_STRINGS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field RUBY_COMMAND_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field SCRIPT_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field SCUNTHORPE_PROBLEM Lio/github/serpro69/kfaker/blns/Category;
+	public static final field SERVER_CODE_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field SPECIAL Lio/github/serpro69/kfaker/blns/Category;
+	public static final field SQL_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field TERMINAL_ESCAPE_CODES Lio/github/serpro69/kfaker/blns/Category;
+	public static final field TWO_BYTE_CHARS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field TWO_BYTE_LETTERS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_ACCENTS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_ADDITIONAL_CONTROL Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_FONT Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_NUMBERS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_SPECIAL_CHAR_UNION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_SYMBOLS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_TRICKS Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNICODE_UPSIDE_DOWN Lio/github/serpro69/kfaker/blns/Category;
+	public static final field UNWANTED_INTERPOLATION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field VARIABLE_CASE_LENGTH Lio/github/serpro69/kfaker/blns/Category;
+	public static final field WHITESPACE Lio/github/serpro69/kfaker/blns/Category;
+	public static final field WIN_SPECIAL_FILENAMES Lio/github/serpro69/kfaker/blns/Category;
+	public static final field XXE_INJECTION Lio/github/serpro69/kfaker/blns/Category;
+	public static final field ZALGO_TEXT Lio/github/serpro69/kfaker/blns/Category;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/blns/Category;
+	public static fun values ()[Lio/github/serpro69/kfaker/blns/Category;
+}
+
