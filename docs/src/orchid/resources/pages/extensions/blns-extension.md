@@ -61,8 +61,9 @@ For example, using [JUnit5 Parameterized Testing](https://junit.org/junit5/docs/
 - ② Get `all` strings
 - ③ Get a `sublist` of strings
 - ④ Get a `random` string
-- ⑤ Test your inputs
-- ⑥ Profit 💸
+- ⑤ `get` strings by a `Category`
+- ⑥ Test your inputs
+- Profit 💸
 
 {% tabs %}
 
@@ -72,9 +73,9 @@ For example, using [JUnit5 Parameterized Testing](https://junit.org/junit5/docs/
 ```kotlin
 class Test {
   @ParameterizedTest
-  @MethodSource("allStrings") // ⑤
+  @MethodSource("allStrings") // ⑥
   fun `test input with a naughty string`(s: String) {
-    inputField.sendKeys(s) // ⑤
+    inputField.sendKeys(s) // ⑥
   }
 
   companion object {
@@ -85,6 +86,9 @@ class Test {
     @JvmStatic private fun sublistBase64() = blns.sublist(10, base64 = true).stream() // ③
     val randomString: String get() = blns.random() // ④
     val randomBase64String: String get() = blns.random(base64 = true) // ④
+    val emojiStrings = blns.get(Category.EMOJI) // ⑤
+    val emojiAndKaomojiStrings = blns.get(Category.EMOJI, Category.KAOMOJI) // ⑤
+    val basicCategories = blns.get(Category.RESERVED, Category.NUMERIC, Category.SPECIAL) // ⑤
   }
 }
 ```
