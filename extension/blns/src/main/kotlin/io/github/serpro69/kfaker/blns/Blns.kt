@@ -15,7 +15,7 @@ import io.github.serpro69.kfaker.RandomService
  */
 @Suppress("unused")
 class Blns @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
-    private val get: (filename: String) -> List<String> = {
+    private val _all: (filename: String) -> List<String> = {
         val inStr = requireNotNull(javaClass.classLoader.getResourceAsStream(it))
         Mapper.readValue(inStr, jacksonTypeRef())
     }
@@ -23,12 +23,20 @@ class Blns @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : Ab
     /**
      * @property all a list of all strings.
      */
-    val all: List<String> by lazy { get("blns.json") }
+    val all: List<String> by lazy { _all("blns.json") }
 
     /**
      * @property allBase64 a list of all base64-encoded strings.
      */
-    val allBase64: List<String> by lazy { get("blns.base64.json") }
+    val allBase64: List<String> by lazy { _all("blns.base64.json") }
+
+    fun get(category: Category): List<String> = get(*arrayOf(category))[category]!!
+
+    fun get(vararg category: Category): Map<Category, List<String>> {
+        val inStr = requireNotNull(javaClass.classLoader.getResourceAsStream("blns_categories.json"))
+        val all: Map<Category, List<String>> = Mapper.readValue(inStr, jacksonTypeRef())
+        return all.filter { it.key in category }
+    }
 
     /**
      * Returns a random string of [all] strings (or [allBase64] strings if [base64] is `true`)
@@ -74,4 +82,5 @@ class Blns @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : Ab
  * Applies the [block] function to [Blns.Builder]
  * and returns as an instance of [Blns] from that builder.
  */
+@Suppress("unused")
 fun blns(block: Blns.Builder.() -> Unit): Blns = Blns.Builder().apply(block).build()
