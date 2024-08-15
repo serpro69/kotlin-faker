@@ -1,5 +1,10 @@
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
 
+> [!IMPORTANT]
+> **Are you considering supporting the project by donating to me? Please DO NOT!!!**
+>
+> **Please visit the above banner link and make a small donation to help the people in Ukraine. A small donation goes a long way.** 💙💛
+
 <a href="https://github.com/serpro69/kotlin-faker"> <img src=./logo/name.png alt="kotlin-faker"/> </a>
 
 > **Generate realistically-looking fake data for Kotlin, Android, Java and JVM**  

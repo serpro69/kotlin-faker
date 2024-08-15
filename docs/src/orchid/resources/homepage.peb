@@ -67,6 +67,17 @@ layout: 'homepage'
         </text>
       </a>
     </svg>
+
+    <div>
+      <style>
+        p {
+          font-size: 24px;
+          text-align: center;
+        }
+      </style>
+      <p style="color:white;background:#0057b7;padding-bottom:0px;margin-bottom:0px">Are you considering supporting the project by donating to me? Please DO NOT!!!</p>
+      <p style="color:black;background:#ffd700;">Please visit the above banner link and make a small donation to help the people in Ukraine. A small donation goes a long way. 💙💛</p>
+    </div>
   </div>
 </section>
 
