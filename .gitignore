@@ -10,3 +10,6 @@ logs/
 !docs/gradle/wrapper/gradle-wrapper.jar
 # kotlin-language-server
 kls_database.db
+
+# FIXME remove when Gradle Daemon JVM can be auto-provisioned - see configureGradleDaemonJvm()
+gradle/gradle-daemon-jvm.properties

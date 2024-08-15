@@ -1,4 +1,3 @@
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.archives
 
 /**
  * Plugin for publishing conventions
@@ -73,16 +72,16 @@ tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
     dependsOn(project.tasks.withType(Sign::class.java))
     if (isShadow) dependsOn(project.tasks["shadowJar"])
-    onlyIf("Not dev") { !isDev.get() }
-    onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
+    onlyIf { !isDev.get() }
+    onlyIf { isRelease.get() || isSnapshot.get() }
 }
 
 tasks.withType<PublishToMavenLocal>().configureEach {
-    onlyIf("In development") { isDev.get() || isSnapshot.get() }
+    onlyIf { isDev.get() || isSnapshot.get() }
 }
 
 tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
-    onlyIf("Not dev and snapshot") { !isDev.get() && !isSnapshot.get() }
-    onlyIf("Release") { isRelease.get() }
+    onlyIf { !isDev.get() && !isSnapshot.get() }
+    onlyIf { isRelease.get() }
 }

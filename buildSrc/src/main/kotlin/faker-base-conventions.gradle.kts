@@ -1,7 +1,3 @@
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.assemble
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.jar
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.sourceSets
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.test
 import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.configure

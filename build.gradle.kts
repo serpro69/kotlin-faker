@@ -4,6 +4,7 @@ import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import utils.configureGradleDaemonJvm
 
 plugins {
     // NB! some versions are on the classpath from dependency declared in buildSrc/build.gradle.kts
@@ -11,7 +12,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     id("io.github.serpro69.semantic-versioning") apply false
     id("com.github.ben-manes.versions") version "0.51.0" apply false
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.15.0-Beta.1"
+    alias(libs.plugins.kotlin.bcv)
 }
 
 group = "io.github.serpro69"
@@ -45,7 +46,7 @@ subprojects {
 
     configure<JavaPluginExtension> {
         toolchain {
-            languageVersion = JavaLanguageVersion.of(8)
+            languageVersion.set(JavaLanguageVersion.of(8))
         }
     }
 
@@ -174,3 +175,9 @@ tasks.withType<TagTask>().configureEach {
 apiValidation {
     ignoredProjects += listOf("bom", "cli-bot", /*"docs",*/ "test")
 }
+
+configureGradleDaemonJvm(
+    project = project,
+    updateDaemonJvm = tasks.updateDaemonJvm,
+    gradleDaemonJvmVersion = libs.versions.gradleDaemonJvm.map { JavaVersion.toVersion(it) },
+)

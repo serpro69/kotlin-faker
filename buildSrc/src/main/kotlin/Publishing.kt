@@ -1,10 +1,15 @@
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.dokkaJavadoc
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.sourceSets
 import org.gradle.api.Project
+import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.api.tasks.bundling.Jar
-import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.creating
+import org.gradle.kotlin.dsl.getByName
+import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getValue
+import org.jetbrains.dokka.gradle.DokkaTask
+
+//region manually define accessors, because IntelliJ _still_ doesn't index them properly :(
+internal val Project.sourceSets: SourceSetContainer get() = extensions.getByType()
+//endregion
 
 /**
  * For additional providers, use a combination of rootProject and subproject names for artifact name and similar things.
@@ -30,8 +35,8 @@ private fun createSourcesJarTask(p: Project): Jar {
 private fun createJavadocJarTask(p: Project): Jar {
     val dokkaJavadocJar by p.tasks.creating(Jar::class) {
         archiveClassifier.set("javadoc")
-        dependsOn(p.tasks.dokkaJavadoc)
-        from(p.tasks.dokkaJavadoc.get().outputDirectory.orNull)
+        dependsOn(p.tasks.getByName("dokkaJavadoc", DokkaTask::class))
+        from(p.tasks.getByName("dokkaJavadoc", DokkaTask::class).outputDirectory.orNull)
     }
     return dokkaJavadocJar
 }

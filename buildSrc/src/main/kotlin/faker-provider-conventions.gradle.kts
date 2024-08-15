@@ -1,5 +1,4 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import gradle.kotlin.dsl.accessors._617ff5292df7551646490c1442241820.assemble
 
 /**
  * Plugin for :faker:* modules
@@ -37,11 +36,11 @@ dependencies {
 // we have a dependency on :core,
 // hence we also need to make sure ShadowJar tasks depend on core having been built
 val shadowJar by tasks.getting(ShadowJar::class) {
-    dependsOn(core.tasks.shadowJar)
+    dependsOn(core.tasks.getByName("shadowJar", ShadowJar::class))
 }
 
 // since we're adding :core as implementation dependency, and effectively testImplementation
 // we also need to make sure Test tasks depend on core having been built
 tasks.withType<Test> {
-    dependsOn(core.tasks.shadowJar)
+    dependsOn(core.tasks.getByName("shadowJar", ShadowJar::class))
 }

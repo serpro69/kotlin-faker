@@ -12,10 +12,21 @@ snakeyaml = "2.2"
 plugin-dokka = "1.9.10"
 plugin-shadow = "8.1.1"
 plugin-semantic-versioning = "0.13.0"
+plugin-devpublish = "0.4.1"
 # test
 kotest = "5.8.1"
 junit = "5.10.1"
 kctfork = "0.4.1"
+
+### Java compilation ###
+# Kotest's minimum supported Java version.
+jvmMinTarget = "8"
+# Kotest's maximum supported Java version. (Must be >= jvmMinTarget.)
+jvmMaxTarget = "21"
+# JDK used to compile Kotest. (Must be >= jvmMaxTarget.)
+jvmCompiler = "21"
+# JDK used to run Gradle Daemon. (Should be the same as jvmCompiler, but could be higher or lower.)
+gradleDaemonJvm = "21"
 
 [libraries]
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
@@ -40,6 +51,7 @@ gradle-plugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", vers
 gradle-plugin-semantic-versioning = { module = "io.github.serpro69:semantic-versioning", version.ref = "plugin-semantic-versioning" }
 gradle-plugin-shadow = { module = "com.github.johnrengelman:shadow", version.ref = "plugin-shadow" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
+gradle-plugin-devpublish = { module = "dev.adamko.gradle:dev-publish-plugin", version.ref = "plugin-devpublish" }
 
 # Test
 test-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
@@ -57,4 +69,5 @@ kotlinpoet = ["kotlinpoet", "kotlinpoet-ksp"]
 test-kotest = ["test-kotest-runner", "test-kotest-assertions-core", "test-kotest-property"]
 
 [plugins]
+kotlin-bcv = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.15.0-Beta.1" }
 # import plugins using Maven coordinates (see above), not the Gradle plugin ID
