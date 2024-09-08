@@ -70,7 +70,7 @@ signing {
 }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
-    dependsOn(project.tasks.getByName("tag"))
+//    dependsOn(project.tasks.getByName("tag"))
     dependsOn(project.tasks.withType(Sign::class.java))
     if (isShadow) dependsOn(project.tasks["shadowJar"])
     onlyIf { !isDev.get() }
@@ -82,7 +82,7 @@ tasks.withType<PublishToMavenLocal>().configureEach {
 }
 
 tasks.withType<Sign>().configureEach {
-    dependsOn(project.tasks.getByName("tag"))
+//    dependsOn(project.tasks.getByName("tag"))
     onlyIf { !isDev.get() && !isSnapshot.get() }
     onlyIf { isRelease.get() }
 }
