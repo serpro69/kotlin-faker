@@ -49,7 +49,7 @@ application {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
 
@@ -90,7 +90,7 @@ graalvmNative {
         named("main") {
             imageName = "faker-bot_${project.version}"
             javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(17)
+                languageVersion.set(JavaLanguageVersion.of(17))
                 vendor.set(JvmVendorSpec.GRAAL_VM)
             }
             mainClass.set(mainFunction)
