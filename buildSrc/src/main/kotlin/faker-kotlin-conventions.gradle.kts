@@ -55,8 +55,7 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Test> {
-    @Suppress("SimpleRedundantLet")
-    jvmArgs?.let { it.plus("-ea") }
+    jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
 
     useJUnitPlatform()
     maxParallelForks = 1
