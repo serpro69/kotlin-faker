@@ -1,10 +1,30 @@
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 plugins {
+    java
+    kotlin("jvm")
 }
 
 dependencies {
     testImplementation(project(path = ":core", configuration = "shadow"))
+    testImplementation(libs.bundles.test.kotest)
+}
+
+configure<JavaPluginExtension> {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
+configure<KotlinJvmProjectExtension> {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
 
 configurations.create("testHelper")
@@ -20,12 +40,6 @@ artifacts {
     add(testHelper.name, testJar)
 }
 
-// disable api validation tasks
-tasks.apiBuild { enabled = false }
-tasks.apiCheck { enabled = false }
-tasks.apiDump { enabled = false }
-// disable the default jar task
-tasks.jar { enabled = false }
 // never publish
 tasks.withType<PublishToMavenRepository> { enabled = false }
 // nothing to test in this module yet,

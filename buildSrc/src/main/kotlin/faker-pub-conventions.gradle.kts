@@ -1,3 +1,4 @@
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 
 /**
  * Plugin for publishing conventions
@@ -84,4 +85,12 @@ tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag"))
     onlyIf { !isDev.get() && !isSnapshot.get() }
     onlyIf { isRelease.get() }
+}
+
+// Run :tag only after we've published artifacts to sonatype
+tasks.withType<TagTask>().configureEach {
+    // don't apply when "dryRun"
+    findProperty("dryRun") ?: run {
+        dependsOn("closeSonatypeStagingRepository")
+    }
 }

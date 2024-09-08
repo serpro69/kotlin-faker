@@ -33,6 +33,7 @@ dependencies {
     implementation(project(path = ":core", configuration = "shadow"))
     fakers.forEach { implementation(project(path = ":faker:$it", configuration = "shadow")) }
     implementation("info.picocli:picocli:4.7.5")
+    testImplementation(libs.bundles.test.kotest)
 }
 
 // Test tasks must run after we've built the dependencies
