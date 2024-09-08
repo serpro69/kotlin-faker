@@ -3,7 +3,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 plugins {
     application
     kotlin("jvm")
-    id("org.graalvm.buildtools.native") version "0.10.1"
+    id("org.graalvm.buildtools.native") version "0.10.2"
     id("com.github.johnrengelman.shadow")
 }
 
@@ -32,7 +32,7 @@ val fakers = listOf(
 dependencies {
     implementation(project(path = ":core", configuration = "shadow"))
     fakers.forEach { implementation(project(path = ":faker:$it", configuration = "shadow")) }
-    implementation("info.picocli:picocli:4.7.5")
+    implementation("info.picocli:picocli:4.7.6")
     testImplementation(libs.bundles.test.kotest)
 }
 
