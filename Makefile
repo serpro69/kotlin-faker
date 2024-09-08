@@ -46,7 +46,7 @@ pre-release-major: ## publishes next pre-release version with a major version bu
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=major \
 	--info
@@ -56,7 +56,7 @@ pre-release-minor: ## publishes next pre-release with a minor version bump
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=minor \
 	--info
@@ -66,7 +66,7 @@ pre-release-patch: ## publishes next pre-release with a patch version bump
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=patch \
 	--info
@@ -76,7 +76,7 @@ next-pre-release: ## publishes next pre-release version
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -Pincrement=pre_release \
 	--info
@@ -86,7 +86,7 @@ promote-to-release: ## publishes next release from the current pre-release versi
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -PpromoteRelease \
 	--info
@@ -96,7 +96,7 @@ release-major: ## publishes next major release version
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -Pincrement=major \
 	--info
@@ -107,7 +107,7 @@ release-minor: ## publishes next minor release version
 	tag \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	-Prelease -Pincrement=minor \
 	--info
 
@@ -116,7 +116,7 @@ release-patch: ## publishes next patch release version
 	./gradlew test integrationTest \
 	nativeCompile \
 	publishToSonatype \
-	closeSonatypeStagingRepository \
+	# closeSonatypeStagingRepository \
 	tag \
 	-Prelease -Pincrement=patch \
 	--info
