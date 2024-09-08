@@ -18,6 +18,8 @@ subprojects {
     if (this@subprojects.name == "bom") return@subprojects
 
     tasks.withType<DependencyUpdatesTask> {
+        // disable for cli-bot because the classpath takes forever to resolve
+        enabled = this@subprojects.name != "cli-bot"
         fun isNonStable(version: String): Boolean {
             val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
             val regex = "^[0-9,.v-]+(-r|-jre)?$".toRegex()
