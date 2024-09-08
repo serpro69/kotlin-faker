@@ -70,7 +70,7 @@ signing {
 }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
-//    dependsOn(project.tasks.getByName("tag"))
+    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
     dependsOn(project.tasks.withType(Sign::class.java))
     if (isShadow) dependsOn(project.tasks["shadowJar"])
     onlyIf { !isDev.get() }
@@ -82,15 +82,15 @@ tasks.withType<PublishToMavenLocal>().configureEach {
 }
 
 tasks.withType<Sign>().configureEach {
-//    dependsOn(project.tasks.getByName("tag"))
+    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
     onlyIf { !isDev.get() && !isSnapshot.get() }
     onlyIf { isRelease.get() }
 }
 
-// Run :tag only after we've published artifacts to sonatype
-tasks.withType<TagTask>().configureEach {
-    // don't apply when "dryRun"
-    findProperty("dryRun") ?: run {
-        dependsOn(rootProject.tasks.getByName("closeSonatypeStagingRepository"))
-    }
-}
+//// Run :tag only after we've published artifacts to sonatype
+//tasks.withType<TagTask>().configureEach {
+//    // don't apply when "dryRun"
+//    findProperty("dryRun") ?: run {
+//        dependsOn(rootProject.tasks.getByName("closeSonatypeStagingRepository"))
+//    }
+//}
