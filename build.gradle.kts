@@ -1,9 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-import org.gradle.api.tasks.testing.TestResult.ResultType
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import utils.configureGradleDaemonJvm
 
 plugins {
@@ -15,6 +10,8 @@ plugins {
 group = "io.github.serpro69"
 
 subprojects {
+    group = rootProject.group
+
     apply {
         plugin("com.github.ben-manes.versions")
     }
