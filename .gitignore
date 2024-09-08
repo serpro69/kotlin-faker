@@ -3,6 +3,7 @@
 .idea/
 .kotlintest/
 *.jar
+*.log
 out/
 build/
 logs/

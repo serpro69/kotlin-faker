@@ -87,10 +87,10 @@ tasks.withType<Sign>().configureEach {
     onlyIf { isRelease.get() }
 }
 
-// Run :tag only after we've published artifacts to sonatype
-tasks.withType<TagTask>().configureEach {
-    // don't apply when "dryRun"
-    findProperty("dryRun") ?: run {
-        dependsOn("closeSonatypeStagingRepository")
-    }
-}
+//// Run :tag only after we've published artifacts to sonatype
+//tasks.withType<TagTask>().configureEach {
+//    // don't apply when "dryRun"
+//    findProperty("dryRun") ?: run {
+//        dependsOn("closeSonatypeStagingRepository")
+//    }
+//}
