@@ -91,6 +91,6 @@ tasks.withType<Sign>().configureEach {
 tasks.withType<TagTask>().configureEach {
     // don't apply when "dryRun"
     findProperty("dryRun") ?: run {
-        dependsOn(":closeSonatypeStagingRepository")
+        dependsOn(rootProject.tasks.getByName("closeSonatypeStagingRepository"))
     }
 }
