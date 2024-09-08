@@ -10,7 +10,7 @@ plugins {
     `java-library`
     id("org.jetbrains.dokka")
     id("com.github.johnrengelman.shadow")
-    id("faker-base-conventions")
+    id("faker-kotlin-conventions")
     id("faker-pub-conventions")
 }
 

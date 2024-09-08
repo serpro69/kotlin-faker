@@ -3,7 +3,7 @@
  */
 
 plugins {
-    id("faker-base-conventions")
+    id("faker-kotlin-conventions")
     id("faker-pub-conventions")
 }
 

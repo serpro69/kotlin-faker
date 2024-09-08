@@ -33,6 +33,7 @@ dependencies {
     implementation(project(path = ":core", configuration = "shadow"))
     fakers.forEach { implementation(project(path = ":faker:$it", configuration = "shadow")) }
     implementation("info.picocli:picocli:4.7.5")
+    testImplementation(libs.bundles.test.kotest)
 }
 
 // Test tasks must run after we've built the dependencies
@@ -48,7 +49,7 @@ application {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
 
@@ -89,7 +90,7 @@ graalvmNative {
         named("main") {
             imageName = "faker-bot_${project.version}"
             javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(17)
+                languageVersion.set(JavaLanguageVersion.of(17))
                 vendor.set(JvmVendorSpec.GRAAL_VM)
             }
             mainClass.set(mainFunction)
