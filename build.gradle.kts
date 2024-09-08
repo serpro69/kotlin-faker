@@ -5,7 +5,6 @@ import utils.configureGradleDaemonJvm
 plugins {
     alias(libs.plugins.nexus.publish)
     alias(libs.plugins.benmanes.versions)
-    alias(libs.plugins.kotlin.bcv)
 }
 
 group = "io.github.serpro69"
@@ -46,10 +45,6 @@ tasks.withType<TagTask>().configureEach {
     findProperty("dryRun") ?: run {
         dependsOn("closeSonatypeStagingRepository")
     }
-}
-
-apiValidation {
-    ignoredProjects += listOf("bom", "cli-bot", /*"docs",*/ "test")
 }
 
 configureGradleDaemonJvm(

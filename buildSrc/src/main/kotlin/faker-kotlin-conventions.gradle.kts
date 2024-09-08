@@ -23,6 +23,7 @@ plugins {
     java
     kotlin("jvm")
     id("org.jetbrains.dokka")
+    id("org.jetbrains.kotlinx.binary-compatibility-validator")
 }
 
 val lib = project.libs
@@ -175,4 +176,7 @@ tasks {
 tasks.withType<DokkaTask>().configureEach {
     onlyIf("Not dev") { !isDev.get() }
     onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
+}
+
+apiValidation {
 }
