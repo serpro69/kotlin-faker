@@ -25,7 +25,6 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
-group = rootProject.group.toString()
 val lib = project.libs
 
 dependencies {
@@ -55,7 +54,7 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.withType<Test> {
-    @Suppress("SimpleRedundantLet", "UNNECESSARY_SAFE_CALL")
+    @Suppress("SimpleRedundantLet")
     jvmArgs?.let { it.plus("-ea") }
 
     useJUnitPlatform()

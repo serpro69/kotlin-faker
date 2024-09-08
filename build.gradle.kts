@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import utils.configureGradleDaemonJvm
 
 plugins {
@@ -10,8 +11,6 @@ plugins {
 group = "io.github.serpro69"
 
 subprojects {
-    group = rootProject.group
-
     apply {
         plugin("com.github.ben-manes.versions")
     }
@@ -38,6 +37,14 @@ nexusPublishing {
         sonatype {
             stagingProfileId.set(properties["stagingProfileId"]?.toString())
         }
+    }
+}
+
+// Run :tag only after we've published artifacts to sonatype
+tasks.withType<TagTask>().configureEach {
+    // don't apply when "dryRun"
+    findProperty("dryRun") ?: run {
+        dependsOn("closeSonatypeStagingRepository")
     }
 }
 

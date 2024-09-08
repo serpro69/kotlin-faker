@@ -7,6 +7,7 @@ import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 plugins {
     `maven-publish`
     signing
+    id("faker-base-conventions")
 }
 
 publishing {
@@ -86,11 +87,3 @@ tasks.withType<Sign>().configureEach {
     onlyIf { !isDev.get() && !isSnapshot.get() }
     onlyIf { isRelease.get() }
 }
-
-//// Run :tag only after we've published artifacts to sonatype
-//tasks.withType<TagTask>().configureEach {
-//    // don't apply when "dryRun"
-//    findProperty("dryRun") ?: run {
-//        dependsOn(rootProject.tasks.getByName("closeSonatypeStagingRepository"))
-//    }
-//}
