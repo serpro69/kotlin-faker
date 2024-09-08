@@ -1,23 +1,23 @@
 [versions]
 classgraph = "4.8.165"
 commons-io = "2.15.1"
-icu4j = "73.2"
-jackson = "2.15.3"
-kotlin = "1.9.21"
+icu4j = "75.1"
+jackson = "2.17.2"
+kotlin = "2.0.20"
 kotlinpoet = "1.15.3"
-ksp = "1.9.21-1.0.16"
 rgxgen = "2.0"
 # buildsrc and plugins
 snakeyaml = "2.2"
 plugin-bcv = "0.16.3"
-plugin-dokka = "1.9.10"
+plugin-dokka = "1.9.20"
 plugin-shadow = "8.1.1"
 plugin-semantic-versioning = "0.13.0"
 plugin-devpublish = "0.4.1"
+plugin-nexus-publish = "2.0.0"
+plugin-benmanes-versions = "0.51.0"
 # test
-kotest = "5.8.1"
-junit = "5.10.1"
-kctfork = "0.4.1"
+kotest = "5.9.1"
+junit = "5.11.0"
 
 ### Java compilation ###
 # Kotest's minimum supported Java version.
@@ -41,7 +41,6 @@ kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
 kotlinpoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
-ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 rgxgen = { module = "com.github.curious-odd-man:rgxgen", version.ref = "rgxgen" }
 
 # Plugins and dependencies for use in buildSrc/build.gradle.kts
@@ -57,8 +56,6 @@ gradle-plugin-devpublish = { module = "dev.adamko.gradle:dev-publish-plugin", ve
 
 # Test
 test-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
-test-kctfork = { module = "dev.zacsweers.kctfork:core", version.ref = "kctfork" }
-test-kctfork-ksp = { module = "dev.zacsweers.kctfork:ksp", version.ref = "kctfork" }
 test-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 test-kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 test-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
@@ -73,5 +70,5 @@ test-kotest = ["test-kotest-runner", "test-kotest-assertions-core", "test-kotest
 [plugins]
 # these are for root build.gradle.kts
 # most plugins are imported using Maven coordinates (see above), not the Gradle plugin ID
-nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version = "1.3.0" }
-benmanes-versions = { id = "com.github.ben-manes.versions", version = "0.51.0" }
+nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "plugin-nexus-publish" }
+benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "plugin-benmanes-versions" }
