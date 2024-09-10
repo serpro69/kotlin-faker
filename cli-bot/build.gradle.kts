@@ -4,7 +4,7 @@ plugins {
     application
     kotlin("jvm")
     id("org.graalvm.buildtools.native") version "0.10.2"
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
