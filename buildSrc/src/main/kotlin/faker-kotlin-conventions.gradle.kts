@@ -167,11 +167,6 @@ tasks.withType<Jar> {
     }
 }
 
-tasks {
-    getByName(integrationTest.name).dependsOn(test)
-    jar { dependsOn(integrationTest) }
-}
-
 tasks.withType<DokkaTask>().configureEach {
     onlyIf("Not dev") { !isDev.get() }
     onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
