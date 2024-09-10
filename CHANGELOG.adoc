@@ -29,6 +29,8 @@
 [discrete]
 === Other
 
+* https://github.com/serpro69/kotlin-faker/pull/248[#248] Update kotlin to 2.x, update and cleanup other dependencies
+* https://github.com/serpro69/kotlin-faker/issues/247[#247] Remove most logic from root build.gradle file
 * (:docs) Convert `docs` submodule to a standalone gradle project
 
 ====
