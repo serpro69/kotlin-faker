@@ -9,7 +9,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 plugins {
     `java-library`
     id("org.jetbrains.dokka")
-    id("com.github.johnrengelman.shadow")
+    id("com.gradleup.shadow")
     id("faker-kotlin-conventions")
     id("faker-pub-conventions")
 }

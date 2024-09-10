@@ -10,7 +10,7 @@ rgxgen = "2.0"
 snakeyaml = "2.2"
 plugin-bcv = "0.16.3"
 plugin-dokka = "1.9.20"
-plugin-shadow = "8.1.1"
+plugin-shadow = "8.3.0"
 plugin-semantic-versioning = "0.13.0"
 plugin-devpublish = "0.4.1"
 plugin-nexus-publish = "2.0.0"
@@ -50,7 +50,7 @@ gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", v
 gradle-plugin-bcv = { module = "org.jetbrains.kotlinx.binary-compatibility-validator:org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin", version.ref = "plugin-bcv" }
 gradle-plugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "plugin-dokka" }
 gradle-plugin-semantic-versioning = { module = "io.github.serpro69:semantic-versioning", version.ref = "plugin-semantic-versioning" }
-gradle-plugin-shadow = { module = "com.github.johnrengelman:shadow", version.ref = "plugin-shadow" }
+gradle-plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "plugin-shadow" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
 gradle-plugin-devpublish = { module = "dev.adamko.gradle:dev-publish-plugin", version.ref = "plugin-devpublish" }
 
