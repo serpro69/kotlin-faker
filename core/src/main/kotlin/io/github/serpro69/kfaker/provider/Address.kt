@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.dictionary.YamlCategory
 import io.github.serpro69.kfaker.extension.or
+import io.github.serpro69.kfaker.faker
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
@@ -51,4 +52,9 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun fullAddress() = with(fakerService) { resolve("full_address").numerify() }
     fun mailbox() = with(fakerService) { resolve("mail_box").numerify() }
     fun defaultCountry() = resolve("default_country")
+}
+
+fun main() {
+    val f = faker {  }
+    println(f.address.city())
 }
