@@ -290,6 +290,15 @@ class FakerService {
         return fakerData[category.lowercase()] as Map<String, Any>?
     }
 
+    fun getRawValue(category: YamlCategory, vararg keys: String): RawExpression {
+        return when (keys.size) {
+            1 -> getRawValue(category, keys.first())
+            2 -> getRawValue(category, keys.first(), keys.last())
+            3 -> getRawValue(category, keys[0], keys[1], keys[2])
+            else -> throw UnsupportedOperationException("Unsupported keys length of ${keys.size}")
+        }
+    }
+
     /**
      * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
      *
@@ -484,14 +493,10 @@ class FakerService {
             .lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         val ncg = category.names.toMutableSet().plus(cc).joinToString("|", prefix = "(?i:", postfix = ")")
-        val lexpr = Regex("""#\{(?!\d)($ncg\.)?((?!\p{L}*\.).*?)\}""")
-        val cexpr = Regex("""#\{(?!\d)(?!$ncg\.)(\p{L}+\.)?(.*?)\}""")
+        val lexpr = Regex("""#\{(?!\d)($ncg\.)?((?![A-Z]\p{L}*\.).*?)\}""")
+        val cexpr = Regex("""#\{(?!\d)(?!$ncg\.)([A-Z]\p{L}+\.)?(.*?)\}""")
         val sb = StringBuffer()
-        val yc: (Matcher) -> YamlCategory? = {
-            it.group(1)?.trimEnd('.')?.let { c ->
-                if (c == "PhoneNumber") PHONE_NUMBER else YamlCategory.findByName(c)
-            }
-        }
+        val yc: (Matcher) -> YamlCategory? = { it.group(1)?.trimEnd('.')?.let { c -> YamlCategory.findByName(c) } }
 
         println("Resolve cat: $category, expr: $rawExpression")
         println("CC: $cc")
@@ -504,7 +509,7 @@ class FakerService {
 //                        if (cc.equals(n, true)) YamlCategory.findByName(n) else null
 //                    }
                     println("Matcher: $it, raw: ${rawExpression.value}, sb: $sb")
-                    val replacement = getRawValue(category, it.group(2)).value
+                    val replacement = getRawValue(category, *it.group(2).split(".").toTypedArray()).value
                     it.appendReplacement(sb, replacement)
                 }
             }
