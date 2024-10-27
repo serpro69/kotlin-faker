@@ -483,10 +483,15 @@ class FakerService {
         val cc = category
             .lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-        val lexpr = Regex("""#\{(?!\d)($cc\.)?((?!\p{L}*\.).*?)\}""")
-        val cexpr = Regex("""#\{(?!\d)(?!$cc\.)(\p{L}+\.)?(.*?)\}""")
+        val ncg = category.names.toMutableSet().plus(cc).joinToString("|", prefix = "(?i:", postfix = ")")
+        val lexpr = Regex("""#\{(?!\d)($ncg\.)?((?!\p{L}*\.).*?)\}""")
+        val cexpr = Regex("""#\{(?!\d)(?!$ncg\.)(\p{L}+\.)?(.*?)\}""")
         val sb = StringBuffer()
-        val yc: (Matcher) -> YamlCategory? = { it.group(1)?.trimEnd('.')?.let { c -> YamlCategory.findByName(c) } }
+        val yc: (Matcher) -> YamlCategory? = {
+            it.group(1)?.trimEnd('.')?.let { c ->
+                if (c == "PhoneNumber") PHONE_NUMBER else YamlCategory.findByName(c)
+            }
+        }
 
         println("Resolve cat: $category, expr: $rawExpression")
         println("CC: $cc")

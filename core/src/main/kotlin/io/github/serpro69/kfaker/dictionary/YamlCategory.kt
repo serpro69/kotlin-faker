@@ -5,7 +5,7 @@ package io.github.serpro69.kfaker.dictionary
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  */
-enum class YamlCategory : Category {
+enum class YamlCategory(internal vararg val names: String = arrayOf()) : Category {
     /**
      * [YamlCategory] for custom yml-based data providers
      */
@@ -146,7 +146,7 @@ enum class YamlCategory : Category {
     PARKS_AND_REC,
     PEARL_JAM,
     PHISH,
-    PHONE_NUMBER,
+    PHONE_NUMBER("PhoneNumber"),
     PRINCE,
     PRINCESS_BRIDE,
     PROGRAMMING_LANGUAGE,
@@ -212,8 +212,9 @@ enum class YamlCategory : Category {
          * Returns [YamlCategory] by [name] string (case-insensitive).
          */
         internal fun findByName(name: String): YamlCategory {
-            return values().firstOrNull { it.lowercase() == name.lowercase() }
-                ?: throw NoSuchElementException("Category with name '$name' not found.")
+            return values().firstOrNull {
+                it.lowercase() == name.lowercase() || it.names.any { n -> it.lowercase() == n.lowercase() }
+            } ?: throw NoSuchElementException("Category with name '$name' not found.")
         }
     }
 }
