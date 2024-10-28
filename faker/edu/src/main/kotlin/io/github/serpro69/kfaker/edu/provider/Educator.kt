@@ -31,7 +31,7 @@ class Educator internal constructor(fakerService: FakerService) : YamlFakeDataPr
     fun campus() = resolve("campus")
     fun subject() = resolve("subject")
     fun degree() = resolve("degree")
-    fun courseName() = resolve("course_name")
+    fun courseName() = with(fakerService) { resolve("course_name").numerify() }
 }
 
 @Suppress("unused")

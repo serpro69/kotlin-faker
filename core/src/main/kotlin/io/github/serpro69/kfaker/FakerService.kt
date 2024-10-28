@@ -12,19 +12,14 @@ import io.github.serpro69.kfaker.dictionary.YamlCategory.SEPARATOR
 import io.github.serpro69.kfaker.dictionary.YamlCategoryData
 import io.github.serpro69.kfaker.dictionary.lowercase
 import io.github.serpro69.kfaker.exception.DictionaryKeyNotFoundException
-import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.Name
-import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import java.io.InputStream
 import java.util.*
 import java.util.regex.Matcher
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.set
-import kotlin.reflect.KFunction
-import kotlin.reflect.full.declaredMemberFunctions
-import kotlin.reflect.full.declaredMemberProperties
 
 /**
  * Internal class used for resolving yaml expressions into values.
@@ -33,7 +28,6 @@ import kotlin.reflect.full.declaredMemberProperties
  */
 class FakerService {
     @Suppress("RegExpRedundantEscape")
-    private val curlyBraceRegex = Regex("""#\{(?!\d)(\p{L}+\.)?(.*?)\}""")
     private val locale: String
     internal val faker: AbstractFaker
     internal val randomService: RandomService
@@ -296,18 +290,28 @@ class FakerService {
         return fakerData[category.lowercase()] as Map<String, Any>?
     }
 
+    fun getRawValue(category: YamlCategory, vararg keys: String): RawExpression {
+        return when (keys.size) {
+            1 -> getRawValue(category, keys.first())
+            2 -> getRawValue(category, keys.first(), keys.last())
+            3 -> getRawValue(category, keys[0], keys[1], keys[2])
+            else -> throw UnsupportedOperationException("Unsupported keys length of ${keys.size}")
+        }
+    }
+
     /**
      * Returns raw value as [RawExpression] from a given [category] fetched by its [key]
      *
      * @throws DictionaryKeyNotFoundException IF the [dictionary] [category] does not contain the [key]
      */
     fun getRawValue(category: YamlCategory, key: String): RawExpression {
-        val paramValue = dictionary[category]?.get(key)
+        val paramValue = getProviderData(category)[key]
             ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (paramValue) {
             is List<*> -> {
-                if (paramValue.isEmpty()) RawExpression("") else when (val value = randomService.randomValue(paramValue)) {
+                if (paramValue.isEmpty()) RawExpression("") else when (val value =
+                    randomService.randomValue(paramValue)) {
                     is List<*> -> {
                         if (value.isEmpty()) RawExpression("") else RawExpression(randomService.randomValue(value) as String)
                     }
@@ -328,7 +332,7 @@ class FakerService {
      * OR the primary [key] does not contain the [secondaryKey]
      */
     fun getRawValue(category: YamlCategory, key: String, secondaryKey: String): RawExpression {
-        val parameterValue = dictionary[category]?.get(key)
+        val parameterValue = getProviderData(category)[key]
             ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
@@ -369,7 +373,7 @@ class FakerService {
         secondaryKey: String,
         thirdKey: String,
     ): RawExpression {
-        val parameterValue = dictionary[category]?.get(key)
+        val parameterValue = getProviderData(category)[key]
             ?: throw DictionaryKeyNotFoundException("Parameter '$key' not found in '$category' category")
 
         return when (parameterValue) {
@@ -485,30 +489,51 @@ class FakerService {
      */
     @Suppress("KDocUnresolvedReference")
     private tailrec fun resolveExpression(category: YamlCategory, rawExpression: RawExpression): String {
+        val cc = category
+            .lowercase()
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+        val primary = category.names.toMutableSet().plus(cc).joinToString("|")
+        val secondary = category.children.toMutableSet().joinToString("|")
+        // https://regex101.com/r/KIvagc/1
+        //                          #\{(?!\d)(?:(Creature|Games|(Bird|Cat|Dog))\.)?((?![A-Z]\p{L}*\.).*?)\}
+        val lexpr = Regex("""#\{(?!\d)(?i:($primary|($secondary))\.)?((?![A-Z]\p{L}*\.).*?)\}""")
+        // https://regex101.com/r/I8gG7M/1
+        //                          #\{(?!\d)(?!(?i:Creature|(?i:Bird|Cat|Dog))\.)(?:([A-Z]\p{L}+())\.)?(.*?)\}
+        val cexpr = Regex("""#\{(?!\d)(?!(?i:$primary|(?i:$secondary))\.)(?:([A-Z]\p{L}+())\.)?(.*?)\}""")
         val sb = StringBuffer()
+        val pc: (Matcher) -> YamlCategory? = { it.group(1)?.let { c -> YamlCategory.findByName(c) } }
+        val sc: (Matcher) -> Category? = { it.group(2)?.let { c -> Category.ofName(c.uppercase()) } }
 
         val resolvedExpression = when {
-            curlyBraceRegex.containsMatchIn(rawExpression.value) -> {
-                findMatchesAndAppendTail(rawExpression.value, sb, curlyBraceRegex) {
-                    val simpleClassName = it.group(1)?.trimEnd('.')
-
-                    val replacement = when (simpleClassName != null) {
-                        true -> {
-                            val (providerType, propertyName) = getProvider(simpleClassName).getFunctionName(it.group(2))
-                            providerType.callFunction(propertyName)
-                        }
-                        false -> getRawValue(category, it.group(2)).value
-                    }
-
+            lexpr.containsMatchIn(rawExpression.value) -> {
+                findMatchesAndAppendTail(rawExpression.value, sb, lexpr) {
+                    val args = sc(it)?.let { c -> "${c.name.lowercase()}.${it.group(3)}".split(".").toTypedArray() }
+                        ?: it.group(3).split(".").toTypedArray()
+                    val replacement = getRawValue(category, *args).value
                     it.appendReplacement(sb, replacement)
                 }
             }
             else -> rawExpression.value
         }
 
-        return if (!curlyBraceRegex.containsMatchIn(resolvedExpression)) {
-            resolvedExpression
-        } else resolveExpression(category, RawExpression(resolvedExpression))
+        return when {
+            !lexpr.containsMatchIn(resolvedExpression)
+                && !cexpr.containsMatchIn(resolvedExpression) -> resolvedExpression
+            else -> {
+                if (lexpr.containsMatchIn(resolvedExpression)) {
+                    resolveExpression(category, RawExpression(resolvedExpression))
+                } else {
+                    val cm = cexpr.toPattern().matcher(resolvedExpression)
+                    when { // resolve expression from another category, rinse and repeat
+                        cm.find() -> {
+                            val cat = pc(cm) ?: category
+                            resolveExpression(cat, RawExpression(resolvedExpression.replace(cc, "")))
+                        }
+                        else -> resolveExpression(category, RawExpression(resolvedExpression))
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -550,44 +575,6 @@ class FakerService {
         get() = { RgxGen.parse(this).generate(faker.config.random) }
 
     /**
-     * Calls the property of this [FakeDataProvider] receiver and returns the result as [String].
-     *
-     * @param T instance of [FakeDataProvider]
-     * @param kFunction the [KFunction] of [T]
-     */
-    private fun <T : FakeDataProvider> T.callFunction(kFunction: KFunction<*>): String {
-        return kFunction.call(this) as String
-    }
-
-    /**
-     * Gets the [KFunction] of this [FakeDataProvider] receiver from the [rawString].
-     *
-     * Examples:
-     *
-     * - Yaml expression in the form of `Name.first_name` would return the [Name.firstName] function.
-     * - Yaml expression in the form of `Address.country` would return the [Address.country] function.
-     * - Yaml expression in the form of `Educator.tertiary.degree.course_number` would return the [Educator.tertiary.degree.courseNumber] function.
-     *
-     * @param T instance of [FakeDataProvider]
-     */
-    @Suppress("KDocUnresolvedReference")
-    private fun <T : FakeDataProvider> T.getFunctionName(rawString: String): Pair<FakeDataProvider, KFunction<*>> {
-        val funcName = rawString.split("_").mapIndexed { i: Int, s: String ->
-            if (i == 0) s else s.substring(0, 1).uppercase() + s.substring(1)
-        }.joinToString("")
-
-        return this::class.declaredMemberFunctions.firstOrNull { it.name == funcName }
-            ?.let { this to it }
-            ?: run {
-                this::class.declaredMemberProperties.firstOrNull { it.name == funcName.substringBefore(".") }?.let {
-                    (it.getter.call(this) as YamlFakeDataProvider<*>)
-                        .getFunctionName(funcName.substringAfter("."))
-                }
-            }
-            ?: throw NoSuchElementException("Function $funcName not found in $this")
-    }
-
-    /**
      * Returns an instance of [FakeDataProvider] fetched by its [simpleClassName] (case-insensitive).
      *
      * The function will attempt a [FakeDataProvider] in this [faker]'s declared member properties.
@@ -596,19 +583,11 @@ class FakerService {
      * @throws NoSuchElementException if neither this [faker] nor the core [Faker] implementation
      * has declared a provider that matches the [simpleClassName] parameter.
      */
-    private fun getProvider(simpleClassName: String): FakeDataProvider {
-        val kProp = faker::class.declaredMemberProperties.firstOrNull {
-            it.name.lowercase() == simpleClassName.lowercase()
-        }
-
-        return kProp?.let { it.call(faker) as FakeDataProvider } ?: run {
-            val core = Faker(faker.config)
-            val prop = core::class.declaredMemberProperties.firstOrNull { p ->
-                p.name.lowercase() == simpleClassName.lowercase()
-            }
-            prop?.let { p -> p.call(core) as FakeDataProvider }
-                ?: throw NoSuchElementException("Faker provider '$simpleClassName' not found in $core or $faker")
-        }
+    private fun getProviderData(primary: YamlCategory, secondary: Category? = null): YamlCategoryData {
+        return dictionary[primary] 
+            ?: secondary?.let { load(primary, secondary)[primary] }
+            ?: load(primary)[primary]
+            ?: throw NoSuchElementException("Category $primary not found in $this")
     }
 
     private fun findMatchesAndAppendTail(
@@ -618,9 +597,7 @@ class FakerService {
         invoke: (Matcher) -> Unit
     ): String {
         val matcher = regex.toPattern().matcher(string)
-
         while (matcher.find()) invoke(matcher)
-
         matcher.appendTail(stringBuffer)
         return stringBuffer.toString()
     }

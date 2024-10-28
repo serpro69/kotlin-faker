@@ -4,8 +4,15 @@ package io.github.serpro69.kfaker.dictionary
  * This enum contains all default categories and matches with the names of the .yml files for 'en' locale.
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
+ *
+ * @property children an optional set of children category names that are not part of this enum (e.g. Creature -> Animal)
+ * @property names alternative names that may be used to refer to this category in yml expressions, e.g.
+ * `#{PhoneNumber.area_code}` is used in en-US.yml:6932 instead of `#{Phone_Number.area_code}`
  */
-enum class YamlCategory : Category {
+enum class YamlCategory(
+    internal val names: Set<String> = emptySet(),
+    internal val children: Set<String> = emptySet(),
+) : Category {
     /**
      * [YamlCategory] for custom yml-based data providers
      */
@@ -36,8 +43,8 @@ enum class YamlCategory : Category {
     BIG_BANG_THEORY,
     BLOOD,
     BOJACK_HORSEMAN,
-    BOOK,
-    BOOKS,
+    BOOK(children = setOf("title")),
+    BOOKS(children = setOf("the_kingkiller_chronicle")),
     BOSSA_NOVA,
     BREAKING_BAD,
     BROOKLYN_NINE_NINE,
@@ -62,7 +69,7 @@ enum class YamlCategory : Category {
     CONSTRUCTION,
     COSMERE,
     COWBOY_BEBOP,
-    CREATURE,
+    CREATURE(children = setOf("animal", "bird", "cat", "dog", "horse")),
     CROSSFIT,
     CRYPTO_COIN,
     CULTURE_SERIES,
@@ -75,7 +82,7 @@ enum class YamlCategory : Category {
     DEVICE,
     DND,
     DORAEMON,
-    GAMES,
+    GAMES(children = games),
     DRAGON_BALL,
     DRIVING_LICENSE,
     DRONE,
@@ -96,7 +103,7 @@ enum class YamlCategory : Category {
     FRIENDS,
     FUNNY_NAME,
     FUTURAMA,
-    GAME,
+    GAME(children = setOf("title")),
     GAME_OF_THRONES,
     GENDER,
     GHOSTBUSTERS,
@@ -146,7 +153,7 @@ enum class YamlCategory : Category {
     PARKS_AND_REC,
     PEARL_JAM,
     PHISH,
-    PHONE_NUMBER,
+    PHONE_NUMBER(names = setOf("PhoneNumber")),
     PRINCE,
     PRINCESS_BRIDE,
     PROGRAMMING_LANGUAGE,
@@ -212,8 +219,34 @@ enum class YamlCategory : Category {
          * Returns [YamlCategory] by [name] string (case-insensitive).
          */
         internal fun findByName(name: String): YamlCategory {
-            return values().firstOrNull { it.lowercase() == name.lowercase() }
-                ?: throw NoSuchElementException("Category with name '$name' not found.")
+            return values().firstOrNull {
+                it.lowercase() == name.lowercase() || it.names.any { n -> it.lowercase() == n.lowercase() }
+            } ?: throw NoSuchElementException("Category with name '$name' not found.")
         }
     }
 }
+
+private val games = setOf(
+    "dota",
+    "clash_of_clan",
+    "control",
+    "elder_scrolls",
+    "fallout",
+    "final_fantasy_xiv",
+    "half_life",
+    "league_of_legends",
+    "minecraft",
+    "myst",
+    "overwatch",
+    "pokemon",
+    "sonic_the_hedgehog",
+    "street_fighter",
+    "super_mario",
+    "super_smash_bros",
+    "touhou",
+    "tron",
+    "warhammer_fantasy",
+    "witcher",
+    "world_of_warcraft",
+    "zelda",
+)
