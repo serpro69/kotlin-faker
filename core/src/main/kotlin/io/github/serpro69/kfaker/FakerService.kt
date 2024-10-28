@@ -504,28 +504,17 @@ class FakerService {
         val pc: (Matcher) -> YamlCategory? = { it.group(1)?.let { c -> YamlCategory.findByName(c) } }
         val sc: (Matcher) -> Category? = { it.group(2)?.let { c -> Category.ofName(c.uppercase()) } }
 
-        println("Resolve cat: $category, expr: $rawExpression")
-        println("CC: $cc")
-
         val resolvedExpression = when {
             lexpr.containsMatchIn(rawExpression.value) -> {
-                println("Contains match: true")
                 findMatchesAndAppendTail(rawExpression.value, sb, lexpr) {
-//                    val yc = it.group(1)?.trimEnd('.')?.let { n ->
-//                        if (cc.equals(n, true)) YamlCategory.findByName(n) else null
-//                    }
-                    println("Matcher: $it, raw: ${rawExpression.value}, sb: $sb")
                     val args = sc(it)?.let { c -> "${c.name.lowercase()}.${it.group(3)}".split(".").toTypedArray() }
                         ?: it.group(3).split(".").toTypedArray()
-                    println("args: ${args.toList()}")
                     val replacement = getRawValue(category, *args).value
                     it.appendReplacement(sb, replacement)
                 }
             }
             else -> rawExpression.value
         }
-
-        println("Resolved: $resolvedExpression")
 
         return when {
             !lexpr.containsMatchIn(resolvedExpression)
@@ -535,19 +524,10 @@ class FakerService {
                     resolveExpression(category, RawExpression(resolvedExpression))
                 } else {
                     val cm = cexpr.toPattern().matcher(resolvedExpression)
-                    println("CM: $cm, resolved: $resolvedExpression")
-//                    val s = if (cm.group(1) != null && cm.group(1)!!.trimEnd('.').equals(category.toString(), true)) {
-//                        cm.group(2)
-//                    } else cm.group(2)
                     when { // resolve expression from another category, rinse and repeat
                         cm.find() -> {
                             val cat = pc(cm) ?: category
-                            println("New cat: $cat")
                             resolveExpression(cat, RawExpression(resolvedExpression.replace(cc, "")))
-//                            s?.let { c ->
-//                                val yc = YamlCategory.findByName(c.trimEnd('.'))
-//                                resolveExpression(yc, RawExpression(resolvedExpression.replace(c, "")))
-//                            } ?: resolveExpression(category, RawExpression(resolvedExpression))
                         }
                         else -> resolveExpression(category, RawExpression(resolvedExpression))
                     }

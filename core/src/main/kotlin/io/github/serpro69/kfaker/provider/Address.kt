@@ -53,8 +53,3 @@ class Address internal constructor(fakerService: FakerService) : YamlFakeDataPro
     fun mailbox() = with(fakerService) { resolve("mail_box").numerify() }
     fun defaultCountry() = resolve("default_country")
 }
-
-fun main() {
-    val f = faker {  }
-    println(f.address.city())
-}
