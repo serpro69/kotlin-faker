@@ -584,9 +584,8 @@ class FakerService {
      * has declared a provider that matches the [simpleClassName] parameter.
      */
     private fun getProviderData(primary: YamlCategory, secondary: Category? = null): YamlCategoryData {
-        return secondary?.let {
-            load(primary, secondary)[primary]
-        } ?: dictionary[primary]
+        return dictionary[primary] 
+            ?: secondary?.let { load(primary, secondary)[primary] }
             ?: load(primary)[primary]
             ?: throw NoSuchElementException("Category $primary not found in $this")
     }
