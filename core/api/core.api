@@ -87,6 +87,7 @@ public final class io/github/serpro69/kfaker/FakerService {
 	public final fun getLetterify (Ljava/lang/String;)Lkotlin/jvm/functions/Function1;
 	public final fun getNumerify (Ljava/lang/String;)Lkotlin/jvm/functions/Function0;
 	public final fun getRawValue-DOu9s8A (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;)Ljava/lang/String;
+	public final fun getRawValue-DOu9s8A (Lio/github/serpro69/kfaker/dictionary/YamlCategory;[Ljava/lang/String;)Ljava/lang/String;
 	public final fun getRawValue-EpprjwY (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public final fun getRawValue-f6CUTBQ (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 	public final fun getRegexify (Ljava/lang/String;)Lkotlin/jvm/functions/Function0;
