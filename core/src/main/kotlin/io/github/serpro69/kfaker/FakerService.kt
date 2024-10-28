@@ -492,11 +492,17 @@ class FakerService {
         val cc = category
             .lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-        val ncg = category.names.toMutableSet().plus(cc).joinToString("|", prefix = "(?i:", postfix = ")")
-        val lexpr = Regex("""#\{(?!\d)($ncg\.)?((?![A-Z]\p{L}*\.).*?)\}""")
-        val cexpr = Regex("""#\{(?!\d)(?!$ncg\.)([A-Z]\p{L}+\.)?(.*?)\}""")
+        val primary = category.names.toMutableSet().plus(cc).joinToString("|")
+        val secondary = category.children.toMutableSet().joinToString("|")
+        // https://regex101.com/r/KIvagc/1
+        //                          #\{(?!\d)(?:(Creature|Games|(Bird|Cat|Dog))\.)?((?![A-Z]\p{L}*\.).*?)\}
+        val lexpr = Regex("""#\{(?!\d)(?i:($primary|($secondary))\.)?((?![A-Z]\p{L}*\.).*?)\}""")
+        // https://regex101.com/r/I8gG7M/1
+        //                          #\{(?!\d)(?!(?i:Creature|(?i:Bird|Cat|Dog))\.)(?:([A-Z]\p{L}+())\.)?(.*?)\}
+        val cexpr = Regex("""#\{(?!\d)(?!(?i:$primary|(?i:$secondary))\.)(?:([A-Z]\p{L}+())\.)?(.*?)\}""")
         val sb = StringBuffer()
-        val yc: (Matcher) -> YamlCategory? = { it.group(1)?.trimEnd('.')?.let { c -> YamlCategory.findByName(c) } }
+        val pc: (Matcher) -> YamlCategory? = { it.group(1)?.let { c -> YamlCategory.findByName(c) } }
+        val sc: (Matcher) -> Category? = { it.group(2)?.let { c -> Category.ofName(c.uppercase()) } }
 
         println("Resolve cat: $category, expr: $rawExpression")
         println("CC: $cc")
@@ -509,7 +515,10 @@ class FakerService {
 //                        if (cc.equals(n, true)) YamlCategory.findByName(n) else null
 //                    }
                     println("Matcher: $it, raw: ${rawExpression.value}, sb: $sb")
-                    val replacement = getRawValue(category, *it.group(2).split(".").toTypedArray()).value
+                    val args = sc(it)?.let { c -> "${c.name.lowercase()}.${it.group(3)}".split(".").toTypedArray() }
+                        ?: it.group(3).split(".").toTypedArray()
+                    println("args: ${args.toList()}")
+                    val replacement = getRawValue(category, *args).value
                     it.appendReplacement(sb, replacement)
                 }
             }
@@ -532,7 +541,7 @@ class FakerService {
 //                    } else cm.group(2)
                     when { // resolve expression from another category, rinse and repeat
                         cm.find() -> {
-                            val cat = yc(cm) ?: category
+                            val cat = pc(cm) ?: category
                             println("New cat: $cat")
                             resolveExpression(cat, RawExpression(resolvedExpression.replace(cc, "")))
 //                            s?.let { c ->
@@ -594,10 +603,12 @@ class FakerService {
      * @throws NoSuchElementException if neither this [faker] nor the core [Faker] implementation
      * has declared a provider that matches the [simpleClassName] parameter.
      */
-    private fun getProviderData(name: YamlCategory): YamlCategoryData {
-        return dictionary[name]
-            ?: load(name)[name]
-            ?: throw NoSuchElementException("Category $name not found in $this")
+    private fun getProviderData(primary: YamlCategory, secondary: Category? = null): YamlCategoryData {
+        return secondary?.let {
+            load(primary, secondary)[primary]
+        } ?: dictionary[primary]
+            ?: load(primary)[primary]
+            ?: throw NoSuchElementException("Category $primary not found in $this")
     }
 
     private fun findMatchesAndAppendTail(

@@ -4,8 +4,15 @@ package io.github.serpro69.kfaker.dictionary
  * This enum contains all default categories and matches with the names of the .yml files for 'en' locale.
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
+ *
+ * @property children an optional set of children category names that are not part of this enum (e.g. Creature -> Animal)
+ * @property names alternative names that may be used to refer to this category in yml expressions, e.g.
+ * `#{PhoneNumber.area_code}` is used in en-US.yml:6932 instead of `#{Phone_Number.area_code}`
  */
-enum class YamlCategory(internal vararg val names: String = arrayOf()) : Category {
+enum class YamlCategory(
+    internal val names: Set<String> = emptySet(),
+    internal val children: Set<String> = emptySet(),
+) : Category {
     /**
      * [YamlCategory] for custom yml-based data providers
      */
@@ -62,7 +69,7 @@ enum class YamlCategory(internal vararg val names: String = arrayOf()) : Categor
     CONSTRUCTION,
     COSMERE,
     COWBOY_BEBOP,
-    CREATURE,
+    CREATURE(children = setOf("Animal", "Bird", "Cat", "Dog", "Horse")),
     CROSSFIT,
     CRYPTO_COIN,
     CULTURE_SERIES,
@@ -146,7 +153,7 @@ enum class YamlCategory(internal vararg val names: String = arrayOf()) : Categor
     PARKS_AND_REC,
     PEARL_JAM,
     PHISH,
-    PHONE_NUMBER("PhoneNumber"),
+    PHONE_NUMBER(names = setOf("PhoneNumber")),
     PRINCE,
     PRINCESS_BRIDE,
     PROGRAMMING_LANGUAGE,
