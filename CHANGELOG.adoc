@@ -19,6 +19,11 @@
 * https://github.com/serpro69/kotlin-faker/issues/218[#218] (:core) Allow creating custom fakers / generators
 
 [discrete]
+=== Changed
+
+* https://github.com/serpro69/kotlin-faker/pull/252[#252] (:core) Get rid of reflection in `FakerService`
+
+[discrete]
 === Fixed
 
 * https://github.com/serpro69/kotlin-faker/pull/240[#240] (:core) Fix NoSuchElementException in `uk.company.name`
