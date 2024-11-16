@@ -40,6 +40,7 @@ val fakers =
         "misc",
         "movies",
         "music",
+        "pictures",
         "sports",
         "tech",
         "travel",
