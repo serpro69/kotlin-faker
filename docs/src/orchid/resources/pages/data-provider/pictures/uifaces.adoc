@@ -1,0 +1,13 @@
+---
+---
+
+== `Faker().uiFaces`
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().uiFaces.avatar()
+----
+====

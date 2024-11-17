@@ -1,0 +1,3 @@
+plugins {
+    `faker-provider-conventions`
+}
