@@ -22,6 +22,89 @@
 [discrete]
 === Changed
 
+* https://github.com/serpro69/kotlin-faker/issues/249[#249] Publish all artifacts with the same version
+
+++++
+<details><summary><b>Cleaned-up tags:</b></summary>
+<p>
+++++
+```bash
+➜ git tag --list | grep -e 'faker-.*v2.0.0-rc.*' | xargs -I{} git tag --delete {}
+Deleted tag 'faker-books-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-books-v2.0.0-rc.2' (was 5a1b993d)
+Deleted tag 'faker-books-v2.0.0-rc.3' (was 306caa24)
+Deleted tag 'faker-books-v2.0.0-rc.4' (was 2783626a)
+Deleted tag 'faker-commerce-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-commerce-v2.0.0-rc.2' (was c29b243c)
+Deleted tag 'faker-commerce-v2.0.0-rc.3' (was 036c2ccf)
+Deleted tag 'faker-commerce-v2.0.0-rc.4' (was e0764054)
+Deleted tag 'faker-creatures-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-creatures-v2.0.0-rc.2' (was 9d92cbca)
+Deleted tag 'faker-creatures-v2.0.0-rc.3' (was 928a0a06)
+Deleted tag 'faker-creatures-v2.0.0-rc.4' (was 2925c425)
+Deleted tag 'faker-databases-v2.0.0-rc.1' (was 37c8f34e)
+Deleted tag 'faker-databases-v2.0.0-rc.2' (was 7f01d507)
+Deleted tag 'faker-databases-v2.0.0-rc.3' (was 3c9bd650)
+Deleted tag 'faker-edu-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-edu-v2.0.0-rc.2' (was f5672634)
+Deleted tag 'faker-edu-v2.0.0-rc.3' (was c7c889a8)
+Deleted tag 'faker-edu-v2.0.0-rc.4' (was 96602cb8)
+Deleted tag 'faker-games-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-games-v2.0.0-rc.2' (was da487701)
+Deleted tag 'faker-games-v2.0.0-rc.3' (was 7ec46be9)
+Deleted tag 'faker-games-v2.0.0-rc.4' (was 94233f02)
+Deleted tag 'faker-humor-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-humor-v2.0.0-rc.2' (was 16431204)
+Deleted tag 'faker-humor-v2.0.0-rc.3' (was a5c4f3fe)
+Deleted tag 'faker-humor-v2.0.0-rc.4' (was 828b3579)
+Deleted tag 'faker-japmedia-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-japmedia-v2.0.0-rc.2' (was a1d0f685)
+Deleted tag 'faker-japmedia-v2.0.0-rc.3' (was 877bb934)
+Deleted tag 'faker-japmedia-v2.0.0-rc.4' (was 2fece179)
+Deleted tag 'faker-lorem-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-lorem-v2.0.0-rc.2' (was 8bade88d)
+Deleted tag 'faker-lorem-v2.0.0-rc.3' (was 069835f9)
+Deleted tag 'faker-lorem-v2.0.0-rc.4' (was d4b6a878)
+Deleted tag 'faker-misc-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-misc-v2.0.0-rc.2' (was ccc4795d)
+Deleted tag 'faker-misc-v2.0.0-rc.3' (was 68c43b3c)
+Deleted tag 'faker-misc-v2.0.0-rc.4' (was a34edb67)
+Deleted tag 'faker-movies-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-movies-v2.0.0-rc.2' (was c2089d94)
+Deleted tag 'faker-movies-v2.0.0-rc.3' (was a4d5d663)
+Deleted tag 'faker-movies-v2.0.0-rc.4' (was 8f0bbdd9)
+Deleted tag 'faker-music-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-music-v2.0.0-rc.2' (was 4f080065)
+Deleted tag 'faker-music-v2.0.0-rc.3' (was 02445b0c)
+Deleted tag 'faker-music-v2.0.0-rc.4' (was c8c74405)
+Deleted tag 'faker-sports-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-sports-v2.0.0-rc.2' (was 99f07075)
+Deleted tag 'faker-sports-v2.0.0-rc.3' (was f83980e5)
+Deleted tag 'faker-sports-v2.0.0-rc.4' (was 392c74c1)
+Deleted tag 'faker-tech-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-tech-v2.0.0-rc.2' (was e2f8c5b1)
+Deleted tag 'faker-tech-v2.0.0-rc.3' (was 1572e6f8)
+Deleted tag 'faker-tech-v2.0.0-rc.4' (was 2bc3b63e)
+Deleted tag 'faker-travel-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-travel-v2.0.0-rc.2' (was 7ef5850c)
+Deleted tag 'faker-travel-v2.0.0-rc.3' (was 823b7e0b)
+Deleted tag 'faker-travel-v2.0.0-rc.4' (was 58fc8567)
+Deleted tag 'faker-tvshows-v2.0.0-rc.1' (was d7d01006)
+Deleted tag 'faker-tvshows-v2.0.0-rc.2' (was c27508d8)
+Deleted tag 'faker-tvshows-v2.0.0-rc.3' (was d016c24e)
+Deleted tag 'faker-tvshows-v2.0.0-rc.4' (was 6e3c8743)
+
+➜ git tag --list | grep -e 'ext-.*v2.0.0-rc.*' | xargs -I{} git tag --delete {}
+Deleted tag 'ext-blns-v2.0.0-rc.6' (was c6028cd1)
+Deleted tag 'ext-kotest-property-ksp-v2.0.0-rc.1' (was 7e5fe034)
+Deleted tag 'ext-kotest-property-v2.0.0-rc.1' (was 1464550b)
+Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
+```
+++++
+</p>
+</details>
+++++
+
 * https://github.com/serpro69/kotlin-faker/pull/252[#252] (:core) Get rid of reflection in `FakerService`
 
 [discrete]
