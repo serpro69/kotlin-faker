@@ -61,20 +61,4 @@ settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
     version {
         useSnapshots = true
     }
-    monorepo {
-        fakers.forEach { f ->
-            module(":faker:$f") {
-                tag {
-                    prefix = TagPrefix("faker-$f-v")
-                }
-            }
-        }
-        extensions.filter { !it.endsWith("-test") }.forEach { e ->
-            module(":extension:$e") {
-                tag {
-                    prefix = TagPrefix("ext-$e-v")
-                }
-            }
-        }
-    }
 }

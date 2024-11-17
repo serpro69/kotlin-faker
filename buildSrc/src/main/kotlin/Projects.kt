@@ -28,9 +28,5 @@ val Project.isSnapshot: Provider<Boolean>
 val Project.isRelease: Provider<Boolean>
     get() = provider {
         val tag = tasks.getByName("tag", TagTask::class)
-        /* all fakers have their own tags, so checking if tag.didWork is enough for them,
-           ':core' shares the tag with 'root', ':bom' and ':cli-bot' modules,
-           and hence the tag might already exist and didWork will return false for ':core' */
-        val tagCreated = if (project.name != "core") tag.didWork else tag.didWork || tag.tagExists
-        !isDev.get() && !isSnapshot.get() && tagCreated
+        (!isDev.get() && !isSnapshot.get()) && (tag.didWork || tag.tagExists)
     }
