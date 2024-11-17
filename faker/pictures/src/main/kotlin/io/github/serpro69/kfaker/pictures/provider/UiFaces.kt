@@ -17,7 +17,6 @@ class UiFaces internal constructor(
         val t = type ?: randomService.nextEnum()
         val g = gender ?: randomService.nextEnum()
         val n = randomService.randomValue(if (g == FEMALE) t.f else t.m)
-        println("$t/$g/$n")
         val instr = requireNotNull(javaClass.classLoader.getResourceAsStream("uifaces/$t/$g/$n.jpg")) {
             "UiFaces avatar $t/$g/$n.jpg does not exist"
         }
