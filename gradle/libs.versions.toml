@@ -36,9 +36,9 @@ icu4j = { module = "com.ibm.icu:icu4j", version.ref = "icu4j" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
-kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common" }
-kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlinpoet = { module = "com.squareup:kotlinpoet", version.ref = "kotlinpoet" }
 kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlinpoet" }
 rgxgen = { module = "com.github.curious-odd-man:rgxgen", version.ref = "rgxgen" }
@@ -61,11 +61,21 @@ test-kotest-property = { module = "io.kotest:kotest-property", version.ref = "ko
 test-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 [bundles]
-gradle-plugins = ["gradle-plugin-kotlin", "gradle-plugin-bcv", "gradle-plugin-dokka", "gradle-plugin-semantic-versioning", "gradle-plugin-shadow"]
+gradle-plugins = [
+  "gradle-plugin-kotlin",
+  "gradle-plugin-bcv",
+  "gradle-plugin-dokka",
+  "gradle-plugin-semantic-versioning",
+  "gradle-plugin-shadow",
+]
 jackson = ["jackson-databind", "jackson-module-kotlin"]
 kotlin = ["kotlin-stdlib-common", "kotlin-stdlib-jdk8", "kotlin-reflect"]
 kotlinpoet = ["kotlinpoet", "kotlinpoet-ksp"]
-test-kotest = ["test-kotest-runner", "test-kotest-assertions-core", "test-kotest-property"]
+test-kotest = [
+  "test-kotest-runner",
+  "test-kotest-assertions-core",
+  "test-kotest-property",
+]
 
 [plugins]
 # these are for root build.gradle.kts
