@@ -9,10 +9,8 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.containOnly
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAnyOf
-import io.kotest.matchers.collections.shouldContainOnly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.collections.shouldNotContain
-import io.kotest.matchers.collections.shouldNotContainOnly
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.maps.shouldHaveSize
 import io.kotest.matchers.shouldBe
@@ -38,6 +36,14 @@ class RandomClassProviderTest : DescribeSpec({
 
         context("creating a random instance of the class") {
             val testClass: TestClass = randomProvider.randomClassInstance()
+
+            it("it should be instance of TestClass") {
+                testClass shouldBe instanceOf(TestClass::class)
+            }
+        }
+
+        context("creating a random instance from kClass") {
+            val testClass: TestClass = randomProvider.randomClassInstance(TestClass::class)
 
             it("it should be instance of TestClass") {
                 testClass shouldBe instanceOf(TestClass::class)
@@ -514,6 +520,7 @@ class RandomClassProviderTest : DescribeSpec({
 
         it("should generate null elements in collections") {
             data class Nullable(val ints: List<Int?>, val longs: Set<Long?>, val map: Map<Char?, String?>)
+
             val nullable = randomProvider.randomClassInstance<Nullable> {
                 collectionsSize = 10
                 collectionElementTypeGenerator<Int?> { if (random.nextBoolean()) null else 42 }

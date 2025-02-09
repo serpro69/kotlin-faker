@@ -1,6 +1,5 @@
 package io.github.serpro69.kfaker.provider.misc
 
-import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.RandomService
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MAX_NUM_OF_ARGS
@@ -105,6 +104,33 @@ class RandomClassProvider {
      */
     inline fun <reified T : Any> randomClassInstance(configurator: RandomProviderConfig.() -> Unit): T {
         return T::class.randomClassInstance(RandomProviderConfig().apply(configurator))
+    }
+
+    /**
+     * Creates an instance of [T] from the [KClass] input.
+     * If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     *
+     * @param kClass a [KClass] of [T]
+     *
+     * @throws NoSuchElementException if [T] has no public constructor.
+     */
+    fun <T : Any> randomClassInstance(kClass: KClass<T>): T {
+        return kClass.randomClassInstance(config)
+    }
+
+    /**
+     * Creates an instance of [T] from the [KClass] input.
+     * If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     *
+     * @param kClass a [KClass] of [T]
+     * @param configurator configure instance creation.
+     *
+     * @throws NoSuchElementException if [T] has no public constructor.
+     */
+    fun <T : Any> randomClassInstance(kClass: KClass<T>, configurator: RandomProviderConfig.() -> Unit): T {
+        return kClass.randomClassInstance(RandomProviderConfig().apply(configurator))
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -250,7 +276,8 @@ class RandomClassProvider {
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
-                val keys = List(config.collectionsSize) { instance(config.mapEntriesTypeGenerators.first, keyElementType) }
+                val keys =
+                    List(config.collectionsSize) { instance(config.mapEntriesTypeGenerators.first, keyElementType) }
                 keys.associateWith { instance(config.mapEntriesTypeGenerators.second, valElementType) }
             }
             else -> null
@@ -389,9 +416,15 @@ private fun RandomProviderConfig.copy(
     this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
     this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
     this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
-    this@apply.collectionElementTypeGenerators.putAll(collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators)
-    this@apply.mapEntriesTypeGenerators.first.putAll(mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first)
-    this@apply.mapEntriesTypeGenerators.second.putAll(mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second)
+    this@apply.collectionElementTypeGenerators.putAll(
+        collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators
+    )
+    this@apply.mapEntriesTypeGenerators.first.putAll(
+        mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first
+    )
+    this@apply.mapEntriesTypeGenerators.second.putAll(
+        mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second
+    )
 }
 
 enum class FallbackStrategy {
