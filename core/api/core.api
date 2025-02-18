@@ -685,7 +685,9 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomClassProvider {
 	public final fun copy ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
 	public final fun getConfig ()Lio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;
 	public final fun new ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public final fun randomClassInstance (Lkotlin/reflect/KClass;)Ljava/lang/Object;
 	public final synthetic fun randomClassInstance (Lkotlin/reflect/KClass;Lio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;)Ljava/lang/Object;
+	public final fun randomClassInstance (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
 	public final fun reset ()V
 }
 
