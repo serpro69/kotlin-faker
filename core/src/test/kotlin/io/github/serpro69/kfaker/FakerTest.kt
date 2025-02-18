@@ -3,7 +3,7 @@ package io.github.serpro69.kfaker
 import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-import java.util.*
+import kotlin.random.Random
 
 @Suppress("UNCHECKED_CAST")
 class FakerTest : DescribeSpec({

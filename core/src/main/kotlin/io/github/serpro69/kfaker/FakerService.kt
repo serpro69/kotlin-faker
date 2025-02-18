@@ -20,6 +20,7 @@ import java.util.regex.Matcher
 import kotlin.collections.component1
 import kotlin.collections.component2
 import kotlin.collections.set
+import kotlin.random.asJavaRandom
 
 /**
  * Internal class used for resolving yaml expressions into values.
@@ -572,7 +573,7 @@ class FakerService {
      * Returns a random string generated from this [String] receiver pattern.
      */
     val String.regexify: () -> String
-        get() = { RgxGen.parse(this).generate(faker.config.random) }
+        get() = { RgxGen.parse(this).generate(faker.config.random.asJavaRandom()) }
 
     /**
      * Returns an instance of [FakeDataProvider] fetched by its [simpleClassName] (case-insensitive).

@@ -3,7 +3,7 @@
 package io.github.serpro69.kfaker
 
 import io.github.serpro69.kfaker.provider.misc.RandomProviderConfig
-import java.util.*
+import kotlin.random.Random
 
 /**
  * Configuration for implementations of [AbstractFaker].
@@ -49,7 +49,7 @@ class FakerConfig private constructor(
     @FakerDsl
     class Builder internal constructor() {
         var locale = "en"
-        var random = Random()
+        var random: Random = Random.Default
         var randomSeed: Long? = null
         var uniqueGeneratorRetryLimit = 100
         private var randomProviderConfig: RandomProviderConfig? = null

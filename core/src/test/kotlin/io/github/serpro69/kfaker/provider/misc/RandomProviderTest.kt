@@ -19,12 +19,13 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.beInstanceOf
 import java.util.*
+import kotlin.random.Random
 
 class RandomProviderTest : DescribeSpec({
     describe("RandomProvider instance") {
         val fakerService = FakerService(faker {
             fakerConfig {
-                random = Random()
+                random = Random.Default
                 uniqueGeneratorRetryLimit = 1000
             }
         })
