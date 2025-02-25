@@ -44,26 +44,26 @@ public final class io/github/serpro69/kfaker/Faker$Builder : io/github/serpro69/
 
 public final class io/github/serpro69/kfaker/FakerConfig {
 	public static final field Companion Lio/github/serpro69/kfaker/FakerConfig$Companion;
-	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Random;ILio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/random/Random;ILio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public static final fun builder ()Lio/github/serpro69/kfaker/FakerConfig$Builder;
 	public final fun getLocale ()Ljava/lang/String;
-	public final fun getRandom ()Ljava/util/Random;
+	public final fun getRandom ()Lkotlin/random/Random;
 	public final fun getUniqueGeneratorRetryLimit ()I
 }
 
 public final class io/github/serpro69/kfaker/FakerConfig$Builder {
 	public final fun build ()Lio/github/serpro69/kfaker/FakerConfig;
 	public final fun getLocale ()Ljava/lang/String;
-	public final fun getRandom ()Ljava/util/Random;
+	public final fun getRandom ()Lkotlin/random/Random;
 	public final fun getRandomSeed ()Ljava/lang/Long;
 	public final fun getUniqueGeneratorRetryLimit ()I
 	public final fun randomClassInstance (Lkotlin/jvm/functions/Function1;)V
 	public final fun setLocale (Ljava/lang/String;)V
-	public final fun setRandom (Ljava/util/Random;)V
+	public final fun setRandom (Lkotlin/random/Random;)V
 	public final fun setRandomSeed (Ljava/lang/Long;)V
 	public final fun setUniqueGeneratorRetryLimit (I)V
 	public final fun withLocale (Ljava/lang/String;)Lio/github/serpro69/kfaker/FakerConfig$Builder;
-	public final fun withRandom (Ljava/util/Random;)Lio/github/serpro69/kfaker/FakerConfig$Builder;
+	public final fun withRandom (Lkotlin/random/Random;)Lio/github/serpro69/kfaker/FakerConfig$Builder;
 	public final fun withRandomSeed (J)Lio/github/serpro69/kfaker/FakerConfig$Builder;
 	public final fun withUniqueGeneratorRetryLimit (I)Lio/github/serpro69/kfaker/FakerConfig$Builder;
 }
