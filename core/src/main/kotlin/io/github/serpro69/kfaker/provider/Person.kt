@@ -1,8 +1,8 @@
 package io.github.serpro69.kfaker.provider
 
 import java.time.LocalDate
-import java.util.*
 import kotlin.random.asKotlinRandom
+import kotlin.random.Random
 
 /**
  * [FakeDataProvider] implementation class for functionality not covered by the standard dictionary files.
@@ -35,8 +35,8 @@ class Person internal constructor(private val random: Random) {
         val startDate = at.minusYears(age + 1)
         val endDate = startDate.plusYears(1).minusDays(1)
         val startMaxDays = if (startDate.isLeapYear) 366 else 365
-        val lower = LocalDate.ofYearDay(startDate.year, (startDate.dayOfYear..startMaxDays).random(random.asKotlinRandom()))
-        val upper = LocalDate.ofYearDay(endDate.year, (1..endDate.dayOfYear).random(random.asKotlinRandom()))
+        val lower = LocalDate.ofYearDay(startDate.year, (startDate.dayOfYear..startMaxDays).random(random))
+        val upper = LocalDate.ofYearDay(endDate.year, (1..endDate.dayOfYear).random(random))
         val dates = if (lower.month == at.month && lower.dayOfMonth == at.dayOfMonth) {
             lower.plusDays(1) to upper
         } else if (upper.month == at.month && upper.dayOfMonth == at.dayOfMonth) {
@@ -45,5 +45,5 @@ class Person internal constructor(private val random: Random) {
         return dates.random()
     }
 
-    private fun Pair<LocalDate, LocalDate>.random() = listOf(first, second).random(random.asKotlinRandom())
+    private fun Pair<LocalDate, LocalDate>.random() = listOf(first, second).random(random)
 }

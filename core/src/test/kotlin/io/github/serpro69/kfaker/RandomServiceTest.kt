@@ -19,10 +19,11 @@ import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.util.*
+import kotlin.random.Random
 
 internal class RandomServiceTest : DescribeSpec({
     describe("RandomService instance") {
-        val config = fakerConfig { random = Random() }
+        val config = fakerConfig { random = Random.Default }
         val randomService = RandomService(config)
 
         context("nextInt(bound) fun") {
@@ -142,10 +143,14 @@ internal class RandomServiceTest : DescribeSpec({
         }
 
         context("nextLong(min, max) fun") {
-            val values = List(100) { randomService.nextLong(6L, 8L) }
-
             it("return value should be within specified range") {
+                val values = List(100) { randomService.nextLong(6L, 8L) }
                 values.all { it in 6L..8L } shouldBe true
+            }
+
+            it("should return positive values with Long.MAX_VALUE upper bound") {
+                val values = List(100) { randomService.nextLong(1L, Long.MAX_VALUE) }
+                values.all { it > 0L } shouldBe true
             }
         }
 

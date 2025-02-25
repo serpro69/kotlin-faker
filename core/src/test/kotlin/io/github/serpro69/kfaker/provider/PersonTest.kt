@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
-import java.util.*
+import kotlin.random.Random
 
 class PersonTest : DescribeSpec({
     describe("Person provider") {

@@ -20,15 +20,15 @@ import io.kotest.matchers.string.shouldHaveLength
 import io.kotest.matchers.types.instanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.assertThrows
-import java.util.Random
 import java.util.UUID
+import kotlin.random.Random
 import kotlin.reflect.full.declaredMemberProperties
 
 @Suppress("unused")
 class RandomClassProviderTest : DescribeSpec({
     assertSoftly = true
 
-    val config = fakerConfig { random = Random() }
+    val config = fakerConfig { random = Random.Default }
     val randomProvider = RandomClassProvider(config)
 
     describe("a TestClass with an empty constructor") {
