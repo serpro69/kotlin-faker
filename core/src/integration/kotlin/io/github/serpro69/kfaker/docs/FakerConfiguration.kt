@@ -6,7 +6,8 @@ import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.Assertions.assertEquals
-import java.util.*
+import java.util.UUID
+import kotlin.random.Random
 
 @DisplayName("Snippets used in Orchid docs 'Faker Configuration' wiki page")
 class FakerConfiguration : DescribeSpec({
