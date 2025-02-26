@@ -4,12 +4,14 @@
 [discrete]
 === Breaking Change
 
+* https://github.com/serpro69/kotlin-faker/pull/259[#259] (:core) Replace java.util.Random with kotlin.random.Random
 * https://github.com/serpro69/kotlin-faker/pull/246[#246] (:extension) Remove KSP from kotest-property extension
 * https://github.com/serpro69/kotlin-faker/pull/219[#219] (:core) Extract faker's providers into several submodules of their own
 
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/258[#258] (:core) Add RandomClassProvider::randomClassInstance fun with KClass input
 * https://github.com/serpro69/kotlin-faker/pull/254[#254] (:faker) Add Pictures faker
 * https://github.com/serpro69/kotlin-faker/pull/245[#245] (:extension) Add extension for testing with BLNS
 * https://github.com/serpro69/kotlin-faker/pull/243[#243] (:core) Add collection element and map k/v type gen for random class instance

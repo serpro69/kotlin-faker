@@ -6,7 +6,8 @@ import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import org.junit.jupiter.api.Assertions.assertEquals
-import java.util.*
+import java.util.UUID
+import kotlin.random.Random
 
 @DisplayName("Snippets used in Orchid docs 'Faker Configuration' wiki page")
 class FakerConfiguration : DescribeSpec({
@@ -14,16 +15,12 @@ class FakerConfiguration : DescribeSpec({
         context("Deterministic Random") {
             it("two faker instances with same 'random' should output same values") {
                 // START faker_config_one
-                val config = fakerConfig {
-                    random = Random(42)
-                }
+                val config = fakerConfig { random = Random(42) }
                 val faker = Faker(config)
                 val city1 = faker.address.city()
                 val name1 = faker.name.name()
 
-                val otherConfig = fakerConfig {
-                    random = Random(42)
-                }
+                val otherConfig = fakerConfig { random = Random(42) }
                 val otherFaker = Faker(otherConfig)
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
@@ -35,17 +32,13 @@ class FakerConfiguration : DescribeSpec({
 
             it("two faker instances with same 'randomSeed' should output same values") {
                 // START faker_config_two
-                val config = fakerConfig {
-                    randomSeed = 42
-                }
+                val config = fakerConfig { randomSeed = 42 }
                 val faker = Faker(config)
                 // END faker_config_two
                 val city1 = faker.address.city()
                 val name1 = faker.name.name()
 
-                val otherConfig = fakerConfig {
-                    randomSeed = 42
-                }
+                val otherConfig = fakerConfig { randomSeed = 42 }
                 val otherFaker = Faker(otherConfig)
                 val city2 = otherFaker.address.city()
                 val name2 = otherFaker.name.name()
@@ -85,9 +78,7 @@ class FakerConfiguration : DescribeSpec({
 
             it("should be able to configure locale") {
                 // START faker_config_five
-                val config = fakerConfig {
-                    locale = "nb-NO"
-                }
+                val config = fakerConfig { locale = "nb-NO" }
                 val faker = Faker(config)
                 assertEquals(faker.address.defaultCountry(), "Norge")
                 // END faker_config_five

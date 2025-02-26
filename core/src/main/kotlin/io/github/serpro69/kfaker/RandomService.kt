@@ -7,10 +7,11 @@ import java.time.Duration
 import java.time.Instant
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
-import java.util.*
+import java.util.Locale
+import java.util.UUID
 import kotlin.experimental.and
 import kotlin.experimental.or
-import kotlin.random.asKotlinRandom
+import kotlin.random.Random
 
 /**
  * Wrapper around [Random] that also contains some additional functions not covered by [Random].
@@ -48,7 +49,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun nextLetter(upper: Boolean): Char {
         val source = if (upper) alphabeticUpperCharset else alphabeticLowerCharset
-        return source.random(config.random.asKotlinRandom())
+        return source.random(config.random)
     }
 
     override fun randomString(length: Int, numericalChars: Boolean): String {
@@ -57,7 +58,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
             alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
         } else alphabeticLowerCharset + alphabeticUpperCharset
         return (1..length)
-            .map { charset.random(this.random.asKotlinRandom()) }
+            .map { charset.random(this.random) }
             .joinToString("")
     }
 
@@ -65,17 +66,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun nextLong() = random.nextLong()
 
-    override fun nextLong(bound: Long): Long {
-        return if (bound > 0) {
-            var value: Long
-
-            do {
-                val bits = (nextLong().shl(1)).shr(1)
-                value = bits % bound
-            } while (bits - value + (bound - 1) < 0L)
-            value
-        } else throw IllegalArgumentException("Bound bound must be greater than 0")
-    }
+    override fun nextLong(bound: Long) = random.nextLong(bound)
 
     override fun nextLong(longRange: LongRange): Long {
         val lowerBound = requireNotNull(longRange.minOrNull())
@@ -84,7 +75,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
         return nextLong(lowerBound, upperBound)
     }
 
-    override fun nextLong(min: Long, max: Long) = nextLong(max - min + 1) + min
+    override fun nextLong(min: Long, max: Long) = random.nextLong(min, max)
 
     override fun nextFloat() = random.nextFloat()
 
@@ -123,7 +114,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
         } else emptyList()
         val numChars = if (numericalChars) numericCharset else emptyList()
         val chars = (mainChars + auxChars + idxChars + punctChars + numChars)
-        return List(length) { chars.random(random.asKotlinRandom()) }.joinToString("")
+        return List(length) { chars.random(random) }.joinToString("")
     }
 
     override fun randomString(
@@ -244,14 +235,14 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     private fun <T> Collection<T>.randomFromToIndices(s: Int): Pair<Int, Int> {
         val fromIndex = if (s > 0) {
-            (0..size - s).random(random.asKotlinRandom())
+            (0..size - s).random(random)
         } else {
-            (indices).random(random.asKotlinRandom())
+            (indices).random(random)
         }
         val toIndex = if (s > 0) {
             fromIndex + s
         } else {
-            (fromIndex..size).random(random.asKotlinRandom())
+            (fromIndex..size).random(random)
         }
 
         return fromIndex to toIndex

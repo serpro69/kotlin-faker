@@ -5,8 +5,7 @@ import io.github.serpro69.kfaker.FakerConfig;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
+import static kotlin.random.RandomKt.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -19,11 +18,11 @@ class FakerConfigurationJ {
         // START faker_config_one_java
         FakerConfig.Builder configBuilder = FakerConfig.builder();
 
-        Faker faker = new Faker(configBuilder.withRandom(new Random(42)).build());
+        Faker faker = new Faker(configBuilder.withRandom(Random(42)).build());
         String city1 = faker.getAddress().city();
         String name1 = faker.getName().name();
 
-        Faker otherFaker = new Faker(configBuilder.withRandom(new Random(42)).build());
+        Faker otherFaker = new Faker(configBuilder.withRandom(Random(42)).build());
         String city2 = otherFaker.getAddress().city();
         String name2 = otherFaker.getName().name();
 
@@ -58,14 +57,14 @@ class FakerConfigurationJ {
     void ignoreRandomIfRandomSeedIsSet() {
         // START faker_config_three_java
         FakerConfig config = FakerConfig.builder()
-            .withRandom(new Random(123))
+            .withRandom(Random(123))
             .withRandomSeed(42)
             .build();
         Faker faker = new Faker(config);
         String city1 = faker.getAddress().city();
 
         FakerConfig otherConfig = FakerConfig.builder()
-            .withRandom(new Random(42))
+            .withRandom(Random(42))
             .build();
         Faker otherFaker = new Faker(otherConfig);
         String city2 = otherFaker.getAddress().city();
