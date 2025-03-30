@@ -378,8 +378,7 @@ The above has the following rules:
 
 By default, all parameters of a [selected constructor](#deterministic-constructor-selection) would be generated with randomized values. This behavior can be changed with `defaultValuesStrategy` configuration option.
 
-One choose between generating values only for non-optional constructor parameters:
-
+One can choose between generating values only for non-optional constructor parameters:
 {% tabs %}
 
 {% kotlin "Kotlin" %}
