@@ -11,6 +11,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/260[#260] (:core) Add config strategy for default values of RandomClass instances
 * https://github.com/serpro69/kotlin-faker/pull/258[#258] (:core) Add RandomClassProvider::randomClassInstance fun with KClass input
 * https://github.com/serpro69/kotlin-faker/pull/254[#254] (:faker) Add Pictures faker
 * https://github.com/serpro69/kotlin-faker/pull/245[#245] (:extension) Add extension for testing with BLNS

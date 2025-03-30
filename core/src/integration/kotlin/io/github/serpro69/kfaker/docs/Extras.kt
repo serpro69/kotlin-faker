@@ -3,6 +3,8 @@ package io.github.serpro69.kfaker.docs
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.fakerConfig
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.PICK_RANDOMLY
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.USE_DEFAULTS
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy
 import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.kotest.core.spec.style.DescribeSpec
@@ -80,6 +82,7 @@ class Extras : DescribeSpec({
                 it("should generate pre-configured map key/value pairs for constructor params") {
                     fun randomKey() = "key"
                     fun randomValue() = "value"
+
                     // START extras_random_instance_seventeen
                     class Baz(val map: Map<String, String>)
 
@@ -96,11 +99,23 @@ class Extras : DescribeSpec({
                 it("should allow nullable element types in collections") {
                     // START extras_random_instance_eighteen
                     data class Nullable(val ints: List<Int?>, val longs: Set<Long?>, val map: Map<Char?, String?>)
+
                     val nullable = faker.randomClass.randomClassInstance<Nullable> {
                         collectionsSize = 10
                         collectionElementTypeGenerator<Int?> { if (faker.random.nextBoolean()) null else 42 }
                         collectionElementTypeGenerator<Long?> { if (!faker.random.nextBoolean()) 0L else null }
-                        mapEntryKeyTypeGenerator<Char> { faker.random.randomValue(listOf('a', 'b', 'c', 'd', 'e', 'f')) }
+                        mapEntryKeyTypeGenerator<Char> {
+                            faker.random.randomValue(
+                                listOf(
+                                    'a',
+                                    'b',
+                                    'c',
+                                    'd',
+                                    'e',
+                                    'f'
+                                )
+                            )
+                        }
                         mapEntryValueTypeGenerator<String?> { if (faker.random.nextBoolean()) null else "foo" }
                     }
                     nullable.ints shouldContain 42
@@ -244,6 +259,50 @@ class Extras : DescribeSpec({
                 assertEquals(bar.set, setOf("one", "two", "fortytwo"))
                 assertEquals(bar.map, mapOf("pwd" to 12177))
                 // END extras_random_instance_nine
+            }
+        }
+
+        context("configurable default values selection") {
+            // START extras_random_instance_nineteen
+            class Foo(val i: Int)
+            class TestClass(
+                val iMin: Int = Int.MIN_VALUE,
+                val iMax: Int = Int.MAX_VALUE,
+                val s: String = "sometimes a string... is just a string",
+                val foo: Foo = Foo(369)
+            )
+            // END extras_random_instance_nineteen
+
+            it("should use defaults") {
+                // START extras_random_instance_twenty
+                val testClass: TestClass = Faker().randomClass.randomClassInstance {
+                    defaultValuesStrategy = USE_DEFAULTS
+                }
+                assertEquals(Int.MIN_VALUE, testClass.iMin)
+                assertEquals(Int.MAX_VALUE, testClass.iMax)
+                assertEquals("sometimes a string... is just a string", testClass.s)
+                assertEquals(369, testClass.foo.i)
+                // END extras_random_instance_twenty
+            }
+
+            // START extras_random_instance_twenty_one
+            it("should randomly pick a default or a random value") {
+                val testClass: TestClass = Faker().randomClass.randomClassInstance {
+                    defaultValuesStrategy = PICK_RANDOMLY
+                }
+                assert(
+                    testClass.iMin == Int.MIN_VALUE
+                        || testClass.iMax == Int.MAX_VALUE
+                        || testClass.s == "sometimes a string... is just a string"
+                        || testClass.foo.i == 369
+                )
+                assert(!(
+                    testClass.iMin == Int.MIN_VALUE
+                        && testClass.iMax == Int.MAX_VALUE
+                        && testClass.s == "sometimes a string... is just a string"
+                        && testClass.foo.i == 369
+                ))
+                // END extras_random_instance_twenty_one
             }
         }
 

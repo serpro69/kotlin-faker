@@ -14,6 +14,7 @@
     * [Pre-defined instance for classes with no public constructors](#pre-defined-instance-for-classes-with-no-public-constructors)
     * [Predefined collection element types](#predefined-collection-element-types)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
+  * [Default constructor values selection](#default-values-selection)
   * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
   * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
     * [New Instance](#new-instance)
@@ -368,6 +369,42 @@ The above has the following rules:
 - `constructorParamSize` config property takes precedence over `constructorFilterStrategy`
 - both can be specified at the same time, though in most cases it probably makes more sense to use `fallbackStrategy` with `constructorParamSize` as it just makes things a bit more readable
 - configuration properties that are set in `randomClassInstance` block will be applied to all "children" classes. For example classes `Foo`, `Bar`, and `Baz` will use the same random instance configuration settings when instances of those classes are created in `FooBarBaz` class.
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Default values selection
+
+By default, all parameters of a [selected constructor](#deterministic-constructor-selection) would be generated with randomized values. This behavior can be changed with `defaultValuesStrategy` configuration option.
+
+One choose between generating values only for non-optional constructor parameters:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_nineteen' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+or randomly choosing between picking a default value and a randomly-generated one:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_twenty' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
 
 {% btc %}{% endbtc %}
 
