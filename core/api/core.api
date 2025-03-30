@@ -650,6 +650,15 @@ public final class io/github/serpro69/kfaker/provider/misc/CryptographyProvider 
 	public final fun sha512 ()Ljava/lang/String;
 }
 
+public final class io/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy : java/lang/Enum {
+	public static final field ALL_RANDOM Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static final field PICK_RANDOMLY Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static final field USE_DEFAULTS Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static fun values ()[Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+}
+
 public final class io/github/serpro69/kfaker/provider/misc/FallbackStrategy : java/lang/Enum {
 	public static final field FAIL_IF_NOT_FOUND Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
 	public static final field USE_MAX_NUM_OF_ARGS Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
@@ -755,6 +764,7 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig 
 	public final fun getCollectionsSize ()I
 	public final fun getConstructorFilterStrategy ()Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
 	public final fun getConstructorParamSize ()I
+	public final fun getDefaultValuesStrategy ()Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
 	public final fun getFallbackStrategy ()Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
 	public final fun getMapEntriesTypeGenerators ()Lkotlin/Pair;
 	public final fun getNamedParameterGenerators ()Ljava/util/Map;
@@ -763,6 +773,7 @@ public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig 
 	public final fun setCollectionsSize (I)V
 	public final fun setConstructorFilterStrategy (Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;)V
 	public final fun setConstructorParamSize (I)V
+	public final fun setDefaultValuesStrategy (Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;)V
 	public final fun setFallbackStrategy (Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;)V
 }
 
