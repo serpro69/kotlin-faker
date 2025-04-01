@@ -5,6 +5,7 @@ import io.github.serpro69.kfaker.RandomService
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MAX_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MIN_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.NO_ARGS
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.*
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.FAIL_IF_NOT_FOUND
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MAX_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MIN_NUM_OF_ARGS
@@ -193,9 +194,14 @@ class RandomClassProvider {
             ?: predefinedInstance?.let { return@run it }
             ?: throw NoSuchElementException("No suitable constructor or predefined instance found for $this")
 
-            val params = constructor.parameters.map {
+            val drop = object : Any() {}
+            val params: Map<KParameter, Any?> = constructor.parameters.associateWith {
                 val pInfo = it.toParameterInfo()
                 val klass = it.type.classifier as KClass<*>
+                if (it.isOptional) {
+                    if (config.defaultValuesStrategy == USE_DEFAULTS) return@associateWith drop
+                    if (config.defaultValuesStrategy == PICK_RANDOMLY && randomService.nextBoolean()) return@associateWith drop
+                }
                 when {
                     config.namedParameterGenerators.containsKey(it.name) -> {
                         config.namedParameterGenerators[it.name]?.invoke(pInfo)
@@ -216,7 +222,7 @@ class RandomClassProvider {
             }
 
             try {
-                constructor.call(*params.toTypedArray())
+                constructor.callBy(params.filterNot { it.value == drop })
             } catch (e: Exception) {
                 throw InstantiationException("Failed to instantiate $this with $params")
                     .initCause(e)
@@ -302,12 +308,16 @@ class RandomClassProvider {
  *
  * @property fallbackStrategy fallback strategy that is used to look up a constructor
  * if no constructor with [constructorParamSize] or [constructorFilterStrategy] was found.
+ *
+ * @property defaultValuesStrategy strategy for choosing how to handle default constructor parameters' values.
+ * By default, generates random values for all constructor parameters.
  */
 class RandomProviderConfig @PublishedApi internal constructor() {
     var collectionsSize: Int = 1
     var constructorParamSize: Int = -1
     var constructorFilterStrategy: ConstructorFilterStrategy = NO_ARGS
     var fallbackStrategy: FallbackStrategy = USE_MIN_NUM_OF_ARGS
+    var defaultValuesStrategy: DefaultValuesStrategy = ALL_RANDOM
 
     /**
      * @property namedParameterGenerators Named constructor parameter type generators.
@@ -393,6 +403,7 @@ private fun RandomProviderConfig.reset() {
     constructorParamSize = -1
     constructorFilterStrategy = NO_ARGS
     fallbackStrategy = USE_MIN_NUM_OF_ARGS
+    defaultValuesStrategy = ALL_RANDOM
     namedParameterGenerators.clear()
     predefinedGenerators.clear()
     nullableGenerators.clear()
@@ -403,6 +414,7 @@ private fun RandomProviderConfig.copy(
     constructorParamSize: Int? = null,
     constructorFilterStrategy: ConstructorFilterStrategy? = null,
     fallbackStrategy: FallbackStrategy? = null,
+    defaultValuesStrategy: DefaultValuesStrategy? = null,
     namedParameterGenerators: Map<String, (pInfo: ParameterInfo) -> Any?>? = null,
     predefinedGenerators: TypeGenMap? = null,
     nullableGenerators: NullableTypeGenMap? = null,
@@ -413,6 +425,7 @@ private fun RandomProviderConfig.copy(
     this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
     this@apply.constructorFilterStrategy = constructorFilterStrategy ?: this@copy.constructorFilterStrategy
     this@apply.fallbackStrategy = fallbackStrategy ?: this@copy.fallbackStrategy
+    this@apply.defaultValuesStrategy = defaultValuesStrategy ?: this@copy.defaultValuesStrategy
     this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
     this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
     this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
@@ -437,6 +450,23 @@ enum class ConstructorFilterStrategy {
     NO_ARGS,
     MIN_NUM_OF_ARGS,
     MAX_NUM_OF_ARGS
+}
+
+enum class DefaultValuesStrategy {
+    /**
+     * Uses default values of constructor parameters.
+     */
+    USE_DEFAULTS,
+
+    /**
+     * Randomly picks either a default or a randomly-generated value of constructor parameters.
+     */
+    PICK_RANDOMLY,
+
+    /**
+     * Uses randomly-generated values of constructor parameters.
+     */
+    ALL_RANDOM
 }
 
 internal typealias TypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any>

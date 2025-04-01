@@ -2,6 +2,8 @@ package io.github.serpro69.kfaker.provider.misc
 
 import io.github.serpro69.kfaker.FakerConfig
 import io.github.serpro69.kfaker.fakerConfig
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.PICK_RANDOMLY
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.USE_DEFAULTS
 import io.github.serpro69.kfaker.random
 import io.kotest.assertions.throwables.shouldNotThrow
 import io.kotest.assertions.throwables.shouldThrow
@@ -75,6 +77,42 @@ class RandomClassProviderTest : DescribeSpec({
 
                 bar.id shouldNotBe 0
                 baz.bar.id shouldNotBe 1
+            }
+        }
+    }
+
+    describe("a TestClass with non-empty constructor and default values") {
+        class Foo(val i: Int)
+        class TestClass(
+            val b: Boolean = true,
+            val i: Int = Int.MAX_VALUE,
+            val s: String = "foobar",
+            val foo: Foo = Foo(369)
+        )
+
+        context("creating a random instance of the class") {
+            val r = RandomClassProvider(config)
+            it("should be instance of TestClass") {
+                val testClass: TestClass = r.randomClassInstance()
+                testClass shouldBe instanceOf(TestClass::class)
+            }
+            it("should use default constructor values") {
+                val testClass: TestClass = r.copy()
+                    .also { it.configure { defaultValuesStrategy = USE_DEFAULTS } }
+                    .randomClassInstance()
+                testClass.b shouldBe true
+                testClass.i shouldBe Int.MAX_VALUE
+                testClass.s shouldBe "foobar"
+                testClass.foo.i shouldBe 369
+            }
+            it("should randomly pick between a default and random values") {
+                val testClass: TestClass = r.copy()
+                    .also { it.configure { defaultValuesStrategy = PICK_RANDOMLY } }
+                    .randomClassInstance()
+                (testClass.b
+                    || testClass.i == Int.MAX_VALUE
+                    || testClass.s == "foobar"
+                    || testClass.i == 369) shouldBe true
             }
         }
     }
