@@ -376,29 +376,47 @@ The above has the following rules:
 
 ### Default values selection
 
-By default, all parameters of a [selected constructor](#deterministic-constructor-selection) would be generated with randomized values. This behavior can be changed with `defaultValuesStrategy` configuration option.
+By default, all parameters of a [selected constructor](#deterministic-constructor-selection) would be generated with randomized values:
 
-One can choose between generating values only for non-optional constructor parameters:
 {% tabs %}
 
 {% kotlin "Kotlin" %}
 {% filter compileAs('md') %}
 ```kotlin
 {% snippet 'extras_random_instance_nineteen' %}
+{% snippet 'extras_random_instance_twenty' %}
 ```
 {% endfilter %}
 {% endkotlin %}
 
 {% endtabs %}
 
-or randomly choosing between picking a default value and a randomly-generated one:
+This behavior can be changed with `defaultValuesStrategy` configuration option.
+
+One can choose between generating values only for non-optional constructor parameters:
 
 {% tabs %}
 
 {% kotlin "Kotlin" %}
 {% filter compileAs('md') %}
 ```kotlin
-{% snippet 'extras_random_instance_twenty' %}
+{% snippet 'extras_random_instance_twenty_one' %}
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+<br>
+
+...or randomly selecting between a default value and a randomly-generated one:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+{% snippet 'extras_random_instance_twenty_two' %}
 ```
 {% endfilter %}
 {% endkotlin %}

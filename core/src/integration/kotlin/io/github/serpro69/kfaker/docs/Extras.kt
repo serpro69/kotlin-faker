@@ -273,8 +273,18 @@ class Extras : DescribeSpec({
             )
             // END extras_random_instance_nineteen
 
-            it("should use defaults") {
+            it("should use random values") {
                 // START extras_random_instance_twenty
+                val testClass: TestClass = Faker().randomClass.randomClassInstance()
+                assertNotEquals(Int.MIN_VALUE, testClass.iMin)
+                assertNotEquals(Int.MAX_VALUE, testClass.iMax)
+                assertNotEquals("sometimes a string... is just a string", testClass.s)
+                assertNotEquals(369, testClass.foo.i)
+                // END extras_random_instance_twenty
+            }
+
+            it("should use defaults") {
+                // START extras_random_instance_twenty_one
                 val testClass: TestClass = Faker().randomClass.randomClassInstance {
                     defaultValuesStrategy = USE_DEFAULTS
                 }
@@ -282,10 +292,10 @@ class Extras : DescribeSpec({
                 assertEquals(Int.MAX_VALUE, testClass.iMax)
                 assertEquals("sometimes a string... is just a string", testClass.s)
                 assertEquals(369, testClass.foo.i)
-                // END extras_random_instance_twenty
+                // END extras_random_instance_twenty_one
             }
 
-            // START extras_random_instance_twenty_one
+            // START extras_random_instance_twenty_two
             it("should randomly pick a default or a random value") {
                 val testClass: TestClass = Faker().randomClass.randomClassInstance {
                     defaultValuesStrategy = PICK_RANDOMLY
@@ -302,7 +312,7 @@ class Extras : DescribeSpec({
                         && testClass.s == "sometimes a string... is just a string"
                         && testClass.foo.i == 369
                 ))
-                // END extras_random_instance_twenty_one
+                // END extras_random_instance_twenty_two
             }
         }
 
