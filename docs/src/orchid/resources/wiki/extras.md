@@ -11,7 +11,7 @@
   * [Random Class Instance Configuration](#random-class-instance-configuration)
   * [Pre-configuring type generation](#pre-configuring-type-generation)
     * [Predefined types for constructor parameters](#predefined-types-for-constructor-parameters)
-    * [Pre-defined instance for classes with no public constructors](#pre-defined-instance-for-classes-with-no-public-constructors)
+    * [Pre-defined instance for classes with no public constructors](#pre-defined-instance-for-classes-with-no-public-or-internal-constructors)
     * [Predefined collection element types](#predefined-collection-element-types)
   * [Deterministic constructor selection](#deterministic-constructor-selection)
   * [Default constructor values selection](#default-values-selection)
@@ -31,8 +31,8 @@ It is possible to create a random instance of (almost) any class.
 
 There are some rules to keep in mind:
 
+- A class must have a public or internal constructor
 - By default, a constructor with the least number of arguments is used (This can be configured - read on.)
-  - Both publicly- and internally-visible constructors are supported
 - `kolin.Array` type in the constructor is not supported at the moment
 - Inner classes (either direct generation or as class parameter type) are not supported at the moment
 
