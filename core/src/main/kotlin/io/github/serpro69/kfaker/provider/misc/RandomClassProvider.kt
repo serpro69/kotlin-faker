@@ -5,22 +5,17 @@ import io.github.serpro69.kfaker.RandomService
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MAX_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.MIN_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.ConstructorFilterStrategy.NO_ARGS
-import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.*
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.ALL_RANDOM
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.PICK_RANDOMLY
+import io.github.serpro69.kfaker.provider.misc.DefaultValuesStrategy.USE_DEFAULTS
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.FAIL_IF_NOT_FOUND
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MAX_NUM_OF_ARGS
 import io.github.serpro69.kfaker.provider.misc.FallbackStrategy.USE_MIN_NUM_OF_ARGS
-import kotlin.Boolean
-import kotlin.Char
-import kotlin.Double
-import kotlin.Float
-import kotlin.Int
-import kotlin.Long
-import kotlin.Short
-import kotlin.String
 import kotlin.reflect.KClass
 import kotlin.reflect.KParameter
 import kotlin.reflect.KType
-import kotlin.reflect.KVisibility
+import kotlin.reflect.KVisibility.INTERNAL
+import kotlin.reflect.KVisibility.PUBLIC
 import kotlin.reflect.full.starProjectedType
 import kotlin.reflect.jvm.jvmName
 
@@ -88,20 +83,20 @@ class RandomClassProvider {
     fun reset() = config.reset()
 
     /**
-     * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
      * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
      *
-     * @throws NoSuchElementException if [T] has no public constructor.
+     * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance(config)
 
     /**
-     * Creates an instance of [T]. If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
      * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
      *
      * @param configurator configure instance creation.
      *
-     * @throws NoSuchElementException if [T] has no public constructor.
+     * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     inline fun <reified T : Any> randomClassInstance(configurator: RandomProviderConfig.() -> Unit): T {
         return T::class.randomClassInstance(RandomProviderConfig().apply(configurator))
@@ -109,12 +104,12 @@ class RandomClassProvider {
 
     /**
      * Creates an instance of [T] from the [KClass] input.
-     * If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
      * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
      *
      * @param kClass a [KClass] of [T]
      *
-     * @throws NoSuchElementException if [T] has no public constructor.
+     * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     fun <T : Any> randomClassInstance(kClass: KClass<T>): T {
         return kClass.randomClassInstance(config)
@@ -122,13 +117,13 @@ class RandomClassProvider {
 
     /**
      * Creates an instance of [T] from the [KClass] input.
-     * If [T] has a parameterless public constructor then it will be used to create an instance of this class,
+     * If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
      * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
      *
      * @param kClass a [KClass] of [T]
      * @param configurator configure instance creation.
      *
-     * @throws NoSuchElementException if [T] has no public constructor.
+     * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     fun <T : Any> randomClassInstance(kClass: KClass<T>, configurator: RandomProviderConfig.() -> Unit): T {
         return kClass.randomClassInstance(RandomProviderConfig().apply(configurator))
@@ -144,7 +139,10 @@ class RandomClassProvider {
         val defaultInstance: T? by lazy {
             if (config.constructorParamSize == -1 && config.constructorFilterStrategy == NO_ARGS) {
                 randomPrimitiveOrNull() as T? ?: try {
-                    constructors.firstOrNull { it.parameters.isEmpty() && it.visibility == KVisibility.PUBLIC }?.call()
+                    constructors.firstOrNull {
+                        it.parameters.isEmpty() &&
+                            (it.visibility == PUBLIC || it.visibility == INTERNAL)
+                    }?.call()
                 } catch (e: Exception) {
                     throw InstantiationException("Failed to instantiate $this")
                         .initCause(e)
@@ -174,7 +172,9 @@ class RandomClassProvider {
         if (this.java.isPrimitive) return randomPrimitiveOrNull() as T
 
         return objectInstance ?: defaultInstance ?: run {
-            val constructors = constructors.filter { it.visibility == KVisibility.PUBLIC }
+            val constructors = constructors.filter {
+                it.visibility == PUBLIC || it.visibility == INTERNAL
+            }
 
             val constructor = constructors.firstOrNull {
                 it.parameters.size == config.constructorParamSize

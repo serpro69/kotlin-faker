@@ -190,7 +190,20 @@ class RandomClassProviderTest : DescribeSpec({
         }
     }
 
-    describe("no public constructors") {
+    describe("internal constructor") {
+        it("should create an instance with a default no-argument constructor") {
+            val t = randomProvider.randomClassInstance<TestClassInternal>()
+            t.id shouldBe 42
+        }
+        it("should use a non-default constructor") {
+            val t = randomProvider.randomClassInstance<TestClassInternal>() {
+                this.constructorParamSize = 1
+            }
+            t.id shouldNotBe 42
+        }
+    }
+
+    describe("no public or internal constructors") {
         context("creating a random instance of a class") {
             it("should return a predefined instance via typeGenerator") {
                 val testClassMin = randomProvider.randomClassInstance<TestClassNoPublic> {
@@ -919,6 +932,15 @@ class Go(val name: String) : TestSealedCls() {
 }
 
 object TestObject
+
+class TestClassInternal internal constructor() {
+    var id = 42
+        private set
+
+    internal constructor(id: Int) : this() {
+        this.id = id
+    }
+}
 
 class TestClassNoPublic private constructor(val id: Int) {
     companion object {

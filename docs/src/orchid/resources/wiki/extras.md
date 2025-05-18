@@ -31,7 +31,8 @@ It is possible to create a random instance of (almost) any class.
 
 There are some rules to keep in mind:
 
-- By default, the constructor with the least number of arguments is used (This can be configured - read on.)
+- By default, a constructor with the least number of arguments is used (This can be configured - read on.)
+  - Both publicly- and internally-visible constructors are supported
 - `kolin.Array` type in the constructor is not supported at the moment
 - Inner classes (either direct generation or as class parameter type) are not supported at the moment
 
@@ -192,7 +193,7 @@ val person: Person = faker.randomProvider.randomClassInstance {
 
 <br>
 
-#### Pre-defined instance for classes with no public constructors
+#### Pre-defined instance for classes with no public or internal constructors
 
 By default, `randomClassInstance` can't generate classes with no public constructors, but this can be worked around by using `typeGenerator`:
 
@@ -243,8 +244,8 @@ A random class instance will be generated using the following precedence rules:
 
 - object instance
 - "default instance" of a class
-  - uses the public constructor with the least number of arguments, unless otherwise configured (see [Random Class Instance Configuration]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#random-class-instance-configuration))
-- "predefined instance" of a class if no public constructors are found
+  - uses a public/internal constructor with the least number of arguments, unless otherwise configured (see [Random Class Instance Configuration]({{ link(collectionType='wiki', collectionId='', itemId='Extras') }}#random-class-instance-configuration))
+- "predefined instance" of a class if no public or internal constructors are found
 - failing all of the above, `NoSuchElementException` will be thrown
 
 {% btc %}{% endbtc %}
