@@ -168,6 +168,7 @@ class RandomClassProvider {
         // Handle cases where "constructor-less" type is not a direct parameter of the generated class,
         // but is a collection type, for example
         // https://github.com/serpro69/kotlin-faker/issues/204
+        if (this.isSealed) return randomSealedClassOrNull(config) as T
         if (this.java.isEnum) return randomEnumOrNull() as T
         if (this.java.isPrimitive) return randomPrimitiveOrNull() as T
 

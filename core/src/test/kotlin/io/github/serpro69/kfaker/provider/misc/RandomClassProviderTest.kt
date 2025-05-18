@@ -651,6 +651,32 @@ class RandomClassProviderTest : DescribeSpec({
         }
     }
 
+    describe("a sealed class") {
+        it("should return a random sealed class implementation") {
+            val cls = randomProvider.randomClassInstance<TestSealedCls>()
+            cls shouldBe instanceOf<TestSealedCls>()
+        }
+        context("with constructor parameters") {
+            it("should return a random sealed class implementation") {
+                val cls = randomProvider.randomClassInstance<TestSealedClsWithParams>()
+                cls shouldBe instanceOf<TestSealedClsWithParams>()
+            }
+        }
+    }
+
+    describe("an enum class") {
+        it("should return a random enum implementation") {
+            val cls = randomProvider.randomClassInstance<TestEnum>()
+            cls shouldBe instanceOf<TestEnum>()
+        }
+        context("with constructor parameters") {
+            it("should return a random sealed class implementation") {
+                val cls = randomProvider.randomClassInstance<TestEnumWithParams>()
+                cls shouldBe instanceOf<TestEnumWithParams>()
+            }
+        }
+    }
+
     describe("RandomClassProvider configuration") {
         class Foo(val int: Int)
         class Bar(val foo: Foo)
@@ -908,6 +934,12 @@ class RandomClassProviderTest : DescribeSpec({
     }
 })
 
+enum class TestEnumWithParams(val id: Int) {
+    THREE(3),
+    SIX(6),
+    FORTY_TWO(42),
+}
+
 @Suppress("unused")
 enum class TestEnum {
     KOTLIN,
@@ -915,10 +947,19 @@ enum class TestEnum {
     GO
 }
 
+sealed class TestSealedClsWithParams(val id: Int) {
+    data object Three : TestSealedClsWithParams(3)
+    class Six : TestSealedClsWithParams(6)
+    object Nine : TestSealedClsWithParams(9)
+    class Cls(private val ownId: Int) : TestSealedClsWithParams(ownId)
+    data class Data(private val ownId: Int) : TestSealedClsWithParams(ownId)
+}
+
 @Suppress("CanSealedSubClassBeObject", "unused")
 sealed class TestSealedCls {
     data object Kotlin : TestSealedCls()
     class Java : TestSealedCls()
+    object JS : TestSealedCls()
 }
 
 @Suppress("unused")
