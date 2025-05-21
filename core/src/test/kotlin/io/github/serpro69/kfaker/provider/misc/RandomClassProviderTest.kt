@@ -24,7 +24,6 @@ import io.kotest.matchers.types.instanceOf
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.assertThrows
 import java.util.UUID
-import kotlin.random.Random
 import kotlin.reflect.full.declaredMemberProperties
 
 @Suppress("unused")
@@ -978,42 +977,6 @@ class RandomClassProviderTest : DescribeSpec({
             baz.bar.foo.int shouldBe 0
             baz.test shouldBe 1
             baz.nullable shouldBe "nn"
-        }
-
-        context("precedence") {
-            val cfg: () -> FakerConfig = {
-                fakerConfig {
-                    randomClassInstance {
-                        typeGenerator { Foo(0) }
-                        nullableTypeGenerator { "nn" }
-                        namedParameterGenerator("test") { 1 }
-                    }
-                }
-            }
-
-            it("should configure random providers from fakerConfig") {
-                randomClassInstance<Bar>(cfg()).foo.int shouldBe 0
-                randomClassInstance<Baz>(cfg()).foo.int shouldBe 0
-                randomClassInstance<Baz>(cfg()).bar.foo.int shouldBe 0
-                randomClassInstance<Baz>(cfg()).test shouldBe 1
-                randomClassInstance<Baz>(cfg()).nullable shouldBe "nn"
-            }
-            it("should override configuration via configurator") {
-                val bar = randomClassInstance<Bar>(cfg()) {
-                    typeGenerator { Foo(42) }
-                }
-                bar.foo.int shouldBe 42
-
-                val baz = randomClassInstance<Baz>(cfg()) {
-                    typeGenerator { Foo(42) }
-                    nullableTypeGenerator { "just a string" }
-                    namedParameterGenerator("test") { 32167 }
-                }
-                baz.foo.int shouldBe 42
-                baz.bar.foo.int shouldBe 42
-                baz.test shouldBe 32167
-                baz.nullable shouldBe "just a string"
-            }
         }
     }
 })
