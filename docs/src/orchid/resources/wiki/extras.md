@@ -20,6 +20,7 @@
     * [New Instance](#new-instance)
     * [Instance Copy](#instance-copy)
   * [Dealing with Generic Types](#dealing-with-generic-types)
+  * [Top-level functions](#top-level-functions)
 * [Random Everything](#random-everything)
 * [Random Strings from Templates](#random-strings-from-templates)
 
@@ -575,6 +576,56 @@ The `copy`, just as `new` instance, can of course be reconfigured ( ❹ ) as nee
 ### Dealing with Generic Types
 
 Generic parameter types are not fully supported at this moment due to type-erasure on the JVM (See also https://github.com/serpro69/kotlin-faker/issues/191)
+
+{% btc %}{% endbtc %}
+
+<br>
+
+### Top-level functions
+
+Sometimes you just want to generate random POJO instances and don't need the whole range of kotlin-faker functionality?
+For these cases you can import `randomClassInstance` top-level function and use it directly w/o the need to instantiate an instance of `Faker`
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+import io.github.serpro69.kfaker.randomClassInstance
+
+val randomClass = randomClassInstance<MyClass>()
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
+
+It can also be configured via `configurator` lambda parameter, or via `FakerConfig` instance:
+
+{% tabs %}
+
+{% kotlin "Kotlin" %}
+{% filter compileAs('md') %}
+```kotlin
+import io.github.serpro69.kfaker.fakerConfig
+import io.github.serpro69.kfaker.randomClassInstance
+import java.time.Instant
+
+val randomClass = randomClassInstance<MyClass>() {
+  typeGenerator<Instant> { Instant.now() }
+}
+
+val cfg = fakerConfig {
+  randomClassInstance {
+    typeGenerator<Instant> { Instant.MIN }
+  }
+}
+val another = randomClassInstance<MyClass>(cfg)
+```
+{% endfilter %}
+{% endkotlin %}
+
+{% endtabs %}
 
 {% btc %}{% endbtc %}
 
