@@ -38,6 +38,7 @@ class RandomClassProvider {
     /**
      * Creates an instance of this [RandomClassProvider] with the given [fakerConfig].
      */
+    @PublishedApi
     internal constructor(fakerConfig: FakerConfig) {
         this.fakerConfig = fakerConfig
         randomService = RandomService(fakerConfig)
