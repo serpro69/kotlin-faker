@@ -79,6 +79,13 @@ public final class io/github/serpro69/kfaker/FakerConfigBuilder {
 public abstract interface annotation class io/github/serpro69/kfaker/FakerDsl : java/lang/annotation/Annotation {
 }
 
+public final class io/github/serpro69/kfaker/FakerExtKt {
+	public static final fun getRcp ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public static final fun randomClassInstance (Lkotlin/reflect/KClass;Lio/github/serpro69/kfaker/FakerConfig;)Ljava/lang/Object;
+	public static final fun randomClassInstance (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static synthetic fun randomClassInstance$default (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
 public final class io/github/serpro69/kfaker/FakerKt {
 	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/Faker;
 }
@@ -690,6 +697,7 @@ public final class io/github/serpro69/kfaker/provider/misc/ParameterInfo {
 }
 
 public final class io/github/serpro69/kfaker/provider/misc/RandomClassProvider {
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
 	public final fun configure (Lkotlin/jvm/functions/Function1;)V
 	public final fun copy ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
 	public final fun getConfig ()Lio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;
