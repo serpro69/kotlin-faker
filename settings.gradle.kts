@@ -8,6 +8,7 @@ apply(from = "./buildSrc/repositories.settings.gradle.kts")
 plugins {
     // NB! remember to set same version in gradle/libs.versions.toml:10
     id("io.github.serpro69.semantic-versioning") version "0.14.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
 rootProject.name = "kotlin-faker"

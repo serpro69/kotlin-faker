@@ -33,7 +33,7 @@ fun configureGradleDaemonJvm(
     gradleDaemonJvmVersion: Provider<JavaVersion>,
 ) {
     updateDaemonJvm {
-        jvmVersion.set(gradleDaemonJvmVersion.map { JavaVersion.toVersion(it) })
+        languageVersion.set(gradleDaemonJvmVersion.map { JavaLanguageVersion.of(it.majorVersion) })
         val javaToolchains = project.serviceOf<JavaToolchainService>()
         val isGradleDaemonJvmVersionInstalled = gradleDaemonJvmVersion.isInstalled(javaToolchains)
         inputs.property("isGradleDaemonJvmVersionInstalled", isGradleDaemonJvmVersionInstalled)
