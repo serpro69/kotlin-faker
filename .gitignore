@@ -1,6 +1,7 @@
 .allure/
 .gradle/
 .idea/
+.kotlin/
 .kotlintest/
 *.jar
 *.log
