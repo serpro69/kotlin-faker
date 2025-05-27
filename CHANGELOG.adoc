@@ -11,6 +11,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/pull/268[#268] (:core) Add randomClassInstance top-level function
 * https://github.com/serpro69/kotlin-faker/pull/267[#267] (:core) Add support for sealed classes in randomClassInstance
 * https://github.com/serpro69/kotlin-faker/pull/266[#266] (:core) Add support for internal constructors in randomClassInstance
 * https://github.com/serpro69/kotlin-faker/pull/260[#260] (:core) Add config strategy for default values of RandomClass instances
