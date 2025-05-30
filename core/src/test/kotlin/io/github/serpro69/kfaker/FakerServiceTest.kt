@@ -571,6 +571,15 @@ internal class FakerServiceTest : DescribeSpec({
 //                }
 //            }
 //        }
+
+        context("locales other than en, fr or ja") {
+            it("should be possible to localize values for a single category") {
+                val foodstuff = fakerService("de", YamlCategory.FOOD)
+                    .dictionary
+                    .getEntryByCategory("food")["ingredients"] as List<*>
+                foodstuff shouldContainExactly listOf("Brot")
+            }
+        }
     }
 
     describe("regexify a string") {

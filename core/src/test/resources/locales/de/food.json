@@ -1,0 +1,11 @@
+{
+  "de": {
+    "faker": {
+      "food": {
+        "ingredients": [
+          "Brot"
+        ]
+      }
+    }
+  }
+}
