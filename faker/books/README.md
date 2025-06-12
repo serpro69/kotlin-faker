@@ -1,7 +1,7 @@
 ## `BooksFaker`
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-books?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker-books)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-books?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
+[![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-books?style=for-the-badge)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker-books)
+[![Central Sonatype (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-books?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)
 
 Provides access to fake data generators within the Books domain.
 
