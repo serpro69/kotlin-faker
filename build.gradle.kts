@@ -206,8 +206,10 @@ val allureAggregatedServe by tasks.creating(AllureServe::class) {
 
 nexusPublishing {
     repositories {
+        // see https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/#configuration
         sonatype {
-            stagingProfileId.set(properties["stagingProfileId"]?.toString())
+            nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://central.sonatype.com/repository/maven-snapshots/"))
         }
     }
 }
