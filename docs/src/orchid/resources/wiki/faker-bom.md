@@ -3,8 +3,8 @@
 
 # Kotlin-faker BOM
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-bom?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker-bom)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-bom?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
+[![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-bom?style=for-the-badge)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker-bom)
+[![Central Sonatype (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker-bom?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)
 
 Kotlin-faker provides a [Bill-of-Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms) that simplifies dependency management.
 
