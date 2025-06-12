@@ -89,13 +89,13 @@ dependencies {
 </dependencies>
 ```  
 
-***Snapshots are also available using the following repository: `https://oss.sonatype.org/content/repositories/snapshots/`***
+***Snapshots are also available using the following repository: `https://central.sonatype.com/repository/maven-snapshots/`***
 
 **With gradle**
 ```groovy
 repositories {
     maven {
-        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
     }
 }
 ```
@@ -106,7 +106,7 @@ repositories {
     <repository>
         <id>sonatype-snapshot</id>
         <name>Sonatype Snapshot</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </repository>
 </repositories>
 ```
