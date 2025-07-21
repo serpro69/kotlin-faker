@@ -4,6 +4,7 @@
 [discrete]
 === Breaking Change
 
+* https://github.com/serpro69/kotlin-faker/pull/274[#274] (:core) Add support for language variants extending their base locale
 * https://github.com/serpro69/kotlin-faker/pull/259[#259] (:core) Replace java.util.Random with kotlin.random.Random
 * https://github.com/serpro69/kotlin-faker/pull/246[#246] (:extension) Remove KSP from kotest-property extension
 * https://github.com/serpro69/kotlin-faker/pull/219[#219] (:core) Extract faker's providers into several submodules of their own
@@ -11,6 +12,7 @@
 [discrete]
 === Added
 
+* https://github.com/serpro69/kotlin-faker/issues/131[#131] (:core) Add support for using `lang` dict when `lang-COUNTRY` dict is missing (via #274)
 * https://github.com/serpro69/kotlin-faker/pull/268[#268] (:core) Add randomClassInstance top-level function
 * https://github.com/serpro69/kotlin-faker/pull/267[#267] (:core) Add support for sealed classes in randomClassInstance
 * https://github.com/serpro69/kotlin-faker/pull/266[#266] (:core) Add support for internal constructors in randomClassInstance
