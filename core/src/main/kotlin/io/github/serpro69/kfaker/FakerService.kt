@@ -64,25 +64,19 @@ class FakerService {
         category: YamlCategory,
         secondaryCategory: Category?,
     ): List<InputStream> {
-        val baseLocale = locale.substringBefore("-")
-
-        val requiredResources = when (locale) {
-            "fr", "ja" -> emptyList()
-            else -> listOf(
-                requireNotNull(
-                    javaClass.classLoader.getResourceAsStream("locales/$locale.json")
-                        ?: javaClass.classLoader.getResourceAsStream("locales/$baseLocale.json")
-                ) { "Dictionary file not found for locale values: '$locale' or '$baseLocale'" }
-            )
-        }
+        val baseLocale = locale.replace('_', '-').substringBefore("-")
 
         val resourceFilenames = listOfNotNull(
+            "locales/$baseLocale.json",
             "locales/$baseLocale/${category.lowercase()}.json",
             secondaryCategory?.let { "locales/$baseLocale/${it.lowercase()}.json" },
+            "locales/$locale.json",
             "locales/$locale/${category.lowercase()}.json",
             secondaryCategory?.let { "locales/$locale/${it.lowercase()}.json" },
         ).distinct()
-        return requiredResources + resourceFilenames.mapNotNull { javaClass.classLoader.getResourceAsStream(it) }
+        val localeStreams = resourceFilenames.mapNotNull { javaClass.classLoader.getResourceAsStream(it) }
+        require(localeStreams.isNotEmpty() || locale in listOf("fr", "ja")) { "Dictionary file not found for locale values: '$locale' or '$baseLocale'" }
+        return localeStreams
     }
 
     private fun getCategoryFileStreamOrNull(
