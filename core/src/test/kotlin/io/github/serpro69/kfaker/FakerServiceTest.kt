@@ -15,6 +15,7 @@ import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.collections.shouldHaveAtLeastSize
 import io.kotest.matchers.collections.shouldHaveAtMostSize
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.maps.shouldContainExactly
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -549,28 +550,52 @@ internal class FakerServiceTest : DescribeSpec({
             }
         }
 
-//        context("fr locale") { // also applicable for ja and any other multi-file localized data
-//            // TODO not supported since 1.11.0
-//            //  see: https://github.com/serpro69/kotlin-faker/issues/131
-//            //  Note: when implemented also add tests to check that existing `lang-COUNTRY` locale is actually loaded, e.g. `fr-CA`
-//            context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
-//                val frFRDict = FakerService(Faker(), Locale.forLanguageTag("fr-FR")).dictionary
-//
-//                it("localized dictionary for `lang` should be loaded") {
-//                    frFRDict shouldNotBe null
-//                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
-//                }
-//            }
-//
-//            context("it is set as `lang_COUNTRY` String") {
-//                val frFRDict = FakerService(Faker(), Locale.forLanguageTag("fr_FR")).dictionary
-//
-//                it("it should be set as `lang-COUNTRY` String") {
-//                    frFRDict shouldNotBe null
-//                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
-//                }
-//            }
-//        }
+        context("fr locale") { // also applicable for ja and any other multi-file localized data
+            context("it is set as `lang-COUNTRY` but dictionary file exists only for `lang`") {
+                val frFRDict = fakerService("fr-FR", YamlCategory.ADDRESS).dictionary // FakerService(Faker(), Locale.forLanguageTag("fr-FR")).dictionary
+
+                it("localized dictionary for `lang` should be loaded") {
+                    frFRDict shouldNotBe null
+                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
+                }
+            }
+
+            context("it is set as `lang_COUNTRY` String") {
+                val frFRDict = fakerService("fr_FR", YamlCategory.ADDRESS).dictionary // FakerService(Faker(), Locale.forLanguageTag("fr-FR")).dictionary
+
+                it("it should be set as `lang-COUNTRY` String") {
+                    frFRDict shouldNotBe null
+                    frFRDict shouldNotBe emptyMap<YamlCategory, YamlCategoryData>()
+                }
+            }
+
+            context("existing lang-COUNTRY locale is actually loaded") {
+                val faker = fakerService("fr-CA")
+                faker.load(YamlCategory.ADDRESS)
+                faker.load(YamlCategory.ANCIENT)
+                val frCAdict = faker.dictionary
+
+                it("should actually load data from the specified locale") {
+                    val states = frCAdict.getEntryByCategory("address")["state"] as List<String>
+                    states shouldContain "Ontario"
+                    states shouldNotContain "Paris"
+                }
+
+                it("should use values from the base locale as a fallback") {
+                    val gods = frCAdict.getEntryByCategory("ancient")["god"] as List<String>
+                    gods shouldContain "Zeus"
+                }
+            }
+        }
+
+        context("locales other than en, fr or ja") {
+            it("should be possible to localize values for a single category") {
+                val foodstuff = fakerService("de", YamlCategory.FOOD)
+                    .dictionary
+                    .getEntryByCategory("food")["ingredients"] as List<*>
+                foodstuff shouldContainExactly listOf("Brot")
+            }
+        }
     }
 
     describe("regexify a string") {

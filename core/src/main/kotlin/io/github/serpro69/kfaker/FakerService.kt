@@ -59,6 +59,26 @@ class FakerService {
         } ?: requireNotNull(javaClass.classLoader.getResourceAsStream("locales/$locale/${category.lowercase()}.json"))
     }
 
+    private fun getAllLocaleOrCategoryFileStreams(
+        locale: String,
+        category: YamlCategory,
+        secondaryCategory: Category?,
+    ): List<InputStream> {
+        val baseLocale = locale.replace('_', '-').substringBefore("-")
+
+        val resourceFilenames = listOfNotNull(
+            "locales/$baseLocale.json",
+            "locales/$baseLocale/${category.lowercase()}.json",
+            secondaryCategory?.let { "locales/$baseLocale/${it.lowercase()}.json" },
+            "locales/$locale.json",
+            "locales/$locale/${category.lowercase()}.json",
+            secondaryCategory?.let { "locales/$locale/${it.lowercase()}.json" },
+        ).distinct()
+        val localeStreams = resourceFilenames.mapNotNull { javaClass.classLoader.getResourceAsStream(it) }
+        require(localeStreams.isNotEmpty() || locale in listOf("fr", "ja")) { "Dictionary file not found for locale values: '$locale' or '$baseLocale'" }
+        return localeStreams
+    }
+
     private fun getCategoryFileStreamOrNull(
         locale: String,
         category: YamlCategory,
@@ -220,26 +240,22 @@ class FakerService {
                         defaultValues.putAll(readCategory(instr, "en", category))
                     }
 
-                    // merge localized values
-                    val input = when (locale) {
-                        // these have multiple files per directory, as opposed to other localizations
-                        "fr", "ja" -> getCategoryFileStreamOrNull(locale, category, secondaryCategory)
-                        else -> if (locale != "en") /*'en' is already processed at this point*/ {
-                            getLocaleFileStream(locale) ?: throw IllegalArgumentException(
-                                "Dictionary file not found for locale values: '$locale' or '${locale.substringBefore("-")}'"
-                            )
-                        } else null
-                    }
-                    input?.use { instr ->
-                        readCategoryOrNull(instr, locale, category)?.let {
-                            val localized = with(category.lowercase()) {
-                                val merged = merge(
-                                    hashMapOf(this to defaultValues),
-                                    hashMapOf(this to it)
-                                )
-                                merged[this]
+                    if (locale != "en") { // 'en' is already processed at this point
+                        val inputs = getAllLocaleOrCategoryFileStreams(locale, category, secondaryCategory)
+
+                        inputs.forEach { input ->
+                            input.use { instr ->
+                                readCategoryOrNull(instr, locale, category)?.let {
+                                    val localized = with(category.lowercase()) {
+                                        val merged = merge(
+                                            hashMapOf(this to defaultValues),
+                                            hashMapOf(this to it)
+                                        )
+                                        merged[this]
+                                    }
+                                    localized?.forEach { m -> defaultValues.merge(m.key, m.value as Any) { orig, loc -> loc } }
+                                }
                             }
-                            localized?.forEach { m -> defaultValues.merge(m.key, m.value as Any) { orig, loc -> loc } }
                         }
                     }
                 }

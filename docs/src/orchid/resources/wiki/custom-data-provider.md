@@ -33,7 +33,7 @@ First, we need to create a json file that will serve as your "data dictionary", 
 - After that you have your data parameters with values as key-value pairs
 
 {% tip %}
-If you want to support a different locale, place the file in `resources/locales/<locale>.json` instead
+If you want to support a different locale, place the file in `resources/locales/<locale>/<category>.json` instead.
 {% endtip %}
 
 Then, we need to implement the `YamlFakeDataProvider` class:
