@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>ee</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/ee" aria-current="page">ee</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_ee_yml"><code>ee.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">ee:
+  faker:
+    invoice:
+      reference:
+        # '#' means the place where check digit is placed
+        # Source: http://www.pangaliit.ee/en/settlements-and-standards/reference-number-of-the-invoice
+        check_digit_method: method_731
+        pattern: '\d{1,19}#'
+    address:
+      postcode: ["#####"]
+      building_number: ["####", "###", "##"]
+      street_suffix: ["tee", "maantee", "tänav", "põik"]
+      state: [Harjumaa, Tartumaa, Ida-Virumaa, Pärnumaa, Lääne-Virumaa, Viljandimaa, Raplamaa, Võrumaa, Saaremaa, Jõgevamaa, Järvamaa, Valgamaa, Põlvamaa, Läänemaa, Hiiumaa]
+      city_name: [Tallinn, Tartu, Narva, Pärnu, Kohtla-Järve, Viljandi, Rakvere, Maardu, Sillamäe, Kuressaare, Valga, Võru, Haapsalu, Jõhvi, Keila, Põlva, Rapla, Türi, Paide, Tapa, Saue, Elva, Kehra, Kiviõli, Suure-Jaani, Jõgeva, Räpina, Kärdla, Põltsamaa, Otepää, Kilingi-Nõmme, Sindi, Paldiski, Tamsalu, Antsla, Karksi-Nuia, Kunda, Püssi, Narva-Jõesuu, Tõrva, Loksa, Lihula, Abja-Paluoja, Võhma, Mustvee, Kallaste, Mõisaküla]
+      city:
+        - "#{city_name}"
+      street_name:
+        - "#{Name.last_name} #{street_suffix}"
+      street_address:
+        - "#{Name.last_name} #{street_suffix} #{building_number}"
+
+    company:
+      suffix: [AS, OÜ]
+      # Buzzword wordlist from http://www.1728.com/buzzword.htm
+      buzzwords:
+        - ["Adaptive", "Advanced", "Ameliorated", "Assimilated", "Automated", "Balanced", "Business-focused", "Centralized", "Cloned", "Compatible", "Configurable", "Cross-group", "Cross-platform", "Customer-focused", "Customizable", "Decentralized", "De-engineered", "Devolved", "Digitized", "Distributed", "Diverse", "Down-sized", "Enhanced", "Enterprise-wide", "Ergonomic", "Exclusive", "Expanded", "Extended", "Face to face", "Focused", "Front-line", "Fully-configurable", "Function-based", "Fundamental", "Future-proofed", "Grass-roots", "Horizontal", "Implemented", "Innovative", "Integrated", "Intuitive", "Inverse", "Managed", "Mandatory", "Monitored", "Multi-channelled", "Multi-lateral", "Multi-layered", "Multi-tiered", "Networked", "Object-based", "Open-architected", "Open-source", "Operative", "Optimized", "Optional", "Organic", "Organized", "Persevering", "Persistent", "Phased", "Polarised", "Pre-emptive", "Proactive", "Profit-focused", "Profound", "Programmable", "Progressive", "Public-key", "Quality-focused", "Reactive", "Realigned", "Re-contextualized", "Re-engineered", "Reduced", "Reverse-engineered", "Right-sized", "Robust", "Seamless", "Secured", "Self-enabling", "Sharable", "Stand-alone", "Streamlined", "Switchable", "Synchronised", "Synergistic", "Synergized", "Team-oriented", "Total", "Triple-buffered", "Universal", "Up-sized", "Upgradable", "User-centric", "User-friendly", "Versatile", "Virtual", "Visionary", "Vision-oriented"]
+        - ["24 hour", "24/7", "3rd generation", "4th generation", "5th generation", "6th generation", "actuating", "analyzing", "asymmetric", "asynchronous", "attitude-oriented", "background", "bandwidth-monitored", "bi-directional", "bifurcated", "bottom-line", "clear-thinking", "client-driven", "client-server", "coherent", "cohesive", "composite", "context-sensitive", "contextually-based", "content-based", "dedicated", "demand-driven", "didactic", "directional", "discrete", "disintermediate", "dynamic", "eco-centric", "empowering", "encompassing", "even-keeled", "executive", "explicit", "exuding", "fault-tolerant", "foreground", "fresh-thinking", "full-range", "global", "grid-enabled", "heuristic", "high-level", "holistic", "homogeneous", "human-resource", "hybrid", "impactful", "incremental", "intangible", "interactive", "intermediate", "leading edge", "local", "logistical", "maximized", "methodical", "mission-critical", "mobile", "modular", "motivating", "multimedia", "multi-state", "multi-tasking", "national", "needs-based", "neutral", "next generation", "non-volatile", "object-oriented", "optimal", "optimizing", "radical", "real-time", "reciprocal", "regional", "responsive", "scalable", "secondary", "solution-oriented", "stable", "static", "systematic", "systemic", "system-worthy", "tangible", "tertiary", "transitional", "uniform", "upward-trending", "user-facing", "value-added", "web-enabled", "well-modulated", "zero administration", "zero defect", "zero tolerance"]
+        - ["ability", "access", "adapter", "algorithm", "alliance", "analyzer", "application", "approach", "architecture", "archive", "artificial intelligence", "array", "attitude", "benchmark", "budgetary management", "capability", "capacity", "challenge", "circuit", "collaboration", "complexity", "concept", "conglomeration", "contingency", "core", "customer loyalty", "database", "data-warehouse", "definition", "emulation", "encoding", "encryption", "extranet", "firmware", "flexibility", "focus group", "forecast", "frame", "framework", "function", "functionalities", "Graphic Interface", "groupware", "Graphical User Interface", "hardware", "help-desk", "hierarchy", "hub", "implementation", "info-mediaries", "infrastructure", "initiative", "installation", "instruction set", "interface", "internet solution", "intranet", "knowledge user", "knowledge base", "local area network", "leverage", "matrices", "matrix", "methodology", "middleware", "migration", "model", "moderator", "monitoring", "moratorium", "neural-net", "open architecture", "open system", "orchestration", "paradigm", "parallelism", "policy", "portal", "pricing structure", "process improvement", "product", "productivity", "project", "projection", "protocol", "secured line", "service-desk", "software", "solution", "standardization", "strategy", "structure", "success", "superstructure", "support", "synergy", "system engine", "task-force", "throughput", "time-frame", "toolset", "utilisation", "website", "workforce"]
+      # BS wordlist from http://dack.com/web/bullshit.html
+      bs:
+        - ["implement", "utilize", "integrate", "streamline", "optimize", "evolve", "transform", "embrace", "enable", "orchestrate", "leverage", "reinvent", "aggregate", "architect", "enhance", "incentivize", "morph", "empower", "envisioneer", "monetize", "harness", "facilitate", "seize", "disintermediate", "synergize", "strategize", "deploy", "brand", "grow", "target", "syndicate", "synthesize", "deliver", "mesh", "incubate", "engage", "maximize", "benchmark", "expedite", "reintermediate", "whiteboard", "visualize", "repurpose", "innovate", "scale", "unleash", "drive", "extend", "engineer", "revolutionize", "generate", "exploit", "transition", "e-enable", "iterate", "cultivate", "matrix", "productize", "redefine", "recontextualize"]
+        - ["clicks-and-mortar", "value-added", "vertical", "proactive", "robust", "revolutionary", "scalable", "leading-edge", "innovative", "intuitive", "strategic", "e-business", "mission-critical", "sticky", "one-to-one", "24/7", "end-to-end", "global", "B2B", "B2C", "granular", "frictionless", "virtual", "viral", "dynamic", "24/365", "best-of-breed", "killer", "magnetic", "bleeding-edge", "web-enabled", "interactive", "dot-com", "sexy", "back-end", "real-time", "efficient", "front-end", "distributed", "seamless", "extensible", "turn-key", "world-class", "open-source", "cross-platform", "cross-media", "synergistic", "bricks-and-clicks", "out-of-the-box", "enterprise", "integrated", "impactful", "wireless", "transparent", "next-generation", "cutting-edge", "user-centric", "visionary", "customized", "ubiquitous", "plug-and-play", "collaborative", "compelling", "holistic", "rich"]
+        - ["synergies", "web-readiness", "paradigms", "markets", "partnerships", "infrastructures", "platforms", "initiatives", "channels", "eyeballs", "communities", "ROI", "solutions", "e-tailers", "e-services", "action-items", "portals", "niches", "technologies", "content", "vortals", "supply-chains", "convergence", "relationships", "architectures", "interfaces", "e-markets", "e-commerce", "systems", "bandwidth", "infomediaries", "models", "mindshare", "deliverables", "users", "schemas", "networks", "applications", "metrics", "e-business", "functionalities", "experiences", "web services", "methodologies"]
+      name:
+        - "#{Name.last_name} #{suffix}"
+        - "#{suffix} #{Name.last_name}"
+
+    internet:
+      domain_suffix: [com, com.ee, ee, net, org]
+
+    name:
+      first_name: [Aabel, Aabraham, Aadu, Aare, Aarne, Aaron, Aavo, Ago, Agu, Ahti, Ahto, Aigar, Ain, Aivar, Aivo, Aksel, Alar, Alari, Albert, Aleks, Aleksander, Allan, Allar, Alo, Alvar, Ando, Andre, Andreas, Andres, Andrus, Anti, Anton, Ants, Ardi, Ardo, Arno, Arnold, Arti, Artur, Arved, Arvi, Arvo, Asko, August, Edgar, Eduard, Eedo, Eedu, Eerik, Eero, Egert, Egon, Einar, Eino, Elias, Elmar, Elmo, Endel, Endrik, Enn, Enno, Ergo, Erik, Erki, Erko, Erlend, Ermo, Evald, Evert, Feliks, Georg, Gert, Gunnar, Gustav, Hannes, Hans, Hardi, Harri, Heigo, Heiki, Heino, Heiti, Hendrik, Henn, Henri, Hillar, Iisak, Illar, Illimar, Ilmar, Ilmo, Imre, Indrek, Innar, Ivar, Ivari, Ivo, Jaagup, Jaak, Jaakob, Jaan, Jaanus, Jakob, Janar, Janek, Janno, Jass, Joel, Johannes, Joona, Joonas, Joonatan, Joosep, Juhan, Juho, Jukk, Juss, Jürgen, Jüri, Jürjo, Kaarel, Kaido, Kajar, Kalev, Kaljo, Kalju, Kalle, Kardo, Karl, Kaspar, Kaupo, Kaur, Kauri, Ken, Kermo, Kert, Kevin, Koit, Kristen, Kristian, Kristjan, Kristo, Kristofer, Kuldar, Kunnar, Kusta, Kustas, Kustav, Küllo, Laur, Lauri, Leevi, Leho, Lembit, Lennart, Luukas, Maanus, Maarjo, Madi, Madis, Magnus, Maido, Mairo, Mait, Marek, Margo, Margus, Mario, Mark, Marko, Markus, Marten, Marti, Martin, Mati, Matteus, Mattias, Meelis, Meeme, Mehis, Mihkel, Miikael, Mikk, Märt, Neeme, Nigul, Nigulas, Niilo, Nuut, Olari, Olavi, Olev, Oliver, Oskar, Ott, Otto, Paavo, Paul, Paulus, Peep, Aada, Aasa, Aet, Age, Agnes, Aile, Aili, Aino, Ainu, Aire, Airi, Aita, Aive, Aleksandra, Alina, Andra, Anete, Angela, Angelika, Ann, Anna, Anne, Anneli, Anni, Annika, Anu, Asta, Astrid, Auli, Aune, Aurelia, Ave, Berit, Birgit, Brita, Dagmar, Diana, Ebe, Eda, Eeva, Eevi, Egle, Eha, Eili, Eliisa, Eliisabet, Eliise, Elina, Elis, Elle, Ellen, Elo, Elvi, Emma, Endla, Ene, Eneli, Epp, Ere, Erika, Esta, Ester, Eva, Eve, Evelin, Gerli, Greete, Grete, Hanna, Hedi, Heidi, Heili, Helbe, Hele, Helen, Helena, Heleri, Helga, Helgi, Heli, Helina, Helju, Helle, Helmi, Helve, Hiie, Hilda, Hilja, Hille, Iiris, Ille, Ilme, Ilona, Imbi, Ines, Inga, Inge, Ingel, Ingrid, Inna, Irene, Iris, Irja, Irma, Ivi, Ivika, Jaana, Jaanika, Jana, Jane, Janne, Johanna, Juta, Kaarin, Kadi, Kadri, Kai, Kaia, Kaidi, Kaie, Kaili, Kairi, Kaisa, Kaja, Karin, Karina, Karmen, Karoliina, Karoliine, Karolin, Katariina, Kati, Katre, Katri, Katriin, Katrin, Keiu, Kelli, Kerli, Kersti, Kerstin, Kertu, Kirke, Koidu, Krista, Kristel, Kristen, Kristi, Kristiina, Kristin, Kristina, Kärt, Kätlin, Külli, Küllike, Lagle, Laine, Laura, Lea, Leelo, Lehte, Leida, Leili, Lembi, Lemme, Lii, Liia, Liidia, Liilia, Liina, Liis, Liisa, Liisbet, Liisi, Liivi, Lilian, Lilli, Linda, Luule, Lüüdia, Maarika, Maarja, Made, Madli, Mai, Maia, Maie, Maila, Maimu, Maire, Malle, Mare, Maret, Margareeta, Margaret, Marge, Margit, Margot, Mari, Mari-Liis]
+      last_name: [Aare, Aasmäe, Aavik, Allik, Alver, Antson, Eenpalu, Eskola, Härma, Hõbe, Ilves, Ivask, Jänes, Järvekülg, Jääger, Jõgi, Kaasik, Kaljurand, Kangur, Kasak, Kask, Kesküla, Kivi, Koppel, Korjus, Kross, Kukk, Kuuse, Kuusik, Kuusk, Käbin, Kärner, Kõiv, Kütt, Laar, Laur, Leok, Lepik, Levandi, Linna, Luik, Lõhmus, Lõoke, Made, Mark, Masing, Meri, Mädamürk, Mägi, Männik, Naissoo, Nurme, Nurmsalu, Nõmmik, Olesk, Orav, Poska, Puhvel, Pärn, Pääsuke, Raag, Raud, Rebane, Reinsalu, Rootare, Rüütli, Saar, Salumäe, Savisaar, Sepp, Sisask, Soosaar, Taaramae, Tamm, Tammik, Toome, Tätte, Vaher, Vaino, Valdma, Valk, Vesik, Viiding, Vitsut, Välbe, Väljas, Västrik, Võsu, Wahl, Õunapuu, Öpik]
+      title:
+        descriptor: [Lead, Senior, Direct, Corporate, Dynamic, Future, Product, National, Regional, District, Central, Global, Customer, Investor, Dynamic, International, Legacy, Forward, Internal, Human, Chief, Principal]
+        level: [Solutions, Program, Brand, Security, Research, Marketing, Directives, Implementation, Integration, Functionality, Response, Paradigm, Tactics, Identity, Markets, Group, Division, Applications, Optimization, Operations, Infrastructure, Intranet, Communications, Web, Branding, Quality, Assurance, Mobility, Accounts, Data, Creative, Configuration, Accountability, Interactions, Factors, Usability, Metrics]
+        job: [Supervisor, Associate, Executive, Liaison, Officer, Manager, Engineer, Specialist, Director, Coordinator, Administrator, Architect, Analyst, Designer, Planner, Orchestrator, Technician, Developer, Producer, Consultant, Assistant, Facilitator, Agent, Representative, Strategist]
+      name:
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+      name_with_middle:
+        - "#{first_name} #{last_name} #{last_name}"
+
+    phone_number:
+      formats: ["32# ####", "33# ####", "35# ####", "38# ####", "39# ####", "43# ####", "44# ####", "45# ####", "46# ####", "47# ####", "48# ####", "61# ####", "62# ####", "63# ####", "64# ####", "65# ####", "66# ####", "67# ####", "68# ####", "69# ####", "7## ####", "71# ####", "72# ####", "73# ####", "74# ####", "75# ####", "76# ####", "77# ####", "78# ####", "79# ####",  "88# ####"]
+    cell_phone:
+      formats: ["5### ####", "5## ####", "81## ####", "82## ####", "83## ####", "84## ####"]</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1438 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Vehicle</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a></li>
+
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/vehicle" aria-current="page">Vehicle</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="Vehicle">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="667f5f9142e9700cf728946bc72a78e0304775f1">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/vehicle">Vehicle</a>: Any</code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"><p><a href="#">FakeDataProvider</a> implementation for <a href="#">YamlCategory.VEHICLE</a> category.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5b4c90a7b53ceb19509650af29d245b2bcb7ca35">
+        <td class="sourcedoc-section section-signature">
+          <code>val yamlCategory: override</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="15fec11da7bed51bb1e4227d38a657caad3aad65">
+        <td class="sourcedoc-section section-signature">
+          <code>val localUniqueDataProvider: override</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="7952db77f160ff88ca21829d1dbf7f68bcb0de73">
+        <td class="sourcedoc-section section-signature">
+          <code>val unique: override</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="c95ff51ee6dbb1de8deed4d8a984d8321baa93d6">
+      
+      <h3 class="sourcedoc-section element-name">manufacture</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun manufacture(): resolve("manufacture")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="49fd98d95ab07e377f344793c4ca5ec4b6233ff3">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fbb7f898a81b5b17dccaa48480dd77c390be85d8">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("manufacture")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="490f78bbb54066540f1b6f9c6129371e41621c10">
+      
+      <h3 class="sourcedoc-section element-name">makes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun makes(): resolve("makes")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="576f5118f2a4898bcf1c46423fd575a8337083c0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d5ac042446914162478f8a814598bbed870a3716">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("makes")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c0accce2dad122dfc429a2add36ad5c4b1978ef0">
+      
+      <h3 class="sourcedoc-section element-name">modelsByMake</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun modelsByMake(make: String): resolve("models_by_make", make)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="161a25e2bbedbe97e8046dc4b9a2df8110c4214e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="80dc84bbc71a3383e0266be925d73fa3d6194231">
+        <td class="sourcedoc-section section-signature">
+          <code>make: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7d7445ce5ff6a4b33086ddbe5e6396f5e26a9112">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6b13adc48319fec25fe8dd6f2414c25897f3e4a9">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("models_by_make", make)</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c2be30d4baa1272f2fe719b5e6daa351c1dfbd18">
+      
+      <h3 class="sourcedoc-section element-name">colors</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun colors(): resolve("colors")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a08a5160ea04727156027f237e6d27b61a6bbd2e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4b4458e26ca48fc92fec124b773c8323bf93ecdf">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("colors")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d6f0bf8ef496abc76a0cdd1fce5dd9c85b94f7b1">
+      
+      <h3 class="sourcedoc-section element-name">transmissions</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun transmissions(): resolve("transmissions")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bb8e33b2f3a42dcf9e94095422626c40e0085dcf">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="58d63ac0cbb8bd9998b3b16226d39830dddba53c">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("transmissions")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="73b72f475a8fe6aab3a9c6a9118596e94091c08e">
+      
+      <h3 class="sourcedoc-section element-name">driveTypes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun driveTypes(): resolve("drive_types")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9f3879cb31f69d2a64cb05fb3818e9fbf7a2da17">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4e1f35b2adc122a8cb34a24d3b83e354f5610570">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("drive_types")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9e83bbe3b60b88cbe4de4f448bc2423333d1c336">
+      
+      <h3 class="sourcedoc-section element-name">fuelTypes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun fuelTypes(): resolve("fuel_types")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="535e25eb422955a0312a5931bfae44791fd2abd8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="923cf2a0def0a489c22abc129a98114aee9ebe8a">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("fuel_types")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ecbaab1a398645309ddf896be1e84b08466518f1">
+      
+      <h3 class="sourcedoc-section element-name">styles</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun styles(): resolve("styles")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4ed14476e57ee8ee32e2908caba53a4705abbc00">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8981c81355d0236bfdf47091a075b5bcd43e5aa3">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("styles")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="81c3057b3c0da0482e478a011d4d5cf84695910f">
+      
+      <h3 class="sourcedoc-section element-name">carTypes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun carTypes(): resolve("car_types")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aaf3b85ed4890bab05f0a386f951d05d61d922ff">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="6c36d459bb5860d715f2b48c71fba01102f9d858">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("car_types")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cf3a78f3baa46b01e5cd1a95bc62b5b6da298bfe">
+      
+      <h3 class="sourcedoc-section element-name">carOptions</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun carOptions(): resolve("car_options")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cd306af696b268864f3b783f6634d6ed87b389ed">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="db95e1304fbc8fb976c00f116a9ff786767c5472">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("car_options")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d42492552532512fb78dcf87a515a764d94b10ee">
+      
+      <h3 class="sourcedoc-section element-name">standardSpecs</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun standardSpecs(): resolve("standard_specs")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="88534cbf47952797a9f9c25c267a691bf6fd74df">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="dc94927bac33c4891b9317043692e866b6ca1863">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("standard_specs")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b56e21ac4697d39651f5c5d268490c94b800b028">
+      
+      <h3 class="sourcedoc-section element-name">doors</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun doors(): resolve("doors")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5c12309f5ad0730b934a4614430b2337db2ca737">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="03d38a973cb880b9961e910010ae804d23d48513">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("doors")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f0648a8e950bbded18db698652b7801955c098a3">
+      
+      <h3 class="sourcedoc-section element-name">engineSizes</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun engineSizes(): resolve("engine_sizes")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="38306739213cd9ffcb9999139d863a8bae565c87">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="fa9f454f1071c4707bdb0798f9605861104e62d4">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("engine_sizes")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7f273effef755e6d6774131636a624324a8536f1">
+      
+      <h3 class="sourcedoc-section element-name">licensePlate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun licensePlate(): with(fakerService) { resolve("license_plate").numerify().letterify() }</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e0855bdf7d213e28a5df4d1a58822ff1fa5e18e6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9496be8b9db0c576ee8218c660998888a40fab50">
+        <td class="sourcedoc-section section-signature">
+          <code>with(fakerService) { resolve("license_plate").numerify().letterify() }</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b9ff4f8a517a5308ed745b915c2acdd9da2b1d7d">
+      
+      <h3 class="sourcedoc-section element-name">licencePlateByState</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun licencePlateByState(stateCode: String): with(fakerService) {
+        resolve("license_plate_by_state", stateCode).numerify().letterify().regexify()
+    }</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="22fe26a9d1bb5f9320b8e2209bfbba5ea7601281">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e19e230f9d44f9b244097806e8cd76a29e199c00">
+        <td class="sourcedoc-section section-signature">
+          <code>stateCode: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2a82449da5197a6e028db0fb5bc36eca1ffa9da8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a7b56af9f7e6546e086330ef2f1537dd787a4833">
+        <td class="sourcedoc-section section-signature">
+          <code>with(fakerService) {
+        resolve("license_plate_by_state", stateCode).numerify().letterify().regexify()
+    }</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0b7c3d7a0883bc7a5be1ad62ec17404fe2b90652">
+      
+      <h3 class="sourcedoc-section element-name">cylinderEngine</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun cylinderEngine(): resolve("cylinder_engine")</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4ca46ff95a80078dbb302e5f6e370b5dc18605e5">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c97ee2ab5cbb1731e094a7b27bbc347d77e49ac9">
+        <td class="sourcedoc-section section-signature">
+          <code>resolve("cylinder_engine")</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

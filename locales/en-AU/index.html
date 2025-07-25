@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>en-AU</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/en-AU" aria-current="page">en-AU</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_en_au_yml"><code>en-AU.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en-AU:
+  faker:
+    name:
+      prefix:
+        - Mr
+        - Mrs
+        - Ms
+        - Dr
+        - Miss
+        - Master
+      first_name:
+        - William
+        - Jack
+        - Oliver
+        - Joshua
+        - Thomas
+        - Lachlan
+        - Cooper
+        - Noah
+        - Ethan
+        - Lucas
+        - James
+        - Samuel
+        - Jacob
+        - Liam
+        - Alexander
+        - Benjamin
+        - Max
+        - Isaac
+        - Daniel
+        - Riley
+        - Ryan
+        - Charlie
+        - Tyler
+        - Jake
+        - Matthew
+        - Xavier
+        - Harry
+        - Jayden
+        - Nicholas
+        - Harrison
+        - Levi
+        - Luke
+        - Adam
+        - Henry
+        - Aiden
+        - Dylan
+        - Oscar
+        - Michael
+        - Jackson
+        - Logan
+        - Joseph
+        - Blake
+        - Nathan
+        - Connor
+        - Elijah
+        - Nate
+        - Archie
+        - Bailey
+        - Marcus
+        - Cameron
+        - Jordan
+        - Zachary
+        - Caleb
+        - Hunter
+        - Ashton
+        - Toby
+        - Aidan
+        - Hayden
+        - Mason
+        - Hamish
+        - Edward
+        - Angus
+        - Eli
+        - Sebastian
+        - Christian
+        - Patrick
+        - Andrew
+        - Anthony
+        - Luca
+        - Kai
+        - Beau
+        - Alex
+        - George
+        - Callum
+        - Finn
+        - Zac
+        - Mitchell
+        - Jett
+        - Jesse
+        - Gabriel
+        - Leo
+        - Declan
+        - Charles
+        - Jasper
+        - Jonathan
+        - Aaron
+        - Hugo
+        - David
+        - Christopher
+        - Chase
+        - Owen
+        - Justin
+        - Ali
+        - Darcy
+        - Lincoln
+        - Cody
+        - Phoenix
+        - Sam
+        - John
+        - Joel
+        - Isabella
+        - Ruby
+        - Chloe
+        - Olivia
+        - Charlotte
+        - Mia
+        - Lily
+        - Emily
+        - Ella
+        - Sienna
+        - Sophie
+        - Amelia
+        - Grace
+        - Ava
+        - Zoe
+        - Emma
+        - Sophia
+        - Matilda
+        - Hannah
+        - Jessica
+        - Lucy
+        - Georgia
+        - Sarah
+        - Abigail
+        - Zara
+        - Eva
+        - Scarlett
+        - Jasmine
+        - Chelsea
+        - Lilly
+        - Ivy
+        - Isla
+        - Evie
+        - Isabelle
+        - Maddison
+        - Layla
+        - Summer
+        - Annabelle
+        - Alexis
+        - Elizabeth
+        - Bella
+        - Holly
+        - Lara
+        - Madison
+        - Alyssa
+        - Maya
+        - Tahlia
+        - Claire
+        - Hayley
+        - Imogen
+        - Jade
+        - Ellie
+        - Sofia
+        - Addison
+        - Molly
+        - Phoebe
+        - Alice
+        - Savannah
+        - Gabriella
+        - Kayla
+        - Mikayla
+        - Abbey
+        - Eliza
+        - Willow
+        - Alexandra
+        - Poppy
+        - Samantha
+        - Stella
+        - Amy
+        - Amelie
+        - Anna
+        - Piper
+        - Gemma
+        - Isabel
+        - Victoria
+        - Stephanie
+        - Caitlin
+        - Heidi
+        - Paige
+        - Rose
+        - Amber
+        - Audrey
+        - Claudia
+        - Taylor
+        - Madeline
+        - Angelina
+        - Natalie
+        - Charli
+        - Lauren
+        - Ashley
+        - Violet
+        - Mackenzie
+        - Abby
+        - Skye
+        - Lillian
+        - Alana
+        - Lola
+        - Leah
+        - Eve
+        - Kiara
+      last_name:
+        - Smith
+        - Jones
+        - Williams
+        - Brown
+        - Wilson
+        - Taylor
+        - Johnson
+        - White
+        - Martin
+        - Anderson
+        - Thompson
+        - Nguyen
+        - Thomas
+        - Walker
+        - Harris
+        - Lee
+        - Ryan
+        - Robinson
+        - Kelly
+        - King
+        - Davis
+        - Wright
+        - Evans
+        - Roberts
+        - Green
+        - Hall
+        - Wood
+        - Jackson
+        - Clarke
+        - Patel
+        - Khan
+        - Lewis
+        - James
+        - Phillips
+        - Mason
+        - Mitchell
+        - Rose
+        - Davies
+        - Rodriguez
+        - Cox
+        - Alexander
+        - Garden
+        - Campbell
+        - Johnston
+        - Moore
+        - Smyth
+        - O'neill
+        - Doherty
+        - Stewart
+        - Quinn
+        - Murphy
+        - Graham
+        - Mclaughlin
+        - Hamilton
+        - Murray
+        - Hughes
+        - Robertson
+        - Thomson
+        - Scott
+        - Macdonald
+        - Reid
+        - Clark
+        - Ross
+        - Young
+        - Watson
+        - Paterson
+        - Morrison
+        - Morgan
+        - Griffiths
+        - Edwards
+        - Rees
+        - Jenkins
+        - Owen
+        - Price
+        - Moss
+        - Richards
+        - Abbott
+        - Adams
+        - Armstrong
+        - Bahringer
+        - Bailey
+        - Barrows
+        - Bartell
+        - Bartoletti
+        - Barton
+        - Bauch
+        - Baumbach
+        - Bayer
+        - Beahan
+        - Beatty
+        - Becker
+        - Beier
+        - Berge
+        - Bergstrom
+        - Bode
+        - Bogan
+        - Borer
+        - Bosco
+        - Botsford
+        - Boyer
+        - Boyle
+        - Braun
+        - Bruen
+        - Carroll
+        - Carter
+        - Cartwright
+        - Casper
+        - Cassin
+        - Champlin
+        - Christiansen
+        - Cole
+        - Collier
+        - Collins
+        - Connelly
+        - Conroy
+        - Corkery
+        - Cormier
+        - Corwin
+        - Cronin
+        - Crooks
+        - Cruickshank
+        - Cummings
+        - D'amore
+        - Daniel
+        - Dare
+        - Daugherty
+        - Dickens
+        - Dickinson
+        - Dietrich
+        - Donnelly
+        - Dooley
+        - Douglas
+        - Doyle
+        - Durgan
+        - Ebert
+        - Emard
+        - Emmerich
+        - Erdman
+        - Ernser
+        - Fadel
+        - Fahey
+        - Farrell
+        - Fay
+        - Feeney
+        - Feil
+        - Ferry
+        - Fisher
+        - Flatley
+        - Gibson
+        - Gleason
+        - Glover
+        - Goldner
+        - Goodwin
+        - Grady
+        - Grant
+        - Greenfelder
+        - Greenholt
+        - Grimes
+        - Gutmann
+        - Hackett
+        - Hahn
+        - Haley
+        - Hammes
+        - Hand
+        - Hane
+        - Hansen
+        - Harber
+        - Hartmann
+        - Harvey
+        - Hayes
+        - Heaney
+        - Heathcote
+        - Heller
+        - Hermann
+        - Hermiston
+        - Hessel
+        - Hettinger
+        - Hickle
+        - Hill
+        - Hills
+        - Hoppe
+        - Howe
+        - Howell
+        - Hudson
+        - Huel
+        - Hyatt
+        - Jacobi
+        - Jacobs
+        - Jacobson
+        - Jerde
+        - Johns
+        - Keeling
+        - Kemmer
+        - Kessler
+        - Kiehn
+        - Kirlin
+        - Klein
+        - Koch
+        - Koelpin
+        - Kohler
+        - Koss
+        - Kovacek
+        - Kreiger
+        - Kris
+        - Kuhlman
+        - Kuhn
+        - Kulas
+        - Kunde
+        - Kutch
+        - Lakin
+        - Lang
+        - Langworth
+        - Larkin
+        - Larson
+        - Leannon
+        - Leffler
+        - Little
+        - Lockman
+        - Lowe
+        - Lynch
+        - Mann
+        - Marks
+        - Marvin
+        - Mayer
+        - Mccullough
+        - Mcdermott
+        - Mckenzie
+        - Miller
+        - Mills
+        - Monahan
+        - Morissette
+        - Mueller
+        - Muller
+        - Nader
+        - Nicolas
+        - Nolan
+        - O'connell
+        - O'conner
+        - O'hara
+        - O'keefe
+        - Olson
+        - O'reilly
+        - Parisian
+        - Parker
+        - Quigley
+        - Reilly
+        - Reynolds
+        - Rice
+        - Ritchie
+        - Rohan
+        - Rolfson
+        - Rowe
+        - Russel
+        - Rutherford
+        - Sanford
+        - Sauer
+        - Schmidt
+        - Schmitt
+        - Schneider
+        - Schroeder
+        - Schultz
+        - Shields
+        - Smitham
+        - Spencer
+        - Stanton
+        - Stark
+        - Stokes
+        - Swift
+        - Tillman
+        - Towne
+        - Tremblay
+        - Tromp
+        - Turcotte
+        - Turner
+        - Walsh
+        - Walter
+        - Ward
+        - Waters
+        - Weber
+        - Welch
+        - West
+        - Wilderman
+        - Wilkinson
+        - Williamson
+        - Windler
+        - Wolf
+      name_with_middle:
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{first_name} #{last_name}"
+    company:
+      suffix:
+        - Pty Ltd
+        - and Sons
+        - Corp
+        - Group
+        - Brothers
+        - Partners
+    internet:
+      domain_suffix:
+        - com.au
+        - com
+        - net.au
+        - net
+        - org.au
+        - org
+        - edu.au
+        - gov.au
+    address:
+      state_abbr:
+        - NSW
+        - QLD
+        - NT
+        - SA
+        - WA
+        - TAS
+        - ACT
+        - VIC
+      state:
+        - New South Wales
+        - Queensland
+        - Northern Territory
+        - South Australia
+        - Western Australia
+        - Tasmania
+        - Australian Capital Territory
+        - Victoria
+      postcode:
+        - 02##
+        - '08##'
+        - "####"
+      postcode_by_state:
+        ACT:
+          - 02##
+          - 260#
+          - 261#
+          - 290#
+          - 291#
+        NSW:
+          - 1###
+          - 2###
+        NT:
+          - '08##'
+          - '09##'
+        QLD:
+          - 4###
+          - 9###
+        SA:
+          - 5###
+        TAS:
+          - 7###
+        VIC:
+          - 3###
+          - 8###
+        WA:
+          - 6###
+      building_number:
+        - "####"
+        - "###"
+        - "##"
+        - "#/#"
+        - "##/#"
+        - "#?"
+      street_suffix:
+        - Approach
+        - Avenue
+        - Arcade
+        - Boulevard
+        - Circle
+        - Circuit
+        - Court
+        - Crescent
+        - Crest
+        - Drive
+        - Estate
+        - Entrance
+        - Gardens
+        - Grove
+        - Green
+        - Heights
+        - Hill
+        - Junction
+        - Lane
+        - Loop
+        - Lookout
+        - Mall
+        - Mews
+        - Mount
+        - Parade
+        - Park
+        - Parkway
+        - Pass
+        - Place
+        - Plaza
+        - Promenade
+        - Ramble
+        - Ridge
+        - Retreat
+        - Rise
+        - Road
+        - Run
+        - Square
+        - Street
+        - Summit
+        - Terrace
+        - Track
+        - Trail
+        - Turn
+        - Way
+        - View
+        - Walk
+      secondary_address:
+        - 'Apartment #'
+        - 'Apt #'
+        - 'Unit #'
+        - U#
+        - 'Flat #'
+        - 'House #'
+        - 'Level #'
+      full_address:
+        - "#{street_address}, #{city} #{postcode}"
+        - "#{street_address}, #{secondary_address}, #{city} #{postcode}"
+        - "#{secondary_address}, #{street_address}, #{city} #{postcode}"
+        - "#{mail_box} #{city} #{postcode}"
+      default_country:
+        - Australia
+        - Aus
+      default_country_code:
+        - AU
+      time_zone:
+        - Australia/Sydney
+        - Australia/Brisbane
+        - Australia/Melbourne
+        - Australia/Hobart
+        - Australia/Adelaide
+        - Australia/Perth
+        - Australia/Darwin
+        - Australia/Canberra
+    phone_number:
+      country_code:
+        - '61'
+      area_code:
+        - '02'
+        - '03'
+        - '07'
+        - '08'
+      subscriber_number:
+        - "####"
+      formats:
+        - '7010 ####'
+        - '5550 ####'
+        - "#{area_code} 7010 #{subscriber_number}"
+        - "#{area_code} 5550 #{subscriber_number}"
+        - "(#{area_code}) 7010 #{subscriber_number}"
+        - "(#{area_code}) 5550 #{subscriber_number}"
+    cell_phone:
+      formats:
+        - '040# ### ###'
+        - 041#######
+        - "(04) 2#######"
+        - '043# ### ###'
+    team:
+      sport:
+        - basketball
+        - football
+        - footy
+        - netball
+        - rugby
+        - cricket
+        - tennis
+        - soccer
+        - hockey
+        - swimming
+        - waterpolo
+        - golf
+        - AFL
+    vehicle:
+      license_plate_by_state:
+        ACT:
+          - Y??##?
+        NSW:
+          - "??##??"
+        NT:
+          - "??##??"
+        QLD:
+          - "###???"
+        SA:
+          - S###???
+        TAS:
+          - "?##??"
+        VIC:
+          - "#??#??"
+        WA:
+          - "#???###"
+    university:
+      name:
+        - University of South Australia
+        - University of Tasmania
+        - University of Technology Sydney
+        - Australian National University
+        - University of Melbourne
+        - Monash University
+        - University of Sydney
+        - University of Queensland
+        - The University of Western Australia
+        - Curtin University
+        - Murdoch University
+        - University of Adelaide
+        - Macquarie University
+        - Deakin University
+        - Griffith University
+        - Flinders University
+        - Edith Cowan University
+        - Australia Catholic University
+        - Charles Sturt University
+        - University of New South Wales
+    bank:
+      name:
+        - ANZ
+        - Westpac
+        - Commonwealth Bank
+        - National Australia Bank
+        - St George Bank
+        - Bank of Queensland
+        - Bankwest
+        - Bendigo Bank
+        - Credit Union Australia
+        - ING</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

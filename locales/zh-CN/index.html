@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>zh-CN</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/zh-CN" aria-current="page">zh-CN</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_zh_cn_yml"><code>zh-CN.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml"># coding: utf-8
+zh-CN:
+  faker:
+    address:
+      city: [海门, 鄂尔多斯, 招远, 舟山, 齐齐哈尔, 盐城, 赤峰, 青岛, 乳山, 金昌, 泉州, 莱西, 日照, 胶南, 南通, 拉萨, 云浮, 梅州, 文登, 上海, 攀枝花, 威海, 承德, 厦门, 汕尾, 潮州, 丹东, 太仓, 曲靖, 烟台, 福州, 瓦房店, 即墨, 抚顺, 玉溪, 张家口, 阳泉, 莱州, 湖州, 汕头, 昆山, 宁波, 湛江, 揭阳, 荣成, 连云港, 葫芦岛, 常熟, 东莞, 河源, 淮安, 泰州, 南宁, 营口, 惠州, 江阴, 蓬莱, 韶关, 嘉峪关, 广州, 延安, 太原, 清远, 中山, 昆明, 寿光, 盘锦, 长治, 深圳, 珠海, 宿迁, 咸阳, 铜川, 平度, 佛山, 海口, 江门, 章丘, 肇庆, 大连, 临汾, 吴江, 石嘴山, 沈阳, 苏州, 茂名, 嘉兴, 长春, 胶州, 银川, 张家港, 三门峡, 锦州, 南昌, 柳州, 三亚, 自贡, 吉林, 阳江, 泸州, 西宁, 宜宾, 呼和浩特, 成都, 大同, 镇江, 桂林, 张家界, 宜兴, 北海, 西安, 金坛, 东营, 牡丹江, 遵义, 绍兴, 扬州, 常州, 潍坊, 重庆, 台州, 南京, 滨州, 贵阳, 无锡, 本溪, 克拉玛依, 渭南, 马鞍山, 宝鸡, 焦作, 句容, 北京, 徐州, 衡水, 包头, 绵阳, 乌鲁木齐, 枣庄, 杭州, 淄博, 鞍山, 溧阳, 库尔勒, 安阳, 开封, 济南, 德阳, 温州, 九江, 邯郸, 临安, 兰州, 沧州, 临沂, 南充, 天津, 富阳, 泰安, 诸暨, 郑州, 哈尔滨, 聊城, 芜湖, 唐山, 平顶山, 邢台, 德州, 济宁, 荆州, 宜昌, 义乌, 丽水, 洛阳, 秦皇岛, 株洲, 石家庄, 莱芜, 常德, 保定, 湘潭, 金华, 岳阳, 长沙, 衢州, 廊坊, 菏泽, 合肥, 武汉, 大庆]
+      building_number: ['#####', '####', '###', '##', '#']
+      street_suffix: [巷, 街, 路, 桥, 侬, 旁, 中心, 栋]
+      postcode: ['######']
+      state: [北京市, 上海市, 天津市, 重庆市, 黑龙江省, 吉林省, 辽宁省, 内蒙古, 河北省, 新疆, 甘肃省, 青海省, 陕西省, 宁夏, 河南省, 山东省, 山西省, 安徽省, 湖北省, 湖南省, 江苏省, 四川省, 贵州省, 云南省, 广西省, 西藏, 浙江省, 江西省, 广东省, 福建省, 海南省, 香港, 澳门]
+      state_abbr: [京, 沪, 津, 渝, 黑, 吉, 辽, 蒙, 冀, 新, 甘, 青, 陕, 宁, 豫, 鲁, 晋, 皖, 鄂, 湘, 苏, 川, 黔, 滇, 桂, 藏, 浙, 赣, 粤, 闽, 琼, 港, 澳]
+      street_name:
+        - "#{Name.last_name}#{street_suffix}"
+      street_address:
+        - "#{street_name}#{building_number}号"
+      default_country: [中国]
+      default_country_code: ["CN"]
+
+
+    name:
+      last_name: [王, 李, 张, 刘, 陈, 杨, 黄, 吴, 赵, 周, 徐, 孙, 马, 朱, 胡, 林, 郭, 何, 高, 罗, 郑, 梁, 谢, 宋, 唐, 许, 邓, 冯, 韩, 曹, 曾, 彭, 萧, 蔡, 潘, 田, 董, 袁, 于, 余, 叶, 蒋, 杜, 苏, 魏, 程, 吕, 丁, 沈, 任, 姚, 卢, 傅, 钟, 姜, 崔, 谭, 廖, 范, 汪, 陆, 金, 石, 戴, 贾, 韦, 夏, 邱, 方, 侯, 邹, 熊, 孟, 秦, 白, 江, 阎, 薛, 尹, 段, 雷, 黎, 史, 龙, 陶, 贺, 顾, 毛, 郝, 龚, 邵, 万, 钱, 严, 赖, 覃, 洪, 武, 莫, 孔]
+      first_name: [绍齐, 博文, 梓晨, 胤祥, 瑞霖, 明哲, 天翊, 凯瑞, 健雄, 耀杰, 潇然, 子涵, 越彬, 钰轩, 智辉, 致远, 俊驰, 雨泽, 烨磊, 晟睿, 文昊, 修洁, 黎昕, 远航, 旭尧, 鸿涛, 伟祺, 荣轩, 越泽, 浩宇, 瑾瑜, 皓轩, 擎苍, 擎宇, 志泽, 子轩, 睿渊, 弘文, 哲瀚, 雨泽, 楷瑞, 建辉, 晋鹏, 天磊, 绍辉, 泽洋, 鑫磊, 鹏煊, 昊强, 伟宸, 博超, 君浩, 子骞, 鹏涛, 炎彬, 鹤轩, 越彬, 风华, 靖琪, 明辉, 伟诚, 明轩, 健柏, 修杰, 志泽, 弘文, 峻熙, 嘉懿, 煜城, 懿轩, 烨伟, 苑博, 伟泽, 熠彤, 鸿煊, 博涛, 烨霖, 烨华, 煜祺, 智宸, 正豪, 昊然, 明杰, 立诚, 立轩, 立辉, 峻熙, 弘文, 熠彤, 鸿煊, 烨霖, 哲瀚, 鑫鹏, 昊天, 思聪, 展鹏, 笑愚, 志强, 炫明, 雪松, 思源, 智渊, 思淼, 晓啸, 天宇, 浩然, 文轩, 鹭洋, 振家, 乐驹, 晓博, 文博, 昊焱, 立果, 金鑫, 锦程, 嘉熙, 鹏飞, 子默, 思远, 浩轩, 语堂, 聪健, 明, 文, 果, 思, 鹏, 驰, 涛, 琪, 浩, 航, 彬]
+      name:
+        - "#{last_name}#{first_name}"
+      name_with_middle: # Chinese names don't have middle names
+        - "#{last_name}#{first_name}"
+
+    phone_number:
+      formats: ['###-########', '####-########', '###########']
+    cell_phone:
+      formats:
+        - '13#########'
+        - '145########'
+        - '147########'
+        - '150########'
+        - '151########'
+        - '152########'
+        - '153########'
+        - '155########'
+        - '156########'
+        - '157########'
+        - '158########'
+        - '159########'
+        - '170########'
+        - '171########'
+        - '172########'
+        - '173########'
+        - '175########'
+        - '176########'
+        - '177########'
+        - '178########'
+        - '18#########'
+
+    university:
+      prefix: ["东", "南", "西", "北", "东南", "东北", "西南", "西北", "中国"]
+      suffix: ["理工大学", "技术大学", "艺术大学", "体育大学", "经贸大学", "农业大学", "科技大学", "大学"]
+      name:
+        - "#{University.prefix}#{University.suffix}"</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

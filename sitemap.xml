@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-assets.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-external.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-changelog.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-forms.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-home.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-kotlindoc.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-pages.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-snippets.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-wiki.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-sitemap.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://serpro69.github.io/kotlin-faker/sitemap-indices.xml</loc>
+        <lastmod>2025-07-25</lastmod>
+    </sitemap>
+</sitemapindex>

@@ -1,0 +1,1562 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Food</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/food" aria-current="page">Food</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_food"><code>Faker().food</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    food:
+      allergens:
+        - Eggs
+        - Milk
+        - Mustard
+        - Peanuts
+        - Crustaceans and molluscs
+        - Fish
+        - Sesame seeds
+        - Soy
+        - Sulphites
+        - Tree Nuts
+        - Wheat and triticale
+      dish:
+        - Arepas
+        - Barbecue Ribs
+        - Bruschette with Tomato
+        - Bunny Chow
+        - Caesar Salad
+        - California Maki
+        - Caprese Salad
+        - Cauliflower Penne
+        - Cheeseburger
+        - Chicken Fajitas
+        - Chicken Milanese
+        - Chicken Parm
+        - Chicken Wings
+        - Chilli con Carne
+        - Ebiten maki
+        - Fettuccine Alfredo
+        - Fish and Chips
+        - French Fries with Sausages
+        - French Toast
+        - Hummus
+        - Katsu Curry
+        - Kebab
+        - Lasagne
+        - Linguine with Clams
+        - Massaman Curry
+        - Meatballs with Sauce
+        - Mushroom Risotto
+        - Pappardelle alla Bolognese
+        - Pasta Carbonara
+        - Pasta and Beans
+        - Pasta with Tomato and Basil
+        - Peking Duck
+        - Philadelphia Maki
+        - Pho
+        - Pierogi
+        - Pizza
+        - Poke
+        - Pork Belly Buns
+        - Pork Sausage Roll
+        - Poutine
+        - Ricotta Stuffed Ravioli
+        - Risotto with Seafood
+        - Salmon Nigiri
+        - Scotch Eggs
+        - Seafood Paella
+        - Som Tam
+        - Souvlaki
+        - Stinky Tofu
+        - Sushi
+        - Tacos
+        - Teriyaki Chicken Donburi
+        - Tiramisù
+        - Tuna Sashimi
+        - Vegetable Soup
+      descriptions:
+        - Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant.
+        - Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant.
+        - Three egg whites with spinach, mushrooms, caramelized onions, tomatoes and low-fat feta cheese. With herbed quinoa, and your choice of rye or whole-grain toast.
+        - Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes.
+        - Fresh parsley, Italian sausage, shallots, garlic, sun-dried tomatoes and mozzarella cheese in an all-butter crust. With a side of mixed fruits.
+        - Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham.
+        - Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.
+        - Breaded fried chicken with waffles, and a side of maple syrup.
+        - Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread.
+        - 28-day aged 300g USDA Certified Prime Ribeye, rosemary-thyme garlic butter, with choice of two sides.
+        - Breaded fried chicken with waffles. Served with maple syrup.
+        - Fresh Norwegian salmon, lightly brushed with our herbed Dijon mustard sauce, with choice of two sides.
+        - Creamy mascarpone cheese and custard layered between espresso and rum soaked house-made ladyfingers, topped with Valrhona cocoa powder.
+        - Granny Smith apples mixed with brown sugar and butter filling, in a flaky all-butter crust, with ice cream.
+      ingredients:
+        - Achacha
+        - Adzuki Beans
+        - Agar
+        - Agave Syrup
+        - Ajowan Seed
+        - Albacore Tuna
+        - Alfalfa
+        - Allspice
+        - Almond Oil
+        - Almonds
+        - Amaranth
+        - Amchur
+        - Anchovies
+        - Anchovies
+        - Aniseed
+        - Annatto Seed
+        - Apple Cider Vinegar
+        - Apple Juice
+        - Apple Juice Concentrate
+        - Apples
+        - Bonza
+        - Apples
+        - Apricots
+        - Arborio Rice
+        - Arrowroot
+        - Artichoke
+        - Arugula
+        - Asafoetida
+        - Asian Greens
+        - Asian Noodles
+        - Asparagus
+        - Aubergine
+        - Avocado
+        - Avocado Oil
+        - Avocado Spread
+        - Bacon
+        - Baking Powder
+        - Baking Soda
+        - Balsamic Vinegar
+        - Bamboo Shoots
+        - Banana
+        - Barberry
+        - Barley
+        - Barramundi
+        - Basil Basmati Rice
+        - Bay Leaves
+        - Bean Shoots
+        - Bean Sprouts
+        - Beans
+        - Green Beans
+        - Beef
+        - Beetroot
+        - Berries
+        - Black Eyed Beans
+        - Blackberries
+        - Blood Oranges
+        - Blue Cheese
+        - Blue Eye Trevalla
+        - Blue Swimmer Crab
+        - Blueberries
+        - Bocconcini
+        - Bok Choy
+        - Bonito Flakes
+        - Borlotti Beans
+        - Brazil Nut
+        - Bran
+        - Bread
+        - Rye Bread
+        - Sour Dough Bread
+        - Spelt Bread
+        - White Bread
+        - Wholegrain Bread
+        - Wholemeal
+        - Brie
+        - Broccoli
+        - Broccolini
+        - Brown Rice
+        - Brown Rice Vinegar
+        - Brussels Sprouts
+        - Buckwheat
+        - Buckwheat Noodles
+        - Bulghur
+        - Bush Tomato
+        - Butter
+        - Butter Beans
+        - Buttermilk
+        - Butternut Lettuce
+        - Butternut Pumpkin
+        - Cabbage
+        - Cacao
+        - Cake
+        - Calamari
+        - Camellia Tea Oil
+        - Camembert
+        - Camomile
+        - Candle Nut
+        - Cannellini Beans
+        - Canola Oil
+        - Cantaloupe
+        - Capers
+        - Capsicum
+        - Starfruit
+        - Caraway Seed
+        - Cardamom
+        - Carob Carrot
+        - Carrot
+        - Cashews
+        - Cassia bark
+        - Cauliflower
+        - Cavalo
+        - Cayenne
+        - Celery
+        - Celery Seed
+        - Cheddar
+        - Cherries
+        - Chestnut
+        - Chia Seeds
+        - Chicken
+        - Chickory
+        - Chickpea
+        - Chilli Pepper
+        - Fresh Chillies
+        - Dried Chinese Broccoli
+        - Chinese Cabbage
+        - Chinese Five Spice
+        - Chives
+        - Dark Chocolate
+        - Milk Chocolate
+        - Choy Sum
+        - Cinnamon
+        - Clams
+        - Cloves
+        - Cocoa Powder
+        - Coconut
+        - Coconut Oil
+        - Coconut Water
+        - Coffee
+        - Corella Pear
+        - Coriander Leaves
+        - Coriander Seed
+        - Corn Oil
+        - Corn Syrup
+        - Corn Tortilla
+        - Cornichons
+        - Cornmeal
+        - Cos Lettuce
+        - Cottage Cheese
+        - Cous Cous
+        - Crabs
+        - Cranberry
+        - Cream
+        - Cream Cheese
+        - Cucumber
+        - Cumin
+        - Cumquat
+        - Currants
+        - Curry Leaves
+        - Curry Powder
+        - Custard Apples
+        - Dandelion
+        - Dashi
+        - Dates
+        - Dill
+        - Dragonfruit
+        - Dried Apricots
+        - Duck
+        - Edam
+        - Edamame
+        - Eggplant
+        - Eggs
+        - Elderberry
+        - Endive
+        - English Spinach
+        - Extra Virgin Olive Oil
+        - Farmed Prawns
+        - Feijoa
+        - Fennel
+        - Fennel Seeds
+        - Fenugreek
+        - Feta
+        - Figs
+        - File Powder
+        - Fingerlime
+        - Fish Sauce
+        - Flathead
+        - Flaxseed
+        - Flaxseed Oil
+        - Flounder
+        - Flour
+        - Besan
+        - Buckwheat Flour
+        - Oat Flour
+        - Potato Flour
+        - Rice Flour
+        - Brown Flour
+        - White Flour
+        - Soy Flour
+        - Tapioca Flour
+        - Unbleached Flour
+        - Wholewheat Flour
+        - Freekeh
+        - French Eschallots
+        - Fromage Blanc
+        - Fruit
+        - Galangal
+        - Garam Masala
+        - Garlic
+        - Chives
+        - Goat Cheese
+        - Goat Milk
+        - Goji Berry
+        - Grape Seed Oil
+        - Grapefruit
+        - Grapes
+        - Green Pepper
+        - Green Tea
+        - Green Tea Noodles
+        - Greenwheat Freekeh
+        - Gruyere
+        - Guava
+        - Gula Melaka
+        - Haloumi
+        - Ham
+        - Haricot Beans
+        - Harissa
+        - Hazelnut
+        - Hijiki
+        - Hiramasa Kingfish
+        - Hokkien Noodles
+        - Honey
+        - Honeydew Melon
+        - Horseradish
+        - Hot Smoked Salmon
+        - Hummus
+        - Iceberg Lettuce
+        - Incaberries
+        - Jarrahdale Pumpkin
+        - Jasmine Rice
+        - Jelly
+        - Jerusalem Artichoke
+        - Jewfish
+        - Jicama
+        - Juniper Berries
+        - Lime Leaves
+        - Kale
+        - Kangaroo
+        - Kecap Manis
+        - Kenchur
+        - Kidney Beans
+        - Kidneys
+        - Kiwi Fruit
+        - Kiwi Berries
+        - Kohlrabi
+        - Kokam
+        - Kombu
+        - Koshihikari Rice
+        - Kudzu
+        - Kumera
+        - Lamb
+        - Lavender Flowers
+        - Leeks
+        - Lemon
+        - Lemongrass
+        - Lentils
+        - Lettuce
+        - Licorice
+        - Limes
+        - Liver
+        - Lobster
+        - Longan
+        - Loquats
+        - Lotus Root
+        - Lychees
+        - Macadamia Nut
+        - Macadamia Oil
+        - Mace
+        - Mackerel
+        - Tinned
+        - Mahi Mahi
+        - Mahlab
+        - Malt Vinegar
+        - Mandarins
+        - Mango
+        - Mangosteens
+        - Maple Syrup
+        - Margarine
+        - Marigold
+        - Marjoram
+        - Mastic
+        - Melon
+        - Milk
+        - Mint
+        - Miso
+        - Molasses
+        - Monkfish
+        - Morwong
+        - Mountain Bread
+        - Mozzarella
+        - Muesli
+        - Mulberries
+        - Mullet
+        - Mung Beans
+        - Flat Mushrooms
+        - Brown Mushrooms
+        - Common Cultivated Mushrooms
+        - Enoki Mushrooms
+        - Oyster Mushrooms
+        - Shiitake Mushrooms
+        - Mussels
+        - Mustard
+        - Mustard Seed
+        - Nashi Pear
+        - Nasturtium
+        - Nectarines
+        - Nori
+        - Nutmeg
+        - Nutritional Yeast
+        - Nuts
+        - Oatmeal
+        - Oats
+        - Octopus
+        - Okra
+        - Olive Oil
+        - Olives
+        - Omega Spread
+        - Onion
+        - Oranges
+        - Oregano
+        - Oyster Sauce
+        - Oysters
+        - Pear
+        - Pandanus Leaves
+        - Papaw
+        - Papaya
+        - Paprik
+        - Parmesan Cheese
+        - Parrotfish
+        - Parsley
+        - Parsnip
+        - Passionfruit
+        - Pasta
+        - Peaches
+        - Peanuts
+        - Pear Juice
+        - Pears
+        - Peas
+        - Pecan Nut
+        - Pecorino
+        - Pepitas
+        - Szechuan Pepperberry
+        - Peppercorns
+        - Peppermint
+        - Peppers
+        - Persimmon
+        - Pine Nut
+        - Pineapple
+        - Pinto Beans
+        - Pistachio Nut
+        - Plums
+        - Polenta
+        - Pomegranate
+        - Poppy Seed
+        - Porcini Mushrooms
+        - Pork
+        - Potatoes
+        - Provolone
+        - Prunes
+        - Pumpkin
+        - Pumpkin Seed
+        - Purple Carrot
+        - Purple Rice
+        - Quark Quinc
+        - Quinoa
+        - Radicchio
+        - Radish
+        - Raisin
+        - Raspberry
+        - Red Cabbage
+        - Red Lentils
+        - Red Pepper
+        - Red Wine Vinegar
+        - Redfish
+        - Rhubarb
+        - Rice Noodles
+        - Rice Paper
+        - Rice Syrup
+        - Ricemilk
+        - Ricotta
+        - Rockmelon
+        - Rose Water
+        - Rosemary
+        - Rye
+        - Safflower Oil
+        - Saffron
+        - Sage
+        - Sake
+        - Salmon
+        - Sardines
+        - Sausages
+        - Scallops
+        - Sea Salt
+        - Semolina
+        - Sesame Oil
+        - Sesame Seeds
+        - Shark
+        - Silverbeet
+        - Slivered Almonds
+        - Smoked Trout
+        - Snapper
+        - Snowpea sprouts
+        - Snowpeas
+        - Soba
+        - Soy Beans
+        - Soy Milk
+        - Soy Sauce
+        - Soy
+        - Sprouts
+        - Soymilk
+        - Spearmint
+        - Spelt
+        - Spinach
+        - Spring Onions
+        - Squash
+        - Squid
+        - Star Anise
+        - Star Fruit
+        - Stevia
+        - Beef Stock
+        - Chicken Stock
+        - Fish Stock
+        - Vegetable Stock
+        - Strawberries
+        - Sugar
+        - Sultanas
+        - Sun-Dried Tomatoes
+        - Sunflower Oil
+        - Sunflower Seeds
+        - Sweet Chilli Sauce
+        - Sweet Potato
+        - Swiss Chard
+        - Swordfish
+        - Tabasco
+        - Tahini
+        - Taleggio Cheese
+        - Tamari
+        - Tamarillo
+        - Tangelo
+        - Tapioca
+        - Tarragon
+        - Tea
+        - Tea Oil
+        - Tempeh
+        - Thyme
+        - Tofu
+        - Tom Yum
+        - Tomatoes
+        - Trout
+        - Tuna
+        - Turkey
+        - Turmeric
+        - Turnips
+        - Vanilla Beans
+        - Vegetable Oil
+        - Vegetable Spaghetti
+        - Vermicelli Noodles
+        - Vinegar
+        - Wakame
+        - Walnut
+        - Warehou
+        - Wasabi
+        - Water
+        - Watercress
+        - Watermelon
+        - Wattleseed
+        - Wheat
+        - Wheatgrass Juice
+        - White rice
+        - White Wine Vinegar
+        - Whiting Wild Rice
+        - William Pear
+        - Red Wine
+        - White Wine
+        - Yeast
+        - Yellow Papaw
+        - Yellowtail Kingfish
+        - Yoghurt
+        - Yogurt
+        - Zucchini
+      fruits:
+        - Apples
+        - Apricots
+        - Aubergine
+        - Avocado
+        - Banana
+        - Berries
+        - Blackberries
+        - Blood oranges
+        - Blueberries
+        - Bush Tomato
+        - Butternut pumpkin
+        - Cantaloupe
+        - Cavalo
+        - Starfruit
+        - Cherries
+        - Corella Pear
+        - Cranberry
+        - Cumquat
+        - Currants
+        - Custard Apples
+        - Custard Apples Daikon
+        - Dates
+        - Dragonfruit
+        - Dried Apricots
+        - Elderberry
+        - Feijoa
+        - Grapefruit
+        - Grapes
+        - Figs
+        - Fingerlime
+        - Goji Berry
+        - Guava
+        - Honeydew melon
+        - Incaberries
+        - Jarrahdale pumpkin
+        - Juniper Berries
+        - Kiwi Fruit
+        - Kiwiberries
+        - Lemon
+        - Limes
+        - Longan
+        - Loquats
+        - Lychees
+        - Mango
+        - Mangosteens
+        - Melon
+        - Mandarins
+        - Mulberries
+        - Nashi Pear
+        - Nectarines
+        - Olives
+        - Oranges
+        - Papaw
+        - Papaya
+        - Passionfruit
+        - Peaches
+        - Pears
+        - Pineapple
+        - Pomegranate
+        - Plums
+        - Prunes
+        - Rockmelon
+        - Snowpeas
+        - Sprouts
+        - Strawberries
+        - Sultanas
+        - Tangelo
+        - Tomatoes
+        - Watermelon
+      vegetables:
+        - Artichoke
+        - Arugula
+        - Asian Greens
+        - Asparagus
+        - Bean Shoots
+        - Bean Sprouts
+        - Beans
+        - Green beans
+        - Beetroot
+        - Bok Choy
+        - Broccoli
+        - Broccolini
+        - Brussels Sprouts
+        - Butternut lettuce
+        - Cabbage
+        - Capers
+        - Carob Carrot
+        - Carrot
+        - Cauliflower
+        - Celery
+        - Chilli Pepper
+        - Chinese Cabbage
+        - Fresh Chillies
+        - Dried Chinese Broccoli
+        - Cornichons
+        - Cos lettuce
+        - Cucumber
+        - Eggplant
+        - Endive
+        - English Spinach
+        - French eschallots
+        - Garlic
+        - Chives
+        - Green Pepper
+        - Hijiki
+        - Iceberg lettuce
+        - Jerusalem Artichoke
+        - Jicama
+        - Kale
+        - Kohlrabi
+        - Leeks
+        - Lettuce
+        - Onion
+        - Okra
+        - Parsnip
+        - Peas
+        - Peppers
+        - Potatoes
+        - Pumpkin
+        - Purple carrot
+        - Radicchio
+        - Radish
+        - Raspberry
+        - Red cabbage
+        - Red Pepper
+        - Rhubarb
+        - Snowpea sprouts
+        - Spinach
+        - Squash
+        - Sun dried tomatoes
+        - Sweet Potato
+        - Swiss Chard
+        - Turnips
+        - Zucchini
+      spices:
+        - Achiote Seed
+        - Ajwain Seed
+        - Ajwan Seed
+        - Allspice Ground
+        - Allspice Whole
+        - Amchoor
+        - Anise
+        - Anise Star
+        - Aniseed Whole
+        - Annatto Seed
+        - Arrowroot
+        - Asafoetida
+        - Baharat
+        - Balti Masala
+        - Balti Stir Fry Mix
+        - Basil
+        - Bay Leaves
+        - Bay Leaves Chopped
+        - BBQ Seasoning
+        - Biryani Spice Mix
+        - Cajun Seasoning
+        - Caraway Seed
+        - Cardamom Ground
+        - Cardamom Whole
+        - Cassia
+        - Cassia Bark
+        - Cayenne Pepper
+        - Celery Leaf
+        - Celery Salt
+        - Celery Seed
+        - Chamomile
+        - Chervil
+        - Chicken Seasoning
+        - Chilli Crushed
+        - Chilli Ground
+        - Chilli Pepper
+        - Chillies Whole
+        - China Star
+        - Chinese 5 Spice
+        - Chives
+        - Cinnamon Bark
+        - Cinnamon Ground
+        - Cinnamon Powder
+        - Cinnamon Sticks
+        - Cloves Ground
+        - Cloves Whole
+        - Colombo Powder
+        - Coriander Ground
+        - Coriander Leaf
+        - Coriander Seed
+        - Creole Seasoning
+        - Cumin Ground
+        - Cumin Seed
+        - Cumin Seed Black
+        - Cumin Seed Royal
+        - Curly Leaf Parsley
+        - Curry Chinese
+        - Curry Hot
+        - Curry Leaves
+        - Curry Madras Medium
+        - Curry Mild
+        - Curry Thai Green
+        - Curry Thai Red
+        - Dhansak Spice Mix
+        - Dill Herb
+        - Dill Leaf
+        - Dill Seed
+        - Fajita Seasoning
+        - Fennel Seed
+        - Fenugreek Ground
+        - Fenugreek Leaf
+        - Fenugreek Seed
+        - Fines Herbes
+        - Fish Seasoning
+        - Five Spice Mix
+        - French Lavender
+        - Galangal Ground
+        - Garam Masala
+        - Garlic Chips
+        - Garlic Granules
+        - Garlic Powder
+        - Garlic Salt
+        - German Chamomile
+        - Ginger Root
+        - Ginger Ground
+        - Green Cardamom
+        - Herbes de Provence
+        - Jalfrezi Curry Powder
+        - Jalfrezi Mix
+        - Jerk Seasoning
+        - Juniper Berries
+        - Kaffir Leaves
+        - Korma Curry Powder
+        - Korma Mix
+        - Lamb Seasoning
+        - Lavender
+        - Lemon Grass
+        - Lemon Grass Chopped
+        - Lemon Pepper
+        - Lime Leaves
+        - Lime Leaves Ground
+        - Liquorice Root
+        - Mace Ground
+        - Mace Whole
+        - Mango Powder
+        - Marjoram
+        - Methi
+        - Methi Leaves
+        - Mexican Salsa Mix
+        - Mint
+        - Mixed Herbs
+        - Mixed Spice
+        - Mulled Cider Spices
+        - Mulled Wine Spices
+        - Mustard Powder
+        - Mustard Seed Black
+        - Mustard Seed Brown
+        - Mustard Seed White
+        - Mustard Seed Yellow
+        - Nigella
+        - Nutmeg Ground
+        - Nutmeg Whole
+        - Onion Seed
+        - Orange Zest
+        - Oregano
+        - Paella Seasoning
+        - Paprika
+        - Paprika Hungarian
+        - Paprika Smoked
+        - Parsley
+        - Parsley Flat Leaf
+        - Pepper Black Coarse
+        - Pepper Black Ground
+        - Pepper White Ground
+        - Peppercorns Black
+        - Peppercorns Cracked Black
+        - Peppercorns Green
+        - Peppercorns Mixed
+        - Peppercorns Pink
+        - Peppercorns Szechwan
+        - Peppercorns White
+        - Pickling Spice
+        - Pimento Berries
+        - Pimento Ground
+        - Piri Piri Seasoning
+        - Pizza Topping Mix
+        - Poppy Seed
+        - Pot Marjoram
+        - Poudre de Colombo
+        - Ras-el-Hanout
+        - Rice Paper
+        - Rogan Josh Curry Powder
+        - Rogan Josh Mix
+        - Rose Baie
+        - Rosemary
+        - Saffron
+        - Sage
+        - Sea Salt Coarse
+        - Seasoning Salt
+        - Self Adhesive Spice Labels
+        - Sesame Seed
+        - Spearmint
+        - Spice Charts
+        - Steak Seasoning
+        - Sumac Ground
+        - Sweet Basil
+        - Sweet Laurel
+        - Tagine Seasoning
+        - Tandoori Masala
+        - Tandoori Mix
+        - Tarragon
+        - Thai Creen Curry Mix
+        - Thai Red Curry Mix
+        - Thai Stir Fry
+        - Thyme
+        - Tikka Masala
+        - Tikka Masala Curry Powder
+        - Turmeric
+        - Turmeric Powder
+        - Vanilla Bean
+        - Vanilla Pods
+        - Vegetable Seasoning
+        - Zahtar Spice Mix
+      measurements:
+        - teaspoon
+        - tablespoon
+        - cup
+        - pint
+        - quart
+        - gallon
+      measurement_sizes:
+        - 1/4
+        - 1/3
+        - 1/2
+        - '1'
+        - '2'
+        - '3'
+      metric_measurements:
+        - milliliter
+        - deciliter
+        - centiliter
+        - liter
+      sushi:
+        - Abalone
+        - Alaskan pink shrimp
+        - Amberjack
+        - Bastard halibut
+        - Bloody clam
+        - Botan shrimp
+        - Crab
+        - Dotted gizzard shad
+        - Eel
+        - Firefly squid
+        - Greater amberjack
+        - Halfbeak
+        - Horned turban
+        - Japanese horse mackerel
+        - Japanese sea bass
+        - Japanese spanish mackerel
+        - Japanese style-chunky omelette
+        - Japanese whiting
+        - Mackerel
+        - Milt
+        - Mirugai clam
+        - Octopus
+        - Orient clam
+        - Oyster
+        - Rosy seabass
+        - Salmon roe
+        - Salmon
+        - Scallop
+        - Sea bream
+        - Skipjack tuna
+        - Small amberjack
+        - Squid
+        - Trough shells
+        - Trout
+        - Tuna
+        - White trevally
+        - Whitespotted conger
+      ethnic_category:
+        - Ainu
+        - Albanian
+        - Argentine
+        - Andhra
+        - American
+        - Anglo-Indian
+        - Arab
+        - Armenian
+        - Assyrian
+        - Awadhi
+        - Azerbaijani
+        - Balochi
+        - Bashkir
+        - Belarusian
+        - Bangladeshi
+        - Bengali
+        - Berber
+        - Brazilian
+        - British
+        - Buddhist
+        - Bulgarian
+        - Cajun
+        - Cantonese
+        - Caribbean
+        - Chechen
+        - Chinese cuisine
+        - Chinese Islamic
+        - Circassian
+        - Crimean Tatar
+        - Cypriot
+        - Czech
+        - Danish
+        - Egyptian
+        - English
+        - Ethiopian
+        - Eritrean
+        - Estonian
+        - French
+        - Filipino
+        - Georgian
+        - German
+        - Goan
+        - Goan Catholic
+        - Greek
+        - Gujarati
+        - Hyderabad
+        - Indian cuisine
+        - Indian Chinese
+        - Indian Singaporean cuisine
+        - Indonesian
+        - Inuit
+        - Irish
+        - Italian-American
+        - Italian cuisine
+        - Jamaican
+        - Japanese
+        - Jewish - Israeli
+        - Karnataka
+        - Kazakh
+        - Keralite
+        - Korean
+        - Kurdish
+        - Laotian
+        - Lebanese
+        - Latvian
+        - Lithuanian
+        - Louisiana Creole
+        - Maharashtrian
+        - Mangalorean
+        - Malay
+        - Malaysian Chinese cuisine
+        - Malaysian Indian cuisine
+        - Mediterranean cuisine
+        - Mennonite
+        - Mexican
+        - Mordovian
+        - Mughal
+        - Native American
+        - Nepalese
+        - New Mexican
+        - Odia
+        - Parsi
+        - Pashtun
+        - Polish
+        - Pennsylvania Dutch
+        - Pakistani
+        - Peranakan
+        - Persian
+        - Peruvian
+        - Portuguese
+        - Punjabi
+        - Québécois
+        - Rajasthani
+        - Romani
+        - Romanian
+        - Russian
+        - Sami
+        - Serbian
+        - Sindhi
+        - Slovak
+        - Slovenian
+        - Somali
+        - South Indian
+        - Soviet
+        - Spanish
+        - Sri Lankan
+        - Taiwanese
+        - Tatar
+        - Texan
+        - Thai
+        - Turkish
+        - Tamil
+        - Udupi
+        - Ukrainian
+        - Vietnamese
+        - Yamal
+        - Zambian
+        - Zanzibari</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().food.allergens() // Eggs
+
+Faker().food.dish() // Arepas
+
+Faker().food.descriptions() // Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant.
+
+Faker().food.ingredients() // Achacha
+
+Faker().food.fruits() // Apples
+
+Faker().food.vegetables() // Artichoke
+
+Faker().food.spices() // Achiote Seed
+
+Faker().food.measurements() // teaspoon
+
+Faker().food.measurementSizes() // 1/4
+
+Faker().food.metricMeasurements() // milliliter
+
+Faker().food.sushi() // Abalone
+
+Faker().food.ethnicCategory // =&gt; Peruvian</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

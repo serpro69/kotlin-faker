@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>bg</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/bg" aria-current="page">bg</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_bg_yml"><code>bg.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">bg:
+  faker:
+    separator: ' и '
+    address:
+      country: [ Австралия, Австрия, Азербайджан, Аландски острови, Албания, Алжир, Американска Самоа, Американски Вирджински острови, Англия, Ангола, Ангуила, Андора, Антарктика, Антигуа и Барбуда, Аржентина, Армения, Аруба, Афганистан, Бангладеш, Барбадос, Бахамски острови, Бахрейн, Беларус, Белгия, Белиз, Бенин, Бермудски острови, Боливия, Босна и Херцеговина, Ботсвана, Бразилия, Британска територия в Индийския океан, Британски Вирджински острови, Бруней Даруссалам, Бряг на слоновата кост Кот д'Ивоар, Буве, Буркина Фасо, Бурунди, Бутан, България, Вануату, Ватикана, Венецуела, Виетнам, Габон, Гамбия, Гана, Гаяна, Гваделупа, Гватемала, Гвинея, Гвинея-Бисау, Германия, Гибралтар, Гренада, Гренландия, Грузия, Гуам, Гърнси, Гърция, Дания, Демократична република Конго Заир, Джибути, Джърси, Доминика, Доминиканска република, Египет, Еквадор, Екваториална Гвинея, Ел Салвадор, Еритрея, Естония, Етиопия, Замбия, Западна Сахара, Зимбабве, Йемен, Израел, Източен Тимор, Индия, Индонезия, Йордания, Ирак, Иран, Ирландия, Исландия, Испания, Италия, Кабо Верде острови Зелени Нос, Казахстан, Каймански острови, Камбоджа, Камерун, Канада, Карибска Холандия, Катар, Кения, Кипър, Киргизстан, Кирибати, Китай, Кокосови острови, Коледни острови, Колумбия, Коморски острови, Конго, Коста Рика, Куба, Кувейт, Кюрасао ç, Лаос, Латвия, Лесото, Либерия, Либия, Ливан, Литва, Лихтенщайн, Люксембург, Мавритания, Мавриций, Мадагаскар, Майот, Макао, Македония, Малави, Малайзия, Малдиви, Мали, Малта, Ман остров, Мароко, Мартиника, Маршалови острови, Мексико, Мианмар, Микронезия, Мозамбик, Молдова, Монако, Монголия, Монсерат, Намибия, Науру, Непал, Нигер, Нигерия, Никарагуа, Ниуе, Нова Зеландия, Нова Каледония, Норвегия, Норфолк остров, Обединени арабски емирства, Оман, Острови Кук, Острови Хърд и Макдоналд, Пакистан, Палау, Палестина, Панама, Папуа Нова Гвинея, Парагвай, Перу, Питкерн, Полша, Португалия, Пуерто Рико, Реюнион, Руанда, Румъния, Русия, Самоа, Сан марино, Сао Томе и Принсипи, Саудитска Арабия, САЩ, Свазиленд, Свалбард и Ян Майен, Света Елена остров, Северна Корея, Северни Мариански острови, Сейнт Бартс, Сейнт Винсент и Гренадини, Сейнт Китс и Невис, Сейнт Лусия, Сейшели, Сен Мартен Франция, Сен Пиер и Микелон, Сенегал, Сиера Леоне, Сингапур, Синт Мартен Холандия, Сирия, Словакия, Словения, Соломонови острови, Сомалия, Судан, Суринам, Сърбия, Таджикистан, Тайван, Тайланд, Танзания, Того, Токелау, Тонга, Тринидад и Тобаго, Тувалу, Тунис, Туркменистан, Турция, Търкс и Кайкос, Уганда, Узбекистан, Украйна, Унгария, Уолис и Футуна, Уругвай, Фарьорски острови, Фиджи, Филипини, Финландия, Фолкландски острови, Франция, Френска Полинезия, Френски южни и антарктически територии, Фреска Гвиана, Хаити, Холандия, Хондурас, Хонконг, Хърватска, Централноафриканска република, Чад, Черна гора, Чехия, Чили, Швейцария, Швеция, Шри Ланка, ЮАР, Южен Судан, Южна Джорджия и Южни Сандвичеви острови, Южна Корея, Ямайка, Япония]
+      building_number: ['#', '##', '###']
+      street_suffix: ['ул.', 'улица', 'площад', 'пл.', 'булевард', 'бул.']
+      postcode: ['####']
+      street_title: ['България', 'Демокрация', 'Патриарх Евтимий', 'Опълченска', 'Княз Борис', 'Народно събрание', 'Симеон Велики', 'Лъчезар Станчев', 'Г.М Димитров', 'Мария Габровска', 'Оборище', 'Иван Вазов', 'Бъднина', 'Орлинска', 'Николавеска', 'Цар Петър', 'Будапеща', 'Чехов', 'Три Уши', 'Вила', 'Първи Май', 'Тотлебен', 'Симеоновско Шосе', 'Васил Левски', 'Черни Връх', 'Йерусалим', 'Акация', 'Самодива', 'Георги Аспарухов', 'Иван Шишман', 'Славейков', 'Македония', 'Христо Ботев', 'Руски Паметник', 'Обзор', 'Свети Климент Охридски', 'Дъбница', 'Айдемир', 'Професор Марко Семов', 'Баку', 'Никола Габровски', '8 декември', 'Джон Ленън', 'Професор Кирил Попов', 'Петър Попов', 'Чавдар Мутафов', 'Могилата', 'Филип Кутев', 'Сребърна', 'Козяк', 'Емилиян Станев', 'Хенрик Ибсен', 'Бадемова Гора', 'Петко Тодоров', 'Тодор Каблешков', 'Пирин', 'Казбек', 'Света Марина', 'Приррода', 'Люляк', 'Лелинска Чука', 'Пчела', 'Белмекен', 'Мусала', 'Вихрен', 'Будилник', 'Горица', 'Европа', 'Любляна', 'Брюксел', 'Ливада', 'Букет', 'Нов Век', 'Чуката', 'Кустут', 'Овча Купел', 'Войводина Могила', 'Народно хоро', 'Камелия', 'Маестро Кънев', 'Петя Дубарова', 'Промишлена', 'Джеймс Баучер', 'Гайтанци']
+      city_name: ['Айтос', 'Аксаково', 'Алфатар', 'Антоново', 'Априлци', 'Ардино', 'Асеновград', 'Ахелой', 'Ахтопол', 'Балчик', 'Банкя', 'Банско', 'Баня', 'Батак', 'Батановци', 'Белене', 'Белица', 'Белово', 'Белоградчик', 'Белослав', 'Берковица', 'Благоевград', 'Бобов Дол', 'Бобошево', 'Божурище', 'Бойчиновци', 'Болярово', 'Борово', 'Ботевград', 'Брацигово', 'Брегово', 'Брезник', 'Брезово', 'Брусарци', 'Бургас', 'Бухово', 'Българово', 'Бяла', 'Бяла', 'Бяла Слатина', 'Бяла Черква', 'Варна', 'Велики Преслав', 'Велико Търново', 'Велинград', 'Ветово', 'Ветрен', 'Видин', 'Враца', 'Вълчедръм', 'Вълчи Дол', 'Върбица', 'Вършец', 'Габрово', 'Генерал Тошево', 'Главиница', 'Глоджево', 'Годеч', 'Горна Оряховица', 'Гоце Делчев', 'Грамада', 'Гулянци', 'Гурково', 'Гълъбово', 'Две Могили', 'Дебелец', 'Девин', 'Девня', 'Джебел', 'Димитровград', 'Димово', 'Добринище', 'Добрич', 'Долна Баня', 'Долна Митрополия', 'Долна Оряховица', 'Долни Дъбник', 'Долни Чифлик', 'Доспат', 'Драгоман', 'Дряново', 'Дулово', 'Дунавци', 'Дупница', 'Дългопол', 'Елена', 'Елин Пелин', 'Елхово', 'Етрополе', 'Завет', 'Земен', 'Златарица', 'Златица', 'Златоград', 'Ивайловград', 'Игнатиево', 'Искър', 'Исперих', 'Ихтиман', 'Каблешково', 'Каварна', 'Казанлък', 'Калофер', 'Камено', 'Каолиново', 'Карлово', 'Карнобат', 'Каспичан', 'Кермен', 'Килифарево', 'Китен', 'Клисура', 'Кнежа', 'Козлодуй', 'Койнаре', 'Копривщица', 'Костандово', 'Костенец', 'Костинброд', 'Котел', 'Кочериново', 'Кресна', 'Криводол', 'Кричим', 'Крумовград', 'Крън', 'Кубрат', 'Куклен', 'Кула', 'Кърджали', 'Кюстендил', 'Левски', 'Летница', 'Ловеч', 'Лозница', 'Лом', 'Луковит', 'Лъки', 'Любимец', 'Лясковец', 'Мадан', 'Маджарово', 'Малко Търново', 'Мартен', 'Мездра', 'Мелник', 'Меричлери', 'Мизия', 'Момин Проход', 'Момчилград', 'Монтана', 'Мъглиж', 'Неделино', 'Несебър', 'Николаево', 'Никопол', 'Нова Загора', 'Нови Искър', 'Нови Пазар', 'Обзор', 'Омуртаг', 'Опака', 'Оряхово', 'Павел Баня', 'Павликени', 'Пазарджик', 'Панагюрище', 'Перник', 'Перущица', 'Петрич', 'Пещера', 'Пирдоп', 'Плачковци', 'Плевен', 'Плиска', 'Пловдив', 'Полски Тръмбеш', 'Поморие', 'Попово', 'Пордим', 'Правец', 'Приморско', 'Провадия', 'Първомай', 'Раднево', 'Радомир', 'Разград', 'Разлог', 'Ракитово', 'Раковски', 'Рила', 'Роман', 'Рудозем', 'Русе', 'Садово', 'Самоков', 'Сандански', 'Сапарева Баня', 'Свети Влас', 'Свиленград', 'Свищов', 'Своге', 'Севлиево', 'Сеново', 'Септември', 'Силистра', 'Симеоновград', 'Симитли', 'Славяново', 'Сливен', 'Сливница', 'Сливо Поле', 'Смолян', 'Смядово', 'Созопол', 'Сопот', 'София', 'Средец', 'Стамболийски', 'Стара Загора', 'Стражица', 'Стралджа', 'Стрелча', 'Суворово', 'Сунгурларе', 'Сухиндол', 'Съединение', 'Сърница', 'Твърдица', 'Тервел', 'Тетевен', 'Тополовград', 'Троян', 'Трън', 'Тръстеник', 'Трявна', 'Тутракан', 'Търговище', 'Угърчин', 'Хаджидимово', 'Харманли', 'Хасково', 'Хисаря', 'Цар Калоян', 'Царево', 'Чепеларе', 'Червен Бряг', 'Черноморец', 'Чипровци', 'Чирпан', 'Шабла', 'Шивачево', 'Шипка', 'Шумен', 'Ябланица', 'Якоруда', 'Ямбол']
+      city:
+        - "#{city_name}"
+      street_name:
+        - "#{street_suffix} #{street_title}"
+      street_address:
+        - "#{street_name}, #{building_number}"
+      default_country: [България]
+      default_country_code: ["BG"]
+    internet:
+      domain_suffix: [com, bg, info, бг, net, org]
+
+    name:
+      male_first_name: [Александър, Антонио, Адриан, Ангел, Аспарух, Алекси, Борислав, Борис, Бойко, Бисер, Благовест, Боримир, Виктор, Владимир, Владислав, Валентин, Валери, Венцислав, Героги, Григор, Гроздан, Геро, Димитър, Даниел, Денис, Денислав, Дамян, Добромир, Динко, Добрин, Евгени, Емил, Евтим, Евстати, Еленко, Живко, Желязко, Жельо, Здравко, Захари, Златомир, Звездомир, Ивам. Илиян, Илия, Ивелин, Игор, Йордан, Йосиф, Йонко, Кристиян, Калоян, Крис, Красимир, Камен, Кирил, Крум, Кубрат, Кристоф, Любомир, Лъчезар, Лазар, Мартин, Максим, Мирослав, Максимилиан, Матей, Мариан, Милко, Николай, Недялко, Никофор, Нестор, Огнян, Орлин, Пламен, Пресиан, Пеко, Петър, Павел, Радослав, Росен, Румен, Самуил, Симеон, Станислав, Спас, Спиридон, Теодор, Тони, Тома, Тихомир, Филип, Христо, Христослав, Христиан, Цеко, Цветан, Цветелин, Чавдар, Чочо, Щилян, Юлиан, Юри, Явор, Ясен, Янис, Янко]
+      male_middle_name: [Александров, Адрианов, Ангелов, Аспарухов, Алексиев, Бориславов, Бисеров, Благовестов, Боримиров, Викторов, Владимиров, Владиславов, Валентинов, Венциславов, Георгиев, Григоров, Грозданов, Димитров, Даниелов, Денисов, Дениславов, Дамянов, Добромиров, Евгениев, Петров, Иванов, Павлов]
+      male_last_name: [Иванов, Георгиев, Димитров, Петров, Николов, Христов, Стоянов, Тодоров, Илиев, Василев, Атанасов, Петков, Янгелов, Колев, Йорданов, Маринов, Стефанов, Попов, Михайлов, Кръстев, Костов, Димов, Костадинов, Павлов, Митев, Симеонов, Цветков, Александров, Марков, Спасов, Лазаров, Добрев, Андреев, Младенов, Русев, Вълчев, Радев, Янев, Найденов, Пенев, Янков, Станчев, Стойчев, Славов, Григоров, Киров, Алексиев, Станев, Стойков, Борисов]
+      female_first_name: [Мария, Иванка, Елена, Йорданка, Пенка, Маргарита, Виолета, Лиляна, Цветанка, Радка, Надежда, Марийка, Румяна, Тодорка, Стефка, Стоянка, Василка, Росица, Станка, Емилия, Донка, Милка, Величка, Райна, Анка, Красимира, Снежана, Мариана, Валентина, Янка, Христина, Катя, Николина, Даниела, Татяна, Светла, Галина, Златка, Лилия, Екатерина, Цветана, Недялка, Диана, Антоанета, Павлина, Анна, Веселина, Славка, Марияна, Юлия]
+      female_middle_name: [Александрова, Адрианова, Ангелова, Аспарухова, Алексиева, Марианов, Бисерова, Благовестова, Боримирова, Викториева, Владимирова, Валентинова, Венциславова, Георгиева, Григорова, Грозданова, Димитрова, Даниелова, Денисова, Дамянова, Добромирова, Евгениева, Петрова, Иванова, Павлова]
+      female_last_name: [Иванова, Георгиева, Димитрова, Петрова, Николова, Стоянова, Христова, Тодорова, Илиева, Василева, Атанасова, Петкова, Ангелова, Колева, Йорданова, Маринова, Стефанова, Попова, Михайлова, Кръстева, Костова, Димова, Павлова, Костадинова, Митева, Симеонова, цветкова, Александрова, Маркова, Спасова, Лазарова, Добрева, Младенова, Андреева, Янева, Радева, Русева, Янкова, Пенева, Вълчева, Григорова, Кирова, Найденова, Станчева, Алексиева, Стойчева, Борисова, Славова, Станева, Панайотова]
+      first_name:
+        - "#{male_first_name}"
+        - "#{female_first_name}"
+      name:
+        - "#{male_first_name} #{male_last_name}"
+        - "#{male_last_name} #{male_first_name}"
+        - "#{male_first_name} #{male_middle_name} #{male_last_name}"
+        - "#{male_last_name} #{male_first_name} #{male_middle_name}"
+        - "#{female_first_name} #{female_last_name}"
+        - "#{female_last_name} #{female_first_name}"
+        - "#{female_first_name} #{female_middle_name} #{female_last_name}"
+        - "#{female_last_name} #{female_first_name} #{female_middle_name}"
+
+    cell_phone:
+      formats: ['088#######', '087#######', '089#######']</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

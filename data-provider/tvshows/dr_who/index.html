@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Dr Who</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/dr_who" aria-current="page">Dr Who</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_drwho"><code>Faker().drWho</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    dr_who:
+      character: [
+        "Dr. Who", "The Doctor", "Tardis", "Rose Tyler", "Adam Mitchell", "Mickey Smith", "Donna Noble", "Martha Jones",
+        "Captain Jack Harkness", "Astrid Peth", "Sarah Jane Smith", "Jackson Lake", "Lady Christina de Souza",
+        "Adelaide Brooke", "Wilfred Mott", "Amy Pond" ]
+      the_doctors: [
+        "First Doctor", "Second Doctor", "Third Doctor", "Fourth Doctor", "Fifth Doctor", "Sixth Doctor", "Seventh Doctor",
+        "Eighth Doctor", "Ninth Doctor", "Tenth Doctor", "Eleventh Doctor", "Twelfth Doctor", "Thirteenth Doctor"
+      ]
+      actors: [
+        "William Hartnell", "Patrick Troughton", "Jon Pertwee", "Tom Baker", "Peter Davison", "Colin Baker", "Sylvester McCoy",
+        "Paul McGann", "Christopher Eccleston", "David Tennant", "Matt Smith", "Peter Capaldi", "Jodie Whittaker"
+      ]
+      catch_phrases: [
+        "Fantastic!", "I’m sorry. I’m so sorry.", "Bow ties are cool.", "Mmm I wonder ... Aha!",
+        "Brave heart, Tegan.", "Would you care for a jelly baby?", "Reverse the polarity of the neutron flow.",
+        "Somewhere there’s danger, somewhere there’s injustice, somewhere else, the tea’s getting cold.",
+        "When I say run, run. (pause) RUN!", "Mm? What’s that, my boy?", "Allons-y!"
+      ]
+      quotes: [
+        "Lots of planets have a north!", "This is my timey-wimey detector. It goes 'ding' when there's stuff.",
+        "Bananas are good.", "I wear a fez now. Fezzes are cool.", "Can you hold? I have to eat a biscuit.",
+        "If we're gonna die, let's die looking like a Peruvian folk band.",
+        "You want weapons? We're in a library! Books! The best weapons in the world!",
+        "Come on, Rory! It isn't rocket science, it's just quantum physics!",
+        "We're all stories in the end. Just make it a good one, eh?",
+        "Big flashy things have my name written all over them. Well... not yet, give me time and a crayon.",
+        "You don't want to take over the universe. You wouldn't know what to do with it beyond shout at it.",
+        "A straight line may be the shortest distance between two points, but it is by no means the most interesting.",
+        "See the bowtie? I wear it and I don't care. That's why it's cool.",
+        "I saw the Fall of Troy! World War Five! I was pushing boxes at the Boston Tea Party! Now I'm gonna die in a dungeon... in Cardiff!",
+        "Bunk beds are cool, a bed with a ladder, you can't beat that!",
+        "The universe is big. It’s vast and complicated and ridiculous. And sometimes, very rarely, impossible things just happen and we call them miracles.",
+        "Do what I do. Hold tight and pretend it’s a plan!",
+        "900 years of time and space, and I’ve never been slapped by someone’s mother.",
+        "Never ignore coincidence. Unless, of course, you’re busy. In which case, always ignore coincidence.",
+        "The assembled hordes of Genghis Khan couldn't get through that door, and, believe me, they've tried.",
+        "Your wish is my command. But be careful what you wish for.",
+        "Aw, I wanted to be ginger! I've never been ginger!",
+        "Crossing into established events is strictly forbidden. Except for cheap tricks.",
+      ]
+      villains: [
+        "Helen A", "Abzorbaloff", "Animus", "The Master", "Davros", "Dalek Emperor"
+      ]
+      species: [
+        "Time Lord", "Dalek", "Thal", "Dal", "Voord", "Sensorite", "Slyther", "Didonian", "Sand Beast", "Animus",
+        "Zarbi", "Larvae Gun", "Menoptra", "Morok", "Xeron", "Aridian", "Mire Beast", "Gubbage Cone", "Rill",
+        "Great Old One", "Drahvin", "Varga Plant", "Representatives of the 7 Galaxies", "Visian", "Screamer",
+        "Monoid", "Refusian", "Celestial Toymaker", "Elder", "Cybermen (Mondas)", "Fish People", "Macra",
+        "Chameleon", "Cybermat", "The Moon", "Great Intelligence", "Ice Warrior", "Seaweed Creature", "Dominator",
+        "Dulcian", "Master Brain", "Land of Fiction beings", "Kroton", "Gond", "Seed Pod", "Auton", "Nestene Consciousness",
+        "Silurian", "Ambassadors", "Primord", "Keller Machine", "Axos/Axon/Axonite", "Uxariean", "Dæmon",
+        "Ogron", "Arcturan", "Alpha Centauran", "Aggedor", "Peladonian", "Sea Devil", "Solonian", "Chronovore",
+        "Minotaur", "Anti-matter organism", "Lurman", "Drashig", "Inter Minorian", "Wallarian", "Draconian", "Spiridon",
+        "Giant Maggots", "Sontaran", "Dinosaur", "Exxilon", "Eight Legs", "Wirrn", "Kaled", "Vogan", "Zygon", "Skarasen",
+        "Morestran", "Sutekh", "Osiran", "Kraal", "Sisterhood of Karn", "Hoothi", "Krynoid", "Mandragora Helix", "Kastrian",
+        "Giant Rat", "Rutan", "Swarm (Virus)", "Fendahl", "Usurian", "Minyan", "Vardan", "Guardian", "Ribosian",
+        "Levithian", "Shrivenzale", "Zanak Humanoid", "Diplosian", "Ogri", "Megara", "Taran", "Taran Beast",
+        "Swampie", "Kroll", "The Shadow", "Mute", "Sirian", "Jagaroth", "Chloris Humanoid", "Tythonian", "Wolfweed",
+        "Mandrel", "Skonnan", "Nimon", "Anethan", "Crinothian", "Drornidian", "Krarg", "Argolin", "Foamasi",
+        "Tigellan", "Zolfa-Thuran", "Gaztak", "Bell Plant", "Alzarian", "Marshman", "Marshspider", "Great Vampire",
+        "Tharil", "Trakenite", "Logopolitan", "Castrovalvan", "Urbankan", "Mara", "Kinda", "Terileptil", "Plasmaton",
+        "Xeraphin", "The Ergon", "Manussan", "Trion", "Garm", "Eternal", "Myrka", "Malus", "Tractator", "Magma Beast",
+        "Queen Bat", "Gastropod", "Jadondan", "Cryon", "Mentor", "Gee-Jee fly", "Androgum", "Karfelon", "Morlox",
+        "Bandril", "Andromedan", "Thoros Alphan", "Krontep", "Posicarian", "Raak", "Vervoid", "Mogarian", "Lakertyan",
+        "Tetrap", "Time Brain", "Chimeron", "Navarino", "Bannermen", "Proamonian", "Dragon", "Stigorax", "Pipe Person",
+        "Validium", "Gods of Ragnorak", "Werewolf", "The Destroyer", "Light", "Fenric", "Haemovore", "Cheetah People",
+        "Kitling", "Deathworm Morphant", "Lady Cassandra O'Brien.∆17", "Boekind", "Crespallion", "Trees of Cheem",
+        "Pakoo", "Balhoonian", "New Human", "Protohuman", "Digihuman", "Gelth", "Raxacoricofallapatorian",
+        "Space Pig", "Jagrafess", "Reaper", "Empty Child", "Nanogene", "Chula", "Barcelonian Dogs", "Sycorax",
+        "Graske", "Catkind", "New Human", "Krillitane", "Cyberman (Pete's World)", "The Wire", "The Beast",
+        "Ood", "Pallushi", "Hoix", "Abzorbaloff", "Isolus", "Flying Stingray", "Weevil", "Sex Gas", "Fairy",
+        "Arcateenian", "Racnoss", "Dogon", "Abaddon", "Bane", "Xylok", "Judoon", "Plasmavore", "Carrionite",
+        "Pig Slave", "Dalek/Human Hybrid", "Richard Lazarus", "Torajii Sun", "Family of Blood", "Scarecrow",
+        "Weeping Angel", "Futurekind", "Malmooth", "Toclafane", "Gorgon", "Uvodni", "The Trickster", "Verron",
+        "Sto Humanoid", "Zocci", "Blowfish", "Cell 114", "Cash Cow", "Mayfly", "Duroc", "Nostrovite", "Night Travellers",
+        "Tumor Alien", "Cowled Ghost", "Adipose", "Pyrovile", "Ood Brain", "Hath", "Vespiform", "Vashta Nerada",
+        "Time Beetle", "Shadow Proclamation Humanoids", "Bees (Melissa Majoria)", "Pied Piper", "Ancient Lights",
+        "Berserker", "Travist Polong", "Cybershade", "The Swarm", "Tritovore", "Hitchhiker", "The 4-5-6", "Veil",
+        "Eve", "Jixen", "Erasmus Darkening", "International Gallery Paintings", "The Flood", "Vinvocci",
+        "Dauntless Prison Inmates", "Korven", "Fear Entity", "Gryffen Family Ghosts", "Bodach", "Anubian",
+        "Oroborus", "Mede", "Multi-form", "Atraxi", "Aeolian", "Star Whale", "Winder", "Centuripede", "The Hunger",
+        "Aplan", "Ukkan", "Saturnyn", "Psychic Pollen", "Eknodine", "Etydion", "Krafayis", "Vishklar", "Shansheeth",
+        "Groske", "Qetesh", "Dark Hoarde", "Chelonian", "Haemogoth", "Sky Fish", "The Silence", "Siren",
+        "Patchwork Person", "Ganger", "Headless Monk", "Brain Parasite", "Tenza", "Peg Doll", "The Blessing Messenger",
+        "Apalapucian", "The Blessing", "Tivolian", "Minotaur", "Metalkind", "Fleshkind", "Hetocumtek", "Skullion",
+        "Androzani Tree", "Dalek Puppet", "Kahler", "Orderly", "Shakri", "Memory Worm", "Snowmen", "Akhaten Humanoid",
+        "Pan-Babylonian", "Lugal-Irra-Kush", "Lucanian", "Hooloovoo", "Terraberserker", "Ultramancer", "Vigil",
+        "Crooked Person", "Time Zombie", "Mr. Sweet", "Cybermite", "Whisper Men", "The Teller", "Skovox Blitzer",
+        "Spider Germ", "The Foretold", "Boneless", "Kantrofarri", "The Fisher King", "The Mire", "Leonian",
+        "The Sandmen", "Janus", "Quantum Shade", "The Veil", "Hydroflax", "Shoal of the Winter Harmony", "Rhodian",
+        "Quill", "Shadow Kin", "Arn", "Lothan", "Leaf Dragon", "Lankin", "Killer petals", "Lorr", "Sentient oil",
+        "Vardy", "Sea Creature", "Lure Fish", "Dryad", "The Monks"
+      ]</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().drWho.character() // =&gt; Dr. Who
+
+Faker().drWho.the_doctors() // =&gt; First Doctor
+
+Faker().drWho.actors() // =&gt; William Hartnell
+
+Faker().drWho.catchPhrases() // =&gt; Fantastic!
+
+Faker().drWho.quotes() // =&gt; Lots of planets have a north!
+
+Faker().drWho.villains() // =&gt; Helen A
+
+Faker().drWho.species() // =&gt; Time Lord</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

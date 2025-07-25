@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Nation</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/nation" aria-current="page">Nation</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_nation"><code>Faker().nation</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    nation:
+      # National flag emojis in bytes
+      # Source for list: https://emojipedia.org/flags
+      flag: [[240, 159, 135, 166, 240, 159, 135, 168], [240, 159, 135, 166, 240, 159, 135, 169], [240, 159, 135, 166, 240, 159, 135, 170], [240, 159, 135, 166, 240, 159, 135, 171], [240, 159, 135, 166, 240, 159, 135, 172], [240, 159, 135, 166, 240, 159, 135, 174], [240, 159, 135, 166, 240, 159, 135, 177], [240, 159, 135, 166, 240, 159, 135, 178], [240, 159, 135, 166, 240, 159, 135, 180], [240, 159, 135, 166, 240, 159, 135, 182], [240, 159, 135, 166, 240, 159, 135, 183], [240, 159, 135, 166, 240, 159, 135, 184], [240, 159, 135, 166, 240, 159, 135, 185], [240, 159, 135, 166, 240, 159, 135, 186], [240, 159, 135, 166, 240, 159, 135, 188], [240, 159, 135, 166, 240, 159, 135, 189], [240, 159, 135, 166, 240, 159, 135, 191], [240, 159, 135, 167, 240, 159, 135, 166], [240, 159, 135, 167, 240, 159, 135, 167], [240, 159, 135, 167, 240, 159, 135, 169], [240, 159, 135, 167, 240, 159, 135, 170], [240, 159, 135, 167, 240, 159, 135, 171], [240, 159, 135, 167, 240, 159, 135, 172], [240, 159, 135, 167, 240, 159, 135, 173], [240, 159, 135, 167, 240, 159, 135, 174], [240, 159, 135, 167, 240, 159, 135, 175], [240, 159, 135, 167, 240, 159, 135, 177], [240, 159, 135, 167, 240, 159, 135, 178], [240, 159, 135, 167, 240, 159, 135, 179], [240, 159, 135, 167, 240, 159, 135, 180], [240, 159, 135, 167, 240, 159, 135, 182], [240, 159, 135, 167, 240, 159, 135, 183], [240, 159, 135, 167, 240, 159, 135, 184], [240, 159, 135, 167, 240, 159, 135, 185], [240, 159, 135, 167, 240, 159, 135, 187], [240, 159, 135, 167, 240, 159, 135, 188], [240, 159, 135, 167, 240, 159, 135, 190], [240, 159, 135, 167, 240, 159, 135, 191], [240, 159, 135, 168, 240, 159, 135, 166], [240, 159, 135, 168, 240, 159, 135, 168], [240, 159, 135, 168, 240, 159, 135, 169], [240, 159, 135, 168, 240, 159, 135, 171], [240, 159, 135, 168, 240, 159, 135, 172], [240, 159, 135, 168, 240, 159, 135, 173], [240, 159, 135, 168, 240, 159, 135, 174], [240, 159, 135, 168, 240, 159, 135, 176], [240, 159, 135, 168, 240, 159, 135, 177], [240, 159, 135, 168, 240, 159, 135, 178], [240, 159, 135, 168, 240, 159, 135, 179], [240, 159, 135, 168, 240, 159, 135, 180], [240, 159, 135, 168, 240, 159, 135, 181], [240, 159, 135, 168, 240, 159, 135, 183], [240, 159, 135, 168, 240, 159, 135, 186], [240, 159, 135, 168, 240, 159, 135, 187], [240, 159, 135, 168, 240, 159, 135, 188], [240, 159, 135, 168, 240, 159, 135, 189], [240, 159, 135, 168, 240, 159, 135, 190], [240, 159, 135, 168, 240, 159, 135, 191], [240, 159, 135, 169, 240, 159, 135, 170], [240, 159, 135, 169, 240, 159, 135, 172], [240, 159, 135, 169, 240, 159, 135, 175], [240, 159, 135, 169, 240, 159, 135, 176], [240, 159, 135, 169, 240, 159, 135, 178], [240, 159, 135, 169, 240, 159, 135, 180], [240, 159, 135, 169, 240, 159, 135, 191], [240, 159, 135, 170, 240, 159, 135, 166], [240, 159, 135, 170, 240, 159, 135, 168], [240, 159, 135, 170, 240, 159, 135, 170], [240, 159, 135, 170, 240, 159, 135, 172], [240, 159, 135, 170, 240, 159, 135, 173], [240, 159, 135, 170, 240, 159, 135, 183], [240, 159, 135, 170, 240, 159, 135, 184], [240, 159, 135, 170, 240, 159, 135, 185], [240, 159, 135, 170, 240, 159, 135, 186], [240, 159, 135, 171, 240, 159, 135, 174], [240, 159, 135, 171, 240, 159, 135, 175], [240, 159, 135, 171, 240, 159, 135, 176], [240, 159, 135, 171, 240, 159, 135, 178], [240, 159, 135, 171, 240, 159, 135, 180], [240, 159, 135, 171, 240, 159, 135, 183], [240, 159, 135, 172, 240, 159, 135, 166], [240, 159, 135, 172, 240, 159, 135, 167], [240, 159, 135, 172, 240, 159, 135, 169], [240, 159, 135, 172, 240, 159, 135, 170], [240, 159, 135, 172, 240, 159, 135, 171], [240, 159, 135, 172, 240, 159, 135, 172], [240, 159, 135, 172, 240, 159, 135, 173], [240, 159, 135, 172, 240, 159, 135, 174], [240, 159, 135, 172, 240, 159, 135, 177], [240, 159, 135, 172, 240, 159, 135, 178], [240, 159, 135, 172, 240, 159, 135, 179], [240, 159, 135, 172, 240, 159, 135, 181], [240, 159, 135, 172, 240, 159, 135, 182], [240, 159, 135, 172, 240, 159, 135, 183], [240, 159, 135, 172, 240, 159, 135, 184], [240, 159, 135, 172, 240, 159, 135, 185], [240, 159, 135, 172, 240, 159, 135, 186], [240, 159, 135, 172, 240, 159, 135, 188], [240, 159, 135, 172, 240, 159, 135, 190], [240, 159, 135, 173, 240, 159, 135, 176], [240, 159, 135, 173, 240, 159, 135, 178], [240, 159, 135, 173, 240, 159, 135, 179], [240, 159, 135, 173, 240, 159, 135, 183], [240, 159, 135, 173, 240, 159, 135, 185], [240, 159, 135, 173, 240, 159, 135, 186], [240, 159, 135, 174, 240, 159, 135, 168], [240, 159, 135, 174, 240, 159, 135, 169], [240, 159, 135, 174, 240, 159, 135, 170], [240, 159, 135, 174, 240, 159, 135, 177], [240, 159, 135, 174, 240, 159, 135, 178], [240, 159, 135, 174, 240, 159, 135, 179], [240, 159, 135, 174, 240, 159, 135, 180], [240, 159, 135, 174, 240, 159, 135, 182], [240, 159, 135, 174, 240, 159, 135, 183], [240, 159, 135, 174, 240, 159, 135, 184], [240, 159, 135, 174, 240, 159, 135, 185], [240, 159, 135, 175, 240, 159, 135, 170], [240, 159, 135, 175, 240, 159, 135, 178], [240, 159, 135, 175, 240, 159, 135, 180], [240, 159, 135, 175, 240, 159, 135, 181], [240, 159, 135, 176, 240, 159, 135, 170], [240, 159, 135, 176, 240, 159, 135, 172], [240, 159, 135, 176, 240, 159, 135, 173], [240, 159, 135, 176, 240, 159, 135, 174], [240, 159, 135, 176, 240, 159, 135, 178], [240, 159, 135, 176, 240, 159, 135, 179], [240, 159, 135, 176, 240, 159, 135, 181], [240, 159, 135, 176, 240, 159, 135, 183], [240, 159, 135, 176, 240, 159, 135, 188], [240, 159, 135, 176, 240, 159, 135, 190], [240, 159, 135, 176, 240, 159, 135, 191], [240, 159, 135, 177, 240, 159, 135, 166], [240, 159, 135, 177, 240, 159, 135, 167], [240, 159, 135, 177, 240, 159, 135, 168], [240, 159, 135, 177, 240, 159, 135, 174], [240, 159, 135, 177, 240, 159, 135, 176], [240, 159, 135, 177, 240, 159, 135, 183], [240, 159, 135, 177, 240, 159, 135, 184], [240, 159, 135, 177, 240, 159, 135, 185], [240, 159, 135, 177, 240, 159, 135, 186], [240, 159, 135, 177, 240, 159, 135, 187], [240, 159, 135, 177, 240, 159, 135, 190], [240, 159, 135, 178, 240, 159, 135, 166], [240, 159, 135, 178, 240, 159, 135, 168], [240, 159, 135, 178, 240, 159, 135, 169], [240, 159, 135, 178, 240, 159, 135, 170], [240, 159, 135, 178, 240, 159, 135, 171], [240, 159, 135, 178, 240, 159, 135, 172], [240, 159, 135, 178, 240, 159, 135, 173], [240, 159, 135, 178, 240, 159, 135, 176], [240, 159, 135, 178, 240, 159, 135, 177], [240, 159, 135, 178, 240, 159, 135, 178], [240, 159, 135, 178, 240, 159, 135, 179], [240, 159, 135, 178, 240, 159, 135, 180], [240, 159, 135, 178, 240, 159, 135, 181], [240, 159, 135, 178, 240, 159, 135, 182], [240, 159, 135, 178, 240, 159, 135, 183], [240, 159, 135, 178, 240, 159, 135, 184], [240, 159, 135, 178, 240, 159, 135, 185], [240, 159, 135, 178, 240, 159, 135, 186], [240, 159, 135, 178, 240, 159, 135, 187], [240, 159, 135, 178, 240, 159, 135, 188], [240, 159, 135, 178, 240, 159, 135, 189], [240, 159, 135, 178, 240, 159, 135, 190], [240, 159, 135, 178, 240, 159, 135, 191], [240, 159, 135, 179, 240, 159, 135, 166], [240, 159, 135, 179, 240, 159, 135, 168], [240, 159, 135, 179, 240, 159, 135, 170], [240, 159, 135, 179, 240, 159, 135, 171], [240, 159, 135, 179, 240, 159, 135, 172], [240, 159, 135, 179, 240, 159, 135, 174], [240, 159, 135, 179, 240, 159, 135, 177], [240, 159, 135, 179, 240, 159, 135, 180], [240, 159, 135, 179, 240, 159, 135, 181], [240, 159, 135, 179, 240, 159, 135, 183], [240, 159, 135, 179, 240, 159, 135, 186], [240, 159, 135, 179, 240, 159, 135, 191], [240, 159, 135, 180, 240, 159, 135, 178], [240, 159, 135, 181, 240, 159, 135, 166], [240, 159, 135, 181, 240, 159, 135, 170], [240, 159, 135, 181, 240, 159, 135, 171], [240, 159, 135, 181, 240, 159, 135, 172], [240, 159, 135, 181, 240, 159, 135, 173], [240, 159, 135, 181, 240, 159, 135, 176], [240, 159, 135, 181, 240, 159, 135, 177], [240, 159, 135, 181, 240, 159, 135, 178], [240, 159, 135, 181, 240, 159, 135, 179], [240, 159, 135, 181, 240, 159, 135, 183], [240, 159, 135, 181, 240, 159, 135, 184], [240, 159, 135, 181, 240, 159, 135, 185], [240, 159, 135, 181, 240, 159, 135, 188], [240, 159, 135, 181, 240, 159, 135, 190], [240, 159, 135, 182, 240, 159, 135, 166], [240, 159, 135, 183, 240, 159, 135, 170], [240, 159, 135, 183, 240, 159, 135, 180], [240, 159, 135, 183, 240, 159, 135, 184], [240, 159, 135, 183, 240, 159, 135, 186], [240, 159, 135, 183, 240, 159, 135, 188], [240, 159, 135, 184, 240, 159, 135, 166], [240, 159, 135, 184, 240, 159, 135, 167], [240, 159, 135, 184, 240, 159, 135, 168], [240, 159, 135, 184, 240, 159, 135, 169], [240, 159, 135, 184, 240, 159, 135, 170], [240, 159, 135, 184, 240, 159, 135, 172], [240, 159, 135, 184, 240, 159, 135, 173], [240, 159, 135, 184, 240, 159, 135, 174], [240, 159, 135, 184, 240, 159, 135, 175], [240, 159, 135, 184, 240, 159, 135, 176], [240, 159, 135, 184, 240, 159, 135, 177], [240, 159, 135, 184, 240, 159, 135, 178], [240, 159, 135, 184, 240, 159, 135, 179], [240, 159, 135, 184, 240, 159, 135, 180], [240, 159, 135, 184, 240, 159, 135, 183], [240, 159, 135, 184, 240, 159, 135, 184], [240, 159, 135, 184, 240, 159, 135, 185], [240, 159, 135, 184, 240, 159, 135, 187], [240, 159, 135, 184, 240, 159, 135, 189], [240, 159, 135, 184, 240, 159, 135, 190], [240, 159, 135, 184, 240, 159, 135, 191], [240, 159, 135, 185, 240, 159, 135, 166], [240, 159, 135, 185, 240, 159, 135, 168], [240, 159, 135, 185, 240, 159, 135, 169], [240, 159, 135, 185, 240, 159, 135, 171], [240, 159, 135, 185, 240, 159, 135, 172], [240, 159, 135, 185, 240, 159, 135, 173], [240, 159, 135, 185, 240, 159, 135, 175], [240, 159, 135, 185, 240, 159, 135, 176], [240, 159, 135, 185, 240, 159, 135, 177], [240, 159, 135, 185, 240, 159, 135, 178], [240, 159, 135, 185, 240, 159, 135, 179], [240, 159, 135, 185, 240, 159, 135, 180], [240, 159, 135, 185, 240, 159, 135, 183], [240, 159, 135, 185, 240, 159, 135, 185], [240, 159, 135, 185, 240, 159, 135, 187], [240, 159, 135, 185, 240, 159, 135, 188], [240, 159, 135, 185, 240, 159, 135, 191], [240, 159, 135, 186, 240, 159, 135, 166], [240, 159, 135, 186, 240, 159, 135, 172], [240, 159, 135, 186, 240, 159, 135, 178], [240, 159, 135, 186, 240, 159, 135, 179], [240, 159, 135, 186, 240, 159, 135, 184], [240, 159, 135, 186, 240, 159, 135, 190], [240, 159, 135, 186, 240, 159, 135, 191], [240, 159, 135, 187, 240, 159, 135, 166], [240, 159, 135, 187, 240, 159, 135, 168], [240, 159, 135, 187, 240, 159, 135, 170], [240, 159, 135, 187, 240, 159, 135, 172], [240, 159, 135, 187, 240, 159, 135, 174], [240, 159, 135, 187, 240, 159, 135, 179], [240, 159, 135, 187, 240, 159, 135, 186], [240, 159, 135, 188, 240, 159, 135, 171], [240, 159, 135, 188, 240, 159, 135, 184], [240, 159, 135, 189, 240, 159, 135, 176], [240, 159, 135, 190, 240, 159, 135, 170], [240, 159, 135, 190, 240, 159, 135, 185], [240, 159, 135, 191, 240, 159, 135, 166], [240, 159, 135, 191, 240, 159, 135, 178], [240, 159, 135, 191, 240, 159, 135, 188], [240, 159, 143, 180, 243, 160, 129, 167, 243, 160, 129, 162, 243, 160, 129, 165, 243, 160, 129, 174, 243, 160, 129, 167, 243, 160, 129, 191], [240, 159, 143, 180, 243, 160, 129, 167, 243, 160, 129, 162, 243, 160, 129, 179, 243, 160, 129, 163, 243, 160, 129, 180, 243, 160, 129, 191], [240, 159, 143, 180, 243, 160, 129, 167, 243, 160, 129, 162, 243, 160, 129, 183, 243, 160, 129, 172, 243, 160, 129, 179, 243, 160, 129, 191]]
+      # This list is taken from https://en.wikipedia.org/wiki/Lists_of_people_by_nationality
+      nationality: [Afghans, Albanians, Algerians, Americans, Andorrans, Angolans, Argentines, Armenians, Aromanians, Arubans, Australians, Austrians, Bahamians, Bahrainis, Bangladeshis, Barbadians, Belarusians, Belgians, Belizeans, Bermudians, Boers, Bosniaks, Brazilians, Bretons, British, British Virgin Islanders, Bulgarians, Macedonian Bulgarians, Burkinabès, Burundians, Cambodians, Cameroonians, Canadians, Catalans, Cape, Verdeans, Chadians, Chileans, Chinese, Colombians, Comorians, Congolese, Croatians, Cubans, Turkish Cypriots, Czechs, Danes, Dominicans (Republic), Dominicans (Commonwealth), Dutch, East Timorese, Ecuadorians, Egyptians, Emiratis, English, Eritreans, Estonians, Ethiopians, Faroese, Finns, Finnish Swedish, Fijians, Filipinos, French citizens, Georgians, Germans, Baltic Germans, Ghanaians, Gibraltar, Greeks, Greek Macedonians, Grenadians, Guatemalans, Guianese (French), Guineans, Guinea-Bissau nationals, Guyanese, Haitians, Hondurans, Hong Kong, Hungarians, Icelanders, Indians, Indonesians, Iranians (Persians), Iraqis, Irish, Israelis, Italians, Ivoirians, Jamaicans, Japanese, Jordanians, Kazakhs, Kenyans, Koreans, Kosovo Albanians, Kurds, Kuwaitis, Lao, Latvians, Lebanese, Liberians, Libyans, Liechtensteiners, Lithuanians, Luxembourgers, Macedonians, Malagasy, Malaysians, Malawians, Maldivians, Malians, Maltese, Manx, Mauritians, Mexicans, Moldovans, Moroccans, Mongolians, Montenegrins, Namibians, Nepalese, New Zealanders, Nicaraguans, Nigeriens, Nigerians, Norwegians, Pakistanis, Palauans, Palestinians, Panamanians, Papua New Guineans, Paraguayans, Peruvians, Poles, Portuguese, Puerto Ricans, Quebecers, Réunionnais, Romanians, Russians, Baltic Russians,Rwandans,Salvadorans, São Tomé and Príncipe,    Saudis,    Scots,    Senegalese,    Serbs,    Sierra Leoneans,    Singaporeans,    Sindhian,    Slovaks,    Slovenes,    Somalis,    South Africans,    Spaniards, Sri Lankans,St Lucians,Sudanese,Surinamese,Swedes,Swiss,Syrians,Taiwanese,Tanzanians,Thais,Tibetans,Tobagonians,Trinidadians,Tunisians,Turks,Tuvaluans,Ugandans,Ukrainians,Uruguayans,Uzbeks,Vanuatuans,Venezuelans,Vietnamese,Welsh,Yemenis,Zambians,Zimbabweans]
+      language: [Nepali, Hindi, English, Arabic, Portuguese, Russian, Japanese, German, Javanese, Telugu, Korean, French, Marathi, Italian, Thai, Hakka, Tagalog, Romanian, Dutch, Kazakh, Zulu, Swedish]
+      # This list is taken from https://www.thoughtco.com/capitals-of-every-independent-country-1434452
+      capital_city: [Kabul, Tirana, Algiers, Andorra la Vella, Luanda, Saint John's, Buenos Aires, Yerevan, Canberra, Vienna, Baku, Nassau, Manama, Dhaka, Bridgetown, Minsk, Brussels, Belmopan, Porto-Novo,Thimphu, Sarajevo, Gaborone, Brasilia, Bandar Seri Begawan, Sofia, Ouagadougou, Bujumbura, Phnom Penh, Yaounde, Ottawa, Praia Bangui, N'Djamena, Santiago, Beijing, Bogota, Moroni, Brazzaville, Kinshasa, San Jose, Zagreb, Havana, Nicosia, Prague, Copenhagen, Djibouti, Roseau, Santo Domingo, Dili, Quito, Cairo, San Salvador, Malabo, Asmara, Tallinn, Addis Ababa, Suva, Helsinki, Paris, Libreville, Banjul, Tbilisi, Berlin, Accra, Athens, Saint George's, Guatemala City, Conakry, Bissau, Georgetown, Prince, Tegucigalpa, Budapest, Reykjavik, New Delhi, Jakarta, Tehran, Baghdad, Dublin, Jerusalem, Rome, Kingston, Tokyo, Amman, Astana, Nairobi, Tarawa Atoll, Pyongyang, Seoul, Pristina, Kuwait City, Bishkek, Vientiane, Riga, Beirut, Maseru, Monrovia, Tripoli, Vaduz, Vilnius, Luxembourg, Skopje, Antananarivo, Lilongwe, Kuala Lumpur, Male, Bamako, Valletta, Majuro, Nouakchott, Port Louis, Mexico City, Palikir, Chisinau, Monaco, Ulaanbaatar, Podgorica, Rabat, Maputo, Windhoek, Kathmandu, Wellington, Managua, Niamey, Abuja, Oslo, Muscat, Islamabad, Melekeok, Panama City, Port Moresby, Asuncion, Lima, Manila, Warsaw, Lisbon, Doha, Bucharest, Moscow, Kigali, Basseterre, Castries, Kingstown, Apia, San Marino, Sao Tome, Riyadh, Dakar, Belgrade, Victoria, Freetown, Singapore, Bratislava, Ljubljana, Honiara, Mogadishu, Juba, Madrid, Colombo, Khartoum, Paramaribo, Mbabane, Stockholm, Bern, Damascus, Taipei, Dushanbe, Dar es Salaam, Bangkok, Lome, Nuku'alofa, Port-of-Spain, Tunis, Ankara, Ashgabat, Vaiaku village, Kampala, Kyiv, Abu Dhabi, London, Washington D.C., Montevideo, Tashkent, Port-Vila, Vatican City, Caracas, Hanoi, Sanaa, Lusaka, Harare]</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().nation.nationality() // =&gt; Afghans
+
+Faker().nation.language() // =&gt; Nepali
+
+Faker().nation.capital_city() // =&gt; Kabul</code></pre>
+</div>
+</div>
+</div>
+</details>
+<hr>
+<details>
+<summary class="title">Non-implemented Functions:</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().nation.flag() // =&gt; [240, 159, 135, 166, 240, 159, 135, 168]</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

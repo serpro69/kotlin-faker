@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Faker Configuration</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+<link rel="prev" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">
+
+
+<link rel="next" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://serpro69.github.io/kotlin-faker/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration" aria-current="page">Faker Configuration</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="faker-configuration"><a href="#faker-configuration" id="faker-configuration" class="anchor"></a>Faker Configuration</h1>
+<h2 id="toc"><a href="#toc" id="toc" class="anchor"></a>ToC</h2>
+<ul>
+<li><a href="#default-configuration">Default Configuration</a></li>
+<li><a href="#deterministic-random">Deterministic Random</a></li>
+<li><a href="#locale">Locale</a></li>
+<li><a href="#random-class-instance">Random Class Instance</a></li>
+</ul>
+<p><br></p>
+<h2 id="default-configuration"><a href="#default-configuration" id="default-configuration" class="anchor"></a>Default Configuration</h2>
+<p><code>Faker</code> can be configured through the <code>FakerConfig</code> class, either by passing an instance of <code>FakerConfig</code> directly, or</p>
+<p>If no <code>FakerConfig</code> instance is passed to <code>Faker</code> constructor and configuration is not set through the <code>faker</code> builder DSL, then default configuration will be used:</p>
+<ul>
+<li><code>locale == &quot;en&quot;</code></li>
+<li><code>random</code> is seeded with a pseudo-randomly generated number.</li>
+<li><code>uniqueGeneratorRetryLimit</code> is set to <code>100</code></li>
+</ul>
+<hr>
+<span class="icon-text">
+  <span class="icon"><i class="fas fa-list-ul"></i></span>
+  <span>
+    <a href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration#toc">back-to-toc</a>
+  </span>
+</span>
+<p><br></p>
+<h2 id="deterministic-random"><a href="#deterministic-random" id="deterministic-random" class="anchor"></a>Deterministic Random</h2>
+<p>Faker supports seeding of it's PRNG (pseudo-random number generator) through <code>FakerConfig</code> to provide deterministic output of repeated function invocations.</p>
+<div class="tabs">
+  <ul data-tabs="JOeN1j6IRu">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+    <li >
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span>
+          java
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="JOeN1j6IRu">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val config = fakerConfig { random = Random(42) }
+val faker = Faker(config)
+val city1 = faker.address.city()
+val name1 = faker.name.name()
+
+val otherConfig = fakerConfig { random = Random(42) }
+val otherFaker = Faker(otherConfig)
+val city2 = otherFaker.address.city()
+val name2 = otherFaker.name.name()
+
+assertEquals(city1, city2)
+assertEquals(name1, name2)
+
+</code></pre></div>
+
+  <div class=" tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-java">FakerConfig.Builder configBuilder = FakerConfig.builder();
+
+Faker faker = new Faker(configBuilder.withRandom(Random(42)).build());
+String city1 = faker.getAddress().city();
+String name1 = faker.getName().name();
+
+Faker otherFaker = new Faker(configBuilder.withRandom(Random(42)).build());
+String city2 = otherFaker.getAddress().city();
+String name2 = otherFaker.getName().name();
+
+assertEquals(city1, city2);
+assertEquals(name1, name2);
+
+</code></pre></div>
+
+</div>
+<p><br></p>
+<p>Alternatively a <code>randomSeed</code> property can be used instead of passing an instance of <code>java.util.Random</code>:</p>
+<div class="tabs">
+  <ul data-tabs="bWKQ25T6od">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+    <li >
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span>
+          java
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="bWKQ25T6od">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val config = fakerConfig { randomSeed = 42 }
+val faker = Faker(config)
+
+</code></pre></div>
+
+  <div class=" tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-java">FakerConfig config = FakerConfig.builder()
+    .withRandomSeed(42)
+    .build();
+Faker faker = new Faker(config);
+
+</code></pre></div>
+
+</div>
+<hr />
+<div class="box has-background-white-ter">
+  <div class="note">
+    <div class="note-heading">
+    <h5><span class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+        <path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
+      </svg>
+    </span>info</h5>
+    </div>
+    <div class="note-content">
+      <p><p><code>randomSeed</code> config property has precedence over <code>random</code> property, and the latter will be ignored if <code>randomSeed</code> is specified.</p></p>
+    </div>
+  </div>
+</div>
+<div class="tabs">
+  <ul data-tabs="DtPoS70z9p">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+    <li >
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span>
+          java
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="DtPoS70z9p">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val config = fakerConfig {
+    random = Random(123)
+    randomSeed = 42
+}
+val faker = Faker(config)
+val city1 = faker.address.city()
+
+val otherConfig = fakerConfig {
+    random = Random(123)
+    randomSeed = 42
+}
+val otherFaker = Faker(otherConfig)
+val city2 = otherFaker.address.city()
+
+assertEquals(city1, city2)
+
+</code></pre></div>
+
+  <div class=" tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-java">FakerConfig config = FakerConfig.builder()
+    .withRandom(Random(123))
+    .withRandomSeed(42)
+    .build();
+Faker faker = new Faker(config);
+String city1 = faker.getAddress().city();
+
+FakerConfig otherConfig = FakerConfig.builder()
+    .withRandom(Random(42))
+    .build();
+Faker otherFaker = new Faker(otherConfig);
+String city2 = otherFaker.getAddress().city();
+
+assertEquals(city1, city2);
+
+</code></pre></div>
+
+</div>
+<hr>
+<span class="icon-text">
+  <span class="icon"><i class="fas fa-list-ul"></i></span>
+  <span>
+    <a href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration#toc">back-to-toc</a>
+  </span>
+</span>
+<p><br></p>
+<h2 id="locale"><a href="#locale" id="locale" class="anchor"></a>Locale</h2>
+<p>By default <code>Faker</code> uses <code>en_US</code>-localized dict files to generate data:</p>
+<div class="tabs">
+  <ul data-tabs="ILbjm0Idye">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="ILbjm0Idye">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val faker = Faker()
+assertEquals(faker.address.defaultCountry(), &quot;United States of America&quot;)
+
+</code></pre></div>
+
+</div>
+<p><br></p>
+<p>When needed, <code>Faker</code> can be configured to use a custom localized dictionary file instead:</p>
+<div class="tabs">
+  <ul data-tabs="E1I91D40FM">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+    <li >
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-java"></span>
+          java
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="E1I91D40FM">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val config = fakerConfig { locale = &quot;nb-NO&quot; }
+val faker = Faker(config)
+assertEquals(faker.address.defaultCountry(), &quot;Norge&quot;)
+
+</code></pre></div>
+
+  <div class=" tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-java">FakerConfig config = FakerConfig.builder()
+    .withLocale(&quot;nb-NO&quot;)
+    .build();
+Faker faker = new Faker(config);
+assertEquals(faker.getAddress().defaultCountry(), &quot;Norge&quot;);
+
+</code></pre></div>
+
+</div>
+<div class="box has-background-white-ter">
+  <div class="note">
+    <div class="note-heading">
+    <h5><span class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+        <path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
+      </svg>
+    </span>info</h5>
+    </div>
+    <div class="note-content">
+      <p><p>The <code>locale</code> configuration property should be set following the <code>.yml</code> dict file name, that is a <code>-</code> should be used as a delimiter between &quot;language&quot; and &quot;country&quot; values instead of <code>_</code>, i.e. <code>nb-NO</code> instead of <code>nb_NO</code>.</p></p>
+    </div>
+  </div>
+</div>
+<p><br></p>
+<hr />
+<p><br></p>
+<p>Using a non-default locale will replace the values in <em>some</em> of the providers with the values from localized dictionary.</p>
+<div class="tabs">
+  <ul data-tabs="ytrD89jPkW">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="ytrD89jPkW">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val config = fakerConfig { locale = &quot;es&quot; }
+val faker = Faker(config)
+faker.address.city() // =&gt; Barcelona
+</code></pre></div>
+
+</div>
+<p><br></p>
+<div class="box has-background-white-ter">
+  <div class="note">
+    <div class="note-heading">
+    <h5><span class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+        <path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
+      </svg>
+    </span>info</h5>
+    </div>
+    <div class="note-content">
+      <p>Note that if the localized dictionary file does not contain a category (or a parameter in a category)
+that is present in the default locale, then non-localized (`en`) value will be generated instead.
+
+<div class="tabs">
+  <ul data-tabs="3OqUGRccXE">
+  
+    <li class="is-active">
+      <a>
+      
+        <p>
+          <span class="iconify-inline" data-icon="vscode-icons:file-type-kotlin"></span>
+          kotlin
+        </p>
+      
+      </a>
+    </li>
+  
+  </ul>
+</div>
+<div data-panes="3OqUGRccXE">
+
+  <div class="is-block tab-hidden content is-medium-tablet is-large-fullhd"><pre><code class="language-kotlin">val faker = Faker() // uses default 'en' locale
+faker.gameOfThrones.cities() // =&gt; Braavos
+
+val config = fakerConfig {
+    locale = &quot;nb-NO&quot;
+}
+val localizedFaker = Faker(config)
+// 'game_of_thrones' category is not localized for `nb-NO` locale
+// and non-localized value is returned instead
+localizedFaker.gameOfThrones.cities() // =&gt; Braavos
+</code></pre></div>
+
+</div></p>
+    </div>
+  </div>
+</div>
+<hr />
+<p><br></p>
+<div class="box has-background-white-ter">
+  <div class="content is-medium">
+    <p class="description-text">
+    A list of all locales, and their corresponding dictionary files, can be found on the <a href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a> page.
+    </p>
+  </div>
+</div>
+<hr>
+<span class="icon-text">
+  <span class="icon"><i class="fas fa-list-ul"></i></span>
+  <span>
+    <a href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration#toc">back-to-toc</a>
+  </span>
+</span>
+<p><br></p>
+<h2 id="random-class-instance"><a href="#random-class-instance" id="random-class-instance" class="anchor"></a>Random Class Instance</h2>
+<p><a href="https://serpro69.github.io/kotlin-faker/wiki/extras#random-instance-of-any-class">RandomClassInstance</a> can also be configured both from the <code>FakerConfig</code> level.</p>
+<div class="box has-background-white-ter">
+  <div class="note">
+    <div class="note-heading">
+    <h5><span class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+        <path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
+      </svg>
+    </span>info</h5>
+    </div>
+    <div class="note-content">
+      <p>This configuration takes the least precedence and will be overridden by config set on the `faker.randomProvider` level or on the `randomClassInstance` function level.
+See [Random Class Instance Configuration](https://serpro69.github.io/kotlin-faker/wiki/extras#random-class-instance-configuration) for more details.</p>
+    </div>
+  </div>
+</div>
+<hr>
+<span class="icon-text">
+  <span class="icon"><i class="fas fa-list-ul"></i></span>
+  <span>
+    <a href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration#toc">back-to-toc</a>
+  </span>
+</span>
+<p><br></p>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous button is-large is-link is-outlined"
+   href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom" >
+      <span class="icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+  </a>
+  <a class="pagination-next button is-large is-link is-outlined"
+   href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator" >
+      <span class="icon">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+  </a>
+</nav>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

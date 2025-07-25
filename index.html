@@ -1,0 +1,878 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>kotlin-faker</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/homepage.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+
+<section class="columns is-centered">
+  <div class="column">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 200">
+      <style>
+        @namespace svg url(http://www.w3.org/2000/svg);
+        svg {
+          font-family: Helvetica, Arial, sans-serif;
+          text-rendering: geometricPrecision;
+        }
+        svg|a:link, svg|a:visited {
+          cursor: pointer;
+        }
+        .flag-blue {
+          fill: #0057b7;
+        }
+        .flag-yellow {
+          fill: #ffd700;
+        }
+        .message {
+          fill: white;
+          font-size: 20px;
+        }
+        .call {
+          fill: black;
+          font-size: 32px;
+        }
+        .mobile-only {
+          display: none;
+        }
+        .arrow {
+          font-size: 24px;
+        }
+        @media (max-width: 770px) {
+          .message {
+            display: none;
+            font-size: 29px;
+          }
+          .mobile-only {
+            display: inherit;
+          }
+          .call {
+            font-size: 36px;
+          }
+        }
+      </style>
+      <a href="https://stand-with-ukraine.pp.ua">
+        <rect x="0" y="0" width="100%" height="100%" class="flag-yellow"/>
+        <rect x="0" y="0" width="100%" height="110px" class="flag-blue"/>
+        <text x="0" y="25" class="message">
+          <tspan x="25" dy="0.45em">This project was created by a developer from Ukraine.</tspan>
+          <tspan x="25" dy="1.3em">Russia has invaded Ukraine and already killed tens of thousands of civilians, with many more raped or tortured.</tspan>
+          <tspan x="25" dy="1.3em">The death toll keeps climbing. It's a <tspan font-weight="bold">genocide</tspan>. We need your help. Let's fight back against the Russian regime.</tspan>
+        </text>
+        <text x="0" y="25" class="message mobile-only">
+          <tspan x="25" dy=".7em">Russia has invaded Ukraine and already killed tens of thousands of civilians,</tspan>
+          <tspan x="25" dy="1.2em">with many more raped or tortured. It's a <tspan font-weight="bold">genocide</tspan>. We need your help.</tspan>
+        </text>
+        <text x="50%" y="78.5%" dominant-baseline="middle" text-anchor="middle" class="call">
+          Help Ukraine Now <tspan dominant-baseline="middle" class="arrow">➔</tspan>
+        </text>
+      </a>
+    </svg>
+
+    <div>
+      <style>
+        p {
+          font-size: 24px;
+          text-align: center;
+        }
+      </style>
+      <p style="color:white;background:#0057b7;padding-bottom:0px;margin-bottom:0px">Are you considering supporting the project by donating to me? Please DO NOT!!!</p>
+      <p style="color:black;background:#ffd700;">Please visit the above banner link and make a small donation to help the people in Ukraine. A small donation goes a long way. 💙💛</p>
+    </div>
+  </div>
+</section>
+
+<section class="columns is-centered">
+  <div class="column is-one-quarter"></div>
+  <div class="column is-half">
+    <figure class="image">
+      <img src="https://serpro69.github.io/kotlin-faker/assets/images/name.png" alt="kotlin-faker">
+    </figure>
+  </div>
+  <div class="column is-one-quarter">
+    <a href="https://github.com/serpro69/kotlin-faker" class="github-corner" aria-label="Fork me on GitHub">
+      <svg width="128" height="128" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: relative; top: 0; border: 0; right: 0; left: 50%" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      </svg>
+    </a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  </div>
+</section>
+
+<section class="columns is-centered">
+  <div class="column">
+    <p>
+      <a href="https://github.com/serpro69/kotlin-faker/actions/workflows/build.yml">
+        <img src="https://img.shields.io/github/actions/workflow/status/serpro69/kotlin-faker/build.yml?branch=master&logo=github&style=for-the-badge" alt="Build Status">
+      </a>
+      <a href="https://search.maven.org/artifact/io.github.serpro69/kotlin-faker">
+        <img src="https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge" alt="Maven Central">
+      </a>
+      <a href="https://serpro69.github.io/kotlin-faker/wiki/getting-started#snapshots">
+        <img src="https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow" alt="Sonatype Nexus (Snapshots)">
+      </a>
+      <a href="https://github.com/serpro69/kotlin-faker/issues">
+        <img src="https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&amp;style=for-the-badge&amp;color=lightblue" alt="Issues">
+      </a>
+      <img src="https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&amp;logoColor=white&amp;color=a97bff&amp;style=for-the-badge" alt="GitHub Top Lang">
+      <a href="https://kotlin.link/resources?q=kotlin-faker">
+        <img src="https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&amp;style=for-the-badge" alt="Awesome Kotlin">
+      </a>
+      <a href="https://serpro69.github.io/kotlin-faker/license">
+        <img src="https://img.shields.io/github/license/serpro69/kotlin-faker.svg?style=for-the-badge" alt="Licence">
+      </a>
+    </p>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="columns is-centered">
+  <div class="column is-8">
+    <p class="description-text">
+      <h3>kotlin-faker: the ultimate fake data generation library for development and testing</h3>
+    </p>
+    <div class="content is-medium">
+      <p class="description-text">
+        Kotlin-faker is a comprehensive data-generation library for the JVM.
+        It is most suitable for development, testing, and data anonymization purposes,
+        and can be used with Kotlin, Java, Android, Scala, and other JVM-based projects.
+        Kotlin-faker provides realistic-looking, fake data generation capabilities in various domains like
+        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮, 
+        and <a href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">many more</a>.
+      </p>
+      <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo.png" alt="faker-logo" class="description-logo">
+      <p class="description-text">
+        In fact, kotlin-faker is so good at generating fake data, it almost fooled us into thinking it was real! 😱
+        From names that sound like they belong to secret agents 🕴️, to addresses where superheroes 🦸 might live.
+        <br>
+        Use kotlin-faker during development and testing to ensure your application data looks as if it was real,
+        just like this <i>really</i> fake logo, but not quite so.
+        <br><br>
+        <i>Kotlin-faker is a kotlin port of a popular <a href="https://github.com/stympy/faker">ruby faker</a> gem written from scratch in kotlin.</i>
+      </p>
+      <p class="description-text">
+        ⚠️ P.S.
+        <i>All names, addresses, bank accounts, and other data generated by this library - even those based on real strings - are entirely fictional.</i> 🦹
+        <i>All produced data is fake and generated... poorly</i> 💩
+        <i>The data is completely made up, but the problems that it tries to solve are real</i> 👽
+        <i>We take no responsibility for any existential crises caused by the eerily convincing fake data.</i>
+        <i>Use with caution!</i> ⚠️
+      </p>
+      <br>
+      <p style="clear:both;">Some of the bits that kotlin-faker gives you are…</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">…a plethora of real-looking data in various domains:</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = Faker()&#13;</code></pre>
+  </div>
+
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Names
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.name.nameWithMiddle() // =&gt; Dr. John Abrams Smith&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Addresses
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.address.streetAddress() // =&gt; 474 Kilback Manor&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Internet
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.internet.safeEmail() // =&gt; chance.marvin@yahoo.test&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Banking
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = CommerceFaker()
+faker.bank.swiftBic() // =&gt; AACCGB21&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Books
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = BooksFaker()
+faker.book.genre() // =&gt; Fantasy&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Movies and TV
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = MoviesFaker()
+faker.starWars.characters() // =&gt; Darth Vader&#13;val faker = TvShowsFaker()
+faker.friends.characters() // =&gt; Phoebe Buffay&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      …and many others
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">// a total of 213 different data providers&#13;</code></pre>
+    </div>
+  
+
+</section>
+
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">…in 60 locales:</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val config = fakerConfig { locale = &quot;nb-NO&quot; }
+val faker = Faker(config)&#13;</code></pre>
+  </div>
+
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      nb_NO -&gt; city
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.address.city() // =&gt; Høyberg&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      nb_NO -&gt; person‘s name
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.name.nameWithMiddle() // =&gt; Sofie Ødegård Løken&#13;</code></pre>
+    </div>
+  
+
+</section>
+
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">…“unique data generation”:</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = Faker()&#13;</code></pre>
+  </div>
+
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Generate unique values within a domain
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.unique.configuration {
+    // enable generation of unique values for address data provider
+    enable(faker::address)
+}
+val countries = List(100) { faker.address.country() }
+assertEquals(countries.distinct().size, 100)&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Generate unique values within a function
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val countries = List(100) { faker.address.unique.country() }
+val cities = List(1000) { faker.address.city() }
+assertEquals(countries.distinct().size, 100)
+assertTrue(cities.distinct().size &lt; 1000)&#13;</code></pre>
+    </div>
+  
+
+</section>
+
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">…cli native app for looking up data generators:</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+      <pre class="notification content is-medium is-dark"><code class="language-bash">faker-bot lookup name --verbose
+#Faker()
+#├── address
+#│   ├── cityName() // =&gt; Port Olinstad
+#│   ├── countryByName() // =&gt; NR
+#│   └── streetName() // =&gt; Lance Roads
+#├── animal
+#│   └── name() // =&gt; gnat
+#├── app
+#│   └── name() // =&gt; Bamity
+#├── artist
+#│   └── names() // =&gt; Cezanne
+#├── bank
+#│   └── name() // =&gt; ABN AMRO HOARE GOVETT SECURITIES
+#├── beer
+#│   └── name() // =&gt; Oaked Arrogant Bastard Ale
+# rest of output that matches query&#13;</code></pre>
+  </div>
+
+  
+
+</section>
+
+<section class="columns is-multiline is-gapless">
+  <header class="column is-4 has-text-right-tablet">
+    <div class="notification content is-medium">
+      <h2 class="title is-4">…and more:</h2>
+    </div>
+  </header>
+  <div class="column is-8 is-hidden-mobile">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">val faker = Faker()&#13;</code></pre>
+  </div>
+
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Random instance of any class…
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">class Foo(val a: String)
+class Bar(val foo: Foo)
+
+val foo: Foo = faker.randomClass.randomClassInstance()
+val bar: Bar = faker.randomClass.randomClassInstance()&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      …with pre-configured type generation
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">class Baz(val id: Int, val uuid: UUID, val username: String)
+
+val baz: Baz = faker.randomClass.randomClassInstance {
+    // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameter values with parameter name!
+    typeGenerator&lt;String&gt; { parameterInfo -&gt; &quot;${parameterInfo.name}_${randomString()}&quot; }
+    typeGenerator&lt;UUID&gt; { UUID.fromString(&quot;00000000-0000-0000-0000-000000000000&quot;) }
+    typeGenerator&lt;Int&gt; { faker.random.nextInt(min = 0, max = 9) }
+}
+assertEquals(baz.username, &quot;username_X3a8s813dcb&quot;)
+assertEquals(baz.uuid, UUID.fromString(&quot;00000000-0000-0000-0000-000000000000&quot;))
+assertTrue(baz.id in 0..9)&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      String templates
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.string.numerify(&quot;foo###bar&quot;) // foo123bar
+faker.string.letterify(&quot;foo???bar&quot;, true) // fooXYZbar
+faker.string.bothify(&quot;foo?##bar&quot;, false) // foox42bar
+faker.string.regexify(&quot;&quot;&quot;\d{2}\w&quot;&quot;&quot;) // 42a&#13;</code></pre>
+    </div>
+  
+    <div class="column is-4 has-text-right-tablet">
+      <div class="notification content is-medium">
+      Random numbers, strings, enums, UUIDs, and more…
+      </div>
+    </div>
+    <div class="column is-8">
+      <pre class="notification content is-medium is-dark"><code class="language-kotlin">faker.random.nextInt(intRange = 0..1000)
+faker.random.nextLong(bound = 999L)
+faker.random.randomString(length = 99)
+faker.random.nextEnum&lt;TestEnum&gt;()
+faker.random.nextEnum(TestEnum::class.java) {
+    it != TestEnum.SOME // Exclude &#39;SOME&#39; enum
+}
+faker.random.nextUUID()&#13;</code></pre>
+    </div>
+  
+
+</section>
+
+
+<section class="columns is-centered is-multiline">
+  <div class="column">
+    <div class="box has-background-white-ter">
+  <div class="content is-medium">
+    <p class="description-text">
+    See the pages under the <span class="icon"><i class="fas fa-graduation-cap"></i></span> User Guide section,
+    jump straight to the
+    <a href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a> page,
+    or explore the
+    Data Provider API
+    or the
+    Full Core API
+    documentation to learn more.
+    </p>
+  </div>
+</div>
+
+  </div>
+</section>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

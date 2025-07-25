@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Book</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/book" aria-current="page">Book</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_book"><code>Faker().book</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    book:
+      title:
+        - Absalom, Absalom!
+        - After Many a Summer Dies the Swan
+        - Ah, Wilderness!
+        - All Passion Spent
+        - All the King's Men
+        - Alone on a Wide, Wide Sea
+        - An Acceptable Time
+        - Antic Hay
+        - An Evil Cradling
+        - Arms and the Man
+        - As I Lay Dying
+        - A Time to Kill
+        - Behold the Man
+        - Beneath the Bleeding
+        - Beyond the Mexique Bay
+        - Blithe Spirit
+        - Blood's a Rover
+        - Blue Remembered Earth
+        - Rosemary Sutcliff
+        - Françoise Sagan
+        - Brandy of the Damned
+        - Bury My Heart at Wounded Knee
+        - Butter In a Lordly Dish
+        - By Grand Central Station I Sat Down and Wept
+        - Cabbages and Kings
+        - Carrion Comfort
+        - A Catskill Eagle
+        - Clouds of Witness
+        - A Confederacy of Dunces
+        - Consider Phlebas
+        - Consider the Lilies
+        - Cover Her Face
+        - The Cricket on the Hearth
+        - The Curious Incident of the Dog in the Night-Time
+        - The Daffodil Sky
+        - Dance Dance Dance
+        - A Darkling Plain
+        - Death Be Not Proud
+        - The Doors of Perception
+        - Down to a Sunless Sea
+        - Dulce et Decorum Est
+        - Dying of the Light
+        - East of Eden
+        - Ego Dominus Tuus
+        - Endless Night
+        - Everything is Illuminated
+        - Eyeless in Gaza
+        - Fair Stood the Wind for France
+        - Fame Is the Spur
+        - Edna O'Brien
+        - The Far-Distant Oxus
+        - A Farewell to Arms
+        - Far From the Madding Crowd
+        - Fear and Trembling
+        - For a Breath I Tarry
+        - For Whom the Bell Tolls
+        - Frequent Hearses
+        - From Here to Eternity
+        - A Glass of Blessings
+        - The Glory and the Dream
+        - The Golden Apples of the Sun
+        - The Golden Bowl
+        - Gone with the Wind
+        - The Grapes of Wrath
+        - Great Work of Time
+        - The Green Bay Tree
+        - A Handful of Dust
+        - Have His Carcase
+        - The Heart Is a Lonely Hunter
+        - The Heart Is Deceitful Above All Things
+        - His Dark Materials
+        - The House of Mirth
+        - Sleep the Brave
+        - I Know Why the Caged Bird Sings
+        - I Sing the Body Electric
+        - I Will Fear No Evil
+        - If I Forget Thee Jerusalem
+        - If Not Now, When?
+        - Infinite Jest
+        - In a Dry Season
+        - In a Glass Darkly
+        - In Death Ground
+        - In Dubious Battle
+        - An Instant In The Wind
+        - It's a Battlefield
+        - Jacob Have I Loved
+        - O Jerusalem!
+        - Jesting Pilate
+        - The Last Enemy
+        - The Last Temptation
+        - The Lathe of Heaven
+        - Let Us Now Praise Famous Men
+        - Lilies of the Field
+        - This Lime Tree Bower
+        - The Line of Beauty
+        - The Little Foxes
+        - Little Hands Clapping
+        - Look Homeward, Angel
+        - Look to Windward
+        - The Man Within
+        - Many Waters
+        - A Many-Splendoured Thing
+        - The Mermaids Singing
+        - The Millstone
+        - The Mirror Crack'd from Side to Side
+        - Moab Is My Washpot
+        - The Monkey's Raincoat
+        - A Monstrous Regiment of Women
+        - The Moon by Night
+        - Mother Night
+        - The Moving Finger
+        - The Moving Toyshop
+        - Mr Standfast
+        - Nectar in a Sieve
+        - The Needle's Eye
+        - Nine Coaches Waiting
+        - No Country for Old Men
+        - No Highway
+        - Noli Me Tangere
+        - No Longer at Ease
+        - Now Sleeps the Crimson Petal
+        - Number the Stars
+        - Of Human Bondage
+        - Of Mice and Men
+        - Oh! To be in England
+        - The Other Side of Silence
+        - The Painted Veil
+        - Pale Kings and Princes
+        - The Parliament of Man
+        - Paths of Glory
+        - A Passage to India
+        - O Pioneers!
+        - Postern of Fate
+        - Precious Bane
+        - The Proper Study
+        - Quo Vadis
+        - Recalled to Life
+        - Recalled to Life
+        - Ring of Bright Water
+        - The Road Less Traveled
+        - A Scanner Darkly
+        - Shall not Perish
+        - The Skull Beneath the Skin
+        - The Soldier's Art
+        - Some Buried Caesar
+        - Specimen Days
+        - The Stars' Tennis Balls
+        - Stranger in a Strange Land
+        - Such, Such Were the Joys
+        - A Summer Bird-Cage
+        - The Sun Also Rises
+        - Surprised by Joy
+        - A Swiftly Tilting Planet
+        - Taming a Sea Horse
+        - Tender Is the Night
+        - Terrible Swift Sword
+        - That Good Night
+        - That Hideous Strength
+        - Things Fall Apart
+        - This Side of Paradise
+        - Those Barren Leaves, Thrones, Dominations
+        - Tiger! Tiger!
+        - A Time of Gifts
+        - Time of our Darkness
+        - Time To Murder And Create
+        - Tirra Lirra by the River
+        - To a God Unknown
+        - To Sail Beyond the Sunset
+        - To Say Nothing of the Dog
+        - To Your Scattered Bodies Go
+        - The Torment of Others
+        - Unweaving the Rainbow
+        - Vanity Fair
+        - Vile Bodies
+        - The Violent Bear It Away
+        - Waiting for the Barbarians
+        - The Waste Land
+        - The Way of All Flesh
+        - The Way Through the Woods
+        - The Wealth of Nations
+        - What's Become of Waring
+        - When the Green Woods Laugh
+        - Where Angels Fear to Tread
+        - The Widening Gyre
+        - Wildfire at Midnight
+        - The Wind's Twelve Quarters
+        - The Wings of the Dove
+        - The Wives of Bath
+        - The World, the Flesh and the Devil
+        - The Yellow Meads of Asphodel
+      author: "#{Name.name}"
+      publisher:
+        - Academic Press
+        - Ace Books
+        - Addison-Wesley
+        - Adis International
+        - Airiti Press
+        - André Deutsch
+        - Andrews McMeel Publishing
+        - Anova Books
+        - Anvil Press Poetry
+        - Applewood Books
+        - Apress
+        - Athabasca University Press
+        - Atheneum Books
+        - Atheneum Publishers
+        - Atlantic Books
+        - Atlas Press
+        - Ballantine Books
+        - Banner of Truth Trust
+        - Bantam Books
+        - Bantam Spectra
+        - Barrie &amp; Jenkins
+        - Basic Books
+        - BBC Books
+        - Harvard University Press
+        - Belknap Press
+        - Bella Books
+        - Bellevue Literary Press
+        - Berg Publishers
+        - Berkley Books
+        - Bison Books
+        - Black Dog Publishing
+        - Black Library
+        - Black Sparrow Books
+        - Blackie and Son Limited
+        - Blackstaff Press
+        - Blackwell Publishing
+        - John Blake Publishing
+        - Bloodaxe Books
+        - Bloomsbury Publishing Plc
+        - Blue Ribbon Books
+        - Book League of America
+        - Book Works
+        - Booktrope
+        - Borgo Press
+        - Bowes &amp; Bowes
+        - Boydell &amp; Brewer
+        - Breslov Research Institute
+        - Brill Publishers
+        - Brimstone Press
+        - Broadview Press
+        - Burns &amp; Oates
+        - Butterworth-Heinemann
+        - Caister Academic Press
+        - Cambridge University Press
+        - Candlewick Press
+        - Canongate Books
+        - Carcanet Press
+        - Carlton Books
+        - Carlton Publishing Group
+        - Carnegie Mellon University Press
+        - Casemate Publishers
+        - Cengage Learning
+        - Central European University Press
+        - Chambers Harrap
+        - Charles Scribner's Sons
+        - Chatto and Windus
+        - Chick Publications
+        - Chronicle Books
+        - Churchill Livingstone
+        - Cisco Press
+        - City Lights Publishers
+        - Cloverdale Corporation
+        - D. Appleton &amp; Company
+        - D. Reidel
+        - Da Capo Press
+        - Daedalus Publishing
+        - Dalkey Archive Press
+        - Darakwon Press
+        - David &amp; Charles
+        - DAW Books
+        - Dedalus Books
+        - Del Rey Books
+        - E. P. Dutton
+        - Earthscan
+        - ECW Press
+        - Eel Pie Publishing
+        - Eerdmans Publishing
+        - Edupedia Publications
+        - Ellora's Cave
+        - Elsevier
+        - Emerald Group Publishing
+        - Etruscan Press
+        - Faber and Faber
+        - FabJob
+        - Fairview Press
+        - Farrar, Straus &amp; Giroux
+        - Fearless Books
+        - Felony &amp; Mayhem Press
+        - Firebrand Books
+        - Flame Tree Publishing
+        - Focal Press
+        - G. P. Putnam's Sons
+        - G-Unit Books
+        - Gaspereau Press
+        - Gay Men's Press
+        - Gefen Publishing House
+        - George H. Doran Company
+        - George Newnes
+        - George Routledge &amp; Sons
+        - Godwit Press
+        - Golden Cockerel Press
+        - Hachette Book Group USA
+        - Hackett Publishing Company
+        - Hamish Hamilton
+        - Happy House
+        - Harcourt Assessment
+        - Harcourt Trade Publishers
+        - Harlequin Enterprises Ltd
+        - Harper &amp; Brothers
+        - Harper &amp; Row
+        - HarperCollins
+        - HarperPrism
+        - HarperTrophy
+        - Harry N. Abrams, Inc.
+        - Harvard University Press
+        - Harvest House
+        - Harvill Press at Random House
+        - Hawthorne Books
+        - Hay House
+        - Haynes Manuals
+        - Heyday Books
+        - HMSO
+        - Hodder &amp; Stoughton
+        - Hodder Headline
+        - Hogarth Press
+        - Holland Park Press
+        - Holt McDougal
+        - Horizon Scientific Press
+        - Ian Allan Publishing
+        - Ignatius Press
+        - Imperial War Museum
+        - Indiana University Press
+        - J. M. Dent
+        - Jaico Publishing House
+        - Jarrolds Publishing
+        - Karadi Tales
+        - Kensington Books
+        - Kessinger Publishing
+        - Kodansha
+        - Kogan Page
+        - Koren Publishers Jerusalem
+        - Ladybird Books
+        - Leaf Books
+        - Leafwood Publishers
+        - Left Book Club
+        - Legend Books
+        - Lethe Press
+        - Libertas Academica
+        - Liberty Fund
+        - Library of America
+        - Lion Hudson
+        - Macmillan Publishers
+        - Mainstream Publishing
+        - Manchester University Press
+        - Mandrake of Oxford
+        - Mandrake Press
+        - Manning Publications
+        - Manor House Publishing
+        - Mapin Publishing
+        - Marion Boyars Publishers
+        - Mark Batty Publisher
+        - Marshall Cavendish
+        - Marshall Pickering
+        - Martinus Nijhoff Publishers
+        - Mascot Books
+        - Matthias Media
+        - McClelland and Stewart
+        - McFarland &amp; Company
+        - McGraw-Hill Education
+        - McGraw Hill Financial
+        - Medknow Publications
+        - Naiad Press
+        - Nauka
+        - NavPress
+        - New Directions Publishing
+        - New English Library
+        - New Holland Publishers
+        - New Village Press
+        - Newnes
+        - No Starch Press
+        - Nonesuch Press
+        - Oberon Books
+        - Open Court Publishing Company
+        - Open University Press
+        - Orchard Books
+        - O'Reilly Media
+        - Orion Books
+        - Packt Publishing
+        - Palgrave Macmillan
+        - Pan Books
+        - Pantheon Books at Random House
+        - Papadakis Publisher
+        - Parachute Publishing
+        - Parragon
+        - Pathfinder Press
+        - Paulist Press
+        - Pavilion Books
+        - Peace Hill Press
+        - Pecan Grove Press
+        - Pen and Sword Books
+        - Penguin Books
+        - Random House
+        - Reed Elsevier
+        - Reed Publishing
+        - SAGE Publications
+        - St. Martin's Press
+        - Salt Publishing
+        - Sams Publishing
+        - Schocken Books
+        - Scholastic Press
+        - Charles Scribner's Sons
+        - Seagull Books
+        - Secker &amp; Warburg
+        - Shambhala Publications
+        - Shire Books
+        - Shoemaker &amp; Hoard Publishers
+        - Shuter &amp; Shooter Publishers
+        - Sidgwick &amp; Jackson
+        - Signet Books
+        - Simon &amp; Schuster
+        - T &amp; T Clark
+        - Tachyon Publications
+        - Tammi
+        - Target Books
+        - Tarpaulin Sky Press
+        - Tartarus Press
+        - Tate Publishing &amp; Enterprises
+        - Taunton Press
+        - Taylor &amp; Francis
+        - Ten Speed Press
+        - UCL Press
+        - Unfinished Monument Press
+        - United States Government Publishing Office
+        - University of Akron Press
+        - University of Alaska Press
+        - University of California Press
+        - University of Chicago Press
+        - University of Michigan Press
+        - University of Minnesota Press
+        - University of Nebraska Press
+        - Velazquez Press
+        - Verso Books
+        - Victor Gollancz Ltd
+        - Viking Press
+        - Vintage Books
+        - Vintage Books at Random House
+        - Virago Press
+        - Virgin Publishing
+        - Voyager Books
+        - Brill
+        - Allen Ltd
+        - Zed Books
+        - Ziff Davis Media
+        - Zondervan
+      genre:
+        - Classic
+        - Comic/Graphic Novel
+        - Crime/Detective
+        - Fable
+        - Fairy tale
+        - Fanfiction
+        - Fantasy
+        - Fiction narrative
+        - Fiction in verse
+        - Folklore
+        - Historical fiction
+        - Horror
+        - Humor
+        - Legend
+        - Metafiction
+        - Mystery
+        - Mythology
+        - Mythopoeia
+        - Realistic fiction
+        - Science fiction
+        - Short story
+        - Suspense/Thriller
+        - Tall tale
+        - Western
+        - Biography/Autobiography
+        - Essay
+        - Narrative nonfiction
+        - Speech
+        - Textbook
+        - Reference book</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().book.title() // =&gt; Absalom, Absalom!
+
+Faker().book.author() // =&gt; John Smith
+
+Faker().book.publisher() // =&gt; Academic Press
+
+Faker().book.genre() // =&gt; Classic</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

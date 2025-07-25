@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>fa</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/fa" aria-current="page">fa</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_fa_yml"><code>fa.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">fa:
+  faker:
+    name:
+      first_name: [آبان دخت, آبتین, آتوسا, آفر, آفره دخت, آذرنوش‌, آذین, آراه, آرزو, آرش, آرتین, آرتام, آرتمن, آرشام, آرمان, آرمین, آرمیتا, آریا فر, آریا, آریا مهر, آرین, آزاده, آزرم, آزرمدخت, آزیتا, آناهیتا, آونگ, آهو, آیدا, اتسز, اختر, ارد, ارد شیر, اردوان, ارژن, ارژنگ, ارسلان, ارغوان, ارمغان, ارنواز, اروانه, استر, اسفندیار, اشکان, اشکبوس, افسانه, افسون, افشین, امید, انوش (‌ آنوشا ), انوشروان, اورنگ, اوژن, اوستا, اهورا, ایاز, ایران, ایراندخت, ایرج, ایزدیار, بابک, باپوک, باربد, بارمان, بامداد, بامشاد, بانو, بختیار, برانوش, بردیا, برزو, برزویه, برزین, برمک, بزرگمهر, بنفشه, بوژان, بویان, بهار, بهارک, بهاره, بهتاش, بهداد, بهرام, بهدیس, بهرخ, بهرنگ, بهروز, بهزاد, بهشاد, بهمن, بهناز, بهنام, بهنود, بهنوش, بیتا, بیژن, پارسا, پاکان, پاکتن, پاکدخت, پانته آ, پدرام, پرتو, پرشنگ, پرتو, پرستو, پرویز, پردیس, پرهام, پژمان, پژوا, پرنیا, پشنگ, پروانه, پروین, پری, پریچهر, پریدخت, پریسا, پرناز, پریوش, پریا, پوپک, پوران, پوراندخت, پوریا, پولاد, پویا, پونه, پیام, پیروز, پیمان, تابان, تاباندخت, تاجی, تارا, تاویار, ترانه, تناز, توران, توراندخت, تورج, تورتک, توفان, توژال, تیر داد, تینا, تینو, جابان, جامین, جاوید, جریره, جمشید, جوان, جویا, جهان, جهانبخت, جهانبخش, جهاندار, جهانگیر, جهان بانو, جهاندخت, جهان ناز, جیران, چابک, چالاک, چاوش, چترا, چوبین, چهرزاد, خاوردخت, خداداد, خدایار, خرم, خرمدخت, خسرو, خشایار, خورشید, دادمهر, دارا, داراب, داریا, داریوش, دانوش, داور‌, دایان, دریا, دل آرا, دل آویز, دلارام, دل انگیز, دلبر, دلبند, دلربا, دلشاد, دلکش, دلناز, دلنواز, دورشاسب, دنیا, دیااکو, دیانوش, دیبا, دیبا دخت, رابو, رابین, رادبانو, رادمان, رازبان, راژانه, راسا, رامتین, رامش, رامشگر, رامونا, رامیار, رامیلا, رامین, راویار, رژینا, رخپاک, رخسار, رخشانه, رخشنده, رزمیار, رستم, رکسانا, روبینا, رودابه, روزبه, روشنک, روناک, رهام, رهی, ریبار, راسپینا, زادبخت, زاد به, زاد چهر, زاد فر, زال, زادماسب, زاوا, زردشت, زرنگار, زری, زرین, زرینه, زمانه, زونا, زیبا, زیبار, زیما, زینو, ژاله, ژالان, ژیار, ژینا, ژیوار, سارا, سارک, سارنگ, ساره, ساسان, ساغر, سام, سامان, سانا, ساناز, سانیار, ساویز, ساهی, ساینا, سایه, سپنتا, سپند, سپهر, سپهرداد, سپیدار, سپید بانو, سپیده, ستاره, ستی, سرافراز, سرور, سروش, سرور, سوبا, سوبار, سنبله, سودابه, سوری, سورن, سورنا, سوزان, سوزه, سوسن, سومار, سولان, سولماز, سوگند, سهراب, سهره, سهند, سیامک, سیاوش, سیبوبه ‌, سیما, سیمدخت, سینا, سیمین, سیمین دخت, شاپرک, شادی, شادمهر, شاران, شاهپور, شاهدخت, شاهرخ, شاهین, شاهیندخت, شایسته, شباهنگ, شب بو, شبدیز, شبنم, شراره, شرمین, شروین, شکوفه, شکفته, شمشاد, شمین, شوان, شمیلا, شورانگیز, شوری, شهاب, شهبار, شهباز, شهبال, شهپر, شهداد, شهرآرا, شهرام, شهربانو, شهرزاد, شهرناز, شهرنوش, شهره, شهریار, شهرزاد, شهلا, شهنواز, شهین, شیبا, شیدا, شیده, شیردل, شیرزاد, شیرنگ, شیرو, شیرین دخت, شیما, شینا, شیرین, شیوا, طوس, طوطی, طهماسب, طهمورث, غوغا, غنچه, فتانه, فدا, فراز, فرامرز, فرانک, فراهان, فربد, فربغ, فرجاد, فرخ, فرخ پی, فرخ داد, فرخ رو, فرخ زاد, فرخ لقا, فرخ مهر, فرداد, فردیس, فرین, فرزاد, فرزام, فرزان, فرزانه, فرزین, فرشاد, فرشته, فرشید, فرمان, فرناز, فرنگیس, فرنود, فرنوش, فرنیا, فروتن, فرود, فروز, فروزان, فروزش, فروزنده, فروغ, فرهاد, فرهنگ, فرهود, فربار, فریبا, فرید, فریدخت, فریدون, فریمان, فریناز, فرینوش, فریوش, فیروز, فیروزه, قابوس, قباد, قدسی, کابان, کابوک, کارا, کارو, کاراکو, کامبخت, کامبخش, کامبیز, کامجو, کامدین, کامران, کامراوا, کامک, کامنوش, کامیار, کانیار, کاووس, کاوه, کتایون, کرشمه, کسری, کلاله, کمبوجیه, کوشا, کهبد, کهرام, کهزاد, کیارش, کیان, کیانا, کیانچهر, کیاندخت, کیانوش, کیاوش, کیخسرو, کیقباد, کیکاووس, کیوان, کیوان دخت, کیومرث, کیهان, کیاندخت, کیهانه, گرد آفرید, گردان, گرشا, گرشاسب, گرشین, گرگین, گزل, گشتاسب, گشسب, گشسب بانو, گل, گل آذین, گل آرا‌, گلاره, گل افروز, گلاله, گل اندام, گلاویز, گلباد, گلبار, گلبام, گلبان, گلبانو, گلبرگ, گلبو, گلبهار, گلبیز, گلپاره, گلپر, گلپری, گلپوش, گل پونه, گلچین, گلدخت, گلدیس, گلربا, گلرخ, گلرنگ, گلرو, گلشن, گلریز, گلزاد, گلزار, گلسا, گلشید, گلنار, گلناز, گلنسا, گلنواز, گلنوش, گلی, گودرز, گوماتو, گهر چهر, گوهر ناز, گیتی, گیسو, گیلدا, گیو, لادن, لاله, لاله رخ, لاله دخت, لبخند, لقاء, لومانا, لهراسب, مارال, ماری, مازیار, ماکان, مامک, مانا, ماندانا, مانوش, مانی, مانیا, ماهان, ماهاندخت, ماه برزین, ماه جهان, ماهچهر, ماهدخت, ماهور, ماهرخ, ماهزاد, مردآویز, مرداس, مرزبان, مرمر, مزدک, مژده, مژگان, مستان, مستانه, مشکاندخت, مشکناز, مشکین دخت, منیژه, منوچهر, مهبانو, مهبد, مه داد, مهتاب, مهدیس, مه جبین, مه دخت, مهر آذر, مهر آرا, مهر آسا, مهر آفاق, مهر افرین, مهرآب, مهرداد, مهر افزون, مهرام, مهران, مهراندخت, مهراندیش, مهرانفر, مهرانگیز, مهرداد, مهر دخت, مهرزاده ‌, مهرناز, مهرنوش, مهرنکار, مهرنیا, مهروز, مهری, مهریار, مهسا, مهستی, مه سیما, مهشاد, مهشید, مهنام, مهناز, مهنوش, مهوش, مهیار, مهین, مهین دخت, میترا, میخک, مینا, مینا دخت, مینو, مینودخت, مینو فر, نادر, ناز آفرین, نازبانو, نازپرور, نازچهر, نازفر, نازلی, نازی, نازیدخت, نامور, ناهید, ندا, نرسی, نرگس, نرمک, نرمین, نریمان, نسترن, نسرین, نسرین دخت, نسرین نوش, نکیسا, نگار, نگاره, نگارین, نگین, نوا, نوش, نوش آذر, نوش آور, نوشا, نوش آفرین, نوشدخت, نوشروان, نوشفر, نوشناز, نوشین, نوید, نوین, نوین دخت, نیش ا, نیک بین, نیک پی, نیک چهر, نیک خواه, نیکداد, نیکدخت, نیکدل, نیکزاد, نیلوفر, نیما, وامق, ورجاوند, وریا, وشمگیر, وهرز, وهسودان, ویدا, ویس, ویشتاسب, ویگن, هژیر, هخامنش, هربد( هیربد ), هرمز, همایون, هما, همادخت, همدم, همراز, همراه, هنگامه, هوتن, هور, هورتاش, هورچهر, هورداد, هوردخت, هورزاد, هورمند, هوروش, هوشنگ, هوشیار, هومان, هومن, هونام, هویدا, هیتاسب, هیرمند, هیما, هیوا, یادگار, یاسمن ( یاسمین ), یاشار, یاور, یزدان, یگانه, یوشیتا]
+      last_name:  [عارف, عاشوری, عالی, عبادی, عبدالکریمی, عبدالملکی, عراقی, عزیزی, عصار, عقیلی, علم, علم‌الهدی, علی عسگری, علی‌آبادی, علیا, علی‌پور, علی‌زمانی, عنایت, غضنفری, غنی, فارسی, فاطمی, فانی, فتاحی, فرامرزی, فرج, فرشیدورد, فرمانفرمائیان, فروتن, فرهنگ, فریاد, فنایی, فنی‌زاده, فولادوند, فهمیده, قاضی, قانعی, قانونی, قمیشی, قنبری, قهرمان, قهرمانی, قهرمانیان, قهستانی, کاشی, کاکاوند, کامکار, کاملی, کاویانی, کدیور, کردبچه, کرمانی, کریمی, کلباسی, کمالی, کوشکی, کهنمویی, کیان, کیانی (نام خانوادگی), کیمیایی, گل محمدی, گلپایگانی, گنجی, لاجوردی, لاچینی, لاهوتی, لنکرانی, لوکس, مجاهد, مجتبایی, مجتبوی, مجتهد شبستری, مجتهدی, مجرد, محجوب, محجوبی, محدثی, محمدرضایی, محمدی, مددی, مرادخانی, مرتضوی, مستوفی, مشا, مصاحب, مصباح, مصباح‌زاده, مطهری, مظفر, معارف, معروف, معین, مفتاح, مفتح, مقدم, ملایری, ملک, ملکیان, منوچهری, موحد, موسوی, موسویان, مهاجرانی, مهدی‌پور, میرباقری, میردامادی, میرزاده, میرسپاسی, میزبانی, ناظری, نامور, نجفی, ندوشن, نراقی, نعمت‌زاده, نقدی, نقیب‌زاده, نواب, نوبخت, نوبختی, نهاوندی, نیشابوری, نیلوفری, واثقی, واعظ, واعظ‌زاده, واعظی, وکیلی, هاشمی, هاشمی رفسنجانی, هاشمیان, هامون, هدایت, هراتی, هروی, همایون, همت, همدانی, هوشیار, هومن, یاحقی, یادگار, یثربی, یلدا]
+      male_first_name: [آبتین, آتش, آترین, آتورپات, آذرخش, آذرمه, آذین, آرتین, آرام, آراز, آراد, آرتا, آرتان, آرش, آرشام, آرمان, آرمین, آروین, آریا, آریابان, آریانا, آرین, آریوبرزن, آزاد, آزرمگان, آساد, آستیاژ, آستیاگ, آلان, آوه, آویژه, آیین‌گشسب, آریو, آریافر, آریامن, آریامنش, آریامهر, آریان, اخگر, ارخشا, اُرُد, اردشیر, اردلان, اردوان, ارژنگ, ارس, ارشا, آرشام, الیاس, اَرَشک, ارشیا, ارمایل, اروند, اژدر, اسفندیار, اشک, اشکان, اشکبوس, افراسیاب, افشار, افشین, البرز, الوند, امید, انوش, انوشیروان, اورمزد, اورنگ, ایرج, ایشتوویگو, بابک, باربد, بامداد, بامین, بامشاد, بردیا, بزرگمهر, به‌آیین, بهبد, بهرام, بهمن, بهمنش, بیژن, بهروز, بهراد, بهرنگ, بهزاد, بهداد, بهشاد, بهنام, برسام, برزو, برنا, برزن, برومند, برزین, بهداد, تیرداد, تهماسب, تهمتن, تهمورث, تورج, تابان, تیریژ, جاماسب, جاوید, جمشید, جهانگیر, جهان‌بخش, جهانشاه, جهاندار, جهان, چنگیز, چه‌کو, چیا, چیاکو, چومان, خداداد, خدابخش, خدایار, خسرو, خشایار, خوبیار, خورشید, خوناس, خناو, دارا, دادویه, دادمهر, دامون, دانوش, دانو, داراب, داریوش, دیاکو, رادین, رامبد, رامین, رامتین, رخشان, رستان, روزبه, رادمان, رامان, رایان, رایکا, رها, رهام, راد, رستم, ریونیز, ریکا, زاب, زال, زامیاد, زرتشت, زردشت, زرمهر, زند, زوبین, سالار, ساسان, سامان, سام, سروش, سپهر, سپنتا, سورن, سورنا, سوشیانت, سوشیانس, سهراب, سهند, سیامک, سیاوش, سیروس, سینا, شادمهر, شروین, شراگیم, شاپور, شایا, شایان, شاهرخ, شاهین, شباهنگ, شهرام, شاهکام, شهراد, شهاب, شهرداد, شهریار, شهروز, شیرزاد, شیرنگ, شهیار, شهبد, شهنام, شوپه, شیریزدان, شاهو, شیروان, شه‌مال, شه‌مزین, شیرکو, شورش, فربد, فرزان, فرسا, فرامرز, فرزاد, فرزام, فرزین, فردین, فرداد, فرود, فرورتیش, فرمان, فرهنگ, فریبرز, فرناد, فرهاد, فرنام, فرهام, فرهود, فروهر, فیروز, فرشاد, فرشید, فرخ, فرخزاد, فربد, فهام, فریا, کوروش, کارن, کامبیز, کامران, کامشاد, کامیار, کاوه, کاووس, کنارنگ, کورس, کورش, کیانوش, کیارش, کیاوش, کیا, کیان, کیوس, کوشا, کیخسرو, کیقباد, کیکاووس, کیوان, کیومرث, کیوس, کاردو, کاروان, کاروخ, کازیوه, کارزان, کاژاو, کوماس, گرگین, گستهم, گیو, گودرز, گَرسیوَز, گرشاسب, گشتاسب, گلینوش, گوران, گووه‌ند, لوران(نام, لهراسب, لاس, لاوچاک, لیزان, مهدیار, مازیار, ماکان, مانشت, مانی, ماهان, مرداس, مهرگان, مرداویج, مزدک, مکابیز, منوچهر, مهبد, مهداد, مهرداد, مهرزاد, مهرشاد, مهران, مهزاد, مهراب, مهرشاد, مهزیار, مهیار, مهرنگ, میلاد, مه‌ریوان, میلان, میران, نرمن, نریمان, نکیسا, نوید, نیما, نیوشا, نوژن, نوذر, نیاسا, ناسیکو, نسکو, نه‌به‌ز, نه‌سره‌و, نه‌هروز, نه‌وشیروان, نه‌که‌روز, نچیروان, وارش, ونداد, وریا, وندیداد, وهومن, هیرمان, هامون, هرمز, هورمزد, هورموند, هومن, هوشنگ, هوتن, هومان, هوشیار, هورداد, یاور, یزدگرد, یزدان, یادگار]
+      female_first_name: [آبگینه, آبنوس, آتنا, آتوسا, اختر, آذر, آذرافروز, آذرگون, آزرمیدخت, آذرنوش, آذین, آرا, آرتمیس, آرزو, آرمینا, آرمینه, آرمیتا, آریانا, آریادخت, آریانوش, آرینا, آزاده, آسا, آسانا, آستیاژ, آفتاب, آفرین, آگرین, آلا, آلاء, آلاله, آناهیتا, آندریا, آنوشا, آوا, آوید, آویده, آویزه, آویسا, آوین, آوینه, آهو, ابریشم, اختر, ارغوان, اروشا, اِستِر, افروز, افروغ, افسانه, افسر, افسون, افشان, افشار, آرتمیس, اومَتی, امتیس, امیتیس, اناهید, اندیشه, انوشه, ایران, ایرانا, ایرانو, ایرانیک, ایرمن, ایریانا, ایران, ایراندخت, ایلدا, بانو, بنفشه, بهار, بهاران, بهاره, بهارک, بهدیس, بهدخت, بهرخ, بهشید, بهناز, بهنوش, بوسه, بیتا, باران, پانیذ, پائیزه, پارمیس, پدیده, پرتو, پردیس, پرستو, پرند, پرنیا, پرنیان, پروانه, پروین, پری, پریا, پریچهر, پریدخت, پریرو, پریزاد, پریسا, پریشاد, پریماه, پریناز, پریوش, پگاه, پوپک, پوران, پوران, پوراندخت, پوری, پونه, پژهان, پیمانه, پرنیان, پارمیدا, پادینا, تیام, تیارا, تیاناز, تیدا, تابنده, ترانه, ترسا, ترمه, ترنه, تهمینه, تیشتر, تیر, ترنگ, توراندخت, توسکا, تینا, تیکا, ته‌لار, ته‌نیا, تریفه, تیروژ, جوانه, جوان, چکامه, خجسته, خورشید, خوروَش, دانه, دُرّی, دریا, دلارا, دلارام, دلبر, دلکش, دلوسه, دوکا, دینا, رامش, راشر, رامینا, رسا, رها, رهام, روان, رود, رودابه, روجا, روشنک, روناک, رؤیا, رکسانا, روژین, روژینا, رازان, ریزان, زری, زرین, زرین‌دخت, زویا, زیبا, زینا, زیور, زایه‌له, ژاله, ژرفا, ژیلا, ژینر, ژینا, سارک, سارینا, ساغر, ساناز, سایه, سپیده, ستاره, ستوده, سرگل, سروناز, سمانه, سودابه, سوری, سوزان, سوسن, سوگل, سوگند, سیما, سیمین, شاپرک, شاپری, شادان, شادی, شانا, شانار, شایسته, شبره, شبنم, شرمینه, شکیبا, شمیلا, شمیم, شهپر, شهربانو, شهرخ, شهربانو, شهرزاد, شهرناز, شهره, شهناز, شهین, شوکا, شقایق, شکوفه, شکوه, شکیلا, شیدا, شیده, شیرین, شیرین‌بانو, شیفته, شیلا, شیما, شیوا, شورانگیز, غمزه, غنچه, فاختک, فرانک, فرشته, فروزنده, فروغ, فرنیا, فریبا, فریما, فرین, فریناز, فوژان, فیروزه, فریماه, فرنوش, قشنگ, کتایون, کمند, کرانه, کشور, کیان, کیانا, کیجا, کیمیا, کیهانه, گردآفرید, گلاره, گلاوژ, گل‌افروز, گل‌اندام, گلبانو, گلبهار, گلابتون, گلبیز, گلپا, گلپری, گلپونه, گلتاج, گلتن, گلرخ, گلرو, گلشن, گلشید, گلشیفته, گلمیس, گلنار, گلناز, گلنوش, گل‌ورچین, گلی, گوهر, گوهرشاد, گیتا, گیتی, گیسو, گیلا, گیلان, لورا, لادن, لاله, لاله‌رخ, مازون, مامک, مانا, ماندان, ماندانا, مانلی, ماتیسا, ماه‌پری, ماهتو, ماه‌چهر, ماهدخت, ماه‌برزین, ماهنوش, ماه‌جهان, ماهزاد, ماهک, ماه‌تی‌تی, مرجان, مرجانه, مروارید, مژده, مژگان, مسل, مستانه, مشکان‌دخت, مشکین‌دخت, مونا, منیژه, مهتا, مهتاب, مهدخت, مهدیس, مهرآذر, مهرا, مهراد, مهراب, مهرانگیز, مهرانه, مهربانو, مهرخ, مهرریز, مهرسا, مهروا, مهرک, مهری, مهزاد, مهسا, مهستی, مهشید, مهکامه, مهناز, مهنوش, مهکامه, مهین, موژان, میترا, میخک, میگل, میشکا, مینا, مینو, نازآفرین, نازگل, نازنین, نازیلا, ناژیلا, ناژین, ناهید, نرگس, نرمین, نسترن, نسرین, نگار, نگین, نهال, نوا, نوش‌آفرین, نوشزاد, نوشین, نیلوفر, نیکو, نیکی, نیکسا, نیشا, نیوشا, ویس, ویدا, وندا, هستی, هما, هنگامه, هوروَش, یارا, یاس, یاسمن, یاسمین, یگانه, یکتا, یسنا, یوتاب]
+      name_with_middle:
+        - "#{prefix} #{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+      prefix: [آقای, خانم, دکتر]</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

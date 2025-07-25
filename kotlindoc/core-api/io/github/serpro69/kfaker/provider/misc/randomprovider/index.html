@@ -1,0 +1,3421 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>RandomProvider</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a></li>
+
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider" aria-current="page">RandomProvider</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="RandomProvider">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="1cc4f4f41d3a5eaf8aff1529a38778b075b0d418">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider">RandomProvider</a>: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/irandom">IRandom</a>, <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/abstractfakedataprovider">AbstractFakeDataProvider</a>&lt;<a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider">RandomProvider</a>&gt;</code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Provides data-generator-like functionality for the functions of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice">RandomService</a>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0e66d1bae5c948e54e5a56480700f4321043234">
+        <td class="sourcedoc-section section-signature">
+          <code>protected category: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/category">Category</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Category of <code>this</code> fake data provider class.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="ed2cfda3b898089c262484d9e3b2ffcb00be23b2">
+        <td class="sourcedoc-section section-signature">
+          <code>protected localUniqueDataProvider: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider">LocalUniqueDataProvider</a>&lt;<a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider">RandomProvider</a>&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>A <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider">LocalUniqueDataProvider</a> instance that is used with this unique provider.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="e34f6401127fdfebaf6db95742179b1b0eac3795">
+        <td class="sourcedoc-section section-signature">
+          <code>val unique: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider">RandomProvider</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>An instance of T for generating unique values</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="0b70210bd8ab7ff6cddf8762781709eb3020e868">
+        <td class="sourcedoc-section section-signature">
+          <code>val config: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="678710476249fd8f70d824866eb49175aed0ea5a">
+      
+      <h3 class="sourcedoc-section element-name">clear</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun clear(key: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider/key">Key</a>)</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Clears used unique values for the function key of this provider.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9be12d03d2b2f2e08702d8207debaa82db229689">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7a6fc844e69bb597818b4a431644c3f64efe0c80">
+        <td class="sourcedoc-section section-signature">
+          <code>key: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider/key">Key</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="95d58ced67192e5c7829e6523133d2886b0dec5e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e058229ed44d18fa0f7bee82c47d8dd7a94e336e">
+      
+      <h3 class="sourcedoc-section element-name">nextInt</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextInt(): Int</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Int value from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f69b07de2602f9b97bf6dc84c3d56f89f53eea1f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c89edcac2811a6a9e8072517cae7f3cbfd5049d">
+        <td class="sourcedoc-section section-signature">
+          <code>Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8afdc654ed86c5acd6128c3b3d7c5cc6a040bfb2">
+      
+      <h3 class="sourcedoc-section element-name">nextInt</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextInt(bound: Int): Int</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Int value between <code>0</code> (inclusive)
+and the specified bound (exclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="33f7705496822bc9967f06b1eecd5b135b353254">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="343bc72447638db53f49e95d3e5627e80c0082e3">
+        <td class="sourcedoc-section section-signature">
+          <code>bound: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="407c3f7fb63211aaf3bf9ed8cb846c3889c23ac4">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c89edcac2811a6a9e8072517cae7f3cbfd5049d">
+        <td class="sourcedoc-section section-signature">
+          <code>Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6b07cf93cb6f630c4d5f91153befd4101401e7c2">
+      
+      <h3 class="sourcedoc-section element-name">nextInt</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextInt(intRange: IntRange): Int</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Int value within the specified int <a href="#">range</a> (inclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f04788648d951c4626758ca6836c634b7c552bb9">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="1228e2b1265d7f2c4654074b65947e36d703c460">
+        <td class="sourcedoc-section section-signature">
+          <code>intRange: IntRange</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="165721c97170a3c177309930a941c6c9b9b68348">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c89edcac2811a6a9e8072517cae7f3cbfd5049d">
+        <td class="sourcedoc-section section-signature">
+          <code>Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cfd7146e9290342a4f59eaa53a2d0ce3daa619ce">
+      
+      <h3 class="sourcedoc-section element-name">nextInt</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextInt(min: Int, max: Int): Int</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Int value between min (inclusive) and max (inclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5f7b267bcc39870e13b740a021b144c065652acc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0093fc0fc6b342e629b46f7b0b55cc71b7dac680">
+        <td class="sourcedoc-section section-signature">
+          <code>min: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b832cb309950ed3e95a46888e30a0b62290e76dc">
+        <td class="sourcedoc-section section-signature">
+          <code>max: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="19a375d521f137553317e151f2ed0f8a626221f5">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="5c89edcac2811a6a9e8072517cae7f3cbfd5049d">
+        <td class="sourcedoc-section section-signature">
+          <code>Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bdbb24fdf8a1c0c42aff24acff5c860f5f4c96dd">
+      
+      <h3 class="sourcedoc-section element-name">randomValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomValue(list: List&lt;T&gt;): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudo-randomly selected value from the list of values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b63c67815effb60d6c614e6b905ccbfe765bdfdc">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4774d076dec6434424b2c167d2aaaf9347636342">
+        <td class="sourcedoc-section section-signature">
+          <code>list: List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="38a2a41a381e326c357d08a72619f923029e2ae7">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0fcd4075c7988a6ee0965f321b743dfae398940c">
+      
+      <h3 class="sourcedoc-section element-name">randomValue</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomValue(array: Array&lt;T&gt;): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudo-randomly selected value from the array of values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ed08c389a89adce821ce61bde614f9a31e965631">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="2f952cd533ed6576a7bfa53b079189a103cbcd05">
+        <td class="sourcedoc-section section-signature">
+          <code>array: Array&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="21b8b530ba835d92a4fe453c4b485655c0bc9ce8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7352ce451fd70c5907c43bb7b583fb417588c64f">
+      
+      <h3 class="sourcedoc-section element-name">nextLetter</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextLetter(upper: Boolean): Char</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Char value
+that corresponds to a letter in the English alphabet.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d3f78970317a79fcb8dbbd9a530d0f4e21a75299">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0781be8d4472450585ec9a8339ea2d08623256b8">
+        <td class="sourcedoc-section section-signature">
+          <code>upper: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>returns the Char in upper-case if set to <code>true</code>, and in lower-case otherwise</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3afb8fd7665203bc378c57c79a88833d12ace04e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0f9ba953e35135a3f8ec268817cc92f2557202a9">
+        <td class="sourcedoc-section section-signature">
+          <code>Char</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="30388b9f3913c5509f80a99b62c354aa73e77d4b">
+      
+      <h3 class="sourcedoc-section element-name">randomString</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomString(length: Int, numericalChars: Boolean): String</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns String with the specified length consisting of a pseudo-randomly generated
+English alphabet letters and optional numericalChars,
+or an empty string for a <code>length < 1</code>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="319a3704d5a10a0be83d6358db3b940bd1659114">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f0162867e8d5054b87f468151dda45f0e95f7ba6">
+        <td class="sourcedoc-section section-signature">
+          <code>length: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the length of the resulting string.
+Default: <code>24</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a3c89b415c9441e4bd95efb2698f8e6b50011609">
+        <td class="sourcedoc-section section-signature">
+          <code>numericalChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional numerical chars from 0 to 9 to the resulting string.
+Default: <code>true</code></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4059287f7ea267c9631721e2327c9758c3314520">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3df63b7acb0522da685dad5fe84b81fdd7b25264">
+        <td class="sourcedoc-section section-signature">
+          <code>String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c28cf0fbc4a3051b132113448cabed608c72b65e">
+      
+      <h3 class="sourcedoc-section element-name">randomString</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomString(length: Int, locale: Locale, indexChars: Boolean, auxiliaryChars: Boolean, punctuationChars: Boolean, numericalChars: Boolean): String</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns String with the specified length (or an empty string for a <code>length < 1</code>)
+consisting of pseudo-randomly generated characters
+in a given locale with optional auxiliaryChars and numericalChars</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8a92f15c6bfa349e1bd82198c64e53f130d1666a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f0162867e8d5054b87f468151dda45f0e95f7ba6">
+        <td class="sourcedoc-section section-signature">
+          <code>length: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the length of the resulting string.
+Default: <code>24</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="849d4a26effad8d4cf26da3b26b8cc89d068a325">
+        <td class="sourcedoc-section section-signature">
+          <code>locale: Locale</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>locale to use to generate the charset.
+Defaults to <code>locale</code> config value set for the <code>faker</code> instance.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="287ad45db63397dd0031541346f3ac5ef6659d50">
+        <td class="sourcedoc-section section-signature">
+          <code>indexChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional index chars to the resulting string, as defined in
+<a href="https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements">Character_Elements</a>.
+Default: <code>true</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="413da10ea3d5149122c59f9f86408a178b6b9ea3">
+        <td class="sourcedoc-section section-signature">
+          <code>auxiliaryChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional auxiliary chars to the resulting string as defined in
+<a href="https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements">Character_Elements</a>.
+Default: <code>false</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="f98729402af9a0f2a2649c061cd2433b9d871473">
+        <td class="sourcedoc-section section-signature">
+          <code>punctuationChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a3c89b415c9441e4bd95efb2698f8e6b50011609">
+        <td class="sourcedoc-section section-signature">
+          <code>numericalChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional numerical chars from 0 to 9 to the resulting string
+Default: <code>false</code></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fa75ee13d6e3eef6b65139251ae394db94a4cbbc">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3df63b7acb0522da685dad5fe84b81fdd7b25264">
+        <td class="sourcedoc-section section-signature">
+          <code>String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="54ea3f266ea7c87f4b6f626b696087e47761ef4e">
+      
+      <h3 class="sourcedoc-section element-name">randomString</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomString(min: Int, max: Int, locale: Locale, indexChars: Boolean, auxiliaryChars: Boolean, punctuationChars: Boolean, numericalChars: Boolean): String</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns String with a randomLength withing the specified min and max boundaries
+(or an empty string for if <code>randomLength < 1</code>)
+consisting of pseudo-randomly generated characters
+in a given locale with optional auxiliaryChars and numericalChars</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="74a680d44a04fea198b87412bd312a3d123e9360">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0093fc0fc6b342e629b46f7b0b55cc71b7dac680">
+        <td class="sourcedoc-section section-signature">
+          <code>min: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the minimum length of the resulting string.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b832cb309950ed3e95a46888e30a0b62290e76dc">
+        <td class="sourcedoc-section section-signature">
+          <code>max: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the maximum length of the resulting string.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="849d4a26effad8d4cf26da3b26b8cc89d068a325">
+        <td class="sourcedoc-section section-signature">
+          <code>locale: Locale</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>locale to use to generate the charset.
+Defaults to <code>locale</code> config value set for the <code>faker</code> instance.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="287ad45db63397dd0031541346f3ac5ef6659d50">
+        <td class="sourcedoc-section section-signature">
+          <code>indexChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional index chars to the resulting string, as defined in
+<a href="https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements">Character_Elements</a>.
+Default: <code>true</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="413da10ea3d5149122c59f9f86408a178b6b9ea3">
+        <td class="sourcedoc-section section-signature">
+          <code>auxiliaryChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional auxiliary chars to the resulting string as defined in
+<a href="https://www.unicode.org/reports/tr35/tr35-general.html#Character_Elements">Character_Elements</a>.
+Default: <code>false</code></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="f98729402af9a0f2a2649c061cd2433b9d871473">
+        <td class="sourcedoc-section section-signature">
+          <code>punctuationChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a3c89b415c9441e4bd95efb2698f8e6b50011609">
+        <td class="sourcedoc-section section-signature">
+          <code>numericalChars: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>add additional numerical chars from 0 to 9 to the resulting string
+Default: <code>false</code></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3fee47b1934b61be50af6b0b460f339034f82d88">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3df63b7acb0522da685dad5fe84b81fdd7b25264">
+        <td class="sourcedoc-section section-signature">
+          <code>String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="5568cde075b09aba0209d53d34521659a16228b9">
+      
+      <h3 class="sourcedoc-section element-name">nextBoolean</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextBoolean(): Boolean</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Boolean value
+from this random number generator's sequence.</p><p>The values <code>true</code> and <code>false</code> are produced with (approximately) equal probability.</p><p><i>NB! this method does not try to produce "unique" values via unique data provider.</i></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5feab9c02ec744387678725c44d9cb5e35418fae">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b76ff4906f33c2dd97ddd929b9662ba8cac6174c">
+        <td class="sourcedoc-section section-signature">
+          <code>Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ee8e0087ae6f61fd648363f5ea97b0ff4317b3b1">
+      
+      <h3 class="sourcedoc-section element-name">nextLong</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextLong(): Long</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Long value from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a0134adb83bc39e74f6c4e2ff2315b54f90f8b7b">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="11eda67f9b15a760342f8e98a3fc78d8d3ea9945">
+        <td class="sourcedoc-section section-signature">
+          <code>Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="973f6f48e3d024b552080541f10f1534935809a6">
+      
+      <h3 class="sourcedoc-section element-name">nextLong</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextLong(bound: Long): Long</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Long value between <code>0</code> (inclusive),
+and the specified bound value (exclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d795610b4010f0cbc25123671948d46f8146d363">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="614456c8455840c67f681e690f3ab2745d19c0a4">
+        <td class="sourcedoc-section section-signature">
+          <code>bound: Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c787a67695096776976a961f43aad06d07d39c58">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="11eda67f9b15a760342f8e98a3fc78d8d3ea9945">
+        <td class="sourcedoc-section section-signature">
+          <code>Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="fef9d81c725ecc8b985ece1b2841f2bbd11fadb0">
+      
+      <h3 class="sourcedoc-section element-name">nextLong</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextLong(longRange: LongRange): Long</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Long value within the specified longRange (inclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2b2d677f99e2e6c9ebbb28bdb96e92d08b6ed61e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3481b5a486826d378a984af916964b1dfaaf7756">
+        <td class="sourcedoc-section section-signature">
+          <code>longRange: LongRange</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7e93528e11b2d64d0b77963f882979429c1943e6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="11eda67f9b15a760342f8e98a3fc78d8d3ea9945">
+        <td class="sourcedoc-section section-signature">
+          <code>Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="af14f76ca1d8331df12f33e5f283455a94640ba3">
+      
+      <h3 class="sourcedoc-section element-name">nextLong</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextLong(min: Long, max: Long): Long</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed Long value between min (inclusive) and max (inclusive),
+drawn from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bf5d8c0e9de695a7398e5f62e4346a2273390806">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d620ada4bc91ccaee9d7af8a3b4f0f8a565db2fc">
+        <td class="sourcedoc-section section-signature">
+          <code>min: Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="2df551820a34112ca5d346bff563d04c456c015e">
+        <td class="sourcedoc-section section-signature">
+          <code>max: Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="219dc6114a4af188681912ecb5a67ee7db8d98a9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="11eda67f9b15a760342f8e98a3fc78d8d3ea9945">
+        <td class="sourcedoc-section section-signature">
+          <code>Long</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="584274eaa7c5ce5fbc908b2651ecd66b60a5d6a4">
+      
+      <h3 class="sourcedoc-section element-name">nextFloat</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextFloat(): Float</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Float value between <code>0.0</code> and <code>1.0</code>
+from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cf8952b42f1749a62756007da32223fb14649599">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="64435fd82de7b1d614dfb9844848a48b14c6cd2c">
+        <td class="sourcedoc-section section-signature">
+          <code>Float</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="63145ebc61c5fa3ba48204feed68cf39c4e5e407">
+      
+      <h3 class="sourcedoc-section element-name">nextDouble</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextDouble(): Double</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Double value between <code>0.0</code> and <code>1.0</code>
+from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3401cd0dea37435ad6e6b2c24d2327b44450d06e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="81581597044514bf54d4f97266022fc991f3915e">
+        <td class="sourcedoc-section section-signature">
+          <code>Double</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="cf5bb85ad05039688f7bbccbb76905482a8f80fb">
+      
+      <h3 class="sourcedoc-section element-name">nextChar</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextChar(): Char</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom, uniformly distributed Char value,
+from this <a href="#">random</a> number generator's sequence.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1e76ed9cc6642d31065b5ed65ba0b21bb8ff515d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0f9ba953e35135a3f8ec268817cc92f2557202a9">
+        <td class="sourcedoc-section section-signature">
+          <code>Char</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4ee9713356edcd270f795fd0139db42420c34766">
+      
+      <h3 class="sourcedoc-section element-name">nextEnum</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E : Enum&lt;E&gt;&gt; nextEnum(): E</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a randomly selected enum entry of type E.</p><p><i>NB! when used with unique, the nextInt, which is used to get a random index of the enumValues of Ewill also use unique generation and will need to be reset via clear as well when needed.</i></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ab3bf5d96e3f4b8a0c7fa577d2d9447c5d31c20a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0184adedf913b076626646d3f52c3b49c39ad6d">
+        <td class="sourcedoc-section section-signature">
+          <code>E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9c1f6302a9c3a9827b9652e73bb371c38174d739">
+      
+      <h3 class="sourcedoc-section element-name">nextEnum</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E : Enum&lt;E&gt;&gt; nextEnum(enum: Class&lt;E&gt;): E</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudo-randomly selected enum entry of type E.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="371d682b89be341f17b24b1f76a251252d0c6cfa">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="870fb975c4a3dff6cb4c7817eb1264a668befa2d">
+        <td class="sourcedoc-section section-signature">
+          <code>enum: Class&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4d59ad19eb395078e327d932a39835339e15e710">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0184adedf913b076626646d3f52c3b49c39ad6d">
+        <td class="sourcedoc-section section-signature">
+          <code>E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="dca09da6ff8398e7fc6b12a4b534ead41d3a5311">
+      
+      <h3 class="sourcedoc-section element-name">nextEnum</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E : Enum&lt;E&gt;&gt; nextEnum(values: Array&lt;E&gt;): E</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudo-randomly selected enum entry from an Array of E type values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="84474f00bb539b55e200820ab7837f13af334013">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f5121b553e8f49e852e48a28a740dcd4a2956141">
+        <td class="sourcedoc-section section-signature">
+          <code>values: Array&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="35d9cbdb25c0f1b3738fb158854b8b714aa06bc2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0184adedf913b076626646d3f52c3b49c39ad6d">
+        <td class="sourcedoc-section section-signature">
+          <code>E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="439bc3abbc808000778be69f8f5eda3aa7ae97f4">
+      
+      <h3 class="sourcedoc-section element-name">nextEnum</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E : Enum&lt;E&gt;&gt; nextEnum(enum: Class&lt;E&gt;, predicate: (E)-&gt;Boolean): E</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudo-randomly selected enum class of type E based on predicate for E.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3f3432986a252853b17e528baab7040523f95b0d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="870fb975c4a3dff6cb4c7817eb1264a668befa2d">
+        <td class="sourcedoc-section section-signature">
+          <code>enum: Class&lt;E&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a33a8a26f2e33d36c9cbba941c89022ea467b363">
+        <td class="sourcedoc-section section-signature">
+          <code>predicate: (E)-&gt;Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="270844c90ada428cae0c4ec300fe4397b85557b0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0184adedf913b076626646d3f52c3b49c39ad6d">
+        <td class="sourcedoc-section section-signature">
+          <code>E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4aeb9aa1aa419f7792a1dbecd7396c79eff3b3bd">
+      
+      <h3 class="sourcedoc-section element-name">nextEnum</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;E : Enum&lt;E&gt;&gt; nextEnum(vararg excludeName: String): E</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a randomly selected enum entry of type E excluding a particular enum class by its name.</p><p><i>NB! when used with unique, the nextInt, which is used to get a random index of the enumValues of Ewill also use unique generation and will need to be reset via clear as well when needed.</i></p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5b903398d8c85b9858e04713ff26ddeaa29c9dcd">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0fa022f672e92e542b5f7682653a5f85097e1d14">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg excludeName: String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="9c5ea442f0d4b96a4149d52f45e7e8a145bea436">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e0184adedf913b076626646d3f52c3b49c39ad6d">
+        <td class="sourcedoc-section section-signature">
+          <code>E</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="6e52935ebe46c9aa0b5394449fe78cabb3f83753">
+      
+      <h3 class="sourcedoc-section element-name">nextUUID</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun nextUUID(): String</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns the next pseudorandom <a href="https://docs.oracle.com/javase/6/docs/api/java/util/UUID.html">UUID</a> as String taking the seed of this <a href="#">random</a>.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5649c0e129d91e94070a4145790235dfca83c1c3">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3df63b7acb0522da685dad5fe84b81fdd7b25264">
+        <td class="sourcedoc-section section-signature">
+          <code>String</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="34fc4df18ac0861e8721f649b3bfa264eae80829">
+      
+      <h3 class="sourcedoc-section element-name">randomSublist</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomSublist(list: List&lt;T&gt;, size: Int, shuffled: Boolean): List&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a view of the portion of the list
+with pseudo-randomly generated <code>fromIndex</code> and (possibly) <code>toIndex</code> values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f425086441a0091e47d9d6579293273cd96cbc59">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4774d076dec6434424b2c167d2aaaf9347636342">
+        <td class="sourcedoc-section section-signature">
+          <code>list: List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dbbe178f5454bf951d22f436e97723133f89964b">
+        <td class="sourcedoc-section section-signature">
+          <code>size: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the desired size of the resulting list.
+If <code>size &lt;= 0</code> then <code>toIndex</code> will also be randomly-generated.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="db7d81347a2750d6897ff80d19bd4f73da3ee1c4">
+        <td class="sourcedoc-section section-signature">
+          <code>shuffled: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>if <code>true</code> the list will be shuffled before extracting the sublist</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="eedecd31d0726ec66a58d77a87e215dab83f1541">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8ba44f9709cdb27febdf0a05183d7bac7d3f462e">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7f31307b1c1671f051f47bccdacea3e261ca80fa">
+      
+      <h3 class="sourcedoc-section element-name">randomSublist</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomSublist(list: List&lt;T&gt;, sizeRange: IntRange, shuffled: Boolean): List&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a view of the portion of the list
+with pseudo-randomly generated <code>fromIndex</code> and (possibly) <code>toIndex</code> values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fb6f290dea71e98f3686507fd7d7bf6b38b26d7a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4774d076dec6434424b2c167d2aaaf9347636342">
+        <td class="sourcedoc-section section-signature">
+          <code>list: List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dcd6671b0deed4ba08226d902fb403a64d7c7bb5">
+        <td class="sourcedoc-section section-signature">
+          <code>sizeRange: IntRange</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the desired size range of the resulting list.
+The <code>size</code> of the returned list is the result of calling nextInt with the sizeRange.
+IF <code>size &lt;= 0</code> then <code>toIndex</code> will also be randomly-generated.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="db7d81347a2750d6897ff80d19bd4f73da3ee1c4">
+        <td class="sourcedoc-section section-signature">
+          <code>shuffled: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>if <code>true</code> the list will be shuffled before extracting the sublist</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ad24a215e79dd493fde677a1c40b33e023822537">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="8ba44f9709cdb27febdf0a05183d7bac7d3f462e">
+        <td class="sourcedoc-section section-signature">
+          <code>List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bf2eca1a52c1d6be02172cffd07bd2352f802071">
+      
+      <h3 class="sourcedoc-section element-name">randomSubset</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomSubset(set: Set&lt;T&gt;, size: Int, shuffled: Boolean): Set&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a portion of the set
+with pseudo-randomly generated <code>fromIndex</code> and (possibly) <code>toIndex</code> values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a82f2f2d0662377fab6f23a5a1d36e82e10eb209">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="51f06f2cec6f3d8883aafdbc58df0a86a3b13c6d">
+        <td class="sourcedoc-section section-signature">
+          <code>set: Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dbbe178f5454bf951d22f436e97723133f89964b">
+        <td class="sourcedoc-section section-signature">
+          <code>size: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the desired size of the resulting set.
+If <code>size &lt;= 0</code> then <code>toIndex</code> will also be randomly-generated.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="db7d81347a2750d6897ff80d19bd4f73da3ee1c4">
+        <td class="sourcedoc-section section-signature">
+          <code>shuffled: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>if <code>true</code> the set will be shuffled before extracting the subset</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="bb338d671311e0201f61792fee0c38e7f0fa39fe">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="df67f89861cf3ecbfb427c81721736f1552e0936">
+        <td class="sourcedoc-section section-signature">
+          <code>Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="fd3cda515feae2344a641de7c79c7f0180945e1b">
+      
+      <h3 class="sourcedoc-section element-name">randomSubset</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; randomSubset(set: Set&lt;T&gt;, sizeRange: IntRange, shuffled: Boolean): Set&lt;T&gt;</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a portion of the set
+with pseudo-randomly generated <code>fromIndex</code> and (possibly) <code>toIndex</code> values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2f664975b5ecd423b517f685e21793851c64d4e6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="51f06f2cec6f3d8883aafdbc58df0a86a3b13c6d">
+        <td class="sourcedoc-section section-signature">
+          <code>set: Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dcd6671b0deed4ba08226d902fb403a64d7c7bb5">
+        <td class="sourcedoc-section section-signature">
+          <code>sizeRange: IntRange</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>the desired size range of the resulting list.
+The <code>size</code> of the returned list is the result of calling nextInt with the sizeRange.
+IF <code>size &lt;= 0</code> then <code>toIndex</code> will also be randomly-generated.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="db7d81347a2750d6897ff80d19bd4f73da3ee1c4">
+        <td class="sourcedoc-section section-signature">
+          <code>shuffled: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>if <code>true</code> the set will be shuffled before extracting the subset</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3ac6b9621e852dd35238b30588387169af88145e">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="df67f89861cf3ecbfb427c81721736f1552e0936">
+        <td class="sourcedoc-section section-signature">
+          <code>Set&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="67a23f93d576d60d7780b6386cbcd8e9915ba3c2">
+      
+      <h3 class="sourcedoc-section element-name">randomPastDate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomPastDate(): OffsetDateTime</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed OffsetDateTime value
+between Unix epoch (1970-01-01T00:00:00Z) (inclusive) and now (exclusive) using UTC zone offset</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="051b03cff2188f4e793658f524238a0ac9068978">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ac2b0b54660ddb4b995e020a9ebb1307a3076165">
+        <td class="sourcedoc-section section-signature">
+          <code>OffsetDateTime</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b10c55bf947ef2106db889c34b718b7a6e642c28">
+      
+      <h3 class="sourcedoc-section element-name">randomPastDate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomPastDate(min: Instant): OffsetDateTime</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed OffsetDateTime value
+between min (inclusive) and now (exclusive) using UTC zone offset</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c9fc1402919f9049d861289d5bae96a1861d0cb1">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="383257a456a22e05c42f839374d5af7ed103d999">
+        <td class="sourcedoc-section section-signature">
+          <code>min: Instant</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="21e592080ab2e610e2b3ccb07720b0dee73c73db">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ac2b0b54660ddb4b995e020a9ebb1307a3076165">
+        <td class="sourcedoc-section section-signature">
+          <code>OffsetDateTime</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="fb3bc83b8f87b5b4d68d1f60636095bfb74c0c68">
+      
+      <h3 class="sourcedoc-section element-name">randomFutureDate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomFutureDate(): OffsetDateTime</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed OffsetDateTime value
+between now (exclusive) and now + 50 years (inclusive) using UTC zone offset</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ba2f714adeab15b5b78bc2837ccd1ea0a1dce231">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ac2b0b54660ddb4b995e020a9ebb1307a3076165">
+        <td class="sourcedoc-section section-signature">
+          <code>OffsetDateTime</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e8fb2e2967043638a3937343d7bf762c1cb0f21c">
+      
+      <h3 class="sourcedoc-section element-name">randomFutureDate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomFutureDate(max: Instant): OffsetDateTime</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed OffsetDateTime value
+between now (exclusive) and max (inclusive) using UTC zone offset</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c8ff4aa36e1140df7c338648baf2017d5b273a5b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="52e9c39143e1252000e519bb1f3db28ce32a2a7c">
+        <td class="sourcedoc-section section-signature">
+          <code>max: Instant</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5576b9a349a66bd940d1ff89a26bfa4ce5095752">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ac2b0b54660ddb4b995e020a9ebb1307a3076165">
+        <td class="sourcedoc-section section-signature">
+          <code>OffsetDateTime</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="fda618027a32585678ef52bf2a1f22ab8d4a3a17">
+      
+      <h3 class="sourcedoc-section element-name">randomDate</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Returns a pseudorandom, uniformly distributed OffsetDateTime value
+between min (inclusive) and max (inclusive) using the defined zoneOffset</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6927d9b20bde0ca2e12a869be68444b7c3dc703c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="383257a456a22e05c42f839374d5af7ed103d999">
+        <td class="sourcedoc-section section-signature">
+          <code>min: Instant</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="52e9c39143e1252000e519bb1f3db28ce32a2a7c">
+        <td class="sourcedoc-section section-signature">
+          <code>max: Instant</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="77e3562bf0fcc42a97612a17b2ec09f72efb572a">
+        <td class="sourcedoc-section section-signature">
+          <code>zoneOffset: ZoneOffset</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="caf142c97edbf181e1f577e1b86a77a4d8785ecf">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="ac2b0b54660ddb4b995e020a9ebb1307a3076165">
+        <td class="sourcedoc-section section-signature">
+          <code>OffsetDateTime</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Zelda</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/zelda" aria-current="page">Zelda</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_zelda"><code>Faker().zelda</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    games:
+      zelda:
+        games:
+          - A Link to the Past
+          - Breath of the Wild
+          - Four Swords
+          - Link's Awakening
+          - Majora's Mask
+          - Ocarina of Time
+          - Oracle of Seasons - Oracle of Ages
+          - Phantom Hourglass
+          - The Legend of Zelda
+          - The Minish Cap
+          - The Wind Waker
+          - Twilight Princess
+          - 'Zelda II: Adventure of Link'
+        characters:
+          - Abe
+          - Agahnim
+          - Akh Va'quot
+          - Alder
+          - Anju
+          - Anju's Mother
+          - Aryll
+          - Astrid
+          - Aveil
+          - Baby Goron
+          - Bagu
+          - Barta
+          - Beedle
+          - Belari
+          - Beth
+          - Biggoron
+          - Bipin
+          - Bipin and Blossom's son
+          - Blade Brothers
+          - Blaino
+          - Blossom
+          - Bombers
+          - Borlov
+          - Bosh Kala
+          - Bow-Wow
+          - Brocco
+          - Bugut
+          - Cado
+          - Calip
+          - Captain
+          - Carlov
+          - Carpenters
+          - Chaas Qeta
+          - Champions
+          - Chef Bear
+          - Cheval
+          - Chio
+          - Christine
+          - Ciela
+          - Colin
+          - Comedians
+          - Cotera
+          - Crazy Tracy
+          - Cucco Keeper
+          - Curiosity Shop Guy
+          - Cyclos
+          - Daag Chokah
+          - Dah Kaso
+          - Daka Tuss
+          - Dalia
+          - Damia
+          - Dampe
+          - Dampé
+          - Dan Hesho
+          - Daphnes Nohansen Hyrule
+          - Daqa Koth
+          - Darmani III
+          - Darton
+          - Daruk
+          - Darunia
+          - Daz
+          - Decci
+          - Deities
+          - Dekki
+          - Deku Royalty
+          - Deku Tree Sprout
+          - Dento
+          - Deppi
+          - Dimitri
+          - Din
+          - Doc Bandam
+          - Dorian
+          - Dr.Troy
+          - Eddo
+          - Ember
+          - Embry
+          - Epona
+          - Ezlo
+          - Fado
+          - Fairies
+          - Fairy
+          - Fairy Queen
+          - Farore
+          - Festari
+          - Fishermen
+          - Fishman
+          - Flat
+          - Forest Minish
+          - Fortune Teller
+          - Ganon
+          - Ganondorf
+          - Garadon
+          - Garill
+          - Gentari
+          - Ghost
+          - Gibdo Man
+          - Golden Chief Cylos
+          - Gongoron
+          - Gorman
+          - Goron Elder
+          - Grandma
+          - Grandma Ulrira
+          - Great Deku Tree
+          - Great Fairies
+          - Great Fairy
+          - Great Moblin
+          - Greta
+          - Grog
+          - Gruve
+          - Guru-Guru
+          - Ha Dahamar
+          - Happy Mask Salesman
+          - Hetsu
+          - Hila Rao
+          - Hino
+          - Hurdy Gurdy Man
+          - Hylia
+          - Ilia
+          - Impa
+          - Indigo-Go's
+          - Ingo
+          - Isha
+          - Ja Baij
+          - Jabun
+          - Jee Noh
+          - Jitan Sa'mi
+          - Joel
+          - Joute
+          - Ka'o Makagh
+          - Ka'o Muakagh
+          - Kaam Ya'tak
+          - Kaepora Gaebora
+          - Kafei
+          - Kah Mael
+          - Kalm Yu'ogh
+          - Kam Urog
+          - Kamaro
+          - Kass
+          - Katah Chuki
+          - Kaya Wan
+          - Kayo
+          - Keaton
+          - Keh Namut
+          - Keo Ruug
+          - Kiki
+          - Killer Bees
+          - King Daltus
+          - King Dorephan
+          - King Zora
+          - King of Hyrule
+          - King of Red Lions
+          - Knights of Hyrule
+          - Kohga
+          - Komali
+          - Koume and Kotake
+          - Kuhn Sidajj
+          - Lakna Rokee
+          - Laruto
+          - Lasli
+          - Leaf
+          - Lenzo
+          - Liana
+          - Librari
+          - Linebeck
+          - Link
+          - Link (Goron)
+          - Link's Uncle
+          - Lord Jabu-Jabu
+          - Louise
+          - Maag Halan
+          - Maca
+          - Mad Batter
+          - Madam Aroma
+          - Madam MeowMeow
+          - Magda
+          - Maggie and her father
+          - Main Antagonist
+          - Majora's Mask (Boss)
+          - Makar
+          - Maku Tree
+          - Malena
+          - Malo
+          - Malon
+          - Marot
+          - Mamamu Yan
+          - Mamu
+          - Manbo
+          - Maple
+          - Marathon Man
+          - Marin
+          - Martha
+          - Mayor Dotour
+          - Mayor Hagen
+          - Medigoron
+          - Melari
+          - Mellie
+          - Mesa
+          - Midna
+          - Mido
+          - Mikau
+          - Mila and her father
+          - Mils
+          - Mina
+          - Mipha
+          - Misae Suma
+          - Mo'a Keet
+          - Monkey
+          - Moosh
+          - Mountain Minish
+          - Mr. Barten
+          - Mr. Write
+          - Mrs. Marie
+          - Mrs. Ruul
+          - Mutoh
+          - Muwo Jeem
+          - Muzu
+          - Myahm Agana
+          - Nabooru
+          - Nanna
+          - Natie
+          - Navi
+          - Nayru
+          - Ne'ez Yohma
+          - Neri
+          - Nightmare
+          - No'Ez Yohma
+          - Noya Neha
+          - Nyave
+          - Nyeve
+          - Oakif
+          - Old Lady from Bomb Shop
+          - Old Man
+          - Old Men
+          - Old Wayfarer
+          - Old Woman
+          - Olkin
+          - Oman Au
+          - Onox
+          - Ooccoo
+          - Orca
+          - Oshus
+          - Owa Daim
+          - Owl
+          - Padok
+          - Paya
+          - Pamela
+          - Papahl and family
+          - Patch
+          - Percy
+          - Photographer
+          - Pina
+          - Plen
+          - Plikango
+          - Poe salesman
+          - Postman
+          - Potho
+          - Prince Ralis
+          - Prince Sidon
+          - Prince of Hyrule
+          - Princess Ruto
+          - Princess Zelda
+          - Professor Shikashi
+          - Pumaag Nitae
+          - Purah
+          - Queen Ambi
+          - Queen Rutela
+          - Quill
+          - Qukah Nata
+          - Rabbits
+          - Ralph
+          - Rauru
+          - Reagah
+          - Ree Dahee
+          - Rem
+          - Renado
+          - Rensa
+          - Revali
+          - Rhoam Bosphoramus Hyrule
+          - Richard
+          - Ricky
+          - Riju
+          - Rik
+          - Rito Chieftain
+          - Robbie
+          - Rola
+          - Romani and Cremia
+          - Rosa
+          - Rosa Sisters
+          - Rose
+          - Rota Ooh
+          - Ruul
+          - Sages
+          - Sagessa
+          - Sahasrahla
+          - Sakon
+          - Sale
+          - Salvatore
+          - Saria
+          - Sayge
+          - Schule Donavitch
+          - Sha Warvo
+          - Shae Loya
+          - Shai Utoh
+          - Sharp
+          - Shee Vaneer
+          - Sheh Rata
+          - Sheik
+          - Sheikah Monk
+          - Shibo
+          - Shiro
+          - Shop Keeper
+          - Shopkeeper
+          - Shrine Maidens
+          - Simon
+          - Skull Kid
+          - Smith
+          - Soh Kofi
+          - Sokra
+          - Sophie
+          - Sorelia
+          - Sprinn
+          - Steen
+          - Stockwell
+          - Sturgeon
+          - Subrosian Queen
+          - Sue-Belle
+          - Symin
+          - Syrup
+          - Ta'log Naeg
+          - Ta'loh Naeg
+          - Tael
+          - Tahno O'ah
+          - Talo
+          - Talon
+          - Tarin
+          - Tasho
+          - Tasseren
+          - Tatl
+          - Teba
+          - Teller of Treasures
+          - Telma
+          - Tena Ko'sah
+          - Tetra
+          - The Pirates
+          - Tingle
+          - Toffa
+          - Toh Yahsa
+          - Tokkey
+          - Tona
+          - Torfeau
+          - Toto
+          - Toto Sah
+          - Tott
+          - Town Minish
+          - Traveling Merchants
+          - Trissa
+          - Turtle
+          - Twinrova
+          - Tye
+          - Ulrira
+          - Urbosa
+          - Vaati
+          - Valoo
+          - Vasu
+          - Veran
+          - Vilia
+          - Viscen
+          - Wahgo Katta
+          - Walrus
+          - Walton
+          - Wheaton and Pita
+          - Wind Fish
+          - Wolf Link
+          - Yah Rin
+          - Yammo
+          - Yeta
+          - Yeto
+          - Yiga Clan
+          - Yunobo
+          - Zalta Wa
+          - Zant
+          - Zauz
+          - Ze Kasho
+          - Zelda
+          - Zephos
+          - Zill
+          - Zooki
+          - Zunari
+        locations:
+          - Akkala Ancient Tech Lab
+          - East Akkala Stable
+          - Lomei Labyrinth Island
+          - Skull Lake
+          - South Akkala Stable
+          - Tarrey Town
+          - Ze Kasho Shrine
+          - Applean Forest
+          - Central Tower
+          - Gleeok Bridge
+          - Hyrule Castle
+          - Hyrule Castle Town Ruins
+          - Kam Yatakh Shrine
+          - Outpost Ruins
+          - Outskirt Stable
+          - Riverside Stable
+          - Rota Ooh Shrine
+          - Sacred Ground Ruins
+          - Safula Hill
+          - Serenne Stable
+          - Tabantha Bridge Stable
+          - Wetland Stable
+          - Afromsia Coast
+          - Camphor Pond
+          - Chaas Qeta Shrine
+          - Cliffs of Quince
+          - Deepback Bay
+          - Ebon Mountain
+          - Equestrian Riding Course
+          - Fir River
+          - Firly Plateau
+          - Firly Pond
+          - Fort Hateno
+          - Ginner Woods
+          - Hateno Bay
+          - Hateno Beach
+          - Hateno Tower
+          - Hateno Village
+          - Kam Urog Shrine
+          - Kitano Bay
+          - Lake Jarrah
+          - Lake Sumac
+          - Lanayru Bluff
+          - Lanayru Heights
+          - Lanayru Promenade
+          - Lanayru Range
+          - Lanayru Road - East Gate
+          - Lanayru Road - West Gate
+          - Loshlo Harbor
+          - Madorna Mountain
+          - Mapla Point
+          - Marblod Plain
+          - Midla Woods
+          - Mount Lanayru
+          - Myahm Agana Shrine
+          - Naydra Snowfield
+          - Necluda Sea
+          - Nirvata Lake
+          - Ovli Plain
+          - Phalian Highlands
+          - Pierre Plateau
+          - Purifier Lake
+          - Quatta's Shelf
+          - Rabia Plain
+          - Retsam Forest
+          - Robred Dropoff
+          - Solewood Range
+          - Tenoko Island
+          - Trotter's Downfall
+          - Walnot Mountain
+          - Zelkoa Pond
+          - Abandoned North Mine
+          - Bridge of Eldin
+          - Broca Island
+          - Cephla Lake
+          - Darb Pond
+          - Darunia Lake
+          - Death Caldera
+          - Death Mountain
+          - Death Mountain Summit
+          - Eldin Canyon
+          - Eldin's Flank
+          - Eldin Great Skeleton
+          - Eldin Mountains
+          - Eldin Tower
+          - Foothill Stable
+          - Gero Pond
+          - Goro Cove
+          - Gollow River
+          - Gorko Lake
+          - Gorko Tunnel
+          - Goron City
+          - Goron Hot Springs
+          - Goronbi Lake
+          - Goronbi River
+          - Gortram Cliff
+          - Gut Check Rock
+          - Isle of Rabac
+          - Lake Darman
+          - Lake Ferona
+          - Lake Intenouch
+          - Maw of Death Mountain
+          - Medingo Pool
+          - Southern Mine
+          - Stolock Bridge
+          - Trilby Valley
+          - Damel Forest
+          - Darybon Plains
+          - Dracozu Lake
+          - Dracozu River
+          - Faron Grasslands
+          - Faron Sea
+          - Faron Woods
+          - Finra Woods
+          - Floria Falls
+          - Fural Plain
+          - Guchini Plain
+          - Harker Lake
+          - Herin Lake
+          - Harfin Valley
+          - Highland Stable
+          - Ibara Butte
+          - Keelay Plain
+          - Komo Shoreline
+          - Lake Floria
+          - Lake Hylia
+          - Lake of the Horse God
+          - Lakeside Stable
+          - Laverra Beach
+          - Malanya Spring
+          - Menoat River
+          - Mount Floria
+          - Nautelle Wetlands
+          - Nette Plateau
+          - Oseira Plains
+          - Papetto Grove
+          - Parache Plains
+          - Puffer Beach
+          - Riola Spring
+          - Sarjon Woods
+          - Spring of Courage
+          - Tobio's Hollow
+          - Zokassa Ridge
+          - Zonai Ruins
+          - Arbiter's Grounds
+          - East Barrens
+          - East Gerudo Ruins
+          - Dragon's Exile
+          - Gerudo Desert Gateway
+          - Gerudo Town
+          - Great Cliffs
+          - Great Gerudo Skeleton
+          - Karusa Valley
+          - Northern Icehouse
+          - Palu Wasteland
+          - Sand-Seal Rally
+          - Southern Oasis
+          - Toruma Dunes
+          - West Barrens
+          - West Gerudo Ruins
+          - Birida Lookout
+          - Champion's Gate
+          - Cliffs of Ruvara
+          - Daval Peak
+          - East Gerudo Mesa
+          - Gerudo Canyon
+          - Gerudo Canyon Pass
+          - Gerudo Canyon Stable
+          - Gerudo Summit
+          - Hemaar's Descent
+          - Koukot Plateau
+          - Laparoh Mesa
+          - Meadela's Mantle
+          - Mount Agaat
+          - Mount Granajh
+          - Mount Nabooru
+          - Mystathi's Shelf
+          - Nephra Hill
+          - Risoka Snowfield
+          - Rutimala Hill
+          - Sapphia's Table
+          - South Lomei Labyrinth
+          - Spectacle Rock
+          - Statue of the Eighth Heroine
+          - Stalry Plateau
+          - Taafei Hill
+          - Vatorsa Snowfield
+          - Yarna Valley
+          - Yiga Clan Hideout
+          - Zirco Mesa
+          - Korok Forest
+          - Lost Woods
+          - Thims Bridge
+          - Woodland Stable
+          - Woodland Tower
+          - Great Plateau
+          - Eastern Abbey
+          - Forest of Spirits
+          - Great Plateau Tower
+          - Hopper Pond
+          - Ja Baij Shrine
+          - Keh Namut Shrine
+          - Mount Hylia
+          - Oman Au Shrine
+          - Owa Daim Shrine
+          - River of the Dead
+          - Shrine of Resurrection
+          - Temple of Time
+          - Woodcutter's House
+          - Hebra Tower
+          - Snowfield Stable
+          - Lanayru Wetlands
+          - Mount Lanayru
+          - Ralis Pond
+          - Veiled Falls
+          - Zora's Domain
+          - Ancient Columns
+          - Cuho Mountain
+          - Dronoc's Pass
+          - Hebra Plunge
+          - Kolami Bridge
+          - Lake Totori
+          - Nero Hill
+          - Passer Hill
+          - Piper Ridge
+          - Rayne Highlands
+          - Rito Village
+          - Rito Stable
+          - Rospro Pass
+          - Strock Lake
+          - Tabantha Tower
+          - Ash Swamp
+          - Batrea Lake
+          - Big Twin Bridge
+          - Blatchery Plain
+          - Bonooru's Stand
+          - Bosh Kala Shrine
+          - Bubinga Forest
+          - Deya Lake
+          - Dueling Peaks
+          - Dueling Peaks Stable
+          - Dueling Peaks Tower
+          - East Post Ruins
+          - Floret Sandbar
+          - Fort Hateno
+          - Hickaly Woods
+          - Hila Rao Shrine
+          - Hills of Baumer
+          - Horwell Bridge
+          - Hylia River
+          - Kakariko Bridge
+          - Kakariko Village
+          - Lake Siela
+          - Lantern Lake
+          - Mable Ridge
+          - Mount Rozudo
+          - Nabi Lake
+          - Oakle's Navel
+          - Pillars of Levia
+          - Popla Foothills
+          - Proxim Bridge
+          - Ree Dahee Shrine
+          - Sahasra Slope
+          - Scout's Hill
+          - South Nabi Lake
+          - Spring of Courage
+          - Squabble River
+          - West Nabi Lake
+        items:
+          - Blue Ring
+          - Red Ring
+          - Wooden Sword
+          - White Sword
+          - Magical Sword
+          - Small Shield
+          - Magical Shield
+          - Boomerang
+          - Magical Boomerang
+          - Bomb
+          - Book of Magic
+          - Magical Rod
+          - Arrow
+          - Silver Arrow
+          - Bow
+          - Raft
+          - Stepladder
+          - Heart Container
+          - Blue Candle
+          - Red Candle
+          - Recorder
+          - Power Bracelet
+          - Magical Key
+          - Food
+          - Life Potion
+          - 2nd Potion
+          - Magic Container
+          - 1-up Doll
+          - Candle
+          - Hammer
+          - Handy Glove
+          - Boots
+          - Flute
+          - Cross
+          - Trophy
+          - Water of Life
+          - Fighter's Sword
+          - Master Sword
+          - Tempered Sword
+          - Golden Sword
+          - Fighter's Shield
+          - Red Shield
+          - Mirror Shield
+          - Magic Hammer
+          - Pendant of Courage
+          - Pendant of Wisdom
+          - Pendant of Power
+          - Zora's Flippers
+          - Super Bomb
+          - Bottle
+          - Quake Medallion
+          - Ether Medallion
+          - Bombos Medallion
+          - Bug-Catching Net
+          - Piece of Heart
+          - Cane of Somaria
+          - Cane of Byrna
+          - Power Glove
+          - Titan's Mitt
+          - Magic Cape
+          - Book of Mudora
+          - Hookshot
+          - Fire Rod
+          - Ice Rod
+          - Pegasus Boots
+          - Magic Mirror
+          - Sword
+          - Shield
+          - Roc's Feather
+          - Power Bracelet L-2
+          - Magic Powder
+          - Shovel
+          - Flippers
+          - Magic Potion
+          - Kokiri Sword
+          - Giant's Knife
+          - Biggoron's Sword
+          - Deku Shield
+          - Hylian Shield
+          - Kokiri Tunic
+          - Zora Tunic
+          - Goron Tunic
+          - Fairy Ocarina
+          - Ocarina of Time
+          - Silver Scale
+          - Golden Scale
+          - Deku Seed
+          - Deku Seeds Bullet Bag
+          - Fairy Slingshot
+          - Fairy Bow
+          - Quiver
+          - Bomb Bag
+          - Goron's Bracelet
+          - Silver Gauntlets
+          - Golden Gauntlets
+          - Din's Fire
+          - Farore's Wind
+          - Nayru's Love
+          - Longshot
+          - Megaton Hammer
+          - Kokiri Boots
+          - Iron Boots
+          - Hover Boots
+          - Gold Skulltula Tokens
+          - Odd Mushroom
+          - Odd Potion
+          - Poacher's Saw
+          - World's Finest Eye Drops
+          - Eyeball Frog
+          - Red Potion
+          - Green Potion
+          - Blue Potion
+          - Fairy
+          - Keaton Mask
+          - Goron Mask
+          - Zora Mask
+          - Gerudo Mask
+          - Mask of Truth
+          - Deku Nuts
+          - Deku Sticks
+          - Spiritual Stones
+          - Fire Arrow
+          - Ice Arrow
+          - Light Arrow
+          - Lens of Truth
+          - Razor Sword
+          - Gilded Sword
+          - Great Fairy's Sword
+          - Hero's Shield
+          - Bombers' Notebook
+          - Hero's Bow
+          - Postman's Hat
+          - Blast Mask
+          - Great Fairy's Mask
+          - Giant's Mask
+          - Romani's Mask
+          - Bunny Hood
+          - Bremen Mask
+          - Garo's Mask
+          - Gibdo Mask
+          - Captain's Hat
+          - Don Gero's Mask
+          - Deku Mask
+          - Fierce Deity's Mask
+          - Kafei's Mask
+          - Couple's Mask
+          - All-Night Mask
+          - Mask of Scents
+          - Circus Leader's Mask
+          - Noble Sword
+          - Wooden Shield
+          - Iron Shield
+          - Gasha Seed
+          - Seed Rings
+          - Seed Satchel
+          - Ember Seed
+          - Scent Seed
+          - Gale Seed
+          - Pegasus Seed
+          - Mystery Seed
+          - Harp of Ages
+          - Bombchu
+          - Strange Flute
+          - Ricky's Flute
+          - Moosh's Flute
+          - Dimitri's Flute
+          - Seed Shooter
+          - Switch Hook
+          - Mermaid Suit
+          - Long Hook
+          - Rod of Seasons
+          - Bombs
+          - Slingshot
+          - Hyper Slingshot
+          - Magnetic Gloves
+          - Roc's Cape
+          - Four Sword
+          - Gnat Hat
+          - Bow-Wow
+          - Hero's Sword
+          - Power Bracelets
+          - Hero's Charm
+          - Deku Leaf
+          - Skull Hammer
+          - Bottles
+          - Wind Waker
+          - Sail
+          - Telescope
+          - Grappling Hook
+          - Magic Armor
+          - Tingle Tuner
+          - Picto Box
+          - Deluxe Picto Box
+          - Arrows
+          - Moon Pearl
+          - Smith's Sword
+          - Picori Sword/White Sword/Four Sword
+          - Light Arrows
+          - Remote Bombs
+          - Gust Jar
+          - Cane of Pacci
+          - Mole Mitts
+          - Flame Lantern
+          - Ocarina of Wind
+          - Grip Ring
+          - Ordon Sword
+          - Ordon Shield
+          - Hawkeye
+          - Gale Boomerang
+          - Clawshot
+          - Double Clawshots
+          - Spinner
+          - Ball and Chain
+          - Dominion Rod
+          - Fishing Rod
+          - Water Bombs
+          - Bomblings
+          - Horse Call
+          - Oshus's Sword
+          - Phantom Sword
+          - Phantom Hourglass
+          - Pure Metals
+          - Regal Necklace
+          - Recruit's Sword
+          - Lokomo Sword
+          - Lokomo Song
+          - Spirit Flute
+          - Whirlwind
+          - Whip
+          - Sand Wand
+          - Tears of Light
+          - Bow of Light
+          - Compass of Light
+          - Stamp Book
+          - Shield of Antiquity
+          - Recruit Uniform
+          - Engineer's Clothes
+          - Engineer Certificate
+          - Practice Sword
+          - Sailcloth
+          - Adventure Pouch
+          - Goddess Sword
+          - Banded Shield
+          - Braced Shield
+          - Divine Shield
+          - Fortified Shield
+          - Goddess Shield
+          - Reinforced Shield
+          - Sacred Shield
+          - Scattershot
+          - Big Bug Net
+          - Beetle
+          - Hook Beetle
+          - Quick Beetle
+          - Tough Beetle
+          - Digging Mitts
+          - Gust Bellows
+          - Goddess's Harp
+          - Water Dragon's Scale
+          - Iron Bow
+          - Sacred Bow
+          - Fireshield Earrings
+          - Mogma Mitts
+          - Forgotten Sword
+          - Master Sword Lv2
+          - Master Sword Lv3
+          - Green Tunic
+          - Blue Mail
+          - Red Mail
+          - Stamina Scroll
+          - Bell
+          - Lost Maiamai
+          - Master Ore
+          - Nice Bow
+          - Tornado Rod
+          - Nice Tornado Rod
+          - Nice Hammer
+          - Nice Bombs
+          - Nice Hookshot
+          - Sand Rod
+          - Nice Sand Rod
+          - Nice Fire Rod
+          - Nice Ice Rod
+          - Nice Boomerang
+          - Lamp
+          - Super Lamp
+          - Super Net
+          - Scoot Fruit
+          - Foul Fruit</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().zelda.games() // =&gt; A Link to the Past
+
+Faker().zelda.characters() // =&gt; Abe
+
+Faker().zelda.locations() // =&gt; Akkala Ancient Tech Lab
+
+Faker().zelda.items() // =&gt; Blue Ring</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

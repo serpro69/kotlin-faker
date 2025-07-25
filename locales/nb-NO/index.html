@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>nb-NO</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/nb-NO" aria-current="page">nb-NO</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_nb_no_yml"><code>nb-NO.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">nb-NO:
+  faker:
+    address:
+      city_root:
+        - Fet
+        - Gjes
+        - Høy
+        - Inn
+        - Fager
+        - Lille
+        - Lo
+        - Mal
+        - Nord
+        - Nær
+        - Sand
+        - Sme
+        - Stav
+        - Stor
+        - Tand
+        - Ut
+        - Vest
+      city_suffix:
+        - berg
+        - borg
+        - by
+        - bø
+        - dal
+        - eid
+        - fjell
+        - fjord
+        - foss
+        - grunn
+        - hamn
+        - havn
+        - helle
+        - mark
+        - nes
+        - odden
+        - sand
+        - sjøen
+        - stad
+        - strand
+        - strøm
+        - sund
+        - vik
+        - vær
+        - våg
+        - ø
+        - øy
+        - ås
+      street_prefix:
+        - Øvre
+        - Nedre
+        - Søndre
+        - Gamle
+        - Østre
+        - Vestre
+      street_root:
+        - Eike
+        - Bjørke
+        - Gran
+        - Vass
+        - Furu
+        - Litj
+        - Lille
+        - Høy
+        - Fosse
+        - Elve
+        - Ku
+        - Konvall
+        - Soldugg
+        - Hestemyr
+        - Granitt
+        - Hegge
+        - Rogne
+        - Fiol
+        - Sol
+        - Ting
+        - Malm
+        - Klokker
+        - Preste
+        - Dam
+        - Geiterygg
+        - Bekke
+        - Berg
+        - Kirke
+        - Kors
+        - Bru
+        - Blåveis
+        - Torg
+        - Sjø
+      street_suffix:
+        - alléen
+        - bakken
+        - berget
+        - bråten
+        - eggen
+        - engen
+        - ekra
+        - faret
+        - flata
+        - gata
+        - gjerdet
+        - grenda
+        - gropa
+        - hagen
+        - haugen
+        - havna
+        - holtet
+        - høgda
+        - jordet
+        - kollen
+        - kroken
+        - lia
+        - lunden
+        - lyngen
+        - løkka
+        - marka
+        - moen
+        - myra
+        - plassen
+        - ringen
+        - roa
+        - røa
+        - skogen
+        - skrenten
+        - spranget
+        - stien
+        - stranda
+        - stubben
+        - stykket
+        - svingen
+        - tjernet
+        - toppen
+        - tunet
+        - vollen
+        - vika
+        - åsen
+      common_street_suffix:
+        - sgate
+        - svei
+        - s Gate
+        - s Vei
+        - gata
+        - veien
+      building_number:
+        - "#"
+        - "##"
+      secondary_address:
+        - 'Leil. ###'
+        - Oppgang A
+        - Oppgang B
+      postcode:
+        - "####"
+        - "####"
+        - "####"
+        - 0###
+      state:
+        - Østfold
+        - Akershus
+        - Oslo
+        - Hedmark
+        - Oppland
+        - Buskerud
+        - Vestfold
+        - Telemark
+        - Aust-Agder
+        - Vest-Agder
+        - Rogaland
+        - Hordaland
+        - Sogn og Fjordane
+        - Møre og Romsdal
+        - Sør-Trøndelag
+        - Nord-Trøndelag
+        - Nordland
+        - Troms
+        - Finnmark
+        - Svalbard
+      city:
+        - "#{city_root}#{city_suffix}"
+      street_name:
+        - "#{street_root}#{street_suffix}"
+        - "#{street_prefix} #{street_root}#{street_suffix}"
+        - "#{Name.first_name}#{common_street_suffix}"
+        - "#{Name.last_name}#{common_street_suffix}"
+      street_address:
+        - "#{street_name} #{building_number}"
+      default_country:
+        - Norge
+      default_country_code:
+        - 'NO'
+    company:
+      suffix:
+        - Gruppen
+        - AS
+        - ASA
+        - BA
+        - RFH
+        - og Sønner
+      name:
+        - "#{Name.last_name} #{suffix}"
+        - "#{Name.last_name}-#{Name.last_name}"
+        - "#{Name.last_name}, #{Name.last_name} og #{Name.last_name}"
+    internet:
+      domain_suffix:
+        - 'no'
+        - com
+        - net
+        - org
+    name:
+      first_name:
+        - Emma
+        - Sara
+        - Thea
+        - Ida
+        - Julie
+        - Nora
+        - Emilie
+        - Ingrid
+        - Hanna
+        - Maria
+        - Sofie
+        - Anna
+        - Malin
+        - Amalie
+        - Vilde
+        - Frida
+        - Andrea
+        - Tuva
+        - Victoria
+        - Mia
+        - Karoline
+        - Mathilde
+        - Martine
+        - Linnea
+        - Marte
+        - Hedda
+        - Marie
+        - Helene
+        - Silje
+        - Leah
+        - Maja
+        - Elise
+        - Oda
+        - Kristine
+        - Aurora
+        - Kaja
+        - Camilla
+        - Mari
+        - Maren
+        - Mina
+        - Selma
+        - Jenny
+        - Celine
+        - Eline
+        - Sunniva
+        - Natalie
+        - Tiril
+        - Synne
+        - Sandra
+        - Madeleine
+        - Markus
+        - Mathias
+        - Kristian
+        - Jonas
+        - Andreas
+        - Alexander
+        - Martin
+        - Sander
+        - Daniel
+        - Magnus
+        - Henrik
+        - Tobias
+        - Kristoffer
+        - Emil
+        - Adrian
+        - Sebastian
+        - Marius
+        - Elias
+        - Fredrik
+        - Thomas
+        - Sondre
+        - Benjamin
+        - Jakob
+        - Oliver
+        - Lucas
+        - Oskar
+        - Nikolai
+        - Filip
+        - Mats
+        - William
+        - Erik
+        - Simen
+        - Ole
+        - Eirik
+        - Isak
+        - Kasper
+        - Noah
+        - Lars
+        - Joakim
+        - Johannes
+        - Håkon
+        - Sindre
+        - Jørgen
+        - Herman
+        - Anders
+        - Jonathan
+        - Even
+        - Theodor
+        - Mikkel
+        - Aksel
+      female_first_name:
+        - Emma
+        - Sara
+        - Thea
+        - Ida
+        - Julie
+        - Nora
+        - Emilie
+        - Ingrid
+        - Hanna
+        - Maria
+        - Sofie
+        - Anna
+        - Malin
+        - Amalie
+        - Vilde
+        - Frida
+        - Andrea
+        - Tuva
+        - Victoria
+        - Mia
+        - Karoline
+        - Mathilde
+        - Martine
+        - Linnea
+        - Marte
+        - Hedda
+        - Marie
+        - Helene
+        - Silje
+        - Leah
+        - Maja
+        - Elise
+        - Oda
+        - Kristine
+        - Aurora
+        - Kaja
+        - Camilla
+        - Mari
+        - Maren
+        - Mina
+        - Selma
+        - Jenny
+        - Celine
+        - Eline
+        - Sunniva
+        - Natalie
+        - Tiril
+        - Synne
+        - Sandra
+        - Madeleine
+      male_first_name:
+        - Markus
+        - Mathias
+        - Kristian
+        - Jonas
+        - Andreas
+        - Alexander
+        - Martin
+        - Sander
+        - Daniel
+        - Magnus
+        - Henrik
+        - Tobias
+        - Kristoffer
+        - Emil
+        - Adrian
+        - Sebastian
+        - Marius
+        - Elias
+        - Fredrik
+        - Thomas
+        - Sondre
+        - Benjamin
+        - Jakob
+        - Oliver
+        - Lucas
+        - Oskar
+        - Nikolai
+        - Filip
+        - Mats
+        - William
+        - Erik
+        - Simen
+        - Ole
+        - Eirik
+        - Isak
+        - Kasper
+        - Noah
+        - Lars
+        - Joakim
+        - Johannes
+        - Håkon
+        - Sindre
+        - Jørgen
+        - Herman
+        - Anders
+        - Jonathan
+        - Even
+        - Theodor
+        - Mikkel
+        - Aksel
+      last_name:
+        - Johansen
+        - Hansen
+        - Andersen
+        - Kristiansen
+        - Larsen
+        - Olsen
+        - Solberg
+        - Andresen
+        - Pedersen
+        - Nilsen
+        - Berg
+        - Halvorsen
+        - Karlsen
+        - Svendsen
+        - Jensen
+        - Haugen
+        - Martinsen
+        - Eriksen
+        - Sørensen
+        - Johnsen
+        - Myhrer
+        - Johannessen
+        - Nielsen
+        - Hagen
+        - Pettersen
+        - Bakke
+        - Skuterud
+        - Løken
+        - Gundersen
+        - Strand
+        - Jørgensen
+        - Kvarme
+        - Røed
+        - Sæther
+        - Stensrud
+        - Moe
+        - Kristoffersen
+        - Jakobsen
+        - Holm
+        - Aas
+        - Lie
+        - Moen
+        - Andreassen
+        - Vedvik
+        - Nguyen
+        - Jacobsen
+        - Torgersen
+        - Ruud
+        - Krogh
+        - Christiansen
+        - Bjerke
+        - Aalerud
+        - Borge
+        - Sørlie
+        - Berge
+        - Østli
+        - Ødegård
+        - Torp
+        - Henriksen
+        - Haukelidsæter
+        - Fjeld
+        - Danielsen
+        - Aasen
+        - Fredriksen
+        - Dahl
+        - Berntsen
+        - Arnesen
+        - Wold
+        - Thoresen
+        - Solheim
+        - Skoglund
+        - Bakken
+        - Amundsen
+        - Solli
+        - Smogeli
+        - Kristensen
+        - Glosli
+        - Fossum
+        - Evensen
+        - Eide
+        - Carlsen
+        - Østby
+        - Vegge
+        - Tangen
+        - Smedsrud
+        - Olstad
+        - Lunde
+        - Kleven
+        - Huseby
+        - Bjørnstad
+        - Ryan
+        - Rasmussen
+        - Nygård
+        - Nordskaug
+        - Nordby
+        - Mathisen
+        - Hopland
+        - Gran
+        - Finstad
+        - Edvardsen
+      prefix:
+        - Dr.
+        - Prof.
+      suffix:
+        - Jr.
+        - Sr.
+        - I
+        - II
+        - III
+        - IV
+        - V
+      name:
+        - "#{prefix} #{first_name} #{last_name}"
+        - "#{first_name} #{last_name} #{suffix}"
+        - "#{female_first_name} #{female_first_name} #{last_name}"
+        - "#{male_first_name} #{male_first_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+      name_with_middle:
+        - "#{prefix} #{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name} #{suffix}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+    phone_number:
+      country_code:
+        - '47'
+      formats:
+        - "########"
+        - "## ## ## ##"
+        - "### ## ###"
+        - "## ## ## ##"
+    cell_phone:
+      formats:
+        - "########"
+        - "## ## ## ##"
+        - "### ## ###"
+        - "## ## ## ##"</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

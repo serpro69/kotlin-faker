@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /meta/
+
+
+
+Sitemap: https://serpro69.github.io/kotlin-faker/sitemap.xml
+

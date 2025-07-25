@@ -1,0 +1,1262 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>io.github.serpro69.kfaker</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSourceDoc.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a></li>
+
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker" aria-current="page">io.github.serpro69.kfaker</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="io.github.serpro69.kfaker">
+
+
+  
+
+  
+    <div class="sourcedoc-section section-element" id="96270882d4c097659b68419fb43f6d3237e41551">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker">io.github.serpro69.kfaker</a></code>
+      </p>
+
+      
+        
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+      
+
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="classes">
+
+
+  <p class="sourcedoc-section section-name"><strong>Classes</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0cb102bf7a2137ae13b27f552fc3eefe6e7d22bb">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker">AbstractFaker</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="4346fa1bccbdde7cd8bd25e68958693627d9ce76">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker">Faker</a>: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker">AbstractFaker</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Provides access to 'core' fake data generators.</p><p>Each category (generator) from this <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker">Faker</a> is represented by a property that has the same name as the <code>.yml</code> file.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="67a723513d1e4745913a346640ece7df3dade83b">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Configuration for implementations of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker">AbstractFaker</a>.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="aaea5bb82233c2789a86a2923b191bdd9b713d6c">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder">ConfigBuilder</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Lambda with <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder">FakerConfig.Builder</a> receiver type that returns a Unit.</p><p>Used with DSL functions to construct an instance of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a>
+by applying the results of the function to the <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder">FakerConfig.Builder</a>.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="00f5de48a7bc527418ebea5fe11b1d5227a45010">
+        <td class="sourcedoc-section section-signature">
+          <code>annotation class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerdsl">FakerDsl</a>: Annotation, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="caea86cd746adb46e5e027d0accaa20e28a7a559">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerservice">FakerService</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Internal class used for resolving yaml expressions into values.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="da444c7487899bb379c8cf6e98760ca4694ffb1d">
+        <td class="sourcedoc-section section-signature">
+          <code>interface <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/irandom">IRandom</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Provides functionality similar to <a href="https://docs.oracle.com/javase/6/docs/api/java/util/Random.html">Random</a></p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b283540777da9b94aee172b7a0e42fc807637808">
+        <td class="sourcedoc-section section-signature">
+          <code>class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice">RandomService</a>: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/irandom">IRandom</a>, Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Wrapper around <a href="#">Random</a> that also contains some additional functions not covered by <a href="#">Random</a>.</p><p>If two instances of this <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice">RandomService</a> are created with the same seed,
+and the same sequence of method calls is made for each,
+then they will generate and return identical sequences of values.</p><p>Instances of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice">RandomService</a> are not cryptographically secure by default.
+Consider passing <a href="https://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html">java.security.SecureRandom</a> to the constructor of this <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice">RandomService</a>
+to get a cryptographically secure pseudo-random generator.</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="367d30b40b477b9e53329a78566e9cc1ec174319">
+        <td class="sourcedoc-section section-signature">
+          <code>open class <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/functionalutil">FunctionalUtil</a>: Any</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="subpackages">
+
+
+  <p class="sourcedoc-section section-name"><strong>Subpackages</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b6805a929f1a45d385a166fa9006391613b19945">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary">io.github.serpro69.kfaker.dictionary</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="5d4eab7f41ec2ce498417f4dcd8aaac71c79ece0">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/exception">io.github.serpro69.kfaker.exception</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a8e4766ee73b2f721189412b685d189420ed4f31">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/extension">io.github.serpro69.kfaker.extension</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="044cd877336676e46044e38c8b1a9b0de597adc5">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/helper">io.github.serpro69.kfaker.helper</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="efd5b88edbc944add9b99d9fd9edde23f72be3c4">
+        <td class="sourcedoc-section section-signature">
+          <code>package <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider">io.github.serpro69.kfaker.provider</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="typealiases">
+
+
+  <p class="sourcedoc-section section-name"><strong>Typealiases</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b524b523e9bb0147fb4b05c687a844c32c2c5bad">
+        <td class="sourcedoc-section section-signature">
+          <code>typealias <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder">ConfigBuilder</a> = Function1</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>Lambda with <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder">FakerConfig.Builder</a> receiver type that returns a Unit.</p><p>Used with DSL functions to construct an instance of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a>
+by applying the results of the function to the <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder">FakerConfig.Builder</a>.</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  
+    <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+
+  
+    <div class="sourcedoc-section section-element" id="48eea612ee355b83fa5f77380361529282e1db8c">
+      
+      <h3 class="sourcedoc-section element-name">faker</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun faker(block: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker/builder">Builder</a>.()-&gt;Unit): <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker">Faker</a></code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Applies the block function to <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker/builder">Faker.Builder</a>
+and returns as an instance of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker">Faker</a> from that builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="af5ad447461cbb6f6301a87d6fcf358465545f4d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7988b2a407ad4f090ef6b8661d383443fc5b348e">
+        <td class="sourcedoc-section section-signature">
+          <code>block: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker/builder">Builder</a>.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ec95fb6db95b5defb3dc0ac95bc54a6cc6ee51e6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a54013e7d75af368cbfcd26ae855468606eb7c50">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker">Faker</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bbf7e70c333b66df2cb321e3f2cc0b179cacf154">
+      
+      <h3 class="sourcedoc-section element-name">fakerConfig</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun fakerConfig(block: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder">ConfigBuilder</a>): <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Applies the the block function to <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder">ConfigBuilder</a>
+and returns as an instance of <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a> from that builder.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="782f43234005764e2a7345a19fdd6ddcc1db9ee7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9bfd663a117148e75223ff39c33023b4e8c64e85">
+        <td class="sourcedoc-section section-signature">
+          <code>block: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder">ConfigBuilder</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="547cf0ce404fb687266d0c4717beb36ee0202dcc">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="49e2dd67f40d1fdb66c2ab98e6a7cff717ff12a8">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="81a8c48a595d061d5ab859838c5749f5d35f3d64">
+      
+      <h3 class="sourcedoc-section element-name">randomClassInstance</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T : Any&gt; randomClassInstance(configurator: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig">RandomProviderConfig</a>.()-&gt;Unit): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Creates an instance of T. If T has a parameterless public/internal constructor then it will be used to create an instance of this class,
+otherwise a constructor with minimal number of parameters will be used with randomly-generated values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e02324d87c6516238be347de699a229b772356b3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a4aa58c79b7110b779792f4f13ccd75c983531ae">
+        <td class="sourcedoc-section section-signature">
+          <code>configurator: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig">RandomProviderConfig</a>.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>configure random class instance creation</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3d12229ae55bfc2b35be77710065ea11f11d72af">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="c560ed18bcb7d2258dd03a61138e412d93b740ff">
+      
+      <h3 class="sourcedoc-section element-name">randomClassInstance</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Any&gt; randomClassInstance(fakerConfig: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a>): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Creates an instance of T. If T has a parameterless public/internal constructor then it will be used to create an instance of this class,
+otherwise a constructor with minimal number of parameters will be used with randomly-generated values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="6746df3173e69d35b3ee64fceeca6f9323735bcb">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="eb2391d18a60755db16be12126c8b4a33a07396e">
+        <td class="sourcedoc-section section-signature">
+          <code>fakerConfig: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>configure <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomclassprovider">RandomClassProvider</a> via the <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="aa97ee55a3b3a91b491175ae61f9523d6a2521ef">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="41c4faf4a24048377b500cda46cec30d70faee04">
+      
+      <h3 class="sourcedoc-section element-name">randomClassInstance</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Any&gt; randomClassInstance(kClass: KClass&lt;T&gt;, configurator: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig">RandomProviderConfig</a>.()-&gt;Unit): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Creates an instance of T from the KClass input.
+If T has a parameterless public/internal constructor then it will be used to create an instance of this class,
+otherwise a constructor with minimal number of parameters will be used with randomly-generated values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8ad884d6f6cd49f51349890bf1e9672b22c4d4a6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="861bb6f3ce0bf6aafaaee382a06818c79b98f18f">
+        <td class="sourcedoc-section section-signature">
+          <code>kClass: KClass&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a KClass of T</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a4aa58c79b7110b779792f4f13ccd75c983531ae">
+        <td class="sourcedoc-section section-signature">
+          <code>configurator: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig">RandomProviderConfig</a>.()-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>configure random class instance creation</p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8428b6a71da19d0a0bcd61bf29bc37fdd72539dd">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b1fe3beb715e829ad34bc132178578d1b79a58f2">
+      
+      <h3 class="sourcedoc-section element-name">randomClassInstance</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Any&gt; randomClassInstance(kClass: KClass&lt;T&gt;, fakerConfig: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a>): T</code>
+      </p>
+
+      
+
+      <div class="sourcedoc-section section-comments"><p>Creates an instance of T from the KClass input.
+If T has a parameterless public/internal constructor then it will be used to create an instance of this class,
+otherwise a constructor with minimal number of parameters will be used with randomly-generated values.</p>
+</div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fc5731c23ec1645a800881feb43d098e379a3e2f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="861bb6f3ce0bf6aafaaee382a06818c79b98f18f">
+        <td class="sourcedoc-section section-signature">
+          <code>kClass: KClass&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>a KClass of T</p>
+
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="eb2391d18a60755db16be12126c8b4a33a07396e">
+        <td class="sourcedoc-section section-signature">
+          <code>fakerConfig: <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        <p>configure <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomclassprovider">RandomClassProvider</a> via the <a href="https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig">FakerConfig</a></p>
+
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1bce4493904457bcec270bece1ae8eeceed6f0ec">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

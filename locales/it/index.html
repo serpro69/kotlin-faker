@@ -1,0 +1,1804 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>it</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/locales/it" aria-current="page">it</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_it_yml"><code>it.yml</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Localized dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">it:
+  faker:
+    address:
+      city_prefix:
+        - San
+        - Borgo
+        - Sesto
+        - Quarto
+        - Settimo
+      city_suffix:
+        - a mare
+        - lido
+        - ligure
+        - del friuli
+        - salentino
+        - calabro
+        - veneto
+        - nell'emilia
+        - umbro
+        - laziale
+        - terme
+        - sardo
+      country:
+        - Afghanistan
+        - Albania
+        - Algeria
+        - American Samoa
+        - Andorra
+        - Angola
+        - Anguilla
+        - Antartide (territori a sud del 60° parallelo)
+        - Antigua e Barbuda
+        - Argentina
+        - Armenia
+        - Aruba
+        - Australia
+        - Austria
+        - Azerbaijan
+        - Bahamas
+        - Bahrain
+        - Bangladesh
+        - Barbados
+        - Bielorussia
+        - Belgio
+        - Belize
+        - Benin
+        - Bermuda
+        - Bhutan
+        - Bolivia
+        - Bosnia e Herzegovina
+        - Botswana
+        - Bouvet Island (Bouvetoya)
+        - Brasile
+        - Territorio dell'arcipelago indiano
+        - Isole Vergini Britanniche
+        - Brunei Darussalam
+        - Bulgaria
+        - Burkina Faso
+        - Burundi
+        - Cambogia
+        - Cameroon
+        - Canada
+        - Capo Verde
+        - Isole Cayman
+        - Repubblica Centrale Africana
+        - Chad
+        - Cile
+        - Cina
+        - Isola di Pasqua
+        - Isola di Cocos (Keeling)
+        - Colombia
+        - Comoros
+        - Congo
+        - Isole Cook
+        - Costa Rica
+        - Costa d'Avorio
+        - Croazia
+        - Cuba
+        - Cipro
+        - Repubblica Ceca
+        - Danimarca
+        - Gibuti
+        - Repubblica Dominicana
+        - Equador
+        - Egitto
+        - El Salvador
+        - Guinea Equatoriale
+        - Eritrea
+        - Estonia
+        - Etiopia
+        - Isole Faroe
+        - Isole Falkland (Malvinas)
+        - Fiji
+        - Finlandia
+        - Francia
+        - Guyana Francese
+        - Polinesia Francese
+        - Territori Francesi del sud
+        - Gabon
+        - Gambia
+        - Georgia
+        - Germania
+        - Ghana
+        - Gibilterra
+        - Grecia
+        - Groenlandia
+        - Grenada
+        - Guadalupa
+        - Guam
+        - Guatemala
+        - Guernsey
+        - Guinea
+        - Guinea-Bissau
+        - Guyana
+        - Haiti
+        - Heard Island and McDonald Islands
+        - Città del Vaticano
+        - Honduras
+        - Hong Kong
+        - Ungheria
+        - Islanda
+        - India
+        - Indonesia
+        - Iran
+        - Iraq
+        - Irlanda
+        - Isola di Man
+        - Israele
+        - Italia
+        - Giamaica
+        - Giappone
+        - Jersey
+        - Giordania
+        - Kazakhstan
+        - Kenya
+        - Kiribati
+        - Korea
+        - Kuwait
+        - Republicca Kirgiza
+        - Repubblica del Laos
+        - Latvia
+        - Libano
+        - Lesotho
+        - Liberia
+        - Libyan Arab Jamahiriya
+        - Liechtenstein
+        - Lituania
+        - Lussemburgo
+        - Macao
+        - Macedonia
+        - Madagascar
+        - Malawi
+        - Malesia
+        - Maldive
+        - Mali
+        - Malta
+        - Isole Marshall
+        - Martinica
+        - Mauritania
+        - Mauritius
+        - Mayotte
+        - Messico
+        - Micronesia
+        - Moldova
+        - Principato di Monaco
+        - Mongolia
+        - Montenegro
+        - Montserrat
+        - Marocco
+        - Mozambico
+        - Myanmar
+        - Namibia
+        - Nauru
+        - Nepal
+        - Antille Olandesi
+        - Olanda
+        - Nuova Caledonia
+        - Nuova Zelanda
+        - Nicaragua
+        - Niger
+        - Nigeria
+        - Niue
+        - Isole Norfolk
+        - Northern Mariana Islands
+        - Norvegia
+        - Oman
+        - Pakistan
+        - Palau
+        - Palestina
+        - Panama
+        - Papua Nuova Guinea
+        - Paraguay
+        - Peru
+        - Filippine
+        - Pitcairn Islands
+        - Polonia
+        - Portogallo
+        - Porto Rico
+        - Qatar
+        - Reunion
+        - Romania
+        - Russia
+        - Rwanda
+        - San Bartolomeo
+        - Sant'Elena
+        - Saint Kitts and Nevis
+        - Saint Lucia
+        - Saint Martin
+        - Saint Pierre and Miquelon
+        - Saint Vincent and the Grenadines
+        - Samoa
+        - San Marino
+        - Sao Tome and Principe
+        - Arabia Saudita
+        - Senegal
+        - Serbia
+        - Seychelles
+        - Sierra Leone
+        - Singapore
+        - Slovenia
+        - Isole Solomon
+        - Somalia
+        - Sud Africa
+        - Georgia del sud e South Sandwich Islands
+        - Spagna
+        - Sri Lanka
+        - Sudan
+        - Suriname
+        - Svalbard &amp; Jan Mayen Islands
+        - Swaziland
+        - Svezia
+        - Svizzera
+        - Siria
+        - Taiwan
+        - Tajikistan
+        - Tanzania
+        - Tailandia
+        - Timor-Leste
+        - Togo
+        - Tokelau
+        - Tonga
+        - Trinidad e Tobago
+        - Tunisia
+        - Turchia
+        - Turkmenistan
+        - Isole di Turks and Caicos
+        - Tuvalu
+        - Uganda
+        - Ucraina
+        - Emirati Arabi Uniti
+        - Regno Unito
+        - Stati Uniti d'America
+        - United States Minor Outlying Islands
+        - Isole Vergini Statunitensi
+        - Uruguay
+        - Uzbekistan
+        - Vanuatu
+        - Venezuela
+        - Vietnam
+        - Wallis and Futuna
+        - Western Sahara
+        - Yemen
+        - Zambia
+        - Zimbabwe
+      building_number:
+        - "###"
+        - "##"
+        - "#"
+      street_suffix:
+        - Piazza
+        - Strada
+        - Via
+        - Borgo
+        - Contrada
+        - Rotonda
+        - Incrocio
+      secondary_address:
+        - 'Appartamento ##'
+        - 'Piano #'
+      postcode:
+        - "#####"
+      state:
+        - Agrigento
+        - Alessandria
+        - Ancona
+        - Aosta
+        - Arezzo
+        - Ascoli Piceno
+        - Asti
+        - Avellino
+        - Bari
+        - Barletta-Andria-Trani
+        - Belluno
+        - Benevento
+        - Bergamo
+        - Biella
+        - Bologna
+        - Bolzano
+        - Brescia
+        - Brindisi
+        - Cagliari
+        - Caltanissetta
+        - Campobasso
+        - Carbonia-Iglesias
+        - Caserta
+        - Catania
+        - Catanzaro
+        - Chieti
+        - Como
+        - Cosenza
+        - Cremona
+        - Crotone
+        - Cuneo
+        - Enna
+        - Fermo
+        - Ferrara
+        - Firenze
+        - Foggia
+        - Forlì-Cesena
+        - Frosinone
+        - Genova
+        - Gorizia
+        - Grosseto
+        - Imperia
+        - Isernia
+        - La Spezia
+        - L'Aquila
+        - Latina
+        - Lecce
+        - Lecco
+        - Livorno
+        - Lodi
+        - Lucca
+        - Macerata
+        - Mantova
+        - Massa-Carrara
+        - Matera
+        - Messina
+        - Milano
+        - Modena
+        - Monza e della Brianza
+        - Napoli
+        - Novara
+        - Nuoro
+        - Olbia-Tempio
+        - Oristano
+        - Padova
+        - Palermo
+        - Parma
+        - Pavia
+        - Perugia
+        - Pesaro e Urbino
+        - Pescara
+        - Piacenza
+        - Pisa
+        - Pistoia
+        - Pordenone
+        - Potenza
+        - Prato
+        - Ragusa
+        - Ravenna
+        - Reggio Calabria
+        - Reggio Emilia
+        - Rieti
+        - Rimini
+        - Roma
+        - Rovigo
+        - Salerno
+        - Medio Campidano
+        - Sassari
+        - Savona
+        - Siena
+        - Siracusa
+        - Sondrio
+        - Taranto
+        - Teramo
+        - Terni
+        - Torino
+        - Ogliastra
+        - Trapani
+        - Trento
+        - Treviso
+        - Trieste
+        - Udine
+        - Varese
+        - Venezia
+        - Verbano-Cusio-Ossola
+        - Vercelli
+        - Verona
+        - Vibo Valentia
+        - Vicenza
+        - Viterbo
+      state_abbr:
+        - AG
+        - AL
+        - AN
+        - AO
+        - AR
+        - AP
+        - AT
+        - AV
+        - BA
+        - BT
+        - BL
+        - BN
+        - BG
+        - BI
+        - BO
+        - BZ
+        - BS
+        - BR
+        - CA
+        - CL
+        - CB
+        - CI
+        - CE
+        - CT
+        - CZ
+        - CH
+        - CO
+        - CS
+        - CR
+        - KR
+        - CN
+        - EN
+        - FM
+        - FE
+        - FI
+        - FG
+        - FC
+        - FR
+        - GE
+        - GO
+        - GR
+        - IM
+        - IS
+        - SP
+        - AQ
+        - LT
+        - LE
+        - LC
+        - LI
+        - LO
+        - LU
+        - MC
+        - MN
+        - MS
+        - MT
+        - ME
+        - MI
+        - MO
+        - MB
+        - NA
+        - 'NO'
+        - NU
+        - OT
+        - OR
+        - PD
+        - PA
+        - PR
+        - PV
+        - PG
+        - PU
+        - PE
+        - PC
+        - PI
+        - PT
+        - PN
+        - PZ
+        - PO
+        - RG
+        - RA
+        - RC
+        - RE
+        - RI
+        - RN
+        - RM
+        - RO
+        - SA
+        - VS
+        - SS
+        - SV
+        - SI
+        - SR
+        - SO
+        - TA
+        - TE
+        - TR
+        - TO
+        - OG
+        - TP
+        - TN
+        - TV
+        - TS
+        - UD
+        - VA
+        - VE
+        - VB
+        - VC
+        - VR
+        - VV
+        - VI
+        - VT
+      city:
+        - "#{city_prefix} #{Name.first_name} #{city_suffix}"
+        - "#{city_prefix} #{Name.first_name}"
+        - "#{Name.first_name} #{city_suffix}"
+        - "#{Name.last_name} #{city_suffix}"
+      street_name:
+        - "#{street_suffix} #{Name.first_name}"
+        - "#{street_suffix} #{Name.last_name}"
+      street_address:
+        - "#{street_name} #{building_number}"
+        - "#{street_name} #{building_number}, #{secondary_address}"
+      default_country:
+        - Italia
+      default_country_code:
+        - IT
+    company:
+      suffix:
+        - SPA
+        - e figli
+        - Group
+        - s.r.l.
+      buzzwords:
+        - - Abilità
+          - Access
+          - Adattatore
+          - Algoritmo
+          - Alleanza
+          - Analizzatore
+          - Applicazione
+          - Approccio
+          - Architettura
+          - Archivio
+          - Intelligenza artificiale
+          - Array
+          - Attitudine
+          - Benchmark
+          - Capacità
+          - Sfida
+          - Circuito
+          - Collaborazione
+          - Complessità
+          - Concetto
+          - Conglomerato
+          - Contingenza
+          - Core
+          - Database
+          - Data-warehouse
+          - Definizione
+          - Emulazione
+          - Codifica
+          - Criptazione
+          - Firmware
+          - Flessibilità
+          - Previsione
+          - Frame
+          - framework
+          - Funzione
+          - Funzionalità
+          - Interfaccia grafica
+          - Hardware
+          - Help-desk
+          - Gerarchia
+          - Hub
+          - Implementazione
+          - Infrastruttura
+          - Iniziativa
+          - Installazione
+          - Set di istruzioni
+          - Interfaccia
+          - Soluzione internet
+          - Intranet
+          - Conoscenza base
+          - Matrici
+          - Matrice
+          - Metodologia
+          - Middleware
+          - Migrazione
+          - Modello
+          - Moderazione
+          - Monitoraggio
+          - Moratoria
+          - Rete
+          - Architettura aperta
+          - Sistema aperto
+          - Orchestrazione
+          - Paradigma
+          - Parallelismo
+          - Policy
+          - Portale
+          - Struttura di prezzo
+          - Prodotto
+          - Produttività
+          - Progetto
+          - Proiezione
+          - Protocollo
+          - Servizio clienti
+          - Software
+          - Soluzione
+          - Standardizzazione
+          - Strategia
+          - Struttura
+          - Successo
+          - Sovrastruttura
+          - Supporto
+          - Sinergia
+          - Task-force
+          - Finestra temporale
+          - Strumenti
+          - Utilizzazione
+          - Sito web
+          - Forza lavoro
+        - - adattiva
+          - avanzata
+          - migliorata
+          - assimilata
+          - automatizzata
+          - bilanciata
+          - centralizzata
+          - compatibile
+          - configurabile
+          - cross-platform
+          - decentralizzata
+          - digitalizzata
+          - distribuita
+          - piccola
+          - ergonomica
+          - esclusiva
+          - espansa
+          - estesa
+          - configurabile
+          - fondamentale
+          - orizzontale
+          - implementata
+          - innovativa
+          - integrata
+          - intuitiva
+          - inversa
+          - gestita
+          - obbligatoria
+          - monitorata
+          - multi-canale
+          - multi-laterale
+          - open-source
+          - operativa
+          - ottimizzata
+          - organica
+          - persistente
+          - polarizzata
+          - proattiva
+          - programmabile
+          - progressiva
+          - reattiva
+          - riallineata
+          - ricontestualizzata
+          - ridotta
+          - robusta
+          - sicura
+          - condivisibile
+          - stand-alone
+          - switchabile
+          - sincronizzata
+          - sinergica
+          - totale
+          - universale
+          - user-friendly
+          - versatile
+          - virtuale
+          - visionaria
+        - - 24 ore
+          - 24/7
+          - terza generazione
+          - quarta generazione
+          - quinta generazione
+          - sesta generazione
+          - asimmetrica
+          - asincrona
+          - background
+          - bi-direzionale
+          - biforcata
+          - bottom-line
+          - coerente
+          - coesiva
+          - composita
+          - sensibile al contesto
+          - basta sul contesto
+          - basata sul contenuto
+          - dedicata
+          - didattica
+          - direzionale
+          - discreta
+          - dinamica
+          - eco-centrica
+          - esecutiva
+          - esplicita
+          - full-range
+          - globale
+          - euristica
+          - alto livello
+          - olistica
+          - omogenea
+          - ibrida
+          - impattante
+          - incrementale
+          - intangibile
+          - interattiva
+          - intermediaria
+          - locale
+          - logistica
+          - massimizzata
+          - metodica
+          - mission-critical
+          - mobile
+          - modulare
+          - motivazionale
+          - multimedia
+          - multi-tasking
+          - nazionale
+          - neutrale
+          - nextgeneration
+          - non-volatile
+          - object-oriented
+          - ottima
+          - ottimizzante
+          - radicale
+          - real-time
+          - reciproca
+          - regionale
+          - responsiva
+          - scalabile
+          - secondaria
+          - stabile
+          - statica
+          - sistematica
+          - sistemica
+          - tangibile
+          - terziaria
+          - uniforme
+          - valore aggiunto
+      bs:
+        - - partnerships
+          - comunità
+          - ROI
+          - soluzioni
+          - e-services
+          - nicchie
+          - tecnologie
+          - contenuti
+          - supply-chains
+          - convergenze
+          - relazioni
+          - architetture
+          - interfacce
+          - mercati
+          - e-commerce
+          - sistemi
+          - modelli
+          - schemi
+          - reti
+          - applicazioni
+          - metriche
+          - e-business
+          - funzionalità
+          - esperienze
+          - webservices
+          - metodologie
+        - - implementate
+          - utilizzo
+          - integrate
+          - ottimali
+          - evolutive
+          - abilitate
+          - reinventate
+          - aggregate
+          - migliorate
+          - incentivate
+          - monetizzate
+          - sinergizzate
+          - strategiche
+          - deploy
+          - marchi
+          - accrescitive
+          - target
+          - sintetizzate
+          - spedizioni
+          - massimizzate
+          - innovazione
+          - guida
+          - estensioni
+          - generate
+          - exploit
+          - transizionali
+          - matrici
+          - ricontestualizzate
+        - - valore aggiunto
+          - verticalizzate
+          - proattive
+          - forti
+          - rivoluzionari
+          - scalabili
+          - innovativi
+          - intuitivi
+          - strategici
+          - e-business
+          - mission-critical
+          - 24/7
+          - globali
+          - B2B
+          - B2C
+          - granulari
+          - virtuali
+          - virali
+          - dinamiche
+          - magnetiche
+          - web
+          - interattive
+          - sexy
+          - back-end
+          - real-time
+          - efficienti
+          - front-end
+          - distributivi
+          - estensibili
+          - mondiali
+          - open-source
+          - cross-platform
+          - sinergiche
+          - out-of-the-box
+          - enterprise
+          - integrate
+          - di impatto
+          - wireless
+          - trasparenti
+          - next-generation
+          - cutting-edge
+          - visionari
+          - plug-and-play
+          - collaborative
+          - olistiche
+          - ricche
+      name:
+        - "#{Name.last_name} #{suffix}"
+        - "#{Name.last_name}-#{Name.last_name} #{suffix}"
+        - "#{Name.last_name}, #{Name.last_name} e #{Name.last_name} #{suffix}"
+    internet:
+      domain_suffix:
+        - com
+        - com
+        - com
+        - net
+        - org
+        - it
+        - it
+        - it
+    name:
+      first_name:
+        - Alberto
+        - Alessandro
+        - Alighieri
+        - Amedeo
+        - Anselmo
+        - Antonino
+        - Arcibaldo
+        - Armando
+        - Audenico
+        - Ausonio
+        - Bacchisio
+        - Battista
+        - Bernardo
+        - Caio
+        - Carlo
+        - Cecco
+        - Cirino
+        - Costantino
+        - Damiano
+        - Davide
+        - Edilio
+        - Egidio
+        - Elio
+        - Emanuel
+        - Enrico
+        - Ercole
+        - Eusebio
+        - Evangelista
+        - Fabiano
+        - Ferdinando
+        - Fiorentino
+        - Flavio
+        - Fulvio
+        - Gabriele
+        - Gastone
+        - Germano
+        - Giacinto
+        - Gianantonio
+        - Gianleonardo
+        - Gianmarco
+        - Gianriccardo
+        - Gioacchino
+        - Giordano
+        - Giuliano
+        - Graziano
+        - Guido
+        - Iacopo
+        - Ilario
+        - Ione
+        - Italo
+        - Laerte
+        - Lauro
+        - Leonardo
+        - Liborio
+        - Lorenzo
+        - Ludovico
+        - Maggiore
+        - Manuele
+        - Mariano
+        - Matteo
+        - Mauro
+        - Mirco
+        - Modesto
+        - Muzio
+        - Odino
+        - Olo
+        - Oreste
+        - Osea
+        - Patrizio
+        - Piererminio
+        - Pierfrancesco
+        - Piersilvio
+        - Priamo
+        - Quarto
+        - Quirino
+        - Raniero
+        - Renato
+        - Rocco
+        - Romeo
+        - Rosalino
+        - Sabatino
+        - Samuel
+        - Santo
+        - Serse
+        - Silvano
+        - Sirio
+        - Tancredi
+        - Terzo
+        - Timoteo
+        - Tolomeo
+        - Ubaldo
+        - Ulrico
+        - Valdo
+        - Neri
+        - Vinicio
+        - Walter
+        - Zaccaria
+        - Abramo
+        - Adriano
+        - Alan
+        - Albino
+        - Alessio
+        - Alighiero
+        - Amerigo
+        - Anastasio
+        - Antimo
+        - Antonio
+        - Arduino
+        - Aroldo
+        - Arturo
+        - Augusto
+        - Avide
+        - Baldassarre
+        - Bettino
+        - Bortolo
+        - Caligola
+        - Carmelo
+        - Celeste
+        - Ciro
+        - Costanzo
+        - Dante
+        - Dindo
+        - Domiziano
+        - Edipo
+        - Egisto
+        - Eliziario
+        - Emidio
+        - Enzo
+        - Eriberto
+        - Erminio
+        - Ettore
+        - Eustachio
+        - Fabio
+        - Fernando
+        - Fiorenzo
+        - Folco
+        - Furio
+        - Gaetano
+        - Gavino
+        - Gerlando
+        - Giacobbe
+        - Giancarlo
+        - Gianmaria
+        - Giobbe
+        - Giorgio
+        - Giulio
+        - Gregorio
+        - Ippolito
+        - Ivano
+        - Jacopo
+        - Lamberto
+        - Lazzaro
+        - Leone
+        - Lino
+        - Loris
+        - Luigi
+        - Manfredi
+        - Marco
+        - Marino
+        - Marzio
+        - Mattia
+        - Max
+        - Michele
+        - Mirko
+        - Moreno
+        - Nazzareno
+        - Nestore
+        - Nico
+        - Odone
+        - Omar
+        - Orfeo
+        - Osvaldo
+        - Pacifico
+        - Pericle
+        - Pietro
+        - Primo
+        - Quasimodo
+        - Radio
+        - Raoul
+        - Renzo
+        - Rodolfo
+        - Romolo
+        - Rosolino
+        - Rufo
+        - Sabino
+        - Sandro
+        - Secondo
+        - Sesto
+        - Silverio
+        - Siro
+        - Tazio
+        - Teseo
+        - Tommaso
+        - Tristano
+        - Umberto
+        - Artemide
+        - Assia
+        - Azue
+        - Benedetta
+        - Bibiana
+        - Brigitta
+        - Carmela
+        - Cassiopea
+        - Cesidia
+        - Cira
+        - Clea
+        - Cleopatra
+        - Clodovea
+        - Concetta
+        - Cosetta
+        - Cristyn
+        - Damiana
+        - Danuta
+        - Deborah
+        - Demi
+        - Diamante
+        - Diana
+        - Donatella
+        - Doriana
+        - Elda
+        - Elga
+        - Elsa
+        - Emilia
+        - Enrica
+        - Erminia
+        - Eufemia
+        - Evita
+        - Fatima
+        - Felicia
+        - Filomena
+        - Flaviana
+        - Fortunata
+        - Gelsomina
+        - Genziana
+        - Giacinta
+        - Gilda
+        - Giovanna
+        - Giulietta
+        - Grazia
+        - Guendalina
+        - Ileana
+        - Irene
+        - Isabel
+        - Isira
+        - Ivonne
+        - Jole
+        - Claudia
+        - Laura
+        - Lucia
+        - Lia
+        - Lidia
+        - Lisa
+        - Loredana
+        - Loretta
+        - Luce
+        - Lucrezia
+        - Luna
+        - Marcella
+        - Maria
+        - Mariagiulia
+        - Marianita
+        - Mariapia
+        - Marieva
+        - Marina
+        - Maristella
+        - Matilde
+        - Mecren
+        - Mietta
+        - Miriana
+        - Miriam
+        - Monia
+        - Morgana
+        - Naomi
+        - Nicoletta
+        - Ninfa
+        - Noemi
+        - Nunzia
+        - Olimpia
+        - Oretta
+        - Ortensia
+        - Penelope
+        - Piccarda
+        - Prisca
+        - Rebecca
+        - Rita
+        - Rosalba
+        - Rosaria
+        - Rosita
+        - Samira
+        - Sarita
+        - Selvaggia
+        - Sibilla
+        - Soriana
+        - Thea
+        - Tosca
+        - Ursula
+        - Vania
+        - Vera
+        - Vienna
+        - Violante
+        - Vitalba
+        - Zelida
+      last_name:
+        - Amato
+        - Barbieri
+        - Barone
+        - Basile
+        - Battaglia
+        - Bellini
+        - Benedetti
+        - Bernardi
+        - Bianc
+        - Bianchi
+        - Bruno
+        - Caputo
+        - Carbon
+        - Caruso
+        - Cattaneo
+        - Colombo
+        - Cont
+        - Conte
+        - Coppola
+        - Costa
+        - Costantin
+        - D'amico
+        - D'angelo
+        - Damico
+        - De Angelis
+        - De luca
+        - De rosa
+        - De Santis
+        - Donati
+        - Esposito
+        - Fabbri
+        - Farin
+        - Ferrara
+        - Ferrari
+        - Ferraro
+        - Ferretti
+        - Ferri
+        - Fior
+        - Fontana
+        - Galli
+        - Gallo
+        - Gatti
+        - Gentile
+        - Giordano
+        - Giuliani
+        - Grassi
+        - Grasso
+        - Greco
+        - Guerra
+        - Leone
+        - Lombardi
+        - Lombardo
+        - Longo
+        - Mancini
+        - Marchetti
+        - Marian
+        - Marini
+        - Marino
+        - Martinelli
+        - Martini
+        - Martino
+        - Mazza
+        - Messina
+        - Milani
+        - Montanari
+        - Monti
+        - Morelli
+        - Moretti
+        - Negri
+        - Neri
+        - Orlando
+        - Pagano
+        - Palmieri
+        - Palumbo
+        - Parisi
+        - Pellegrini
+        - Pellegrino
+        - Piras
+        - Ricci
+        - Rinaldi
+        - Riva
+        - Rizzi
+        - Rizzo
+        - Romano
+        - Ross
+        - Rossetti
+        - Ruggiero
+        - Russo
+        - Sala
+        - Sanna
+        - Santoro
+        - Sartori
+        - Serr
+        - Silvestri
+        - Sorrentino
+        - Testa
+        - Valentini
+        - Villa
+        - Vitale
+        - Vitali
+      prefix:
+        - Sig.
+        - Dott.
+        - Dr.
+        - Ing.
+      suffix: []
+      name:
+        - "#{prefix} #{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+        - "#{first_name} #{last_name}"
+      name_with_middle:
+        - "#{prefix} #{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+        - "#{first_name} #{last_name} #{last_name}"
+    phone_number:
+      country_code:
+        - '39'
+      formats:
+        - "### ## ## ####"
+        - "## #######"
+        - "## ########"
+        - "### #######"
+        - "### ########"
+        - "#### #######"
+        - "#### ########"
+        - '0## ### ####'
+        - '0## ### ###'
+        - '3## ### ###'
+        - '3## ### ###'
+    subscription:
+      plans:
+        - Prova gratuita
+        - Basico
+        - Starter
+        - Essential
+        - Studente
+        - Bronze"
+        - Standard
+        - Silver
+        - Gold
+        - Platinum
+        - Profesional
+        - Business
+        - Diamond
+        - Premium
+      statuses:
+        - Attivo
+        - Inattivo
+        - Bloccato
+        - In sospeso
+      payment_methods:
+        - Carta di credito
+        - Carta di debito
+        - Paypal
+        - Contanti
+        - Bonifico
+        - Bitcoins
+        - Assegno
+        - Apple Pay
+        - Google Pay
+        - WeChat Pay
+        - Alipay
+        - Visa Checkout
+      subscription_terms:
+        - Quotidiano
+        - Settimanale
+        - Mensile
+        - Annuale
+        - Biennale
+        - Triennale
+        - Quinquennale
+        - Abbonamento a vita
+      payment_terms:
+        - Pagamento anticipato
+        - Mensile
+        - Annuale
+        - Abbonamento completo</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

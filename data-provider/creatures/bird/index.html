@@ -1,0 +1,1850 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Bird</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/bird" aria-current="page">Bird</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_bird"><code>Faker().bird</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">---
+en:
+  faker:
+    creature:
+      bird:
+        order_common_map:
+          Accipitriformes:
+          - Bateleur
+          - Baza
+          - Besra
+          - Buzzard
+          - Eagle
+          - Goshawk
+          - Griffon
+          - Harrier
+          - Hawk
+          - Kite
+          - Osprey
+          - Secretarybird
+          - Shikra
+          - Sparrowhawk
+          - Vulture
+          Anseriformes:
+          - Brant
+          - Bufflehead
+          - Canvasback
+          - Duck
+          - Eider
+          - Gadwall
+          - Garganey
+          - Goldeneye
+          - Goose
+          - Hardhead
+          - Mallard
+          - Merganser
+          - Pintail
+          - Pochard
+          - Redhead
+          - Scaup
+          - Scoter
+          - Screamer
+          - Shelduck
+          - Shoveler
+          - Smew
+          - Swan
+          - Teal
+          - Wigeon
+          Apterygiformes:
+          - Kiwi
+          Bucerotiformes:
+          - Hoopoe
+          - Hornbill
+          - Scimitarbill
+          - Woodhoopoe
+          Caprimulgiformes:
+          - Avocetbill
+          - Awlbill
+          - Barbthroat
+          - Blossomcrown
+          - Brilliant
+          - Carib
+          - Comet
+          - Coquette
+          - Coronet
+          - Daggerbill
+          - Emerald
+          - Fairy
+          - Firecrown
+          - Frogmouth
+          - Goldentail
+          - Goldenthroat
+          - Helmetcrest
+          - Hermit
+          - Hillstar
+          - Hummingbird
+          - Inca
+          - Jacobin
+          - Jewelfront
+          - Lancebill
+          - Mango
+          - Metaltail
+          - Mountaineer
+          - Needletail
+          - Nighthawk
+          - Nightjar
+          - Oilbird
+          - Pauraque
+          - Piedtail
+          - Plovercrest
+          - Plumeleteer
+          - Poorwill
+          - Potoo
+          - Puffleg
+          - Ruby
+          - Sabrewing
+          - Sapphire
+          - Sapphirewing
+          - Sheartail
+          - Sicklebill
+          - Snowcap
+          - Spatuletail
+          - Spinetail
+          - Starfrontlet
+          - Starthroat
+          - Streamertail
+          - Sunangel
+          - Sunbeam
+          - Sungem
+          - Swift
+          - Swiftlet
+          - Sylph
+          - Thornbill
+          - Thorntail
+          - Topaz
+          - Trainbearer
+          - Treeswift
+          - Velvetbreast
+          - Violetear
+          - Visorbearer
+          - Whitetip
+          - Woodnymph
+          - Woodstar
+          Cariamiformes:
+          - Seriema
+          Casuariiformes:
+          - Cassowary
+          - Emu
+          Cathartiformes:
+          - Condor
+          - Vulture
+          Charadriiformes:
+          - Auk
+          - Auklet
+          - Avocet
+          - Buttonquail
+          - Courser
+          - Curlew
+          - Dotterel
+          - Dovekie
+          - Dowitcher
+          - Dunlin
+          - Godwit
+          - Greenshank
+          - Guillemot
+          - Gull
+          - Ibisbill
+          - Jacana
+          - Jaeger
+          - Killdeer
+          - Kittiwake
+          - Knot
+          - Lapwing
+          - Murre
+          - Murrelet
+          - Noddy
+          - Oystercatcher
+          - Phalarope
+          - Plover
+          - Pratincole
+          - Puffin
+          - Razorbill
+          - Redshank
+          - Ruff
+          - Sanderling
+          - Sandpiper
+          - Seedsnipe
+          - Sheathbill
+          - Skimmer
+          - Skua
+          - Snipe
+          - Stilt
+          - Stint
+          - Surfbird
+          - Tattler
+          - Tern
+          - Turnstone
+          - Whimbrel
+          - Willet
+          - Woodcock
+          - Wrybill
+          - Yellowlegs
+          Ciconiiformes:
+          - Adjutant
+          - Jabiru
+          - Openbill
+          - Stork
+          Coliiformes:
+          - Mousebird
+          Columbiformes:
+          - Bronzewing
+          - Dodo
+          - Dove
+          - Pigeon
+          - Solitaire
+          Coraciiformes:
+          - Dollarbird
+          - Kingfisher
+          - Kookaburra
+          - Motmot
+          - Roller
+          - Tody
+          Cuculiformes:
+          - Ani
+          - Coua
+          - Coucal
+          - Cuckoo
+          - Koel
+          - Malkoha
+          - Roadrunner
+          Eurypygiformes:
+          - Kagu
+          - Sunbittern
+          Falconiformes:
+          - Caracara
+          - Falcon
+          - Falconet
+          - Gyrfalcon
+          - Hobby
+          - Kestrel
+          - Merlin
+          Galbuliformes:
+          - Jacamar
+          - Monklet
+          - Nunbird
+          - Nunlet
+          - Puffbird
+          Galliformes:
+          - Argus
+          - Bobwhite
+          - Brushturkey
+          - Capercaillie
+          - Chachalaca
+          - Chukar
+          - Curassow
+          - Fireback
+          - Francolin
+          - Grouse
+          - Guan
+          - Guineafowl
+          - Junglefowl
+          - Maleo
+          - Malleefowl
+          - Monal
+          - Partridge
+          - Peacock
+          - Peafowl
+          - Pheasant
+          - Ptarmigan
+          - Quail
+          - Scrubfowl
+          - Snowcock
+          - Spurfowl
+          - Tragopan
+          - Turkey
+          Gaviiformes:
+          - Loon
+          Gruiformes:
+          - Brolga
+          - Coot
+          - Crake
+          - Crane
+          - Finfoot
+          - Flufftail
+          - Gallinule
+          - Limpkin
+          - Moorhen
+          - Nativehen
+          - Rail
+          - Sora
+          - Sungrebe
+          - Swamphen
+          - Takahe
+          - Trumpeter
+          - Watercock
+          - Waterhen
+          - Weka
+          Mesitornithiformes:
+          - Mesite
+          Musophagiformes:
+          - Turaco
+          Opisthocomiformes:
+          - Hoatzin
+          Otidiformes:
+          - Bustard
+          - Florican
+          Passeriformes:
+          - Accentor
+          - Akalat
+          - Akekee
+          - Akepa
+          - Akialoa
+          - Akiapolaau
+          - Akikiki
+          - Akohekohe
+          - Alauahio
+          - Alethe
+          - Amakihi
+          - Amaui
+          - Anianiau
+          - Antbird
+          - Antpecker
+          - Antpipit
+          - Antpitta
+          - Antshrike
+          - Antthrush
+          - Antvireo
+          - Antwren
+          - Apalis
+          - Apapane
+          - Apostlebird
+          - Asity
+          - Astrapia
+          - Attila
+          - Avadavat
+          - Babax
+          - Babbler
+          - Balicassiao
+          - Bamboowren
+          - Bananaquit
+          - Barbtail
+          - Barwing
+          - Batis
+          - Baywing
+          - Becard
+          - Bellbird
+          - Bentbill
+          - Bernieria
+          - Berryeater
+          - Berryhunter
+          - Berrypecker
+          - Bishop
+          - Blackbird
+          - Blackcap
+          - Blackstart
+          - Blackthroat
+          - Bluebill
+          - Bluebird
+          - Bluetail
+          - Bluethroat
+          - Boatbill
+          - Bobolink
+          - Bokmakierie
+          - Boubou
+          - Bowerbird
+          - Brambling
+          - Bristlebill
+          - Bristlebird
+          - Bristlefront
+          - Bristlehead
+          - Broadbill
+          - Brownbul
+          - Brubru
+          - Brushfinch
+          - Brushrunner
+          - Bulbul
+          - Bullfinch
+          - Bunting
+          - Bushbird
+          - Bushchat
+          - Bushlark
+          - Bushshrike
+          - Bushtit
+          - Butcherbird
+          - Cacholote
+          - Cacique
+          - Calyptura
+          - Camaroptera
+          - Canary
+          - Canastero
+          - Capuchinbird
+          - Cardinal
+          - Casiornis
+          - Catbird
+          - Chaffinch
+          - Chat
+          - Chatterer
+          - Chickadee
+          - Chiffchaff
+          - Chilia
+          - Chlorophonia
+          - Chlorospingus
+          - Chough
+          - Chowchilla
+          - Cicadabird
+          - Cinclodes
+          - Cisticola
+          - Citril
+          - Cochoa
+          - Coleto
+          - Conebill
+          - Cordonbleu
+          - Cotinga
+          - Cowbird
+          - Creeper
+          - Crescentchest
+          - Crimsonwing
+          - Crocias
+          - Crombec
+          - Crossbill
+          - Crow
+          - Cuckooshrike
+          - Cupwing
+          - Currawong
+          - Cutia
+          - Dacnis
+          - Dickcissel
+          - Dipper
+          - Diucon
+          - Donacobius
+          - Doradito
+          - Drongo
+          - Dunnock
+          - Earthcreeper
+          - Elachura
+          - Elaenia
+          - Elepaio
+          - Emutail
+          - Emuwren
+          - Eremomela
+          - Erpornis
+          - Euphonia
+          - Fairywren
+          - Fantail
+          - Fernbird
+          - Fernwren
+          - Fieldfare
+          - Fieldwren
+          - Figbird
+          - Finch
+          - Finchbill
+          - Firecrest
+          - Firefinch
+          - Firetail
+          - Firethroat
+          - Fiscal
+          - Flamecrest
+          - Flatbill
+          - Flowerpecker
+          - Flowerpiercer
+          - Flycatcher
+          - Flyrobin
+          - Fody
+          - Forktail
+          - Friarbird
+          - Fruitcrow
+          - Fruiteater
+          - Fulvetta
+          - Gallito
+          - Geomalia
+          - Gerygone
+          - Gnatcatcher
+          - Gnateater
+          - Gnatwren
+          - Goldcrest
+          - Goldenface
+          - Goldfinch
+          - Gonolek
+          - Grackle
+          - Grandala
+          - Grassbird
+          - Grassquit
+          - Grasswren
+          - Graveteiro
+          - Graytail
+          - Greenbul
+          - Greenfinch
+          - Greenlet
+          - Grenadier
+          - Grosbeak
+          - Groundcreeper
+          - Hawfinch
+          - Heathwren
+          - Helmetshrike
+          - Hemispingus
+          - Honeycreeper
+          - Honeyeater
+          - Hookbill
+          - Hornero
+          - Huia
+          - Hwamei
+          - Hylia
+          - Hyliota
+          - Hylocitrea
+          - Hypocolius
+          - Ibon
+          - Ifrita
+          - Iiwi
+          - Illadopsis
+          - Indigobird
+          - Iora
+          - Jackdaw
+          - Jay
+          - Jery
+          - Junco
+          - Kakawahie
+          - Kamao
+          - Kingbird
+          - Kinglet
+          - Kioea
+          - Kiskadee
+          - Kokako
+          - Lark
+          - Laughingthrush
+          - Leafbird
+          - Leaftosser
+          - Leiothrix
+          - Linnet
+          - Liocichla
+          - Locustfinch
+          - Logrunner
+          - Longbill
+          - Longclaw
+          - Longspur
+          - Longtail
+          - Lophorina
+          - Lyrebird
+          - Madanga
+          - Magpie
+          - Malia
+          - Malimbe
+          - Mamo
+          - Manakin
+          - Mannikin
+          - Manucode
+          - Mao
+          - Marshbird
+          - Martin
+          - Meadowlark
+          - Melampitta
+          - Melidectes
+          - Meliphaga
+          - Mesia
+          - Millerbird
+          - Miner
+          - Minivet
+          - Minla
+          - Mistletoebird
+          - Mockingbird
+          - Monarch
+          - Monjita
+          - Morningbird
+          - Mourner
+          - Munia
+          - Myna
+          - Myza
+          - Myzomela
+          - Myzornis
+          - Negrito
+          - Newtonia
+          - Nicator
+          - Nightingale
+          - Nigrita
+          - Niltava
+          - Nukupuu
+          - Nutcracker
+          - Nuthatch
+          - Odedi
+          - Oliveback
+          - Olomao
+          - Omao
+          - Oo
+          - Orangequit
+          - Oriole
+          - Oropendola
+          - Ou
+          - Ouzel
+          - Ovenbird
+          - Oxpecker
+          - Oxylabes
+          - Palila
+          - Palmchat
+          - Palmcreeper
+          - Paradigalla
+          - Pardalote
+          - Pardusco
+          - Parisoma
+          - Parotia
+          - Parrotbill
+          - Parrotfinch
+          - Parula
+          - Peltops
+          - Peppershrike
+          - Pewee
+          - Phainopepla
+          - Philentoma
+          - Phoebe
+          - Piapiac
+          - Piha
+          - Pilotbird
+          - Pinktail
+          - Piopio
+          - Pipipi
+          - Pipit
+          - Piprites
+          - Pitohui
+          - Pitta
+          - Plantcutter
+          - Ploughbill
+          - Plushcap
+          - Plushcrown
+          - Prickletail
+          - Prinia
+          - Puaiohi
+          - Puffback
+          - Purpletuft
+          - Pyrrhuloxia
+          - Pytilia
+          - Quailfinch
+          - Quelea
+          - Raven
+          - Rayadito
+          - Recurvebill
+          - Redpoll
+          - Redstart
+          - Redthroat
+          - Redwing
+          - Reedhaunter
+          - Reedling
+          - Rhabdornis
+          - Riflebird
+          - Rifleman
+          - Robin
+          - Rockfinch
+          - Rockfowl
+          - Rockjumper
+          - Rockrunner
+          - Rockwarbler
+          - Rook
+          - Rosefinch
+          - Rubythroat
+          - Rushbird
+          - Saddleback
+          - Saltator
+          - Sapayoa
+          - Satinbird
+          - Sawwing
+          - Schiffornis
+          - Scrubtit
+          - Scrubwren
+          - Scythebill
+          - Seedcracker
+          - Seedeater
+          - Serin
+          - Shama
+          - Sharpbill
+          - Sholakili
+          - Shortwing
+          - Shrike
+          - Shrikebill
+          - Shrikejay
+          - Shrikethrush
+          - Sibia
+          - Sicklebill
+          - Silktail
+          - Silverbill
+          - Silverbird
+          - Silvereye
+          - Sirystes
+          - Siskin
+          - Sittella
+          - Skylark
+          - Snowfinch
+          - Softtail
+          - Solitaire
+          - Songlark
+          - Spadebill
+          - Sparrow
+          - Speirops
+          - Spiderhunter
+          - Spindalis
+          - Spinebill
+          - Spinetail
+          - Spinifexbird
+          - Starling
+          - Stipplethroat
+          - Stitchbird
+          - Stonechat
+          - Straightbill
+          - Streamcreeper
+          - Stubtail
+          - Sugarbird
+          - Sunbird
+          - Swallow
+          - Tachuri
+          - Tailorbird
+          - Tanager
+          - Tapaculo
+          - Tchagra
+          - Tesia
+          - Tetraka
+          - Thamnornis
+          - Thicketbird
+          - Thistletail
+          - Thornbill
+          - Thornbird
+          - Thrasher
+          - Thrush
+          - Tit
+          - Titmouse
+          - Tityra
+          - Tomtit
+          - Towhee
+          - Treecreeper
+          - Treehunter
+          - Treepie
+          - Treerunner
+          - Trembler
+          - Triller
+          - Troupial
+          - Tuftedcheek
+          - Tui
+          - Turca
+          - Twinspot
+          - Twistwing
+          - Twite
+          - Tyrannulet
+          - Tyrant
+          - Umbrellabird
+          - Vanga
+          - Veery
+          - Verdin
+          - Vireo
+          - Wagtail
+          - Wallcreeper
+          - Warbler
+          - Waterthrush
+          - Wattlebird
+          - Waxbill
+          - Waxwing
+          - Weaver
+          - Wedgebill
+          - Weebill
+          - Wheatear
+          - Whinchat
+          - Whipbird
+          - Whistler
+          - Whiteface
+          - Whitehead
+          - Whitethroat
+          - Whydah
+          - Widowbird
+          - Wiretail
+          - Woodcreeper
+          - Woodhaunter
+          - Woodshrike
+          - Woodswallow
+          - Wren
+          - Wrenthrush
+          - Wrentit
+          - Xenops
+          - Xenopsaris
+          - Yellowhammer
+          - Yellowhead
+          - Yellowthroat
+          - Yuhina
+          Pelecaniformes:
+          - Bittern
+          - Egret
+          - Hamerkop
+          - Heron
+          - Ibis
+          - Pelican
+          - Shoebill
+          - Spoonbill
+          Phaethontiformes:
+          - Tropicbird
+          Phoenicopteriformes:
+          - Flamingo
+          Piciformes:
+          - Aracari
+          - Barbet
+          - Flameback
+          - Flicker
+          - Honeyguide
+          - Piculet
+          - Sapsucker
+          - Tinkerbird
+          - Toucan
+          - Toucanet
+          - Woodpecker
+          - Wryneck
+          - Yellownape
+          Podicipediformes:
+          - Grebe
+          Procellariiformes:
+          - Albatross
+          - Fulmar
+          - Petrel
+          - Prion
+          - Shearwater
+          Psittaciformes:
+          - Bluebonnet
+          - Budgerigar
+          - Cockatiel
+          - Cockatoo
+          - Corella
+          - Galah
+          - Guaiabero
+          - Kaka
+          - Kakapo
+          - Kea
+          - Lorikeet
+          - Lory
+          - Lovebird
+          - Macaw
+          - Parakeet
+          - Parrot
+          - Parrotlet
+          - Ringneck
+          - Rosella
+          Pterocliformes:
+          - Sandgrouse
+          Rheiformes:
+          - Rhea
+          Sphenisciformes:
+          - Penguin
+          Strigiformes:
+          - Boobook
+          - Morepork
+          - Owl
+          - Owlet
+          Struthioniformes:
+          - Ostrich
+          Suliformes:
+          - Anhinga
+          - Booby
+          - Cormorant
+          - Darter
+          - Frigatebird
+          - Gannet
+          - Shag
+          Tinamiformes:
+          - Nothura
+          - Tinamou
+          Trogoniformes:
+          - Quetzal
+          - Trogon
+        anatomy:
+        - back
+        - beak
+        - belly
+        - bill
+        - breast
+        - cap
+        - chin
+        - collar
+        - crest
+        - crown
+        - eye
+        - face
+        - head
+        - neck
+        - rump
+        - shoulder
+        - tail
+        - throat
+        - wing
+        anatomy_past_tense:
+        - backed
+        - beaked
+        - bearded
+        - bellied
+        - breasted
+        - capped
+        - chinned
+        - collared
+        - crested
+        - crowned
+        - eared
+        - eyed
+        - faced
+        - fronted
+        - headed
+        - hooded
+        - naped
+        - necked
+        - rumped
+        - shouldered
+        - tailed
+        - throated
+        - winged
+        geo:
+        - African
+        - American
+        - Arabian
+        - Arctic
+        - Asian
+        - Atlantic
+        - Australian
+        - Baltimore
+        - Brazilian
+        - California
+        - Canada
+        - Carolina
+        - Chihuahua
+        - Chinese
+        - Congo
+        - Colombian
+        - eastern
+        - Egyptian
+        - Eurasian
+        - Inca
+        - Iranian
+        - Japanese
+        - Kentucky
+        - Madagascar
+        - Mexican
+        - Mississippi
+        - Mongolian
+        - mountain
+        - New Zeland
+        - northern
+        - Pacific
+        - Papuan
+        - prarie
+        - sandhill
+        - Savannah
+        - southern
+        - Spanish
+        - swamp
+        - tropical
+        - western
+        colors:
+        - ash
+        - black
+        - blue
+        - bronze
+        - brown
+        - cerulean
+        - chestnut
+        - dusky
+        - ferruginous
+        - fulvous
+        - gold
+        - gray
+        - green
+        - indigo
+        - lazuli
+        - purple
+        - red
+        - roze
+        - roseate
+        - ruby
+        - ruddy
+        - rufous
+        - smoky
+        - snooty
+        - snowy
+        - tawny
+        - violet
+        - white
+        - yellow
+        emotional_adjectives:
+        - angry
+        - aggrieved
+        - agitated
+        - anxious
+        - cantankerous
+        - demented
+        - depressed
+        - flirty
+        - furious
+        - gloomy
+        - gregarious
+        - irritated
+        - lonely
+        - manic
+        - moody
+        - morbid
+        - murderous
+        - needy
+        - nervous
+        - ornery
+        - panicked
+        - quizzical
+        - sad
+        - sleepy
+        - terrified
+        silly_adjectives:
+        - anarchist
+        - bloated
+        - communist
+        - conservative
+        - dangerous
+        - drunk
+        - dumb
+        - enchanted
+        - flatulent
+        - idiotic
+        - impotent
+        - incompotent
+        - insufferable
+        - liberal
+        - Masonic
+        - noxious
+        - obnoxious
+        - pansexual
+        - racist
+        - sexist
+        - silly
+        - vegan
+        adjectives:
+        - banded
+        - common
+        - dwarf
+        - giant
+        - great
+        - greater
+        - lesser
+        - lined
+        - painted
+        - rough
+        - smooth
+        - spotted
+        plausible_common_names: # NB! some functional calls are fixed since they had incorrect names
+        - "#{Name.last_name}'s #{Bird.common_family_name}"
+        - "#{Bird.adjectives} #{Bird.anatomy} #{Bird.common_family_name}"
+        - "#{Bird.adjectives}-#{Bird.anatomy_past_tense} #{Bird.common_family_name}"
+        - "#{Bird.colors}-#{Bird.anatomy_past_tense} #{Bird.common_family_name}"
+        - "#{Bird.adjectives} #{Bird.common_family_name}"
+        - "#{Bird.geo} #{Bird.common_family_name}"
+        - "#{Bird.geo} #{Bird.colors} #{Bird.common_family_name}"
+        implausible_common_names: # NB! some functional calls are fixed since they had incorrect names
+        - "#{Name.last_name}'s #{Bird.emotional_adjectives} #{Bird.common_family_name}"
+        - "#{Name.last_name}'s #{Bird.silly_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.adjectives} #{Bird.silly_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.adjectives} #{Bird.emotional_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.geo} #{Bird.silly_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.geo} #{Bird.emotional_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.colors}-#{Bird.anatomy_past_tense} #{Bird.silly_adjectives} #{Bird.common_family_name}"
+        - "#{Bird.colors}-#{Bird.anatomy_past_tense} #{Bird.emotional_adjectives} #{Bird.common_family_name}"
+        common_family_name:
+        - Accentors
+        - African Barbets
+        - African Warblers
+        - African and Green Broadbills
+        - Albatrosses
+        - Anhingas
+        - Antpittas
+        - Antthrushes
+        - Asian Barbets
+        - Asian and Grauer's Broadbills
+        - Asities
+        - Auks, Murres, and Puffins
+        - Australasian Robins
+        - Australasian Treecreepers
+        - Australo-Papuan Bellbirds
+        - Barn-Owls
+        - Bearded Reedling
+        - Bee-eaters
+        - Berrypeckers and Longbills
+        - Birds-of-Paradise
+        - Boatbills
+        - Boobies and Gannets
+        - Bowerbirds
+        - Bristlebirds
+        - Bristlehead
+        - Bulbuls
+        - Bush Warblers and Allies
+        - Bushshrikes and Allies
+        - Bustards
+        - Buttonquail
+        - Cardinals and Allies
+        - Cassowaries and Emu
+        - Chat-Tanagers
+        - Cisticolas and Allies
+        - Cockatoos
+        - Cormorants and Shags
+        - Cotingas
+        - Crab-Plover
+        - Cranes
+        - Crescentchests
+        - Crested Shrikejay
+        - Crows, Jays, and Magpies
+        - Cuban Warblers
+        - Cuckoo-roller
+        - Cuckoos
+        - Cuckooshrikes
+        - Cupwings
+        - Dapple-throat and Allies
+        - Dippers
+        - Donacobius
+        - Drongos
+        - Ducks, Geese, and Waterfowl
+        - Egyptian Plover
+        - Fairy Flycatchers
+        - Fairy-bluebirds
+        - Fairywrens
+        - Falcons and Caracaras
+        - Fantails
+        - Finches, Euphonias, and Allies
+        - Finfoots
+        - Flamingos
+        - Flowerpeckers
+        - Flufftails
+        - Frigatebirds
+        - Frogmouths
+        - Gnatcatchers
+        - Gnateaters
+        - Grassbirds and Allies
+        - Grebes
+        - Ground Babblers and Allies
+        - Ground-Hornbills
+        - Ground-Rollers
+        - Guans, Chachalacas, and Curassows
+        - Guineafowl
+        - Gulls, Terns, and Skimmers
+        - Hamerkop
+        - Hawaiian Honeyeaters
+        - Hawks, Eagles, and Kites
+        - Herons, Egrets, and Bitterns
+        - Hispaniolan Tanagers
+        - Hoatzin
+        - Honeyeaters
+        - Honeyguides
+        - Hoopoes
+        - Hornbills
+        - Hummingbirds
+        - Hyliotas
+        - Hylocitrea
+        - Hypocolius
+        - Ibisbill
+        - Ibises and Spoonbills
+        - Ifrita
+        - Indigobirds
+        - Ioras
+        - Jacamars
+        - Jacanas
+        - Kagu
+        - Kingfishers
+        - Kinglets
+        - Kiwis
+        - Larks
+        - Laughingthrushes and Allies
+        - Leaf Warblers
+        - Leafbirds
+        - Limpkin
+        - Logrunners
+        - Long-tailed Tits
+        - Longspurs and Snow Buntings
+        - Loons
+        - Lyrebirds
+        - Magellanic Plover
+        - Magpie Goose
+        - Malagasy Warblers
+        - Manakins
+        - Megapodes
+        - Melampittas
+        - Mesites
+        - Mitrospingid Tanagers
+        - Mockingbirds and Thrashers
+        - Monarch Flycatchers
+        - Motmots
+        - Mottled Berryhunter
+        - Mousebirds
+        - New World Barbets
+        - New World Quail
+        - New World Sparrows
+        - New World Vultures
+        - New World Warblers
+        - New World and African Parrots
+        - New Zealand Parrots
+        - New Zealand Wrens
+        - Nicators
+        - Nightjars and Allies
+        - Northern Storm-Petrels
+        - Nuthatches
+        - Oilbird
+        - Old World Buntings
+        - Old World Flycatchers
+        - Old World Orioles
+        - Old World Parrots
+        - Old World Sparrows
+        - Olive Warbler
+        - Osprey
+        - Ostriches
+        - Ovenbirds and Woodcreepers
+        - Owlet-nightjars
+        - Owls
+        - Oxpeckers
+        - Oystercatchers
+        - Painted-Snipes
+        - Palmchat
+        - Pardalotes
+        - Pelicans
+        - Penduline-Tits
+        - Penguins
+        - Pheasants, Grouse, and Allies
+        - Pigeons and Doves
+        - Pittas
+        - Plains-wanderer
+        - Ploughbill
+        - Plovers and Lapwings
+        - Potoos
+        - Pratincoles and Coursers
+        - Przevalski's Pinktail
+        - Pseudo-Babblers
+        - Puerto Rican Tanager
+        - Puffbirds
+        - Quail-thrushes and Jewel-babblers
+        - Rail-babbler
+        - Rails, Gallinules, and Coots
+        - Reed Warblers and Allies
+        - Rheas
+        - Rockfowl
+        - Rockjumpers
+        - Rollers
+        - Sandgrouse
+        - Sandpipers and Allies
+        - Sapayoa
+        - Satinbirds
+        - Screamers
+        - Scrub-birds
+        - Secretarybird
+        - Seedsnipes
+        - Seriemas
+        - Sharpbill, Royal Flycatcher, and Allies
+        - Shearwaters and Petrels
+        - Sheathbills
+        - Shoebill
+        - Shrike-tit
+        - Shrikes
+        - Silky-flycatchers
+        - Sittellas
+        - Skuas and Jaegers
+        - Southern Storm-Petrels
+        - Spindalises
+        - Spotted Elachura
+        - Starlings
+        - Stilts and Avocets
+        - Stitchbird
+        - Storks
+        - Sugarbirds
+        - Sunbirds and Spiderhunters
+        - Sunbittern
+        - Swallows
+        - Swifts
+        - Sylviid Warblers, Parrotbills, and Allies
+        - Tanagers and Allies
+        - Tapaculos
+        - Thick-knees
+        - Thornbills and Allies
+        - Thrush-Tanager
+        - Thrushes and Allies
+        - Tinamous
+        - Tit Berrypecker and Crested Berrypecker
+        - Tits, Chickadees, and Titmice
+        - Tityras and Allies
+        - Todies
+        - Toucan-Barbets
+        - Toucans
+        - Tree-Babblers, Scimitar-Babblers, and Allies
+        - Treecreepers
+        - Treeswifts
+        - Trogons
+        - Tropicbirds
+        - Troupials and Allies
+        - Trumpeters
+        - Turacos
+        - Typical Antbirds
+        - Tyrant Flycatchers
+        - Vangas, Helmetshrikes, and Allies
+        - Vireos, Shrike-Babblers, and Erpornis
+        - Wagtails and Pipits
+        - Wallcreeper
+        - Wattle-eyes and Batises
+        - Wattlebirds
+        - Waxbills and Allies
+        - Waxwings
+        - Weavers and Allies
+        - Whipbirds and Wedgebills
+        - Whistlers and Allies
+        - White-eyes, Yuhinas, and Allies
+        - White-winged Chough and Apostlebird
+        - Whiteheads
+        - Woodhoopoes and Scimitarbills
+        - Woodpeckers
+        - Woodswallows, Bellmagpies, and Allies
+        - Wrens
+        - Wrenthrush
+        - Yellow-breasted Chat</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">CreaturesFaker().bird.orderCommonMap.Accipitriformes() // =&gt; Bateleur
+
+CreaturesFaker().bird.orderCommonMap.Anseriformes() // =&gt; Brant
+
+CreaturesFaker().bird.orderCommonMap.Apterygiformes() // =&gt; Kiwi
+
+CreaturesFaker().bird.orderCommonMap.Bucerotiformes() // =&gt; Hoopoe
+
+CreaturesFaker().bird.orderCommonMap.Caprimulgiformes() // =&gt; Avocetbill
+
+CreaturesFaker().bird.orderCommonMap.Cariamiformes() // =&gt; Seriema
+
+CreaturesFaker().bird.orderCommonMap.Casuariiformes() // =&gt; Cassowary
+
+CreaturesFaker().bird.orderCommonMap.Cathartiformes() // =&gt; Condor
+
+CreaturesFaker().bird.orderCommonMap.Charadriiformes() // =&gt; Auk
+
+CreaturesFaker().bird.orderCommonMap.Ciconiiformes() // =&gt; Adjutant
+
+CreaturesFaker().bird.orderCommonMap.Coliiformes() // =&gt; Mousebird
+
+CreaturesFaker().bird.orderCommonMap.Columbiformes() // =&gt; Bronzewing
+
+CreaturesFaker().bird.orderCommonMap.Coraciiformes() // =&gt; Dollarbird
+
+CreaturesFaker().bird.orderCommonMap.Cuculiformes() // =&gt; Ani
+
+CreaturesFaker().bird.orderCommonMap.Eurypygiformes() // =&gt; Kagu
+
+CreaturesFaker().bird.orderCommonMap.Falconiformes() // =&gt; Caracara
+
+CreaturesFaker().bird.orderCommonMap.Galbuliformes() // =&gt; Jacamar
+
+CreaturesFaker().bird.orderCommonMap.Galliformes() // =&gt; Argus
+
+CreaturesFaker().bird.orderCommonMap.Gaviiformes() // =&gt; Loon
+
+CreaturesFaker().bird.orderCommonMap.Gruiformes() // =&gt; Brolga
+
+CreaturesFaker().bird.orderCommonMap.Mesitornithiformes() // =&gt; Mesite
+
+CreaturesFaker().bird.orderCommonMap.Musophagiformes() // =&gt; Turaco
+
+CreaturesFaker().bird.orderCommonMap.Opisthocomiformes() // =&gt; Hoatzin
+
+CreaturesFaker().bird.orderCommonMap.Otidiformes() // =&gt; Bustard
+
+CreaturesFaker().bird.orderCommonMap.Passeriformes() // =&gt; Accentor
+
+CreaturesFaker().bird.orderCommonMap.Pelecaniformes() // =&gt; Bittern
+
+CreaturesFaker().bird.orderCommonMap.Phaethontiformes() // =&gt; Tropicbird
+
+CreaturesFaker().bird.orderCommonMap.Phoenicopteriformes() // =&gt; Flamingo
+
+CreaturesFaker().bird.orderCommonMap.Piciformes() // =&gt; Aracari
+
+CreaturesFaker().bird.orderCommonMap.Podicipediformes() // =&gt; Grebe
+
+CreaturesFaker().bird.orderCommonMap.Procellariiformes() // =&gt; Albatross
+
+CreaturesFaker().bird.orderCommonMap.Psittaciformes() // =&gt; Bluebonnet
+
+CreaturesFaker().bird.orderCommonMap.Pterocliformes() // =&gt; Sandgrouse
+
+CreaturesFaker().bird.orderCommonMap.Rheiformes() // =&gt; Rhea
+
+CreaturesFaker().bird.orderCommonMap.Sphenisciformes() // =&gt; Penguin
+
+CreaturesFaker().bird.orderCommonMap.Strigiformes() // =&gt; Boobook
+
+CreaturesFaker().bird.orderCommonMap.Struthioniformes() // =&gt; Ostrich
+
+CreaturesFaker().bird.orderCommonMap.Suliformes() // =&gt; Anhinga
+
+CreaturesFaker().bird.orderCommonMap.Tinamiformes() // =&gt; Nothura
+
+CreaturesFaker().bird.orderCommonMap.Trogoniformes() // =&gt; Quetzal
+
+CreaturesFaker().bird.anatomy() // =&gt; back
+
+CreaturesFaker().bird.anatomyPastTense() // =&gt; backed
+
+CreaturesFaker().bird.geo() // =&gt; African
+
+CreaturesFaker().bird.colors() // =&gt; ash
+
+CreaturesFaker().bird.emotionalAdjectives() // =&gt; angry
+
+CreaturesFaker().bird.sillyAdjectives() // =&gt; anarchist
+
+CreaturesFaker().bird.adjectives() // =&gt; banded
+
+CreaturesFaker().bird.plausibleCommonNames() // =&gt; Egyptian lazuli Herons, Egrets, and Bitterns
+
+CreaturesFaker().bird.implausibleCommonNames() // =&gt; Waters's furious Limpkin
+
+CreaturesFaker().bird.commonFamilyName() // =&gt; Accentors</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Data Providers</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+<link rel="prev" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">
+
+
+<link rel="next" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li><a href="https://serpro69.github.io/kotlin-faker/wiki">Wiki</a></li>
+
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/wiki/data-providers" aria-current="page">Data Providers</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<h1 id="data-providers"><a href="#data-providers" id="data-providers" class="anchor"></a>Data Providers</h1>
+<p>Below is the list of available Fakers domains and their data providers (data generators) that correspond to the yaml dictionary files found in <a href="https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/en">core/locales/en</a></p>
+<div class="box has-background-white-ter">
+  <div class="note">
+    <div class="note-heading">
+    <h5><span class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16">
+        <path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path>
+      </svg>
+    </span>info</h5>
+    </div>
+    <div class="note-content">
+      <p>Not all (although most) of the providers and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below, or go to the Core API page to browse the API reference documentation.</p>
+    </div>
+  </div>
+</div>
+<div class="box has-background-warning">
+  <div class="warn">
+    <div class="warn-heading">
+      <h5><span class="warn-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path>
+        </svg>
+      </span>warn</h5>
+    </div>
+    <div class="warn-content">
+      <p>Below pages contain code blocks with inlined yaml dictionaries, some of them can be quite big. This could affect your internet traffic if you're viewing these docs on a mobile device.</p>
+    </div>
+  </div>
+</div>
+<p>&quot;Core&quot; <code>Faker</code></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/address">Address</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/color">Color</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/crypto">Crypto</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/currency">Currency</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/currency_symbol">Currency Symbol</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/file">File</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/gender">Gender</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/id_number">Id Number</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/internet">Internet</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/measurement">Measurement</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/money">Money</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/name">Name</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/person">Person</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/phone_number">Phone Number</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/random">Random</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/random_class">Random Class</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/separator">Separator</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/source">Source</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/core/string_provider">String Provider</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/books"><code>BooksFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/bible">Bible</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/book">Book</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/cosmere">Cosmere</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/culture_series">Culture Series</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/dc_comics">Dc Comics</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/dune">Dune</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/lovecraft">Lovecraft</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/shakespeare">Shakespeare</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/the_kingkiller_chronicle">The Kingkiller Chronicle</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/books/tolkien">Tolkien</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/commerce"><code>CommerceFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/bank">Bank</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/barcode">Barcode</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/beer">Beer</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/business">Business</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/cannabis">Cannabis</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/code">Code</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/coffee">Coffee</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/commerce">Commerce</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/company">Company</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/construction">Construction</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/dessert">Dessert</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/finance">Finance</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/food">Food</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/house">House</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/industry_segments">Industry Segments</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/invoice">Invoice</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/marketing">Marketing</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/restaurant">Restaurant</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/stripe">Stripe</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/subscription">Subscription</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/commerce/tea">Tea</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/creatures"><code>CreaturesFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/ancient">Ancient</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/animal">Animal</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/bird">Bird</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/cat">Cat</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/dog">Dog</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/creatures/horse">Horse</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/databases"><code>DatabasesFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/database">Database</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/mariadb">Mariadb</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/mssqlserver">Mssqlserver</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/mysql">Mysql</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/oracledb">Oracledb</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/databases/postgresql">Postgresql</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/edu"><code>EduFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/edu/educator">Educator</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/edu/job">Job</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/edu/science">Science</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/edu/university">University</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/games"><code>GamesFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/clash_of_clans">Clash Of Clans</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/coin">Coin</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/control">Control</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/dnd">Dnd</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/dota">Dota</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/elder_scrolls">Elder Scrolls</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/fallout">Fallout</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/final_fantasy_xiv">Final Fantasy Xiv</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/game">Game</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/half_life">Half Life</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/heroes">Heroes</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/heroes_of_the_storm">Heroes Of The Storm</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/league_of_legends">League Of Legends</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/minecraft">Minecraft</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/myst">Myst</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/overwatch">Overwatch</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/pokemon">Pokemon</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/sonic_the_hedgehog">Sonic The Hedgehog</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/street_fighter">Street Fighter</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/super_mario">Super Mario</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/super_smash_bros">Super Smash Bros</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/superhero">Superhero</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/tarkov">Tarkov</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/touhou">Touhou</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/warhammer_fantasy">Warhammer Fantasy</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/witcher">Witcher</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/world_of_warcraft">World Of Warcraft</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/zelda">Zelda</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/humor"><code>HumorFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/humor/chiquito">Chiquito</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/humor/chuck_norris">Chuck Norris</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/humor/funny_name">Funny Name</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/humor/jack_handey">Jack Handey</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/humor/mitch_hedberg">Mitch Hedberg</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/japmedia"><code>JapaneseMediaFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/conan">Conan</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/cowbow_bebop">Cowbow Bebop</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/doraemon">Doraemon</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/dragon_ball">Dragon Ball</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/fma_brotherhood">Fma Brotherhood</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/kamen_rider">Kamen Rider</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/naruto">Naruto</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/one_piece">One Piece</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/studio_ghibli">Studio Ghibli</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/japmedia/sword_art_online">Sword Art Online</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/lorem"><code>LoremFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/adjective">Adjective</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/emotion">Emotion</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/hipster">Hipster</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/lorem">Lorem</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/markdown">Markdown</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/nato_phonetic_alphabet">Nato Phonetic Alphabet</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/quote">Quote</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/slack_emoji">Slack Emoji</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/lorem/verbs">Verbs</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/misc"><code>MiscFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/artist">Artist</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/blood">Blood</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/demographic">Demographic</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/driving_license">Driving License</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/greek_philosophers">Greek Philosophers</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/hobby">Hobby</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/military">Military</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/misc/relationship">Relationship</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/movies"><code>MoviesFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/avatar">Avatar</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/back_to_the_future">Back To The Future</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/departed">Departed</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/dumb_and_dumber">Dumb And Dumber</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/ghost_busters">Ghost Busters</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/hackers">Hackers</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/harry_potter">Harry Potter</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/hitchhikers_guide_to_the_galaxy">Hitchhikers Guide To The Galaxy</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/hobbit">Hobbit</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/how_to_train_your_dragon">How To Train Your Dragon</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/lebowski">Lebowski</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/lord_of_the_rings">Lord Of The Rings</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/movie">Movie</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/princess_bride">Princess Bride</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/rajnikanth">Rajnikanth</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/star_wars">Star Wars</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/the_room">The Room</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/tron">Tron</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/v_for_vendetta">V For Vendetta</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/movies/yoda">Yoda</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/music"><code>MusicFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/bossa_nova">Bossa Nova</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/grateful_dead">Grateful Dead</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/kpop">Kpop</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/music">Music</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/opera">Opera</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/pearl_jam">Pearl Jam</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/phish">Phish</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/prince">Prince</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/rock_band">Rock Band</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/rush">Rush</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/show">Show</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/smashing_pumpkins">Smashing Pumpkins</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/music/umphreys_mcgee">Umphreys Mcgee</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/sports"><code>SportsFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/basketball">Basketball</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/chess">Chess</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/crossfit">Crossfit</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/esport">Esport</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/football">Football</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/mountaineering">Mountaineering</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/sport">Sport</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/team">Team</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/volleyball">Volleyball</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/sports/world_cup">World Cup</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/tech"><code>TechFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/app">App</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/appliance">Appliance</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/camera">Camera</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/computer">Computer</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/crypto_coin">Crypto Coin</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/device">Device</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/drone">Drone</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/electrical_components">Electrical Components</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/hacker">Hacker</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/programming_language">Programming Language</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/space">Space</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tech/vehicle">Vehicle</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/travel"><code>TravelFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/airport">Airport</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/australia">Australia</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/compass">Compass</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/mountain">Mountain</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/nation">Nation</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/travel/train_station">Train Station</a></p>
+</li>
+</ul>
+<p><a href="https://serpro69.github.io/kotlin-faker/fakers/tvshows"><code>TvShowsFaker</code></a></p>
+<ul>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/aqua_teen_hunger_force">Aqua Teen Hunger Force</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/archer">Archer</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/big_bang_theory">Big Bang Theory</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/bojack_horseman">Bojack Horseman</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/breaking_bad">Breaking Bad</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/brooklyn_nine_nine">Brooklyn Nine Nine</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/buffy">Buffy</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/community">Community</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/dr_who">Dr Who</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/family_guy">Family Guy</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/final_space">Final Space</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/fresh_price_of_bel_air">Fresh Price Of Bel Air</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/friends">Friends</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/futurama">Futurama</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/game_of_thrones">Game Of Thrones</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/hey_arnold">Hey Arnold</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/how_i_met_your_mother">How I Met Your Mother</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/michael_scott">Michael Scott</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/new_girl">New Girl</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/parks_and_rec">Parks And Rec</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/rick_and_morty">Rick And Morty</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/rupaul">Rupaul</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/seinfeld">Seinfeld</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/silicon_valley">Silicon Valley</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/simpsons">Simpsons</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/south_park">South Park</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/spongebob">Spongebob</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/star_trek">Star Trek</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/stargate">Stargate</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/stranger_things">Stranger Things</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/suits">Suits</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/supernatural">Supernatural</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/the_expanse">The Expanse</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/the_it_crowd">The It Crowd</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/the_office">The Office</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/the_thick_of_it">The Thick Of It</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/twin_peaks">Twin Peaks</a></p>
+</li>
+<li>
+<p><a href="https://serpro69.github.io/kotlin-faker/data-provider/tvshows/venture_bros">Venture Bros</a></p>
+</li>
+</ul>
+
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+  <a class="pagination-previous button is-large is-link is-outlined"
+   href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl" >
+      <span class="icon">
+        <i class="fas fa-arrow-left"></i>
+      </span>
+  </a>
+  <a class="pagination-next button is-large is-link is-outlined"
+   href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider" >
+      <span class="icon">
+        <i class="fas fa-arrow-right"></i>
+      </span>
+  </a>
+</nav>
+
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Fallout</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/fallout" aria-current="page">Fallout</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_fallout"><code>Faker().fallout</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    games:
+      fallout:
+        characters:
+          - Abel
+          - Ada
+          - Agatha
+          - Alan
+          - Alex
+          - Alya
+          - Amber
+          - Andrew
+          - Angela Bishop
+          - Anthony
+          - Aradesh
+          - Barry
+          - Beth
+          - Billy
+          - Boone
+          - Brenden
+          - Butch Harris
+          - Cabbot
+          - Caesar
+          - Cait
+          - Calder
+          - Caleb
+          - Children of the Cathedral member
+          - Christine
+          - Christine Royce
+          - Chuck
+          - Cindy
+          - Cleo
+          - Codsworth
+          - Cougar
+          - Curie
+          - Curtis
+          - Daecon
+          - Dan
+          - Dane
+          - Daren Hightower
+          - Darrel
+          - Decker
+          - Demetre Romara
+          - Diana
+          - DiMA
+          - Doc Morbid
+          - Dog
+          - Dogmeat
+          - Dominic Moore
+          - Dr. Wu
+          - Dugan
+          - Ed
+          - Elder
+          - Elder Maxon
+          - Flash
+          - Flip
+          - Francis
+          - Gabriel
+          - Garl Death-Hand
+          - Garret
+          - Gary
+          - George
+          - Ghoul leader
+          - Ghoul prisoner
+          - Gizmo
+          - Greg
+          - Gretch
+          - Guido
+          - Gunther
+          - Gustofer
+          - Gwen
+          - Harold
+          - Harry
+          - Heather
+          - Henry
+          - Herion
+          - Hernandez
+          - Ian
+          - Iguana Bob Frazier
+          - Irwin
+          - Ismarc
+          - Izo
+          - Jacoren
+          - Jain
+          - Jake
+          - Jarvis
+          - Jasmine
+          - Jason Zimmerman
+          - Jelissa
+          - Jennifer
+          - Jeremiah
+          - Jerry
+          - Jessica
+          - John
+          - John Hancock
+          - John Maxson
+          - Jon Zimmerman
+          - Joshua Graham
+          - Justin Greene
+          - Kalnor
+          - Kane
+          - Katja
+          - Katrina
+          - Kenji
+          - Kenny
+          - Keri Lee
+          - Killian Darkwater
+          - Krupper
+          - Kyle
+          - Larry
+          - Lars
+          - Lasher
+          - Laura
+          - Legate Lanius
+          - Lemmy
+          - Lenny
+          - Leon
+          - Leone
+          - Leslie Ann Bishop
+          - Lex
+          - Liberty Prime
+          - Lieutenant
+          - Lorenzo Giovanni
+          - Lorraine
+          - Lorri
+          - Lox
+          - Loxley
+          - Lucas Simms
+          - Lucy
+          - Luke
+          - Lyle
+          - Lynda
+          - MacRae
+          - Madison Lee
+          - Marcelles
+          - Martha Rastello
+          - Master
+          - Mat
+          - Mathia
+          - Michael
+          - Miles
+          - Miria
+          - Mitch
+          - Mohandki
+          - Morpheus
+          - Myron
+          - Nancy
+          - Neal
+          - Nick Valentine
+          - Nicole
+          - Old Longfellow
+          - Paladin Danse
+          - Patrick the Celt
+          - Paul
+          - Percy
+          - Petrox
+          - Phil
+          - Phillips
+          - Piper Wright
+          - Porter Gage
+          - Preston Garvey
+          - Rayze
+          - Razlo
+          - Razor
+          - Rhombus
+          - Rick
+          - Robert Joseph Mac Cready
+          - Rock
+          - Rose of Sharon Cassidy
+          - Rutger
+          - Sally
+          - Sammael
+          - Sarah
+          - Sasha
+          - Saul
+          - Savil
+          - Set
+          - Seth
+          - Shannon
+          - Shark
+          - Sherry
+          - Shopkeeper
+          - Sid
+          - Sinthia
+          - Skizzer
+          - Slappy
+          - Slummer
+          - Smitty
+          - Sophia
+          - Stapleton
+          - Strong
+          - Sulik
+          - Talius
+          - Talus
+          - Tandi
+          - Terry
+          - The Master
+          - Theresa
+          - Thomas
+          - Thorndyke
+          - Three Dog
+          - Tine Taylor
+          - Tolya
+          - Ton Barracus
+          - Tony Fry
+          - Trish
+          - Tycho
+          - Unit 462
+          - Van Hagan
+          - Vance
+          - Victor
+          - Vincent
+          - Vinnie
+          - Viola
+          - Vree
+          - Wiggum
+          - X6-88
+          - Yes Man
+          - Zack
+          - Zack Barstow
+          - Zark
+          - ZAX 1.2
+        factions:
+          - Boomers
+          - Brotherhood of Steel
+          - Caesar's Legion
+          - Chinese remnants
+          - Diamond City security
+          - Enclave
+          - Followers of the Apocalypse
+          - Gunners
+          - Kings
+          - Master's Army
+          - Mojave Express
+          - New California Republic
+          - Nuka World Triumvirate
+          - Powder Gangers
+          - Raiders
+          - State of Utobitha
+          - Talon Company
+          - Triggermen
+          - United States Armed Forces
+          - Van Graffs
+        locations:
+          - Anchorage
+          - Big MT
+          - Big town
+          - Cambridge
+          - Capital Wasteland
+          - Concord
+          - Diamond City
+          - Dog City
+          - Goodsprings
+          - Hoover Dam
+          - Lexington
+          - Little Lamplight
+          - Megaton
+          - Nellis Air Force Base
+          - New Reno
+          - New Vegas
+          - Nipton
+          - Primm
+          - Raven Rock
+          - Red Rock Canyon
+          - Sloan
+          - The Commonwealth
+          - The Institute
+          - Vault 101
+          - Vault 11
+          - Vault 111
+          - Vault 13
+          - Vault 15
+          - Vault 19
+          - Vault 22
+          - Vault 3
+          - Vault 81
+          - Vault City
+        quotes:
+          - Ad Victoriam!
+          - Calm is what you have to be when people look to you, and it's all you can be when things are out of your hands.
+          - Democracy is non-negotiable
+          - Hi, I'm Jean Baptiste. And you're about to stop being a pain in my ass.
+          - I'm a synth. Synthetic man. All the parts, minus a few red blood cells.
+          - I'm dying.... so that democracy... can live.
+          - I'm gonna run some diagnostics while you're tinkering. Take your time.
+          - I've seen soldiers come and go. Some were brave. Some were honest. Some were even heroic. But I've never called any of them a friend.
+          - If you want to see the fate of democracies, just look out the window
+          - Let's go, pal.
+          - 'Liberty Prime is online. All systems nominal. Weapons hot. Mission: the destruction of any and all Chinese communists.'
+          - Ngh. Hi. I'm Mahsofabish ang I gob ko keep fiebs gaeg.
+          - Nobody has a Dick that long, not eve Long-Dick Johnson, and he had a fuckin long dick, thus the name.
+          - Nothing to impede progress. If you want to see the fate of democracies, look out the windows.
+          - Patrolling the Mojave almost makes you wish for a nuclear winter.
+          - Please step out of the fountain
+          - 'Revised stratagem: Initiate photonic resonance overcharge.'
+          - Stimpaks are a marvelous invention, don't you think?
+          - Strange rumors from across the river indicate that a secret underground robot army has been destroyed before anyone had a chance to use it.
+          - Success depends on forethought, dispassionate calculation of probabilities, accounting for every stray variable.
+          - Sure. Be glad to take...I mean hold some stuff for you.
+          - That chip of yours, I wouldn't wager it on Blackjack...Unless the dealer has a five of six showing.
+          - That means you're, erm... two centuries late for dinner! Perhaps I could whip you up a snack? You must be famished!
+          - The past, the present, and the future walked into a bar. It was tense.
+          - The women of New Vegas ask me a lot if there's a Mrs. New Vegas. Well, of course there is. You're her. And you're still as perfect as the day we met.
+          - Though dangerous, combat is quite vigorous exercise.
+          - Today's forecast calls for a 99%chance of clear skies being ruined by artillery fire.
+          - 'Voice module online. Audio functionality test initialized. Designation: Liberty Prime. Mission: the liberation of Anchorage, Alaska.'
+          - We must find the men of science and institutes of learning, surely they are out there still.
+          - We'd move faster if you'd keep your eyes on the road and off me arse.
+          - Well, ain't we all, right? That was a long time ago. I don't pay it much mind anymore.
+          - What did you... did you put a plug in his cocktube and make him explode?
+          - Who do you think actually won the war? No one, I guess.
+          - You stood up to Elder Maxson for me. I'll never forget that for as long as I live.
+          - You think I inject myself with all that shite and drink myself drunk because I’m a tough Irish gal?
+          - You'd be shocked how many people I've managed to convince I'm just a really sick ghoul.</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().fallout.characters() // =&gt; Ada
+
+Faker().fallout.factions() // =&gt; Boomers
+
+Faker().fallout.locations() // =&gt; Anchorage
+
+Faker().fallout.quotes() // =&gt; Ad Victoriam!</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>

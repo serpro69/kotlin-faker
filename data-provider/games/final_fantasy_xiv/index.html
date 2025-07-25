@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="en" class="has-spaced-navbar-fixed-top">
+<head>
+
+
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 1.0.0-SNAPSHOT"/>
+<link rel="icon" href="https://serpro69.github.io/kotlin-faker/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>Final Fantasy Xiv</title>
+
+
+<meta name="description" content="kotlin-faker is a data-generation library intended for use during development and testing.
+It can also be sucessfully used for data-anonymization purposes.
+It generates realistically looking fake data such as names, addresses, banking, internet details, and many more.">
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extraCss.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-tooltip.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma-accordion.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/bulma.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/extras.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/homepage.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/css/plugins.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/themes/prism-tomorrow.min.css"  />
+<link rel="stylesheet" type="text/css" href="https://serpro69.github.io/kotlin-faker/assets/css/prism-duotone.css"  />
+<!-- end:inject styles -->
+
+
+
+<script>
+    window.site = {"orchidVersion":"1.0.0-SNAPSHOT","baseUrl":"https://serpro69.github.io/kotlin-faker","environment":"prod","version":"2.1.0-SNAPSHOT"};
+</script>
+
+
+    <!-- start:inject meta-components [head] -->
+    
+
+        
+            
+        
+
+        
+            
+        
+            
+        
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+    <!-- start:inject meta-components [head] -->
+    
+    <!-- end:inject meta-components [head] -->
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<nav class="navbar is-spaced is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+        <img src="https://serpro69.github.io/kotlin-faker/assets/images/logo-white.png" alt="kotlin-faker">
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-start">
+        <form id="search-input" data-orchid-search>
+  <div class="field has-addons">
+    <div class="control text-control">
+      <input class="input" type="text" name="query" placeholder="Search faker docs...">
+
+      <div id="search-progress" data-orchid-search-progress style="display: none;">
+        <div class="loader">Loading...</div>
+      </div>
+    </div>
+    <div class="control">
+      <input type="submit" class="button is-info" value="Search">
+    </div>
+  </div>
+</form>
+<div id="search-results" data-orchid-search-results style="display: none;">
+  <div class="carat"></div>
+  <b>
+    Search Results
+    <i class="fa fa-times" aria-hidden="true" onclick="$('[data-orchid-search-results]').hide()"></i>
+  </b>
+  <ul></ul>
+</div>
+
+      </div>
+      <div class="navbar-end">
+
+      
+      
+        <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker">
+          <span class="icon has-text-info"><i class="fas fa-home"></i></span>
+          <span>Home</span>
+        </a>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-graduation-cap"></i></span>
+            <span>User Guide</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/getting-started">Getting Started</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-bom">Kotlin-faker BOM</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-configuration">Faker Configuration</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/unique-generator">Generator of Unique Values</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extras">Extras</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-dsl">Faker DSL</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/data-providers">Data Providers</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider">Custom Data Provider</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/available-locales">Available Locales</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/java-interop">Java Interop</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/faker-cli">Faker Bot CLI</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/wiki/extensions">Extensions</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-book"></i></span>
+            <span>API</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-api">Full Core API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/core-data-provider">Core Data Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/books-data-provider">Books Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider">Commerce Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider">Creatures Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/databases-data-provider">Databases Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/edu-data-provider">Edu Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/games-data-provider">Games Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/humor-data-provider">Humor Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider">JapMedia Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider">Lorem Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/misc-data-provider">Misc Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/movies-data-provider">Movies Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/music-data-provider">Music Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/sports-data-provider">Sports Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tech-data-provider">Tech Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/travel-data-provider">Travel Provider API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider">TvShows Provider API</a>
+            
+          
+            
+              <hr class="navbar-divider">
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/blns-extension">Blns Extension API</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension">Kotest Property Extension API</a>
+            
+          
+          </div>
+        </div>
+      
+      
+      
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon has-text-info"><i class="fas fa-info-circle"></i></span>
+            <span>Information</span>
+          </a>
+          <div class="navbar-dropdown is-right">
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/about">About</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/changelog">Changelog</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/contrib">Contributing</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/faker-comparisons">Faker Comparisons</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/license">License</a>
+            
+          
+            
+              <a class="navbar-item" href="https://serpro69.github.io/kotlin-faker/ack">Thanks</a>
+            
+          
+          </div>
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-12-desktop">
+      
+        <div class="box">
+          
+<nav class="breadcrumb" aria-label="breadcrumbs">
+<ul>
+
+
+    <li class="is-active"><a href="https://serpro69.github.io/kotlin-faker/data-provider/games/final_fantasy_xiv" aria-current="page">Final Fantasy Xiv</a></li>
+
+
+</ul>
+</nav>
+
+
+        </div>
+        <div class="content is-medium">
+        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="content is-medium-tablet is-large-fullhd">
+<div class="sect1">
+<h2 id="_faker_finalfantasyxiv"><code>Faker().finalFantasyXIV</code></h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Dictionary file</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">en:
+  faker:
+    games:
+      final_fantasy_xiv:
+        characters:
+          - Alphinaud Leveilleur
+          - Alisaie Leveilleur
+          - Y'shtola Rhul
+          - Thancred Waters
+          - Lyse Hext
+          - Urianger Augurelt
+          - G'raha Tia
+          - Estinien Wyrmblood
+          - Tataru Taru
+          - Krile Mayer Baldesion
+          - Minfilia Warde
+          - Louisoix Leveilleur
+          - Papalymo Totolymo
+          - Yda Hext
+          - F'lhaminn Qesh
+          - Unukalhai
+          - Moenbryda Wilfsunnwyn
+          - Arenvald Lentinus
+          - Riol Forrest
+          - Alianne Vellegrance
+          - Aenor Cockburne
+          - Aergmhus Saehstymmsyn
+          - Bluomwyda
+          - Clemence
+          - Coultenet Dailebaure
+          - Ephemie Giphelmont
+          - Hoary Boulder
+          - Ocher Boulder
+          - Una Tayuun
+          - V'mah Tia
+          - Noraxia
+          - Kan-E-Senna
+          - Merlwyb Bloefhiswyn
+          - Raubahn Aldynn
+          - Nanamo Ul Namo
+          - Aymeric de Borel
+          - Cid nan Garlond
+          - Biggs
+          - Wedge
+          - Jessie Jaye
+          - Alpha
+          - Cato Mammula
+          - Lilja Sjasaris
+          - Emet-Selch
+          - Elidibus
+          - Lahabrea
+          - Igeyorhm
+          - Nabriales
+          - Fandaniel
+          - Pashtarot
+          - Loghrif
+          - Mitron
+          - Travanchet
+          - Hythlodaeus
+          - Venat
+          - Erichthonios
+          - Solus zos Galvus
+          - Varis zos Galvus
+          - Zenos yae Galvus
+          - Gaius van Baelsar
+          - Nael van Darnus
+          - Asahi sas Brutus
+          - Aulus mal Asina
+          - Basch van Gabranth
+          - Fordola rem Lupis
+          - Grynewaht pyr Arvina
+          - Lambard Calowise
+          - Livia sas Junius
+          - Maxima quo Priscus
+          - Midas nan Garlond
+          - Nero tol Scaeva
+          - Noah van Gabranth
+          - Regula van Hydrus
+          - Rhitahtyn sas Arvina
+          - Vitus quo Messalla
+          - Allie
+          - Clarricie Priscus
+          - Drusilla
+          - Dyunbu Potitus
+          - Fabineau Soranus
+          - Gilbrisbert Buteo
+          - Hernais Longus
+          - Jullus Norbanus
+          - Llofii Potitus
+          - Lyon Helsos
+          - Menenius Lanatus
+          - Milisandia
+          - Pagaga Vochstein
+          - Quintus Cinna
+          - Rex
+          - Ricon
+          - Sadr Albeleo
+          - Sartauvoir Soranus
+          - Sicinius Vellutus
+          - Valens Varro
+          - Vergilia Corculum
+          - Yamatsumi Urabe
+          - A-Ruhn-Senna
+          - A-Towa-Cant
+          - Buscarron Stacks
+          - Cicely
+          - Drake Rhodes
+          - E-Sumi-Yan
+          - Eschiva Keyes
+          - Foulques
+          - Fufucha Fucha
+          - Gerolt Blackthorn
+          - Geva Storke
+          - Guydelot Thildonnet
+          - Isildaure Vellegrance
+          - Janremi Blackheart
+          - Jehantel Fointeaume
+          - Joacin
+          - Landenel Peaumasquier
+          - Laurentius Daye
+          - Leih Aliapoh
+          - Lina Mewrilah
+          - Luciane Corne
+          - Millith Ironheart
+          - Miounne
+          - Nolanel
+          - O-App-Pesi
+          - Pawah Mujuuk
+          - Raya-O-Senna
+          - Sanson Smyth
+          - Silvairre
+          - Swethyna Brookstone
+          - Sylphie Webb
+          - Tatabaru
+          - Tataramu
+          - Sezul Totoloc
+          - Voyce
+          - Wulfiue
+          - Ywain Deepwell
+          - Zhai'a Nelhah
+          - Frixio'
+          - Adalberta Sterne
+          - Aldis
+          - Chuchuto Chuto
+          - Cocobani
+          - Cocobezi
+          - Cocoboha
+          - Cocobuki Lolobuki
+          - Cocobusi
+          - Cocobygo
+          - Colbernoux
+          - Dancing Wolf
+          - Deep Canyon
+          - Dewlala Dewla
+          - Eline Roaille
+          - Erik
+          - F'hobhas
+          - Fyrgeiss Loetkilbsyn
+          - Gagaruna
+          - Greinfarr Redblade
+          - Hamon Holyfist
+          - Iliud
+          - Jenlyns Aesc
+          - Kikipu Kipu
+          - Lalai Lai
+          - Leavold
+          - Lewena
+          - Lolorito Nanarito
+          - Loonh Gah
+          - Martyn
+          - Memeriga
+          - Momodi Modi
+          - Mumuepo
+          - Mylla Swordsong
+          - Nenekko Nekko
+          - Niellefresne Thaudour
+          - Nutiba Buntiba
+          - Pipin Tarupin
+          - Popokkuli and Seserukka
+          - P'yandih
+          - Qhota Nbolo
+          - Ququruka Tataruka
+          - Redolent Rose
+          - Royse
+          - Rurukuta
+          - Serendipity
+          - Severian Lyctor
+          - Solkzagyl Keltnaglsyn
+          - Teledji Adeledji
+          - Tristan Lowe
+          - U'odh Nunh
+          - Valiant Hart
+          - Waldeve
+          - Whastrach
+          - Weggfarr
+          - Wide Gulley
+          - Yayake Yake
+          - Yuyuhase Luluhase
+          - Zirnberk
+          - Dozol Meloc
+          - Kazagg Chah
+          - Mutamix Bubblypots
+          - Alka Zolka
+          - Arya Gastaurknan
+          - Baderon Tenfingers
+          - Brithael Spade
+          - Broken Mountain
+          - Carvallain de Gorgagne
+          - Curious Gorge
+          - Doesmaga Poisonheart
+          - Eynzahr Slafyrsyn
+          - H'mhasi Tia
+          - H'naanza Esi
+          - Hyllfyr Faezmoensyn
+          - Jacke Swallow
+          - K'lyhia
+          - K'rhid Tia
+          - Latisha
+          - Lorens
+          - Lyngsath Hyllbornsyn
+          - Madison
+          - Melkoko Melko
+          - Mimidoa Nanadoa
+          - Perimu Haurimu
+          - R'ashaht Rhiki
+          - Reyner Hansred
+          - Rhoswen Leach
+          - Rostnsthal
+          - Shamani Lohmani
+          - Sisipu Sipu
+          - Solkwyb Saelsmyndsyn
+          - Thubyrgeim Guldweitzwyn
+          - V'kebbe
+          - Wawalago Momolago
+          - Wheiskaet Rysswoerdsyn
+          - Wyrnzoen Saelsmyndsyn
+          - 13th Order Fugleman Zo Ga
+          - 175th Order Alchemist Bi Bi
+          - 789th Order Pickman Gi Gu
+          - Ga Bu
+          - Brayflox Alltalks
+          - Govv
+          - Surito Carito
+          - Setoto Seto
+          - Talan
+          - Rowena
+          - Estinien Wyrmblood
+          - Ysayle Dangoulain
+          - Thordan VII
+          - Edmont de Fortemps
+          - Artoirel de Fortemps
+          - Emmanellain de Fortemps
+          - Haurchefant Greystone
+          - Alberic Bale
+          - Ansaulme de Rougecarpe
+          - Audaine
+          - Augebert
+          - Aurvael de Haillenarte
+          - Ayleth
+          - Baurendouin de Haillenarte
+          - Charlemend de Durendaire
+          - Constaint
+          - Dominiac
+          - Drillemont de Lasserrant
+          - Forlemort
+          - Foncrineau
+          - Elaisse Poole
+          - Francel de Haillenarte
+          - Fray Myste
+          - Gontrandoix
+          - Guillaime
+          - Guillefresne
+          - Haldrath
+          - Handeloup de Daimbaux
+          - Hautdlong
+          - Heustienne de Vimaroix
+          - Hilda Ware
+          - Honoroit Banlardois
+          - Hourlinet
+          - Jannequinard de Durendaire
+          - Jantellot de Thelomaire
+          - Joye
+          - Julchiezain
+          - Laniaitte de Haillenarte
+          - Lucia goe Junius
+          - Lycelle
+          - Marcelloix
+          - Muscadain de Citenrond
+          - Noalle
+          - Pehainel
+          - Peyraquile
+          - Quimperain Evertrue
+          - Rasequin
+          - Redwald Younge
+          - Rielle de Caulignont
+          - Saintrelmaux
+          - Ser Adelphel de Chevraudan
+          - Ser Charibert de Leusignac
+          - Ser Grinnaux de Dzemael
+          - Ser Guerrique de Montrohain
+          - Ser Haumeric de Peulagnon
+          - Ser Hermenost de la Treaumaille
+          - Ser Janlenoux de Courcillant
+          - Ser Ignasse de Vesnaint
+          - Ser Noudenet de Jaimberd
+          - Ser Paulecrain de Fanouilley
+          - Ser Zephirin de Valhourdin
+          - Ser Vellguine de Bourbagne
+          - Sidurgu Orl
+          - Sigan
+          - Stephanivien de Haillenarte
+          - Sylvetrel de Dzemael
+          - Tedalgrinche
+          - Thomelin
+          - Thordan I
+          - Ystride de Caulignont
+          - Midgardsormr
+          - Bahamut
+          - Hraesvelgr
+          - Nidhogg
+          - Ratatoskr
+          - Tiamat
+          - Vrtra
+          - Azdaja
+          - Ehll Tou
+          - Faunehm
+          - Orn Khai
+          - Twintania
+          - Vedrfolnir
+          - Vidofnir
+          - Vishap
+          - Adri Westwoode
+          - Conrad Kemp
+          - Curtis Hext
+          - D'zentsa
+          - Gundobald
+          - H'raha Tia
+          - Hewerald
+          - Ilberd Feare
+          - J'moldva
+          - M'naago Rahz
+          - Meffrid Noward
+          - O'tchakha
+          - Raulf Redhill
+          - The Griffin
+          - Ulger Ironheart
+          - Widargelt Beake
+          - Wilred Glasse
+          - X'rhun Tia
+          - Slowfix Cointoss
+          - Adkiragh
+          - Khloe Aliapoh
+          - Mide Hotogo
+          - Midnight Dew
+          - T'kebbe Morh
+          - Zhloe Aliapoh
+          - Loifa
+          - Quickthinx Allthoughts
+          - Chieftain Moglin
+          - Master Mogzin
+          - Leofard Myste
+          - Stacia Myste
+          - Radlia Keene
+          - Cait Sith
+          - Ejika Tsunjika
+          - Faldrinet
+          - Fourchenault Leveilleur
+          - Koh Rabntah
+          - Lalah Jinjahl
+          - Leveva Byrde
+          - Matoya
+          - Mikoto Jinba
+          - Rammbroes Zasertylsyn
+          - Rhesh Polaali
+          - Y'mhitra Rhul
+          - Hien Rijin
+          - Yugiri Mistwalker
+          - Gosetsu Everfall
+          - Yotsuyu goe Brutus
+          - Azami Shibunuri
+          - Anzu Zenbu
+          - Gekkai
+          - Ginko
+          - Gogo
+          - Hakuro Gunji
+          - Hozan Nagae
+          - Isse Shibunuri
+          - Karasu Kanshi
+          - Kinko
+          - Kurobana
+          - Mikuzume
+          - Oboro Torioi
+          - Tsubame Oshidari
+          - Yozan Nagae
+          - Tenzen
+          - Seiryu
+          - Suzaku
+          - Byakko
+          - Genbu
+          - Ramza Beoulve
+          - Delita Heiral
+          - Alma Beoulve
+          - Agrias Oaks
+          - Fran Eruyt
+          - Montblanc
+          - Ashelia
+          - Rasler
+          - Ba'Gamnan
+          - Rofocale
+          - Sophie
+          - Alma bas Lexentale
+          - Jenomis cen Lexentale
+          - Ramza bas Lexentale
+          - Wandering Dramaturge
+          - Akagi
+          - Hanzo
+          - Hancock Fitzgerald
+          - Kikimo Kimo
+          - Kotokaze Benitoki
+          - Kyokuho Moribe
+          - Makoto Obinata
+          - Yatsurugi no Yuki
+          - Hansaku Ushikai
+          - Hisui Sui
+          - Kurenai Shisui
+          - Rasho Mastbreaker
+          - Shiosai Sui
+          - Soroban
+          - Suzume Kaisuri
+          - Tansui
+          - Tsukikage Urabe
+          - Cirina Mol
+          - Magnai Oronir
+          - Sadu Dotharl
+          - Alaqa
+          - Altani Dataq
+          - Anarba Dataq
+          - Chambui Dazkar
+          - Dorgono Qerel
+          - Gurbesu Goro
+          - Khalja Dataq
+          - Nayaga
+          - Ogul Khatayin
+          - Sokhatai Dataq
+          - Bajsaljen Ulgasch
+          - Marsak Apella
+          - Misija Votyasch
+          - Rostik Liubasch
+          - Blaz Azetina
+          - Isolde Covey
+          - Lovro Slanasch
+          - Meryall Miller
+          - Stanik Alubov
+          - Velibor Azetina
+          - Xeven Svanasch
+          - Dabog Inivisch
+          - Radovan
+          - Ardashir Balyk
+          - Jalzahn Daemir
+          - Nashmeira
+          - Pasareen
+          - Ranaa Mihgo
+          - Yezahn
+          - Nidhana
+          - Ardbert
+          - Branden
+          - Cylva
+          - Lamitt
+          - Nyelbert
+          - Renda-Rae
+          - The Crystal Exarch
+          - Ryne
+          - Beq Lugg
+          - Callea
+          - Cerigg
+          - Gaia
+          - Giott
+          - Granson
+          - Lue-Reeq
+          - Lyna
+          - Mauwyl
+          - Nielden
+          - Taynor
+          - Tolas
+          - Tesleen
+          - Halric
+          - Vauthry
+          - Ran'jit
+          - Jongleurs of Eulmore
+          - Chai-Nuzz
+          - Dulia-Chai
+          - Tista-Bie
+          - Anogg and Konogg
+          - Eueliss
+          - Kai-Shirr
+          - Lanbyrd
+          - Olvara
+          - Sai-Lewq
+          - Tristol
+          - Feo Ul
+          - An Lad
+          - Ezel II
+          - Seto
+          - Sul Oul
+          - Tonatiuh
+          - Titania
+          - Tyr Beq
+          - Sauldia
+          - Tadric
+          - Almet
+          - Cymet
+          - Uimet
+          - Ciuna
+          - Phyna
+          - Quinfort
+          - Valan
+          - Runar
+          - Xande
+          - Doga
+          - Unei
+          - Amon
+          - Phlegethon
+          - Scylla
+          - Glasya Labolas
+          - Ultima Weapon
+          - Halone
+          - Menphina
+          - Nymeia
+          - Byregot
+          - Rhalgr
+          - Azeyma
+          - Nald
+          - Thal
+          - Nophica
+          - Althyk
+          - Hydaelyn, Divine Light
+          - Zodiark, Eternal Darkness
+          - Ifrit, Lord of the Inferno
+          - Titan, Lord of Crags
+          - Garuda, Lady of the Vortex
+          - Good King Moggle Mog XII
+          - Leviathan, Lord of the Whorl
+          - Ramuh, Lord of Levin
+          - Shiva, Lady of Frost
+          - Phoenix, Mythical Bird of Rebirth
+          - Odin, The Dark Divinity
+          - Bismarck, Lord of the Mists
+          - Ravana, Lord of the Hive
+          - King Thordan
+          - Sephirot, the Fiend
+          - Sophia, the Goddess
+          - Zurvan, the Demon
+          - Alexander, the Colossus
+          - Susano, Lord of the Revel
+          - Lakshmi, Lady of Bliss
+          - Shinryu, Dragon God of Vengeance
+          - Tsukuyomi
+          - Enkidu
+          - Eureka
+          - The Twelve
+          - The Queen, Vengeful Eikon
+          - Diabolos
+          - Cloud of Darkness
+          - Ferdiad
+          - Scathach
+          - Zero
+          - Scarmiglione, Blighted Despot
+          - Barbariccia, Empress of the Winds
+          - Cagnazzo, Drowned King
+          - Rubicante, Autarch of Flame
+          - Golbez
+          - Hildibrand Manderville
+          - Godbert Manderville
+          - Julyan Manderville
+          - Nashu Mhakaracca
+          - Briardien de Manseauguel
+          - Cyr Blyme
+          - Ellie Ryse
+          - Gigi
+          - Gilgamesh
+          - Typhon and Ultros
+          - Yojimbo
+          - Ardashir Balyk
+          - Gerolt Blackthorn
+          - Drake Rhodes
+          - Jalzahn Daemir
+          - Rowena
+          - Edda Pureheart
+          - Jandelaine
+          - Martyn
+          - Nhaza'a Jaab
+          - Reyna Breakhook
+          - Rhesh Polaali
+          - Wandering Minstrel
+          - Naoki Yoshida
+          - Nohi
+          - Aldiytha Thorne
+          - Amh Garanjy
+          - Damielliot
+          - Impresario
+          - Jihli Aliapoh
+          - Kipih Jakkya
+          - Laurenssen
+          - Lorie
+          - Momoru
+          - Nanapasi
+          - Ninimo
+          - Rodolph
+          - Royal seneschal
+          - Songbirds
+          - Unsavory Imp
+          - Omega
+          - N-7000
+          - Livingway
+          - Jammingway
+          - Puddingway
+          - Shantotto
+          - Iroha
+          - Lightning
+          - Odin
+          - Garuda
+          - Noctis Lucis Caelum
+          - Lunafreya Nox Fleuret
+          - Nybeth Obdilord
+          - 2B
+          - 2P
+          - 9S
+        jobs:
+          - Paladin
+          - Gladiator
+          - Warrior
+          - Marauder
+          - Dark Knight
+          - Gunbreaker
+          - White Mage
+          - Scholar
+          - Astrologian
+          - Sage
+          - Arcanist
+          - Red Mage
+          - Black Mage
+          - Blue Mage
+          - Thaumaturge
+          - Summoner
+          - Lancer
+          - Dragoon
+          - Monk
+          - Ninja
+          - Rogue
+          - Samurai
+          - Reaper
+          - Bard
+          - Archer
+          - Machinist
+          - Dancer
+          - Fisher
+          - Botanist
+          - Miner
+          - Carpenter
+          - Blacksmith
+          - Armorer
+          - Goldsmith
+          - Leatherworker
+          - Weaver
+          - Alchemist
+          - Culinarian
+        races:
+          - Au Ra
+          - Viera
+          - Miqo'te
+          - Hrothgar
+          - Lalafell
+          - Elezen
+          - Roegadyn
+          - Hyur
+        data_centers:
+          - Aether
+          - Crystal
+          - Dynamis
+          - Primal
+          - Chaos
+          - Light
+          - Materia
+          - Elemental
+          - Gaia
+          - Mana
+          - Meteor
+        zones:
+          - Limsa Lominsa Upper Decks
+          - Limsa Lominsa Lower Decks
+          - Mist
+          - Wolves' Den Pier
+          - Middle La Noscea
+          - Lower La Noscea
+          - Eastern La Noscea
+          - Western La Noscea
+          - Upper La Noscea
+          - Outer La Noscea
+          - New Gridania
+          - Old Gridania
+          - The Lavender Beds
+          - Central Shroud
+          - East Shroud
+          - South Shroud
+          - North Shroud
+          - Ul'dah - Steps of Nald
+          - Ul'dah - Steps of Thal
+          - The Goblet
+          - The Gold Saucer
+          - Western Thanalan
+          - Central Thanalan
+          - Eastern Thanalan
+          - Southern Thanalan
+          - Northern Thanalan
+          - Foundation
+          - The Pillars
+          - Empyreum
+          - Coerthas Central Highlands
+          - Coerthas Western Highlands
+          - Mor Dhona
+          - The Sea of Clouds
+          - Azys Lla
+          - Idyllshire
+          - The Dravanian Forelands
+          - The Dravanian Hinterlands
+          - The Churning Mists
+          - Rhalgr's Reach
+          - The Fringes
+          - The Peaks
+          - The Lochs
+          - Kugane
+          - Shirogane
+          - The Ruby Sea
+          - Yanxia
+          - The Azim Steppe
+          - The Crystarium
+          - Lakeland
+          - Eulmore
+          - Kholusia
+          - Amh Araeng
+          - Il Mheg
+          - The Rak'tika Greatwood
+          - The Tempest
+          - Old Sharlayan
+          - Labyrinthos
+          - Garlemald
+          - Radz-at-Han
+          - Thavnair
+          - Mare Lamentorum
+          - Ultima Thule
+          - Elpis
+          - Gangos
+          - The Omphalos
+          - Unnamed Island</code></pre>
+</div>
+</div>
+</div>
+</details>
+<details>
+<summary class="title">Available Functions</summary>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">Faker().finalFantasyXIV.characters() // =&gt; Alphinaud Leveilleur
+
+Faker().finalFantasyXIV.jobs() // =&gt; Paladin
+
+Faker().finalFantasyXIV.races() // =&gt; Au Ra
+
+Faker().finalFantasyXIV.dataCenters() // =&gt; Aether
+
+Faker().finalFantasyXIV.zones() // =&gt; Limsa Lominsa Upper Decks</code></pre>
+</div>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+        </div>
+      
+      
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <p class="has-text-left-tablet has-text-centered-mobile">
+        
+          <a href="/kotlin-faker" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fas fa-home"></i></span>
+            <span>Home</span>
+          </a>
+        
+          <a href="https://github.com/serpro69/kotlin-faker/" class="button is-dark">
+            <span class="icon"><i class="fab fa-lg fab fa-github"></i></span>
+            <span>GitHub</span>
+          </a>
+        
+        </p>
+      </div>
+      <div class="column">
+        <p class="has-text-right-tablet has-text-centered-mobile">
+          <a href="https://bulma.io/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/images/made-with-bulma--semiblack.png"
+              alt="Bulma"
+              width="171"
+              height="32">
+          </a>
+          <a href="https://orchid.run/">
+            <img
+              src="https://serpro69.github.io/kotlin-faker/assets/svg/orchid/logo_top_light.svg"
+              alt="Orchid 1.0.0-SNAPSHOT"
+              width="64"
+              height="32">
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- start:inject scripts -->
+<script defer data-search-pseudo-elements="true" src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/releases/v5.4.0/js/all.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-accordion.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/bulma-tabs.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/assets/js/simpleFilter.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/Copper/5438a553/2/2.0.1/iconify.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/lunr/lunr.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/assets/js/orchidSearch.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/prism.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-clike.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markup-templating.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-kotlin.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-java.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-groovy.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yaml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-yml.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-asciidoc.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-markdown.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-twig.min.js"></script>
+<script  src="https://serpro69.github.io/kotlin-faker/ajax/libs/prism/1.17.1/components/prism-xml.min.js"></script>
+<!-- end:inject scripts -->
+
+
+
+</body>
+</html>
