@@ -51,7 +51,7 @@ publishing {
                 developers {
                     developer {
                         id.set("serpro69")
-                        name.set("Serhii Prodan")
+                        name.set("Særgeir")
                     }
                 }
             }
