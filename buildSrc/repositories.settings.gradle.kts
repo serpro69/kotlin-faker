@@ -7,18 +7,10 @@ dependencyResolutionManagement {
     repositories {
         mavenCentral()
         gradlePluginPortal()
-        maven {
-            // orchid...
-            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-        }
     }
 
     pluginManagement {
         repositories {
-            maven {
-                // orchid...
-                url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots")
-            }
             mavenCentral()
             gradlePluginPortal()
         }

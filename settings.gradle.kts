@@ -17,7 +17,6 @@ include(
     ":bom",
     ":core",
     ":cli-bot",
-//    ":docs",
 )
 
 val extensions =
