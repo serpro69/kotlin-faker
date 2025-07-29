@@ -1,4 +1,4 @@
-# START australia_provider_dict
+# --8<-- [start:australia_provider_dict]
 en:
   faker:
     australia:
@@ -106,4 +106,4 @@ en:
         - Australian Capital Territory
         - Victoria
         - Tasmania
-# END australia_provider_dict
+# --8<-- [end:australia_provider_dict]

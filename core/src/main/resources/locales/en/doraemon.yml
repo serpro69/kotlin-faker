@@ -1,4 +1,4 @@
-# START doraemon_provider_dict
+# --8<-- [start:doraemon_provider_dict]
 en:
   faker:
     doraemon:
@@ -285,4 +285,4 @@ en:
         - "Time Tunnel"
         - "Tokyo"
         - "Tomos Island"
-# END doraemon_provider_dict
+# --8<-- [end:doraemon_provider_dict]

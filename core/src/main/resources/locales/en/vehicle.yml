@@ -1,4 +1,4 @@
-# START vehicle_provider_dict
+# --8<-- [start:vehicle_provider_dict]
 en:
   faker:
     vehicle:
@@ -2813,4 +2813,4 @@ en:
         - Sport 2.0 CVT
         - TXS 1.5 TB AT
         - Premier 1.2 TB
-# END vehicle_provider_dict
+# --8<-- [end:vehicle_provider_dict]

@@ -1,4 +1,4 @@
-# START postgresql_provider_dict
+# --8<-- [start:postgresql_provider_dict]
 en:
   faker:
     database:
@@ -52,4 +52,4 @@ en:
           # Other
           - ARRAY
           - UUID
-# END postgresql_provider_dict
+# --8<-- [end:postgresql_provider_dict]

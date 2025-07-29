@@ -1,4 +1,4 @@
-# START myst_provider_dict
+# --8<-- [start:myst_provider_dict]
 en:
   faker:
     games:
@@ -103,4 +103,4 @@ en:
           - Atrus? Is that you? Come to rescue your Book so soon? Not yet, old friend... not yet.
           # Ti'ana
           - Atrus... what do you see?
-# END myst_provider_dict
+# --8<-- [end:myst_provider_dict]

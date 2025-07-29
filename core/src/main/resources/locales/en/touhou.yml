@@ -1,4 +1,4 @@
-# START touhou_provider_dict
+# --8<-- [start:touhou_provider_dict]
 en:
   faker:
     games:
@@ -838,4 +838,4 @@ en:
           - Prince Shoutoku's Pegasus ~ Dark Pegasus
           - The Animals' Rest
           - Returning Home from the Underground
-# END touhou_provider_dict
+# --8<-- [end:touhou_provider_dict]

@@ -1,4 +1,4 @@
-# START name_provider_dict
+# --8<-- [start:name_provider_dict]
 en:
   faker:
     name:
@@ -25,4 +25,4 @@ en:
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
         - "#{first_name} #{last_name} #{last_name}"
-# END name_provider_dict
+# --8<-- [end:name_provider_dict]

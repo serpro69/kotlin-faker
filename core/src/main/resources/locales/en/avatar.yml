@@ -1,4 +1,4 @@
-# START avatar_provider_dict
+# --8<-- [start:avatar_provider_dict]
 en:
   faker:
     avatar:
@@ -30,4 +30,4 @@ en:
         "So you just figured you'd come here, to the most hostile environment known to men, with no training of any kind, and see how it went? What was going through your head?",
         "It is hard to fill a cup that is already full."
       ]
-# END avatar_provider_dict
+# --8<-- [end:avatar_provider_dict]

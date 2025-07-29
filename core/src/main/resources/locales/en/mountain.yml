@@ -1,4 +1,4 @@
-# START mountain_provider_dict
+# --8<-- [start:mountain_provider_dict]
 en:
   faker:
     mountain:
@@ -170,4 +170,4 @@ en:
         - Tian Shan
         - Wrangell Mountains
         - Yengisogat Karakoram
-# END mountain_provider_dict
+# --8<-- [end:mountain_provider_dict]

@@ -1,4 +1,4 @@
-# START dune_provider_dict
+# --8<-- [start:dune_provider_dict]
 en:
   faker:
     dune:
@@ -297,4 +297,4 @@ en:
           - Knowledge is pitiless.
           - Fate and Hope only rarely speak the same language.
           - Beware the seeds you sow and the crops you reap. Do not curse God for the punishment you inflict upon yourself.
-# END dune_provider_dict
+# --8<-- [end:dune_provider_dict]

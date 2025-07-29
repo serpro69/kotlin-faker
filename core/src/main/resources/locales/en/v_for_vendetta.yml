@@ -1,4 +1,4 @@
-# START v_for_vendetta_provider_dict
+# --8<-- [start:v_for_vendetta_provider_dict]
 en:
   faker:
     v_for_vendetta:
@@ -162,4 +162,4 @@ en:
         "Your own father said that artists use lies to tell the truth. Yes, I created a lie. But because you believed it, you found something true about yourself.",
         "Your powers of observation continue to serve you well."
       ]
-# END v_for_vendetta_provider_dict
+# --8<-- [end:v_for_vendetta_provider_dict]

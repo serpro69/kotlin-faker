@@ -1,4 +1,4 @@
-# START subscription_provider_dict
+# --8<-- [start:subscription_provider_dict]
 en:
   faker:
     subscription:
@@ -7,4 +7,4 @@ en:
       payment_methods: ["Credit card", "Debit card", "Paypal", "Cash", "Money transfer", "Bitcoins", "Cheque", "Apple Pay", "Google Pay", "WeChat Pay", "Alipay", "Visa checkout"]
       subscription_terms: ["Daily", "Weekly", "Monthly", "Annual", "Biennal", "Triennal", "Quinquennal", "Lifetime"]
       payment_terms: ["Payment in advance", "Monthly", "Annual", "Full subscription"]
-# END subscription_provider_dict
+# --8<-- [end:subscription_provider_dict]

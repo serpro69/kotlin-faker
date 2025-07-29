@@ -1,4 +1,4 @@
-# START sonic_the_hedgehog_provider_dict
+# --8<-- [start:sonic_the_hedgehog_provider_dict]
 en:
   faker:
     games:
@@ -409,4 +409,4 @@ en:
           - Team Sonic Racing
           - Super Smash Bros. Ultimate
           - Sega Heroes
-# END sonic_the_hedgehog_provider_dict
+# --8<-- [end:sonic_the_hedgehog_provider_dict]

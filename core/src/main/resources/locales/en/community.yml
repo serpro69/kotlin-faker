@@ -1,4 +1,4 @@
-# START community_provider_dict
+# --8<-- [start:community_provider_dict]
 en:
   faker:
     community:
@@ -32,4 +32,4 @@ en:
         "Some flies are too awesome for the wall.",
         "We’ll definitely be back next year. If not, it’ll be because an asteroid has destroyed all human civilization. And that’s canon."
       ]
-# END community_provider_dict
+# --8<-- [end:community_provider_dict]

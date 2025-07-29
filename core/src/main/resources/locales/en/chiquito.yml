@@ -1,4 +1,4 @@
-# START chiquito_provider_dict
+# --8<-- [start:chiquito_provider_dict]
 en:
   faker:
     chiquito:
@@ -63,4 +63,4 @@ en:
         - ¿Qué quiere que dé dos viajes?",
         "Nació un niño tan feo tan feo que la madre en vez de darle el pecho le daba la espalda"
       ]
-# END chiquito_provider_dict
+# --8<-- [end:chiquito_provider_dict]

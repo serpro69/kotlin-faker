@@ -1,4 +1,4 @@
-# START overwatch_provider_dict
+# --8<-- [start:overwatch_provider_dict]
 en:
   faker:
     games:
@@ -2651,4 +2651,4 @@ en:
           - Curses and Madness be upon you all
           - The Iris consumes you
           - Trick or Treat
-# END overwatch_provider_dict
+# --8<-- [end:overwatch_provider_dict]

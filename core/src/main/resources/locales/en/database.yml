@@ -1,4 +1,4 @@
-# START database_provider_dict
+# --8<-- [start:database_provider_dict]
 en:
   faker:
     database:
@@ -8,4 +8,4 @@ en:
         - email
         - created_at
         - updated_at
-# END database_provider_dict
+# --8<-- [end:database_provider_dict]

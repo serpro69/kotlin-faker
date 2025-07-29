@@ -1,4 +1,4 @@
-# START train_station_provider_dict
+# --8<-- [start:train_station_provider_dict]
 en:
   faker:
     train_station:
@@ -279,4 +279,4 @@ en:
           - Secaucus Junction
           - South Station
           - Washington Union Station
-# END train_station_provider_dict
+# --8<-- [end:train_station_provider_dict]

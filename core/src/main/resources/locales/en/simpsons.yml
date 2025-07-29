@@ -1,4 +1,4 @@
-# START simpsons_provider_dict
+# --8<-- [start:simpsons_provider_dict]
 en:
   faker:
     simpsons:
@@ -693,4 +693,4 @@ en:
         "Treehouse of Horror XXX",
         "Gorillas on the Mast"
       ]
-# END simpsons_provider_dict
+# --8<-- [end:simpsons_provider_dict]

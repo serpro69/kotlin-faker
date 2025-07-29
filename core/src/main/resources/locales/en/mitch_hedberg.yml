@@ -1,4 +1,4 @@
-# START mitch_hedberg_provider_dict
+# --8<-- [start:mitch_hedberg_provider_dict]
 en:
   faker:
     quote:
@@ -45,4 +45,4 @@ en:
         - I'm a heroine addict. I need to have sex with women who have saved someone's life.
         - I wear a necklace, cause I wanna know when I'm upside down.
         - You know when they have a fishing show on TV? They catch the fish and then let it go. They don't want to eat the fish, they just want to make it late for something.
-# END mitch_hedberg_provider_dict
+# --8<-- [end:mitch_hedberg_provider_dict]

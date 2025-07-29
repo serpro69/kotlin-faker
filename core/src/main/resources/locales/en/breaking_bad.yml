@@ -1,4 +1,4 @@
-# START breaking_bad_provider_dict
+# --8<-- [start:breaking_bad_provider_dict]
 en:
   faker:
     breaking_bad:
@@ -27,4 +27,4 @@ en:
         "Buyout", "Say My Name", "Gliding Over All", "Blood Money", "Buried", "Confessions",
         "Rabid Dog", "To'hajiilee", "Ozymandias", "Granite State", "Felina"
       ]
-# END breaking_bad_provider_dict
+# --8<-- [end:breaking_bad_provider_dict]

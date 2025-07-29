@@ -1,4 +1,4 @@
-# START food_provider_dict
+# --8<-- [start:food_provider_dict]
 en:
   faker:
     food:
@@ -1068,4 +1068,4 @@ en:
         - Yamal
         - Zambian
         - Zanzibari
-# END food_provider_dict
+# --8<-- [end:food_provider_dict]
