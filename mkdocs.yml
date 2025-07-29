@@ -60,9 +60,7 @@ theme:
     - toc.follow
     # - toc.integrate
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
-  icon:
-    # TODO: logo
-    logo: logo
+  logo: assets/images/icon.png
   custom_dir: material
 
 extra:
