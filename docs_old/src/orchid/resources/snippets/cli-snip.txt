@@ -1,4 +1,4 @@
-# START cli_app_zero
+# --8<-- [start:cli_app_zero]
 faker-bot lookup name --verbose
 #Faker()
 #├── address
@@ -16,4 +16,4 @@ faker-bot lookup name --verbose
 #├── beer
 #│   └── name() // => Oaked Arrogant Bastard Ale
 # rest of output that matches query
-# END cli_app_zero
+# --8<-- [end:cli_app_zero]

@@ -1,4 +1,4 @@
-# START military_provider_dict
+# --8<-- [start:military_provider_dict]
 en:
   faker:
     military:
@@ -181,4 +181,4 @@ en:
         - W-4
         - W-5
         - Special
-# END military_provider_dict
+# --8<-- [end:military_provider_dict]

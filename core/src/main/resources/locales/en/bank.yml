@@ -1,4 +1,4 @@
-# START bank_provider_dict
+# --8<-- [start:bank_provider_dict]
 # Most of the iban details and the idea were copied from: https://github.com/iulianu/iban-tools
 #
 # Copyright (c) 2009 Iulian Dogariu
@@ -301,4 +301,4 @@ en:
           # Kosovo, Republic of
           length: 20
           bban_pattern: '\d{16}'
-# END bank_provider_dict
+# --8<-- [end:bank_provider_dict]

@@ -1,4 +1,4 @@
-# START grateful_dead_provider_dict
+# --8<-- [start:grateful_dead_provider_dict]
 en:
   faker:
     grateful_dead:
@@ -47,4 +47,4 @@ en:
               "Looks Like Rain",
               "Bird Song",
               "Cassidy"]
-# END grateful_dead_provider_dict
+# --8<-- [end:grateful_dead_provider_dict]

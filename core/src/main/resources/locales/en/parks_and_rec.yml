@@ -1,4 +1,4 @@
-# START parks_and_rec_provider_dict
+# --8<-- [start:parks_and_rec_provider_dict]
 en:
   faker:
     parks_and_rec:
@@ -6,4 +6,4 @@ en:
       "Donna Meagle","Ben Wyatt","Chris Traeger","Craig Middlebrooks","Jean-Ralphio Saperstein","Li'l Sebastian","Mona-Lisa Saperstein","Orin",
       "Tammy 1","Tammy 2","Tammy Zero","Jeremy Jamm","Ethel Beavers","Crazy Ira","The Douche","Joan Callamezzo","Perd Hapley","Shauna Malwae-Tweep","Bobby Newport","Dr. Richard Nygard"]
       cities: ["Pawnee","Eagleton","Boraqua"]
-# END parks_and_rec_provider_dict
+# --8<-- [end:parks_and_rec_provider_dict]

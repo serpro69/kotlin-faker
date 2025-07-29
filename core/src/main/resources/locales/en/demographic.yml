@@ -1,4 +1,4 @@
-# START demographic_provider_dict
+# --8<-- [start:demographic_provider_dict]
 en:
   faker:
     demographic:
@@ -220,4 +220,4 @@ en:
       - Divorced
       - Separated
       - Never married
-# END demographic_provider_dict
+# --8<-- [end:demographic_provider_dict]

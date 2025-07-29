@@ -1,4 +1,4 @@
-# START phone_number_provider_dict
+# --8<-- [start:phone_number_provider_dict]
 en:
   faker:
     phone_number:
@@ -87,4 +87,4 @@ en:
         - "(###) ###-####"
         - "###.###.####"
         - "### ### ####"
-# END phone_number_provider_dict
+# --8<-- [end:phone_number_provider_dict]

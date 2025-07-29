@@ -1,4 +1,4 @@
-# START airport_provider_dict
+# --8<-- [start:airport_provider_dict]
 en:
   faker:
       airport:
@@ -380,4 +380,4 @@ en:
               - CTA
               - LIN
               - NAP
-# END airport_provider_dict
+# --8<-- [end:airport_provider_dict]

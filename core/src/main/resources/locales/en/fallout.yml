@@ -1,4 +1,4 @@
-# START fallout_provider_dict
+# --8<-- [start:fallout_provider_dict]
 en:
   faker:
     games:
@@ -314,4 +314,4 @@ en:
           - You stood up to Elder Maxson for me. I'll never forget that for as long as I live.
           - You think I inject myself with all that shite and drink myself drunk because I’m a tough Irish gal?
           - You'd be shocked how many people I've managed to convince I'm just a really sick ghoul.
-# END fallout_provider_dict
+# --8<-- [end:fallout_provider_dict]
