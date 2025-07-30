@@ -17,6 +17,37 @@ Blue color variations
 
 <!-- Additional styles for landing page -->
 <style>
+    .md-typeset pre {
+        display: flow-root;
+        line-height: 1.4;
+        position: relative;
+    }
+
+    .md-typeset code, .md-typeset kbd, .md-typeset pre {
+        color: var(--md-code-fg-color);
+        direction: ltr;
+        font-variant-ligatures: none;
+        transition: background-color 125ms;
+    }
+
+    .md-typeset pre {
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    code, kbd, pre {
+        font-feature-settings: "kern";
+        font-family: var(--md-code-font-family);
+    }
+
+    pre {
+        display: block;
+        font-family: monospace;
+        unicode-bidi: isolate;
+        white-space: pre-line !important;
+        margin-block: 0px;
+        margin-inline: 0px;
+    }
 
     .d-flex {
         display: flex;

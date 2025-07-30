@@ -53,8 +53,8 @@ title: kotlin-faker
       and data anonymization purposes through data generators that provide...</i>
     </p>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        ...a plethora of real-looking data in various domains:
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>...a plethora of real-looking data in various domains:</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -63,8 +63,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        Names
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>Names</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -73,8 +73,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        Addresses
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>Addresses</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -83,8 +83,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        Internet
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>Internet</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -93,8 +93,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        Banking
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>Banking</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -103,7 +103,7 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
         Books
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
@@ -113,8 +113,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        Movies and TV
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>Movies and TV</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -124,8 +124,8 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        ...and many more!
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 30%;">
+        <p>...and many more!</p>
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
@@ -134,16 +134,15 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div style="order:0; flex: 30%;">
+        <button
+          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/data-providers/'"
+          title="Data Providers"
+          type="button"
+          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
+        >Data Generators</button>
       </div>
-      <div style="order:0; flex: 50%;">
-          <button
-            onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/data-providers/'"
-            title="Data Providers"
-            type="button"
-            class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
-          >Data Generators</button>
-        </div>
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
       </div>
     </div>
   </div>
