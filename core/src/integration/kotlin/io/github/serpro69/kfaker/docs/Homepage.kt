@@ -18,7 +18,7 @@ import java.util.*
  * and additionally it's also being tested since this is, after all, a test class.
  *
  * Usage:
- * ❶ Wrap each code snippet in comments like `// --8<-- [start:snippet_name` and `// --8<-- [end:snippet_name`]]
+ * ❶ Wrap each code snippet in comments like `// --8<-- [start:snippet_name]` and `// --8<-- [end:snippet_name`]
  * ❷ Code snippets can be referenced from the docs using the {% snippet snippet_name %} tag.
  * ❸ (See https://orchid.run/plugins/orchidsnippets for snippets docs)
  */
@@ -46,7 +46,7 @@ class Homepage : DescribeSpec({
                 // --8<-- [end:data_provider_three]
             }
             // --8<-- [start:data_provider_seven]
-            // a total of 213 different data providers
+            // a total of 213 different data generators
             // --8<-- [end:data_provider_seven]
         }
 
