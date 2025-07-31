@@ -69,6 +69,7 @@ extra:
 
 extra_css:
   - assets/stylesheets/extra.css
+  - assets/stylesheets/nord.css
 
 markdown_extensions:
   - abbr

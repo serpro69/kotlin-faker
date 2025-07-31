@@ -264,8 +264,6 @@ Blue color variations
         padding-right: 3rem;
     }
 
-
-
     .my-0 {
         margin-top: 0rem;
         margin-bottom: 0rem;
@@ -290,7 +288,6 @@ Blue color variations
         margin-top: 3rem;
         margin-bottom: 3rem;
     }
-
 
     .py-0 {
         padding-top: 0rem;
@@ -410,11 +407,11 @@ Blue color variations
         font-family: Roboto, sans-serif;
         font-weight: 600;
         font-size: 14px;
-        color: #fff;
-        background-color: #000000;
+        color: var(--md-default-fg-color);
+        background-color: var(--md-default-bg-color);
         padding: 10px 30px;
-        border: solid #000 2px;
-        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border: solid var(--md-default-fg-color--lighter) 2px;
+        box-shadow: var(--md-accent-bg-color) 0px 0px 0px 0px;
         border-radius: 8px;
         transition : 1000ms;
         transform: translateY(0);
@@ -428,21 +425,20 @@ Blue color variations
         transition : 1000ms;
         padding: 10px 50px;
         transform : translateY(-0px);
-        background-color: #121212;
-        color: #ffffff;
-        border: solid 2px #292929;
+        background-color: var(--md-default-bg-color--light);
+        color: var(--md-default-fg-color);
+        border: solid var(--md-default-fg-color--lighter) 2px;
     }
-
 
     .btn-warning {
         font-family: Roboto, sans-serif;
         font-weight: 600;
         font-size: 14px;
-        color: #000000;
-        background-color: #bdd61c;
+        color: var(--md-primary-bg-color);
+        background-color: var(--color-nord-orange);
         padding: 10px 30px;
-        border: solid #bdd61c 2px;
-        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border: solid var(--color-nord-red) 2px;
+        box-shadow: var(--md-accent-bg-color) 0px 0px 0px 0px;
         border-radius: 8px;
         transition : 1000ms;
         transform: translateY(0);
@@ -456,20 +452,20 @@ Blue color variations
         transition : 1000ms;
         padding: 10px 50px;
         transform : translateY(-0px);
-        background-color: #e1ff00;
-        color: #000000;
-        border: solid 2px #bdd61c;
+        background-color: rgba(var(--color-nord-orange-rgb), 0.7);
+        color: var(--md-primary-bg-color);
+        border: solid var(--color-nord-red) 2px;
     }
 
     .btn-white {
         font-family: Roboto, sans-serif;
         font-weight: 600;
         font-size: 14px;
-        color: #000000;
-        background-color: #ffffff;
+        color: var(--md-default-bg-color);
+        background-color: var(--md-default-fg-color);
         padding: 10px 30px;
-        border: solid #ffffff 2px;
-        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border: solid var(--md-accent-bg-color--light) 2px;
+        box-shadow: var(--md-accent-bg-color) 0px 0px 0px 0px;
         border-radius: 8px;
         transition : 1000ms;
         transform: translateY(0);
@@ -477,42 +473,39 @@ Blue color variations
         flex-direction: column;
         align-items: center;
         cursor: pointer;
-        }
+    }
 
     .btn-white:hover{
         transition : 1000ms;
         padding: 10px 50px;
         transform : translateY(-0px);
-        background-color: #fff;
-        color: #0d0d0d;
-        border: solid 2px #ababab;
+        background-color: var(--md-default-fg-color--light);
+        color: var(--md-default-bg-color);
+        border: solid var(--md-accent-bg-color--light) 2px;
     }
 
-    .btn-rainbow {
+    .btn-aurora {
         border-radius: 10px;
         padding: 1rem;
         font-family: Roboto, sans-serif;
         font-weight: 600;
         font-size: 14px;
         padding: 10px 30px;
-        color: #fff;
+        color: var(--md-default-fg-color);
         box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
         border: solid 3px transparent;
-        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #ff48fa, #BDD61C);
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, var(--color-nord-red), var(--color-nord-orange), var(--color-nord-yellow), var(--color-nord-green), var(--color-nord-purple));
         background-origin: border-box;
         background-clip: content-box, border-box;
         box-shadow: 2px 1000px 1px #181917 inset;
     }
 
-
-
-    .btn-rainbow:hover {
+    .btn-aurora:hover {
         box-shadow: none;
-        color: white;
+        color: var(--md-default-bg-color);
         transition : 1000ms;
         transform : translateY(-0px);
     }
-
 
     .box-shadow {
         box-shadow: -5px 5px 10px 1px rgb(0 0 0 / 75%);
@@ -620,7 +613,7 @@ Blue color variations
         border-radius: 60px 0px 60px 0px;
     }
 
-    .card-rainbow {
+    .card-aurora {
         position: relative;
         bottom: -170px;
         border-radius: 15px;
@@ -708,7 +701,7 @@ Blue color variations
             padding: 15px 30px;
         }
 
-        .btn-rainbow-custom {
+        .btn-aurora-custom {
             margin-top: 15rem;
         }
 
@@ -789,7 +782,7 @@ Blue color variations
             padding: 15px 30px;
         }
 
-        .btn-rainbow-custom {
+        .btn-aurora-custom {
             margin-top: 15rem;
         }
 
