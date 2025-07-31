@@ -27,24 +27,7 @@
 }
 
 * {
-  --md-primary-fg-color: #bdd61c;
-  --md-primary-fg-color--light: #029c8e;
-  --md-primary-fg-color--dark: #303c55;
-  --md-typeset-color: var(--md-default-fg-color);
-  --md-typeset-a-color: var(--md-primary-fg-color--light);
   --md-text-font: "Telegraf-Regular";
-}
-
-:root {
-  --md-primary-fg-color: #181917;
-  --md-primary-fg-color--light: #029c8e;
-  --md-primary-fg-color--dark: #303c55;
-}
-
-:root > * {
-  --md-primary-bg-color: #000;
-  --md-typeset-color: var(--md-default-fg-color);
-  --md-typeset-a-color: var(--md-primary-fg-color--light);
 }
 
 /*
