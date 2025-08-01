@@ -377,16 +377,16 @@ Blue color variations
         font-weight: bold;
     }
 
-    .text-pink {
-        color: #d328ae;
+    .text-dark {
+        color: var(--md-default-fg-color);
     }
 
     .text-white {
-        color: #fff;
+        color: var(--md-default-bg-color);
     }
 
-    .text-dark {
-        color: #000;
+    .text-pink {
+        color: var(--color-nord-purple);
     }
 
     .text-align-center {
@@ -491,7 +491,7 @@ Blue color variations
         font-weight: 600;
         font-size: 14px;
         padding: 10px 30px;
-        color: var(--md-default-fg-color);
+        color: var(--color-nord-red) !important;
         box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
         border: solid 3px transparent;
         background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, var(--color-nord-red), var(--color-nord-orange), var(--color-nord-yellow), var(--color-nord-green), var(--color-nord-purple));
@@ -502,7 +502,7 @@ Blue color variations
 
     .btn-aurora:hover {
         box-shadow: none;
-        color: var(--md-default-bg-color);
+        color: var(--md-default-fg-color) !important;
         transition : 1000ms;
         transform : translateY(-0px);
     }
@@ -511,7 +511,7 @@ Blue color variations
         box-shadow: -5px 5px 10px 1px rgb(0 0 0 / 75%);
     }
 
-
+    /*
     .first-gradient-body {
         background: hsla(316, 100%, 63%, 1);
         background: linear-gradient(0deg, hsla(316, 100%, 63%, 1) 0%, hsla(2, 62%, 69%, 1) 33%, hsla(68, 77%, 47%, 1) 87%);
@@ -521,6 +521,7 @@ Blue color variations
         background: hsla(316, 100%, 63%, 1);
         background: linear-gradient(180deg, hsla(316, 100%, 63%, 1) 0%, hsla(2, 62%, 69%, 1) 33%, hsla(68, 77%, 47%, 1) 87%);
     }
+    */
 
     .stack-tenology-gradient {
         background: hsla(316, 100%, 63%, 1);
@@ -528,11 +529,11 @@ Blue color variations
     }
 
     .third-dark-body {
-        background-color: #181917;
+        background-color: var(--md-default-fg-color--light);
     }
 
     .four-gray-body {
-        background-color: #D0D0D0;
+        background-color: var(--md-default-fg-color--lighter);
     }
 
     .bg-dark {
@@ -605,12 +606,6 @@ Blue color variations
         width: 60%;
         left: 10%;
         position: relative;
-    }
-
-    .card-white {
-        width: 100%;
-        background-color: white;
-        border-radius: 60px 0px 60px 0px;
     }
 
     .card-aurora {

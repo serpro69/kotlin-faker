@@ -17,6 +17,9 @@ plugins:
       always_show_hint: true
   - include_dir_to_nav
 
+watch:
+  - ./material
+
 theme:
   favicon: assets/images/favicon.ico
   name: material
