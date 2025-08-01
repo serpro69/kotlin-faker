@@ -1,4 +1,4 @@
-# START chuck_norris_provider_dict
+# --8<-- [start:chuck_norris_provider_dict]
 en:
   faker:
     chuck_norris:
@@ -81,4 +81,4 @@ en:
         "Chuck Norris' keyboard doesn't have a F1 key, the computer asks him for help.",
         "When Chuck Norris presses Ctrl+Alt+Delete, worldwide computer restart is initiated."
       ]
-# END chuck_norris_provider_dict
+# --8<-- [end:chuck_norris_provider_dict]

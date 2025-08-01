@@ -27,13 +27,17 @@ ifneq ($(__java_version_ok),$(shell echo 0))
 	$(error "Expected java 17")
 endif
 
-.PHONY: deploy-docs
-deploy-docs: ## deploys documentation with orchid
-	cd docs; \
-	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./src/orchid/resources/config.yml; \
-	sed -i 's/^\s\shomePageOnly:.*/#/' ./src/orchid/resources/config.yml; \
-	./gradlew orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE); \
-	git checkout ./src/orchid/resources/config.yml
+.PHONY: docs
+docs: ## serve documentation on the localhost
+	@mkdocs serve
+
+# .PHONY: deploy-docs
+# deploy-docs: ## deploys documentation with orchid
+# 	cd docs; \
+# 	sed -i 's/^\s\sbaseUrl:\shttp:\/\/localhost:8080/  baseUrl: https:\/\/serpro69.github.io\/kotlin-faker/' ./src/orchid/resources/config.yml; \
+# 	sed -i 's/^\s\shomePageOnly:.*/#/' ./src/orchid/resources/config.yml; \
+# 	./gradlew orchidDeploy -PorchidEnvironment=prod -PorchidDiagnose=$(ORCHID_DIAGNOSE); \
+# 	git checkout ./src/orchid/resources/config.yml
 
 .PHONY: snapshot-minor
 snapshot-minor: ## publishes next snapshot with a minor version bump

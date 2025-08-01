@@ -1,4 +1,4 @@
-# START educator_provider_dict
+# --8<-- [start:educator_provider_dict]
 en:
   faker:
     educator:
@@ -79,4 +79,4 @@ en:
             - 3##
             - 4##
             - 5##
-# END educator_provider_dict
+# --8<-- [end:educator_provider_dict]

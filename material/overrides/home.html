@@ -1,0 +1,263 @@
+{% extends "overrides/main-styles.html" %}
+
+<!-- Render hero under tabs -->
+{% block tabs %}
+{{ super() }}
+
+<!-- Hero for landing page -->
+
+<div class="gradient-wrapper"> <!-- angled gradient wrapper for dark mode -->
+
+<!--kotlin-faker documetation-->
+<section class="first-gradient-body w-100">
+  <div class="md-grid container-row pt-1 pt-lg-5 my-4">
+    <div class="px-3 ctx-header-text container">
+      <div class="container-row">
+        <p class="h1 text-xs-center">
+          <img src="assets/images/logos/name.png" class="mx-3 title-logo" height="22%"/>
+          <br>
+          <b>...the only fake-data-generation library you'd need on the JVM</b>
+        <br>
+        </p>
+      </div>
+
+      <img src="assets/images/logos/logo-white.png" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
+      <p class="h3 text-xs-center">
+        Kotlin-faker is a comprehensive data-generation library which provides realistic-looking, 
+        fake-data-generation capabilities withing a variety of domains, like
+        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮, 
+        and <a href="TODO" class="text-link">many more</a>.
+        <br>
+        It can be used with Kotlin, Java, Android, Scala, and other JVM-based projects.
+        <br>
+        Ensure your application data looks as if it was real, just like our <i>really</i> fake logo, but not quite so.
+      </p>
+
+      <div class="container-row container-xs">
+        <button
+          type="button"
+          title="{{ page.next_page.title | e }}"
+          onclick="location.href='./concepts/'"
+          class="btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow"
+        >
+            Get Started
+        </button>
+        <button
+          onclick="window.open('{{ config.repo_url }}', '_blank')"
+          title="{{ lang.t('source.link.title') }}"
+          type="button"
+          class="btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          Contribute
+        </button>
+      </div>
+    </div>
+    <div class="ctx-header-img d-lg">
+      <img src="assets/images/logos/logo.png" class="header-img mx-lg-5" />
+    </div>
+  </div>
+</section>
+
+{{ page.content }}
+
+</div> <!-- angled gradient wrapper for dark mode -->
+
+<!--Why Leverage-->
+<section class="third-dark-body w-100">
+  <div class="container py-5 my-5">
+    <img src="assets/images/illustrations/why-leverage.svg" class="why-img" />
+    <img src="assets/images/illustrations/Ilustracion-Binbash.png" class="mac2-img" />
+    <div class="container-row">
+      <div style="order:0; flex: 50%;">
+        <div class="container ctx-card-white-1 text-white h3 my-5 d-xl-none d-lg-none mx-auto w-70">
+          <p class="my-3">
+            <img src="assets/images/icons/check-ok.svg" class="mx-2" width="20px" height="20px"/>
+            You will get your entire Cloud Native Application Infra in a few weeks.
+          </p>
+          <p class="my-3">
+            <img src="assets/images/icons/check-ok.svg" class="mx-2" width="20px" height="20px"/>
+            We've built every component based on the best recommended practices.
+          </p>
+          <p class="my-3">
+            <img src="assets/images/icons/check-ok.svg" class="mx-2" width="20px" height="20px"/>
+            Implement, reuse and scale your production workloads faster.
+          </p>
+        </div>
+        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
+          <btn
+            onclick="window.open('https://www.binbash.co/competition','_blank')"
+            title="{{ lang.t('source.link.title') }}"
+            type="button"
+            class="btn-aurora btn-aurora-custom btn-xl-large btn-lg-large mx-auto text-align-center cursor-pointer"
+          >
+            Kotlin-Faker vs. Competition
+          </btn>
+        </div>
+      </div>
+      <div style="order:0; flex: 50%;" class="d-lg">
+        <div class="card-aurora second-gradient-body px-5 py-5" style="order:1; flex: 100%;">
+          <div class="container ctx-card-white-1 text-dark h3">
+            <p class="my-3">
+              <img src="assets/images/icons/check-ok.svg" width="20px" height="20px"/>
+              If you implement our <span class="t-b">Reference AWS Cloud Solutions Architecture</span> and the <span class="t-b">Infrastructure as Code (IaC) Library</span> via <span class="t-b">Leverage CLI</span>, you will get your entire Cloud Native Application Infra in a few weeks.
+            </p>
+            <p class="my-3">
+              <img src="assets/images/icons/check-ok.svg" width="20px" height="20px"/>
+              We've built every component based on the best-recommended practices, mainly following the <span class="t-b">AWS Well-Architected Framework</span>, granting you ownership to implement, reuse and scale your production workloads faster.
+            </p>
+            <p class="my-3">
+              <img src="assets/images/icons/check-ok.svg" width="20px" height="20px"/>
+              Leverage will solve your entire infrastructure and grant you complete control of the source code, and of course, you'll be able to run it without us.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Supported tech stack-->
+<section class="four-gray-body w-100">
+  <div class="md-grid container pt-5  my-0 my-xl-4 my-lg-4">
+    <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Our tech stack</p>
+    <img src="assets/images/logos/stack-tecnology.svg" class="mx-auto my-5" width="80%"/>
+    <div class="container container-row-lg container-row-xl my-4">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <p>Opinionated reference <span class="t-b">AWS solutions</span> composable architecture, based on the <span class="t-b">AWS Well-Architected Framework</span>. With over ten years of experience, Infra as code and best practices.</p>
+      </div>
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <p>Leverage facilitates a collection of reusable, tested, production-ready E2E IaC solutions. They are leveraged by modules written in <span class="t-b">Terraform, Ansible, Dockerfiles, Helm Charts</span> and <span class="t-b">Python</span>.</p>
+      </div>
+    </div>
+    <div class="container container-row-lg container-row-xl my-4">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <p>Automated deployment workflow via <span class="t-b">Leverage CLI.</span></p>
+      </div>
+      <div style="order:0; flex: 50%;">
+        <button
+          onclick="location.href='./concepts/our-tech-stack/'"
+          title="{{ page.next_page.title | e }}"
+          type="button"
+          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow mx-auto"
+        >
+          Why our tech stack???
+        </button>
+      </div>
+    </div>
+    <!--    <img src="/assets/images/diagrams/AWS-ORGANIZATION.png" class="mx-auto mt-5 mb-3 d-sm" width="100%"/>-->
+    <img src="assets/images/diagrams/ref-architecture-aws.png" class="mx-auto mt-5 mb-3 d-sm" width="100%"/>
+    <img src="assets/images/diagrams/diagrama-organization-binbash.png" class="mx-auto mt-5 d-sm-none d-md-none d-lg-none d-xl-none" width="100%"/>
+    <div class="container-row my-0 my-xl-4 my-lg-4 stack-tenology-gradient">
+      <img src="assets/images/logos/stack-tecnologico-2.svg" class="mx-auto py-3" width="60%"/>
+    </div>
+  </div>
+</section>
+
+<!--Footer-->
+<footer class="bg-dark w-100">
+  <div class="md-grid container-row-xl container-row-lg container pt-5 my-4">
+    <div class="container-row" style="flex:50%">
+      <div class="text-white d-flex" style="flex: 40%;">
+        <img src="assets/images/logos/logo-binbash.png" class="mx-auto" width="30%"/>
+      </div>
+      <div class="text-white h3" style="flex: 30%;">
+        <div class="container text-white h3">
+          <ul>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ config.site_url }}" target="_blank">Home</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ config.repo_url }}" target="_blank">Github</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://github.com/serpro69/kotlin-faker/discussions" target="_blank">Ask Questions</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://github.com/serpro69/kotlin-faker/issues" target="_blank">Report Issues</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://www.binbash.co/contact" target="_blank">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-white h3" style="flex: 30%;">
+        <div class="container text-white h3">
+          <ul>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ config.site_url }}/about/" target="_blank">About</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://www.binbash.co/team" target="_blank">Team</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://github.com/binbashar" target="_blank">Resources</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://www.binbash.co/" target="_blank">Testimonials</a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="https://www.binbash.co/pricing" target="_blank">Pricing</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container-row mt-5 my-xl-0 mX-lg-0" style="flex:50%">
+      <div class="text-white text-end h3" style="flex: 15%;">
+          <span>Follow us on: </span>
+      </div>
+      <div class="text-white h3" style="flex: 55%;">
+        <a href="https://join.slack.com/t/binbashar/shared_invite/zt-fw1692b6-9k4ADsWJ47lKacszphXM1w" target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/slack.svg"
+            title="Slack"
+            class="mx-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+        <a href="https://www.linkedin.com/company/binbash" target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/linkedIn.svg"
+            title="linkedIn"
+            class="mr-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+        <a href="https://github.com/binbashar" target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/github.svg"
+            title="Github"
+            class="mr-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+        <a href="https://twitter.com/binbash_devops" target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/twitter.svg"
+            title="Twitter"
+            class="mr-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+        <a href="https://www.instagram.com/binbash_devops/"  target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/instagram.svg"
+            title="Instagram"
+            class="mr-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+        <a href="https://medium.com/binbash-inc" target="_blank">
+          <img
+            src="assets/images/logos/socialmedia/medium.svg"
+            title="Medium"
+            class="mr-3 cursor-pointer item-social-media"
+            width="9%"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

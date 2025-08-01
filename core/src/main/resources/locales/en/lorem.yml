@@ -1,4 +1,4 @@
-# START lorem_provider_dict
+# --8<-- [start:lorem_provider_dict]
 en:
   faker:
     lorem:
@@ -10,4 +10,4 @@ en:
         space: ' '
         period: '.'
         question_mark: '?'
-# END lorem_provider_dict
+# --8<-- [end:lorem_provider_dict]

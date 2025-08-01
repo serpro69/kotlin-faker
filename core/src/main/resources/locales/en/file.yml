@@ -1,4 +1,4 @@
-# START file_provider_dict
+# --8<-- [start:file_provider_dict]
 en:
   faker:
     file:
@@ -12,4 +12,4 @@ en:
         multipart: ["multipart/mixed", "multipart/alternative", "multipart/related", "multipart/form-data", "multipart/signed", "multipart/encrypted"]
         text: ["text/cmd", "text/css", "text/csv", "text/html", "text/javascript", "text/plain", "text/vcard", "text/xml"]
         video: ["video/mpeg", "video/mp4", "video/ogg", "video/quicktime", "video/webm", "video/x-matroska", "video/x-ms-wmv", "video/x-flv"]
-# END file_provider_dict
+# --8<-- [end:file_provider_dict]

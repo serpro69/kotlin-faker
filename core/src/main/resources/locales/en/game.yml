@@ -1,4 +1,4 @@
-# START game_provider_dict
+# --8<-- [start:game_provider_dict]
 en:
   faker:
     game:
@@ -293,4 +293,4 @@ en:
         - 'Sega Saturn'
         - 'Sega Dreamcast'
         - 'Virtual Boy'
-# END game_provider_dict
+# --8<-- [end:game_provider_dict]

@@ -1,4 +1,4 @@
-# START half_life_provider_dict
+# --8<-- [start:half_life_provider_dict]
 en:
   faker:
     games:
@@ -87,4 +87,4 @@ en:
           - St. Olga
           - White Forest
           - Xen
-# END half_life_provider_dict
+# --8<-- [end:half_life_provider_dict]
