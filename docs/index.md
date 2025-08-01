@@ -134,13 +134,13 @@ title: kotlin-faker
     <div class="container container-row-lg container-row-xl my-4">
       <div style="order:0; flex: 20%;">
         <button
-          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/data-providers/'"
+          onclick="location.href='{{ config.site_url }}/wiki/data-providers/'"
           title="Data Providers"
           type="button"
           class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
         >Data Generators</button>
       </div>
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 110%;">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 80%;">
       </div>
     </div>
   </div>
@@ -197,23 +197,23 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 70%;">
-      </div>
-      <div style="order:0; flex: 20%;">
-        <button
-          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/available-locales/'"
-          title="Available Locales"
-          type="button"
-          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
-        >Available Locales</button>
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 40%;">
       </div>
       <div style="order:0; flex: 30%;">
         <button
-          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/unique-generator/'"
-          title="Unique Data Generation"
+          onclick="location.href='{{ config.site_url }}/wiki/available-locales/'"
+          title="Locales"
           type="button"
           class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
-        >Unique Data Generation</button>
+        >Locales</button>
+      </div>
+      <div style="order:0; flex: 30%;">
+        <button
+          onclick="location.href='{{ config.site_url }}/wiki/unique-generator/'"
+          title="Unique Data"
+          type="button"
+          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
+        >Unique Data </button>
       </div>
     </div>
     <p class="h2 my-3">
@@ -226,6 +226,18 @@ title: kotlin-faker
         ```text
         --8<-- "docs/snippets/cli-snip.txt:cli_app_zero"
         ```
+      </div>
+    </div>
+    <div class="container container-row-lg container-row-xl my-4">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 80%;">
+      </div>
+      <div style="order:0; flex: 20%;">
+        <button
+          onclick="location.href='{{ config.site_url }}/wiki/available-locales/'"
+          title="Available Locales"
+          type="button"
+          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
+        >CLI App</button>
       </div>
     </div>
     <p class="h2 my-3">
@@ -272,23 +284,15 @@ title: kotlin-faker
       </div>
     </div>
     <div class="container container-row-lg container-row-xl my-4">
-      <div style="order:0; flex: 30%;">
+      <div style="order:0; flex: 20%;">
         <button
-          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/available-locales/'"
-          title="Available Locales"
-          type="button"
-          class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
-        >CLI App</button>
-      </div>
-      <div style="order:0; flex: 30%;">
-        <button
-          onclick="location.href='https://serpro69.github.io/kotlin-faker/wiki/unique-generator/'"
+          onclick="location.href='{{ config.site_url }}/wiki/unique-generator/'"
           title="Unique Data Generation"
           type="button"
           class="btn-dark btn-xl-large btn-lg-large my-4 box-shadow ml-auto mx-xs-auto mx-sm-auto mx-md-auto"
         >Extras</button>
       </div>
-      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 100%;">
+      <div class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 80%;">
       </div>
     </div>
   </div>
