@@ -614,6 +614,49 @@
         color:#c8ff00
     }
 
+    :is(.twemoji-check-all) {
+      --md-icon-size: 1rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+        fill: var(--color-nord-green) !important;
+      }
+    }
+
+    :is(.twemoji-display-4) {
+      --md-icon-size: 2.5rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
+
+    :is(.twemoji-kotlin) {
+      svg {
+        fill: var(--color-nord-frost1) !important;
+      }
+    }
+
+    :is(.twemoji-rocket-launch) {
+      svg {
+        fill: var(--color-nord-green) !important;
+      }
+    }
+
+    :is(.twemoji-unicorn-variant) {
+      svg {
+        fill: var(--color-nord-purple) !important;
+      }
+    }
 
     @media (min-width: 1220px) {
 
