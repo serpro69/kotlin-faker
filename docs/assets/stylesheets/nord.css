@@ -200,12 +200,6 @@
     );
     background-attachment: fixed; /* Creates a smooth parallax effect, matching dark mode */
   }
-
-  /* Make the individual sections transparent to show the wrapper's background */
-  .first-gradient-body,
-  .second-gradient-body {
-    background: transparent !important;
-  }
 }
 
 /* Nord dark color scheme */
@@ -360,12 +354,6 @@
     --md-code-hl-comment-color: var(--color-nord-dark3);
     --md-code-hl-generic-color: var(--md-default-fg-color--light);
     --md-code-hl-variable-color: var(--md-default-fg-color--light);
-  }
-
-  /* Make the sections transparent so the wrapper shows through */
-  .first-gradient-body,
-  .second-gradient-body {
-    background: transparent !important;
   }
 
   .third-dark-body {
