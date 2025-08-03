@@ -3,7 +3,7 @@ template: overrides/home.html
 title: kotlin-faker
 ---
 
-<section class="second-gradient-body w-100">
+<section class="w-100">
   <!--We fake it. You make it-->
   <div class="md-grid container-row pt-4 my-4">
     <div class="card-white py-3 mx-xs-3 mx-sm-3 mx-4 mx-xl-0 ">
@@ -146,7 +146,7 @@ title: kotlin-faker
   </div>
 </section>
 
-<section class="first-gradient-body w-100">
+<section class="w-100">
   <!-- Locales and other features -->
   <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
     <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Tell me more...</p>
