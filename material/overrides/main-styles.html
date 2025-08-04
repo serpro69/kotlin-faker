@@ -640,6 +640,30 @@
       }
     }
 
+    :is(.twemoji-btn) {
+      --md-icon-size: 1.5rem; /* TODO: make this responsive */
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
+
+    :is(.twemoji-arrow) {
+      svg {
+        fill: var(--md-default-fg-color) !important;
+      }
+    }
+
+    :is(.twemoji-github) {
+      svg {
+        fill: var(--md-default-bg-color) !important;
+      }
+    }
+
     :is(.twemoji-kotlin) {
       svg {
         fill: var(--color-nord-frost1) !important;
