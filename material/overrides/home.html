@@ -39,16 +39,15 @@
           type="button"
           title="{{ page.next_page.title | e }}"
           onclick="location.href='./concepts/'"
-          class="btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow"
-        >
-            Get Started
+          class="twemoji twemoji-btn twemoji-arrow btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          Get Started {% include ".icons/material/play.svg" %}
         </button>
         <button
           onclick="window.open('{{ config.repo_url }}', '_blank')"
           title="{{ lang.t('source.link.title') }}"
           type="button"
-          class="btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
-          Contribute
+          class="twemoji twemoji-btn twemoji-github btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          Contribute {% include ".icons/material/github.svg" %}
         </button>
       </div>
     </div>

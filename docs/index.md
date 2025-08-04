@@ -46,7 +46,7 @@ title: kotlin-faker
 
   <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
     <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">What kind of data?</p>
-    <p class="h2 my-3">
+    <p class="h2 my-3 text-dark">
       <i>Our focus is on creating realistically-looking fake data that is most suitable for development, testing,
       and data anonymization purposes through data generators that provide...</i>
     </p>
@@ -150,7 +150,7 @@ title: kotlin-faker
   <!-- Locales and other features -->
   <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
     <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Tell me more...</p>
-    <p class="h2 my-3">
+    <p class="h2 my-3 text-dark">
       <i>…data in 60+ locales:</i>
     </p>
     <div class="container container-row-lg container-row-xl my-4">
@@ -173,7 +173,7 @@ title: kotlin-faker
         ```
       </div>
     </div>
-    <p class="h2 my-3">
+    <p class="h2 my-3 text-dark">
       <i>…unique data generation capabilities:</i>
     </p>
     <div class="container container-row-lg container-row-xl my-4">
@@ -216,7 +216,7 @@ title: kotlin-faker
         >Unique Data </button>
       </div>
     </div>
-    <p class="h2 my-3">
+    <p class="h2 my-3 text-dark">
       <i>…cli app for generator functionality lookup:</i>
     </p>
     <div class="container container-row-lg container-row-xl my-4">
@@ -240,7 +240,7 @@ title: kotlin-faker
         >CLI App</button>
       </div>
     </div>
-    <p class="h2 my-3">
+    <p class="h2 my-3 text-dark">
       <i>…and more:</i>
     </p>
     <div class="container container-row-lg container-row-xl my-4">
