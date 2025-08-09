@@ -5,15 +5,6 @@
 
 <strong>kotlin-faker</strong> supports generation of unique (non-repeatable) values and there are two ways to use this: _"globally"_ - per data-provider, and _"locally"_ - per function.
 
-## ToC
-
-* [Unique Values for Entire Data Provider](#unique-values-for-entire-data-provider)
-  * [Clearing Records of Generated Values](#clearing-records-of-generated-values)
-  * [Disabling Unique Values Generator](#disabling-unique-values-generator)
-* [Unique Values for a Single Function](#unique-values-for-a-single-function)
-* [Configuring Retry Limit](#configuring-retry-limit)
-* [Excluding Values from Generation](#excluding-values-from-generation)
-
 ## Unique Values for Entire Data Provider
 
 ❶ Use the `faker.unique.configuration` function to configure unique generation of values "globally".

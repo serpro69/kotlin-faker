@@ -11,11 +11,6 @@ The extension modules require the [main `kotlin-faker` dependency]({{ link(colle
 {% endfilter %}
 {% endinfo %}
 
-## ToC
-
-- [BLNS](#blns)
-- [Kotest Property](#kotest-property)
-
 <br>
 
 ## BLNS

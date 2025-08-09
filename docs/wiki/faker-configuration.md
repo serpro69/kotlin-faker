@@ -3,15 +3,6 @@
 
 # Faker Configuration
 
-## ToC
-
-* [Default Configuration](#default-configuration)
-* [Deterministic Random](#deterministic-random)
-* [Locale](#locale)
-* [Random Class Instance](#random-class-instance)
-
-<br>
-
 ## Default Configuration
 
 `Faker` can be configured through the `FakerConfig` class, either by passing an instance of `FakerConfig` directly, or  

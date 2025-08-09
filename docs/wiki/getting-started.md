@@ -3,14 +3,6 @@
 
 # Getting Started
 
-## ToC
-
-* [Installing](#installing)
-  * [Releases](#releases)
-  * [Snapshots](#snapshots)
-  * [Faker BOM](#faker-bom)
-* [Generating Data](#generating-data)
-
 ## Installing
 
 ### Releases

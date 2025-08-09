@@ -3,19 +3,6 @@
 
 # Faker Bot CLI
 
-## ToC
-
-* [Prerequisites](#prerequisites)
-* [Installation](#installation)
-* [Commands](#commands)
-  * [`list`](#list)
-  * [`lookup`](#lookup)
-* [Options](#options)
-  * [`--verbose`](#--verbose)
-  * [`--locale`](#--locale)
-
-<br>
-
 ## Prerequisites
 
 `faker-bot` is released as a native linux image, and thus there are no additional pre-requisites for running the application.
