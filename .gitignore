@@ -3,6 +3,7 @@
 .idea/
 .kotlin/
 .kotlintest/
+.env
 *.jar
 *.log
 out/

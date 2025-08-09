@@ -1,4 +1,4 @@
-# START suits_provider_dict
+# --8<-- [start:suits_provider_dict]
 en:
   faker:
     suits:
@@ -44,4 +44,4 @@ en:
         - I don't have dreams, I have goals.
         - You just got Litt up!
         - I’m Moby goddamn Dick, and you just swam in my waters
-# END suits_provider_dict
+# --8<-- [end:suits_provider_dict]

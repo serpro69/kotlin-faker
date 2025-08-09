@@ -1,4 +1,4 @@
-# START science_provider_dict
+# --8<-- [start:science_provider_dict]
 en:
   faker:
     science:
@@ -483,4 +483,4 @@ en:
         - Viscometer
         - Generator
         - Reactor
-# END science_provider_dict
+# --8<-- [end:science_provider_dict]

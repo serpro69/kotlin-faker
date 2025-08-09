@@ -1,4 +1,4 @@
-# START driving_license_provider_dict
+# --8<-- [start:driving_license_provider_dict]
 en:
   faker:
     driving_license:
@@ -180,4 +180,4 @@ en:
         wyoming:
           - '#########'
           - '##########'
-# END driving_license_provider_dict
+# --8<-- [end:driving_license_provider_dict]

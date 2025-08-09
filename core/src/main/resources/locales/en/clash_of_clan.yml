@@ -1,4 +1,4 @@
-# START clash_of_clan_provider_dict
+# --8<-- [start:clash_of_clan_provider_dict]
 en:
   faker:
     games:
@@ -100,4 +100,4 @@ en:
           - Mega Tesla
           - Lava Launcher
           - Traps
-# END clash_of_clan_provider_dict
+# --8<-- [end:clash_of_clan_provider_dict]

@@ -1,4 +1,4 @@
-# START prince_provider_dict
+# --8<-- [start:prince_provider_dict]
 en:
   faker:
     prince:
@@ -226,4 +226,4 @@ en:
         - "Vanity 6"
         - "Apollonia 6"
         - "The Family"
-# END prince_provider_dict
+# --8<-- [end:prince_provider_dict]

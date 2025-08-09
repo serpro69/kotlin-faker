@@ -1,4 +1,4 @@
-# START world_of_warcraft_provider_dict
+# --8<-- [start:world_of_warcraft_provider_dict]
 en:
   faker:
     games:
@@ -125,4 +125,4 @@ en:
           - Highmountain
           - Mag'har
           - Zandalari
-# END world_of_warcraft_provider_dict
+# --8<-- [end:world_of_warcraft_provider_dict]

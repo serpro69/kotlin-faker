@@ -1,4 +1,4 @@
-# START blood_provider_dict
+# --8<-- [start:blood_provider_dict]
 en:
   faker:
     blood:
@@ -12,4 +12,4 @@ en:
         - '-'
       group:
         - "#{type}#{rh_factor}"
-# END blood_provider_dict
+# --8<-- [end:blood_provider_dict]

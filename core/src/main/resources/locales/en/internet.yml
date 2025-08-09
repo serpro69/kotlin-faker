@@ -1,4 +1,4 @@
-# START internet_provider_dict
+# --8<-- [start:internet_provider_dict]
 en:
   faker:
     internet:
@@ -153,4 +153,4 @@ en:
           - Mozilla/5.0 (compatible; YandexMetrika/2.0; +http://yandex.com/bots yabs01)
           - Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.268
           - Mozilla/5.0 (compatible; YandexImages/3.0; +http://yandex.com/bots)
-# END internet_provider_dict
+# --8<-- [end:internet_provider_dict]

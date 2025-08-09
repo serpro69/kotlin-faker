@@ -1,4 +1,4 @@
-# START coffee_provider_dict
+# --8<-- [start:coffee_provider_dict]
 en:
   faker:
     coffee:
@@ -30,4 +30,4 @@ en:
       name_1: ["Summer", "Holiday", "Jacked", "Joe", "Express", "Reg's", "Split", "Spilt", "Chocolate", "Dark", "Veranda", "Major", "Bluebery", "American", "Huggy", "Wake-up", "Morning", "Evening", "Winter", "Captain's", "Thanksgiving", "Seattle", "Brooklyn", "Café", "Blacktop", "Pumpkin-spice", "Good-morning", "Postmodern", "The Captain's", "The", "Cascara", "Melty", "Heart", "Goodbye", "Hello", "Street", "Red", "Blue", "Green", "Strong", "KrebStar", "Kreb-Full-o"]
       name_2: ["Solstice", "Blend", "Level", "Enlightenment", "Cowboy", "Choice", "Select", "Equinox", "Star", "Forrester", "Java", "Symphony", "Utopia", "Cup", "Mug", "Been", "Bean", "Cake", "Extract", "Delight", "Pie", "America", "Treat", "Volcano", "Breaker", "Town", "Light", "Look", "Coffee", "Nuts"]
       blend_name: "#{name_1} #{name_2}"
-# END coffee_provider_dict
+# --8<-- [end:coffee_provider_dict]

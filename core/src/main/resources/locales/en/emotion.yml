@@ -1,4 +1,4 @@
-# START emotion_provider_dict
+# --8<-- [start:emotion_provider_dict]
 en:
   faker:
     emotion:
@@ -479,4 +479,4 @@ en:
         - worry
         - zeal
         - zest
-# END emotion_provider_dict
+# --8<-- [end:emotion_provider_dict]

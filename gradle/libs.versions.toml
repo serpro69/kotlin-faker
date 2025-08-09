@@ -82,3 +82,4 @@ test-kotest = [
 # most plugins are imported using Maven coordinates (see above), not the Gradle plugin ID
 nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "plugin-nexus-publish" }
 benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "plugin-benmanes-versions" }
+dokka = { id = "org.jetbrains.dokka" }
