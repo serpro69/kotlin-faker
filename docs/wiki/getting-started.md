@@ -1,7 +1,8 @@
 ---
+icon: simple/rocket
 ---
 
-# Getting Started
+# :beginner: Getting Started
 
 ## Installing
 
@@ -9,7 +10,27 @@
 
 Installation is as simple as adding `kotlin-faker` dependency to your build configuration file:
 
-{% include 'includes/wiki/dependencyTabs.peb' %}
+=== "kotlin"
+
+    ```kotlin
+    testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion")
+    ```
+
+=== "groovy"
+
+    ```groovy
+    testImplementation 'io.github.serpro69:kotlin-faker:$fakerVersion'
+    ```
+
+=== "maven"
+
+    ```xml
+    <dependency>
+        <groupId>io.github.serpro69</groupId>
+        <artifactId>kotlin-faker</artifactId>
+        <version>${kotlin-faker.version}</version>
+    </dependency>
+    ```
 
 Release artifacts are available for download from maven central, and you usually don't need to add any additional repositories information.
 
@@ -17,111 +38,110 @@ Release artifacts are available for download from maven central, and you usually
 
 Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
-{% include 'includes/wiki/repositoriesTabs.peb' %}
+=== "kotlin"
+
+    ```kotlin
+    repositories {
+        maven {
+            url = URI("https://central.sonatype.com/repository/maven-snapshots/")
+        }
+    }
+    ```
+
+=== "groovy"
+
+    ```groovy
+    repositories {
+        maven {
+            url = 'https://central.sonatype.com/repository/maven-snapshots/'
+        }
+    }
+    ```
+
+=== "maven"
+
+    ```xml
+    <repositories>
+        <repository>
+            <id>sonatype-snapshot</id>
+            <name>Sonatype Snapshot</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
+    ```
 
 ### Faker BOM
 
 See {{ anchor(title='Kotlin-faker BOM', collectionType='wiki', collectionId='', itemId='Kotlin-faker BOM') }} page for details on how to use a Bill-of-Materials to simplify dependency management.
 
-{% btc %}{% endbtc %}
-
-<br>
 
 ## Generating Data
 
 Creating a `Faker` instance can be done either by creating a class instance directly:
 
-{% tabs %}
+=== "kotlin"
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
-```kotlin
-val faker = Faker()
+    ```kotlin
+    val faker = Faker()
 
-faker.name.firstName()
-faker.address.city()
-```
-{% endfilter %}
-{% endkotlin %}
+    faker.name.firstName()
+    faker.address.city()
+    ```
 
-{% java "Java" %}
-{% filter compileAs('md') %}
-```java
-Faker faker = new Faker();
+=== "java"
 
-faker.getName().firstName()
-faker.getAddress().city()
-```
-{% endfilter %}
-{% endjava %}
+    ```java
+    Faker faker = new Faker();
 
-{% endtabs %}
-
-<br>
+    faker.getName().firstName()
+    faker.getAddress().city()
+    ```
 
 Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }} (Which also gives you dsl-like access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
 .)
 
-{% tabs %}
+=== "kotlin"
 
-{% kotlin "Kotlin" %} {% filter compileAs('md') %}
-```kotlin
-val faker = faker {
-    // faker config
-}
+    ```kotlin
+    val faker = faker {
+        // faker config
+    }
 
-faker.name.firstName()
-faker.address.city()
-```
-{% endfilter %} {% endkotlin %}
+    faker.name.firstName()
+    faker.address.city()
+    ```
 
-{% fjava "FunJava" %} {% filter compileAs('md') %}
-```java
-Faker faker = faker(fromConsumer(f -> {
-    // faker config
-}));
 
-faker.getName().firstName()
-faker.getAddress().city()
-```
-{% endfilter %} {% endfjava %}
+=== "functional-java"
 
-{% java "Java" %} {% filter compileAs('md') %}
-```java
-Faker faker = faker(f -> {
-    // faker config
-    return Unit.INSTANCE;
-});
+    ```java
+    Faker faker = faker(fromConsumer(f -> {
+        // faker config
+    }));
 
-faker.getName().firstName()
-faker.getAddress().city()
-```
-{% endfilter %} {% endjava %}
+    faker.getName().firstName()
+    faker.getAddress().city()
+    ```
 
-{% endtabs %}
+=== "java"
 
-{% tip %}
-{% filter compileAs('html') %}
-<section class="accordions">
-  <article class="accordion">
-    <div class="accordion-header toggle">
-      <p>For Java users (clickable)</p>
-    </div>
-    <div class="accordion-body">
-      <div class="accordion-content">
-Notice usage of <code>FunctionalUtil.fromConsumer</code> method in "FunJava" tab. If this is not used, then an explicit return must be specified at the end of the lambda (See "Java" tab instead).
-See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
-      </div>
-    </div>
-  </article>
-</section>
-{% endfilter %}
-{% endtip %}
+    ```java
+    Faker faker = faker(f -> {
+        // faker config
+        return Unit.INSTANCE;
+    });
 
-<br>
+    faker.getName().firstName()
+    faker.getAddress().city()
+    ```
+
+!!! tip
+    For Java users (1) 
+    { .annotate }
+
+    1. Note the usage of `FunctionalUtil.fromConsumer` method in "functional-java" tab. 
+    If this is not used, then an explicit return must be specified at the end of the lambda (See "java" tab instead).
+    <br>
+    See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
 
 This concludes this short "getting started" guide. Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.
-
-{% btc %}{% endbtc %}
-
-<br>

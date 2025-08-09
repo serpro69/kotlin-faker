@@ -24,10 +24,10 @@
 - ① add the core `kotlin-faker` dependency to the test classpath
 - ② add the `testImplementation` dependency for the `kotlin-faker-kotest-property` extension
 
-{% tabs %}
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
+
+=== "kotlin"
+
 
 ```kotlin
 dependencies {
@@ -36,12 +36,12 @@ dependencies {
 }
 ```
 
-{% endfilter %}
-{% endkotlin %}
 
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+
+
+
+
 
 <br>
 
@@ -56,7 +56,7 @@ Arb.of(Faker().address::city)
 <br>
 
 {% info %}
-{% filter compileAs('md') %}
+
 For any additional fakers that you want to generate `Arb`s for, e.g. `BooksFaker` or `EduFaker`, make sure to add the corresponding dependency to `testImplementation`:
 
 ```kotlin
@@ -66,7 +66,7 @@ dependencies {
 }
 ```
 
-{% endfilter %}
+
 {% endinfo %}
 
 <br>
@@ -100,7 +100,7 @@ class KotestPropertyArbsTest : DescribeSpec({
 })
 ```
 
-{% btc %}{% endbtc %}
+
 
 <br>
 
@@ -129,6 +129,6 @@ it("should generate person with address") {
 }
 ```
 
-{% btc %}{% endbtc %}
+
 
 <br>

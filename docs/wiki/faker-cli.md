@@ -7,7 +7,7 @@
 
 `faker-bot` is released as a native linux image, and thus there are no additional pre-requisites for running the application.
 
-{% btc %}{% endbtc %}
+
 
 <br>
 
@@ -19,7 +19,7 @@ The latest releases are available on github (link)
 
 [ ] add link
 
-{% btc %}{% endbtc %}
+
 
 <br>
 
@@ -29,16 +29,16 @@ The latest releases are available on github (link)
 
 This command will print all existing functionality of kotlin-faker.
 
-{% tabs %}
+
 {% shell %}
-{% filter compileAs('md') %}
+
 ```shell
 faker-bot list
 ```
-{% endfilter %}
+
 {% endshell %}
 {% text "output" %}
-{% filter compileAs('md') %}
+
 ```text
 Faker()
 ├── address
@@ -105,11 +105,11 @@ Faker()
 └── ...
     └── ...
 ```
-{% endfilter %}
-{% endtext %}
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+{% endtext %}
+
+
+
 
 ### `lookup`
 
@@ -117,16 +117,16 @@ Often a `lookup` command will be more suitable to quickly find a necessary funct
 
 This command will print all the functions that match the specified string argument (case-insensitive)
 
-{% tabs %}
+
 {% shell %}
-{% filter compileAs('md') %}
+
 ```shell
 faker-bot lookup QuoTe
 ```
-{% endfilter %}
+
 {% endshell %}
 {% text "output" %}
-{% filter compileAs('md') %}
+
 ```text
 Faker()
 ├── aquaTeenHungerForce
@@ -242,11 +242,11 @@ Faker()
 └── yoda
     └── quotes()
 ```
-{% endfilter %}
-{% endtext %}
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+{% endtext %}
+
+
+
 
 <br>
 
@@ -256,16 +256,16 @@ Faker()
 
 Each of the commands accepts a `--verbose` option that will also print a randomly generated value.
 
-{% tabs %}
+
 {% shell %}
-{% filter compileAs('md') %}
+
 ```shell
 faker-bot lookup ea --verbose
 ```
-{% endfilter %}
+
 {% endshell %}
 {% text "output" %}
-{% filter compileAs('md') %}
+
 ```text
 Faker()
 ├── address
@@ -312,26 +312,26 @@ Faker()
 └── worldCup
     └── teams() // => Morocco
 ```
-{% endfilter %}
-{% endtext %}
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+{% endtext %}
+
+
+
 
 ### `--locale`
 
 Combining `--locale` option with `--verbose` will output translated values using the selected locale.
 
-{% tabs %}
+
 {% shell %}
-{% filter compileAs('md') %}
+
 ```shell
 lookup names --verbose --locale uk
 ```
-{% endfilter %}
+
 {% endshell %}
 {% text "output" %}
-{% filter compileAs('md') %}
+
 ```text
 Faker()
 ├── artist
@@ -346,18 +346,18 @@ Faker()
     └── names() // => Onix
 
 ```
-{% endfilter %}
+
 {% endtext %}
-{% endtabs %}
+
 
 {% info %}
-{% filter compileAs('md') %}
+
 Notice how some values are not translated because of a partially-localized {{ anchor(title='uk', collectionType='pages', collectionId='locales', itemId='uk') }} dictionary.
 <br>
 See also [Faker Configuration - Locale]({{ link(collectionType='wiki', collectionId='', itemId='Faker Configuration') }}#locale) for more information about generating values in another language.
-{% endfilter %}
+
 {% endinfo %}
 
-{% btc %}{% endbtc %}
+
 
 <br>
