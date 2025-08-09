@@ -10,16 +10,10 @@ icon: simple/rocket
 
 Installation is as simple as adding `kotlin-faker` dependency to your build configuration file:
 
-=== "kotlin"
+=== "gradle"
 
     ```kotlin
     testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion")
-    ```
-
-=== "groovy"
-
-    ```groovy
-    testImplementation 'io.github.serpro69:kotlin-faker:$fakerVersion'
     ```
 
 === "maven"
@@ -38,22 +32,12 @@ Release artifacts are available for download from maven central, and you usually
 
 Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
-=== "kotlin"
+=== "gradle"
 
     ```kotlin
     repositories {
         maven {
             url = URI("https://central.sonatype.com/repository/maven-snapshots/")
-        }
-    }
-    ```
-
-=== "groovy"
-
-    ```groovy
-    repositories {
-        maven {
-            url = 'https://central.sonatype.com/repository/maven-snapshots/'
         }
     }
     ```
@@ -72,8 +56,7 @@ Snapshot are automatically published on each commit to master. If you want to tr
 
 ### Faker BOM
 
-See {{ anchor(title='Kotlin-faker BOM', collectionType='wiki', collectionId='', itemId='Kotlin-faker BOM') }} page for details on how to use a Bill-of-Materials to simplify dependency management.
-
+See [Kotlin-faker BOM](./faker-bom.md) page for details on how to use a Bill-of-Materials to simplify dependency management.
 
 ## Generating Data
 
@@ -97,8 +80,7 @@ Creating a `Faker` instance can be done either by creating a class instance dire
     faker.getAddress().city()
     ```
 
-Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId='', itemId='Faker DSL') }} (Which also gives you dsl-like access to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }}
-.)
+Or by using the [Faker DSL](./faker-dsl.md) (Which also gives you dsl-like access to [Faker Configuration](./faker-configuration.md).)
 
 === "kotlin"
 
@@ -142,6 +124,6 @@ Or by using the {{ anchor(title='Faker DSL', collectionType='wiki', collectionId
     1. Note the usage of `FunctionalUtil.fromConsumer` method in "functional-java" tab. 
     If this is not used, then an explicit return must be specified at the end of the lambda (See "java" tab instead).
     <br>
-    See also {{ anchor(title='Java Interop', collectionType='wiki', collectionId='', itemId='Java Interop') }} for more details on using kotlin-faker from Java.
+    See also [Java Interop](./java-interop.md) for more details on using kotlin-faker from Java.
 
-This concludes this short "getting started" guide. Jump to {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.
+This concludes this short "getting started" guide. Jump to [Faker Configuration](./faker-configuration.md) page to learn how to configure `Faker` to generate localized data, ensure deterministic random data generation and other configuration options or just click the next button to go to next wiki page.

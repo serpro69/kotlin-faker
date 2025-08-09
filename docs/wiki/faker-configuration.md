@@ -1,7 +1,8 @@
 ---
+icon: material/screwdriver
 ---
 
-# Faker Configuration
+# :screwdriver: Faker Configuration
 
 ## Default Configuration
 
