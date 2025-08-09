@@ -5,27 +5,6 @@
 
 `kotlin-faker` provides additional functionality outside of data generation from static .yml dictionaries.
 
-## ToC
-
-* [Random instance of any class](#random-instance-of-any-class)
-  * [Random Class Instance Configuration](#random-class-instance-configuration)
-  * [Pre-configuring type generation](#pre-configuring-type-generation)
-    * [Predefined types for constructor parameters](#predefined-types-for-constructor-parameters)
-    * [Pre-defined instance for classes with no public constructors](#pre-defined-instance-for-classes-with-no-public-or-internal-constructors)
-    * [Predefined collection element types](#predefined-collection-element-types)
-  * [Deterministic constructor selection](#deterministic-constructor-selection)
-  * [Default constructor values selection](#default-values-selection)
-  * [Configuring the size of generated Collections](#configuring-the-size-of-generated-collections)
-  * [Making a Copy or a New instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)
-    * [New Instance](#new-instance)
-    * [Instance Copy](#instance-copy)
-  * [Dealing with Generic Types](#dealing-with-generic-types)
-  * [Top-level functions](#top-level-functions)
-* [Random Everything](#random-everything)
-* [Random Strings from Templates](#random-strings-from-templates)
-
-<br>
-
 ## Random instance of any class
 
 It is possible to create a random instance of (almost) any class. 

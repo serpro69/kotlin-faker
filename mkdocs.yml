@@ -127,4 +127,18 @@ markdown_extensions:
 
 nav:
   - "~/": index.md
+  - User Guide:
+      - wiki/index.md
+      - Getting Started: wiki/getting-started.md
+      - Using kotlin-faker BOM: wiki/faker-bom.md
+      - Configuring Faker: wiki/faker-configuration.md
+      - Generating Unique Values: wiki/unique-generator.md
+      - Extras: wiki/extras.md
+      - Faker DSL: wiki/faker-dsl.md
+      - Available Data Generators: wiki/data-providers.md
+      - Custom Data Generators: wiki/custom-data-provider.md
+      - Available Locales: wiki/available-locales.md
+      - Java Interop: wiki/java-interop.md
+      - Faker CLI: wiki/faker-cli.md
+      - Faker Extensions: wiki/extensions.md
   - API: api

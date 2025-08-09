@@ -3,11 +3,6 @@
 
 # Java Interop
 
-# ToC
-
-* [Using Faker DSL](#using-faker-dsl)
-* [Calling `Faker` methods](#calling-faker-methods)
-
 ## Using Faker DSL
 
 Even though **kotlin-faker** was created with Kotlin in mind, it is still possible to use this library from a Java-based project thanks to great
