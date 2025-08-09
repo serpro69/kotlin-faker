@@ -6,9 +6,9 @@
 `kotlin-faker` provides "Faker extensions" for popular third-party testing-related libraries and frameworks.
 
 {% info %}
-{% filter compileAs('md') %}
+
 The extension modules require the [main `kotlin-faker` dependency]({{ link(collectionType='wiki', collectionId='', itemId='Getting Started') }}#installing) to be on the classpath, unless otherwise specified in the given extension's documentation.
-{% endfilter %}
+
 {% endinfo %}
 
 <br>
@@ -19,7 +19,7 @@ Kotlin-faker `blns` artifact provides convenience functions for returning string
 
 See the [Big List of Naughty Strings Extension]({{ link(collectionType='pages', collectionId='extensions', itemId='Blns Extension') }}) page for usage details.
 
-{% btc %}{% endbtc %}
+
 
 <br>
 
@@ -29,7 +29,7 @@ See the [Big List of Naughty Strings Extension]({{ link(collectionType='pages', 
 
 See the [Kotest Property Extension]({{ link(collectionType='pages', collectionId='extensions', itemId='Kotest Property Extension') }}) page for usage details.
 
-{% btc %}{% endbtc %}
+
 
 <br>
 

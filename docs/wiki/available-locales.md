@@ -13,6 +13,6 @@ Below pages contain code blocks with inlined yaml dictionaries, some of them can
 - [`{{ page.title }}`]({{ page.link }})
 {% endfor %}
 
-{% btc %}{% endbtc %}
+
 
 <br>

@@ -18,9 +18,9 @@ To somehow mitigate these limitations, kotlin faker comes with a `FunctionalUtil
 
 Consider the following example of creating and configuring a `Faker` instance with the DSL:
 
-{% tabs %}
-{% java "Java" %}
-{% filter compileAs('md') %}
+
+=== "java"
+
 ```java
 Faker faker = faker(fromConsumer(f -> {
     f.config(fromConsumer(config -> {
@@ -28,17 +28,17 @@ Faker faker = faker(fromConsumer(f -> {
     }));
 }));
 ```
-{% endfilter %}
-{% endjava %}
-{% endtabs %}
+
+
+
 
 This of course doesn't look as good as Kotlin, but that's Java for you with its ugly lambdas.
 
 However, if `builder` parameters are not called with the help of `fromConsumer` method, then explicit returns should be specified:
 
-{% tabs %}
-{% java "Java" %}
-{% filter compileAs('md') %}
+
+=== "java"
+
 ```java
 Faker faker = faker(f -> {
     f.config(config -> {
@@ -48,13 +48,13 @@ Faker faker = faker(f -> {
     return Unit.INSTANCE;
 });
 ```
-{% endfilter %}
-{% endjava %}
-{% endtabs %}
+
+
+
 
 Fewer parentheses, but an explicit `return` statement for each lambda - the choice, as they say, is yours.
 
-{% btc %}{% endbtc %}
+
 
 <br>
 
@@ -62,28 +62,28 @@ Fewer parentheses, but an explicit `return` statement for each lambda - the choi
 
 Calling a faker method is pretty straightforward. The only difference between kotlin and java here is that in java you need to call the getter of the fake data provider properties such as `name`, `address`, and so on.
 
-{% tabs %}
 
-{% java "Java" %}
-{% filter compileAs('md') %}
+
+=== "java"
+
 ```java
 faker.getName().firstName()
 faker.getAddress().city()
 ```
-{% endfilter %}
-{% endjava %}
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
+
+
+=== "kotlin"
+
 ```kotlin
 faker.name.firstName()
 faker.address.city()
 ```
-{% endfilter %}
-{% endkotlin %}
 
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+
+
+
+
 
 <br>

@@ -28,10 +28,10 @@ Kotlin-faker `blns` artifact provides convenience functions for returning string
 - ① add the core `kotlin-faker` dependency to the test classpath
 - ② then add the dependency for the `kotlin-faker-blns` extension
 
-{% tabs %}
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
+
+=== "kotlin"
+
 
 ```kotlin
 dependencies {
@@ -40,12 +40,12 @@ dependencies {
 }
 ```
 
-{% endfilter %}
-{% endkotlin %}
 
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+
+
+
+
 
 <br>
 
@@ -65,10 +65,10 @@ For example, using [JUnit5 Parameterized Testing](https://junit.org/junit5/docs/
 - ⑥ Test your inputs
 - Profit 💸
 
-{% tabs %}
 
-{% kotlin "Kotlin" %}
-{% filter compileAs('md') %}
+
+=== "kotlin"
+
 
 ```kotlin
 class Test {
@@ -93,12 +93,12 @@ class Test {
 }
 ```
 
-{% endfilter %}
-{% endkotlin %}
 
-{% endtabs %}
 
-{% btc %}{% endbtc %}
+
+
+
+
 
 <br>
 
