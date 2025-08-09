@@ -39,14 +39,14 @@
           type="button"
           title="{{ page.next_page.title | e }}"
           onclick="location.href='./concepts/'"
-          class="twemoji twemoji-btn twemoji-arrow btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          class="twemoji twemoji-arrow btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
           Get Started {% include ".icons/material/play.svg" %}
         </button>
         <button
           onclick="window.open('{{ config.repo_url }}', '_blank')"
           title="{{ lang.t('source.link.title') }}"
           type="button"
-          class="twemoji twemoji-btn twemoji-github btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          class="twemoji twemoji-github btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
           Contribute {% include ".icons/material/github.svg" %}
         </button>
       </div>
@@ -258,105 +258,99 @@
 <footer class="bg-dark w-100">
   <div class="md-grid container-row-xl container-row-lg container pt-5 my-4">
     <div class="container-row" style="flex:50%">
-      <div class="text-white d-flex" style="flex: 40%;">
-        <img src="assets/images/logos/logo-binbash.png" class="mx-auto" width="30%"/>
+      <div class="text-white d-flex" style="flex: 30%;">
+        <img src="assets/images/logos/logo.png" class="mx-auto" width="30%"/>
       </div>
+      <div class="container text-white h3">
+        <ul>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.site_url }}" target="_blank">
+              <p>
+              <span class="twemoji twemoji-footer">
+                {% include ".icons/material/home.svg" %}
+              </span>
+              Home
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}" target="_blank">
+              <p>
+              <span class="twemoji twemoji-footer">
+                {% include ".icons/material/github.svg" %}
+              </span>
+              Github
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}/discussions" target="_blank">
+              <p>
+              <span class="twemoji twemoji-footer">
+                {% include ".icons/material/chat-question.svg" %}
+              </span>
+              Ask Questions
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}/issues" target="_blank">
+              <p>
+              <span class="twemoji twemoji-footer">
+                {% include ".icons/material/bug.svg" %}
+              </span>
+              Report Issues
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div style="flex: 10%;"></div>
       <div class="text-white h3" style="flex: 30%;">
         <div class="container text-white h3">
           <ul>
             <li class="cursor-pointer item-text-footer">
-              <a href="{{ config.site_url }}" target="_blank">Home</a>
+              <a href="{{ config.site_url }}/about/" target="_blank">
+                <p>
+                <span class="twemoji twemoji-footer">
+                  {% include ".icons/material/information-slab-box.svg" %}
+                </span>
+                About
+                </p>
+              </a>
             </li>
             <li class="cursor-pointer item-text-footer">
-              <a href="{{ config.repo_url }}" target="_blank">Github</a>
+              <a href="https://www.binbash.co/" target="_blank">
+                <p>
+                <span class="twemoji twemoji-footer">
+                  {% include ".icons/fontawesome/solid/scroll.svg" %}
+                </span>
+                Changelog
+                </p>
+              </a>
             </li>
             <li class="cursor-pointer item-text-footer">
-              <a href="https://github.com/serpro69/kotlin-faker/discussions" target="_blank">Ask Questions</a>
+              <a href="https://www.binbash.co/team" target="_blank">
+                <p>
+                <span class="twemoji twemoji-footer">
+                  {% include ".icons/material/license.svg" %}
+                </span>
+                License
+                </p>
+              </a>
             </li>
             <li class="cursor-pointer item-text-footer">
-              <a href="https://github.com/serpro69/kotlin-faker/issues" target="_blank">Report Issues</a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="https://www.binbash.co/contact" target="_blank">Contact</a>
+              <a href="https://github.com/binbashar" target="_blank">
+                <p>
+                <span class="twemoji twemoji-footer">
+                  {% include ".icons/material/handshake.svg" %}
+                </span>
+                Contributing
+                </p>
+              </a>
             </li>
           </ul>
         </div>
-      </div>
-      <div class="text-white h3" style="flex: 30%;">
-        <div class="container text-white h3">
-          <ul>
-            <li class="cursor-pointer item-text-footer">
-              <a href="{{ config.site_url }}/about/" target="_blank">About</a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="https://www.binbash.co/team" target="_blank">Team</a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="https://github.com/binbashar" target="_blank">Resources</a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="https://www.binbash.co/" target="_blank">Testimonials</a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="https://www.binbash.co/pricing" target="_blank">Pricing</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="container-row mt-5 my-xl-0 mX-lg-0" style="flex:50%">
-      <div class="text-white text-end h3" style="flex: 15%;">
-          <span>Follow us on: </span>
-      </div>
-      <div class="text-white h3" style="flex: 55%;">
-        <a href="https://join.slack.com/t/binbashar/shared_invite/zt-fw1692b6-9k4ADsWJ47lKacszphXM1w" target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/slack.svg"
-            title="Slack"
-            class="mx-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
-        <a href="https://www.linkedin.com/company/binbash" target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/linkedIn.svg"
-            title="linkedIn"
-            class="mr-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
-        <a href="https://github.com/binbashar" target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/github.svg"
-            title="Github"
-            class="mr-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
-        <a href="https://twitter.com/binbash_devops" target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/twitter.svg"
-            title="Twitter"
-            class="mr-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
-        <a href="https://www.instagram.com/binbash_devops/"  target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/instagram.svg"
-            title="Instagram"
-            class="mr-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
-        <a href="https://medium.com/binbash-inc" target="_blank">
-          <img
-            src="assets/images/logos/socialmedia/medium.svg"
-            title="Medium"
-            class="mr-3 cursor-pointer item-social-media"
-            width="9%"
-          />
-        </a>
       </div>
     </div>
   </div>
