@@ -514,7 +514,7 @@
     }
 
     .bg-dark {
-        background-color: #181917;
+        background-color: var(--md-default-fg-color);
     }
 
     .w-100 {
@@ -606,12 +606,24 @@
     }
 
     .item-social-media:hover {
-        background-color: #6a7a00;
+        background-color: var(--md-accent-fg-color);
         border-radius: 10px;
     }
 
     .item-text-footer:hover {
-        color:#c8ff00
+        color: var(--md-accent-fg-color)
+    }
+
+    :is(.twemoji-footer) {
+      --md-icon-size: 1rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
     }
 
     :is(.twemoji-check-all) {
@@ -630,18 +642,6 @@
     :is(.twemoji-display-4) {
       --md-icon-size: 2.5rem; /* TODO: make this responsive */
 
-      svg {
-        display: inline-flex;
-        height: var(--md-icon-size);
-        vertical-align: text-top;
-
-        width: var(--md-icon-size);
-        max-height: 100%;
-      }
-    }
-
-    :is(.twemoji-btn) {
-      --md-icon-size: 1.5rem; /* TODO: make this responsive */
       svg {
         display: inline-flex;
         height: var(--md-icon-size);
@@ -738,6 +738,16 @@
         .btn-lg-large {
             font-size: 22px;
             padding: 15px 30px;
+
+            --md-icon-size: 22px; /* TODO: make this responsive */
+
+            svg {
+              display: inline-flex;
+              height: var(--md-icon-size);
+              vertical-align: text-top;
+              width: var(--md-icon-size);
+              max-height: 100%;
+            }
         }
 
         .btn-aurora-custom {
@@ -819,6 +829,16 @@
         .btn-lg-large {
             font-size: 22px;
             padding: 15px 30px;
+
+            --md-icon-size: 22px; /* TODO: make this responsive */
+
+            svg {
+              display: inline-flex;
+              height: var(--md-icon-size);
+              vertical-align: text-top;
+              width: var(--md-icon-size);
+              max-height: 100%;
+            }
         }
 
         .btn-aurora-custom {
