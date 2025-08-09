@@ -1,4 +1,5 @@
 ---
+icon: material/translate
 ---
 
 # Available Locales

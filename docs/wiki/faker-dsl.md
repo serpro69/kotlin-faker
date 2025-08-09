@@ -1,7 +1,8 @@
 ---
+icon: material/code-block-braces
 ---
 
-# Faker DSL
+# :material-code-block-braces: Faker DSL
 
 Faker comes with a DSL to create `Faker` and `FakerConfig` instances.
 
