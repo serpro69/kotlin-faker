@@ -1,1 +1,1 @@
-{{ load('../../../../core/src/main/resources/locales/ca-CAT.yml') | raw }}
+--8<-- "core/src/main/resources/locales/ca-CAT.yml"

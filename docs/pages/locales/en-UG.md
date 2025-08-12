@@ -1,1 +1,1 @@
-{{ load('../../../../core/src/main/resources/locales/en-UG.yml') | raw }}
+--8<-- "core/src/main/resources/locales/en-UG.yml"

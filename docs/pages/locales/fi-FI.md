@@ -1,1 +1,1 @@
-{{ load('../../../../core/src/main/resources/locales/fi-FI.yml') | raw }}
+--8<-- "core/src/main/resources/locales/fi-FI.yml"
