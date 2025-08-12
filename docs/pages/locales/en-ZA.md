@@ -1,3 +1,7 @@
+---
+title: en-ZA
+---
+
 ```yaml
 --8<-- "core/src/main/resources/locales/en-ZA.yml"
 ```

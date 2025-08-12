@@ -1,3 +1,7 @@
+---
+title: hy
+---
+
 ```yaml
 --8<-- "core/src/main/resources/locales/hy.yml"
 ```
