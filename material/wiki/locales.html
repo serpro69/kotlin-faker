@@ -1,0 +1,15 @@
+{% extends "main.html" %} 
+
+{% block content %}
+
+{{ super() }}
+
+<ul>
+  {% for file in pages %}
+  <li>
+    <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

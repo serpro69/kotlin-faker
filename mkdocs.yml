@@ -16,6 +16,7 @@ plugins:
   - panzoom:
       always_show_hint: true
   - include_dir_to_nav
+  - meta
 
 watch:
   - ./material
@@ -65,6 +66,8 @@ theme:
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
   logo: assets/images/icon.png
   custom_dir: material
+  static_templates:
+    - wiki/locales.html
 
 extra:
   version:
