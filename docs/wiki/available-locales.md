@@ -9,8 +9,3 @@ Below is the list of available locales that correspond to the yaml dictionary fi
 
 !!! warning
     Below pages contain code blocks with inlined yaml dictionaries, some of them can be quite big. This could affect your internet traffic if you're viewing these docs on a mobile device.
-
-<!-- {% for page in findAll(collectionType='pages', collectionId='locales') %} -->
-<!-- - [`{{ page.title }}`]({{ page.link }}) -->
-<!-- {% endfor %} -->
-

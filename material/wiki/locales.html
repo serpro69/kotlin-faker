@@ -6,9 +6,11 @@
 
 <ul>
   {% for file in pages %}
+  {% if file.page.url.startswith('pages/locales') %}
   <li>
     <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
   </li>
+  {% endif %}
   {% endfor %}
 </ul>
 
