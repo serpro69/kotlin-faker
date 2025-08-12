@@ -1,14 +1,1 @@
----
-title: vi
----
-
-== `vi.yml`
-
-.Localized dictionary file
-[%collapsible]
-====
-[source,yaml]
-----
 {{ load('../../../../core/src/main/resources/locales/vi.yml') | raw }}
-----
-====
