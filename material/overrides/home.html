@@ -10,7 +10,7 @@
 
 <!--kotlin-faker documetation-->
 <section class="w-100">
-  <div class="md-grid container-row pt-1 pt-lg-5 my-4">
+  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
     <div class="px-3 ctx-header-text container">
       <!-- TODO: responsiveness -->
       <div class="container-row">
@@ -63,7 +63,7 @@
 
 <!-- Why kotlin-faker -->
 <section class="third-dark-body w-100">
-  <div class="md-grid container-row pt-1 pt-lg-5 my-4">
+  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
     <div class="px-3 ctx-header-text container">
       <div class="container-row">
         <p class="display-1 Telegraf-UltraBold text-xs-center">
@@ -219,7 +219,7 @@
 
 <!--Supported tech stack-->
 <section class="four-gray-body w-100">
-  <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
+  <div class="md-grid md-typeset container pt-5 my-0 my-xl-4 my-lg-4">
     <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Supported Tech-Stack</p>
     <div class="container container-row-lg container-row-xl my-4">
       <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
@@ -251,11 +251,18 @@
   </div>
 </section>
 
+{% endblock %}
+
+
+{% block content %} {% endblock %}
+
+{% block footer %}
+
 <!--Footer-->
 <footer class="bg-dark w-100">
   <div class="md-grid container-row-xl container-row-lg container pt-5 my-4">
     <div class="container-row" style="flex:50%">
-      <div class="text-dark d-flex" style="flex: 30%;">
+      <div class="text-dark d-flex footer-img" style="flex: 30%;">
         <img src="assets/images/logos/logo.png" class="mx-auto" width="30%"/>
       </div>
       <div class="container text-dark h3">
