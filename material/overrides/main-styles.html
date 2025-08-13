@@ -426,11 +426,11 @@ pre {
 }
 
 .text-link {
-  color: var(--md-accent-bg-color) !important;
+  color: var(--color-nord-yellow) !important;
 }
 
 .text-link:hover {
-  color: var(--md-typeset-a-color) !important;
+  color: var(--md-accent-fg-color) !important;
 }
 
 .text-align-center {
@@ -2098,6 +2098,17 @@ ul {
   }
   [data-tooltip]:after {
     border-width: 7px 7px 0px 7px;
+  }
+}
+
+/* extra styling for light mode */
+[data-md-color-scheme="nord:light"] {
+  .text-link {
+    color: var(--color-nord-purple) !important;
+  }
+
+  .text-link:hover {
+    color: var(--md-accent-fg-color) !important;
   }
 }
 </style>
