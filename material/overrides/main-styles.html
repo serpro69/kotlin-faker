@@ -327,18 +327,66 @@
 
   .display-1 {
     font-size: 6rem;
+
+    :is(.md-icon) {
+      --md-icon-size: 6rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
   }
 
   .display-2 {
     font-size: 5rem;
+
+    :is(.md-icon) {
+      --md-icon-size: 5rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
   }
 
   .display-3 {
     font-size: 4rem;
+
+    :is(.md-icon) {
+      --md-icon-size: 4rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
   }
 
   .display-4 {
     font-size: 3rem;
+
+    :is(.md-icon) {
+      --md-icon-size: 3rem; /* TODO: make this responsive */
+
+      svg {
+        display: inline-flex;
+        height: var(--md-icon-size);
+        vertical-align: text-top;
+        width: var(--md-icon-size);
+        max-height: 100%;
+      }
+    }
   }
 
   .h1 {
@@ -527,7 +575,7 @@
   }
 
   .bg-dark {
-    background-color: var(--md-default-fg-color);
+    background-color: var(--md-accent-bg-color);
   }
 
   .w-100 {
@@ -640,28 +688,9 @@
   }
 
   :is(.twemoji-check-all) {
-    --md-icon-size: 1rem; /* TODO: make this responsive */
-
     svg {
       display: inline-flex;
-      height: var(--md-icon-size);
-      vertical-align: text-top;
-      width: var(--md-icon-size);
-      max-height: 100%;
       fill: var(--color-nord-green) !important;
-    }
-  }
-
-  :is(.twemoji-display-4) {
-    --md-icon-size: 2.5rem; /* TODO: make this responsive */
-
-    svg {
-      display: inline-flex;
-      height: var(--md-icon-size);
-      vertical-align: text-top;
-
-      width: var(--md-icon-size);
-      max-height: 100%;
     }
   }
 
