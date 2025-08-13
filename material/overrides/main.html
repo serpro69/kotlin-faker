@@ -3,6 +3,9 @@
 <!-- Custom front matter -->
 {% block extrahead %}
 
+<!-- Extra stylesheets -->
+<link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}" />
+
 <!-- Determine title -->
 {% set title = config.site_name %} {% if page and page.title and not
 page.is_homepage %} {% set title = config.site_name ~ " - " ~ page.title |
@@ -27,11 +30,6 @@ striptags %} {% endif %}
   content="-Rj8YMCn9uu5IwOFdC-WfAzXp4ZOMJtYKxU40ZgcJIU"
 />
 
-<!-- Extra stylesheets -->
-<!--  <link
-    rel="stylesheet"
-    href="{{ 'assets/stylesheets/overrides.css' | url }}"
-  />-->
 {% endblock %}
 
 <!-- Announcement bar -->
@@ -43,6 +41,5 @@ striptags %} {% endif %}
   .md-announce a:hover{color:currentColor}.md-announce
   strong{white-space:nowrap}.md-announce
 </style>
-
 
 {% endblock %}

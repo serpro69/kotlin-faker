@@ -1,11 +1,7 @@
-{% extends "overrides/main.html" %}
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
 
-<!-- Render hero under tabs -->
-{% block tabs %}
-{{ super() }}
+/* Additional styles for landing page */
 
-<!-- Additional styles for landing page -->
-<style>
 .md-typeset pre {
   display: flow-root;
   line-height: 1.4;
@@ -444,8 +440,6 @@ pre {
 .text-end {
   text-align: end;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
 
 .btn-dark {
   font-family: Roboto, sans-serif;
@@ -1095,9 +1089,7 @@ pre {
   justify-content: center;
 }
 
-/*
-     Table of content font color
-    */
+/* Table of content font color */
 a.md-nav__link {
   color: #303c55;
   text-decoration: none;
@@ -1395,10 +1387,8 @@ a.md-nav__link {
   max-height: 130px;
   vertical-align: middle;
 }
-</style>
 
-<!-- Table Style -->
-<style>
+/* Table Style */
 .table-wrapper {
   margin: 10px 70px 70px;
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
@@ -1509,10 +1499,8 @@ a.md-nav__link {
     text-align: center;
   }
 }
-</style>
 
-<!-- Testimonial Section Style -->
-<style>
+/* Testimonial Section Style */
 * {
   box-sizing: border-box;
 }
@@ -1667,10 +1655,8 @@ body {
     margin-right: 150px;
   }
 }
-</style>
 
-<!-- Subscription Section Style -->
-<style>
+/* Subscription Section Style */
 * {
   margin: 0;
   padding: 0;
@@ -1874,31 +1860,15 @@ ul {
 }
 
 @media only screen and (max-width: 767px) {
-  .pricing-wrapper {
-    width: 420px;
-  }
-
-  .pricing-table {
-    display: block;
-    float: none;
-    margin: 0 0 20px 0;
-    width: 100%;
-  }
-
   .footer-img {
     display: none;
   }
 }
 
 @media only screen and (max-width: 479px) {
-  .pricing-wrapper {
-    width: 300px;
-  }
 }
-</style>
 
-<!-- Subscription Section Tooltip Style -->
-<style>
+/* Subscription Section Tooltip Style */
 /*
   You want a simple and fancy tooltip?
   Just copy all [data-tooltip] blocks:
@@ -2111,7 +2081,3 @@ ul {
     color: var(--md-accent-fg-color) !important;
   }
 }
-</style>
-{% endblock %}
-
-
