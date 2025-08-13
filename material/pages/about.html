@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ super() }}
+
+{% if config.extra.contributors %}
+  <ul>
+  {% for contributor in config.extra.contributors %}
+    <li>
+      <a href="{{ contributor.link }}">{{ contributor.name }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

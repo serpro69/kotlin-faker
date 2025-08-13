@@ -72,6 +72,43 @@ theme:
 extra:
   version:
     provider: mike
+  contributors:
+    - name: Sylvain Corsini
+      link: https://github.com/scorsi
+    - name: Benjamin Leber
+      link: https://github.com/Grisu118
+    - name: Alexey Stepanov
+      link: https://github.com/Arsennikum
+    - name: Christoph von Krüchten
+      link: https://github.com/cvk77
+    - name: Vlad Minaev
+      link: https://github.com/web-devel
+    - name: Andrew Kirkham
+      link: https://github.com/andrew-kirkham
+    - name: Johan Vergeer
+      link: https://github.com/johanvergeer
+    - name: Pavel.S.K.
+      link: https://github.com/el-qq
+    - name: David Whetstone
+      link: https://github.com/humblehacker
+    - name: Tobias Zanke
+      link: https://github.com/TZanke
+    - name: Julien Giovaresco
+      link: https://github.com/jgiovaresco
+    - name: Uroš Jarc
+      link: https://github.com/urosjarc
+    - name: Rafał Spryszyński
+      link: https://github.com/Rafal-Spryszynski-Allegro
+    - name: João Moreira
+      link: https://github.com/JoaoSouMoreira
+    - name: Nicklas Ansman
+      link: https://github.com/ansman
+    - name: Eric Fenderbosch
+      link: https://github.com/efenderbosch-atg
+    - name: Mathieu Boisnard
+      link: https://github.com/mboisnard
+    - name: Carsten Brachem
+      link: https://github.com/cbrachem
 
 extra_css:
   - assets/stylesheets/extra.css

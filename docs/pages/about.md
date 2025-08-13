@@ -1,11 +1,6 @@
 ---
 title: About
+template: pages/about.html
 ---
 
-## About kotlin-faker
-
-kotlin-faker was written by [Særgeir](https://github.com/serpro69) with contributions from:
-
-{% for contributor in data.contributors %}
-* [{{ contributor.name }}]({{ contributor.link }})
-{% endfor %}
+kotlin-faker was originally written by [Særgeir](https://github.com/serpro69), but it would not be possible without all the contributions from:
