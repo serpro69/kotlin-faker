@@ -2,7 +2,7 @@
 icon: material/unicorn-variant
 ---
 
-# :unicorn: Generator of Unique Values
+# :material-unicorn-variant: Generator of Unique Values
 
 <strong>kotlin-faker</strong> supports generation of unique (non-repeatable) values and there are two ways to use this: _"globally"_ - per data-provider, and _"locally"_ - per function.
 

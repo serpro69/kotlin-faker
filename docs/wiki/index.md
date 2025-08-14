@@ -1,4 +1,4 @@
-# User Guide
+# :material-compass: User Guide
 
 * [Getting Started](getting-started.md)
 * [Using kotlin-faker BOM ](faker-bom.md)

@@ -1,7 +1,8 @@
 ---
+icon: fontawesome/solid/user-gear
 ---
 
-# Custom Data Provider
+# :fontawesome-solid-user-gear: Custom Data Generators
 
 Kotlin-faker allows you to easily create your own custom fake data generators (providers), and even new fakers.
 

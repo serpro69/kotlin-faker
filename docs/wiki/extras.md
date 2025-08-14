@@ -2,7 +2,7 @@
 icon: material/ice-cream
 ---
 
-# :ice_cream: Extras
+# :material-ice-cream: Extras
 
 `kotlin-faker` provides additional functionality outside of data generation from static .yml dictionaries.
 
