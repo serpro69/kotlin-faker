@@ -12,7 +12,6 @@
 <section class="w-100">
   <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
     <div class="px-3 ctx-header-text container">
-      <!-- TODO: responsiveness -->
       <div class="container-row">
         <p class="h1 text-xs-center">
           <img src="assets/images/logos/name.png" class="mx-3 title-logo" height="22%"/>
@@ -25,9 +24,9 @@
       <img src="assets/images/logos/logo-white.png#only-dark" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
       <img src="assets/images/logos/logo.png#only-light" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
       <p class="h3 text-xs-center">
-        Kotlin-faker is a comprehensive data-generation library which provides realistic-looking, 
+        Kotlin-faker is a comprehensive data-generation library which provides realistic-looking,
         fake-data-generation capabilities within a variety of domains, like
-        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮, 
+        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮,
         and <a href="/wiki/data-providers" class="text-link">many more</a>.
         <br>
         It can be used with Kotlin, Java, Android, Scala, and other JVM-based projects.
@@ -69,7 +68,6 @@
     <div class="px-3 ctx-header-text container">
       <div class="container-row">
         <p class="display-1 Telegraf-UltraBold text-xs-center">
-          <!-- TODO: responsiveness -->
           <b>Why</b>
           <img src="assets/images/logos/name.png" class="mx-1 title-logo" height="60%"/>
           <b>?</b>
@@ -82,9 +80,9 @@
     </div>
   </div>
   <div class="container py-5 my-5">
-    <div class="container-row">
+    <div class="feature-column-container">
       <!-- Feature Column 1: Kotlin First -->
-      <div style="order:0; flex: 33%;" class="d-lg">
+      <div class="feature-column">
         <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
           <p class="my-3 display-4 Telegraf-UltraBold">
             <span class="md-icon twemoji-kotlin">
@@ -106,7 +104,7 @@
         </div>
       </div>
       <!-- Feature Column 2: Unrivaled Coverage -->
-      <div style="order:1; flex: 33%;" class="d-lg">
+      <div class="feature-column">
         <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
           <p class="my-3 display-4 Telegraf-UltraBold">
             <span class="md-icon twemoji-rocket-launch">
@@ -128,7 +126,7 @@
         </div>
       </div>
       <!-- Feature Column 3: Unique & Powerful -->
-      <div style="order:2; flex: 33%;" class="d-lg">
+      <div class="feature-column">
         <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
           <p class="my-3 display-4 Telegraf-UltraBold">
             <span class="md-icon twemoji-unicorn-variant">
@@ -153,8 +151,8 @@
     </div>
     <!-- Comparison Card -->
     <div class="container-row">
-      <div style="order:0; flex: 100%;" class="d-lg">
-        <div class="card-aurora second-gradient-body px-5 py-5" style="order:1; flex: 100%;">
+      <div class="w-100">
+        <div class="card-aurora second-gradient-body px-5 py-5">
           <div class="container ctx-card-white-1 text-dark h3">
             <p class="my-3 display-4 Telegraf-UltraBold">Blazing Fast & Actively Maintained</p>
             <p class="my-3">
@@ -181,41 +179,6 @@
         </div>
       </div>
     </div>
-    <!-- Mobile-friendly version of the above content -->
-    <div class="container ctx-card-white-1 text-white h3 my-5 d-xl-none d-lg-none mx-auto w-70">
-      <p class="my-3">
-        <span class="md-icon mx-2 twemoji-check-all">
-          {% include ".icons/material/check-all.svg" %}
-          <strong>Idiomatic Kotlin DSL:</strong> Clean, readable, and type-safe code.
-        </span>
-      </p>
-      <p class="my-3">
-        <span class="md-icon mx-2 twemoji-check-all">
-          {% include ".icons/material/check-all.svg" %}
-          <strong>Unrivaled Coverage:</strong> 213+ providers and 60+ locales.
-        </span>
-      </p>
-      <p class="my-3">
-        <span class="md-icon mx-2 twemoji-check-all">
-          {% include ".icons/material/check-all.svg" %}
-          <strong>Truly Unique Values:</strong> A critical testing feature that others lack.
-        </span>
-      </p>
-      <p class="my-3">
-        <span class="md-icon mx-2 twemoji-check-all">
-          {% include ".icons/material/check-all.svg" %}
-          <strong>Up to 4x Faster</strong> than legacy Java faker libraries.
-        </span>
-      </p>
-      <button
-        onclick="location.href='./pages/faker-comparisons/'"
-        title="Comparisons"
-        type="button"
-        class="btn-aurora btn-aurora-custom btn-xl-large btn-lg-large mx-auto text-align-center cursor-pointer mt-5"
-      >
-        Kotlin-Faker vs. Competition
-      </button>
-    </div>
   </div>
 </section>
 
@@ -224,27 +187,27 @@
   <div class="md-grid md-typeset container pt-5 my-0 my-xl-4 my-lg-4">
     <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Supported Tech-Stack</p>
     <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         <span class="md-icon">
           {% include ".icons/material/language-kotlin.svg" %}
         <span>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         <span class="md-icon">
           {% include ".icons/material/language-java.svg" %}
         <span>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         <span class="md-icon">
           {% include ".icons/simple/scala.svg" %}
         <span>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         <span class="md-icon">
           {% include ".icons/simple/apachegroovy.svg" %}
         <span>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         <span class="md-icon">
           {% include ".icons/simple/clojure.svg" %}
         <span>
