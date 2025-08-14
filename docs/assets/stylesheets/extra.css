@@ -57,21 +57,6 @@ Tables set to 100% width
 }
 
 /*
-Colors for First Steps
-custom code blocks coloring
-*/
-.fsg-timestamp {
-  color: grey;
-}
-.fsg-userinput {
-  color: cornflowerblue;
-}
-.fsg-path,
-.fsg-prompt {
-  color: mediumseagreen;
-}
-
-/*
 Footer social media icons:
 set the size of the svg icons and the espace between them.
 */
@@ -80,13 +65,4 @@ set the size of the svg icons and the espace between them.
 }
 .md-social__link svg {
   max-height: 1.6rem;
-}
-
-/*
-hide content only for mobile devices
-*/
-@media only screen and (min-device-width: 280px) and (max-device-width: 480px) {
-  .hide-on-mobile {
-    display: none;
-  }
 }
