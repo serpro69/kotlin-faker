@@ -1,4 +1,4 @@
-# START fresh_prince_of_bel_air_provider_dict
+# --8<-- [start:fresh_prince_of_bel_air_provider_dict]
 en:
   faker:
     fresh_prince_of_bel_air: # NB! do not change the category name as it needs to match with the filename
@@ -72,4 +72,4 @@ en:
         "Well, it's got ceiling-to-floor doors, and wall-to-wall floors.",
         "I'm definitely gonna miss you, C."
       ]
-# END fresh_prince_of_bel_air_provider_dict
+# --8<-- [end:fresh_prince_of_bel_air_provider_dict]

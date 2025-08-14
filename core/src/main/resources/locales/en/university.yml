@@ -1,4 +1,4 @@
-# START university_provider_dict
+# --8<-- [start:university_provider_dict]
 en:
   faker:
     university:
@@ -9,4 +9,4 @@ en:
         - "#{University.prefix} #{Name.last_name} #{University.suffix}"
         - "#{University.prefix} #{Name.last_name}"
         - "#{University.prefix} #{Address.state} #{University.suffix}"
-# END university_provider_dict
+# --8<-- [end:university_provider_dict]

@@ -1,4 +1,4 @@
-# START book_provider_dict
+# --8<-- [start:book_provider_dict]
 en:
   faker:
     book:
@@ -490,4 +490,4 @@ en:
         - Speech
         - Textbook
         - Reference book
-# END book_provider_dict
+# --8<-- [end:book_provider_dict]

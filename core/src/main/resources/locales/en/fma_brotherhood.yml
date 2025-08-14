@@ -1,4 +1,4 @@
-# START fma_brotherhood_provider_dict
+# --8<-- [start:fma_brotherhood_provider_dict]
 en:
   faker:
     fma_brotherhood:
@@ -77,4 +77,4 @@ en:
         - Drachma
         - Xerxes
         - Xing
-# END fma_brotherhood_provider_dict
+# --8<-- [end:fma_brotherhood_provider_dict]

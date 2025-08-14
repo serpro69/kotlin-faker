@@ -1,4 +1,4 @@
-# START crossfit_provider_dict
+# --8<-- [start:crossfit_provider_dict]
 en:
   faker:
     crossfit:
@@ -109,4 +109,4 @@ en:
           - Glen
           - JT
           - Murph
-# END crossfit_provider_dict
+# --8<-- [end:crossfit_provider_dict]

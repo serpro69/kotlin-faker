@@ -1,4 +1,4 @@
-# START opera_provider_dict
+# --8<-- [start:opera_provider_dict]
 en:
   faker:
     opera:
@@ -339,4 +339,4 @@ en:
           - Proserpine
           - Samson and Delilah
           - Le timbre d'argent
-# END opera_provider_dict
+# --8<-- [end:opera_provider_dict]

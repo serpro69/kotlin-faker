@@ -1,4 +1,4 @@
-# START bird_provider_dict
+# --8<-- [start:bird_provider_dict]
 ---
 en:
   faker:
@@ -1280,4 +1280,4 @@ en:
         - Wrens
         - Wrenthrush
         - Yellow-breasted Chat
-# END bird_provider_dict
+# --8<-- [end:bird_provider_dict]

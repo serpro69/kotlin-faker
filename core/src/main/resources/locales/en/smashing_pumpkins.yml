@@ -1,4 +1,4 @@
-# START smashing_pumpkins_provider_dict
+# --8<-- [start:smashing_pumpkins_provider_dict]
 en:
   faker:
     smashing_pumpkins:
@@ -381,4 +381,4 @@ en:
         - X.Y.U.
         - Zeitgeist
         - Zero
-# END smashing_pumpkins_provider_dict
+# --8<-- [end:smashing_pumpkins_provider_dict]

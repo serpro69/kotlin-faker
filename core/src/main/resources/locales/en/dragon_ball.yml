@@ -1,4 +1,4 @@
-# START dragon_ball_provider_dict
+# --8<-- [start:dragon_ball_provider_dict]
 en:
   faker:
     dragon_ball:
@@ -245,4 +245,4 @@ en:
       - Yardrat
       - Zoon
       - Zorert
-# END dragon_ball_provider_dict
+# --8<-- [end:dragon_ball_provider_dict]

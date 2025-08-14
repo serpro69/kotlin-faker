@@ -1,4 +1,4 @@
-# START archer_provider_dict
+# --8<-- [start:archer_provider_dict]
 en:
   faker:
     archer:
@@ -74,4 +74,4 @@ en:
         - That's how you get ants. But seriously, don't eat that.
         - Phrasing. Boom!
         - Read a book, it'll make you feel better.
-# END archer_provider_dict
+# --8<-- [end:archer_provider_dict]

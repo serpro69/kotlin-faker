@@ -1,4 +1,4 @@
-# START address_provider_dict
+# --8<-- [start:address_provider_dict]
 en:
   faker:
     address:
@@ -1850,4 +1850,4 @@ en:
         - 'PO Box ####'
       default_country:
         - United States of America
-# END address_provider_dict
+# --8<-- [end:address_provider_dict]

@@ -1,4 +1,4 @@
-# START tarkov_provider_dict
+# --8<-- [start:tarkov_provider_dict]
 en:
   faker:
     tarkov:
@@ -592,4 +592,4 @@ en:
           - Compensation for Damage - Wergild
           - Compensation for Damage - Barkeep
           - Compensation for Damage - Collection
-# END tarkov_provider_dict
+# --8<-- [end:tarkov_provider_dict]

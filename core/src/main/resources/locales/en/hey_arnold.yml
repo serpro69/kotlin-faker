@@ -1,4 +1,4 @@
-# START hey_arnold_provider_dict
+# --8<-- [start:hey_arnold_provider_dict]
 en:
   faker:
     hey_arnold:
@@ -23,4 +23,4 @@ en:
        "Never eat raspberries.",
        "I'm okay!"
       ]
-# END hey_arnold_provider_dict
+# --8<-- [end:hey_arnold_provider_dict]

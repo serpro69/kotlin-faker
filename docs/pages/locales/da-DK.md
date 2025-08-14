@@ -1,0 +1,7 @@
+---
+title: da-DK
+---
+
+```yaml
+--8<-- "core/src/main/resources/locales/da-DK.yml"
+```
