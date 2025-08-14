@@ -1,7 +1,8 @@
 ---
+icon: material/hand-extended
 ---
 
-# Extensions
+# :material-hand-extended: Extensions
 
 `kotlin-faker` provides "Faker extensions" for popular third-party testing-related libraries and frameworks.
 

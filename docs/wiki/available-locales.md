@@ -3,7 +3,7 @@ template: wiki/locales.html
 icon: material/translate
 ---
 
-# Available Locales
+# :material-translate: Available Locales
 
 Below is the list of available locales that correspond to the yaml dictionary files found in [core/locales/](https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/) (excluding the `en` sub-directory)
 

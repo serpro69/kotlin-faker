@@ -1,7 +1,8 @@
 ---
+icon: octicons/command-palette-16
 ---
 
-# Faker Bot CLI
+# :octicons-command-palette-16: Faker CLI
 
 ## Prerequisites
 

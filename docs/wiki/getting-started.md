@@ -2,7 +2,7 @@
 icon: simple/rocket
 ---
 
-# :beginner: Getting Started
+# :simple-rocket: Getting Started
 
 ## Installing
 

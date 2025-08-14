@@ -2,7 +2,7 @@
 icon: material/invoice-list
 ---
 
-# :receipt: Kotlin-faker BOM
+# :material-invoice-list: Kotlin-faker BOM
 
 [![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-bom?style=for-the-badge&logo=apachemaven&label=release-version&color=blue)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker-bom)
 [![Central Sonatype (Snapshots)](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fio%2Fgithub%2Fserpro69%2Fkotlin-faker-bom%2Fmaven-metadata.xml&strategy=highestVersion&style=for-the-badge&logo=apachemaven&label=snapshot-version&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)

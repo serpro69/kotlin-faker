@@ -1,7 +1,8 @@
 ---
+icon: fontawesome/brands/java
 ---
 
-# Java Interop
+# :fontawesome-brands-java: Java Interop
 
 ## Using Faker DSL
 
