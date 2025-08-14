@@ -25,21 +25,36 @@ striptags %} {% endif %}
 <meta property="og:image:height" content="568" />
 
 <!-- google-site-verification meta-tag -->
-<meta
-  name="google-site-verification"
-  content="-Rj8YMCn9uu5IwOFdC-WfAzXp4ZOMJtYKxU40ZgcJIU"
-/>
+<!-- https://search.google.com/search-console/welcome?utm_source=about-page -->
+<meta name="google-site-verification" content="p4odp071l1EbA4UzkStxpdi2k5YUzjhm7CGLuK007w0" />
 
 {% endblock %}
 
 <!-- Announcement bar -->
 {% block announce %}
-<!-- Extra stylesing -->
 <style>
-  .md-announce a,
-  .md-announce a:focus,
-  .md-announce a:hover{color:currentColor}.md-announce
-  strong{white-space:nowrap}.md-announce
+  .md-banner a {
+    color: var(--color-nord-frost3) !important;
+  }
+
+  .md-banner a:focus, .md-banner a:hover {
+    color: var(--color-nord-green) !important;
+  }
+
+  .md-banner strong {
+    white-space: nowrap;
+  }
+
+  .md-banner {
+    background-color: var(--color-nord-purple);
+    text-align: center;
+  }
 </style>
+
+<p>
+  Next <i>major release version</i> of <strong>kotlin-faker 2.0</strong> is in the works 🚧
+  for updates <strong><a href="https://github.com/serpro69/kotlin-faker/discussions/236">subscribe to this discussion</a></strong>
+  on <span class="twemoji md-icon">{% include ".icons/fontawesome/brands/github.svg" %}</span>
+</p>
 
 {% endblock %}
