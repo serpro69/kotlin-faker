@@ -6,7 +6,7 @@ icon: material/ice-cream
 
 `kotlin-faker` provides additional functionality outside of data generation from static .yml dictionaries.
 
-## Random instance of any class
+## Random instance of any class {#random-class-instance}
 
 It is possible to create a random instance of (almost) any class. 
 

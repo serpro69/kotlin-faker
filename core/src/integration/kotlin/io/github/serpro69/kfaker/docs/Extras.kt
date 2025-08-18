@@ -40,10 +40,16 @@ class Extras : DescribeSpec({
                 class Baz(val id: Int, val uuid: UUID, val relatedUuid: UUID, val user: String)
 
                 val baz: Baz = faker.randomClass.randomClassInstance {
-                    typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
+                    typeGenerator<UUID> {
+                      UUID.fromString("00000000-0000-0000-0000-000000000000")
+                    }
                     typeGenerator<Int> { 0 }
-                    typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
-                    namedParameterGenerator("relatedUuid") { UUID.fromString("11111111-1111-1111-1111-111111111111") }
+                    typeGenerator<String> { parameterInfo ->
+                      "${parameterInfo.name}_${randomString()}"
+                    }
+                    namedParameterGenerator("relatedUuid") {
+                      UUID.fromString("11111111-1111-1111-1111-111111111111")
+                    }
                 }
                 // --8<-- [end:extras_random_instance_two]
 
