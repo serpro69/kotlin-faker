@@ -20,24 +20,24 @@ Faker supports seeding of it's PRNG (pseudo-random number generator) through `Fa
 
 === "kotlin"
     ```kotlin
-    --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/FakerConfiguration.kt:faker_config_one"
+    --8<-- "FakerConfiguration.kt:faker_config_one"
     ```
     
 === "java"
     ```java
-    --8<-- "core/src/integration/java/io/github/serpro69/kfaker/docs/FakerConfigurationJ.java:faker_config_one_java"
+    --8<-- "FakerConfigurationJ.java:faker_config_one_java"
     ```
 
 Alternatively a `randomSeed` property can be used instead of passing an instance of `java.util.Random`:
 
 === "kotlin"
     ```kotlin
-    --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/FakerConfiguration.kt:faker_config_two"
+    --8<-- "FakerConfiguration.kt:faker_config_two"
     ```
 
 === "java"
     ```java
-    --8<-- "core/src/integration/java/io/github/serpro69/kfaker/docs/FakerConfigurationJ.java:faker_config_two_java"
+    --8<-- "FakerConfigurationJ.java:faker_config_two_java"
     ```
 
 ---
@@ -47,12 +47,12 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 
     === "kotlin"
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/FakerConfiguration.kt:faker_config_three"
+        --8<-- "FakerConfiguration.kt:faker_config_three"
         ```
 
     === "java"
         ```java
-        --8<-- "core/src/integration/java/io/github/serpro69/kfaker/docs/FakerConfigurationJ.java:faker_config_three_java"
+        --8<-- "FakerConfigurationJ.java:faker_config_three_java"
         ```
 
 ## Locale
@@ -62,7 +62,7 @@ By default `Faker` uses `en_US`-localized dict files to generate data:
 
 === "kotlin"
     ```kotlin
-    --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/FakerConfiguration.kt:faker_config_four"
+    --8<-- "FakerConfiguration.kt:faker_config_four"
     ```
 
 When needed, `Faker` can be configured to use a custom localized dictionary file instead:
@@ -70,12 +70,12 @@ When needed, `Faker` can be configured to use a custom localized dictionary file
 
 === "kotlin"
     ```kotlin
-    --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/FakerConfiguration.kt:faker_config_five"
+    --8<-- "FakerConfiguration.kt:faker_config_five"
     ```
 
 === "java"
     ```java
-    --8<-- "core/src/integration/java/io/github/serpro69/kfaker/docs/FakerConfigurationJ.java:faker_config_five_java"
+    --8<-- "FakerConfigurationJ.java:faker_config_five_java"
     ```
 
 !!! info

@@ -41,7 +41,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:data_provider_zero"
+        --8<-- "Homepage.kt:data_provider_zero"
         ```
       </div>
     </div>
@@ -51,7 +51,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:data_provider_one"
+        --8<-- "Homepage.kt:data_provider_one"
         ```
       </div>
     </div>
@@ -61,7 +61,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:data_provider_two"
+        --8<-- "Homepage.kt:data_provider_two"
         ```
       </div>
     </div>
@@ -71,7 +71,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:data_provider_three"
+        --8<-- "Homepage.kt:data_provider_three"
         ```
       </div>
     </div>
@@ -112,7 +112,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "./core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:data_provider_seven"
+        --8<-- "./Homepage.kt:data_provider_seven"
         ```
       </div>
     </div>
@@ -144,7 +144,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:faker_locale_zero"
+        --8<-- "Homepage.kt:faker_locale_zero"
         ```
       </div>
     </div>
@@ -154,7 +154,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:faker_locale_one"
+        --8<-- "Homepage.kt:faker_locale_one"
         ```
       </div>
     </div>
@@ -167,7 +167,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:unique_data_one"
+        --8<-- "Homepage.kt:unique_data_one"
         ```
       </div>
     </div>
@@ -177,7 +177,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:unique_data_two"
+        --8<-- "Homepage.kt:unique_data_two"
         ```
       </div>
     </div>
@@ -234,7 +234,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:random_class_instance_one"
+        --8<-- "Homepage.kt:random_class_instance_one"
         ```
       </div>
     </div>
@@ -244,7 +244,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:random_class_instance_two"
+        --8<-- "Homepage.kt:random_class_instance_two"
         ```
       </div>
     </div>
@@ -254,7 +254,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:string_provider_one"
+        --8<-- "Homepage.kt:string_provider_one"
         ```
       </div>
     </div>
@@ -264,7 +264,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "core/src/integration/kotlin/io/github/serpro69/kfaker/docs/Homepage.kt:random_service_one"
+        --8<-- "Homepage.kt:random_service_one"
         ```
       </div>
     </div>
