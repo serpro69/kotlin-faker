@@ -76,7 +76,8 @@ class Homepage : DescribeSpec({
 
                 // --8<-- [start:unique_data_one]
                 faker.unique.configuration {
-                    // enable generation of unique values for address data provider
+                    // enable generation of unique values
+                    // for address data provider
                     enable(faker::address)
                 }
                 val countries = List(100) { faker.address.country() }
@@ -86,8 +87,13 @@ class Homepage : DescribeSpec({
             it("should generate unique countries, but not unique cities") {
                 val faker = Faker()
                 // --8<-- [start:unique_data_two]
-                val countries = List(100) { faker.address.unique.country() }
-                val cities = List(1000) { faker.address.city() }
+                val countries = List(100) {
+                  faker.address.unique.country()
+                }
+                val cities = List(1000) {
+                  faker.address.city()
+                }
+
                 assertEquals(countries.distinct().size, 100)
                 assertTrue(cities.distinct().size < 1000)
                 // --8<-- [end:unique_data_two]
@@ -109,18 +115,29 @@ class Homepage : DescribeSpec({
                 // --8<-- [end:random_class_instance_one]
             }
             it("should generate types by configuration") {
-                fun randomString() = "X3a8s813dcb";
                 // --8<-- [start:random_class_instance_two]
-                class Baz(val id: Int, val uuid: UUID, val username: String)
+                fun string() = "X3a8s813dcb"
+                fun uuid() = "00000000-0000-0000-0000-000000000000"
+                class Baz(
+                  val id: Int,
+                  val uuid: UUID,
+                  val username: String
+                )
 
                 val baz: Baz = faker.randomClass.randomClassInstance {
-                    // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameter values with parameter name!
-                    typeGenerator<String> { parameterInfo -> "${parameterInfo.name}_${randomString()}" }
-                    typeGenerator<UUID> { UUID.fromString("00000000-0000-0000-0000-000000000000") }
-                    typeGenerator<Int> { faker.random.nextInt(min = 0, max = 9) }
+                    // ヽ(^o^)丿 ᕕ(ᐛ)ᕗ Prepend string type parameter
+                    // values with parameter name!
+                    typeGenerator<String> { parameterInfo ->
+                      "${parameterInfo.name}_${string()}"
+                    }
+                    typeGenerator<UUID> { UUID.fromString(uuid()) }
+                    typeGenerator<Int> {
+                      faker.random.nextInt(min = 0, max = 9)
+                    }
                 }
-                assertEquals(baz.username, "username_X3a8s813dcb")
-                assertEquals(baz.uuid, UUID.fromString("00000000-0000-0000-0000-000000000000"))
+
+                assertEquals(baz.username, "username_${string()}")
+                assertEquals( baz.uuid, UUID.fromString(uuid()))
                 assertTrue(baz.id in 0..9)
                 // --8<-- [end:random_class_instance_two]
             }

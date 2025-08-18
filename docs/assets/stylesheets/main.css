@@ -33,7 +33,6 @@ pre {
   display: block;
   font-family: monospace;
   unicode-bidi: isolate;
-  white-space: pre-line !important;
   margin-block: 0px;
   margin-inline: 0px;
 }
