@@ -150,6 +150,7 @@ markdown_extensions:
         # https://www.mkdocs.org/user-guide/configuration/#paths-relative-to-the-current-file-or-site
         - !relative $config_dir
         - !relative $docs_dir
+        - !relative $config_dir/core/src/integration/kotlin/io/github/serpro69/kfaker/docs/
       check_paths: true
       dedent_subsections: true
   - pymdownx.tasklist:

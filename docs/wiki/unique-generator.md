@@ -16,33 +16,21 @@ icon: material/unicorn-variant
 
 ❹ Repeated invocations will produce unique values until all the values are exhausted and a `uniqueGeneratorRetryLimit` is reached.
 
-
-
 === "kotlin"
-
-```kotlin
-{% snippet 'unique_data_generator_one' %}
-```
-
-
+    ```kotlin
+    --8<-- "UniqueGenerator.kt:unique_data_generator_one"
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_one_java' %}
-```
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_one_java" -->
 
-
-
-
-
-{% warn %}
-Unique values can be exhausted and <code>Faker</code> will throw a <code>RetryLimitException</code> if the <code>uniqueGeneratorRetryLimit</code> is reached.
-<br>
-See also {{ anchor(title='Faker Configuration', collectionType='wiki', collectionId='', itemId='Faker Configuration') }} page to learn how to configure <code>Faker</code>, as well as the <a href="{{ link(collectionType='wiki', collectionId='', itemId='Generator of Unique Values') }}#configuring-retry-limit">Configuring Retry Limit</a> section of this page for information on retry limits for unique generators.
-{% endwarn %}
-
-
+!!! warning
+    Unique values can be exhausted and <code>Faker</code> will throw a <code>RetryLimitException</code> if the <code>uniqueGeneratorRetryLimit</code> is reached.
+    <br>
+    See also [Faker Configuration](./faker-configuration.md) page to learn how to configure <code>Faker</code>, as well as the [Configuring Retry Limit](#configuring-retry-limit) section of this page for information on retry limits for unique generators.
 
 ### Clearing Records of Generated Values
 
@@ -52,52 +40,32 @@ It is possible to clear (reset) the record of already generated values, so that 
 
 ❷ Invocations of `faker.<provider>.<someFun>()` can now generate values that were already generated before.
 
-
-
 === "kotlin"
-
-```kotlin
-{% snippet 'unique_data_generator_two' %}
-```
-
-
+    ```kotlin
+    --8<-- "UniqueGenerator.kt:unique_data_generator_two"
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_two_java' %}
-```
-
-
-
-
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_two_java" -->
 
 ---
 
 It is also possible to clear all records of generated values:
 
-
-
 === "kotlin"
-
-```kotlin
-{% snippet 'unique_data_generator_three' %}
-{% snippet 'unique_data_generator_four' %}
-```
-
-
+    ```kotlin
+    --8<-- "UniqueGenerator.kt:unique_data_generator_three"
+    --8<-- "UniqueGenerator.kt:unique_data_generator_four"
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_three_java' %}
-```
-
-
-
-
-
-
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_three_java" -->
 
 ### Disabling Unique Values Generator
 
@@ -112,140 +80,87 @@ One may want to disable generating unique values altogether. Just like clearing 
 ❹ `Name` and `Internet` still generate unique values.
 
 
-
 === "kotlin"
-
-```kotlin
-{% snippet 'unique_data_generator_five' %}
-```
-
-
+    ```kotlin
+    --8<-- "UniqueGenerator.kt:unique_data_generator_five"
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_five_java' %}
-```
-
-
-
-
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_five_java" -->
 
 As well as for all providers:
 
 ❶ Unique generation is disabled for `Address`, `Name`, `Internet`, and all other providers that may have been enabled.
 
-
-
 === "kotlin"
-
-```kotlin
-{% snippet 'unique_data_generator_six' %}
-```
-
-
+    ```kotlin
+    --8<-- "UniqueGenerator.kt:unique_data_generator_six"
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_six_java' %}
-```
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_six_java" -->
 
-
-
-
-
-{% info %}
-Disabling generation of unique values will effectively clear the record(s) of already generated values.
-{% endinfo %}
-
-
-
-<br>
+!!! info
+    Disabling generation of unique values will effectively clear the record(s) of already generated values.
 
 ## Unique Values for a Single Function
 
 Unique values can also be generated for a single function, instead of an entire data provider. To do so, prepend the function invocation with `unique` generator property:
 
-
+<!-- TODO: --8<-- "UniqueGenerator.kt:unique_data_generator_seven" -->
 
 === "kotlin"
+    ```kotlin
+    val faker = Faker()
 
-```kotlin
-{% snippet 'unique_data_generator_seven' %}
-```
+    repeat(10) { faker.address.unique.country() } // will generate unique country each time `country()` is prefixed with `unique`
 
-
+    repeat(10) { faker.address.city() } // this will not necessarily be unique (unless `faker.unique.enable(faker::address)` was called previously)
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_seven_java' %}
-```
-
-
-
-
-
-```kotlin
-val faker = Faker()
-
-repeat(10) { faker.address.unique.country() } // will generate unique country each time `country()` is prefixed with `unique`
-
-repeat(10) { faker.address.city() } // this will not necessarily be unique (unless `faker.unique.enable(faker::address)` was called previously)
-```
+<!-- TODO: --8<-- "UniqueGeneratorJ.java:unique_data_generator_seven_java" -->
 
 ---
 
 To clear the record of unique values that were already generated use the `clear("functionName")` with the "local" unique generator:
 
-
+<!-- TODO: --8<-- "UniqueGenerator.kt:unique_data_generator_seven" -->
 
 === "kotlin"
+    ```kotlin
+    faker.address.unique.clear("city") // clears used values for `faker.address.unique.city()` function
 
-```kotlin
-{% snippet 'unique_data_generator_seven' %}
-```
-
-
+    faker.address.unique.clearAll() // clears used values for all functions of address provider
+    ```
 
 === "java"
+    ```java
+    ```
 
-```java
-{% snippet 'unique_data_generator_seven_java' %}
-```
+<!-- TODO: --8<-- "UniqueGenerator.kt:unique_data_generator_seven_java" -->
 
-
-
-
-
-```kotlin
-faker.address.unique.clear("city") // clears used values for `faker.address.unique.city()` function
-
-faker.address.unique.clearAll() // clears used values for all functions of address provider
-```
-
-{% info %}
-There is no <code>disable</code> function available for local unique generators - they are completely independent of the standard APIs:
+!!! info
+    There is no <code>disable</code> function available for local unique generators - they are completely independent of the standard APIs:
 
 
 === "kotlin"
+    ```kotlin
+    // generates unique city each time it's called
+    faker.address.unique.city()
 
-```kotlin
-// generates unique city each time it's called
-faker.address.unique.city()
-
-// generates non-unique city (unless global unique generator for 'address' is enabled)
-faker.address.city()
-```
-
-
-
-{% endinfo %}
-
-
-
-<br>
+    // generates non-unique city (unless global unique generator for 'address' is enabled)
+    faker.address.city()
+    ```
 
 ## Configuring retry limit
 
@@ -261,51 +176,31 @@ val config = fakerConfig {
 val faker = Faker(config)
 ```
 
-{% info %}
-Even if <code>uniqueGeneratorRetryLimit</code> is set to a very high number, one still needs to keep in mind the dataset size for a given faker function to avoid unexpected exceptions when generating unique values.
-<br>
-For example, a <code>city_prefix</code> param in the <code>address</code> category only has 7 values:
-{% filter compileAs('html') %}
-<section class="accordions">
-  <article class="accordion">
-    <div class="accordion-header toggle">
-      <p>address.yml</p>
-    </div>
-    <div class="accordion-body">
-      <div class="accordion-content">
+!!! info
+    Even if `uniqueGeneratorRetryLimit` is set to a very high number, one still needs to keep in mind the dataset size for a given faker function to avoid unexpected exceptions when generating unique values.
+    <br>
+    For example, a `city_prefix` param in the `address` category only has 7 values:
 
+    ??? example "address.yml"
+        ```yaml
+        en:
+          faker:
+            address:
+              city_prefix: [North, East, West, South, New, Lake, Port]
+        # rest of the address.yml dict file
+        ```
 
-```yaml
-en:
-  faker:
-    address:
-      city_prefix: [North, East, West, South, New, Lake, Port]
-# rest of the address.yml dict file
-```
+    Therefore, the initial pool size of unique values is quite small and will be exhausted very quickly, so the retry limit might need to be set to a higher than default value.
+    <br>
+    And obviously if one tries to generate 8 unique city prefixes a `RetryLimitException` will be thrown sooner or later, irrespective of what value is set for the `uniqueGeneratorRetryLimit` config property.
+    <br>
+    <br>
+    A reference list of available Data Generators with their corresponding yml dictionary data can be found on the [Data Generators](./data-providers.md) wiki page.
 
-
-      </div>
-    </div>
-  </article>
-</section>
-
-Therefore, the initial pool size of unique values is quite small and will be exhausted very quickly, so the retry limit might need to be set to a higher than default value.
-<br>
-And obviously if one tries to generate 8 unique city prefixes a <code>RetryLimitException</code> will be thrown sooner or later, irrespective of what value is set for the <code>uniqueGeneratorRetryLimit</code> config property.
-<br>
-<br>
-A reference list of available Data Providers with their corresponding yml dictionary data can be found on the {{ anchor(title='Data Providers', collectionType='wiki', collectionId='', itemId='Data Providers') }} wiki page.
-{% endinfo %}
-
-{% info %}
-It is also worth mentioning that "global" and "local" unique data generators are independent of each other, each keeping its own records of generated values that might need to be cleared eventually.
-<br>
-At the same time, the <code>uniqueGeneratorRetryLimit</code> config property applies to both equally.
-{% endinfo %}
-
-
-
-<br>
+!!! info
+    It is also worth mentioning that "global" and "local" unique data generators are independent of each other, each keeping its own records of generated values that might need to be cleared eventually.
+    <br>
+    At the same time, the `uniqueGeneratorRetryLimit` config property applies to both equally.
 
 ## Excluding Values from Generation
 
@@ -363,31 +258,22 @@ assertTrue(lastName.startsWith("B") == false)
 assertTrue(lastName.startsWith("C") == false)
 ```
 
-{% info %}
-This is only applicable when the whole category, i.e. <code>Address</code> or <code>Name</code>, is enabled for unique generation of values. Local generators will still generate unique values of their own, but won't take into consideration exclusion rules, if any are set:
+!!! info
+    This is only applicable when the whole category, i.e. <code>Address</code> or <code>Name</code>, is enabled for unique generation of values. Local generators will still generate unique values of their own, but won't take into consideration exclusion rules, if any are set:
 
 
 === "kotlin"
+    ```kotlin
+    val faker = Faker()
 
-```kotlin
-val faker = Faker()
+    faker.unique.configuration {
+        enable(faker::address)
+        exclude(listOfCountries)
+    }
 
-faker.unique.configuration {
-    enable(faker::address)
-    exclude(listOfCountries)
-}
+    // generates unique countries, but will never generate any of the values from the 'listOfCountries'
+    faker.address.country()
 
-// generates unique countries, but will never generate any of the values from the 'listOfCountries'
-faker.address.country()
-
-// will still generate its own unique countries, but won't consider the exclusions that are set above
-faker.address.unique.country()
-```
-
-
-
-{% endinfo %}
-
-
-
-<br>
+    // will still generate its own unique countries, but won't consider the exclusions that are set above
+    faker.address.unique.country()
+    ```
