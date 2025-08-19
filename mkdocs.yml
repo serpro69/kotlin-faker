@@ -176,7 +176,10 @@ nav:
       - Using kotlin-faker BOM: wiki/faker-bom.md
       - Configuring Faker: wiki/faker-configuration.md
       - Generating Unique Values: wiki/unique-generator.md
-      - Extras: wiki/extras.md
+      - Extras:
+          - Random Class Instances: wiki/random-class-instance.md
+          - Random Wrapper: wiki/random-wrapper.md
+          - Random Strings from Templates: wiki/string-templates.md
       - Faker DSL: wiki/faker-dsl.md
       - Available Data Generators: wiki/data-providers.md
       - Custom Data Generators: wiki/custom-data-provider.md

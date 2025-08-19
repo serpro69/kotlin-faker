@@ -4,7 +4,10 @@
 * [Using kotlin-faker BOM ](faker-bom.md)
 * [Configuring Faker ](faker-configuration.md)
 * [Generating Unique Values ](unique-generator.md)
-* [Extras](extras.md)
+* Extras:
+    * [Random Class Instances](./random-class-instance.md)
+    * [Random Wrapper](random-wrapper.md)
+    * [Random Strings from Templates](string-templates.md)
 * [Faker DSL](faker-dsl.md)
 * [Available Data Generators ](data-providers.md)
 * [Custom Data Generators](custom-data-provider.md)
