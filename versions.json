@@ -12,5 +12,10 @@
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "old",
+    "title": "1.6 (legacy)",
+    "aliases": []
   }
 ]
