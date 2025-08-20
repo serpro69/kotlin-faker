@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().subscription`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'subscription_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().subscription.plans() // => Free Trial
+
+Faker().subscription.statuses() // => Active
+
+Faker().subscription.paymentMethods() // => Credit card
+
+Faker().subscription.subscriptionTerms() // => Daily
+
+Faker().subscription.paymentTerms() // => Payment in advance
+----
+====

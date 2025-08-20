@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().swordArtOnline`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'sword_art_online_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().swordArtOnline.realName() // => Alice Zuberg
+
+Faker().swordArtOnline.gameName() // => Sinon
+
+Faker().swordArtOnline.location() // => Aincrad
+
+Faker().swordArtOnline.item() // => Blackwyrm Coat
+----
+====

@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().team`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'team_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().team.name() // => Los Angeles bees
+
+Faker().team.sport() // => baseball
+
+Faker().team.mascot() // => Raymond
+----
+====

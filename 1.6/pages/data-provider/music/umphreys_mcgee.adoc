@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().umphreysMcgee`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'umphreys_mcgee_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().umphreysMcgee.song() // => 1000 Places to See Before You Die
+----
+====

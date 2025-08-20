@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().finalFantasyXIV`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'final_fantasy_xiv_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().finalFantasyXIV.characters() // => Alphinaud Leveilleur
+
+Faker().finalFantasyXIV.jobs() // => Paladin
+
+Faker().finalFantasyXIV.races() // => Au Ra
+
+Faker().finalFantasyXIV.dataCenters() // => Aether
+
+Faker().finalFantasyXIV.zones() // => Limsa Lominsa Upper Decks
+----
+====

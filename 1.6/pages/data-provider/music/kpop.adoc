@@ -1,0 +1,32 @@
+---
+---
+
+== `Faker().kPop`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'kpop_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().kPop.firstGroups() // => Seo Taiji and Boys
+
+Faker().kPop.secondGroups() // => CB Mass
+
+Faker().kPop.thirdGroups() // => APeace
+
+Faker().kPop.girlGroups() // => 2NB
+
+Faker().kPop.boyBands() // => 1TYM
+
+Faker().kPop.solo() // => Ailee
+----
+====

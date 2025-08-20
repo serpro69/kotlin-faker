@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().hipster`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'hipster_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().hipster.words() // => Wes Anderson
+----
+====

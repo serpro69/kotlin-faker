@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().hackers`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'hackers_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().hackers.characters() // => Dade Murphy
+
+Faker().hackers.handles() // => Zero Cool
+
+Faker().hackers.quotes() // => Hack the Planet!
+----
+====

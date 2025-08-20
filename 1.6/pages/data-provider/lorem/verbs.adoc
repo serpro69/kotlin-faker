@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().verbs`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'verbs_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().verbs.base() // => abash
+
+Faker().verbs.past() // => abashed
+
+Faker().verbs.pastParticiple() // => abashed
+
+Faker().verbs.simplePresent() // => abashes
+
+Faker().verbs.ingForm() // => abashing
+----
+====

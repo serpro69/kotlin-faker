@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().breakingBad`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'breaking_bad_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().breakingBad.character() // => Walter White
+
+Faker().breakingBad.episode() // => Pilot
+----
+====

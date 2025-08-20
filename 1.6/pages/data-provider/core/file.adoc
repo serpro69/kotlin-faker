@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().file`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'file_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().file.extension() // => flac
+Faker().file.mimeType.application() // => application/atom+xml
+Faker().file.mimeType.audio() // => audio/basic
+Faker().file.mimeType.image() // => image/gif
+Faker().file.mimeType.message() // => message/http
+Faker().file.mimeType.model() // => model/example
+Faker().file.mimeType.multipart() // => multipart/mixed
+Faker().file.mimeType.text() // => text/cmd
+Faker().file.mimeType.video() // => video/mpeg
+----
+====

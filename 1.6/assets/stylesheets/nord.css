@@ -1,0 +1,366 @@
+/*
+  Custom Nord Color Scheme for MkDocs Material (using RGB variables)
+
+  Based on the MkDocs Material _colors.scss structure and the Nord color palette.
+
+  Nord palette:
+  --color-nord-dark0:  #2e3440; --color-nord-dark0-rgb: 46, 52, 64;
+  --color-nord-dark1:  #3b4252; --color-nord-dark1-rgb: 59, 66, 82;
+  --color-nord-dark2:  #434c5e; --color-nord-dark2-rgb: 67, 76, 94;
+  --color-nord-dark3:  #4c566a; --color-nord-dark3-rgb: 76, 86, 106;
+  --color-nord-light0: #d8dee9; --color-nord-light0-rgb: 216, 222, 233;
+  --color-nord-light1: #e5e9f0; --color-nord-light1-rgb: 229, 233, 240;
+  --color-nord-light2: #eceff4; --color-nord-light2-rgb: 236, 239, 244;
+  --color-nord-light3: #ffffff; --color-nord-light3-rgb: 255, 255, 255;
+  --color-nord-frost0: #8fbcbb; --color-nord-frost0-rgb: 143, 188, 187;
+  --color-nord-frost1: #88c0d0; --color-nord-frost1-rgb: 136, 192, 208;
+  --color-nord-frost2: #81a1c1; --color-nord-frost2-rgb: 129, 161, 193;
+  --color-nord-frost3: #5e81ac; --color-nord-frost3-rgb: 94, 129, 172;
+  --color-nord-red:    #bf616a; --color-nord-red-rgb: 191, 97, 106;
+  --color-nord-orange: #d08770; --color-nord-orange-rgb: 208, 135, 112;
+  --color-nord-yellow: #ebcb8b; --color-nord-yellow-rgb: 235, 203, 139;
+  --color-nord-green:  #a3be8c; --color-nord-green-rgb: 163, 190, 140;
+  --color-nord-purple: #b48ead; --color-nord-purple-rgb: 180, 142, 173;
+*/
+
+/* Define Nord palette as global CSS variables for easier referencing */
+:root {
+  /* Hex colors */
+  --color-nord-dark0: #070707; /* match the logo instead of using original nord0 */
+  --color-nord-dark1: #3b4252;
+  --color-nord-dark2: #434c5e;
+  --color-nord-dark3: #4c566a;
+  --color-nord-light0: #d8dee9;
+  --color-nord-light1: #e5e9f0;
+  --color-nord-light2: #eceff4;
+  --color-nord-light3: #ffffff;
+  --color-nord-frost0: #8fbcbb;
+  --color-nord-frost1: #88c0d0;
+  --color-nord-frost2: #81a1c1;
+  --color-nord-frost3: #5e81ac;
+  --color-nord-red: #bf616a;
+  --color-nord-orange: #d08770;
+  --color-nord-yellow: #ebcb8b;
+  --color-nord-green: #a3be8c;
+  --color-nord-purple: #b48ead;
+
+  /* RGB tuples for rgba() */
+  --color-nord-dark0-rgb: 46, 52, 64;
+  --color-nord-dark1-rgb: 59, 66, 82;
+  --color-nord-dark2-rgb: 67, 76, 94;
+  --color-nord-dark3-rgb: 76, 86, 106;
+  --color-nord-light0-rgb: 216, 222, 233;
+  --color-nord-light1-rgb: 229, 233, 240;
+  --color-nord-light2-rgb: 236, 239, 244;
+  --color-nord-light3-rgb: 255, 255, 255;
+  --color-nord-frost0-rgb: 143, 188, 187;
+  --color-nord-frost1-rgb: 136, 192, 208;
+  --color-nord-frost2-rgb: 129, 161, 193;
+  --color-nord-frost3-rgb: 94, 129, 172;
+  --color-nord-red-rgb: 191, 97, 106;
+  --color-nord-orange-rgb: 208, 135, 112;
+  --color-nord-yellow-rgb: 235, 203, 139;
+  --color-nord-green-rgb: 163, 190, 140;
+  --color-nord-purple-rgb: 180, 142, 173;
+}
+
+/* Nord light color scheme */
+[data-md-color-scheme="nord:light"] {
+  color-scheme: light !important;
+
+  /* Hide images intended for dark mode */
+  img[src$="#only-dark"],
+  img[src$="#gh-dark-mode-only"] {
+    display: none;
+  }
+
+  /* Primary color shades (Header, prominent elements) */
+  --md-primary-fg-color: var(--color-nord-frost3);
+  --md-primary-fg-color--light: var(--color-nord-frost2);
+  /* Keep strong frost for contrast */
+  --md-primary-fg-color--dark: var(--color-nord-frost3);
+  --md-primary-bg-color: var(--color-nord-light3);
+  /* light3 with opacity */
+  --md-primary-bg-color--light: rgba(var(--color-nord-light3-rgb), 0.7);
+
+  /* Accent color shades (Buttons, highlights, selection) */
+  --md-accent-fg-color: var(--color-nord-frost1);
+  /* frost1 with opacity */
+  --md-accent-fg-color--transparent: rgba(var(--color-nord-frost1-rgb), 0.1);
+  --md-accent-bg-color: var(--color-nord-light3);
+  /* light3 with opacity */
+  --md-accent-bg-color--light: rgba(var(--color-nord-light3-rgb), 0.7);
+
+  /* Default color shades (Text, background) */
+  --md-default-fg-color: var(--color-nord-dark0);
+  --md-default-fg-color--light: var(--color-nord-dark1);
+  --md-default-fg-color--lighter: var(--color-nord-dark2);
+  /* dark0 with opacity */
+  --md-default-fg-color--lightest: rgba(var(--color-nord-dark0-rgb), 0.07);
+  --md-default-bg-color: var(--color-nord-light2);
+  /* light2 with opacity */
+  --md-default-bg-color--light: rgba(var(--color-nord-light2-rgb), 0.7);
+  /* light2 with opacity */
+  --md-default-bg-color--lighter: rgba(var(--color-nord-light2-rgb), 0.3);
+  /* light2 with opacity */
+  --md-default-bg-color--lightest: rgba(var(--color-nord-light2-rgb), 0.12);
+
+  /* Code color shades */
+  --md-code-fg-color: var(--color-nord-dark3);
+  --md-code-bg-color: var(--color-nord-light1);
+
+  /* Code highlighting base color shades */
+  --md-code-hl-color: var(--color-nord-frost1);
+  /* frost1 with opacity */
+  --md-code-hl-color--light: rgba(var(--color-nord-frost1-rgb), 0.1);
+
+  /* Code highlighting syntax color shades (Pygments default mapping) */
+  --md-code-hl-number-color: var(--color-nord-orange);
+  --md-code-hl-special-color: var(--color-nord-red);
+  --md-code-hl-function-color: var(--color-nord-frost0);
+  --md-code-hl-constant-color: var(--color-nord-purple);
+  --md-code-hl-keyword-color: var(--color-nord-frost2);
+  --md-code-hl-string-color: var(--color-nord-green);
+  --md-code-hl-name-color: var(--md-code-fg-color); /* Default name color */
+  --md-code-hl-operator-color: var(--md-default-fg-color--light);
+  --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
+  /* Specific comment color */
+  --md-code-hl-comment-color: var(--color-nord-dark3);
+  /* For e.g., output */
+  --md-code-hl-generic-color: var(--md-default-fg-color--light);
+  --md-code-hl-variable-color: var(--md-default-fg-color--light);
+
+  /* Typeset color shades (Main content text) */
+  --md-typeset-color: var(--md-default-fg-color);
+
+  /* Typeset link (`a`) color shades */
+  --md-typeset-a-color: var(--md-primary-fg-color);
+
+  /* Typeset `del` and `ins` color shades */
+  /* red with opacity */
+  --md-typeset-del-color: rgba(var(--color-nord-red-rgb), 0.15);
+  /* green with opacity */
+  --md-typeset-ins-color: rgba(var(--color-nord-green-rgb), 0.15);
+
+  /* Typeset `kbd` color shades */
+  --md-typeset-kbd-color: var(--color-nord-light2);
+  --md-typeset-kbd-accent-color: var(--color-nord-light3);
+  --md-typeset-kbd-border-color: var(--color-nord-light0);
+
+  /* Typeset `mark` color shades */
+  /* yellow with opacity */
+  --md-typeset-mark-color: rgba(var(--color-nord-yellow-rgb), 0.5);
+
+  /* Typeset `table` color shades */
+  /* dark0 with opacity */
+  --md-typeset-table-color: rgba(var(--color-nord-dark0-rgb), 0.12);
+  /* dark0 with lower opacity */
+  --md-typeset-table-color--light: rgba(var(--color-nord-dark0-rgb), 0.035);
+
+  /* Admonition base color shades */
+  --md-admonition-fg-color: var(--md-default-fg-color);
+  --md-admonition-bg-color: var(--md-default-bg-color);
+
+  /* Warning admonition color shades */
+  --md-warning-fg-color: var(--color-nord-dark0); /* Dark text on yellow */
+  --md-warning-bg-color: var(--color-nord-yellow);
+
+  /* Footer color shades */
+  --md-footer-fg-color: var(--color-nord-light2);
+  --md-footer-fg-color--light: var(--color-nord-light1);
+  --md-footer-fg-color--lighter: var(--color-nord-light0);
+  --md-footer-bg-color: var(--color-nord-dark1);
+  --md-footer-bg-color--dark: var(--color-nord-dark0);
+
+  /* Shadow depth using dark base with opacity */
+  --md-shadow-z1:
+    0 0.25rem 0.625rem rgba(var(--color-nord-dark0-rgb), 0.05),
+    0 0 0.0625rem rgba(var(--color-nord-dark0-rgb), 0.1);
+  --md-shadow-z2:
+    0 0.25rem 0.625rem rgba(var(--color-nord-dark0-rgb), 0.1),
+    0 0 0.0625rem rgba(var(--color-nord-dark0-rgb), 0.25);
+  --md-shadow-z3:
+    0 0.25rem 0.625rem rgba(var(--color-nord-dark0-rgb), 0.2),
+    0 0 0.0625rem rgba(var(--color-nord-dark0-rgb), 0.35);
+
+  /* Styles for main page elements */
+
+  .card-white {
+    width: 100%;
+    background-color: rgba(var(--color-nord-frost1-rgb), 0.42);
+    border-radius: 60px 0px 60px 0px;
+  }
+
+  .gradient-wrapper {
+    background: linear-gradient(
+      70deg,
+      rgba(var(--color-nord-light1-rgb), 0.35),
+      rgba(var(--color-nord-frost2-rgb), 0.35),
+      rgba(var(--color-nord-frost3-rgb), 0.35)
+    );
+    background-attachment: fixed; /* Creates a smooth parallax effect, matching dark mode */
+  }
+}
+
+/* Nord dark color scheme */
+[data-md-color-scheme="nord:dark"] {
+  color-scheme: dark !important;
+
+  /* Hide images intended for light mode */
+  img[src$="#only-light"],
+  img[src$="#gh-light-mode-only"] {
+    display: none;
+  }
+
+  /* Primary color shades (Header, prominent elements) */
+  /* Lighter frost for dark background */
+  --md-primary-fg-color: var(--color-nord-frost2);
+  --md-primary-fg-color--light: var(--color-nord-frost0);
+  --md-primary-fg-color--dark: var(--color-nord-frost3);
+  --md-primary-bg-color: var(--color-nord-dark1);
+  /* dark1 with opacity */
+  --md-primary-bg-color--light: rgba(var(--color-nord-dark1-rgb), 0.7);
+
+  /* Accent color shades (Buttons, highlights, selection) */
+  --md-accent-fg-color: var(--color-nord-green); /* Use green for dark accent */
+  /* green with opacity */
+  --md-accent-fg-color--transparent: rgba(var(--color-nord-green-rgb), 0.1);
+  --md-accent-bg-color: var(--color-nord-dark1);
+  /* dark1 with opacity */
+  --md-accent-bg-color--light: rgba(var(--color-nord-dark1-rgb), 0.7);
+
+  /* Default color shades (Text, background) */
+  --md-default-fg-color: var(--color-nord-light1);
+  --md-default-fg-color--light: var(--color-nord-light0);
+  /* Use light0 again */
+  --md-default-fg-color--lighter: var(--color-nord-light0);
+  /* light1 with opacity */
+  --md-default-fg-color--lightest: rgba(var(--color-nord-light1-rgb), 0.07);
+  --md-default-bg-color: var(--color-nord-dark0);
+  /* dark0 with opacity */
+  --md-default-bg-color--light: rgba(var(--color-nord-dark0-rgb), 0.7);
+  /* dark0 with opacity */
+  --md-default-bg-color--lighter: rgba(var(--color-nord-dark0-rgb), 0.3);
+  /* dark0 with opacity */
+  --md-default-bg-color--lightest: rgba(var(--color-nord-dark0-rgb), 0.12);
+
+  /* Code color shades */
+  --md-code-fg-color: var(--color-nord-light0);
+  --md-code-bg-color: var(--color-nord-dark1);
+
+  /* Code highlighting base color shades */
+  --md-code-hl-color: var(--color-nord-frost0);
+  /* frost0 with opacity */
+  --md-code-hl-color--light: rgba(var(--color-nord-frost0-rgb), 0.1);
+
+  /* Code highlighting syntax color shades (Pygments default mapping) */
+  --md-code-hl-number-color: var(--color-nord-orange);
+  --md-code-hl-special-color: var(--color-nord-red);
+  /* Green often good for functions in dark */
+  --md-code-hl-function-color: var(--color-nord-green);
+  --md-code-hl-constant-color: var(--color-nord-purple);
+  --md-code-hl-keyword-color: var(--color-nord-frost2);
+  /* Yellow often good for strings in dark */
+  --md-code-hl-string-color: var(--color-nord-yellow);
+  --md-code-hl-name-color: var(--md-code-fg-color); /* Default name color */
+  --md-code-hl-operator-color: var(--md-default-fg-color--light);
+  --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
+  /* Keep dark3 for comments */
+  --md-code-hl-comment-color: var(--color-nord-dark3);
+  --md-code-hl-generic-color: var(--md-default-fg-color--light);
+  --md-code-hl-variable-color: var(--md-default-fg-color--light);
+
+  /* Typeset color shades (Main content text) */
+  --md-typeset-color: var(--md-default-fg-color);
+
+  /* Typeset link (`a`) color shades */
+  --md-typeset-a-color: var(--md-primary-fg-color);
+
+  /* Typeset `del` and `ins` color shades */
+  /* red with opacity */
+  --md-typeset-del-color: rgba(var(--color-nord-red-rgb), 0.15);
+  /* green with opacity */
+  --md-typeset-ins-color: rgba(var(--color-nord-green-rgb), 0.15);
+
+  /* Typeset `kbd` color shades */
+  --md-typeset-kbd-color: var(--color-nord-dark1);
+  --md-typeset-kbd-accent-color: var(--color-nord-dark0);
+  --md-typeset-kbd-border-color: var(--color-nord-dark2);
+
+  /* Typeset `mark` color shades */
+  /* yellow with opacity */
+  --md-typeset-mark-color: rgba(var(--color-nord-yellow-rgb), 0.5);
+
+  /* Typeset `table` color shades */
+  /* light1 with opacity */
+  --md-typeset-table-color: rgba(var(--color-nord-light1-rgb), 0.12);
+  /* light1 with lower opacity */
+  --md-typeset-table-color--light: rgba(var(--color-nord-light1-rgb), 0.035);
+
+  /* Admonition base color shades */
+  --md-admonition-fg-color: var(--md-default-fg-color);
+  --md-admonition-bg-color: var(--md-default-bg-color);
+
+  /* Warning admonition color shades */
+  --md-warning-fg-color: var(--color-nord-dark0); /* Dark text on yellow */
+  --md-warning-bg-color: var(--color-nord-yellow);
+
+  /* Footer color shades */
+  --md-footer-fg-color: var(--color-nord-light1);
+  --md-footer-fg-color--light: var(--color-nord-light0);
+  --md-footer-fg-color--lighter: var(--color-nord-light2); /* Lighter shade */
+  --md-footer-bg-color: var(--color-nord-dark1);
+  --md-footer-bg-color--dark: var(--color-nord-dark0);
+
+  /* Shadow depth using black with higher opacity for contrast on dark backgrounds */
+  --md-shadow-z1:
+    0 0.25rem 0.625rem rgba(0, 0, 0, 0.2), 0 0 0.0625rem rgba(0, 0, 0, 0.3);
+  --md-shadow-z2:
+    0 0.25rem 0.625rem rgba(0, 0, 0, 0.3), 0 0 0.0625rem rgba(0, 0, 0, 0.45);
+  --md-shadow-z3:
+    0 0.25rem 0.625rem rgba(0, 0, 0, 0.4), 0 0 0.0625rem rgba(0, 0, 0, 0.55);
+
+  /* Styles for main page elements */
+
+  .card-white {
+    width: 100%;
+    background-color: rgba(var(--color-nord-frost3-rgb), 0.93);
+    border-radius: 60px 0px 60px 0px;
+  }
+
+  /* angled gradient for the dark mode */
+  .gradient-wrapper {
+    background: linear-gradient(
+      160deg,
+      var(--color-nord-purple),
+      var(--color-nord-frost2) 42%,
+      var(--color-nord-frost3) 76%
+    );
+    background-attachment: fixed; /* This creates the parallax effect */
+
+    /* Override some code highlighting for home page to make it more visible on the gradient bg */
+    --md-code-hl-number-color: var(--color-nord-orange);
+    --md-code-hl-special-color: var(--color-nord-red);
+    /* Green often good for functions in dark */
+    --md-code-hl-function-color: var(--color-nord-red);
+    --md-code-hl-constant-color: var(--color-nord-purple);
+    --md-code-hl-keyword-color: var(--color-nord-yellow);
+    /* Yellow often good for strings in dark */
+    --md-code-hl-string-color: var(--color-nord-green);
+    --md-code-hl-name-color: var(--md-code-fg-color); /* Default name color */
+    --md-code-hl-operator-color: var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color: var(--md-default-fg-color--light);
+    /* Keep dark3 for comments */
+    --md-code-hl-comment-color: var(--color-nord-dark3);
+    --md-code-hl-generic-color: var(--md-default-fg-color--light);
+    --md-code-hl-variable-color: var(--md-default-fg-color--light);
+  }
+
+  .third-dark-body {
+    background-color: var(--color-nord-frost3);
+  }
+
+  .four-gray-body {
+    background-color: var(--color-nord-frost2);
+  }
+}

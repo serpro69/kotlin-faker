@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().fallout`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'fallout_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().fallout.characters() // => Ada
+
+Faker().fallout.factions() // => Boomers
+
+Faker().fallout.locations() // => Anchorage
+
+Faker().fallout.quotes() // => Ad Victoriam!
+----
+====

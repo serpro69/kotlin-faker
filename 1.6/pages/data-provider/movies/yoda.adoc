@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().yoda`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'yoda_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().yoda.quotes() // => Use your feelings, Obi-Wan, and find him you will.
+----
+====

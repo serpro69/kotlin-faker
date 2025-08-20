@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().electricalComponents`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'electrical_components_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().electricalComponents.active() // => Diode
+
+Faker().electricalComponents.passive() // => Resistor
+
+Faker().electricalComponents.electromechanical() // => Piezoelectric device
+----
+====

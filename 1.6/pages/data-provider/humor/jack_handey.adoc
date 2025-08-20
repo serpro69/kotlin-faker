@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().jackHandey`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'jack_handey_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().jackHandey.quote() // => When you die, if you get a choice between going to regular heaven or pie heaven, choose pie heaven. It might be a trick, but if it's not, mmmmmmmm, boy.
+
+----
+====

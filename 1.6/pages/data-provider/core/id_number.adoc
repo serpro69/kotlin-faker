@@ -1,0 +1,33 @@
+---
+---
+
+== `Faker().idNumber`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'id_number_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().idNumber.invalid() // => 000-##-#### where '#' is a random digit
+----
+====
+
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().idNumber.valid() // => #{IDNumber.ssn_valid}
+----
+====

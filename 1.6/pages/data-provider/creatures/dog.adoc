@@ -1,0 +1,34 @@
+---
+---
+
+== `Faker().dog`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'dog_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().dog.name() // => Buddy
+
+Faker().dog.breed() // => Affenpinscher
+
+Faker().dog.sound() // => woof
+
+Faker().dog.memePhrase() // => heck no pal
+
+Faker().dog.age() // => puppy
+
+Faker().dog.coatLength() // => hairless
+
+Faker().dog.size() // => small
+----
+====

@@ -1,0 +1,27 @@
+---
+---
+
+== `Faker().space`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'spongebob_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().spongebob.characters() // => SpongeBob SquarePants
+
+Faker().spongebob.quotes() // => I'm ready! I'm ready!
+
+Faker().spongebob.episodes() // => Help Wanted
+
+----
+====

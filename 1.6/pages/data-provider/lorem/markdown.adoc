@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().markdown`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'markdown_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().markdown.headers() // => #
+Faker().markdown.emphasis() // => _
+----
+====

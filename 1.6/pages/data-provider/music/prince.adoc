@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().prince`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'prince_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker.prince.lyric() // => Only want to see you laughing in the purple rain.
+Faker.prince.song() // => 1-800-Newfunk Ad
+Faker.prince.album() // => For You
+Faker.prince.band() // => The Revolution
+----
+====

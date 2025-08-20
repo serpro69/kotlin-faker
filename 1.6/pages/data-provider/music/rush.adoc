@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().rush`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'rush_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().rush.players() // => Geddy Lee
+Faker().rush.albums() // => Rush
+----
+====

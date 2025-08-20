@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().cat`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'cat_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().cat.name() // => Alfie
+
+Faker().cat.breed() // => Abyssinian
+
+Faker().cat.registry() // => American Cat Fanciers Association
+----
+====

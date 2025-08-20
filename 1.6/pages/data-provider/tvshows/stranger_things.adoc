@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().strangerThings`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'stranger_things_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().strangerThings.character() // => Joyce
+
+Faker().strangerThings.quote() // => I just didn’t want you to think I was such a wastoid, you know?
+----
+====

@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().drivingLicense`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'driving_license_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+// `#` represents a random digit
+// `?` represents a random letter
+Faker().drivingLicense.license() // => ######
+Faker().drivingLicense.licenseByState("district_of_columbia") // => #######
+----
+====

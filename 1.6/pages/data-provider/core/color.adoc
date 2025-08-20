@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().color`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'color_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().color.name() // => blue
+----
+====

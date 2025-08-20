@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().theThickOfIt`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'the_thick_of_it_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().theThickOfIt.characters() // => Malcolm Tucker
+
+Faker().theThickOfIt.positions() // => General Elections Advisor
+
+Faker().theThickOfIt.departments() // => Number 10
+----
+====

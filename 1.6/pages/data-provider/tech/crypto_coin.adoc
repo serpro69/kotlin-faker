@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().cryptoCoin`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'crypto_coin_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().cryptoCoin.coin() // => Bitcoin, BTC, https://i.imgur.com/psBNOBq.png
+----
+====

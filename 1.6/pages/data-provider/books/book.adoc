@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().book`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'book_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().book.title() // => Absalom, Absalom!
+
+Faker().book.author() // => John Smith
+
+Faker().book.publisher() // => Academic Press
+
+Faker().book.genre() // => Classic
+----
+====

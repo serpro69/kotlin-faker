@@ -1,0 +1,29 @@
+---
+---
+
+== `Faker().naruto`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'naruto_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().naruto.characters() // => "Naruto Uzumaki"
+
+Faker().naruto.villages() // => "Konohagakure (Leaf Village)"
+
+Faker().naruto.eyes() // => "Byakugan"
+
+Faker().naruto.demons() // => "One-Tails (Shukaku)"
+
+----
+====

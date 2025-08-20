@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().bojackHorseman`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'bojack_horseman_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().bojackHorseman.characters() // => Joseph Sugarman
+
+Faker().bojackHorseman.quotes() // => It gets easier. But you have to do it every day, that's the hard part. But it does get easier
+
+Faker().bojackHorseman.tongueTwisters() // => Courtney Portnoy portrayed the formerly portly consort in the seaport resort
+----
+====

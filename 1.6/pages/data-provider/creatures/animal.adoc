@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().animal`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'animal_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+// Name
+Faker().animal.name() // => alpaca
+----
+====

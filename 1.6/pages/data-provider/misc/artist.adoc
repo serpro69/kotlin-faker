@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().artist`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'artist_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().artist.names() // => Donatello
+----
+====

@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().rockBand`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'rock_band_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().rockBand.name() // => Led Zeppelin
+Faker().rockBand.song() // => Are You Gonna Be My Girl
+----
+====

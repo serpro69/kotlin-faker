@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().device`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'device_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().device.modelName() // => iPhone
+
+Faker().device.platform() // => Android OS
+
+Faker().device.manufacturer() // => Dell
+
+Faker().device.serial() // => pEekWH7zGxVITv6NTa5KHjLSwr5Ie4
+----
+====
