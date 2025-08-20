@@ -16,12 +16,12 @@ icon: material/unicorn-variant
 
 ❹ Repeated invocations will produce unique values until all the values are exhausted and a `uniqueGeneratorRetryLimit` is reached.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "UniqueGenerator.kt:unique_data_generator_one"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -40,12 +40,12 @@ It is possible to clear (reset) the record of already generated values, so that 
 
 ❷ Invocations of `faker.<provider>.<someFun>()` can now generate values that were already generated before.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "UniqueGenerator.kt:unique_data_generator_two"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -55,13 +55,13 @@ It is possible to clear (reset) the record of already generated values, so that 
 
 It is also possible to clear all records of generated values:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "UniqueGenerator.kt:unique_data_generator_three"
     --8<-- "UniqueGenerator.kt:unique_data_generator_four"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -80,12 +80,12 @@ One may want to disable generating unique values altogether. Just like clearing 
 ❹ `Name` and `Internet` still generate unique values.
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "UniqueGenerator.kt:unique_data_generator_five"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -95,12 +95,12 @@ As well as for all providers:
 
 ❶ Unique generation is disabled for `Address`, `Name`, `Internet`, and all other providers that may have been enabled.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "UniqueGenerator.kt:unique_data_generator_six"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -115,7 +115,7 @@ Unique values can also be generated for a single function, instead of an entire 
 
 <!-- TODO: --8<-- "UniqueGenerator.kt:unique_data_generator_seven" -->
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     val faker = Faker()
 
@@ -124,7 +124,7 @@ Unique values can also be generated for a single function, instead of an entire 
     repeat(10) { faker.address.city() } // this will not necessarily be unique (unless `faker.unique.enable(faker::address)` was called previously)
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -136,14 +136,14 @@ To clear the record of unique values that were already generated use the `clear(
 
 <!-- TODO: --8<-- "UniqueGenerator.kt:unique_data_generator_seven" -->
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     faker.address.unique.clear("city") // clears used values for `faker.address.unique.city()` function
 
     faker.address.unique.clearAll() // clears used values for all functions of address provider
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     ```
 
@@ -153,7 +153,7 @@ To clear the record of unique values that were already generated use the `clear(
     There is no <code>disable</code> function available for local unique generators - they are completely independent of the standard APIs:
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     // generates unique city each time it's called
     faker.address.unique.city()
@@ -262,7 +262,7 @@ assertTrue(lastName.startsWith("C") == false)
     This is only applicable when the whole category, i.e. <code>Address</code> or <code>Name</code>, is enabled for unique generation of values. Local generators will still generate unique values of their own, but won't take into consideration exclusion rules, if any are set:
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     val faker = Faker()
 

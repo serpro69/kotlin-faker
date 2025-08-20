@@ -15,7 +15,7 @@ There are some rules to keep in mind:
 
 Random instance generation is available through `Faker().randomProvider`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_one"
     ```
@@ -25,7 +25,7 @@ Random instance generation is available through `Faker().randomProvider`:
 Random Class Instance configuration can be applied on several levels. Consider the following classes:
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_ten"
     ```
@@ -34,7 +34,7 @@ Random Class Instance configuration can be applied on several levels. Consider t
 
 This takes the least precedence and applies to all instances (see [Making a copy/new instance of RandomClassProvider](#making-a-new-instance-of-random-class-provider)) of `RandomClassProvider` if set.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_eleven"
     ```
@@ -43,7 +43,7 @@ This takes the least precedence and applies to all instances (see [Making a copy
 
 This takes higher precedence and will also merge any configuration that was set on the previous level.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_twelve"
     ```
@@ -52,7 +52,7 @@ This takes higher precedence and will also merge any configuration that was set 
 
 This configuration takes the most precedence and does not take into account configurations applied on other levels.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_thirteen"
     ```
@@ -63,7 +63,7 @@ This configuration takes the most precedence and does not take into account conf
 
 Some, or all, of the constructor params can be instantiated with values following some pre-configured logic using `typeGenerator` or `namedParameterGenerator` functions. Consider the following example:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_two"
     ```
@@ -79,7 +79,7 @@ baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
 
 This example itself does not make that much sense, since we're using "static" values, but we could also do something like:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     val baz: Baz = faker.randomProvider.randomClassInstance {
         typeGenerator<UUID> { UUID.randomUUID() }
@@ -88,7 +88,7 @@ This example itself does not make that much sense, since we're using "static" va
 
 ...or even so:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     class Person(val id: Int, val name: String)
 
@@ -101,7 +101,7 @@ This example itself does not make that much sense, since we're using "static" va
 
 By default, `randomClassInstance` can't generate classes with no public constructors, but this can be worked around by using `typeGenerator`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     faker.randomProvider.randomClassInstance<Instant> {
         typeGenerator<Instant> { Instant.now() }
@@ -110,7 +110,7 @@ By default, `randomClassInstance` can't generate classes with no public construc
 
 You could also use the same approach to create interfaces, for example:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     interface TestInterface {
       val id: Int
@@ -142,7 +142,7 @@ A random class instance will be generated using the following precedence rules:
 
 It may be desirable to define how elements of a `Collection` (currently supports `List`s and `Set`s) constructor parameter type are generated, for this `collectionElementTypeGenerator` function can be used:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_sixteen"
     ```
@@ -163,14 +163,14 @@ This example kind of makes little sense, since we're using "static" values, so i
 
 There are also two similar methods for map entries: `mapEntryKeyTypeGenerator` and `mapEntryValueTypeGenerator`, which can be used to configure how keys and values are generated in `Map` constructor parameter types:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_seventeen"
     ```
 
 Nullable collection element types are also supported (but note that `null`s as values are never returned):
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_eighteen"
     ```
@@ -179,14 +179,14 @@ Nullable collection element types are also supported (but note that `null`s as v
 
 By default, the constructor with the least number of args is used when creating a random instance of the class. This might not always be desirable and can be configured. Consider the following example:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_three"
     ```
 
 If there is a need to use the constructor with 3 arguments when creating an instance of `FooBarBaz`, we can do it like so:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_four"
     ```
@@ -195,7 +195,7 @@ In the above example, `FooBarBaz` will be instantiated with the first discovered
 
 Alternatively to `constructorParamSize`, a `constructorFilterStrategy` config property can be used as well:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_five"
     ```
@@ -210,7 +210,7 @@ The above has the following rules:
 
 By default, all parameters of a [selected constructor](#deterministic-constructor-selection) would be generated with randomized values:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
 
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_nineteen"
@@ -221,14 +221,14 @@ This behavior can be changed with `defaultValuesStrategy` configuration option.
 
 One can choose between generating values only for non-optional constructor parameters:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_twenty_one"
     ```
 
 ...or randomly selecting between a default value and a randomly-generated one:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_twenty_two"
     ```
@@ -239,14 +239,14 @@ Support for `kotlin.collections.Collection` parameter types - `List`, `Set` and 
 
 By default, all collections will be generated with only 1 element:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_six"
     ```
 
 This can be configured using `collectionsSize` parameter:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_seven"
     ```
@@ -259,14 +259,14 @@ This can be configured using `collectionsSize` parameter:
 
 Consider the following example. If `typeGenerator<String> { "a string" }` would affect `String` typed elements of `Set`, the resulting generated set would be of size `1`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_eight"
     ```
 
 At the same time, `typeGenerator` configurator itself can be used with collections as well:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_nine"
     ```
@@ -279,7 +279,7 @@ At the same time, `typeGenerator` configurator itself can be used with collectio
 
 To make a new instance of `randomProvider`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_fourteen"
     ```
@@ -293,7 +293,7 @@ To make a new instance of `randomProvider`:
 
 To make a copy of an existing instance of `randomProvider`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_instance_fifteen"
     ```
@@ -312,7 +312,7 @@ Generic parameter types are not fully supported at this moment due to type-erasu
 Sometimes you just want to generate random POJO instances and don't need the whole range of kotlin-faker functionality?
 For these cases you can import `randomClassInstance` top-level function and use it directly w/o the need to instantiate an instance of `Faker`
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     import io.github.serpro69.kfaker.randomClassInstance
 
@@ -321,7 +321,7 @@ For these cases you can import `randomClassInstance` top-level function and use 
 
 It can also be configured via `configurator` lambda parameter, or via `FakerConfig` instance:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     import io.github.serpro69.kfaker.fakerConfig
     import io.github.serpro69.kfaker.randomClassInstance

@@ -30,7 +30,7 @@ Kotlin-faker `blns` artifact provides convenience functions for returning string
 
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
 
 
 ```kotlin
@@ -67,7 +67,7 @@ For example, using [JUnit5 Parameterized Testing](https://junit.org/junit5/docs/
 
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
 
 
 ```kotlin

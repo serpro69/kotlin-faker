@@ -8,7 +8,7 @@ Faker comes with a DSL to create `Faker` and `FakerConfig` instances.
 
 If you're using kotlin - chances are, you will want to use a DSL for creating and configuring `Faker` instances. An exception to this could be if you want to postpone creating the `FakerConfig` instance to a later point, in which case check out the "Non-DSL" way of configuring `Faker`s.
 
-=== "Faker DSL"
+=== "Faker DSL :material-language-kotlin:"
 
     ❶ Use the `faker` dsl function to create an instance of `Faker`.
 
@@ -24,7 +24,7 @@ If you're using kotlin - chances are, you will want to use a DSL for creating an
     }
     ```
 
-=== "Config Builder"
+=== "Config Builder :material-language-kotlin:"
 
     ❶ Alternatively create `FakerConfig` instance with the top-level `fakerConfig` function.
 
@@ -40,7 +40,7 @@ If you're using kotlin - chances are, you will want to use a DSL for creating an
     val faker = Faker(config) // ❷
     ```
 
-=== "Non-DSL"
+=== "Non-DSL :material-language-kotlin:"
 
     ❶ Create `FakerConfig.Builder` instance and postpone instantiation of `FakerConfig`.
 

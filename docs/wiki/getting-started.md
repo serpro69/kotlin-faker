@@ -10,13 +10,13 @@ icon: simple/rocket
 
 Installation is as simple as adding `kotlin-faker` dependency to your build configuration file:
 
-=== "gradle"
+=== "gradle :simple-gradle:"
 
     ```kotlin
     testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion")
     ```
 
-=== "maven"
+=== "maven :simple-apachemaven:"
 
     ```xml
     <dependency>
@@ -32,7 +32,7 @@ Release artifacts are available for download from maven central, and you usually
 
 Snapshot are automatically published on each commit to master. If you want to try out the latest functionality - add the dependency the same way as described above, but change the version to the current snapshot version, and add the sonatype snapshots repository to your repositories block in the build configuration file:
 
-=== "gradle"
+=== "gradle :simple-gradle:"
 
     ```kotlin
     repositories {
@@ -42,7 +42,7 @@ Snapshot are automatically published on each commit to master. If you want to tr
     }
     ```
 
-=== "maven"
+=== "maven :simple-apachemaven:"
 
     ```xml
     <repositories>
@@ -62,7 +62,7 @@ See [Kotlin-faker BOM](./faker-bom.md) page for details on how to use a Bill-of-
 
 Creating a `Faker` instance can be done either by creating a class instance directly:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
 
     ```kotlin
     val faker = Faker()
@@ -71,7 +71,7 @@ Creating a `Faker` instance can be done either by creating a class instance dire
     faker.address.city()
     ```
 
-=== "java"
+=== "java :material-language-java:"
 
     ```java
     Faker faker = new Faker();
@@ -82,7 +82,7 @@ Creating a `Faker` instance can be done either by creating a class instance dire
 
 Or by using the [Faker DSL](./faker-dsl.md) (Which also gives you dsl-like access to [Faker Configuration](./faker-configuration.md).)
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
 
     ```kotlin
     val faker = faker {
@@ -94,7 +94,7 @@ Or by using the [Faker DSL](./faker-dsl.md) (Which also gives you dsl-like acces
     ```
 
 
-=== "functional-java"
+=== "functional-java :material-language-java:"
 
     ```java
     Faker faker = faker(fromConsumer(f -> {
@@ -105,7 +105,7 @@ Or by using the [Faker DSL](./faker-dsl.md) (Which also gives you dsl-like acces
     faker.getAddress().city()
     ```
 
-=== "java"
+=== "java :material-language-java:"
 
     ```java
     Faker faker = faker(f -> {

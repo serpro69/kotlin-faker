@@ -46,13 +46,13 @@ Fewer parentheses, but an explicit `return` statement for each lambda - the choi
 
 Calling a faker method is pretty straightforward. The only difference between kotlin and java here is that in java you need to call the getter of the fake data provider properties such as `name`, `address`, and so on.
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     faker.getName().firstName()
     faker.getAddress().city()
     ```
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     faker.name.firstName()
     faker.address.city()

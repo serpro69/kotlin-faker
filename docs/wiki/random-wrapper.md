@@ -8,14 +8,14 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 
 ### Wrappers around `java.util.Random`
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_one"
     ```
 
 ### Random Enum Instance
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_two"
 
@@ -24,7 +24,7 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 
 ### Random Strings
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_four"
 
@@ -33,7 +33,7 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 
 ### Random sub-lists and sub-sets
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_six"
 
@@ -42,14 +42,14 @@ Faker provides its wrapper functions around `java.util.Random` (with some additi
 
 ### Random element from a list/array
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_eight"
     ```
 
 ### Random UUID
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_nine"
     ```
@@ -60,7 +60,7 @@ Just like most data providers, `Faker#random` supports generation of unique valu
 
 Both "local" (data-generator level) and "global" (faker level) generation of unique values are supported for `RandomProvider`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "Extras.kt:extras_random_everything_ten"
     ```

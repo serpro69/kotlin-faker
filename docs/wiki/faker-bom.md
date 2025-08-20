@@ -15,7 +15,7 @@ Kotlin-faker provides a [Bill-of-Materials](https://maven.apache.org/guides/intr
 
 Latest releases are always available on maven central.
 
-=== "gradle"
+=== "gradle :simple-gradle:"
 
     To [import Maven BOM with Gradle](https://docs.gradle.org/current/userguide/platforms.html#sub:bom_import), a platform dependency needs to be declared on the `kotlin-faker-bom`. The rest of `kotlin-faker` dependencies do not need to specify the versions explicitly as they will be pulled from the BOM
 
@@ -29,7 +29,7 @@ Latest releases are always available on maven central.
     }
     ```  
 
-=== "maven"
+=== "maven :simple-apachemaven:"
 
     To use the BOM, a dependency on `kotlin-faker-bom` needs to be declared in the `<dependencyManagement>` block of the `pom.xml`, file:
 

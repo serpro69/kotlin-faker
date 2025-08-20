@@ -18,24 +18,24 @@ If no `FakerConfig` instance is passed to `Faker` constructor and configuration 
 
 Faker supports seeding of it's PRNG (pseudo-random number generator) through `FakerConfig` to provide deterministic output of repeated function invocations.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "FakerConfiguration.kt:faker_config_one"
     ```
     
-=== "java"
+=== "java :material-language-java:"
     ```java
     --8<-- "FakerConfigurationJ.java:faker_config_one_java"
     ```
 
 Alternatively a `randomSeed` property can be used instead of passing an instance of `java.util.Random`:
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "FakerConfiguration.kt:faker_config_two"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     --8<-- "FakerConfigurationJ.java:faker_config_two_java"
     ```
@@ -45,12 +45,12 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 !!! info
     `randomSeed` config property has precedence over `random` property, and the latter will be ignored if `randomSeed` is specified.
 
-    === "kotlin"
+    === "kotlin :material-language-kotlin:"
         ```kotlin
         --8<-- "FakerConfiguration.kt:faker_config_three"
         ```
 
-    === "java"
+    === "java :material-language-java:"
         ```java
         --8<-- "FakerConfigurationJ.java:faker_config_three_java"
         ```
@@ -60,7 +60,7 @@ Alternatively a `randomSeed` property can be used instead of passing an instance
 By default `Faker` uses `en_US`-localized dict files to generate data:
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "FakerConfiguration.kt:faker_config_four"
     ```
@@ -68,12 +68,12 @@ By default `Faker` uses `en_US`-localized dict files to generate data:
 When needed, `Faker` can be configured to use a custom localized dictionary file instead:
 
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     --8<-- "FakerConfiguration.kt:faker_config_five"
     ```
 
-=== "java"
+=== "java :material-language-java:"
     ```java
     --8<-- "FakerConfigurationJ.java:faker_config_five_java"
     ```
@@ -85,7 +85,7 @@ When needed, `Faker` can be configured to use a custom localized dictionary file
 
 Using a non-default locale will replace the values in _some_ of the providers with the values from localized dictionary.
 
-=== "kotlin"
+=== "kotlin :material-language-kotlin:"
     ```kotlin
     val config = fakerConfig { locale = "es" }
     val faker = Faker(config)
@@ -95,7 +95,7 @@ Using a non-default locale will replace the values in _some_ of the providers wi
 !!! info
     Note that if the localized dictionary file does not contain a category (or a parameter in a category) that is present in the default locale, then non-localized (`en`) value will be generated instead.
 
-    === "kotlin"
+    === "kotlin :material-language-kotlin:"
         ```kotlin
         val faker = Faker() // uses default 'en' locale
         faker.gameOfThrones.cities() // => Braavos
