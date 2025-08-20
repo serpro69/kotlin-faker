@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().ventureBros`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'venture_bros_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().ventureBros.character() // =>  Hank Venture
+
+Faker().ventureBros.organization() // =>  Team Venture
+
+Faker().ventureBros.vehicle() // =>  Adrian
+
+Faker().ventureBros.quote() // =>  Monarchs..don't sting..
+----
+====

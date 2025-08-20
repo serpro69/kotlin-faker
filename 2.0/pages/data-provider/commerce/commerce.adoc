@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().commerce`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'commerce_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().commerce.department() // => Books
+
+Faker().commerce.productName() // => Intelligent Steel Coat
+
+Faker().commerce.promotionCode() // => Amazing Deal
+
+Faker().commerce.brand() // => Dell
+
+Faker().commerce.vendor() // => Amazon
+----
+====

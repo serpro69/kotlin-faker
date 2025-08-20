@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().streetFighter`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'street_fighter_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker.streetFighter.characters() // => Abel
+Faker.streetFighter.stages() // => A Shadow Falls stages
+Faker.streetFighter.quotes() // => Go home and be a family man.
+Faker.streetFighter.moves() // => A.X.E.
+----
+====

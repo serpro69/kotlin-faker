@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().stargate`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'stargate_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().stargate.characters() // => Jack O'Neill
+
+Faker().stargate.planets() // => Abydos
+
+Faker().stargate.quotes() // => What is an Oprah?
+----
+====

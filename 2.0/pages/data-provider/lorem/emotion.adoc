@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().emotion`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'emotion_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().emotion.adjective() // => able
+
+Faker().emotion.noun() // => adoration
+
+----
+====

@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().university`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'university_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().university.prefix() // => The
+
+Faker().university.suffix() // => University
+
+Faker().university.name() // => West Carolina University
+----
+====

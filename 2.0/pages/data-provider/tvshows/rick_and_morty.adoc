@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().rickAndMorty`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'rick_and_morty_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().rickAndMorty.characters() // => Rick Sanchez
+
+Faker().rickAndMorty.locations() // => Dimension C-132
+
+Faker().rickAndMorty.quotes() // => Ohh yea, you gotta get schwifty.
+----
+====

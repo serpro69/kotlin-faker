@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().dcComics`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'dc_comics_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().dcComics.hero() // => Batman
+
+Faker().dcComics.heroine() // => Wonder Woman
+
+Faker().dcComics.villain() // => The Joker
+
+Faker().dcComics.name() // => John Stewart
+
+Faker().dcComics.title() // => The Sinestro Corps War
+----
+====

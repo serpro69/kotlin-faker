@@ -1,0 +1,27 @@
+---
+---
+
+== `Faker().doraemon`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'doraemon_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().doraemon.characters() // => Doraemon
+
+Faker().doraemon.gadgets() // => Doraemon Tool Catalog
+
+Faker().doraemon.locations() // => Africa
+
+----
+====

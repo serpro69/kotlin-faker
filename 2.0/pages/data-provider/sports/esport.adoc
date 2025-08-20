@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().esport`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'esport_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().esport.players() // => Froggen
+
+Faker().esport.teams() // => Dignitas
+
+Faker().esport.events() // => ESL Cologne
+
+Faker().esport.leagues() // => ESL
+
+Faker().esport.games() // => CS:GO
+----
+====

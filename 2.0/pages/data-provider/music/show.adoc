@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().show`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'show_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().show.adultMusical() // => Aladdin (Prince Street Players Version)
+
+Faker().show.play() // => A Delicate Balance
+
+Faker().show.kidsMusical() // => Disney's Alice in Wonderland JR.
+----
+====

@@ -1,0 +1,27 @@
+---
+---
+
+== `Faker().phoneNumber`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'phone_number_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().phoneNumber.areaCode() // => 201
+Faker().phoneNumber.countryCode() // => 1
+Faker().phoneNumber.exchangecode() // => 321
+Faker().phoneNumber.phoneNumber() // => ###-###-#### where '#' is a random digit
+
+Faker().phoneNumber.cellPhone.number() // => ###-###-#### where '#' is a random digit
+----
+====

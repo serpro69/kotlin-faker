@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().superhero`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'superhero_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().superhero.power() // =>  Ability Shift
+
+Faker().superhero.name() // => Alien Man
+----
+====

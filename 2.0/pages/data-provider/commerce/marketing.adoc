@@ -1,0 +1,22 @@
+---
+---
+
+== `Faker().marketing`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'marketing_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().marketing.buzzwords() // => put a pin in it
+----
+====

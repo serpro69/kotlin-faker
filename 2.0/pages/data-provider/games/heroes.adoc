@@ -1,0 +1,28 @@
+---
+---
+
+== `Faker().heroes`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'heroes_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().heroes.names() // => Christian
+
+Faker().heroes.specialties() // => Ballista
+
+Faker().heroes.klasses() // => Knight
+
+Faker().heroes.artifacts() // => Admiral's Hat
+----
+====

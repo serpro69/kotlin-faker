@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().futurama`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'futurama_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().futurama.characters() // => Abner Doubledeal
+Faker().futurama.locations() // => Akbar
+Faker().futurama.quotes() // => A fancy dress gala? I'll wear my formal shell.
+Faker().futurama.hermesCatchphrases() // => Cursed bacteria of Liberia!
+----
+====

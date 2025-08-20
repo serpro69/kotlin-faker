@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().halfLife`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'half_life_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().halfLife.character() // => Adrian Shephard
+
+Faker().halfLife.enemy() // => APC
+
+Faker().halfLife.location() // => Black Mesa East
+----
+====

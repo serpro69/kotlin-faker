@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().avatar`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'avatar_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().avatar.characters() // => Neytiri
+
+Faker().avatar.dates() // => December 18, 2009
+
+Faker().avatar.quotes() // => I'm a warrior of the Jarhead clan.
+----
+====

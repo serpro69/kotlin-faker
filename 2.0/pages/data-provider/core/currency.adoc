@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().currency`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'currency_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().currency.code() // => AED
+
+Faker().currency.name() // => UAE Dirham
+
+Faker().currency.symbol() // => HK$
+----
+====

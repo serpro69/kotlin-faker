@@ -1,0 +1,78 @@
+---
+---
+
+== `Faker().dota`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'dota_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().dota.building() // => Fountain
+
+Faker().dota.hero() // => Abaddon
+
+Faker().dota.item() // => Animal Courier
+
+Faker().dota.team() // => Evil Geniuses
+
+Faker().dota.player() // => Alliance.AdmiralBulldog
+----
+====
+
+'''
+
+.Non-implemented Functions:
+[%collapsible]
+====
+[source,kotlin]
+----
+// Random hero quote
+Faker().dota.abaddon() // => You have called death upon yourself.
+Faker().dota.alchemist() // => Easy now, this stuff is explosive!
+Faker().dota.axe() // => Let the carnage begin.
+Faker().dota.beastmaster() // => Meet your master…snuhg… beastmaster.
+Faker().dota.brewmaster() // => I fight any thing in the house.
+Faker().dota.bristleback() // => Time to mash some faces, I'd say.
+Faker().dota.centaur() // => Long shall my name be remembered.
+Faker().dota.chaosKnight() // => All that is light shall be cast in darkness.
+Faker().dota.clockwerk() // => I've a mind like a steel trap, and the physique to go with it!
+Faker().dota.doom() // => Face your demons.
+Faker().dota.dragonKnight() // => Who calls the Dragon Knight?
+Faker().dota.earthSpirit() // => Body is flesh, but spirit immortal.
+Faker().dota.earthshaker() // => Time to shake things up and see where they settle.
+Faker().dota.elderTitan() // => The battle is joined, like the pieces of a broken world.
+Faker().dota.huskar() // => You must learn to sacrifice.
+Faker().dota.io() // => Really?! If you play DotA, you know IO can't talk. ¬¬'
+Faker().dota.kunkka() // => An old vessel, but more than seaworthy.
+Faker().dota.legionCommander() // => I've come to put an end to hope.
+Faker().dota.lifestealer() // => Better to die free than to live in chains.
+Faker().dota.lycan() // => A wolf in man's clothing.
+Faker().dota.magnus() // => Under my hoof you will find your fate.
+Faker().dota.nightStalker() // => Day walker, night stalker.
+Faker().dota.omniknight() // => Fear not my friends, our guardian is here.
+Faker().dota.phoenix() // => Really?! If you play DotA, you know Phoenix can't talk. ¬¬'
+Faker().dota.pudge() // => They call me the Butcher.
+Faker().dota.sandKing() // => King of the Desert.
+Faker().dota.slardar() // => Guardian of the deeps.
+Faker().dota.spiritBreaker() // => The peace is broken!
+Faker().dota.sven() // => Rogue Knight at your service!
+Faker().dota.tidehunter() // => Time and Tidehunter wait for no man.
+Faker().dota.timbersaw() // => I'm Rizzrack. Don't touch me!
+Faker().dota.tiny() // => Sticks and stones will break their bones!
+Faker().dota.treantProtector() // => Thoughts cross my mind as the sun crosses the sky.
+Faker().dota.tusk() // => They call me the Terror from the Barrier. They call me the Snowball from Cobalt. But you may call me Tusk!
+Faker().dota.underlord() // => I rule the Abyssal Horde.
+Faker().dota.undying() // => I bring the song of death.
+Faker().dota.wraithKing() // => King am I of all the wraiths.
+----
+====

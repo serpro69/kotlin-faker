@@ -1,0 +1,30 @@
+---
+---
+
+== `Faker().lovecraft`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'lovecraft_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().lovecraft.fhtagn() // => Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn
+
+Faker().lovecraft.deity() // => Azathoth
+
+Faker().lovecraft.location() // => Arkham
+
+Faker().lovecraft.tome() // => Necronomicon
+
+Faker().lovecraft.words() // => abnormal
+----
+====

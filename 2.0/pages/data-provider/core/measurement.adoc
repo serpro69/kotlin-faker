@@ -1,0 +1,36 @@
+---
+---
+
+== `Faker().measurement`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'measurement_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().measurement.height() // => inch
+
+Faker().measurement.length() // => yard
+
+Faker().measurement.volume() // => cup
+
+Faker().measurement.weight() // => pound
+
+Faker().measurement.metricHeight() // => centimeter
+
+Faker().measurement.metricLength() // => millimeter
+
+Faker().measurement.metricVolume() // => milliliter
+
+Faker().measurement.metricWeight() // => milligram
+----
+====

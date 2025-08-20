@@ -1,0 +1,25 @@
+---
+---
+
+== `Faker().mountain`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'mountain_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().mountain.name() // => Abi Gamin
+
+Faker().mountain.range() // => Annapurna Himalaya
+
+----
+====

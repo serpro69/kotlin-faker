@@ -1,0 +1,23 @@
+---
+---
+
+== `Faker().hobby`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'hobby_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().hobby.activity() // => 3D printing
+
+----
+====

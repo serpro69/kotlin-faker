@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().adjective`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'adjective_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().adjective.positive() // => adorable
+
+Faker().adjective.negative() // => aggressive
+----
+====

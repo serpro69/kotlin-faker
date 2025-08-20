@@ -1,0 +1,24 @@
+---
+---
+
+== `Faker().familyGuy`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'family_guy_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().familyGuy.character() // => Peter Griffin
+Faker().familyGuy.location() // => Cleveland's Deli
+Faker().familyGuy.quote() // => It’s Peanut Butter Jelly Time.
+----
+====

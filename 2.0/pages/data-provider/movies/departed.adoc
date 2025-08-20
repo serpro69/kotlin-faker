@@ -1,0 +1,26 @@
+---
+---
+
+== `Faker().departed`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'departed_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().departed.actors() // => Leonardo DiCaprio
+
+Faker().departed.characters() // => Billy Costigan
+
+Faker().departed.quotes() // => I'm the guy who does his job. You must be the other guy.
+----
+====

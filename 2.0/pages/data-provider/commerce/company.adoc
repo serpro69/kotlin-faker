@@ -1,0 +1,34 @@
+---
+---
+
+== `Faker().company`
+
+.Dictionary file
+[%collapsible]
+====
+[source,yaml]
+----
+{% snippet 'company_provider_dict' %}
+----
+====
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+Faker().company.buzzwords() // Advanced
+
+Faker().company.bs() // clicks-and-mortar
+
+Faker().company.name() // Smith and Sons
+
+Faker().company.industry() // Defense & Space
+
+Faker().company.profession // teacher
+
+Faker().company.type() // Public Company
+
+Faker().company.sicCode() // 0112
+----
+====

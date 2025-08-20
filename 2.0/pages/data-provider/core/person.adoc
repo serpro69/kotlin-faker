@@ -1,0 +1,15 @@
+---
+---
+
+== `Faker().person`
+
+.Available Functions
+[%collapsible]
+====
+[source,kotlin]
+----
+import java.time.LocalDate
+
+Faker().person.birthDate(age = 30, at = LocalDate.of(2020, 1, 1)) // => 1990-06-15
+----
+====
