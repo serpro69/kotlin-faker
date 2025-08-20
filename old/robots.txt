@@ -4,5 +4,5 @@ Disallow: /meta/
 
 
 
-Sitemap: https://serpro69.github.io/kotlin-faker/sitemap.xml
+Sitemap: https://serpro69.github.io/kotlin-faker/old/sitemap.xml
 

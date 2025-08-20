@@ -31,7 +31,7 @@
 
 .hero-image {
   background-color: white !important;
-  background-image: url("https://serpro69.github.io/kotlin-faker/assets/media/bg-sidebar.jpeg");
+  background-image: url("https://serpro69.github.io/kotlin-faker/old/assets/media/bg-sidebar.jpeg");
   background-position: 50% 50%;
   background-size: cover; }
 
@@ -53,7 +53,7 @@
   right: 0;
   position: absolute;
   z-index: -1;
-  background-image: url("https://serpro69.github.io/kotlin-faker/assets/media/bg-texture.png"); }
+  background-image: url("https://serpro69.github.io/kotlin-faker/old/assets/media/bg-texture.png"); }
 
 .grow {
   flex-grow: 1; }

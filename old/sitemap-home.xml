@@ -4,12 +4,12 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/404.html</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/404.html</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>

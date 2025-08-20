@@ -4,67 +4,67 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/getting-started</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/getting-started</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/faker-bom</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/faker-bom</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/faker-configuration</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/faker-configuration</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/unique-generator</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/unique-generator</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/extras</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/extras</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/faker-dsl</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/faker-dsl</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/data-providers</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/data-providers</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/custom-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/custom-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/available-locales</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/available-locales</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/java-interop</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/java-interop</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/faker-cli</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/faker-cli</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/wiki/extensions</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/wiki/extensions</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>

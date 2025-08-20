@@ -4,1987 +4,1987 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/core-api</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/core-api</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/core-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/core-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/books-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/books-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/commerce-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/commerce-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/creatures-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/creatures-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/databases-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/databases-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/edu-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/edu-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/games-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/games-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/humor-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/humor-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/japmedia-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/japmedia-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/lorem-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/lorem-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/misc-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/misc-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/movies-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/movies-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/music-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/music-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/sports-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/sports-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/tech-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/tech-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/travel-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/travel-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/tvshows-data-provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/tvshows-data-provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/blns-extension</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/blns-extension</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/modules/kotest-property-extension</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/modules/kotest-property-extension</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider/key</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomprovider/key</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/cryptographyprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/cryptographyprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomproviderconfig</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/constructorfilterstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/constructorfilterstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomclassprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/randomclassprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/parameterinfo</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/parameterinfo</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/stringprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/stringprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/fallbackstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/fallbackstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/defaultvaluesstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/misc/defaultvaluesstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/globaluniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/globaluniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniqueproviderdelegate</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniqueproviderdelegate</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniqueproviderconfiguration</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/uniqueproviderconfiguration</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/separator</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/separator</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/phonenumber</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/phonenumber</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/measurement</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/measurement</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/filemimetype</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/filemimetype</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/person</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/person</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/color</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/color</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/currency</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/currency</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/gender</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/gender</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/currencysymbol</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/currencysymbol</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/cellphone</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/cellphone</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/name</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/name</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/address</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/address</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/abstractfakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/abstractfakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/yamlfakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/yamlfakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/file</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/file</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/money</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/money</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/source</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/source</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/internet</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/internet</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/fakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/fakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/provider/idnumber</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/provider/idnumber</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/helper</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/helper</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/exception</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/exception</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/exception/retrylimitexception</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/exception/retrylimitexception</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/exception/dictionarykeynotfoundexception</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/exception/dictionarykeynotfoundexception</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/extension</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/extension</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/extension/altkey</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/extension/altkey</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/yamlcategory</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/yamlcategory</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/rawexpression</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/rawexpression</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/category</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/dictionary/category</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/functionalutil</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/functionalutil</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/faker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/faker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/configbuilder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/fakerconfig/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/abstractfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerdsl</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/fakerdsl</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/fakerservice</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/fakerservice</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/irandom</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/irandom</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-api/io/github/serpro69/kfaker/randomservice</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomprovider/key</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomprovider/key</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/cryptographyprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/cryptographyprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomproviderconfig</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomproviderconfig</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/constructorfilterstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/constructorfilterstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomclassprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/randomclassprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/parameterinfo</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/parameterinfo</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/stringprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/stringprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/fallbackstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/fallbackstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/defaultvaluesstrategy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/misc/defaultvaluesstrategy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/globaluniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/globaluniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniqueproviderdelegate</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniqueproviderdelegate</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniqueproviderconfiguration</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/uniqueproviderconfiguration</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/unique/localuniquedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/separator</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/separator</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/phonenumber</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/phonenumber</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/measurement</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/measurement</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/filemimetype</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/filemimetype</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/person</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/person</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/color</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/color</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/currency</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/currency</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/gender</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/gender</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/currencysymbol</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/currencysymbol</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/cellphone</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/cellphone</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/name</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/name</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/address</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/address</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/abstractfakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/abstractfakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/yamlfakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/yamlfakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/file</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/file</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/money</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/money</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/source</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/source</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/internet</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/internet</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/fakedataprovider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/fakedataprovider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/idnumber</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/core-data-provider/io/github/serpro69/kfaker/provider/idnumber</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkien</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkien</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/bible</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/bible</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/cultureseries</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/cultureseries</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/book</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/book</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dccomics</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dccomics</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/thekingkillerchronicle</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/thekingkillerchronicle</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/shakespeare</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/shakespeare</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkienhobbit</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkienhobbit</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune/quotecharacter</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune/quotecharacter</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune/sayingorigin</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/dune/sayingorigin</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/cosmere</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/cosmere</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/lovecraft</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/lovecraft</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkienlordoftherings</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/provider/tolkienlordoftherings</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/booksfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/booksfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/booksfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/booksfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/books-data-provider/io/github/serpro69/kfaker/books/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/teavariety</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/teavariety</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/code</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/code</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/tea</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/tea</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/industrysegments</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/industrysegments</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/commerce</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/commerce</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/invoice</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/invoice</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/business</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/business</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/bank</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/bank</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/house</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/house</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/beer</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/beer</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/food</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/food</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/stripe</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/stripe</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/finance</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/finance</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/coffee</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/coffee</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/barcode</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/barcode</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/construction</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/construction</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/company</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/company</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/marketing</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/marketing</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/subscription</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/subscription</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/restaurant</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/restaurant</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/dessert</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/dessert</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/stockexchange</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/stockexchange</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/cannabis</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/provider/cannabis</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/commercefaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/commercefaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/commercefaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/commercefaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/commerce-data-provider/io/github/serpro69/kfaker/commerce/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/bird</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/bird</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/ancient</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/ancient</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/horse</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/horse</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/birdordercommonmap</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/birdordercommonmap</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/cat</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/cat</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/dog</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/dog</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/animal</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/provider/animal</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/creaturesfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/creaturesfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/creaturesfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/creaturesfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/creatures-data-provider/io/github/serpro69/kfaker/creatures/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mssqlserver</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mssqlserver</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/oracledb</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/oracledb</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mariadb</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mariadb</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mysql</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/mysql</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/database</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/database</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/postgresql</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/provider/postgresql</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/databasesfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/databasesfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/databasesfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/databasesfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/databases-data-provider/io/github/serpro69/kfaker/databases/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/degree</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/degree</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/university</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/university</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/tertiary</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/tertiary</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/job</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/job</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/educator</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/educator</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/science</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/science</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/sciencebranch</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/provider/sciencebranch</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/edufaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/edufaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/edufaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/edufaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/edu-data-provider/io/github/serpro69/kfaker/edu/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/finalfantasyxiv</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/finalfantasyxiv</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dota</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dota</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/heroesofthestorm</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/heroesofthestorm</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/streetfighter</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/streetfighter</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dndname</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dndname</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/zelda</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/zelda</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/coin</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/coin</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/elderscrolls</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/elderscrolls</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/superhero</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/superhero</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/game</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/game</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/sonicthehedgehog</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/sonicthehedgehog</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/control</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/control</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/myst</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/myst</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/tarkovquests</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/tarkovquests</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/clashofclans</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/clashofclans</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/tarkov</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/tarkov</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/leagueoflegends</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/leagueoflegends</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/overwatch</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/overwatch</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dnd</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/dnd</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/worldofwarcraft</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/worldofwarcraft</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/touhou</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/touhou</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/supersmashbros</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/supersmashbros</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/supermario</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/supermario</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/minecraft</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/minecraft</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/witcher</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/witcher</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/heroes</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/heroes</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/pokemon</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/pokemon</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/warhammerfantasy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/warhammerfantasy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/fallout</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/fallout</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/halflife</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/provider/halflife</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/gamesfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/gamesfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/gamesfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/games-data-provider/io/github/serpro69/kfaker/games/gamesfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/jackhandey</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/jackhandey</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/chucknorris</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/chucknorris</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/mitchhedberg</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/mitchhedberg</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/funnyname</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/funnyname</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/chiquito</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/provider/chiquito</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/humorfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/humorfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/humorfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/humorfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/humor-data-provider/io/github/serpro69/kfaker/humor/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenridershowa</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenridershowa</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/swordartonline</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/swordartonline</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/onepiece</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/onepiece</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenriderreiwa</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenriderreiwa</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/naruto</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/naruto</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/studioghibli</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/studioghibli</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/cowboybebop</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/cowboybebop</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/fmabrotherhood</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/fmabrotherhood</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/doraemon</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/doraemon</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/conan</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/conan</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenriderheisei</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenriderheisei</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenrider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/kamenrider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/dragonball</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/provider/dragonball</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/japanesemediafaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/japanesemediafaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/japanesemediafaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/japanesemediafaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/japmedia-data-provider/io/github/serpro69/kfaker/japmedia/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/hipster</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/hipster</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/slackemoji</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/slackemoji</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/verbs</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/verbs</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/markdown</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/markdown</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/lorem</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/lorem</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/natophoneticalphabet</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/natophoneticalphabet</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/adjective</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/adjective</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/quote</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/quote</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/emotion</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/provider/emotion</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/loremfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/loremfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/loremfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/lorem-data-provider/io/github/serpro69/kfaker/lorem/loremfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/drivinglicense</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/drivinglicense</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/greekphilosophers</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/greekphilosophers</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/relationship</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/relationship</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/military</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/military</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/artist</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/artist</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/demographic</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/demographic</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/hobby</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/hobby</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/blood</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/provider/blood</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/miscfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/miscfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/miscfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/miscfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/misc-data-provider/io/github/serpro69/kfaker/misc/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/princessbride</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/princessbride</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/dumbanddumber</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/dumbanddumber</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/vforvendetta</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/vforvendetta</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/ghostbusters</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/ghostbusters</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/lebowski</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/lebowski</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hitchhikersguidetothegalaxy</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hitchhikersguidetothegalaxy</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/yoda</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/yoda</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/troncharactertype</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/troncharactertype</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/tron</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/tron</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/backtothefuture</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/backtothefuture</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/lordoftherings</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/lordoftherings</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hackers</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hackers</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/troncharacter</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/troncharacter</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/movie</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/movie</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/howtotrainyourdragon</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/howtotrainyourdragon</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/theroom</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/theroom</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/harrypotter</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/harrypotter</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/tronalternatecharacter</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/tronalternatecharacter</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/avatar</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/avatar</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/rajnikanth</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/rajnikanth</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/starwars</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/starwars</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hobbit</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/hobbit</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/departed</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/provider/departed</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/moviesfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/moviesfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/moviesfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/moviesfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/movies-data-provider/io/github/serpro69/kfaker/movies/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/gratefuldead</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/gratefuldead</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/show</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/show</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/germanopera</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/germanopera</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/pearljam</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/pearljam</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/smashingpumpkins</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/smashingpumpkins</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/hiphop</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/hiphop</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/music</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/music</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/rush</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/rush</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/opera</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/opera</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/rockband</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/rockband</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/italianopera</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/italianopera</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/bossanova</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/bossanova</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/umphreysmcgee</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/umphreysmcgee</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/frenchopera</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/frenchopera</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/kpop</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/kpop</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/prince</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/prince</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/phish</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/provider/phish</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/musicfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/musicfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/musicfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/musicfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/music-data-provider/io/github/serpro69/kfaker/music/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/basketball</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/basketball</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/mountaineering</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/mountaineering</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/esport</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/esport</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/worldcup</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/worldcup</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/crossfit</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/crossfit</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/chess</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/chess</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/volleyball</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/volleyball</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/sport</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/sport</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/team</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/team</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/football</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/provider/football</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/sportsfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/sportsfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/sportsfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/sportsfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/sports-data-provider/io/github/serpro69/kfaker/sports/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/cryptocoin</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/cryptocoin</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/camera</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/camera</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/device</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/device</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/programminglanguage</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/programminglanguage</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/space</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/space</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/appliance</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/appliance</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/app</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/app</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/hacker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/hacker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/electricalcomponents</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/electricalcomponents</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/computer</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/computer</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/vehicle</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/vehicle</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/computeros</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/computeros</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/drone</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/provider/drone</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/techfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/techfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/techfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/techfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/tech-data-provider/io/github/serpro69/kfaker/tech/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/iatacode</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/iatacode</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/europeanunion</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/europeanunion</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/unitedstates</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/unitedstates</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationgermany</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationgermany</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/airport</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/airport</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/compass</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/compass</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationspain</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationspain</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationunitedkingdom</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationunitedkingdom</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/nation</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/nation</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstation</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstation</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/mountain</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/mountain</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationunitedstates</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/trainstationunitedstates</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/australia</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/provider/australia</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/faker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/faker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/travelfaker</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/travelfaker</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/travelfaker/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/travel-data-provider/io/github/serpro69/kfaker/travel/travelfaker/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/blns</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/blns</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/blns/builder</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/blns/builder</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/category</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/blns-extension/io/github/serpro69/kfaker/blns/category</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://serpro69.github.io/kotlin-faker/kotlindoc/kotest-property-extension/io/github/serpro69/kfaker/kotest</loc>
+        <loc>https://serpro69.github.io/kotlin-faker/old/kotlindoc/kotest-property-extension/io/github/serpro69/kfaker/kotest</loc>
         <lastmod>2025-07-25</lastmod>
         <priority>0.5</priority>
     </url>
