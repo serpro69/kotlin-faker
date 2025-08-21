@@ -47,9 +47,10 @@ $content =~ s{
     my $snippet_name = $1;
     # Use the file's basename to construct the new include path.
     "??? example \"dictionary file\"\n" .
-    "    ```yaml\n" .
-    "    --8<-- \"core/src/main/resources/locales/en/$file_basename.yml:$snippet_name\"\n" .
-    "    ```"
+    "    === \"yaml :simple-yaml:\"\n" .
+    "        ```yaml\n" .
+    "        --8<-- \"core/src/main/resources/locales/en/$file_basename.yml:$snippet_name\"\n" .
+    "        ```"
 }msxge;
 
 # Transform the "Available Functions" block.
@@ -68,7 +69,7 @@ $content =~ s{
     my $code = $2;
     $code =~ s/^\s+|\s+$//g; # Trim leading/trailing whitespace.
     $code =~ s/^/    /mg;     # Indent each line of the code.
-    "???+ example \"available functions\"\n" .
+    "=== \"kotlin :material-language-kotlin:\"\n" .
     "    ```$lang\n" .
     "$code\n" .
     "    ```"
