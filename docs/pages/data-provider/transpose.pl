@@ -19,9 +19,10 @@ my $content = do {
 };
 
 # 4. Extract the provider name from the content for use in the title.
-my ($provider_name) = $content =~ /`Faker\(\)\.([a-z_]+)`/;
+my ($provider_name) = $content =~ /`Faker\(\)\.([a-zA-Z_]+)`/;
 die "Could not find a provider name like 'Faker().provider' in '$filepath'" unless $provider_name;
-my $title = ucfirst($provider_name);
+#my $title = ucfirst($provider_name);
+my $title = $provider_name;
 
 # --- Begin Transformations ---
 
