@@ -1,5 +1,5 @@
 ---
-title: no
+title: 'no'
 ---
 
 ```yaml

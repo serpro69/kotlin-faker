@@ -20,3 +20,5 @@ gradle/gradle-daemon-jvm.properties
 
 # macos
 **/.DS_Store
+
+__pycache__/

@@ -17,6 +17,7 @@ plugins:
       always_show_hint: true
   - include_dir_to_nav
   - meta
+  - macros
 
 watch:
   - ./material

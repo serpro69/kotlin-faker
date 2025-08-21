@@ -39,18 +39,16 @@
 </h1>
 
 <!-- disable on localhost for faster reloads -->
-{% if not '127.0.0.1' in config.site_url %}
 {{ page.content }}
-{% endif %}
 
 <br>
 
 <div>
   <button
     type="button"
-    onclick="location.href='{{ page.meta.base_uri }}wiki/available-locales'"
+    onclick="location.href='{{ page.meta.base_uri }}wiki/data-providers'"
     class="twemoji md-back md-icon">
-    {% include ".icons/material/arrow-left.svg" %} Back to locales list
+    {% include ".icons/material/arrow-left.svg" %} Back to generators list
   </button>
 </div>
 
