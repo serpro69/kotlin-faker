@@ -1,4 +1,7 @@
 *.gradle/
 .idea/
+*.kotlin/
+build/
+site/
 
 .env
