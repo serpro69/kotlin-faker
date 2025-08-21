@@ -1,15 +1,8 @@
 ---
+icon: material/hand-extended
 ---
 
-# Big List of Naughty Strings Extension
-
-## TOC
-
-- [About](#about)
-- [Usage](#usage)
-  - [Installation](#installation)
-  - [Generate Arb Extensions](#generate-arb-extensions)
-  - [Random Class Instance ARBs](#random-class-instance-arb)
+# :material-hand-extended: Big List of Naughty Strings Extension
 
 ## About
 
@@ -28,26 +21,13 @@ Kotlin-faker `blns` artifact provides convenience functions for returning string
 - ① add the core `kotlin-faker` dependency to the test classpath
 - ② then add the dependency for the `kotlin-faker-blns` extension
 
-
-
-=== "kotlin :material-language-kotlin:"
-
-
-```kotlin
-dependencies {
-  testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion") // ①
-  testImplementation("io.github.serpro69:kotlin-faker-blns:$fakerVersion") // ②
-}
-```
-
-
-
-
-
-
-
-
-<br>
+=== "gradle :simple-gradle:"
+    ```kotlin
+    dependencies {
+      testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion") // ①
+      testImplementation("io.github.serpro69:kotlin-faker-blns:$fakerVersion") // ②
+    }
+    ```
 
 ### Using the Big List of Naughty Strings
 
@@ -65,43 +45,30 @@ For example, using [JUnit5 Parameterized Testing](https://junit.org/junit5/docs/
 - ⑥ Test your inputs
 - Profit 💸
 
-
-
 === "kotlin :material-language-kotlin:"
+    ```kotlin
+    class Test {
+      @ParameterizedTest
+      @MethodSource("allStrings") // ⑥
+      fun `test input with a naughty string`(s: String) {
+        inputField.sendKeys(s) // ⑥
+      }
 
-
-```kotlin
-class Test {
-  @ParameterizedTest
-  @MethodSource("allStrings") // ⑥
-  fun `test input with a naughty string`(s: String) {
-    inputField.sendKeys(s) // ⑥
-  }
-
-  companion object {
-    private val blns = blns { /*faker configuration*/ } // ① 
-    @JvmStatic private fun allStrings() = blns.all.stream() // ②
-    @JvmStatic private fun allBase64 () = blns.allBase64.stream() // ②
-    @JvmStatic private fun sublist() = blns.sublist(10).stream() // ③
-    @JvmStatic private fun sublistBase64() = blns.sublist(10, base64 = true).stream() // ③
-    val randomString: String get() = blns.random() // ④
-    val randomBase64String: String get() = blns.random(base64 = true) // ④
-    val emojiStrings = blns.get(Category.EMOJI) // ⑤
-    val emojiAndKaomojiStrings = blns.get(Category.EMOJI, Category.KAOMOJI) // ⑤
-    val basicCategories = blns.get(Category.RESERVED, Category.NUMERIC, Category.SPECIAL) // ⑤
-  }
-}
-```
-
-
-
-
-
-
-
-
-<br>
+      companion object {
+        private val blns = blns { /*faker configuration*/ } // ① 
+        @JvmStatic private fun allStrings() = blns.all.stream() // ②
+        @JvmStatic private fun allBase64 () = blns.allBase64.stream() // ②
+        @JvmStatic private fun sublist() = blns.sublist(10).stream() // ③
+        @JvmStatic private fun sublistBase64() = blns.sublist(10, base64 = true).stream() // ③
+        val randomString: String get() = blns.random() // ④
+        val randomBase64String: String get() = blns.random(base64 = true) // ④
+        val emojiStrings = blns.get(Category.EMOJI) // ⑤
+        val emojiAndKaomojiStrings = blns.get(Category.EMOJI, Category.KAOMOJI) // ⑤
+        val basicCategories = blns.get(Category.RESERVED, Category.NUMERIC, Category.SPECIAL) // ⑤
+      }
+    }
+    ```
 
 ## Credits
 
-The input for this extension is maintained by [github.com/minimaxir](https://github.com/minimaxir) at https://github.com/minimaxir/big-list-of-naughty-strings.
+The input for this extension is maintained by [minimaxir](https://github.com/minimaxir) at [minimaxir/big-list-of-naughty-strings](https://github.com/minimaxir/big-list-of-naughty-strings).

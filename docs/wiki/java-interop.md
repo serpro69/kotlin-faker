@@ -18,27 +18,29 @@ To somehow mitigate these limitations, kotlin faker comes with a `FunctionalUtil
 
 Consider the following example of creating and configuring a `Faker` instance with the DSL:
 
-```java
-Faker faker = faker(fromConsumer(f -> {
-    f.config(fromConsumer(config -> {
-        config.setRandomSeed(42L);
+=== "java :material-language-java:"
+    ```java
+    Faker faker = faker(fromConsumer(f -> {
+        f.config(fromConsumer(config -> {
+            config.setRandomSeed(42L);
+        }));
     }));
-}));
-```
+    ```
 
 This of course doesn't look as good as Kotlin, but that's Java for you with its ugly lambdas.
 
 However, if `builder` parameters are not called with the help of `fromConsumer` method, then explicit returns should be specified:
 
-```java
-Faker faker = faker(f -> {
-    f.config(config -> {
-        config.setRandomSeed(42L);
+=== "java :material-language-java:"
+    ```java
+    Faker faker = faker(f -> {
+        f.config(config -> {
+            config.setRandomSeed(42L);
+            return Unit.INSTANCE;
+        });
         return Unit.INSTANCE;
     });
-    return Unit.INSTANCE;
-});
-```
+    ```
 
 Fewer parentheses, but an explicit `return` statement for each lambda - the choice, as they say, is yours.
 

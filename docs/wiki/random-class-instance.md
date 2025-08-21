@@ -70,12 +70,13 @@ Some, or all, of the constructor params can be instantiated with values followin
 
 So for each instance of `Baz` the following will be true:
 
-```kotlin
-baz.id == 0
-baz.user == "user_X3a8s813dcb"
-baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
-baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
-```
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    baz.id == 0
+    baz.user == "user_X3a8s813dcb"
+    baz.uuid == UUID.fromString("00000000-0000-0000-0000-000000000000")
+    baz.relatedUuid == UUID.fromString("11111111-1111-1111-1111-111111111111")
+    ```
 
 This example itself does not make that much sense, since we're using "static" values, but we could also do something like:
 
@@ -149,10 +150,11 @@ It may be desirable to define how elements of a `Collection` (currently supports
 
 So for each instance of `Baz` the following will be true:
 
-```kotlin
-baz.list.all { it == "list" }
-baz.set.all {it == "string" }
-```
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    baz.list.all { it == "list" }
+    baz.set.all {it == "string" }
+    ```
 
 This example kind of makes little sense, since we're using "static" values, so it's just for example purposes.
 

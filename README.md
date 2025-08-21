@@ -67,6 +67,13 @@ In fact, kotlin-faker is so good at generating fake data, it almost fooled us in
 
 ## Installation
 
+**Full documentation, including [installation instructions](https://serpro69.github.io/kotlin-faker/dev/wiki/getting-started/#installing), for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).**
+
+> [!WARNING]
+> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
+>
+> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
+
 Latest releases are always available on maven central.
 
 ### Install with Gradle
@@ -126,15 +133,6 @@ Extra fakers covering a wide range of domains are available as separate dependen
 Faker provides extensions for some third-party testing libraries. See [extension](extension) submodules in this repo for more details about each extension.
 
 ## Usage
-
-Full usage documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
-
-_NB! The documentation website is currently not versioned and always reflects `master` rather than the last stable version._
-
-> [!WARNING]
-> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
->
-> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
 
 ### Generating data
 

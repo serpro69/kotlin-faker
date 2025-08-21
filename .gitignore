@@ -9,6 +9,7 @@
 out/
 build/
 logs/
+site/
 !gradle/wrapper/gradle-wrapper.jar
 !docs/gradle/wrapper/gradle-wrapper.jar
 # kotlin-language-server

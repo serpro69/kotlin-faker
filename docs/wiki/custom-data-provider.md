@@ -38,22 +38,23 @@ First, we need to create a json file that will serve as your "data dictionary", 
 
 Then, we need to implement the `YamlFakeDataProvider` class:
 
-```kotlin
-class FooBar(fakerService: FakerService) : YamlFakeDataProvider<FooBar>(fakerService) {
-    override val yamlCategory: YamlCategory = YamlCategory.CUSTOM // ❶
-    override val secondaryCategory: Category = Category.ofName("FOOBAR") // ❷
-    override val localUniqueDataProvider = LocalUniqueDataProvider<FooBar>()
-    override val unique: FooBar by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    class FooBar(fakerService: FakerService) : YamlFakeDataProvider<FooBar>(fakerService) {
+        override val yamlCategory: YamlCategory = YamlCategory.CUSTOM // ❶
+        override val secondaryCategory: Category = Category.ofName("FOOBAR") // ❷
+        override val localUniqueDataProvider = LocalUniqueDataProvider<FooBar>()
+        override val unique: FooBar by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
-    init {
-        fakerService.load(yamlCategory, secondaryCategory) // ❸
+        init {
+            fakerService.load(yamlCategory, secondaryCategory) // ❸
+        }
+
+        fun foo(): String = resolve(secondaryCategory, "foo")
+        fun bar(): String = resolve(secondaryCategory, "bar")
+        fun baz(): String = with(fakerService) { resolve(secondaryCategory, "baz").numerify().letterify() } // ❹
     }
-
-    fun foo(): String = resolve(secondaryCategory, "foo")
-    fun bar(): String = resolve(secondaryCategory, "bar")
-    fun baz(): String = with(fakerService) { resolve(secondaryCategory, "baz").numerify().letterify() } // ❹
-}
-```
+    ```
 
 ❶ The `yamlCategory` should generally use `YamlCategory.CUSTOM` enum class. Although you could also use one of the existing categories if you like, one should be careful not to override existing functionality in a given data provider.
 <br>
@@ -69,18 +70,20 @@ class FooBar(fakerService: FakerService) : YamlFakeDataProvider<FooBar>(fakerSer
 
 Last, we need to add a very simple implementation of the `AbstractFaker`:
 
-```kotlin
-class CustomFaker(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    class CustomFaker(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
 
-    val fooBar by lazy { FooBar(fakerService) }
-}
-```
+        val fooBar by lazy { FooBar(fakerService) }
+    }
+    ```
 
 From there we can use our `CustomFaker` just like any other:
 
-```kotlin
-val testFaker = CustomFaker()
-println(testFaker.fooBar.foo()) // baz
-println(testFaker.fooBar.bar()) // foobar
-println(testFaker.fooBar.baz()) // ABC 123
-```
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    val testFaker = CustomFaker()
+    println(testFaker.fooBar.foo()) // baz
+    println(testFaker.fooBar.bar()) // foobar
+    println(testFaker.fooBar.baz()) // ABC 123
+    ```
