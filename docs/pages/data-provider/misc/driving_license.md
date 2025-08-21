@@ -1,0 +1,19 @@
+---
+title: drivingLicense
+---
+
+## `Faker().drivingLicense`
+
+??? example "dictionary file"
+    === "yaml :simple-yaml:"
+        ```yaml
+        --8<-- "core/src/main/resources/locales/en/driving_license.yml:driving_license_provider_dict"
+        ```
+
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    // `#` represents a random digit
+    // `?` represents a random letter
+    Faker().drivingLicense.license() // => ######
+    Faker().drivingLicense.licenseByState("district_of_columbia") // => #######
+    ```

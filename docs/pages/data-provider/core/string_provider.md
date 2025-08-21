@@ -1,0 +1,18 @@
+---
+title: string
+---
+
+## `Faker().string`
+
+Provides functionality for generating strings from templates.
+
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    Faker().string.numerify("foo###bar") // foo123bar
+
+    Faker().string.letterify("foo???bar", true) // fooXYZbar
+
+    Faker().string.bothify("foo?##bar", false) // foox42bar
+
+    Faker().string.regexify("""\d{2}\w""") // 42a
+    ```

@@ -1,0 +1,18 @@
+---
+title: dragonBall
+---
+
+## `Faker().dragonBall`
+
+??? example "dictionary file"
+    === "yaml :simple-yaml:"
+        ```yaml
+        --8<-- "core/src/main/resources/locales/en/dragon_ball.yml:dragon_ball_provider_dict"
+        ```
+
+=== "kotlin :material-language-kotlin:"
+    ```kotlin
+    Faker().dragonBall.characters() // => Goku
+    Faker().dragonBall.races() // => Android
+    Faker().dragonBall.planets() // => Alpha
+    ```
