@@ -4,32 +4,33 @@
 [discrete]
 === Breaking Change
 
-* https://github.com/serpro69/kotlin-faker/pull/274[#274] (:core) Add support for language variants extending their base locale
-* https://github.com/serpro69/kotlin-faker/pull/259[#259] (:core) Replace java.util.Random with kotlin.random.Random
-* https://github.com/serpro69/kotlin-faker/pull/246[#246] (:extension) Remove KSP from kotest-property extension
-* https://github.com/serpro69/kotlin-faker/pull/219[#219] (:core) Extract faker's providers into several submodules of their own
+* https://github.com/serpro69/kotlin-faker/pull/274[#274] (core) Add support for language variants extending their base locale
+* https://github.com/serpro69/kotlin-faker/pull/259[#259] (core) Replace java.util.Random with kotlin.random.Random
+* https://github.com/serpro69/kotlin-faker/pull/246[#246] (extension) Remove KSP from kotest-property extension
+* https://github.com/serpro69/kotlin-faker/pull/219[#219] (core) Extract faker's providers into several submodules of their own
 
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/issues/131[#131] (:core) Add support for using `lang` dict when `lang-COUNTRY` dict is missing (via #274)
-* https://github.com/serpro69/kotlin-faker/pull/268[#268] (:core) Add randomClassInstance top-level function
-* https://github.com/serpro69/kotlin-faker/pull/267[#267] (:core) Add support for sealed classes in randomClassInstance
-* https://github.com/serpro69/kotlin-faker/pull/266[#266] (:core) Add support for internal constructors in randomClassInstance
-* https://github.com/serpro69/kotlin-faker/pull/260[#260] (:core) Add config strategy for default values of RandomClass instances
-* https://github.com/serpro69/kotlin-faker/pull/258[#258] (:core) Add RandomClassProvider::randomClassInstance fun with KClass input
-* https://github.com/serpro69/kotlin-faker/pull/254[#254] (:faker) Add Pictures faker
-* https://github.com/serpro69/kotlin-faker/pull/245[#245] (:extension) Add extension for testing with BLNS
-* https://github.com/serpro69/kotlin-faker/pull/243[#243] (:core) Add collection element and map k/v type gen for random class instance
-* https://github.com/serpro69/kotlin-faker/pull/234[#234] (:extension) Add extension module for kotest property testing
-* https://github.com/serpro69/kotlin-faker/pull/232[#232] (:core) Add support for alternative primary key when resolving values
-* https://github.com/serpro69/kotlin-faker/pull/227[#227] Add BOM to manage faker versions
-* https://github.com/serpro69/kotlin-faker/issues/222[#222] (:faker:databases) Create new Databases faker module
-* https://github.com/serpro69/kotlin-faker/issues/218[#218] (:core) Allow creating custom fakers / generators
+* https://github.com/serpro69/kotlin-faker/issues/131[#131] (core) Add support for using `lang` dict when `lang-COUNTRY` dict is missing (via #274)
+* https://github.com/serpro69/kotlin-faker/pull/268[#268] (core) Add randomClassInstance top-level function
+* https://github.com/serpro69/kotlin-faker/pull/267[#267] (core) Add support for sealed classes in randomClassInstance
+* https://github.com/serpro69/kotlin-faker/pull/266[#266] (core) Add support for internal constructors in randomClassInstance
+* https://github.com/serpro69/kotlin-faker/pull/260[#260] (core) Add config strategy for default values of RandomClass instances
+* https://github.com/serpro69/kotlin-faker/pull/258[#258] (core) Add RandomClassProvider::randomClassInstance fun with KClass input
+* https://github.com/serpro69/kotlin-faker/pull/254[#254] (faker) Add Pictures faker
+* https://github.com/serpro69/kotlin-faker/pull/245[#245] (extension) Add extension for testing with BLNS
+* https://github.com/serpro69/kotlin-faker/pull/243[#243] (core) Add collection element and map k/v type gen for random class instance
+* https://github.com/serpro69/kotlin-faker/pull/234[#234] (extension) Add extension module for kotest property testing
+* https://github.com/serpro69/kotlin-faker/pull/232[#232] (core) Add support for alternative primary key when resolving values
+* https://github.com/serpro69/kotlin-faker/pull/227[#227] (bom) Add BOM to manage faker versions
+* https://github.com/serpro69/kotlin-faker/issues/222[#222] (faker/databases) Create new Databases faker module
+* https://github.com/serpro69/kotlin-faker/issues/218[#218] (core) Allow creating custom fakers / generators
 
 [discrete]
 === Changed
 
+* https://github.com/serpro69/kotlin-faker/issues/273[#273] (docs) Migrate documentation to mkdocs
 * https://github.com/serpro69/kotlin-faker/issues/249[#249] Publish all artifacts with the same version
 
 ++++
@@ -113,22 +114,22 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 </details>
 ++++
 
-* https://github.com/serpro69/kotlin-faker/pull/252[#252] (:core) Get rid of reflection in `FakerService`
+* https://github.com/serpro69/kotlin-faker/pull/252[#252] (core) Get rid of reflection in `FakerService`
 
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/pull/240[#240] (:core) Fix NoSuchElementException in `uk.company.name`
+* https://github.com/serpro69/kotlin-faker/pull/240[#240] (core) Fix NoSuchElementException in `uk.company.name`
 ** Also fixes `uk.name.first_name` and `uk.name.last_name` to return both male and female names.
-* https://github.com/serpro69/kotlin-faker/issues/207[#207] (:core) Regexify generates invalid value
-* https://github.com/serpro69/kotlin-faker/issues/208[#208] (:core) Regexify fails with StackOverflowError
+* https://github.com/serpro69/kotlin-faker/issues/207[#207] (core) Regexify generates invalid value
+* https://github.com/serpro69/kotlin-faker/issues/208[#208] (core) Regexify fails with StackOverflowError
 
 [discrete]
 === Other
 
 * https://github.com/serpro69/kotlin-faker/pull/248[#248] Update kotlin to 2.x, update and cleanup other dependencies
 * https://github.com/serpro69/kotlin-faker/issues/247[#247] Remove most logic from root build.gradle file
-* (:docs) Convert `docs` submodule to a standalone gradle project
+* (docs) Convert `docs` submodule to a standalone gradle project
 
 ====
 
@@ -138,24 +139,24 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Breaking Change
 
-* https://github.com/serpro69/kotlin-faker/pull/214[#214] (:core) Update `Faker#internet#domain` function which affects returned values
-* https://github.com/serpro69/kotlin-faker/pull/213[#213] (:core) Add support for unique data generation to `Faker#random`
+* https://github.com/serpro69/kotlin-faker/pull/214[#214] (core) Update `Faker#internet#domain` function which affects returned values
+* https://github.com/serpro69/kotlin-faker/pull/213[#213] (core) Add support for unique data generation to `Faker#random`
 
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/215[#215] (:core) Add IPv4, IPv6 and MAC address generation to `Internet`
+* https://github.com/serpro69/kotlin-faker/pull/215[#215] (core) Add IPv4, IPv6 and MAC address generation to `Internet`
 ** `iPv4Address()`
 ** `publicIPv4Address()`
 ** `privateIPv4Address()`
 ** `iPv6Address()`
 ** `macAddress()`
-* https://github.com/serpro69/kotlin-faker/pull/214[#214] (:core) Update dictionary files, including:
+* https://github.com/serpro69/kotlin-faker/pull/214[#214] (core) Update dictionary files, including:
 ** Data and functions in existing data providers
 ** `Faker().internet.domain()` now takes optional argument and produces a "safe-domain" (ending with `.example` or `.test`)
 ** Updates to existing localized dictionaries + one new locale
-* https://github.com/serpro69/kotlin-faker/issues/208[#208] (:core) Allow `StringProvider#regexify` to take Regex as input
-* https://github.com/serpro69/kotlin-faker/pull/202[#202] (:core) Allow `randomClassInstance` to directly use predefined generators
+* https://github.com/serpro69/kotlin-faker/issues/208[#208] (core) Allow `StringProvider#regexify` to take Regex as input
+* https://github.com/serpro69/kotlin-faker/pull/202[#202] (core) Allow `randomClassInstance` to directly use predefined generators
 
 ++++
 <details><summary><h3>New Data Providers</h3></summary>
@@ -181,8 +182,8 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/pull/205[#205] (:core) Fix `Person.birthDate` range error during leap year
-* https://github.com/serpro69/kotlin-faker/issues/204[#204] (:core) Fix RandomClassProvider handling "constructor-less" types in collections
+* https://github.com/serpro69/kotlin-faker/pull/205[#205] (core) Fix `Person.birthDate` range error during leap year
+* https://github.com/serpro69/kotlin-faker/issues/204[#204] (core) Fix RandomClassProvider handling "constructor-less" types in collections
 
 ====
 
@@ -192,7 +193,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/195[#195] (:core) Update dictionary files, including:
+* https://github.com/serpro69/kotlin-faker/pull/195[#195] (core) Update dictionary files, including:
 ** Data and functions in existing data providers, including new functions:
 *** `Faker().company.department()`
 *** `Faker().dnd.name...`
@@ -200,7 +201,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 *** `Faker().southPark.episodes()`
 ** Updates to existing localized dictionaries
 * https://github.com/serpro69/kotlin-faker/pull/197[#197] (:cli-bot) Render sub-providers functions in cli output
-* https://github.com/serpro69/kotlin-faker/pull/200[#200] (:core) Add new data providers
+* https://github.com/serpro69/kotlin-faker/pull/200[#200] (core) Add new data providers
 
 ++++
 <details><summary><h3>New Data Providers</h3></summary>
@@ -223,8 +224,8 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/pull/188[#188] (:core) Fix postcode for en-GB locale
-* https://github.com/serpro69/kotlin-faker/pull/193[#193] (:core) Fix localized postcodes with regex patterns
+* https://github.com/serpro69/kotlin-faker/pull/188[#188] (core) Fix postcode for en-GB locale
+* https://github.com/serpro69/kotlin-faker/pull/193[#193] (core) Fix localized postcodes with regex patterns
 
 ====
 
@@ -234,8 +235,8 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/179[#179] (:core) Add parameter info context to user defined generators
-* https://github.com/serpro69/kotlin-faker/pull/176[#176], https://github.com/serpro69/kotlin-faker/pull/182[#182], https://github.com/serpro69/kotlin-faker/pull/183[#183], (:core) Update dictionary files, including:
+* https://github.com/serpro69/kotlin-faker/pull/179[#179] (core) Add parameter info context to user defined generators
+* https://github.com/serpro69/kotlin-faker/pull/176[#176], https://github.com/serpro69/kotlin-faker/pull/182[#182], https://github.com/serpro69/kotlin-faker/pull/183[#183], (core) Update dictionary files, including:
 ** Data and functions in existing data providers
 *** `Faker().food.allergens()`
 ** Updates to existing localized dictionaries
@@ -257,7 +258,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Other
 
-* https://github.com/serpro69/kotlin-faker/pull/181[#181] (:core) Add context to exception when `randomClassInstance` fails
+* https://github.com/serpro69/kotlin-faker/pull/181[#181] (core) Add context to exception when `randomClassInstance` fails
 
 ====
 
@@ -298,7 +299,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 * https://github.com/serpro69/kotlin-faker/pull/134[#134] Overload `RandomService#randomSublist` and `RandomService#randomSubset` with `sizeRange` parameter
 * https://github.com/serpro69/kotlin-faker/pull/144[#144] Add index and punctuation chars support to `RandomService#randomString`
 * https://github.com/serpro69/kotlin-faker/pull/154[#154] New `CryptographyProvider` for generating random sha sums
-* https://github.com/serpro69/kotlin-faker/pull/155[#155] (:core) Update dictionary files, including:
+* https://github.com/serpro69/kotlin-faker/pull/155[#155] (core) Update dictionary files, including:
 ** Data and functions in existing data providers
 ** Updates to existing localized dictionaries
 
@@ -343,8 +344,8 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/122[#122] (:core) Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
-* https://github.com/serpro69/kotlin-faker/pull/129[#129] (:core) Update dictionary files, including:
+* https://github.com/serpro69/kotlin-faker/pull/122[#122] (core) Add (unique) `numerify`, `letterify`, `bothify` and `regexify` functions through `StringProvider`
+* https://github.com/serpro69/kotlin-faker/pull/129[#129] (core) Update dictionary files, including:
 * New data and functions in existing data providers
 * Updates to existing localized dictionaries
 ** Especially notable for `fr` and `ja` locales as they now, similarly to `en` locale, contain multiple dict files per locale
@@ -397,7 +398,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/issues/125[#125] (:core) Generating postcode with locale "nl" gives back expression rather than result
+* https://github.com/serpro69/kotlin-faker/issues/125[#125] (core) Generating postcode with locale "nl" gives back expression rather than result
 ====
 
 .[1.10.0] - 2022-02-20
@@ -406,16 +407,16 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/115[#115] (:core) Add Crossfit® provider to Faker
-* https://github.com/serpro69/kotlin-faker/pull/117[#117] (:core) Add namedParameterGenerator for RandomProvider#randomClassInstance
-* https://github.com/serpro69/kotlin-faker/pull/118[#118] (:core) Add support for chained parameter expressions in yml dicts
-* https://github.com/serpro69/kotlin-faker/pull/55[#55] (:core) Add missing 'Educator' functionality
-* https://github.com/serpro69/kotlin-faker/pull/53[#53] (:core) Implement 'Finance' functions
+* https://github.com/serpro69/kotlin-faker/pull/115[#115] (core) Add Crossfit® provider to Faker
+* https://github.com/serpro69/kotlin-faker/pull/117[#117] (core) Add namedParameterGenerator for RandomProvider#randomClassInstance
+* https://github.com/serpro69/kotlin-faker/pull/118[#118] (core) Add support for chained parameter expressions in yml dicts
+* https://github.com/serpro69/kotlin-faker/pull/55[#55] (core) Add missing 'Educator' functionality
+* https://github.com/serpro69/kotlin-faker/pull/53[#53] (core) Implement 'Finance' functions
 
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/pull/54[#54] (:core) Incorrect return values for `Vehicle#licence_plate(_by_state)`
+* https://github.com/serpro69/kotlin-faker/pull/54[#54] (core) Incorrect return values for `Vehicle#licence_plate(_by_state)`
 ====
 
 .[1.9.0] - 2021-11-19
@@ -424,22 +425,22 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/issues/103[#103] (:core) Add support for `Collection` types in `RandomProvider#randomClassInstance`
-* https://github.com/serpro69/kotlin-faker/issues/96[#96] (:core) Add `randomSubset` and `randomSublist` to `RandomService`
-* https://github.com/serpro69/kotlin-faker/issues/92[#92] (:core) Add `randomString` function to `RandomService`
-* https://github.com/serpro69/kotlin-faker/issues/86[#86] (:core) Generate birth-date based on the age
+* https://github.com/serpro69/kotlin-faker/issues/103[#103] (core) Add support for `Collection` types in `RandomProvider#randomClassInstance`
+* https://github.com/serpro69/kotlin-faker/issues/96[#96] (core) Add `randomSubset` and `randomSublist` to `RandomService`
+* https://github.com/serpro69/kotlin-faker/issues/92[#92] (core) Add `randomString` function to `RandomService`
+* https://github.com/serpro69/kotlin-faker/issues/86[#86] (core) Generate birth-date based on the age
 
 [discrete]
 === Changed
 
 * https://github.com/serpro69/kotlin-faker/issues/108[#108] Update kotlin to 1.6.0
-* https://github.com/serpro69/kotlin-faker/issues/100[#100] (:core) Add deprecation warning for `RandomService#nextString` since it's going to be replaced with `RandomService#randomString`
-* https://github.com/serpro69/kotlin-faker/issues/97[#97] (:core) Change `RandomService#nextString` to generate strings only within given locale
+* https://github.com/serpro69/kotlin-faker/issues/100[#100] (core) Add deprecation warning for `RandomService#nextString` since it's going to be replaced with `RandomService#randomString`
+* https://github.com/serpro69/kotlin-faker/issues/97[#97] (core) Change `RandomService#nextString` to generate strings only within given locale
 
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/issues/104[#104] (:core) `RandomProvider#randomClassInstance` : 'No suitable constructor found' for primitive classes
+* https://github.com/serpro69/kotlin-faker/issues/104[#104] (core) `RandomProvider#randomClassInstance` : 'No suitable constructor found' for primitive classes
 ====
 
 .[1.8.0] - 2021-10-03
@@ -448,12 +449,12 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/issues/67[#67] (:core) Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
-* https://github.com/serpro69/kotlin-faker/pull/77[#77] (:core) Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
-* https://github.com/serpro69/kotlin-faker/pull/69[#69] (:core) Passing `seed` directly to `FakerConfig` instead of through `java.util.Random` instance
-* https://github.com/serpro69/kotlin-faker/pull/71[#71] (:core) DSL for creating and configuring `Faker`
-* https://github.com/serpro69/kotlin-faker/pull/78[#78] (:core) Support sealed classes in `RandomProvider#randomClassInstance` fun
-* https://github.com/serpro69/kotlin-faker/pull/88[#88] (:core) Postpone initialization of FakerConfig through the Builder
+* https://github.com/serpro69/kotlin-faker/issues/67[#67] (core) Access to `RandomService` through `Faker` for generating random `Int`, `Double`, `Float`, etc.
+* https://github.com/serpro69/kotlin-faker/pull/77[#77] (core) Extra functionality to `RandomService` - `nextEnum()`, `nextUUID()`, `nextLong(bound)` functions.
+* https://github.com/serpro69/kotlin-faker/pull/69[#69] (core) Passing `seed` directly to `FakerConfig` instead of through `java.util.Random` instance
+* https://github.com/serpro69/kotlin-faker/pull/71[#71] (core) DSL for creating and configuring `Faker`
+* https://github.com/serpro69/kotlin-faker/pull/78[#78] (core) Support sealed classes in `RandomProvider#randomClassInstance` fun
+* https://github.com/serpro69/kotlin-faker/pull/88[#88] (core) Postpone initialization of FakerConfig through the Builder
 
 [discrete]
 === Changed
@@ -463,13 +464,13 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/issues/65[#65] (:core) Could not initialize class `io.github.serpro69.kfaker.Mapper` with SpringBoot `2.4.x`
-* https://github.com/serpro69/kotlin-faker/issues/60[#60] (:core) Move out of Bintray/Jcenter
-* https://github.com/serpro69/kotlin-faker/issues/79[#79] (:core) java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
-* https://github.com/serpro69/kotlin-faker/issues/81[#81] (:core) `RandomProvider#randomClassInstance` fails for object types
-* https://github.com/serpro69/kotlin-faker/pull/90[#90] (:core) Android `java.lang.NoClassDefFoundError: FakerService$$ExternalSyntheticLambda1`
-* https://github.com/serpro69/kotlin-faker/pull/87[#87] (:core) Parameter 'city_root' not found in 'address' category
-* https://github.com/serpro69/kotlin-faker/pull/89[#89] (:core) Parameter 'male_last_name' not found in 'name' category for "ru" locale
+* https://github.com/serpro69/kotlin-faker/issues/65[#65] (core) Could not initialize class `io.github.serpro69.kfaker.Mapper` with SpringBoot `2.4.x`
+* https://github.com/serpro69/kotlin-faker/issues/60[#60] (core) Move out of Bintray/Jcenter
+* https://github.com/serpro69/kotlin-faker/issues/79[#79] (core) java.lang.NoClassDefFoundError: org/yaml/snakeyaml/error/YAMLException
+* https://github.com/serpro69/kotlin-faker/issues/81[#81] (core) `RandomProvider#randomClassInstance` fails for object types
+* https://github.com/serpro69/kotlin-faker/pull/90[#90] (core) Android `java.lang.NoClassDefFoundError: FakerService$$ExternalSyntheticLambda1`
+* https://github.com/serpro69/kotlin-faker/pull/87[#87] (core) Parameter 'city_root' not found in 'address' category
+* https://github.com/serpro69/kotlin-faker/pull/89[#89] (core) Parameter 'male_last_name' not found in 'name' category for "ru" locale
 ====
 
 .[1.7.1] - 2021-04-28
@@ -478,7 +479,7 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/pull/45[#45] (:core) Parameter 'city_name' not found in 'address'
+* https://github.com/serpro69/kotlin-faker/pull/45[#45] (core) Parameter 'city_name' not found in 'address'
 ====
 
 .[1.7.0] - 2021-04-16
@@ -487,8 +488,8 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/59[#59] (:core) Random money amount
-* https://github.com/serpro69/kotlin-faker/pull/62[#62] (:core) Add nullable types to random provider type generator
+* https://github.com/serpro69/kotlin-faker/pull/59[#59] (core) Random money amount
+* https://github.com/serpro69/kotlin-faker/pull/62[#62] (core) Add nullable types to random provider type generator
 ====
 
 .[1.6.0] - 2020-12-30
@@ -497,23 +498,23 @@ Deleted tag 'ext-kotest-property-v2.0.0-rc.2' (was 64d5125e)
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/pull/44[#44] (:core) Add support for random instance configuration.
-* https://github.com/serpro69/kotlin-faker/issues/47[#47] (:core) Publish release candidates to bintray
-* https://github.com/serpro69/kotlin-faker/issues/49[#49] (:core) Unique values exclusions with wildcards
-* https://github.com/serpro69/kotlin-faker/issues/46[#46] (:core) Support deterministic constructor selection for randomClassInstance
+* https://github.com/serpro69/kotlin-faker/pull/44[#44] (core) Add support for random instance configuration.
+* https://github.com/serpro69/kotlin-faker/issues/47[#47] (core) Publish release candidates to bintray
+* https://github.com/serpro69/kotlin-faker/issues/49[#49] (core) Unique values exclusions with wildcards
+* https://github.com/serpro69/kotlin-faker/issues/46[#46] (core) Support deterministic constructor selection for randomClassInstance
 
 [discrete]
 === Fixed
 
-* https://github.com/serpro69/kotlin-faker/issues/26[#26] (:core) Parameter '4' not found in 'vehicle' category
-* https://github.com/serpro69/kotlin-faker/issues/48[#48] (:core) streetFighter#moves: class java.util.LinkedHashMap cannot be cast to class java.lang.String
-* https://github.com/serpro69/kotlin-faker/issues/50[#50] (:core) Horseman spelt wrong
-* https://github.com/serpro69/kotlin-faker/issues/56[#56] (:core) Values with single '?' char are not always letterified
+* https://github.com/serpro69/kotlin-faker/issues/26[#26] (core) Parameter '4' not found in 'vehicle' category
+* https://github.com/serpro69/kotlin-faker/issues/48[#48] (core) streetFighter#moves: class java.util.LinkedHashMap cannot be cast to class java.lang.String
+* https://github.com/serpro69/kotlin-faker/issues/50[#50] (core) Horseman spelt wrong
+* https://github.com/serpro69/kotlin-faker/issues/56[#56] (core) Values with single '?' char are not always letterified
 
 [discrete]
 === Changed
 
-* (:core) Configuration for generation of unique values.
+* (core) Configuration for generation of unique values.
 Old functionality is deprecated and will be removed in future releases.
 This relates to changes in [#49](https://github.com/serpro69/kotlin-faker/issues/49)
 ====
@@ -524,8 +525,8 @@ This relates to changes in [#49](https://github.com/serpro69/kotlin-faker/issues
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/issues/40[#40] (:core) Add enum support for `RandomProvider`
-* https://github.com/serpro69/kotlin-faker/issues/39[#39] (:core) Update dict files.
+* https://github.com/serpro69/kotlin-faker/issues/40[#40] (core) Add enum support for `RandomProvider`
+* https://github.com/serpro69/kotlin-faker/issues/39[#39] (core) Update dict files.
 * Including new functions in existing providers:
 * `aquaTeenHungerForce.quote()`
 * `dnd.cities()`
@@ -583,7 +584,7 @@ This relates to changes in [#49](https://github.com/serpro69/kotlin-faker/issues
 [discrete]
 === Added
 
-* https://github.com/serpro69/kotlin-faker/issues/34[#34] (:core) 8 new providers:
+* https://github.com/serpro69/kotlin-faker/issues/34[#34] (core) 8 new providers:
 * `warhammerFantasy`
 * `suits`
 * `show`
