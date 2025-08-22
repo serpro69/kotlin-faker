@@ -2,386 +2,1290 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://localhost:8000/1.6/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/about/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/ack/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/contrib/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/faker-comparisons/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/bible/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/book/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/cosmere/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/culture_series/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/dc_comics/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/dune/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/lovecraft/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/shakespeare/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/the_kingkiller_chronicle/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/books/tolkien/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/bank/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/barcode/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/beer/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/business/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/cannabis/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/code/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/coffee/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/commerce/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/company/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/construction/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/dessert/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/finance/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/food/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/house/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/industry_segments/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/invoice/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/marketing/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/restaurant/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/stripe/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/subscription/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/commerce/tea/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/address/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/color/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/crypto/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/currency/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/currency_symbol/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/file/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/gender/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/id_number/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/internet/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/measurement/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/money/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/name/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/person/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/phone_number/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/random/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/random_class/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/separator/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/source/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/core/string_provider/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/ancient/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/animal/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/bird/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/cat/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/dog/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/creatures/horse/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/database/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/mariadb/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/ms_sql_server/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/mysql/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/oracledb/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/databases/postgresql/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/edu/educator/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/edu/job/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/edu/science/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/edu/university/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/clash_of_clans/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/coin/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/control/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/dnd/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/dota/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/elder_scrolls/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/fallout/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/final_fantasy_xiv/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/game/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/half_life/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/heroes/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/heroes_of_the_storm/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/league_of_legends/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/minecraft/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/myst/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/overwatch/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/pokemon/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/sonic_the_hedgehog/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/street_fighter/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/super_mario/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/super_smash_bros/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/superhero/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/tarkov/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/touhou/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/warhammer_fantasy/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/witcher/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/world_of_warcraft/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/games/zelda/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/humor/chiquito/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/humor/chuck_norris/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/humor/funny_name/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/humor/jack_handey/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/humor/mitch_hedberg/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/conan/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/cowboy_bebop/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/doraemon/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/dragon_ball/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/fma_brotherhood/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/kamen_rider/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/naruto/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/one_piece/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/studio_ghibli/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/japmedia/sword_art_online/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/adjective/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/emotion/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/hipster/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/lorem/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/markdown/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/nato_phonetic_alphabet/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/quote/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/slack_emoji/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/lorem/verbs/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/artist/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/blood/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/demographic/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/driving_license/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/greek_philosophers/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/hobby/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/military/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/misc/relationship/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/avatar/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/back_to_the_future/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/departed/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/dumb_and_dumber/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/ghostbusters/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/hackers/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/harry_potter/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/hitchhikers_guide_to_the_galaxy/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/hobbit/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/how_to_train_your_dragon/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/lebowski/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/lord_of_the_rings/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/movie/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/princess_bride/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/rajnikanth/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/star_wars/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/the_room/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/tron/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/v_for_vendetta/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/movies/yoda/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/bossa_nova/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/grateful_dead/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/kpop/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/music/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/opera/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/pearl_jam/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/phish/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/prince/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/rock_band/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/rush/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/show/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/smashing_pumpkins/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/music/umphreys_mcgee/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/pictures/uifaces/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/basketball/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/chess/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/crossfit/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/esport/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/football/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/mountaineering/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/sport/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/team/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/volleyball/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/sports/world_cup/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/app/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/appliance/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/camera/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/computer/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/crypto_coin/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/device/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/drone/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/electrical_components/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/hacker/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/programming_language/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/space/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tech/vehicle/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/airport/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/australia/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/compass/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/mountain/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/nation/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/travel/train_station/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/aqua_teen_hunger_force/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/archer/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/big_bang_theory/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/bojack_horseman/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/breaking_bad/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/brooklyn_nine_nine/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/buffy/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/community/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/dr_who/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/family_guy/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/final_space/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/fresh_prince_of_bel_air/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/friends/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/futurama/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/game_of_thrones/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/hey_arnold/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/how_i_met_your_mother/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/michael_scott/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/new_girl/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/parks_and_rec/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/rick_and_morty/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/rupaul/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/seinfeld/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/silicon_valley/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/simpsons/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/south_park/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/spongebob/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/star_trek/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/stargate/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/stranger_things/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/suits/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/supernatural/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/the_expanse/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/the_it_crowd/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/the_office/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/the_thick_of_it/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/twin_peaks/</loc>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>http://localhost:8000/1.6/pages/data-provider/tvshows/venture_bros/</loc>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/extensions/blns-extension/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/extensions/kotest-property-extension/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/books/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/commerce/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/creatures/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/databases/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/edu/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/games/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/humor/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/japmedia/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/lorem/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/misc/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/movies/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/music/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/sports/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/tech/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/travel/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/fakers/tvshows/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ar/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/bg/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ca-CAT/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ca/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/da-DK/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/de-AT/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/de-CH/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/de/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ee/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-AU/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-BORK/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-CA/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-GB/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-IND/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-MS/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-NEP/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-NG/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-NZ/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-PAK/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-SG/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-TH/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-UG/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-US/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-ZA/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en-au-ocker/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/en/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/es-AR/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/es-MX/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/es/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/fa/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/fi-FI/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/fr-CA/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/fr-CH/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/fr/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/he/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/hy/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/id/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/it/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ja/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ko/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/lt/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/lv/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/mi-NZ/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/nb-NO/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/nl/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/no/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/pl/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/pt-BR/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/pt/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/ru/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/sk/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/sv/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/th/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/tr/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/uk/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/vi/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/zh-CN/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/pages/locales/zh-TW/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/available-locales/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/custom-data-provider/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/data-providers/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/extensions/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/faker-bom/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/faker-cli/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/faker-configuration/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/faker-dsl/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/getting-started/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/java-interop/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/random-class-instance/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/random-wrapper/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/string-templates/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>http://localhost:8000/1.6/wiki/unique-generator/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-08-22</lastmod>
     </url>
 </urlset>
