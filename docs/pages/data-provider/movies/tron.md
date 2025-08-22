@@ -1,5 +1,6 @@
 ---
 title: tron
+faker: movies
 ---
 
 ## `Faker().tron`

@@ -1,5 +1,6 @@
 ---
 title: address
+faker: core
 ---
 
 ## `Faker().address`

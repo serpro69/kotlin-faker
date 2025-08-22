@@ -1,5 +1,6 @@
 ---
 title: warhammerFantasy
+faker: games
 ---
 
 ## `Faker().warhammerFantasy`

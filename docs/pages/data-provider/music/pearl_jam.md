@@ -1,5 +1,6 @@
 ---
 title: pearlJam
+faker: music
 ---
 
 ## `Faker().pearlJam`

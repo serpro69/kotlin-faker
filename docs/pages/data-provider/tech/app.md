@@ -1,5 +1,6 @@
 ---
 title: app
+faker: tech
 ---
 
 ## `Faker().app`

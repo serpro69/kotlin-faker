@@ -1,5 +1,6 @@
 ---
 title: blood
+faker: misc
 ---
 
 ## `Faker().blood`

@@ -1,5 +1,6 @@
 ---
 title: lebowski
+faker: movies
 ---
 
 ## `Faker().lebowski`

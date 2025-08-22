@@ -1,5 +1,6 @@
 ---
 title: rockBand
+faker: music
 ---
 
 ## `Faker().rockBand`

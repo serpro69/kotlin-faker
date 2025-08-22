@@ -1,5 +1,6 @@
 ---
 title: howIMetYourMother
+faker: tvshows
 ---
 
 ## `Faker().howIMetYourMother`

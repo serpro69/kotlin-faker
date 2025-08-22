@@ -1,5 +1,6 @@
 ---
 title: stripe
+faker: commerce
 ---
 
 ## `Faker().stripe`

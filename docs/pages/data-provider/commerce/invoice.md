@@ -1,5 +1,6 @@
 ---
 title: invoice
+faker: commerce
 ---
 
 ## `Faker().invoice`

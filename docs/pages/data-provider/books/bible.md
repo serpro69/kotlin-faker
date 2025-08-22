@@ -1,5 +1,6 @@
 ---
 title: bible
+faker: books
 ---
 
 ## `Faker().bible`

@@ -1,5 +1,6 @@
 ---
 title: cryptoCoin
+faker: tech
 ---
 
 ## `Faker().cryptoCoin`

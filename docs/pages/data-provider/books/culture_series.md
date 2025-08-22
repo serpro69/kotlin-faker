@@ -1,5 +1,6 @@
 ---
 title: cultureSeries
+faker: books
 ---
 
 ## `Faker().cultureSeries`

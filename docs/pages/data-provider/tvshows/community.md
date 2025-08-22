@@ -1,5 +1,6 @@
 ---
 title: community
+faker: tvshows
 ---
 
 ## `Faker().community`

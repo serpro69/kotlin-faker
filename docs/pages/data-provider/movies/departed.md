@@ -1,5 +1,6 @@
 ---
 title: departed
+faker: movies
 ---
 
 ## `Faker().departed`

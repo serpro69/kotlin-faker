@@ -1,5 +1,6 @@
 ---
 title: emotion
+faker: lorem
 ---
 
 ## `Faker().emotion`

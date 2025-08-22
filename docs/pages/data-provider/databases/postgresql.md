@@ -1,5 +1,6 @@
 ---
 title: postgreSQL
+faker: databases
 ---
 
 ## `Faker().postgreSQL`

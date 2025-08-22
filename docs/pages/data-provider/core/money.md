@@ -1,5 +1,6 @@
 ---
 title: money
+faker: core
 ---
 
 ## `Faker().money`

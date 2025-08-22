@@ -1,5 +1,6 @@
 ---
 title: touhou
+faker: games
 ---
 
 ## `Faker().touhou`

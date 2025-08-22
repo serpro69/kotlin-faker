@@ -1,5 +1,6 @@
 ---
 title: quote
+faker: lorem
 ---
 
 ## `Faker().quote`

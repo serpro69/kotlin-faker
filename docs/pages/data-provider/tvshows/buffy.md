@@ -1,5 +1,6 @@
 ---
 title: buffy
+faker: tvshows
 ---
 
 ## `Faker().buffy`

@@ -1,5 +1,6 @@
 ---
 title: rush
+faker: music
 ---
 
 ## `Faker().rush`

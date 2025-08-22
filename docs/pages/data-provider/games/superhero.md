@@ -1,5 +1,6 @@
 ---
 title: superhero
+faker: games
 ---
 
 ## `Faker().superhero`

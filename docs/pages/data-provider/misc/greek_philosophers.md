@@ -1,5 +1,6 @@
 ---
 title: greekPhilosophers
+faker: misc
 ---
 
 ## `Faker().greekPhilosophers`

@@ -1,5 +1,6 @@
 ---
 title: university
+faker: edu
 ---
 
 ## `Faker().university`

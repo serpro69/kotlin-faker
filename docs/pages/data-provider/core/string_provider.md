@@ -1,5 +1,6 @@
 ---
 title: string
+faker: core
 ---
 
 ## `Faker().string`

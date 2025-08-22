@@ -1,5 +1,6 @@
 ---
 title: job
+faker: edu
 ---
 
 ## `Faker().job`

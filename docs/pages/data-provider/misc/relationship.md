@@ -1,5 +1,6 @@
 ---
 title: relationship
+faker: misc
 ---
 
 ## `Faker().relationship`

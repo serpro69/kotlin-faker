@@ -1,5 +1,6 @@
 ---
 title: dragonBall
+faker: japmedia
 ---
 
 ## `Faker().dragonBall`

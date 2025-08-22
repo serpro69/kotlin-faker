@@ -1,5 +1,6 @@
 ---
 title: mySQL
+faker: databases
 ---
 
 ## `Faker().mySQL`

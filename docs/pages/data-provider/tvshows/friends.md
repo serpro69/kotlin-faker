@@ -1,5 +1,6 @@
 ---
 title: friends
+faker: tvshows
 ---
 
 ## `Faker().friends`

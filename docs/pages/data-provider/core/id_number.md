@@ -1,5 +1,6 @@
 ---
 title: idNumber
+faker: core
 ---
 
 ## `Faker().idNumber`

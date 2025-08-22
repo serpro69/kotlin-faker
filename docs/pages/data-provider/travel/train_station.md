@@ -1,5 +1,6 @@
 ---
 title: trainStation
+faker: travel
 ---
 
 ## `Faker().trainStation`

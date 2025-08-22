@@ -1,5 +1,6 @@
 ---
 title: overwatch
+faker: games
 ---
 
 ## `Faker().overwatch`

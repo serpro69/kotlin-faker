@@ -1,5 +1,6 @@
 ---
 title: chiquito
+faker: humor
 ---
 
 ## `Faker().chiquito`

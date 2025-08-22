@@ -1,5 +1,6 @@
 ---
 title: industrySegments
+faker: commerce
 ---
 
 ## `Faker().industrySegments`

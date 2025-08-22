@@ -1,5 +1,6 @@
 ---
 title: internet
+faker: core
 ---
 
 ## `Faker().internet`

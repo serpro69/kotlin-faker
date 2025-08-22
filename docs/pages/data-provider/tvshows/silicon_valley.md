@@ -1,5 +1,6 @@
 ---
 title: siliconValley
+faker: tvshows
 ---
 
 ## `Faker().siliconValley`

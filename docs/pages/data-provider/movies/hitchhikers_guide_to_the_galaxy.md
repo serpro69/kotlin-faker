@@ -1,5 +1,6 @@
 ---
 title: hitchhikersGuideToTheGalaxy
+faker: movies
 ---
 
 ## `Faker().hitchhikersGuideToTheGalaxy`

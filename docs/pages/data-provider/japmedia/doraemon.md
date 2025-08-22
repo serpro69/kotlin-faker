@@ -1,5 +1,6 @@
 ---
 title: doraemon
+faker: japmedia
 ---
 
 ## `Faker().doraemon`

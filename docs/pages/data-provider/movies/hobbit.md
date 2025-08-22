@@ -1,5 +1,6 @@
 ---
 title: hobbit
+faker: movies
 ---
 
 ## `Faker().hobbit`

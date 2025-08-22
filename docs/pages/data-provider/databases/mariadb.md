@@ -1,5 +1,6 @@
 ---
 title: mariaDB
+faker: databases
 ---
 
 ## `Faker().mariaDB`

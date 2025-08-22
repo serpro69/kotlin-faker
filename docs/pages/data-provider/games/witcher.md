@@ -1,5 +1,6 @@
 ---
 title: witcher
+faker: games
 ---
 
 ## `Faker().witcher`

@@ -1,5 +1,6 @@
 ---
 title: markdown
+faker: lorem
 ---
 
 ## `Faker().markdown`

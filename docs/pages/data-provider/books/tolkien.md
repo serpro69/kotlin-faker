@@ -1,5 +1,6 @@
 ---
 title: tolkien
+faker: books
 ---
 
 ## `Faker().tolkien`

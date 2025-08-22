@@ -1,5 +1,6 @@
 ---
 title: finalFantasyXIV
+faker: games
 ---
 
 ## `Faker().finalFantasyXIV`

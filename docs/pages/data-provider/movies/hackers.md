@@ -1,5 +1,6 @@
 ---
 title: hackers
+faker: movies
 ---
 
 ## `Faker().hackers`

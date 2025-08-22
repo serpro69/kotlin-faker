@@ -1,5 +1,6 @@
 ---
 title: futurama
+faker: tvshows
 ---
 
 ## `Faker().futurama`

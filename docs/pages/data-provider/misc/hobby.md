@@ -1,5 +1,6 @@
 ---
 title: hobby
+faker: misc
 ---
 
 ## `Faker().hobby`

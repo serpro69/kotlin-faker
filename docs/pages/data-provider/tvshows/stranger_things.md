@@ -1,5 +1,6 @@
 ---
 title: strangerThings
+faker: tvshows
 ---
 
 ## `Faker().strangerThings`

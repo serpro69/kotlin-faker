@@ -1,5 +1,6 @@
 ---
 title: separator
+faker: core
 ---
 
 ## `Faker().separator`

@@ -1,5 +1,6 @@
 ---
 title: cowboyBebop
+faker: japmedia
 ---
 
 ## `Faker().cowboyBebop`

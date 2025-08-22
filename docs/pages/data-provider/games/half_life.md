@@ -1,5 +1,6 @@
 ---
 title: halfLife
+faker: games
 ---
 
 ## `Faker().halfLife`

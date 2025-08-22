@@ -1,5 +1,6 @@
 ---
 title: code
+faker: commerce
 ---
 
 ## `Faker().code`

@@ -1,5 +1,6 @@
 ---
 title: database
+faker: databases
 ---
 
 ## `Faker().database`

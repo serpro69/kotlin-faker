@@ -1,5 +1,6 @@
 ---
 title: smashingPumpking
+faker: music
 ---
 
 ## `Faker().smashingPumpking`

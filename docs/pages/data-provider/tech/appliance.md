@@ -1,5 +1,6 @@
 ---
 title: appliance
+faker: tech
 ---
 
 ## `Faker().appliance`

@@ -1,5 +1,6 @@
 ---
 title: pokemon
+faker: games
 ---
 
 ## `Faker().pokemon`

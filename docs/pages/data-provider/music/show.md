@@ -1,5 +1,6 @@
 ---
 title: show
+faker: music
 ---
 
 ## `Faker().show`

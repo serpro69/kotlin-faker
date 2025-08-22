@@ -1,5 +1,6 @@
 ---
 title: clashOfClans
+faker: games
 ---
 
 ## `Faker().clashOfClans`

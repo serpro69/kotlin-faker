@@ -1,5 +1,6 @@
 ---
 title: cosmere
+faker: books
 ---
 
 ## `Faker().cosmere`

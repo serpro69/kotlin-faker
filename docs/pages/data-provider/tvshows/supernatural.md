@@ -1,5 +1,6 @@
 ---
 title: supernatural
+faker: tvshows
 ---
 
 ## `Faker().supernatural`

@@ -1,5 +1,6 @@
 ---
 title: funnyName
+faker: humor
 ---
 
 ## `Faker().funnyName`

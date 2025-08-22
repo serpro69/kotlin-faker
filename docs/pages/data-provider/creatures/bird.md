@@ -1,5 +1,6 @@
 ---
 title: bird
+faker: creatures
 ---
 
 ## `Faker().bird`

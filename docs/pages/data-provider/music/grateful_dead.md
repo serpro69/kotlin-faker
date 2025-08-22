@@ -1,5 +1,6 @@
 ---
 title: gratefulDead
+faker: music
 ---
 
 ## `Faker().gratefulDead`

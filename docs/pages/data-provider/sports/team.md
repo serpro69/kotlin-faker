@@ -1,5 +1,6 @@
 ---
 title: team
+faker: sports
 ---
 
 ## `Faker().team`

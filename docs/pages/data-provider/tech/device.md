@@ -1,5 +1,6 @@
 ---
 title: device
+faker: tech
 ---
 
 ## `Faker().device`

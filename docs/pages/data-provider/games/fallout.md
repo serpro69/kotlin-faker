@@ -1,5 +1,6 @@
 ---
 title: fallout
+faker: games
 ---
 
 ## `Faker().fallout`

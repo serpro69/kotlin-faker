@@ -1,5 +1,6 @@
 ---
 title: leagueOfLegends
+faker: games
 ---
 
 ## `Faker().leagueOfLegends`

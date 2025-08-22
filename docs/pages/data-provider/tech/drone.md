@@ -1,5 +1,6 @@
 ---
 title: drone
+faker: tech
 ---
 
 ## `Faker().drone`

@@ -1,5 +1,6 @@
 ---
 title: control
+faker: games
 ---
 
 ## `Faker().control`

@@ -1,5 +1,6 @@
 ---
 title: ancient
+faker: creatures
 ---
 
 ## `Faker().ancient`

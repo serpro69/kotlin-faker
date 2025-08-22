@@ -1,5 +1,6 @@
 ---
 title: programmingLanguage
+faker: tech
 ---
 
 ## `Faker().programmingLanguage`

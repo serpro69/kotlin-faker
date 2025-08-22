@@ -1,5 +1,6 @@
 ---
 title: electricalComponents
+faker: tech
 ---
 
 ## `Faker().electricalComponents`

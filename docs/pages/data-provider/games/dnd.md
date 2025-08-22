@@ -1,5 +1,6 @@
 ---
 title: dnd
+faker: games
 ---
 
 ## `Faker().dnd`

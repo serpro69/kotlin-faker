@@ -1,5 +1,6 @@
 ---
 title: slackEmoji
+faker: lorem
 ---
 
 ## `Faker().slackEmoji`

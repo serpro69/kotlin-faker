@@ -1,5 +1,6 @@
 ---
 title: zelda
+faker: games
 ---
 
 ## `Faker().zelda`

@@ -1,5 +1,6 @@
 ---
 title: camera
+faker: tech
 ---
 
 ## `Faker().camera`

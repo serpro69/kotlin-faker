@@ -1,5 +1,7 @@
 ---
 title: coin
+faker: games
+faker: games
 ---
 
 ## `Faker().coin`

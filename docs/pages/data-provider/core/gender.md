@@ -1,5 +1,6 @@
 ---
 title: gender
+faker: core
 ---
 
 ## `Faker().gender`

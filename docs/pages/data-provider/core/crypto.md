@@ -1,5 +1,6 @@
 ---
 title: crypto
+faker: core
 ---
 
 ## `Faker().crypto`

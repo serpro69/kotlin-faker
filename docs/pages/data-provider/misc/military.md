@@ -1,5 +1,6 @@
 ---
 title: military
+faker: misc
 ---
 
 ## `Faker().military`

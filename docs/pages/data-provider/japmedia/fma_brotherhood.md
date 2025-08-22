@@ -1,5 +1,6 @@
 ---
 title: fmaBrotherhood
+faker: japmedia
 ---
 
 ## `Faker().fmaBrotherhood`

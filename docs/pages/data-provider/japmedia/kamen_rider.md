@@ -1,5 +1,6 @@
 ---
 title: kamenRider
+faker: japmedia
 ---
 
 ## `Faker().kamenRider`

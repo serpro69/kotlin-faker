@@ -1,5 +1,6 @@
 ---
 title: uiFaces
+faker: pictures
 ---
 
 ## `Faker().uiFaces`

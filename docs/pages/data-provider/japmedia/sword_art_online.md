@@ -1,5 +1,6 @@
 ---
 title: swordArtOnline
+faker: japmedia
 ---
 
 ## `Faker().swordArtOnline`

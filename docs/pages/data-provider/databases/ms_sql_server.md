@@ -1,5 +1,6 @@
 ---
 title: msSQLServer
+faker: databases
 ---
 
 ## `Faker().msSQLServer`

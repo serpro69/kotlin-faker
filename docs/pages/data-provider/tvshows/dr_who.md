@@ -1,5 +1,6 @@
 ---
 title: drWho
+faker: tvshows
 ---
 
 ## `Faker().drWho`

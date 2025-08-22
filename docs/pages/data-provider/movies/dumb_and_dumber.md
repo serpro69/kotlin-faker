@@ -1,5 +1,6 @@
 ---
 title: dumbAndDumber
+faker: movies
 ---
 
 ## `Faker().dumbAndDumber`

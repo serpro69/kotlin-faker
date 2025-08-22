@@ -1,5 +1,6 @@
 ---
 title: verbs
+faker: lorem
 ---
 
 ## `Faker().verbs`

@@ -1,5 +1,6 @@
 ---
 title: princessBride
+faker: movies
 ---
 
 ## `Faker().princessBride`

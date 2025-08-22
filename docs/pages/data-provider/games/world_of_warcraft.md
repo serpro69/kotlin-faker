@@ -1,5 +1,6 @@
 ---
 title: worldOfWarcraft
+faker: games
 ---
 
 ## `Faker().worldOfWarcraft`

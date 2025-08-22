@@ -1,5 +1,6 @@
 ---
 title: lordOfTheRings
+faker: movies
 ---
 
 ## `Faker().lordOfTheRings`

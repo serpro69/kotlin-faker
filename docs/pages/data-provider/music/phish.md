@@ -1,5 +1,6 @@
 ---
 title: phish
+faker: music
 ---
 
 ## `Faker().phish`

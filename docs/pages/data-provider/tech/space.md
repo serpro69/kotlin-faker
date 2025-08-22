@@ -1,5 +1,6 @@
 ---
 title: space
+faker: tech
 ---
 
 ## `Faker().space`

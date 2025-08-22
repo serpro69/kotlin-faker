@@ -1,5 +1,6 @@
 ---
 title: sonicTheHedgehog
+faker: games
 ---
 
 ## `Faker().sonicTheHedgehog`

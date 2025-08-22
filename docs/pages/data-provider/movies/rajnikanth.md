@@ -1,5 +1,6 @@
 ---
 title: rajnikanth
+faker: movies
 ---
 
 ## `Faker().rajnikanth`

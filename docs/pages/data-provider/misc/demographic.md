@@ -1,5 +1,6 @@
 ---
 title: demographic
+faker: misc
 ---
 
 ## `Faker().demographic`

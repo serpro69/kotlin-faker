@@ -1,5 +1,6 @@
 ---
 title: backToTheFuture
+faker: movies
 ---
 
 ## `Faker().backToTheFuture`

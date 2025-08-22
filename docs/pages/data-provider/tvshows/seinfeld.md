@@ -1,5 +1,6 @@
 ---
 title: seinfeld
+faker: tvshows
 ---
 
 ## `Faker().seinfeld`

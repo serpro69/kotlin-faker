@@ -1,5 +1,6 @@
 ---
 title: file
+faker: core
 ---
 
 ## `Faker().file`

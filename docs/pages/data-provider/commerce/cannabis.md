@@ -1,5 +1,6 @@
 ---
 title: cannabis
+faker: commerce
 ---
 
 ## `Faker().cannabis`

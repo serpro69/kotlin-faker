@@ -1,5 +1,6 @@
 ---
 title: brooklynNineNine
+faker: tvshows
 ---
 
 ## `Faker().brooklynNineNine`

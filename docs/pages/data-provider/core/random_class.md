@@ -1,5 +1,6 @@
 ---
 title: randomClass
+faker: core
 ---
 
 ## `Faker().randomClass`

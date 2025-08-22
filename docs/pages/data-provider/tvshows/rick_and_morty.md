@@ -1,5 +1,6 @@
 ---
 title: rickAndMorty
+faker: tvshows
 ---
 
 ## `Faker().rickAndMorty`

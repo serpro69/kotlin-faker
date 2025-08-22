@@ -1,5 +1,6 @@
 ---
 title: myst
+faker: games
 ---
 
 ## `Faker().myst`

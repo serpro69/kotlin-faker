@@ -1,5 +1,6 @@
 ---
 title: dcComics
+faker: books
 ---
 
 ## `Faker().dcComics`

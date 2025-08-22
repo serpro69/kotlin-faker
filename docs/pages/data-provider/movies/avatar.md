@@ -1,5 +1,6 @@
 ---
 title: avatar
+faker: movies
 ---
 
 ## `Faker().avatar`

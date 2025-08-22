@@ -1,5 +1,6 @@
 ---
 title: compass
+faker: travel
 ---
 
 ## `Faker().compass`

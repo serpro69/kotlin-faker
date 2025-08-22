@@ -1,5 +1,6 @@
 ---
 title: oracleDB
+faker: databases
 ---
 
 ## `Faker().oracleDB`

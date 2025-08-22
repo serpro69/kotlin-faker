@@ -1,5 +1,6 @@
 ---
 title: crossfit
+faker: sports
 ---
 
 ## `Faker().crossfit`

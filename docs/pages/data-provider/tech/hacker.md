@@ -1,5 +1,6 @@
 ---
 title: hacker
+faker: tech
 ---
 
 ## `Faker().hacker`

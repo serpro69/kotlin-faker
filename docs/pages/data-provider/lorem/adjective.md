@@ -1,5 +1,6 @@
 ---
 title: adjective
+faker: lorem
 ---
 
 ## `Faker().adjective`

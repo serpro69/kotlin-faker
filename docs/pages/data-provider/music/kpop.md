@@ -1,5 +1,6 @@
 ---
 title: kPop
+faker: music
 ---
 
 ## `Faker().kPop`

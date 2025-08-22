@@ -1,5 +1,6 @@
 ---
 title: star_trek
+faker: tvshows
 ---
 
 ## `Faker().star_trek`

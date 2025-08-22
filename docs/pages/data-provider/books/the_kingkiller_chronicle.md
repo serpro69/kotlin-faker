@@ -1,5 +1,6 @@
 ---
 title: theKingkillerChronicle
+faker: books
 ---
 
 ## `Faker().theKingkillerChronicle`

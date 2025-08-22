@@ -1,5 +1,6 @@
 ---
 title: gameOfThrones
+faker: tvshows
 ---
 
 ## `Faker().gameOfThrones`

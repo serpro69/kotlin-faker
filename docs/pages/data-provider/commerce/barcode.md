@@ -1,5 +1,6 @@
 ---
 title: barcode
+faker: commerce
 ---
 
 ## `Faker().barcode`

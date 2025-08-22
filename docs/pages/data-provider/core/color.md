@@ -1,5 +1,6 @@
 ---
 title: color
+faker: core
 ---
 
 ## `Faker().color`

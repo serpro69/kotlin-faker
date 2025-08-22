@@ -1,5 +1,6 @@
 ---
 title: drivingLicense
+faker: misc
 ---
 
 ## `Faker().drivingLicense`

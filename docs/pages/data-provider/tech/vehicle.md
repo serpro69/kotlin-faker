@@ -1,5 +1,6 @@
 ---
 title: vehicle
+faker: tech
 ---
 
 ## `Faker().vehicle`

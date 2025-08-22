@@ -1,5 +1,6 @@
 ---
 title: australia
+faker: travel
 ---
 
 ## `Faker().australia`

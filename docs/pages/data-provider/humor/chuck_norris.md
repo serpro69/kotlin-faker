@@ -1,5 +1,6 @@
 ---
 title: chuckNorris
+faker: humor
 ---
 
 ## `Faker().chuckNorris`

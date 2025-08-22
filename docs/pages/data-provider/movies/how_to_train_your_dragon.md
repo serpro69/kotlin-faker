@@ -1,5 +1,6 @@
 ---
 title: howToTrainYourDragon
+faker: movies
 ---
 
 ## `Faker().howToTrainYourDragon`

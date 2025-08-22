@@ -1,5 +1,6 @@
 ---
 title: onePiece
+faker: japmedia
 ---
 
 ## `Faker().onePiece`

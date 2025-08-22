@@ -1,5 +1,6 @@
 ---
 title: cat
+faker: creatures
 ---
 
 ## `Faker().cat`

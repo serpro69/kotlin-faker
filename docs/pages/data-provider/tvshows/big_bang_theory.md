@@ -1,5 +1,6 @@
 ---
 title: bigBangTheory
+faker: tvshows
 ---
 
 ## `Faker().bigBangTheory`

@@ -1,5 +1,6 @@
 ---
 title: tea
+faker: commerce
 ---
 
 ## `Faker().tea`

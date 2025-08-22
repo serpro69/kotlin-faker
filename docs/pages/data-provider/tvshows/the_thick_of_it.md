@@ -1,5 +1,6 @@
 ---
 title: theThickOfIt
+faker: tvshows
 ---
 
 ## `Faker().theThickOfIt`

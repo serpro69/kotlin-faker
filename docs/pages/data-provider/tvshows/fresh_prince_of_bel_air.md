@@ -1,5 +1,6 @@
 ---
 title: freshPrinceOfBelAir
+faker: tvshows
 ---
 
 ## `Faker().freshPrinceOfBelAir`

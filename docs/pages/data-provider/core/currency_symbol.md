@@ -1,5 +1,6 @@
 ---
 title: currencySymbol
+faker: core
 ---
 
 ## `Faker().currencySymbol`

@@ -1,5 +1,6 @@
 ---
 title: dota
+faker: games
 ---
 
 ## `Faker().dota`

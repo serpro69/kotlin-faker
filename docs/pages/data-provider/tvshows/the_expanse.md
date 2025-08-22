@@ -1,5 +1,6 @@
 ---
 title: theExpanse
+faker: tvshows
 ---
 
 ## `Faker().theExpanse`

@@ -1,5 +1,6 @@
 ---
 title: computer
+faker: tech
 ---
 
 ## `Faker().computer`

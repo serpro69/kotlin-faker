@@ -1,5 +1,6 @@
 ---
 title: natoPhoneticAlphabet
+faker: lorem
 ---
 
 ## `Faker().natoPhoneticAlphabet`

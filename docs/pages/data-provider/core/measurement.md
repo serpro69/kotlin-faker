@@ -1,5 +1,6 @@
 ---
 title: measurement
+faker: core
 ---
 
 ## `Faker().measurement`

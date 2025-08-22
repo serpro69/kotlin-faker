@@ -1,5 +1,6 @@
 ---
 title: elderScrolls
+faker: games
 ---
 
 ## `Faker().elderScrolls`

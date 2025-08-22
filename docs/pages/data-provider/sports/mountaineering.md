@@ -1,5 +1,6 @@
 ---
 title: mountaineering
+faker: sports
 ---
 
 ## `Faker().mountaineering`

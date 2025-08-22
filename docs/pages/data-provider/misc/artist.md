@@ -1,5 +1,6 @@
 ---
 title: artist
+faker: misc
 ---
 
 ## `Faker().artist`

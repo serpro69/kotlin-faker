@@ -1,5 +1,6 @@
 ---
 title: twinPeaks
+faker: tvshows
 ---
 
 ## `Faker().twinPeaks`

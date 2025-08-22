@@ -1,5 +1,6 @@
 ---
 title: source
+faker: core
 ---
 
 ## `Faker().source`

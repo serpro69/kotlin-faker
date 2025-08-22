@@ -1,5 +1,6 @@
 ---
 title: educator
+faker: edu
 ---
 
 ## `Faker().educator`

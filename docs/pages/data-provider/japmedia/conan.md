@@ -1,5 +1,6 @@
 ---
 title: conan
+faker: japmedia
 ---
 
 ## `Faker().conan`

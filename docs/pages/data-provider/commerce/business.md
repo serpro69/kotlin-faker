@@ -1,5 +1,6 @@
 ---
 title: business
+faker: commerce
 ---
 
 ## `Faker().business`

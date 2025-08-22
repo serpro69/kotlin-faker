@@ -1,5 +1,6 @@
 ---
 title: aquaTeenHungerForce
+faker: tvshows
 ---
 
 ## `Faker().aquaTeenHungerForce`

@@ -1,5 +1,6 @@
 ---
 title: phoneNumber
+faker: core
 ---
 
 ## `Faker().phoneNumber`

@@ -1,5 +1,6 @@
 ---
 title: studioGhibli
+faker: japmedia
 ---
 
 ## `Faker().studioGhibli`

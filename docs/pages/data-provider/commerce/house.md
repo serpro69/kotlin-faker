@@ -1,5 +1,6 @@
 ---
 title: house
+faker: commerce
 ---
 
 ## `Faker().house`
