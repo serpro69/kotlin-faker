@@ -1,4 +1,4 @@
-# START music_provider_dict
+# --8<-- [start:music_provider_dict]
 en:
   faker:
     music:
@@ -463,4 +463,4 @@ en:
         - Nate Dogg
         - Kurupt
         - Twista
-# END music_provider_dict
+# --8<-- [end:music_provider_dict]

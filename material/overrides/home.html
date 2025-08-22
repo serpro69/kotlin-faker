@@ -1,0 +1,331 @@
+{% extends "overrides/main.html" %}
+
+<!-- Render hero under tabs -->
+{% block tabs %}
+{{ super() }}
+
+<!-- Hero for landing page -->
+
+<div class="gradient-wrapper"> <!-- angled gradient wrapper for dark mode -->
+
+<!--kotlin-faker documetation-->
+<section class="w-100">
+  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
+    <div class="px-3 ctx-header-text container">
+      <div class="container-row">
+        <p class="h1 text-xs-center">
+          <img src="assets/images/logos/name.png" class="mx-3 title-logo" height="22%"/>
+          <br>
+          <b>...the only fake-data-generation library you'd need on the JVM</b>
+        <br>
+        </p>
+      </div>
+
+      <img src="assets/images/logos/logo-white.png#only-dark" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
+      <img src="assets/images/logos/logo.png#only-light" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
+      <p class="h3 text-xs-center">
+        Kotlin-faker is a comprehensive data-generation library which provides realistic-looking,
+        fake-data-generation capabilities within a variety of domains, like
+        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮,
+        and <a href="/wiki/data-providers" class="text-link">many more</a>.
+        <br>
+        It can be used with Kotlin, Java, Android, Scala, and other JVM-based projects.
+        <br>
+        Ensure your application data looks as if it was real, just like our <i>really</i> fake logo, but not quite so.
+      </p>
+
+      <div class="container-row container-xs">
+        <button
+          type="button"
+          title="{{ page.next_page.title | e }}"
+          onclick="location.href='./concepts/'"
+          class="md-icon btn-dark btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          Get Started {% include ".icons/material/play.svg" %}
+        </button>
+        <button
+          onclick="window.open('{{ config.repo_url }}', '_blank')"
+          title="Github"
+          type="button"
+          class="md-icon btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
+          Contribute {% include ".icons/material/github.svg" %}
+        </button>
+      </div>
+    </div>
+    <div class="ctx-header-img d-lg">
+      <img src="assets/images/logos/logo-white.png#only-dark" class="header-img mx-lg-5" />
+      <img src="assets/images/logos/logo.png#only-light" class="header-img mx-lg-5" />
+    </div>
+  </div>
+</section>
+
+{{ page.content }}
+
+</div> <!-- angled gradient wrapper for dark mode -->
+
+<!-- Why kotlin-faker -->
+<section class="third-dark-body w-100">
+  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
+    <div class="px-3 ctx-header-text container">
+      <div class="container-row">
+        <p class="display-1 Telegraf-UltraBold text-xs-center">
+          <b>Why</b>
+          <img src="assets/images/logos/name.png" class="mx-1 title-logo" height="60%"/>
+          <b>?</b>
+        </br>
+        </p>
+      </div>
+      <p class="h3 text-xs-center text-white">
+        While other data fakers exist, kotlin-faker is built from the ground up to be the most powerful, flexible, and developer-friendly choice for the modern JVM ecosystem.
+      </p>
+    </div>
+  </div>
+  <div class="container py-5 my-5">
+    <div class="feature-column-container">
+      <!-- Feature Column 1: Kotlin First -->
+      <div class="feature-column">
+        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
+          <p class="my-3 display-4 Telegraf-UltraBold">
+            <span class="md-icon twemoji-kotlin">
+            Kotlin<br>First {% include ".icons/simple/kotlin.svg" %}
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              An idiomatic Kotlin DSL makes your data-generation code clean, readable, and type-safe.
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              No more dealing with awkward Java interop or legacy library design. It just feels right.
+            </span>
+          </p>
+        </div>
+      </div>
+      <!-- Feature Column 2: Unrivaled Coverage -->
+      <div class="feature-column">
+        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
+          <p class="my-3 display-4 Telegraf-UltraBold">
+            <span class="md-icon twemoji-rocket-launch">
+            Unrivaled<br>Coverage {% include ".icons/material/rocket-launch.svg" %}
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              With <strong>213+ data providers</strong> and <strong>60+ locales</strong>, it has the most comprehensive and diverse dataset of any JVM faker library.
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              From <code>Address</code> and <code>Name</code> to obscure <code>Esport</code> teams, <code>Games</code> and <code>Lord of the Rings</code> characters, the all the data you could need is readily available.
+            </span>
+          </p>
+        </div>
+      </div>
+      <!-- Feature Column 3: Unique & Powerful -->
+      <div class="feature-column">
+        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
+          <p class="my-3 display-4 Telegraf-UltraBold">
+            <span class="md-icon twemoji-unicorn-variant">
+            Unique {% include ".icons/material/unicorn-variant.svg" %}
+            <br>& Powerful
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              Generate truly <strong>unique values</strong> at the provider or function level, a critical feature for realistic testing that others lack.
+            </span>
+          </p>
+          <p class="my-3">
+            <span class="md-icon mx-2 twemoji-check-all">
+              {% include ".icons/material/check-all.svg" %}
+              A handy <strong>CLI application</strong> lets you explore the data that can be generated and how to generate it.
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Comparison Card -->
+    <div class="container-row">
+      <div class="w-100">
+        <div class="card-aurora second-gradient-body px-5 py-5">
+          <div class="container ctx-card-white-1 text-dark h3">
+            <p class="my-3 display-4 Telegraf-UltraBold">Blazing Fast & Actively Maintained</p>
+            <p class="my-3">
+              <span class="md-icon mx-2 twemoji-check-all">
+                {% include ".icons/material/check-all.svg" %}
+                When benchmarked against legacy Java fakers, <strong>kotlin-faker is up to 4x faster</strong>, saving you valuable time in your test and build cycles.
+              </span>
+            </p>
+            <p class="my-3">
+              <span class="md-icon mx-2 twemoji-check-all">
+                {% include ".icons/material/check-all.svg" %}
+                Unlike many older libraries that are no longer maintained, kotlin-faker is actively developed, ensuring it stays up-to-date with new data and features.
+              </span>
+            </p>
+          <button
+            onclick="location.href='./pages/faker-comparisons/'"
+            title="Comparisons"
+            type="button"
+            class="btn-aurora btn-aurora-custom btn-xl-large btn-lg-large mx-auto text-align-center cursor-pointer"
+          >
+            Kotlin-Faker vs. Competition
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Supported tech stack-->
+<section class="four-gray-body w-100">
+  <div class="md-grid md-typeset container pt-5 my-0 my-xl-4 my-lg-4">
+    <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Supported Tech-Stack</p>
+    <div class="container container-row-lg container-row-xl my-4">
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <span class="md-icon">
+          {% include ".icons/material/language-kotlin.svg" %}
+        <span>
+      </div>
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <span class="md-icon">
+          {% include ".icons/material/language-java.svg" %}
+        <span>
+      </div>
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <span class="md-icon">
+          {% include ".icons/simple/scala.svg" %}
+        <span>
+      </div>
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <span class="md-icon">
+          {% include ".icons/simple/apachegroovy.svg" %}
+        <span>
+      </div>
+      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
+        <span class="md-icon">
+          {% include ".icons/simple/clojure.svg" %}
+        <span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block content %} {% endblock %}
+
+{% block footer %}
+
+<!--Footer-->
+<footer class="bg-dark w-100">
+  <div class="md-grid container-row-xl container-row-lg container pt-5 my-4">
+    <div class="container-row" style="flex:50%">
+      <div class="text-dark d-flex footer-img" style="flex: 30%;">
+        <img src="assets/images/logos/logo-white.png#only-dark" class="mx-auto" width="30%"/>
+        <img src="assets/images/logos/logo.png#only-light" class="mx-auto" width="30%"/>
+      </div>
+      <div class="container text-dark h3">
+        <ul>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.site_url }}" target="_blank">
+              <p>
+              <span class="md-icon twemoji-footer">
+                {% include ".icons/material/home.svg" %}
+              </span>
+              Home
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}" target="_blank">
+              <p>
+              <span class="md-icon twemoji-footer">
+                {% include ".icons/material/github.svg" %}
+              </span>
+              Github
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}/discussions" target="_blank">
+              <p>
+              <span class="md-icon twemoji-footer">
+                {% include ".icons/material/chat-question.svg" %}
+              </span>
+              Ask Questions
+              </p>
+            </a>
+          </li>
+          <li class="cursor-pointer item-text-footer">
+            <a href="{{ config.repo_url }}/issues" target="_blank">
+              <p>
+              <span class="md-icon twemoji-footer">
+                {% include ".icons/material/bug.svg" %}
+              </span>
+              Report Issues
+              </p>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div style="flex: 10%;">
+        <!-- empty space for alignment -->
+      </div>
+      <div class="text-dark h3" style="flex: 30%;">
+        <div class="container text-dark h3">
+          <ul>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ page.meta.base_uri }}pages/about/" target="_blank">
+                <p>
+                <span class="md-icon twemoji-footer">
+                  {% include ".icons/material/information-slab-box.svg" %}
+                </span>
+                About
+                </p>
+              </a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ page.meta.base_uri }}pages/changelog/" target="_blank">
+                <p>
+                <span class="md-icon twemoji-footer">
+                  {% include ".icons/fontawesome/solid/scroll.svg" %}
+                </span>
+                Changelog
+                </p>
+              </a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ page.meta.base_uri }}pages/license/" target="_blank">
+                <p>
+                <span class="md-icon twemoji-footer">
+                  {% include ".icons/material/license.svg" %}
+                </span>
+                License
+                </p>
+              </a>
+            </li>
+            <li class="cursor-pointer item-text-footer">
+              <a href="{{ page.meta.base_uri }}pages/contrib/" target="_blank">
+                <p>
+                <span class="md-icon twemoji-footer">
+                  {% include ".icons/material/handshake.svg" %}
+                </span>
+                Contributing
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

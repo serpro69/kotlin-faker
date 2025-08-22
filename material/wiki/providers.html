@@ -1,0 +1,296 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{{ super() }}
+
+<h3 id="core-faker">
+  "Core" <code>Faker</code>
+  <a class="headerlink" href="#core-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'core' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="books-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/books/"><code>BooksFaker</code></a>
+  <a class="headerlink" href="#books-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'books' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="commerce-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/commerce"><code>CommerceFaker</code></a>
+  <a class="headerlink" href="#commerce-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'commerce' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="creatures-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/creatures"><code>CreaturesFaker</code></a>
+  <a class="headerlink" href="#creatures-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'creatures' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="databases-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/databases"><code>DatabasesFaker</code></a>
+  <a class="headerlink" href="#databases-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'databases' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="edu-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/edu"><code>EduFaker</code></a>
+  <a class="headerlink" href="#edu-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'edu' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="games-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/games"><code>GamesFaker</code></a>
+  <a class="headerlink" href="#games-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'games' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="humor-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/humor"><code>HumorFaker</code></a>
+  <a class="headerlink" href="#humor-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'humor' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="japmedia-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/japmedia"><code>JapaneseMediaFaker</code></a>
+  <a class="headerlink" href="#japmedia-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'japmedia' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="lorem-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/lorem"><code>LoremFaker</code></a>
+  <a class="headerlink" href="#lorem-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'lorem' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="misc-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/misc"><code>MiscFaker</code></a>
+  <a class="headerlink" href="#misc-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'misc' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="movies-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/movies"><code>MoviesFaker</code></a>
+  <a class="headerlink" href="#movies-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'movies' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="music-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/music"><code>MusicFaker</code></a>
+  <a class="headerlink" href="#music-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'music' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="sports-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/sports"><code>SportsFaker</code></a>
+  <a class="headerlink" href="#sports-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'sports' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="tech-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/tech"><code>TechFaker</code></a>
+  <a class="headerlink" href="#tech-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'tech' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="travel-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/travel"><code>TravelFaker</code></a>
+  <a class="headerlink" href="#travel-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'travel' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+<h3 id="tvshows-faker">
+  <a href="{{ page.meta.base_uri }}pages/fakers/tvshows"><code>TvShowsFaker</code></a>
+  <a class="headerlink" href="#tvshows-faker" title="Permanent link">¶</a>
+</h3>
+
+<p>
+  <ul>
+    {% for file in pages %}
+    {% if 'tvshows' in file.page.url.split('/') and 'fakers' not in file.page.url.split('/') %}
+    <li>
+      <a href="{{ file.page.url|url }}">{{ file.page.title }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</p>
+
+{% endblock %}

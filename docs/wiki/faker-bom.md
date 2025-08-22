@@ -1,0 +1,68 @@
+---
+icon: material/invoice-list
+---
+
+# :material-invoice-list: Kotlin-faker BOM
+
+[![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker-bom?style=for-the-badge&logo=apachemaven&label=release-version&color=blue)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker-bom)
+[![Central Sonatype (Snapshots)](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fio%2Fgithub%2Fserpro69%2Fkotlin-faker-bom%2Fmaven-metadata.xml&strategy=highestVersion&style=for-the-badge&logo=apachemaven&label=snapshot-version&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)
+
+Kotlin-faker provides a [Bill-of-Materials](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms) that simplifies dependency management.
+
+## Usage
+
+### Downloading
+
+Latest releases are always available on maven central.
+
+=== "gradle :simple-gradle:"
+
+    To [import Maven BOM with Gradle](https://docs.gradle.org/current/userguide/platforms.html#sub:bom_import), a platform dependency needs to be declared on the `kotlin-faker-bom`. The rest of `kotlin-faker` dependencies do not need to specify the versions explicitly as they will be pulled from the BOM
+
+    ```kotlin
+    dependencies {
+        implementation(platform("io.github.serpro69:kotlin-faker-bom:$version")
+        implementation("io.github.serpro69:kotlin-faker")
+        implementation("io.github.serpro69:kotlin-faker-books")
+        implementation("io.github.serpro69:kotlin-faker-tech")
+        // rest of dependencies
+    }
+    ```  
+
+=== "maven :simple-apachemaven:"
+
+    To use the BOM, a dependency on `kotlin-faker-bom` needs to be declared in the `<dependencyManagement>` block of the `pom.xml`, file:
+
+    ```xml
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.github.serpro69</groupId>
+                <artifactId>kotlin-faker-bom</artifactId>
+                <version>${kotlin-faker.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    ```
+
+    Then add the dependencies as usual but w/o specifying the versions, which will be pulled from the BOM:
+
+    ```xml
+    <dependencies>
+        <dependency>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker-books</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.serpro69</groupId>
+            <artifactId>kotlin-faker-tech</artifactId>
+        </dependency>
+        <!-- rest of dependencies as needed -->
+    </dependencies>
+    ```  

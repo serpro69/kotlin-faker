@@ -1,4 +1,4 @@
-# START supernatural_provider_dict
+# --8<-- [start:supernatural_provider_dict]
 en:
   faker:
     supernatural:
@@ -140,4 +140,4 @@ en:
         - Virgin blood
         - steel
         - The Colt
-# END supernatural_provider_dict
+# --8<-- [end:supernatural_provider_dict]

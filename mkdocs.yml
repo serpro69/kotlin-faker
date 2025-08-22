@@ -1,0 +1,193 @@
+---
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: kotlin-faker
+# ref: https://www.mkdocs.org/user-guide/configuration/#site_url
+# ref: https://www.mkdocs.org/user-guide/configuration/#environment-variables
+site_url: !ENV [MKDOCS_SITE_URL, 'http://localhost:8000']
+copyright: Copyright &copy; 2019 - present, serpro69
+
+repo_url: https://github.com/serpro69/kotlin-faker
+
+plugins:
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - panzoom:
+      always_show_hint: true
+  - include_dir_to_nav
+  - meta
+  - macros
+
+watch:
+  - ./material
+
+theme:
+  favicon: assets/images/favicon.ico
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: nord:light
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: nord:dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    # - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
+  logo: assets/images/icon.png
+  custom_dir: material
+  static_templates:
+    - wiki/locales.html
+
+extra:
+  version:
+    provider: mike
+  contributors:
+    - name: Sylvain Corsini
+      link: https://github.com/scorsi
+    - name: Benjamin Leber
+      link: https://github.com/Grisu118
+    - name: Alexey Stepanov
+      link: https://github.com/Arsennikum
+    - name: Christoph von Krüchten
+      link: https://github.com/cvk77
+    - name: Vlad Minaev
+      link: https://github.com/web-devel
+    - name: Andrew Kirkham
+      link: https://github.com/andrew-kirkham
+    - name: Johan Vergeer
+      link: https://github.com/johanvergeer
+    - name: Pavel.S.K.
+      link: https://github.com/el-qq
+    - name: David Whetstone
+      link: https://github.com/humblehacker
+    - name: Tobias Zanke
+      link: https://github.com/TZanke
+    - name: Julien Giovaresco
+      link: https://github.com/jgiovaresco
+    - name: Uroš Jarc
+      link: https://github.com/urosjarc
+    - name: Rafał Spryszyński
+      link: https://github.com/Rafal-Spryszynski-Allegro
+    - name: João Moreira
+      link: https://github.com/JoaoSouMoreira
+    - name: Nicklas Ansman
+      link: https://github.com/ansman
+    - name: Eric Fenderbosch
+      link: https://github.com/efenderbosch-atg
+    - name: Mathieu Boisnard
+      link: https://github.com/mboisnard
+    - name: Carsten Brachem
+      link: https://github.com/cbrachem
+
+extra_css:
+  - assets/stylesheets/extra.css
+  - assets/stylesheets/nord.css
+
+markdown_extensions:
+  - abbr
+  - footnotes
+  # https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+  # https://squidfunk.github.io/mkdocs-material/reference/images/
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
+  # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - admonition
+  - toc:
+      permalink: true
+  # https://squidfunk.github.io/mkdocs-material/reference/data-tables/
+  - tables
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.extra
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.snippets:
+      base_path:
+        # https://www.mkdocs.org/user-guide/configuration/#paths-relative-to-the-current-file-or-site
+        - !relative $config_dir
+        - !relative $docs_dir
+        - !relative $config_dir/core/src/integration/kotlin/io/github/serpro69/kfaker/docs/
+        - !relative $config_dir/core/src/integration/java/io/github/serpro69/kfaker/docs/
+      check_paths: true
+      dedent_subsections: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: serpro69
+      repo: kotlin-faker
+
+nav:
+  - "~/": index.md
+  - User Guide:
+      - wiki/index.md
+      - Getting Started: wiki/getting-started.md
+      - Using kotlin-faker BOM: wiki/faker-bom.md
+      - Configuring Faker: wiki/faker-configuration.md
+      - Generating Unique Values: wiki/unique-generator.md
+      - Extras:
+          - Random Class Instances: wiki/random-class-instance.md
+          - Random Wrapper: wiki/random-wrapper.md
+          - Random Strings from Templates: wiki/string-templates.md
+      - Faker DSL: wiki/faker-dsl.md
+      - Available Data Generators: wiki/data-providers.md
+      - Custom Data Generators: wiki/custom-data-provider.md
+      - Available Locales: wiki/available-locales.md
+      - Java Interop: wiki/java-interop.md
+      - Faker CLI: wiki/faker-cli.md
+      - Faker Extensions: wiki/extensions.md
+  - API: api

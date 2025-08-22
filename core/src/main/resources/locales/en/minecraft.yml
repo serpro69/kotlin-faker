@@ -1,4 +1,4 @@
-# START minecraft_provider_dict
+# --8<-- [start:minecraft_provider_dict]
 en:
   faker:
     games:
@@ -662,4 +662,4 @@ en:
           - Water Breathing
           - Weakness
           - Wither
-# END minecraft_provider_dict
+# --8<-- [end:minecraft_provider_dict]

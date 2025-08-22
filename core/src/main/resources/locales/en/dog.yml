@@ -1,4 +1,4 @@
-# START dog_provider_dict
+# --8<-- [start:dog_provider_dict]
 en:
   faker:
     creature:
@@ -10,4 +10,4 @@ en:
         age: ["puppy", "young", "adult", "senior"]
         coat_length: ["hairless", "short", "medium", "long", "wire", "curly"]
         size: ["small", "medium", "large", "extra large"]
-# END dog_provider_dict
+# --8<-- [end:dog_provider_dict]

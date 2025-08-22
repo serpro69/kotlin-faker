@@ -5,6 +5,7 @@ import utils.configureGradleDaemonJvm
 plugins {
     alias(libs.plugins.nexus.publish)
     alias(libs.plugins.benmanes.versions)
+    alias(libs.plugins.dokka)
 }
 
 group = "io.github.serpro69"
@@ -56,3 +57,7 @@ configureGradleDaemonJvm(
     updateDaemonJvm = tasks.updateDaemonJvm,
     gradleDaemonJvmVersion = libs.versions.gradleDaemonJvm.map { JavaVersion.toVersion(it) },
 )
+
+tasks.dokkaGfmMultiModule {
+    moduleName.set("kotlin-faker")
+}

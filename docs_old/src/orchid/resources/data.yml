@@ -1,0 +1,67 @@
+homepageSections:
+  - title: '…a plethora of real-looking data in various domains:'
+    snippets: ['data_provider_zero']
+    lang: 'kotlin'
+    tabs:
+      - title: 'Names'
+        snippets: ['data_provider_one']
+        lang: 'kotlin'
+      - title: 'Addresses'
+        snippets: ['data_provider_two']
+        lang: 'kotlin'
+      - title: 'Internet'
+        snippets: ['data_provider_three']
+        lang: 'kotlin'
+      - title: 'Banking'
+        snippets: ['commerce_faker_one']
+        lang: 'kotlin'
+      - title: 'Books'
+        snippets: ['books_faker_one']
+        lang: 'kotlin'
+      - title: 'Movies and TV'
+        snippets: ['movies_faker_one', 'tvshows_faker_one']
+        lang: 'kotlin'
+      - title: '…and many others'
+        snippets: ['data_provider_seven']
+        lang: 'kotlin'
+  - title: '…in 60 locales:'
+    snippets: ['faker_locale_zero']
+    lang: 'kotlin'
+    tabs:
+      - title: 'nb_NO -> city'
+        snippets: ['faker_locale_one']
+        lang: 'kotlin'
+      - title: 'nb_NO -> person‘s name'
+        snippets: ['faker_locale_two']
+        lang: 'kotlin'
+  - title: '…“unique data generation”:'
+    snippets: ['unique_data_zero']
+    lang: 'kotlin'
+    tabs:
+      - title: 'Generate unique values within a domain'
+        snippets: ['unique_data_one']
+        lang: 'kotlin'
+      - title: 'Generate unique values within a function'
+        snippets: ['unique_data_two']
+        lang: 'kotlin'
+  - title: '…cli native app for looking up data generators:'
+    snippets: ['cli_app_zero']
+    lang: 'bash'
+    tabs: []
+  - title: '…and more:'
+    snippets: ['and_more_zero']
+    lang: 'kotlin'
+    tabs:
+      - title: 'Random instance of any class…'
+        snippets: ['random_class_instance_one']
+        lang: 'kotlin'
+      - title: '…with pre-configured type generation'
+        snippets: ['random_class_instance_two']
+        lang: 'kotlin'
+      - title: 'String templates'
+        snippets: ['string_provider_one']
+        lang: 'kotlin'
+      - title: 'Random numbers, strings, enums, UUIDs, and more…'
+        snippets: ['random_service_one']
+        lang: 'kotlin'
+

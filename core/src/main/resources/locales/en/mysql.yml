@@ -1,4 +1,4 @@
-# START mysql_provider_dict
+# --8<-- [start:mysql_provider_dict]
 en:
   faker:
     database:
@@ -64,4 +64,4 @@ en:
           - BLACKHOLE
           - MERGE
           - FEDERATED
-# END mysql_provider_dict
+# --8<-- [end:mysql_provider_dict]

@@ -1,4 +1,4 @@
-# START final_space_provider_dict
+# --8<-- [start:final_space_provider_dict]
 en:
   faker:
     final_space:
@@ -36,4 +36,4 @@ en:
         - Hey kids, it's me, your mother
         - That's not a cookie. And you know that HUE, you know that!
         - Get off my cheeks HUE!
-# END final_space_provider_dict
+# --8<-- [end:final_space_provider_dict]

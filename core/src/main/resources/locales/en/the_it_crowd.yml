@@ -1,4 +1,4 @@
-# START the_it_crowd_provider_dict
+# --8<-- [start:the_it_crowd_provider_dict]
 en:
   faker:
     the_it_crowd:
@@ -154,4 +154,4 @@ en:
         "Balloons explode, Jen. They explode suddenly, and unexpectedly. They are filled with the capacity to give me a little fright, and I find that unbearable.",
         "I came here to drink milk and kick ass. And I've just finished my milk."
       ]
-# END the_it_crowd_provider_dict
+# --8<-- [end:the_it_crowd_provider_dict]

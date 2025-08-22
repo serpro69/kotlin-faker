@@ -1,4 +1,4 @@
-# START elder_scrolls_provider_dict
+# --8<-- [start:elder_scrolls_provider_dict]
 en:
   faker:
     games:
@@ -584,4 +584,4 @@ en:
           - Shahvee's Amulet of Zenithar
           - The Gauldur Amulet
           - Yisra's Necklace
-# END elder_scrolls_provider_dict
+# --8<-- [end:elder_scrolls_provider_dict]

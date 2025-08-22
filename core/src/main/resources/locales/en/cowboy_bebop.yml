@@ -1,4 +1,4 @@
-# START cowboy_bebop_provider_dict
+# --8<-- [start:cowboy_bebop_provider_dict]
 en: 
   faker: 
     cowboy_bebop:
@@ -162,4 +162,4 @@ en:
         - "Humans were meant to work and sweat for their money after all. Those that try to get rich quickly or live at expense of others - all get divine retribution along the way. That is the lesson. But, one thing about humans is that they quickly forget the lesson they have learnt."
         - "When I was a cop, this was my beat. I’m the Black Dog and when I bite I don’t let go. I have no regrets about her, but I’ll settle this score on my own turf."
         - "I was younger then, I wasn't afraid of anything, I didn't think about dying for a second. I thought I was invincible. Then I met some girl. I wanted to live, I started to think like that; for the first time I was afraid of death. I had never felt like that before."
-# END cowboy_bebop_provider_dict
+# --8<-- [end:cowboy_bebop_provider_dict]

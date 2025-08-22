@@ -1,0 +1,21 @@
+---
+extends: default
+
+ignore: |-
+  system/monitoring-system/templates/configmap.yaml
+  platform/gitea/templates/config-source.yaml
+  platform/global-secrets/templates/secret-generator/configmap.yaml
+
+rules:
+  braces:
+    max-spaces-inside: 1
+  comments:
+    # prettier compatibility
+    min-spaces-from-content: 1
+  comments-indentation: false
+  line-length:
+    max: 160
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+  truthy: disable

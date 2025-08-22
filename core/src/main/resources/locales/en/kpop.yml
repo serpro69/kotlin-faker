@@ -1,4 +1,4 @@
-# START kpop_provider_dict
+# --8<-- [start:kpop_provider_dict]
 en:
   faker:
     kpop:
@@ -82,4 +82,4 @@ en:
       "Yang Yo-seob", "Yeon Woo", "Yesung", "Yim Jae-beom", "Yoo Ara", "Yoo Chae-yeong", "Yoo Seung-jun", "Yoo Young-jae", "Yoon Eun-hye",
       "Yoon Mi-rae", "Yong Jun-hyung", "Yoochun", "You Hee-yeol", "Younha", "Yubin", "Yoo Seung-ho", "Yunho", "Yoon Doo-joon", "Yeeun", "Yangpa",
       "Zelo", "Zhou Mi", "Zia", "Zion.T"]
-# END kpop_provider_dict
+# --8<-- [end:kpop_provider_dict]

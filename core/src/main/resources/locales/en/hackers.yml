@@ -1,4 +1,4 @@
-# START hackers_provider_dict
+# --8<-- [start:hackers_provider_dict]
 en:
   faker:
     hackers:
@@ -52,4 +52,4 @@ en:
         - Anything else? You want me to mow the lawn? Oops forgot, New York, no grass
         - It's in that place where I put that thing that time
         - RISC is good
-# END hackers_provider_dict
+# --8<-- [end:hackers_provider_dict]

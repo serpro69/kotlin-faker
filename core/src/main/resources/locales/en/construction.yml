@@ -1,4 +1,4 @@
-# START construction_provider_dict
+# --8<-- [start:construction_provider_dict]
 en:
   faker:
     construction:
@@ -424,4 +424,4 @@ en:
         "17-030 - Bond",
         "17-040 - Profit"
       ]
-# END construction_provider_dict
+# --8<-- [end:construction_provider_dict]

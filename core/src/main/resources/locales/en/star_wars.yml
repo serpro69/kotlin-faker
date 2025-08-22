@@ -1,4 +1,4 @@
-# START star_wars_provider_dict
+# --8<-- [start:star_wars_provider_dict]
 en:
   faker:
     star_wars:
@@ -605,4 +605,4 @@ en:
         yoda:
         - master yoda
         - yoda
-# END star_wars_provider_dict
+# --8<-- [end:star_wars_provider_dict]

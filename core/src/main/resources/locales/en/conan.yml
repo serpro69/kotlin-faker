@@ -1,4 +1,4 @@
-# START conan_provider_dict
+# --8<-- [start:conan_provider_dict]
 en:
   faker:
     conan:
@@ -170,4 +170,4 @@ en:
         - Shiratori's car
         - Kusuda's Nissan
         - Yukiko's Motorcycle
-# END conan_provider_dict
+# --8<-- [end:conan_provider_dict]

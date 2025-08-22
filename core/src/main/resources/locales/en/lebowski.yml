@@ -1,4 +1,4 @@
-# START lebowski_provider_dict
+# --8<-- [start:lebowski_provider_dict]
 en:
   faker:
     lebowski:
@@ -42,4 +42,4 @@ en:
         "Stay away from my special lady friend, man.",
         "I don't roll on Shabbos!"
       ]
-# END lebowski_provider_dict
+# --8<-- [end:lebowski_provider_dict]

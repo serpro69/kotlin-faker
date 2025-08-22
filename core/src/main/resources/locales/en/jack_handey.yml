@@ -1,4 +1,4 @@
-# START jack_handey_provider_dict
+# --8<-- [start:jack_handey_provider_dict]
 en:
   faker:
     quote:
@@ -53,4 +53,4 @@ en:
         - Many people don't realize that playing dead can help not only with bears, but also at important business meetings.
         - I bet a funny thing about driving a car off a cliff is, while you're in midair, you still hit those brakes. Hey, better try the emergency brake.
         - One day one of my little nephews came up to me and asked me if the equator was a real line that went around the Earth, or just an imaginary one. I had to laugh. Laugh and laugh. Because I didn't know, and I thought that maybe by laughing he would forget what he asked me.
-# END jack_handey_provider_dict
+# --8<-- [end:jack_handey_provider_dict]

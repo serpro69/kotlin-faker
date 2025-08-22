@@ -1,4 +1,4 @@
-# START slack_emoji_provider_dict
+# --8<-- [start:slack_emoji_provider_dict]
 en:
   faker:
     slack_emoji:
@@ -19,4 +19,4 @@ en:
         - "#{travel_and_places}"
         - "#{objects_and_symbols}"
         - "#{custom}"
-# END slack_emoji_provider_dict
+# --8<-- [end:slack_emoji_provider_dict]

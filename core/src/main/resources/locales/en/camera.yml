@@ -1,4 +1,4 @@
-# START camera_provider_dict
+# --8<-- [start:camera_provider_dict]
 en:
   faker:
     camera:
@@ -610,4 +610,4 @@ en:
         - Sony Cyber-shot DSC-W800
         - Sony Cyber-shot DSC-WX350
         - Sony Cyber-shot DSC-WX500 - YI M1 -
-# END camera_provider_dict
+# --8<-- [end:camera_provider_dict]

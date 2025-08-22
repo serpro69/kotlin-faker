@@ -1,4 +1,4 @@
-# START mariadb_provider_dict
+# --8<-- [start:mariadb_provider_dict]
 en:
   faker:
     database:
@@ -67,4 +67,4 @@ en:
           - FEDERATED
           - TokuDB
           - Spider
-# END mariadb_provider_dict
+# --8<-- [end:mariadb_provider_dict]

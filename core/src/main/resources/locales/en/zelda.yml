@@ -1,4 +1,4 @@
-# START zelda_provider_dict
+# --8<-- [start:zelda_provider_dict]
 en:
   faker:
     games:
@@ -965,4 +965,4 @@ en:
           - Super Net
           - Scoot Fruit
           - Foul Fruit
-# END zelda_provider_dict
+# --8<-- [end:zelda_provider_dict]

@@ -1,4 +1,4 @@
-# START how_to_train_your_dragon_provider_dict
+# --8<-- [start:how_to_train_your_dragon_provider_dict]
 en:
   faker:
     how_to_train_your_dragon:
@@ -172,4 +172,4 @@ en:
         - Woolly Canyon
         - Wreck Reef
         - Zippleback Island
-# END how_to_train_your_dragon_provider_dict
+# --8<-- [end:how_to_train_your_dragon_provider_dict]

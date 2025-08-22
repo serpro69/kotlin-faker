@@ -1,4 +1,4 @@
-# START pokemon_provider_dict
+# --8<-- [start:pokemon_provider_dict]
 en:
   faker:
     games:
@@ -420,4 +420,4 @@ en:
           - Wing Attack
           - Withdraw
           - Wrap
-# END pokemon_provider_dict
+# --8<-- [end:pokemon_provider_dict]

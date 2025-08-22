@@ -15,7 +15,7 @@ class FakerConfigurationJ {
     @DisplayName("two faker instances with same 'random' should output same values - java")
     @Test
     void sameRandomConfigurationForTwoFakerInstances() {
-        // START faker_config_one_java
+        // --8<-- [start:faker_config_one_java]
         FakerConfig.Builder configBuilder = FakerConfig.builder();
 
         Faker faker = new Faker(configBuilder.withRandom(Random(42)).build());
@@ -28,18 +28,18 @@ class FakerConfigurationJ {
 
         assertEquals(city1, city2);
         assertEquals(name1, name2);
-        // END faker_config_one_java
+        // --8<-- [end:faker_config_one_java]
     }
 
     @DisplayName("two faker instances with same 'randomSeed' should output same values - java")
     @Test
     void sameRandomSeedConfiguration() {
-        // START faker_config_two_java
+        // --8<-- [start:faker_config_two_java]
         FakerConfig config = FakerConfig.builder()
             .withRandomSeed(42)
             .build();
         Faker faker = new Faker(config);
-        // END faker_config_two_java
+        // --8<-- [end:faker_config_two_java]
 
         String city1 = faker.getAddress().city();
         String name1 = faker.getName().name();
@@ -55,7 +55,7 @@ class FakerConfigurationJ {
     @DisplayName("random' should be ignored if 'randomSeed' is specified - java")
     @Test
     void ignoreRandomIfRandomSeedIsSet() {
-        // START faker_config_three_java
+        // --8<-- [start:faker_config_three_java]
         FakerConfig config = FakerConfig.builder()
             .withRandom(Random(123))
             .withRandomSeed(42)
@@ -70,19 +70,19 @@ class FakerConfigurationJ {
         String city2 = otherFaker.getAddress().city();
 
         assertEquals(city1, city2);
-        // END faker_config_three_java
+        // --8<-- [end:faker_config_three_java]
     }
 
     @DisplayName("should be able to configure locale")
     @Test
     void configureLocale() {
-        // START faker_config_five_java
+        // --8<-- [start:faker_config_five_java]
         FakerConfig config = FakerConfig.builder()
             .withLocale("nb-NO")
             .build();
         Faker faker = new Faker(config);
         assertEquals(faker.getAddress().defaultCountry(), "Norge");
-        // END faker_config_five_java
+        // --8<-- [end:faker_config_five_java]
     }
 }
 

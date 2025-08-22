@@ -1,4 +1,4 @@
-# START relationship_provider_dict
+# --8<-- [start:relationship_provider_dict]
 en:
   faker:
     relationship:
@@ -9,4 +9,4 @@ en:
       spouse: ['Husband', 'Wife']
       parent: ['Father', 'Mother']
       sibling: ['Sister', 'Brother']
-# END relationship_provider_dict
+# --8<-- [end:relationship_provider_dict]

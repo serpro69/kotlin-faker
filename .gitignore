@@ -3,11 +3,13 @@
 .idea/
 .kotlin/
 .kotlintest/
+.env
 *.jar
 *.log
 out/
 build/
 logs/
+site/
 !gradle/wrapper/gradle-wrapper.jar
 !docs/gradle/wrapper/gradle-wrapper.jar
 # kotlin-language-server
@@ -15,3 +17,8 @@ kls_database.db
 
 # FIXME remove when Gradle Daemon JVM can be auto-provisioned - see configureGradleDaemonJvm()
 gradle/gradle-daemon-jvm.properties
+
+# macos
+**/.DS_Store
+
+__pycache__/

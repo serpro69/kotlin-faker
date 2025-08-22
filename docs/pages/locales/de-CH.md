@@ -1,0 +1,7 @@
+---
+title: de-CH
+---
+
+```yaml
+--8<-- "core/src/main/resources/locales/de-CH.yml"
+```

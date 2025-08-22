@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+<!-- Custom front matter -->
+{% block extrahead %}
+
+<!-- Extra stylesheets -->
+<link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}" />
+
+<!-- Determine title -->
+{% set title = config.site_name %} {% if page and page.title and not
+page.is_homepage %} {% set title = config.site_name ~ " - " ~ page.title |
+striptags %} {% endif %}
+
+<!-- The image needs to have an absolute URL -->
+{% set image = config.site_url ~ 'assets/images/illustrations/banner.png' %}
+
+<!-- Open graph meta tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ config.site_description }}" />
+<meta property="og:url" content="{{ page.canonical_url }}" />
+<meta property="og:image" content="{{ image }}" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="568" />
+
+<!-- google-site-verification meta-tag -->
+<!-- https://search.google.com/search-console/welcome?utm_source=about-page -->
+<meta name="google-site-verification" content="p4odp071l1EbA4UzkStxpdi2k5YUzjhm7CGLuK007w0" />
+
+{% endblock %}
+
+<!-- Announcement bar -->
+{% block announce %}
+<style>
+  .md-banner a {
+    color: var(--color-nord-frost3) !important;
+  }
+
+  .md-banner a:focus, .md-banner a:hover {
+    color: var(--color-nord-green) !important;
+  }
+
+  .md-banner strong {
+    white-space: nowrap;
+  }
+
+  .md-banner {
+    background-color: var(--color-nord-purple);
+    text-align: center;
+  }
+</style>
+
+<!-- <p> -->
+<!--   Next <i>major release version</i> of <strong>kotlin-faker 2.0</strong> is in the works 🚧 -->
+<!--   for updates <strong><a href="https://github.com/serpro69/kotlin-faker/discussions/236">subscribe to this discussion</a></strong> -->
+<!--   on <span class="twemoji md-icon">{\% include ".icons/fontawesome/brands/github.svg" %}</span> -->
+<!-- </p> -->
+
+<p>
+  This documentation is being updated 🚧
+  Old <strong><a href="https://serpro69.github.io/kotlin-faker/old/">1.6 (legacy)</a></strong> version is available if you find something missing.
+</p>
+
+{% endblock %}

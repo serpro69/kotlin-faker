@@ -1,4 +1,4 @@
-# START source_provider_dict
+# --8<-- [start:source_provider_dict]
 en:
   faker:
     source:
@@ -50,4 +50,4 @@ en:
         clojure: "
                 (for [i (range 1 11)]
                   (println i))"
-# END source_provider_dict
+# --8<-- [end:source_provider_dict]

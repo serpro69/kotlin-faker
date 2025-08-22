@@ -1,4 +1,4 @@
-# START harry_potter_provider_dict
+# --8<-- [start:harry_potter_provider_dict]
 en:
   faker:
     harry_potter:
@@ -8,4 +8,4 @@ en:
       books: ["Harry Potter and the Sorcerer's Stone", "Harry Potter and the Chamber of Secrets", "Harry Potter and the Prisoner of Azkaban", "Harry Potter and the Goblet of Fire", "Harry Potter and the Order of the Phoenix", "Harry Potter and the Half-Blood Prince", "Harry Potter and the Deathly Hallows"]
       houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff", "Horned Serpent", "Wampus", "Thunderbird", "Pukwudgie"]
       spells: ["Accio", "Alohomora", "Avada Kedavra", "Crucio", "Confundo", "Expelliarmus", "Expecto Patronum", "Lumos", "Obliviate", "Reparo", "Revelio", "Riddikulus", "Stupefy", "Sectumsempra", "Wingardium Leviosa"]
-# END harry_potter_provider_dict
+# --8<-- [end:harry_potter_provider_dict]

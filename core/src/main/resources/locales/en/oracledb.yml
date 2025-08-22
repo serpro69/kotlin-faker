@@ -1,4 +1,4 @@
-# START oracledb_provider_dict
+# --8<-- [start:oracledb_provider_dict]
 en:
   faker:
     database:
@@ -35,4 +35,4 @@ en:
           - ROWID
           - UROWID
           - BFILE
-# END oracledb_provider_dict
+# --8<-- [end:oracledb_provider_dict]

@@ -15,8 +15,8 @@
 > *Kotlin-faker is a kotlin port of a popular [ruby faker](https://github.com/stympy/faker) gem.*
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/serpro69/kotlin-faker/build.yml?branch=master&logo=github&style=for-the-badge)](https://github.com/serpro69/kotlin-faker/actions/workflows/build.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge)](https://search.maven.org/artifact/io.github.serpro69/kotlin-faker)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.serpro69/kotlin-faker?label=snapshot-version&server=https%3A%2F%2Foss.sonatype.org&style=for-the-badge&color=yellow)](#downloading)
+[![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge&logo=apachemaven&label=release-version&color=blue)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker)
+[![Central Sonatype (Snapshots)](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fio%2Fgithub%2Fserpro69%2Fkotlin-faker%2Fmaven-metadata.xml&strategy=highestVersion&style=for-the-badge&logo=apachemaven&label=snapshot-version&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)
 [![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&style=for-the-badge&color=lightblue)](https://github.com/serpro69/kotlin-faker/issues)
 ![GitHub Top Lang](https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&logoColor=white&color=A97BFF&style=for-the-badge)
 [![Awesome Kotlin](https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&style=for-the-badge)](https://kotlin.link/resources?q=kotlin-faker)
@@ -67,6 +67,13 @@ In fact, kotlin-faker is so good at generating fake data, it almost fooled us in
 
 ## Installation
 
+**Full documentation, including [installation instructions](https://serpro69.github.io/kotlin-faker/dev/wiki/getting-started/#installing), for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).**
+
+> [!WARNING]
+> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
+>
+> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
+
 Latest releases are always available on maven central.
 
 ### Install with Gradle
@@ -89,13 +96,13 @@ dependencies {
 </dependencies>
 ```  
 
-***Snapshots are also available using the following repository: `https://oss.sonatype.org/content/repositories/snapshots/`***
+***Snapshots are also available using the following repository: `https://central.sonatype.com/repository/maven-snapshots/`***
 
 **With gradle**
 ```groovy
 repositories {
     maven {
-        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+        url = 'https://central.sonatype.com/repository/maven-snapshots/'
     }
 }
 ```
@@ -106,7 +113,7 @@ repositories {
     <repository>
         <id>sonatype-snapshot</id>
         <name>Sonatype Snapshot</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <url>https://central.sonatype.com/repository/maven-snapshots/</url>
     </repository>
 </repositories>
 ```
@@ -126,15 +133,6 @@ Extra fakers covering a wide range of domains are available as separate dependen
 Faker provides extensions for some third-party testing libraries. See [extension](extension) submodules in this repo for more details about each extension.
 
 ## Usage
-
-Full usage documentation for kotlin-faker is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/).
-
-_NB! The documentation website is currently not versioned and always reflects `master` rather than the last stable version._
-
-> [!WARNING]
-> **kotlin-faker 2.0** is coming, which, apart from new features, also means breaking changes.
->
-> More details on currently added breaking changes and migration can be found in [#220](https://github.com/serpro69/kotlin-faker/issues/220)
 
 ### Generating data
 

@@ -1,4 +1,4 @@
-# START super_mario_provider_dict
+# --8<-- [start:super_mario_provider_dict]
 en:
   faker:
     games:
@@ -57,4 +57,4 @@ en:
           - Peach's Castle
           - Rabbit Ridge
           - Culmina Crater
-# END super_mario_provider_dict
+# --8<-- [end:super_mario_provider_dict]

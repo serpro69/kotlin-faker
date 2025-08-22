@@ -1,4 +1,4 @@
-# START finance_provider_dict
+# --8<-- [start:finance_provider_dict]
 en:
   faker:
     finance:
@@ -188,4 +188,4 @@ en:
         - ASX
         - JSE
         - BOVESPA
-# END finance_provider_dict
+# --8<-- [end:finance_provider_dict]

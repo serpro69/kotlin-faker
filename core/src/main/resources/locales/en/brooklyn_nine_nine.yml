@@ -1,4 +1,4 @@
-# START brooklyn_nine_nine_provider_dict
+# --8<-- [start:brooklyn_nine_nine_provider_dict]
 en:
   faker:
     brooklyn_nine_nine:
@@ -34,4 +34,4 @@ en:
         - It's Gina's phone. Leave me a voice mail. I won't check it 'cause it's not 1993.
         - You should make me your campaign manager. I was born for politics. I have great hair and I love lying.
         - It's not that weird to say, 'May I have some cocaine?
-# END brooklyn_nine_nine_provider_dict
+# --8<-- [end:brooklyn_nine_nine_provider_dict]
