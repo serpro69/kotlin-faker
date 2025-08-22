@@ -16,13 +16,10 @@ faker: core
     Faker().idNumber.invalid() // => 000-##-#### where '#' is a random digit
     ```
 
-'''
+---
 
-.Non-implemented Functions:
-[%collapsible]
-====
-[source,kotlin]
-----
-Faker().idNumber.valid() // => #{IDNumber.ssn_valid}
-----
-====
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().idNumber.valid() // => #{IDNumber.ssn_valid}
+        ```

@@ -15,12 +15,12 @@ faker: commerce
     ```kotlin
     // `#` represents a random digit
     // `?` represents a random letter
-    Faker.barcode.ean8() // => #######
-    Faker.barcode.ean13() // => ############
-    Faker.barcode.upcA() // => ###########
-    Faker.barcode.upcE() // => 0######
-    Faker.barcode.compositeSymbol() // => ????####
-    Faker.barcode.isbn() // => 978#########
-    Faker.barcode.ismn() // => 9790########
-    Faker.barcode.issn() // => 977#########
+    Faker().barcode.ean8() // => #######
+    Faker().barcode.ean13() // => ############
+    Faker().barcode.upcA() // => ###########
+    Faker().barcode.upcE() // => 0######
+    Faker().barcode.compositeSymbol() // => ????####
+    Faker().barcode.isbn() // => 978#########
+    Faker().barcode.ismn() // => 9790########
+    Faker().barcode.issn() // => 977#########
     ```

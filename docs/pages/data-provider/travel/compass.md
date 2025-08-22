@@ -13,19 +13,16 @@ faker: travel
 
 === "kotlin :material-language-kotlin:"
     ```kotlin
-    ----
-    ====
-
-    '''
-
-    .Non-implemented Functions:
-    [%collapsible]
-    ====
-    [source,kotlin]
-    ----
-    Faker().compass.direction() // => north
-
-    Faker().compass.abbreviation() // => N
-
-    Faker().compass.azimuth() // => 180
     ```
+
+---
+
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().compass.direction() // => north
+
+        Faker().compass.abbreviation() // => N
+
+        Faker().compass.azimuth() // => 180
+        ```

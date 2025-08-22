@@ -20,13 +20,10 @@ faker: lorem
     Faker().lorem.punctuation() // => '.'
     ```
 
-'''
+---
 
-.Non-implemented Functions:
-[%collapsible]
-====
-[source,kotlin]
-----
-Faker().lorem.multibyte() // => [240, 159, 152, 128]
-----
-====
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().lorem.multibyte() // => [240, 159, 152, 128]
+        ```

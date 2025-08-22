@@ -15,7 +15,7 @@ faker: books
     ```kotlin
     Faker().cultureSeries.books() // => Consider Phlebas
 
-    Faker().cultureSeries.cultureShips() Happy Idiot Talk
+    Faker().cultureSeries.cultureShips() // => Happy Idiot Talk
 
     Faker().cultureSeries.culture_ship_classes() // => General Systems Vehicle
 

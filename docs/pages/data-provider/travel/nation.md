@@ -20,13 +20,10 @@ faker: travel
     Faker().nation.capital_city() // => Kabul
     ```
 
-'''
+---
 
-.Non-implemented Functions:
-[%collapsible]
-====
-[source,kotlin]
-----
-Faker().nation.flag() // => [240, 159, 135, 166, 240, 159, 135, 168]
-----
-====
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().nation.flag() // => [240, 159, 135, 166, 240, 159, 135, 168]
+        ```

@@ -13,17 +13,14 @@ faker: commerce
 
 === "kotlin :material-language-kotlin:"
     ```kotlin
-    ----
-    ====
-
-    '''
-
-    .Non-implemented Functions:
-    [%collapsible]
-    ====
-    [source,kotlin]
-    ----
-    Faker().invoice.checkDigitMethod() // method_731
-
-    Faker().invoice.pattern() // '\d{3,19}#'
     ```
+
+---
+
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().invoice.checkDigitMethod() // method_731
+
+        Faker().invoice.pattern() // '\d{3,19}#'
+        ```

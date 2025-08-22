@@ -25,15 +25,12 @@ faker: edu
     Faker().educator.tertiaryDegreeCourseNumber() // => 306
     ```
 
-'''
+---
 
-.Non-implemented Functions:
-[%collapsible]
-====
-[source,kotlin]
-----
-Faker().educator.university() // =>
-Faker().educator.degree() // =>
-Faker().educator.courseName() // =>
-----
-====
+??? info "non-implemented functions"
+    === "kotlin :material-language-kotlin:"
+        ```kotlin
+        Faker().educator.university() // =>
+        Faker().educator.degree() // =>
+        Faker().educator.courseName() // =>
+        ```
