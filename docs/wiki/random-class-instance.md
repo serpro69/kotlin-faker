@@ -2,7 +2,7 @@
 icon: material/ice-cream
 ---
 
-# :material-ice-cream: Random instance of any class {#random-class-instance}
+# :material-ice-cream: Random class instance
 
 It is possible to create a random instance of (almost) any class. 
 
