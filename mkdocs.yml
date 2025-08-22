@@ -131,6 +131,8 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: true
+  # https://squidfunk.github.io/mkdocs-material/reference/data-tables/
+  - tables
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.extra
