@@ -3,5 +3,6 @@
 *.kotlin/
 build/
 site/
+__pycache__/
 
 .env
