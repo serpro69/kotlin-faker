@@ -116,9 +116,9 @@ Using a non-default locale will replace the values in _some_ of the providers wi
 
 ## Random Class Instance
 
-[RandomClassInstance](./extras.md#random-class-instance) can also be configured from the `FakerConfig`.
+[RandomClassInstance](./random-class-instance.md) can also be configured from the `FakerConfig`.
 
 !!! info
     This configuration takes the least precedence and will be overridden by config set on the `faker.randomProvider` level or on the `randomClassInstance` function level.
     <br>
-    See [Random Class Instance Configuration](./extras.md#random-class-instance-configuration) for more details. 
+    See [Random Class Instance Configuration](./random-class-instance.md#random-class-instance-configuration) for more details. 

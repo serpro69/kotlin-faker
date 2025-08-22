@@ -16,6 +16,16 @@ def define_env(env):
         return re.sub(find, replace, s)
 
 
+def on_pre_page_macros(env):
+    """
+    Actions to be done before macro interpretation,
+    just before the markdown is generated
+    """
+    # base URI of the page (with versioning support)
+    env.page.meta['base_uri'] = re.sub(
+        env.page.file.page.url, '', env.page.canonical_url)
+
+
 def on_post_page_macros(env):
     """
     Actions to be done after macro interpretation,

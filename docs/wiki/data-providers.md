@@ -8,7 +8,7 @@ icon: fontawesome/solid/gear
 Below is the list of available Fakers domains and their data providers (data generators) that correspond to the yaml dictionary files found in [core/locales/en](https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/en)
 
 !!! info
-    Not all (although most) of the providers (generators) and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below, or go to the [Core API](TODO) page to browse the API reference documentation.
+    Not all (although most) of the providers (generators) and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below, or go to the <a href="{{ page.meta.base_uri }}api/">Core API</a> page to browse the API reference documentation.
 
 !!! warning
     Below pages contain code blocks with inlined yaml dictionaries, some of them can be quite big. This could affect your internet traffic if you're viewing these docs on a mobile device.

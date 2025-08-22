@@ -39,7 +39,9 @@
 </h1>
 
 <!-- disable on localhost for faster reloads -->
+{% if not '127.0.0.1' in config.site_url %}
 {{ page.content }}
+{% endif %}
 
 <br>
 
