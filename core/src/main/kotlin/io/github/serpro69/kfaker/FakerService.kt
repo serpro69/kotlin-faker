@@ -509,7 +509,7 @@ class FakerService {
         val cc = category
             .lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-        val primary = category.names.toMutableSet().plus(cc).joinToString("|")
+        val primary = category.aliases.toMutableSet().plus(cc).joinToString("|")
         val secondary = category.children.toMutableSet().joinToString("|")
         // https://regex101.com/r/KIvagc/1
         //                          #\{(?!\d)(?:(Creature|Games|(Bird|Cat|Dog))\.)?((?![A-Z]\p{L}*\.).*?)\}

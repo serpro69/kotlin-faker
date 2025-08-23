@@ -25,7 +25,6 @@ class PhoneNumber internal constructor(fakerService: FakerService) : YamlFakeDat
     fun countryCode() = resolve("country_code")
     fun exchangeCode() = resolve("exchange_code")
     fun phoneNumber() = with(fakerService) { resolve("formats").numerify() }
-    // part of locales/en-US.yml and some others but not in locales/en/phone.yml
     fun extension() = with(fakerService) { resolve("extension").numerify() }
     fun subscriberNumber() = with(fakerService) { resolve("subscriber_number").numerify() }
 }

@@ -155,7 +155,7 @@ internal class FakerServiceTest : DescribeSpec({
             context("value type is String") {
                 val service = fakerService(YamlCategory.ID_NUMBER)
                 val rawValue = service.getRawValue(YamlCategory.ID_NUMBER, "valid")
-                val expectedValue = "#{IDNumber.ssn_valid}"
+                val expectedValue = "#{IdNumber.ssn_valid}"
 
                 it("the raw value is returned as String") {
                     rawValue.value shouldBe expectedValue
