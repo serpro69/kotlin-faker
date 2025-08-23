@@ -1,4 +1,3 @@
-# --8<-- [start:tolkien_provider_dict]
 en:
   faker:
     tolkien:
@@ -2452,4 +2451,3 @@ en:
           - Ravenhill
           - Iron Hills
           - Mount Gundabad
-# --8<-- [end:tolkien_provider_dict]

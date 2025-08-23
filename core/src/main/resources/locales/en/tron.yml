@@ -1,4 +1,3 @@
-# --8<-- [start:tron_provider_dict]
 en:
   faker:
     tron:
@@ -226,4 +225,3 @@ en:
         - roy
         - roy kleinberg
         - roy klienberg
-# --8<-- [end:tron_provider_dict]

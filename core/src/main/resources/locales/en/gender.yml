@@ -1,8 +1,6 @@
-# --8<-- [start:gender_provider_dict]
 en:
   faker:
     gender:
       types: ["Female", "Male", "Non-binary", "Agender", "Genderfluid", "Genderqueer", "Bigender", "Polygender"]
       binary_types: ["Female", "Male"]
       short_binary_types: ["f", "m"]
-# --8<-- [end:gender_provider_dict]

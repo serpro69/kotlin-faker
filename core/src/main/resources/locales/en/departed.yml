@@ -1,4 +1,3 @@
-# --8<-- [start:departed_provider_dict]
 en:
   faker:
     departed:
@@ -49,4 +48,3 @@ en:
       - One of you mugs got a light?
       - Do you want to be a cop or do you want to appear to be a cop?
       - Yeah, it's working... Overtime!
-# --8<-- [end:departed_provider_dict]

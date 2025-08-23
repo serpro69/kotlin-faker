@@ -1,4 +1,3 @@
-# --8<-- [start:measurement_provider_dict]
 en:
   faker:
     measurement:
@@ -10,4 +9,3 @@ en:
       metric_length: ["millimeter", "centimeter", "decimeter", "meter", "dekameter", "hectometer", "kilometer"]
       metric_volume: ["milliliter", "liter"]
       metric_weight: ["milligram", "centigram", "decigram", "gram", "dekagram", "hectogram", "kilogram", "metric ton"]
-# --8<-- [end:measurement_provider_dict]

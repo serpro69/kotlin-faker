@@ -1,4 +1,3 @@
-# --8<-- [start:heroes_provider_dict]
 en:
   faker:
     heroes:
@@ -410,4 +409,3 @@ en:
         - Vial of Dragon Blood
         - Vial of Lifeblood
         - Wizard's Well
-# --8<-- [end:heroes_provider_dict]

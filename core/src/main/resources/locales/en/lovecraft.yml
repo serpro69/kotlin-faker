@@ -1,4 +1,3 @@
-# --8<-- [start:lovecraft_provider_dict]
 en:
   faker:
     lovecraft:
@@ -78,4 +77,3 @@ en:
         - unmentionable
         - unnamable
         - unutterable
-# --8<-- [end:lovecraft_provider_dict]

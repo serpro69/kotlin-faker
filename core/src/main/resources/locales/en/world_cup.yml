@@ -1,4 +1,3 @@
-# --8<-- [start:world_cup_provider_dict]
 en:
   faker:
     world_cup:
@@ -270,4 +269,3 @@ en:
           defenders: ["Lamine Gassama", "Saliou Ciss", "Kalidou Koulibaly", "Kara Mbodii", "Youssouf Sabaly", "Salif Sane", "Moussa Wague"]
           midfielders: ["Idrissa Gueye", "Cheikhou Kouyate", "Alfred Ndiaye", "Badou Ndiaye", "Cheikh Ndoye", "Ismaila Sarr"]
           forwards: ["Keita Balde", "Mame Biram Diouf", "Moussa Konate", "Sadio Mane", "Mbaye Niang", "Diafra Sakho", "Moussa Sow"]
-# --8<-- [end:world_cup_provider_dict]

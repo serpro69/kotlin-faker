@@ -8,7 +8,7 @@ faker: tech
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/crypto_coin.yml:crypto_coin_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/crypto_coin.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

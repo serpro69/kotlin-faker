@@ -1,4 +1,3 @@
-# --8<-- [start:book_provider_dict]
 en:
   faker:
     book:
@@ -490,4 +489,3 @@ en:
         - Speech
         - Textbook
         - Reference book
-# --8<-- [end:book_provider_dict]

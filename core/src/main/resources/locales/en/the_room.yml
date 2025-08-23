@@ -1,4 +1,3 @@
-# --8<-- [start:the_room_provider_dict]
 en:
   faker:
     the_room:
@@ -67,4 +66,3 @@ en:
         - "How could you do this to me?! I gave you seven years of my life! And you betray me."
         - "Aughhhhhhhh!!! Everybody betray me. I don’t have a friend in the world."
         - "As far as I’m concerned, you can drop off the earth. That’s a promise"
-# --8<-- [end:the_room_provider_dict]

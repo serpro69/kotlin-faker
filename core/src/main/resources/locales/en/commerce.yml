@@ -1,4 +1,3 @@
-# --8<-- [start:commerce_provider_dict]
 en:
   faker:
     commerce:
@@ -27,4 +26,3 @@ en:
         'Walmart',
         'Target'
       ]
-# --8<-- [end:commerce_provider_dict]

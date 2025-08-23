@@ -1,4 +1,3 @@
-# --8<-- [start:crypto_coin_provider_dict]
 en:
   faker:
     crypto_coin:
@@ -24,4 +23,3 @@ en:
         - "Tether,           USDT, https://i.imgur.com/xk6pQZy.png"
         - "TRON,             TRX,  https://i.imgur.com/grG05ZK.png"
         - "Zcash,            ZEC,  https://i.imgur.com/mX3r4j9.png"
-# --8<-- [end:crypto_coin_provider_dict]

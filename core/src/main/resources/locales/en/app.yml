@@ -1,4 +1,3 @@
-# --8<-- [start:app_provider_dict]
 en:
   faker:
     app:
@@ -16,4 +15,3 @@ en:
         - "#{Name.last_name}, #{Name.last_name} and #{Name.last_name}"
       suffix: [Inc, and Sons, LLC, Group]
       ### end
-# --8<-- [end:app_provider_dict]

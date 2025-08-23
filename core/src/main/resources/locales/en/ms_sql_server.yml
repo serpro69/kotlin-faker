@@ -1,4 +1,3 @@
-# --8<-- [start:ms_sql_server_provider_dict]
 en:
   faker:
     database:
@@ -41,4 +40,3 @@ en:
           - SQL_VARIANT
           - TABLE
           - GEOMETRY
-# --8<-- [end:ms_sql_server_provider_dict]

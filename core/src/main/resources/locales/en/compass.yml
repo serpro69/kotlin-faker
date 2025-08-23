@@ -1,4 +1,3 @@
-# --8<-- [start:compass_provider_dict]
 en:
   faker:
     compass:
@@ -33,4 +32,3 @@ en:
         - "#{ordinal_azimuth}"
         - "#{half_wind_azimuth}"
         - "#{quarter_wind_azimuth}"
-# --8<-- [end:compass_provider_dict]

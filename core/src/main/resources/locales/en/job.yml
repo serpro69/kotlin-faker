@@ -1,4 +1,3 @@
-# --8<-- [start:job_provider_dict]
 en:
   faker:
     job:
@@ -14,4 +13,3 @@ en:
         - "#{field} #{position}"
         - "#{field} #{position}"
         - "#{seniority} #{position}"
-# --8<-- [end:job_provider_dict]

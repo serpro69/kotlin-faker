@@ -1,4 +1,3 @@
-# --8<-- [start:family_guy_provider_dict]
 en:
   faker:
     family_guy:
@@ -6,4 +5,3 @@ en:
       location: ["Cleveland's Deli", "Drunken Clam", "Goldman's Pharmacy", "Happy-Go-Lucky Toy Factory", "Jack's Joke Shop", "James Woods High", "Pawtucket Brewery", "Quahog 5 News", "Spooner Street"]
       quote: ["It’s Peanut Butter Jelly Time.", "I’ve got an idea–an idea so smart that my head would explode if I even began to know what I’m talking about.", "A degenerate, am I? Well, you are a festisio! See? I can make up words too, sister.", "Now I may be an idiot, but there’s one thing I am not sir, and that sir, is an idiot.", "Isn’t ‘bribe’ just another word for ‘love’?", "I am so not competitive. In fact, I am the least non-competitive. So I win.", "Hey, don't try to take this away from me. This is the only thing I've ever been good at. Well, this and timing my farts to a thunderstorm.", "Joe, gag on my fat dauber.", "People in love can overcome anything.", "Amazing. One second of a stranger's voice on a phone, and you've got full Bollywood.", "You know, this is great guys. Drinking and eating garbage. I'm glad we all took a mental health day."]
 
-# --8<-- [end:family_guy_provider_dict]

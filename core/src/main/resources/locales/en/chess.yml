@@ -1,4 +1,3 @@
-# --8<-- [start:chess_provider_dict]
 en:
   faker:
     chess:
@@ -102,4 +101,3 @@ en:
         - AFM
         - ACM
 
-# --8<-- [end:chess_provider_dict]

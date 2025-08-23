@@ -1,4 +1,3 @@
-# --8<-- [start:silicon_valley_provider_dict]
 en:
   faker:
     silicon_valley:
@@ -52,4 +51,3 @@ en:
         "http://drinkhomicide.com"
       ]
       email: ['richard@piedpiper.test', 'bertram@piedpiper.test', 'dinesh@piedpiper.test', 'jared@piedpiper.test', 'bighead@nipplealert.test', 'erlich@bachmanity.test', 'monica@raviga.test', 'laurie@raviga.test', 'gavin@hooli.test', 'russ@threecommaclub.test', 'denpok@hooli.test']
-# --8<-- [end:silicon_valley_provider_dict]
