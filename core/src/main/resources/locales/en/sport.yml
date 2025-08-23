@@ -1,4 +1,3 @@
-# --8<-- [start:sport_provider_dict]
 en:
   faker:
     sport:
@@ -129,4 +128,3 @@ en:
         - Poohsticks
         - Wife carrying
         - Zorbing
-# --8<-- [end:sport_provider_dict]

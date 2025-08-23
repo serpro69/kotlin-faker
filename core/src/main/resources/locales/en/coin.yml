@@ -1,8 +1,6 @@
-# --8<-- [start:coin_provider_dict]
 en:
   faker:
     coin:
       flip:
         - Heads
         - Tails
-# --8<-- [end:coin_provider_dict]

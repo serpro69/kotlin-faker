@@ -1,4 +1,3 @@
-# --8<-- [start:naruto_provider_dict]
 en:
   faker:
     naruto:
@@ -229,4 +228,3 @@ en:
         - "Eight-Tails (Gyuki)"
         - "Nine-Tails (Kurama)"
         - "Ten-Tails (Shinju)"
-# --8<-- [end:naruto_provider_dict]

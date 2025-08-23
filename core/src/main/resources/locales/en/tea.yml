@@ -1,4 +1,3 @@
-# --8<-- [start:tea_provider_dict]
 en:
   faker:
     tea:
@@ -171,4 +170,3 @@ en:
         - Green
         - White
         - Herbal
-# --8<-- [end:tea_provider_dict]

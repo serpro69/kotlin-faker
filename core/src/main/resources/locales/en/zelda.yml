@@ -1,4 +1,3 @@
-# --8<-- [start:zelda_provider_dict]
 en:
   faker:
     games:
@@ -965,4 +964,3 @@ en:
           - Super Net
           - Scoot Fruit
           - Foul Fruit
-# --8<-- [end:zelda_provider_dict]

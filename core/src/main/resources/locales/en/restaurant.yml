@@ -1,4 +1,3 @@
-# --8<-- [start:restaurant_provider_dict]
 en:
   faker:
     restaurant:
@@ -128,4 +127,3 @@ en:
         - "Staff was very accommodating but the chef were no nonsense. The ambiance is clean and tranquil which is perfect if youre looking to have a conversation with a date or a friend."
         - "My only critique would be that the rice could of used more vingaer and for them to use real wasabi. Also the variety of fish in stock wasnt a lot but hopefully that can change over time. The cost justify the quality youre getting. A solid 4 stars."
         - "In terms of omakase, they had a few options but the one we chose was the 87 dollar version which include sashimi and sushi."
-# --8<-- [end:restaurant_provider_dict]

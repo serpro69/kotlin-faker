@@ -1,4 +1,3 @@
-# --8<-- [start:quote_provider_dict]
 en:
   faker:
     quote:
@@ -694,4 +693,3 @@ en:
       - Failure is fuel for victory
       - A black cat is not bad luck for a blind man.
       - To hesitate is to be lost.
-# --8<-- [end:quote_provider_dict]

@@ -1,4 +1,3 @@
-# --8<-- [start:control_provider_dict]
 en:
   faker:
     games:
@@ -246,4 +245,3 @@ en:
           - 'The least a director can do is keep the lights on'
           - "I forgot fridge duty."
           - 'You must choose to be the chosen one.'
-# --8<-- [end:control_provider_dict]

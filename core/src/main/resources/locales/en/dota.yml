@@ -1,4 +1,3 @@
-# --8<-- [start:dota_provider_dict]
 en:
   faker:
     games:
@@ -692,4 +691,3 @@ en:
           - Jenkins
           - JoHnNy
           - shadow
-# --8<-- [end:dota_provider_dict]

@@ -1,4 +1,3 @@
-# --8<-- [start:shakespeare_provider_dict]
 en:
   faker:
     shakespeare:
@@ -52,4 +51,3 @@ en:
         "See how she leans her cheek upon her hand. Oh, that I were a glove upon that hand that I might touch that cheek!",
         "Not stepping o'er the bounds of modesty."
       ]
-# --8<-- [end:shakespeare_provider_dict]

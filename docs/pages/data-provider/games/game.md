@@ -8,7 +8,7 @@ faker: games
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/game.yml:game_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/game.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

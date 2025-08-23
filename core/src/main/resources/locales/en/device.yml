@@ -1,4 +1,3 @@
-# --8<-- [start:device_provider_dict]
 en:
   faker:
     device:
@@ -114,4 +113,3 @@ en:
         - _usDGH^%'4dSYvUtH39qu3*hbi3V+z
         - "&XwUS6yR2N&+Z`$94eK@XzFp/p/ie^"
         - tL&^J@24CVF=zP46Lxixk`_a#=o6c5
-# --8<-- [end:device_provider_dict]

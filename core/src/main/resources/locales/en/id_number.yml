@@ -1,7 +1,5 @@
-# --8<-- [start:id_number_provider_dict]
 en:
   faker:
     id_number:
       valid: "#{IDNumber.ssn_valid}"
       invalid: ['000-##-####', '###-00-####', '###-##-0000', '666-##-####', '9##-##-####']
-# --8<-- [end:id_number_provider_dict]

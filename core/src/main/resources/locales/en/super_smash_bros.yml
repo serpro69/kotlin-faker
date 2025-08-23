@@ -1,4 +1,3 @@
-# --8<-- [start:super_smash_bros_provider_dict]
 en:
   faker:
     games:
@@ -222,4 +221,3 @@ en:
           - Yoshi's Island
           - Yoshi's Story
           - Yggdrasil's Altar
-# --8<-- [end:super_smash_bros_provider_dict]

@@ -1,4 +1,3 @@
-# --8<-- [start:airport_provider_dict]
 en:
   faker:
       airport:
@@ -380,4 +379,3 @@ en:
               - CTA
               - LIN
               - NAP
-# --8<-- [end:airport_provider_dict]

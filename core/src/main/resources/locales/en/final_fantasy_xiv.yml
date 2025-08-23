@@ -1,4 +1,3 @@
-# --8<-- [start:final_fantasy_xiv_provider_dict]
 en:
   faker:
     games:
@@ -753,4 +752,3 @@ en:
           - Gangos
           - The Omphalos
           - Unnamed Island
-# --8<-- [end:final_fantasy_xiv_provider_dict]

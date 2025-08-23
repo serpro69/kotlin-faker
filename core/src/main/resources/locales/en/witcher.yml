@@ -1,4 +1,3 @@
-# --8<-- [start:witcher_provider_dict]
 en:
   faker:
     games:
@@ -429,4 +428,3 @@ en:
           - The Tower of the Swallow
           - The Lady of the Lake
           - Season of Storms
-# --8<-- [end:witcher_provider_dict]

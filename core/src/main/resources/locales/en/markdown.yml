@@ -1,7 +1,5 @@
-# --8<-- [start:markdown_provider_dict]
 en:
   faker:
     markdown:
       headers: ["#", "##", "###", "####", "#####", "######"]
       emphasis: ["_", "~", "*", "**"]
-# --8<-- [end:markdown_provider_dict]

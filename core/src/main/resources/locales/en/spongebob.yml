@@ -1,4 +1,3 @@
-# --8<-- [start:spongebob_provider_dict]
 en:
   faker:
     spongebob:
@@ -488,4 +487,3 @@ en:
         - Camping Episode' - Puppet Edition!
         - Arrgh' - Puppet Edition!
         - The Patrick Star Fan Favorites Special
-# --8<-- [end:spongebob_provider_dict]

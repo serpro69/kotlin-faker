@@ -1,4 +1,3 @@
-# --8<-- [start:computer_provider_dict]
 en:
   faker:
     computer:
@@ -54,4 +53,3 @@ en:
           - Windows Server 2019
           - Windows Server 2016
           - Windows Server 2012 R2
-# --8<-- [end:computer_provider_dict]

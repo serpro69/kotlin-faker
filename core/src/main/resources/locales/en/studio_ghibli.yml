@@ -1,4 +1,3 @@
-# --8<-- [start:studio_ghibli_provider_dict]
 en:
   faker:
     studio_ghibli:
@@ -106,4 +105,3 @@ en:
         - The Wind Rises
         - The Tale of the Princess Kaguya
         - My Neighbors the Yamadas
-# --8<-- [end:studio_ghibli_provider_dict]

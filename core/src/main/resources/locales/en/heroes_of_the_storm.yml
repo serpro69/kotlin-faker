@@ -1,4 +1,3 @@
-# --8<-- [start:heroes_of_the_storm_provider_dict]
 en:
   faker:
     heroes_of_the_storm:
@@ -133,4 +132,3 @@ en:
         - You see this hero yes? Then kill them!
         - You think us fools?
         - You waste both my time and your breath, and the former has value.
-# --8<-- [end:heroes_of_the_storm_provider_dict]

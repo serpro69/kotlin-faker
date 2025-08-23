@@ -1,4 +1,3 @@
-# --8<-- [start:south_park_provider_dict]
 en:
   faker:
     south_park:
@@ -362,4 +361,3 @@ en:
         - Deep Learning
         - DikinBaus Hot Dogs
         - Spring Break
-# --8<-- [end:south_park_provider_dict]

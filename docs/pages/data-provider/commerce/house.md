@@ -8,7 +8,7 @@ faker: commerce
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/house.yml:house_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/house.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

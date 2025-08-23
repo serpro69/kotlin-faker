@@ -1,4 +1,3 @@
-# --8<-- [start:cosmere_provider_dict]
 en:
   faker:
     cosmere:
@@ -56,4 +55,3 @@ en:
       'Painspren', 'Passionspren', 'Rainspren', 'Riverspren', 'Rotspren',
       'Shamespren', 'Shockspren', 'Stormspren'
       ]
-# --8<-- [end:cosmere_provider_dict]

@@ -1,4 +1,3 @@
-# --8<-- [start:back_to_the_future_provider_dict]
 en:
   faker:
     back_to_the_future:
@@ -119,4 +118,3 @@ en:
         "You want a Pepsi, pal, you're gonna pay for it.",
         "You're late! Do you have no concept of time?"
       ]
-# --8<-- [end:back_to_the_future_provider_dict]

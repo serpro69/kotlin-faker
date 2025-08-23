@@ -1,4 +1,3 @@
-# --8<-- [start:kamen_rider_provider_dict]
 en:
   faker:
     kamen_rider:
@@ -451,4 +450,3 @@ en:
           - Eneiken Noroshi
           - Ankokuken Kurayami
           - Onjuuken Suzune
-# --8<-- [end:kamen_rider_provider_dict]

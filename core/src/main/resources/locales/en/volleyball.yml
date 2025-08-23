@@ -1,4 +1,3 @@
-# --8<-- [start:volleyball_provider_dict]
 en:
   faker:
     volleyball:
@@ -500,4 +499,3 @@ en:
       - 4-2
       - 5-1
       - 6-2
-# --8<-- [end:volleyball_provider_dict]

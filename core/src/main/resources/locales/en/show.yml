@@ -1,4 +1,3 @@
-# --8<-- [start:show_provider_dict]
 en:
   faker:
     show:
@@ -596,4 +595,3 @@ en:
         - "The Adventures of Tom Sawyer TYA"
         - "Roald Dahl's Willy Wonka TYA"
         - "A Year with Frog and Toad TYA"
-# --8<-- [end:show_provider_dict]

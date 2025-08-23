@@ -8,7 +8,7 @@ faker: databases
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/postgresql.yml:postgresql_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/postgresql.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

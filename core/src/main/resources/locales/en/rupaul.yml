@@ -1,4 +1,3 @@
-# --8<-- [start:rupaul_provider_dict]
 en:
   faker:
     rupaul:
@@ -124,4 +123,3 @@ en:
        "Must be jelly 'cause jam don't shake.",
        "She done already done had herses."
       ]
-# --8<-- [end:rupaul_provider_dict]

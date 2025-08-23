@@ -8,7 +8,7 @@ faker: japmedia
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/one_piece.yml:one_piece_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/one_piece.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

@@ -8,7 +8,7 @@ faker: tvshows
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/the_office.yml:the_office_provider_dict"
+        --8<-- "core/src/main/resources/locales/en/the_office.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

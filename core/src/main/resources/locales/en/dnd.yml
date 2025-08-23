@@ -1,4 +1,3 @@
-# --8<-- [start:dnd_provider_dict]
 en:
   faker:
     dnd:
@@ -635,4 +634,3 @@ en:
         - Net
         - Shortbow
         - Sling
-# --8<-- [end:dnd_provider_dict]
