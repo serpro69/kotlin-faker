@@ -20,7 +20,10 @@ class Vehicle internal constructor(fakerService: FakerService) : YamlFakeDataPro
         fakerService.load(yamlCategory)
     }
 
-    fun manufacture() = resolve("manufacture")
+    @Deprecated(level = DeprecationLevel.WARNING, message = "Will be removed in 2.0, use 'manufacturer()' instead", replaceWith = ReplaceWith("manufacturer()"))
+    fun manufacture() = manufacturer()
+
+    fun manufacturer() = resolve("manufacturer")
     fun makes() = resolve("makes")
     fun modelsByMake(make: String) = resolve("models_by_make", make)
     fun colors() = resolve("colors")

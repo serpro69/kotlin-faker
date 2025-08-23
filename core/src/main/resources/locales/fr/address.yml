@@ -767,7 +767,7 @@ fr:
       street_address:
         - "#{building_number} #{street_name}"
       full_address:
-        - "#{street_address}, #{zip_code} #{city}"
-        - "#{secondary_address}, #{street_address}, #{zip_code} #{city}"
+        - "#{street_address}, #{postcode} #{city}"
+        - "#{secondary_address}, #{street_address}, #{postcode} #{city}"
       default_country:
         - France

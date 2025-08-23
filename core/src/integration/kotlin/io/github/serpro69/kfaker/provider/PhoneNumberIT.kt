@@ -59,6 +59,15 @@ class PhoneNumberIT : DescribeSpec({
                 }
             }
         }
+
+        context("en-CA") {
+            val phone = phoneNumber("en-CA")
+            repeat(100) {
+                it("should generate a phoneNumber run#$it") {
+                    phone.phoneNumber().filter { c -> c.isDigit() } shouldNotBe ""
+                }
+            }
+        }
     }
 })
 

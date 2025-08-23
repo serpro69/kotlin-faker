@@ -5,12 +5,13 @@ package io.github.serpro69.kfaker.dictionary
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  *
- * @property children an optional set of children category names that are not part of this enum (e.g. Creature -> Animal)
- * @property names alternative names that may be used to refer to this category in yml expressions, e.g.
+ * @property aliases alias names that may be used to refer to this category in yml expressions, e.g.
  * `#{PhoneNumber.area_code}` is used in en-US.yml:6932 instead of `#{Phone_Number.area_code}`
+ *
+ * @property children an optional set of children category names that are not part of this enum (e.g. Creature -> Animal)
  */
 enum class YamlCategory(
-    internal val names: Set<String> = emptySet(),
+    internal val aliases: Set<String> = emptySet(),
     internal val children: Set<String> = emptySet(),
 ) : Category {
     /**
@@ -32,7 +33,6 @@ enum class YamlCategory(
     AQUA_TEEN_HUNGER_FORCE,
     ARCHER,
     ARTIST,
-    AUSTRALIA,
     AVATAR,
     BACK_TO_THE_FUTURE,
     BANK,
@@ -130,6 +130,7 @@ enum class YamlCategory(
     KAMEN_RIDER,
     KPOP,
     LEBOWSKI,
+    LOCATIONS,
     LORD_OF_THE_RINGS,
     LOREM,
     LOVECRAFT,
@@ -153,7 +154,7 @@ enum class YamlCategory(
     PARKS_AND_REC,
     PEARL_JAM,
     PHISH,
-    PHONE_NUMBER(names = setOf("PhoneNumber")),
+    PHONE_NUMBER(aliases = setOf("PhoneNumber")),
     PRINCE,
     PRINCESS_BRIDE,
     PROGRAMMING_LANGUAGE,
@@ -220,7 +221,7 @@ enum class YamlCategory(
          */
         internal fun findByName(name: String): YamlCategory {
             return values().firstOrNull {
-                it.lowercase() == name.lowercase() || it.names.any { n -> it.lowercase() == n.lowercase() }
+                it.lowercase() == name.lowercase() || it.aliases.any { a -> name == a }
             } ?: throw NoSuchElementException("Category with name '$name' not found.")
         }
     }
