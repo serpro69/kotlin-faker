@@ -299,8 +299,7 @@
   "name":"io.github.serpro69.kfaker.edu.EduFaker$Builder"
 },
 {
-  "name":"io.github.serpro69.kfaker.edu.provider.Degree",
-  "methods":[{"name":"courseNumber","parameterTypes":[] }, {"name":"type","parameterTypes":[] }]
+  "name":"io.github.serpro69.kfaker.edu.provider.Degree"
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Educator",
@@ -320,11 +319,14 @@
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.Tertiary",
-  "methods":[{"name":"getDegree","parameterTypes":[] }, {"name":"universityType","parameterTypes":[] }]
+  "methods":[{"name":"universityType","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.edu.provider.University",
   "methods":[{"name":"name","parameterTypes":[] }, {"name":"prefix","parameterTypes":[] }, {"name":"suffix","parameterTypes":[] }]
+},
+{
+  "name":"io.github.serpro69.kfaker.extension.AltKey"
 },
 {
   "name":"io.github.serpro69.kfaker.games.GamesFaker",
@@ -426,7 +428,7 @@
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Superhero",
-  "methods":[{"name":"descriptor$games","parameterTypes":[] }, {"name":"name","parameterTypes":[] }, {"name":"power","parameterTypes":[] }, {"name":"prefix$games","parameterTypes":[] }, {"name":"suffix$games","parameterTypes":[] }]
+  "methods":[{"name":"name","parameterTypes":[] }, {"name":"power","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.games.provider.Tarkov",
@@ -725,7 +727,7 @@
 },
 {
   "name":"io.github.serpro69.kfaker.music.MusicFaker",
-  "methods":[{"name":"getBossaNova","parameterTypes":[] }, {"name":"getGratefulDead","parameterTypes":[] }, {"name":"getHipHop","parameterTypes":[] }, {"name":"getKPop","parameterTypes":[] }, {"name":"getMusic","parameterTypes":[] }, {"name":"getOpera","parameterTypes":[] }, {"name":"getPearlJam","parameterTypes":[] }, {"name":"getPhish","parameterTypes":[] }, {"name":"getPrince","parameterTypes":[] }, {"name":"getRockBand","parameterTypes":[] }, {"name":"getRush","parameterTypes":[] }, {"name":"getShow","parameterTypes":[] }, {"name":"getSmashingPumpkins","parameterTypes":[] }, {"name":"getUmphreysMcgee","parameterTypes":[] }]
+  "methods":[{"name":"getBossaNova","parameterTypes":[] }, {"name":"getGratefulDead","parameterTypes":[] }, {"name":"getHipHop","parameterTypes":[] }, {"name":"getKPop","parameterTypes":[] }, {"name":"getMusic","parameterTypes":[] }, {"name":"getOpera","parameterTypes":[] }, {"name":"getPearlJam","parameterTypes":[] }, {"name":"getPhish","parameterTypes":[] }, {"name":"getPrince","parameterTypes":[] }, {"name":"getRockBand","parameterTypes":[] }, {"name":"getRush","parameterTypes":[] }, {"name":"getShow","parameterTypes":[] }, {"name":"getSmashingPumpkins","parameterTypes":[] }, {"name":"getTheater","parameterTypes":[] }, {"name":"getUmphreysMcgee","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.music.MusicFaker$Builder"
@@ -787,12 +789,12 @@
   "methods":[{"name":"albums","parameterTypes":[] }, {"name":"players","parameterTypes":[] }]
 },
 {
-  "name":"io.github.serpro69.kfaker.music.provider.Show",
-  "methods":[{"name":"adultMusical","parameterTypes":[] }, {"name":"kidsMusical","parameterTypes":[] }, {"name":"play","parameterTypes":[] }]
-},
-{
   "name":"io.github.serpro69.kfaker.music.provider.SmashingPumpkins",
   "methods":[{"name":"albums","parameterTypes":[] }, {"name":"lyric","parameterTypes":[] }, {"name":"musicians","parameterTypes":[] }, {"name":"songs","parameterTypes":[] }]
+},
+{
+  "name":"io.github.serpro69.kfaker.music.provider.Theater",
+  "methods":[{"name":"adultMusical","parameterTypes":[] }, {"name":"kidsMusical","parameterTypes":[] }, {"name":"play","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.music.provider.UmphreysMcgee",
@@ -890,7 +892,7 @@
   "name":"io.github.serpro69.kfaker.provider.misc.StringProvider"
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataDataProvider"
+  "name":"io.github.serpro69.kfaker.provider.unique.GlobalUniqueDataProvider"
 },
 {
   "name":"io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider"
@@ -1002,7 +1004,10 @@
 },
 {
   "name":"io.github.serpro69.kfaker.tech.provider.Vehicle",
-  "methods":[{"name":"carOptions","parameterTypes":[] }, {"name":"carTypes","parameterTypes":[] }, {"name":"colors","parameterTypes":[] }, {"name":"cylinderEngine","parameterTypes":[] }, {"name":"doors","parameterTypes":[] }, {"name":"driveTypes","parameterTypes":[] }, {"name":"engineSizes","parameterTypes":[] }, {"name":"fuelTypes","parameterTypes":[] }, {"name":"licencePlateByState","parameterTypes":["java.lang.String"] }, {"name":"licensePlate","parameterTypes":[] }, {"name":"makes","parameterTypes":[] }, {"name":"manufacture","parameterTypes":[] }, {"name":"modelsByMake","parameterTypes":["java.lang.String"] }, {"name":"standardSpecs","parameterTypes":[] }, {"name":"styles","parameterTypes":[] }, {"name":"transmissions","parameterTypes":[] }]
+  "allDeclaredFields":true,
+  "queryAllDeclaredMethods":true,
+  "queryAllDeclaredConstructors":true,
+  "methods":[{"name":"carOptions","parameterTypes":[] }, {"name":"carTypes","parameterTypes":[] }, {"name":"colors","parameterTypes":[] }, {"name":"cylinderEngine","parameterTypes":[] }, {"name":"doors","parameterTypes":[] }, {"name":"driveTypes","parameterTypes":[] }, {"name":"engineSizes","parameterTypes":[] }, {"name":"fuelTypes","parameterTypes":[] }, {"name":"licencePlateByState","parameterTypes":["java.lang.String"] }, {"name":"licensePlate","parameterTypes":[] }, {"name":"makes","parameterTypes":[] }, {"name":"manufacturer","parameterTypes":[] }, {"name":"modelsByMake","parameterTypes":["java.lang.String"] }, {"name":"standardSpecs","parameterTypes":[] }, {"name":"styles","parameterTypes":[] }, {"name":"transmissions","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.travel.TravelFaker",
@@ -1221,10 +1226,6 @@
   "methods":[{"name":"character","parameterTypes":[] }, {"name":"organization","parameterTypes":[] }, {"name":"quote","parameterTypes":[] }, {"name":"vehicle","parameterTypes":[] }]
 },
 {
-  "name":"java.io.Console",
-  "methods":[{"name":"isTerminal","parameterTypes":[] }]
-},
-{
   "name":"java.lang.ClassValue"
 },
 {
@@ -1234,10 +1235,6 @@
 },
 {
   "name":"java.lang.String"
-},
-{
-  "name":"java.lang.System",
-  "methods":[{"name":"console","parameterTypes":[] }]
 },
 {
   "name":"java.nio.file.Path"
@@ -1348,6 +1345,9 @@
   "name":"kotlin.Metadata",
   "queryAllDeclaredMethods":true,
   "methods":[{"name":"bv","parameterTypes":[] }, {"name":"d1","parameterTypes":[] }, {"name":"d2","parameterTypes":[] }, {"name":"k","parameterTypes":[] }, {"name":"mv","parameterTypes":[] }, {"name":"pn","parameterTypes":[] }, {"name":"xi","parameterTypes":[] }, {"name":"xs","parameterTypes":[] }]
+},
+{
+  "name":"kotlin.Pair"
 },
 {
   "name":"kotlin.ReplaceWith",
