@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class SuperSmashBros internal constructor(fakerService: FakerService) : YamlFakeDataProvider<SuperSmashBros>(fakerService) {
+class SuperSmashBros internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<SuperSmashBros>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("SUPER_SMASH_BROS")
     override val localUniqueDataProvider = LocalUniqueDataProvider<SuperSmashBros>()
@@ -23,5 +22,6 @@ class SuperSmashBros internal constructor(fakerService: FakerService) : YamlFake
     }
 
     fun fighter() = resolve(secondaryCategory, "fighter")
+
     fun stage() = resolve(secondaryCategory, "stage")
 }

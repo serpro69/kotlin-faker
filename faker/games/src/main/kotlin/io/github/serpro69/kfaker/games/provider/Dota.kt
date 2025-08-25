@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class Dota internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Dota>(fakerService) {
+class Dota internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Dota>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("DOTA")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dota>()

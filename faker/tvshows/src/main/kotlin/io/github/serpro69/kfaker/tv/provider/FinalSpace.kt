@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.FINAL_SPACE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.FINAL_SPACE] category. */
 class FinalSpace internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<FinalSpace>(fakerService) {
     override val yamlCategory = YamlCategory.FINAL_SPACE
@@ -23,7 +21,8 @@ class FinalSpace internal constructor(fakerService: FakerService) :
     }
 
     fun characters(): String = resolve("characters")
+
     fun vehicles(): String = resolve("vehicles")
+
     fun quotes(): String = resolve("quotes")
 }
-

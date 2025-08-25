@@ -35,7 +35,7 @@ class FakerConfigTest : DescribeSpec() {
                 }
             }
 
-/*            context("Faker is re-initialized without setting Faker.Config.random") {
+            /*            context("Faker is re-initialized without setting Faker.Config.random") {
                 Faker.init()
 
                 val rand2 = Faker.Config.random

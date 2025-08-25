@@ -13,7 +13,12 @@ dependencies {
     shadow(libs.rgxgen)
 }
 
-apply<Yaml2JsonPlugin>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{} block
+apply<
+    Yaml2JsonPlugin
+>() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{}
+
+// block
+
 configure<Yaml2JsonPluginExtension> {
     val cwd = project.projectDir.absolutePath
     input.set(File("$cwd/src/main/resources/locales"))
@@ -24,16 +29,20 @@ tasks.processResources.get().dependsOn(tasks["yaml2json"])
 
 tasks.withType<Jar>().configureEach {
     manifest {
-        // set the classpath attribute here because we can't modify it in a buildSrc plugin or someplace else
+        // set the classpath attribute here because we can't modify it in a buildSrc plugin or
+        // someplace else
         // see comment in the ShadowJar task config of the 'faker-lib-conventions' buildSrc plugin
-        attributes["Class-Path"] = project.configurations.compileClasspath.get().joinToString(" ") { it.name }
+        attributes["Class-Path"] =
+            project.configurations.compileClasspath.get().joinToString(" ") { it.name }
     }
 }
 
 tasks.withType<ShadowJar>().configureEach {
     manifest {
-        // set the classpath attribute here because we can't modify it in a buildSrc plugin or someplace else
+        // set the classpath attribute here because we can't modify it in a buildSrc plugin or
+        // someplace else
         // see comment in the ShadowJar task config of the 'faker-lib-conventions' buildSrc plugin
-        attributes["Class-Path"] = project.configurations.compileClasspath.get().joinToString(" ") { it.name }
+        attributes["Class-Path"] =
+            project.configurations.compileClasspath.get().joinToString(" ") { it.name }
     }
 }

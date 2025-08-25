@@ -8,14 +8,11 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DATABASE] category. */
 @Suppress("unused")
-class PostgreSQL internal constructor(
-    fakerService: FakerService,
-    private val fakerConfig: FakerConfig,
-) : YamlFakeDataProvider<PostgreSQL>(fakerService) {
+class PostgreSQL
+internal constructor(fakerService: FakerService, private val fakerConfig: FakerConfig) :
+    YamlFakeDataProvider<PostgreSQL>(fakerService) {
     override val yamlCategory = YamlCategory.DATABASE
     override val secondaryCategory: Category = Category.ofName("POSTGRESQL")
     override val localUniqueDataProvider = LocalUniqueDataProvider<PostgreSQL>()
@@ -26,5 +23,6 @@ class PostgreSQL internal constructor(
     }
 
     fun dataType() = resolve(secondaryCategory, "data_type")
+
     fun collation() = "${fakerConfig.locale}.UTF-8"
 }

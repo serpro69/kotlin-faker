@@ -10,10 +10,9 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.LOCATIONS] category.
- */
-class Australia internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Australia>(fakerService) {
+/** [FakeDataProvider] implementation for [YamlCategory.LOCATIONS] category. */
+class Australia internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Australia>(fakerService) {
     override val yamlCategory = YamlCategory.LOCATIONS
     override val secondaryCategory: Category = Category.ofName("AUSTRALIA")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Australia>()
@@ -24,7 +23,8 @@ class Australia internal constructor(fakerService: FakerService) : YamlFakeDataP
     }
 
     fun locations() = resolve(secondaryCategory, "locations")
+
     fun animals() = resolve(secondaryCategory, "animals")
+
     fun states() = resolve(secondaryCategory, "states")
 }
-

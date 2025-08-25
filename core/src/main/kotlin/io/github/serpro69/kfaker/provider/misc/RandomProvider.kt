@@ -26,21 +26,17 @@ import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.util.*
 
-/**
- * Provides data-generator-like functionality for the functions of [RandomService].
- */
-class RandomProvider internal constructor(
-    fakerService: FakerService
-) : IRandom, AbstractFakeDataProvider<RandomProvider>(fakerService) {
+/** Provides data-generator-like functionality for the functions of [RandomService]. */
+class RandomProvider internal constructor(fakerService: FakerService) :
+    IRandom, AbstractFakeDataProvider<RandomProvider>(fakerService) {
     override val category: Category = Category.ofName("RANDOM")
     override val localUniqueDataProvider = LocalUniqueDataProvider<RandomProvider>()
-    override val unique: RandomProvider by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
+    override val unique: RandomProvider by
+        UniqueProviderDelegate(localUniqueDataProvider, fakerService)
     override val config: FakerConfig = fakerService.faker.config
     private val rs = fakerService.randomService
 
-    /**
-     * Clears used unique values for the function [key] of this provider.
-     */
+    /** Clears used unique values for the function [key] of this provider. */
     fun clear(key: Key) = localUniqueDataProvider.clear(key.name)
 
     override fun nextInt(): Int = resolveUnique(NEXT_INT) { rs.nextInt() }
@@ -49,21 +45,27 @@ class RandomProvider internal constructor(
 
     override fun nextInt(intRange: IntRange): Int = resolveUnique(NEXT_INT) { rs.nextInt(intRange) }
 
-    override fun nextInt(min: Int, max: Int): Int = resolveUnique(NEXT_INT) { rs.nextInt(min = min, max = max) }
+    override fun nextInt(min: Int, max: Int): Int =
+        resolveUnique(NEXT_INT) { rs.nextInt(min = min, max = max) }
 
-    override fun <T> randomValue(list: List<T>): T = resolveUnique(RANDOM_VALUE) { rs.randomValue(list) }
+    override fun <T> randomValue(list: List<T>): T =
+        resolveUnique(RANDOM_VALUE) { rs.randomValue(list) }
 
-    override fun <T> randomValue(array: Array<T>): T = resolveUnique(RANDOM_VALUE) { rs.randomValue(array) }
+    override fun <T> randomValue(array: Array<T>): T =
+        resolveUnique(RANDOM_VALUE) { rs.randomValue(array) }
 
-    override fun nextLetter(upper: Boolean): Char = resolveUnique(NEXT_LETTER) { rs.nextLetter(upper) }
+    override fun nextLetter(upper: Boolean): Char =
+        resolveUnique(NEXT_LETTER) { rs.nextLetter(upper) }
 
     override fun randomString(length: Int, numericalChars: Boolean): String {
-        return resolveUnique(RANDOM_STRING) { rs.randomString(length = length, numericalChars = numericalChars) }
+        return resolveUnique(RANDOM_STRING) {
+            rs.randomString(length = length, numericalChars = numericalChars)
+        }
     }
 
     /**
-     * Returns the next pseudorandom, uniformly distributed [Boolean] value
-     * from this random number generator's sequence.
+     * Returns the next pseudorandom, uniformly distributed [Boolean] value from this random number
+     * generator's sequence.
      *
      * The values `true` and `false` are produced with (approximately) equal probability.
      *
@@ -75,9 +77,11 @@ class RandomProvider internal constructor(
 
     override fun nextLong(bound: Long): Long = resolveUnique(NEXT_LONG) { rs.nextLong(bound) }
 
-    override fun nextLong(longRange: LongRange): Long = resolveUnique(NEXT_LONG) { rs.nextLong(longRange) }
+    override fun nextLong(longRange: LongRange): Long =
+        resolveUnique(NEXT_LONG) { rs.nextLong(longRange) }
 
-    override fun nextLong(min: Long, max: Long): Long = resolveUnique(NEXT_LONG) { rs.nextLong(min, max) }
+    override fun nextLong(min: Long, max: Long): Long =
+        resolveUnique(NEXT_LONG) { rs.nextLong(min, max) }
 
     override fun nextFloat(): Float = resolveUnique(NEXT_FLOAT) { rs.nextFloat() }
 
@@ -91,17 +95,18 @@ class RandomProvider internal constructor(
         indexChars: Boolean,
         auxiliaryChars: Boolean,
         punctuationChars: Boolean,
-        numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING) {
-        rs.randomString(
-            length = length,
-            locale = locale,
-            indexChars = indexChars,
-            auxiliaryChars = auxiliaryChars,
-            punctuationChars = punctuationChars,
-            numericalChars = numericalChars
-        )
-    }
+        numericalChars: Boolean,
+    ): String =
+        resolveUnique(RANDOM_STRING) {
+            rs.randomString(
+                length = length,
+                locale = locale,
+                indexChars = indexChars,
+                auxiliaryChars = auxiliaryChars,
+                punctuationChars = punctuationChars,
+                numericalChars = numericalChars,
+            )
+        }
 
     override fun randomString(
         min: Int,
@@ -110,34 +115,39 @@ class RandomProvider internal constructor(
         indexChars: Boolean,
         auxiliaryChars: Boolean,
         punctuationChars: Boolean,
-        numericalChars: Boolean
-    ): String = resolveUnique(RANDOM_STRING) {
-        rs.randomString(
-            min = min,
-            max = max,
-            locale = locale,
-            indexChars = indexChars,
-            auxiliaryChars = auxiliaryChars,
-            punctuationChars = punctuationChars,
-            numericalChars = numericalChars
-        )
-    }
+        numericalChars: Boolean,
+    ): String =
+        resolveUnique(RANDOM_STRING) {
+            rs.randomString(
+                min = min,
+                max = max,
+                locale = locale,
+                indexChars = indexChars,
+                auxiliaryChars = auxiliaryChars,
+                punctuationChars = punctuationChars,
+                numericalChars = numericalChars,
+            )
+        }
 
     // copy-pasta from RandomService due to need for reified
     /**
      * Returns a randomly selected enum entry of type [E].
      *
-     * _NB! when used with [unique], the [nextInt], which is used to get a random index of the [enumValues] of [E]
-     * will also use unique generation and will need to be reset via [clear] as well when needed._
+     * _NB! when used with [unique], the [nextInt], which is used to get a random index of the
+     * [enumValues] of [E] will also use unique generation and will need to be reset via [clear] as
+     * well when needed._
      */
-    inline fun <reified E : Enum<E>> nextEnum(): E = resolveUnique(NEXT_ENUM) {
-        val x: Int = nextInt(enumValues<E>().size)
-        enumValues<E>()[x]
-    }
+    inline fun <reified E : Enum<E>> nextEnum(): E =
+        resolveUnique(NEXT_ENUM) {
+            val x: Int = nextInt(enumValues<E>().size)
+            enumValues<E>()[x]
+        }
 
-    override fun <E : Enum<E>> nextEnum(enum: Class<E>): E = resolveUnique(NEXT_ENUM) { rs.nextEnum(enum) }
+    override fun <E : Enum<E>> nextEnum(enum: Class<E>): E =
+        resolveUnique(NEXT_ENUM) { rs.nextEnum(enum) }
 
-    override fun <E : Enum<E>> nextEnum(values: Array<E>): E = resolveUnique(NEXT_ENUM) { rs.nextEnum(values) }
+    override fun <E : Enum<E>> nextEnum(values: Array<E>): E =
+        resolveUnique(NEXT_ENUM) { rs.nextEnum(values) }
 
     override fun <E : Enum<E>> nextEnum(enum: Class<E>, predicate: (E) -> Boolean): E {
         return resolveUnique(NEXT_ENUM) { rs.nextEnum(enum, predicate) }
@@ -145,10 +155,12 @@ class RandomProvider internal constructor(
 
     // copy-pasta from RandomService due to need for reified
     /**
-     * Returns a randomly selected enum entry of type [E] excluding a particular enum class by its name.
+     * Returns a randomly selected enum entry of type [E] excluding a particular enum class by its
+     * name.
      *
-     * _NB! when used with [unique], the [nextInt], which is used to get a random index of the [enumValues] of [E]
-     * will also use unique generation and will need to be reset via [clear] as well when needed._
+     * _NB! when used with [unique], the [nextInt], which is used to get a random index of the
+     * [enumValues] of [E] will also use unique generation and will need to be reset via [clear] as
+     * well when needed._
      */
     inline fun <reified E : Enum<E>> nextEnum(vararg excludeName: String): E {
         do {
@@ -162,28 +174,40 @@ class RandomProvider internal constructor(
     override fun nextUUID(): String = resolveUnique(NEXT_UUID) { rs.nextUUID() }
 
     override fun <T> randomSublist(list: List<T>, size: Int, shuffled: Boolean): List<T> {
-        return resolveUnique(RANDOM_SUBLIST) { rs.randomSublist(list = list, size = size, shuffled = shuffled) }
+        return resolveUnique(RANDOM_SUBLIST) {
+            rs.randomSublist(list = list, size = size, shuffled = shuffled)
+        }
     }
 
     override fun <T> randomSublist(list: List<T>, sizeRange: IntRange, shuffled: Boolean): List<T> {
-        return resolveUnique(RANDOM_SUBLIST) { rs.randomSublist(list = list, sizeRange = sizeRange, shuffled = shuffled) }
+        return resolveUnique(RANDOM_SUBLIST) {
+            rs.randomSublist(list = list, sizeRange = sizeRange, shuffled = shuffled)
+        }
     }
 
     override fun <T> randomSubset(set: Set<T>, size: Int, shuffled: Boolean): Set<T> {
-        return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, size = size, shuffled = shuffled) }
+        return resolveUnique(RANDOM_SUBSET) {
+            rs.randomSubset(set = set, size = size, shuffled = shuffled)
+        }
     }
 
     override fun <T> randomSubset(set: Set<T>, sizeRange: IntRange, shuffled: Boolean): Set<T> {
-        return resolveUnique(RANDOM_SUBSET) { rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled) }
+        return resolveUnique(RANDOM_SUBSET) {
+            rs.randomSubset(set = set, sizeRange = sizeRange, shuffled = shuffled)
+        }
     }
 
-    override fun randomPastDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomPastDate() }
+    override fun randomPastDate(): OffsetDateTime =
+        resolveUnique(RANDOM_DATE) { rs.randomPastDate() }
 
-    override fun randomPastDate(min: Instant): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomPastDate(min) }
+    override fun randomPastDate(min: Instant): OffsetDateTime =
+        resolveUnique(RANDOM_DATE) { rs.randomPastDate(min) }
 
-    override fun randomFutureDate(): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomFutureDate() }
+    override fun randomFutureDate(): OffsetDateTime =
+        resolveUnique(RANDOM_DATE) { rs.randomFutureDate() }
 
-    override fun randomFutureDate(max: Instant): OffsetDateTime = resolveUnique(RANDOM_DATE) { rs.randomFutureDate(max) }
+    override fun randomFutureDate(max: Instant): OffsetDateTime =
+        resolveUnique(RANDOM_DATE) { rs.randomFutureDate(max) }
 
     override fun randomDate(min: Instant, max: Instant, zoneOffset: ZoneOffset): OffsetDateTime =
         resolveUnique(RANDOM_SUBSET) { rs.randomDate(min, max, zoneOffset) }
@@ -192,73 +216,47 @@ class RandomProvider internal constructor(
     internal fun <T> resolveUnique(key: Key, f: () -> T): T = resolveUniqueValue(key.name, f)
 
     /**
-     * Keys for [unique] data provider to simplify resetting unique values via [RandomProvider.clear] function.
+     * Keys for [unique] data provider to simplify resetting unique values via
+     * [RandomProvider.clear] function.
      */
     enum class Key {
-        /**
-         * Key for [nextInt] function
-         */
+        /** Key for [nextInt] function */
         NEXT_INT,
 
-        /**
-         * Key for [randomValue] function
-         */
+        /** Key for [randomValue] function */
         RANDOM_VALUE,
 
-        /**
-         * Key for [nextLetter] function
-         */
+        /** Key for [nextLetter] function */
         NEXT_LETTER,
 
-        /**
-         * Key for [randomString] function
-         */
+        /** Key for [randomString] function */
         RANDOM_STRING,
 
-        /**
-         * Key for [nextLong] function
-         */
+        /** Key for [nextLong] function */
         NEXT_LONG,
 
-        /**
-         * Key for [nextFloat] function
-         */
+        /** Key for [nextFloat] function */
         NEXT_FLOAT,
 
-        /**
-         * Key for [nextDouble] function
-         */
+        /** Key for [nextDouble] function */
         NEXT_DOUBLE,
 
-        /**
-         * Key for [nextChar] function
-         */
+        /** Key for [nextChar] function */
         NEXT_CHAR,
 
-        /**
-         * Key for [nextEnum] function
-         */
+        /** Key for [nextEnum] function */
         NEXT_ENUM,
 
-        /**
-         * Key for [nextUUID] function
-         */
+        /** Key for [nextUUID] function */
         NEXT_UUID,
 
-        /**
-         * Key for [randomSublist] function
-         */
+        /** Key for [randomSublist] function */
         RANDOM_SUBLIST,
 
-        /**
-         * Key for [randomSubset] function
-         */
+        /** Key for [randomSubset] function */
         RANDOM_SUBSET,
 
-        /**
-         * Key for [randomDate] function
-         */
+        /** Key for [randomDate] function */
         RANDOM_DATE,
-        ;
     }
 }

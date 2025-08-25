@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.ARCHER] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.ARCHER] category. */
 @Suppress("unused")
-class Archer internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Archer>(fakerService) {
+class Archer internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Archer>(fakerService) {
     override val yamlCategory = YamlCategory.ARCHER
     override val localUniqueDataProvider = LocalUniqueDataProvider<Archer>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,6 +20,8 @@ class Archer internal constructor(fakerService: FakerService) : YamlFakeDataProv
     }
 
     fun characters() = resolve("characters")
+
     fun locations() = resolve("locations")
+
     fun quotes() = resolve("quotes")
 }

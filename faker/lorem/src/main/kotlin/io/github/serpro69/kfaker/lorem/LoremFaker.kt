@@ -14,21 +14,20 @@ import io.github.serpro69.kfaker.lorem.provider.Quote
 import io.github.serpro69.kfaker.lorem.provider.SlackEmoji
 import io.github.serpro69.kfaker.lorem.provider.Verbs
 
-/**
- * Typealias for the [LoremFaker]
- */
+/** Typealias for the [LoremFaker] */
 typealias Faker = LoremFaker
 
 /**
  * Provides access to fake data generators within the Lorem domain.
  *
- * Each category (generator) from this [LoremFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [LoremFaker] is represented by a property that (usually) has
+ * the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class LoremFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class LoremFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val adjective: Adjective by lazy { Adjective(fakerService) }
     val emotion: Emotion by lazy { Emotion(fakerService) }
@@ -41,20 +40,17 @@ class LoremFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val verbs: Verbs by lazy { Verbs(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [LoremFaker.Builder]
- * and returns as an instance of [LoremFaker] from that builder.
+ * Applies the [block] function to [LoremFaker.Builder] and returns as an instance of [LoremFaker]
+ * from that builder.
  */
-fun faker(block: LoremFaker.Builder.() -> Unit): LoremFaker = LoremFaker.Builder().apply(block).build()
+fun faker(block: LoremFaker.Builder.() -> Unit): LoremFaker =
+    LoremFaker.Builder().apply(block).build()

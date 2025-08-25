@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.ROCK_BAND] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.ROCK_BAND] category. */
 @Suppress("unused")
-class RockBand internal constructor(fakerService: FakerService) : YamlFakeDataProvider<RockBand>(fakerService) {
+class RockBand internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<RockBand>(fakerService) {
     override val yamlCategory = YamlCategory.ROCK_BAND
     override val localUniqueDataProvider = LocalUniqueDataProvider<RockBand>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,5 +20,6 @@ class RockBand internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     fun name() = resolve("name")
+
     fun song() = resolve("song")
 }

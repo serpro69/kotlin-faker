@@ -7,14 +7,11 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DATABASE] category. */
 @Suppress("unused")
-class Database internal constructor(
-    fakerService: FakerService,
-    private val randomService: RandomService,
-) : YamlFakeDataProvider<Database>(fakerService) {
+class Database
+internal constructor(fakerService: FakerService, private val randomService: RandomService) :
+    YamlFakeDataProvider<Database>(fakerService) {
     override val yamlCategory = YamlCategory.DATABASE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Database>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -25,11 +22,12 @@ class Database internal constructor(
 
     fun columnName() = resolve("column_name")
 
-    fun mongodbObjectId() = resolveUniqueValue("objectId") {
-        val date = randomService.randomPastDate()
-        val epochSeconds = date.toInstant().toEpochMilli() / 1000
-        val epochSecondsInHexa = epochSeconds.toString(16)
+    fun mongodbObjectId() =
+        resolveUniqueValue("objectId") {
+            val date = randomService.randomPastDate()
+            val epochSeconds = date.toInstant().toEpochMilli() / 1000
+            val epochSecondsInHexa = epochSeconds.toString(16)
 
-        "${epochSecondsInHexa}0000000000000000"
-    }
+            "${epochSecondsInHexa}0000000000000000"
+        }
 }

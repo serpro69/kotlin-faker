@@ -43,21 +43,20 @@ import io.github.serpro69.kfaker.tv.provider.TheThickOfIt
 import io.github.serpro69.kfaker.tv.provider.TwinPeaks
 import io.github.serpro69.kfaker.tv.provider.VentureBros
 
-/**
- * Typealias for the [TvShowsFaker]
- */
+/** Typealias for the [TvShowsFaker] */
 typealias Faker = TvShowsFaker
 
 /**
  * Provides access to fake data generators within the TvShows domain.
  *
- * Each category (generator) from this [TvShowsFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [TvShowsFaker] is represented by a property that (usually)
+ * has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class TvShowsFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
+class TvShowsFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val aquaTeenHungerForce: AquaTeenHungerForce by lazy { AquaTeenHungerForce(fakerService) }
     val archer: Archer by lazy { Archer(fakerService) }
@@ -99,20 +98,17 @@ class TvShowsFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {
     val ventureBros: VentureBros by lazy { VentureBros(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [TvShowsFaker.Builder]
- * and returns as an instance of [TvShowsFaker] from that builder.
+ * Applies the [block] function to [TvShowsFaker.Builder] and returns as an instance of
+ * [TvShowsFaker] from that builder.
  */
-fun faker(block: TvShowsFaker.Builder.() -> Unit): TvShowsFaker = TvShowsFaker.Builder().apply(block).build()
+fun faker(block: TvShowsFaker.Builder.() -> Unit): TvShowsFaker =
+    TvShowsFaker.Builder().apply(block).build()

@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON] category. */
 class HowToTrainYourDragon internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<HowToTrainYourDragon>(fakerService) {
     override val yamlCategory = YamlCategory.HOW_TO_TRAIN_YOUR_DRAGON
@@ -23,6 +21,8 @@ class HowToTrainYourDragon internal constructor(fakerService: FakerService) :
     }
 
     fun characters(): String = resolve("characters")
+
     fun dragons(): String = resolve("dragons")
+
     fun locations(): String = resolve("locations")
 }

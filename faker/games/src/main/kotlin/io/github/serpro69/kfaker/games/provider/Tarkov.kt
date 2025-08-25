@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.TARKOV] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.TARKOV] category. */
 class Tarkov internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Tarkov>(fakerService) {
     override val yamlCategory = YamlCategory.TARKOV
@@ -25,10 +23,15 @@ class Tarkov internal constructor(fakerService: FakerService) :
     val quests by lazy { TarkovQuests(fakerService) }
 
     fun locations() = resolve("locations")
+
     fun traders() = resolve("traders")
+
     fun weapons() = resolve("weapons")
+
     fun items() = resolve("items")
+
     fun factions() = resolve("factions")
+
     fun bosses() = resolve("bosses")
 }
 
@@ -43,11 +46,18 @@ class TarkovQuests internal constructor(fakerService: FakerService) :
     }
 
     fun prapor() = resolve("quests", "prapor")
+
     fun therapist() = resolve("quests", "therapist")
+
     fun skier() = resolve("quests", "skier")
+
     fun peacekeeper() = resolve("quests", "peacekeeper")
+
     fun mechanic() = resolve("quests", "mechanic")
+
     fun ragman() = resolve("quests", "ragman")
+
     fun jaeger() = resolve("quests", "jaeger")
+
     fun fence() = resolve("quests", "fence")
 }

@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.SUPERNATURAL] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.SUPERNATURAL] category. */
 class Supernatural internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Supernatural>(fakerService) {
     override val yamlCategory = YamlCategory.SUPERNATURAL
@@ -23,6 +21,8 @@ class Supernatural internal constructor(fakerService: FakerService) :
     }
 
     fun character(): String = resolve("character")
+
     fun creature(): String = resolve("creature")
+
     fun weapon(): String = resolve("weapon")
 }

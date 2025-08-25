@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DATABASE] category. */
 @Suppress("unused")
-class MySQL internal constructor(fakerService: FakerService) : YamlFakeDataProvider<MySQL>(fakerService) {
+class MySQL internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<MySQL>(fakerService) {
     override val yamlCategory = YamlCategory.DATABASE
     override val secondaryCategory: Category = Category.ofName("MYSQL")
     override val localUniqueDataProvider = LocalUniqueDataProvider<MySQL>()
@@ -22,5 +21,6 @@ class MySQL internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     }
 
     fun dataType() = resolve(secondaryCategory, "data_type")
+
     fun engine() = resolve(secondaryCategory, "engine")
 }

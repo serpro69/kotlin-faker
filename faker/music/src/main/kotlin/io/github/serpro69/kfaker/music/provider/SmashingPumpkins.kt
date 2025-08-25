@@ -7,9 +7,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.SMASHING_PUMPKINS] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.SMASHING_PUMPKINS] category. */
 @Suppress("unused")
 class SmashingPumpkins internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<SmashingPumpkins>(fakerService) {
@@ -22,7 +20,10 @@ class SmashingPumpkins internal constructor(fakerService: FakerService) :
     }
 
     fun musicians() = resolve("musicians")
+
     fun albums() = resolve("albums")
+
     fun lyric() = resolve("lyric")
+
     fun songs() = resolve("songs")
 }

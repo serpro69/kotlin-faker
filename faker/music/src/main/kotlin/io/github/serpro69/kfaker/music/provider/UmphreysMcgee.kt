@@ -7,9 +7,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.UMPHREYS_MCGEE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.UMPHREYS_MCGEE] category. */
 @Suppress("unused")
 class UmphreysMcgee internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<UmphreysMcgee>(fakerService) {

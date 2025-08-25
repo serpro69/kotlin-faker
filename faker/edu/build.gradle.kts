@@ -1,3 +1,1 @@
-plugins {
-    `faker-provider-conventions`
-}
+plugins { `faker-provider-conventions` }

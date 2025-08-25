@@ -11,5 +11,6 @@ internal object Mapper {
         mapper.registerModule(KotlinModule.Builder().build())
     }
 
-    fun <T> readValue(inputStream: InputStream, type: Class<T>): T = mapper.readerFor(type).readValue(inputStream)
+    fun <T> readValue(inputStream: InputStream, type: Class<T>): T =
+        mapper.readerFor(type).readValue(inputStream)
 }

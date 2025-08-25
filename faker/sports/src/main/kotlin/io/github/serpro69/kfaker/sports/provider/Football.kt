@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.FOOTBALL] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.FOOTBALL] category. */
 @Suppress("unused")
-class Football internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Football>(fakerService) {
+class Football internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Football>(fakerService) {
     override val yamlCategory = YamlCategory.FOOTBALL
     override val localUniqueDataProvider = LocalUniqueDataProvider<Football>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,8 +20,12 @@ class Football internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     fun teams() = resolve("teams")
+
     fun players() = resolve("players")
+
     fun coaches() = resolve("coaches")
+
     fun competitions() = resolve("competitions")
+
     fun positions() = resolve("positions")
 }

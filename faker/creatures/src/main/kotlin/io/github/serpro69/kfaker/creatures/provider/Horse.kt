@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.CREATURE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.CREATURE] category. */
 @Suppress("unused")
-class Horse internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Horse>(fakerService) {
+class Horse internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Horse>(fakerService) {
     override val yamlCategory = YamlCategory.CREATURE
     override val secondaryCategory: Category = Category.ofName("HORSE")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Horse>()
@@ -23,5 +22,6 @@ class Horse internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     }
 
     fun name() = resolve(secondaryCategory, "name")
+
     fun breed() = resolve(secondaryCategory, "breed")
 }

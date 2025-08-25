@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DESSERT] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DESSERT] category. */
 @Suppress("unused")
-class Dessert internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Dessert>(fakerService) {
+class Dessert internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Dessert>(fakerService) {
     override val yamlCategory = YamlCategory.DESSERT
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dessert>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,7 +20,10 @@ class Dessert internal constructor(fakerService: FakerService) : YamlFakeDataPro
     }
 
     fun variety() = resolve("variety")
+
     fun topping() = resolve("topping")
+
     fun flavor() = resolve("flavor")
+
     fun dessert() = { "${flavor()} ${variety()} with ${topping()}" }
 }

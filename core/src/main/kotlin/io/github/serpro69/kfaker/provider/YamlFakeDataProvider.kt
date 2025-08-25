@@ -13,9 +13,8 @@ import io.github.serpro69.kfaker.extension.AltKey
  *
  * @param T type of data provider (i.e. [Address])
  */
-abstract class YamlFakeDataProvider<T : FakeDataProvider>(
-    fakerService: FakerService
-) : AbstractFakeDataProvider<T>(fakerService) {
+abstract class YamlFakeDataProvider<T : FakeDataProvider>(fakerService: FakerService) :
+    AbstractFakeDataProvider<T>(fakerService) {
 
     /**
      * Category for `this` fake yaml data provider class.
@@ -28,11 +27,12 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      *   faker:
      *     address:
      * ```
+     *
      * then the [yamlCategory] would be [YamlCategory.ADDRESS]
      *
-     * _NB! If the [secondaryCategory] is NOT set,
-     * the dictionary filename should match the [yamlCategory] name,
-     * i.e. the file name should be `address.yml` for the [YamlCategory.ADDRESS]._
+     * _NB! If the [secondaryCategory] is NOT set, the dictionary filename should match the
+     * [yamlCategory] name, i.e. the file name should be `address.yml` for the
+     * [YamlCategory.ADDRESS]._
      */
     protected abstract val yamlCategory: YamlCategory
 
@@ -48,13 +48,15 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
      *     creature:
      *       dog:
      * ```
-     * then the [yamlCategory] would be [YamlCategory.CREATURE], and the  secondary [Category.name] would be `"dog"`
+     *
+     * then the [yamlCategory] would be [YamlCategory.CREATURE], and the secondary [Category.name]
+     * would be `"dog"`
      *
      * _TIP: Use [Category.ofName] helper function when needed._
      *
-     * _NB! If the [secondaryCategory] is set,
-     * the dictionary filename should match the [Category.name] of this [secondaryCategory],
-     * i.e. the file name should be `dog.yml` for the `[Category.ofName]` dog._
+     * _NB! If the [secondaryCategory] is set, the dictionary filename should match the
+     * [Category.name] of this [secondaryCategory], i.e. the file name should be `dog.yml` for the
+     * `[Category.ofName]` dog._
      */
     protected open val secondaryCategory: Category? = null
 
@@ -68,7 +70,8 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     /**
      * Returns resolved (unique) value for the parameter with the specified [key].
      *
-     * Will return a unique value if the call to the function is prefixed with `unique` property. Example:
+     * Will return a unique value if the call to the function is prefixed with `unique` property.
+     * Example:
      * ```
      * faker.address.unique.city() => will return a unique value for the `city` parameter
      * ```
@@ -78,22 +81,24 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns resolved (unique) value for the parameter with the specified pair of [keys],
-     * where `first` is the "altKey" and `second` is the "primaryKey".
+     * Returns resolved (unique) value for the parameter with the specified pair of [keys], where
+     * `first` is the "altKey" and `second` is the "primaryKey".
      *
-     * This function can be used to resolve locale-specific keys that are not present in the default 'en' dictionaries.
+     * This function can be used to resolve locale-specific keys that are not present in the default
+     * 'en' dictionaries.
      *
      * An example usage (taken from [Address.countryCode]) looks something like this:
-     *
      * ```
      * fun countryCode() = resolve("default_country_code" or "country_code")
      * ```
      *
-     * Here, the `"default_country_code"` is the key that is only present in the localized dictionaries,
-     * which may or may not be present in the default 'en' dictionary,
-     * and `"country_code"` is the default key for this function which is defined in `en/address.yml` dict file.
+     * Here, the `"default_country_code"` is the key that is only present in the localized
+     * dictionaries, which may or may not be present in the default 'en' dictionary, and
+     * `"country_code"` is the default key for this function which is defined in `en/address.yml`
+     * dict file.
      *
-     * Will attempt to return a unique value if the call to the function is prefixed with `unique` property. Example:
+     * Will attempt to return a unique value if the call to the function is prefixed with `unique`
+     * property. Example:
      * ```
      * faker.address.unique.countryCode() => will return a unique value for the `country_code` parameter.
      * ```
@@ -103,10 +108,11 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and
+     * [secondaryKey].
      *
-     * TIP: Can be useful for providers that override this [secondaryCategory]
-     * to use a compile-safe object instead of a string for the [primaryKey].
+     * TIP: Can be useful for providers that override this [secondaryCategory] to use a compile-safe
+     * object instead of a string for the [primaryKey].
      *
      * Example:
      * ```diff
@@ -132,7 +138,8 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and [secondaryKey].
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey] and
+     * [secondaryKey].
      *
      * Will return a unique value if the call to the function is prefixed with `unique` property.
      * Example:
@@ -145,7 +152,8 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey], [secondaryKey] and [thirdKey]
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey],
+     * [secondaryKey] and [thirdKey]
      *
      * Will return a unique value if the call to the function is prefixed with `unique` property.
      * Example:
@@ -158,7 +166,8 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns resolved (unique) value for the parameter with the specified [primaryKey], [secondaryKey] and [thirdKey]
+     * Returns resolved (unique) value for the parameter with the specified [primaryKey],
+     * [secondaryKey] and [thirdKey]
      *
      * Will return a unique value if the call to the function is prefixed with `unique` property.
      * Example:
@@ -171,24 +180,24 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     }
 
     /**
-     * Returns the result of this [resolve] function using a pair of [AltKey]s,
-     * where `first` is the "altKey" and `second` is the "primaryKey".
+     * Returns the result of this [resolve] function using a pair of [AltKey]s, where `first` is the
+     * "altKey" and `second` is the "primaryKey".
      *
-     * This function can be used to resolve locale-specific keys that are not present in the default 'en' dictionaries.
+     * This function can be used to resolve locale-specific keys that are not present in the default
+     * 'en' dictionaries.
      *
      * An example usage (taken from [Address.countryCode]) looks something like this:
-     *
      * ```
      * fun countryCode() = resolve("default_country_code" or "country_code")
      * ```
      *
-     * Here, the `"default_country_code"` is the key that is only present in the localized dictionaries,
-     * which may or may not be present in the default 'en' dictionary,
-     * and `"country_code"` is the default key for this function which is defined in `en/address.yml` dict file.
+     * Here, the `"default_country_code"` is the key that is only present in the localized
+     * dictionaries, which may or may not be present in the default 'en' dictionary, and
+     * `"country_code"` is the default key for this function which is defined in `en/address.yml`
+     * dict file.
      *
-     * IF [AbstractFaker.unique] is enabled for this [T] provider type
-     * OR this [unique] is used
-     * THEN will attempt to return a unique value.
+     * IF [AbstractFaker.unique] is enabled for this [T] provider type OR this [unique] is used THEN
+     * will attempt to return a unique value.
      *
      * @throws RetryLimitException if exceeds number of retries to generate a unique value.
      */
@@ -207,9 +216,8 @@ abstract class YamlFakeDataProvider<T : FakeDataProvider>(
     /**
      * Returns the result of this [resolve] function.
      *
-     * IF [AbstractFaker.unique] is enabled for this [T] provider type
-     * OR this [unique] is used
-     * THEN will attempt to return a unique value.
+     * IF [AbstractFaker.unique] is enabled for this [T] provider type OR this [unique] is used THEN
+     * will attempt to return a unique value.
      *
      * @throws RetryLimitException if exceeds number of retries to generate a unique value.
      */

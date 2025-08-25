@@ -8,9 +8,7 @@ import io.github.serpro69.kfaker.provider.*
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.TEA] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.TEA] category. */
 class Tea internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Tea>(fakerService) {
     override val yamlCategory = YamlCategory.TEA
@@ -37,8 +35,12 @@ class TeaVariety internal constructor(fakerService: FakerService) :
     }
 
     fun black(): String = resolve("variety", "black")
+
     fun oolong(): String = resolve("variety", "oolong")
+
     fun green(): String = resolve("variety", "green")
+
     fun white(): String = resolve("variety", "white")
+
     fun herbal(): String = resolve("variety", "herbal")
 }

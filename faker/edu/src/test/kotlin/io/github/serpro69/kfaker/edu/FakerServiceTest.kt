@@ -9,27 +9,23 @@ import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.collections.shouldBeIn
 
-internal class FakerServiceTest : DescribeSpec({
+internal class FakerServiceTest :
+    DescribeSpec({
+        describe("dictionary is loaded") {
+            context("resolving raw expression") {
+                context("expression matches the curly-brace-regex") {
+                    context("expression calls are chained with a dot '.' char") {
+                        val degreeType = fakerService().resolve(EDUCATOR, "degree")
 
-    describe("dictionary is loaded") {
-        context("resolving raw expression") {
-            context("expression matches the curly-brace-regex") {
-                context("expression calls are chained with a dot '.' char") {
-                    val degreeType = fakerService().resolve(EDUCATOR, "degree")
-
-                    it("is resolved by functionName") {
-                        degreeType.split(" ").take(2).joinToString(" ") shouldBeIn listOf(
-                            "Associate Degree",
-                            "Bachelor of",
-                            "Master of",
-                        )
+                        it("is resolved by functionName") {
+                            degreeType.split(" ").take(2).joinToString(" ") shouldBeIn
+                                listOf("Associate Degree", "Bachelor of", "Master of")
+                        }
                     }
                 }
             }
         }
-    }
-
-})
+    })
 
 private fun fakerService(): FakerService {
     val f = TestFaker()
@@ -37,7 +33,8 @@ private fun fakerService(): FakerService {
 }
 
 @Suppress("unused")
-class TestFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class TestFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     // expose FakerService for tests
     val service = fakerService

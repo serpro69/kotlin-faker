@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class HalfLife internal constructor(fakerService: FakerService) : YamlFakeDataProvider<HalfLife>(fakerService) {
+class HalfLife internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<HalfLife>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("HALF_LIFE")
     override val localUniqueDataProvider = LocalUniqueDataProvider<HalfLife>()
@@ -23,6 +22,8 @@ class HalfLife internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     fun character() = resolve(secondaryCategory, "character")
+
     fun enemy() = resolve(secondaryCategory, "enemy")
+
     fun location() = resolve(secondaryCategory, "location")
 }

@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DATABASE] category. */
 @Suppress("unused")
-class MSSQLServer internal constructor(fakerService: FakerService) : YamlFakeDataProvider<MSSQLServer>(fakerService) {
+class MSSQLServer internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<MSSQLServer>(fakerService) {
     override val yamlCategory = YamlCategory.DATABASE
     override val secondaryCategory: Category = Category.ofName("MS_SQL_SERVER")
     override val localUniqueDataProvider = LocalUniqueDataProvider<MSSQLServer>()

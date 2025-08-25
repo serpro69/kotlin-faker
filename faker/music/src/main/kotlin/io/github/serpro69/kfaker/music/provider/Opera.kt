@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.OPERA] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.OPERA] category. */
 @Suppress("unused")
-class Opera internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Opera>(fakerService) {
+class Opera internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Opera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<Opera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -31,9 +30,8 @@ class Opera internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     // TODO: fun french() // resolves to a random french opera
 }
 
-class ItalianOpera internal constructor(
-    fakerService: FakerService
-) : YamlFakeDataProvider<ItalianOpera>(fakerService) {
+class ItalianOpera internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<ItalianOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<ItalianOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -43,16 +41,20 @@ class ItalianOpera internal constructor(
     }
 
     fun byGiuseppeVerdi() = resolve("italian", "by_giuseppe_verdi")
+
     fun byGioacchinoRossini() = resolve("italian", "by_gioacchino_rossini")
+
     fun byGaetanoDonizetti() = resolve("italian", "by_gaetano_donizetti")
+
     fun byVincenzoBellini() = resolve("italian", "by_vincenzo_bellini")
+
     fun byChristophWillibaldGluck() = resolve("italian", "by_christoph_willibald_gluck")
+
     fun byWolfgangAmadeusMozart() = resolve("italian", "by_wolfgang_amadeus_mozart")
 }
 
-class GermanOpera internal constructor(
-    fakerService: FakerService
-) : YamlFakeDataProvider<GermanOpera>(fakerService) {
+class GermanOpera internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<GermanOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<GermanOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -62,18 +64,24 @@ class GermanOpera internal constructor(
     }
 
     fun byWolfgangAmadeusMozart(): String = resolve("german", "by_wolfgang_amadeus_mozart")
+
     fun byLudwigVanBeethoven(): String = resolve("german", "by_ludwig_van_beethoven")
+
     fun byCarlMariaVonWeber(): String = resolve("german", "by_carl_maria_von_weber")
+
     fun byRichardStrauss(): String = resolve("german", "by_richard_strauss")
+
     fun byRichardWagner(): String = resolve("german", "by_richard_wagner")
+
     fun byRobertSchumann(): String = resolve("german", "by_robert_schumann")
+
     fun byFranzSchubert(): String = resolve("german", "by_franz_schubert")
+
     fun byAlbanBerg(): String = resolve("german", "by_alban_berg")
 }
 
-class FrenchOpera internal constructor(
-    fakerService: FakerService
-) : YamlFakeDataProvider<FrenchOpera>(fakerService) {
+class FrenchOpera internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<FrenchOpera>(fakerService) {
     override val yamlCategory = YamlCategory.OPERA
     override val localUniqueDataProvider = LocalUniqueDataProvider<FrenchOpera>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -83,9 +91,14 @@ class FrenchOpera internal constructor(
     }
 
     fun byChristophWillibaldGluck(): String = resolve("french", "by_christoph_willibald_gluck")
+
     fun byMauriceRavel(): String = resolve("french", "by_maurice_ravel")
+
     fun byHectorBerlioz(): String = resolve("french", "by_hector_berlioz")
+
     fun byGeorgesBizet(): String = resolve("french", "by_georges_bizet")
+
     fun byCharlesGounod(): String = resolve("french", "by_charles_gounod")
+
     fun byCamilleSaintSaens(): String = resolve("french", "by_camille_saint_saens")
 }

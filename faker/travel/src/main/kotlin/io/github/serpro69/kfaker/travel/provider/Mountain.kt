@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.MOUNTAIN] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.MOUNTAIN] category. */
 class Mountain internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Mountain>(fakerService) {
     override val yamlCategory = YamlCategory.MOUNTAIN
@@ -23,5 +21,6 @@ class Mountain internal constructor(fakerService: FakerService) :
     }
 
     fun name(): String = resolve("name")
+
     fun range(): String = resolve("range")
 }

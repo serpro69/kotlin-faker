@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.MOUNTAINEERING] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.MOUNTAINEERING] category. */
 class Mountaineering internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Mountaineering>(fakerService) {
     override val yamlCategory = YamlCategory.MOUNTAINEERING

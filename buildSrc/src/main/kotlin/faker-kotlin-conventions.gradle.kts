@@ -14,16 +14,14 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import utils.Color
 import utils.times
 
-/**
- * Plugin for base build setup of faker modules with kotlin
- */
-
+/** Plugin for base build setup of faker modules with kotlin */
 plugins {
     id("faker-base-conventions")
     java
     kotlin("jvm")
     id("org.jetbrains.dokka")
     id("org.jetbrains.kotlinx.binary-compatibility-validator")
+    id("com.diffplug.spotless")
 }
 
 val lib = project.libs
@@ -38,21 +36,13 @@ dependencies {
     testImplementation(lib.bundles.test.kotest)
 }
 
-configure<JavaPluginExtension> {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
-}
+configure<JavaPluginExtension> { toolchain { languageVersion.set(JavaLanguageVersion.of(8)) } }
 
 configure<KotlinJvmProjectExtension> {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
+    jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
-}
+tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
 
 tasks.withType<Test> {
     jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
@@ -62,59 +52,72 @@ tasks.withType<Test> {
 
     testLogging {
         // set options for log level LIFECYCLE
-        events = setOf(
-            TestLogEvent.FAILED,
-            TestLogEvent.SKIPPED,
-            TestLogEvent.STANDARD_OUT
-        )
+        events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.STANDARD_OUT)
         exceptionFormat = TestExceptionFormat.FULL
         showExceptions = true
         showCauses = true
         showStackTraces = true
         // set options for log level DEBUG and INFO
         debug {
-            events = setOf(
-                TestLogEvent.STARTED,
-                TestLogEvent.FAILED,
-                TestLogEvent.PASSED,
-                TestLogEvent.SKIPPED,
-                TestLogEvent.STANDARD_ERROR,
-                TestLogEvent.STANDARD_OUT
-            )
+            events =
+                setOf(
+                    TestLogEvent.STARTED,
+                    TestLogEvent.FAILED,
+                    TestLogEvent.PASSED,
+                    TestLogEvent.SKIPPED,
+                    TestLogEvent.STANDARD_ERROR,
+                    TestLogEvent.STANDARD_OUT,
+                )
             exceptionFormat = TestExceptionFormat.FULL
         }
         info.events = debug.events
         info.exceptionFormat = debug.exceptionFormat
 
-        afterSuite(KotlinClosure2({ desc: TestDescriptor, result: TestResult ->
-            if (desc.parent == null) { // will match the outermost suite
-                val pass = "${Color.GREEN}${result.successfulTestCount} passed${Color.NONE}"
-                val fail = "${Color.RED}${result.failedTestCount} failed${Color.NONE}"
-                val skip = "${Color.YELLOW}${result.skippedTestCount} skipped${Color.NONE}"
-                val type = when (val r: ResultType = result.resultType) {
-                    ResultType.SUCCESS -> "${Color.GREEN}$r${Color.NONE}"
-                    ResultType.FAILURE -> "${Color.RED}$r${Color.NONE}"
-                    ResultType.SKIPPED -> "${Color.YELLOW}$r${Color.NONE}"
+        afterSuite(
+            KotlinClosure2({ desc: TestDescriptor, result: TestResult ->
+                if (desc.parent == null) { // will match the outermost suite
+                    val pass = "${Color.GREEN}${result.successfulTestCount} passed${Color.NONE}"
+                    val fail = "${Color.RED}${result.failedTestCount} failed${Color.NONE}"
+                    val skip = "${Color.YELLOW}${result.skippedTestCount} skipped${Color.NONE}"
+                    val type =
+                        when (val r: ResultType = result.resultType) {
+                            ResultType.SUCCESS -> "${Color.GREEN}$r${Color.NONE}"
+                            ResultType.FAILURE -> "${Color.RED}$r${Color.NONE}"
+                            ResultType.SKIPPED -> "${Color.YELLOW}$r${Color.NONE}"
+                        }
+                    val output = "Results: $type (${result.testCount} tests, $pass, $fail, $skip)"
+                    val startItem = "|   "
+                    val endItem = "   |"
+                    val repeatLength = startItem.length + output.length + endItem.length - 36
+                    println("")
+                    println(
+                        "\n" +
+                            ("-" * repeatLength) +
+                            "\n" +
+                            startItem +
+                            output +
+                            endItem +
+                            "\n" +
+                            ("-" * repeatLength)
+                    )
                 }
-                val output = "Results: $type (${result.testCount} tests, $pass, $fail, $skip)"
-                val startItem = "|   "
-                val endItem = "   |"
-                val repeatLength = startItem.length + output.length + endItem.length - 36
-                println("")
-                println("\n" + ("-" * repeatLength) + "\n" + startItem + output + endItem + "\n" + ("-" * repeatLength))
-            }
-        }))
+            })
+        )
     }
 
-    onOutput(KotlinClosure2({ _: TestDescriptor, event: TestOutputEvent ->
-        if (event.destination == TestOutputEvent.Destination.StdOut) {
-            logger.lifecycle(event.message.replace(Regex("""\s+$"""), ""))
-        }
-    }))
+    onOutput(
+        KotlinClosure2({ _: TestDescriptor, event: TestOutputEvent ->
+            if (event.destination == TestOutputEvent.Destination.StdOut) {
+                logger.lifecycle(event.message.replace(Regex("""\s+$"""), ""))
+            }
+        })
+    )
 }
 
 configurations {
-    create("integrationImplementation") { extendsFrom(configurations.getByName("testImplementation")) }
+    create("integrationImplementation") {
+        extendsFrom(configurations.getByName("testImplementation"))
+    }
     create("integrationRuntimeOnly") {
         if (isShadow) {
             extendsFrom(
@@ -127,7 +130,8 @@ configurations {
     }
 }
 
-// configure sourceSets as extension since it's not available here as `sourceSets` is an extension on `Project`
+// configure sourceSets as extension since it's not available here as `sourceSets` is an extension
+// on `Project`
 // https://docs.gradle.org/current/userguide/kotlin_dsl.html#project_extensions_and_conventions
 configure<SourceSetContainer> {
     create("integration") {
@@ -135,17 +139,14 @@ configure<SourceSetContainer> {
         compileClasspath += main.get().compileClasspath + test.get().compileClasspath
         runtimeClasspath += main.get().runtimeClasspath + test.get().runtimeClasspath
     }
-    main {
-        resources {
-            this.srcDir("build/generated/src/main/resources")
-        }
-    }
+    main { resources { this.srcDir("build/generated/src/main/resources") } }
 }
 
-val integrationTest: Test by tasks.creating(Test::class) {
-    testClassesDirs = sourceSets["integration"].output.classesDirs
-    classpath = sourceSets["integration"].runtimeClasspath
-}
+val integrationTest: Test by
+    tasks.creating(Test::class) {
+        testClassesDirs = sourceSets["integration"].output.classesDirs
+        classpath = sourceSets["integration"].runtimeClasspath
+    }
 
 tasks.withType<Jar> {
     archiveBaseName.set(fullName)
@@ -161,7 +162,8 @@ tasks.withType<Jar> {
                  * Cannot change dependencies of dependency configuration ':core:implementation' after it has been included in dependency resolution
                  * if we try to add more dependencies in the module's build.gradle file directly
                  */
-                // "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name }
+                // "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") {
+                // it.name }
             )
         )
     }
@@ -172,5 +174,12 @@ tasks.withType<DokkaTask>().configureEach {
     onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }
 
-apiValidation {
+apiValidation {}
+
+spotless {
+    kotlin { ktfmt().kotlinlangStyle().configure {} }
+    kotlinGradle {
+        target("*.gradle.kts")
+        ktfmt().kotlinlangStyle().configure {}
+    }
 }

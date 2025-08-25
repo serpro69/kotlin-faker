@@ -14,11 +14,7 @@ import io.kotest.matchers.string.shouldContain
 import io.kotest.matchers.string.shouldNotContain
 
 class StringIT : DescribeSpec() {
-    private val faker = faker {
-        fakerConfig {
-            uniqueGeneratorRetryLimit = 1000
-        }
-    }
+    private val faker = faker { fakerConfig { uniqueGeneratorRetryLimit = 1000 } }
     private val sourceString = "foo###bar???"
 
     override suspend fun beforeEach(testCase: TestCase) {
@@ -28,7 +24,6 @@ class StringIT : DescribeSpec() {
 
     init {
         describe("String Provider") {
-
             context("numerify") {
                 it("should NOT contain # chars") {
                     faker.string.numerify(sourceString) shouldNotContain "#"
@@ -49,12 +44,8 @@ class StringIT : DescribeSpec() {
                     val list = List(1000) { faker.string.letterify(sourceString) }
                     list.distinct().size shouldBeLessThan 1000
                 }
-                it("should be upper") {
-                    faker.string.letterify("###", true) should beUpperCase()
-                }
-                it("should be lower") {
-                    faker.string.letterify("###", false) should beLowerCase()
-                }
+                it("should be upper") { faker.string.letterify("###", true) should beUpperCase() }
+                it("should be lower") { faker.string.letterify("###", false) should beLowerCase() }
             }
 
             context("bothify") {
@@ -66,12 +57,8 @@ class StringIT : DescribeSpec() {
                     val list = List(1000) { faker.string.bothify("foo#bar?") }
                     list.distinct().size shouldBeLessThan 1000
                 }
-                it("should be upper") {
-                    faker.string.bothify("###", true) should beUpperCase()
-                }
-                it("should be lower") {
-                    faker.string.bothify("###", false) should beLowerCase()
-                }
+                it("should be upper") { faker.string.bothify("###", true) should beUpperCase() }
+                it("should be lower") { faker.string.bothify("###", false) should beLowerCase() }
             }
             context("regexify") {
                 it("should resolve the regex template to a string") {

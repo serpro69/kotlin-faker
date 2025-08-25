@@ -16,13 +16,12 @@ import kotlin.random.Random
 /**
  * Wrapper around [Random] that also contains some additional functions not covered by [Random].
  *
- * If two instances of this [RandomService] are created with the same seed,
- * and the same sequence of method calls is made for each,
- * then they will generate and return identical sequences of values.
+ * If two instances of this [RandomService] are created with the same seed, and the same sequence of
+ * method calls is made for each, then they will generate and return identical sequences of values.
  *
- * Instances of [RandomService] are not cryptographically secure by default.
- * Consider passing [java.security.SecureRandom] to the constructor of this [RandomService]
- * to get a cryptographically secure pseudo-random generator.
+ * Instances of [RandomService] are not cryptographically secure by default. Consider passing
+ * [java.security.SecureRandom] to the constructor of this [RandomService] to get a
+ * cryptographically secure pseudo-random generator.
  */
 class RandomService internal constructor(override val config: FakerConfig) : IRandom {
     private val random = config.random
@@ -54,12 +53,11 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun randomString(length: Int, numericalChars: Boolean): String {
         if (length < 1) return ""
-        val charset = if (numericalChars) {
-            alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
-        } else alphabeticLowerCharset + alphabeticUpperCharset
-        return (1..length)
-            .map { charset.random(this.random) }
-            .joinToString("")
+        val charset =
+            if (numericalChars) {
+                alphabeticLowerCharset + alphabeticUpperCharset + numericCharset
+            } else alphabeticLowerCharset + alphabeticUpperCharset
+        return (1..length).map { charset.random(this.random) }.joinToString("")
     }
 
     override fun nextBoolean() = random.nextBoolean()
@@ -94,24 +92,32 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
         if (length < 1) return "" // base case
 
         val localeData = LocaleData.getInstance(ULocale.forLocale(locale))
-        val mainChars = localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_STANDARD)
-            .ranges()
-            .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
-        val auxChars = if (auxiliaryChars) {
-            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_AUXILIARY)
+        val mainChars =
+            localeData
+                .getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_STANDARD)
                 .ranges()
                 .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
-        } else emptyList()
-        val idxChars = if (indexChars) {
-            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_INDEX)
-                .ranges()
-                .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
-        } else emptyList()
-        val punctChars = if (punctuationChars) {
-            localeData.getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_PUNCTUATION)
-                .ranges()
-                .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
-        } else emptyList()
+        val auxChars =
+            if (auxiliaryChars) {
+                localeData
+                    .getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_AUXILIARY)
+                    .ranges()
+                    .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+            } else emptyList()
+        val idxChars =
+            if (indexChars) {
+                localeData
+                    .getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_INDEX)
+                    .ranges()
+                    .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+            } else emptyList()
+        val punctChars =
+            if (punctuationChars) {
+                localeData
+                    .getExemplarSet(UnicodeSet.MIN_VALUE, LocaleData.ES_PUNCTUATION)
+                    .ranges()
+                    .flatMap { (it.codepoint..it.codepointEnd).map { code -> Char(code) } }
+            } else emptyList()
         val numChars = if (numericalChars) numericCharset else emptyList()
         val chars = (mainChars + auxChars + idxChars + punctChars + numChars)
         return List(length) { chars.random(random) }.joinToString("")
@@ -137,9 +143,7 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
         )
     }
 
-    /**
-     * Returns a randomly selected enum entry of type [E].
-     */
+    /** Returns a randomly selected enum entry of type [E]. */
     inline fun <reified E : Enum<E>> nextEnum(): E {
         val x: Int = nextInt(enumValues<E>().size)
         return enumValues<E>()[x]
@@ -159,7 +163,8 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
     }
 
     /**
-     * Returns a randomly selected enum entry of type [E] excluding a particular enum class by its name.
+     * Returns a randomly selected enum entry of type [E] excluding a particular enum class by its
+     * name.
      */
     inline fun <reified E : Enum<E>> nextEnum(excludeName: String): E {
         do {
@@ -182,7 +187,8 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
 
     override fun <T> randomSublist(list: List<T>, size: Int, shuffled: Boolean): List<T> {
         val (from, to) = list.randomFromToIndices(size)
-        return list.ifEmpty { emptyList() }
+        return list
+            .ifEmpty { emptyList() }
             .let { if (shuffled) it.shuffled(random) else it }
             .subList(from, to)
     }
@@ -234,16 +240,18 @@ class RandomService internal constructor(override val config: FakerConfig) : IRa
     }
 
     private fun <T> Collection<T>.randomFromToIndices(s: Int): Pair<Int, Int> {
-        val fromIndex = if (s > 0) {
-            (0..size - s).random(random)
-        } else {
-            (indices).random(random)
-        }
-        val toIndex = if (s > 0) {
-            fromIndex + s
-        } else {
-            (fromIndex..size).random(random)
-        }
+        val fromIndex =
+            if (s > 0) {
+                (0..size - s).random(random)
+            } else {
+                (indices).random(random)
+            }
+        val toIndex =
+            if (s > 0) {
+                fromIndex + s
+            } else {
+                (fromIndex..size).random(random)
+            }
 
         return fromIndex to toIndex
     }
