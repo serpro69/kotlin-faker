@@ -11,9 +11,9 @@ import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
  * [FakeDataProvider] implementation for [YamlCategory.SHOW] category.
  */
 @Suppress("unused")
-class Show internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Show>(fakerService) {
-    override val yamlCategory = YamlCategory.SHOW
-    override val localUniqueDataProvider = LocalUniqueDataProvider<Show>()
+class Theater internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Theater>(fakerService) {
+    override val yamlCategory = YamlCategory.THEATER
+    override val localUniqueDataProvider = LocalUniqueDataProvider<Theater>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
 
     init {

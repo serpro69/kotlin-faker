@@ -15,7 +15,7 @@ import io.github.serpro69.kfaker.music.provider.Phish
 import io.github.serpro69.kfaker.music.provider.Prince
 import io.github.serpro69.kfaker.music.provider.RockBand
 import io.github.serpro69.kfaker.music.provider.Rush
-import io.github.serpro69.kfaker.music.provider.Show
+import io.github.serpro69.kfaker.music.provider.Theater
 import io.github.serpro69.kfaker.music.provider.SmashingPumpkins
 import io.github.serpro69.kfaker.music.provider.UmphreysMcgee
 
@@ -46,9 +46,12 @@ class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val prince: Prince by lazy { Prince(fakerService) }
     val rockBand: RockBand by lazy { RockBand(fakerService) }
     val rush: Rush by lazy { Rush(fakerService) }
-    val show: Show by lazy { Show(fakerService) }
+    val theater: Theater by lazy { Theater(fakerService) }
     val smashingPumpkins: SmashingPumpkins by lazy { SmashingPumpkins(fakerService) }
     val umphreysMcgee: UmphreysMcgee by lazy { UmphreysMcgee(fakerService) }
+
+    @Deprecated(level = DeprecationLevel.WARNING, message = "Will be removed in 2.0, use 'theater' instead", replaceWith = ReplaceWith("theater"))
+    val show: Theater by lazy { Theater(fakerService) }
 
     @FakerDsl
     /**
