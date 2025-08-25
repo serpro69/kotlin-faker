@@ -41,13 +41,13 @@ docs: ## serve documentation on the localhost
 
 .PHONY: snapshot-minor
 snapshot-minor: ## publishes next snapshot with a minor version bump
-	./gradlew clean test integrationTest
+	./gradlew clean test integrationTest spotlessCheck
 	./gradlew nativeCompile
 	./gradlew publishToSonatype --info
 
 .PHONY: pre-release-major
 pre-release-major: ## publishes next pre-release version with a major version bump
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -57,7 +57,7 @@ pre-release-major: ## publishes next pre-release version with a major version bu
 
 .PHONY: pre-release-minor
 pre-release-minor: ## publishes next pre-release with a minor version bump
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -67,7 +67,7 @@ pre-release-minor: ## publishes next pre-release with a minor version bump
 
 .PHONY: pre-release-patch
 pre-release-patch: ## publishes next pre-release with a patch version bump
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -77,7 +77,7 @@ pre-release-patch: ## publishes next pre-release with a patch version bump
 
 .PHONY: next-pre-release
 next-pre-release: ## publishes next pre-release version
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -87,7 +87,7 @@ next-pre-release: ## publishes next pre-release version
 
 .PHONY: promote-to-release
 promote-to-release: ## publishes next release from the current pre-release version
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -97,7 +97,7 @@ promote-to-release: ## publishes next release from the current pre-release versi
 
 .PHONY: release-major
 release-major: ## publishes next major release version
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -107,7 +107,7 @@ release-major: ## publishes next major release version
 
 .PHONY: release-minor
 release-minor: ## publishes next minor release version
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	tag \
 	nativeCompile \
 	publishToSonatype \
@@ -117,7 +117,7 @@ release-minor: ## publishes next minor release version
 
 .PHONY: release-patch
 release-patch: ## publishes next patch release version
-	./gradlew test integrationTest \
+	./gradlew test integrationTest spotlessCheck \
 	nativeCompile \
 	publishToSonatype \
 	closeSonatypeStagingRepository \
@@ -130,7 +130,7 @@ release: check_java ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
 
 	# run tests
-	./gradlew test integrationTest -Pversion=$(VERSION)
+	./gradlew test integrationTest spotlessCheck -Pversion=$(VERSION)
 	# build and test native image
 	./gradlew nativeCompile -Pversion=$(VERSION) --info
 	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) list --verbose >/dev/null || false
