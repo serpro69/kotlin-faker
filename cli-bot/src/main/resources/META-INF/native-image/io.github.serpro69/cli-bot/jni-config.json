@@ -1,13 +1,14 @@
 [
 {
-  "name":"java.lang.ClassLoader",
-  "methods":[{"name":"loadClass","parameterTypes":["java.lang.String"] }]
+  "name":"io.github.serpro69.kfaker.app.KFakerKt",
+  "methods":[{"name":"main","parameterTypes":["java.lang.String[]"] }]
 },
 {
-  "name":"java.net.FactoryURLClassLoader"
+  "name":"java.lang.String",
+  "methods":[{"name":"lastIndexOf","parameterTypes":["int"] }, {"name":"substring","parameterTypes":["int"] }]
 },
 {
-  "name":"org.graalvm.nativebridge.jni.JNIExceptionWrapperEntryPoints",
-  "methods":[{"name":"getClassName","parameterTypes":["java.lang.Class"] }]
+  "name":"java.lang.System",
+  "methods":[{"name":"getProperty","parameterTypes":["java.lang.String"] }, {"name":"setProperty","parameterTypes":["java.lang.String","java.lang.String"] }]
 }
 ]
