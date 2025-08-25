@@ -15,6 +15,7 @@ plugin-semantic-versioning = "0.13.0"
 plugin-devpublish = "0.4.1"
 plugin-nexus-publish = "2.0.0"
 plugin-benmanes-versions = "0.51.0"
+plugin-spotless = "7.2.1"
 # test
 kotest = "5.9.1"
 junit = "5.11.0"
@@ -51,6 +52,7 @@ gradle-plugin-bcv = { module = "org.jetbrains.kotlinx.binary-compatibility-valid
 gradle-plugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "plugin-dokka" }
 gradle-plugin-semantic-versioning = { module = "io.github.serpro69:semantic-versioning", version.ref = "plugin-semantic-versioning" }
 gradle-plugin-shadow = { module = "com.gradleup.shadow:shadow-gradle-plugin", version.ref = "plugin-shadow" }
+gradle-plugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "plugin-spotless" }
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
 gradle-plugin-devpublish = { module = "dev.adamko.gradle:dev-publish-plugin", version.ref = "plugin-devpublish" }
 
@@ -67,6 +69,7 @@ gradle-plugins = [
   "gradle-plugin-dokka",
   "gradle-plugin-semantic-versioning",
   "gradle-plugin-shadow",
+  "gradle-plugin-spotless",
 ]
 jackson = ["jackson-databind", "jackson-module-kotlin"]
 kotlin = ["kotlin-stdlib-common", "kotlin-stdlib-jdk8", "kotlin-reflect"]
