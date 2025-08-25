@@ -15,25 +15,24 @@ import io.github.serpro69.kfaker.music.provider.Phish
 import io.github.serpro69.kfaker.music.provider.Prince
 import io.github.serpro69.kfaker.music.provider.RockBand
 import io.github.serpro69.kfaker.music.provider.Rush
-import io.github.serpro69.kfaker.music.provider.Theater
 import io.github.serpro69.kfaker.music.provider.SmashingPumpkins
+import io.github.serpro69.kfaker.music.provider.Theater
 import io.github.serpro69.kfaker.music.provider.UmphreysMcgee
 
-/**
- * Typealias for the [MusicFaker]
- */
+/** Typealias for the [MusicFaker] */
 typealias Faker = MusicFaker
 
 /**
  * Provides access to fake data generators within the Music domain.
  *
- * Each category (generator) from this [MusicFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [MusicFaker] is represented by a property that (usually) has
+ * the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val bossaNova: BossaNova by lazy { BossaNova(fakerService) }
     val gratefulDead: GratefulDead by lazy { GratefulDead(fakerService) }
@@ -50,24 +49,25 @@ class MusicFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val smashingPumpkins: SmashingPumpkins by lazy { SmashingPumpkins(fakerService) }
     val umphreysMcgee: UmphreysMcgee by lazy { UmphreysMcgee(fakerService) }
 
-    @Deprecated(level = DeprecationLevel.WARNING, message = "Will be removed in 2.0, use 'theater' instead", replaceWith = ReplaceWith("theater"))
+    @Deprecated(
+        level = DeprecationLevel.WARNING,
+        message = "Will be removed in 2.0, use 'theater' instead",
+        replaceWith = ReplaceWith("theater"),
+    )
     val show: Theater by lazy { Theater(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [MusicFaker.Builder]
- * and returns as an instance of [MusicFaker] from that builder.
+ * Applies the [block] function to [MusicFaker.Builder] and returns as an instance of [MusicFaker]
+ * from that builder.
  */
-fun faker(block: MusicFaker.Builder.() -> Unit): MusicFaker = MusicFaker.Builder().apply(block).build()
+fun faker(block: MusicFaker.Builder.() -> Unit): MusicFaker =
+    MusicFaker.Builder().apply(block).build()

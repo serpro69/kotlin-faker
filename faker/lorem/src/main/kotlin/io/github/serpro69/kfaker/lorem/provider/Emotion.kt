@@ -7,9 +7,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.EMOTION] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.EMOTION] category. */
 @Suppress("unused")
 class Emotion internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Emotion>(fakerService) {
@@ -22,6 +20,6 @@ class Emotion internal constructor(fakerService: FakerService) :
     }
 
     fun adjective(): String = resolve("adjective")
+
     fun noun(): String = resolve("noun")
 }
-

@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.NARUTO] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.NARUTO] category. */
 @Suppress("unused")
-class Naruto internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Naruto>(fakerService) {
+class Naruto internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Naruto>(fakerService) {
     override val yamlCategory = YamlCategory.NARUTO
     override val localUniqueDataProvider = LocalUniqueDataProvider<Naruto>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,7 +20,10 @@ class Naruto internal constructor(fakerService: FakerService) : YamlFakeDataProv
     }
 
     fun characters(): String = resolve("characters")
+
     fun villages(): String = resolve("villages")
+
     fun eyes(): String = resolve("eyes")
+
     fun demons(): String = resolve("demons")
 }

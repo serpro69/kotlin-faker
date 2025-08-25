@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class Zelda internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Zelda>(fakerService) {
+class Zelda internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Zelda>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("ZELDA")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Zelda>()
@@ -23,7 +22,10 @@ class Zelda internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     }
 
     fun games() = resolve(secondaryCategory, "games")
+
     fun characters() = resolve(secondaryCategory, "characters")
+
     fun locations() = resolve(secondaryCategory, "locations")
+
     fun items() = resolve(secondaryCategory, "items")
 }

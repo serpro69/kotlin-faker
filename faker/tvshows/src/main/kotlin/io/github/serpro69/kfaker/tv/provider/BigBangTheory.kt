@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.BIG_BANG_THEORY] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.BIG_BANG_THEORY] category. */
 @Suppress("unused")
-class BigBangTheory internal constructor(fakerService: FakerService) : YamlFakeDataProvider<BigBangTheory>(fakerService) {
+class BigBangTheory internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<BigBangTheory>(fakerService) {
     override val yamlCategory = YamlCategory.BIG_BANG_THEORY
     override val localUniqueDataProvider = LocalUniqueDataProvider<BigBangTheory>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,5 +20,6 @@ class BigBangTheory internal constructor(fakerService: FakerService) : YamlFakeD
     }
 
     fun characters() = resolve("characters")
+
     fun quotes() = resolve("quotes")
 }

@@ -10,21 +10,20 @@ import io.github.serpro69.kfaker.travel.provider.Mountain
 import io.github.serpro69.kfaker.travel.provider.Nation
 import io.github.serpro69.kfaker.travel.provider.TrainStation
 
-/**
- * Typealias for the [TravelFaker]
- */
+/** Typealias for the [TravelFaker] */
 typealias Faker = TravelFaker
 
 /**
  * Provides access to fake data generators within the Travel domain.
  *
- * Each category (generator) from this [TravelFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [TravelFaker] is represented by a property that (usually) has
+ * the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class TravelFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class TravelFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val airport: Airport by lazy { Airport(fakerService) }
     val australia: Australia by lazy { Australia(fakerService) }
@@ -34,20 +33,17 @@ class TravelFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val trainStation: TrainStation by lazy { TrainStation(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [TravelFaker.Builder]
- * and returns as an instance of [TravelFaker] from that builder.
+ * Applies the [block] function to [TravelFaker.Builder] and returns as an instance of [TravelFaker]
+ * from that builder.
  */
-fun faker(block: TravelFaker.Builder.() -> Unit): TravelFaker = TravelFaker.Builder().apply(block).build()
+fun faker(block: TravelFaker.Builder.() -> Unit): TravelFaker =
+    TravelFaker.Builder().apply(block).build()

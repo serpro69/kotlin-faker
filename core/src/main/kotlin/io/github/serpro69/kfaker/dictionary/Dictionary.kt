@@ -8,7 +8,7 @@ import java.util.*
 internal typealias Dictionary = EnumMap<YamlCategory, YamlCategoryData>
 
 /**
- * Represents a dictionary data map of a given category (i.e. `address`)
- * where the `key` is a "function name" (i.e. `address.city`).
+ * Represents a dictionary data map of a given category (i.e. `address`) where the `key` is a
+ * "function name" (i.e. `address.city`).
  */
 internal typealias YamlCategoryData = LinkedHashMap<String, Any>

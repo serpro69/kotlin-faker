@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.THE_EXPANSE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.THE_EXPANSE] category. */
 @Suppress("unused")
-class TheExpanse internal constructor(fakerService: FakerService) : YamlFakeDataProvider<TheExpanse>(fakerService) {
+class TheExpanse internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<TheExpanse>(fakerService) {
     override val yamlCategory = YamlCategory.THE_EXPANSE
     override val localUniqueDataProvider = LocalUniqueDataProvider<TheExpanse>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,7 +20,10 @@ class TheExpanse internal constructor(fakerService: FakerService) : YamlFakeData
     }
 
     fun characters() = resolve("characters")
+
     fun locations() = resolve("locations")
+
     fun ships() = resolve("ships")
+
     fun quotes() = resolve("quotes")
 }

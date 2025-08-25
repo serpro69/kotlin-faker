@@ -22,7 +22,8 @@ import kotlin.reflect.jvm.jvmName
 /**
  * Provider functionality for generating random class instances.
  *
- * Inspired by [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
+ * Inspired by
+ * [Creating a random instance of any class in Kotlin blog post](https://blog.kotlin-academy.com/creating-a-random-instance-of-any-class-in-kotlin-b6168655b64a).
  *
  * @property config configuration for this [RandomClassProvider]
  */
@@ -31,13 +32,9 @@ class RandomClassProvider {
     private val fakerConfig: FakerConfig
     private val randomService: RandomService
 
-    @PublishedApi
-    @JvmSynthetic
-    internal val config: RandomProviderConfig
+    @PublishedApi @JvmSynthetic internal val config: RandomProviderConfig
 
-    /**
-     * Creates an instance of this [RandomClassProvider] with the given [fakerConfig].
-     */
+    /** Creates an instance of this [RandomClassProvider] with the given [fakerConfig]. */
     @PublishedApi
     internal constructor(fakerConfig: FakerConfig) {
         this.fakerConfig = fakerConfig
@@ -45,18 +42,14 @@ class RandomClassProvider {
         config = fakerConfig.randomProviderConfig?.copy() ?: RandomProviderConfig()
     }
 
-    /**
-     * Private constructor that is only used for [new] and [copy] functions.
-     */
+    /** Private constructor that is only used for [new] and [copy] functions. */
     private constructor(fakerConfig: FakerConfig, config: RandomProviderConfig) {
         this.fakerConfig = fakerConfig
         this.config = config.copy()
         randomService = RandomService(fakerConfig)
     }
 
-    /**
-     * Applies [configurator] to this [RandomClassProvider].
-     */
+    /** Applies [configurator] to this [RandomClassProvider]. */
     fun configure(configurator: RandomProviderConfig.() -> Unit) {
         config.apply(configurator)
     }
@@ -64,52 +57,49 @@ class RandomClassProvider {
     /**
      * Creates a new instance of this [RandomClassProvider].
      *
-     * IF [FakerConfig.randomProviderConfig] was configured
-     * THEN new instance will be created with a copy of that configuration,
-     * ELSE a new instance is created with a new instance of default configuration as defined in [RandomProviderConfig].
+     * IF [FakerConfig.randomProviderConfig] was configured THEN new instance will be created with a
+     * copy of that configuration, ELSE a new instance is created with a new instance of default
+     * configuration as defined in [RandomProviderConfig].
      */
-    fun new(): RandomClassProvider = RandomClassProvider(
-        fakerConfig,
-        fakerConfig.randomProviderConfig ?: RandomProviderConfig()
-    )
+    fun new(): RandomClassProvider =
+        RandomClassProvider(fakerConfig, fakerConfig.randomProviderConfig ?: RandomProviderConfig())
 
-    /**
-     * Creates a copy of this [RandomClassProvider] instance with a copy of its [config].
-     */
+    /** Creates a copy of this [RandomClassProvider] instance with a copy of its [config]. */
     fun copy(): RandomClassProvider = RandomClassProvider(fakerConfig, config)
 
-    /**
-     * Resets [config] to defaults for this [RandomClassProvider] instance.
-     */
+    /** Resets [config] to defaults for this [RandomClassProvider] instance. */
     fun reset() = config.reset()
 
     /**
-     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
-     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it
+     * will be used to create an instance of this class, otherwise a constructor with minimal number
+     * of parameters will be used with randomly-generated values.
      *
      * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     inline fun <reified T : Any> randomClassInstance() = T::class.randomClassInstance(config)
 
     /**
-     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
-     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     * Creates an instance of [T]. If [T] has a parameterless public/internal constructor then it
+     * will be used to create an instance of this class, otherwise a constructor with minimal number
+     * of parameters will be used with randomly-generated values.
      *
      * @param configurator configure instance creation.
-     *
      * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
-    inline fun <reified T : Any> randomClassInstance(configurator: RandomProviderConfig.() -> Unit): T {
+    inline fun <reified T : Any> randomClassInstance(
+        configurator: RandomProviderConfig.() -> Unit
+    ): T {
         return T::class.randomClassInstance(RandomProviderConfig().apply(configurator))
     }
 
     /**
-     * Creates an instance of [T] from the [KClass] input.
-     * If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
-     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     * Creates an instance of [T] from the [KClass] input. If [T] has a parameterless
+     * public/internal constructor then it will be used to create an instance of this class,
+     * otherwise a constructor with minimal number of parameters will be used with
+     * randomly-generated values.
      *
      * @param kClass a [KClass] of [T]
-     *
      * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
     fun <T : Any> randomClassInstance(kClass: KClass<T>): T {
@@ -117,16 +107,19 @@ class RandomClassProvider {
     }
 
     /**
-     * Creates an instance of [T] from the [KClass] input.
-     * If [T] has a parameterless public/internal constructor then it will be used to create an instance of this class,
-     * otherwise a constructor with minimal number of parameters will be used with randomly-generated values.
+     * Creates an instance of [T] from the [KClass] input. If [T] has a parameterless
+     * public/internal constructor then it will be used to create an instance of this class,
+     * otherwise a constructor with minimal number of parameters will be used with
+     * randomly-generated values.
      *
      * @param kClass a [KClass] of [T]
      * @param configurator configure instance creation.
-     *
      * @throws NoSuchElementException if [T] has no public or internal constructor.
      */
-    fun <T : Any> randomClassInstance(kClass: KClass<T>, configurator: RandomProviderConfig.() -> Unit): T {
+    fun <T : Any> randomClassInstance(
+        kClass: KClass<T>,
+        configurator: RandomProviderConfig.() -> Unit,
+    ): T {
         return kClass.randomClassInstance(RandomProviderConfig().apply(configurator))
     }
 
@@ -139,15 +132,17 @@ class RandomClassProvider {
 
         val defaultInstance: T? by lazy {
             if (config.constructorParamSize == -1 && config.constructorFilterStrategy == NO_ARGS) {
-                randomPrimitiveOrNull() as T? ?: try {
-                    constructors.firstOrNull {
-                        it.parameters.isEmpty() &&
-                            (it.visibility == PUBLIC || it.visibility == INTERNAL)
-                    }?.call()
-                } catch (e: Exception) {
-                    throw InstantiationException("Failed to instantiate $this")
-                        .initCause(e)
-                }
+                randomPrimitiveOrNull() as T?
+                    ?: try {
+                        constructors
+                            .firstOrNull {
+                                it.parameters.isEmpty() &&
+                                    (it.visibility == PUBLIC || it.visibility == INTERNAL)
+                            }
+                            ?.call()
+                    } catch (e: Exception) {
+                        throw InstantiationException("Failed to instantiate $this").initCause(e)
+                    }
             } else null
         }
 
@@ -161,132 +156,163 @@ class RandomClassProvider {
                     isOptional = false,
                     isVararg = false,
                     type = starProjectedType,
-                    kind = KParameter.Kind.INSTANCE
-                )
-            ) as T?
+                    kind = KParameter.Kind.INSTANCE,
+                ),
+            )
+                as T?
         }
 
-        // Handle cases where "constructor-less" type is not a direct parameter of the generated class,
+        // Handle cases where "constructor-less" type is not a direct parameter of the generated
+        // class,
         // but is a collection type, for example
         // https://github.com/serpro69/kotlin-faker/issues/204
         if (this.isSealed) return randomSealedClassOrNull(config) as T
         if (this.java.isEnum) return randomEnumOrNull() as T
         if (this.java.isPrimitive) return randomPrimitiveOrNull() as T
 
-        return objectInstance ?: defaultInstance ?: run {
-            val constructors = constructors.filter {
-                it.visibility == PUBLIC || it.visibility == INTERNAL
-            }
+        return objectInstance
+            ?: defaultInstance
+            ?: run {
+                val constructors =
+                    constructors.filter { it.visibility == PUBLIC || it.visibility == INTERNAL }
 
-            val constructor = constructors.firstOrNull {
-                it.parameters.size == config.constructorParamSize
-            } ?: when (config.constructorFilterStrategy) {
-                MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
-                MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
-                else -> {
-                    when (config.fallbackStrategy) {
-                        FAIL_IF_NOT_FOUND -> {
-                            throw NoSuchElementException("Constructor with 'parameters.size == ${config.constructorParamSize}' not found for $this")
+                val constructor =
+                    constructors.firstOrNull { it.parameters.size == config.constructorParamSize }
+                        ?: when (config.constructorFilterStrategy) {
+                            MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
+                            MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
+                            else -> {
+                                when (config.fallbackStrategy) {
+                                    FAIL_IF_NOT_FOUND -> {
+                                        throw NoSuchElementException(
+                                            "Constructor with 'parameters.size == ${config.constructorParamSize}' not found for $this"
+                                        )
+                                    }
+                                    USE_MIN_NUM_OF_ARGS ->
+                                        constructors.minByOrNull { it.parameters.size }
+                                    USE_MAX_NUM_OF_ARGS ->
+                                        constructors.maxByOrNull { it.parameters.size }
+                                }
+                            }
                         }
-                        USE_MIN_NUM_OF_ARGS -> constructors.minByOrNull { it.parameters.size }
-                        USE_MAX_NUM_OF_ARGS -> constructors.maxByOrNull { it.parameters.size }
-                    }
-                }
-            }
-            ?: predefinedInstance?.let { return@run it }
-            ?: throw NoSuchElementException("No suitable constructor or predefined instance found for $this")
+                        ?: predefinedInstance?.let {
+                            return@run it
+                        }
+                        ?: throw NoSuchElementException(
+                            "No suitable constructor or predefined instance found for $this"
+                        )
 
-            val drop = object : Any() {}
-            val params: Map<KParameter, Any?> = constructor.parameters.associateWith {
-                val pInfo = it.toParameterInfo()
-                val klass = it.type.classifier as KClass<*>
-                if (it.isOptional) {
-                    if (config.defaultValuesStrategy == USE_DEFAULTS) return@associateWith drop
-                    if (config.defaultValuesStrategy == PICK_RANDOMLY && randomService.nextBoolean()) return@associateWith drop
-                }
-                when {
-                    config.namedParameterGenerators.containsKey(it.name) -> {
-                        config.namedParameterGenerators[it.name]?.invoke(pInfo)
+                val drop = object : Any() {}
+                val params: Map<KParameter, Any?> =
+                    constructor.parameters.associateWith {
+                        val pInfo = it.toParameterInfo()
+                        val klass = it.type.classifier as KClass<*>
+                        if (it.isOptional) {
+                            if (config.defaultValuesStrategy == USE_DEFAULTS)
+                                return@associateWith drop
+                            if (
+                                config.defaultValuesStrategy == PICK_RANDOMLY &&
+                                    randomService.nextBoolean()
+                            )
+                                return@associateWith drop
+                        }
+                        when {
+                            config.namedParameterGenerators.containsKey(it.name) -> {
+                                config.namedParameterGenerators[it.name]?.invoke(pInfo)
+                            }
+                            it.type.isMarkedNullable &&
+                                config.nullableGenerators.containsKey(klass) -> {
+                                config.nullableGenerators[klass]?.invoke(pInfo)
+                            }
+                            else -> {
+                                klass.objectInstance
+                                    ?: klass.predefinedTypeOrNull(config, pInfo)
+                                    ?: klass.randomPrimitiveOrNull()
+                                    ?: klass.randomEnumOrNull()
+                                    ?: klass.randomSealedClassOrNull(config)
+                                    ?: klass.randomCollectionOrNull(it.type, config, pInfo)
+                                    ?: klass.randomClassInstance(config)
+                            }
+                        }
                     }
-                    it.type.isMarkedNullable && config.nullableGenerators.containsKey(klass) -> {
-                        config.nullableGenerators[klass]?.invoke(pInfo)
-                    }
-                    else -> {
-                        klass.objectInstance
-                            ?: klass.predefinedTypeOrNull(config, pInfo)
-                            ?: klass.randomPrimitiveOrNull()
-                            ?: klass.randomEnumOrNull()
-                            ?: klass.randomSealedClassOrNull(config)
-                            ?: klass.randomCollectionOrNull(it.type, config, pInfo)
-                            ?: klass.randomClassInstance(config)
-                    }
-                }
-            }
 
-            try {
-                constructor.callBy(params.filterNot { it.value == drop })
-            } catch (e: Exception) {
-                throw InstantiationException("Failed to instantiate $this with $params")
-                    .initCause(e)
+                try {
+                    constructor.callBy(params.filterNot { it.value == drop })
+                } catch (e: Exception) {
+                    throw InstantiationException("Failed to instantiate $this with $params")
+                        .initCause(e)
+                }
             }
-        }
     }
 
-    private fun <T : Any> KClass<T>.predefinedTypeOrNull(config: RandomProviderConfig, pInfo: ParameterInfo): Any? {
+    private fun <T : Any> KClass<T>.predefinedTypeOrNull(
+        config: RandomProviderConfig,
+        pInfo: ParameterInfo,
+    ): Any? {
         return config.predefinedGenerators[this]?.invoke(pInfo)
     }
 
-    /**
-     * Handles generation of primitive types since they do not have a public constructor.
-     */
-    private fun KClass<*>.randomPrimitiveOrNull(): Any? = when (this) {
-        Double::class -> randomService.nextDouble()
-        Float::class -> randomService.nextFloat()
-        Long::class -> randomService.nextLong()
-        Int::class -> randomService.nextInt()
-        Short::class -> randomService.nextInt().toShort()
-        Byte::class -> randomService.nextInt().toByte()
-        String::class -> randomService.randomString()
-        Char::class -> randomService.nextChar()
-        Boolean::class -> randomService.nextBoolean()
-        else -> null
-    }
+    /** Handles generation of primitive types since they do not have a public constructor. */
+    private fun KClass<*>.randomPrimitiveOrNull(): Any? =
+        when (this) {
+            Double::class -> randomService.nextDouble()
+            Float::class -> randomService.nextFloat()
+            Long::class -> randomService.nextLong()
+            Int::class -> randomService.nextInt()
+            Short::class -> randomService.nextInt().toShort()
+            Byte::class -> randomService.nextInt().toByte()
+            String::class -> randomService.randomString()
+            Char::class -> randomService.nextChar()
+            Boolean::class -> randomService.nextBoolean()
+            else -> null
+        }
 
-    /**
-     * Handles generation of enums types since they do not have a public constructor.
-     */
+    /** Handles generation of enums types since they do not have a public constructor. */
     private fun KClass<*>.randomEnumOrNull(): Any? {
         return if (this.java.isEnum) randomService.randomValue(this.java.enumConstants) else null
     }
 
     private fun KClass<*>.randomSealedClassOrNull(config: RandomProviderConfig): Any? {
-        return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config) else null
+        return if (isSealed) randomService.randomValue(sealedSubclasses).randomClassInstance(config)
+        else null
     }
 
     private fun KClass<*>.randomCollectionOrNull(
         kType: KType,
         config: RandomProviderConfig,
-        pInfo: ParameterInfo
+        pInfo: ParameterInfo,
     ): Any? {
-        val instance: (gen: Map<KClass<*>, (ParameterInfo) -> Any?>, el: KClass<*>) -> Any = { gen, el ->
-            gen[el]?.invoke(pInfo) ?: el.randomClassInstance(config)
-        }
+        val instance: (gen: Map<KClass<*>, (ParameterInfo) -> Any?>, el: KClass<*>) -> Any =
+            { gen, el ->
+                gen[el]?.invoke(pInfo) ?: el.randomClassInstance(config)
+            }
         return when (this) {
-            List::class, Set::class -> {
+            List::class,
+            Set::class -> {
                 val elementType = kType.arguments[0].type?.classifier as KClass<*>
-                val r = List(config.collectionsSize) { instance(config.collectionElementTypeGenerators, elementType) }
+                val r =
+                    List(config.collectionsSize) {
+                        instance(config.collectionElementTypeGenerators, elementType)
+                    }
                 when (this) {
                     List::class -> r
                     Set::class -> r.toSet()
-                    else -> throw UnsupportedOperationException("$this collection type is not supported")
+                    else ->
+                        throw UnsupportedOperationException(
+                            "$this collection type is not supported"
+                        )
                 }
             }
             Map::class -> {
                 val keyElementType = kType.arguments[0].type?.classifier as KClass<*>
                 val valElementType = kType.arguments[1].type?.classifier as KClass<*>
                 val keys =
-                    List(config.collectionsSize) { instance(config.mapEntriesTypeGenerators.first, keyElementType) }
-                keys.associateWith { instance(config.mapEntriesTypeGenerators.second, valElementType) }
+                    List(config.collectionsSize) {
+                        instance(config.mapEntriesTypeGenerators.first, keyElementType)
+                    }
+                keys.associateWith {
+                    instance(config.mapEntriesTypeGenerators.second, valElementType)
+                }
             }
             else -> null
         }
@@ -296,23 +322,17 @@ class RandomClassProvider {
 /**
  * Configuration for [RandomClassProvider.randomClassInstance].
  *
- * @property collectionsSize the size of the generated [Collection] type arguments.
- * Defaults to `1`.
- *
- * @property constructorParamSize will try to look up the constructor with specified number of arguments,
- * and use that to create the instance of the class.
- * Defaults to `-1`, which ignores this configuration property.
- * This takes precedence over [constructorFilterStrategy] configuration.
- *
- * @property constructorFilterStrategy default strategy for looking up a constructor
- * that is used to create the instance of a class.
- * By default, a zero-args constructor will be used.
- *
- * @property fallbackStrategy fallback strategy that is used to look up a constructor
- * if no constructor with [constructorParamSize] or [constructorFilterStrategy] was found.
- *
- * @property defaultValuesStrategy strategy for choosing how to handle default constructor parameters' values.
- * By default, generates random values for all constructor parameters.
+ * @property collectionsSize the size of the generated [Collection] type arguments. Defaults to `1`.
+ * @property constructorParamSize will try to look up the constructor with specified number of
+ *   arguments, and use that to create the instance of the class. Defaults to `-1`, which ignores
+ *   this configuration property. This takes precedence over [constructorFilterStrategy]
+ *   configuration.
+ * @property constructorFilterStrategy default strategy for looking up a constructor that is used to
+ *   create the instance of a class. By default, a zero-args constructor will be used.
+ * @property fallbackStrategy fallback strategy that is used to look up a constructor if no
+ *   constructor with [constructorParamSize] or [constructorFilterStrategy] was found.
+ * @property defaultValuesStrategy strategy for choosing how to handle default constructor
+ *   parameters' values. By default, generates random values for all constructor parameters.
  */
 class RandomProviderConfig @PublishedApi internal constructor() {
     var collectionsSize: Int = 1
@@ -321,81 +341,71 @@ class RandomProviderConfig @PublishedApi internal constructor() {
     var fallbackStrategy: FallbackStrategy = USE_MIN_NUM_OF_ARGS
     var defaultValuesStrategy: DefaultValuesStrategy = ALL_RANDOM
 
-    /**
-     * @property namedParameterGenerators Named constructor parameter type generators.
-     */
+    /** @property namedParameterGenerators Named constructor parameter type generators. */
     @PublishedApi
     internal val namedParameterGenerators = mutableMapOf<String, (pInfo: ParameterInfo) -> Any?>()
 
-    /**
-     * @property predefinedGenerators Constructor parameter type generators.
-     */
+    /** @property predefinedGenerators Constructor parameter type generators. */
+    @PublishedApi internal val predefinedGenerators: TypeGenMap = hashMapOf()
+
+    /** @property nullableGenerators Nullable constructor parameter type generators. */
+    @PublishedApi internal val nullableGenerators: NullableTypeGenMap = hashMapOf()
+
+    /** @property collectionElementTypeGenerators Type generators for [Collection] element types. */
+    @PublishedApi internal val collectionElementTypeGenerators: NullableTypeGenMap = hashMapOf()
+
+    /** @property mapEntriesTypeGenerators Type generators for [Map] key/value pair types. */
     @PublishedApi
-    internal val predefinedGenerators: TypeGenMap = hashMapOf()
+    internal val mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap> =
+        Pair(hashMapOf(), hashMapOf())
 
     /**
-     * @property nullableGenerators Nullable constructor parameter type generators.
-     */
-    @PublishedApi
-    internal val nullableGenerators: NullableTypeGenMap = hashMapOf()
-
-    /**
-     * @property collectionElementTypeGenerators Type generators for [Collection] element types.
-     */
-    @PublishedApi
-    internal val collectionElementTypeGenerators: NullableTypeGenMap = hashMapOf()
-
-    /**
-     * @property mapEntriesTypeGenerators Type generators for [Map] key/value pair types.
-     */
-    @PublishedApi
-    internal val mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap> = Pair(hashMapOf(), hashMapOf())
-
-    /**
-     * Configures generation for a specific named constructor parameter.
-     * Overrides all other generators.
+     * Configures generation for a specific named constructor parameter. Overrides all other
+     * generators.
      */
     inline fun <reified K : Any> namedParameterGenerator(
         parameterName: String,
-        noinline generator: (pInfo: ParameterInfo) -> K?
+        noinline generator: (pInfo: ParameterInfo) -> K?,
     ) {
         namedParameterGenerators[parameterName] = generator
     }
 
     /**
-     * Configures generation for a specific type of constructor parameter.
-     * It can override internal generators (for primitives, for example)
+     * Configures generation for a specific type of constructor parameter. It can override internal
+     * generators (for primitives, for example)
      */
     inline fun <reified K : Any> typeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
         predefinedGenerators[K::class] = generator
     }
 
     /**
-     * Configures generation for a specific nullable type of constructor parameter.
-     * It can override internal generators (for primitives, for example)
+     * Configures generation for a specific nullable type of constructor parameter. It can override
+     * internal generators (for primitives, for example)
      */
-    inline fun <reified K : Any?> nullableTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+    inline fun <reified K : Any?> nullableTypeGenerator(
+        noinline generator: (pInfo: ParameterInfo) -> K?
+    ) {
         nullableGenerators[K::class] = generator
     }
 
-    /**
-     * Configures generation of elements of constructor parameters of [Collection] types.
-     */
-    inline fun <reified K : Any?> collectionElementTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+    /** Configures generation of elements of constructor parameters of [Collection] types. */
+    inline fun <reified K : Any?> collectionElementTypeGenerator(
+        noinline generator: (pInfo: ParameterInfo) -> K?
+    ) {
         collectionElementTypeGenerators[K::class] = generator
     }
 
-    /**
-     * Configures generation of non-null keys of constructor parameters of [Map] types.
-     */
-    inline fun <reified K : Any> mapEntryKeyTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K) {
+    /** Configures generation of non-null keys of constructor parameters of [Map] types. */
+    inline fun <reified K : Any> mapEntryKeyTypeGenerator(
+        noinline generator: (pInfo: ParameterInfo) -> K
+    ) {
         mapEntriesTypeGenerators.first[K::class] = generator
     }
 
-    /**
-     * Configures generation of values of constructor parameters of [Map] types.
-     */
-    inline fun <reified K : Any?> mapEntryValueTypeGenerator(noinline generator: (pInfo: ParameterInfo) -> K?) {
+    /** Configures generation of values of constructor parameters of [Map] types. */
+    inline fun <reified K : Any?> mapEntryValueTypeGenerator(
+        noinline generator: (pInfo: ParameterInfo) -> K?
+    ) {
         mapEntriesTypeGenerators.second[K::class] = generator
     }
 }
@@ -422,54 +432,55 @@ private fun RandomProviderConfig.copy(
     nullableGenerators: NullableTypeGenMap? = null,
     collectionElementTypeGenerators: NullableTypeGenMap? = null,
     mapEntriesTypeGenerators: Pair<TypeGenMap, NullableTypeGenMap>? = null,
-): RandomProviderConfig = RandomProviderConfig().apply {
-    this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
-    this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
-    this@apply.constructorFilterStrategy = constructorFilterStrategy ?: this@copy.constructorFilterStrategy
-    this@apply.fallbackStrategy = fallbackStrategy ?: this@copy.fallbackStrategy
-    this@apply.defaultValuesStrategy = defaultValuesStrategy ?: this@copy.defaultValuesStrategy
-    this@apply.namedParameterGenerators.putAll(namedParameterGenerators ?: this@copy.namedParameterGenerators)
-    this@apply.predefinedGenerators.putAll(predefinedGenerators ?: this@copy.predefinedGenerators)
-    this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
-    this@apply.collectionElementTypeGenerators.putAll(
-        collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators
-    )
-    this@apply.mapEntriesTypeGenerators.first.putAll(
-        mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first
-    )
-    this@apply.mapEntriesTypeGenerators.second.putAll(
-        mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second
-    )
-}
+): RandomProviderConfig =
+    RandomProviderConfig().apply {
+        this@apply.collectionsSize = collectionsSize ?: this@copy.collectionsSize
+        this@apply.constructorParamSize = constructorParamSize ?: this@copy.constructorParamSize
+        this@apply.constructorFilterStrategy =
+            constructorFilterStrategy ?: this@copy.constructorFilterStrategy
+        this@apply.fallbackStrategy = fallbackStrategy ?: this@copy.fallbackStrategy
+        this@apply.defaultValuesStrategy = defaultValuesStrategy ?: this@copy.defaultValuesStrategy
+        this@apply.namedParameterGenerators.putAll(
+            namedParameterGenerators ?: this@copy.namedParameterGenerators
+        )
+        this@apply.predefinedGenerators.putAll(
+            predefinedGenerators ?: this@copy.predefinedGenerators
+        )
+        this@apply.nullableGenerators.putAll(nullableGenerators ?: this@copy.nullableGenerators)
+        this@apply.collectionElementTypeGenerators.putAll(
+            collectionElementTypeGenerators ?: this@copy.collectionElementTypeGenerators
+        )
+        this@apply.mapEntriesTypeGenerators.first.putAll(
+            mapEntriesTypeGenerators?.first ?: this@copy.mapEntriesTypeGenerators.first
+        )
+        this@apply.mapEntriesTypeGenerators.second.putAll(
+            mapEntriesTypeGenerators?.second ?: this@copy.mapEntriesTypeGenerators.second
+        )
+    }
 
 enum class FallbackStrategy {
     USE_MIN_NUM_OF_ARGS,
     USE_MAX_NUM_OF_ARGS,
-    FAIL_IF_NOT_FOUND
+    FAIL_IF_NOT_FOUND,
 }
 
 enum class ConstructorFilterStrategy {
     NO_ARGS,
     MIN_NUM_OF_ARGS,
-    MAX_NUM_OF_ARGS
+    MAX_NUM_OF_ARGS,
 }
 
 enum class DefaultValuesStrategy {
-    /**
-     * Uses default values of constructor parameters.
-     */
+    /** Uses default values of constructor parameters. */
     USE_DEFAULTS,
 
-    /**
-     * Randomly picks either a default or a randomly-generated value of constructor parameters.
-     */
+    /** Randomly picks either a default or a randomly-generated value of constructor parameters. */
     PICK_RANDOMLY,
 
-    /**
-     * Uses randomly-generated values of constructor parameters.
-     */
-    ALL_RANDOM
+    /** Uses randomly-generated values of constructor parameters. */
+    ALL_RANDOM,
 }
 
 internal typealias TypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any>
+
 internal typealias NullableTypeGenMap = HashMap<KClass<*>, (pInfo: ParameterInfo) -> Any?>

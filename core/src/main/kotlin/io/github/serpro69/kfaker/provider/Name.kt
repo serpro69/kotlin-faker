@@ -5,11 +5,10 @@ import io.github.serpro69.kfaker.dictionary.*
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.NAME] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.NAME] category. */
 @Suppress("unused")
-class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Name>(fakerService) {
+class Name internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Name>(fakerService) {
     override val yamlCategory = YamlCategory.NAME
     override val localUniqueDataProvider = LocalUniqueDataProvider<Name>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -19,10 +18,16 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
     }
 
     fun maleFirstName() = resolve("male_first_name")
+
     fun femaleFirstName() = resolve("female_first_name")
+
     fun neutralFirstName() = resolve("neutral_first_name")
+
     fun firstName() = resolve("first_name")
+
     fun lastName() = resolve("last_name")
+
     fun name() = resolve("name")
+
     fun nameWithMiddle() = resolve("name_with_middle")
 }

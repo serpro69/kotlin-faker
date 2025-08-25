@@ -10,17 +10,13 @@ interface Category {
 
     companion object {
 
-        /**
-         * Creates a new [Category] with the given [name].
-         */
-        fun ofName(name: String): Category = object : Category {
-            override val name: String = name.uppercase()
-        }
+        /** Creates a new [Category] with the given [name]. */
+        fun ofName(name: String): Category =
+            object : Category {
+                override val name: String = name.uppercase()
+            }
     }
 }
 
-/**
- * Returns the lowercase [Category.name] as string.
- */
+/** Returns the lowercase [Category.name] as string. */
 internal fun Category.lowercase(): String = name.lowercase()
-

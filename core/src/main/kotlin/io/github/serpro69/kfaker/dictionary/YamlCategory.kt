@@ -1,22 +1,21 @@
 package io.github.serpro69.kfaker.dictionary
 
 /**
- * This enum contains all default categories and matches with the names of the .yml files for 'en' locale.
+ * This enum contains all default categories and matches with the names of the .yml files for 'en'
+ * locale.
  *
  * If any new category is added to .yml file(s) a new class has to be added to this enum as well.
  *
  * @property aliases alias names that may be used to refer to this category in yml expressions, e.g.
- * `#{PhoneNumber.area_code}` is used in en-US.yml:6932 instead of `#{Phone_Number.area_code}`
- *
- * @property children an optional set of children category names that are not part of this enum (e.g. Creature -> Animal)
+ *   `#{PhoneNumber.area_code}` is used in en-US.yml:6932 instead of `#{Phone_Number.area_code}`
+ * @property children an optional set of children category names that are not part of this enum
+ *   (e.g. Creature -> Animal)
  */
 enum class YamlCategory(
     internal val aliases: Set<String> = emptySet(),
     internal val children: Set<String> = emptySet(),
 ) : Category {
-    /**
-     * [YamlCategory] for custom yml-based data providers
-     */
+    /** [YamlCategory] for custom yml-based data providers */
     CUSTOM,
 
     // Special providers for locale-based symbols
@@ -211,14 +210,11 @@ enum class YamlCategory(
     VOLLEYBALL,
     V_FOR_VENDETTA,
     WORLD_CUP,
-    YODA,
-    ;
+    YODA;
 
     companion object {
 
-        /**
-         * Returns [YamlCategory] by [name] string (case-insensitive).
-         */
+        /** Returns [YamlCategory] by [name] string (case-insensitive). */
         internal fun findByName(name: String): YamlCategory {
             return values().firstOrNull {
                 it.lowercase() == name.lowercase() || it.aliases.any { a -> name == a }
@@ -227,27 +223,28 @@ enum class YamlCategory(
     }
 }
 
-private val games = setOf(
-    "dota",
-    "clash_of_clan",
-    "control",
-    "elder_scrolls",
-    "fallout",
-    "final_fantasy_xiv",
-    "half_life",
-    "league_of_legends",
-    "minecraft",
-    "myst",
-    "overwatch",
-    "pokemon",
-    "sonic_the_hedgehog",
-    "street_fighter",
-    "super_mario",
-    "super_smash_bros",
-    "touhou",
-    "tron",
-    "warhammer_fantasy",
-    "witcher",
-    "world_of_warcraft",
-    "zelda",
-)
+private val games =
+    setOf(
+        "dota",
+        "clash_of_clan",
+        "control",
+        "elder_scrolls",
+        "fallout",
+        "final_fantasy_xiv",
+        "half_life",
+        "league_of_legends",
+        "minecraft",
+        "myst",
+        "overwatch",
+        "pokemon",
+        "sonic_the_hedgehog",
+        "street_fighter",
+        "super_mario",
+        "super_smash_bros",
+        "touhou",
+        "tron",
+        "warhammer_fantasy",
+        "witcher",
+        "world_of_warcraft",
+        "zelda",
+    )

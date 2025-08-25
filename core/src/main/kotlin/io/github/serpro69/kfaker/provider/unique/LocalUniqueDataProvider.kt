@@ -13,8 +13,8 @@ import kotlin.reflect.jvm.javaField
 /**
  * Local provider for unique values.
  *
- * This provider is used in [T] implementation of [FakeDataProvider] class,
- * and controls unique generation configuration of [T]'s functions.
+ * This provider is used in [T] implementation of [FakeDataProvider] class, and controls unique
+ * generation configuration of [T]'s functions.
  *
  * Example usage:
  * ```
@@ -22,25 +22,21 @@ import kotlin.reflect.jvm.javaField
  * ```
  */
 class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
-//    override val config: UniqueProviderConfiguration
-//        get() = TODO("Not yet implemented")
-//    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
-//    override val usedValues = hashMapOf<String, MutableSet<String>>()
+    //    override val config: UniqueProviderConfiguration
+    //        get() = TODO("Not yet implemented")
+    //    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
+    //    override val usedValues = hashMapOf<String, MutableSet<String>>()
 
     internal val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
     internal val usedValues = hashMapOf<String, MutableSet<String>>()
 
-    /**
-     * In `this` class the function works the same as [clearAll] implementation.
-     */
+    /** In `this` class the function works the same as [clearAll] implementation. */
     override fun disableAll() {
         clearAll()
     }
 
     override fun clearAll() {
-        usedValues.keys.forEach { k ->
-            usedValues[k] = mutableSetOf()
-        }
+        usedValues.keys.forEach { k -> usedValues[k] = mutableSetOf() }
     }
 
     /**
@@ -57,10 +53,10 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
 }
 
 /**
- * Delegate class for [LocalUniqueDataProvider] used to return local providers that generate unique values.
+ * Delegate class for [LocalUniqueDataProvider] used to return local providers that generate unique
+ * values.
  *
  * @param T an implementation of [AbstractFakeDataProvider]
- *
  * @property uniqueDataProvider [LocalUniqueDataProvider] of [T] type.
  */
 @Suppress("UNCHECKED_CAST")

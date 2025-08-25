@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class WorldOfWarcraft internal constructor(fakerService: FakerService) : YamlFakeDataProvider<WorldOfWarcraft>(fakerService) {
+class WorldOfWarcraft internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<WorldOfWarcraft>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("WORLD_OF_WARCRAFT")
     override val localUniqueDataProvider = LocalUniqueDataProvider<WorldOfWarcraft>()
@@ -23,7 +22,10 @@ class WorldOfWarcraft internal constructor(fakerService: FakerService) : YamlFak
     }
 
     fun hero() = resolve(secondaryCategory, "heros") // key typo in the yml file
+
     fun quotes() = resolve(secondaryCategory, "quotes")
+
     fun classNames() = resolve(secondaryCategory, "class_names")
+
     fun races() = resolve(secondaryCategory, "races")
 }

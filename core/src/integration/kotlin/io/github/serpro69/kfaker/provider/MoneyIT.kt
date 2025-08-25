@@ -8,50 +8,52 @@ import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldStartWith
 
-class MoneyIT : DescribeSpec({
-    describe("Money provider class") {
-        val money = Faker().money
+class MoneyIT :
+    DescribeSpec({
+        describe("Money provider class") {
+            val money = Faker().money
 
-        context("monetaryAmount function") {
+            context("monetaryAmount function") {
 
-            // TODO other locales
-            it("should contain a currency symbol") {
-                val amount = money.amount(0..99, generateDecimals = false)
-                amount shouldStartWith "$"
-            }
-
-            repeat(99) {
-                it("should return a valid amount within the specified range without decimals run#$it") {
+                // TODO other locales
+                it("should contain a currency symbol") {
                     val amount = money.amount(0..99, generateDecimals = false)
-                        .replace("$", "")
-                        .toInt()
-
-                    amount shouldBeInRange 0..99
+                    amount shouldStartWith "$"
                 }
-            }
 
-            repeat(99) {
-                it("should return a valid amount within the specified range with decimals run#$it") {
-                    val amount = money.amount(0..99, generateDecimals = true)
-                        .replace("$", "")
+                repeat(99) {
+                    it(
+                        "should return a valid amount within the specified range without decimals run#$it"
+                    ) {
+                        val amount =
+                            money.amount(0..99, generateDecimals = false).replace("$", "").toInt()
 
-                    val value = amount.dropLast(3).toInt()
-                    val decimal = amount.takeLast(2).toInt()
-
-                    assertSoftly {
-                        value shouldBeInRange 0..99
-                        decimal shouldBeInRange 0..99
+                        amount shouldBeInRange 0..99
                     }
                 }
-            }
 
-            it("should return a negative amount") {
-                val amount = money.amount(-99 until 0, generateDecimals = false)
-                    .replace("$", "")
-                    .toInt()
+                repeat(99) {
+                    it(
+                        "should return a valid amount within the specified range with decimals run#$it"
+                    ) {
+                        val amount = money.amount(0..99, generateDecimals = true).replace("$", "")
 
-                amount shouldBe negative()
+                        val value = amount.dropLast(3).toInt()
+                        val decimal = amount.takeLast(2).toInt()
+
+                        assertSoftly {
+                            value shouldBeInRange 0..99
+                            decimal shouldBeInRange 0..99
+                        }
+                    }
+                }
+
+                it("should return a negative amount") {
+                    val amount =
+                        money.amount(-99 until 0, generateDecimals = false).replace("$", "").toInt()
+
+                    amount shouldBe negative()
+                }
             }
         }
-    }
-})
+    })

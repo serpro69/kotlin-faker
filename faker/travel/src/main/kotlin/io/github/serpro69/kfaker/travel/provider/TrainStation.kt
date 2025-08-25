@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.TRAIN_STATION] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.TRAIN_STATION] category. */
 class TrainStation internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TrainStation>(fakerService) {
     override val yamlCategory = YamlCategory.TRAIN_STATION
@@ -39,9 +37,9 @@ class TrainStationGermany internal constructor(fakerService: FakerService) :
     }
 
     fun metro(): String = resolve("germany", "metro")
+
     fun railway(): String = resolve("germany", "railway")
 }
-
 
 class TrainStationSpain internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TrainStationSpain>(fakerService) {
@@ -54,6 +52,7 @@ class TrainStationSpain internal constructor(fakerService: FakerService) :
     }
 
     fun metro(): String = resolve("spain", "metro")
+
     fun railway(): String = resolve("spain", "railway")
 }
 
@@ -68,6 +67,7 @@ class TrainStationUnitedKingdom internal constructor(fakerService: FakerService)
     }
 
     fun metro(): String = resolve("united_kingdom", "metro")
+
     fun railway(): String = resolve("united_kingdom", "railway")
 }
 
@@ -82,5 +82,6 @@ class TrainStationUnitedStates internal constructor(fakerService: FakerService) 
     }
 
     fun metro(): String = resolve("united_states", "metro")
+
     fun railway(): String = resolve("united_states", "railway")
 }

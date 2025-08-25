@@ -7,9 +7,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.HOBBY] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.HOBBY] category. */
 @Suppress("unused")
 class Hobby internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Hobby>(fakerService) {
