@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.COMMUNITY] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.COMMUNITY] category. */
 @Suppress("unused")
-class Community internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Community>(fakerService) {
+class Community internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Community>(fakerService) {
     override val yamlCategory = YamlCategory.COMMUNITY
     override val localUniqueDataProvider = LocalUniqueDataProvider<Community>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,5 +20,6 @@ class Community internal constructor(fakerService: FakerService) : YamlFakeDataP
     }
 
     fun characters() = resolve("characters")
+
     fun quotes() = resolve("quotes")
 }

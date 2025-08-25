@@ -1,6 +1,4 @@
-plugins {
-    `faker-ext-conventions`
-}
+plugins { `faker-ext-conventions` }
 
 dependencies {
     compileOnly(projects.core)

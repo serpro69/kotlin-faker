@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.VOLLEYBALL] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.VOLLEYBALL] category. */
 class Volleyball internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<Volleyball>(fakerService) {
     override val yamlCategory = YamlCategory.VOLLEYBALL
@@ -23,8 +21,12 @@ class Volleyball internal constructor(fakerService: FakerService) :
     }
 
     fun team(): String = resolve("team")
+
     fun player(): String = resolve("player")
+
     fun coach(): String = resolve("coach")
+
     fun position(): String = resolve("position")
+
     fun formation(): String = resolve("formation")
 }

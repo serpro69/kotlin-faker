@@ -8,14 +8,11 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DUNE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DUNE] category. */
 @Suppress("unused")
-class Dune internal constructor(
-    fakerService: FakerService,
-    private val randomService: RandomService,
-) : YamlFakeDataProvider<Dune>(fakerService) {
+class Dune
+internal constructor(fakerService: FakerService, private val randomService: RandomService) :
+    YamlFakeDataProvider<Dune>(fakerService) {
     override val yamlCategory = YamlCategory.DUNE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Dune>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -25,8 +22,11 @@ class Dune internal constructor(
     }
 
     fun characters() = resolve("characters")
+
     fun titles() = resolve("titles")
+
     fun planets() = resolve("planets")
+
     fun cities() = resolve("cities")
 
     fun quotes(character: QuoteCharacter = randomService.nextEnum()) =
@@ -54,7 +54,6 @@ class Dune internal constructor(
         MAPES,
         DUNCAN,
         YUEH,
-        ;
     }
 
     enum class SayingOrigin {
@@ -63,6 +62,5 @@ class Dune internal constructor(
         MENTAT,
         MUADDIB,
         ORANGE_CATHOLIC_BIBLE,
-        ;
     }
 }

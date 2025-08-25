@@ -10,9 +10,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.QUOTE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.QUOTE] category. */
 class JackHandey internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<JackHandey>(fakerService) {
     override val yamlCategory = YamlCategory.QUOTE

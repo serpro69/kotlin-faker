@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.MOVIE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.MOVIE] category. */
 @Suppress("unused")
-class Movie internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Movie>(fakerService) {
+class Movie internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Movie>(fakerService) {
     override val yamlCategory = YamlCategory.MOVIE
     override val localUniqueDataProvider = LocalUniqueDataProvider<Movie>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,5 +20,6 @@ class Movie internal constructor(fakerService: FakerService) : YamlFakeDataProvi
     }
 
     fun title() = resolve("title")
+
     fun quote() = resolve("quote")
 }

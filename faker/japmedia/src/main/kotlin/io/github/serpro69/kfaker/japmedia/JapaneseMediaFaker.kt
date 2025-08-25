@@ -15,21 +15,20 @@ import io.github.serpro69.kfaker.japmedia.provider.OnePiece
 import io.github.serpro69.kfaker.japmedia.provider.StudioGhibli
 import io.github.serpro69.kfaker.japmedia.provider.SwordArtOnline
 
-/**
- * Typealias for the [JapaneseMediaFaker]
- */
+/** Typealias for the [JapaneseMediaFaker] */
 typealias Faker = JapaneseMediaFaker
 
 /**
  * Provides access to fake data generators within the JapaneseMedia domain.
  *
- * Each category (generator) from this [JapaneseMediaFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [JapaneseMediaFaker] is represented by a property that
+ * (usually) has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class JapaneseMediaFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class JapaneseMediaFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val conan: Conan by lazy { Conan(fakerService) }
     val cowboyBebop: CowboyBebop by lazy { CowboyBebop(fakerService) }
@@ -43,20 +42,17 @@ class JapaneseMediaFaker @JvmOverloads constructor(config: FakerConfig = fakerCo
     val swordArtOnline: SwordArtOnline by lazy { SwordArtOnline(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [JapaneseMediaFaker.Builder]
- * and returns as an instance of [JapaneseMediaFaker] from that builder.
+ * Applies the [block] function to [JapaneseMediaFaker.Builder] and returns as an instance of
+ * [JapaneseMediaFaker] from that builder.
  */
-fun faker(block: JapaneseMediaFaker.Builder.() -> Unit): JapaneseMediaFaker = JapaneseMediaFaker.Builder().apply(block).build()
+fun faker(block: JapaneseMediaFaker.Builder.() -> Unit): JapaneseMediaFaker =
+    JapaneseMediaFaker.Builder().apply(block).build()

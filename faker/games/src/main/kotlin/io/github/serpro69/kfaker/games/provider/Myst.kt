@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
 @Suppress("unused")
-class Myst internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Myst>(fakerService) {
+class Myst internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Myst>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("MYST")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Myst>()
@@ -23,8 +22,12 @@ class Myst internal constructor(fakerService: FakerService) : YamlFakeDataProvid
     }
 
     fun games() = resolve(secondaryCategory, "games")
+
     fun creatures() = resolve(secondaryCategory, "creatures")
+
     fun characters() = resolve(secondaryCategory, "characters")
+
     fun ages() = resolve(secondaryCategory, "ages")
+
     fun quotes() = resolve(secondaryCategory, "quotes")
 }

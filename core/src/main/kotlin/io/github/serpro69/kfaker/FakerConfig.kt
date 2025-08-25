@@ -5,14 +5,9 @@ package io.github.serpro69.kfaker
 import io.github.serpro69.kfaker.provider.misc.RandomProviderConfig
 import kotlin.random.Random
 
-/**
- * Configuration for implementations of [AbstractFaker].
- */
-class FakerConfig private constructor(
-    val locale: String,
-    val random: Random,
-    val uniqueGeneratorRetryLimit: Int
-) {
+/** Configuration for implementations of [AbstractFaker]. */
+class FakerConfig
+private constructor(val locale: String, val random: Random, val uniqueGeneratorRetryLimit: Int) {
     internal var randomProviderConfig: RandomProviderConfig? = null
         private set
 
@@ -20,31 +15,25 @@ class FakerConfig private constructor(
         locale: String,
         random: Random,
         uniqueGeneratorRetryLimit: Int,
-        randomProviderConfig: RandomProviderConfig?
+        randomProviderConfig: RandomProviderConfig?,
     ) : this(locale, random, uniqueGeneratorRetryLimit) {
         this.randomProviderConfig = randomProviderConfig
     }
 
     companion object {
-        @JvmStatic
-        fun builder() = Builder()
+        @JvmStatic fun builder() = Builder()
     }
 
     /**
-     * @property locale Sets the [FakerConfig.locale] when creating an instance of [FakerConfig] with this [Builder].
-     * Default: `"en"`.
-     *
-     * @property random Sets the [FakerConfig.random] when creating an instance of [FakerConfig] with this [Builder].
-     * Default: `"en"`.
-     *
-     * @property randomSeed Sets the seed for [FakerConfig.random].
-     * If specified, the [random] property will be ignored
-     * when creating an instance of [FakerConfig] with this [Builder].
-     * Default: `null`.
-     *
-     * @property uniqueGeneratorRetryLimit Sets the [FakerConfig.uniqueGeneratorRetryLimit]
-     * when creating an instance of [FakerConfig] with this [Builder].
-     * Default: `100`.
+     * @property locale Sets the [FakerConfig.locale] when creating an instance of [FakerConfig]
+     *   with this [Builder]. Default: `"en"`.
+     * @property random Sets the [FakerConfig.random] when creating an instance of [FakerConfig]
+     *   with this [Builder]. Default: `"en"`.
+     * @property randomSeed Sets the seed for [FakerConfig.random]. If specified, the [random]
+     *   property will be ignored when creating an instance of [FakerConfig] with this [Builder].
+     *   Default: `null`.
+     * @property uniqueGeneratorRetryLimit Sets the [FakerConfig.uniqueGeneratorRetryLimit] when
+     *   creating an instance of [FakerConfig] with this [Builder]. Default: `100`.
      */
     @FakerDsl
     class Builder internal constructor() {
@@ -74,28 +63,28 @@ class FakerConfig private constructor(
             return this
         }
 
-        fun build() = randomSeed?.let {
-            FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit, randomProviderConfig)
-        } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit, randomProviderConfig)
+        fun build() =
+            randomSeed?.let {
+                FakerConfig(locale, Random(it), uniqueGeneratorRetryLimit, randomProviderConfig)
+            } ?: FakerConfig(locale, random, uniqueGeneratorRetryLimit, randomProviderConfig)
 
         fun randomClassInstance(configurator: RandomProviderConfig.() -> Unit) {
-            randomProviderConfig?.apply(configurator) ?: run {
-                randomProviderConfig = RandomProviderConfig().also(configurator)
-            }
+            randomProviderConfig?.apply(configurator)
+                ?: run { randomProviderConfig = RandomProviderConfig().also(configurator) }
         }
     }
 }
 
 /**
- * Applies the the [block] function to [ConfigBuilder]
- * and returns as an instance of [FakerConfig] from that builder.
+ * Applies the the [block] function to [ConfigBuilder] and returns as an instance of [FakerConfig]
+ * from that builder.
  */
 fun fakerConfig(block: ConfigBuilder): FakerConfig = FakerConfig.Builder().apply(block).build()
 
 /**
  * Lambda with [FakerConfig.Builder] receiver type that returns a [Unit].
  *
- * Used with DSL functions to construct an instance of [FakerConfig]
- * by applying the results of the function to the [FakerConfig.Builder].
+ * Used with DSL functions to construct an instance of [FakerConfig] by applying the results of the
+ * function to the [FakerConfig.Builder].
  */
 typealias ConfigBuilder = FakerConfig.Builder.() -> Unit

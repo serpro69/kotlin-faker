@@ -10,10 +10,9 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.GAMES] category.
- */
-class Touhou internal constructor(fakerService: FakerService) : YamlFakeDataProvider<Touhou>(fakerService) {
+/** [FakeDataProvider] implementation for [YamlCategory.GAMES] category. */
+class Touhou internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<Touhou>(fakerService) {
     override val yamlCategory = YamlCategory.GAMES
     override val secondaryCategory: Category = Category.ofName("TOUHOU")
     override val localUniqueDataProvider = LocalUniqueDataProvider<Touhou>()
@@ -24,8 +23,12 @@ class Touhou internal constructor(fakerService: FakerService) : YamlFakeDataProv
     }
 
     fun games(): String = resolve(secondaryCategory, "games")
+
     fun characters(): String = resolve(secondaryCategory, "characters")
+
     fun spellCards(): String = resolve(secondaryCategory, "spell_cards")
+
     fun locations(): String = resolve(secondaryCategory, "locations")
+
     fun songs(): String = resolve(secondaryCategory, "songs")
 }

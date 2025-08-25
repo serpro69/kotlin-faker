@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.BROOKLYN_NINE_NINE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.BROOKLYN_NINE_NINE] category. */
 class BrooklynNineNine internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<BrooklynNineNine>(fakerService) {
     override val yamlCategory = YamlCategory.BROOKLYN_NINE_NINE
@@ -23,6 +21,6 @@ class BrooklynNineNine internal constructor(fakerService: FakerService) :
     }
 
     fun characters() = resolve("characters")
+
     fun quotes() = resolve("quotes")
 }
-

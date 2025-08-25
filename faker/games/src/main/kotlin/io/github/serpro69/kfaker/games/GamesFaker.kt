@@ -33,21 +33,20 @@ import io.github.serpro69.kfaker.games.provider.Witcher
 import io.github.serpro69.kfaker.games.provider.WorldOfWarcraft
 import io.github.serpro69.kfaker.games.provider.Zelda
 
-/**
- * Typealias for the [GamesFaker]
- */
+/** Typealias for the [GamesFaker] */
 typealias Faker = GamesFaker
 
 /**
  * Provides access to fake data generators within the Games domain.
  *
- * Each category (generator) from this [GamesFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [GamesFaker] is represented by a property that (usually) has
+ * the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class GamesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
+class GamesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val clashOfClans: ClashOfClans by lazy { ClashOfClans(fakerService) }
     val coin: Coin by lazy { Coin(fakerService) }
@@ -79,20 +78,17 @@ class GamesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }
     val zelda: Zelda by lazy { Zelda(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [GamesFaker.Builder]
- * and returns as an instance of [GamesFaker] from that builder.
+ * Applies the [block] function to [GamesFaker.Builder] and returns as an instance of [GamesFaker]
+ * from that builder.
  */
-fun faker(block: GamesFaker.Builder.() -> Unit): GamesFaker = GamesFaker.Builder().apply(block).build()
+fun faker(block: GamesFaker.Builder.() -> Unit): GamesFaker =
+    GamesFaker.Builder().apply(block).build()

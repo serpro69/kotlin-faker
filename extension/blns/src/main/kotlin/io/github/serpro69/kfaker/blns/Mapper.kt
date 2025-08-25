@@ -16,5 +16,6 @@ internal object Mapper {
         mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true)
     }
 
-    fun <T> readValue(inputStream: InputStream, typeRef: TypeReference<T>): T = mapper.readValue(inputStream, typeRef)
+    fun <T> readValue(inputStream: InputStream, typeRef: TypeReference<T>): T =
+        mapper.readValue(inputStream, typeRef)
 }

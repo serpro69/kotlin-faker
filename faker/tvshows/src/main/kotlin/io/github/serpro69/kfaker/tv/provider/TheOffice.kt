@@ -9,9 +9,7 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.THE_OFFICE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.THE_OFFICE] category. */
 class TheOffice internal constructor(fakerService: FakerService) :
     YamlFakeDataProvider<TheOffice>(fakerService) {
     override val yamlCategory = YamlCategory.THE_OFFICE
@@ -23,5 +21,6 @@ class TheOffice internal constructor(fakerService: FakerService) :
     }
 
     fun characters(): String = resolve("characters")
+
     fun quotes(): String = resolve("quotes")
 }

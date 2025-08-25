@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.PEARL_JAM] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.PEARL_JAM] category. */
 @Suppress("unused")
-class PearlJam internal constructor(fakerService: FakerService) : YamlFakeDataProvider<PearlJam>(fakerService) {
+class PearlJam internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<PearlJam>(fakerService) {
     override val yamlCategory = YamlCategory.PEARL_JAM
     override val localUniqueDataProvider = LocalUniqueDataProvider<PearlJam>()
     override val unique by UniqueProviderDelegate(localUniqueDataProvider, fakerService)
@@ -21,6 +20,8 @@ class PearlJam internal constructor(fakerService: FakerService) : YamlFakeDataPr
     }
 
     fun musicians() = resolve("musicians")
+
     fun albums() = resolve("albums")
+
     fun songs() = resolve("songs")
 }

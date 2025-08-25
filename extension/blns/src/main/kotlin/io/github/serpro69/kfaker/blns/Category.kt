@@ -42,8 +42,7 @@ enum class Category {
     TERMINAL_ESCAPE_CODES,
     IOS_VULNERABILITIES,
     PERSIAN_SPECIAL_CHARS,
-    JINJA_INJECTION,
-    ;
+    JINJA_INJECTION;
 
     override fun toString(): String = name.lowercase()
 }

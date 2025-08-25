@@ -24,16 +24,19 @@ import io.github.serpro69.kfaker.provider.misc.StringProvider
 /**
  * Provides access to 'core' fake data generators.
  *
- * Each category (generator) from this [Faker] is represented by a property that has the same name as the `.yml` file.
+ * Each category (generator) from this [Faker] is represented by a property that has the same name
+ * as the `.yml` file.
  *
- * @property random      provides data-generator-like functionality for the functions of [RandomService].
- * @property randomClass provides additional functionality that is not covered by other data providers
- * such as [address], [name], [internet], and so on. See [RandomClassProvider] for more details.
- * @property string      provides functionality to generate strings from expressions/templates
- * @property unique      global provider for generation of unique values.
+ * @property random provides data-generator-like functionality for the functions of [RandomService].
+ * @property randomClass provides additional functionality that is not covered by other data
+ *   providers such as [address], [name], [internet], and so on. See [RandomClassProvider] for more
+ *   details.
+ * @property string provides functionality to generate strings from expressions/templates
+ * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     // misc providers
     val crypto: CryptographyProvider by lazy { CryptographyProvider(fakerService) }
@@ -56,23 +59,20 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : A
     val person: Person by lazy { Person(config.random) }
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
     val separator: Separator by lazy { Separator(fakerService) }
+
     // TODO val source: Source by lazy { Source(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [Faker.Builder]
- * and returns as an instance of [Faker] from that builder.
+ * Applies the [block] function to [Faker.Builder] and returns as an instance of [Faker] from that
+ * builder.
  */
 fun faker(block: Faker.Builder.() -> Unit): Faker = Faker.Builder().apply(block).build()

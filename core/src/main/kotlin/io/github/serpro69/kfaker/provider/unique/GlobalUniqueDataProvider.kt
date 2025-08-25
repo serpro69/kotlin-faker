@@ -1,14 +1,15 @@
 package io.github.serpro69.kfaker.provider.unique
 
-import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.AbstractFaker
+import io.github.serpro69.kfaker.provider.FakeDataProvider
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty0
 
 /**
  * Global provider for unique values.
  *
- * This provider is used in [AbstractFaker] class implementations to control global unique generation configuration of faker providers.
+ * This provider is used in [AbstractFaker] class implementations to control global unique
+ * generation configuration of faker providers.
  *
  * Example usage:
  * ```
@@ -27,9 +28,7 @@ import kotlin.reflect.KProperty0
 @Suppress("UNCHECKED_CAST")
 class GlobalUniqueDataProvider internal constructor() : UniqueDataProvider() {
 
-    @JvmSynthetic
-    @PublishedApi
-    internal val config = UniqueProviderConfiguration()
+    @JvmSynthetic @PublishedApi internal val config = UniqueProviderConfiguration()
 
     /**
      * Disables "unique generation" for all providers that were configured to return unique values,
@@ -40,20 +39,23 @@ class GlobalUniqueDataProvider internal constructor() : UniqueDataProvider() {
     }
 
     /**
-     * Clears the already returned (used) unique values and exclusion patterns so that values can again be returned.
+     * Clears the already returned (used) unique values and exclusion patterns so that values can
+     * again be returned.
      */
     override fun clearAll() {
-        config.usedProviderFunctionValues.keys.forEach { k -> config.usedProviderFunctionValues[k] = hashMapOf() }
-        config.providerFunctionExclusionPatterns.keys.forEach { k -> config.providerFunctionExclusionPatterns[k] = hashMapOf() }
+        config.usedProviderFunctionValues.keys.forEach { k ->
+            config.usedProviderFunctionValues[k] = hashMapOf()
+        }
+        config.providerFunctionExclusionPatterns.keys.forEach { k ->
+            config.providerFunctionExclusionPatterns[k] = hashMapOf()
+        }
     }
 
     fun <T : FakeDataProvider> clear(providerProperty: KProperty0<T>) {
         config.clear(providerProperty.returnType.classifier as KClass<T>)
     }
 
-    /**
-     * Configures `this` Unique provider.
-     */
+    /** Configures `this` Unique provider. */
     fun configuration(function: UniqueProviderConfiguration.() -> Unit) {
         config.apply(function)
     }

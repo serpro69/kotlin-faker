@@ -25,21 +25,20 @@ import io.github.serpro69.kfaker.movies.provider.Tron
 import io.github.serpro69.kfaker.movies.provider.VForVendetta
 import io.github.serpro69.kfaker.movies.provider.Yoda
 
-/**
- * Typealias for the [MoviesFaker]
- */
+/** Typealias for the [MoviesFaker] */
 typealias Faker = MoviesFaker
 
 /**
  * Provides access to fake data generators within the Movies domain.
  *
- * Each category (generator) from this [MoviesFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [MoviesFaker] is represented by a property that (usually) has
+ * the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }): AbstractFaker(config) {
+class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val avatar: Avatar by lazy { Avatar(fakerService) }
     val backToTheFuture: BackToTheFuture by lazy { BackToTheFuture(fakerService) }
@@ -48,7 +47,9 @@ class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val ghostBusters: GhostBusters by lazy { GhostBusters(fakerService) }
     val hackers: Hackers by lazy { Hackers(fakerService) }
     val harryPotter: HarryPotter by lazy { HarryPotter(fakerService) }
-    val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy by lazy { HitchhikersGuideToTheGalaxy(fakerService) }
+    val hitchhikersGuideToTheGalaxy: HitchhikersGuideToTheGalaxy by lazy {
+        HitchhikersGuideToTheGalaxy(fakerService)
+    }
     val hobbit: Hobbit by lazy { Hobbit(fakerService) }
     val howToTrainYourDragon: HowToTrainYourDragon by lazy { HowToTrainYourDragon(fakerService) }
     val lebowski: Lebowski by lazy { Lebowski(fakerService) }
@@ -63,20 +64,17 @@ class MoviesFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { 
     val yoda: Yoda by lazy { Yoda(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [MoviesFaker.Builder]
- * and returns as an instance of [MoviesFaker] from that builder.
+ * Applies the [block] function to [MoviesFaker.Builder] and returns as an instance of [MoviesFaker]
+ * from that builder.
  */
-fun faker(block: MoviesFaker.Builder.() -> Unit): MoviesFaker = MoviesFaker.Builder().apply(block).build()
+fun faker(block: MoviesFaker.Builder.() -> Unit): MoviesFaker =
+    MoviesFaker.Builder().apply(block).build()

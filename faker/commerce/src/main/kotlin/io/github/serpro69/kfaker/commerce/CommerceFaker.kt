@@ -25,21 +25,20 @@ import io.github.serpro69.kfaker.commerce.provider.Subscription
 import io.github.serpro69.kfaker.commerce.provider.Tea
 import io.github.serpro69.kfaker.fakerConfig
 
-/**
- * Typealias for the [CommerceFaker]
- */
+/** Typealias for the [CommerceFaker] */
 typealias Faker = CommerceFaker
 
 /**
  * Provides access to fake data generators within the Commerce domain.
  *
- * Each category (generator) from this [CommerceFaker] is represented by a property
- * that (usually) has the same name as the `.yml` dictionary file.
+ * Each category (generator) from this [CommerceFaker] is represented by a property that (usually)
+ * has the same name as the `.yml` dictionary file.
  *
  * @property unique global provider for generation of unique values.
  */
 @Suppress("unused")
-class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig { }) : AbstractFaker(config) {
+class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
+    AbstractFaker(config) {
 
     val bank: Bank by lazy { Bank(fakerService) }
     val barcode: Barcode by lazy { Barcode(fakerService) }
@@ -65,20 +64,17 @@ class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
     val tea: Tea by lazy { Tea(fakerService) }
 
     @FakerDsl
-    /**
-     * DSL builder for creating instances of [Faker]
-     */
+    /** DSL builder for creating instances of [Faker] */
     class Builder internal constructor() : AbstractFaker.Builder<Faker>() {
 
-        /**
-         * Builds an instance of [Faker] with this [config].
-         */
+        /** Builds an instance of [Faker] with this [config]. */
         override fun build(): Faker = Faker(config)
     }
 }
 
 /**
- * Applies the [block] function to [CommerceFaker.Builder]
- * and returns as an instance of [CommerceFaker] from that builder.
+ * Applies the [block] function to [CommerceFaker.Builder] and returns as an instance of
+ * [CommerceFaker] from that builder.
  */
-fun faker(block: CommerceFaker.Builder.() -> Unit): CommerceFaker = CommerceFaker.Builder().apply(block).build()
+fun faker(block: CommerceFaker.Builder.() -> Unit): CommerceFaker =
+    CommerceFaker.Builder().apply(block).build()

@@ -8,11 +8,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.QUOTE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.QUOTE] category. */
 @Suppress("unused")
-class MitchHedberg internal constructor(fakerService: FakerService) : YamlFakeDataProvider<MitchHedberg>(fakerService) {
+class MitchHedberg internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<MitchHedberg>(fakerService) {
     override val yamlCategory = YamlCategory.QUOTE
     override val secondaryCategory: Category = Category.ofName("MITCH_HEDBERG")
     override val localUniqueDataProvider = LocalUniqueDataProvider<MitchHedberg>()

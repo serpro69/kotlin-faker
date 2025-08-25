@@ -7,11 +7,10 @@ import io.github.serpro69.kfaker.provider.YamlFakeDataProvider
 import io.github.serpro69.kfaker.provider.unique.LocalUniqueDataProvider
 import io.github.serpro69.kfaker.provider.unique.UniqueProviderDelegate
 
-/**
- * [FakeDataProvider] implementation for [YamlCategory.DATABASE] category.
- */
+/** [FakeDataProvider] implementation for [YamlCategory.DATABASE] category. */
 @Suppress("unused")
-class MariaDB internal constructor(fakerService: FakerService) : YamlFakeDataProvider<MariaDB>(fakerService) {
+class MariaDB internal constructor(fakerService: FakerService) :
+    YamlFakeDataProvider<MariaDB>(fakerService) {
     override val yamlCategory = YamlCategory.DATABASE
     override val secondaryCategory: Category = Category.ofName("MARIADB")
     override val localUniqueDataProvider = LocalUniqueDataProvider<MariaDB>()
@@ -22,5 +21,6 @@ class MariaDB internal constructor(fakerService: FakerService) : YamlFakeDataPro
     }
 
     fun dataType() = resolve(secondaryCategory, "data_type")
+
     fun engine() = resolve(secondaryCategory, "engine")
 }
