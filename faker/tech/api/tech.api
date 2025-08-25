@@ -171,6 +171,7 @@ public final class io/github/serpro69/kfaker/tech/provider/Vehicle : io/github/s
 	public final fun licensePlate ()Ljava/lang/String;
 	public final fun makes ()Ljava/lang/String;
 	public final fun manufacture ()Ljava/lang/String;
+	public final fun manufacturer ()Ljava/lang/String;
 	public final fun modelsByMake (Ljava/lang/String;)Ljava/lang/String;
 	public final fun standardSpecs ()Ljava/lang/String;
 	public final fun styles ()Ljava/lang/String;

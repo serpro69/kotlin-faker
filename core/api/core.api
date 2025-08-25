@@ -224,7 +224,6 @@ public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang
 	public static final field AQUA_TEEN_HUNGER_FORCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field ARCHER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field ARTIST Lio/github/serpro69/kfaker/dictionary/YamlCategory;
-	public static final field AUSTRALIA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field AVATAR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field BACK_TO_THE_FUTURE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field BANK Lio/github/serpro69/kfaker/dictionary/YamlCategory;
@@ -326,6 +325,7 @@ public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang
 	public static final field KAMEN_RIDER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field KPOP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field LEBOWSKI Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LOCATIONS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field LORD_OF_THE_RINGS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field LOREM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field LOVECRAFT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
@@ -365,7 +365,6 @@ public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang
 	public static final field SEINFELD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field SEPARATOR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field SHAKESPEARE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
-	public static final field SHOW Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field SILICON_VALLEY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field SIMPSONS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field SLACK_EMOJI Lio/github/serpro69/kfaker/dictionary/YamlCategory;
@@ -389,6 +388,7 @@ public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang
 	public static final field TARKOV Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field TEA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field TEAM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THEATER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field THE_EXPANSE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field THE_IT_CROWD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
 	public static final field THE_OFFICE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
