@@ -68,7 +68,7 @@ jobs:
           mvn-toolchain-vendor: GraalVM
           mvn-toolchain-id: graalce-${{ env.GRAALCE_JDK_VERSION }}
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v4
+        uses: gradle/actions/wrapper-validation@v4
       - name: Grant execute permission to scripts
         run: |
           chmod +x gradlew
