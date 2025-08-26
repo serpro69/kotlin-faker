@@ -55,7 +55,7 @@ class CommerceFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig 
     val food: Food by lazy { Food(fakerService) }
     val house: House by lazy { House(fakerService) }
     val industrySegments: IndustrySegments by lazy { IndustrySegments(fakerService) }
-    // TODO not implemented
+    // TODO: not implemented
     //  val invoice: Invoice by lazy { Invoice(fakerService }
     val marketing: Marketing by lazy { Marketing(fakerService) }
     val restaurant: Restaurant by lazy { Restaurant(fakerService) }

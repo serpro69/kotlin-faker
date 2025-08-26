@@ -15,7 +15,7 @@ class MoneyIT :
 
             context("monetaryAmount function") {
 
-                // TODO other locales
+                // TODO: other locales
                 it("should contain a currency symbol") {
                     val amount = money.amount(0..99, generateDecimals = false)
                     amount shouldStartWith "$"

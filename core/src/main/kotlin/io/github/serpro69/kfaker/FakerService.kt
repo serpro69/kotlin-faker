@@ -124,7 +124,7 @@ class FakerService {
      * Currently, does not handle missing <locale>.category.function.secondary_key.third_key
      * scenarios.
      */
-    // TODO make internal and add tests
+    // TODO: make internal and add tests
     private fun merge(
         default: HashMap<String, Map<String, *>>,
         localized: Map<String, Map<out String, *>>,
@@ -238,7 +238,7 @@ class FakerService {
 
         dictionary.compute(category) { _, categoryData
             -> // i.e. compute data for 'address' category
-            // TODO can this be improved by doing smth along the lines of
+            // TODO: can this be improved by doing smth along the lines of
             // categoryData.computeIfAbsent()
             when (category) {
                 /* Some keys are missing in localized phone.yml files,

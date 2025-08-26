@@ -27,7 +27,7 @@ class TravelFaker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}
 
     val airport: Airport by lazy { Airport(fakerService) }
     val australia: Australia by lazy { Australia(fakerService) }
-    // TODO val compass: Compass by lazy {Compass(fakerService) }
+    // TODO: val compass: Compass by lazy {Compass(fakerService) }
     val mountain: Mountain by lazy { Mountain(fakerService) }
     val nation: Nation by lazy { Nation(fakerService) }
     val trainStation: TrainStation by lazy { TrainStation(fakerService) }

@@ -60,7 +60,7 @@ class Faker @JvmOverloads constructor(config: FakerConfig = fakerConfig {}) :
     val phoneNumber: PhoneNumber by lazy { PhoneNumber(fakerService) }
     val separator: Separator by lazy { Separator(fakerService) }
 
-    // TODO val source: Source by lazy { Source(fakerService) }
+    // TODO: val source: Source by lazy { Source(fakerService) }
 
     @FakerDsl
     /** DSL builder for creating instances of [Faker] */

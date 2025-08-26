@@ -7,7 +7,7 @@ import io.kotest.matchers.shouldNotBe
 class StarWarsTest :
     DescribeSpec({
         describe("StarWars provider") {
-            // TODO is there a better way to test a provider directly w/o exposing constructors of
+            // TODO: is there a better way to test a provider directly w/o exposing constructors of
             // FakerService?
             //  StarWars(FakerService(MoviesFaker()) won't work because the constructor in
             // FakerService is internal,

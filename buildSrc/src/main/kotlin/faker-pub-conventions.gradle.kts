@@ -20,13 +20,13 @@ publishing {
                 isBomModule -> from(components["javaPlatform"])
                 !isShadow -> from(components["java"])
                 else -> {
-                    // TODO figure out how to include shadowed component here
+                    // TODO: figure out how to include shadowed component here
                     //  See also faker-lib-conventions.gradle.kts publishing configuration
                 }
             }
             if (!isBomModule) {
                 artifact(sourcesJar)
-                artifact(dokkaJavadocJar) //TODO configure dokka or use defaults?
+                artifact(dokkaJavadocJar) //TODO: configure dokka or use defaults?
             }
 
             pom {
