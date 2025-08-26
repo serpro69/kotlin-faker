@@ -1,9 +1,4 @@
-import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-
-/**
- * Plugin for publishing conventions
- */
-
+/** Plugin for publishing conventions */
 plugins {
     `maven-publish`
     signing
@@ -26,22 +21,22 @@ publishing {
             }
             if (!isBomModule) {
                 artifact(sourcesJar)
-                artifact(dokkaJavadocJar) //TODO: configure dokka or use defaults?
+                artifact(dokkaJavadocJar) // TODO: configure dokka or use defaults?
             }
 
             pom {
                 packaging = if (isBomModule) "pom" else "jar"
                 name.set(if (isBomModule) "kotlin-faker" else fullName)
-                description.set("Generate realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data anonymization purposes.")
+                description.set(
+                    "Generate realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data anonymization purposes."
+                )
                 url.set("https://github.com/serpro69/kotlin-faker")
                 scm {
                     connection.set("scm:git:https://github.com/serpro69/kotlin-faker")
                     developerConnection.set("scm:git:https://github.com/serpro69")
                     url.set("https://github.com/serpro69/kotlin-faker")
                 }
-                issueManagement {
-                    url.set("https://github.com/serpro69/kotlin-faker/issues")
-                }
+                issueManagement { url.set("https://github.com/serpro69/kotlin-faker/issues") }
                 licenses {
                     license {
                         name.set("MIT")
@@ -66,24 +61,20 @@ if (!isBomModule) {
     }
 }
 
-signing {
-    sign(publishing.publications["maven"])
-}
+signing { sign(publishing.publications["maven"]) }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
-    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
+    dependsOn(project.tasks.named("tag")) // needed for onlyIf conditions
     dependsOn(project.tasks.withType(Sign::class.java))
-    if (isShadow) dependsOn(project.tasks["shadowJar"])
+    if (isShadow) dependsOn(project.tasks.named("shadowJar"))
     onlyIf { !isDev.get() }
     onlyIf { isRelease.get() || isSnapshot.get() }
 }
 
-tasks.withType<PublishToMavenLocal>().configureEach {
-    onlyIf { isDev.get() || isSnapshot.get() }
-}
+tasks.withType<PublishToMavenLocal>().configureEach { onlyIf { isDev.get() || isSnapshot.get() } }
 
 tasks.withType<Sign>().configureEach {
-    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
+    dependsOn(project.tasks.named("tag")) // needed for onlyIf conditions
     onlyIf { !isDev.get() && !isSnapshot.get() }
     onlyIf { isRelease.get() }
 }

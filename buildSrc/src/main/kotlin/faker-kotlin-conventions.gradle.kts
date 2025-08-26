@@ -4,7 +4,6 @@ import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.creating
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getValue
 import org.gradle.kotlin.dsl.invoke
@@ -42,9 +41,9 @@ configure<KotlinJvmProjectExtension> {
     jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
 }
 
-tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
+tasks.withType<JavaCompile>().configureEach { options.encoding = "UTF-8" }
 
-tasks.withType<Test> {
+tasks.withType<Test>().configureEach {
     jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
 
     useJUnitPlatform()
@@ -142,11 +141,10 @@ configure<SourceSetContainer> {
     main { resources { this.srcDir("build/generated/src/main/resources") } }
 }
 
-val integrationTest: Test by
-    tasks.creating(Test::class) {
-        testClassesDirs = sourceSets["integration"].output.classesDirs
-        classpath = sourceSets["integration"].runtimeClasspath
-    }
+tasks.register("integrationTest", Test::class) {
+    testClassesDirs = sourceSets["integration"].output.classesDirs
+    classpath = sourceSets["integration"].runtimeClasspath
+}
 
 tasks.withType<Jar> {
     archiveBaseName.set(fullName)
