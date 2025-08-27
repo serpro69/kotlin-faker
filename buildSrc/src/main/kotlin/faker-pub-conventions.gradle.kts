@@ -18,11 +18,7 @@ publishing {
             version = project.version.toString()
             when {
                 isBomModule -> from(components["javaPlatform"])
-                !isShadow -> from(components["java"])
-                else -> {
-                    // TODO: figure out how to include shadowed component here
-                    //  See also faker-lib-conventions.gradle.kts publishing configuration
-                }
+                else -> from(components["java"])
             }
             if (!isBomModule) {
                 artifact(sourcesJar)
@@ -73,7 +69,6 @@ signing {
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
     dependsOn(project.tasks.withType(Sign::class.java))
-    if (isShadow) dependsOn(project.tasks["shadowJar"])
     onlyIf { !isDev.get() }
     onlyIf { isRelease.get() || isSnapshot.get() }
 }

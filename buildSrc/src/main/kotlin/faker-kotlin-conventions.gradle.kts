@@ -1,14 +1,6 @@
-import org.gradle.api.tasks.SourceSetContainer
-import org.gradle.api.tasks.testing.Test
 import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.creating
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.getValue
-import org.gradle.kotlin.dsl.invoke
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import utils.Color
@@ -119,14 +111,7 @@ configurations {
         extendsFrom(configurations.getByName("testImplementation"))
     }
     create("integrationRuntimeOnly") {
-        if (isShadow) {
-            extendsFrom(
-                configurations.getByName("testRuntimeOnly"),
-                configurations.getByName("shadow"),
-            )
-        } else {
-            extendsFrom(configurations.getByName("testRuntimeOnly"))
-        }
+        extendsFrom(configurations.getByName("testRuntimeOnly"))
     }
 }
 
@@ -143,10 +128,10 @@ configure<SourceSetContainer> {
 }
 
 val integrationTest: Test by
-    tasks.creating(Test::class) {
-        testClassesDirs = sourceSets["integration"].output.classesDirs
-        classpath = sourceSets["integration"].runtimeClasspath
-    }
+tasks.creating(Test::class) {
+    testClassesDirs = sourceSets["integration"].output.classesDirs
+    classpath = sourceSets["integration"].runtimeClasspath
+}
 
 tasks.withType<Jar> {
     archiveBaseName.set(fullName)

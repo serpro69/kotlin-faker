@@ -5,7 +5,7 @@ plugins {
     application
     kotlin("jvm")
     id("org.graalvm.buildtools.native") version "0.10.6"
-    id("com.gradleup.shadow")
+    id("com.gradleup.shadow") version "9.0.2"
 }
 
 val mainFunction = "io.github.serpro69.kfaker.app.KFakerKt"
@@ -31,16 +31,17 @@ val fakers = listOf(
 )
 
 dependencies {
-    implementation(project(path = ":core", configuration = "shadow"))
-    fakers.forEach { implementation(project(path = ":faker:$it", configuration = "shadow")) }
+    implementation(libs.bundles.kotlin)
+    implementation(project(path = ":core"))
+    fakers.forEach { implementation(project(path = ":faker:$it")) }
     implementation("info.picocli:picocli:4.7.7")
     testImplementation(libs.bundles.test.kotest)
 }
 
 // Test tasks must run after we've built the dependencies
 tasks.withType<Test> {
-    dependsOn(":core:shadowJar")
-    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+    dependsOn(":core:jar")
+    fakers.forEach { dependsOn(":faker:$it:jar") }
 }
 
 application {
@@ -74,14 +75,14 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     dependsOn(project.configurations.runtimeClasspath)
     // since we're adding :core and :faker:* as implementation dependencies
     // we also need to make sure ShadowJar task depend on core having been built
-    dependsOn(":core:shadowJar")
-    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+    dependsOn(":core:jar")
+    fakers.forEach { dependsOn(":faker:$it:jar") }
 }
 
 // dunno why, but gradle is complaining that 'startScripts' may run before dependencies have been built
 tasks.startScripts {
-    dependsOn(":core:shadowJar")
-    fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+    dependsOn(":core:jar")
+    fakers.forEach { dependsOn(":faker:$it:jar") }
 }
 
 graalvmNative {
@@ -135,6 +136,6 @@ tasks {
     }
 
     generateResourcesConfigFile {
-        fakers.forEach { dependsOn(":faker:$it:shadowJar") }
+        fakers.forEach { dependsOn(":faker:$it:jar") }
     }
 }

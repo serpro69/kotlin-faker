@@ -1,6 +1,5 @@
 import Yaml_to_json_gradle.Yaml2JsonPlugin
 import Yaml_to_json_gradle.Yaml2JsonPluginExtension
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     `faker-lib-conventions`
@@ -9,8 +8,8 @@ plugins {
 
 dependencies {
     implementation(libs.bundles.jackson)
-    shadow(libs.icu4j)
-    shadow(libs.rgxgen)
+    implementation(libs.icu4j)
+    implementation(libs.rgxgen)
 }
 
 apply<
@@ -26,23 +25,3 @@ configure<Yaml2JsonPluginExtension> {
 }
 
 tasks.processResources.get().dependsOn(tasks["yaml2json"])
-
-tasks.withType<Jar>().configureEach {
-    manifest {
-        // set the classpath attribute here because we can't modify it in a buildSrc plugin or
-        // someplace else
-        // see comment in the ShadowJar task config of the 'faker-lib-conventions' buildSrc plugin
-        attributes["Class-Path"] =
-            project.configurations.compileClasspath.get().joinToString(" ") { it.name }
-    }
-}
-
-tasks.withType<ShadowJar>().configureEach {
-    manifest {
-        // set the classpath attribute here because we can't modify it in a buildSrc plugin or
-        // someplace else
-        // see comment in the ShadowJar task config of the 'faker-lib-conventions' buildSrc plugin
-        attributes["Class-Path"] =
-            project.configurations.compileClasspath.get().joinToString(" ") { it.name }
-    }
-}

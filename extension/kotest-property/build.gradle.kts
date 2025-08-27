@@ -10,5 +10,5 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    dependsOn(":core:shadowJar")
+    dependsOn(":core:jar")
 }
