@@ -7,7 +7,12 @@ plugins {
     id("faker-pub-conventions")
 }
 
-dependencies {
-    val implementation by configurations
-    implementation(libs.bundles.kotlin)
+kotlin {
+    sourceSets {
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.bundles.kotlin)
+            }
+        }
+    }
 }
