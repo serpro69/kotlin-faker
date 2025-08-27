@@ -2,35 +2,39 @@ import org.gradle.api.tasks.testing.TestResult.ResultType
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.dokka.gradle.DokkaTask
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import utils.Color
 import utils.times
 
 /** Plugin for base build setup of faker modules with kotlin */
 plugins {
     id("faker-base-conventions")
-    java
-    kotlin("jvm")
+    kotlin("multiplatform")
     id("org.jetbrains.dokka")
     id("org.jetbrains.kotlinx.binary-compatibility-validator")
     id("com.diffplug.spotless")
 }
 
-val lib = project.libs
+kotlin {
+    jvm {
+        withSourcesJar()
+    }
 
-dependencies {
-    val implementation by configurations
-    val testImplementation by configurations
-    // common-for-all dependencies go here
-    implementation(platform(lib.kotlin.bom))
-    implementation(lib.bundles.kotlin)
-    testImplementation(lib.bundles.test.kotest)
-}
+    jvmToolchain(8)
 
-configure<JavaPluginExtension> { toolchain { languageVersion.set(JavaLanguageVersion.of(8)) } }
-
-configure<KotlinJvmProjectExtension> {
-    jvmToolchain { languageVersion.set(JavaLanguageVersion.of(8)) }
+    sourceSets {
+        val jvmMain by getting {
+            resources.srcDir("build/generated/src/main/resources")
+            dependencies {
+                implementation(platform(libs.kotlin.bom.get()))
+                implementation(libs.bundles.kotlin)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.bundles.test.kotest)
+            }
+        }
+    }
 }
 
 tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
@@ -106,13 +110,6 @@ tasks.withType<Test> {
     )
 }
 
-// configure sourceSets as extension since it's not available here as `sourceSets` is an extension
-// on `Project`
-// https://docs.gradle.org/current/userguide/kotlin_dsl.html#project_extensions_and_conventions
-configure<SourceSetContainer> {
-    main { resources { this.srcDir("build/generated/src/main/resources") } }
-}
-
 tasks.withType<Jar> {
     archiveBaseName.set(fullName)
 
@@ -121,14 +118,6 @@ tasks.withType<Jar> {
             mapOf(
                 "Implementation-Title" to fullName,
                 "Implementation-Version" to project.version,
-                /*
-                 * We can't add this here because this resolves the configuration,
-                 * after which it effectively becomes read-only and we'll get an error
-                 * Cannot change dependencies of dependency configuration ':core:implementation' after it has been included in dependency resolution
-                 * if we try to add more dependencies in the module's build.gradle file directly
-                 */
-                // "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") {
-                // it.name }
             )
         )
     }
