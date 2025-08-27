@@ -40,7 +40,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew clean test integrationTest spotlessCheck build shadowJar
+        run: ./gradlew clean test integrationTest spotlessCheck build
 
   cli:
     name: build and test native image
