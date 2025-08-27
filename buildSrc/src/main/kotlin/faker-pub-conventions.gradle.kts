@@ -18,14 +18,15 @@ publishing {
             version = project.version.toString()
             when {
                 isBomModule -> from(components["javaPlatform"])
-                !isShadow -> from(components["java"])
-                else -> {
-                    // TODO: figure out how to include shadowed component here
-                    //  See also faker-lib-conventions.gradle.kts publishing configuration
-                }
+                /*
+                 * When used with maven-publish,
+                 * the Kotlin plugin automatically creates publications
+                 * for each target that can be built on the current host
+                 * (ref: https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-publish-lib-setup.html#structure-of-publications)
+                 */
+                else -> { /* noop */ }
             }
             if (!isBomModule) {
-                artifact(sourcesJar)
                 artifact(dokkaJavadocJar) //TODO: configure dokka or use defaults?
             }
 
@@ -61,7 +62,6 @@ publishing {
 
 if (!isBomModule) {
     artifacts {
-        archives(sourcesJar)
         archives(dokkaJavadocJar)
     }
 }
@@ -73,7 +73,6 @@ signing {
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
     dependsOn(project.tasks.withType(Sign::class.java))
-    if (isShadow) dependsOn(project.tasks["shadowJar"])
     onlyIf { !isDev.get() }
     onlyIf { isRelease.get() || isSnapshot.get() }
 }

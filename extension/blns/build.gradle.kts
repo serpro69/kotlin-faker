@@ -1,13 +1,24 @@
 plugins { `faker-ext-conventions` }
 
-dependencies {
-    compileOnly(projects.core)
-    implementation(libs.bundles.jackson)
-    testImplementation(projects.core) // needed for tests since we have compileOnly dependency
-    testImplementation(libs.bundles.test.kotest)
+kotlin {
+    sourceSets {
+        val jvmMain by getting {
+            dependencies {
+                compileOnly(projects.core)
+                implementation(libs.bundles.jackson)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                // needed for tests since we have compileOnly dependency
+                implementation(projects.core)
+                implementation(libs.bundles.test.kotest)
+            }
+        }
+    }
 }
 
-tasks.test {
+tasks.jvmTest {
     useJUnitPlatform()
-    dependsOn(":core:shadowJar")
+    dependsOn(":core:jvmJar")
 }
