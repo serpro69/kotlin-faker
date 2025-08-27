@@ -24,10 +24,8 @@ apply<Yaml2JsonPlugin>()
 
 configure<Yaml2JsonPluginExtension> {
     val cwd = project.projectDir.absolutePath
-    input.set(File("$cwd/src/main/resources/locales"))
-    output.set(File("$cwd/build/generated/src/main/resources"))
+    input.set(File("$cwd/src/jvmMain/resources/locales"))
+    output.set(File("$cwd/build/generated/src/jvmMain/resources"))
 }
 
-tasks.withType<ProcessResources>().configureEach {
-    dependsOn(tasks["yaml2json"])
-}
+tasks.withType<ProcessResources>().configureEach { dependsOn(tasks["yaml2json"]) }

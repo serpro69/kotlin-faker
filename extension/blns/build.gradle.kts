@@ -10,7 +10,8 @@ kotlin {
         }
         val jvmTest by getting {
             dependencies {
-                implementation(projects.core) // needed for tests since we have compileOnly dependency
+                // needed for tests since we have compileOnly dependency
+                implementation(projects.core)
                 implementation(libs.bundles.test.kotest)
             }
         }

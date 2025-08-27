@@ -23,7 +23,7 @@ kotlin {
 
     sourceSets {
         val jvmMain by getting {
-            resources.srcDir("build/generated/src/main/resources")
+            resources.srcDir("build/generated/src/jvmMain/resources")
             dependencies {
                 implementation(platform(libs.kotlin.bom.get()))
                 implementation(libs.bundles.kotlin)
@@ -39,13 +39,15 @@ kotlin {
 
 tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
 
-tasks.withType<Test> {
+tasks.named("jvmTest", Test::class).configure {
     @Suppress("UNNECESSARY_SAFE_CALL")
     jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
 
     useJUnitPlatform()
     maxParallelForks = 1
+}
 
+tasks.withType<Test> {
     testLogging {
         // set options for log level LIFECYCLE
         events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.STANDARD_OUT)
