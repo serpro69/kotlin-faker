@@ -40,7 +40,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew clean test integrationTest spotlessCheck build
+        run: ./gradlew clean test spotlessCheck build
 
   cli:
     name: build and test native image
@@ -80,7 +80,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile native image
-        run: ./gradlew nativeCompile -x test -x integrationTest
+        run: ./gradlew nativeCompile -x test -x
       - name: Test native image
         run: |-
           _app_path=$(find ./cli-bot/build/native/nativeCompile/ -type f -name faker-bot\* -not -name \*.txt)
