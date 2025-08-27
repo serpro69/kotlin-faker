@@ -12,7 +12,6 @@ val Project.isBomModule: Boolean get() = path.startsWith(":bom")
 val Project.isCoreModule: Boolean get() = path.startsWith(":core")
 val Project.isFakerModule: Boolean get() = path.startsWith(":faker")
 val Project.isExtensionModule: Boolean get() = path.startsWith(":extension")
-val Project.isShadow: Boolean get() = isCoreModule || isFakerModule
 
 // versioning
 val Project.isDev: Provider<Boolean>
