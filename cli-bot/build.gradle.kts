@@ -40,8 +40,8 @@ dependencies {
 
 // Test tasks must run after we've built the dependencies
 tasks.withType<Test> {
-    dependsOn(":core:jar")
-    fakers.forEach { dependsOn(":faker:$it:jar") }
+    dependsOn(":core:jvmJar")
+    fakers.forEach { dependsOn(":faker:$it:jvmJar") }
 }
 
 application {
@@ -75,14 +75,14 @@ val shadowJar by tasks.getting(ShadowJar::class) {
     dependsOn(project.configurations.runtimeClasspath)
     // since we're adding :core and :faker:* as implementation dependencies
     // we also need to make sure ShadowJar task depend on core having been built
-    dependsOn(":core:jar")
-    fakers.forEach { dependsOn(":faker:$it:jar") }
+    dependsOn(":core:jvmJar")
+    fakers.forEach { dependsOn(":faker:$it:jvmJar") }
 }
 
 // dunno why, but gradle is complaining that 'startScripts' may run before dependencies have been built
 tasks.startScripts {
-    dependsOn(":core:jar")
-    fakers.forEach { dependsOn(":faker:$it:jar") }
+    dependsOn(":core:jvmJar")
+    fakers.forEach { dependsOn(":faker:$it:jvmJar") }
 }
 
 graalvmNative {
@@ -136,6 +136,6 @@ tasks {
     }
 
     generateResourcesConfigFile {
-        fakers.forEach { dependsOn(":faker:$it:jar") }
+        fakers.forEach { dependsOn(":faker:$it:jvmJar") }
     }
 }

@@ -6,17 +6,21 @@ plugins {
     `yaml-to-json`
 }
 
-dependencies {
-    implementation(libs.bundles.jackson)
-    implementation(libs.icu4j)
-    implementation(libs.rgxgen)
+kotlin {
+    sourceSets {
+        val jvmMain by getting {
+            dependencies {
+                implementation(libs.bundles.jackson)
+                implementation(libs.icu4j)
+                implementation(libs.rgxgen)
+            }
+        }
+    }
 }
 
-apply<
-    Yaml2JsonPlugin
->() // this shouldn't really be needed since the plugin is supposed to be applied in the plugins{}
-
-// block
+// this shouldn't really be needed
+// since the plugin is supposed to be applied in the plugins{}
+apply<Yaml2JsonPlugin>()
 
 configure<Yaml2JsonPluginExtension> {
     val cwd = project.projectDir.absolutePath
@@ -24,4 +28,6 @@ configure<Yaml2JsonPluginExtension> {
     output.set(File("$cwd/build/generated/src/main/resources"))
 }
 
-tasks.processResources.get().dependsOn(tasks["yaml2json"])
+tasks.withType<ProcessResources>().configureEach {
+    dependsOn(tasks["yaml2json"])
+}

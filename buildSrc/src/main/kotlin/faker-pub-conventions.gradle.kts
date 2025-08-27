@@ -18,10 +18,15 @@ publishing {
             version = project.version.toString()
             when {
                 isBomModule -> from(components["javaPlatform"])
-                else -> from(components["java"])
+                /*
+                 * When used with maven-publish,
+                 * the Kotlin plugin automatically creates publications
+                 * for each target that can be built on the current host
+                 * (ref: https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-publish-lib-setup.html#structure-of-publications)
+                 */
+                else -> { /* noop */ }
             }
             if (!isBomModule) {
-                artifact(sourcesJar)
                 artifact(dokkaJavadocJar) //TODO: configure dokka or use defaults?
             }
 
@@ -57,7 +62,6 @@ publishing {
 
 if (!isBomModule) {
     artifacts {
-        archives(sourcesJar)
         archives(dokkaJavadocJar)
     }
 }
