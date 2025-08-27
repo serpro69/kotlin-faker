@@ -33,7 +33,7 @@ Please note that we can only merge a PR if:
 
 * The code is following the official kotlin codestyle as defined by Jetbrains.
 * All tests pass, and the code has 100% test coverage (run `./gradlew clean test` to run the checks). If it does not make sense to cover a certain line of code, please mention that in the PR.
-* Bigger changes and new features are also covered by integration test(s) which can be run with gradle `integrationTest` task.
+* Bigger changes and new features are also covered by integration test(s) which are placed in an `integration` sub-package in test sources.
 * All relevant documentation is updated. Usually this means updating the KDoc of the code you work on, [README.md](https://github.com/serpro69/kotlin-faker/blob/master/README.md) and documentation in [docs](https://github.com/serpro69/kotlin-faker/tree/master/docs) dir.
 * Additional third-party dependencies are only added with a good reason.
 * Code was reviewed by one of the regular contributors, taking into consideration code readability, security and whether the addition aligns with the long-term roadmap.

@@ -13,9 +13,7 @@ plugins {
 
 dependencies {
     val implementation by configurations
-    val testImplementation by configurations
     val testRuntimeOnly by configurations
-    val integrationImplementation by configurations
     implementation(libs.bundles.kotlin)
     testRuntimeOnly("ch.qos.logback:logback-core:1.3.4") {
         version { strictly("1.3.4") /* last stable for java 8 */ }

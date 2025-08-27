@@ -21,7 +21,6 @@ val lib = project.libs
 dependencies {
     val implementation by configurations
     val testImplementation by configurations
-    val testRuntimeOnly by configurations
     // common-for-all dependencies go here
     implementation(platform(lib.kotlin.bom))
     implementation(lib.bundles.kotlin)
@@ -37,6 +36,7 @@ configure<KotlinJvmProjectExtension> {
 tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
 
 tasks.withType<Test> {
+    @Suppress("UNNECESSARY_SAFE_CALL")
     jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
 
     useJUnitPlatform()
@@ -106,31 +106,11 @@ tasks.withType<Test> {
     )
 }
 
-configurations {
-    create("integrationImplementation") {
-        extendsFrom(configurations.getByName("testImplementation"))
-    }
-    create("integrationRuntimeOnly") {
-        extendsFrom(configurations.getByName("testRuntimeOnly"))
-    }
-}
-
 // configure sourceSets as extension since it's not available here as `sourceSets` is an extension
 // on `Project`
 // https://docs.gradle.org/current/userguide/kotlin_dsl.html#project_extensions_and_conventions
 configure<SourceSetContainer> {
-    create("integration") {
-        resources.srcDir("src/integration/resources")
-        compileClasspath += main.get().compileClasspath + test.get().compileClasspath
-        runtimeClasspath += main.get().runtimeClasspath + test.get().runtimeClasspath
-    }
     main { resources { this.srcDir("build/generated/src/main/resources") } }
-}
-
-val integrationTest: Test by
-tasks.creating(Test::class) {
-    testClassesDirs = sourceSets["integration"].output.classesDirs
-    classpath = sourceSets["integration"].runtimeClasspath
 }
 
 tasks.withType<Jar> {

@@ -12,8 +12,6 @@ val core = rootProject.subprojects.first { it.path == ":core" }
 dependencies {
     val compileOnly by configurations
     val testImplementation by configurations
-    val testRuntimeOnly by configurations
-    val integrationImplementation by configurations
     /* :core is versioned separately,
     during development versions will always equal
       (both are set to a version placeholder via gradle.properties),
@@ -28,5 +26,5 @@ dependencies {
     // we need implementation dependency for tests to be able to access 'core' functionality
     testImplementation(project(path = core.path))
     // provides helpers for integration tests
-    integrationImplementation(project(":test", "testHelper"))
+    testImplementation(project(":test", "testHelper"))
 }

@@ -150,9 +150,7 @@ for installation and usage details.
 
 ## Test
 
-To run unit tests: `./gradlew clean test`
-
-To run integration tests: `./gradlew clean integrationTest`
+To run unit and integration tests: `./gradlew clean test`
 
 ## Build and Deploy
 
