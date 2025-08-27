@@ -5,7 +5,7 @@ This document provides guidelines for AI agents working on this codebase.
 ## Build, Lint, and Test
 
 - **Build:** `./gradlew build`
-- **Run all tests:** `./gradlew test integrationTest`
+- **Run all tests:** `./gradlew test`
 - **Run a single test class:** `./gradlew test --tests "package.ClassName"`
 - **Run a single test method:** `./gradlew test --tests "package.ClassName.methodName"`
 - **Lint:** There is no dedicated lint task. Follow existing code style.
