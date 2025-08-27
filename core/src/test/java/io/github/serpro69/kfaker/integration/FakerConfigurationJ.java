@@ -9,7 +9,7 @@ import static kotlin.random.RandomKt.Random;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@DisplayName("Snippets used in Orchid docs 'Faker Configuration' wiki page")
+@DisplayName("Snippets used in documentation 'Faker Configuration' wiki page")
 class FakerConfigurationJ {
 
     @DisplayName("two faker instances with same 'random' should output same values - java")
