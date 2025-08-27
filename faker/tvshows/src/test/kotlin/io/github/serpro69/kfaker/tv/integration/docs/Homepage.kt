@@ -21,7 +21,7 @@ import java.util.*
  * ❸ (See https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
  *   for snippets docs)
  */
-@DisplayName("Snippets used in Orchid docs 'homepage'")
+@DisplayName("Snippets used in documentation 'homepage'")
 class Homepage :
     DescribeSpec({
         describe("TvShowsFaker") {

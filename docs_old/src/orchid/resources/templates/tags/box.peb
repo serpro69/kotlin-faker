@@ -1,7 +1,0 @@
-<div class="box has-background-white-ter">
-  <div class="content is-medium">
-    <p class="description-text">
-    {{ tag.content | raw }}
-    </p>
-  </div>
-</div>

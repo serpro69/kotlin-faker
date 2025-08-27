@@ -12,12 +12,16 @@ import java.util.*
  * way that this becomes a "live-documentation", and additionally it's also being tested since this
  * is, after all, a test class.
  *
- * Usage: ❶ Wrap each code snippet in comments like `// --8<--
- * [start:snippet_name` and `// --8<-- [end:snippet_name`]] ❷ Code snippets can be referenced from
- * the docs using the {% snippet snippet_name %} tag. ❸ (See
- * https://orchid.run/plugins/orchidsnippets for snippets docs)
+ * Usage:
+ * ❶ Wrap each code snippet in comments like
+ *   `// --8<-- [start:snippet_name]`
+ *   and `// --8<-- [end:snippet_name]`
+ * ❷ Code snippets can be referenced from the docs
+ *   using the `--8<-- "path/to/file:snippet_name"`.
+ * ❸ (See https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
+ *   for snippets docs)
  */
-@DisplayName("Snippets used in Orchid docs 'homepage'")
+@DisplayName("Snippets used in documentation 'homepage'")
 class Homepage :
     DescribeSpec({
         describe("BooksFaker") {

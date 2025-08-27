@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 
-@DisplayName("Snippets used in Orchid docs 'Unique Data Generator' wiki page")
+@DisplayName("Snippets used in documentation 'Unique Data Generator' wiki page")
 class UniqueGenerator :
     DescribeSpec({
         describe("Unique Data Generator for Entire Data Provider") {

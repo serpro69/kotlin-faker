@@ -9,7 +9,7 @@ import java.util.UUID
 import kotlin.random.Random
 import org.junit.jupiter.api.Assertions.assertEquals
 
-@DisplayName("Snippets used in Orchid docs 'Faker Configuration' wiki page")
+@DisplayName("Snippets used in documentation 'Faker Configuration' wiki page")
 class FakerConfiguration :
     DescribeSpec({
         describe("FakerConfig") {
