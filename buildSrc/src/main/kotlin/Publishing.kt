@@ -7,37 +7,37 @@ import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.getValue
 import org.jetbrains.dokka.gradle.DokkaTask
 
-//region manually define accessors, because IntelliJ _still_ doesn't index them properly :(
-internal val Project.sourceSets: SourceSetContainer get() = extensions.getByType()
-//endregion
+// region manually define accessors, because IntelliJ _still_ doesn't index them properly :(
+internal val Project.sourceSets: SourceSetContainer
+    get() = extensions.getByType()
+// endregion
 
 /**
- * For additional providers, use a combination of rootProject and subproject names for artifact name and similar things.
- * i.e. kotlin-faker-books, kotlin-faker-movies, kotlin-faker-tv, ...
+ * For additional providers, use a combination of rootProject and subproject names for artifact name
+ * and similar things. i.e. kotlin-faker-books, kotlin-faker-movies, kotlin-faker-tv, ...
  *
  * The "core" lib retains the same name as before: kotlin-faker
  */
 val Project.fullName: String
-    get() = if (name == "core") rootProject.name
-    else "${rootProject.name}-${name}"
+    get() = if (name == "core") rootProject.name else "${rootProject.name}-${name}"
 
 private fun createSourcesJarTask(p: Project): Jar {
-    val sourcesJar by p.tasks.creating(Jar::class) {
-        archiveClassifier.set("sources")
-        from(p.sourceSets.getByName("main").allSource)
-        from("${p.rootProject.rootDir.resolve("LICENSE.adoc")}") {
-            into("META-INF")
+    val sourcesJar by
+        p.tasks.creating(Jar::class) {
+            archiveClassifier.set("sources")
+            from(p.sourceSets.getByName("main").allSource)
+            from("${p.rootProject.rootDir.resolve("LICENSE.adoc")}") { into("META-INF") }
         }
-    }
     return sourcesJar
 }
 
 private fun createJavadocJarTask(p: Project): Jar {
-    val dokkaJavadocJar by p.tasks.creating(Jar::class) {
-        archiveClassifier.set("javadoc")
-        dependsOn(p.tasks.getByName("dokkaJavadoc", DokkaTask::class))
-        from(p.tasks.getByName("dokkaJavadoc", DokkaTask::class).outputDirectory.orNull)
-    }
+    val dokkaJavadocJar by
+        p.tasks.creating(Jar::class) {
+            archiveClassifier.set("javadoc")
+            dependsOn(p.tasks.getByName("dokkaJavadoc", DokkaTask::class))
+            from(p.tasks.getByName("dokkaJavadoc", DokkaTask::class).outputDirectory.orNull)
+        }
     return dokkaJavadocJar
 }
 
@@ -58,4 +58,3 @@ val Project.dokkaJavadocJar: Jar
         }
         return createJavadocJarTask(this)
     }
-

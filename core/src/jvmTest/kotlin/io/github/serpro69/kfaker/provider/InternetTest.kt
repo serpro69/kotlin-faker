@@ -1,5 +1,6 @@
 package io.github.serpro69.kfaker.provider
 
+import com.google.common.net.InetAddresses
 import io.github.serpro69.kfaker.Faker
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.helper.isPrivateNet
@@ -7,7 +8,6 @@ import io.github.serpro69.kfaker.helper.isReservedNet
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldMatch
-import sun.net.util.IPAddressUtil
 
 class InternetTest :
     DescribeSpec({
@@ -20,17 +20,15 @@ class InternetTest :
                     it("should generate private IPv4 address run#$it") {
                         isPrivateNet(internet.privateIPv4Address()) shouldBe true
                         isReservedNet(internet.privateIPv4Address()) shouldBe true
-                        IPAddressUtil.isIPv4LiteralAddress(internet.privateIPv4Address()) shouldBe
-                            true
+                        InetAddresses.isInetAddress(internet.privateIPv4Address()) shouldBe true
                     }
                     it("should generate a public IPv4 address run#$it") {
                         isPrivateNet(internet.publicIPv4Address()) shouldBe false
                         isReservedNet(internet.publicIPv4Address()) shouldBe false
-                        IPAddressUtil.isIPv4LiteralAddress(internet.publicIPv4Address()) shouldBe
-                            true
+                        InetAddresses.isInetAddress(internet.publicIPv4Address()) shouldBe true
                     }
                     it("should generate a random IPv4 address run#$it") {
-                        IPAddressUtil.isIPv4LiteralAddress(internet.iPv4Address()) shouldBe true
+                        InetAddresses.isInetAddress(internet.iPv4Address()) shouldBe true
                         internet.iPv4Address().split(".").all { s -> s.toInt() in 0..255 } shouldBe
                             true
                     }
@@ -40,7 +38,7 @@ class InternetTest :
             context("IPv6 address generation") {
                 repeat(100) {
                     it("should generate a valid IPv6 address run#$it") {
-                        IPAddressUtil.isIPv6LiteralAddress(internet.iPv6Address()) shouldBe true
+                        InetAddresses.isInetAddress(internet.iPv6Address()) shouldBe true
                     }
                 }
             }
