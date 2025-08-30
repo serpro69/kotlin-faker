@@ -17,4 +17,3 @@ internal enum class Color(ansiCode: Int) {
         return ansiString
     }
 }
-
