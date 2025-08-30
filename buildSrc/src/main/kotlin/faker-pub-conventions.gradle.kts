@@ -1,13 +1,8 @@
-import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
-
-/**
- * Plugin for publishing conventions
- */
-
+/** Plugin for publishing conventions */
 plugins {
     `maven-publish`
     signing
-    id("faker-base-conventions")
+    id("faker-base")
 }
 
 publishing {
@@ -24,25 +19,27 @@ publishing {
                  * for each target that can be built on the current host
                  * (ref: https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-publish-lib-setup.html#structure-of-publications)
                  */
-                else -> { /* noop */ }
+                else -> {
+                    /* noop */
+                }
             }
             if (!isBomModule) {
-                artifact(dokkaJavadocJar) //TODO: configure dokka or use defaults?
+                artifact(dokkaJavadocJar) // TODO: configure dokka or use defaults?
             }
 
             pom {
                 packaging = if (isBomModule) "pom" else "jar"
                 name.set(if (isBomModule) "kotlin-faker" else fullName)
-                description.set("Generate realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data anonymization purposes.")
+                description.set(
+                    "Generate realistically looking fake data such as names, addresses, banking details, and many more, that can be used for testing and data anonymization purposes."
+                )
                 url.set("https://github.com/serpro69/kotlin-faker")
                 scm {
                     connection.set("scm:git:https://github.com/serpro69/kotlin-faker")
                     developerConnection.set("scm:git:https://github.com/serpro69")
                     url.set("https://github.com/serpro69/kotlin-faker")
                 }
-                issueManagement {
-                    url.set("https://github.com/serpro69/kotlin-faker/issues")
-                }
+                issueManagement { url.set("https://github.com/serpro69/kotlin-faker/issues") }
                 licenses {
                     license {
                         name.set("MIT")
@@ -61,14 +58,10 @@ publishing {
 }
 
 if (!isBomModule) {
-    artifacts {
-        archives(dokkaJavadocJar)
-    }
+    artifacts { archives(dokkaJavadocJar) }
 }
 
-signing {
-    sign(publishing.publications["maven"])
-}
+signing { sign(publishing.publications["maven"]) }
 
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
@@ -77,9 +70,7 @@ tasks.withType<PublishToMavenRepository>().configureEach {
     onlyIf { isRelease.get() || isSnapshot.get() }
 }
 
-tasks.withType<PublishToMavenLocal>().configureEach {
-    onlyIf { isDev.get() || isSnapshot.get() }
-}
+tasks.withType<PublishToMavenLocal>().configureEach { onlyIf { isDev.get() || isSnapshot.get() } }
 
 tasks.withType<Sign>().configureEach {
     dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions

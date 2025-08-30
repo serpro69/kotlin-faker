@@ -5,49 +5,29 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import utils.Color
 import utils.times
 
-/** Plugin for base build setup of faker modules with kotlin */
+/** Plugin for build setup of faker modules with kotlin */
 plugins {
-    id("faker-base-conventions")
+    id("faker-base")
     kotlin("multiplatform")
     id("org.jetbrains.dokka")
-    id("org.jetbrains.kotlinx.binary-compatibility-validator")
     id("com.diffplug.spotless")
 }
 
 kotlin {
-    jvm {
+    sourceSets.configureEach {
         withSourcesJar()
-    }
 
-    jvmToolchain(8)
-
-    sourceSets {
-        val jvmMain by getting {
-            resources.srcDir("build/generated/src/jvmMain/resources")
-            dependencies {
-                implementation(platform(libs.kotlin.bom.get()))
-                implementation(libs.bundles.kotlin)
-            }
-        }
-        val jvmTest by getting {
-            dependencies {
-                implementation(libs.bundles.test.kotest)
-            }
+        resources.srcDir("build/generated/src/jvmMain/resources")
+        dependencies {
+            implementation(platform(libs.kotlin.bom.get()))
+            implementation(libs.bundles.kotlin)
         }
     }
 }
 
-tasks.withType<JavaCompile> { options.encoding = "UTF-8" }
-
-tasks.named("jvmTest", Test::class).configure {
-    @Suppress("UNNECESSARY_SAFE_CALL")
-    jvmArgs = jvmArgs?.plus("-ea") ?: listOf("-ea")
-
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-    maxParallelForks = 1
-}
 
-tasks.withType<Test> {
     testLogging {
         // set options for log level LIFECYCLE
         events = setOf(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.STANDARD_OUT)
@@ -117,10 +97,7 @@ tasks.withType<Jar> {
 
     manifest {
         attributes(
-            mapOf(
-                "Implementation-Title" to fullName,
-                "Implementation-Version" to project.version,
-            )
+            mapOf("Implementation-Title" to fullName, "Implementation-Version" to project.version)
         )
     }
 }
@@ -129,8 +106,6 @@ tasks.withType<DokkaTask>().configureEach {
     onlyIf("Not dev") { !isDev.get() }
     onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }
 }
-
-apiValidation {}
 
 spotless {
     kotlin { ktfmt().kotlinlangStyle().configure {} }

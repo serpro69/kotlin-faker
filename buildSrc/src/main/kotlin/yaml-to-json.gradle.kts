@@ -7,8 +7,8 @@ interface Yaml2JsonPluginExtension {
 }
 
 /**
- * This plugin takes in yaml input files and outputs json files.
- * It's primarily used to convert the faker source dictionaries from yml to json format.
+ * This plugin takes in yaml input files and outputs json files. It's primarily used to convert the
+ * faker source dictionaries from yml to json format.
  */
 class Yaml2JsonPlugin : Plugin<Project> {
     val jsonMapper = ObjectMapper()
@@ -27,7 +27,8 @@ class Yaml2JsonPlugin : Plugin<Project> {
             val output = ext.output.get().absoluteFile
 
             doFirst {
-                if (output.exists() && !output.isDirectory) throw IllegalArgumentException("$output is not a directory")
+                if (output.exists() && !output.isDirectory)
+                    throw IllegalArgumentException("$output is not a directory")
             }
 
             doLast {
@@ -35,19 +36,25 @@ class Yaml2JsonPlugin : Plugin<Project> {
                 if (input.isDirectory) {
                     input.getYmlFiles().forEach { src ->
                         val outFile = src.relativeTo(input.parentFile)
-                        val dest = output
-                            .resolve(File("${(outFile.parentFile.resolve(outFile.nameWithoutExtension))}.json"))
-                            .also {
-                                it.parentFile.mkdirs()
-                                it.createNewFile()
-                            }
+                        val dest =
+                            output
+                                .resolve(
+                                    File(
+                                        "${(outFile.parentFile.resolve(outFile.nameWithoutExtension))}.json"
+                                    )
+                                )
+                                .also {
+                                    it.parentFile.mkdirs()
+                                    it.createNewFile()
+                                }
                         writeYamlToJson(src, dest)
                     }
                 } else if (input.extension == "yml" || input.extension == "yaml") {
-                    val dest = output.resolve("${input.nameWithoutExtension}.json").also {
-                        it.parentFile.mkdirs()
-                        it.createNewFile()
-                    }
+                    val dest =
+                        output.resolve("${input.nameWithoutExtension}.json").also {
+                            it.parentFile.mkdirs()
+                            it.createNewFile()
+                        }
                     writeYamlToJson(input, dest)
                 } else throw IllegalArgumentException("Unable to process file $input")
             }

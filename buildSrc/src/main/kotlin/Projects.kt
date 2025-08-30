@@ -8,10 +8,14 @@ import org.gradle.kotlin.dsl.the
 val Project.libs: LibrariesForLibs
     get() = the<LibrariesForLibs>()
 
-val Project.isBomModule: Boolean get() = path.startsWith(":bom")
-val Project.isCoreModule: Boolean get() = path.startsWith(":core")
-val Project.isFakerModule: Boolean get() = path.startsWith(":faker")
-val Project.isExtensionModule: Boolean get() = path.startsWith(":extension")
+val Project.isBomModule: Boolean
+    get() = path.startsWith(":bom")
+val Project.isCoreModule: Boolean
+    get() = path.startsWith(":core")
+val Project.isFakerModule: Boolean
+    get() = path.startsWith(":faker")
+val Project.isExtensionModule: Boolean
+    get() = path.startsWith(":extension")
 
 // versioning
 val Project.isDev: Provider<Boolean>
@@ -19,11 +23,12 @@ val Project.isDev: Provider<Boolean>
 
 val Project.isSnapshot: Provider<Boolean>
     get() = provider {
-            // QUESTION do we need to check if rootProject is also set to snapshot?
-            //  Likely not, since "isRelease" will not just check for the version, but also for the actual tag creation
-            //    rootProject.version.toString().endsWith("SNAPSHOT") &&
-            version.toString().endsWith("SNAPSHOT")
-        }
+        // QUESTION do we need to check if rootProject is also set to snapshot?
+        //  Likely not, since "isRelease" will not just check for the version, but also for the
+        // actual tag creation
+        //    rootProject.version.toString().endsWith("SNAPSHOT") &&
+        version.toString().endsWith("SNAPSHOT")
+    }
 val Project.isRelease: Provider<Boolean>
     get() = provider {
         val tag = tasks.getByName("tag", TagTask::class)
