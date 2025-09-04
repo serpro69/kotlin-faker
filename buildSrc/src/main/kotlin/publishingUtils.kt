@@ -74,21 +74,49 @@ internal fun publishPlatformArtifactsInRootModule(project: Project) {
 
                 val kmpPom = kmpPomDoc.documentElement
 
-                val dependencies = kmpPom.getElement("dependencies")
-
-                // Remove the original platform dependencies...
-                while (dependencies.hasChildNodes()) {
-                    dependencies.removeChild(dependencies.firstChild)
-                }
-                // instead, add a single dependency on the platform module
-                dependencies.appendChild(
-                    kmpPomDoc.createElement("dependency") {
-                        appendChild(kmpPomDoc.createElement("groupId", jvmGroupId))
-                        appendChild(kmpPomDoc.createElement("artifactId", jvmArtifactId))
-                        appendChild(kmpPomDoc.createElement("version", jvmVersion))
-                        appendChild(kmpPomDoc.createElement("scope", "compile"))
+                when (val dependencies = kmpPom.getElement("dependencies")) {
+                    null -> {
+                        if (logger.isInfoEnabled) {
+                            val updated = destination.readText()
+                            logger.info(
+                                """
+                                [$path] No dependencies found in original KMP POM
+                                ${"=".repeat(25)} original ${"=".repeat(25)}
+                                $original
+                                ${"=".repeat(25)}==========${"=".repeat(25)}
+                                """
+                                    .trimIndent()
+                            )
+                        }
+                        kmpPom.appendChild(
+                            kmpPomDoc.createElement("dependencies") {
+                                appendChild(
+                                    kmpPomDoc.createElement("dependency") {
+                                        appendChild(kmpPomDoc.createElement("groupId", jvmGroupId))
+                                        appendChild(kmpPomDoc.createElement("artifactId", jvmArtifactId))
+                                        appendChild(kmpPomDoc.createElement("version", jvmVersion))
+                                        appendChild(kmpPomDoc.createElement("scope", "compile"))
+                                    }
+                                )
+                            }
+                        )
                     }
-                )
+                    else -> {
+                        // Remove the original platform dependencies...
+                        while (dependencies.hasChildNodes()) {
+                            dependencies.removeChild(dependencies.firstChild)
+                        }
+                        // instead, add a single dependency on the platform module
+                        dependencies.appendChild(
+                            kmpPomDoc.createElement("dependency") {
+                                appendChild(kmpPomDoc.createElement("groupId", jvmGroupId))
+                                appendChild(kmpPomDoc.createElement("artifactId", jvmArtifactId))
+                                appendChild(kmpPomDoc.createElement("version", jvmVersion))
+                                appendChild(kmpPomDoc.createElement("scope", "compile"))
+                            }
+                        )
+                    }
+                }
 
                 // Set packaging to POM to indicate that there's no artifact
                 kmpPom.appendChild(kmpPomDoc.createElement("packaging", "pom"))
@@ -108,13 +136,13 @@ internal fun publishPlatformArtifactsInRootModule(project: Project) {
                     val updated = destination.readText()
                     logger.info(
                         """
-               [$path] Re-wrote KMP POM
-               ${"=".repeat(25)} original ${"=".repeat(25)}
-               $original
-               ${"=".repeat(25)} updated  ${"=".repeat(25)}
-               $updated
-               ${"=".repeat(25)}==========${"=".repeat(25)}
-               """
+                        [$path] Re-wrote KMP POM
+                        ${"=".repeat(25)} original ${"=".repeat(25)}
+                        $original
+                        ${"=".repeat(25)} updated  ${"=".repeat(25)}
+                        $updated
+                        ${"=".repeat(25)}==========${"=".repeat(25)}
+                        """
                             .trimIndent()
                     )
                 }
@@ -125,8 +153,7 @@ internal fun publishPlatformArtifactsInRootModule(project: Project) {
 private fun Document.getElement(tagName: String): Node =
     getElementsByTagName(tagName).item(0) ?: error("No element named '$tagName' in Document $this")
 
-private fun Element.getElement(tagName: String): Node =
-    getElementsByTagName(tagName).item(0) ?: error("No element named '$tagName' in Element $this")
+private fun Element.getElement(tagName: String): Node? = getElementsByTagName(tagName).item(0)
 
 private fun Document.createElement(name: String, content: String): Element {
     val element = createElement(name)
