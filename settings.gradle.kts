@@ -1,5 +1,4 @@
 import io.github.serpro69.semverkt.gradle.plugin.SemverPluginExtension
-import io.github.serpro69.semverkt.release.configuration.TagPrefix
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
@@ -11,20 +10,20 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "kotlin-faker"
+rootProject.name = "kfaker"
 
-include(
-    ":bom",
-    ":core",
-    ":cli-bot",
-)
+include(":bom", ":core", ":cli-bot")
 
-val extensions =
-    listOf(
-        "blns",
-        "kotest-property",
-    )
-extensions.forEach { include(":extension:$it") }
+project(":bom").name = "kotlin-faker-bom"
+
+project(":core").name = "kotlin-faker"
+
+val extensions = listOf("blns", "kotest-property")
+
+extensions.forEach {
+    include(":extension:$it")
+    project(":extension:$it").name = "kotlin-faker-ext-$it"
+}
 
 val fakers =
     listOf(
@@ -46,7 +45,11 @@ val fakers =
         "travel",
         "tvshows",
     )
-fakers.forEach { include(":faker:$it") }
+
+fakers.forEach {
+    include(":faker:$it")
+    project(":faker:$it").name = "kotlin-faker-$it"
+}
 
 // helpers for integration tests
 include(":test")
@@ -58,7 +61,5 @@ settings.extensions.configure<SemverPluginExtension>("semantic-versioning") {
             ignoreCase = true
         }
     }
-    version {
-        useSnapshots = true
-    }
+    version { useSnapshots = true }
 }
