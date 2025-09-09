@@ -4,13 +4,13 @@ kotlin {
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                compileOnly(projects.core)
+                compileOnly(projects.kotlinFaker)
                 compileOnly(libs.test.kotest.property)
             }
         }
         val jvmTest by getting {
             dependencies {
-                implementation(projects.core)
+                implementation(projects.kotlinFaker)
                 implementation(libs.bundles.test.kotest)
             }
         }
@@ -19,5 +19,5 @@ kotlin {
 
 tasks.jvmTest {
     useJUnitPlatform()
-    dependsOn(":core:jvmJar")
+    dependsOn(":kotlin-faker:jvmJar")
 }

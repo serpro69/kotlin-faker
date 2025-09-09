@@ -36,31 +36,31 @@ val publishToAppropriateCentralRepository by
     }
 
 dependencies {
-    nmcpAggregation(projects.bom)
-    nmcpAggregation(projects.core)
+    nmcpAggregation(projects.kotlinFakerBom)
+    nmcpAggregation(projects.kotlinFaker)
 
     // extension modules
-    nmcpAggregation(projects.extension.blns)
-    nmcpAggregation(projects.extension.kotestProperty)
+    nmcpAggregation(projects.extension.kotlinFakerExtBlns)
+    nmcpAggregation(projects.extension.kotlinFakerExtKotestProperty)
 
     // faker modules
-    nmcpAggregation(projects.faker.books)
-    nmcpAggregation(projects.faker.commerce)
-    nmcpAggregation(projects.faker.creatures)
-    nmcpAggregation(projects.faker.databases)
-    nmcpAggregation(projects.faker.edu)
-    nmcpAggregation(projects.faker.games)
-    nmcpAggregation(projects.faker.humor)
-    nmcpAggregation(projects.faker.japmedia)
-    nmcpAggregation(projects.faker.lorem)
-    nmcpAggregation(projects.faker.misc)
-    nmcpAggregation(projects.faker.movies)
-    nmcpAggregation(projects.faker.music)
-    nmcpAggregation(projects.faker.pictures)
-    nmcpAggregation(projects.faker.sports)
-    nmcpAggregation(projects.faker.tech)
-    nmcpAggregation(projects.faker.travel)
-    nmcpAggregation(projects.faker.tvshows)
+    nmcpAggregation(projects.faker.kotlinFakerBooks)
+    nmcpAggregation(projects.faker.kotlinFakerCommerce)
+    nmcpAggregation(projects.faker.kotlinFakerCreatures)
+    nmcpAggregation(projects.faker.kotlinFakerDatabases)
+    nmcpAggregation(projects.faker.kotlinFakerEdu)
+    nmcpAggregation(projects.faker.kotlinFakerGames)
+    nmcpAggregation(projects.faker.kotlinFakerHumor)
+    nmcpAggregation(projects.faker.kotlinFakerJapmedia)
+    nmcpAggregation(projects.faker.kotlinFakerLorem)
+    nmcpAggregation(projects.faker.kotlinFakerMisc)
+    nmcpAggregation(projects.faker.kotlinFakerMovies)
+    nmcpAggregation(projects.faker.kotlinFakerMusic)
+    nmcpAggregation(projects.faker.kotlinFakerPictures)
+    nmcpAggregation(projects.faker.kotlinFakerSports)
+    nmcpAggregation(projects.faker.kotlinFakerTech)
+    nmcpAggregation(projects.faker.kotlinFakerTravel)
+    nmcpAggregation(projects.faker.kotlinFakerTvshows)
 }
 
 configureGradleDaemonJvm(

@@ -11,6 +11,7 @@ val Project.libs: LibrariesForLibs
 val Project.isBomModule: Boolean
     get() = path.startsWith(":bom")
 val Project.isCoreModule: Boolean
+    // TODO: is this correct after I've renamed the module? does path change?
     get() = path.startsWith(":core")
 val Project.isFakerModule: Boolean
     get() = path.startsWith(":faker")
