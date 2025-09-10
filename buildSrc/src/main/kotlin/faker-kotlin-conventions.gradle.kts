@@ -92,16 +92,6 @@ tasks.withType<Test>().configureEach {
     )
 }
 
-tasks.withType<Jar> {
-    archiveBaseName.set(fullName)
-
-    manifest {
-        attributes(
-            mapOf("Implementation-Title" to fullName, "Implementation-Version" to project.version)
-        )
-    }
-}
-
 tasks.withType<DokkaTask>().configureEach {
     onlyIf("Not dev") { !isDev.get() }
     onlyIf("Release or snapshot") { isRelease.get() || isSnapshot.get() }

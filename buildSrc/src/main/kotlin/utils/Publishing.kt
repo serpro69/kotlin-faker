@@ -9,6 +9,7 @@ import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.tasks.GenerateMavenPom
 import org.gradle.api.tasks.PathSensitivity.NAME_ONLY
+import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.named
 import org.gradle.plugins.signing.SigningExtension
@@ -18,6 +19,9 @@ import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
 // region manually define accessors, because IntelliJ _still_ doesn't index them properly :(
+internal val Project.sourceSets: SourceSetContainer
+    get() = extensions.getByType()
+
 internal val Project.signing
     get() = extensions.getByType<SigningExtension>()
 
@@ -93,7 +97,9 @@ internal fun publishPlatformArtifactsInRootModule(project: Project) {
                                 appendChild(
                                     kmpPomDoc.createElement("dependency") {
                                         appendChild(kmpPomDoc.createElement("groupId", jvmGroupId))
-                                        appendChild(kmpPomDoc.createElement("artifactId", jvmArtifactId))
+                                        appendChild(
+                                            kmpPomDoc.createElement("artifactId", jvmArtifactId)
+                                        )
                                         appendChild(kmpPomDoc.createElement("version", jvmVersion))
                                         appendChild(kmpPomDoc.createElement("scope", "compile"))
                                     }
