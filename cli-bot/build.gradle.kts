@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.gradle.internal.os.OperatingSystem
 
 plugins {
@@ -121,9 +122,9 @@ tasks {
     compileKotlin {
         // Set version for --version options
         doFirst("Set app version") {
-            val sed = if (OperatingSystem.current().isMacOsX()) "gsed" else "sed"
+            val sed = if (OperatingSystem.current().isMacOsX) "gsed" else "sed"
             val command =
-                "find . -type f -name 'KFaker.kt' -exec ${sed} -i 's/{FAKER_VER}/${project.version}/g' {} +;"
+                "find . -type f -name 'KFaker.kt' -exec $sed -i 's/{FAKER_VER}/${project.version}/g' {} +;"
 
             exec { commandLine("sh", "-c", command) }
         }
@@ -137,3 +138,6 @@ tasks {
 
     generateResourcesConfigFile { fakers.forEach { dependsOn(":faker:kotlin-faker-$it:jvmJar") } }
 }
+
+// depend on root tag task to avoid failures due to race conditions in parallel tasks executations
+tasks.withType<TagTask>().configureEach { dependsOn(":tag") }

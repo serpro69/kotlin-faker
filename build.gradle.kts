@@ -92,23 +92,11 @@ subprojects {
     }
 }
 
-// nexusPublishing {
-//     repositories {
-//         // see
-// https://central.sonatype.org/publish/publish-portal-ossrh-staging-api/#configuration
-//         sonatype {
-//             nexusUrl.set(uri("https://ossrh-staging-api.central.sonatype.com/service/local/"))
-//             snapshotRepositoryUrl.set(
-//                 uri("https://central.sonatype.com/repository/maven-snapshots/")
-//             )
-//         }
-//     }
-// }
-
 // Run :tag only after we've published artifacts to sonatype
 tasks.withType<TagTask>().configureEach {
     // don't apply when "dryRun"
-    findProperty("dryRun") ?: run { dependsOn("publishAggregationToCentralPortal") }
+    findProperty("dryRun")
+        ?: run { dependsOn(tasks.named("publishAggregationToCentralPortalSnapshots")) }
 }
 
 tasks.dokkaGfmMultiModule { moduleName.set("kotlin-faker") }

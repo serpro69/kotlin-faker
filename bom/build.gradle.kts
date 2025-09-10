@@ -9,10 +9,17 @@ val bom = project
 
 // Exclude subprojects that will never be published so that when configuring this project
 // we don't force their configuration and do unnecessary work
-val excludeFromBom = listOf(":cli-bot", /*":docs",*/ ":extension", ":faker", ":test", ":extension:kotest-property-test")
+val excludeFromBom =
+    listOf(
+        ":cli-bot", /*":docs",*/
+        ":extension",
+        ":faker",
+        ":test",
+        ":extension:kotest-property-test",
+    )
+
 fun projectsFilter(candidateProject: Project) =
-    excludeFromBom.none { candidateProject.path == it }
-        && candidateProject.name != bom.name
+    excludeFromBom.none { candidateProject.path == it } && candidateProject.name != bom.name
 
 // Declare that this subproject depends on all subprojects matching the filter
 // When this subproject is configured, it will force configuration of all subprojects
@@ -21,17 +28,25 @@ rootProject.subprojects.filter(::projectsFilter).forEach { bom.evaluationDepends
 
 dependencies {
     constraints {
-        rootProject.subprojects.filter { project ->
-            logger.info("Include {} in bom: {}", project, project.tasks.findByName("publish")?.enabled ?: false)
-            // Only declare dependencies on projects that will have publications
-            projectsFilter(project) && project.tasks.findByName("publish")?.enabled == true
-        }.forEach { project ->
-            project.publishing.publications.forEach { publication: Publication ->
-                if (publication is MavenPublication) {
-                    // use publication coordinates rather than project because they could differ
-                    api("${publication.groupId}:${publication.artifactId}:${publication.version}")
+        rootProject.subprojects
+            .filter { project ->
+                logger.info(
+                    "Include {} in bom: {}",
+                    project,
+                    project.tasks.findByName("publish")?.enabled ?: false,
+                )
+                // Only declare dependencies on projects that will have publications
+                projectsFilter(project) && project.tasks.findByName("publish")?.enabled == true
+            }
+            .forEach { project ->
+                project.publishing.publications.forEach { publication: Publication ->
+                    if (publication is MavenPublication) {
+                        // use publication coordinates rather than project because they could differ
+                        api(
+                            "${publication.groupId}:${publication.artifactId}:${publication.version}"
+                        )
+                    }
                 }
             }
-        }
     }
 }
