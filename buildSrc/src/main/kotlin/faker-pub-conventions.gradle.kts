@@ -26,14 +26,14 @@ signing {
         )
     }
     sign(publishing.publications)
-    setRequired { Ci.isRelease } // only require signing when releasing
+    setRequired { isRelease.get() } // only require signing when releasing
 }
 
 // region Only enabling signing when publishing to Maven Central.
 // (Otherwise signing is required for dev-publish, which prevents testing if the credentials aren't
 // present.)
 gradle.taskGraph.whenReady {
-    val isPublishingToMavenCentral = Ci.isRelease
+    val isPublishingToMavenCentral = isRelease.get()
 
     if (isPublishingToMavenCentral) {
         logger.lifecycle("[faker-publishing] Publishing to Maven Central, signing is required")

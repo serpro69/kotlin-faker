@@ -5,8 +5,11 @@ import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.getByName
 import org.gradle.kotlin.dsl.the
 
+// region manually define accessors, because IntelliJ _still_ doesn't index them properly :(
 val Project.libs: LibrariesForLibs
     get() = the<LibrariesForLibs>()
+
+// endregion
 
 val Project.isBomModule: Boolean
     get() = path.startsWith(":bom")
@@ -18,7 +21,7 @@ val Project.isFakerModule: Boolean
 val Project.isExtensionModule: Boolean
     get() = path.startsWith(":extension")
 
-// versioning
+// region versioning
 val Project.isDev: Provider<Boolean>
     get() = provider { version.toString().startsWith("0.0.0") }
 
@@ -35,3 +38,5 @@ val Project.isRelease: Provider<Boolean>
         val tag = tasks.getByName("tag", TagTask::class)
         (!isDev.get() && !isSnapshot.get()) && (tag.didWork || tag.tagExists)
     }
+
+// endregion
