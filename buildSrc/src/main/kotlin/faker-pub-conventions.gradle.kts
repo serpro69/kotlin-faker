@@ -20,11 +20,7 @@ signing {
     if (!signingKey.isNullOrBlank() && !signingPassword.isNullOrBlank()) {
         useGpgCmd()
         useInMemoryPgpKeys(signingKey, signingPassword)
-    } else {
-        logger.lifecycle(
-            "[faker-publishing] No GPG signing key or password provided, skipping signing"
-        )
-    }
+    } // else use default signing plugin configuration
     sign(publishing.publications)
     setRequired { isRelease.get() } // only require signing when releasing
 }

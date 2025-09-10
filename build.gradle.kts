@@ -15,10 +15,13 @@ group = "io.github.serpro69"
 
 apiValidation { ignoredProjects.addAll(listOf("cli-bot", "test")) }
 
+val ossrhUsername: String? by project
+val ossrhPassword: String? by project
+
 nmcpAggregation {
     centralPortal {
-        username.set(System.getenv("NEW_MAVEN_CENTRAL_USERNAME"))
-        password.set(System.getenv("NEW_MAVEN_CENTRAL_PASSWORD"))
+        username.set(ossrhUsername ?: System.getenv("NEW_MAVEN_CENTRAL_USERNAME"))
+        password.set(ossrhPassword ?: System.getenv("NEW_MAVEN_CENTRAL_PASSWORD"))
         publishingType = "USER_MANAGED"
         publicationName = "Faker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
     }
@@ -105,7 +108,7 @@ subprojects {
 // Run :tag only after we've published artifacts to sonatype
 tasks.withType<TagTask>().configureEach {
     // don't apply when "dryRun"
-    findProperty("dryRun") ?: run { dependsOn("closeSonatypeStagingRepository") }
+    findProperty("dryRun") ?: run { dependsOn("publishAggregationToCentralPortal") }
 }
 
 tasks.dokkaGfmMultiModule { moduleName.set("kotlin-faker") }

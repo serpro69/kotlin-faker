@@ -44,7 +44,7 @@ abstract class BuildSettings @Inject constructor(private val providers: Provider
             ) // workaround for https://github.com/gradle/gradle/issues/12388
 
     private fun fakerFlag(name: String, default: Boolean) =
-        providers.gradleProperty("faker_$name").map { it.toBoolean() }.orElse(default)
+        providers.gradleProperty("kotlinFaker_$name").map { it.toBoolean() }.orElse(default)
 
     companion object {
         const val EXTENSION_NAME = "fakerSettings"
