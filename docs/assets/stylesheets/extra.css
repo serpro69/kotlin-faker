@@ -9,25 +9,25 @@
 }
 
 @font-face {
-  font-family: Telegraf-Regular;
-  src: url("typography/Telegraf-Regular.otf");
+  font-family: IBMPlexSans-Regular;
+  src: url("typography/IBMPlexSans-Regular.otf");
 }
 
 @font-face {
-  font-family: Telegraf-UltraBold;
-  src: url("typography/Telegraf-UltraBold.otf");
+  font-family: IBMPlexSans-Bold;
+  src: url("typography/IBMPlexSans-Bold.otf");
 }
 
-.Telegraf-Regular {
-  font-family: Telegraf-Regular;
+.IBMPlexSans-Regular {
+  font-family: IBMPlexSans-Regular;
 }
 
-.Telegraf-UltraBold {
-  font-family: Telegraf-UltraBold;
+.IBMPlexSans-Bold {
+  font-family: IBMPlexSans-Bold;
 }
 
 * {
-  --md-text-font: "Telegraf-Regular";
+  --md-text-font: "IBMPlexSans-Regular";
 }
 
 /*
