@@ -7,4 +7,4 @@
 
 ## Usage
 
-Documentation for this extension is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/extensions/kotest-property-extension).
+Documentation for this extension is available at [serpro69.github.io/kotlin-faker/](https://serpro69.github.io/kotlin-faker/dev/extensions/kotest-property-extension).

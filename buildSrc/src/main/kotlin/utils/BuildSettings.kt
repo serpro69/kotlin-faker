@@ -30,7 +30,7 @@ abstract class BuildSettings @Inject constructor(private val providers: Provider
     val enabledPublicationNamePrefixes: Provider<Set<String>> =
         fakerSetting(
                 "enabledPublicationNamePrefixes",
-                "KotlinMultiplatform,Jvm,Js,iOS,macOS,watchOS,tvOS,mingw,wasm,android,linux,pluginMaven,kotlinFakerGradlePluginPluginMarkerMaven,kotlinFakerBom",
+                "KotlinMultiplatform,Jvm,Js,iOS,macOS,watchOS,tvOS,mingw,wasm,android,linux,pluginMaven,kotlinFakerGradlePluginPluginMarkerMaven,KotlinFakerBom",
             )
             .map { enabledPlatforms ->
                 enabledPlatforms.split(",").map { it.trim() }.filter { it.isNotBlank() }.toSet()
@@ -49,11 +49,10 @@ abstract class BuildSettings @Inject constructor(private val providers: Provider
     companion object {
         const val EXTENSION_NAME = "fakerSettings"
 
-        /**
-         * Regex for matching the release version.
-         *
-         * If a version does not match this code it should be treated as a SNAPSHOT version.
-         */
-        val releaseVersionRegex = Regex("\\d+.\\d+.\\d+")
+        /** Regex for matching the release version. */
+        val releaseVersionRegex = Regex("^\\d+\\.\\d+\\.\\d+$")
+
+        /** Regex for matching the release-candidate version. */
+        val releaseCandidateVersionRegex = Regex("^\\d+\\.\\d+\\.\\d+-rc\\.\\d+$")
     }
 }
