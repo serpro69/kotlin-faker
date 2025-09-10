@@ -10,8 +10,8 @@ title: kotlin-faker
       <div class="container-row-responsive">
         <div class="container ctx-card-white-1 pt-4" style="flex: 1;">
           <div class="text-align-center">
-            <p class="display-3 Telegraf-UltraBold text-dark mx-auto mt-4">We fake it.</p>
-            <p class="display-3 Telegraf-UltraBold text-pink mx-auto my-4">You make it.</p>
+            <p class="display-3 IBMPlexSans-Bold text-dark mx-auto mt-4">We fake it.</p>
+            <p class="display-3 IBMPlexSans-Bold text-pink mx-auto my-4">You make it.</p>
           </div>
         </div>
         <div class="container ctx-card-white-1 text-dark h3" style="flex: 1;">
@@ -30,7 +30,7 @@ title: kotlin-faker
   </div>
 
   <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
-    <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">What kind of data?</p>
+    <p class="display-3 text-dark IBMPlexSans-Bold mt-4 text-align-center text-start-xl text-start-lg">What kind of data?</p>
     <p class="h2 my-3 text-dark">
       <i>Our focus is on creating realistically-looking fake data that is most suitable for development, testing,
       and data anonymization purposes through data generators that provide...</i>
@@ -134,7 +134,7 @@ title: kotlin-faker
 <section class="w-100">
   <!-- Locales and other features -->
   <div class="md-grid container pt-5 my-0 my-xl-4 my-lg-4">
-    <p class="display-3 text-dark Telegraf-UltraBold mt-4 text-align-center text-start-xl text-start-lg">Tell me more...</p>
+    <p class="display-3 text-dark IBMPlexSans-Bold mt-4 text-align-center text-start-xl text-start-lg">Tell me more...</p>
     <p class="h2 my-3 text-dark">
       <i>…data in 60+ locales:</i>
     </p>
@@ -286,8 +286,8 @@ title: kotlin-faker
       <div class="container-row-responsive">
         <div class="container ctx-card-white-1 pt-4" style="flex: 1;">
           <div class="text-align-center">
-            <p class="display-3 Telegraf-UltraBold text-dark mx-auto mt-4">WARNING</p>
-            <p class="display-3 Telegraf-UltraBold text-pink mx-auto my-4">⚠️ ⚠️ ⚠️</p>
+            <p class="display-3 IBMPlexSans-Bold text-dark mx-auto mt-4">WARNING</p>
+            <p class="display-3 IBMPlexSans-Bold text-pink mx-auto my-4">⚠️ ⚠️ ⚠️</p>
           </div>
         </div>
         <div class="container ctx-card-white-1 text-dark h3" style="flex: 1;">
