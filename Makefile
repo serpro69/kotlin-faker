@@ -140,6 +140,13 @@ release: check_java ## publishes the next release with a specified VERSION
 	# create and push git tag
 	git tag v$(VERSION)
 
+.PHONY: _deploy_docs
+_deploy_docs: # temporary target to deploy docs with mike, TODO: move to github actions
+	@./gradlew dokkaGfmMultiModule; \
+	mv build/dokka/gfmMultiModule docs/api; \
+	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 1.6 latest -t '1.6.0 (latest)' -u; \
+	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 2.0 dev -t '2.1.0-SNAPSHOT' -u
+
 .PHONY: help
 help: ## Displays this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
