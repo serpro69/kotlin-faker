@@ -4,6 +4,7 @@
 [discrete]
 === Breaking Change
 
+* https://github.com/serpro69/kotlin-faker/pull/278[#278] (extension) Change artifact names of extension modules
 * https://github.com/serpro69/kotlin-faker/pull/274[#274] (core) Add support for language variants extending their base locale
 * https://github.com/serpro69/kotlin-faker/pull/259[#259] (core) Replace java.util.Random with kotlin.random.Random
 * https://github.com/serpro69/kotlin-faker/pull/246[#246] (extension) Remove KSP from kotest-property extension
@@ -30,6 +31,7 @@
 [discrete]
 === Changed
 
+* https://github.com/serpro69/kotlin-faker/issues/278[#278] (core) Refactor build configs to use kotlin multiplatform plugin
 * https://github.com/serpro69/kotlin-faker/issues/273[#273] (docs) Migrate documentation to mkdocs
 * https://github.com/serpro69/kotlin-faker/issues/249[#249] Publish all artifacts with the same version
 

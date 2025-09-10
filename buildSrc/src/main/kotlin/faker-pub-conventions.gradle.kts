@@ -1,3 +1,4 @@
+import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType.common
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType.jvm
@@ -30,12 +31,11 @@ signing {
 // present.)
 gradle.taskGraph.whenReady {
     val isPublishingToMavenCentral = isRelease.get()
-
     if (isPublishingToMavenCentral) {
-        logger.lifecycle("[faker-publishing] Publishing to Maven Central, signing is required")
+        logger.lifecycle("[faker-publishing] Publishing ${project.name}:${version} to Maven Central, signing is required")
     } else {
         logger.lifecycle(
-            "[faker-publishing] Not publishing to Maven Central, signing is not required"
+            "[faker-publishing] Not publishing ${project.name}:${version} to Maven Central, signing is not required"
         )
     }
 
@@ -43,8 +43,10 @@ gradle.taskGraph.whenReady {
 
     tasks.withType<Sign>().configureEach {
         // redefine val for Config Cache compatibility
+        @Suppress("LocalVariableName")
         val isPublishingToMavenCentral_ = isPublishingToMavenCentral
         inputs.property("isPublishingToMavenCentral", isPublishingToMavenCentral_)
+        onlyIf("neither dev, nor snapshot") { !isDev.get() && !isSnapshot.get() }
         onlyIf("publishing to Maven Central") { isPublishingToMavenCentral_ }
     }
 }
@@ -145,7 +147,7 @@ extensions.add("fakerBomService", fakerBomService)
 
 /** Controls whether the current subproject will be included in the faker-bom. */
 val includeInFakerBom: Property<Boolean> =
-    objects.property<Boolean>().convention(project.name != "bom")
+    objects.property<Boolean>().convention(project.name != "kotlin-faker-bom")
 
 extensions.add<Property<Boolean>>("includeInFakerBom", includeInFakerBom)
 
@@ -186,9 +188,7 @@ pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
 tasks.withType<AbstractPublishToMaven>().configureEach {
     onlyIf {
         val enabled = isPublicationEnabled(publication.name).get()
-        if (!enabled) {
-            logger.lifecycle("[task: $path] publishing for ${publication.name} is disabled")
-        }
+        logger.lifecycle("[task: $path] publishing for ${publication.name} is disabled")
         enabled
     }
 }
@@ -216,7 +216,6 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
 // endregion
 
 tasks.withType<PublishToMavenRepository>().configureEach {
-    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
     dependsOn(project.tasks.withType(Sign::class.java))
     onlyIf { !isDev.get() }
     onlyIf { isRelease.get() || isSnapshot.get() }
@@ -224,8 +223,9 @@ tasks.withType<PublishToMavenRepository>().configureEach {
 
 tasks.withType<PublishToMavenLocal>().configureEach { onlyIf { isDev.get() || isSnapshot.get() } }
 
-tasks.withType<Sign>().configureEach {
-    dependsOn(project.tasks.getByName("tag")) // needed for onlyIf conditions
-    onlyIf { !isDev.get() && !isSnapshot.get() }
-    onlyIf { isRelease.get() }
+tasks.withType<TagTask>().configureEach {
+    usesService(mavenPublishLimiter)
+    // even with above, race-conditions seem to happen sometimes,
+    // hence depend on root :tag task to avoid failures of :<module>:tag tasks
+    dependsOn(":tag")
 }
