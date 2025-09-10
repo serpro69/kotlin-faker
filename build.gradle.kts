@@ -20,15 +20,14 @@ nmcpAggregation {
         username.set(System.getenv("NEW_MAVEN_CENTRAL_USERNAME"))
         password.set(System.getenv("NEW_MAVEN_CENTRAL_PASSWORD"))
         publishingType = "USER_MANAGED"
-        publicationName =
-            "Faker ${Ci.publishVersion} ${fakerSettings.enabledPublicationNamePrefixes.get()}"
+        publicationName = "Faker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
     }
 }
 
 val publishToAppropriateCentralRepository by
     tasks.registering {
         group = "publishing"
-        if (Ci.isRelease) {
+        if (isRelease.get()) {
             dependsOn(tasks.named("publishAggregationToCentralPortal"))
         } else {
             dependsOn(tasks.named("publishAggregationToCentralPortalSnapshots"))
