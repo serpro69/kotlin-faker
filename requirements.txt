@@ -2,6 +2,7 @@
 mkdocs
 mkdocs-material
 # plugins
+mkdocs-macros-plugin
 mkdocs-minify-plugin
 mkdocs-panzoom-plugin
 mkdocs-include-dir-to-nav

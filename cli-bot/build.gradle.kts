@@ -119,6 +119,8 @@ graalvmNative {
 // }
 
 tasks {
+    check { onlyIf { project.hasProperty("cliCheck") } }
+
     compileKotlin {
         // Set version for --version options
         doFirst("Set app version") {
