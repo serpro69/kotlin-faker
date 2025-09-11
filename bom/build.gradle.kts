@@ -28,30 +28,20 @@ fun projectsFilter(candidateProject: Project) =
 // so that we can declare dependencies on them
 rootProject.subprojects.filter(::projectsFilter).forEach { bom.evaluationDependsOn(it.path) }
 
-dependencies {
-    constraints {
-        val includeInBom =
-        rootProject.subprojects
-            .filter { project ->
-                logger.info(
-                    "Include {} in bom: {}",
-                    project,
-                    projectsFilter(project),
-                )
-                // Only declare dependencies on projects that will have publications
-                projectsFilter(project) && project.tasks.findByName("publish")?.enabled == true
-            }
-            .forEach { project ->
-                project.publishing.publications.forEach { publication: Publication ->
-                    if (publication is MavenPublication) {
-                        // use publication coordinates rather than project because they could differ
-                        api(
-                            "${publication.groupId}:${publication.artifactId}:${publication.version}"
-                        )
-                    }
+configurations.api.configure {
+    // lazily add the coords from all subprojects to the kotest-bom
+    dependencyConstraints.addAllLater(
+        fakerBomService.coordinates.map { coords ->
+            logger.lifecycle("[$path] adding ${coords.size} coords to kotest-bom: $coords")
+            coords
+                .distinct()
+                .sorted()
+                .map { coord ->
+                    logger.lifecycle("[$path] adding $coord dependencies")
+                    project.dependencies.constraints.create(coord)
                 }
-            }
-    }
+        }
+    )
 }
 
 publishing {
