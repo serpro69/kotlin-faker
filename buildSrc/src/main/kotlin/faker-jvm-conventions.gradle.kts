@@ -30,8 +30,6 @@ kotlin {
             }
         tasks.check { dependsOn(maxJdk.executionTask) }
     }
-
-    sourceSets { jvmTest { dependencies { implementation(libs.bundles.test.kotest) } } }
 }
 
 val versionCatalog: VersionCatalog = versionCatalogs.named("libs")

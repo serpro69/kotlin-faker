@@ -1,13 +1,12 @@
 /** Plugin for "faker libraries" */
 plugins {
-    id("org.jetbrains.dokka")
     id("faker-jvm-conventions")
     id("faker-pub-conventions")
 }
 
 kotlin {
     sourceSets {
-        val jvmTest by getting {
+        jvmTest {
             dependencies {
                 runtimeOnly("ch.qos.logback:logback-core:1.3.4") {
                     version { strictly("1.3.4") /* last stable for java 8 */ }
