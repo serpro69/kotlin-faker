@@ -6,7 +6,6 @@ plugins {
     id("faker-base")
     id("com.gradleup.nmcp.aggregation")
     alias(libs.plugins.bcv)
-    alias(libs.plugins.nexus.publish)
     alias(libs.plugins.benmanes.versions)
     alias(libs.plugins.dokka)
 }
@@ -20,10 +19,10 @@ val ossrhPassword: String? by project
 
 nmcpAggregation {
     centralPortal {
-        username.set(ossrhUsername ?: System.getenv("NEW_MAVEN_CENTRAL_USERNAME"))
-        password.set(ossrhPassword ?: System.getenv("NEW_MAVEN_CENTRAL_PASSWORD"))
+        username.set(ossrhUsername ?: System.getenv("MAVEN_CENTRAL_USERNAME"))
+        password.set(ossrhPassword ?: System.getenv("MAVEN_CENTRAL_PASSWORD"))
         publishingType = "USER_MANAGED"
-        publicationName = "Faker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
+        publicationName = "KotlinFaker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
     }
 }
 
@@ -96,7 +95,7 @@ subprojects {
 tasks.withType<TagTask>().configureEach {
     // don't apply when "dryRun"
     findProperty("dryRun")
-        ?: run { dependsOn(tasks.named("publishAggregationToCentralPortalSnapshots")) }
+        ?: run { dependsOn(tasks.named("publishToAppropriateCentralRepository")) }
 }
 
 tasks.dokkaGfmMultiModule { moduleName.set("kotlin-faker") }
