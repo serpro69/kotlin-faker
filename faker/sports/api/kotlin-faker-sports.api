@@ -1,0 +1,119 @@
+public final class io/github/serpro69/kfaker/sports/SportsFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBasketball ()Lio/github/serpro69/kfaker/sports/provider/Basketball;
+	public final fun getChess ()Lio/github/serpro69/kfaker/sports/provider/Chess;
+	public final fun getCrossfit ()Lio/github/serpro69/kfaker/sports/provider/Crossfit;
+	public final fun getESport ()Lio/github/serpro69/kfaker/sports/provider/ESport;
+	public final fun getFootball ()Lio/github/serpro69/kfaker/sports/provider/Football;
+	public final fun getMountaineering ()Lio/github/serpro69/kfaker/sports/provider/Mountaineering;
+	public final fun getSport ()Lio/github/serpro69/kfaker/sports/provider/Sport;
+	public final fun getTeam ()Lio/github/serpro69/kfaker/sports/provider/Team;
+	public final fun getVolleyball ()Lio/github/serpro69/kfaker/sports/provider/Volleyball;
+	public final fun getWorldCup ()Lio/github/serpro69/kfaker/sports/provider/WorldCup;
+}
+
+public final class io/github/serpro69/kfaker/sports/SportsFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/sports/SportsFaker;
+}
+
+public final class io/github/serpro69/kfaker/sports/SportsFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/sports/SportsFaker;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Basketball : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun coaches ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Basketball;
+	public final fun players ()Ljava/lang/String;
+	public final fun positions ()Ljava/lang/String;
+	public final fun teams ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Chess : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Chess;
+	public final fun openings ()Ljava/lang/String;
+	public final fun players ()Ljava/lang/String;
+	public final fun titles ()Ljava/lang/String;
+	public final fun tournaments ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Crossfit : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun competitions ()Ljava/lang/String;
+	public final fun femaleAthletes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Crossfit;
+	public final fun girlWorkouts ()Ljava/lang/String;
+	public final fun heroWorkouts ()Ljava/lang/String;
+	public final fun maleAthletes ()Ljava/lang/String;
+	public final fun movements ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/ESport : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun events ()Ljava/lang/String;
+	public final fun games ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/ESport;
+	public final fun leagues ()Ljava/lang/String;
+	public final fun players ()Ljava/lang/String;
+	public final fun teams ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Football : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun coaches ()Ljava/lang/String;
+	public final fun competitions ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Football;
+	public final fun players ()Ljava/lang/String;
+	public final fun positions ()Ljava/lang/String;
+	public final fun teams ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Mountaineering : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Mountaineering;
+	public final fun mountaineer ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Sport : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun ancientOlympics ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Sport;
+	public final fun summerOlympics ()Ljava/lang/String;
+	public final fun summerParalympics ()Ljava/lang/String;
+	public final fun unusual ()Ljava/lang/String;
+	public final fun winterOlympics ()Ljava/lang/String;
+	public final fun winterParalympics ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Team : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Team;
+	public final fun mascot ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun sport ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/Volleyball : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun coach ()Ljava/lang/String;
+	public final fun formation ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/Volleyball;
+	public final fun player ()Ljava/lang/String;
+	public final fun position ()Ljava/lang/String;
+	public final fun team ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/sports/provider/WorldCup : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun cities ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/sports/provider/WorldCup;
+	public final fun groups (Ljava/lang/String;)Ljava/lang/String;
+	public final fun roosters (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun stadiums ()Ljava/lang/String;
+	public final fun teams ()Ljava/lang/String;
+}
+
