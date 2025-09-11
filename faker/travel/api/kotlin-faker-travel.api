@@ -1,0 +1,120 @@
+public final class io/github/serpro69/kfaker/travel/TravelFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAirport ()Lio/github/serpro69/kfaker/travel/provider/Airport;
+	public final fun getAustralia ()Lio/github/serpro69/kfaker/travel/provider/Australia;
+	public final fun getMountain ()Lio/github/serpro69/kfaker/travel/provider/Mountain;
+	public final fun getNation ()Lio/github/serpro69/kfaker/travel/provider/Nation;
+	public final fun getTrainStation ()Lio/github/serpro69/kfaker/travel/provider/TrainStation;
+}
+
+public final class io/github/serpro69/kfaker/travel/TravelFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/travel/TravelFaker;
+}
+
+public final class io/github/serpro69/kfaker/travel/TravelFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/travel/TravelFaker;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/Airport : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getEuropeanUnion ()Lio/github/serpro69/kfaker/travel/provider/EuropeanUnion;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/Airport;
+	public final fun getUnitedStates ()Lio/github/serpro69/kfaker/travel/provider/UnitedStates;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/Australia : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun animals ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/Australia;
+	public final fun locations ()Ljava/lang/String;
+	public final fun states ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/Compass : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/Compass;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/EuropeanUnion : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getIataCode ()Lio/github/serpro69/kfaker/travel/provider/IataCode;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/EuropeanUnion;
+	public final fun large ()Ljava/lang/String;
+	public final fun medium ()Ljava/lang/String;
+}
+
+public class io/github/serpro69/kfaker/travel/provider/IataCode : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	protected final fun getLocalUniqueDataProvider ()Lio/github/serpro69/kfaker/provider/unique/LocalUniqueDataProvider;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/IataCode;
+	protected final fun getYamlCategory ()Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public final fun large ()Ljava/lang/String;
+	public final fun medium ()Ljava/lang/String;
+	public fun small ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/Mountain : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/Mountain;
+	public final fun name ()Ljava/lang/String;
+	public final fun range ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/Nation : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun capitalCity ()Ljava/lang/String;
+	public final fun flag ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/Nation;
+	public final fun language ()Ljava/lang/String;
+	public final fun nationality ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/TrainStation : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getGermany ()Lio/github/serpro69/kfaker/travel/provider/TrainStationGermany;
+	public final fun getSpain ()Lio/github/serpro69/kfaker/travel/provider/TrainStationSpain;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/TrainStation;
+	public final fun getUnitedKingdom ()Lio/github/serpro69/kfaker/travel/provider/TrainStationUnitedKingdom;
+	public final fun getUnitedStates ()Lio/github/serpro69/kfaker/travel/provider/TrainStationUnitedStates;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/TrainStationGermany : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/TrainStationGermany;
+	public final fun metro ()Ljava/lang/String;
+	public final fun railway ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/TrainStationSpain : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/TrainStationSpain;
+	public final fun metro ()Ljava/lang/String;
+	public final fun railway ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/TrainStationUnitedKingdom : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/TrainStationUnitedKingdom;
+	public final fun metro ()Ljava/lang/String;
+	public final fun railway ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/TrainStationUnitedStates : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/TrainStationUnitedStates;
+	public final fun metro ()Ljava/lang/String;
+	public final fun railway ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/travel/provider/UnitedStates : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getIataCode ()Lio/github/serpro69/kfaker/travel/provider/IataCode;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/travel/provider/UnitedStates;
+	public final fun large ()Ljava/lang/String;
+	public final fun medium ()Ljava/lang/String;
+	public final fun small ()Ljava/lang/String;
+}
+
