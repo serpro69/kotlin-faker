@@ -14,13 +14,21 @@ plugins {
 }
 
 kotlin {
-    sourceSets.configureEach {
-        withSourcesJar()
+    sourceSets {
+        configureEach {
+            withSourcesJar()
 
-        resources.srcDir("build/generated/src/jvmMain/resources")
-        dependencies {
-            implementation(platform(libs.kotlin.bom.get()))
-            implementation(libs.bundles.kotlin)
+            resources.srcDir("build/generated/src/jvmMain/resources")
+            dependencies {
+                implementation(platform(libs.kotlin.bom.get()))
+                implementation(libs.bundles.kotlin)
+            }
+        }
+
+        jvmTest {
+            dependencies {
+                implementation(libs.bundles.test.kotest)
+            }
         }
     }
 }
