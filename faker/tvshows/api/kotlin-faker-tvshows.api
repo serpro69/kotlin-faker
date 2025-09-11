@@ -1,0 +1,364 @@
+public final class io/github/serpro69/kfaker/tv/TvShowsFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAquaTeenHungerForce ()Lio/github/serpro69/kfaker/tv/provider/AquaTeenHungerForce;
+	public final fun getArcher ()Lio/github/serpro69/kfaker/tv/provider/Archer;
+	public final fun getBigBangTheory ()Lio/github/serpro69/kfaker/tv/provider/BigBangTheory;
+	public final fun getBojackHorseman ()Lio/github/serpro69/kfaker/tv/provider/BojackHorseman;
+	public final fun getBreakingBad ()Lio/github/serpro69/kfaker/tv/provider/BreakingBad;
+	public final fun getBrooklynNineNine ()Lio/github/serpro69/kfaker/tv/provider/BrooklynNineNine;
+	public final fun getBuffy ()Lio/github/serpro69/kfaker/tv/provider/Buffy;
+	public final fun getCommunity ()Lio/github/serpro69/kfaker/tv/provider/Community;
+	public final fun getDrWho ()Lio/github/serpro69/kfaker/tv/provider/DrWho;
+	public final fun getFamilyGuy ()Lio/github/serpro69/kfaker/tv/provider/FamilyGuy;
+	public final fun getFinalSpace ()Lio/github/serpro69/kfaker/tv/provider/FinalSpace;
+	public final fun getFreshPriceOfBelAir ()Lio/github/serpro69/kfaker/tv/provider/FreshPriceOfBelAir;
+	public final fun getFriends ()Lio/github/serpro69/kfaker/tv/provider/Friends;
+	public final fun getFuturama ()Lio/github/serpro69/kfaker/tv/provider/Futurama;
+	public final fun getGameOfThrones ()Lio/github/serpro69/kfaker/tv/provider/GameOfThrones;
+	public final fun getHeyArnold ()Lio/github/serpro69/kfaker/tv/provider/HeyArnold;
+	public final fun getHowIMetYourMother ()Lio/github/serpro69/kfaker/tv/provider/HowIMetYourMother;
+	public final fun getMichaelScott ()Lio/github/serpro69/kfaker/tv/provider/MichaelScott;
+	public final fun getNewGirl ()Lio/github/serpro69/kfaker/tv/provider/NewGirl;
+	public final fun getParksAndRec ()Lio/github/serpro69/kfaker/tv/provider/ParksAndRec;
+	public final fun getRickAndMorty ()Lio/github/serpro69/kfaker/tv/provider/RickAndMorty;
+	public final fun getRupaul ()Lio/github/serpro69/kfaker/tv/provider/Rupaul;
+	public final fun getSeinfeld ()Lio/github/serpro69/kfaker/tv/provider/Seinfeld;
+	public final fun getSiliconValley ()Lio/github/serpro69/kfaker/tv/provider/SiliconValley;
+	public final fun getSimpsons ()Lio/github/serpro69/kfaker/tv/provider/Simpsons;
+	public final fun getSouthPark ()Lio/github/serpro69/kfaker/tv/provider/SouthPark;
+	public final fun getSpongebob ()Lio/github/serpro69/kfaker/tv/provider/Spongebob;
+	public final fun getStarTrek ()Lio/github/serpro69/kfaker/tv/provider/StarTrek;
+	public final fun getStargate ()Lio/github/serpro69/kfaker/tv/provider/Stargate;
+	public final fun getStrangerThings ()Lio/github/serpro69/kfaker/tv/provider/StrangerThings;
+	public final fun getSuits ()Lio/github/serpro69/kfaker/tv/provider/Suits;
+	public final fun getSupernatural ()Lio/github/serpro69/kfaker/tv/provider/Supernatural;
+	public final fun getTheExpanse ()Lio/github/serpro69/kfaker/tv/provider/TheExpanse;
+	public final fun getTheITCrowd ()Lio/github/serpro69/kfaker/tv/provider/TheITCrowd;
+	public final fun getTheOffice ()Lio/github/serpro69/kfaker/tv/provider/TheOffice;
+	public final fun getTheThickOfIt ()Lio/github/serpro69/kfaker/tv/provider/TheThickOfIt;
+	public final fun getTwinPeaks ()Lio/github/serpro69/kfaker/tv/provider/TwinPeaks;
+	public final fun getVentureBros ()Lio/github/serpro69/kfaker/tv/provider/VentureBros;
+}
+
+public final class io/github/serpro69/kfaker/tv/TvShowsFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/tv/TvShowsFaker;
+}
+
+public final class io/github/serpro69/kfaker/tv/TvShowsFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/tv/TvShowsFaker;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/AquaTeenHungerForce : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/AquaTeenHungerForce;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Archer : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Archer;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/BigBangTheory : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/BigBangTheory;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/BojackHorseman : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/BojackHorseman;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun tongueTwisters ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/BreakingBad : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public final fun episode ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/BreakingBad;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/BrooklynNineNine : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/BrooklynNineNine;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Buffy : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun actors ()Ljava/lang/String;
+	public final fun bigBads ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public final fun episodes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Buffy;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Community : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Community;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/DrWho : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun actors ()Ljava/lang/String;
+	public final fun catchPhrases ()Ljava/lang/String;
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/DrWho;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun species ()Ljava/lang/String;
+	public final fun theDoctors ()Ljava/lang/String;
+	public final fun villains ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/FamilyGuy : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/FamilyGuy;
+	public final fun location ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/FinalSpace : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/FinalSpace;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun vehicles ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/FreshPriceOfBelAir : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun actors ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/FreshPriceOfBelAir;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Friends : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Friends;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Futurama : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Futurama;
+	public final fun hermesCatchphrases ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/GameOfThrones : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun cities ()Ljava/lang/String;
+	public final fun dragons ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/GameOfThrones;
+	public final fun houses ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/HeyArnold : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/HeyArnold;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/HowIMetYourMother : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun catchPhrase ()Ljava/lang/String;
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/HowIMetYourMother;
+	public final fun highFive ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/MichaelScott : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/MichaelScott;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/NewGirl : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/NewGirl;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/ParksAndRec : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun cities ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/ParksAndRec;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/RickAndMorty : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/RickAndMorty;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Rupaul : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Rupaul;
+	public final fun queens ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Seinfeld : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun business ()Ljava/lang/String;
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Seinfeld;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/SiliconValley : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun apps ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public final fun companies ()Ljava/lang/String;
+	public final fun email ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/SiliconValley;
+	public final fun inventions ()Ljava/lang/String;
+	public final fun mottos ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun urls ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Simpsons : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun episodeTitles ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Simpsons;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/SouthPark : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun episodes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/SouthPark;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Spongebob : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun episodes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Spongebob;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/StarTrek : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/StarTrek;
+	public final fun location ()Ljava/lang/String;
+	public final fun specie ()Ljava/lang/String;
+	public final fun villain ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Stargate : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Stargate;
+	public final fun planets ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/StrangerThings : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/StrangerThings;
+	public final fun quote ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Suits : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Suits;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/Supernatural : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public final fun creature ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/Supernatural;
+	public final fun weapon ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/TheExpanse : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/TheExpanse;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun ships ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/TheITCrowd : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun actors ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public final fun emails ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/TheITCrowd;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/TheOffice : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/TheOffice;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/TheThickOfIt : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun departments ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/TheThickOfIt;
+	public final fun positions ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/TwinPeaks : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/TwinPeaks;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/tv/provider/VentureBros : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/tv/provider/VentureBros;
+	public final fun organization ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+	public final fun vehicle ()Ljava/lang/String;
+}
+

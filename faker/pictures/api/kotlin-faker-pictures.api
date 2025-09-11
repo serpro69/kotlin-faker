@@ -1,0 +1,42 @@
+public final class io/github/serpro69/kfaker/pictures/PicturesFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getUiFaces ()Lio/github/serpro69/kfaker/pictures/provider/UiFaces;
+}
+
+public final class io/github/serpro69/kfaker/pictures/PicturesFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/pictures/PicturesFaker;
+}
+
+public final class io/github/serpro69/kfaker/pictures/PicturesFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/pictures/PicturesFaker;
+}
+
+public final class io/github/serpro69/kfaker/pictures/provider/UiFaces : io/github/serpro69/kfaker/provider/FakeDataProvider {
+	public final fun avatar (Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;)[B
+	public static synthetic fun avatar$default (Lio/github/serpro69/kfaker/pictures/provider/UiFaces;Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;ILjava/lang/Object;)[B
+}
+
+public final class io/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender : java/lang/Enum {
+	public static final field FEMALE Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;
+	public static final field MALE Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;
+	public static fun values ()[Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarGender;
+}
+
+public final class io/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType : java/lang/Enum {
+	public static final field ABSTRACT Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static final field ALIEN Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static final field CARTOON Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static final field HUMAN Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static final field ROBOT Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public fun toString ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+	public static fun values ()[Lio/github/serpro69/kfaker/pictures/provider/UiFacesAvatarType;
+}
+

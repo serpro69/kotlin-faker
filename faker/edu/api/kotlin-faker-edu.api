@@ -1,0 +1,93 @@
+public final class io/github/serpro69/kfaker/edu/EduFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getEducator ()Lio/github/serpro69/kfaker/edu/provider/Educator;
+	public final fun getJob ()Lio/github/serpro69/kfaker/edu/provider/Job;
+	public final fun getScience ()Lio/github/serpro69/kfaker/edu/provider/Science;
+	public final fun getUniversity ()Lio/github/serpro69/kfaker/edu/provider/University;
+}
+
+public final class io/github/serpro69/kfaker/edu/EduFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/edu/EduFaker;
+}
+
+public final class io/github/serpro69/kfaker/edu/EduFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/edu/EduFaker;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/Degree : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun courseNumber ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/Degree;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/Educator : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun campus ()Ljava/lang/String;
+	public final fun courseName ()Ljava/lang/String;
+	public final fun degree ()Ljava/lang/String;
+	public final fun getTertiary ()Lio/github/serpro69/kfaker/edu/provider/Tertiary;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/Educator;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun primary ()Ljava/lang/String;
+	public final fun primarySchool ()Ljava/lang/String;
+	public final fun schoolName ()Ljava/lang/String;
+	public final fun secondary ()Ljava/lang/String;
+	public final fun secondarySchool ()Ljava/lang/String;
+	public final fun subject ()Ljava/lang/String;
+	public final fun university ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/Job : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun educationLevel ()Ljava/lang/String;
+	public final fun employmentType ()Ljava/lang/String;
+	public final fun field ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/Job;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun keySkills ()Ljava/lang/String;
+	public final fun position ()Ljava/lang/String;
+	public final fun seniority ()Ljava/lang/String;
+	public final fun title ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/Science : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun element ()Ljava/lang/String;
+	public final fun elementState ()Ljava/lang/String;
+	public final fun elementSubcategory ()Ljava/lang/String;
+	public final fun elementSymbol ()Ljava/lang/String;
+	public final fun getBranch ()Lio/github/serpro69/kfaker/edu/provider/ScienceBranch;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/Science;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun modifier ()Ljava/lang/String;
+	public final fun scientist ()Ljava/lang/String;
+	public final fun tool ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/ScienceBranch : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun empiricalNaturalApplied ()Ljava/lang/String;
+	public final fun empiricalNaturalBasic ()Ljava/lang/String;
+	public final fun empiricalSocialApplied ()Ljava/lang/String;
+	public final fun empiricalSocialBasic ()Ljava/lang/String;
+	public final fun formalApplied ()Ljava/lang/String;
+	public final fun formalBasic ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/ScienceBranch;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/Tertiary : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getDegree ()Lio/github/serpro69/kfaker/edu/provider/Degree;
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/Tertiary;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun universityType ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/edu/provider/University : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/edu/provider/University;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun prefix ()Ljava/lang/String;
+	public final fun suffix ()Ljava/lang/String;
+}
+
