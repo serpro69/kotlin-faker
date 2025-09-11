@@ -1,0 +1,372 @@
+public final class io/github/serpro69/kfaker/games/GamesFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getClashOfClans ()Lio/github/serpro69/kfaker/games/provider/ClashOfClans;
+	public final fun getCoin ()Lio/github/serpro69/kfaker/games/provider/Coin;
+	public final fun getControl ()Lio/github/serpro69/kfaker/games/provider/Control;
+	public final fun getDnd ()Lio/github/serpro69/kfaker/games/provider/DnD;
+	public final fun getDota ()Lio/github/serpro69/kfaker/games/provider/Dota;
+	public final fun getElderScrolls ()Lio/github/serpro69/kfaker/games/provider/ElderScrolls;
+	public final fun getFallout ()Lio/github/serpro69/kfaker/games/provider/Fallout;
+	public final fun getFinalFantasyXIV ()Lio/github/serpro69/kfaker/games/provider/FinalFantasyXIV;
+	public final fun getGame ()Lio/github/serpro69/kfaker/games/provider/Game;
+	public final fun getHalfLife ()Lio/github/serpro69/kfaker/games/provider/HalfLife;
+	public final fun getHeroes ()Lio/github/serpro69/kfaker/games/provider/Heroes;
+	public final fun getHeroesOfTheStorm ()Lio/github/serpro69/kfaker/games/provider/HeroesOfTheStorm;
+	public final fun getLeagueOfLegends ()Lio/github/serpro69/kfaker/games/provider/LeagueOfLegends;
+	public final fun getMinecraft ()Lio/github/serpro69/kfaker/games/provider/Minecraft;
+	public final fun getMyst ()Lio/github/serpro69/kfaker/games/provider/Myst;
+	public final fun getOverwatch ()Lio/github/serpro69/kfaker/games/provider/Overwatch;
+	public final fun getPokemon ()Lio/github/serpro69/kfaker/games/provider/Pokemon;
+	public final fun getSonicTheHedgehog ()Lio/github/serpro69/kfaker/games/provider/SonicTheHedgehog;
+	public final fun getStreetFighter ()Lio/github/serpro69/kfaker/games/provider/StreetFighter;
+	public final fun getSuperMario ()Lio/github/serpro69/kfaker/games/provider/SuperMario;
+	public final fun getSuperSmashBros ()Lio/github/serpro69/kfaker/games/provider/SuperSmashBros;
+	public final fun getSuperhero ()Lio/github/serpro69/kfaker/games/provider/Superhero;
+	public final fun getTarkov ()Lio/github/serpro69/kfaker/games/provider/Tarkov;
+	public final fun getTouhou ()Lio/github/serpro69/kfaker/games/provider/Touhou;
+	public final fun getWarhammerFantasy ()Lio/github/serpro69/kfaker/games/provider/WarhammerFantasy;
+	public final fun getWitcher ()Lio/github/serpro69/kfaker/games/provider/Witcher;
+	public final fun getWorldOfWarcraft ()Lio/github/serpro69/kfaker/games/provider/WorldOfWarcraft;
+	public final fun getZelda ()Lio/github/serpro69/kfaker/games/provider/Zelda;
+}
+
+public final class io/github/serpro69/kfaker/games/GamesFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/games/GamesFaker;
+}
+
+public final class io/github/serpro69/kfaker/games/GamesFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/games/GamesFaker;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/ClashOfClans : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun defensiveBuildings ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/ClashOfClans;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun ranks ()Ljava/lang/String;
+	public final fun troops ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Coin : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun flip ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Coin;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Control : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun alteredItem ()Ljava/lang/String;
+	public final fun alteredWorldEvent ()Ljava/lang/String;
+	public final fun character ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Control;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hiss ()Ljava/lang/String;
+	public final fun location ()Ljava/lang/String;
+	public final fun objectOfPower ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+	public final fun theBoard ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/DnD : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun alignments ()Ljava/lang/String;
+	public final fun backgrounds ()Ljava/lang/String;
+	public final fun cities ()Ljava/lang/String;
+	public final fun getName ()Lio/github/serpro69/kfaker/games/provider/DndName;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/DnD;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun klasses ()Ljava/lang/String;
+	public final fun languages ()Ljava/lang/String;
+	public final fun meleeWeapons ()Ljava/lang/String;
+	public final fun monsters ()Ljava/lang/String;
+	public final fun races ()Ljava/lang/String;
+	public final fun rangedWeapons ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/DndName : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun firstName ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/DndName;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun lastName ()Ljava/lang/String;
+	public final fun title ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Dota : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun abaddon ()Ljava/lang/String;
+	public final fun alchemist ()Ljava/lang/String;
+	public final fun axe ()Ljava/lang/String;
+	public final fun beastmaster ()Ljava/lang/String;
+	public final fun brewmaster ()Ljava/lang/String;
+	public final fun bristleback ()Ljava/lang/String;
+	public final fun building ()Ljava/lang/String;
+	public final fun centaur ()Ljava/lang/String;
+	public final fun chaosKnight ()Ljava/lang/String;
+	public final fun clockwerk ()Ljava/lang/String;
+	public final fun doom ()Ljava/lang/String;
+	public final fun dragonKnight ()Ljava/lang/String;
+	public final fun earthSpirit ()Ljava/lang/String;
+	public final fun earthshaker ()Ljava/lang/String;
+	public final fun elderTitan ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Dota;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hero ()Ljava/lang/String;
+	public final fun huskar ()Ljava/lang/String;
+	public final fun io ()Ljava/lang/String;
+	public final fun item ()Ljava/lang/String;
+	public final fun kunkka ()Ljava/lang/String;
+	public final fun legionCommander ()Ljava/lang/String;
+	public final fun lifestealer ()Ljava/lang/String;
+	public final fun lycan ()Ljava/lang/String;
+	public final fun magnus ()Ljava/lang/String;
+	public final fun meepo ()Ljava/lang/String;
+	public final fun nightStalker ()Ljava/lang/String;
+	public final fun omniknight ()Ljava/lang/String;
+	public final fun phoenix ()Ljava/lang/String;
+	public final fun player ()Ljava/lang/String;
+	public final fun pudge ()Ljava/lang/String;
+	public final fun sandKing ()Ljava/lang/String;
+	public final fun slardar ()Ljava/lang/String;
+	public final fun spiritBreaker ()Ljava/lang/String;
+	public final fun sven ()Ljava/lang/String;
+	public final fun team ()Ljava/lang/String;
+	public final fun tidehunter ()Ljava/lang/String;
+	public final fun timbersaw ()Ljava/lang/String;
+	public final fun tiny ()Ljava/lang/String;
+	public final fun treantProtector ()Ljava/lang/String;
+	public final fun tusk ()Ljava/lang/String;
+	public final fun underlord ()Ljava/lang/String;
+	public final fun undying ()Ljava/lang/String;
+	public final fun wraithKing ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/ElderScrolls : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun city ()Ljava/lang/String;
+	public final fun creature ()Ljava/lang/String;
+	public final fun dragon ()Ljava/lang/String;
+	public final fun firstName ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/ElderScrolls;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun jewelry ()Ljava/lang/String;
+	public final fun lastName ()Ljava/lang/String;
+	public final fun race ()Ljava/lang/String;
+	public final fun region ()Ljava/lang/String;
+	public final fun weapon ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Fallout : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun factions ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Fallout;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/FinalFantasyXIV : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun dataCenters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/FinalFantasyXIV;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun jobs ()Ljava/lang/String;
+	public final fun races ()Ljava/lang/String;
+	public final fun zones ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Game : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Game;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun title ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/HalfLife : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public final fun enemy ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/HalfLife;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun location ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Heroes : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun artifacts ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Heroes;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun klasses ()Ljava/lang/String;
+	public final fun names ()Ljava/lang/String;
+	public final fun specialties ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/HeroesOfTheStorm : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun battlegrounds ()Ljava/lang/String;
+	public final fun classNames ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/HeroesOfTheStorm;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun heroes ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/LeagueOfLegends : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun champion ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/LeagueOfLegends;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun location ()Ljava/lang/String;
+	public final fun masteries ()Ljava/lang/String;
+	public final fun quote ()Ljava/lang/String;
+	public final fun rank ()Ljava/lang/String;
+	public final fun summonerSpell ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Minecraft : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun achievement ()Ljava/lang/String;
+	public final fun biome ()Ljava/lang/String;
+	public final fun blocks ()Ljava/lang/String;
+	public final fun enchantment ()Ljava/lang/String;
+	public final fun gameMode ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Minecraft;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun items ()Ljava/lang/String;
+	public final fun mobs ()Ljava/lang/String;
+	public final fun statusEffect ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Myst : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun ages ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public final fun creatures ()Ljava/lang/String;
+	public final fun games ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Myst;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Overwatch : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Overwatch;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun heroes ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Pokemon : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Pokemon;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun moves ()Ljava/lang/String;
+	public final fun names ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/SonicTheHedgehog : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public final fun game ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/SonicTheHedgehog;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun zone ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/StreetFighter : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/StreetFighter;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun moves ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun stages ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/SuperMario : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun games ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/SuperMario;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/SuperSmashBros : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun fighter ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/SuperSmashBros;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun stage ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Superhero : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Superhero;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun power ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Tarkov : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun bosses ()Ljava/lang/String;
+	public final fun factions ()Ljava/lang/String;
+	public final fun getQuests ()Lio/github/serpro69/kfaker/games/provider/TarkovQuests;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Tarkov;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun items ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+	public final fun traders ()Ljava/lang/String;
+	public final fun weapons ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/TarkovQuests : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun fence ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/TarkovQuests;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun jaeger ()Ljava/lang/String;
+	public final fun mechanic ()Ljava/lang/String;
+	public final fun peacekeeper ()Ljava/lang/String;
+	public final fun prapor ()Ljava/lang/String;
+	public final fun ragman ()Ljava/lang/String;
+	public final fun skier ()Ljava/lang/String;
+	public final fun therapist ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Touhou : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun games ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Touhou;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun songs ()Ljava/lang/String;
+	public final fun spellCards ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/WarhammerFantasy : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun creatures ()Ljava/lang/String;
+	public final fun factions ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/WarhammerFantasy;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun heroes ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Witcher : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun books ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Witcher;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+	public final fun monsters ()Ljava/lang/String;
+	public final fun potions ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun schools ()Ljava/lang/String;
+	public final fun signs ()Ljava/lang/String;
+	public final fun witchers ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/WorldOfWarcraft : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun classNames ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/WorldOfWarcraft;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun hero ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun races ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/games/provider/Zelda : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun games ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/games/provider/Zelda;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun items ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+}
+
