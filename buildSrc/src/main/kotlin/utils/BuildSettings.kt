@@ -38,7 +38,7 @@ abstract class BuildSettings @Inject constructor(private val providers: Provider
 
     private fun fakerSetting(name: String, default: String? = null) =
         providers
-            .gradleProperty("faker_$name")
+            .gradleProperty("kotlinFaker_$name")
             .orElse(
                 providers.provider { default }
             ) // workaround for https://github.com/gradle/gradle/issues/12388
