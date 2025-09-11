@@ -11,7 +11,7 @@ val bom = project
 // we don't force their configuration and do unnecessary work
 val excludeFromBom =
     listOf(
-        ":cli-bot", /*":docs",*/
+        ":cli-bot",
         ":extension",
         ":faker",
         ":test",
@@ -19,7 +19,9 @@ val excludeFromBom =
     )
 
 fun projectsFilter(candidateProject: Project) =
-    excludeFromBom.none { candidateProject.path == it } && candidateProject.name != bom.name
+    excludeFromBom.none { candidateProject.path == it }
+        && candidateProject.tasks.findByName("publish")?.enabled ?: false
+        && candidateProject.path != bom.path
 
 // Declare that this subproject depends on all subprojects matching the filter
 // When this subproject is configured, it will force configuration of all subprojects
@@ -28,12 +30,13 @@ rootProject.subprojects.filter(::projectsFilter).forEach { bom.evaluationDepends
 
 dependencies {
     constraints {
+        val includeInBom =
         rootProject.subprojects
             .filter { project ->
                 logger.info(
                     "Include {} in bom: {}",
                     project,
-                    project.tasks.findByName("publish")?.enabled ?: false,
+                    projectsFilter(project),
                 )
                 // Only declare dependencies on projects that will have publications
                 projectsFilter(project) && project.tasks.findByName("publish")?.enabled == true
@@ -48,5 +51,13 @@ dependencies {
                     }
                 }
             }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("KotlinFakerBom") {
+            from(components["javaPlatform"])
+        }
     }
 }
