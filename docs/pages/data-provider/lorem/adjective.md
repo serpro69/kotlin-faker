@@ -8,7 +8,7 @@ faker: lorem
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/adjective.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/adjective.yml"
         ```
 
 === "kotlin :material-language-kotlin:"
