@@ -8,12 +8,8 @@ kotlin {
     sourceSets {
         jvmTest {
             dependencies {
-                runtimeOnly("ch.qos.logback:logback-core:1.3.4") {
-                    version { strictly("1.3.4") /* last stable for java 8 */ }
-                }
-                runtimeOnly("ch.qos.logback:logback-classic:1.3.4") {
-                    version { strictly("1.3.4") /* last stable for java 8 */ }
-                }
+                runtimeOnly("ch.qos.logback:logback-core:1.5.18")
+                runtimeOnly("ch.qos.logback:logback-classic:1.5.18")
                 runtimeOnly("org.codehaus.groovy:groovy:3.0.24")
                 // needed to be able to run tests in intellij, no idea why... (gradle tests work
                 // fine from cli)

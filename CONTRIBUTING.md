@@ -63,18 +63,19 @@ _If this is your first pull request - please add yourself to the "contributors s
 
 ## Prerequisites
 
-* JDK 8 (temurin or any other distribution; mandatory)
-* JDK 11 (temurin or any other distribution; mandatory due to plugin dependencies)
+* JDK 11 (temurin, or any other distribution)
 * JDK 17 (GraalVM CE distribution; optional; needed for building `cli-bot` image)
+* Kotlin 2.x
+* Python 3.x (for `docs` module)
 
 Some details for the above requirements are as follows:
 
-* To build any module of kotlin-faker, jdk version 11 or higher has to be used to run gradle processes due to [`org.graalvm.buildtools.native`](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html) plugin requirements that is used in the [`cli-bot`]() build file.
-** [`core`](https://github.com/serpro69/kotlin-faker/tree/master/core) faker, and all additional [`faker`](https://github.com/serpro69/kotlin-faker/tree/master/faker) implementations will look up jdk 8 via [gradle jvm toolchains](https://docs.gradle.org/current/userguide/toolchains.html) to make sure the libraries are built with java 8 compatibility.
-** GraalVM CE is needed to build the native image of the [`cli-bot`](https://github.com/serpro69/kotlin-faker/tree/master/cli-bot) application. But since it's a module in the project and therefore is part of the project's build configuration process, it introduces a hard dependency on jdk version 11 or higher
-*** GraalVM CE jdk distribution can be omitted if one does not want to build the native image of the `cli-bot` application, but any other jdk with version >= 11 is still mandatory to build the rest of the project as mentioned above.
-*** GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the [graalvm-ce-builds releases](https://github.com/graalvm/graalvm-ce-builds/releases)
-** The [`docs`](https://github.com/serpro69/kotlin-faker/tree/master/docs) module contains documentation written in [mkdocs](https://mkdocs.org).
+* From faker 2.0.0, building and using kotlin-faker depends on jdk version 11 or higher 
+* [`core`](https://github.com/serpro69/kotlin-faker/tree/master/core) faker, and all additional [`faker`](https://github.com/serpro69/kotlin-faker/tree/master/faker) implementations will look up jdk 11 via [gradle jvm toolchains](https://docs.gradle.org/current/userguide/toolchains.html) to make sure the libraries are built with java 11 compatibility.
+* GraalVM CE is needed to build the native image of the [`cli-bot`](https://github.com/serpro69/kotlin-faker/tree/master/cli-bot) application.
+    * GraalVM CE jdk distribution can be omitted if one does not want to build the native image of the `cli-bot` application, but any other jdk with version >= 11 is still mandatory to build the rest of the project as mentioned above.
+    * GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the [graalvm-ce-builds releases](https://github.com/graalvm/graalvm-ce-builds/releases)
+* The [`docs`](https://github.com/serpro69/kotlin-faker/tree/master/docs) module contains documentation written in [mkdocs](https://mkdocs.org), which has a dependency on python for building the static documentation pages.
 
 ## Code Structure
 
