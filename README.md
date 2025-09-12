@@ -62,8 +62,8 @@ In fact, kotlin-faker is so good at generating fake data, it almost fooled us in
 
 ## Prerequisites
 
-- Faker libraries depend on java 8 and kotlin 1.9.x for runtime
-- Building faker from source requires 3 jdk distributions: jdk 8 (temurin is recommended, but any vendor should work), jdk 11 (for [`docs`](docs) module) and jdk 17 (graalvm-ce distribution, for [`cli-bot`](cli-bot) module). See [CONTRIBUTING](CONTRIBUTING.adoc) for more details.
+- java 11+ 
+- kotlin 2.x
 
 ## Installation
 
