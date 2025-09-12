@@ -5,7 +5,7 @@ Please read them thoroughly before contributing with a Pull Request, and at leas
 
 ## How to ask for help
 
-At the moment, it is totally fine to [open an issue](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) if you have any questions.
+At the moment, it is totally fine to [open an issue](https://github.com/serpro69/kotlin-faker/issues/new) if you have any questions.
 This might change though, depending on the time needed to answer.
 Although, please note that this is free and open source software and there are no guarantees on any kind of support from our side.
 
@@ -42,8 +42,8 @@ Please note that we can only merge a PR if:
 
 First please [fork this repository](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) to be able to contribute any changes.
 
-The code in this codebase is managed by https://git-scm.com/[Git] for version control, and it uses https://gradle.org/[Gradle] as a build tool.
-We use [gradle wrapper](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt), so you normally don't need to install gradle separately.
+The code in this codebase is managed by [Git](https://git-scm.com/) for version control, and it uses [Gradle](https://gradle.org/) as a build tool.
+We use [gradle wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html), so you normally don't need to install gradle separately.
 
 You can run `./gradlew clean test` to download the dependencies and ensure that everything is set up correctly.
 
@@ -51,10 +51,10 @@ Now you can create a new branch describing the change you are about to make, e.g
 
 ### Your First Contribution
 
-If you are interested in contributing, but don't have a specific issue at heart, we would recommend looking through the issues labelled [help wanted](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt).
+If you are interested in contributing, but don't have a specific issue at heart, we would recommend looking through the issues labelled [help wanted](https://github.com/serpro69/kotlin-faker/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted+%3Asos%3A%22).
 
 If you are new to contributing to open source, we recommend having a look at a http://makeapullrequest.com/[free tutorial] for this.
-Issues labelled [good first issue](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) are meant specifically to get started in the repository.
+Issues labelled [good first issue](https://github.com/serpro69/kotlin-faker/issues?q=is%3Aopen+label%3A%22good+first+issue+%3Ahammer%3A%22+sort%3Aupdated-desc) are meant specifically to get started in the repository.
 
 If you are stuck at any point, feel free to comment in the issue you chose.
 We try to be as helpful to newcomers as possible, and you don't have to be afraid of "dumb" questions.
@@ -69,11 +69,11 @@ _If this is your first pull request - please add yourself to the "contributors s
 
 Some details for the above requirements are as follows:
 
-* To build any module of kotlin-faker, jdk version 11 or higher has to be used to run gradle processes due to [`org.graalvm.buildtools.native`](https://github.com/serpro69/kotlin-faker/blob/master/LICENSE.md) plugin requirements that is used in the [`cli-bot`](https://github.com/serpro69/kotlin-faker/blob/master/LICENSE.md) build file.
-** [`core`](https://github.com/serpro69/kotlin-faker/tree/master/core) faker, and all additional [`faker`](https://github.com/serpro69/kotlin-faker/tree/master/faker) implementations will look up jdk 8 via [gradle jvm toolchains](https://github.com/serpro69/kotlin-faker/tree/master/faker) to make sure the libraries are built with java 8 compatibility.
+* To build any module of kotlin-faker, jdk version 11 or higher has to be used to run gradle processes due to [`org.graalvm.buildtools.native`](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html) plugin requirements that is used in the [`cli-bot`]() build file.
+** [`core`](https://github.com/serpro69/kotlin-faker/tree/master/core) faker, and all additional [`faker`](https://github.com/serpro69/kotlin-faker/tree/master/faker) implementations will look up jdk 8 via [gradle jvm toolchains](https://docs.gradle.org/current/userguide/toolchains.html) to make sure the libraries are built with java 8 compatibility.
 ** GraalVM CE is needed to build the native image of the [`cli-bot`](https://github.com/serpro69/kotlin-faker/tree/master/cli-bot) application. But since it's a module in the project and therefore is part of the project's build configuration process, it introduces a hard dependency on jdk version 11 or higher
 *** GraalVM CE jdk distribution can be omitted if one does not want to build the native image of the `cli-bot` application, but any other jdk with version >= 11 is still mandatory to build the rest of the project as mentioned above.
-*** GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the [graalvm-ce-builds releases](https://github.com/serpro69/kotlin-faker/tree/master/cli-bot)
+*** GraalVM CE jdk can be installed with e.g. sdkman, or can be downloaded and installed directly from the [graalvm-ce-builds releases](https://github.com/graalvm/graalvm-ce-builds/releases)
 ** The [`docs`](https://github.com/serpro69/kotlin-faker/tree/master/docs) module contains documentation written in [mkdocs](https://mkdocs.org).
 
 ## Code Structure
@@ -184,9 +184,9 @@ class Name internal constructor(fakerService: FakerService) : YamlFakeDataProvid
 
 #### Examples
 
-* In addition to the above instructions, you can also take a look at [`0b34d1`](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) commit, which can be used as an MVP example of all of the above steps.
+* In addition to the above instructions, you can also take a look at [`0b34d1`](https://github.com/serpro69/kotlin-faker/commit/0b34d19d77aa728ed87382444908c90a63cc5f52) commit, which can be used as an MVP example of all of the above steps.
 
-* Also see [#222](https://github.com/serpro69/kotlin-faker/blob/master/core/src/main/kotlin/io/github/serpro69/kfaker/Faker.kt) for an example of adding a completely new faker implementation module
+* Also see [#222](https://github.com/serpro69/kotlin-faker/pull/222) for an example of adding a completely new faker implementation module
 
 #### Which Faker implementation to use?
 
