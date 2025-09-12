@@ -8,7 +8,7 @@ faker: creatures
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/animal.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/animal.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

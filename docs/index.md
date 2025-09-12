@@ -81,7 +81,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "faker/commerce/src/test/kotlin/io/github/serpro69/kfaker/commerce/integration/docs/Homepage.kt:commerce_faker_one"
+        --8<-- "faker/commerce/src/jvmTest/kotlin/io/github/serpro69/kfaker/commerce/integration/docs/Homepage.kt:commerce_faker_one"
         ```
       </div>
     </div>
@@ -91,7 +91,7 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "faker/books/src/test/kotlin/io/github/serpro69/kfaker/books/integration/docs/Homepage.kt:books_faker_one"
+        --8<-- "faker/books/src/jvmTest/kotlin/io/github/serpro69/kfaker/books/integration/docs/Homepage.kt:books_faker_one"
         ```
       </div>
     </div>
@@ -101,8 +101,8 @@ title: kotlin-faker
       </div>
       <div markdown="1" class="text-dark h3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
         ```kotlin
-        --8<-- "faker/movies/src/test/kotlin/io/github/serpro69/kfaker/movies/integration/docs/Homepage.kt:movies_faker_one"
-        --8<-- "faker/tvshows/src/test/kotlin/io/github/serpro69/kfaker/tv/integration/docs/Homepage.kt:tvshows_faker_one"
+        --8<-- "faker/movies/src/jvmTest/kotlin/io/github/serpro69/kfaker/movies/integration/docs/Homepage.kt:movies_faker_one"
+        --8<-- "faker/tvshows/src/jvmTest/kotlin/io/github/serpro69/kfaker/tv/integration/docs/Homepage.kt:tvshows_faker_one"
         ```
       </div>
     </div>

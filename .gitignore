@@ -1,6 +1,9 @@
 .allure/
 .gradle/
 .idea/
+.classpath
+.project
+.settings/
 .kotlin/
 .kotlintest/
 .env

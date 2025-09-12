@@ -3,5 +3,5 @@ title: en-PAK
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/en-PAK.yml"
+--8<-- "core/src/jvmMain/resources/locales/en-PAK.yml"
 ```

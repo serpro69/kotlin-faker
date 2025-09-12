@@ -5,7 +5,7 @@ icon: fontawesome/solid/gear
 
 # :fontawesome-solid-gear: Data Generators
 
-Below is the list of available Fakers domains and their data providers (data generators) that correspond to the yaml dictionary files found in [core/locales/en](https://github.com/serpro69/kotlin-faker/tree/master/core/src/main/resources/locales/en)
+Below is the list of available Fakers domains and their data providers (data generators) that correspond to the yaml dictionary files found in [core/locales/en](https://github.com/serpro69/kotlin-faker/tree/master/core/src/jvmMain/resources/locales/en)
 
 !!! info
     Not all (although most) of the providers (generators) and/or their functions are implemented at this point. For more details on available functions see the documentation for each provider below, or go to the <a href="{{ page.meta.base_uri }}api/">Core API</a> page to browse the API reference documentation.

@@ -8,7 +8,7 @@ faker: travel
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/train_station.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/train_station.yml"
         ```
 
 

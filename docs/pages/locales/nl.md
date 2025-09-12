@@ -3,5 +3,5 @@ title: nl
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/nl.yml"
+--8<-- "core/src/jvmMain/resources/locales/nl.yml"
 ```
