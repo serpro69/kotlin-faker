@@ -119,7 +119,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Compile native image
-        run: ./gradlew :cli-bot:check :cli-bot:nativeCompile -P"cliCheck=true"
+        run: ./gradlew :cli-bot:check :cli-bot:nativeCompile -P"kotlinFaker_enableCli"
         shell: bash
 
       - name: Test native image
