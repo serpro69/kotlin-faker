@@ -88,7 +88,9 @@ class RandomClassProviderTest :
             class Foo(val i: Int)
             class TestClass(
                 val b: Boolean = true,
+                val c: Char = 'c',
                 val i: Int = Int.MAX_VALUE,
+                val l: Long = Long.MAX_VALUE,
                 val s: String = "foobar",
                 val foo: Foo = Foo(369),
             )
@@ -105,7 +107,9 @@ class RandomClassProviderTest :
                             .also { it.configure { defaultValuesStrategy = USE_DEFAULTS } }
                             .randomClassInstance()
                     testClass.b shouldBe true
+                    testClass.c shouldBe 'c'
                     testClass.i shouldBe Int.MAX_VALUE
+                    testClass.l shouldBe Long.MAX_VALUE
                     testClass.s shouldBe "foobar"
                     testClass.foo.i shouldBe 369
                 }
@@ -115,7 +119,9 @@ class RandomClassProviderTest :
                             .also { it.configure { defaultValuesStrategy = PICK_RANDOMLY } }
                             .randomClassInstance()
                     (testClass.b ||
+                        testClass.c == 'c' ||
                         testClass.i == Int.MAX_VALUE ||
+                        testClass.l == Long.MAX_VALUE ||
                         testClass.s == "foobar" ||
                         testClass.i == 369) shouldBe true
                 }
@@ -617,7 +623,7 @@ class RandomClassProviderTest :
 
                 val nullable =
                     randomProvider.randomClassInstance<Nullable> {
-                        collectionsSize = 10
+                        collectionsSize = 25
                         collectionElementTypeGenerator<Int?> {
                             if (random.nextBoolean()) null else 42
                         }

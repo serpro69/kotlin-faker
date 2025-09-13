@@ -15,7 +15,7 @@ kotlin {
                 implementation(libs.rgxgen)
             }
         }
-        jvmTest { dependencies { implementation("com.google.guava:guava:33.4.8-jre") } }
+        jvmTest { dependencies { implementation(libs.guava) } }
     }
 }
 

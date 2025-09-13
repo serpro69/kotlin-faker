@@ -1,6 +1,7 @@
 [versions]
 classgraph = "4.8.165"
 commons-io = "2.15.1"
+guava = "33.4.8-jre"
 icu4j = "77.1"
 jackson = "2.19.0"
 kotlin = "2.1.21"
@@ -33,6 +34,7 @@ gradleDaemonJvm = "21"
 [libraries]
 commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
 classgraph = { module = "io.github.classgraph:classgraph", version.ref = "classgraph" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
 icu4j = { module = "com.ibm.icu:icu4j", version.ref = "icu4j" }
 jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }

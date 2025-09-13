@@ -323,7 +323,8 @@ internal class RandomServiceTest :
                 }
 
                 it("should return a random shuffled subset") {
-                    val subset = randomService.randomSubset(set, shuffled = true)
+                    val subset =
+                        randomService.randomSubset(set, sizeRange = 10..20, shuffled = true)
                     assertSoftly {
                         set shouldContainAll subset
                         if (subset.size > 1)
