@@ -32,7 +32,9 @@ signing {
 gradle.taskGraph.whenReady {
     val isPublishingToMavenCentral = isRelease.get()
     if (isPublishingToMavenCentral) {
-        logger.lifecycle("[faker-publishing] Publishing ${project.name}:${version} to Maven Central, signing is required")
+        logger.lifecycle(
+            "[faker-publishing] Publishing ${project.name}:${version} to Maven Central, signing is required"
+        )
     } else {
         logger.lifecycle(
             "[faker-publishing] Not publishing ${project.name}:${version} to Maven Central, signing is not required"
@@ -43,8 +45,7 @@ gradle.taskGraph.whenReady {
 
     tasks.withType<Sign>().configureEach {
         // redefine val for Config Cache compatibility
-        @Suppress("LocalVariableName")
-        val isPublishingToMavenCentral_ = isPublishingToMavenCentral
+        @Suppress("LocalVariableName") val isPublishingToMavenCentral_ = isPublishingToMavenCentral
         inputs.property("isPublishingToMavenCentral", isPublishingToMavenCentral_)
         onlyIf("neither dev, nor snapshot") { !isDev.get() && !isSnapshot.get() }
         onlyIf("publishing to Maven Central") { isPublishingToMavenCentral_ }
@@ -186,11 +187,9 @@ pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
 
 // region Letting Faker settings control which publications are enabled
 tasks.withType<AbstractPublishToMaven>().configureEach {
-    onlyIf {
-        val enabled = isPublicationEnabled(publication.name).get()
-        logger.lifecycle("[task: $path] publishing for ${publication.name} is disabled")
-        enabled
-    }
+    val enabled = isPublicationEnabled(publication.name).get()
+    logger.lifecycle("[task: $path] publishing for ${publication.name} is $enabled")
+    onlyIf("publishing enabled") { enabled }
 }
 
 private val fakerSettings = extensions.getByType<BuildSettings>()
