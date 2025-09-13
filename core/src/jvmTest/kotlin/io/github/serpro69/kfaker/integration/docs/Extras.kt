@@ -125,7 +125,7 @@ class Extras :
 
                         val nullable =
                             faker.randomClass.randomClassInstance<Nullable> {
-                                collectionsSize = 10
+                                collectionsSize = 25
                                 collectionElementTypeGenerator<Int?> {
                                     if (faker.random.nextBoolean()) null else 42
                                 }
@@ -588,8 +588,8 @@ class Extras :
                 faker.unique.clear(faker::random)
                 // disable global unique values for Random provider
                 faker.unique.configuration { disable(faker::random) }
-                val ints = List(21) { faker.random.nextInt(42) }
-                assert(ints.distinct().size < 21)
+                val ints = List(30) { faker.random.nextInt(42) }
+                assert(ints.distinct().size < 30)
                 // --8<-- [end:extras_random_everything_eleven]
             }
         }

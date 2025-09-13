@@ -41,8 +41,8 @@ class StringIT : DescribeSpec() {
                     faker.string.letterify(sourceString) shouldContain "#"
                 }
                 it("can have duplicates") {
-                    val list = List(1000) { faker.string.letterify(sourceString) }
-                    list.distinct().size shouldBeLessThan 1000
+                    val list = List(4200) { faker.string.letterify(sourceString) }
+                    list.distinct().size shouldBeLessThan 4200
                 }
                 it("should be upper") { faker.string.letterify("###", true) should beUpperCase() }
                 it("should be lower") { faker.string.letterify("###", false) should beLowerCase() }
