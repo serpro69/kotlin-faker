@@ -6,22 +6,22 @@ icon: material/hand-extended
 
 ## About
 
-`kotlin-faker-kotest-property` artifact extends [`Arb` generators](https://kotest.io/docs/proptest/property-test-generators.html) and provides an easy way to use kotlin-faker functionality with [kotest property testing](https://kotest.io/docs/proptest/property-based-testing.html).
+`kotlin-faker-ext-kotest-property` artifact extends [`Arb` generators](https://kotest.io/docs/proptest/property-test-generators.html) and provides an easy way to use kotlin-faker functionality with [kotest property testing](https://kotest.io/docs/proptest/property-based-testing.html).
 
 ## Usage
 
 ### Installation
 
-`kotlin-faker-kotest-property` extension needs to be added in your `build.gradle.kts` alongside core `kotlin-faker` dependency:
+`kotlin-faker-ext-kotest-property` extension needs to be added in your `build.gradle.kts` alongside core `kotlin-faker` dependency:
 
 - ① add the core `kotlin-faker` dependency to the test classpath
-- ② add the `testImplementation` dependency for the `kotlin-faker-kotest-property` extension
+- ② add the `testImplementation` dependency for the `kotlin-faker-ext-kotest-property` extension
 
 === "gradle :simple-gradle:"
     ```kotlin
     dependencies {
         testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion") // ①
-        testImplementation("io.github.serpro69:kotlin-faker-kotest-property:$fakerExtVersion") // ②
+        testImplementation("io.github.serpro69:kotlin-faker-ext-kotest-property:$fakerExtVersion") // ②
     }
     ```
 

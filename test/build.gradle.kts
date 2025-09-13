@@ -7,7 +7,8 @@ plugins {
 }
 
 dependencies {
-    testImplementation(project(path = ":core", configuration = "shadow"))
+    testImplementation(libs.bundles.kotlin)
+    testImplementation(project(path = ":kotlin-faker"))
     testImplementation(libs.bundles.test.kotest)
 }
 

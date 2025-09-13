@@ -1,13 +1,23 @@
-/**
- * Plugin for :extension:* modules
- */
+/** Plugin for :extension:* modules */
+plugins { id("faker-lib-conventions") }
 
-plugins {
-    id("faker-kotlin-conventions")
-    id("faker-pub-conventions")
+kotlin {
+    sourceSets {
+        jvmMain {
+            dependencies {
+                compileOnly(project(":kotlin-faker"))
+            }
+        }
+        jvmTest {
+            dependencies {
+                // needed for tests since we have compileOnly dependency
+                implementation(project(":kotlin-faker"))
+            }
+        }
+    }
 }
 
-dependencies {
-    val implementation by configurations
-    implementation(libs.bundles.kotlin)
+tasks.named<Test>("jvmTest") {
+    // TODO: is this needed?
+    dependsOn(":kotlin-faker:jvmJar")
 }
