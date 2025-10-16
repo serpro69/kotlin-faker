@@ -29,7 +29,7 @@ import kotlin.random.asJavaRandom
  *   specified.
  */
 class FakerService {
-    @Suppress("RegExpRedundantEscape") private val locale: String
+    private val locale: String
     internal val faker: AbstractFaker
     internal val randomService: RandomService
     internal val dictionary: Dictionary = EnumMap(YamlCategory::class.java)
