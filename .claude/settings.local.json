@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__find_file",
+      "mcp__serena__find_symbol",
+      "mcp__serena__list_dir",
+      "mcp__serena__search_for_pattern",
+      "mcp__task-master-ai__add_task",
+      "mcp__task-master-ai__analyze_project_complexity",
+      "mcp__task-master-ai__complexity_report",
+      "mcp__task-master-ai__expand_all",
+      "mcp__task-master-ai__expand_task",
+      "mcp__task-master-ai__get_task",
+      "mcp__task-master-ai__get_tasks",
+      "mcp__task-master-ai__next_task",
+      "mcp__task-master-ai__parse_prd",
+      "mcp__task-master-ai__set_task_status",
+      "mcp__task-master-ai__update_subtask",
+      "mcp__zen__codereview",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(task-master:*)",
+      "Read(./**/consensus*.md)",
+      "Read(./**/review*.md)"
+    ],
+    "ask": []
+  },
+  "enabledMcpjsonServers": []
+}
