@@ -17,6 +17,9 @@ site/
 !docs/gradle/wrapper/gradle-wrapper.jar
 # kotlin-language-server
 kls_database.db
+**/.settings/
+**/.project
+**/.classpath
 
 # FIXME remove when Gradle Daemon JVM can be auto-provisioned - see configureGradleDaemonJvm()
 gradle/gradle-daemon-jvm.properties
@@ -25,3 +28,4 @@ gradle/gradle-daemon-jvm.properties
 **/.DS_Store
 
 __pycache__/
+
