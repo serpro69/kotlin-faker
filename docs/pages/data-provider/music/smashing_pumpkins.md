@@ -8,7 +8,7 @@ faker: music
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/smashing_pumpkins.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/smashing_pumpkins.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

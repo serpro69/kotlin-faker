@@ -1,5 +1,5 @@
 ---
-name: Deploy Docs
+name: docs
 
 on:
   workflow_dispatch:

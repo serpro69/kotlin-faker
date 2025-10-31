@@ -3,5 +3,5 @@ title: en-BORK
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/en-BORK.yml"
+--8<-- "core/src/jvmMain/resources/locales/en-BORK.yml"
 ```

@@ -8,7 +8,7 @@ faker: movies
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/the_room.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/the_room.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

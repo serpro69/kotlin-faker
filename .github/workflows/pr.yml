@@ -1,0 +1,186 @@
+---
+name: pr
+
+on:
+  pull_request:
+  merge_group:
+
+env:
+  GRAALCE_JDK_VERSION: '17.0.9'
+  # concatenation of env variables isn't currently supported
+  # so need to specify version explicitly
+  GRAALVM_HOME: /opt/hostedtoolcache/Java_graalce_jdk/17.0.9/x64
+
+concurrency:
+  group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: Determine workflows to run
+    runs-on: ubuntu-latest
+    outputs:
+      run_docs: ${{ steps.check_files.outputs.run_docs }}
+      run_tests: ${{ steps.check_files.outputs.run_tests }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: check modified files
+        id: check_files
+        run: |
+          echo "run_docs=false" >> $GITHUB_OUTPUT
+          echo "run_tests=false" >> $GITHUB_OUTPUT
+
+          echo "=============== list modified files ==============="
+          git diff --name-only HEAD^ HEAD
+
+          echo "========== check paths of modified files =========="
+          git diff --name-only HEAD^ HEAD > files.txt
+          while IFS= read -r file
+          do
+            echo $file
+            if [[ $file != docs/* ]]; then
+              echo "This modified file is not under the 'docs' folder. Will run tests."
+              echo "run_tests=true" >> $GITHUB_OUTPUT
+            elif [[ $file = docs/* ]] || [[ $file = mkdocs.yml ]] || [[ $file = main.py ]]; then
+              echo "This modified file is under the 'docs' folder. Will run docs workflow."
+              echo "run_docs=true" >> $GITHUB_OUTPUT
+            fi
+          done < files.txt
+
+  validate-api:
+    name: Validate API
+    needs: [changes]
+    if: ${{ github.repository == 'serpro69/kotlin-faker' && needs.changes.outputs.run_tests == 'true' }}
+    uses: ./.github/workflows/run_gradle.yml
+    secrets: inherit
+    with:
+      runs-on: ubuntu-latest
+      ref: ${{ inputs.ref }}
+      task: apiCheck --continue
+
+  gradle-check:
+    name: Run gradle check
+    if: ${{ github.repository == 'serpro69/kotlin-faker' && needs.changes.outputs.run_tests == 'true' }}
+    needs: [changes, validate-api]
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+          - os: ubuntu-latest
+          - os: windows-latest
+      fail-fast: false
+    uses: ./.github/workflows/run_gradle.yml
+    secrets: inherit
+    with:
+      runs-on: ${{ matrix.os }}
+      ref: ${{ inputs.ref }}
+      task: >
+        -P"kotlinFaker_enableKotlinJs=true"
+        -P"kotlinFaker_enableKotlinNative=true"
+        --continue
+        check
+
+  # TODO: extract gradle stuff to run_gradle.yml
+  cli-check:
+    name: Build and Test Native Image
+    if: ${{ github.repository == 'serpro69/kotlin-faker' && needs.changes.outputs.run_tests == 'true' }}
+    runs-on: ubuntu-latest
+    needs: [changes, validate-api]
+    steps:
+      - uses: actions/checkout@v4
+      # loosely based on https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#installing-java-from-local-file
+      - id: fetch_latest_jdk
+        run: |
+          jdk_version=${{ env.GRAALCE_JDK_VERSION }}
+          cd $RUNNER_TEMP
+          latest_jdk_download_url="https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${jdk_version}/graalvm-community-jdk-${jdk_version}_linux-x64_bin.tar.gz"
+          echo "$latest_jdk_download_url"
+          curl -Ls "$latest_jdk_download_url" -o java_package.tar.gz
+          echo "java_version=$jdk_version" >> "$GITHUB_OUTPUT"
+
+      - name: Set up GraalCE JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'jdkfile'
+          jdkFile: ${{ runner.temp }}/java_package.tar.gz
+          java-version: ${{ steps.fetch_latest_jdk.outputs.java_version }}
+          architecture: x64
+          mvn-toolchain-vendor: GraalVM
+          mvn-toolchain-id: graalce-${{ env.GRAALCE_JDK_VERSION }}
+
+      - name: Gradle Wrapper Validation
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Compile native image
+        run: ./gradlew :cli-bot:check :cli-bot:nativeCompile -P"kotlinFaker_enableCli"
+        shell: bash
+
+      - name: Test native image
+        run: |-
+          _app_path=$(find ./cli-bot/build/native/nativeCompile/ -type f -name faker-bot\* -not -name \*.txt)
+          mv "$_app_path" $RUNNER_TEMP/faker-bot
+          # run several iterations to test various pathways when generating data
+          for i in {0..10}; do
+            ${{ runner.temp }}/faker-bot list --verbose >/dev/null || false
+            ${{ runner.temp }}/faker-bot lookup a --verbose >/dev/null || false
+          done
+
+      - name: Upload build reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports-${{ runner.os }}-${{ github.action }}-${{ github.run_id }}
+          path: |
+            **/build/reports/
+            **/*.hprof
+            **/*.log
+          if-no-files-found: ignore
+
+  docs-check:
+    name: Run docs check
+    needs: [changes]
+    if: ${{ github.repository == 'serpro69/kotlin-faker' && needs.changes.outputs.run_docs == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install -r requirements.txt
+      - name: Build mkdocs pages
+        run: |
+          mkdocs build
+
+  finalize:
+    # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
+    name: Final PR results
+    needs: [validate-api, gradle-check, docs-check]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check all job status
+        # see https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#needs-context
+        # see https://stackoverflow.com/a/67532120/4907315
+        # Note: skipped results are OK in our case, we don't run code tests if there's only docs changes
+        if: >-
+          ${{
+               contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
+        run: exit 1

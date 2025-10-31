@@ -1,0 +1,851 @@
+public abstract class io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	protected final fun getFakerService ()Lio/github/serpro69/kfaker/FakerService;
+	protected final fun getRandomService ()Lio/github/serpro69/kfaker/RandomService;
+	public final fun getUnique ()Lio/github/serpro69/kfaker/provider/unique/GlobalUniqueDataProvider;
+}
+
+public abstract class io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public fun <init> ()V
+	public abstract fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public final fun fakerConfig (Lkotlin/jvm/functions/Function1;)V
+	protected final fun getConfig ()Lio/github/serpro69/kfaker/FakerConfig;
+	protected final fun setConfig (Lio/github/serpro69/kfaker/FakerConfig;)V
+}
+
+public final class io/github/serpro69/kfaker/Faker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAddress ()Lio/github/serpro69/kfaker/provider/Address;
+	public final fun getColor ()Lio/github/serpro69/kfaker/provider/Color;
+	public final fun getCrypto ()Lio/github/serpro69/kfaker/provider/misc/CryptographyProvider;
+	public final fun getCurrency ()Lio/github/serpro69/kfaker/provider/Currency;
+	public final fun getCurrencySymbol ()Lio/github/serpro69/kfaker/provider/CurrencySymbol;
+	public final fun getFile ()Lio/github/serpro69/kfaker/provider/File;
+	public final fun getGender ()Lio/github/serpro69/kfaker/provider/Gender;
+	public final fun getIdNumber ()Lio/github/serpro69/kfaker/provider/IdNumber;
+	public final fun getInternet ()Lio/github/serpro69/kfaker/provider/Internet;
+	public final fun getMeasurement ()Lio/github/serpro69/kfaker/provider/Measurement;
+	public final fun getMoney ()Lio/github/serpro69/kfaker/provider/Money;
+	public final fun getName ()Lio/github/serpro69/kfaker/provider/Name;
+	public final fun getPerson ()Lio/github/serpro69/kfaker/provider/Person;
+	public final fun getPhoneNumber ()Lio/github/serpro69/kfaker/provider/PhoneNumber;
+	public final fun getRandom ()Lio/github/serpro69/kfaker/provider/misc/RandomProvider;
+	public final fun getRandomClass ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public final fun getSeparator ()Lio/github/serpro69/kfaker/provider/Separator;
+	public final fun getString ()Lio/github/serpro69/kfaker/provider/misc/StringProvider;
+}
+
+public final class io/github/serpro69/kfaker/Faker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/Faker;
+}
+
+public final class io/github/serpro69/kfaker/FakerConfig {
+	public static final field Companion Lio/github/serpro69/kfaker/FakerConfig$Companion;
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/random/Random;ILio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public static final fun builder ()Lio/github/serpro69/kfaker/FakerConfig$Builder;
+	public final fun getLocale ()Ljava/lang/String;
+	public final fun getRandom ()Lkotlin/random/Random;
+	public final fun getUniqueGeneratorRetryLimit ()I
+}
+
+public final class io/github/serpro69/kfaker/FakerConfig$Builder {
+	public final fun build ()Lio/github/serpro69/kfaker/FakerConfig;
+	public final fun getLocale ()Ljava/lang/String;
+	public final fun getRandom ()Lkotlin/random/Random;
+	public final fun getRandomSeed ()Ljava/lang/Long;
+	public final fun getUniqueGeneratorRetryLimit ()I
+	public final fun randomClassInstance (Lkotlin/jvm/functions/Function1;)V
+	public final fun setLocale (Ljava/lang/String;)V
+	public final fun setRandom (Lkotlin/random/Random;)V
+	public final fun setRandomSeed (Ljava/lang/Long;)V
+	public final fun setUniqueGeneratorRetryLimit (I)V
+	public final fun withLocale (Ljava/lang/String;)Lio/github/serpro69/kfaker/FakerConfig$Builder;
+	public final fun withRandom (Lkotlin/random/Random;)Lio/github/serpro69/kfaker/FakerConfig$Builder;
+	public final fun withRandomSeed (J)Lio/github/serpro69/kfaker/FakerConfig$Builder;
+	public final fun withUniqueGeneratorRetryLimit (I)Lio/github/serpro69/kfaker/FakerConfig$Builder;
+}
+
+public final class io/github/serpro69/kfaker/FakerConfig$Companion {
+	public final fun builder ()Lio/github/serpro69/kfaker/FakerConfig$Builder;
+}
+
+public final class io/github/serpro69/kfaker/FakerConfigBuilder {
+	public static final fun fakerConfig (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/FakerConfig;
+}
+
+public abstract interface annotation class io/github/serpro69/kfaker/FakerDsl : java/lang/annotation/Annotation {
+}
+
+public final class io/github/serpro69/kfaker/FakerExtKt {
+	public static final fun getRcp ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public static final fun randomClassInstance (Lkotlin/reflect/KClass;Lio/github/serpro69/kfaker/FakerConfig;)Ljava/lang/Object;
+	public static final fun randomClassInstance (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static synthetic fun randomClassInstance$default (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/serpro69/kfaker/FakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/Faker;
+}
+
+public final class io/github/serpro69/kfaker/FakerService {
+	public final fun getLetterify (Ljava/lang/String;)Lkotlin/jvm/functions/Function1;
+	public final fun getNumerify (Ljava/lang/String;)Lkotlin/jvm/functions/Function0;
+	public final fun getRawValue-DOu9s8A (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;)Ljava/lang/String;
+	public final fun getRawValue-DOu9s8A (Lio/github/serpro69/kfaker/dictionary/YamlCategory;[Ljava/lang/String;)Ljava/lang/String;
+	public final fun getRawValue-EpprjwY (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun getRawValue-f6CUTBQ (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun getRegexify (Ljava/lang/String;)Lkotlin/jvm/functions/Function0;
+	public final fun letterify (Ljava/lang/String;)Ljava/lang/String;
+	public final fun load (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Lio/github/serpro69/kfaker/dictionary/Category;)Ljava/util/EnumMap;
+	public static synthetic fun load$default (Lio/github/serpro69/kfaker/FakerService;Lio/github/serpro69/kfaker/dictionary/YamlCategory;Lio/github/serpro69/kfaker/dictionary/Category;ILjava/lang/Object;)Ljava/util/EnumMap;
+	public final fun resolve (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;)Ljava/lang/String;
+	public final fun resolve (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public final fun resolve (Lio/github/serpro69/kfaker/dictionary/YamlCategory;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+}
+
+public class io/github/serpro69/kfaker/FunctionalUtil {
+	public fun <init> ()V
+	public static fun fromConsumer (Ljava/util/function/Consumer;)Lkotlin/jvm/functions/Function1;
+}
+
+public abstract interface class io/github/serpro69/kfaker/IRandom {
+	public abstract fun getConfig ()Lio/github/serpro69/kfaker/FakerConfig;
+	public abstract fun nextBoolean ()Z
+	public abstract fun nextChar ()C
+	public abstract fun nextDouble ()D
+	public abstract fun nextEnum (Ljava/lang/Class;)Ljava/lang/Enum;
+	public abstract fun nextEnum (Ljava/lang/Class;Lkotlin/jvm/functions/Function1;)Ljava/lang/Enum;
+	public abstract fun nextEnum ([Ljava/lang/Enum;)Ljava/lang/Enum;
+	public abstract fun nextFloat ()F
+	public abstract fun nextInt ()I
+	public abstract fun nextInt (I)I
+	public abstract fun nextInt (II)I
+	public abstract fun nextInt (Lkotlin/ranges/IntRange;)I
+	public abstract fun nextLetter (Z)C
+	public abstract fun nextLong ()J
+	public abstract fun nextLong (J)J
+	public abstract fun nextLong (JJ)J
+	public abstract fun nextLong (Lkotlin/ranges/LongRange;)J
+	public abstract fun nextUUID ()Ljava/lang/String;
+	public abstract fun randomDate (Ljava/time/Instant;Ljava/time/Instant;Ljava/time/ZoneOffset;)Ljava/time/OffsetDateTime;
+	public abstract fun randomFutureDate ()Ljava/time/OffsetDateTime;
+	public abstract fun randomFutureDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public abstract fun randomPastDate ()Ljava/time/OffsetDateTime;
+	public abstract fun randomPastDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public abstract fun randomString (IILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public abstract fun randomString (ILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public abstract fun randomString (IZ)Ljava/lang/String;
+	public abstract fun randomSublist (Ljava/util/List;IZ)Ljava/util/List;
+	public abstract fun randomSublist (Ljava/util/List;Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public abstract fun randomSubset (Ljava/util/Set;IZ)Ljava/util/Set;
+	public abstract fun randomSubset (Ljava/util/Set;Lkotlin/ranges/IntRange;Z)Ljava/util/Set;
+	public abstract fun randomValue (Ljava/util/List;)Ljava/lang/Object;
+	public abstract fun randomValue ([Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/serpro69/kfaker/IRandom$DefaultImpls {
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;IILjava/util/Locale;ZZZZILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;ILjava/util/Locale;ZZZZILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;IZILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun randomSublist$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/List;IZILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun randomSublist$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/List;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun randomSubset$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/Set;IZILjava/lang/Object;)Ljava/util/Set;
+	public static synthetic fun randomSubset$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/Set;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/Set;
+}
+
+public final class io/github/serpro69/kfaker/RandomService : io/github/serpro69/kfaker/IRandom {
+	public fun getConfig ()Lio/github/serpro69/kfaker/FakerConfig;
+	public fun nextBoolean ()Z
+	public fun nextChar ()C
+	public fun nextDouble ()D
+	public fun nextEnum (Ljava/lang/Class;)Ljava/lang/Enum;
+	public fun nextEnum (Ljava/lang/Class;Lkotlin/jvm/functions/Function1;)Ljava/lang/Enum;
+	public fun nextEnum ([Ljava/lang/Enum;)Ljava/lang/Enum;
+	public fun nextFloat ()F
+	public fun nextInt ()I
+	public fun nextInt (I)I
+	public fun nextInt (II)I
+	public fun nextInt (Lkotlin/ranges/IntRange;)I
+	public fun nextLetter (Z)C
+	public fun nextLong ()J
+	public fun nextLong (J)J
+	public fun nextLong (JJ)J
+	public fun nextLong (Lkotlin/ranges/LongRange;)J
+	public fun nextUUID ()Ljava/lang/String;
+	public fun randomDate (Ljava/time/Instant;Ljava/time/Instant;Ljava/time/ZoneOffset;)Ljava/time/OffsetDateTime;
+	public fun randomFutureDate ()Ljava/time/OffsetDateTime;
+	public fun randomFutureDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public fun randomPastDate ()Ljava/time/OffsetDateTime;
+	public fun randomPastDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public fun randomString (IILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public fun randomString (ILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public fun randomString (IZ)Ljava/lang/String;
+	public fun randomSublist (Ljava/util/List;IZ)Ljava/util/List;
+	public fun randomSublist (Ljava/util/List;Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public fun randomSubset (Ljava/util/Set;IZ)Ljava/util/Set;
+	public fun randomSubset (Ljava/util/Set;Lkotlin/ranges/IntRange;Z)Ljava/util/Set;
+	public fun randomValue (Ljava/util/List;)Ljava/lang/Object;
+	public fun randomValue ([Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class io/github/serpro69/kfaker/dictionary/Category {
+	public static final field Companion Lio/github/serpro69/kfaker/dictionary/Category$Companion;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/dictionary/Category$Companion {
+	public final fun ofName (Ljava/lang/String;)Lio/github/serpro69/kfaker/dictionary/Category;
+}
+
+public final class io/github/serpro69/kfaker/dictionary/RawExpression {
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lio/github/serpro69/kfaker/dictionary/RawExpression;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/dictionary/YamlCategory : java/lang/Enum, io/github/serpro69/kfaker/dictionary/Category {
+	public static final field ADDRESS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ADJECTIVE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field AIRPORT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ANCIENT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field APP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field APPLIANCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field AQUA_TEEN_HUNGER_FORCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ARCHER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ARTIST Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field AVATAR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BACK_TO_THE_FUTURE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BANK Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BARCODE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BASKETBALL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BEER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BIBLE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BIG_BANG_THEORY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BLOOD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BOJACK_HORSEMAN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BOOK Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BOOKS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BOSSA_NOVA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BREAKING_BAD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BROOKLYN_NINE_NINE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BUFFY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field BUSINESS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CAMERA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CANNABIS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CELL_PHONE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CHESS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CHIQUITO Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CHUCK_NORRIS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CODE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COFFEE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COIN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COLOR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COMMERCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COMMUNITY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COMPANY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COMPASS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COMPUTER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CONAN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CONSTRUCTION Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COSMERE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field COWBOY_BEBOP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CREATURE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CROSSFIT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CRYPTO_COIN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CULTURE_SERIES Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CURRENCY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CURRENCY_SYMBOL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field CUSTOM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field Companion Lio/github/serpro69/kfaker/dictionary/YamlCategory$Companion;
+	public static final field DATABASE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DC_COMICS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DEMOGRAPHIC Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DEPARTED Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DESSERT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DEVICE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DND Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DORAEMON Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DRAGON_BALL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DRIVING_LICENSE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DRONE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DR_WHO Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DUMB_AND_DUMBER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field DUNE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field EDUCATOR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ELECTRICAL_COMPONENTS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field EMOTION Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ESPORT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FAMILY_GUY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FILE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FINAL_SPACE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FINANCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FMA_BROTHERHOOD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FOOD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FOOTBALL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FRESH_PRINCE_OF_BEL_AIR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FRIENDS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FUNNY_NAME Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field FUTURAMA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GAME Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GAMES Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GAME_OF_THRONES Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GENDER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GHOSTBUSTERS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GRATEFUL_DEAD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field GREEK_PHILOSOPHERS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HACKER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HACKERS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HARRY_POTTER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HEROES Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HEROES_OF_THE_STORM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HEY_ARNOLD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HIPSTER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HITCHHIKERS_GUIDE_TO_THE_GALAXY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HOBBIT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HOBBY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HOUSE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HOW_I_MET_YOUR_MOTHER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field HOW_TO_TRAIN_YOUR_DRAGON Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ID_NUMBER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field INDUSTRY_SEGMENTS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field INTERNET Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field INVOICE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field JOB Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field KAMEN_RIDER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field KPOP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LEBOWSKI Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LOCATIONS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LORD_OF_THE_RINGS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LOREM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field LOVECRAFT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MARKDOWN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MARKETING Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MEASUREMENT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MICHAEL_SCOTT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MILITARY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MONEY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MOUNTAIN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MOUNTAINEERING Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MOVIE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field MUSIC Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field NAME Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field NARUTO Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field NATION Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field NATO_PHONETIC_ALPHABET Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field NEW_GIRL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ONE_PIECE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field OPERA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PARKS_AND_REC Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PEARL_JAM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PHISH Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PHONE_NUMBER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PRINCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PRINCESS_BRIDE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field PROGRAMMING_LANGUAGE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field QUOTE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RAJNIKANTH Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RELATIONSHIP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RESTAURANT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RICK_AND_MORTY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field ROCK_BAND Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RUPAUL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field RUSH Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SCIENCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SEINFELD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SEPARATOR Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SHAKESPEARE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SILICON_VALLEY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SIMPSONS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SLACK_EMOJI Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SMASHING_PUMPKINS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SOURCE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SOUTH_PARK Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SPACE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SPONGEBOB Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SPORT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STARGATE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STAR_TREK Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STAR_WARS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STRANGER_THINGS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STRIPE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field STUDIO_GHIBLI Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SUBSCRIPTION Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SUITS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SUPERHERO Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SUPERNATURAL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field SWORD_ART_ONLINE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TARKOV Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TEA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TEAM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THEATER Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THE_EXPANSE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THE_IT_CROWD Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THE_OFFICE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THE_ROOM Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field THE_THICK_OF_IT Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TOLKIEN Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TRAIN_STATION Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TRON Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field TWIN_PEAKS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field UMPHREYS_MCGEE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field UNIVERSITY Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field VEHICLE Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field VENTURE_BROS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field VERBS Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field VOLLEYBALL Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field V_FOR_VENDETTA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field WORLD_CUP Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static final field YODA Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public synthetic fun getName ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	public static fun values ()[Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+}
+
+public final class io/github/serpro69/kfaker/dictionary/YamlCategory$Companion {
+}
+
+public final class io/github/serpro69/kfaker/exception/DictionaryKeyNotFoundException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
+public final class io/github/serpro69/kfaker/exception/RetryLimitException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun <init> (Ljava/lang/Throwable;)V
+}
+
+public abstract class io/github/serpro69/kfaker/provider/AbstractFakeDataProvider : io/github/serpro69/kfaker/provider/FakeDataProvider {
+	public final fun clear (Ljava/lang/String;)V
+	public final fun clearAll ()V
+	protected abstract fun getCategory ()Lio/github/serpro69/kfaker/dictionary/Category;
+	protected final fun getFakerService ()Lio/github/serpro69/kfaker/FakerService;
+	protected abstract fun getLocalUniqueDataProvider ()Lio/github/serpro69/kfaker/provider/unique/LocalUniqueDataProvider;
+	public abstract fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	protected final fun resolveUniqueValue (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/String;
+	protected final fun resolveUniqueValue (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/String;
+	protected final fun resolveUniqueValue (Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+	protected final fun resolveUniqueValue (Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Address : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun buildingNumber ()Ljava/lang/String;
+	public final fun city ()Ljava/lang/String;
+	public final fun cityPrefix ()Ljava/lang/String;
+	public final fun citySuffix ()Ljava/lang/String;
+	public final fun cityWithState ()Ljava/lang/String;
+	public final fun community ()Ljava/lang/String;
+	public final fun communityPrefix ()Ljava/lang/String;
+	public final fun communitySuffix ()Ljava/lang/String;
+	public final fun country ()Ljava/lang/String;
+	public final fun countryByCode (Ljava/lang/String;)Ljava/lang/String;
+	public final fun countryByName (Ljava/lang/String;)Ljava/lang/String;
+	public final fun countryCode ()Ljava/lang/String;
+	public final fun countryCodeLong ()Ljava/lang/String;
+	public final fun defaultCountry ()Ljava/lang/String;
+	public final fun fullAddress ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Address;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun mailbox ()Ljava/lang/String;
+	public final fun postcode ()Ljava/lang/String;
+	public final fun postcodeByState (Ljava/lang/String;)Ljava/lang/String;
+	public final fun secondaryAddress ()Ljava/lang/String;
+	public final fun state ()Ljava/lang/String;
+	public final fun stateAbbr ()Ljava/lang/String;
+	public final fun streetAddress ()Ljava/lang/String;
+	public final fun streetName ()Ljava/lang/String;
+	public final fun streetSuffix ()Ljava/lang/String;
+	public final fun timeZone ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/CellPhone : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/CellPhone;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun number ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Color : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Color;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Currency : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun code ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Currency;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun symbol ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/CurrencySymbol : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/CurrencySymbol;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun symbol ()Ljava/lang/String;
+}
+
+public abstract interface class io/github/serpro69/kfaker/provider/FakeDataProvider {
+}
+
+public final class io/github/serpro69/kfaker/provider/File : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun extension ()Ljava/lang/String;
+	public final fun getMimeType ()Lio/github/serpro69/kfaker/provider/FileMimeType;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/File;
+}
+
+public final class io/github/serpro69/kfaker/provider/FileMimeType : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun application ()Ljava/lang/String;
+	public final fun audio ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/FileMimeType;
+	public final fun image ()Ljava/lang/String;
+	public final fun message ()Ljava/lang/String;
+	public final fun model ()Ljava/lang/String;
+	public final fun multipart ()Ljava/lang/String;
+	public final fun text ()Ljava/lang/String;
+	public final fun video ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Gender : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun binaryTypes ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Gender;
+	public final fun shortBinaryTypes ()Ljava/lang/String;
+	public final fun types ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/IdNumber : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/IdNumber;
+	public final fun invalid ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Internet : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun botUserAgent (Ljava/lang/String;)Ljava/lang/String;
+	public final fun domain (ZLjava/lang/String;)Ljava/lang/String;
+	public static synthetic fun domain$default (Lio/github/serpro69/kfaker/provider/Internet;ZLjava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun domainSuffix ()Ljava/lang/String;
+	public final fun email ()Ljava/lang/String;
+	public final fun email (Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun email$default (Lio/github/serpro69/kfaker/provider/Internet;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Internet;
+	public final fun iPv4Address ()Ljava/lang/String;
+	public final fun iPv6Address ()Ljava/lang/String;
+	public final fun macAddress (Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun macAddress$default (Lio/github/serpro69/kfaker/provider/Internet;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun privateIPv4Address ()Ljava/lang/String;
+	public final fun publicIPv4Address ()Ljava/lang/String;
+	public final fun safeDomainSuffix ()Ljava/lang/String;
+	public final fun safeEmail ()Ljava/lang/String;
+	public final fun safeEmail (Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun safeEmail$default (Lio/github/serpro69/kfaker/provider/Internet;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun slug ()Ljava/lang/String;
+	public final fun userAgent (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Measurement : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Measurement;
+	public final fun height ()Ljava/lang/String;
+	public final fun length ()Ljava/lang/String;
+	public final fun metricHeight ()Ljava/lang/String;
+	public final fun metricLength ()Ljava/lang/String;
+	public final fun metricVolume ()Ljava/lang/String;
+	public final fun metricWeight ()Ljava/lang/String;
+	public final fun volume ()Ljava/lang/String;
+	public final fun weight ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Money : io/github/serpro69/kfaker/provider/AbstractFakeDataProvider {
+	public final fun amount ()Ljava/lang/String;
+	public final fun amount (Lkotlin/ranges/IntRange;)Ljava/lang/String;
+	public final fun amount (Lkotlin/ranges/IntRange;Z)Ljava/lang/String;
+	public final fun amount (Lkotlin/ranges/IntRange;ZLjava/lang/String;)Ljava/lang/String;
+	public final fun amount (Lkotlin/ranges/IntRange;ZLjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun amount$default (Lio/github/serpro69/kfaker/provider/Money;Lkotlin/ranges/IntRange;ZLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Money;
+}
+
+public final class io/github/serpro69/kfaker/provider/Name : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun femaleFirstName ()Ljava/lang/String;
+	public final fun firstName ()Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Name;
+	public final fun lastName ()Ljava/lang/String;
+	public final fun maleFirstName ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun nameWithMiddle ()Ljava/lang/String;
+	public final fun neutralFirstName ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Person {
+	public final fun birthDate (J)Ljava/time/LocalDate;
+	public final fun birthDate (JLjava/time/LocalDate;)Ljava/time/LocalDate;
+	public static synthetic fun birthDate$default (Lio/github/serpro69/kfaker/provider/Person;JLjava/time/LocalDate;ILjava/lang/Object;)Ljava/time/LocalDate;
+}
+
+public final class io/github/serpro69/kfaker/provider/PhoneNumber : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun areaCode ()Ljava/lang/String;
+	public final fun countryCode ()Ljava/lang/String;
+	public final fun exchangeCode ()Ljava/lang/String;
+	public final fun extension ()Ljava/lang/String;
+	public final fun getCellPhone ()Lio/github/serpro69/kfaker/provider/CellPhone;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/PhoneNumber;
+	public final fun phoneNumber ()Ljava/lang/String;
+	public final fun subscriberNumber ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Separator : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Separator;
+	public final fun separator ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/Source : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/Source;
+}
+
+public abstract class io/github/serpro69/kfaker/provider/YamlFakeDataProvider : io/github/serpro69/kfaker/provider/AbstractFakeDataProvider {
+	public fun <init> (Lio/github/serpro69/kfaker/FakerService;)V
+	public synthetic fun getCategory ()Lio/github/serpro69/kfaker/dictionary/Category;
+	protected final fun getCategory ()Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	protected fun getSecondaryCategory ()Lio/github/serpro69/kfaker/dictionary/Category;
+	protected abstract fun getYamlCategory ()Lio/github/serpro69/kfaker/dictionary/YamlCategory;
+	protected final fun resolve (Lio/github/serpro69/kfaker/dictionary/Category;Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Lio/github/serpro69/kfaker/dictionary/Category;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	protected final fun resolve (Lkotlin/Pair;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy : java/lang/Enum {
+	public static final field MAX_NUM_OF_ARGS Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+	public static final field MIN_NUM_OF_ARGS Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+	public static final field NO_ARGS Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+	public static fun values ()[Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/CryptographyProvider : io/github/serpro69/kfaker/provider/AbstractFakeDataProvider {
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/misc/CryptographyProvider;
+	public final fun md5 ()Ljava/lang/String;
+	public final fun sha1 ()Ljava/lang/String;
+	public final fun sha224 ()Ljava/lang/String;
+	public final fun sha256 ()Ljava/lang/String;
+	public final fun sha384 ()Ljava/lang/String;
+	public final fun sha512 ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy : java/lang/Enum {
+	public static final field ALL_RANDOM Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static final field PICK_RANDOMLY Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static final field USE_DEFAULTS Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public static fun values ()[Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/FallbackStrategy : java/lang/Enum {
+	public static final field FAIL_IF_NOT_FOUND Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public static final field USE_MAX_NUM_OF_ARGS Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public static final field USE_MIN_NUM_OF_ARGS Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public static fun values ()[Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/ParameterInfo {
+	public fun <init> (ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun component5 ()Lkotlin/reflect/KType;
+	public final fun component6 ()Lkotlin/reflect/KParameter$Kind;
+	public final fun copy (ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
+	public static synthetic fun copy$default (Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;ILjava/lang/String;ZZLkotlin/reflect/KType;Lkotlin/reflect/KParameter$Kind;ILjava/lang/Object;)Lio/github/serpro69/kfaker/provider/misc/ParameterInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getIndex ()I
+	public final fun getKind ()Lkotlin/reflect/KParameter$Kind;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getType ()Lkotlin/reflect/KType;
+	public fun hashCode ()I
+	public final fun isOptional ()Z
+	public final fun isVararg ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/RandomClassProvider {
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public final fun configure (Lkotlin/jvm/functions/Function1;)V
+	public final fun copy ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public final fun getConfig ()Lio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;
+	public final fun new ()Lio/github/serpro69/kfaker/provider/misc/RandomClassProvider;
+	public final fun randomClassInstance (Lkotlin/reflect/KClass;)Ljava/lang/Object;
+	public final synthetic fun randomClassInstance (Lkotlin/reflect/KClass;Lio/github/serpro69/kfaker/provider/misc/RandomProviderConfig;)Ljava/lang/Object;
+	public final fun randomClassInstance (Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public final fun reset ()V
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/RandomProvider : io/github/serpro69/kfaker/provider/AbstractFakeDataProvider, io/github/serpro69/kfaker/IRandom {
+	public final fun clear (Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;)V
+	public fun getConfig ()Lio/github/serpro69/kfaker/FakerConfig;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/misc/RandomProvider;
+	public fun nextBoolean ()Z
+	public fun nextChar ()C
+	public fun nextDouble ()D
+	public fun nextEnum (Ljava/lang/Class;)Ljava/lang/Enum;
+	public fun nextEnum (Ljava/lang/Class;Lkotlin/jvm/functions/Function1;)Ljava/lang/Enum;
+	public fun nextEnum ([Ljava/lang/Enum;)Ljava/lang/Enum;
+	public fun nextFloat ()F
+	public fun nextInt ()I
+	public fun nextInt (I)I
+	public fun nextInt (II)I
+	public fun nextInt (Lkotlin/ranges/IntRange;)I
+	public fun nextLetter (Z)C
+	public fun nextLong ()J
+	public fun nextLong (J)J
+	public fun nextLong (JJ)J
+	public fun nextLong (Lkotlin/ranges/LongRange;)J
+	public fun nextUUID ()Ljava/lang/String;
+	public fun randomDate (Ljava/time/Instant;Ljava/time/Instant;Ljava/time/ZoneOffset;)Ljava/time/OffsetDateTime;
+	public fun randomFutureDate ()Ljava/time/OffsetDateTime;
+	public fun randomFutureDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public fun randomPastDate ()Ljava/time/OffsetDateTime;
+	public fun randomPastDate (Ljava/time/Instant;)Ljava/time/OffsetDateTime;
+	public fun randomString (IILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public fun randomString (ILjava/util/Locale;ZZZZ)Ljava/lang/String;
+	public fun randomString (IZ)Ljava/lang/String;
+	public fun randomSublist (Ljava/util/List;IZ)Ljava/util/List;
+	public fun randomSublist (Ljava/util/List;Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public fun randomSubset (Ljava/util/Set;IZ)Ljava/util/Set;
+	public fun randomSubset (Ljava/util/Set;Lkotlin/ranges/IntRange;Z)Ljava/util/Set;
+	public fun randomValue (Ljava/util/List;)Ljava/lang/Object;
+	public fun randomValue ([Ljava/lang/Object;)Ljava/lang/Object;
+	public final fun resolveUnique (Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/RandomProvider$Key : java/lang/Enum {
+	public static final field NEXT_CHAR Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_DOUBLE Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_ENUM Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_FLOAT Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_INT Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_LETTER Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_LONG Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field NEXT_UUID Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field RANDOM_DATE Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field RANDOM_STRING Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field RANDOM_SUBLIST Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field RANDOM_SUBSET Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static final field RANDOM_VALUE Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+	public static fun values ()[Lio/github/serpro69/kfaker/provider/misc/RandomProvider$Key;
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/RandomProviderConfig {
+	public fun <init> ()V
+	public final fun getCollectionElementTypeGenerators ()Ljava/util/HashMap;
+	public final fun getCollectionsSize ()I
+	public final fun getConstructorFilterStrategy ()Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;
+	public final fun getConstructorParamSize ()I
+	public final fun getDefaultValuesStrategy ()Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;
+	public final fun getFallbackStrategy ()Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;
+	public final fun getMapEntriesTypeGenerators ()Lkotlin/Pair;
+	public final fun getNamedParameterGenerators ()Ljava/util/Map;
+	public final fun getNullableGenerators ()Ljava/util/HashMap;
+	public final fun getPredefinedGenerators ()Ljava/util/HashMap;
+	public final fun setCollectionsSize (I)V
+	public final fun setConstructorFilterStrategy (Lio/github/serpro69/kfaker/provider/misc/ConstructorFilterStrategy;)V
+	public final fun setConstructorParamSize (I)V
+	public final fun setDefaultValuesStrategy (Lio/github/serpro69/kfaker/provider/misc/DefaultValuesStrategy;)V
+	public final fun setFallbackStrategy (Lio/github/serpro69/kfaker/provider/misc/FallbackStrategy;)V
+}
+
+public final class io/github/serpro69/kfaker/provider/misc/StringProvider : io/github/serpro69/kfaker/provider/AbstractFakeDataProvider {
+	public final fun bothify (Ljava/lang/String;Ljava/lang/Boolean;)Ljava/lang/String;
+	public static synthetic fun bothify$default (Lio/github/serpro69/kfaker/provider/misc/StringProvider;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Ljava/lang/String;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public fun getUnique ()Lio/github/serpro69/kfaker/provider/misc/StringProvider;
+	public final fun letterify (Ljava/lang/String;Ljava/lang/Boolean;)Ljava/lang/String;
+	public static synthetic fun letterify$default (Lio/github/serpro69/kfaker/provider/misc/StringProvider;Ljava/lang/String;Ljava/lang/Boolean;ILjava/lang/Object;)Ljava/lang/String;
+	public final fun numerify (Ljava/lang/String;)Ljava/lang/String;
+	public final fun regexify (Ljava/lang/String;)Ljava/lang/String;
+	public final fun regexify (Lkotlin/text/Regex;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/provider/unique/GlobalUniqueDataProvider : io/github/serpro69/kfaker/provider/unique/UniqueDataProvider {
+	public final fun clear (Lkotlin/reflect/KProperty0;)V
+	public fun clearAll ()V
+	public final fun configuration (Lkotlin/jvm/functions/Function1;)V
+	public fun disableAll ()V
+	public final fun getConfig ()Lio/github/serpro69/kfaker/provider/unique/UniqueProviderConfiguration;
+}
+
+public final class io/github/serpro69/kfaker/provider/unique/LocalUniqueDataProvider : io/github/serpro69/kfaker/provider/unique/UniqueDataProvider {
+	public fun <init> ()V
+	public final fun clear (Ljava/lang/String;)V
+	public fun clearAll ()V
+	public fun disableAll ()V
+}
+
+public abstract class io/github/serpro69/kfaker/provider/unique/UniqueDataProvider {
+	public fun <init> ()V
+	public abstract fun clearAll ()V
+	public abstract fun disableAll ()V
+}
+
+public final class io/github/serpro69/kfaker/provider/unique/UniqueProviderConfiguration {
+	public fun <init> ()V
+	public final synthetic fun clear (Lkotlin/reflect/KClass;)V
+	public final synthetic fun disable (Lkotlin/reflect/KClass;)V
+	public final fun disable (Lkotlin/reflect/KProperty0;)V
+	public final fun disableAll ()V
+	public final synthetic fun enable (Lkotlin/reflect/KClass;)V
+	public final fun enable (Lkotlin/reflect/KProperty0;)V
+	public final fun enable (Lkotlin/reflect/KProperty0;Lkotlin/jvm/functions/Function1;)V
+	public final fun exclude (Ljava/util/List;)V
+	public final fun exclude (Lkotlin/jvm/functions/Function0;)V
+	public final fun getExcludedPatterns ()Ljava/util/List;
+	public final fun getExcludedValues ()Ljava/util/List;
+	public final fun getMarkedUnique ()Ljava/util/Set;
+	public final fun getProviderExclusionPatterns ()Ljava/util/HashMap;
+	public final fun getProviderFunctionExclusionPatterns ()Ljava/util/HashMap;
+	public final fun getUsedProviderFunctionValues ()Ljava/util/HashMap;
+	public final fun getUsedProviderValues ()Ljava/util/HashMap;
+}
+
+public final class io/github/serpro69/kfaker/provider/unique/UniqueProviderConfiguration$sam$i$java_util_function_BiFunction$0 : java/util/function/BiFunction {
+	public fun <init> (Lkotlin/jvm/functions/Function2;)V
+	public final synthetic fun apply (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class io/github/serpro69/kfaker/provider/unique/UniqueProviderDelegate : kotlin/properties/ReadOnlyProperty {
+	public fun <init> (Lio/github/serpro69/kfaker/provider/unique/LocalUniqueDataProvider;Lio/github/serpro69/kfaker/FakerService;)V
+	public fun getValue (Lio/github/serpro69/kfaker/provider/AbstractFakeDataProvider;Lkotlin/reflect/KProperty;)Lio/github/serpro69/kfaker/provider/AbstractFakeDataProvider;
+	public synthetic fun getValue (Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;
+}
+

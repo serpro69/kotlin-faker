@@ -1,7 +1,0 @@
-<hr>
-<span class="icon-text">
-  <span class="icon"><i class="fas fa-list-ul"></i></span>
-  <span>
-    <a href="{{ page.link }}#toc">back-to-toc</a>
-  </span>
-</span>

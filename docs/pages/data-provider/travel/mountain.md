@@ -8,7 +8,7 @@ faker: travel
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/mountain.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/mountain.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

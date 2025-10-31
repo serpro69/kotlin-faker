@@ -3,5 +3,5 @@ title: sk
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/sk.yml"
+--8<-- "core/src/jvmMain/resources/locales/sk.yml"
 ```

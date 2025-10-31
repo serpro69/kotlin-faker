@@ -8,7 +8,7 @@ faker: sports
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/volleyball.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/volleyball.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

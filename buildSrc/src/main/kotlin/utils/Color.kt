@@ -1,6 +1,6 @@
 package utils
 
-internal enum class Color(ansiCode: Int) {
+enum class Color(ansiCode: Int) {
     NONE(0),
     BLACK(30),
     RED(31),
@@ -17,4 +17,3 @@ internal enum class Color(ansiCode: Int) {
         return ansiString
     }
 }
-

@@ -3,5 +3,5 @@ title: ca
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/ca.yml"
+--8<-- "core/src/jvmMain/resources/locales/ca.yml"
 ```

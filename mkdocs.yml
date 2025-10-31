@@ -153,8 +153,8 @@ markdown_extensions:
         # https://www.mkdocs.org/user-guide/configuration/#paths-relative-to-the-current-file-or-site
         - !relative $config_dir
         - !relative $docs_dir
-        - !relative $config_dir/core/src/integration/kotlin/io/github/serpro69/kfaker/docs/
-        - !relative $config_dir/core/src/integration/java/io/github/serpro69/kfaker/docs/
+        - !relative $config_dir/core/src/jvmTest/kotlin/io/github/serpro69/kfaker/integration/docs/
+        - !relative $config_dir/core/src/jvmTest/java/io/github/serpro69/kfaker/integration/docs/
       check_paths: true
       dedent_subsections: true
   - pymdownx.tasklist:
