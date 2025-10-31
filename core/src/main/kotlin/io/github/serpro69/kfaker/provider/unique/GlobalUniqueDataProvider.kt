@@ -44,10 +44,10 @@ class GlobalUniqueDataProvider internal constructor() : UniqueDataProvider() {
      */
     override fun clearAll() {
         config.usedProviderFunctionValues.keys.forEach { k ->
-            config.usedProviderFunctionValues[k] = hashMapOf()
+            config.usedProviderFunctionValues[k] = java.util.concurrent.ConcurrentHashMap()
         }
         config.providerFunctionExclusionPatterns.keys.forEach { k ->
-            config.providerFunctionExclusionPatterns[k] = hashMapOf()
+            config.providerFunctionExclusionPatterns[k] = java.util.concurrent.ConcurrentHashMap()
         }
     }
 

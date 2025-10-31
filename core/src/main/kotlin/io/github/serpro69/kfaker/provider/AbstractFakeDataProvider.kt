@@ -72,21 +72,21 @@ internal constructor(protected val fakerService: FakerService) : FakeDataProvide
 
         return if (localUniqueDataProvider.markedUnique.contains(this)) {
             // if function is prefixed with `unique` -> try to resolve a unique value
-            when (val set = localUniqueDataProvider.usedValues[key]) {
-                null -> {
-                    localUniqueDataProvider.usedValues[key] = mutableSetOf(resultString)
-                    result
-                }
-                else -> {
-                    if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                        throw RetryLimitException("Retry limit of $counter exceeded")
-                    } else if (!set.contains(resultString))
-                        result.also {
-                            localUniqueDataProvider.usedValues[key] =
-                                mutableSetOf(resultString).also { it.addAll(set) }
-                        }
-                    else resolveNewUniqueValue()
-                }
+            if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
+                throw RetryLimitException("Retry limit of $counter exceeded")
+            }
+
+            // Thread-safe check-then-add with computeIfAbsent + atomic add
+            val set = localUniqueDataProvider.usedValues.computeIfAbsent(key) {
+                java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
+            }
+
+            // The add operation on ConcurrentHashMap.newKeySet() is atomic
+            if (set.add(resultString)) {
+                result
+            } else {
+                // Value already exists, try again
+                resolveNewUniqueValue()
             }
         } else {
             val glUniqueProvider = fakerService.faker.unique
@@ -135,26 +135,29 @@ internal constructor(protected val fakerService: FakerService) : FakeDataProvide
                                 patterns.any { r -> r.containsMatchIn(resultString) } -> {
                                 resolveNewUniqueValue()
                             }
-                            usedValues == null ->
-                                result.also {
-                                    // Create 'usedValues' set with the returned value for the 'key'
-                                    usedProviderFunctionsValuesMap[key] =
-                                        mutableSetOf(it.toString())
+                            usedValues == null -> {
+                                // Create 'usedValues' set with the returned value for the 'key'
+                                val newSet = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
+                                val existingSet = usedProviderFunctionsValuesMap.putIfAbsent(key, newSet)
+                                if (existingSet == null) {
+                                    newSet.add(resultString)
+                                    result
+                                } else {
+                                    // Another thread beat us to creating the set, try to add to it
+                                    if (existingSet.add(resultString)) result
+                                    else resolveNewUniqueValue()
                                 }
+                            }
                             else -> {
                                 if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
                                     throw RetryLimitException("Retry limit of $counter exceeded")
-                                } else if (!usedValues.contains(resultString))
-                                    result.also { r ->
-                                        // Add returned value at the beginning of existing
-                                        // 'usedValues' set for the
-                                        // 'key'
-                                        usedProviderFunctionsValuesMap[key] =
-                                            mutableSetOf(r.toString()).also {
-                                                it.addAll(usedValues)
-                                            }
-                                    }
-                                else resolveNewUniqueValue()
+                                } else if (usedValues.add(resultString)) {
+                                    // Successfully added (it was unique)
+                                    result
+                                } else {
+                                    // Value already exists, try again
+                                    resolveNewUniqueValue()
+                                }
                             }
                         }
                     }

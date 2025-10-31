@@ -2,6 +2,8 @@ package io.github.serpro69.kfaker.provider.unique
 
 import io.github.serpro69.kfaker.provider.Address
 import io.github.serpro69.kfaker.provider.FakeDataProvider
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction1
 import kotlin.reflect.KProperty0
@@ -15,7 +17,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *
      * This applies to ALL providers that have unique generation enabled.
      */
-    @JvmSynthetic @PublishedApi internal val excludedPatterns = mutableListOf<Regex>()
+    @JvmSynthetic @PublishedApi internal val excludedPatterns: MutableList<Regex> = CopyOnWriteArrayList()
 
     /**
      * A List of [String]s used to exclude values from being returned when unique generation is
@@ -23,12 +25,12 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      *
      * This applies to ALL providers that have unique generation enabled.
      */
-    @PublishedApi @JvmSynthetic internal val excludedValues = mutableListOf<String>()
+    @PublishedApi @JvmSynthetic internal val excludedValues: MutableList<String> = CopyOnWriteArrayList()
 
     /** A Set of [FakeDataProvider]s' [KClass]es that are configured to return unique values. */
     @PublishedApi
     @JvmSynthetic
-    internal val markedUnique = mutableSetOf<KClass<out FakeDataProvider>>()
+    internal val markedUnique: MutableSet<KClass<out FakeDataProvider>> = ConcurrentHashMap.newKeySet()
 
     /**
      * A HashMap where the key is a [KClass] of [FakeDataProvider], and value is a set of already
@@ -38,7 +40,7 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     @PublishedApi
     @JvmSynthetic
-    internal val usedProviderValues = hashMapOf<KClass<out FakeDataProvider>, MutableSet<String>>()
+    internal val usedProviderValues: ConcurrentHashMap<KClass<out FakeDataProvider>, MutableSet<String>> = ConcurrentHashMap()
 
     /**
      * A HashMap where the key is a [KClass] of [FakeDataProvider], and values are Maps of
@@ -46,8 +48,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     @PublishedApi
     @JvmSynthetic
-    internal val usedProviderFunctionValues =
-        hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<String>>>()
+    internal val usedProviderFunctionValues: ConcurrentHashMap<KClass<out FakeDataProvider>, ConcurrentHashMap<String, MutableSet<String>>> =
+        ConcurrentHashMap()
 
     /**
      * A HashMap where the key is a [KClass] of [FakeDataProvider], and value is a set of patterns
@@ -58,8 +60,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     @PublishedApi
     @JvmSynthetic
-    internal val providerExclusionPatterns =
-        hashMapOf<KClass<out FakeDataProvider>, MutableSet<Regex>>()
+    internal val providerExclusionPatterns: ConcurrentHashMap<KClass<out FakeDataProvider>, MutableSet<Regex>> =
+        ConcurrentHashMap()
 
     /**
      * A HashMap where the key is a [KClass] of [FakeDataProvider], and values are Maps of
@@ -68,8 +70,8 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
      */
     @PublishedApi
     @JvmSynthetic
-    internal val providerFunctionExclusionPatterns =
-        hashMapOf<KClass<out FakeDataProvider>, MutableMap<String, MutableSet<Regex>>>()
+    internal val providerFunctionExclusionPatterns: ConcurrentHashMap<KClass<out FakeDataProvider>, ConcurrentHashMap<String, MutableSet<Regex>>> =
+        ConcurrentHashMap()
 
     /**
      * Disables generation of unique values for [providerFunction] of [T] provider.
@@ -132,10 +134,10 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     internal fun <T : FakeDataProvider> enable(provider: KClass<out T>) {
         if (!markedUnique.contains(provider)) {
             markedUnique.add(provider).also {
-                usedProviderValues[provider] = mutableSetOf()
-                usedProviderFunctionValues[provider] = hashMapOf()
-                providerExclusionPatterns[provider] = mutableSetOf()
-                providerFunctionExclusionPatterns[provider] = hashMapOf()
+                usedProviderValues[provider] = ConcurrentHashMap.newKeySet()
+                usedProviderFunctionValues[provider] = ConcurrentHashMap()
+                providerExclusionPatterns[provider] = ConcurrentHashMap.newKeySet()
+                providerFunctionExclusionPatterns[provider] = ConcurrentHashMap()
             }
         }
     }
@@ -168,10 +170,10 @@ class UniqueProviderConfiguration @PublishedApi internal constructor() {
     @JvmSynthetic
     internal fun <T : FakeDataProvider> clear(provider: KClass<out T>) {
         if (markedUnique.contains(provider)) {
-            usedProviderValues[provider] = mutableSetOf()
-            usedProviderFunctionValues[provider] = hashMapOf()
-            providerExclusionPatterns[provider] = mutableSetOf()
-            providerFunctionExclusionPatterns[provider] = hashMapOf()
+            usedProviderValues[provider] = ConcurrentHashMap.newKeySet()
+            usedProviderFunctionValues[provider] = ConcurrentHashMap()
+            providerExclusionPatterns[provider] = ConcurrentHashMap.newKeySet()
+            providerFunctionExclusionPatterns[provider] = ConcurrentHashMap()
         }
     }
 

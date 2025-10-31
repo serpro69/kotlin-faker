@@ -3,6 +3,7 @@ package io.github.serpro69.kfaker.provider.unique
 import io.github.serpro69.kfaker.FakerService
 import io.github.serpro69.kfaker.provider.AbstractFakeDataProvider
 import io.github.serpro69.kfaker.provider.FakeDataProvider
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
@@ -27,8 +28,8 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
     //    override val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
     //    override val usedValues = hashMapOf<String, MutableSet<String>>()
 
-    internal val markedUnique: MutableSet<FakeDataProvider> = mutableSetOf()
-    internal val usedValues = hashMapOf<String, MutableSet<String>>()
+    internal val markedUnique: MutableSet<FakeDataProvider> = ConcurrentHashMap.newKeySet()
+    internal val usedValues: ConcurrentHashMap<String, MutableSet<String>> = ConcurrentHashMap()
 
     /** In `this` class the function works the same as [clearAll] implementation. */
     override fun disableAll() {
@@ -36,7 +37,7 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
     }
 
     override fun clearAll() {
-        usedValues.keys.forEach { k -> usedValues[k] = mutableSetOf() }
+        usedValues.keys.forEach { k -> usedValues[k] = ConcurrentHashMap.newKeySet() }
     }
 
     /**
@@ -48,7 +49,7 @@ class LocalUniqueDataProvider<T : FakeDataProvider> : UniqueDataProvider() {
      * ```
      */
     fun clear(name: String) {
-        usedValues[name] = mutableSetOf()
+        usedValues[name] = ConcurrentHashMap.newKeySet()
     }
 }
 
