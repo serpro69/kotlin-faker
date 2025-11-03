@@ -73,7 +73,7 @@ internal constructor(protected val fakerService: FakerService) : FakeDataProvide
         return if (localUniqueDataProvider.markedUnique.contains(this)) {
             // if function is prefixed with `unique` -> try to resolve a unique value
             if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                throw RetryLimitException("Retry limit of $counter exceeded")
+                throw RetryLimitException("Retry limit of $counter exceeded for local $this#$key")
             }
 
             // Thread-safe check-then-add with computeIfAbsent + atomic add
@@ -150,7 +150,7 @@ internal constructor(protected val fakerService: FakerService) : FakeDataProvide
                             }
                             else -> {
                                 if (counter >= fakerConfig.uniqueGeneratorRetryLimit) {
-                                    throw RetryLimitException("Retry limit of $counter exceeded")
+                                    throw RetryLimitException("Retry limit of $counter exceeded for $this#$key")
                                 } else if (usedValues.add(resultString)) {
                                     // Successfully added (it was unique)
                                     result
