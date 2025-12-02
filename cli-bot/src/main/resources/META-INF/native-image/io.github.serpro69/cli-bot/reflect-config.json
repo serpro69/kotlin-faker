@@ -25,7 +25,7 @@
 },
 {
   "name":"io.github.serpro69.kfaker.Faker",
-  "methods":[{"name":"getAddress","parameterTypes":[] }, {"name":"getColor","parameterTypes":[] }, {"name":"getCrypto","parameterTypes":[] }, {"name":"getCurrency","parameterTypes":[] }, {"name":"getCurrencySymbol","parameterTypes":[] }, {"name":"getFile","parameterTypes":[] }, {"name":"getGender","parameterTypes":[] }, {"name":"getIdNumber","parameterTypes":[] }, {"name":"getInternet","parameterTypes":[] }, {"name":"getMeasurement","parameterTypes":[] }, {"name":"getMoney","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }, {"name":"getPhoneNumber","parameterTypes":[] }, {"name":"getSeparator","parameterTypes":[] }]
+  "methods":[{"name":"getAddress","parameterTypes":[] }, {"name":"getColor","parameterTypes":[] }, {"name":"getCrypto","parameterTypes":[] }, {"name":"getCurrency","parameterTypes":[] }, {"name":"getCurrencySymbol","parameterTypes":[] }, {"name":"getFile","parameterTypes":[] }, {"name":"getGender","parameterTypes":[] }, {"name":"getIdNumber","parameterTypes":[] }, {"name":"getInternet","parameterTypes":[] }, {"name":"getMeasurement","parameterTypes":[] }, {"name":"getMoney","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }, {"name":"getPerson","parameterTypes":[] }, {"name":"getPhoneNumber","parameterTypes":[] }, {"name":"getSeparator","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.Faker$Builder"
