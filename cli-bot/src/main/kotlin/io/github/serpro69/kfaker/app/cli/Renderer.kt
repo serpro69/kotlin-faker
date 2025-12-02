@@ -6,6 +6,7 @@ import io.github.serpro69.kfaker.provider.Money
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.system.exitProcess
+import io.github.serpro69.kfaker.provider.Person
 
 /**
  * Renders and prints a tree with root (parent) node [name] and a list of [children] nodes.
@@ -81,6 +82,8 @@ fun renderProvider(
                 3 -> {
                     if (it.parameters[1].isOptional && it.parameters[2].isOptional) {
                         it.callBy(mapOf(it.parameters[0] to instance)).toString()
+                    } else if (it.name == "birthDate" && instance is Person) {
+                        it.callBy(mapOf(it.parameters[0] to instance, it.parameters[1] to 30L)).toString()
                     } else it.call(instance, "", "").toString()
                 }
                 else -> {
