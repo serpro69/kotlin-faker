@@ -865,7 +865,8 @@
   "methods":[{"name":"femaleFirstName","parameterTypes":[] }, {"name":"firstName","parameterTypes":[] }, {"name":"lastName","parameterTypes":[] }, {"name":"maleFirstName","parameterTypes":[] }, {"name":"name","parameterTypes":[] }, {"name":"nameWithMiddle","parameterTypes":[] }, {"name":"neutralFirstName","parameterTypes":[] }]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.Person"
+  "name":"io.github.serpro69.kfaker.provider.Person",
+  "methods":[{"name":"birthDate","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.provider.PhoneNumber",

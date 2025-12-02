@@ -35,6 +35,7 @@ class IntrospectorTest : DescribeSpec() {
                         "Measurement",
                         "Money",
                         "Name",
+                        "Person",
                         "PhoneNumber",
                         "Separator",
                     )
@@ -61,6 +62,7 @@ class IntrospectorTest : DescribeSpec() {
                         "measurement",
                         "money",
                         "name",
+                        "person",
                         "phoneNumber",
                         "separator",
                     )

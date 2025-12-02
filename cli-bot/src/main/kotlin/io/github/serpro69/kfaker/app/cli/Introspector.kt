@@ -4,6 +4,7 @@ import io.github.serpro69.kfaker.AbstractFaker
 import io.github.serpro69.kfaker.provider.FakeDataProvider
 import io.github.serpro69.kfaker.provider.misc.RandomProvider
 import io.github.serpro69.kfaker.provider.misc.StringProvider
+import io.github.serpro69.kfaker.provider.Person
 import kotlin.reflect.KFunction
 import kotlin.reflect.KProperty
 import kotlin.reflect.KVisibility
@@ -19,7 +20,7 @@ class Introspector(private val faker: AbstractFaker) {
     // Get a list of all publicly visible providers
     val providers: Sequence<KProperty<*>> = faker::class.declaredMemberProperties.asSequence().filter {
         it.visibility == KVisibility.PUBLIC
-            && it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType)
+            && (it.returnType.isSubtypeOf(FakeDataProvider::class.starProjectedType) || it.returnType.classifier == Person::class)
             && it.returnType.classifier != StringProvider::class // Ignore this one as it's "special"
             && it.returnType.classifier != RandomProvider::class // Ignore this one as it's "special"
     }
