@@ -25,7 +25,7 @@
 },
 {
   "name":"io.github.serpro69.kfaker.Faker",
-  "methods":[{"name":"getAddress","parameterTypes":[] }, {"name":"getColor","parameterTypes":[] }, {"name":"getCrypto","parameterTypes":[] }, {"name":"getCurrency","parameterTypes":[] }, {"name":"getCurrencySymbol","parameterTypes":[] }, {"name":"getFile","parameterTypes":[] }, {"name":"getGender","parameterTypes":[] }, {"name":"getIdNumber","parameterTypes":[] }, {"name":"getInternet","parameterTypes":[] }, {"name":"getMeasurement","parameterTypes":[] }, {"name":"getMoney","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }, {"name":"getPhoneNumber","parameterTypes":[] }, {"name":"getSeparator","parameterTypes":[] }]
+  "methods":[{"name":"getAddress","parameterTypes":[] }, {"name":"getColor","parameterTypes":[] }, {"name":"getCrypto","parameterTypes":[] }, {"name":"getCurrency","parameterTypes":[] }, {"name":"getCurrencySymbol","parameterTypes":[] }, {"name":"getFile","parameterTypes":[] }, {"name":"getGender","parameterTypes":[] }, {"name":"getIdNumber","parameterTypes":[] }, {"name":"getInternet","parameterTypes":[] }, {"name":"getMeasurement","parameterTypes":[] }, {"name":"getMoney","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }, {"name":"getPerson","parameterTypes":[] }, {"name":"getPhoneNumber","parameterTypes":[] }, {"name":"getSeparator","parameterTypes":[] }]
 },
 {
   "name":"io.github.serpro69.kfaker.Faker$Builder"
@@ -865,7 +865,11 @@
   "methods":[{"name":"femaleFirstName","parameterTypes":[] }, {"name":"firstName","parameterTypes":[] }, {"name":"lastName","parameterTypes":[] }, {"name":"maleFirstName","parameterTypes":[] }, {"name":"name","parameterTypes":[] }, {"name":"nameWithMiddle","parameterTypes":[] }, {"name":"neutralFirstName","parameterTypes":[] }]
 },
 {
-  "name":"io.github.serpro69.kfaker.provider.Person"
+  "name":"io.github.serpro69.kfaker.provider.Person",
+  "methods":[
+    {"name":"birthDate","parameterTypes":["long","java.time.LocalDate"] },
+    {"name":"birthDate$default","parameterTypes":["io.github.serpro69.kfaker.provider.Person","long","java.time.LocalDate","int","java.lang.Object"] }
+  ]
 },
 {
   "name":"io.github.serpro69.kfaker.provider.PhoneNumber",
