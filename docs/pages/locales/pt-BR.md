@@ -3,5 +3,5 @@ title: pt-BR
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/pt-BR.yml"
+--8<-- "core/src/jvmMain/resources/locales/pt-BR.yml"
 ```
