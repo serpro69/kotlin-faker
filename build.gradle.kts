@@ -12,7 +12,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.28.0" apply false
     id("io.qameta.allure") version "2.8.1"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+    id("com.gradleup.shadow") version "8.3.0" apply false
 }
 
 repositories {
@@ -36,7 +36,7 @@ subprojects {
         plugin("com.adarshr.test-logger")
         plugin("com.github.ben-manes.versions")
         plugin("io.qameta.allure")
-        plugin("com.github.johnrengelman.shadow")
+        plugin("com.gradleup.shadow")
     }
 
     dependencies {
