@@ -3,11 +3,11 @@ import Yaml_to_json_gradle.Yaml2JsonPluginExtension
 import com.adarshr.gradle.testlogger.theme.ThemeType
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
-//import io.github.serpro69.YamlToJsonPlugin
+// import io.github.serpro69.YamlToJsonPlugin
 
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.dokka") version "1.9.10"
+    id("org.jetbrains.dokka") version "2.0.0"
     `maven-publish`
     signing
     `yaml-to-json`
@@ -63,8 +63,8 @@ tasks.withType<Jar> {
             mapOf(
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version,
-                "Class-Path" to configurations.compileClasspath.get().joinToString(" ") { it.name }
-            )
+                "Class-Path" to configurations.compileClasspath.get().joinToString(" ") { it.name },
+            ),
         )
     }
 }
@@ -87,8 +87,11 @@ val shadowJar by tasks.getting(ShadowJar::class) {
             mapOf(
                 "Implementation-Title" to project.name,
                 "Implementation-Version" to project.version,
-                "Class-Path" to project.configurations.compileClasspath.get().joinToString(" ") { it.name }
-            )
+                "Class-Path" to
+                    project.configurations.compileClasspath
+                        .get()
+                        .joinToString(" ") { it.name },
+            ),
         )
     }
     dependsOn(tasks.jar)
@@ -115,7 +118,11 @@ val sourcesJar by tasks.creating(Jar::class) {
 val dokkaJavadocJar by tasks.creating(Jar::class) {
     archiveClassifier.set("javadoc")
     dependsOn(tasks.dokkaJavadoc)
-    from(tasks.dokkaJavadoc.get().outputDirectory.orNull)
+    from(
+        tasks.dokkaJavadoc
+            .get()
+            .outputDirectory.orNull,
+    )
 }
 
 artifacts {
@@ -152,7 +159,7 @@ publishing {
 //            from(components["java"])
             project.shadow.component(this)
             artifact(sourcesJar)
-            artifact(dokkaJavadocJar) //TODO configure dokka or use defaults?
+            artifact(dokkaJavadocJar) // TODO configure dokka or use defaults?
 
             pom {
                 packaging = "jar"
