@@ -17,8 +17,8 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.21.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.1")
     shadow("com.ibm.icu:icu4j:73.2")
-    shadow(kotlin("stdlib-jdk8"))
-    shadow(kotlin("reflect"))
+    shadow("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.21")
+    shadow("org.jetbrains.kotlin:kotlin-reflect:2.1.21")
     shadow("com.github.mifmif:generex:1.0.2")
 }
 

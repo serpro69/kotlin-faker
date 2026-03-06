@@ -44,8 +44,8 @@ subprojects {
         val testRuntimeOnly by configurations
         val testImplementation by configurations
 
-        implementation(kotlin("stdlib-jdk8"))
-        implementation(kotlin("reflect"))
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.21")
+        implementation("org.jetbrains.kotlin:kotlin-reflect:2.1.21")
         implementation("com.github.mifmif:generex:1.0.2")
         testImplementation("io.kotest:kotest-runner-junit5:5.7.2")
         testImplementation("io.kotest:kotest-runner-junit5-jvm:5.7.2")
