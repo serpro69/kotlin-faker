@@ -1,5 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.adarshr.gradle.testlogger.theme.ThemeType
+import org.gradle.internal.os.OperatingSystem
 
 plugins {
     application
@@ -64,7 +65,8 @@ tasks {
     compileKotlin {
         // Set version for --version options
         doFirst("Set app version") {
-            val command = "find . -type f -name 'KFaker.kt' -exec sed -i 's/{FAKER_VER}/${project.version}/g' {} +;"
+            val sed = if (OperatingSystem.current().isMacOsX()) "gsed" else "sed"
+            val command = "find . -type f -name 'KFaker.kt' -exec ${sed} -i 's/{FAKER_VER}/${project.version}/g' {} +;"
 
             exec {
                 commandLine("sh", "-c", command)
