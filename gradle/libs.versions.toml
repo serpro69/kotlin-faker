@@ -2,7 +2,7 @@
 classgraph = "4.8.165"
 commons-io = "2.15.1"
 icu4j = "77.1"
-jackson = "2.19.0"
+jackson = "2.21.1"
 kotlin = "2.1.21"
 kotlinpoet = "2.2.0"
 rgxgen = "2.0"
