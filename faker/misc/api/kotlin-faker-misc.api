@@ -1,0 +1,91 @@
+public final class io/github/serpro69/kfaker/misc/MiscFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getArtist ()Lio/github/serpro69/kfaker/misc/provider/Artist;
+	public final fun getBlood ()Lio/github/serpro69/kfaker/misc/provider/Blood;
+	public final fun getDemographic ()Lio/github/serpro69/kfaker/misc/provider/Demographic;
+	public final fun getDrivingLicense ()Lio/github/serpro69/kfaker/misc/provider/DrivingLicense;
+	public final fun getGreekPhilosophers ()Lio/github/serpro69/kfaker/misc/provider/GreekPhilosophers;
+	public final fun getHobby ()Lio/github/serpro69/kfaker/misc/provider/Hobby;
+	public final fun getMilitary ()Lio/github/serpro69/kfaker/misc/provider/Military;
+	public final fun getRelationship ()Lio/github/serpro69/kfaker/misc/provider/Relationship;
+}
+
+public final class io/github/serpro69/kfaker/misc/MiscFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/misc/MiscFaker;
+}
+
+public final class io/github/serpro69/kfaker/misc/MiscFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/misc/MiscFaker;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Artist : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Artist;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun names ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Blood : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Blood;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun group ()Ljava/lang/String;
+	public final fun rhFactor ()Ljava/lang/String;
+	public final fun type ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Demographic : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun demonym ()Ljava/lang/String;
+	public final fun educationalAttainment ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Demographic;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun maritalStatus ()Ljava/lang/String;
+	public final fun race ()Ljava/lang/String;
+	public final fun sex ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/DrivingLicense : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/DrivingLicense;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun license ()Ljava/lang/String;
+	public final fun licenseByState (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/GreekPhilosophers : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/GreekPhilosophers;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun names ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Hobby : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun activity ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Hobby;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Military : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun airForceRank ()Ljava/lang/String;
+	public final fun armyRank ()Ljava/lang/String;
+	public final fun coastGuardRank ()Ljava/lang/String;
+	public final fun dodPaygrade ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Military;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun marinesRank ()Ljava/lang/String;
+	public final fun navyRank ()Ljava/lang/String;
+	public final fun spaceForceRank ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/misc/provider/Relationship : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun familial ()Ljava/lang/String;
+	public final fun familialDirect ()Ljava/lang/String;
+	public final fun familialExtended ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/misc/provider/Relationship;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun inLaw ()Ljava/lang/String;
+	public final fun parent ()Ljava/lang/String;
+	public final fun sibling ()Ljava/lang/String;
+	public final fun spouse ()Ljava/lang/String;
+}
+

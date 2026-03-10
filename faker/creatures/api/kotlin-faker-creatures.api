@@ -1,0 +1,124 @@
+public final class io/github/serpro69/kfaker/creatures/CreaturesFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAncient ()Lio/github/serpro69/kfaker/creatures/provider/Ancient;
+	public final fun getAnimal ()Lio/github/serpro69/kfaker/creatures/provider/Animal;
+	public final fun getBird ()Lio/github/serpro69/kfaker/creatures/provider/Bird;
+	public final fun getCat ()Lio/github/serpro69/kfaker/creatures/provider/Cat;
+	public final fun getDog ()Lio/github/serpro69/kfaker/creatures/provider/Dog;
+	public final fun getHorse ()Lio/github/serpro69/kfaker/creatures/provider/Horse;
+}
+
+public final class io/github/serpro69/kfaker/creatures/CreaturesFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/creatures/CreaturesFaker;
+}
+
+public final class io/github/serpro69/kfaker/creatures/CreaturesFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/creatures/CreaturesFaker;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Ancient : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Ancient;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun god ()Ljava/lang/String;
+	public final fun hero ()Ljava/lang/String;
+	public final fun primordial ()Ljava/lang/String;
+	public final fun titan ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Animal : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Animal;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Bird : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun adjectives ()Ljava/lang/String;
+	public final fun anatomy ()Ljava/lang/String;
+	public final fun anatomyPastTense ()Ljava/lang/String;
+	public final fun colors ()Ljava/lang/String;
+	public final fun commonFamilyName ()Ljava/lang/String;
+	public final fun emotionalAdjectives ()Ljava/lang/String;
+	public final fun geo ()Ljava/lang/String;
+	public final fun getOrderCommonMap ()Lio/github/serpro69/kfaker/creatures/provider/BirdOrderCommonMap;
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Bird;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun implausibleCommonNames ()Ljava/lang/String;
+	public final fun plausibleCommonNames ()Ljava/lang/String;
+	public final fun sillyAdjectives ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/BirdOrderCommonMap : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun accipitriformes ()Ljava/lang/String;
+	public final fun anseriformes ()Ljava/lang/String;
+	public final fun apterygiformes ()Ljava/lang/String;
+	public final fun bucerotiformes ()Ljava/lang/String;
+	public final fun caprimulgiformes ()Ljava/lang/String;
+	public final fun cariamiformes ()Ljava/lang/String;
+	public final fun casuariiformes ()Ljava/lang/String;
+	public final fun cathartiformes ()Ljava/lang/String;
+	public final fun charadriiformes ()Ljava/lang/String;
+	public final fun ciconiiformes ()Ljava/lang/String;
+	public final fun coliiformes ()Ljava/lang/String;
+	public final fun columbiformes ()Ljava/lang/String;
+	public final fun coraciiformes ()Ljava/lang/String;
+	public final fun cuculiformes ()Ljava/lang/String;
+	public final fun eurypygiformes ()Ljava/lang/String;
+	public final fun falconiformes ()Ljava/lang/String;
+	public final fun galbuliformes ()Ljava/lang/String;
+	public final fun galliformes ()Ljava/lang/String;
+	public final fun gaviiformes ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/BirdOrderCommonMap;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun gruiformes ()Ljava/lang/String;
+	public final fun mesitornithiformes ()Ljava/lang/String;
+	public final fun musophagiformes ()Ljava/lang/String;
+	public final fun opisthocomiformes ()Ljava/lang/String;
+	public final fun otidiformes ()Ljava/lang/String;
+	public final fun passeriformes ()Ljava/lang/String;
+	public final fun pelecaniformes ()Ljava/lang/String;
+	public final fun phaethontiformes ()Ljava/lang/String;
+	public final fun phoenicopteriformes ()Ljava/lang/String;
+	public final fun piciformes ()Ljava/lang/String;
+	public final fun podicipediformes ()Ljava/lang/String;
+	public final fun procellariiformes ()Ljava/lang/String;
+	public final fun psittaciformes ()Ljava/lang/String;
+	public final fun pterocliformes ()Ljava/lang/String;
+	public final fun rheiformes ()Ljava/lang/String;
+	public final fun sphenisciformes ()Ljava/lang/String;
+	public final fun strigiformes ()Ljava/lang/String;
+	public final fun struthioniformes ()Ljava/lang/String;
+	public final fun suliformes ()Ljava/lang/String;
+	public final fun tinamiformes ()Ljava/lang/String;
+	public final fun trogoniformes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Cat : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun breed ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Cat;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+	public final fun registry ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Dog : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun age ()Ljava/lang/String;
+	public final fun breed ()Ljava/lang/String;
+	public final fun coatLength ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Dog;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun memePhrase ()Ljava/lang/String;
+	public final fun name ()Ljava/lang/String;
+	public final fun size ()Ljava/lang/String;
+	public final fun sound ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/creatures/provider/Horse : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun breed ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/creatures/provider/Horse;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun name ()Ljava/lang/String;
+}
+

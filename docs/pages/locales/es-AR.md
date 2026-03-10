@@ -3,5 +3,5 @@ title: es-AR
 ---
 
 ```yaml
---8<-- "core/src/main/resources/locales/es-AR.yml"
+--8<-- "core/src/jvmMain/resources/locales/es-AR.yml"
 ```

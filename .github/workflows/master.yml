@@ -1,0 +1,49 @@
+---
+name: master
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+    branches:
+      - master
+
+concurrency:
+  group: '${{ github.workflow }}'
+  # don't leave snapshot builds in a half-done state
+  cancel-in-progress: false
+
+jobs:
+  validate-api:
+    name: Validate API
+    if: github.repository == 'serpro69/kotlin-faker'
+    uses: ./.github/workflows/run_gradle.yml
+    secrets: inherit
+    with:
+      runs-on: ubuntu-latest
+      ref: ${{ inputs.ref }}
+      task: apiCheck
+
+  build-primary:
+    needs: validate-api
+    strategy:
+      matrix:
+        include:
+          # KMP
+          - os: ubuntu-latest
+            args: -P"kotlinFaker_enabledPublicationNamePrefixes=KotlinMultiplatform"
+          # JVM
+          - os: ubuntu-latest
+            args: -P"kotlinFaker_enabledPublicationNamePrefixes=jvm"
+    uses: ./.github/workflows/run_gradle.yml
+    secrets: inherit
+    with:
+      ref: ${{ inputs.ref }}
+      task: >
+        -P"kotlinFaker_enableKotlinJs=true"
+        -P"kotlinFaker_enableKotlinNative=true"
+        ${{ matrix.args }}
+        --no-configuration-cache
+        check publishToAppropriateCentralRepository
+      runs-on: ${{ matrix.os }}

@@ -8,7 +8,7 @@ faker: books
 ??? example "dictionary file"
     === "yaml :simple-yaml:"
         ```yaml
-        --8<-- "core/src/main/resources/locales/en/dune.yml"
+        --8<-- "core/src/jvmMain/resources/locales/en/dune.yml"
         ```
 
 === "kotlin :material-language-kotlin:"

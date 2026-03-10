@@ -1,0 +1,100 @@
+---
+name: Gradle Task
+run-name: "Gradle Task ${{ inputs.task }}, ${{ inputs.runs-on }}, ${{ inputs.ref }}"
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        description: "The platform to run tests on"
+        required: true
+        type: string
+      ref:
+        description: "The git branch, tag or SHA to checkout"
+        required: false
+        type: string
+      task:
+        description: "The Gradle task to run"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  gradle:
+    runs-on: ${{ inputs.runs-on }}
+    steps:
+      - name: "Redirect caches to fast D: drive for Windows runners"
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          mkdir D:\.gradle
+          mklink /D C:\Users\runneradmin\.gradle D:\.gradle
+
+          mkdir D:\.konan
+          mklink /D C:\Users\runneradmin\.konan D:\.konan
+          echo KONAN_DATA_DIR=D:\.konan>>%GITHUB_ENV%
+
+      - name: "Set KONAN_DATA_DIR (bash)"
+        if: runner.os != 'Windows'
+        run: |
+          echo "KONAN_DATA_DIR=${HOME}/.konan" >> $GITHUB_ENV
+
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref }}
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version-file: .github/.java-version
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-home-cache-cleanup: true
+          cache-encryption-key: ${{ secrets.GRADLE_CONFIGURATION_CACHE_ENCRYPTION_KEY }}
+
+      - name: Cache Kotlin Konan
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.KONAN_DATA_DIR }}
+          key: kotlin-konan-${{ runner.os }}
+          enableCrossOsArchive: true
+          restore-keys: |
+            kotlin-konan-
+
+      - name: Cache kfaker user directory
+        uses: actions/cache@v4
+        with:
+          path: ~/.kfaker
+          key: kfaker-user-dir-${{ runner.os }}
+          enableCrossOsArchive: true
+          restore-keys: |
+            kfaker-user-dir-
+
+      - name: Run tests
+        run: ./gradlew ${{ inputs.task }}
+        shell: bash
+
+      - name: Upload build reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports-${{ runner.os }}-${{ github.action }}-${{ github.run_id }}
+          path: |
+            **/build/reports/
+            **/*.hprof
+            **/*.log
+          if-no-files-found: ignore
+
+env:
+  ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+  ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+  ORG_GRADLE_PROJECT_KotlinFaker_GradleBuildCache_user: ${{ secrets.GRADLE_BUILD_CACHE_USER }}
+  ORG_GRADLE_PROJECT_KotlinFaker_GradleBuildCache_pass: ${{ secrets.GRADLE_BUILD_CACHE_PASS }}
+  MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+  MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}

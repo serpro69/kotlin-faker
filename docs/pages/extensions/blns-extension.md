@@ -6,7 +6,7 @@ icon: material/hand-extended
 
 ## About
 
-Kotlin-faker `blns` artifact provides convenience functions for returning strings from [The Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) - a list of strings which have a high probability of causing issues when used as user-input data, and can therefore be quite useful in testing.
+`kotlin-faker-ext-blns` artifact provides convenience functions for returning strings from [The Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings) - a list of strings which have a high probability of causing issues when used as user-input data, and can therefore be quite useful in testing.
 
 ## Disclaimer
 
@@ -19,13 +19,13 @@ Kotlin-faker `blns` artifact provides convenience functions for returning string
 ### Installation
 
 - ① add the core `kotlin-faker` dependency to the test classpath
-- ② then add the dependency for the `kotlin-faker-blns` extension
+- ② then add the dependency for the `kotlin-faker-ext-blns` extension
 
 === "gradle :simple-gradle:"
     ```kotlin
     dependencies {
       testImplementation("io.github.serpro69:kotlin-faker:$fakerVersion") // ①
-      testImplementation("io.github.serpro69:kotlin-faker-blns:$fakerVersion") // ②
+      testImplementation("io.github.serpro69:kotlin-faker-ext-blns:$fakerVersion") // ②
     }
     ```
 

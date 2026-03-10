@@ -1,0 +1,140 @@
+public final class io/github/serpro69/kfaker/japmedia/JapaneseMediaFaker : io/github/serpro69/kfaker/AbstractFaker {
+	public fun <init> ()V
+	public fun <init> (Lio/github/serpro69/kfaker/FakerConfig;)V
+	public synthetic fun <init> (Lio/github/serpro69/kfaker/FakerConfig;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getConan ()Lio/github/serpro69/kfaker/japmedia/provider/Conan;
+	public final fun getCowboyBebop ()Lio/github/serpro69/kfaker/japmedia/provider/CowboyBebop;
+	public final fun getDoraemon ()Lio/github/serpro69/kfaker/japmedia/provider/Doraemon;
+	public final fun getDragonBall ()Lio/github/serpro69/kfaker/japmedia/provider/DragonBall;
+	public final fun getFmaBrotherhood ()Lio/github/serpro69/kfaker/japmedia/provider/FmaBrotherhood;
+	public final fun getKamenRider ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRider;
+	public final fun getNaruto ()Lio/github/serpro69/kfaker/japmedia/provider/Naruto;
+	public final fun getOnePiece ()Lio/github/serpro69/kfaker/japmedia/provider/OnePiece;
+	public final fun getStudioGhibli ()Lio/github/serpro69/kfaker/japmedia/provider/StudioGhibli;
+	public final fun getSwordArtOnline ()Lio/github/serpro69/kfaker/japmedia/provider/SwordArtOnline;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/JapaneseMediaFaker$Builder : io/github/serpro69/kfaker/AbstractFaker$Builder {
+	public synthetic fun build ()Lio/github/serpro69/kfaker/AbstractFaker;
+	public fun build ()Lio/github/serpro69/kfaker/japmedia/JapaneseMediaFaker;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/JapaneseMediaFakerKt {
+	public static final fun faker (Lkotlin/jvm/functions/Function1;)Lio/github/serpro69/kfaker/japmedia/JapaneseMediaFaker;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/Conan : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun gadgets ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/Conan;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun vehicles ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/CowboyBebop : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun character ()Ljava/lang/String;
+	public final fun episode ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/CowboyBebop;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun quote ()Ljava/lang/String;
+	public final fun song ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/Doraemon : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun gadgets ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/Doraemon;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun locations ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/DragonBall : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/DragonBall;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun planets ()Ljava/lang/String;
+	public final fun races ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/FmaBrotherhood : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun cities ()Ljava/lang/String;
+	public final fun countries ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/FmaBrotherhood;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/KamenRider : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun getHeisei ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderHeisei;
+	public final fun getReiwa ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderReiwa;
+	public final fun getShowa ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderShowa;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRider;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/KamenRiderHeisei : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun collectibleDevices ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderHeisei;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun kamenRiders ()Ljava/lang/String;
+	public final fun series ()Ljava/lang/String;
+	public final fun transformationDevices ()Ljava/lang/String;
+	public final fun users ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/KamenRiderReiwa : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun collectibleDevices ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderReiwa;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun kamenRiders ()Ljava/lang/String;
+	public final fun series ()Ljava/lang/String;
+	public final fun transformationDevices ()Ljava/lang/String;
+	public final fun users ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/KamenRiderShowa : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/KamenRiderShowa;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun kamenRiders ()Ljava/lang/String;
+	public final fun series ()Ljava/lang/String;
+	public final fun transformationDevices ()Ljava/lang/String;
+	public final fun users ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/Naruto : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public final fun demons ()Ljava/lang/String;
+	public final fun eyes ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/Naruto;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun villages ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/OnePiece : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun akumaNoMi ()Ljava/lang/String;
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/OnePiece;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun islands ()Ljava/lang/String;
+	public final fun locations ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+	public final fun seas ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/StudioGhibli : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun characters ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/StudioGhibli;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun movies ()Ljava/lang/String;
+	public final fun quotes ()Ljava/lang/String;
+}
+
+public final class io/github/serpro69/kfaker/japmedia/provider/SwordArtOnline : io/github/serpro69/kfaker/provider/YamlFakeDataProvider {
+	public final fun gameName ()Ljava/lang/String;
+	public fun getUnique ()Lio/github/serpro69/kfaker/japmedia/provider/SwordArtOnline;
+	public synthetic fun getUnique ()Lio/github/serpro69/kfaker/provider/FakeDataProvider;
+	public final fun item ()Ljava/lang/String;
+	public final fun location ()Ljava/lang/String;
+	public final fun realName ()Ljava/lang/String;
+}
+

@@ -1,0 +1,42 @@
+{
+  "models": {
+    "main": {
+      "provider": "claude-code",
+      "modelId": "sonnet",
+      "maxTokens": 120000,
+      "temperature": 0.2
+    },
+    "research": {
+      "provider": "claude-code",
+      "modelId": "opus",
+      "maxTokens": 64000,
+      "temperature": 0.1
+    },
+    "fallback": {
+      "provider": "claude-code",
+      "modelId": "sonnet",
+      "maxTokens": 120000,
+      "temperature": 0.2
+    }
+  },
+  "global": {
+    "logLevel": "info",
+    "debug": false,
+    "defaultNumTasks": 10,
+    "defaultSubtasks": 5,
+    "defaultPriority": "medium",
+    "projectName": "kotlin-faker",
+    "ollamaBaseURL": "",
+    "bedrockBaseURL": "",
+    "responseLanguage": "English",
+    "enableCodebaseAnalysis": true,
+    "defaultTag": "master",
+    "azureOpenaiBaseURL": "",
+    "userId": "42"
+  },
+  "claudeCode": {
+    "customSystemPrompt": "You are a Kotlin expert specializing in modern Kotlin 2.0+ development with advanced concurrency patterns, performance optimization, production-ready system design, with deep knowledge in developing applications, libraries, and APIs in Kotlin.",
+    "appendSystemPrompt": "Always follow Kotlin 2.0+ coding best practices, clean architecture, domain-driven design with Kotlin idioms. Use context7 MCP to lookup documentation for dependencies, libraries, SDKs, APIs and other external frameworks and tools, whenever necessary.",
+    "permissionMode": "default"
+  }
+}
