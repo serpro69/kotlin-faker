@@ -1,0 +1,80 @@
+{
+  "env": {
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
+    "MAX_MCP_OUTPUT_TOKENS": "64000",
+    "CLAUDE_STATUSLINE_THEME": "catppuccin",
+    "CLAUDE_STATUSLINE_MODE": "dark"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(sort:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__find_file",
+      "mcp__serena__find_symbol",
+      "mcp__serena__insert_after_symbol",
+      "mcp__serena__insert_before_symbol",
+      "mcp__serena__list_dir",
+      "mcp__serena__replace_symbol_body",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__think_about_collected_information",
+      "mcp__zen__codereview",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Read(./examples)",
+      "Read(./**/consensus*.md)",
+      "Read(./**/review*.md)",
+      "Read(./**/.env)",
+      "Read(./**/service-account-key.json)",
+      "Read(*.csv)",
+      "Read(*.log)",
+      "Read(*.pyc)",
+      "Read(./**/*.lock*)",
+      "Read(.git/)",
+      "Read(.idea/)",
+      "Read(.vscode/)",
+      "Read(.next/)",
+      "Read(./**/.ansible/)",
+      "Read(./**/.terraform/)",
+      "Read(./**/build/)",
+      "Read(./**/data/)",
+      "Read(./**/dist/)",
+      "Read(./**/out/)",
+      "Read(./**/node_modules/)",
+      "Read(./**/venv/)",
+      "Read(./**/__pycache__/)"
+    ],
+    "ask": [],
+    "defaultMode": "default"
+  },
+  "model": "opus[1m]",
+  "enabledMcpjsonServers": [],
+  "statusLine": {
+    "type": "command",
+    "command": "bash $CLAUDE_PROJECT_DIR/.claude/scripts/statusline_enhanced.sh"
+  },
+  "extraKnownMarketplaces": {
+    "claude-toolbox": {
+      "source": {
+        "source": "github",
+        "repo": "serpro69/claude-toolbox"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "enabledPlugins": {
+    "kk@claude-toolbox": true
+  }
+}
