@@ -1,0 +1,333 @@
+---
+# GitHub Actions Workflow for syncing downstream repositories with the upstream Claude Starter Kit template.
+# This workflow fetches the latest template version, compares files, and creates a PR with updates.
+
+name: Template Sync
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: |
+          Template version to sync to.
+          Accepts 'latest' (most recent tag), 'master' (current master branch), or a specific tag (e.g., 'v1.0.0').
+        required: true
+        default: latest
+        type: string
+      dry_run:
+        description: |
+          Preview changes without creating a PR.
+          When enabled, shows what would be updated but makes no changes to the repository.
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  sync:
+    name: Sync Template
+    runs-on: ubuntu-latest
+    if: github.event.repository.name != 'claude-toolbox'
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      has_changes: ${{ steps.sync.outputs.has_changes }}
+      old_version: ${{ steps.manifest.outputs.old_version }}
+      new_version: ${{ steps.sync.outputs.resolved_version }}
+      diff_summary: ${{ steps.sync.outputs.diff_summary }}
+      plugin_migrated: ${{ steps.sync.outputs.plugin_migrated }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate Manifest
+        id: manifest
+        run: |
+          if [[ ! -f ".github/template-state.json" ]]; then
+            echo "::error::Manifest file .github/template-state.json not found."
+            echo "### ❌ Manifest Not Found" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "This repository doesn't have a template state manifest at \`.github/template-state.json\`." >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**Possible causes:**" >> "$GITHUB_STEP_SUMMARY"
+            echo "- The repository was created before the sync feature was available" >> "$GITHUB_STEP_SUMMARY"
+            echo "- The cleanup script was run with an older version" >> "$GITHUB_STEP_SUMMARY"
+            echo "- The manifest file was accidentally deleted" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**To fix this:** Re-run the template-cleanup workflow or manually create the manifest file." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+          # Validate JSON syntax
+          if ! jq -e '.' .github/template-state.json >/dev/null 2>&1; then
+            echo "::error::Manifest file contains invalid JSON."
+            echo "### ❌ Invalid Manifest" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "The manifest file \`.github/template-state.json\` contains invalid JSON." >> "$GITHUB_STEP_SUMMARY"
+            echo "Please check for syntax errors or restore the file from version control." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+          # Capture current version before sync
+          old_version=$(jq -r '.template_version // "unknown"' .github/template-state.json)
+          echo "old_version=$old_version" >> "$GITHUB_OUTPUT"
+          echo "Current template version: $old_version"
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Fetch target sync script from upstream
+        run: |
+          # Resolve upstream repo and target version
+          UPSTREAM_REPO=$(jq -r '.upstream_repo // "serpro69/claude-toolbox"' .github/template-state.json)
+          VERSION="${{ inputs.version }}"
+
+          # Resolve "latest" to the most recent tag
+          if [[ "$VERSION" == "latest" ]]; then
+            VERSION=$(git ls-remote --tags --sort=-v:refname "https://github.com/$UPSTREAM_REPO.git" \
+              | grep -v '\^{}' | head -1 | sed 's/.*refs\/tags\///')
+            if [[ -z "$VERSION" ]]; then
+              VERSION="HEAD"
+            fi
+          fi
+
+          echo "Fetching template-sync.sh from $UPSTREAM_REPO @ $VERSION"
+          SCRIPT_URL="https://raw.githubusercontent.com/$UPSTREAM_REPO/$VERSION/.github/scripts/template-sync.sh"
+          if curl -fsSL "$SCRIPT_URL" -o .github/scripts/template-sync.sh.new 2>/dev/null; then
+            mv .github/scripts/template-sync.sh.new .github/scripts/template-sync.sh
+            chmod +x .github/scripts/template-sync.sh
+            echo "Updated template-sync.sh to $VERSION"
+          else
+            echo "::warning::Could not fetch upstream template-sync.sh, using local version"
+          fi
+
+      - name: Run Template Sync
+        id: sync
+        continue-on-error: true
+        run: |
+          chmod +x .github/scripts/template-sync.sh
+          mkdir -p .github/reports
+          .github/scripts/template-sync.sh \
+            --version "${{ inputs.version }}" \
+            --ci \
+            --output-dir .github/sync-staging \
+            ${{ inputs.dry_run == true && '--dry-run' || '' }} \
+            | tee .github/reports/sync-output.txt
+
+      - name: Handle Sync Failure
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo "::error::Template sync failed. Check the logs above for details."
+          echo "### ❌ Sync Failed" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "The template sync encountered an error. Check the 'Run Template Sync' step logs for details." >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Common causes:**" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Network connectivity issues reaching GitHub" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Invalid version specified (tag/branch doesn't exist)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Corrupted or missing manifest file" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Troubleshooting:**" >> "$GITHUB_STEP_SUMMARY"
+          echo "1. Verify the version '${{ inputs.version }}' exists in the upstream repository" >> "$GITHUB_STEP_SUMMARY"
+          echo "2. Check that \`.github/template-state.json\` exists and contains valid JSON" >> "$GITHUB_STEP_SUMMARY"
+          echo "3. Try running with \`dry_run: true\` to see more details" >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: Upload Diff Report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: sync-diff-report
+          path: |
+            .github/reports/
+            .github/sync-staging/
+          retention-days: 7
+
+  create-pr:
+    name: Create Pull Request
+    needs: sync
+    if: needs.sync.outputs.has_changes == 'true' && inputs.dry_run == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Download Staged Changes
+        uses: actions/download-artifact@v7
+        with:
+          name: sync-diff-report
+          path: .github/sync-artifacts
+
+      - name: Run Plugin Migration
+        if: needs.sync.outputs.plugin_migrated == 'true'
+        run: |
+          echo "Migrating to kk plugin system..."
+          # Remove template-managed skills, commands, hooks, and validator
+          rm -rf .claude/skills .claude/commands
+          rm -f .claude/scripts/validate-bash.sh
+          # Remove hooks from settings.json (substituted template will provide marketplace config)
+          if [[ -f .claude/settings.json ]] && jq -e '.hooks' .claude/settings.json &>/dev/null; then
+            jq 'del(.hooks)' .claude/settings.json > .claude/settings.json.tmp
+            mv .claude/settings.json.tmp .claude/settings.json
+          fi
+          # Set plugin_migrated flag in manifest
+          jq '.plugin_migrated = true' .github/template-state.json > .github/template-state.json.tmp
+          mv .github/template-state.json.tmp .github/template-state.json
+          echo "Plugin migration complete"
+
+      - name: Apply Staged Changes
+        run: |
+          STAGING_DIR=".github/sync-artifacts/sync-staging/substituted"
+
+          # Copy claude config files
+          if [[ -d "$STAGING_DIR/claude" ]]; then
+            cp -r "$STAGING_DIR/claude/"* .claude/ 2>/dev/null || true
+            echo "Applied changes to .claude/"
+          fi
+
+          # Copy serena config files
+          if [[ -d "$STAGING_DIR/serena" ]]; then
+            cp -r "$STAGING_DIR/serena/"* .serena/ 2>/dev/null || true
+            echo "Applied changes to .serena/"
+          fi
+
+          # Copy workflow files (sync infrastructure)
+          if [[ -d "$STAGING_DIR/workflows" ]]; then
+            cp -r "$STAGING_DIR/workflows/"* .github/workflows/ 2>/dev/null || true
+            echo "Applied changes to .github/workflows/"
+          fi
+
+          # Copy script files (sync infrastructure, preserve executable permissions)
+          if [[ -d "$STAGING_DIR/scripts" ]]; then
+            cp -r "$STAGING_DIR/scripts/"* .github/scripts/ 2>/dev/null || true
+            chmod +x .github/scripts/*.sh 2>/dev/null || true
+            echo "Applied changes to .github/scripts/"
+          fi
+
+          # Auto-append @import reference for CLAUDE.extra.md on first sync
+          # If the file was just added and CLAUDE.md exists but doesn't reference it, add the import
+          if [[ -f "$STAGING_DIR/claude/CLAUDE.extra.md" && -f "CLAUDE.md" ]]; then
+            if ! grep -q '@.claude/CLAUDE.extra.md' CLAUDE.md; then
+              printf '\n# Extra Instructions\n' >> CLAUDE.md
+              printf '@.claude/CLAUDE.extra.md\n' >> CLAUDE.md
+              echo "Added @import reference for .claude/CLAUDE.extra.md to CLAUDE.md"
+            fi
+          fi
+
+      - name: Cleanup Staging Artifacts
+        run: |
+          # Remove staging artifacts to prevent them from being included in the PR
+          rm -rf .github/sync-artifacts .github/reports
+          echo "Cleaned up staging artifacts"
+
+      - name: Update Manifest Version
+        run: |
+          NEW_VERSION="${{ needs.sync.outputs.new_version }}"
+          SYNCED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # Migrate upstream_repo if still using old repository name
+          CURRENT_REPO=$(jq -r '.upstream_repo' .github/template-state.json)
+          if [[ "$CURRENT_REPO" == "serpro69/claude-starter-kit" ]]; then
+            echo "Migrating upstream_repo from serpro69/claude-starter-kit to serpro69/claude-toolbox"
+            jq '.upstream_repo = "serpro69/claude-toolbox"' \
+              .github/template-state.json > .github/template-state.json.tmp
+            mv .github/template-state.json.tmp .github/template-state.json
+          fi
+
+          jq --arg version "$NEW_VERSION" --arg synced_at "$SYNCED_AT" \
+            '.template_version = $version | .synced_at = $synced_at' \
+            .github/template-state.json > .github/template-state.json.tmp
+          mv .github/template-state.json.tmp .github/template-state.json
+
+          echo "Updated manifest to version $NEW_VERSION"
+
+      - name: Check for Existing PR
+        id: check-pr
+        run: |
+          # Check if a PR already exists for this version
+          BRANCH_NAME="template-sync/${{ needs.sync.outputs.new_version }}"
+          EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --json number --jq '.[0].number // empty' 2>/dev/null || echo "")
+          if [[ -n "$EXISTING_PR" ]]; then
+            echo "::notice::A PR already exists for this version: #$EXISTING_PR"
+            echo "existing_pr=$EXISTING_PR" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create Pull Request
+        id: create-pr
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: template-sync/${{ needs.sync.outputs.new_version }}
+          delete-branch: true
+          title: "chore: sync template ${{ needs.sync.outputs.old_version }} → ${{ needs.sync.outputs.new_version }}"
+          body: |
+            ## Template Update
+
+            This PR updates the repository from template version **${{ needs.sync.outputs.old_version }}** to **${{ needs.sync.outputs.new_version }}**.
+
+            ### Changes
+
+            ${{ needs.sync.outputs.diff_summary }}
+
+            ### Review Checklist
+
+            - [ ] Review changed files for any customizations that should be preserved
+            - [ ] Test that Claude Code still works correctly
+            - [ ] Verify MCP server configurations are intact
+
+            ### How to Handle Conflicts
+
+            If you've customized any files that upstream also changed:
+
+            1. **Review the diff** for each modified file to identify conflicts
+            2. **Edit the PR branch** to preserve your customizations where needed
+            3. **Reject specific changes** by reverting individual files if upstream changes aren't wanted
+
+            > [!TIP]
+            > To undo a file change with git, for example `.claude/settings.json`
+            >
+            > ```bash
+            > git checkout template-sync/abcdef
+            > git checkout origin/master -- .claude/settings.json
+            > git reset HEAD -- .claude/settings.json
+            > git add --patch .claude/settings.json
+            > # select hunks to undo
+            > git add .claude/settings.json
+            > git commit -m "Undo claude settings changes"
+            > git push origin template-sync/abcdef
+            > ```
+
+            ---
+            *Generated by [Template Sync](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) workflow*
+          commit-message: "chore: sync template to ${{ needs.sync.outputs.new_version }}"
+          labels: |
+            template-sync
+            automated
+
+      - name: Summary
+        if: always()
+        env:
+          DIFF_SUMMARY: ${{ needs.sync.outputs.diff_summary }}
+        run: |
+          echo "### Template Sync Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ "${{ steps.create-pr.outputs.pull-request-number }}" != "" ]]; then
+            echo "✅ **Pull Request Created:** [#${{ steps.create-pr.outputs.pull-request-number }}](${{ steps.create-pr.outputs.pull-request-url }})" >> "$GITHUB_STEP_SUMMARY"
+          elif [[ "${{ steps.check-pr.outputs.existing_pr }}" != "" ]]; then
+            echo "ℹ️ **Existing PR Updated:** #${{ steps.check-pr.outputs.existing_pr }}" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Version:** ${{ needs.sync.outputs.old_version }} → ${{ needs.sync.outputs.new_version }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "#### Changes" >> "$GITHUB_STEP_SUMMARY"
+          # Use printf to avoid bash interpreting backticks in markdown as command substitution
+          printf '%s\n' "$DIFF_SUMMARY" >> "$GITHUB_STEP_SUMMARY"
