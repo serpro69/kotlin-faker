@@ -91,7 +91,7 @@ subprojects {
     }
 }
 
-// Run :tag only after we've published artifacts to sonatype
+// Run :tag only after we've published artifacts to Maven Central
 tasks.withType<TagTask>().configureEach {
     // don't apply when "dryRun"
     findProperty("dryRun")
