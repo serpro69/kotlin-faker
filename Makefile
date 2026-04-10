@@ -43,14 +43,13 @@ docs: ## serve documentation on the localhost
 snapshot-minor: ## publishes next snapshot with a minor version bump
 	./gradlew clean test spotlessCheck
 	./gradlew nativeCompile
-	./gradlew publishToSonatype --info
+	./gradlew publishToAppropriateCentralRepository --info
 
 .PHONY: pre-release-major
 pre-release-major: ## publishes next pre-release version with a major version bump
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=major \
 	--info
@@ -59,8 +58,7 @@ pre-release-major: ## publishes next pre-release version with a major version bu
 pre-release-minor: ## publishes next pre-release with a minor version bump
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=minor \
 	--info
@@ -69,8 +67,7 @@ pre-release-minor: ## publishes next pre-release with a minor version bump
 pre-release-patch: ## publishes next pre-release with a patch version bump
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -PpreRelease -Pincrement=patch \
 	--info
@@ -79,8 +76,7 @@ pre-release-patch: ## publishes next pre-release with a patch version bump
 next-pre-release: ## publishes next pre-release version
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -Pincrement=pre_release \
 	--info
@@ -89,8 +85,7 @@ next-pre-release: ## publishes next pre-release version
 promote-to-release: ## publishes next release from the current pre-release version
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -PpromoteRelease \
 	--info
@@ -99,8 +94,7 @@ promote-to-release: ## publishes next release from the current pre-release versi
 release-major: ## publishes next major release version
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -Pincrement=major \
 	--info
@@ -108,10 +102,9 @@ release-major: ## publishes next major release version
 .PHONY: release-minor
 release-minor: ## publishes next minor release version
 	./gradlew test spotlessCheck \
-	tag \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
+	tag \
 	-Prelease -Pincrement=minor \
 	--info
 
@@ -119,8 +112,7 @@ release-minor: ## publishes next minor release version
 release-patch: ## publishes next patch release version
 	./gradlew test spotlessCheck \
 	nativeCompile \
-	publishToSonatype \
-	closeSonatypeStagingRepository \
+	publishToAppropriateCentralRepository \
 	tag \
 	-Prelease -Pincrement=patch \
 	--info
@@ -135,8 +127,8 @@ release: check_java ## publishes the next release with a specified VERSION
 	./gradlew nativeCompile -Pversion=$(VERSION) --info
 	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) list --verbose >/dev/null || false
 	./cli-bot/build/native/nativeCompile/faker-bot_$(VERSION) lookup a --verbose >/dev/null || false
-	# publish to sonatype and close staging repo
-	./gradlew publishToSonatype closeSonatypeStagingRepository -Pversion=$(VERSION) --info
+	# publish to maven central
+	./gradlew publishToAppropriateCentralRepository -Pversion=$(VERSION) --info
 	# create and push git tag
 	git tag v$(VERSION)
 
