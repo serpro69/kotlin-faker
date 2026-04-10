@@ -22,7 +22,7 @@ jobs:
     secrets: inherit
     with:
       runs-on: ubuntu-latest
-      ref: ${{ inputs.ref }}
+      ref: master
       task: apiCheck
 
   build-primary:
@@ -39,7 +39,7 @@ jobs:
     uses: ./.github/workflows/run_gradle.yml
     secrets: inherit
     with:
-      ref: ${{ inputs.ref }}
+      ref: master
       task: >
         -P"kotlinFaker_enableKotlinJs=true"
         -P"kotlinFaker_enableKotlinNative=true"

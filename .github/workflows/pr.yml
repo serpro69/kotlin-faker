@@ -6,7 +6,7 @@ on:
   merge_group:
 
 env:
-  GRAALCE_JDK_VERSION: '17.0.9'
+  GRAALCE_JDK_VERSION: "17.0.9"
   # concatenation of env variables isn't currently supported
   # so need to specify version explicitly
   GRAALVM_HOME: /opt/hostedtoolcache/Java_graalce_jdk/17.0.9/x64
@@ -42,12 +42,12 @@ jobs:
           while IFS= read -r file
           do
             echo $file
-            if [[ $file != docs/* ]]; then
-              echo "This modified file is not under the 'docs' folder. Will run tests."
-              echo "run_tests=true" >> $GITHUB_OUTPUT
-            elif [[ $file = docs/* ]] || [[ $file = mkdocs.yml ]] || [[ $file = main.py ]]; then
-              echo "This modified file is under the 'docs' folder. Will run docs workflow."
+            if [[ $file = docs/* ]] || [[ $file = mkdocs.yml ]] || [[ $file = main.py ]]; then
+              echo "This modified file is docs-related. Will run docs workflow."
               echo "run_docs=true" >> $GITHUB_OUTPUT
+            else
+              echo "This modified file is not docs-related. Will run tests."
+              echo "run_tests=true" >> $GITHUB_OUTPUT
             fi
           done < files.txt
 
@@ -59,7 +59,6 @@ jobs:
     secrets: inherit
     with:
       runs-on: ubuntu-latest
-      ref: ${{ inputs.ref }}
       task: apiCheck --continue
 
   gradle-check:
@@ -77,7 +76,6 @@ jobs:
     secrets: inherit
     with:
       runs-on: ${{ matrix.os }}
-      ref: ${{ inputs.ref }}
       task: >
         -P"kotlinFaker_enableKotlinJs=true"
         -P"kotlinFaker_enableKotlinNative=true"
@@ -105,7 +103,7 @@ jobs:
       - name: Set up GraalCE JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'jdkfile'
+          distribution: "jdkfile"
           jdkFile: ${{ runner.temp }}/java_package.tar.gz
           java-version: ${{ steps.fetch_latest_jdk.outputs.java_version }}
           architecture: x64
@@ -150,8 +148,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.ref }}
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -170,7 +166,7 @@ jobs:
   finalize:
     # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
     name: Final PR results
-    needs: [validate-api, gradle-check, docs-check]
+    needs: [validate-api, gradle-check, docs-check, cli-check]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:

@@ -2,7 +2,7 @@
 plugins { id("faker-lib-conventions") }
 
 val core =
-    rootProject.subprojects.first { it.path == ":kotlin-faker" }
+    rootProject.subprojects.firstOrNull { it.path == ":kotlin-faker" }
         ?: throw GradleException(":kotlin-faker project not found")
 
 kotlin {

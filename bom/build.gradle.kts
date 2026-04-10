@@ -29,7 +29,7 @@ fun projectsFilter(candidateProject: Project) =
 rootProject.subprojects.filter(::projectsFilter).forEach { bom.evaluationDependsOn(it.path) }
 
 configurations.api.configure {
-    // lazily add the coords from all subprojects to the kotest-bom
+    // lazily add the coords from all subprojects to the faker-bom
     dependencyConstraints.addAllLater(
         fakerBomService.coordinates.map { coords ->
             logger.lifecycle("[$path] adding ${coords.size} coords to faker-bom: $coords")

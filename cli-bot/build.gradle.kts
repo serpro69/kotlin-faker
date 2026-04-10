@@ -52,7 +52,6 @@ tasks.withType<Test> {
 }
 
 application {
-    //    mainClassName = mainFunction
     mainClass.set(mainFunction)
 }
 
@@ -112,16 +111,6 @@ graalvmNative {
         }
     }
 }
-
-// graalvmNative {
-//    graalVersion("21.2.0")
-//    javaVersion("8")
-//    mainClass(mainFunction)
-//    outputName("faker-bot_${project.version}")
-//    option("--no-fallback")
-//    option("--no-server")
-//    option("--report-unsupported-elements-at-runtime")
-// }
 
 tasks {
     all {

@@ -44,7 +44,7 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.ref }}
+          ref: ${{ inputs.ref }}
 
       - name: Setup JDK
         uses: actions/setup-java@v4
