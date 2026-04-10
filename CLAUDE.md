@@ -80,21 +80,20 @@ The project follows a multi-module Gradle build:
 
 When adding a new provider to `core` or creating a new faker module:
 
-1. Add YAML dictionary file to `core/src/main/resources/locales/en/{category}.yml` (or to appropriate faker module)
-2. Create provider class extending `YamlFakeDataProvider` in `core/src/main/kotlin/io/github/serpro69/kfaker/provider/` (or faker module's provider package)
+1. Add YAML dictionary file to `core/src/jvmMain/resources/locales/en/{category}.yml` (or to appropriate faker module)
+2. Create provider class extending `YamlFakeDataProvider` in `core/src/jvmMain/kotlin/io/github/serpro69/kfaker/provider/` (or faker module's provider package)
 3. Add property to `Faker` class (or appropriate faker class) that instantiates the provider
 4. Update `cli-bot/src/main/kotlin/io/github/serpro69/kfaker/app/Constants.kt` for CLI support
 5. Update native-image `reflect-config.json` in `cli-bot/src/main/resources/META-INF/native-image/`
-6. Update test constants in `core/src/test/kotlin/io/github/serpro69/kfaker/TestConstants.kt`
+6. Update test constants in `core/src/jvmTest/kotlin/io/github/serpro69/kfaker/TestConstants.kt`
 7. Update `cli-bot/src/test/kotlin/io/github/serpro69/kfaker/app/cli/IntrospectorTest.kt`
 
 See CONTRIBUTING.md for detailed step-by-step instructions and examples.
 
 ## Java Version Requirements
 
-- **Runtime**: Java 8 + Kotlin 1.9.x
-- **Build**: Requires JDK 11 or higher (due to GraalVM buildtools plugin in cli-bot)
-- **Toolchains**: Core libs use Gradle toolchains to compile with Java 8 compatibility
+- **Runtime**: Java 11 + Kotlin 2.x
+- **Build**: Requires JDK 21 (configured via Gradle toolchains)
 - **Native Image**: Requires GraalVM CE JDK 17 for building cli-bot native image
 
 The project uses Gradle toolchains to automatically provision correct JDK versions.

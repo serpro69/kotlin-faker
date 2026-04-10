@@ -14,7 +14,6 @@ plugin-dokka = "2.0.0"
 plugin-semantic-versioning = "0.13.0"
 plugin-devpublish = "0.4.1"
 plugin-nmcp = "1.0.2"
-plugin-nexus-publish = "2.0.0"
 plugin-benmanes-versions = "0.51.0"
 plugin-spotless = "7.2.1"
 # test
@@ -49,8 +48,6 @@ rgxgen = { module = "com.github.curious-odd-man:rgxgen", version.ref = "rgxgen" 
 # Plugins and dependencies for use in buildSrc/build.gradle.kts
 # Plugins are the *Maven coodinates* of Gradle plugins.
 gradle-plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-#gradle-plugin-ktLint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
-gradle-plugin-bcv = { module = "org.jetbrains.kotlinx.binary-compatibility-validator:org.jetbrains.kotlinx.binary-compatibility-validator.gradle.plugin", version.ref = "plugin-bcv" }
 gradle-plugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "plugin-dokka" }
 gradle-plugin-semantic-versioning = { module = "io.github.serpro69:semantic-versioning", version.ref = "plugin-semantic-versioning" }
 gradle-plugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version.ref = "plugin-spotless" }
@@ -84,7 +81,6 @@ test-kotest = [
 [plugins]
 # these are for root build.gradle.kts
 # most plugins are imported using Maven coordinates (see above), not the Gradle plugin ID
-nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "plugin-nexus-publish" }
 benmanes-versions = { id = "com.github.ben-manes.versions", version.ref = "plugin-benmanes-versions" }
 dokka = { id = "org.jetbrains.dokka" }
 bcv = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "plugin-bcv" }
