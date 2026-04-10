@@ -187,9 +187,12 @@ pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
 
 // region Letting Faker settings control which publications are enabled
 tasks.withType<AbstractPublishToMaven>().configureEach {
-    val enabled = isPublicationEnabled(publication.name).get()
-    logger.lifecycle("[task: $path] publishing for ${publication.name} is $enabled")
-    onlyIf("publishing enabled") { enabled }
+    onlyIf("publishing enabled") {
+        val pub = publication ?: return@onlyIf false
+        val enabled = isPublicationEnabled(pub.name).get()
+        logger.lifecycle("[task: $path] publishing for ${pub.name} is $enabled")
+        enabled
+    }
 }
 
 private val fakerSettings = extensions.getByType<BuildSettings>()
