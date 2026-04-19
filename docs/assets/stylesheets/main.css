@@ -253,42 +253,45 @@ footer ul{list-style-type:none}
   display: block;
 }
 
-/* h1 */
-.md-typeset h1 {
-  font-family: Teko, sans-serif !important;
-  font-weight: 700;
-  font-size: 2.8rem;
-  text-transform: uppercase;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
-  color: var(--md-default-fg-color);
-  margin-bottom: 0.5rem;
-  border-bottom: none;
+/* h1 — high specificity to beat MkDocs defaults */
+html body .md-typeset h1,
+html body article h1 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.8rem !important;
+  text-transform: uppercase !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--md-default-fg-color) !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: none !important;
 }
 
 /* h2 */
-.md-typeset h2 {
-  font-family: Teko, sans-serif !important;
-  font-weight: 600;
-  font-size: 2rem;
-  text-transform: uppercase;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  border-bottom: 1px solid rgba(136, 192, 208, 0.1);
-  padding-bottom: 0.4rem;
-  margin-top: 2.5rem;
+html body .md-typeset h2,
+html body article h2 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
+  padding-bottom: 0.4rem !important;
+  margin-top: 2.5rem !important;
 }
 
 /* h3 */
-.md-typeset h3 {
-  font-family: Teko, sans-serif !important;
-  font-weight: 600;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-top: 2rem;
-  color: var(--md-default-fg-color);
-  opacity: 0.9;
+html body .md-typeset h3,
+html body article h3 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin-top: 2rem !important;
+  color: var(--md-default-fg-color) !important;
+  opacity: 0.9 !important;
 }
 
 /* h4+ stays IBM Plex Sans */

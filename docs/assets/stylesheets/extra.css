@@ -1,3 +1,12 @@
+/* ═══════════════════════════════════════════════════════════
+   Teko display font for headings
+═══════════════════════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   Original extra.css — preserved
+═══════════════════════════════════════════════════════════ */
+
 .md-typeset__table {
   min-width: 100%;
 }
@@ -30,39 +39,281 @@
   --md-text-font: "IBMPlexSans-Regular";
 }
 
-/*
-markdown and image alignment
-ALT tag and a CSS selector on the alt tag
-*/
-img[src*="#left"] {
-  float: left;
-}
-img[src*="#right"] {
-  float: right;
-}
-img[src*="#center"] {
-  display: block;
-  margin: auto;
-}
-
-/*
-Tables set to 100% width
-*/
-.md-typeset__table {
-  min-width: 100%;
-}
+/* markdown and image alignment */
+img[src*="#left"] { float: left; }
+img[src*="#right"] { float: right; }
+img[src*="#center"] { display: block; margin: auto; }
 
 .md-typeset table:not([class]) {
   display: table;
 }
 
-/*
-Footer social media icons:
-set the size of the svg icons and the espace between them.
-*/
-.md-social__link {
-  width: 2rem;
+.md-social__link { width: 2rem; }
+.md-social__link svg { max-height: 1.6rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Inner page typography (Teko headings)
+═══════════════════════════════════════════════════════════ */
+
+/* h1 */
+html body .md-typeset h1,
+html body article h1 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.8rem !important;
+  text-transform: uppercase !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--md-default-fg-color) !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: none !important;
 }
-.md-social__link svg {
-  max-height: 1.6rem;
+
+/* h2 */
+html body .md-typeset h2,
+html body article h2 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
+  padding-bottom: 0.4rem !important;
+  margin-top: 2.5rem !important;
+}
+
+/* h3 */
+html body .md-typeset h3,
+html body article h3 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin-top: 2rem !important;
+  color: var(--md-default-fg-color) !important;
+  opacity: 0.9 !important;
+}
+
+/* h4+ stays IBM Plex Sans */
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+}
+
+/* Body text */
+.md-typeset {
+  line-height: 1.75;
+}
+
+/* Inline code */
+.md-typeset code {
+  font-size: 0.8em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  background: rgba(136, 192, 208, 0.08);
+  border: 1px solid rgba(136, 192, 208, 0.12);
+  color: var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Code blocks
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset pre {
+  border-radius: 8px;
+  border: 1px solid rgba(136, 192, 208, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.md-typeset pre > code {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  background: transparent;
+  border: none;
+  color: var(--md-code-fg-color);
+  padding: 0;
+}
+
+.md-typeset .highlight {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Content tabs */
+.md-typeset .tabbed-labels > label {
+  font-family: var(--md-code-font-family);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  color: var(--md-default-fg-color);
+  opacity: 0.55;
+  transition: all 0.15s;
+}
+
+.md-typeset .tabbed-labels > label:hover { opacity: 0.9; }
+
+.md-typeset .tabbed-labels > .tabbed-label--active {
+  opacity: 1;
+  color: var(--color-nord-frost1);
+  border-bottom-color: var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Admonitions
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+  border-width: 0;
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: 0.85rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+}
+
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before {
+  margin-right: 0.5rem;
+}
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: var(--color-nord-green);
+  background: rgba(163, 190, 140, 0.07);
+}
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background: rgba(163, 190, 140, 0.12);
+  color: var(--color-nord-green);
+}
+
+.md-typeset .admonition.info,
+.md-typeset .admonition.note,
+.md-typeset details.info,
+.md-typeset details.note {
+  border-color: var(--color-nord-frost1);
+  background: rgba(136, 192, 208, 0.07);
+}
+.md-typeset .info > .admonition-title,
+.md-typeset .note > .admonition-title,
+.md-typeset .info > summary,
+.md-typeset .note > summary {
+  background: rgba(136, 192, 208, 0.12);
+  color: var(--color-nord-frost1);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: var(--color-nord-yellow);
+  background: rgba(235, 203, 139, 0.07);
+}
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background: rgba(235, 203, 139, 0.12);
+  color: var(--color-nord-yellow);
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-color: var(--color-nord-red);
+  background: rgba(191, 97, 106, 0.07);
+}
+.md-typeset .danger > .admonition-title,
+.md-typeset .danger > summary {
+  background: rgba(191, 97, 106, 0.12);
+  color: var(--color-nord-red);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Navigation sidebar
+═══════════════════════════════════════════════════════════ */
+
+.md-nav__title {
+  font-family: var(--md-code-font-family);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-nord-frost1);
+  opacity: 0.65;
+}
+
+.md-nav__link {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+  font-size: 13px;
+  color: var(--md-default-fg-color);
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  border-radius: 0;
+}
+
+.md-nav__link:hover {
+  opacity: 1;
+  color: var(--md-default-fg-color);
+}
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  opacity: 1;
+  color: var(--color-nord-frost1) !important;
+  font-weight: 400;
+}
+
+.md-nav__item--active > .md-nav__link {
+  border-left: 2px solid var(--color-nord-frost1);
+  padding-left: calc(var(--md-nav-item-padding) - 2px);
+  color: var(--color-nord-frost1) !important;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 12px;
+  opacity: 0.5;
+}
+.md-nav--secondary .md-nav__link--active {
+  opacity: 1;
+  color: var(--color-nord-frost1) !important;
+  border-left: 2px solid var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Tables
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset table:not([class]) th {
+  font-family: var(--md-code-font-family);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(136, 192, 208, 0.06);
+  color: var(--color-nord-frost1);
+  border-bottom: 1px solid rgba(136, 192, 208, 0.15);
+}
+
+.md-typeset table:not([class]) td {
+  font-size: 13px;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.06);
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(136, 192, 208, 0.03);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Content area
+═══════════════════════════════════════════════════════════ */
+
+.md-content__inner {
+  padding-top: 2rem;
 }
