@@ -319,12 +319,33 @@ html body article h1[data-text]::before {
   color: var(--color-nord-frost1);
   clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
   animation: lpG1 3s infinite;
+  animation-play-state: paused;
 }
 html body .md-typeset h1[data-text]::after,
 html body article h1[data-text]::after {
   color: var(--color-nord-red);
   clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
   animation: lpG2 3s infinite;
+  animation-play-state: paused;
+}
+
+/* Only run animations when the h1 is on-screen (set by glitch.js) */
+html body .md-typeset h1[data-text].glitch-on::before,
+html body .md-typeset h1[data-text].glitch-on::after,
+html body article h1[data-text].glitch-on::before,
+html body article h1[data-text].glitch-on::after {
+  animation-play-state: running;
+}
+
+/* Respect user motion preference — drop the animated duplicates entirely,
+   keep the static scanlines on the base text. */
+@media (prefers-reduced-motion: reduce) {
+  html body .md-typeset h1[data-text]::before,
+  html body .md-typeset h1[data-text]::after,
+  html body article h1[data-text]::before,
+  html body article h1[data-text]::after {
+    content: none;
+  }
 }
 
 /* keep the permalink (¶) opaque — otherwise it inherits text-fill: transparent */
