@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-site_name: kotlin-faker
+site_name: kotlin
 # ref: https://www.mkdocs.org/user-guide/configuration/#site_url
 # ref: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 site_url: !ENV [MKDOCS_SITE_URL, 'http://localhost:8000']
