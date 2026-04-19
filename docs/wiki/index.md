@@ -1,3 +1,7 @@
+---
+icon: material/compass
+---
+
 # :material-compass: User Guide
 
 * [Getting Started](getting-started.md)
