@@ -96,7 +96,7 @@ pre {
 .md-main__inner{margin:0}
 .md-footer-copyright{display:none}
 .md-footer-nav__inner{display:none}
-.md-content{display:none}
+/* .md-content / .md-main hidden only on homepage — see home.html */
 .md-footer-meta__inner{align-content:center;display:flex;align-items:center;justify-content:center}
 
 a.md-nav__link{color:var(--md-default-fg-color);text-decoration:none}
@@ -122,9 +122,9 @@ footer ul{list-style-type:none}
   .btn-xl-large:hover{font-size:22px;padding:15px 50px}
   .btn-lg-large{font-size:22px;padding:15px 30px}
   .btn-aurora-custom{margin-top:15rem}
-  .md-main{display:none}
-  .md-header__title .md-header__ellipsis .md-header__topic{background-image:url(../images/logos/nav-icon.svg);height:40px;width:150px;background-repeat:no-repeat;margin-top:10px}
-  .md-header__topic .md-ellipsis{display:none}
+  /* .md-main hidden only on homepage — see home.html */
+  .md-header__title .md-header__ellipsis .md-header__topic{background-image:none;height:auto;width:auto;margin-top:0}
+  .md-header__topic .md-ellipsis{display:block}
 }
 @media (min-width:960px) and (max-width:1219px) {
   .container-row-xl{display:flex;flex-flow:row}
