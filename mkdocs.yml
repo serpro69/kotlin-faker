@@ -1,14 +1,15 @@
 ---
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-site_name: kotlin
+# -faker appended by styling
+site_name: kotlin-faker
 # ref: https://www.mkdocs.org/user-guide/configuration/#site_url
 # ref: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 site_url: !ENV [MKDOCS_SITE_URL, "http://localhost:8000"]
 copyright: Copyright &copy; 2019 - present, serpro69
 # NOTE: comment out to speed things up during dev
-# exclude_docs: |
-#   api/
-#   pages/locales/
+exclude_docs: |
+  api/
+  pages/locales/
 
 repo_url: https://github.com/serpro69/kotlin-faker
 
@@ -54,7 +55,12 @@ theme:
     # - navigation.expand
     - navigation.footer
     - navigation.indexes
+    #
+    # NOTE: if you ever enable navigation.instant,
+    # DOMContentLoaded won't re-fire on internal navigation.
+    # Switch to material's document$.subscribe(applyGlitch) pattern then.
     # - navigation.instant
+    #
     # - navigation.instant.prefetch
     # - navigation.instant.progress
     # - navigation.prune
