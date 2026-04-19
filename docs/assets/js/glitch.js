@@ -1,7 +1,26 @@
 // Set data-text on every article h1 so the scanline/glitch pseudo-elements
 // in main.css can duplicate the text. Also toggles `.glitch-on` via an
 // IntersectionObserver so the animation only runs while the h1 is visible.
+// Additionally splits the header site name so `-faker` can be styled as a
+// two-tone accent.
 (function () {
+  function splitHeaderAccent() {
+    // Target only the first header__topic (site name), not the page-title
+    // one that swaps in on scroll.
+    var el = document.querySelector(
+      '.md-header__ellipsis > .md-header__topic:first-child .md-ellipsis'
+    );
+    if (!el || el.querySelector('.md-ellipsis__accent')) return;
+    var text = el.textContent;
+    var idx = text.indexOf('-faker');
+    if (idx < 0) return;
+    el.textContent = text.slice(0, idx);
+    var span = document.createElement('span');
+    span.className = 'md-ellipsis__accent';
+    span.textContent = text.slice(idx);
+    el.appendChild(span);
+  }
+
   function extractText(el) {
     var text = '';
     el.childNodes.forEach(function (n) {
@@ -46,9 +65,14 @@
     headings.forEach(function (h) { io.observe(h); });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyGlitch);
-  } else {
+  function init() {
+    splitHeaderAccent();
     applyGlitch();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();

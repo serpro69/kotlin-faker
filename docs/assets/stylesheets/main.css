@@ -201,13 +201,18 @@ footer ul{list-style-type:none}
   width: auto !important;
   margin-top: 0 !important;
 }
-.md-header__topic .md-ellipsis {
+/* Scope to the FIRST header__topic (site name).
+   Material renders a second one that swaps in the current page title on
+   scroll — we don't want scanlines or the "-faker" suffix on that. */
+.md-header__ellipsis > .md-header__topic:first-child .md-ellipsis {
   display: block !important;
   font-family: Teko, sans-serif !important;
   font-size: 20px !important;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--md-primary-bg-color) !important;
+  /* Header bar is forced dark in both schemes; use a scheme-independent
+     light color so the scanlines stay readable in nord:light too. */
+  color: var(--color-nord-light2) !important;
   background-image: repeating-linear-gradient(
     0deg,
     currentColor,
@@ -220,9 +225,22 @@ footer ul{list-style-type:none}
   -webkit-text-fill-color: transparent;
           text-fill-color: transparent;
 }
-.md-header__topic .md-ellipsis::after {
-  content: '-faker';
+/* Two-tone accent — "-faker" span is injected by glitch.js so it can carry
+   its own scanline background in frost1. Without its own background-image,
+   the parent's clipped gradient wouldn't apply to the span region. */
+.md-header__ellipsis > .md-header__topic:first-child .md-ellipsis__accent {
   color: var(--color-nord-frost1);
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
 }
 
 /* Tabs bar */
@@ -234,6 +252,7 @@ footer ul{list-style-type:none}
   font-family: 'IBMPlexSans-Regular', 'IBM Plex Sans', sans-serif !important;
   font-size: 13px !important;
   opacity: 0.6;
+  color: var(--color-nord-light2) !important;
   transition: opacity 0.2s;
 }
 .md-tabs__link:hover { opacity: 1 !important; }
