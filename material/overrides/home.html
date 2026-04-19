@@ -1,331 +1,632 @@
 {% extends "overrides/main.html" %}
 
-<!-- Render hero under tabs -->
 {% block tabs %}
 {{ super() }}
 
-<!-- Hero for landing page -->
+<style>
+/* ── Landing page styles (lp- prefix to avoid MkDocs conflicts) ─── */
+.lp-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px 60px;
+  background: rgba(var(--color-nord-dark0-rgb), 0.88);
+}
+/* scanlines on text elements — both modes */
+.lp-glitch-wrap {
+  position: relative;
+  display: block; /* block so subtitle goes below */
+}
+.lp-subtitle {
+  position: relative;
+  display: block; /* must be block to sit on its own line */
+}
+.lp-glitch-wrap::after,
+.lp-subtitle::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.18) 3px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+/* lighter scanlines in light mode */
+[data-md-color-scheme="nord:light"] .lp-glitch-wrap::after,
+[data-md-color-scheme="nord:light"] .lp-subtitle::after {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.07) 3px,
+    rgba(0,0,0,0.07) 4px
+  );
+}
+/* light mode: semi-transparent hero + sections so backdrop shows through */
+[data-md-color-scheme="nord:light"] .lp-hero {
+  background: rgba(var(--color-nord-light2-rgb), 0.88);
+}
+[data-md-color-scheme="nord:light"] .lp-section.lp-alt {
+  background: rgba(var(--color-nord-light1-rgb), 0.85);
+}
+/* also on the MkDocs header logo text */
+.md-header__topic .md-ellipsis {
+  position: relative;
+  display: inline-block;
+}
+.md-header__topic .md-ellipsis::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.18) 3px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+/* Full-page backdrop — fixed, behind all sections */
+.lp-backdrop {
+  position: fixed; inset: 0;
+  display: grid; grid-template-columns: repeat(6,1fr);
+  opacity: 0.06; pointer-events: none; overflow: hidden;
+  z-index: 0;
+  mask-image: none;
+}
+.lp-col {
+  font-family: var(--md-code-font-family);
+  font-size: 11px; line-height: 2;
+  color: var(--color-nord-frost1); padding: 0 8px;
+  animation: lpScrollUp 20s linear infinite;
+}
+.lp-col:nth-child(2) { animation-duration:17s; color:var(--color-nord-purple); }
+.lp-col:nth-child(3) { animation-duration:23s; color:var(--color-nord-green); }
+.lp-col:nth-child(4) { animation-duration:19s; color:var(--color-nord-frost2); }
+.lp-col:nth-child(5) { animation-duration:25s; color:var(--color-nord-yellow); }
+.lp-col:nth-child(6) { animation-duration:15s; color:var(--color-nord-frost0); }
+/* In light mode, use darker column colors for visibility */
+[data-md-color-scheme="nord:light"] .lp-backdrop { opacity: 0.12; }
+[data-md-color-scheme="nord:light"] .lp-col { color: var(--color-nord-frost3); }
+[data-md-color-scheme="nord:light"] .lp-col:nth-child(2) { color:var(--color-nord-purple); }
+[data-md-color-scheme="nord:light"] .lp-col:nth-child(3) { color:var(--color-nord-frost3); }
+[data-md-color-scheme="nord:light"] .lp-col:nth-child(4) { color:var(--color-nord-dark3); }
+[data-md-color-scheme="nord:light"] .lp-col:nth-child(5) { color:var(--color-nord-orange); }
+[data-md-color-scheme="nord:light"] .lp-col:nth-child(6) { color:var(--color-nord-frost2); }
+@keyframes lpScrollUp { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
 
-<div class="gradient-wrapper"> <!-- angled gradient wrapper for dark mode -->
+.lp-hero-content { position: relative; z-index: 2; }
 
-<!--kotlin-faker documetation-->
-<section class="w-100">
-  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
-    <div class="px-3 ctx-header-text container">
-      <div class="container-row">
-        <p class="h1 text-xs-center">
-          <img src="assets/images/logos/name.png" class="mx-3 title-logo" height="22%"/>
-          <br>
-          <b>...the only fake-data-generation library you'd need on the JVM</b>
-        <br>
-        </p>
-      </div>
+.lp-glitch-wrap { margin-bottom: 4px; }
+.lp-glitch {
+  font-family: Teko, sans-serif;
+  font-weight: 700;
+  font-size: clamp(80px, 13vw, 160px);
+  line-height: 0.85; text-transform: uppercase;
+  color: var(--md-default-fg-color); letter-spacing: -0.02em;
+  display: inline-block; position: relative;
+}
+.lp-glitch::before, .lp-glitch::after {
+  content: attr(data-text);
+  position: absolute; top:0; left:0; right:0;
+  font-family: Teko, sans-serif; font-weight:700;
+  font-size:inherit; line-height:inherit; text-transform:uppercase;
+}
+.lp-glitch::before { color:var(--color-nord-frost1); clip-path:polygon(0 30%,100% 30%,100% 50%,0 50%); animation:lpG1 3s infinite; }
+.lp-glitch::after  { color:var(--color-nord-red);    clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%); animation:lpG2 3s infinite; }
+@keyframes lpG1 { 0%,90%,100%{transform:translate(0);opacity:0} 91%{transform:translate(-4px,0);opacity:1} 93%{transform:translate(4px,0);opacity:1} 95%{transform:translate(0);opacity:0} }
+@keyframes lpG2 { 0%,85%,100%{transform:translate(0);opacity:0} 86%{transform:translate(4px,0);opacity:1} 88%{transform:translate(-4px,0);opacity:1} 90%{transform:translate(0);opacity:0} }
 
-      <img src="assets/images/logos/logo-white.png#only-dark" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
-      <img src="assets/images/logos/logo.png#only-light" class="header-img d-lg-none d-xl-none mx-auto mb-5" />
-      <p class="h3 text-xs-center">
-        Kotlin-faker is a comprehensive data-generation library which provides realistic-looking,
-        fake-data-generation capabilities within a variety of domains, like
-        <i>names</i> 📇, <i>addresses</i> 🏡, <i>internet</i> 🌐, <i>banking</i> 💸, <i>books</i> 📖, <i>games</i> 🎮,
-        and <a href="/wiki/data-providers" class="text-link">many more</a>.
-        <br>
-        It can be used with Kotlin, Java, Android, Scala, and other JVM-based projects.
-        <br>
-        Ensure your application data looks as if it was real, just like our <i>really</i> fake logo, but not quite so.
-      </p>
+.lp-subtitle {
+  font-family: Teko, sans-serif; font-weight:400;
+  font-size: clamp(20px,3vw,38px);
+  color: var(--color-nord-frost1);
+  margin-bottom: 14px; letter-spacing: 0.03em; white-space: nowrap;
+}
+.lp-lang-tags { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
+.lp-lang-tag {
+  font-family: var(--md-code-font-family); font-size:11px;
+  padding:4px 12px; border-radius:3px; border:1px solid;
+  text-transform:uppercase; letter-spacing:0.08em;
+}
+.lp-tw {
+  font-family: var(--md-code-font-family); font-size:13px;
+  color: var(--color-nord-frost0); opacity:0.7;
+  margin-bottom:32px; height:20px;
+}
+.lp-actions { display:flex; gap:16px; justify-content:center; }
+.lp-btn-p {
+  font-family: var(--md-code-font-family); font-weight:500; font-size:13px;
+  padding:12px 32px; border-radius:3px; letter-spacing:0.06em; text-transform:uppercase;
+  background: var(--color-nord-frost1); color: var(--md-default-bg-color);
+  border:none; cursor:pointer; white-space:nowrap; transition: all 0.2s;
+}
+.lp-btn-p:hover { background:var(--color-nord-frost0); box-shadow:0 0 20px rgba(136,192,208,0.3); }
+.lp-btn-s {
+  font-family: var(--md-code-font-family); font-size:13px;
+  padding:12px 32px; border-radius:3px; letter-spacing:0.06em; text-transform:uppercase;
+  background:transparent; color:var(--color-nord-frost1);
+  border:1px solid var(--color-nord-frost1); cursor:pointer; white-space:nowrap;
+  opacity:0.75; transition: all 0.2s;
+}
+.lp-btn-s:hover { opacity:1; }
 
-      <div class="container-row container-xs">
-        <button
-          type="button"
-          title="{{ page.next_page.title | e }}"
-          onclick="location.href='./concepts/'"
-          class="md-icon btn-dark btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
-          Get Started {% include ".icons/material/play.svg" %}
-        </button>
-        <button
-          onclick="window.open('{{ config.repo_url }}', '_blank')"
-          title="Github"
-          type="button"
-          class="md-icon btn-white btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow">
-          Contribute {% include ".icons/material/github.svg" %}
-        </button>
-      </div>
+.lp-stats {
+  position: relative; z-index:2;
+  display:flex; gap:48px; justify-content:center;
+  margin-top:56px; padding-top:40px;
+  border-top:1px solid rgba(136,192,208,0.1);
+  flex-wrap: wrap;
+}
+.lp-stat-val { font-family:Teko,sans-serif; font-size:40px; font-weight:600; color:var(--color-nord-frost1); line-height:1; }
+.lp-stat-label { font-family:var(--md-code-font-family); font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:var(--md-default-fg-color); opacity:0.45; margin-top:4px; }
+
+/* ── Section commons ─── */
+.lp-section { padding: 96px 0; position: relative; z-index: 1; }
+.lp-hero { position: relative; z-index: 1; }.lp-section.lp-alt { background: rgba(var(--color-nord-dark1-rgb), 0.85); }
+.lp-inner { max-width:1200px; margin:0 auto; padding:0 48px; }
+.lp-eyebrow {
+  font-family:var(--md-code-font-family); font-size:11px; text-transform:uppercase;
+  letter-spacing:0.15em; color:var(--color-nord-frost1); margin-bottom:12px; opacity:0.8;
+  display:flex; align-items:center; gap:8px;
+}
+.lp-eyebrow::before { content:''; display:block; width:20px; height:1px; background:var(--color-nord-frost1); }
+.lp-h2 {
+  font-family:Teko,sans-serif; font-weight:700; font-size:clamp(40px,5vw,64px);
+  line-height:0.95; text-transform:uppercase; letter-spacing:-0.01em;
+  color:var(--md-default-fg-color); margin-bottom:16px;
+}
+.lp-h2 span { color:var(--color-nord-frost1); }
+.lp-lead { font-size:15px; line-height:1.7; color:var(--md-default-fg-color); opacity:0.65; max-width:560px; }
+
+/* ── MkDocs header overrides (homepage) ─── */
+
+/* Main header bar — dark, no shadow */
+.md-header {
+  background: rgba(7, 7, 7, 0.97) !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
+}
+
+/* Show text logo, hide SVG background */
+.md-header__title .md-header__ellipsis .md-header__topic {
+  background-image: none !important;
+  height: auto !important;
+  width: auto !important;
+  margin-top: 0 !important;
+}
+.md-header__topic .md-ellipsis {
+  display: block !important;
+  font-family: Teko, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--md-primary-bg-color) !important;
+}
+.md-header__topic .md-ellipsis::after {
+  content: '-faker';
+  color: var(--color-nord-frost1);
+}
+
+/* Tabs bar — match the dark header */
+.md-tabs {
+  background: rgba(7, 7, 7, 0.97) !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.08) !important;
+}
+.md-tabs__link {
+  font-family: 'IBMPlexSans-Regular', 'IBM Plex Sans', sans-serif !important;
+  font-size: 13px !important;
+  opacity: 0.6;
+  color: var(--md-primary-bg-color) !important;
+  transition: opacity 0.2s;
+}
+.md-tabs__link:hover { opacity: 1 !important; }
+.md-tabs__link--active {
+  opacity: 1 !important;
+  color: var(--color-nord-frost1) !important;
+  border-bottom: 2px solid var(--color-nord-frost1);
+}
+.lp-data-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:56px; }
+.lp-cat-grid { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 32px; }
+.lp-cat-pill {
+  font-family:var(--md-code-font-family); font-size:11px;
+  padding:5px 14px; border-radius:100px;
+  border:1px solid rgba(136,192,208,0.15);
+  color:var(--md-default-fg-color); opacity:0.6; cursor:pointer;
+  transition:all 0.2s; white-space:nowrap; background:transparent;
+}
+.lp-cat-pill:hover { opacity:.9; border-color:rgba(136,192,208,.4); }
+.lp-cat-pill.active { opacity:1; border-color:var(--color-nord-frost1); color:var(--color-nord-frost1); background:rgba(136,192,208,.06); }
+.lp-code-win {
+  background:var(--md-code-bg-color); border-radius:8px;
+  border:1px solid rgba(136,192,208,0.1);
+  box-shadow:0 24px 64px rgba(0,0,0,0.4); overflow:hidden;
+}
+.lp-code-bar {
+  background:var(--md-default-bg-color--light); padding:10px 16px;
+  display:flex; align-items:center; gap:6px;
+  border-bottom:1px solid rgba(136,192,208,0.06);
+}
+.lp-dot { width:10px; height:10px; border-radius:50%; }
+.lp-code-body {
+  padding:24px; font-family:var(--md-code-font-family);
+  font-size:13px; line-height:1.9; min-height:240px;
+}
+.lp-cat-desc { font-size:12px; line-height:1.7; color:var(--md-default-fg-color); opacity:0.5; font-family:var(--md-code-font-family); }
+
+/* ── Features ─── */
+.lp-features { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+.lp-feat-card {
+  background:var(--md-default-bg-color--light); border-radius:8px;
+  border:1px solid rgba(136,192,208,0.08); padding:32px; transition:border-color 0.2s;
+}
+.lp-feat-card:hover { border-color:rgba(136,192,208,.2); }
+.lp-feat-icon { font-family:Teko,sans-serif; font-size:32px; font-weight:600; color:var(--color-nord-frost1); margin-bottom:16px; line-height:1; }
+.lp-feat-title { font-family:Teko,sans-serif; font-size:28px; font-weight:600; text-transform:uppercase; color:var(--md-default-fg-color); margin-bottom:16px; line-height:1; }
+.lp-feat-item {
+  font-size:13px; line-height:1.6; color:var(--md-default-fg-color); opacity:0.7;
+  padding:8px 0; border-top:1px solid rgba(136,192,208,0.06);
+  display:flex; gap:8px; align-items:flex-start;
+}
+.lp-feat-item::before { content:'→'; color:var(--color-nord-frost1); flex-shrink:0; opacity:0.6; }
+
+.lp-perf-card {
+  margin-top:32px; border-radius:8px; padding:40px 48px;
+  background: linear-gradient(135deg,rgba(180,142,173,.08),rgba(136,192,208,.06),rgba(163,190,140,.04));
+  border:1px solid rgba(136,192,208,.15);
+  display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center;
+}
+.lp-perf-title { font-family:Teko,sans-serif; font-size:clamp(24px,3vw,40px); font-weight:600; text-transform:uppercase; color:var(--md-default-fg-color); margin-bottom:12px; }
+.lp-perf-sub { font-size:14px; line-height:1.7; color:var(--md-default-fg-color); opacity:0.65; max-width:520px; }
+.lp-perf-num { font-family:Teko,sans-serif; font-size:80px; font-weight:700; color:var(--color-nord-frost1); line-height:1; text-align:center; white-space:nowrap; }
+.lp-perf-sub2 { font-family:var(--md-code-font-family); font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--md-default-fg-color); opacity:.35; text-align:center; margin-top:4px; }
+
+/* ── Locales ─── */
+.lp-locales-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:56px; }
+.lp-locale-grid { display:flex; flex-wrap:wrap; gap:6px; margin-top:24px; }
+.lp-locale-chip {
+  font-family:var(--md-code-font-family); font-size:10px;
+  padding:3px 10px; border-radius:2px;
+  background:rgba(136,192,208,.05); border:1px solid rgba(136,192,208,.12);
+  color:var(--md-default-fg-color); opacity:0.7; white-space:nowrap;
+}
+
+/* ── Extras ─── */
+.lp-extras { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:56px; }
+.lp-extra-card { background:var(--md-default-bg-color--light); border-radius:8px; border:1px solid rgba(136,192,208,.08); padding:28px; }
+.lp-extra-num { font-family:Teko,sans-serif; font-size:48px; font-weight:700; color:var(--color-nord-frost1); opacity:.15; line-height:1; margin-bottom:8px; }
+.lp-extra-title { font-family:Teko,sans-serif; font-size:22px; font-weight:600; text-transform:uppercase; color:var(--md-default-fg-color); margin-bottom:10px; }
+.lp-extra-body { font-size:12px; line-height:1.65; color:var(--md-default-fg-color); opacity:.6; margin-bottom:16px; }
+.lp-extra-code { font-family:var(--md-code-font-family); font-size:11px; line-height:1.8; color:var(--color-nord-frost1); opacity:.75; }
+
+/* ── Tech stack ─── */
+.lp-tech-row { display:flex; align-items:center; justify-content:center; gap:48px; margin-top:56px; flex-wrap:wrap; }
+.lp-tech-item { text-align:center; }
+.lp-tech-logo {
+  width:48px; height:48px; border-radius:8px;
+  background:rgba(136,192,208,.06); border:1px solid rgba(136,192,208,.1);
+  display:flex; align-items:center; justify-content:center; margin:0 auto;
+  font-family:Teko,sans-serif; font-size:22px; font-weight:700;
+}
+.lp-tech-name { font-family:var(--md-code-font-family); font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--md-default-fg-color); opacity:.4; margin-top:10px; }
+
+/* ── Code syntax (landing page) ─── */
+.lp-kw { color:var(--color-nord-frost2); }
+.lp-fn { color:var(--color-nord-green); }
+.lp-str { color:var(--color-nord-yellow); }
+.lp-cls { color:var(--color-nord-frost1); }
+.lp-cm { color:var(--color-nord-dark3); font-style:italic; }
+.lp-out { color:var(--color-nord-purple); }
+
+/* ── Responsive ─── */
+@media (max-width: 960px) {
+  .lp-data-layout, .lp-locales-layout, .lp-perf-card { grid-template-columns:1fr; }
+  .lp-features { grid-template-columns:1fr; }
+  .lp-extras { grid-template-columns:repeat(2,1fr); }
+  .lp-inner { padding:0 24px; }
+  .lp-perf-num { display:none; }
+}
+@media (max-width: 540px) {
+  .lp-extras { grid-template-columns:1fr; }
+  .lp-stats { gap:24px; }
+}
+</style>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="lp-hero">
+  <div class="lp-backdrop" id="lpBackdrop"></div>
+  <div class="lp-hero-content">
+    <div class="lp-glitch-wrap">
+      <div class="lp-glitch" data-text="FAKER">FAKER</div>
     </div>
-    <div class="ctx-header-img d-lg">
-      <img src="assets/images/logos/logo-white.png#only-dark" class="header-img mx-lg-5" />
-      <img src="assets/images/logos/logo.png#only-light" class="header-img mx-lg-5" />
+    <div class="lp-subtitle">// kotlin edition //</div>
+    <div class="lp-lang-tags">
+      <span class="lp-lang-tag" style="color:var(--color-nord-frost1);border-color:rgba(136,192,208,0.35)">Kotlin</span>
+      <span class="lp-lang-tag" style="color:var(--color-nord-green);border-color:rgba(163,190,140,0.35)">Java</span>
+      <span class="lp-lang-tag" style="color:var(--color-nord-purple);border-color:rgba(180,142,173,0.35)">Scala</span>
+      <span class="lp-lang-tag" style="color:var(--color-nord-yellow);border-color:rgba(235,203,139,0.35)">Groovy</span>
+      <span class="lp-lang-tag" style="color:var(--color-nord-orange);border-color:rgba(208,135,112,0.35)">Clojure</span>
+    </div>
+    <div class="lp-tw" id="lpTw"></div>
+    <div class="lp-actions">
+      <button onclick="location.href='{{ config.site_url }}concepts/'" class="lp-btn-p">GET STARTED</button>
+      <button onclick="window.open('{{ config.repo_url }}', '_blank')" class="lp-btn-s">github ↗</button>
+    </div>
+  </div>
+  <div class="lp-stats">
+    <div><div class="lp-stat-val">213+</div><div class="lp-stat-label">Providers</div></div>
+    <div><div class="lp-stat-val">60+</div><div class="lp-stat-label">Locales</div></div>
+    <div><div class="lp-stat-val">4×</div><div class="lp-stat-label">Faster</div></div>
+    <div><div class="lp-stat-val">JVM</div><div class="lp-stat-label">Platform</div></div>
+  </div>
+</section>
+
+<!-- ══ WHAT KIND OF DATA ══════════════════════════════════════ -->
+<section class="lp-section lp-alt">
+  <div class="lp-inner">
+    <div class="lp-eyebrow">data domains</div>
+    <h2 class="lp-h2">What Kind of <span>Data?</span></h2>
+    <p class="lp-lead">213+ generators covering everything from real-world names and banking details to obscure pop culture references.</p>
+    <div class="lp-data-layout">
+      <div>
+        <p style="font-size:13px;line-height:1.7;color:var(--md-default-fg-color);opacity:.65;margin-bottom:8px">Pick a category to explore:</p>
+        <div class="lp-cat-grid">
+          <span class="lp-cat-pill active" data-cat="core">Core</span>
+          <span class="lp-cat-pill" data-cat="entertainment">Entertainment</span>
+          <span class="lp-cat-pill" data-cat="tech">Tech</span>
+          <span class="lp-cat-pill" data-cat="culture">Culture</span>
+          <span class="lp-cat-pill" data-cat="creatures">Creatures</span>
+          <span class="lp-cat-pill" data-cat="humor">Humor</span>
+        </div>
+        <div class="lp-cat-desc" id="lpCatDesc"></div>
+        <button onclick="location.href='{{ config.site_url }}wiki/data-providers/'" class="lp-btn-p" style="margin-top:24px;font-size:12px;padding:10px 24px">VIEW ALL GENERATORS →</button>
+      </div>
+      <div>
+        <div class="lp-code-win">
+          <div class="lp-code-bar">
+            <div class="lp-dot" style="background:#bf616a"></div>
+            <div class="lp-dot" style="background:#ebcb8b"></div>
+            <div class="lp-dot" style="background:#a3be8c"></div>
+            <span style="font-family:var(--md-code-font-family);font-size:11px;color:var(--md-default-fg-color);opacity:.35;margin-left:8px" id="lpCodeTitle">Faker.kt</span>
+          </div>
+          <div class="lp-code-body" id="lpCodeBody"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-{{ page.content }}
-
-</div> <!-- angled gradient wrapper for dark mode -->
-
-<!-- Why kotlin-faker -->
-<section class="third-dark-body w-100">
-  <div class="md-grid md-typeset container-row pt-1 pt-lg-5 my-4">
-    <div class="px-3 ctx-header-text container">
-      <div class="container-row">
-        <p class="display-1 IBMPlexSans-Bold text-xs-center">
-          <b>Why</b>
-          <img src="assets/images/logos/name.png" class="mx-1 title-logo" height="60%"/>
-          <b>?</b>
-        </br>
-        </p>
+<!-- ══ WHY KOTLIN-FAKER ════════════════════════════════════════ -->
+<section class="lp-section">
+  <div class="lp-inner">
+    <div class="lp-eyebrow">why kotlin-faker</div>
+    <h2 class="lp-h2">Built for <span>Modern</span> JVM</h2>
+    <p class="lp-lead">While other data fakers exist, kotlin-faker is built from the ground up to be the most powerful, flexible, and developer-friendly choice.</p>
+    <div class="lp-features">
+      <div class="lp-feat-card">
+        <div class="lp-feat-icon">{ }</div>
+        <div class="lp-feat-title">Kotlin First</div>
+        <div class="lp-feat-item">Idiomatic DSL makes data-generation code clean, readable, and type-safe</div>
+        <div class="lp-feat-item">No awkward Java interop or legacy API design — it just feels right</div>
+        <div class="lp-feat-item">Full coroutine support and null-safety baked in</div>
       </div>
-      <p class="h3 text-xs-center text-white">
-        While other data fakers exist, kotlin-faker is built from the ground up to be the most powerful, flexible, and developer-friendly choice for the modern JVM ecosystem.
-      </p>
+      <div class="lp-feat-card">
+        <div class="lp-feat-icon">∞</div>
+        <div class="lp-feat-title">Unrivaled Coverage</div>
+        <div class="lp-feat-item">213+ data providers across every imaginable domain</div>
+        <div class="lp-feat-item">60+ locales including non-latin scripts</div>
+        <div class="lp-feat-item">From Address and Name to obscure Esport teams and LOTR characters</div>
+      </div>
+      <div class="lp-feat-card">
+        <div class="lp-feat-icon">⟳</div>
+        <div class="lp-feat-title">Unique &amp; Powerful</div>
+        <div class="lp-feat-item">Guaranteed unique values at the provider or function level</div>
+        <div class="lp-feat-item">Random class instance generation for any data class</div>
+        <div class="lp-feat-item">CLI app for exploring generators without writing code</div>
+      </div>
+    </div>
+    <div class="lp-perf-card">
+      <div>
+        <div class="lp-perf-title">Blazing Fast &amp; Actively Maintained</div>
+        <div class="lp-perf-sub">Benchmarked against legacy Java fakers, kotlin-faker is up to 4× faster — saving you time across thousands of test runs. Actively developed with new providers added regularly.</div>
+        <button onclick="location.href='{{ config.site_url }}pages/faker-comparisons/'" class="lp-btn-s" style="margin-top:20px;font-size:12px;padding:10px 24px">KOTLIN-FAKER VS COMPETITION ↗</button>
+      </div>
+      <div>
+        <div class="lp-perf-num">4×</div>
+        <div class="lp-perf-sub2">faster than java-faker</div>
+      </div>
     </div>
   </div>
-  <div class="container py-5 my-5">
-    <div class="feature-column-container">
-      <!-- Feature Column 1: Kotlin First -->
-      <div class="feature-column">
-        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
-          <p class="my-3 display-4 IBMPlexSans-Bold">
-            <span class="md-icon twemoji-kotlin">
-            Kotlin<br>First {% include ".icons/simple/kotlin.svg" %}
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              An idiomatic Kotlin DSL makes your data-generation code clean, readable, and type-safe.
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              No more dealing with awkward Java interop or legacy library design. It just feels right.
-            </span>
-          </p>
-        </div>
-      </div>
-      <!-- Feature Column 2: Unrivaled Coverage -->
-      <div class="feature-column">
-        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
-          <p class="my-3 display-4 IBMPlexSans-Bold">
-            <span class="md-icon twemoji-rocket-launch">
-            Unrivaled<br>Coverage {% include ".icons/material/rocket-launch.svg" %}
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              With <strong>213+ data providers</strong> and <strong>60+ locales</strong>, it has the most comprehensive and diverse dataset of any JVM faker library.
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              From <code>Address</code> and <code>Name</code> to obscure <code>Esport</code> teams, <code>Games</code> and <code>Lord of the Rings</code> characters, the all the data you could need is readily available.
-            </span>
-          </p>
-        </div>
-      </div>
-      <!-- Feature Column 3: Unique & Powerful -->
-      <div class="feature-column">
-        <div class="container ctx-card-white-1 text-white h3 my-5 mx-auto w-70">
-          <p class="my-3 display-4 IBMPlexSans-Bold">
-            <span class="md-icon twemoji-unicorn-variant">
-            Unique {% include ".icons/material/unicorn-variant.svg" %}
-            <br>& Powerful
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              Generate truly <strong>unique values</strong> at the provider or function level, a critical feature for realistic testing that others lack.
-            </span>
-          </p>
-          <p class="my-3">
-            <span class="md-icon mx-2 twemoji-check-all">
-              {% include ".icons/material/check-all.svg" %}
-              A handy <strong>CLI application</strong> lets you explore the data that can be generated and how to generate it.
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!-- Comparison Card -->
-    <div class="container-row">
-      <div class="w-100">
-        <div class="card-aurora second-gradient-body px-5 py-5">
-          <div class="container ctx-card-white-1 text-dark h3">
-            <p class="my-3 display-4 IBMPlexSans-Bold">Blazing Fast & Actively Maintained</p>
-            <p class="my-3">
-              <span class="md-icon mx-2 twemoji-check-all">
-                {% include ".icons/material/check-all.svg" %}
-                When benchmarked against legacy Java fakers, <strong>kotlin-faker is up to 4x faster</strong>, saving you valuable time in your test and build cycles.
-              </span>
-            </p>
-            <p class="my-3">
-              <span class="md-icon mx-2 twemoji-check-all">
-                {% include ".icons/material/check-all.svg" %}
-                Unlike many older libraries that are no longer maintained, kotlin-faker is actively developed, ensuring it stays up-to-date with new data and features.
-              </span>
-            </p>
-          <button
-            onclick="location.href='./pages/faker-comparisons/'"
-            title="Comparisons"
-            type="button"
-            class="btn-aurora btn-aurora-custom btn-xl-large btn-lg-large mx-auto text-align-center cursor-pointer"
-          >
-            Kotlin-Faker vs. Competition
-          </button>
+</section>
+
+<!-- ══ LOCALES ═════════════════════════════════════════════════ -->
+<section class="lp-section lp-alt">
+  <div class="lp-inner">
+    <div class="lp-eyebrow">internationalization</div>
+    <h2 class="lp-h2">60+ <span>Locales</span></h2>
+    <p class="lp-lead">Generate data that feels local — from Norwegian names to Japanese addresses. Just set the locale and go.</p>
+    <div class="lp-locales-layout">
+      <div>
+        <div class="lp-code-win" style="margin-top:32px">
+          <div class="lp-code-bar">
+            <div class="lp-dot" style="background:#bf616a"></div>
+            <div class="lp-dot" style="background:#ebcb8b"></div>
+            <div class="lp-dot" style="background:#a3be8c"></div>
+            <span style="font-family:var(--md-code-font-family);font-size:11px;color:var(--md-default-fg-color);opacity:.35;margin-left:8px">Locales.kt</span>
+          </div>
+          <div class="lp-code-body">
+<div><span class="lp-cm">// default — English (en)</span></div>
+<div><span class="lp-kw">val</span> faker = <span class="lp-cls">Faker</span>()</div>
+<div>faker.<span class="lp-fn">name</span>.<span class="lp-fn">name</span>() <span class="lp-out">// → "John Smith"</span></div>
+<div>&nbsp;</div>
+<div><span class="lp-cm">// Norwegian Bokmål (nb-NO)</span></div>
+<div><span class="lp-kw">val</span> nbFaker = <span class="lp-cls">Faker</span> { locale = <span class="lp-str">"nb-NO"</span> }</div>
+<div>nbFaker.<span class="lp-fn">name</span>.<span class="lp-fn">name</span>() <span class="lp-out">// → "Bjørn Eriksen"</span></div>
+<div>&nbsp;</div>
+<div><span class="lp-cm">// Japanese (ja)</span></div>
+<div><span class="lp-kw">val</span> jaFaker = <span class="lp-cls">Faker</span> { locale = <span class="lp-str">"ja"</span> }</div>
+<div>jaFaker.<span class="lp-fn">name</span>.<span class="lp-fn">name</span>() <span class="lp-out">// → "田中 太郎"</span></div>
           </div>
         </div>
       </div>
+      <div style="padding-top:32px">
+        <div class="lp-locale-grid" id="lpLocaleGrid"></div>
+        <button onclick="location.href='{{ config.site_url }}wiki/available-locales/'" class="lp-btn-p" style="margin-top:24px;font-size:12px;padding:10px 24px">VIEW ALL LOCALES →</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!--Supported tech stack-->
-<section class="four-gray-body w-100">
-  <div class="md-grid md-typeset container pt-5 my-0 my-xl-4 my-lg-4">
-    <p class="display-3 text-dark IBMPlexSans-Bold mt-4 text-align-center text-start-xl text-start-lg">Supported Tech-Stack</p>
-    <div class="container container-row-lg container-row-xl my-4">
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        <span class="md-icon">
-          {% include ".icons/material/language-kotlin.svg" %}
-        <span>
+<!-- ══ EXTRAS ══════════════════════════════════════════════════ -->
+<section class="lp-section">
+  <div class="lp-inner">
+    <div class="lp-eyebrow">advanced features</div>
+    <h2 class="lp-h2">And <span>Much More</span></h2>
+    <div class="lp-extras">
+      <div class="lp-extra-card">
+        <div class="lp-extra-num">01</div>
+        <div class="lp-extra-title">Unique Values</div>
+        <div class="lp-extra-body">Guarantee no repeated values across a provider or a specific function. Essential for realistic, non-colliding test data.</div>
+        <div class="lp-extra-code">faker.unique.name.name()<br>faker.unique.address.city()</div>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        <span class="md-icon">
-          {% include ".icons/material/language-java.svg" %}
-        <span>
+      <div class="lp-extra-card">
+        <div class="lp-extra-num">02</div>
+        <div class="lp-extra-title">Random Instances</div>
+        <div class="lp-extra-body">Populate any Kotlin data class automatically with fake data. Configure generators per field, or let faker decide.</div>
+        <div class="lp-extra-code">faker.randomProvider&lt;User&gt;()<br>&nbsp;&nbsp;.randomClassInstance()</div>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        <span class="md-icon">
-          {% include ".icons/simple/scala.svg" %}
-        <span>
+      <div class="lp-extra-card">
+        <div class="lp-extra-num">03</div>
+        <div class="lp-extra-title">String Templates</div>
+        <div class="lp-extra-body">Build composite strings using expression templates that resolve to real faker values inline.</div>
+        <div class="lp-extra-code">faker.string.resolve(<br>&nbsp;&nbsp;"#{Name.name}"<br>)</div>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        <span class="md-icon">
-          {% include ".icons/simple/apachegroovy.svg" %}
-        <span>
+      <div class="lp-extra-card">
+        <div class="lp-extra-num">04</div>
+        <div class="lp-extra-title">CLI App</div>
+        <div class="lp-extra-body">Explore available generators and outputs right from your terminal — no code needed.</div>
+        <div class="lp-extra-code">$ faker-cli list<br>$ faker-cli generate name</div>
       </div>
-      <div class="text-dark display-3 mx-4 my-3 mx-lg-0 my-xl-0" style="order:0; flex: 50%;">
-        <span class="md-icon">
-          {% include ".icons/simple/clojure.svg" %}
-        <span>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TECH STACK ══════════════════════════════════════════════ -->
+<section class="lp-section lp-alt" style="padding:64px 0">
+  <div class="lp-inner" style="text-align:center">
+    <div class="lp-eyebrow" style="justify-content:center;margin-bottom:8px">platform support</div>
+    <p style="font-size:13px;color:var(--md-default-fg-color);opacity:.4;font-family:var(--md-code-font-family)">Works anywhere on the JVM</p>
+    <div class="lp-tech-row">
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-orange)">K</div><div class="lp-tech-name">Kotlin</div></div>
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-green)">J</div><div class="lp-tech-name">Java</div></div>
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-red)">S</div><div class="lp-tech-name">Scala</div></div>
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-yellow)">G</div><div class="lp-tech-name">Groovy</div></div>
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-purple)">C</div><div class="lp-tech-name">Clojure</div></div>
     </div>
   </div>
 </section>
 
 {% endblock %}
 
-
-{% block content %} {% endblock %}
+{% block content %}{% endblock %}
 
 {% block footer %}
-
-<!--Footer-->
-<footer class="bg-dark w-100">
-  <div class="md-grid container-row-xl container-row-lg container pt-5 my-4">
-    <div class="container-row" style="flex:50%">
-      <div class="text-dark d-flex footer-img" style="flex: 30%;">
-        <img src="assets/images/logos/logo-white.png#only-dark" class="mx-auto" width="30%"/>
-        <img src="assets/images/logos/logo.png#only-light" class="mx-auto" width="30%"/>
+<footer style="background:var(--md-footer-bg-color--dark);border-top:1px solid rgba(136,192,208,.07);padding:64px 48px 40px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;">
+      <div>
+        <div style="font-family:Teko,sans-serif;font-size:22px;font-weight:600;color:var(--md-footer-fg-color);letter-spacing:.05em;margin-bottom:12px">kotlin<span style="color:var(--color-nord-frost1)">-faker</span></div>
+        <div style="font-size:12px;line-height:1.6;color:var(--md-footer-fg-color);opacity:.4;max-width:220px">The only fake-data library you'd need on the JVM. Generate realistic data for testing, prototyping, and anonymization.</div>
       </div>
-      <div class="container text-dark h3">
-        <ul>
-          <li class="cursor-pointer item-text-footer">
-            <a href="{{ config.site_url }}/" target="_blank">
-              <p>
-              <span class="md-icon twemoji-footer">
-                {% include ".icons/material/home.svg" %}
-              </span>
-              Home
-              </p>
-            </a>
-          </li>
-          <li class="cursor-pointer item-text-footer">
-            <a href="{{ config.repo_url }}" target="_blank">
-              <p>
-              <span class="md-icon twemoji-footer">
-                {% include ".icons/material/github.svg" %}
-              </span>
-              Github
-              </p>
-            </a>
-          </li>
-          <li class="cursor-pointer item-text-footer">
-            <a href="{{ config.repo_url }}/discussions" target="_blank">
-              <p>
-              <span class="md-icon twemoji-footer">
-                {% include ".icons/material/chat-question.svg" %}
-              </span>
-              Ask Questions
-              </p>
-            </a>
-          </li>
-          <li class="cursor-pointer item-text-footer">
-            <a href="{{ config.repo_url }}/issues" target="_blank">
-              <p>
-              <span class="md-icon twemoji-footer">
-                {% include ".icons/material/bug.svg" %}
-              </span>
-              Report Issues
-              </p>
-            </a>
-          </li>
+      <div>
+        <div style="font-family:var(--md-code-font-family);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--color-nord-frost1);margin-bottom:16px;opacity:.7">Docs</div>
+        <ul style="list-style:none">
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}concepts/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Getting Started</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}wiki/faker-configuration/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Configuration</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}wiki/data-providers/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Data Generators</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}wiki/available-locales/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Locales</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}api/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">API Reference</a></li>
         </ul>
       </div>
-      <div style="flex: 10%;">
-        <!-- empty space for alignment -->
+      <div>
+        <div style="font-family:var(--md-code-font-family);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--color-nord-frost1);margin-bottom:16px;opacity:.7">Project</div>
+        <ul style="list-style:none">
+          <li style="margin-bottom:10px"><a href="{{ config.repo_url }}" target="_blank" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">GitHub</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}pages/changelog/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Changelog</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.repo_url }}/discussions" target="_blank" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Discussions</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.repo_url }}/issues" target="_blank" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Report Issues</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}pages/contrib/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Contributing</a></li>
+        </ul>
       </div>
-      <div class="text-dark h3" style="flex: 30%;">
-        <div class="container text-dark h3">
-          <ul>
-            <li class="cursor-pointer item-text-footer">
-              <a href="{{ page.meta.base_uri }}pages/about/" target="_blank">
-                <p>
-                <span class="md-icon twemoji-footer">
-                  {% include ".icons/material/information-slab-box.svg" %}
-                </span>
-                About
-                </p>
-              </a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="{{ page.meta.base_uri }}pages/changelog/" target="_blank">
-                <p>
-                <span class="md-icon twemoji-footer">
-                  {% include ".icons/fontawesome/solid/scroll.svg" %}
-                </span>
-                Changelog
-                </p>
-              </a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="{{ page.meta.base_uri }}pages/license/" target="_blank">
-                <p>
-                <span class="md-icon twemoji-footer">
-                  {% include ".icons/material/license.svg" %}
-                </span>
-                License
-                </p>
-              </a>
-            </li>
-            <li class="cursor-pointer item-text-footer">
-              <a href="{{ page.meta.base_uri }}pages/contrib/" target="_blank">
-                <p>
-                <span class="md-icon twemoji-footer">
-                  {% include ".icons/material/handshake.svg" %}
-                </span>
-                Contributing
-                </p>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div>
+        <div style="font-family:var(--md-code-font-family);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--color-nord-frost1);margin-bottom:16px;opacity:.7">Legal</div>
+        <ul style="list-style:none">
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}pages/license/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">License (MIT)</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}pages/about/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">About</a></li>
+          <li style="margin-bottom:10px"><a href="{{ config.site_url }}pages/ack/" style="font-size:13px;color:var(--md-footer-fg-color);opacity:.5;text-decoration:none">Acknowledgements</a></li>
+        </ul>
       </div>
+    </div>
+    <div style="padding-top:24px;border-top:1px solid rgba(136,192,208,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+      <div style="font-family:var(--md-code-font-family);font-size:11px;color:var(--md-footer-fg-color);opacity:.25">© kotlin-faker — MIT License — All generated data is fictional</div>
+      <div style="font-family:var(--md-code-font-family);font-size:11px;color:var(--md-footer-fg-color);opacity:.25">Built with ❤ for the JVM ecosystem</div>
     </div>
   </div>
 </footer>
+{% raw %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // ── BACKDROP ──────────────────────────────────────────
+  const fd=['"Valentina Koslov"','"Port Ethereal"','"not.real@fake.io"','"DE89 3704"','"Glorfindel"','"Team Liquid"','"The Quiet Algorithm"','"Shadow Protocol"','"Bjørn Eriksen"','"42 Meridian Loop"','"Frostheim"','"Marcus Halverson"','"Elif Şahin"','"Reykjavík"','"Hermione Granger"','"Lena Voss"','"Nova Scotia"','"FAKE-0042"'];
+  const wrap=document.getElementById('lpBackdrop');
+  if(wrap){for(let c=0;c<6;c++){const col=document.createElement('div');col.className='lp-col';let h='';for(let r=0;r<60;r++)h+=fd[(c*10+r)%fd.length]+'<br>';col.innerHTML=h+h;wrap.appendChild(col);}}
+
+  // ── TYPEWRITER ────────────────────────────────────────
+  const lines=['faker.name.name()         // → "Dr. Valentina Koslov"','faker.address.city()      // → "Port Ethereal"','faker.lotr.character()    // → "Glorfindel"','faker.banking.iban()      // → "DE89 3704 0044 0532"','faker.game.title()        // → "Shadow Protocol"'];
+  let li=0,ci=0,del=false;
+  const tw=document.getElementById('lpTw');
+  function doTw(){if(!tw)return;const l=lines[li];if(!del){if(ci<l.length){tw.textContent=l.slice(0,++ci)+'▋';setTimeout(doTw,28);}else setTimeout(()=>{del=true;doTw();},2200);}else{if(ci>0){tw.textContent=l.slice(0,--ci)+'▋';setTimeout(doTw,12);}else{del=false;li=(li+1)%lines.length;setTimeout(doTw,400);}}}
+  doTw();
+
+  // ── CATEGORY PICKER ───────────────────────────────────
+  const cats={
+    core:{title:'Core.kt',desc:'Name · Address · Internet · Banking · Currency · Phone · Color · Crypto · Random',code:'<div><span class="lp-cm">// core generators</span></div><div><span class="lp-kw">val</span> faker = <span class="lp-cls">Faker</span>()</div><div>faker.<span class="lp-fn">name</span>.<span class="lp-fn">name</span>()         <span class="lp-out">// "Dr. Valentina Koslov"</span></div><div>faker.<span class="lp-fn">address</span>.<span class="lp-fn">fullAddress</span>() <span class="lp-out">// "42 Meridian Loop"</span></div><div>faker.<span class="lp-fn">internet</span>.<span class="lp-fn">email</span>()     <span class="lp-out">// "v.koslov@fake.dev"</span></div><div>&nbsp;</div><div>faker.<span class="lp-fn">bank</span>.<span class="lp-fn">iban</span>()           <span class="lp-out">// "DE89 3704 0044 0532"</span></div><div>faker.<span class="lp-fn">random</span>.<span class="lp-fn">nextInt</span>(1,100)  <span class="lp-out">// 42</span></div>'},
+    entertainment:{title:'Entertainment.kt',desc:'Books · Games · Movies · TV Shows · Music · Anime · LOTR · Harry Potter · Star Wars',code:'<div><span class="lp-cm">// books &amp; games</span></div><div>faker.<span class="lp-fn">book</span>.<span class="lp-fn">title</span>()         <span class="lp-out">// "The Quiet Algorithm"</span></div><div>faker.<span class="lp-fn">tolkien</span>.<span class="lp-fn">character</span>()  <span class="lp-out">// "Glorfindel"</span></div><div>faker.<span class="lp-fn">game</span>.<span class="lp-fn">title</span>()         <span class="lp-out">// "Shadow Protocol"</span></div><div>faker.<span class="lp-fn">leagueOfLegends</span>.<span class="lp-fn">champion</span>() <span class="lp-out">// "Jinx"</span></div><div>&nbsp;</div><div><span class="lp-cm">// movies &amp; tv</span></div><div>faker.<span class="lp-fn">starWars</span>.<span class="lp-fn">character</span>()  <span class="lp-out">// "Han Solo"</span></div>'},
+    tech:{title:'Tech.kt',desc:'Programming Languages · Databases · Space · Crypto · Computers · Hacker · Drones',code:'<div><span class="lp-cm">// tech &amp; programming</span></div><div>faker.<span class="lp-fn">programmingLanguage</span>.<span class="lp-fn">name</span>() <span class="lp-out">// "Kotlin"</span></div><div>faker.<span class="lp-fn">database</span>.<span class="lp-fn">engine</span>()    <span class="lp-out">// "InnoDB"</span></div><div>faker.<span class="lp-fn">space</span>.<span class="lp-fn">star</span>()           <span class="lp-out">// "Proxima Centauri"</span></div><div>faker.<span class="lp-fn">hacker</span>.<span class="lp-fn">verb</span>()          <span class="lp-out">// "synthesize"</span></div>'},
+    culture:{title:'Culture.kt',desc:'Music · Sports · Food · Travel · Nations · Quotes · Greek Philosophers',code:'<div><span class="lp-cm">// culture &amp; sports</span></div><div>faker.<span class="lp-fn">music</span>.<span class="lp-fn">genre</span>()          <span class="lp-out">// "Synthwave"</span></div><div>faker.<span class="lp-fn">football</span>.<span class="lp-fn">team</span>()       <span class="lp-out">// "FC Barcelona"</span></div><div>faker.<span class="lp-fn">food</span>.<span class="lp-fn">dish</span>()            <span class="lp-out">// "Pad Thai"</span></div><div>faker.<span class="lp-fn">airport</span>.<span class="lp-fn">name</span>()       <span class="lp-out">// "Heathrow Airport"</span></div>'},
+    creatures:{title:'Creatures.kt',desc:'Animals · Birds · Cats · Dogs · Horses · Ancient & Mythical Creatures',code:'<div><span class="lp-cm">// animals &amp; creatures</span></div><div>faker.<span class="lp-fn">animal</span>.<span class="lp-fn">name</span>()          <span class="lp-out">// "Axolotl"</span></div><div>faker.<span class="lp-fn">cat</span>.<span class="lp-fn">breed</span>()            <span class="lp-out">// "Norwegian Forest Cat"</span></div><div>faker.<span class="lp-fn">dog</span>.<span class="lp-fn">breed</span>()            <span class="lp-out">// "Samoyed"</span></div><div>faker.<span class="lp-fn">ancient</span>.<span class="lp-fn">god</span>()          <span class="lp-out">// "Zeus"</span></div>'},
+    humor:{title:'Humor.kt',desc:'Chuck Norris · Jack Handey · Mitch Hedberg · Funny Names · Chiquito',code:'<div><span class="lp-cm">// for when you need a laugh</span></div><div>faker.<span class="lp-fn">chuckNorris</span>.<span class="lp-fn">fact</span>()</div><div><span class="lp-out">// "Chuck Norris can divide by zero."</span></div><div>&nbsp;</div><div>faker.<span class="lp-fn">funnyName</span>.<span class="lp-fn">name</span>()     <span class="lp-out">// "Ben Dover"</span></div>'}
+  };
+
+  function showCat(id){
+    document.querySelectorAll('.lp-cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat===id));
+    const d=cats[id];
+    const t=document.getElementById('lpCodeTitle');
+    const b=document.getElementById('lpCodeBody');
+    const desc=document.getElementById('lpCatDesc');
+    if(t)t.textContent=d.title;
+    if(b)b.innerHTML=d.code;
+    if(desc)desc.textContent=d.desc;
+  }
+  document.querySelectorAll('.lp-cat-pill').forEach(p=>p.addEventListener('click',()=>showCat(p.dataset.cat)));
+  showCat('core');
+
+  // ── LOCALES GRID ──────────────────────────────────────
+  const locales=['ar','bg','ca','da-DK','de','de-AT','de-CH','en','en-AU','en-CA','en-GB','en-IND','en-NG','en-NZ','en-US','en-ZA','es','es-AR','es-MX','fa','fi-FI','fr','fr-CA','fr-CH','he','hy','id','it','ja','ko','lt','lv','mi-NZ','nb-NO','nl','no','pl','pt','pt-BR','ru','sk','sv','th','tr','uk','vi','zh-CN','zh-TW','ee','ca-CAT','en-MS','en-PAK','en-SG','en-TH','en-UG','en-BORK','en-NEP','en-au-ocker'];
+  const lg=document.getElementById('lpLocaleGrid');
+  if(lg) locales.forEach(l=>{const c=document.createElement('span');c.className='lp-locale-chip';c.textContent=l;lg.appendChild(c);});
+});
+</script>
+{% endraw %}
 
 {% endblock %}
