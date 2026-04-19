@@ -201,6 +201,24 @@ footer ul{list-style-type:none}
   width: auto !important;
   margin-top: 0 !important;
 }
+
+/* Custom ø logo (see material/.icons/kfaker/logo.svg). The SVG uses
+   stroke="currentColor" so CSS color flows through cleanly. */
+.md-header__button.md-logo {
+  color: var(--color-nord-frost1);
+  transition: filter 0.25s ease, transform 0.25s ease;
+  filter: drop-shadow(0 0 3px rgba(136, 192, 208, 0.3));
+}
+.md-header__button.md-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(136, 192, 208, 0.55));
+  transform: rotate(-6deg);
+}
+.md-header__button.md-logo svg {
+  height: 1.6rem;
+  width: 1.6rem;
+  fill: none;
+  stroke: currentColor;
+}
 /* Scope to the FIRST header__topic (site name).
    Material renders a second one that swaps in the current page title on
    scroll — we don't want scanlines or the "-faker" suffix on that. */

@@ -7,9 +7,9 @@ site_name: kotlin-faker
 site_url: !ENV [MKDOCS_SITE_URL, "http://localhost:8000"]
 copyright: Copyright &copy; 2019 - present, serpro69
 # NOTE: comment out to speed things up during dev
-# exclude_docs: |
-#   api/
-#   pages/locales/
+exclude_docs: |
+  api/
+  pages/locales/
 
 repo_url: https://github.com/serpro69/kotlin-faker
 
@@ -75,7 +75,8 @@ theme:
     - toc.follow
     # - toc.integrate
   # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
-  logo: assets/images/icon.png
+  icon:
+    logo: kfaker/logo
   custom_dir: material
   static_templates:
     - wiki/locales.html
