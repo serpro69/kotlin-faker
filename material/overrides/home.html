@@ -15,66 +15,48 @@
   justify-content: center;
   text-align: center;
   padding: 80px 40px 60px;
-  background: rgba(var(--color-nord-dark0-rgb), 0.88);
+  background: var(--md-default-bg-color);
 }
-/* scanlines on text elements — both modes */
-.lp-glitch-wrap {
-  position: relative;
-  display: block; /* block so subtitle goes below */
+/* Scanlines baked into the text via background-clip */
+.lp-glitch {
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 3px,
+    transparent 3px,
+    transparent 5px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
 }
 .lp-subtitle {
-  position: relative;
-  display: block; /* must be block to sit on its own line */
-}
-.lp-glitch-wrap::after,
-.lp-subtitle::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
+  background-image: repeating-linear-gradient(
     0deg,
-    transparent,
-    transparent 3px,
-    rgba(0,0,0,0.18) 3px,
-    rgba(0,0,0,0.18) 4px
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
   );
-  pointer-events: none;
-  z-index: 10;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
 }
-/* lighter scanlines in light mode */
-[data-md-color-scheme="nord:light"] .lp-glitch-wrap::after,
-[data-md-color-scheme="nord:light"] .lp-subtitle::after {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0,0,0,0.07) 3px,
-    rgba(0,0,0,0.07) 4px
-  );
-}
-/* light mode: semi-transparent hero + sections so backdrop shows through */
-[data-md-color-scheme="nord:light"] .lp-hero {
-  background: rgba(var(--color-nord-light2-rgb), 0.88);
-}
-[data-md-color-scheme="nord:light"] .lp-section.lp-alt {
-  background: rgba(var(--color-nord-light1-rgb), 0.85);
-}
-/* also on the MkDocs header logo text */
+/* Header logo scanlines */
 .md-header__topic .md-ellipsis {
-  position: relative;
-  display: inline-block;
-}
-.md-header__topic .md-ellipsis::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
+  background-image: repeating-linear-gradient(
     0deg,
-    transparent,
-    transparent 3px,
-    rgba(0,0,0,0.18) 3px,
-    rgba(0,0,0,0.18) 4px
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
   );
-  pointer-events: none;
-  z-index: 1;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
 }
 /* Full-page backdrop — fixed, behind all sections */
 .lp-backdrop {
@@ -121,6 +103,11 @@
   position: absolute; top:0; left:0; right:0;
   font-family: Teko, sans-serif; font-weight:700;
   font-size:inherit; line-height:inherit; text-transform:uppercase;
+}
+.lp-glitch::before, .lp-glitch::after {
+  background-image: repeating-linear-gradient(0deg, currentColor, currentColor 3px, transparent 3px, transparent 5px);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; text-fill-color: transparent;
 }
 .lp-glitch::before { color:var(--color-nord-frost1); clip-path:polygon(0 30%,100% 30%,100% 50%,0 50%); animation:lpG1 3s infinite; }
 .lp-glitch::after  { color:var(--color-nord-red);    clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%); animation:lpG2 3s infinite; }
