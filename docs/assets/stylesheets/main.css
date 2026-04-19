@@ -580,13 +580,6 @@ html body article h3 {
   font-weight: 400;
 }
 
-/* Active item left border */
-.md-nav__item--active > .md-nav__link {
-  border-left: 2px solid var(--color-nord-frost1);
-  padding-left: calc(var(--md-nav-item-padding) - 2px);
-  color: var(--color-nord-frost1) !important;
-}
-
 /* ToC links */
 .md-nav--secondary .md-nav__link {
   font-size: 12px;
