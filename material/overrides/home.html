@@ -4,6 +4,10 @@
 {{ super() }}
 
 <style>
+/* Hide inner-page chrome on the homepage only */
+.md-main { display: none !important; }
+.md-content { display: none !important; }
+
 /* ── Landing page styles (lp- prefix to avoid MkDocs conflicts) ─── */
 .lp-hero {
   position: relative;
