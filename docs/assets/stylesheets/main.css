@@ -211,8 +211,9 @@ footer ul{list-style-type:none}
   font-weight: 600;
   letter-spacing: 0.05em;
   /* Header bar is forced dark in both schemes; use a scheme-independent
-     light color so the scanlines stay readable in nord:light too. */
-  color: var(--color-nord-light2) !important;
+     muted dark-gray so scanlines read as a subtle retro pattern, not
+     bright white. */
+  color: var(--color-nord-dark1) !important;
   background-image: repeating-linear-gradient(
     0deg,
     currentColor,
