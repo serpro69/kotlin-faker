@@ -48,20 +48,6 @@
   -webkit-text-fill-color: transparent;
           text-fill-color: transparent;
 }
-/* Header logo scanlines */
-.md-header__topic .md-ellipsis {
-  background-image: repeating-linear-gradient(
-    0deg,
-    currentColor,
-    currentColor 2px,
-    transparent 2px,
-    transparent 3px
-  );
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-          text-fill-color: transparent;
-}
 /* Full-page backdrop — fixed, behind all sections */
 .lp-backdrop {
   position: fixed; inset: 0;
@@ -187,26 +173,6 @@
   background: rgba(7, 7, 7, 0.97) !important;
   box-shadow: none !important;
   border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
-}
-
-/* Show text logo, hide SVG background */
-.md-header__title .md-header__ellipsis .md-header__topic {
-  background-image: none !important;
-  height: auto !important;
-  width: auto !important;
-  margin-top: 0 !important;
-}
-.md-header__topic .md-ellipsis {
-  display: block !important;
-  font-family: Teko, sans-serif !important;
-  font-size: 20px !important;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--md-primary-bg-color) !important;
-}
-.md-header__topic .md-ellipsis::after {
-  content: '-faker';
-  color: var(--color-nord-frost1);
 }
 
 /* Tabs bar — match the dark header */

@@ -3,8 +3,12 @@
 site_name: kotlin
 # ref: https://www.mkdocs.org/user-guide/configuration/#site_url
 # ref: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-site_url: !ENV [MKDOCS_SITE_URL, 'http://localhost:8000']
+site_url: !ENV [MKDOCS_SITE_URL, "http://localhost:8000"]
 copyright: Copyright &copy; 2019 - present, serpro69
+# NOTE: comment out to speed things up during dev
+# exclude_docs: |
+#   api/
+#   pages/locales/
 
 repo_url: https://github.com/serpro69/kotlin-faker
 
@@ -112,8 +116,12 @@ extra:
       link: https://github.com/cbrachem
 
 extra_css:
+  - assets/stylesheets/main.css
   - assets/stylesheets/extra.css
   - assets/stylesheets/nord.css
+
+extra_javascript:
+  - assets/js/glitch.js
 
 markdown_extensions:
   - abbr

@@ -82,8 +82,6 @@ pre {
 .card-aurora{position:relative;bottom:-170px;border-radius:15px;width:80%;min-height:600px}
 .title-logo{margin-bottom:-10px}
 
-.md-main{padding:0}
-.md-footer{display:none}
 .item-text-footer:hover{color:var(--md-accent-fg-color)}
 
 :is(.twemoji-footer) { --md-icon-size:1rem; svg{display:inline-flex;height:var(--md-icon-size);vertical-align:text-top;width:var(--md-icon-size);max-height:100%} }
@@ -92,10 +90,6 @@ pre {
 :is(.twemoji-rocket-launch) { svg{fill:var(--color-nord-green)!important} }
 :is(.twemoji-unicorn-variant) { svg{fill:var(--color-nord-purple)!important} }
 
-.md-header{position:initial}
-.md-main__inner{margin:0}
-.md-footer-copyright{display:none}
-.md-footer-nav__inner{display:none}
 /* .md-content / .md-main hidden only on homepage — see home.html */
 .md-footer-meta__inner{align-content:center;display:flex;align-items:center;justify-content:center}
 
@@ -168,8 +162,6 @@ footer ul{list-style-type:none}
   .mx-xs-auto{margin-left:auto;margin-right:auto}
   .my-xs-5{margin-top:3rem;margin-bottom:3rem}
 }
-@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}
-@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}
 @media (max-width:959px) {
   .display-1{font-size:4rem}.display-3{font-size:3rem}.display-4{font-size:2.2rem}
   .d-lg-none{display:flex}
@@ -215,6 +207,22 @@ footer ul{list-style-type:none}
   font-size: 20px !important;
   font-weight: 600;
   letter-spacing: 0.05em;
+  color: var(--md-primary-bg-color) !important;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+}
+.md-header__topic .md-ellipsis::after {
+  content: '-faker';
+  color: var(--color-nord-frost1);
 }
 
 /* Tabs bar */
@@ -265,6 +273,78 @@ html body article h1 {
   color: var(--md-default-fg-color) !important;
   margin-bottom: 0.5rem !important;
   border-bottom: none !important;
+  position: relative;
+  display: inline-block;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+}
+
+/* h1 glitch duplicates — need data-text attr set via glitch.js */
+html body .md-typeset h1[data-text]::before,
+html body .md-typeset h1[data-text]::after,
+html body article h1[data-text]::before,
+html body article h1[data-text]::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+  pointer-events: none;
+}
+html body .md-typeset h1[data-text]::before,
+html body article h1[data-text]::before {
+  color: var(--color-nord-frost1);
+  clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  animation: lpG1 3s infinite;
+}
+html body .md-typeset h1[data-text]::after,
+html body article h1[data-text]::after {
+  color: var(--color-nord-red);
+  clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+  animation: lpG2 3s infinite;
+}
+
+/* keep the permalink (¶) opaque — otherwise it inherits text-fill: transparent */
+.md-typeset h1 .headerlink {
+  -webkit-text-fill-color: currentColor;
+          text-fill-color: currentColor;
+  background-image: none;
+}
+
+@keyframes lpG1 {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  91%           { transform: translate(-3px, 0); opacity: 1; }
+  93%           { transform: translate(3px, 0); opacity: 1; }
+  95%           { transform: translate(0); opacity: 0; }
+}
+@keyframes lpG2 {
+  0%, 85%, 100% { transform: translate(0); opacity: 0; }
+  86%           { transform: translate(3px, 0); opacity: 1; }
+  88%           { transform: translate(-3px, 0); opacity: 1; }
+  90%           { transform: translate(0); opacity: 0; }
 }
 
 /* h2 */
@@ -446,11 +526,6 @@ html body article h3 {
 /* ═══════════════════════════════════════════════════════════
    NEW — Navigation sidebar
 ═══════════════════════════════════════════════════════════ */
-
-/* Left sidebar background */
-.md-sidebar--primary .md-sidebar__scrollwrap {
-  background: rgba(10, 13, 20, 0.6);
-}
 
 /* Nav section titles */
 .md-nav__title {
