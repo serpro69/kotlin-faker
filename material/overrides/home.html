@@ -399,11 +399,73 @@
   .lp-extras { grid-template-columns:1fr; }
   .lp-stats { gap:24px; }
 }
+
+/* ── Scroll transition (hero → manifesto) ─── */
+.lp-hero-wrap {
+  position: relative;
+  height: 170vh;
+}
+.lp-hero.lp-hero--pinned {
+  position: sticky !important;
+  top: 0;
+  height: 100vh;
+  min-height: 100vh;
+  --lp-fade: 0;
+  --lp-glitch: 0;
+  --lp-jx: 0;
+  opacity: calc(1 - var(--lp-fade));
+  filter:
+    blur(calc(var(--lp-glitch) * 2.5px))
+    saturate(calc(1 + var(--lp-glitch) * 0.6))
+    contrast(calc(1 + var(--lp-glitch) * 0.35))
+    hue-rotate(calc(var(--lp-glitch) * 18deg));
+  transform: translate3d(calc(var(--lp-jx) * 6px), 0, 0);
+  transition: none;
+  will-change: opacity, filter, transform;
+}
+.lp-glitch-overlay {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 10;
+  opacity: calc(var(--lp-glitch, 0) * 0.9);
+  background-image:
+    repeating-linear-gradient(0deg,
+      transparent 0, transparent 2px,
+      rgba(191, 97, 106, 0.10) 2px, rgba(191, 97, 106, 0.10) 3px
+    ),
+    repeating-linear-gradient(90deg,
+      transparent 0, transparent 48px,
+      rgba(136, 192, 208, 0.05) 48px, rgba(136, 192, 208, 0.05) 49px
+    );
+  mix-blend-mode: screen;
+  transition: none;
+}
+.lp-glitch-overlay::after {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  height: calc(var(--lp-glitch, 0) * 14vh);
+  top: calc(20% + var(--lp-jx, 0) * 30%);
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(235, 203, 139, calc(var(--lp-glitch, 0) * 0.18)),
+    transparent);
+  mix-blend-mode: screen;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lp-hero-wrap { height: auto; }
+  .lp-hero.lp-hero--pinned {
+    position: relative !important;
+    height: auto; min-height: calc(100vh - 60px);
+    opacity: 1 !important; filter: none !important; transform: none !important;
+  }
+  .lp-glitch-overlay { display: none; }
+}
 </style>
 
 <!-- ══ HERO ══════════════════════════════════════════════════ -->
-<section class="lp-hero">
+<div class="lp-hero-wrap" id="lpHeroWrap">
+<section class="lp-hero lp-hero--pinned">
   <div class="lp-backdrop" id="lpBackdrop"></div>
+  <div class="lp-glitch-overlay" aria-hidden="true"></div>
   <div class="lp-hero-content">
     <div class="lp-glitch-wrap">
       <div class="lp-glitch" data-text="FAKER">FAKER</div>
@@ -431,6 +493,7 @@
   </div>
   <p class="lp-tagline">Ensure your application data looks as if it was real, just like our <em>really</em> fake logo, but not quite so.</p>
 </section>
+</div>
 
 <!-- ══ MANIFESTO ═══════════════════════════════════════════════ -->
 <section class="lp-section lp-manifesto">
@@ -679,6 +742,44 @@
 {% raw %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // ── SCROLL TRANSITION (hero fade → glitch → fade out) ─
+  const heroWrap = document.getElementById('lpHeroWrap');
+  const hero = heroWrap && heroWrap.querySelector('.lp-hero');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroWrap && hero && !prefersReduced) {
+    let ticking = false;
+    function updateHero() {
+      ticking = false;
+      const rect = heroWrap.getBoundingClientRect();
+      const scrollDistance = rect.height - window.innerHeight;
+      if (scrollDistance <= 0) return;
+      const progress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
+      let fade, glitch;
+      if (progress < 0.25) {
+        fade = (progress / 0.25) * 0.22;
+        glitch = 0;
+      } else if (progress < 0.7) {
+        const t = (progress - 0.25) / 0.45;
+        fade = 0.22 + Math.sin(t * Math.PI * 0.5) * 0.08;
+        glitch = Math.sin(t * Math.PI);
+      } else {
+        const t = (progress - 0.7) / 0.3;
+        fade = 0.30 + t * 0.70;
+        glitch = Math.max(0, 1 - t * 4);
+      }
+      const jx = glitch > 0.25 ? (Math.random() * 2 - 1) * glitch : 0;
+      hero.style.setProperty('--lp-fade', fade.toFixed(3));
+      hero.style.setProperty('--lp-glitch', glitch.toFixed(3));
+      hero.style.setProperty('--lp-jx', jx.toFixed(3));
+    }
+    function onScroll() {
+      if (!ticking) { requestAnimationFrame(updateHero); ticking = true; }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateHero();
+  }
+
   // ── BACKDROP ──────────────────────────────────────────
   const fd=['"Valentina Koslov"','"Port Ethereal"','"not.real@fake.io"','"DE89 3704"','"Glorfindel"','"Team Liquid"','"The Quiet Algorithm"','"Shadow Protocol"','"Bjørn Eriksen"','"42 Meridian Loop"','"Frostheim"','"Marcus Halverson"','"Elif Şahin"','"Reykjavík"','"Hermione Granger"','"Lena Voss"','"Nova Scotia"','"FAKE-0042"'];
   const wrap=document.getElementById('lpBackdrop');
