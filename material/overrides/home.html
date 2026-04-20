@@ -400,16 +400,57 @@
   .lp-stats { gap:24px; }
 }
 
+/* ── Manifesto staged reveal (triggered when section enters viewport) ─── */
+.lp-manifesto .lp-manifesto-eyebrow,
+.lp-manifesto .lp-manifesto-title,
+.lp-manifesto .lp-manifesto-lead {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 750ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 750ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  will-change: opacity, transform;
+}
+.lp-manifesto.is-revealed .lp-manifesto-eyebrow,
+.lp-manifesto.is-revealed .lp-manifesto-title,
+.lp-manifesto.is-revealed .lp-manifesto-lead {
+  opacity: 1;
+  transform: translateY(0);
+}
+.lp-manifesto.is-revealed .lp-manifesto-eyebrow { transition-delay: 0ms; }
+.lp-manifesto.is-revealed .lp-manifesto-title:not(.lp-manifesto-title--accent) { transition-delay: 140ms; }
+.lp-manifesto.is-revealed .lp-manifesto-title--accent { transition-delay: 300ms; }
+.lp-manifesto.is-revealed .lp-manifesto-lead { transition-delay: 480ms; }
+@media (prefers-reduced-motion: reduce) {
+  .lp-manifesto .lp-manifesto-eyebrow,
+  .lp-manifesto .lp-manifesto-title,
+  .lp-manifesto .lp-manifesto-lead {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* ── Scroll transition (hero → manifesto) ─── */
 .lp-hero-wrap {
   position: relative;
-  height: 170vh;
+  height: 220vh;
 }
-.lp-hero.lp-hero--pinned {
-  position: sticky !important;
+.lp-pin-stack {
+  position: sticky;
   top: 0;
   height: 100vh;
+  display: grid;
+  grid-template-areas: 'stack';
+  overflow: hidden;
+}
+.lp-pin-stack > * { grid-area: stack; }
+.lp-hero.lp-hero--pinned {
+  position: relative !important;
+  top: auto;
+  height: 100vh;
   min-height: 100vh;
+  z-index: 2;
   --lp-fade: 0;
   --lp-glitch: 0;
   --lp-jx: 0;
@@ -423,6 +464,17 @@
   transition: none;
   will-change: opacity, filter, transform;
 }
+.lp-manifesto.lp-manifesto--pinned {
+  z-index: 1;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.lp-manifesto.lp-manifesto--pinned .lp-inner { padding: 0 48px; }
 .lp-glitch-overlay {
   position: absolute; inset: 0;
   pointer-events: none; z-index: 10;
@@ -452,10 +504,19 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .lp-hero-wrap { height: auto; }
+  .lp-pin-stack {
+    position: static; height: auto;
+    display: block; overflow: visible;
+  }
   .lp-hero.lp-hero--pinned {
     position: relative !important;
     height: auto; min-height: calc(100vh - 60px);
     opacity: 1 !important; filter: none !important; transform: none !important;
+  }
+  .lp-manifesto.lp-manifesto--pinned {
+    height: auto; min-height: 0;
+    padding: 80px 0 104px !important;
+    display: block;
   }
   .lp-glitch-overlay { display: none; }
 }
@@ -463,6 +524,7 @@
 
 <!-- ══ HERO ══════════════════════════════════════════════════ -->
 <div class="lp-hero-wrap" id="lpHeroWrap">
+<div class="lp-pin-stack">
 <section class="lp-hero lp-hero--pinned">
   <div class="lp-backdrop" id="lpBackdrop"></div>
   <div class="lp-glitch-overlay" aria-hidden="true"></div>
@@ -482,7 +544,7 @@
     <div class="lp-tw" id="lpTw"></div>
     <div class="lp-actions">
       <button onclick="location.href='{{ config.site_url }}concepts/'" class="lp-btn-p">GET STARTED</button>
-      <button onclick="window.open('{{ config.repo_url }}', '_blank')" class="lp-btn-s">github ↗</button>
+      <button onclick="window.open('{{ config.repo_url }}', '_blank')" class="lp-btn-s">Contribute ↗</button>
     </div>
   </div>
   <div class="lp-stats">
@@ -493,10 +555,9 @@
   </div>
   <p class="lp-tagline">Ensure your application data looks as if it was real, just like our <em>really</em> fake logo, but not quite so.</p>
 </section>
-</div>
 
-<!-- ══ MANIFESTO ═══════════════════════════════════════════════ -->
-<section class="lp-section lp-manifesto">
+<!-- ══ MANIFESTO (stacked under hero, revealed as hero fades) ═════════ -->
+<section class="lp-section lp-manifesto lp-manifesto--pinned">
   <div class="lp-inner lp-manifesto-inner">
     <div class="lp-eyebrow lp-manifesto-eyebrow">philosophy</div>
     <h2 class="lp-manifesto-title">We fake it.</h2>
@@ -510,6 +571,8 @@
     </p>
   </div>
 </section>
+</div>
+</div>
 
 <!-- ══ WHAT KIND OF DATA ══════════════════════════════════════ -->
 <section class="lp-section lp-alt">
@@ -742,28 +805,36 @@
 {% raw %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // ── SCROLL TRANSITION (hero fade → glitch → fade out) ─
+  // ── SCROLL TRANSITION (hero fade → glitch → fade out, manifesto reveal) ─
   const heroWrap = document.getElementById('lpHeroWrap');
   const hero = heroWrap && heroWrap.querySelector('.lp-hero');
+  const manifesto = document.querySelector('.lp-manifesto');
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced && manifesto) manifesto.classList.add('is-revealed');
+
   if (heroWrap && hero && !prefersReduced) {
     let ticking = false;
+    let manifestoRevealed = false;
+    // Hero transition occupies the first HERO_PHASE of wrap scroll; the
+    // remainder lets the manifesto linger alone in view before the wrap releases.
+    const HERO_PHASE = 0.6;
     function updateHero() {
       ticking = false;
       const rect = heroWrap.getBoundingClientRect();
       const scrollDistance = rect.height - window.innerHeight;
       if (scrollDistance <= 0) return;
       const progress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
+      const hp = Math.min(1, progress / HERO_PHASE);
       let fade, glitch;
-      if (progress < 0.25) {
-        fade = (progress / 0.25) * 0.22;
+      if (hp < 0.25) {
+        fade = (hp / 0.25) * 0.22;
         glitch = 0;
-      } else if (progress < 0.7) {
-        const t = (progress - 0.25) / 0.45;
+      } else if (hp < 0.7) {
+        const t = (hp - 0.25) / 0.45;
         fade = 0.22 + Math.sin(t * Math.PI * 0.5) * 0.08;
         glitch = Math.sin(t * Math.PI);
       } else {
-        const t = (progress - 0.7) / 0.3;
+        const t = (hp - 0.7) / 0.3;
         fade = 0.30 + t * 0.70;
         glitch = Math.max(0, 1 - t * 4);
       }
@@ -771,6 +842,11 @@ document.addEventListener('DOMContentLoaded', function() {
       hero.style.setProperty('--lp-fade', fade.toFixed(3));
       hero.style.setProperty('--lp-glitch', glitch.toFixed(3));
       hero.style.setProperty('--lp-jx', jx.toFixed(3));
+
+      if (manifesto && !manifestoRevealed && hp > 0.78) {
+        manifesto.classList.add('is-revealed');
+        manifestoRevealed = true;
+      }
     }
     function onScroll() {
       if (!ticking) { requestAnimationFrame(updateHero); ticking = true; }
