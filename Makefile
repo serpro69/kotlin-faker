@@ -136,7 +136,7 @@ release: check_java ## publishes the next release with a specified VERSION
 _deploy_docs: # temporary target to deploy docs with mike, TODO: move to github actions
 	@./gradlew dokkaGfmMultiModule; \
 	mv build/dokka/gfmMultiModule docs/api; \
-	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 1.6 latest -t '1.6.0 (latest)' -u; \
+	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 1.6.1 latest -t '1.6.1 (latest)' -u; \
 	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 2.0 dev -t '2.1.0-SNAPSHOT' -u
 
 .PHONY: help
