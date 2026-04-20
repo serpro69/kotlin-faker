@@ -1,0 +1,15 @@
+---
+title: Changelog
+---
+
+:sourcedir: ../../../../..
+
+== CHANGELOG
+
+All notable changes to this project will be documented in this file.
+
+The format follows https://keepachangelog.com/en/1.0.0/[Keep a Changelog], and the project versioning adheres to https://semver.org/spec/v2.0.0.html[Semantic Versioning].
+
+<<<
+
+include::{sourcedir}/CHANGELOG.adoc[]

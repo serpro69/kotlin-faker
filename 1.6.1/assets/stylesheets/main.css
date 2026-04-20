@@ -1,0 +1,752 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko:wght@400;500;600;700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   EXISTING STYLES — preserved from original main.css
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset pre {
+  display: flow-root;
+  line-height: 1.4;
+  position: relative;
+}
+
+.md-typeset code,
+.md-typeset kbd,
+.md-typeset pre {
+  color: var(--md-code-fg-color);
+  direction: ltr;
+  font-variant-ligatures: none;
+  transition: background-color 125ms;
+}
+
+.md-typeset pre { margin-bottom: 0px; margin-top: 0px; }
+
+code, kbd, pre {
+  font-feature-settings: "kern";
+  font-family: var(--md-code-font-family);
+}
+
+pre {
+  display: block;
+  font-family: monospace;
+  unicode-bidi: isolate;
+  margin-block: 0px;
+  margin-inline: 0px;
+}
+
+/* Spacing utilities */
+.ml-0{margin-left:0}.ml-1{margin-left:.25rem}.ml-2{margin-left:.5rem}.ml-3{margin-left:1rem}.ml-4{margin-left:1.5rem}.ml-5{margin-left:3rem}
+.mr-0{margin-right:0}.mr-1{margin-right:.25rem}.mr-2{margin-right:.5rem}.mr-3{margin-right:1rem}.mr-4{margin-right:1.5rem}.mr-5{margin-right:3rem}
+.pl-0{padding-left:0}.pl-1{padding-left:.25rem}.pl-2{padding-left:.5rem}.pl-3{padding-left:1rem}.pl-4{padding-left:1.5rem}.pl-5{padding-left:3rem}
+.pr-0{padding-right:0}.pr-1{padding-right:.25rem}.pr-2{padding-right:.5rem}.pr-3{padding-right:1rem}.pr-4{padding-right:1.5rem}.pr-5{padding-right:3rem}
+.mt-0{margin-top:0}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:1rem}.mt-4{margin-top:1.5rem}.mt-5{margin-top:3rem}
+.pt-0{padding-top:0}.pt-1{padding-top:.25rem}.pt-2{padding-top:.5rem}.pt-3{padding-top:1rem}.pt-4{padding-top:1.5rem}.pt-5{padding-top:3rem}
+.mb-0{margin-bottom:0}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:1rem}.mb-4{margin-bottom:1.5rem}.mb-5{margin-bottom:3rem}
+.pb-0{padding-bottom:0}.pb-1{padding-bottom:.25rem}.pb-2{padding-bottom:.5rem}.pb-3{padding-bottom:1rem}.pb-4{padding-bottom:1.5rem}.pb-5{padding-bottom:3rem}
+.mx-0{margin-left:0;margin-right:0}.mx-1{margin-left:.25rem;margin-right:.25rem}.mx-2{margin-left:.5rem;margin-right:.5rem}.mx-3{margin-left:1rem;margin-right:1rem}.mx-4{margin-left:1.5rem;margin-right:1.5rem}.mx-5{margin-left:3rem;margin-right:3rem}
+.px-0{padding-left:0;padding-right:0}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:1rem;padding-right:1rem}.px-4{padding-left:1.5rem;padding-right:1.5rem}.px-5{padding-left:3rem;padding-right:3rem}
+.my-0{margin-top:0;margin-bottom:0}.my-1{margin-top:.25rem;margin-bottom:.25rem}.my-2{margin-top:.5rem;margin-bottom:.5rem}.my-3{margin-top:1rem;margin-bottom:1rem}.my-4{margin-top:1.5rem;margin-bottom:1.5rem}.my-5{margin-top:3rem;margin-bottom:3rem}
+.py-0{padding-top:0;padding-bottom:0}.py-1{padding-top:.25rem;padding-bottom:.25rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-3{padding-top:1rem;padding-bottom:1rem}.py-4{padding-top:1.5rem;padding-bottom:1.5rem}.py-5{padding-top:3rem;padding-bottom:3rem}
+.mx-auto{margin-left:auto;margin-right:auto}.ml-auto{margin-left:auto}.mr-auto{margin-right:auto}
+
+.container{display:flex;flex-flow:column}
+.container-row{display:flex;flex-flow:row}
+
+.display-1{font-size:6rem}.display-2{font-size:5rem}.display-3{font-size:4rem}.display-4{font-size:3rem}
+.h1{font-size:2.2rem}.h2{font-size:1.5rem}.h3{font-size:1rem}.h4{font-size:.5rem}.h5{font-size:.25rem}
+
+.text-dark{color:var(--md-default-fg-color)!important}
+.text-white{color:var(--md-default-bg-color)!important}
+.text-pink{color:var(--color-nord-purple)!important}
+.text-link{color:var(--color-nord-yellow)!important}
+.text-link:hover{color:var(--md-accent-fg-color)!important}
+.text-align-center{text-align:center}.text-start{text-align:start}.text-end{text-align:end}
+
+.btn-dark{font-family:Roboto,sans-serif;font-weight:600;font-size:14px;color:var(--md-default-fg-color);background-color:var(--md-default-bg-color);padding:10px 30px;border:solid var(--md-default-fg-color--lighter) 2px;border-radius:8px;transition:1000ms;display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.btn-dark:hover{transition:1000ms;padding:10px 50px;background-color:var(--md-default-bg-color--light);color:var(--md-default-fg-color);border:solid var(--md-default-fg-color--lighter) 2px}
+.btn-white{font-family:Roboto,sans-serif;font-weight:600;font-size:14px;color:var(--md-default-bg-color);background-color:var(--md-default-fg-color);padding:10px 30px;border:solid var(--md-accent-bg-color--light) 2px;border-radius:8px;transition:1000ms;display:flex;flex-direction:column;align-items:center;cursor:pointer}
+.btn-white:hover{transition:1000ms;padding:10px 50px;background-color:var(--md-default-fg-color--light);color:var(--md-default-bg-color)}
+.btn-aurora{border-radius:10px;padding:1rem;font-family:Roboto,sans-serif;font-weight:600;font-size:14px;padding:10px 30px;color:var(--color-nord-red)!important;border:solid 3px transparent;background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)),linear-gradient(101deg,var(--color-nord-red),var(--color-nord-orange),var(--color-nord-yellow),var(--color-nord-green),var(--color-nord-purple));background-origin:border-box;background-clip:content-box,border-box;box-shadow:2px 1000px 1px var(--color-nord-dark0) inset}
+.btn-aurora:hover{box-shadow:none;color:var(--md-default-fg-color)!important;transition:1000ms}
+
+.box-shadow{box-shadow:-5px 5px 10px 1px rgb(0 0 0/75%)}
+.third-dark-body{background-color:var(--md-default-fg-color--light)}
+.four-gray-body{background-color:var(--md-default-fg-color--lighter)}
+.bg-dark{background-color:var(--md-accent-bg-color)}
+.w-100{width:100%}.w-70{width:70%}
+
+.ctx-header-text{flex:60%;order:0;display:flex;color:var(--md-default-fg-color)}
+.ctx-header-img{flex:40%;order:1;display:flex;flex-flow:column}
+.ctx-card-white-1{flex:50%;order:0;justify-content:center}
+.header-img{width:55%;margin-left:auto}
+.card-aurora{position:relative;bottom:-170px;border-radius:15px;width:80%;min-height:600px}
+.title-logo{margin-bottom:-10px}
+
+.item-text-footer:hover{color:var(--md-accent-fg-color)}
+
+:is(.twemoji-footer) { --md-icon-size:1rem; svg{display:inline-flex;height:var(--md-icon-size);vertical-align:text-top;width:var(--md-icon-size);max-height:100%} }
+:is(.twemoji-check-all) { svg{display:inline-flex;fill:var(--color-nord-green)!important} }
+:is(.twemoji-kotlin) { svg{fill:var(--color-nord-frost1)!important} }
+:is(.twemoji-rocket-launch) { svg{fill:var(--color-nord-green)!important} }
+:is(.twemoji-unicorn-variant) { svg{fill:var(--color-nord-purple)!important} }
+
+/* .md-content / .md-main hidden only on homepage — see home.html */
+.md-footer-meta__inner{align-content:center;display:flex;align-items:center;justify-content:center}
+
+a.md-nav__link{color:var(--md-default-fg-color);text-decoration:none}
+
+footer *{margin:0;padding:0;-webkit-box-sizing:border-box;box-sizing:border-box}
+footer ul{list-style-type:none}
+
+.container-row-responsive{display:flex;flex-flow:column;align-items:center}
+.text-content-padding{padding:1.5rem;text-align:center}
+.feature-column-container{display:flex;flex-flow:column;gap:1rem}
+.feature-column{flex:1}
+
+/* Large screen breakpoints */
+@media (min-width:1220px) {
+  .container-row-lg{display:flex;flex-flow:row}
+  .d-xl-none{display:none}
+  .pt-lg-5{padding-top:3rem}
+  .my-xl-5{margin-top:3rem;margin-bottom:3rem}
+  .my-xl-4{margin-top:1.5rem;margin-bottom:1.5rem}
+  .mx-xl-0{margin-left:0;margin-right:0}
+  .mx-xl-auto{margin-left:auto;margin-right:auto}
+  .text-start-xl{text-align:start}
+  .btn-xl-large:hover{font-size:22px;padding:15px 50px}
+  .btn-lg-large{font-size:22px;padding:15px 30px}
+  .btn-aurora-custom{margin-top:15rem}
+  /* .md-main hidden only on homepage — see home.html */
+  .md-header__title .md-header__ellipsis .md-header__topic{background-image:none;height:auto;width:auto;margin-top:0}
+  .md-header__topic .md-ellipsis{display:block}
+}
+@media (min-width:960px) and (max-width:1219px) {
+  .container-row-xl{display:flex;flex-flow:row}
+  .d-lg-none{display:none}
+  .pt-lg-5{padding-top:3rem}
+  .my-lg-5{margin-top:3rem;margin-bottom:3rem}
+  .my-lg-4{margin-top:1.5rem;margin-bottom:1.5rem}
+  .mx-lg-0{margin-left:0;margin-right:0}
+  .mx-lg-5{margin-left:3rem;margin-right:3rem}
+  .ctx-card-white-1{flex:100%}
+  .text-start-lg{text-align:start}
+  .btn-xl-large:hover{font-size:22px;padding:15px 50px}
+  .btn-lg-large{font-size:22px;padding:15px 30px}
+  .btn-aurora-custom{margin-top:15rem}
+}
+@media (min-width:960px) {
+  .container-row-responsive{flex-flow:row;align-items:center}
+  .text-content-padding{padding:0 1rem;text-align:left}
+  .feature-column-container{flex-flow:row}
+  .d-lg{display:flex}
+}
+@media (min-width:720px) and (max-width:959px) {
+  .d-md-none{display:none}.d-lg{display:none}
+  .my-md-5{margin-top:3rem;margin-bottom:3rem}
+  .mx-md-auto{margin-left:auto;margin-right:auto}
+  .ctx-header-text{flex:100%}
+  .header-img{width:35%}
+}
+@media (min-width:540px) and (max-width:719px) {
+  .d-sm-none{display:none}.d-lg{display:none}
+  .mx-sm-auto{margin-left:auto;margin-right:auto}
+  .my-sm-5{margin-top:3rem;margin-bottom:3rem}
+  .header-img{width:35%}
+}
+@media (min-width:300px) and (max-width:539px) {
+  .d-xs-none{display:none}.d-lg{display:none}.d-sm{display:none}
+  .text-xs-center{text-align:center}
+  .h1{font-size:2.2rem}
+  .title-logo{margin-bottom:-5px}
+  .container-xs{display:flex;flex-flow:column}
+  .mx-xs-auto{margin-left:auto;margin-right:auto}
+  .my-xs-5{margin-top:3rem;margin-bottom:3rem}
+}
+@media (max-width:959px) {
+  .display-1{font-size:4rem}.display-3{font-size:3rem}.display-4{font-size:2.2rem}
+  .d-lg-none{display:flex}
+  .card-aurora{position:relative;bottom:0;width:100%;min-height:auto;margin-top:3rem;border-radius:15px}
+  .btn-aurora-custom{margin-top:3rem}
+}
+@media (max-width:767px){.footer-img{display:none}}
+@media (max-width:539px) {
+  .display-1{font-size:3.5rem}.display-3{font-size:2.5rem}.display-4{font-size:2rem}
+  .h1{font-size:1.8rem}
+  .text-content-padding{padding:1rem}
+}
+[data-md-color-scheme="nord:light"] {
+  .text-link{color:var(--color-nord-purple)!important}
+  .text-link:hover{color:var(--md-accent-fg-color)!important}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Header redesign
+═══════════════════════════════════════════════════════════ */
+
+/* Sticky transparent header */
+.md-header {
+  position: sticky !important;
+  top: 0;
+  background: rgba(7, 7, 7, 0.97) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
+  box-shadow: none !important;
+}
+
+/* Logo text: use Teko, hide SVG bg */
+.md-header__title .md-header__ellipsis .md-header__topic {
+  background-image: none !important;
+  height: auto !important;
+  width: auto !important;
+  margin-top: 0 !important;
+}
+
+/* Custom ø logo (see material/.icons/kfaker/logo.svg). The SVG uses
+   stroke="currentColor" so CSS color flows through cleanly. */
+.md-header__button.md-logo {
+  color: var(--color-nord-frost1);
+  transition: filter 0.25s ease, transform 0.25s ease;
+  filter: drop-shadow(0 0 3px rgba(136, 192, 208, 0.3));
+}
+.md-header__button.md-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(136, 192, 208, 0.55));
+  transform: rotate(-6deg);
+}
+.md-header__button.md-logo svg {
+  height: 1.6rem;
+  width: 1.6rem;
+  fill: none;
+  stroke: currentColor;
+}
+/* Scope to the FIRST header__topic (site name).
+   Material renders a second one that swaps in the current page title on
+   scroll — we don't want scanlines or the "-faker" suffix on that. */
+.md-header__ellipsis > .md-header__topic:first-child .md-ellipsis {
+  display: block !important;
+  font-family: Teko, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  /* Header bar is forced dark in both schemes; use a scheme-independent
+     muted dark-gray so scanlines read as a subtle retro pattern, not
+     bright white. */
+  color: var(--color-nord-dark1) !important;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+}
+/* Two-tone accent — "-faker" span is injected by glitch.js so it can carry
+   its own scanline background in frost1. Without its own background-image,
+   the parent's clipped gradient wouldn't apply to the span region. */
+.md-header__ellipsis > .md-header__topic:first-child .md-ellipsis__accent {
+  color: var(--color-nord-frost1);
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 3px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+}
+
+/* Tabs bar */
+.md-tabs {
+  background: rgba(7, 7, 7, 0.97) !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.08) !important;
+}
+.md-tabs__link {
+  font-family: 'IBMPlexSans-Regular', 'IBM Plex Sans', sans-serif !important;
+  font-size: 13px !important;
+  opacity: 0.6;
+  color: var(--color-nord-light2) !important;
+  transition: opacity 0.2s;
+}
+.md-tabs__link:hover { opacity: 1 !important; }
+.md-tabs__link--active {
+  opacity: 1 !important;
+  color: var(--color-nord-frost1) !important;
+  border-bottom: 2px solid var(--color-nord-frost1);
+}
+
+/* Search bar */
+.md-search__input {
+  font-family: var(--md-code-font-family);
+  font-size: 13px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(136, 192, 208, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Inner page typography (Teko headings)
+═══════════════════════════════════════════════════════════ */
+
+/* Re-enable content for inner pages */
+.md-content {
+  display: block;
+}
+
+/* h1 — high specificity to beat MkDocs defaults */
+html body .md-typeset h1,
+html body article h1 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 2.8rem !important;
+  text-transform: uppercase !important;
+  line-height: 0.95 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--md-default-fg-color) !important;
+  margin-bottom: 0.5rem !important;
+  border-bottom: none !important;
+  position: relative;
+  display: inline-block;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+}
+
+/* h1 glitch duplicates — need data-text attr set via glitch.js */
+html body .md-typeset h1[data-text]::before,
+html body .md-typeset h1[data-text]::after,
+html body article h1[data-text]::before,
+html body article h1[data-text]::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
+  pointer-events: none;
+}
+html body .md-typeset h1[data-text]::before,
+html body article h1[data-text]::before {
+  color: var(--color-nord-frost1);
+  clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  animation: lpG1 3s infinite;
+  animation-play-state: paused;
+}
+html body .md-typeset h1[data-text]::after,
+html body article h1[data-text]::after {
+  color: var(--color-nord-red);
+  clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+  animation: lpG2 3s infinite;
+  animation-play-state: paused;
+}
+
+/* Only run animations when the h1 is on-screen (set by glitch.js) */
+html body .md-typeset h1[data-text].glitch-on::before,
+html body .md-typeset h1[data-text].glitch-on::after,
+html body article h1[data-text].glitch-on::before,
+html body article h1[data-text].glitch-on::after {
+  animation-play-state: running;
+}
+
+/* Respect user motion preference — drop the animated duplicates entirely,
+   keep the static scanlines on the base text. */
+@media (prefers-reduced-motion: reduce) {
+  html body .md-typeset h1[data-text]::before,
+  html body .md-typeset h1[data-text]::after,
+  html body article h1[data-text]::before,
+  html body article h1[data-text]::after {
+    content: none;
+  }
+}
+
+/* keep the permalink (¶) opaque — otherwise it inherits text-fill: transparent */
+.md-typeset h1 .headerlink {
+  -webkit-text-fill-color: currentColor;
+          text-fill-color: currentColor;
+  background-image: none;
+}
+
+@keyframes lpG1 {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  91%           { transform: translate(-3px, 0); opacity: 1; }
+  93%           { transform: translate(3px, 0); opacity: 1; }
+  95%           { transform: translate(0); opacity: 0; }
+}
+@keyframes lpG2 {
+  0%, 85%, 100% { transform: translate(0); opacity: 0; }
+  86%           { transform: translate(3px, 0); opacity: 1; }
+  88%           { transform: translate(-3px, 0); opacity: 1; }
+  90%           { transform: translate(0); opacity: 0; }
+}
+
+/* h2 */
+html body .md-typeset h2,
+html body article h2 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.1) !important;
+  padding-bottom: 0.4rem !important;
+  margin-top: 2.5rem !important;
+}
+
+/* h3 */
+html body .md-typeset h3,
+html body article h3 {
+  font-family: 'Teko', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin-top: 2rem !important;
+  color: var(--md-default-fg-color) !important;
+  opacity: 0.9 !important;
+}
+
+/* h4+ stays IBM Plex Sans */
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+}
+
+/* Body text */
+.md-typeset {
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+/* Inline code */
+.md-typeset code {
+  font-size: 0.8em;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  background: rgba(136, 192, 208, 0.08);
+  border: 1px solid rgba(136, 192, 208, 0.12);
+  color: var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Code blocks
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset pre {
+  border-radius: 8px;
+  border: 1px solid rgba(136, 192, 208, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.md-typeset pre > code {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  background: transparent;
+  border: none;
+  color: var(--md-code-fg-color);
+  padding: 0;
+}
+
+/* Code block title bar */
+.md-typeset .highlight {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Content tabs (===) */
+.md-typeset .tabbed-labels > label {
+  font-family: var(--md-code-font-family);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 16px;
+  border-bottom: 2px solid transparent;
+  color: var(--md-default-fg-color);
+  opacity: 0.55;
+  transition: all 0.15s;
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  opacity: 0.9;
+}
+
+.md-typeset .tabbed-labels > .tabbed-label--active {
+  opacity: 1;
+  color: var(--color-nord-frost1);
+  border-bottom-color: var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Admonitions
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 6px;
+  border-width: 0;
+  border-left-width: 3px;
+  box-shadow: none;
+  font-size: 0.85rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+}
+
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before {
+  margin-right: 0.5rem;
+}
+
+/* tip */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: var(--color-nord-green);
+  background: rgba(163, 190, 140, 0.07);
+}
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background: rgba(163, 190, 140, 0.12);
+  color: var(--color-nord-green);
+}
+
+/* info / note */
+.md-typeset .admonition.info,
+.md-typeset .admonition.note,
+.md-typeset details.info,
+.md-typeset details.note {
+  border-color: var(--color-nord-frost1);
+  background: rgba(136, 192, 208, 0.07);
+}
+.md-typeset .info > .admonition-title,
+.md-typeset .note > .admonition-title,
+.md-typeset .info > summary,
+.md-typeset .note > summary {
+  background: rgba(136, 192, 208, 0.12);
+  color: var(--color-nord-frost1);
+}
+
+/* warning */
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-color: var(--color-nord-yellow);
+  background: rgba(235, 203, 139, 0.07);
+}
+.md-typeset .warning > .admonition-title,
+.md-typeset .warning > summary {
+  background: rgba(235, 203, 139, 0.12);
+  color: var(--color-nord-yellow);
+}
+
+/* danger */
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-color: var(--color-nord-red);
+  background: rgba(191, 97, 106, 0.07);
+}
+.md-typeset .danger > .admonition-title,
+.md-typeset .danger > summary {
+  background: rgba(191, 97, 106, 0.12);
+  color: var(--color-nord-red);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Navigation sidebar
+═══════════════════════════════════════════════════════════ */
+
+/* Nav section titles */
+.md-nav__title {
+  font-family: var(--md-code-font-family);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-nord-frost1);
+  opacity: 0.65;
+}
+
+/* Nav links */
+.md-nav__link {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+  font-size: 13px;
+  color: var(--md-default-fg-color);
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  border-radius: 0;
+}
+
+.md-nav__link:hover {
+  opacity: 1;
+  color: var(--md-default-fg-color);
+}
+
+.md-nav__link--active,
+.md-nav__link--active:hover {
+  opacity: 1;
+  color: var(--color-nord-frost1) !important;
+  font-weight: 400;
+}
+
+/* ToC links */
+.md-nav--secondary .md-nav__link {
+  font-size: 12px;
+  opacity: 0.5;
+}
+.md-nav--secondary .md-nav__link--active {
+  opacity: 1;
+  color: var(--color-nord-frost1) !important;
+  border-left: 2px solid var(--color-nord-frost1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Tables
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset__table { min-width: 100%; }
+.md-typeset table:not([class]) { display: table; }
+
+.md-typeset table:not([class]) th {
+  font-family: var(--md-code-font-family);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(136, 192, 208, 0.06);
+  color: var(--color-nord-frost1);
+  border-bottom: 1px solid rgba(136, 192, 208, 0.15);
+}
+
+.md-typeset table:not([class]) td {
+  font-size: 13px;
+  border-bottom: 1px solid rgba(136, 192, 208, 0.06);
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(136, 192, 208, 0.03);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Pagination & back button
+═══════════════════════════════════════════════════════════ */
+
+.md-footer-nav__link {
+  font-family: var(--md-code-font-family);
+  font-size: 12px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: var(--md-default-bg-color--light);
+  border: 1px solid rgba(136, 192, 208, 0.1);
+  transition: border-color 0.2s;
+}
+
+.md-footer-nav__link:hover {
+  border-color: var(--color-nord-frost1);
+}
+
+.md-footer-nav__title {
+  font-family: 'IBMPlexSans-Regular', sans-serif;
+  font-size: 14px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Announcement banner
+═══════════════════════════════════════════════════════════ */
+
+.md-banner {
+  background-color: var(--color-nord-purple);
+  text-align: center;
+  font-size: 13px;
+}
+
+.md-banner a { color: var(--color-nord-frost3) !important; }
+.md-banner a:focus,
+.md-banner a:hover { color: var(--color-nord-green) !important; }
+.md-banner strong { white-space: nowrap; }
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Breadcrumb
+═══════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Content area
+═══════════════════════════════════════════════════════════ */
+
+.md-content__inner {
+  padding-top: 2rem;
+  max-width: 720px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Homepage overrides (hide content/sidebar on home)
+═══════════════════════════════════════════════════════════ */
+
+/* Hide inner page elements on the homepage */
+[data-md-component="content"] .md-content {
+  display: block;
+}
+
+/* Ensure landing page sections fill width */
+.lp-hero,
+.lp-section {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Social links footer
+═══════════════════════════════════════════════════════════ */
+
+.md-social__link {
+  width: 2rem;
+}
+.md-social__link svg {
+  max-height: 1.6rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   NEW — Light mode overrides
+═══════════════════════════════════════════════════════════ */
+
+[data-md-color-scheme="nord:light"] {
+  .text-link { color: var(--color-nord-purple) !important; }
+  .text-link:hover { color: var(--md-accent-fg-color) !important; }
+
+  .md-typeset code {
+    background: rgba(94, 129, 172, 0.08);
+    border-color: rgba(94, 129, 172, 0.2);
+    color: var(--color-nord-frost3);
+  }
+
+  .lp-hero {
+    background: var(--color-nord-light2);
+  }
+}

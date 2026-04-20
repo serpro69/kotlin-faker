@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════════════════════
+   Teko display font for headings
+═══════════════════════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   Original extra.css — preserved
+═══════════════════════════════════════════════════════════ */
+
+.md-typeset__table {
+  min-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  td:nth-child(1) {
+    white-space: nowrap;
+  }
+}
+
+@font-face {
+  font-family: IBMPlexSans-Regular;
+  src: url("typography/IBMPlexSans-Regular.otf");
+}
+
+@font-face {
+  font-family: IBMPlexSans-Bold;
+  src: url("typography/IBMPlexSans-Bold.otf");
+}
+
+.IBMPlexSans-Regular {
+  font-family: IBMPlexSans-Regular;
+}
+
+.IBMPlexSans-Bold {
+  font-family: IBMPlexSans-Bold;
+}
+
+* {
+  --md-text-font: "IBMPlexSans-Regular";
+}
+
+/* markdown and image alignment */
+img[src*="#left"] { float: left; }
+img[src*="#right"] { float: right; }
+img[src*="#center"] { display: block; margin: auto; }
+
+.md-typeset table:not([class]) {
+  display: table;
+}
+
+.md-social__link { width: 2rem; }
+.md-social__link svg { max-height: 1.6rem; }
