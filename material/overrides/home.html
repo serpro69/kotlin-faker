@@ -218,12 +218,26 @@
   letter-spacing: 0.02em; margin: 0 0 36px;
   color: var(--color-nord-red);
   position: relative; display: inline-block;
+  background-image: repeating-linear-gradient(
+    0deg,
+    currentColor,
+    currentColor 3px,
+    transparent 3px,
+    transparent 5px
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          text-fill-color: transparent;
 }
 .lp-warn-title::before, .lp-warn-title::after {
   content: attr(data-text);
   position: absolute; top: 0; left: 0; right: 0;
   font-family: Teko, sans-serif; font-weight: 700;
   font-size: inherit; line-height: inherit; text-transform: uppercase;
+  background-image: repeating-linear-gradient(0deg, currentColor, currentColor 3px, transparent 3px, transparent 5px);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; text-fill-color: transparent;
 }
 .lp-warn-title::before {
   color: var(--color-nord-yellow);
