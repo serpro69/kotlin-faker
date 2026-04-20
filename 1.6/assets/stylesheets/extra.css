@@ -1,3 +1,12 @@
+/* ═══════════════════════════════════════════════════════════
+   Teko display font for headings
+═══════════════════════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap");
+
+/* ═══════════════════════════════════════════════════════════
+   Original extra.css — preserved
+═══════════════════════════════════════════════════════════ */
+
 .md-typeset__table {
   min-width: 100%;
 }
@@ -30,39 +39,14 @@
   --md-text-font: "IBMPlexSans-Regular";
 }
 
-/*
-markdown and image alignment
-ALT tag and a CSS selector on the alt tag
-*/
-img[src*="#left"] {
-  float: left;
-}
-img[src*="#right"] {
-  float: right;
-}
-img[src*="#center"] {
-  display: block;
-  margin: auto;
-}
-
-/*
-Tables set to 100% width
-*/
-.md-typeset__table {
-  min-width: 100%;
-}
+/* markdown and image alignment */
+img[src*="#left"] { float: left; }
+img[src*="#right"] { float: right; }
+img[src*="#center"] { display: block; margin: auto; }
 
 .md-typeset table:not([class]) {
   display: table;
 }
 
-/*
-Footer social media icons:
-set the size of the svg icons and the espace between them.
-*/
-.md-social__link {
-  width: 2rem;
-}
-.md-social__link svg {
-  max-height: 1.6rem;
-}
+.md-social__link { width: 2rem; }
+.md-social__link svg { max-height: 1.6rem; }
