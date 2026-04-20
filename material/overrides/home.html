@@ -166,6 +166,94 @@
 .lp-h2 span { color:var(--color-nord-frost1); }
 .lp-lead { font-size:15px; line-height:1.7; color:var(--md-default-fg-color); opacity:0.65; max-width:560px; }
 
+/* ── Hero tagline ─── */
+.lp-tagline {
+  position: relative; z-index: 2;
+  margin: 40px auto 0; max-width: 640px; padding: 0 24px;
+  font-family: var(--md-code-font-family);
+  font-size: 12px; line-height: 1.7;
+  color: var(--md-default-fg-color); opacity: 0.5;
+  text-align: center; font-style: italic;
+}
+.lp-tagline em { color: var(--color-nord-frost1); opacity: 0.95; font-style: italic; }
+
+/* ── Manifesto ─── */
+.lp-manifesto { padding: 80px 0 104px; }
+.lp-manifesto-inner { text-align: center; }
+.lp-manifesto-eyebrow { justify-content: center; margin-bottom: 20px; }
+.lp-manifesto-title {
+  font-family: Teko, sans-serif; font-weight: 700;
+  font-size: clamp(56px, 9vw, 112px);
+  line-height: 0.9; text-transform: uppercase;
+  letter-spacing: -0.02em; color: var(--md-default-fg-color);
+  margin: 0;
+}
+.lp-manifesto-title.lp-manifesto-title--accent { color: var(--color-nord-frost1); margin-bottom: 36px; }
+.lp-manifesto-lead {
+  max-width: 620px; margin: 0 auto;
+  font-size: 16px; line-height: 1.85;
+  color: var(--md-default-fg-color); opacity: 0.72;
+}
+.lp-manifesto-lead em {
+  color: var(--color-nord-frost1); opacity: 0.95; font-style: italic;
+}
+
+/* ── Warning ─── */
+.lp-warn {
+  padding: 96px 0;
+  border-top: 1px solid rgba(191, 97, 106, 0.15);
+  border-bottom: 1px solid rgba(191, 97, 106, 0.15);
+  background: linear-gradient(180deg, transparent, rgba(191, 97, 106, 0.04), transparent);
+}
+.lp-warn-inner { text-align: center; max-width: 760px; margin: 0 auto; padding: 0 48px; }
+.lp-warn-badge {
+  display: flex; justify-content: center; gap: 18px;
+  margin-bottom: 18px; font-size: 26px;
+  letter-spacing: 0.1em; opacity: 0.75;
+}
+.lp-warn-title {
+  font-family: Teko, sans-serif; font-weight: 700;
+  font-size: clamp(60px, 10vw, 120px);
+  line-height: 0.9; text-transform: uppercase;
+  letter-spacing: 0.02em; margin: 0 0 36px;
+  color: var(--color-nord-red);
+  position: relative; display: inline-block;
+}
+.lp-warn-title::before, .lp-warn-title::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0; right: 0;
+  font-family: Teko, sans-serif; font-weight: 700;
+  font-size: inherit; line-height: inherit; text-transform: uppercase;
+}
+.lp-warn-title::before {
+  color: var(--color-nord-yellow);
+  clip-path: polygon(0 30%, 100% 30%, 100% 45%, 0 45%);
+  animation: lpG1 4s infinite;
+}
+.lp-warn-title::after {
+  color: var(--color-nord-frost1);
+  clip-path: polygon(0 65%, 100% 65%, 100% 80%, 0 80%);
+  animation: lpG2 4s infinite;
+}
+.lp-warn-body {
+  font-family: var(--md-code-font-family);
+  font-size: 14px; line-height: 1.9;
+  color: var(--md-default-fg-color); opacity: 0.78;
+}
+.lp-warn-body p { margin: 10px 0; }
+.lp-warn-body em {
+  color: var(--color-nord-frost1);
+  opacity: 0.95; font-style: italic;
+}
+.lp-warn-sign-off {
+  margin-top: 28px !important;
+  font-size: 18px !important;
+  color: var(--color-nord-red) !important;
+  opacity: 1 !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* ── MkDocs header overrides (homepage) ─── */
 
 /* Main header bar — dark, no shadow */
@@ -313,6 +401,7 @@
       <span class="lp-lang-tag" style="color:var(--color-nord-purple);border-color:rgba(180,142,173,0.35)">Scala</span>
       <span class="lp-lang-tag" style="color:var(--color-nord-yellow);border-color:rgba(235,203,139,0.35)">Groovy</span>
       <span class="lp-lang-tag" style="color:var(--color-nord-orange);border-color:rgba(208,135,112,0.35)">Clojure</span>
+      <span class="lp-lang-tag" style="color:var(--color-nord-frost2);border-color:rgba(143,188,187,0.35)">Android</span>
     </div>
     <div class="lp-tw" id="lpTw"></div>
     <div class="lp-actions">
@@ -325,6 +414,23 @@
     <div><div class="lp-stat-val">60+</div><div class="lp-stat-label">Locales</div></div>
     <div><div class="lp-stat-val">4×</div><div class="lp-stat-label">Faster</div></div>
     <div><div class="lp-stat-val">JVM</div><div class="lp-stat-label">Platform</div></div>
+  </div>
+  <p class="lp-tagline">Ensure your application data looks as if it was real, just like our <em>really</em> fake logo, but not quite so.</p>
+</section>
+
+<!-- ══ MANIFESTO ═══════════════════════════════════════════════ -->
+<section class="lp-section lp-manifesto">
+  <div class="lp-inner lp-manifesto-inner">
+    <div class="lp-eyebrow lp-manifesto-eyebrow">philosophy</div>
+    <h2 class="lp-manifesto-title">We fake it.</h2>
+    <h2 class="lp-manifesto-title lp-manifesto-title--accent">You make it.</h2>
+    <p class="lp-manifesto-lead">
+      In fact, kotlin-faker is <em>so</em> good at generating fake data,
+      it almost fooled us into thinking it was real! 😱
+      <br><br>
+      From names that sound like they belong to secret agents 🕴️
+      to addresses where superheroes 🦸 might live.
+    </p>
   </div>
 </section>
 
@@ -375,7 +481,7 @@
         <div class="lp-feat-title">Kotlin First</div>
         <div class="lp-feat-item">Idiomatic DSL makes data-generation code clean, readable, and type-safe</div>
         <div class="lp-feat-item">No awkward Java interop or legacy API design — it just feels right</div>
-        <div class="lp-feat-item">Full coroutine support and null-safety baked in</div>
+        <div class="lp-feat-item">Runs on Android and any JVM 11+ environment without extra setup</div>
       </div>
       <div class="lp-feat-card">
         <div class="lp-feat-icon">∞</div>
@@ -489,6 +595,22 @@
       <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-red)">S</div><div class="lp-tech-name">Scala</div></div>
       <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-yellow)">G</div><div class="lp-tech-name">Groovy</div></div>
       <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-purple)">C</div><div class="lp-tech-name">Clojure</div></div>
+      <div class="lp-tech-item"><div class="lp-tech-logo" style="color:var(--color-nord-frost2)">A</div><div class="lp-tech-name">Android</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WARNING ═════════════════════════════════════════════════ -->
+<section class="lp-section lp-warn">
+  <div class="lp-warn-inner">
+    <div class="lp-warn-badge"><span>⚠</span><span>⚠</span><span>⚠</span></div>
+    <h2 class="lp-warn-title" data-text="WARNING">WARNING</h2>
+    <div class="lp-warn-body">
+      <p><em>All names, addresses, bank accounts, and other data generated by this library — even those based on real strings — are entirely fictional.</em> 🦹</p>
+      <p><em>All produced data is fake and generated... poorly.</em> 💩</p>
+      <p><em>The data is completely made up, but the problems that it tries to solve are real.</em> 👽</p>
+      <p><em>We take no responsibility for any existential crises caused by the eerily convincing fake data.</em></p>
+      <p class="lp-warn-sign-off">Use with caution!</p>
     </div>
   </div>
 </section>
