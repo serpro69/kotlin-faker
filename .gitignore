@@ -1,8 +1,17 @@
 *.gradle/
 .idea/
 *.kotlin/
+.serena/
 build/
 site/
 __pycache__/
 
 .env
+
+cli-bot/
+core/
+docs/
+extension/
+faker/
+kls_database.db
+test/
