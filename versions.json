@@ -1,10 +1,5 @@
 [
   {
-    "version": "old",
-    "title": "1.6.0 (legacy)",
-    "aliases": []
-  },
-  {
     "version": "2.0",
     "title": "2.1.0-SNAPSHOT",
     "aliases": [
@@ -17,5 +12,10 @@
     "aliases": [
       "latest"
     ]
+  },
+  {
+    "version": "old",
+    "title": "1.6.0 (legacy)",
+    "aliases": []
   }
 ]
