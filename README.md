@@ -20,7 +20,7 @@
 [![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&style=for-the-badge&color=lightblue)](https://github.com/serpro69/kotlin-faker/issues)
 ![GitHub Top Lang](https://img.shields.io/github/languages/top/serpro69/kotlin-faker.svg?logo=Kotlin&logoColor=white&color=A97BFF&style=for-the-badge)
 [![Awesome Kotlin](https://img.shields.io/badge/awesome-kotlin-orange?logo=Awesome-Lists&style=for-the-badge)](https://kotlin.link/resources?q=kotlin-faker)
-[![Licence](https://img.shields.io/github/license/serpro69/kotlin-faker.svg?style=for-the-badge)](LICENSE.adoc)
+[![Licence](https://img.shields.io/github/license/serpro69/kotlin-faker.svg?style=for-the-badge)](LICENSE.md)
 
 ## ToC
 
