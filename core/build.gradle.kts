@@ -14,8 +14,8 @@ plugins {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.21.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.21.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.22.1")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.22.1")
     shadow("com.ibm.icu:icu4j:73.2")
     shadow("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.21")
     shadow("org.jetbrains.kotlin:kotlin-reflect:2.1.21")
