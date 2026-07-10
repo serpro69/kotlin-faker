@@ -14,7 +14,7 @@
 >
 > *Kotlin-faker is a kotlin port of a popular [ruby faker](https://github.com/stympy/faker) gem.*
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/serpro69/kotlin-faker/build.yml?branch=master&logo=github&style=for-the-badge)](https://github.com/serpro69/kotlin-faker/actions/workflows/build.yml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/serpro69/kotlin-faker/master.yml?branch=master&logo=github&style=for-the-badge)](https://github.com/serpro69/kotlin-faker/actions/workflows/master.yml)
 [![Central Sonatype](https://img.shields.io/maven-central/v/io.github.serpro69/kotlin-faker?style=for-the-badge&logo=apachemaven&label=release-version&color=blue)](https://central.sonatype.com/artifact/io.github.serpro69/kotlin-faker)
 [![Central Sonatype (Snapshots)](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fcentral.sonatype.com%2Frepository%2Fmaven-snapshots%2Fio%2Fgithub%2Fserpro69%2Fkotlin-faker%2Fmaven-metadata.xml&strategy=highestVersion&style=for-the-badge&logo=apachemaven&label=snapshot-version&color=yellow)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/io/github/serpro69/kotlin-faker/)
 [![Issues](https://img.shields.io/github/issues/serpro69/kotlin-faker.svg?logo=GitHub&style=for-the-badge&color=lightblue)](https://github.com/serpro69/kotlin-faker/issues)
