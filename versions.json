@@ -10,12 +10,5 @@
     "aliases": [
       "dev"
     ]
-  },
-  {
-    "version": "1.6",
-    "title": "1.6 (latest)",
-    "aliases": [
-      "latest"
-    ]
   }
 ]
