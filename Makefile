@@ -1,7 +1,7 @@
-SHELL  := env ORCHID_DIAGNOSE=$(ORCHID_DIAGNOSE) $(SHELL)
-ORCHID_DIAGNOSE ?= false
-.SHELLFLAGS := -ec
-.DEFAULT_GOAL := help
+.ONESHELL:
+SHELL           := $(shell which bash)
+.SHELLFLAGS     := -ec
+.DEFAULT_GOAL   := help
 
 # https://stackoverflow.com/a/10858332
 # Check that given variables are set and all have non-empty values,
@@ -120,7 +120,6 @@ release-patch: ## publishes next patch release version
 .PHONY: release
 release: check_java ## publishes the next release with a specified VERSION
 	@:$(call check_defined, VERSION, semantic version string - 'X.Y.Z(-rc.\d+)?')
-
 	# run tests
 	./gradlew test spotlessCheck -Pversion=$(VERSION)
 	# build and test native image
@@ -134,9 +133,11 @@ release: check_java ## publishes the next release with a specified VERSION
 
 .PHONY: _deploy_docs
 _deploy_docs: # temporary target to deploy docs with mike, TODO: move to github actions
-	@./gradlew dokkaGfmMultiModule; \
-	mv build/dokka/gfmMultiModule docs/api; \
-	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 1.6.1 latest -t '1.6.1 (latest)' -u; \
+	@./gradlew dokkaGfmMultiModule
+	mv build/dokka/gfmMultiModule docs/api
+	# 1.6 should only exist as legacy docs, we can't really publish a correct 1.6 docs version via mkdocs without refactoring the documentation
+	# otherwise 1.6 is just a copy if 2.x with a different title, which makes little to no sense to publish and at the very least is confusing
+	# MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 1.6 latest -t '1.6 (latest)' -u
 	MKDOCS_SITE_URL="https://serpro69.github.io/kotlin-faker/" mike deploy 2.0 dev -t '2.1.0-SNAPSHOT' -u
 
 .PHONY: help
