@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "capy": {
+      "args": [
+        ".claude/scripts/capy.sh",
+        "serve"
+      ],
+      "command": "bash"
+    }
+  }
+}

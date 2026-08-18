@@ -26,15 +26,11 @@ jobs:
     name: Sync Template
     runs-on: ubuntu-latest
     if: github.event.repository.name != 'claude-toolbox'
-    permissions:
-      contents: write
-      pull-requests: write
     outputs:
       has_changes: ${{ steps.sync.outputs.has_changes }}
       old_version: ${{ steps.manifest.outputs.old_version }}
       new_version: ${{ steps.sync.outputs.resolved_version }}
       diff_summary: ${{ steps.sync.outputs.diff_summary }}
-      plugin_migrated: ${{ steps.sync.outputs.plugin_migrated }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v6
@@ -78,6 +74,9 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq
+          # Install yq (mikefarah) for YAML processing
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
 
       - name: Fetch target sync script from upstream
         run: |
@@ -85,32 +84,37 @@ jobs:
           UPSTREAM_REPO=$(jq -r '.upstream_repo // "serpro69/claude-toolbox"' .github/template-state.json)
           VERSION="${{ inputs.version }}"
 
-          # Resolve "latest" to the most recent tag
+          # Resolve "latest" via GitHub releases API (excludes pre-releases)
           if [[ "$VERSION" == "latest" ]]; then
-            VERSION=$(git ls-remote --tags --sort=-v:refname "https://github.com/$UPSTREAM_REPO.git" \
-              | grep -v '\^{}' | head -1 | sed 's/.*refs\/tags\///')
+            VERSION=$(gh release view --repo "$UPSTREAM_REPO" --json tagName -q .tagName 2>/dev/null || true)
             if [[ -z "$VERSION" ]]; then
               VERSION="HEAD"
             fi
           fi
 
-          echo "Fetching template-sync.sh from $UPSTREAM_REPO @ $VERSION"
-          SCRIPT_URL="https://raw.githubusercontent.com/$UPSTREAM_REPO/$VERSION/.github/scripts/template-sync.sh"
-          if curl -fsSL "$SCRIPT_URL" -o .github/scripts/template-sync.sh.new 2>/dev/null; then
-            mv .github/scripts/template-sync.sh.new .github/scripts/template-sync.sh
-            chmod +x .github/scripts/template-sync.sh
-            echo "Updated template-sync.sh to $VERSION"
-          else
-            echo "::warning::Could not fetch upstream template-sync.sh, using local version"
-          fi
+          echo "Fetching sync scripts from $UPSTREAM_REPO @ $VERSION"
+          mkdir -p .claude/toolbox/scripts
+          BASE_URL="https://raw.githubusercontent.com/$UPSTREAM_REPO/$VERSION/.claude/toolbox/scripts"
+          FETCH_OK=true
+          for script in template-sync.sh semver-compare.sh; do
+            if curl -fsSL "$BASE_URL/$script" -o ".claude/toolbox/scripts/${script}.new" 2>/dev/null; then
+              mv ".claude/toolbox/scripts/${script}.new" ".claude/toolbox/scripts/$script"
+              chmod +x ".claude/toolbox/scripts/$script"
+              echo "Updated $script to $VERSION"
+            else
+              rm -f ".claude/toolbox/scripts/${script}.new"
+              echo "::warning::Could not fetch upstream $script, using local version"
+              FETCH_OK=false
+            fi
+          done
 
       - name: Run Template Sync
         id: sync
         continue-on-error: true
         run: |
-          chmod +x .github/scripts/template-sync.sh
+          chmod +x .claude/toolbox/scripts/template-sync.sh
           mkdir -p .github/reports
-          .github/scripts/template-sync.sh \
+          .claude/toolbox/scripts/template-sync.sh \
             --version "${{ inputs.version }}" \
             --ci \
             --output-dir .github/sync-staging \
@@ -151,12 +155,19 @@ jobs:
     needs: sync
     if: needs.sync.outputs.has_changes == 'true' && inputs.dry_run == false
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        if: ${{ vars.CLAUDE_TOOLBOX_APP_ID != '' || vars.JEAN_CLAWDER_APP_ID != '' }}
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.CLAUDE_TOOLBOX_APP_ID || vars.JEAN_CLAWDER_APP_ID }}
+          private-key: ${{ secrets.CLAUDE_TOOLBOX_APP_KEY || secrets.JEAN_CLAWDER_APP_KEY }}
+
       - name: Checkout Repository
         uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token || github.token }}
 
       - name: Download Staged Changes
         uses: actions/download-artifact@v7
@@ -164,88 +175,14 @@ jobs:
           name: sync-diff-report
           path: .github/sync-artifacts
 
-      - name: Run Plugin Migration
-        if: needs.sync.outputs.plugin_migrated == 'true'
+      - name: Apply Changes
         run: |
-          echo "Migrating to kk plugin system..."
-          # Remove template-managed skills, commands, hooks, and validator
-          rm -rf .claude/skills .claude/commands
-          rm -f .claude/scripts/validate-bash.sh
-          # Remove hooks from settings.json (substituted template will provide marketplace config)
-          if [[ -f .claude/settings.json ]] && jq -e '.hooks' .claude/settings.json &>/dev/null; then
-            jq 'del(.hooks)' .claude/settings.json > .claude/settings.json.tmp
-            mv .claude/settings.json.tmp .claude/settings.json
-          fi
-          # Set plugin_migrated flag in manifest
-          jq '.plugin_migrated = true' .github/template-state.json > .github/template-state.json.tmp
-          mv .github/template-state.json.tmp .github/template-state.json
-          echo "Plugin migration complete"
-
-      - name: Apply Staged Changes
-        run: |
-          STAGING_DIR=".github/sync-artifacts/sync-staging/substituted"
-
-          # Copy claude config files
-          if [[ -d "$STAGING_DIR/claude" ]]; then
-            cp -r "$STAGING_DIR/claude/"* .claude/ 2>/dev/null || true
-            echo "Applied changes to .claude/"
-          fi
-
-          # Copy serena config files
-          if [[ -d "$STAGING_DIR/serena" ]]; then
-            cp -r "$STAGING_DIR/serena/"* .serena/ 2>/dev/null || true
-            echo "Applied changes to .serena/"
-          fi
-
-          # Copy workflow files (sync infrastructure)
-          if [[ -d "$STAGING_DIR/workflows" ]]; then
-            cp -r "$STAGING_DIR/workflows/"* .github/workflows/ 2>/dev/null || true
-            echo "Applied changes to .github/workflows/"
-          fi
-
-          # Copy script files (sync infrastructure, preserve executable permissions)
-          if [[ -d "$STAGING_DIR/scripts" ]]; then
-            cp -r "$STAGING_DIR/scripts/"* .github/scripts/ 2>/dev/null || true
-            chmod +x .github/scripts/*.sh 2>/dev/null || true
-            echo "Applied changes to .github/scripts/"
-          fi
-
-          # Auto-append @import reference for CLAUDE.extra.md on first sync
-          # If the file was just added and CLAUDE.md exists but doesn't reference it, add the import
-          if [[ -f "$STAGING_DIR/claude/CLAUDE.extra.md" && -f "CLAUDE.md" ]]; then
-            if ! grep -q '@.claude/CLAUDE.extra.md' CLAUDE.md; then
-              printf '\n# Extra Instructions\n' >> CLAUDE.md
-              printf '@.claude/CLAUDE.extra.md\n' >> CLAUDE.md
-              echo "Added @import reference for .claude/CLAUDE.extra.md to CLAUDE.md"
-            fi
-          fi
-
-      - name: Cleanup Staging Artifacts
-        run: |
-          # Remove staging artifacts to prevent them from being included in the PR
+          chmod +x .claude/toolbox/scripts/template-sync.sh
+          .claude/toolbox/scripts/template-sync.sh \
+            --apply \
+            --version "${{ needs.sync.outputs.new_version }}" \
+            --output-dir .github/sync-artifacts/sync-staging
           rm -rf .github/sync-artifacts .github/reports
-          echo "Cleaned up staging artifacts"
-
-      - name: Update Manifest Version
-        run: |
-          NEW_VERSION="${{ needs.sync.outputs.new_version }}"
-          SYNCED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          # Migrate upstream_repo if still using old repository name
-          CURRENT_REPO=$(jq -r '.upstream_repo' .github/template-state.json)
-          if [[ "$CURRENT_REPO" == "serpro69/claude-starter-kit" ]]; then
-            echo "Migrating upstream_repo from serpro69/claude-starter-kit to serpro69/claude-toolbox"
-            jq '.upstream_repo = "serpro69/claude-toolbox"' \
-              .github/template-state.json > .github/template-state.json.tmp
-            mv .github/template-state.json.tmp .github/template-state.json
-          fi
-
-          jq --arg version "$NEW_VERSION" --arg synced_at "$SYNCED_AT" \
-            '.template_version = $version | .synced_at = $synced_at' \
-            .github/template-state.json > .github/template-state.json.tmp
-          mv .github/template-state.json.tmp .github/template-state.json
-
-          echo "Updated manifest to version $NEW_VERSION"
 
       - name: Check for Existing PR
         id: check-pr
@@ -258,15 +195,16 @@ jobs:
             echo "existing_pr=$EXISTING_PR" >> "$GITHUB_OUTPUT"
           fi
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
 
       - name: Create Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v8
         with:
+          token: ${{ steps.app-token.outputs.token || github.token }}
           branch: template-sync/${{ needs.sync.outputs.new_version }}
           delete-branch: true
-          title: "chore: sync template ${{ needs.sync.outputs.old_version }} → ${{ needs.sync.outputs.new_version }}"
+          title: "(chore) Sync claude-toolbox ${{ needs.sync.outputs.old_version }} → ${{ needs.sync.outputs.new_version }}"
           body: |
             ## Template Update
 
@@ -306,7 +244,7 @@ jobs:
 
             ---
             *Generated by [Template Sync](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) workflow*
-          commit-message: "chore: sync template to ${{ needs.sync.outputs.new_version }}"
+          commit-message: "(chore) Sync claude-toolbox to ${{ needs.sync.outputs.new_version }}"
           labels: |
             template-sync
             automated

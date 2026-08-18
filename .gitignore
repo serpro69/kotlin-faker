@@ -30,3 +30,7 @@ gradle/gradle-daemon-jvm.properties
 
 __pycache__/
 
+.capy/**
+!.capy
+!.capy/AGENTS.md
+!.capy/knowledge.db

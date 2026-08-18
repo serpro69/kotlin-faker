@@ -1,0 +1,18 @@
+{
+  "schema_version": "1",
+  "upstream_repo": "serpro69/claude-toolbox",
+  "template_version": "v0.19.0",
+  "synced_at": "2026-08-18T18:09:46Z",
+  "variables": {
+    "PROJECT_NAME": "kotlin-faker",
+    "LANGUAGES": "kotlin,java",
+    "CC_MODEL": "claude-opus-4-8[1m]",
+    "CC_STATUSLINE": "enhanced",
+    "CC_EFFORT_LEVEL": "high",
+    "CC_PERMISSION_MODE": "default",
+    "CODEX_APPROVAL_POLICY": "on-request",
+    "CODEX_MODEL": "gpt-5.6-sol",
+    "SKIP_CAPY": "false"
+  },
+  "plugin_migrated": true
+}

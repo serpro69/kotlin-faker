@@ -75,8 +75,9 @@ main() {
   fetch_file "$version" ".github/workflows/template-sync.yml" ".github/workflows/template-sync.yml" || ((failed++))
 
   log_step "Fetching template-sync.sh..."
-  fetch_file "$version" ".github/scripts/template-sync.sh" ".github/scripts/template-sync.sh" || ((failed++))
-  chmod +x .github/scripts/template-sync.sh 2>/dev/null || true
+  mkdir -p .claude/toolbox/scripts
+  fetch_file "$version" ".claude/toolbox/scripts/template-sync.sh" ".claude/toolbox/scripts/template-sync.sh" || ((failed++))
+  chmod +x .claude/toolbox/scripts/template-sync.sh 2>/dev/null || true
 
   if [[ "$failed" -gt 0 ]]; then
     log_error "$failed file(s) failed to download"
@@ -84,7 +85,7 @@ main() {
   fi
 
   # Verify non-empty
-  for f in .github/workflows/template-sync.yml .github/scripts/template-sync.sh; do
+  for f in .github/workflows/template-sync.yml .claude/toolbox/scripts/template-sync.sh; do
     if [[ ! -s "$f" ]]; then
       log_error "$f is empty after download"
       exit 1
@@ -96,7 +97,7 @@ main() {
   # Show diff if in a git repo
   if git rev-parse --is-inside-work-tree &>/dev/null; then
     echo ""
-    git diff --stat .github/workflows/template-sync.yml .github/scripts/template-sync.sh 2>/dev/null || true
+    git diff --stat .github/workflows/template-sync.yml .claude/toolbox/scripts/template-sync.sh 2>/dev/null || true
   fi
 }
 

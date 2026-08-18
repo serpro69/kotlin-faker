@@ -1,0 +1,13 @@
+# Ported from .claude/settings.json permissions.deny (Bash entries only).
+# Read(...) deny entries (.env, *.csv, *.log, node_modules, etc.) are NOT enforced
+# here — codex PreToolUse hooks can only intercept shell commands, not read_file.
+# Advisory-only coverage via AGENTS.md and SessionStart context injection.
+# See docs/adr/0005-codex-hook-enforcement-gap.md for details.
+
+prefix_rule(
+    pattern = ["rm"],
+    decision = "forbidden",
+    justification = "Destructive file removal is blocked. Request explicit user approval before deleting files.",
+    match = ["rm -rf /tmp/test", "rm foo.txt", "rm -r ./build"],
+    not_match = ["ls -la", "mkdir -p dir", "grep -r pattern"],
+)

@@ -132,3 +132,7 @@ Or use `./gradlew tag` task with appropriate flags (see README.md "Build and Dep
 ## Extra Instuctions
 
 @.claude/CLAUDE.extra.md
+
+# capy — context-window routing
+
+@.capy/AGENTS.md

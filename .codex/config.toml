@@ -1,0 +1,23 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+model = "gpt-5.6-sol"
+model_reasoning_effort = "xhigh"
+model_auto_compact_token_limit = 1000000
+approval_policy = "on-request"
+approvals_reviewer = "user"
+sandbox_mode = "read-only"
+
+[features]
+hooks = true
+
+[agents]
+max_threads = 6
+max_depth = 1
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "context-usage", "used-tokens", "five-hour-limit", "weekly-limit"]
+terminal_title = ["project", "git-branch", "status", "thread", "task-progress"]
+
+[mcp_servers.capy]
+command = "bash"
+args = [".codex/scripts/capy.sh", "serve"]
+env_vars = ["CAPY_DB_KEY"]
