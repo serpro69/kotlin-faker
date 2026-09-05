@@ -1,6 +1,7 @@
 #:schema https://developers.openai.com/codex/config-schema.json
 model = "gpt-5.6-sol"
 model_reasoning_effort = "xhigh"
+model_context_window = 1000000
 model_auto_compact_token_limit = 1000000
 approval_policy = "on-request"
 approvals_reviewer = "user"
