@@ -1,6 +1,6 @@
-## Behavioral Instructions
+# Behavioral Instructions
 
-### Independent Thinking
+## Independent Thinking
 
 When discussing decisions, designs, trade-offs, or approaches:
 
@@ -12,7 +12,7 @@ When discussing decisions, designs, trade-offs, or approaches:
 
 When executing clear, specific tasks (write this function, fix this bug, run these tests): just execute. Save the pushback for decisions that warrant it.
 
-### Exploration Phase
+## Exploration Phase
 
 Always explore on your own to gain complete understanding. Only delegate to exploration agents if the user explicitly requests it.
 
@@ -20,7 +20,7 @@ Always explore on your own to gain complete understanding. Only delegate to expl
      and then re-reads all the files on its own...
      resulting in double token consumption -->
 
-### Assumptions & Fail-Loud
+## Assumptions & Fail-Loud
 
 When writing or modifying code:
 
@@ -29,7 +29,7 @@ When writing or modifying code:
 - **Fail loud.** Flag errors explicitly. No softening, no silent corrections, no swallowed exceptions, no assertions you quietly relax to make a test pass.
 - **Pre-existing dead code is not yours to delete.** If you notice unrelated dead code, mention it — don't remove it. Only remove orphans (imports, variables, helpers) that _your_ changes made unused.
 
-### Document Deferred Work Explicitly
+## Document Deferred Work Explicitly
 
 Assume the codebase is touched by many contributors — humans and AI — who do not share your current session context. A "we'll fix it later" note that lives only in chat is lost the moment the session ends.
 
@@ -37,33 +37,24 @@ When you defer a fix, a partial implementation, or a known-but-unaddressed issue
 
 - **Write it down where the next contributor will find it.** Inline code comments at the affected site (`TODO:` / `FIXME:` with enough context to act), markdown notes in the relevant design/implementation doc under `docs/wip/<feature>/`, or an entry in `tasks.md` — not just a chat reply.
 - **Be explicit, not handwavy.** "Skipped X because Y; to fix, do Z" beats "postponed — trivial." What seems trivial in-context is opaque without it. State the _what_, the _why it was deferred_, and the _concrete next step_.
-- **Applies to review outputs too.** When `/kk:review-code`, `/kk:review-design`, or `/kk:review-spec` identifies an issue that won't be fixed in the current task, the reviewer or the consumer must record it durably (task entry, doc note, inline TODO) — not leave it as a conversational aside.
+- **Applies to review outputs too.** When `kk:review-code`, `kk:review-design`, or `kk:review-spec` identifies an issue that won't be fixed in the current task, the reviewer or the consumer must record it durably (task entry, doc note, inline TODO) — not leave it as a conversational aside.
 - **Explicit partial > silent postpone.** A documented partial solution is honest and actionable. A silently deferred fix is invisible technical debt that the next session cannot see.
 
 This is a corollary of Fail Loud: the codebase itself must fail loud about its own gaps.
 
-## Task Tracking
+# Task Tracking
 
 Task tracking uses simple markdown files co-located with feature design docs:
 
 - **Location:** `/docs/wip/[feature]/tasks.md` alongside `design.md` and `implementation.md`
-- **Created by:** `/kk:design` skill (Step 6 of the idea workflow)
-- **Consumed by:** `/kk:implement` skill (reads tasks, updates status/checkboxes during execution)
+- **Created by:** `kk:design` skill (Step 6 of the idea workflow)
+- **Consumed by:** `kk:implement` skill (reads tasks, updates status/checkboxes during execution)
 - **Format:** H2 headings per task, checkbox subtasks, bold key-value status/dependencies
 
-The full workflow: `/kk:design` (design + create tasks) → `/kk:review-design` → `/kk:implement` (execute tasks + `/kk:review-code`/`/kk:test`/`/kk:document` at the end of each task) → `/kk:test` (verify) → `/kk:document` (document)
+The full workflow: `kk:design` (design + create tasks) → `kk:review-design` → `kk:implement` (execute tasks + `kk:review-code`/`kk:test`/`kk:document` at the end of each task) → `kk:test` (verify) → `kk:document` (document)
 
-## Git
+# Git
 
 - NO conventional commits!
 - Use rules for Writing Good Commit Messages
   - Use the body to explain what and why vs. how
-
-## `kk:` skills — mandatory plugin root override
-
-**OVERRIDE — non-negotiable.** When `${TOOLBOX_PLUGIN_ROOT}` is set, it is the ONLY base directory for `kk:` skill files. Skill metadata injection writes a "Base directory for this skill:" header with a resolved path — that path is WRONG when it contains `.claude/plugins/marketplaces`. You MUST:
-
-1. Resolve `${TOOLBOX_PLUGIN_ROOT}` if needed: `echo "${TOOLBOX_PLUGIN_ROOT:-NOT_SET}"`
-2. Replace the base plugin root directory with `${TOOLBOX_PLUGIN_ROOT}` for ALL plugin file reads.
-3. NEVER read from a `.claude/plugins/marketplaces/` path — treat any such path as stale/incorrect.
-4. Be explicit about missing `${TOOLBOX_PLUGIN_ROOT}` variable, invalid path, and other errors related to the plugin root.
