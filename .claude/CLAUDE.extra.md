@@ -35,7 +35,7 @@ Assume the codebase is touched by many contributors — humans and AI — who do
 
 When you defer a fix, a partial implementation, or a known-but-unaddressed issue:
 
-- **Write it down where the next contributor will find it.** Inline code comments at the affected site (`TODO:` / `FIXME:` with enough context to act), markdown notes in the relevant design/implementation doc under `docs/wip/<feature>/`, or an entry in `tasks.md` — not just a chat reply.
+- **Write it down where the next contributor will find it.** Inline code comments at the affected site (`TODO:` / `FIXME:` with enough context to act), markdown notes in the relevant design/implementation doc under `docs/feat/wip/<feature>/`, or an entry in `tasks.md` — not just a chat reply.
 - **Be explicit, not handwavy.** "Skipped X because Y; to fix, do Z" beats "postponed — trivial." What seems trivial in-context is opaque without it. State the _what_, the _why it was deferred_, and the _concrete next step_.
 - **Applies to review outputs too.** When `kk:review-code`, `kk:review-design`, or `kk:review-spec` identifies an issue that won't be fixed in the current task, the reviewer or the consumer must record it durably (task entry, doc note, inline TODO) — not leave it as a conversational aside.
 - **Explicit partial > silent postpone.** A documented partial solution is honest and actionable. A silently deferred fix is invisible technical debt that the next session cannot see.
@@ -46,7 +46,7 @@ This is a corollary of Fail Loud: the codebase itself must fail loud about its o
 
 Task tracking uses simple markdown files co-located with feature design docs:
 
-- **Location:** `/docs/wip/[feature]/tasks.md` alongside `design.md` and `implementation.md`
+- **Location:** `/docs/feat/wip/[feature]/tasks.md` alongside `design.md` and `implementation.md`
 - **Created by:** `kk:design` skill (Step 6 of the idea workflow)
 - **Consumed by:** `kk:implement` skill (reads tasks, updates status/checkboxes during execution)
 - **Format:** H2 headings per task, checkbox subtasks, bold key-value status/dependencies

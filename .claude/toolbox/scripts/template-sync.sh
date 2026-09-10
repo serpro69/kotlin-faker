@@ -801,6 +801,95 @@ run_script_consolidation() {
 }
 
 # =============================================================================
+# Feature-Docs Relocation Migration
+# =============================================================================
+
+# needs_docs_feat_migration()
+# Checks whether the downstream repo still keeps feature docs at the legacy
+# top-level locations (docs/wip, docs/done, docs/archive) that upstream moved
+# under docs/feat/.
+#
+# Gating is pure state detection (same pattern as needs_script_consolidation):
+# the migration's own effect — the legacy dirs no longer existing — is the
+# idempotency guard, so no manifest flag is required.
+#
+# Returns 0 if any legacy dir is present, 1 otherwise.
+needs_docs_feat_migration() {
+  local dir
+  for dir in docs/wip docs/done docs/archive; do
+    if [[ -d "$dir" ]]; then
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+# run_docs_feat_migration()
+# Relocates feature-doc directories from their legacy top-level paths to the
+# docs/feat/ namespace, matching the upstream layout:
+#   docs/wip     -> docs/feat/wip
+#   docs/done    -> docs/feat/done
+#   docs/archive -> docs/feat/archive
+#
+# Deliberate limitations (fail loud, don't over-reach):
+#   - Only moves directories. It does NOT sed-rewrite references inside
+#     consumer files: relative links within the moved trees survive the move,
+#     and a repo-wide rewrite risks corrupting unrelated content. Any hardcoded
+#     "docs/wip/..." references in consumer prose are the consumer's to fix.
+#   - Never clobbers an existing target — if docs/feat/<name> already exists it
+#     warns and skips that pair. Because gating is state-based, an unresolved
+#     collision keeps warning on every sync until a human merges it, rather
+#     than being silently suppressed by a flag.
+#   - Respects sync_exclusions: an excluded legacy dir is left in place.
+#
+# Side effects:
+#   - Moves legacy dirs into docs/feat/ (APPLY_MODE only)
+#   - Appends old paths to DELETED_FILES and new paths to ADDED_FILES
+#   - Logs all actions
+run_docs_feat_migration() {
+  log_step "Relocating feature docs to docs/feat/"
+
+  local pairs=(
+    "docs/wip:docs/feat/wip"
+    "docs/done:docs/feat/done"
+    "docs/archive:docs/feat/archive"
+  )
+
+  local pair src dst
+  for pair in "${pairs[@]}"; do
+    src="${pair%%:*}"
+    dst="${pair##*:}"
+
+    [[ -d "$src" ]] || continue
+
+    # Respect sync_exclusions — if the source tree is excluded, leave it alone
+    if is_excluded "$src"; then
+      log_info "Skipping $src/ relocation (matched sync_exclusions)"
+      continue
+    fi
+
+    # Never clobber an existing target — fail loud, skip this pair
+    if [[ -e "$dst" ]]; then
+      log_warn "Cannot relocate $src/ — $dst/ already exists; merge manually"
+      continue
+    fi
+
+    DELETED_FILES+=("$src/")
+    ADDED_FILES+=("$dst/")
+    if $APPLY_MODE; then
+      mkdir -p "$(dirname "$dst")"
+      mv "$src" "$dst"
+      log_info "Moved $src/ -> $dst/"
+    else
+      log_info "Would move $src/ -> $dst/"
+    fi
+  done
+
+  log_success "Feature docs relocation complete"
+}
+
+# =============================================================================
 # Version Resolution and Template Fetching
 # =============================================================================
 
@@ -1636,6 +1725,10 @@ apply_changes() {
     run_script_consolidation
   fi
 
+  if needs_docs_feat_migration; then
+    run_docs_feat_migration
+  fi
+
   # --- Patch .gitignore for .codex ---
   if [[ -d "$staging_dir/codex" && -f ".gitignore" ]]; then
     if git check-ignore -q .codex 2>/dev/null; then
@@ -1879,6 +1972,10 @@ main() {
 
   if needs_script_consolidation; then
     run_script_consolidation
+  fi
+
+  if needs_docs_feat_migration; then
+    run_docs_feat_migration
   fi
 
   # Apply substitutions to fetched templates

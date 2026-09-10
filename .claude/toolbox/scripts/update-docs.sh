@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Promotes a directory from docs/wip/ to docs/ and updates all references.
+# Promotes a directory from docs/feat/wip/ to docs/ and updates all references.
 #
 
 set -eu
@@ -9,12 +9,12 @@ usage() {
   cat <<EOF
 Usage: $(basename "$0") <dirname>
 
-Promotes a directory from docs/wip/ to docs/ by:
-  1. Updating all file references from docs/wip/<dirname> to docs/<dirname>
-  2. Moving the directory from docs/wip/<dirname> to docs/<dirname>
+Promotes a directory from docs/feat/wip/ to docs/ by:
+  1. Updating all file references from docs/feat/wip/<dirname> to docs/<dirname>
+  2. Moving the directory from docs/feat/wip/<dirname> to docs/<dirname>
 
 Arguments:
-  dirname    Name of the directory in docs/wip/ to promote
+  dirname    Name of the directory in docs/feat/wip/ to promote
 
 Example:
   $(basename "$0") chain-of-verification
@@ -48,15 +48,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 
 # Validate source directory exists
-if [[ ! -d "${PROJECT_ROOT}/docs/wip/${DIRNAME}" ]]; then
-  echo "Error: Directory docs/wip/${DIRNAME} does not exist" >&2
+if [[ ! -d "${PROJECT_ROOT}/docs/feat/wip/${DIRNAME}" ]]; then
+  echo "Error: Directory docs/feat/wip/${DIRNAME} does not exist" >&2
   exit 1
 fi
 
-find "$PROJECT_ROOT" -type f -not -path "*/.git/*" -print0 | $XARGS -I{} -0 $SED -i "s/docs\/wip\/${DIRNAME}/docs\/${DIRNAME}/g" {}
+find "$PROJECT_ROOT" -type f -not -path "*/.git/*" -print0 | $XARGS -I{} -0 $SED -i "s/docs\/feat\/wip\/${DIRNAME}/docs\/feat\/done\/${DIRNAME}/g" {}
 
-mkdir -p docs/done
+mkdir -p docs/feat/done
 
-git -C "$PROJECT_ROOT" mv "docs/wip/${DIRNAME}" "docs/done/${DIRNAME}"
+git -C "$PROJECT_ROOT" mv "docs/feat/wip/${DIRNAME}" "docs/feat/done/${DIRNAME}"
 
-echo "Successfully promoted docs/wip/${DIRNAME} to docs/done/${DIRNAME}"
+echo "Successfully promoted docs/feat/wip/${DIRNAME} to docs/feat/done/${DIRNAME}"
