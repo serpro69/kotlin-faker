@@ -54,7 +54,7 @@ Every indexed entry has a **kind** that controls its lifecycle and search visibi
 |------|-----------------|-----------|-------------------------------|
 | `durable` | `capy_index`, `capy_fetch_and_index(kind: "durable")` | Retention-score tiers (hot → warm → cold → evictable) | Yes |
 | `ephemeral` | `capy_execute`, `capy_execute_file`, `capy_batch_execute`, `capy_fetch_and_index` (default) | Strict TTL — swept after expiry | No |
-| `session` | the session vault (archived transcripts; requires `CAPY_VAULT_KEY`) | Archived forever (vault); chunk-searchable after `capy vault reindex` | Yes |
+| `session` | the session vault (archived transcripts; requires `CAPY_VAULT_KEY`) | Archived forever (vault); already-archived sessions become searchable after `capy vault reindex` | Yes |
 
 **Querying non-default kinds:** pass `include_kinds` to `capy_search`:
 - `include_kinds: ["durable", "ephemeral"]` — recover output from earlier commands in this session
