@@ -6,7 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/scripts/session-start.sh\""
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/scripts/session-start.sh\"",
+            "additionalContextLimit": 10000
           }
         ]
       }

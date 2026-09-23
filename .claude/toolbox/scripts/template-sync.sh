@@ -25,6 +25,15 @@
 #   --output-dir DIR      Directory for staged changes (default: temp)
 #   -h, --help            Show this help message
 #
+# ENVIRONMENT:
+#   TEMPLATE_SYNC_NO_HANDOFF=1
+#                         Disable the self-update handoff. By default, when the
+#                         target version ships a different template-sync.sh,
+#                         this script exec()s that copy so the version matching
+#                         the templates drives the whole run (migrations
+#                         included) in one invocation. Set this to run the
+#                         local script as-is, e.g. while developing it.
+#
 # REQUIRES:
 #   - jq (for JSON parsing)
 #   - git
@@ -120,6 +129,12 @@ APPLY_MODE=false
 # Local mode: fetch + compare + apply in a single invocation
 LOCAL_MODE=false
 
+# Entry-point flag: true only when this file is the process' main script (set
+# by the guard at the bottom of the file), false when sourced — e.g. by the
+# test suite. handoff_to_upstream_script() exec()s over the current process,
+# which is only safe in the former case.
+IS_ENTRYPOINT=false
+
 # =============================================================================
 # Color Output
 # =============================================================================
@@ -171,6 +186,19 @@ cleanup_on_exit() {
     if ! $CI_MODE; then
       log_info "Cleaned up temporary directory"
     fi
+  fi
+
+  # Temp dir inherited from a parent process that exec()'d this script (see
+  # handoff_to_upstream_script). exec() skips the parent's EXIT trap, so the
+  # parent delegates its cleanup to us. Guarded by the mktemp naming pattern so
+  # a stray value in the environment can never point us at an arbitrary path.
+  local handoff_dir="${TEMPLATE_SYNC_HANDOFF_CLEANUP:-}"
+  if [[ -n "$handoff_dir" && -d "$handoff_dir" ]]; then
+    case "$handoff_dir" in
+    */template-sync.*)
+      rm -rf "$handoff_dir"
+      ;;
+    esac
   fi
 
   exit $exit_code
@@ -482,7 +510,7 @@ backfill_manifest_variables() {
     "CC_STATUSLINE:enhanced"
     "CC_EFFORT_LEVEL:high"
     "CC_PERMISSION_MODE:default"
-    "CODEX_MODEL:gpt-5.6-sol"
+    "CODEX_MODEL:gpt-6-astra"
     "CODEX_APPROVAL_POLICY:on-request"
     "SKIP_CAPY:false"
   )
@@ -1107,6 +1135,112 @@ fetch_upstream_templates() {
 }
 
 # =============================================================================
+# Self-Update Handoff
+# =============================================================================
+
+# handoff_to_upstream_script()
+# Hands the current run over to the upstream copy of this script when the two
+# differ, so the script version that matches the target templates drives the
+# whole sync — fetch, migrations, report, apply — in a single invocation.
+#
+# Why this exists:
+#   1. bash reads scripts lazily by byte offset. When apply_changes() copies a
+#      newer template-sync.sh over the running one, the old shell keeps reading
+#      the new file at stale offsets: at best a spurious "syntax error near
+#      unexpected token" after main() returns, at worst execution of whatever
+#      unrelated line the offset lands on.
+#   2. Migrations that only the newer script knows about are not applied until
+#      the user runs the sync a second time, and --dry-run previews miss them.
+#
+# Handing off BEFORE any mutation avoids both: the running (old) process never
+# touches the working tree, and the new script sees the same pre-sync state.
+#
+# The upstream copy is exec()'d from $STAGING_DIR/bin — a stable location the
+# later working-tree copy cannot disturb — with the original CLI arguments.
+# It is read from the fetched/substituted templates tree (non-hidden
+# `claude/...` layout) rather than the raw upstream checkout: in CI the
+# staging dir travels through an artifact that drops hidden paths, so the
+# `upstream/.claude/...` copy is not available in --apply mode.
+#
+# Environment contract with the exec()'d script (forward-only — newer scripts
+# must keep honoring these names, since an older parent sets them):
+#   TEMPLATE_SYNC_NO_HANDOFF=1         Skip the handoff. Set for the child to
+#                                      prevent loops; users may set it to run a
+#                                      locally modified script as-is.
+#   TEMPLATE_SYNC_HANDOFF_CLEANUP=DIR  Auto-created temp dir owned by the
+#                                      parent. exec() skips the parent's EXIT
+#                                      trap, so the child removes it in
+#                                      cleanup_on_exit().
+#
+# Args:
+#   $1 - Templates dir laid out as claude/toolbox/scripts/... — either
+#        FETCHED_TEMPLATES_PATH (fetch modes) or "$STAGING_DIR/substituted"
+#        (--apply mode)
+#   $@ - Remaining args: the original CLI arguments to re-pass verbatim
+#
+# Returns:
+#   0 when no handoff is needed: identical script, handoff disabled, running
+#     sourced rather than as the entry point, or no script at the target
+#     version. Does not return when a handoff happens.
+#
+# Side effects:
+#   On handoff, in fetch modes: removes the upstream/fetched/substituted
+#   staging subdirs so the child's own fetch starts from a clean directory
+#   (git clone refuses a non-empty target; cp -r would nest into existing
+#   dirs). Left intact in --apply mode, where the child consumes them.
+handoff_to_upstream_script() {
+  local templates_dir="$1"
+  shift
+
+  if [[ -n "${TEMPLATE_SYNC_NO_HANDOFF:-}" ]]; then
+    return 0
+  fi
+
+  # exec() replaces the whole process — only safe when this file IS the
+  # process' main script, not when sourced by the test suite or another script.
+  if ! $IS_ENTRYPOINT; then
+    return 0
+  fi
+
+  local self="${BASH_SOURCE[0]}"
+  local upstream_scripts_dir="$templates_dir/claude/toolbox/scripts"
+  local upstream_script="$upstream_scripts_dir/template-sync.sh"
+
+  if [[ ! -f "$upstream_script" ]]; then
+    return 0
+  fi
+
+  if cmp -s "$self" "$upstream_script"; then
+    return 0
+  fi
+
+  log_step "Sync script differs from upstream — handing off to the upstream version"
+
+  local bin_dir="$STAGING_DIR/bin"
+  mkdir -p "$bin_dir"
+  cp "$upstream_script" "$bin_dir/template-sync.sh"
+  chmod +x "$bin_dir/template-sync.sh"
+  # The script sources semver-compare.sh from its own directory and would
+  # otherwise bootstrap it from master over the network — keep them together.
+  if [[ -f "$upstream_scripts_dir/semver-compare.sh" ]]; then
+    cp "$upstream_scripts_dir/semver-compare.sh" "$bin_dir/semver-compare.sh"
+  fi
+
+  if ! $APPLY_MODE; then
+    rm -rf "$STAGING_DIR/upstream" "$STAGING_DIR/fetched" "$STAGING_DIR/substituted"
+  fi
+
+  export TEMPLATE_SYNC_NO_HANDOFF=1
+  if [[ -n "${TEMP_DIR:-}" ]]; then
+    export TEMPLATE_SYNC_HANDOFF_CLEANUP="$TEMP_DIR"
+  fi
+
+  # $BASH is the interpreter running this script — reuse it rather than
+  # whatever `bash` resolves to on PATH (matters on macOS with a Homebrew bash).
+  exec "${BASH:-bash}" "$bin_dir/template-sync.sh" "$@"
+}
+
+# =============================================================================
 # Substitution Functions
 # =============================================================================
 
@@ -1214,7 +1348,7 @@ apply_substitutions() {
   local codex_config_file="$output_dir/codex/config.toml"
   if [[ -f "$codex_config_file" ]]; then
     local codex_model codex_approval_policy
-    codex_model=$(get_manifest_value '.variables.CODEX_MODEL // "gpt-5.6-sol"')
+    codex_model=$(get_manifest_value '.variables.CODEX_MODEL // "gpt-6-astra"')
     codex_approval_policy=$(get_manifest_value '.variables.CODEX_APPROVAL_POLICY // "on-request"')
 
     yq -i -p toml -o toml \
@@ -1681,14 +1815,14 @@ apply_changes() {
   log_step "Applying staged changes"
 
   # --- Copy staged files into working tree ---
-  # FIXME: this cp overwrites .claude/toolbox/scripts/template-sync.sh in place
-  # (same inode, truncate+rewrite) while that very script is executing. bash reads
-  # scripts lazily by byte offset, so once the on-disk file grows underneath it,
-  # the running shell reads corrupted content after apply_changes returns and dies
-  # with a spurious "syntax error near unexpected token" at the tail of main().
-  # The apply itself has already completed, so this is cosmetic-but-alarming.
-  # Proper fix: re-exec the script from a stable temp copy at startup (self-updater
-  # pattern) or replace the self file via atomic rename instead of in-place cp.
+  # NOTE: this cp overwrites .claude/toolbox/scripts/template-sync.sh in place.
+  # That is safe only because (a) main() hands off to the upstream copy of the
+  # script before reaching this point whenever the two differ, so the process
+  # executing here runs from $STAGING_DIR/bin, not from the file being
+  # overwritten (see handoff_to_upstream_script), and (b) the entry-point guard
+  # at the bottom of this file exits immediately after main() returns, so even
+  # with the handoff disabled bash never reads past the overwritten file's
+  # stale byte offset.
   local -A dir_map=(
     ["claude"]=".claude"
     ["codex"]=".codex"
@@ -1792,6 +1926,11 @@ Options:
   --ci                  CI mode: outputs GitHub Actions compatible format
   --output-dir DIR      Directory to stage changes (default: temporary directory)
   -h, --help            Show this help message
+
+Environment:
+  TEMPLATE_SYNC_NO_HANDOFF=1
+                        Run this script as-is instead of handing off to the
+                        target version's copy when the two differ
 
 Requires: jq, git, curl, yq (mikefarah/yq for YAML processing)
 
@@ -1919,8 +2058,10 @@ main() {
   read_manifest
   validate_manifest
 
-  # Apply mode: skip fetch/compare/report, just apply staged changes
+  # Apply mode: skip fetch/compare/report, just apply staged changes.
+  # The staged tree may carry a newer sync script — let it do the applying.
   if $APPLY_MODE; then
+    handoff_to_upstream_script "$STAGING_DIR/substituted" "$@"
     apply_changes "$STAGING_DIR/substituted" "$TARGET_VERSION"
     return 0
   fi
@@ -1951,6 +2092,11 @@ main() {
 
   # Fetch upstream templates (sets FETCHED_TEMPLATES_PATH)
   fetch_upstream_templates "$RESOLVED_VERSION" "$upstream_repo" "$STAGING_DIR"
+
+  # If the fetched version ships a different sync script, let that version
+  # drive the rest of the run. Must happen before any migration/compare/apply
+  # step so the working tree is still in its pre-sync state for the new script.
+  handoff_to_upstream_script "$FETCHED_TEMPLATES_PATH" "$@"
 
   # Display fetched templates info
   if ! $CI_MODE; then
@@ -2031,6 +2177,14 @@ main() {
 
 # Run main with all arguments only if script is executed directly (not sourced)
 # This allows tests to source the file and access functions without running main()
+#
+# The explicit `exit` is load-bearing: bash parses this whole if-block before
+# executing it and reads the file lazily afterwards. apply_changes() may have
+# overwritten this very file with a newer version, so any read past this block
+# would hit stale byte offsets in the new content. Exiting here guarantees
+# nothing past `fi` is ever read. Keep this the last statement in the file.
 if [[ "${BASH_SOURCE[0]:-}" == "${0:-}" ]]; then
+  IS_ENTRYPOINT=true
   main "$@"
+  exit $?
 fi

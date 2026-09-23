@@ -17,6 +17,8 @@ max_depth = 1
 [tui]
 status_line = ["model-with-reasoning", "current-dir", "context-usage", "used-tokens", "five-hour-limit", "weekly-limit"]
 terminal_title = ["project", "git-branch", "status", "thread", "task-progress"]
+whimsy = false  # this is just bad... plus it creates weird flickering artifacts in tmux
+animations = false  # even better, disable all animations to be sure no future "fancy feature" introduces weird behaviors in the terminal
 
 [mcp_servers.capy]
 command = "bash"

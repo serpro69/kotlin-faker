@@ -11,17 +11,21 @@ Provider: Codex (OpenAI).
 
 # Tool-Name Mapping
 
-Skills reference Claude Code tool names. Apply this mapping:
-- Read → read_file
-- Write → write_file
-- Edit → apply_patch
-- Bash → shell
-- Grep → use shell with grep
-- Glob → use shell with find
-- WebSearch → web_search
-- WebFetch → no equivalent; use capy_fetch_and_index via MCP
-- Agent/Task → spawn subagents via natural language
-- Skill → use $mention or /skills
+Skills reference Claude Code tool names. Translate these to codex native tool names:
+- Read
+- Write
+- Edit
+- Bash
+- Grep
+- Glob
+- WebSearch
+- WebFetch
+- Agent/Task
+- Skill
+
+## Tool Usage
+
+- ALWAYS use native tools for file writes/edits instead of ad-hoc scripts via python or similar commands
 CONTEXT_EOF
 
 # Aggregate all .claude/CLAUDE.<name>.md instruction files (CLAUDE.extra.md and
