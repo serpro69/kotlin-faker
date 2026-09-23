@@ -11,7 +11,7 @@
     "CC_EFFORT_LEVEL": "high",
     "CC_PERMISSION_MODE": "default",
     "CODEX_APPROVAL_POLICY": "on-request",
-    "CODEX_MODEL": "gpt-5.6-sol",
+    "CODEX_MODEL": "gpt-6-astra",
     "SKIP_CAPY": "false"
   },
   "plugin_migrated": true
