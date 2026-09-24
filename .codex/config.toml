@@ -23,4 +23,4 @@ animations = false  # even better, disable all animations to be sure no future "
 [mcp_servers.capy]
 command = "bash"
 args = [".codex/scripts/capy.sh", "serve"]
-env_vars = ["CAPY_DB_KEY"]
+env_vars = ["CAPY_DB_KEY", "CAPY_VAULT_KEY"]
