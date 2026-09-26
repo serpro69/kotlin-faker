@@ -26,14 +26,12 @@ FORBIDDEN_PATTERNS=(
   "\.terraform\/"
   "build\/"
   "dist\/"
-  "node_modules\/"
   "target\/"
   "__pycache__\/"
   "\.git\/"
   "venv\/"
   "\.pyc$"
   "\.csv$"
-  "\.log$"
 )
 
 for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
