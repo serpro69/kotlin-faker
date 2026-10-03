@@ -1,7 +1,7 @@
 name = "profile-resolver"
 description = "Resolves active profiles and their checklist-load decisions for a given diff, using the shared profile-detection procedure. Emits a structured resolution report: active profiles with per-file `triggered_by` signal, plus loaded vs. not-loaded checklists with Load-if reasoning. Useful wherever profile detection must be isolated from downstream work — the /kk:review-code eval harness uses it to grade detection independently of review output, and production skill invocations may delegate detection here to keep the main session's context free of the procedure files."
 sandbox_mode = "read-only"
-model = "gpt-5.6-luna"
+model = "gpt-6.1-luna"
 model_reasoning_effort = "xhigh"
 developer_instructions = """
 ## Codex Tool Access

@@ -1,7 +1,7 @@
 name = "design-reviewer"
 description = "Independent design document reviewer with no authorship attachment. Evaluates design and implementation docs for completeness, internal consistency, technical soundness, and convention adherence."
 sandbox_mode = "read-only"
-model = "gpt-6-astra"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "xhigh"
 developer_instructions = """
 ## Codex Tool Access

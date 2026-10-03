@@ -1,7 +1,7 @@
 name = "code-reviewer"
 description = "Independent code reviewer with no authorship attachment. Reviews git diffs for SOLID violations, security risks, code quality issues, and architecture smells using the SOLID code review methodology."
 sandbox_mode = "read-only"
-model = "gpt-6-astra"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "xhigh"
 developer_instructions = """
 ## Codex Tool Access

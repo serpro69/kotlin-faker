@@ -1,7 +1,7 @@
 name = "spec-reviewer"
 description = "Independent spec conformance reviewer with no authorship attachment. Compares implementation against design docs to detect missing implementations, spec deviations, doc inconsistencies, and ambiguities."
 sandbox_mode = "read-only"
-model = "gpt-6-astra"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "xhigh"
 developer_instructions = """
 ## Codex Tool Access
