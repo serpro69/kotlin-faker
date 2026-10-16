@@ -38,8 +38,26 @@ for extra_md in "${REPO_ROOT}"/.claude/CLAUDE.*.md; do
   AGENTS_EXTRA_MD="${AGENTS_EXTRA_MD}$(cat "$extra_md")"$'\n\n'
 done
 
+# Capy guidance. Capy >= v0.17.1 registers its own Codex hooks through
+# `capy setup --platform codex`; every command it registers invokes
+# `capy codex-launch`. When such a command is registered for SessionStart, capy
+# delivers its routing guidance itself and this hook must not inject a second,
+# older copy from .capy/AGENTS.md. The check is per event and re-evaluated on
+# every session start: remove capy's entries from hooks.json and the legacy
+# injection returns. pretooluse-bash.sh applies the same check to PreToolUse.
+capy_hook_registered() {
+  local hooks_json="${REPO_ROOT}/.codex/hooks.json"
+  [[ -f "$hooks_json" ]] && jq -e --arg event "$1" \
+    '[.hooks[$event][]?.hooks[]?.command // empty] | any(contains("capy codex-launch"))' \
+    "$hooks_json" >/dev/null 2>&1
+}
+
 AGENTS_CAPY_MD=""
-if [[ -f "${REPO_ROOT}/.capy/AGENTS.md" ]]; then
+if capy_hook_registered SessionStart; then
+  AGENTS_CAPY_MD="# Capy
+
+Capy guidance and HTTP routing are delivered by the capy hooks registered in .codex/hooks.json. This hook does not inject .capy/AGENTS.md."
+elif [[ -f "${REPO_ROOT}/.capy/AGENTS.md" ]]; then
   AGENTS_CAPY_MD=$(cat "${REPO_ROOT}/.capy/AGENTS.md")
 fi
 

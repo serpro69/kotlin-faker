@@ -114,6 +114,7 @@ BUILTIN_EXCLUSIONS=(
   ".claude/capy/*"
   ".claude/scripts/capy.sh"
   ".codex/scripts/capy.sh"
+  ".codex/capy-owner"
 )
 
 # Resolved version (for reporting)
@@ -1122,6 +1123,10 @@ fetch_upstream_templates() {
   if [[ -d "$upstream_root/.codex" ]]; then
     cp -rp "$upstream_root/.codex" "$FETCHED_TEMPLATES_PATH/codex"
     rm -f "$FETCHED_TEMPLATES_PATH/codex/scripts/capy.sh"
+    # .codex/capy-owner is the per-repo installation ID written by
+    # `capy setup --platform codex`; capy refuses to regenerate it, so it
+    # must never be synced or deleted downstream.
+    rm -f "$FETCHED_TEMPLATES_PATH/codex/capy-owner"
   fi
   if [[ ! -d "$FETCHED_TEMPLATES_PATH/claude" ]]; then
     log_error "Config directories not found in upstream at version: $version"
@@ -1257,6 +1262,9 @@ handoff_to_upstream_script() {
 #
 # Substitutions applied:
 #   - Claude Code settings: CC_MODEL, CC_EFFORT_LEVEL, CC_PERMISSION_MODE
+#   - Codex config.toml: CODEX_MODEL, CODEX_APPROVAL_POLICY; downstream
+#     mcp_servers entries preserved
+#   - Codex hooks.json: downstream non-toolbox hook entries preserved
 #
 # Side effects:
 #   Creates output directory and copies/modifies template files
@@ -1355,14 +1363,57 @@ apply_substitutions() {
       ".model = \"$codex_model\" | .approval_policy = \"$codex_approval_policy\"" \
       "$codex_config_file"
 
-    local skip_capy
-    skip_capy=$(get_manifest_value '.variables.SKIP_CAPY // "false"')
-    if [[ "$skip_capy" == "true" ]]; then
-      yq -i -p toml -o toml 'del(.mcp_servers.capy) | with(select(.mcp_servers | length == 0); del(.mcp_servers))' "$codex_config_file"
-      log_info "Stripped capy MCP server config (SKIP_CAPY=true)"
+    # MCP servers are registered per project by external tooling, not shipped
+    # by the template: `capy setup --platform codex` writes [mcp_servers.capy]
+    # bound to the project's .codex/capy-owner. Copying the template file
+    # wholesale would drop that entry on every sync. Downstream entries fill
+    # the gaps; a server upstream does ship still wins by name.
+    local downstream_codex_config=".codex/config.toml"
+    if [[ -f "$downstream_codex_config" ]]; then
+      local downstream_mcp
+      downstream_mcp=$(mktemp "${TMPDIR:-/tmp}/codex-mcp.XXXXXX")
+      if yq -p toml -o json '.mcp_servers // {}' "$downstream_codex_config" >"$downstream_mcp" 2>/dev/null \
+        && yq -i -p toml -o toml \
+          ".mcp_servers = (load(\"$downstream_mcp\") * (.mcp_servers // {})) | with(select(.mcp_servers | length == 0); del(.mcp_servers))" \
+          "$codex_config_file" 2>/dev/null; then
+        log_info "Preserved downstream mcp_servers in config.toml"
+      else
+        log_warn "MCP server merge failed — downstream .codex/config.toml may contain invalid TOML"
+        log_warn "Falling back to upstream template for config.toml"
+      fi
+      rm -f "$downstream_mcp"
     fi
 
     log_info "Applied Codex config.toml settings"
+  fi
+
+  # --- Codex Hooks (codex/hooks.json) ---
+  local codex_hooks_file="$output_dir/codex/hooks.json"
+  local downstream_hooks=".codex/hooks.json"
+  if [[ -f "$codex_hooks_file" && -f "$downstream_hooks" ]]; then
+    # Toolbox owns every entry that runs a script under .codex/scripts/; those
+    # come from upstream verbatim, so a toolbox entry that changed or was
+    # removed upstream does not linger. Every other downstream entry (capy's
+    # `capy codex-launch` hooks, hand-added hooks) is appended after upstream's
+    # entries for its event. Events only downstream knows about are kept whole.
+    if jq --slurpfile upstream "$codex_hooks_file" '
+      def toolbox_owned: [.hooks[]?.command // empty] | any(contains(".codex/scripts/"));
+      (.hooks // {}) as $d
+      | $upstream[0]
+      | (.hooks // {}) as $u
+      | ($u | keys_unsorted) as $events
+      | .hooks = (reduce ($events + [($d | keys_unsorted)[] | select(. as $k | $events | index($k) | not)])[] as $event ({};
+          ($u[$event] // []) as $entries
+          | .[$event] = $entries + [($d[$event] // [])[]
+              | select((toolbox_owned | not) and (. as $e | $entries | index($e) | not))]))
+    ' "$downstream_hooks" >"${codex_hooks_file}.tmp"; then
+      mv "${codex_hooks_file}.tmp" "$codex_hooks_file"
+      log_info "Preserved downstream hook entries in hooks.json"
+    else
+      log_warn "Hooks merge failed — downstream .codex/hooks.json may contain invalid JSON"
+      log_warn "Falling back to upstream template for hooks.json"
+      rm -f "${codex_hooks_file}.tmp"
+    fi
   fi
 
   log_success "Substitutions applied to $output_dir"
