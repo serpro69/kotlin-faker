@@ -29,21 +29,25 @@ Choose the tool based on what you need from the output:
 
 For both search tools, an explicit `project` matches the session's custom project label, falling back to its imported path only when no label is set. Omitting it or passing an empty string scopes by the current directory in the imported path. Naming a worktree session does not associate it with another checkout. `all_projects: true` or exact `project: "*"` widens to all projects; the star is reserved and cannot narrow to a star-only label. Project selectors affect session results only; knowledge stays scoped to the current project.
 
-## Blocked commands — enforced by hooks
+## HTTP routing and enforced policy
 
-### curl / wget — BLOCKED
-Any Bash command containing `curl` or `wget` is intercepted and replaced with an error message. Do NOT retry.
-Instead use:
+Claude Code hooks cover Bash, WebFetch, file guidance and Agent/Task injection. Codex hooks cover canonical Bash (including exec_command and code-mode shell calls) and capy MCP calls; hosted web/search tools are not intercepted. Registration requires host activation and trust.
+
+Security denies and matched asks always apply before routing. Claude main-agent HTTP redirects remain enforced. Codex main sessions receive advisory discovery/native-tool guidance while availability is unverified; a successful capy_execute call in that session permits one HTTP redirect within 60 seconds. Fetch or other tool successes do not authorize Bash HTTP redirects. A child may receive one redirect after its own suitable tool succeeds; otherwise it receives advisory guidance. Main and child evidence are isolated. A failed retry cannot renew consumed evidence. Git issue/PR/MR comprehension keeps native CLI guidance.
+
+### curl / wget — HTTP routing
+Bash commands containing `curl` or `wget` follow the platform/caller rules above; silent file downloads are allowed. A Claude main-agent routing block redirects to capy. Codex main and child redirects require their own recent capy_execute success; without it, native tools receive advisory guidance and no permission grant.
+For suitable extraction use:
 - `capy_fetch_and_index(url, source)` to fetch and index web pages
 - `capy_execute(language: "javascript", code: "const r = await fetch(...)")` to run HTTP calls in sandbox
 
-### Inline HTTP — BLOCKED
-Any Bash command containing `fetch('http`, `requests.get(`, `requests.post(`, `http.get(`, or `http.request(` is intercepted and replaced with an error message. Do NOT retry with Bash.
-Instead use:
+### Inline HTTP — HTTP routing
+Bash commands containing `fetch('http`, `requests.get(`, `requests.post(`, `http.get(`, or `http.request(` follow the same rules: Claude main redirects are enforced; Codex main and child redirects require recent suitable success. For Codex main sessions and children, native fallback is available if the suggested tool fails or disappears. Actual security denials remain binding.
+For suitable extraction use:
 - `capy_execute(language, code)` to run HTTP calls in sandbox — only stdout enters context
 
-### WebFetch — BLOCKED
-WebFetch calls are denied entirely. Instead use:
+### WebFetch — BLOCKED in Claude Code
+Claude main-agent WebFetch calls are denied. Children require their own recent capy_execute or capy_fetch_and_index success for one suitable redirect; otherwise they receive advisory guidance. For extraction or comprehension, use:
 - For git platform issues/PRs/MRs: platform CLI (e.g., `gh issue view N`) or `WebSearch` for full comprehension
 - For other small pages needing comprehension: `WebSearch` or other runtime web tools
 - For large web content or extraction: `capy_fetch_and_index(url, source)` then `capy_search(queries)`
@@ -89,7 +93,13 @@ Every indexed entry has a **kind** that controls its lifecycle and search visibi
 
 ## Subagent routing
 
-When spawning subagents (Agent/Task tool), the routing block is automatically injected into their prompt. Bash-type subagents are upgraded to general-purpose so they have access to MCP tools. You do NOT need to manually instruct subagents about capy.
+In Claude Code, when spawning subagents (Agent/Task tool), the routing block is automatically injected into their prompt. Bash-type subagents are upgraded to general-purpose; that type change does not prove MCP tools are available.
+
+In Codex, SubagentStart supplies child guidance. Child launch arguments and agent types are preserved. PostToolUse records successful child capy_execute/capy_fetch_and_index calls and, separately, main-session capy_execute success. Root SessionEnd independently clears only that session's main and child observations; child-labelled SessionEnd does not clear root state. Permanent lock files remain in place.
+
+If the host offers deferred-tool discovery, discover capy schemas once, then use suitable available tools. If discovery is unavailable or the tools are absent, use native tools following the comprehension/extraction principle and keep extracted output bounded. Do not loop on discovery. Agent type or a local definition alone does not establish the effective tool pool.
+
+Successful execute/fetch observations expire independently after 60 seconds and are consumed together before one child redirect. A failed retry cannot renew them, so native fallback is available on the next attempt. Missing stable identities or unavailable state also use advisory fallback. This does not guarantee first-call interception or permanent tool availability.
 
 ## capy commands
 
