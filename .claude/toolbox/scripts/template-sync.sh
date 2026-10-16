@@ -1249,6 +1249,20 @@ handoff_to_upstream_script() {
 # Substitution Functions
 # =============================================================================
 
+# Write explicit server tables so both Codex and capy's setup see root-level
+# registrations. Adding a JSON-derived map to TOML with yq can instead append
+# an inline assignment inside the template's last table (usually [tui]).
+render_codex_mcp_servers() {
+  local servers_file="$1"
+  local server
+  jq -c 'to_entries[]' "$servers_file" | while IFS= read -r server; do
+    printf '\n[mcp_servers.%s]\n' "$(jq -r '.key | tojson' <<<"$server")"
+    # Nested settings stay inline inside this server's explicit table. JSON
+    # quoting also protects server names containing dots or TOML metacharacters.
+    yq -p json -o toml '.value | ... style="flow"' <<<"$server" || return 1
+  done
+}
+
 # apply_substitutions()
 # Applies project-specific variable substitutions to fetched template files.
 # Mirrors the substitution logic from template-cleanup.sh for consistency.
@@ -1370,18 +1384,27 @@ apply_substitutions() {
     # the gaps; a server upstream does ship still wins by name.
     local downstream_codex_config=".codex/config.toml"
     if [[ -f "$downstream_codex_config" ]]; then
-      local downstream_mcp
-      downstream_mcp=$(mktemp "${TMPDIR:-/tmp}/codex-mcp.XXXXXX")
-      if yq -p toml -o json '.mcp_servers // {}' "$downstream_codex_config" >"$downstream_mcp" 2>/dev/null \
-        && yq -i -p toml -o toml \
-          ".mcp_servers = (load(\"$downstream_mcp\") * (.mcp_servers // {})) | with(select(.mcp_servers | length == 0); del(.mcp_servers))" \
-          "$codex_config_file" 2>/dev/null; then
+      local mcp_work_dir
+      mcp_work_dir=$(mktemp -d "${TMPDIR:-/tmp}/codex-mcp.XXXXXX")
+      # Recover registrations misplaced by older syncs. A valid root entry
+      # replaces the entire misplaced entry, so stale launch settings cannot
+      # leak into a registration subsequently repaired by capy setup.
+      if yq -p toml -o json '.' "$downstream_codex_config" 2>/dev/null \
+        | jq '(.tui.mcp_servers // {}) + (.mcp_servers // {})' >"$mcp_work_dir/downstream.json" \
+        && yq -p toml -o json \
+          "load(\"$mcp_work_dir/downstream.json\") * (.mcp_servers // {})" \
+          "$codex_config_file" >"$mcp_work_dir/merged.json" 2>/dev/null \
+        && yq -p toml -o toml 'del(.mcp_servers)' "$codex_config_file" >"$mcp_work_dir/config.toml" \
+        && render_codex_mcp_servers "$mcp_work_dir/merged.json" >>"$mcp_work_dir/config.toml" \
+        && yq -p toml -o json '.mcp_servers // {}' "$mcp_work_dir/config.toml" \
+          | jq -e --slurpfile expected "$mcp_work_dir/merged.json" '. == $expected[0]' >/dev/null; then
+        cat "$mcp_work_dir/config.toml" >"$codex_config_file"
         log_info "Preserved downstream mcp_servers in config.toml"
       else
         log_warn "MCP server merge failed — downstream .codex/config.toml may contain invalid TOML"
         log_warn "Falling back to upstream template for config.toml"
       fi
-      rm -f "$downstream_mcp"
+      rm -rf "$mcp_work_dir"
     fi
 
     log_info "Applied Codex config.toml settings"

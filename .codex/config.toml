@@ -19,4 +19,8 @@ status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-use
 terminal_title = ["project", "git-branch", "status", "thread", "task-progress"]
 whimsy = false  # this is just bad... plus it creates weird flickering artifacts in tmux
 animations = false  # even better, disable all animations to be sure no future "fancy feature" introduces weird behaviors in the terminal
-mcp_servers = { capy = { command = "bash", args = [".codex/scripts/capy.sh", "serve"], env_vars = ["CAPY_DB_KEY", "CAPY_VAULT_KEY"] } }
+
+[mcp_servers."capy"]
+command = "bash"
+args = [".codex/scripts/capy.sh", "serve"]
+env_vars = ["CAPY_DB_KEY", "CAPY_VAULT_KEY"]

@@ -1,8 +1,8 @@
 {
   "schema_version": "1",
   "upstream_repo": "serpro69/claude-toolbox",
-  "template_version": "c1894e1ecf6be001a90697e170554c15972dc039",
-  "synced_at": "2026-10-16T06:54:03Z",
+  "template_version": "c17570cc55efb282d93039f1ac416bb60e37ec29",
+  "synced_at": "2026-10-16T07:57:23Z",
   "variables": {
     "PROJECT_NAME": "kotlin-faker",
     "LANGUAGES": "kotlin,java",
