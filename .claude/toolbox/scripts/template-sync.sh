@@ -38,6 +38,8 @@
 #   - jq (for JSON parsing)
 #   - git
 #   - curl
+#   - yq (mikefarah/yq)
+#   - python3 (standard library only)
 #
 # EXIT CODES:
 #   0 - Success (with or without changes)
@@ -285,6 +287,10 @@ check_dependencies() {
 
     if ! command -v yq &>/dev/null; then
       missing+=("yq")
+    fi
+
+    if ! command -v python3 &>/dev/null; then
+      missing+=("python3")
     fi
   fi
 
@@ -1249,18 +1255,148 @@ handoff_to_upstream_script() {
 # Substitution Functions
 # =============================================================================
 
-# Write explicit server tables so both Codex and capy's setup see root-level
-# registrations. Adding a JSON-derived map to TOML with yq can instead append
-# an inline assignment inside the template's last table (usually [tui]).
+# Retain unchanged explicit tables verbatim; render only changed or repaired
+# registrations. The scanner finds source spans, while yq remains the TOML
+# parser and checks whether each server's source matches its merged value.
+# Embedded to keep self-update handoff compatible with older sync scripts.
 render_codex_mcp_servers() {
-  local servers_file="$1"
-  local server
-  jq -c 'to_entries[]' "$servers_file" | while IFS= read -r server; do
-    printf '\n[mcp_servers.%s]\n' "$(jq -r '.key | tojson' <<<"$server")"
-    # Nested settings stay inline inside this server's explicit table. JSON
-    # quoting also protects server names containing dots or TOML metacharacters.
-    yq -p json -o toml '.value | ... style="flow"' <<<"$server" || return 1
-  done
+  python3 - "$1" "$2" <<'PY'
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+
+def parse_toml(data):
+    result = subprocess.run(
+        ["yq", "-p", "toml", "-o", "json", "."],
+        input=data, stdout=subprocess.PIPE, check=True, timeout=30,
+    )
+    return json.loads(result.stdout)
+
+
+def table_spans(data):
+    """Locate real table headers, skipping strings, comments and array values."""
+    headers = []
+    trivia_lines = set()
+    i = line_start = depth = 0
+    while i < len(data):
+        char = data[i:i + 1]
+        if char == b"#":
+            if not data[line_start:i].strip():
+                trivia_lines.add(line_start)
+            end = data.find(b"\n", i)
+            i = len(data) if end < 0 else end
+            continue
+        if char in (b'"', b"'"):
+            delimiter = char * 3 if data.startswith(char * 3, i) else char
+            i += len(delimiter)
+            while i < len(data):
+                if data.startswith(delimiter, i):
+                    i += len(delimiter)
+                    # Multiline strings can end with four or five quotes.
+                    if len(delimiter) == 3:
+                        while data[i:i + 1] == char:
+                            i += 1
+                    break
+                i += 2 if char == b'"' and data[i:i + 1] == b"\\" else 1
+            else:
+                raise ValueError("unterminated TOML string")
+            continue
+        if char == b"[" and depth == 0 and not data[line_start:i].strip():
+            end = data.find(b"\n", i)
+            if end < 0:
+                end = len(data)
+            start = line_start
+            # Associate adjacent full-line comments and blank lines with the
+            # following table. Only lexically recognized trivia qualifies:
+            # a multiline string's closing line can itself start with '#'.
+            while start > 0:
+                previous = data.rfind(b"\n", 0, start - 1) + 1
+                if previous not in trivia_lines:
+                    break
+                start = previous
+            headers.append((start, data[line_start:end]))
+            i = end
+            continue
+        if char in (b"[", b"{"):
+            depth += 1
+        elif char in (b"]", b"}"):
+            depth -= 1
+        elif char == b"\n":
+            if not data[line_start:i].strip():
+                trivia_lines.add(line_start)
+            line_start = i + 1
+        i += 1
+    for index, (start, header) in enumerate(headers):
+        end = headers[index + 1][0] if index + 1 < len(headers) else len(data)
+        yield header, data[start:end]
+
+
+def table_path(header):
+    # Let the TOML parser interpret quoted/dotted keys and array-table headers.
+    marker = "__toolbox_table_probe__"
+    node = parse_toml(header + b"\n" + marker.encode() + b" = true\n")
+    path = []
+    while node != {marker: True}:
+        if isinstance(node, list) and len(node) == 1:
+            node = node[0]
+        elif isinstance(node, dict) and len(node) == 1:
+            key, node = next(iter(node.items()))
+            path.append(key)
+        else:
+            raise ValueError("unexpected TOML table path")
+    return path
+
+
+def render(merged, source):
+    sections = []
+    groups = {}
+    explicit = set()
+    for header, block in table_spans(source):
+        path = table_path(header)
+        if len(path) < 2 or path[0] != "mcp_servers":
+            continue
+        name = path[1]
+        sections.append((name, block))
+        groups.setdefault(name, []).append(block)
+        if len(path) == 2 and not header.lstrip().startswith(b"[["):
+            explicit.add(name)
+
+    preserved = set()
+    for name in explicit & merged.keys():
+        actual = parse_toml(b"".join(groups[name])).get("mcp_servers", {})
+        # Compare JSON representations so booleans cannot compare equal to 0/1.
+        if json.dumps(actual, sort_keys=True) == json.dumps({name: merged[name]}, sort_keys=True):
+            preserved.add(name)
+
+    fragments = [block for name, block in sections if name in preserved]
+    for name, value in merged.items():
+        if name in preserved:
+            continue
+        result = subprocess.run(
+            ["yq", "-p", "json", "-o", "toml", '. | ... style="flow"'],
+            input=json.dumps(value).encode(), stdout=subprocess.PIPE,
+            check=True, timeout=30,
+        )
+        header = "\n[mcp_servers.{}]\n".format(json.dumps(name, ensure_ascii=False))
+        fragments.append(header.encode() + result.stdout)
+
+    output = bytearray()
+    for fragment in fragments:
+        if (not output and not fragment.startswith((b"\n", b"\r\n"))) or (
+            output and not output.endswith(b"\n")
+        ):
+            output.extend(b"\n")
+        output.extend(fragment)
+    return output
+
+
+if __name__ == "__main__":
+    merged = json.loads(Path(sys.argv[1]).read_bytes())
+    source = Path(sys.argv[2]).read_bytes()
+    sys.stdout.buffer.write(render(merged, source))
+PY
 }
 
 # apply_substitutions()
@@ -1382,30 +1518,33 @@ apply_substitutions() {
     # bound to the project's .codex/capy-owner. Copying the template file
     # wholesale would drop that entry on every sync. Downstream entries fill
     # the gaps; a server upstream does ship still wins by name.
-    local downstream_codex_config=".codex/config.toml"
-    if [[ -f "$downstream_codex_config" ]]; then
-      local mcp_work_dir
-      mcp_work_dir=$(mktemp -d "${TMPDIR:-/tmp}/codex-mcp.XXXXXX")
-      # Recover registrations misplaced by older syncs. A valid root entry
-      # replaces the entire misplaced entry, so stale launch settings cannot
-      # leak into a registration subsequently repaired by capy setup.
-      if yq -p toml -o json '.' "$downstream_codex_config" 2>/dev/null \
-        | jq '(.tui.mcp_servers // {}) + (.mcp_servers // {})' >"$mcp_work_dir/downstream.json" \
-        && yq -p toml -o json \
-          "load(\"$mcp_work_dir/downstream.json\") * (.mcp_servers // {})" \
-          "$codex_config_file" >"$mcp_work_dir/merged.json" 2>/dev/null \
-        && yq -p toml -o toml 'del(.mcp_servers)' "$codex_config_file" >"$mcp_work_dir/config.toml" \
-        && render_codex_mcp_servers "$mcp_work_dir/merged.json" >>"$mcp_work_dir/config.toml" \
-        && yq -p toml -o json '.mcp_servers // {}' "$mcp_work_dir/config.toml" \
-          | jq -e --slurpfile expected "$mcp_work_dir/merged.json" '. == $expected[0]' >/dev/null; then
-        cat "$mcp_work_dir/config.toml" >"$codex_config_file"
-        log_info "Preserved downstream mcp_servers in config.toml"
-      else
-        log_warn "MCP server merge failed — downstream .codex/config.toml may contain invalid TOML"
-        log_warn "Falling back to upstream template for config.toml"
-      fi
-      rm -rf "$mcp_work_dir"
+    local mcp_source=".codex/config.toml"
+    if [[ ! -f "$mcp_source" ]]; then
+      mcp_source="$template_dir/codex/config.toml"
     fi
+    local mcp_work_dir
+    mcp_work_dir=$(mktemp -d "${TMPDIR:-/tmp}/codex-mcp.XXXXXX")
+    # Recover registrations misplaced by older syncs. A valid root entry
+    # replaces the entire misplaced entry, so stale launch settings cannot
+    # leak into a registration subsequently repaired by capy setup.
+    # Read upstream servers from the original template: yq's TOML rewrite
+    # during substitutions can lose quoting on dotted server names.
+    if yq -p toml -o json '.' "$mcp_source" 2>/dev/null \
+      | jq '(.tui.mcp_servers // {}) + (.mcp_servers // {})' >"$mcp_work_dir/downstream.json" \
+      && yq -p toml -o json \
+        "load(\"$mcp_work_dir/downstream.json\") * (.mcp_servers // {})" \
+        "$template_dir/codex/config.toml" >"$mcp_work_dir/merged.json" 2>/dev/null \
+      && yq -p toml -o toml 'del(.mcp_servers)' "$codex_config_file" >"$mcp_work_dir/config.toml" \
+      && render_codex_mcp_servers "$mcp_work_dir/merged.json" "$mcp_source" >>"$mcp_work_dir/config.toml" \
+      && yq -p toml -o json '.mcp_servers // {}' "$mcp_work_dir/config.toml" \
+        | jq -e --slurpfile expected "$mcp_work_dir/merged.json" '. == $expected[0]' >/dev/null; then
+      cat "$mcp_work_dir/config.toml" >"$codex_config_file"
+      log_info "Preserved mcp_servers in config.toml"
+    else
+      log_warn "MCP server merge failed — $mcp_source may contain invalid TOML"
+      log_warn "Falling back to upstream template for config.toml"
+    fi
+    rm -rf "$mcp_work_dir"
 
     log_info "Applied Codex config.toml settings"
   fi
@@ -2006,7 +2145,7 @@ Environment:
                         Run this script as-is instead of handing off to the
                         target version's copy when the two differ
 
-Requires: jq, git, curl, yq (mikefarah/yq for YAML processing)
+Requires: jq, git, curl, yq (mikefarah/yq), python3 (standard library only)
 
 Exit Codes:
   0 - Success (changes found or no changes)
