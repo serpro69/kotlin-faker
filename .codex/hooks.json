@@ -28,7 +28,7 @@
             "type": "command"
           }
         ],
-        "matcher": "^(Bash|mcp__[^[:space:]]+__capy_(execute|execute_file|batch_execute|fetch_and_index|index|search|vault_search|stats|doctor|cleanup))$"
+        "matcher": "^(Bash|mcp__[^[:space:]]+__capy_(execute|execute_file|batch_execute|fetch_and_index|index|search|vault_search|stats|doctor|cleanup|runs))$"
       }
     ],
     "SessionEnd": [
