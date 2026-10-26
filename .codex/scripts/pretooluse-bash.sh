@@ -1,25 +1,54 @@
 #!/usr/bin/env bash
-# PreToolUse hook for shell commands — file-path denylist (always) and legacy
+# PreToolUse hook for shell commands — shared permission guard (always) and legacy
 # capy HTTP routing (only while capy's own Codex hooks are not registered).
 # Reads tool_input.command from stdin JSON. Emits permissionDecision: "deny" on
-# match; exits 0 silently on pass-through.
+# match; exits 2 with stderr on denial and 0 on pass-through.
 
-set -euo pipefail
+set -Eeuo pipefail
+
+fail_closed() {
+  trap - ERR
+  printf '%s\n' 'kk guard: failure — Codex Bash adapter could not run; nothing was executed; repair the hook' >&2
+  exit 2
+}
+trap fail_closed ERR HUP INT TERM
+
+# Preserve the payload bytes, including malformed JSON containing raw NULs.
+# Save stdin before command substitution can reuse a closed fd 0.
+exec 3<&0 || fail_closed
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-INPUT=$(cat)
-COMMAND=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty')
+scratch=$(mktemp -d "${TMPDIR:-/tmp}/kk-codex-bash.XXXXXXXX")
+trap 'rm -rf -- "$scratch"' EXIT
+cat <&3 >"$scratch/payload" || fail_closed
+exec 3<&-
+
+export KK_GUARD_PROJECT_ROOT="$REPO_ROOT"
+if bash "$SCRIPT_DIR/guard/guard.sh" <"$scratch/payload" >"$scratch/decision"; then
+  :
+else
+  status=$?
+  if [[ "$status" == 2 ]]; then
+    cat "$scratch/decision"
+    exit 2
+  fi
+  fail_closed
+fi
+
+COMMAND=$(jq -r '.tool_input.command // empty' "$scratch/payload")
 
 if [ -z "$COMMAND" ]; then
+  cat "$scratch/decision"
   exit 0
 fi
 
 deny() {
-  jq -n --arg reason "$1" \
-    '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: $reason}}'
-  exit 0
+  printf '%s\n' "$1" >&2
+  jq -n --arg reason "$1" --slurpfile warning "$scratch/decision" \
+    '($warning[0] // {}) + {hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "deny", permissionDecisionReason: $reason}}'
+  exit 2
 }
 
 # Capy >= v0.17.1 registers its own Codex hooks through
@@ -34,36 +63,15 @@ capy_hook_registered() {
     "$hooks_json" >/dev/null 2>&1
 }
 
-# --- File-path denylist (ported from klaude-plugin/scripts/validate-bash.sh) ---
-
-FORBIDDEN_PATTERNS=(
-  "\.env"
-  "\.ansible\/"
-  "\.terraform\/"
-  "build\/"
-  "dist\/"
-  "target\/"
-  "__pycache__\/"
-  "\.git\/"
-  "venv\/"
-  "\.pyc$"
-  "\.csv$"
-)
-
-for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
-  if printf '%s' "$COMMAND" | grep -qE "$pattern"; then
-    deny "Access to '$pattern' is blocked by security policy"
-  fi
-done
-
 # --- Legacy capy HTTP routing (block curl/wget and inline HTTP patterns) ---
 #
 # Capy's own PreToolUse hook applies an availability-aware policy (advisory
 # guidance, evidence-based redirects, a silent-download exception) that this
 # unconditional deny would override. When that hook is registered, stop here:
-# the file-path denylist above has already run and always applies.
+# the shared guard above has already run and always applies.
 
 if capy_hook_registered PreToolUse; then
+  cat "$scratch/decision"
   exit 0
 fi
 
@@ -89,4 +97,5 @@ for pattern in "${INLINE_HTTP_PATTERNS[@]}"; do
   fi
 done
 
+cat "$scratch/decision"
 exit 0

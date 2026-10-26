@@ -1,0 +1,238 @@
+{
+  "version": 1,
+  "secrets": [
+    "./**/.env",
+    "./**/.env.local",
+    "./**/.env.*.local",
+    "./**/service-account*.json",
+    "./**/*.tfstate",
+    "./**/*.tfstate.backup",
+    "./**/.terraform/**",
+    "./**/*.pem",
+    "./**/id_rsa",
+    "./**/id_ed25519",
+    "./**/id_ecdsa",
+    "~/.ssh/**",
+    "~/.aws/**",
+    "~/.gnupg/**",
+    "~/.kube/**",
+    "~/.config/gcloud/**",
+    "~/.netrc",
+    "~/.pypirc",
+    "~/.docker/config.json",
+    "~/.claude/.credentials.json"
+  ],
+  "destructive": {
+    "filesystem": [
+      {
+        "program": "rm",
+        "exempt": "targets_under_tmp",
+        "reason": "rm deletes files and directories with no undo",
+        "codex": [
+          {
+            "pattern": ["rm"],
+            "match": ["rm -rf x", "rm foo.txt", "rm -r ./build"],
+            "not_match": ["ls -la", "mkdir -p dir", "grep -r pattern"]
+          }
+        ]
+      },
+      {
+        "program": "shred",
+        "reason": "shred overwrites file contents before deleting them",
+        "codex": [
+          {
+            "pattern": ["shred"],
+            "match": ["shred -u secret.txt", "shred file"],
+            "not_match": ["ls -la", "cat file"]
+          }
+        ]
+      },
+      {
+        "program": "find",
+        "flags_any": ["^-delete$"],
+        "reason": "find -delete removes every file the search matches"
+      },
+      {
+        "program": "rsync",
+        "flags_any": ["^--del(ete.*)?$"],
+        "reason": "rsync --delete (and its --del alias) removes destination files missing from the source"
+      }
+    ],
+    "git": [
+      {
+        "program": "git",
+        "subcommand": "clean",
+        "reason": "git clean deletes untracked files, which are not recoverable from git"
+      },
+      {
+        "program": "git",
+        "subcommand": "reset",
+        "flags_any": ["^--hard$"],
+        "reason": "git reset --hard discards every uncommitted change"
+      },
+      {
+        "program": "git",
+        "subcommand": "checkout",
+        "flags_any": ["^--$", "^\\.$"],
+        "reason": "git checkout -- <path> and git checkout . discard uncommitted edits"
+      },
+      {
+        "program": "git",
+        "subcommand": "restore",
+        "flags_none": ["^--staged$", "^-[a-zA-Z]*S[a-zA-Z]*$"],
+        "reason": "git restore without --staged discards uncommitted edits in the working tree"
+      },
+      {
+        "program": "git",
+        "subcommand": "restore",
+        "flags_any": ["^--worktree$", "^-[a-zA-Z]*W[a-zA-Z]*$"],
+        "reason": "git restore --worktree discards uncommitted edits in the working tree even alongside --staged"
+      },
+      {
+        "program": "git",
+        "subcommand": "branch",
+        "flags_any": ["^-[a-zA-Z]*D[a-zA-Z]*$"],
+        "reason": "git branch -D deletes a branch even when it is not merged"
+      },
+      {
+        "program": "git",
+        "subcommand": "branch",
+        "flags_all": ["^(--delete|-[a-zA-Z]*d[a-zA-Z]*)$", "^(--force|-[a-zA-Z]*f[a-zA-Z]*)$"],
+        "reason": "git branch --delete --force (also -d -f and -df) deletes a branch even when it is not merged"
+      },
+      {
+        "program": "git",
+        "subcommand": "push",
+        "flags_any": ["^--force$", "^-[a-zA-Z]*f[a-zA-Z]*$", "^--force-with-lease", "^--delete$", "^-[a-zA-Z]*d[a-zA-Z]*$", "^\\+", "^:"],
+        "reason": "force pushes and remote deletes rewrite or remove history that may exist only on the remote"
+      },
+      {
+        "program": "git",
+        "subcommand": ["stash", "drop"],
+        "reason": "git stash drop discards stashed work that git cannot recover"
+      },
+      {
+        "program": "git",
+        "subcommand": ["stash", "clear"],
+        "reason": "git stash clear discards every stash entry"
+      }
+    ],
+    "infra": [
+      {
+        "program": "terraform",
+        "subcommand": "destroy",
+        "reason": "terraform destroy tears down live infrastructure"
+      },
+      {
+        "program": "terraform",
+        "subcommand": "apply",
+        "flags_any": ["^--?destroy(=.*)?$"],
+        "reason": "terraform apply -destroy tears down live infrastructure"
+      },
+      {
+        "program": "kubectl",
+        "subcommand": "delete",
+        "reason": "kubectl delete removes live cluster resources"
+      },
+      {
+        "program": "helm",
+        "subcommand": "uninstall",
+        "reason": "helm uninstall removes a live release and its resources"
+      },
+      {
+        "program": "helm",
+        "subcommand": "delete",
+        "reason": "helm delete removes a live release and its resources"
+      },
+      {
+        "program": "docker",
+        "subcommand": "rm",
+        "reason": "docker rm removes containers and their writable layers"
+      },
+      {
+        "program": "docker",
+        "subcommand": "rmi",
+        "reason": "docker rmi removes images"
+      },
+      {
+        "program": "docker",
+        "subcommand": ["container", "rm"],
+        "reason": "docker container rm removes containers and their writable layers"
+      },
+      {
+        "program": "docker",
+        "subcommand": ["image", "rm"],
+        "reason": "docker image rm removes images"
+      },
+      {
+        "program": "docker",
+        "subcommand": ["system", "prune"],
+        "reason": "docker system prune removes every unused container, network and image"
+      },
+      {
+        "program": "docker",
+        "subcommand": ["volume", "rm"],
+        "reason": "docker volume rm deletes persistent data volumes"
+      },
+      {
+        "program": "docker",
+        "subcommand": ["volume", "prune"],
+        "reason": "docker volume prune deletes every unused data volume"
+      }
+    ],
+    "privilege": [
+      {
+        "program": "sudo",
+        "reason": "sudo runs a command as the administrator",
+        "codex": [
+          {
+            "pattern": ["sudo"],
+            "match": ["sudo rm -rf /", "sudo apt install x"],
+            "not_match": ["ls -la", "echo sudo"]
+          }
+        ]
+      },
+      {
+        "program": "su",
+        "reason": "su switches to another user account",
+        "codex": [
+          {
+            "pattern": ["su"],
+            "match": ["su root", "su - admin"],
+            "not_match": ["ls -la", "sum file"]
+          }
+        ]
+      },
+      {
+        "program": "doas",
+        "reason": "doas runs a command as another user",
+        "codex": [
+          {
+            "pattern": ["doas"],
+            "match": ["doas rm -rf x", "doas reboot"],
+            "not_match": ["ls -la", "echo doas"]
+          }
+        ]
+      }
+    ]
+  },
+  "tmp_roots": [
+    "/tmp",
+    "/private/tmp",
+    "/var/folders",
+    "/private/var/folders",
+    "$TMPDIR"
+  ],
+  "selfmod": [
+    ".claude/settings.json",
+    ".claude/settings.local.json",
+    ".claude/kk-guard.json",
+    "~/.claude/settings.json",
+    "~/.claude/settings.local.json",
+    "~/.claude/kk-guard.json",
+    ".codex/hooks.json",
+    ".codex/rules/**",
+    ".codex/scripts/**",
+    "~/.claude/plugins/**"
+  ]
+}

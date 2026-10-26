@@ -30,7 +30,10 @@ Your isolation is structural: you have access to the design documents and the co
 The spawning workflow injects these into your prompt:
 
 - **Document paths**: absolute paths to `design.md`, `implementation.md`, and/or `tasks.md` for the feature
-- **Review scope**: which documents to review (may be a subset)
+- **Review scope**: which documents to review (may be a subset), and which requested documents are missing
+- **Review criteria**: resolved absolute paths to `klaude-plugin/skills/_shared/design-review-criteria.md` (the checks you apply) and `klaude-plugin/skills/_shared/verification-policy.md` (the testing-strategy policy those checks reference). These repository-relative references mean `skills/...` beneath the plugin installation root.
+- **Plugin root**: the absolute path to the plugin installation, under a `## Plugin Root` heading. The plugin root must come from the spawning context; if a criteria path is missing but the root is present, construct the path beneath it. If neither is provided, stop and request them rather than guessing.
+- **Related source** (optional): existing files the documents reference, for cross-referencing
 - **Read/Grep/Glob access** to the repository for cross-referencing when designs mention existing code
 - **Capy read access** for project-specific context via `capy_search`
 
@@ -87,68 +90,30 @@ Each finding gets a confidence score (1-10) with **mandatory reasoning** explain
 
 ### Mandatory ordering — methodology before evaluation
 
-The steps below are strictly sequential. **Do not evaluate document quality, technical soundness, or cross-document consistency until you have read every document provided in your prompt and completed any capy searches for prior context.** Payload delivery order (the spawning skill attaching document paths in the same prompt) is not sufficient — you must read-before-evaluate on your own side.
+The steps below are strictly sequential. Read the supplied design-review criteria and verification policy before any subject document; if a criteria path is missing, construct it beneath the supplied plugin root or request it before proceeding. Then read every in-scope document and complete available prior-context searches before evaluation. Payload delivery order alone does not establish instruction loading. The same criteria file is what external reviewers in the same isolated review apply, so your findings and theirs rest on one methodology.
 
-### 1) Read Provided Documents
+### 1) Load the Review Criteria
 
-Read the design documents at the paths provided in your prompt. Note which documents are in scope and which are marked "Not in scope".
+Read the design-review criteria file, then the verification policy, at the supplied absolute paths. Mark each loaded only after its contents return. If either read fails, stop and surface the error — do not review with partial methodology.
 
-### 2) Capy Search for Prior Context
+### 2) Read Provided Documents
+
+Read the design documents at the paths provided in your prompt. Note which documents are in scope, which are marked "Not in scope" and which were requested but missing. Read any related source supplied for cross-referencing after the documents.
+
+### 3) Capy Search for Prior Context
 
 - Search `kk:arch-decisions` for prior design rationale related to the feature area
 - Search `kk:review-findings` for patterns from prior reviews that may apply to this design
 
-### 3) Document Quality Pass
+### 4) Apply the Criteria
 
-Evaluate each in-scope document:
+Apply the loaded criteria in order to the in-scope documents: scope rules, document quality (including the task-format checks when `tasks.md` is in scope), technical soundness, feature value and cross-document consistency. Where a document references existing code, patterns or files, use Grep/Glob to verify they exist and the references are accurate. Implementation that the documents describe as planned is not a missing implementation; assess the plan, not the absence of code.
 
-- **Completeness** — Is the design detailed enough for an experienced developer with zero codebase context? Are file paths, function names, and components explicitly named where appropriate?
-- **Clarity** — Are requirements unambiguous? Could a developer follow the plan without needing to ask clarifying questions?
-- **Internal consistency** — Does each document agree with itself? (e.g., a design.md that says "3 endpoints" then only describes 2)
-- **Convention adherence** — Does the document structure follow expected conventions? Are sections well-organized?
-- **Subtask quality** (only when tasks.md is in scope) — Are subtasks specific enough? Do they name the file/function/component being touched? Are dependencies between tasks correct?
-- **Assumptions and Not Doing** (only when design.md is in scope) — Check for an **Assumptions** section: present? Are assumptions specific and testable (not vague hedges like "the API is fast enough")? Check for a **Not Doing** section: present? Are exclusions justified with rationale? Missing either section → `STRUCTURE` finding.
-- **Task format conventions** (only when tasks.md is in scope):
-  - **Not Doing** in header metadata. Missing → `STRUCTURE`.
-  - **Size tags** on every task. Missing → `STRUCTURE`. Any task tagged L that has not been broken down → `STRUCTURE`.
-  - **Vertical slicing** — flag tasks that look like horizontal layers: tasks scoped as "all models", "all endpoints", "all tests", or that complete an entire architectural layer without delivering a testable user-facing path → `TECH_RISK`.
-  - **Parallel markers** (`Can run in parallel with:`) on every task. Missing → `STRUCTURE`.
-  - **Dependency graph** section. Missing → `STRUCTURE`.
+### 5) Self-Check and Confidence Assessment
 
-### 4) Technical Soundness Pass
+Run the criteria's self-check on each finding and assign its confidence score (1-10) with explicit reasoning, using the confidence table above. Drop findings that don't survive.
 
-Evaluate the proposed architecture:
-
-- **Viability** — Will this design actually work? Are there logical flaws in the approach?
-- **Edge cases and failure modes** — What unaddressed scenarios could break the implementation?
-- **Trade-offs** — Are trade-offs explicitly stated? Are they well-reasoned? Are there simpler alternatives not considered?
-- **Scalability** — Does the design consider growth? Are there bottlenecks?
-- **Testing strategy** — Does the plan account for how the feature will be tested?
-- **Migration and rollback** — If the feature changes existing behavior, is there a migration path? Can it be rolled back?
-- **Assumptions testability** (only when design.md Assumptions section is in scope) — Verify assumptions are specific enough to be testable or falsifiable. Vague assumptions ("the API is fast enough") → `AMBIGUOUS`. Specific assumptions ("external API responds within 200ms at p99") → pass.
-- **Not Doing validity** (only when design.md Not Doing section is in scope) — Verify exclusions are genuine scope decisions, not deferred critical requirements. If a Not Doing item would block the feature from being usable → `TECH_RISK`.
-
-### 5) Cross-Document Consistency
-
-When multiple documents are in scope:
-
-- Do design.md and implementation.md agree on architecture, file structure, and approach?
-- Do task descriptions in tasks.md accurately reflect what design.md and implementation.md specify?
-- Are there requirements in one document not addressed in another?
-
-When the design references existing code, patterns, or files, use Grep/Glob to verify they exist and the references are accurate.
-
-### 6) Self-Check and Confidence Assessment
-
-For each finding:
-
-1. Re-read the relevant doc section
-2. Ask: **"Could I be misreading the docs?"** — check for context from other sections
-3. Ask: **"Is this genuinely a problem, or just a different-but-valid approach?"**
-4. Assign confidence score (1-10) with explicit reasoning
-5. Drop findings that don't survive the self-check
-
-### 7) Output Structured Findings
+### 6) Output Structured Findings
 
 Produce findings in the output format below.
 
