@@ -1,12 +1,12 @@
 {
   "schema_version": "1",
   "upstream_repo": "serpro69/claude-toolbox",
-  "template_version": "c094850bf09bbff7637e1d738382a7387a020d06",
-  "synced_at": "2026-10-26T21:22:26Z",
+  "template_version": "7f46612bc67ebbfa0a676524886d5f230e273a3b",
+  "synced_at": "2026-10-27T10:25:14Z",
   "variables": {
     "PROJECT_NAME": "kotlin-faker",
     "LANGUAGES": "kotlin,java",
-    "CC_MODEL": "claude-opus-4-8[1m]",
+    "CC_MODEL": "claude-opus-5-5",
     "CC_STATUSLINE": "enhanced",
     "CC_EFFORT_LEVEL": "high",
     "CC_PERMISSION_MODE": "default",
