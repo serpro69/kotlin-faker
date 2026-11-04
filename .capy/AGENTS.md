@@ -2,6 +2,8 @@
 
 Capy captures execution output in a separate encrypted run store and returns bounded results. Knowledge and session search remain separate.
 
+Captured execution supports Linux and macOS 26 on Apple Silicon with CGO. Darwin cleanup is observational: escaped or racing descendants may survive a completed run. Use capy_doctor to check host/build capability and authenticated storage compatibility separately; it does not execute a proof probe or establish hook activation or host quiescence. Align CLI/PATH/MCP versions and reload after upgrades. Never discard run logs automatically to repair a version or cleanup error.
+
 ## Decision principle
 
 Use capture for routine tests, builds and dependency installs. Codex enforces recognized commands for root and child agents; Claude Code receives guidance only. For other work, choose the tool based on what you need from the output:
@@ -16,7 +18,7 @@ Use capture for routine tests, builds and dependency installs. Codex enforces re
 - **Files to comprehend or edit:** Read tool. Required before Edit.
 - **Existing sequential/ordered content:** read existing test and build logs directly. New routine runs use capture; recover ordered output with capy_runs read or capy runs read. Live native execution in Codex requires an explicit operator exception.
 - **Governing instructions, checklists, agent configs:** Read and internalize whole. BM25 returns ranked fragments, destroying structural relationships.
-- **Small authoritative web pages:** GitHub issues, PR descriptions, short specs, doc pages — use runtime-native tools when available (e.g., `gh issue view` for GitHub, `WebSearch` for general queries). These are comprehension content; BM25 fragments destroy context just as they do for diffs.
+- **Small authoritative web pages:** GitHub issues, PR descriptions, short specs, doc pages — use runtime-native tools when available (e.g., `gh issue view` for GitHub, `WebFetch` in Claude Code or hosted web tools in Codex for a specific page, `WebSearch` for general queries). These are comprehension content; BM25 fragments destroy context just as they do for diffs.
 
 ## When to use capy tools
 
@@ -34,7 +36,7 @@ For both search tools, an explicit `project` matches the session's custom projec
 
 Claude Code hooks cover Bash, WebFetch, file guidance and Agent/Task injection. Codex hooks cover canonical Bash (including exec_command and code-mode shell calls) and capy MCP calls; hosted web/search tools are not intercepted. Registration requires host activation and trust.
 
-Security denies and matched asks always apply before routing. Claude main-agent HTTP redirects remain enforced. For HTTP-only requests, Codex main sessions receive advisory discovery/native-tool guidance while availability is unverified; a successful capy_execute call in that session permits one HTTP redirect within 60 seconds. Fetch or other tool successes do not authorize Bash HTTP redirects. A child may receive one redirect after its own suitable tool succeeds; otherwise it receives advisory guidance. Main and child evidence are isolated. For execute, a healthy running run ID with recording capture or exited-zero run with complete capture counts. Unstarted/queued, failed/nonzero/incomplete runs and status/read/search/cancel polling never create or refresh evidence. Fetch and legacy response handling remain separate. A failed retry cannot renew consumed evidence. Git issue/PR/MR comprehension keeps native CLI guidance.
+Security denies and matched asks always apply before routing. Claude main-agent Bash HTTP redirects remain enforced; main-agent WebFetch is allowed except for git issue/PR/MR URLs. For HTTP-only requests, Codex main sessions receive advisory discovery/native-tool guidance while availability is unverified; a successful capy_execute call in that session permits one HTTP redirect within 60 seconds. Fetch or other tool successes do not authorize Bash HTTP redirects. A child may receive one redirect after its own suitable tool succeeds; otherwise it receives advisory guidance. Main and child evidence are isolated. For execute, a healthy running run ID with recording capture or exited-zero run with complete capture counts. Unstarted/queued, failed/nonzero/incomplete runs and status/read/search/cancel polling never create or refresh evidence. Fetch and legacy response handling remain separate. A failed retry cannot renew consumed evidence. Git issue/PR/MR comprehension keeps native CLI guidance.
 
 ### Routine capture — enforced in Codex
 
@@ -59,10 +61,10 @@ Bash commands containing `fetch('http`, `requests.get(`, `requests.post(`, `http
 For suitable extraction use:
 - `capy_execute(language, code)` to run HTTP calls in sandbox — only stdout enters context
 
-### WebFetch — BLOCKED in Claude Code
-Claude main-agent WebFetch calls are denied. Children require their own recent capy_execute or capy_fetch_and_index success for one suitable redirect; otherwise they receive advisory guidance. For extraction or comprehension, use:
+### WebFetch — Claude Code
+Claude main-agent WebFetch calls are allowed, with one advisory per session, except git platform issue/PR/MR URLs, which are denied in favor of the platform CLI. Children require their own recent capy_execute or capy_fetch_and_index success for one suitable redirect; otherwise they receive advisory guidance. For extraction or comprehension, use:
 - For git platform issues/PRs/MRs: platform CLI (e.g., `gh issue view N`) or `WebSearch` for full comprehension. For large-content extraction, run the CLI through `capy_execute`, then read or search its captured output with `capy_runs`.
-- For other small pages needing comprehension: `WebSearch` or other runtime web tools
+- For other specific pages needing comprehension: `WebFetch`, or `WebSearch` when you have no specific URL
 - For large content from other URLs: `capy_fetch_and_index(url, source)` then `capy_search(queries)`
 
 ## Source kinds
