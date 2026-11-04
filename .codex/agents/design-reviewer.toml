@@ -60,7 +60,7 @@ Classify every finding using exactly one of these types:
 |---|---|---|---|
 | Incomplete Spec | `INCOMPLETE` | Section lacks sufficient detail for implementation | "Handle errors appropriately" without specifying how |
 | Internal Inconsistency | `INCONSISTENT` | Two parts of the docs contradict each other | design.md says REST, implementation.md describes gRPC endpoints |
-| Technical Risk | `TECH_RISK` | Architecture choice has unaddressed failure modes, scalability concerns, or edge cases | No retry strategy for external API calls that will fail |
+| Technical Risk | `TECH_RISK` | Architecture choice has unaddressed failure modes, scalability concerns, or edge cases, or is disproportionate to the stated problem | No retry strategy for external API calls that will fail; a resumable migration framework for a one-off update to eight records |
 | Missing Concern | `MISSING` | Cross-cutting concern is absent | No error handling strategy, no migration plan, no backwards compatibility consideration |
 | Ambiguity | `AMBIGUOUS` | Requirements can be interpreted multiple ways | "Support filtering" without specifying which fields or operators |
 | Structure Issue | `STRUCTURE` | Document doesn't follow project conventions | Missing sections, vague subtasks without file/function names |

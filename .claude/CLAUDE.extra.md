@@ -26,6 +26,7 @@ When writing or modifying code:
 
 - **State assumptions explicitly.** If uncertain, ask. Don't guess silently.
 - **Surface ambiguity.** If the request has multiple reasonable interpretations, present them and let the user choose — don't pick one silently.
+- **YAGNI — build only what is needed.** Every plan step, component, option, abstraction and handled case must trace to the current requirement, or to a real input, caller or failure that reaches it. If it doesn't, don't build it. Size the solution to the actual problem: a one-off change to 8 documents is a script, not a migration framework. When you can't tell whether something is needed, say so instead of building it.
 - **Fail loud.** Flag errors explicitly. No softening, no silent corrections, no swallowed exceptions, no assertions you quietly relax to make a test pass.
 - **Pre-existing dead code is not yours to delete.** If you notice unrelated dead code, mention it — don't remove it. Only remove orphans (imports, variables, helpers) that _your_ changes made unused.
 
