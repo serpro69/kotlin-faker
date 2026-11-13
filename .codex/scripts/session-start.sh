@@ -28,7 +28,9 @@ Skills reference Claude Code tool names. Translate these to codex native tool na
 - ALWAYS use native tools for file writes/edits instead of ad-hoc scripts via python or similar commands
 CONTEXT_EOF
 
-# read_file may bypass tool hooks, so inject the declaration as policy too.
+# Codex reads files through exec_command, which the Bash hook guards. Inject
+# the declaration as policy too, so the model avoids protected paths up front
+# instead of discovering them through denials.
 PROTECTED_FILES='Protected files: reading secret files (including .env and private keys) is prohibited by policy. Ask the user for the needed value or a redacted copy.'
 if [[ -f "$SCRIPT_DIR/guard/guard-rules.json" ]]; then
   if secrets=$(jq -er '.secrets | select(type == "array" and length > 0) | join(", ")' \
