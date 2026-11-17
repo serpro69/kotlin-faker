@@ -32,7 +32,6 @@
       "Bash(echo \"${TOOLBOX_PLUGIN_ROOT}\")",
       "Bash(echo \"${TOOLBOX_PLUGIN_ROOT:-NOT_SET}\")",
       "Read(//tmp/**)",
-      "Read(${TMPDIR}/**)",
       "Read(//var/folders/vv/**/T/**)"
     ],
     "ask": [],
