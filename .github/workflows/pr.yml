@@ -22,6 +22,7 @@ jobs:
     outputs:
       run_docs: ${{ steps.check_files.outputs.run_docs }}
       run_tests: ${{ steps.check_files.outputs.run_tests }}
+      run_fidelity: ${{ steps.check_files.outputs.run_fidelity }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,6 +34,7 @@ jobs:
         run: |
           echo "run_docs=false" >> $GITHUB_OUTPUT
           echo "run_tests=false" >> $GITHUB_OUTPUT
+          echo "run_fidelity=false" >> $GITHUB_OUTPUT
 
           echo "=============== list modified files ==============="
           git diff --name-only HEAD^ HEAD
@@ -42,6 +44,9 @@ jobs:
           while IFS= read -r file
           do
             echo $file
+            if [[ $file = core/src/jvmMain/resources/locales/* ]] || [[ $file = test/fixtures/kmp-feasibility/* ]] || [[ $file = .github/workflows/kmp-feasibility.yml ]]; then
+              echo "run_fidelity=true" >> $GITHUB_OUTPUT
+            fi
             if [[ $file = docs/* ]] || [[ $file = mkdocs.yml ]] || [[ $file = main.py ]]; then
               echo "This modified file is docs-related. Will run docs workflow."
               echo "run_docs=true" >> $GITHUB_OUTPUT
@@ -81,6 +86,38 @@ jobs:
         -P"kotlinFaker_enableKotlinNative=true"
         --continue
         check
+
+  kmp-check:
+    name: Required KMP ${{ matrix.target }}
+    needs: [changes]
+    if: ${{ needs.changes.outputs.run_tests == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: jvm
+            os: ubuntu-latest
+            task: kmpJvmCheck
+          - target: js
+            os: ubuntu-latest
+            task: kmpJsCheck
+          - target: ios
+            os: macos-latest
+            task: kmpIosCheck
+          - target: coverage
+            os: ubuntu-latest
+            task: kmpCoverageCheck
+    uses: ./.github/workflows/run_gradle.yml
+    with:
+      runs-on: ${{ matrix.os }}
+      task: ${{ matrix.task }}
+      kmp-target: ${{ matrix.target }}
+
+  kmp-fidelity:
+    name: Required dictionary fidelity
+    needs: [changes]
+    if: ${{ needs.changes.outputs.run_fidelity == 'true' }}
+    uses: ./.github/workflows/kmp-feasibility.yml
 
   # TODO: extract gradle stuff to run_gradle.yml
   cli-check:
@@ -168,17 +205,26 @@ jobs:
   finalize:
     # see https://github.community/t/status-check-for-a-matrix-jobs/127354/7
     name: Final PR results
-    needs: [validate-api, gradle-check, docs-check, cli-check]
+    needs: [changes, validate-api, gradle-check, docs-check, cli-check, kmp-check, kmp-fidelity]
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Check all job status
         # see https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#needs-context
         # see https://stackoverflow.com/a/67532120/4907315
-        # Note: skipped results are OK in our case, we don't run code tests if there's only docs changes
+        # Docs-only filtering is allowed; selected code/target jobs must succeed, never skip.
         if: >-
           ${{
                contains(needs.*.result, 'failure')
             || contains(needs.*.result, 'cancelled')
+            || needs.changes.result != 'success'
+            || (needs.changes.outputs.run_fidelity == 'true' && needs.kmp-fidelity.result != 'success')
+            || (needs.changes.outputs.run_tests == 'true' && (
+                 needs.kmp-check.result != 'success'
+              || (github.repository == 'serpro69/kotlin-faker' && (
+                   needs.validate-api.result != 'success'
+                || needs.gradle-check.result != 'success'
+                || needs.cli-check.result != 'success'))))
+            || (github.repository == 'serpro69/kotlin-faker' && needs.changes.outputs.run_docs == 'true' && needs.docs-check.result != 'success')
           }}
         run: exit 1

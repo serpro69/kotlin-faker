@@ -16,6 +16,7 @@ plugin-devpublish = "0.4.1"
 plugin-nmcp = "1.0.2"
 plugin-benmanes-versions = "0.51.0"
 plugin-spotless = "7.2.1"
+plugin-kover = "0.9.11"
 # test
 kotest = "5.9.1"
 junit = "5.11.0"
@@ -55,6 +56,7 @@ gradle-plugin-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradl
 snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
 gradle-plugin-devpublish = { module = "dev.adamko.gradle:dev-publish-plugin", version.ref = "plugin-devpublish" }
 gradle-plugin-nmcp = { module = "com.gradleup.nmcp:com.gradleup.nmcp.gradle.plugin", version.ref = "plugin-nmcp" }
+gradle-plugin-kover = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "plugin-kover" }
 
 # Test
 test-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
@@ -71,6 +73,7 @@ gradle-plugins = [
   "gradle-plugin-semantic-versioning",
   "gradle-plugin-spotless",
   "gradle-plugin-nmcp",
+  "gradle-plugin-kover",
 ]
 jackson = ["jackson-databind", "jackson-module-kotlin"]
 kotlin = ["kotlin-stdlib-common", "kotlin-stdlib-jdk8", "kotlin-reflect"]

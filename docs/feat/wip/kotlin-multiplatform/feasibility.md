@@ -1270,3 +1270,81 @@ enforcement and upload/tag guards remain the later tasks' responsibilities.
 
 Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
 and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).
+
+## Task 31 — required checks and migration controls
+
+Implementation is in progress; hosted evidence and independent review closure are
+still required before this task is complete.
+
+The root `kmpJvmCheck`, `kmpJsCheck`, `kmpIosCheck` and `kmpCoverageCheck` tasks
+select every project applying `faker-multiplatform-conventions`. The first runs
+JVM 11/21, the second runs Node and headless Chrome, and the third executes the
+Arm64 simulator tests plus device test-binary linking and common metadata
+compilation. `writeKmpVerificationPlan` records the selected project paths.
+The PR matrix and feature-branch workflow both use `run_gradle.yml`; selected
+checks must succeed in the final PR result. Docs-only filtering remains allowed.
+Authoring-dictionary changes also trigger the existing feasibility/fidelity and
+external probe-consumer workflow, whose result is required by the PR finalizer.
+That mechanism fixture still pins its reviewed corpus snapshot: deliberate data
+changes require inspecting source reconstruction and updating its documented
+golden values using the independent reference command in its README. Task 8
+owns deriving expectations from production inputs when promoting the regex
+corpus guard; Task 31 does not silently update those reference values.
+
+For fresh execution evidence, run the appropriate root task with
+`--rerun-tasks --no-build-cache --console=plain`, save its complete output as
+`build/kmp-evidence/tasks.log`, then run
+`python3 scripts/verify_kmp_execution.py jvm` (or `js`, `ios`, `coverage`).
+Both portable-target settings must remain enabled. The verifier rejects absent,
+skipped, cached and empty common-test results for any selected module. Its test
+class discovery expects the repository's ordinary `kotlin.test.Test` class
+declarations under `src/commonTest/kotlin`; new test styles require corresponding
+discovery support. The Apple runner remains Arm64 `macos-latest` with
+Xcode 26.0.1 selected explicitly.
+
+[Kover 0.9.11](https://github.com/Kotlin/kotlinx-kover/releases/tag/v0.9.11) is pinned
+in the production catalog. `koverXmlReport` measures JVM execution; the
+`verifyCommonCoverage` task requires zero missed LINE/BRANCH units in handwritten
+`src/commonMain/kotlin` files and rejects an empty measured scope. It is attached
+to `check`, `koverVerify` and `kmpCoverageCheck`. The XML retains legacy JVM
+measurements for inspection, but the new-code gate selects common sources by
+package/source filename. Generated build outputs and legacy JVM-only code do not
+inflate the gate. Current common contracts contain one executable line and no
+branches; Kover reports 1/1 lines and 12/12 instructions. Interface declarations
+have no executable bodies. This is not a claim of 100% repository, build-logic,
+JS or Native coverage. Later slices must preserve meaningful behavioral tests,
+and generated dictionaries retain their independent source-fidelity checks.
+
+The root installs an unconditional migration publication guard. Before any
+selected task action, it rejects remote Maven repositories, both NMCP 1.0.2
+upload task types, the central-publishing wrapper, and release/tag tasks across
+all projects. Disabled/`onlyIf`-skipped uploads still cannot make tagging succeed.
+Guarded tasks cannot reuse a configuration-cache entry. The Makefile release
+routes stop at the failed publishing command before their tag step.
+There is no property that opens the gate: after Task 24, a separately authorized
+release change must remove or replace it and verify remote consumers.
+
+Project-local file repositories are allowed, including development and snapshot
+versions previously affected by publication `onlyIf` rules. For example,
+`:kotlin-faker:publishJvmPublicationToRootBuildDirRepository` stages under
+`build/maven-repo`; enabled-publication selection and existing signing rules
+remain applicable. A successful task with no files is not staging evidence.
+
+`python3 scripts/test_kmp_controls.py --target coverage` copies the current
+production build into a disposable repository without remotes. Its upload/tag
+actions are replaced with marker writes. It checks the actual guard, direct
+upload paths, skipped-upload/tag and configuration-cache cases, actual dev and
+snapshot staging, then verifies that an uncalled common function fails coverage
+and removing it restores success. The `jvm`, `js` and `ios` modes inject a failing
+common test into that copy and require the corresponding real target check to
+fail in each runner's XML. Disposable JVM controls select common test classes;
+the subsequent production job retains the full JVM suites. Signing is disabled
+only inside the disposable fixture so it does not load local signing keys.
+Separate invocation logs are retained under `build/kmp-controls/evidence`; none
+of these checks uploads artifacts or creates a release tag.
+
+Local production evidence so far: `ad16ca5f-e685-4fc4-8e73-22ec7d056afa` passed
+`kmpCoverageCheck` and both 4,423-case JVM suites;
+`1207e9db-e740-44f5-b7c1-75ec848ec617` passed Node/browser tests, repository API
+checks and formatting; `c12e38dd-7db3-4a7b-bcf0-37d6102d9db6` passed the evidence
+verifier's negative controls. Isolated control and hosted results remain pending.

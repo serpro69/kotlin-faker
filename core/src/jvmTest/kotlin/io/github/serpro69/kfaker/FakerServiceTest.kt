@@ -618,7 +618,8 @@ internal class FakerServiceTest :
                                 resolvedValue shouldNotContain "#"
                                 resolvedValue shouldNotContain Regex("""#\{\p{all}+?}""")
                                 resolvedValue.split(" ") shouldHaveAtLeastSize 2
-                                resolvedValue.split(" ") shouldHaveAtMostSize 3
+                                // Name.name may include the two-word prefix "The Hon.".
+                                resolvedValue.split(" ") shouldHaveAtMostSize 4
                                 resolvedValue.split(" ").all { it.first().isUpperCase() } shouldBe
                                     true
                             }

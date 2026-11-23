@@ -5,7 +5,9 @@ on:
     branches: [codex/kmp-task1-feasibility, feat/kmp_support]
     paths:
       - 'test/fixtures/kmp-feasibility/**'
+      - 'core/src/jvmMain/resources/locales/**'
       - '.github/workflows/kmp-feasibility.yml'
+  workflow_call:
   workflow_dispatch:
 
 permissions:

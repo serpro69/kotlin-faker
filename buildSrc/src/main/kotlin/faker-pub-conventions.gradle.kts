@@ -2,6 +2,7 @@ import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType.common
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType.jvm
+import utils.isProjectLocalStaging
 
 /** Plugin for publishing conventions */
 plugins {
@@ -219,8 +220,9 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
 
 tasks.withType<PublishToMavenRepository>().configureEach {
     dependsOn(project.tasks.withType(Sign::class.java))
-    onlyIf { !isDev.get() }
-    onlyIf { isRelease.get() || isSnapshot.get() }
+    onlyIf("project-local staging or a publishable version") {
+        isProjectLocalStaging() || (!isDev.get() && (isRelease.get() || isSnapshot.get()))
+    }
 }
 
 tasks.withType<PublishToMavenLocal>().configureEach { onlyIf { isDev.get() || isSnapshot.get() } }

@@ -17,6 +17,11 @@ on:
         description: "The Gradle task to run"
         required: true
         type: string
+      kmp-target:
+        description: "Require production common-test execution for jvm, js, ios or coverage"
+        required: false
+        default: ''
+        type: string
 
 permissions:
   contents: read
@@ -24,6 +29,7 @@ permissions:
 jobs:
   gradle:
     runs-on: ${{ inputs.runs-on }}
+    timeout-minutes: 40
     steps:
       - name: "Redirect caches to fast D: drive for Windows runners"
         if: runner.os == 'Windows'
@@ -46,6 +52,13 @@ jobs:
         with:
           ref: ${{ inputs.ref }}
           fetch-depth: 0
+
+      - name: Setup minimum JDK for production target checks
+        if: inputs.kmp-target != ''
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
 
       - name: Setup JDK
         uses: actions/setup-java@v4
@@ -78,8 +91,42 @@ jobs:
             kfaker-user-dir-
 
       - name: Run tests
+        if: inputs.kmp-target == ''
         run: ./gradlew ${{ inputs.task }}
         shell: bash
+
+      - name: Select validated Apple environment
+        if: inputs.kmp-target == 'ios'
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.0.1.app
+          test "$(uname -m)" = arm64
+          xcodebuild -version
+          xcrun simctl list runtimes
+
+      - name: Verify migration controls with inert release actions
+        if: inputs.kmp-target != ''
+        run: python3 scripts/test_kmp_controls.py --target '${{ inputs.kmp-target }}'
+
+      - name: Run required production target checks
+        if: inputs.kmp-target != ''
+        shell: bash
+        run: |
+          mkdir -p build/kmp-evidence
+          set -o pipefail
+          ./gradlew ${{ inputs.task }} -PkotlinFaker_enableKotlinJs=true -PkotlinFaker_enableKotlinNative=true --rerun-tasks --no-build-cache --console=plain --stacktrace 2>&1 | tee build/kmp-evidence/tasks.log
+          python3 scripts/verify_kmp_execution.py '${{ inputs.kmp-target }}'
+
+      - name: Retain production execution and coverage evidence
+        if: always() && inputs.kmp-target != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: kmp-${{ inputs.kmp-target }}-${{ github.run_id }}
+          path: |
+            build/kmp-evidence/
+            build/kmp-controls/evidence/
+            **/build/test-results/
+            **/build/reports/kover/
+          if-no-files-found: error
 
       - name: Upload build reports
         if: failure()

@@ -176,7 +176,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 31: Enforce target checks, coverage and publication guards
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Task 26
 - **Size:** M
 - **Can run in parallel with:** —
@@ -189,6 +189,17 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [ ] 31.2 Install the selected coverage measurement before new production behavior, recording instrumentation limits separately from target behavior.
 - [ ] 31.3 Guard direct Maven and NMCP uploads, the root publish wrapper and release/tag entry points through Task 24; preserve project-local staging and prevent tagging after a skipped publish.
 - [ ] 31.4 Test the actual guard configuration with inert upload/tag actions in an isolated build and controlled failing target/coverage cases; dry-run alone is not proof and no real upload/tag is performed.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `28a2aba03457afad5268cc997b24abf9422ca3d4` on `feat/kmp_support`. Task 26 is complete. The current PR aggregator accepts skipped jobs, production target evidence is a separate push workflow, and Maven file staging inherits dev/snapshot filters. Baseline configuration passed in capture `542d3246-76e6-4d81-b529-72eba60521bb`.
+- **2026-11-23 — approach:** Work in bounded slices: publication guard and inert-action integration checks; Kover measurement and shared-source coverage verification; required target workflows and evidence checks. Preserve JVM/provider behavior and API baselines. Enable checks for every module applying the portable convention. Keep the remote gate unconditionally closed; reopening it requires Task 24 completion and a separately authorized release change.
+- **2026-11-23 — verification scope:** Exercise actual configuration with inert uploads/tags, confirm real file staging, and inject controlled test/coverage failures in isolated copies. Reuse the recorded permission to push this feature branch for hosted Apple verification; no remote artifact upload, tag, merge or release is authorized. JVM coverage measures shared handwritten production sources only; browser/iOS execution remains separate evidence.
+- **2026-11-23 — observed:** Production `kmpCoverageCheck` passed with 4,423 tests on each JVM and 1/1 measured common lines (no executable branches), capture `ad16ca5f-e685-4fc4-8e73-22ec7d056afa`. Node/browser, repository API and formatting checks passed in `1207e9db-e740-44f5-b7c1-75ec848ec617`. Evidence-verifier negative checks passed in `c12e38dd-7db3-4a7b-bcf0-37d6102d9db6`.
+- **2026-11-23 — review correction:** The isolated reviewer found that one grouped upload/tag rejection could mask a missing direct-upload predicate. Strengthened the test to check every inventoried rejected path and invoke direct Maven and both NMCP upload types separately. Corrected-source execution and final evidence review remain pending; this finding is not treated as closed from the author edit alone.
+- **2026-11-23 — inherited assertion correction:** Control capture `60b6cde3-a0ba-4a80-ae37-f60316e5d6ed` verified all registered guard paths, skipped-upload/tag, configuration-cache attempts and actual dev/snapshot staging, then stopped on the existing FakerServiceTest assertion rejecting `The Hon. Burton Jacobi`. The English name dictionary permits the two-word prefix and the adjacent recursive-name test already permits four words. Aligned the cross-category author assertion with that data contract; no production data or resolver behavior changed. This failure is retained, not retried unchanged.
+- **2026-11-23 — observed:** Corrected guard capture `830df925-935f-4518-88e2-7969977a711d` passed the three isolated direct uploads, all-path/cache/tag checks and both staging versions. Its coverage-control setup then hit an inherited probabilistic assertion in `RandomClassProviderTest.kt:617` (five generated elements contained no configured `foo`). Negative controls now select common tests, which exercise the measured code; normal production checks still run the full JVM suites. **Deferred owner: Task 9 implementer** — make that collection-choice test deterministic with controlled draws and verify both nullable/custom-generation paths. The failure log remains under `build/kmp-controls/evidence/coverage-4zqli94t/` and in the capture; no retry of the unchanged failing control is claimed as evidence.
+- **2026-11-23 — observed:** Effective GitHub rules for `master` require `Final PR results` and CodeQL (ruleset 4466739); classic branch-protection endpoint returns 404 because enforcement is via a ruleset. The final PR job now requires selected KMP and dictionary-fidelity jobs to succeed. The unchanged master snapshot publishing job intentionally fails closed at the migration guard until Task 24 and a separately authorized release change.
 
 ## Task 5: Integrate dictionary resolution and remove legacy resources
 
