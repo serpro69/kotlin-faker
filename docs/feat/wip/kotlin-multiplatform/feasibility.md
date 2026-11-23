@@ -3,6 +3,7 @@
 Task 1 inventory and toolchain checks, started 2026-11-23 at revision
 `9a3844298b58c45d60e01d39cc72694163fcbdd1`. This is an execution record,
 not approval of the later payload, RNG, regex, publication or migration tasks.
+Task 1 completed on 2026-11-23 after the hosted matrix and independent review passed.
 
 ## Trial configuration
 
@@ -17,13 +18,14 @@ No remote publication task is configured.
 | Producer Kotlin / KGP / kotlin.test | 2.3.21; JVM and Node API tests passed locally. |
 | Gradle | Existing wrapper 8.14.3, inside KGP 2.3.21's supported range. |
 | Compilation / Gradle JDK | Temurin 21; JVM bytecode target 11. |
-| JVM runtime range | 11–21; local 21 passed, 11 pending hosted verification. |
+| JVM runtime range | 11–21; both passed hosted verification. |
 | JSON tree | kotlinx-serialization-json 1.11.0, no serialization compiler plugin. |
 | Dates | kotlinx-datetime 0.8.0 and kotlin.time.Instant; no experimental opt-in. |
 | Common tests | kotlin.test annotations/assertions; JUnit Jupiter 5.11.0 and platform launcher 1.11.0 on JVM; KGP runners on JS/Native. |
 | Build-time inventory | Production versions SnakeYAML 2.2 and ICU4J 77.1. |
-| Apple trial | macos-latest Arm64, explicitly selected Xcode 26.0.1, iOS 26 simulator; execution pending. |
-| Provisional consumer floors | JVM and KMP: Kotlin 2.3.20; JVM and Node API probes passed locally. Apple/browser confirmation remains pending. Real artifact consumption remains Tasks 4/29/21. |
+| Apple trial | macos-latest resolved to macOS 26.7.2, image macos-26-arm64 20261117.0516.1; explicitly selected Xcode 26.0.1 (17A400). Both compiler versions passed simulator execution and device linking. |
+| Provisional consumer floors | JVM and KMP: Kotlin 2.3.20; API probes passed on JVM, browser, Node and iOS simulator. Real artifact consumption remains Tasks 4/29/21. |
+| Minimum resolved stdlib | 2.3.20 for the consumer-floor probe; producer defaults to 2.3.21. Native uses the stdlib bundled with the selected compiler. No forced lower stdlib or metadata bypass. |
 | Language/API settings | Compiler defaults, no metadata-version skip flags. No explicit lowering of producer metadata. |
 
 Kotlin 2.4.21 is newer, but the selected stable 2.3 patch line is sufficient for
@@ -43,6 +45,13 @@ and Node cases without opt-ins or metadata bypasses (capture
 `0eebd6b5-8c36-40fc-b5b1-f422cc14df3b`). Select 2.3.20 as the practical candidate
 floor aligned with serialization's compiler baseline, not a claim that every
 earlier patch/compiler combination has been exhaustively ruled out.
+
+`dependencyInsight --dependency kotlin-stdlib --configuration jvmTestCompileClasspath`
+at `-PprobeKotlinVersion=2.3.20` resolves stdlib **2.3.20**, choosing it over
+datetime's 2.1.20 requirement. Capture `c0bd62dc-db67-42b8-91c8-df5636581407`
+records that dependency graph. The compiler-floor probe did not silently select
+the producer's 2.3.21 stdlib. Keep the compiler and runtime-library requirements
+explicit when building the independent consumers in Tasks 4/29/21.
 
 The optional Intel iOS simulator is not advertised by this trial: the selected
 matrix exercises Arm64 only. Android remains a JVM consumer. There are no desktop
@@ -135,8 +144,8 @@ not enumeration of every random result or a new implementation of generation.
 The extracted corpus has 312 distinct nonliteral syntax representatives. Task 3
 must classify all of them, including grouping/alternation, classes/ranges, escapes,
 repetition and delimiters. Existing public regression examples in
-`FakerServiceTest` include `^AKIA\\S{16}$`, `^\\S{40}$`,
-`^i-0[\\da-f]{16}$` and `^arn:.+:.+:.*:([0-9]{12}):(.+)$`; these add anchors,
+`FakerServiceTest` include `^AKIA\S{16}$`, `^\S{40}$`,
+`^i-0[\da-f]{16}$` and `^arn:.+:.+:.*:([0-9]{12}):(.+)$`; these add anchors,
 non-whitespace classes and unbounded repetition to the compatibility inventory.
 Unsupported public syntax may become an explicit major-release break, but no
 bundled pattern can be silently excluded. This inventory does not implement or
@@ -187,11 +196,11 @@ production generation behavior. It does not install the later production gate.
 | Environment | Required command in the standalone harness | Evidence |
 | --- | --- | --- |
 | JVM 21 | `jvmTest` | 3 tests, zero skipped/failures locally. |
-| JVM 11 | `jvmTest -PprobeTestJdk=11` | Pending hosted verification. |
+| JVM 11 | `jvmTest -PprobeTestJdk=11` | 3 tests passed in hosted run 45205602246. |
 | JS Node | `jsNodeTest` | 3 tests, zero skipped/failures locally. |
-| JS browser | `jsBrowserTest` | Pending hosted Chrome verification. |
-| iOS simulator Arm64 | `iosSimulatorArm64Test` | Pending macOS execution. |
-| iOS device Arm64 | `linkDebugTestIosArm64` | Pending compile/link of the dependency test consumer; physical-device execution is outside scope. |
+| JS browser | `jsBrowserTest` | 3 tests passed for producer 2.3.21 and compiler floor 2.3.20 in hosted run 45205602246. |
+| iOS simulator Arm64 | `iosSimulatorArm64Test` | 3 tests passed with each compiler: floor 2.3.20 in job 137800354478, producer 2.3.21 in successor job 137808660696. |
+| iOS device Arm64 | `linkDebugTestIosArm64` | Dependency test consumer linked with both compilers in those Apple jobs. Physical-device execution is outside scope. |
 
 Local capture `2538e203-fae9-4c53-a0af-fc712caebb48` completed successfully with
 `inventoryInputs jvmTest jsNodeTest`. XML reports independently confirm three
@@ -199,8 +208,43 @@ named tests per runtime. The initial inventory attempt
 `3f65fbfb-e0ae-4fba-b837-38f5d5176e27` failed on the Norwegian key, after which
 the inventory was corrected to report logical and parsed keys separately.
 
+The [hosted run](https://github.com/serpro69/kotlin-faker/actions/runs/45205602246)
+finished **successful** on attempt 2. All five jobs passed: `jvm-web`, `jvm-min`,
+`compiler-floor`, `ios-compiler-floor` and `ios`. Together they execute 27 test
+cases across nine runtime/compiler configurations, with no skipped/failed cases.
+Both Apple jobs also compiled/linked their simulator and device test binaries.
+Producer Apple successor job 137808660696 passed. Its initial job
+137800354997 never obtained a runner, so after checking all other jobs had
+completed, the queued run was cancelled and only that job rescheduled. No failed
+test was retried or dismissed. Attempt 2 retains the successful earlier jobs.
+The first run 45205187415 passed its JVM/web job before being superseded
+and cancelled by the expanded matrix; its overall cancelled status is not a pass.
+
 The dedicated Actions workflow checks named, non-skipped XML cases per requested
 runtime, and retains reports even on failure. No missing/disabled target counts
-as success. Task 1 remains open until its hosted checks and independent review
-complete. Fixture success does not validate production publication hooks, signed
+as success. Both Apple XML reports were downloaded and inspected; the producer
+task log is also retained in capture `90f37c85-5b01-48d4-a0fc-dcfcf714501e`.
+Task 1 verification and final independent review are complete.
+Fixture success does not validate production publication hooks, signed
 uploads or API compatibility of the eventual Faker implementation.
+
+## Independent review
+
+Source review of base `9a3844298b58c45d60e01d39cc72694163fcbdd1` through
+`61c720914` inspected all nine changed files and unchanged regex/resolver/locale
+callers. The isolated code-reviewer reported no substantiated source defect;
+its acceptance verdict was COMMENT while Apple evidence and the explicit stdlib
+declaration were outstanding. The stdlib evidence above addresses the declaration.
+The subsequent evidence review inspected the downloaded Apple-floor XML and
+timestamped task log, confirming three passing tests and both link tasks.
+The final evidence review also inspected the producer Apple XML/log and returned
+**APPROVE**, with no remaining Task 1 findings or evidence requests. Non-Apple
+execution and dependency-resolution results are author-attributed inputs to that
+review; the reviewer did not run tests itself.
+
+External review discovery selected PAL's Claude CLI (Anthropic, initially inferred
+from the shipped client mapping; observed configured model `claude-opus-5-5`).
+Its sole attempt failed before reading source because OAuth had expired and could
+not refresh. No external findings or independent corroboration are claimed.
+Other clients were unavailable; Gemini is retired. The internal reviewer remains
+the only completed source review. There are no systemic findings to index.
