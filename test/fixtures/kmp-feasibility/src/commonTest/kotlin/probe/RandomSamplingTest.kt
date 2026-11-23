@@ -72,7 +72,7 @@ class RandomSamplingTest {
         assertEquals(0, random.nextInt(10))
         assertEquals(5, words.consumed)
 
-        // Large bound: threshold = 2^62 - 3, proving multiple rejections near the signed boundary.
+        // Large non-power-of-two bound: threshold = 2^62 - 3, proving multiple rejections.
         val large = ScriptedWords(listOf(0uL, 4611686018427387900uL, 4611686018427387901uL))
         assertEquals(4611686018427387901L, RandomSampling(large).nextLong(4611686018427387905L))
         assertEquals(3, large.consumed)

@@ -582,6 +582,9 @@ The standalone build uses Gradle's built-in JaCoCo plugin with stable JaCoCo
 [JaCoCo releases](https://www.jacoco.org/jacoco/trunk/doc/changes.html)).
 `randomCoverageVerification` requires 100% JVM line and branch coverage of
 `probe/random/**`; `randomCoverageReport` writes XML/HTML under `build/reports/jacoco/`.
+An explicit prerequisite rejects missing execution data or an empty class tree
+before JaCoCo can skip its report, and a covered-class minimum of two prevents
+an empty measurement from satisfying the percentage limits.
 This measures the two handwritten mechanism classes, excluding generated payload,
 test code and the offline Python oracle. It does not measure JS/Native coverage
 or change Task 31's selected production Kover gate. Target behavior still requires
@@ -599,6 +602,28 @@ Local browser capture `32c47e2f-f7bd-4281-81d6-2ee4a6019088` passed all 19 cases
 without failures/errors/skips, using installed Brave as the Chromium runner.
 Root `spotlessCheck` passed in capture `3aecce10-0063-44e7-a770-423394ef2945`;
 its configured source scope does not include this standalone fixture.
+
+The local compiler-floor run (`-PprobeKotlinVersion=2.3.20`) also passed 20 JVM,
+19 Node and 19 browser cases, with no failures/errors/skips, in capture
+`01f06359-abdf-4b55-8228-d9a452b1607e`. These are producer recompilations at the
+floor, not Task 4's later external-publication consumer checks.
+
+The internal isolated reviewer found no source defects. External Claude review
+(observed model `claude-opus-5-5`) found no sampling defect and suggested two P3
+improvements: reject empty/missing coverage measurements and correct a comment
+describing `2^62` as the signed boundary. Both are addressed. Its first response
+requested hosted evidence and the offline oracle output; final follow-up is
+pending. PAL returned no observable file-read trace (`raw_events_removed_for_normal`),
+so this external review is attributed without claiming verified source receipt
+or independent corroboration. No systemic P0/P1 findings require indexing.
+
+The corrected coverage check passes normally (capture
+`8d5bd698-6f24-4f97-bc37-8b4760717aaf`). Controlled missing-input checks removed
+the build's `.exec` file, then the compiled random class directory, with
+`jvmTest` explicitly excluded. Both attempts failed at `requireRandomCoverageData`
+with the corresponding missing-input diagnostic; original outputs were restored
+(capture `b67543d9-cd12-4cb9-907f-62ee7855549e`). These are intentional negative
+checks, not failed behavioral tests or retries.
 
 The user explicitly authorized pushing the candidate for iOS CI, superseding an
 earlier local-only instruction. Hosted results and final independent review are

@@ -64,6 +64,14 @@ jacoco { toolVersion = "0.8.16" }
 val randomClasses = fileTree(layout.buildDirectory.dir("classes/kotlin/jvm/main")) {
     include("probe/random/**")
 }
+val randomExecutionData = layout.buildDirectory.file("jacoco/jvmTest.exec")
+val requireRandomCoverageData = tasks.register("requireRandomCoverageData") {
+    dependsOn(tasks.named("jvmTest"))
+    doLast {
+        check(randomExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
+        check(!randomClasses.isEmpty) { "Missing compiled random mechanism classes" }
+    }
+}
 val randomCoverageReport = tasks.register<JacocoReport>("randomCoverageReport") {
     reports {
         xml.required.set(true)
@@ -74,6 +82,11 @@ tasks.register<JacocoCoverageVerification>("randomCoverageVerification") {
     dependsOn(randomCoverageReport)
     violationRules {
         rule {
+            limit {
+                counter = "CLASS"
+                value = "COVEREDCOUNT"
+                minimum = "2".toBigDecimal()
+            }
             for (metric in listOf("LINE", "BRANCH")) {
                 limit {
                     counter = metric
@@ -84,8 +97,8 @@ tasks.register<JacocoCoverageVerification>("randomCoverageVerification") {
     }
 }
 tasks.withType<JacocoReportBase>().configureEach {
-    dependsOn(tasks.named("jvmTest"))
-    executionData(layout.buildDirectory.file("jacoco/jvmTest.exec"))
+    dependsOn(requireRandomCoverageData)
+    executionData(randomExecutionData)
     classDirectories.setFrom(randomClasses)
     sourceDirectories.setFrom(files("src/commonMain/kotlin"))
 }
