@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Task 1 is complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Task 1 is complete; Task 2 is in progress and subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -45,7 +45,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 2: Prove the full embedded payload and lazy decoding
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Task 1
 - **Size:** M
 - **Can run in parallel with:** Task 25
@@ -58,6 +58,12 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [ ] 2.2 Keep providers, expressions, uniqueness and random generators out of this payload task.
 - [ ] 2.3 Verify every source value survives projection; compile/access the full payload on all targets and prove one category lookup does not parse unrelated categories of a locale-wide file.
 - [ ] 2.4 Record generated-source/artifact sizes, decoded-category counts and compilation costs in `feasibility.md`.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `ae5373ab90129e0c8ddb5d5660b71ca4e931f7cf` on `feat/kmp_support`. Task 1 is complete. Scope is the existing standalone harness, its CI checks and evidence; no production provider/resolver/RNG or publication code is introduced.
+- **2026-11-23 — selected:** Preserve the current SnakeYAML/Jackson conversion in this probe, including the `no.yml` parsed root key `false` and the Spanish Boolean scalar. Retain logical file locale separately in the manifest and prove exact document reconstruction; do not edit YAML or silently coerce values. Task 5 must explicitly decide any behavior correction before resolver integration.
+- **2026-11-23 — approach:** Two ordered slices keep the work bounded: (1) generator, manifest/accessor and build wiring; (2) full-source/shared tests, workflow measurements and evidence. Generate bounded string suppliers under build outputs, with independent source/category decoding and explicit locale/source overlay metadata.
 
 ## Task 25: Prove seeded generation and sampling independently
 

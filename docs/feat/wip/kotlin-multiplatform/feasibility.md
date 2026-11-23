@@ -100,6 +100,14 @@ embedding, characterize these entries with the production conversion, choose and
 document a scoped correction or preservation policy, and prove every source
 value is accounted for. Silent coercion or dropped locales is not acceptable.
 
+**Task 2 disposition:** Preserve both results exactly in this probe. The generator
+uses the same SnakeYAML 2.2 → Jackson 2.21.1 conversion before partitioning; its
+manifest records `no.yml`'s logical locale `no` and parsed root key `false`
+separately. Full-document reconstruction and explicit shared assertions verify
+the Boolean scalar and parsed root. No YAML was edited. **Owner: Task 5
+implementer**, decide and document any resolver-facing correction before production
+integration; do not mistake successful storage of these values for a data fix.
+
 ## Resolver and resource boundaries
 
 The source baseline is `FakerService.kt` and its existing `FakerServiceTest.kt`:
@@ -248,3 +256,57 @@ Its sole attempt failed before reading source because OAuth had expired and coul
 not refresh. No external findings or independent corroboration are claimed.
 Other clients were unavailable; Gemini is retired. The internal reviewer remains
 the only completed source review. There are no systemic findings to index.
+
+## Task 2: complete embedded payload
+
+Implementation is in progress from `ae5373ab90129e0c8ddb5d5660b71ca4e931f7cf`.
+The preferred chunked-JSON representation is being measured in the existing
+standalone harness. No production data provider or resolver is copied here.
+
+`payload.gradle.kts` expands YAML aliases using the production loader, performs
+the production JSON conversion, orders object keys lexically and partitions
+each source into its individual faker categories. Non-faker root metadata is
+retained in a separate projection. Arrays and scalar kinds are unchanged.
+The generated manifest retains source paths, logical locales, parsed root keys,
+resource names, locale layers (`en`, base, exact) and file precedence
+(locale-wide, primary resource, secondary resource). It records ordering inputs;
+it does not perform fallback merging or expression resolution.
+
+Each projection has its own supplier file; string chunks are bounded to 8,000
+UTF-16 units and 24,000 modified-UTF-8 bytes, preserving surrogate pairs. Separate
+literal-returning methods and append calls prevent giant folded constants.
+Manifest factory groups contain at most 32 entries. Only Kotlin sources under
+`build/generated/payload/commonMain/` are compiled; no YAML/JSON resource copies
+or runtime network/asset setup are added.
+
+Initial generation produced 666 projections from all 326 files/59 locales,
+1,020 literal chunks, 4,265,767 UTF-8 JSON bytes and 5,104,345 generated Kotlin
+source bytes. Largest observed chunk: 8,000 UTF-16 units / 13,941 modified-UTF-8
+bytes. These are generation measurements, not published package sizes.
+The local JVM/Node run passed (capture
+`4764ee75-f998-41ac-bda1-bd4cfdc604ef`): 9 JVM cases, including complete original
+document reconstruction, and 8 Node cases. Both enumerated all 666 projections.
+Browser/Apple compilation, final artifact/resource measurements and review are
+pending. The first build-script compile attempt
+`5a41a0d8-b8b9-4908-bfda-d2326793a36c` failed on ambiguous Kotlin `sumOf`
+overloads; an explicitly typed integer fold fixed the generator before execution.
+
+Verification uses two independent comparisons: common tests round-trip every
+compiled projection and assert canonical object ordering on every target; a JVM
+test reads every original YAML document independently and compares the entire
+converted JSON tree with one reconstructed from compiled projections. Dedicated
+shared cases exercise a single German category without decoding sibling
+categories, repeated access, distinct source identities, missing projection
+failure, Ukrainian aliases, the two Boolean quirks, English time metadata and
+the large Japanese address projection. Full corpus enumeration is a verification
+pass; ordinary category access remains lazy.
+
+### Migration follow-up: IBAN object order
+
+Canonical ordering places `bban_pattern` before `length`, while current
+`Bank.ibanDetails` extracts the last field from a stringified map. Values survive
+unchanged, but blindly retaining that parsing would select the length instead
+of the pattern. **Owner: Task 15 implementer, coordinated with Tasks 5/8.** Read
+the named `bban_pattern` entry through the common resolver and test all IBAN
+patterns; do not rely on map rendering order. This is deferred because Task 2
+contains no bank provider/resolver and changes no production behavior.

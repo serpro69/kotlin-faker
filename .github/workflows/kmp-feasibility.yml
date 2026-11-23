@@ -2,7 +2,7 @@ name: KMP feasibility
 
 on:
   push:
-    branches: [codex/kmp-task1-feasibility]
+    branches: [codex/kmp-task1-feasibility, feat/kmp_support]
     paths:
       - 'test/fixtures/kmp-feasibility/**'
       - '.github/workflows/kmp-feasibility.yml'
@@ -64,8 +64,20 @@ jobs:
           xcodebuild -version
           xcrun simctl list devices available
           xcrun simctl list runtimes
-      - name: Run isolated dependency and discovery checks
-        run: ./gradlew -p test/fixtures/kmp-feasibility ${{ matrix.tasks }} --console=plain --stacktrace
+      - name: Run isolated payload and dependency checks
+        run: |
+          mkdir -p test/fixtures/kmp-feasibility/build/measurements
+          probe_time_flags=(-v)
+          if [[ "$RUNNER_OS" == macOS ]]; then probe_time_flags=(-l); fi
+          if /usr/bin/time "${probe_time_flags[@]}" ./gradlew -p test/fixtures/kmp-feasibility ${{ matrix.tasks }} --no-daemon --profile --console=plain --stacktrace 2> test/fixtures/kmp-feasibility/build/measurements/build-time.txt; then
+            cat test/fixtures/kmp-feasibility/build/measurements/build-time.txt
+          else
+            probe_exit=$?
+            cat test/fixtures/kmp-feasibility/build/measurements/build-time.txt
+            exit "$probe_exit"
+          fi
+      - name: Measure compiled payload artifacts
+        run: ./gradlew -p test/fixtures/kmp-feasibility measurePayloadArtifacts --no-daemon --console=plain
       - name: Require executed common tests in every requested runtime
         env:
           PROBE_REPORTS: ${{ matrix.reports }}
@@ -79,12 +91,19 @@ jobs:
               'jsonTreePreservesUnicodeOrderAndScalarKinds',
               'dateAndInstantApisPreserveLeapDayAndFixedOffset',
               'invalidInputsFailInsteadOfBeingSilentlyAdjusted',
+              'everyProjectionRoundTripsOnThisTarget',
+              'categoryAccessDecodesOnlyTheRequestedProjection',
+              'aliasesAndExistingBooleanCoercionsArePreserved',
+              'sourceIdentityOverlayOrderAndLocaleMetadataAreRetained',
+              'japaneseAddressUsesMultipleChunksAndPreservesUnicode',
           }
           for task in os.environ['PROBE_REPORTS'].split():
               cases = [case for path in (root / task).glob('TEST-*.xml')
                        for case in ET.parse(path).iter('testcase')]
               names = {case.attrib['name'].split('[')[0].removesuffix('()') for case in cases}
               assert expected <= names, (task, 'missing common tests', names)
+              if task == 'jvmTest':
+                  assert 'everyCompiledSourceReconstructsTheOriginalProductionConversion' in names
               assert all(case.find('skipped') is None and case.find('failure') is None
                          and case.find('error') is None for case in cases), task
               print(task, 'executed', len(cases), 'tests')
@@ -97,4 +116,7 @@ jobs:
             test/fixtures/kmp-feasibility/build/test-results/
             test/fixtures/kmp-feasibility/build/reports/
             test/fixtures/kmp-feasibility/build/inventory/
+            test/fixtures/kmp-feasibility/build/generated/payload/manifest.json
+            test/fixtures/kmp-feasibility/build/payload-artifacts.tsv
+            test/fixtures/kmp-feasibility/build/measurements/
           if-no-files-found: error
