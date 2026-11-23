@@ -1,14 +1,15 @@
 # KMP feasibility evidence
 
-Execution evidence for Tasks 1 and 2, started 2026-11-23 at revision
-`9a3844298b58c45d60e01d39cc72694163fcbdd1`. Both tasks completed on 2026-11-23
-after their hosted matrices and independent reviews passed. This does not approve
-the later RNG, regex, publication or production migration tasks. The separate
-inherited repository-check failure is recorded at the end; scoped feasibility
-completion does not establish PR merge readiness.
+Execution evidence for completed Tasks 1–3 and 25. Work began on 2026-11-23 at
+`9a3844298b58c45d60e01d39cc72694163fcbdd1`; each section records its own candidate
+and verification. All four tasks completed after their hosted matrices and
+independent reviews passed. The publication probe and production migration remain
+pending. The separately recorded inherited repository-check failure still limits
+whole-PR readiness.
 
-Task 25's candidate sampling specification and current evidence are recorded
-[below](#task-25-controlled-seeded-operations); its execution status is in tasks.md.
+Detailed [sampling](#task-25-controlled-seeded-operations) and
+[regex](#task-3-portable-regex-generation) specifications/evidence appear below;
+execution status is tracked in tasks.md.
 
 ## Trial configuration
 
@@ -703,7 +704,7 @@ is not claimed to be uniform over all matching strings.
 
 Parsing and validation finish before any random draw, including invalid syntax
 in an alternative that might not be selected. Diagnostics report the UTF-16
-start offset of the offending token, range, bound, sequence or repetition and a
+start offset of the offending token, range, bound, sequence or repetition operator and a
 reason. Unclosed delimiters refer to their opener; a missing count refers to its
 expected start; an oversized whole pattern refers to position zero. AST nodes
 retain their start so expansion-work errors identify the offending subtree.
@@ -867,6 +868,39 @@ change and an unsupported pattern that cannot pass by skipping its target job.
 This does not weaken the current complete-corpus comparison or claim production
 CI enforcement is already installed.
 
-Final correction target execution and independent evidence review are pending.
-No bundled construct has been dropped or silently approximated, and no production
-migration is included.
+**Optional test hardening — owner: Task 8 implementer.** The shorthand tests pin
+each alphabet's endpoints; the code and documentation specify the complete order,
+but interior permutations of the non-corpus `\w` / `\s` alphabets are not directly
+pinned. Before production promotion, add scripted indexes `0..n-1` and compare
+the full documented alphabets. This was a nonblocking external-review suggestion;
+no output defect or current acceptance gap was identified, and the ordering
+contract has not been relaxed.
+
+Final correction [run 45231592739](https://github.com/serpro69/kotlin-faker/actions/runs/45231592739)
+passed all five jobs at `d53cfaae56ffd98a265265b7950049e6ac6d2ce6`, again with
+258 non-skipped cases and all 81 common regex-test executions. The strengthened
+diagnostic/limit/order/literal/inventory checks ran on every applicable target.
+Both device links passed (producer job 137892268568, compiler-floor job
+137892269183). Downloaded XML, both Apple logs and hosted coverage confirm the
+same final 168/168 regex lines, 197/197 branches and 1,465/1,465 instructions;
+random coverage remains unchanged. No failing hosted test was retried.
+
+Final internal review approved the corrected source and all target evidence.
+External review also approved Task 3, closed all original findings/evidence
+requests, and left only the optional alphabet test hardening above; its wording
+nit was clarified to “repetition operator.” No blocking finding remains, and no
+systemic P0/P1 finding requires indexing.
+
+The isolated workflow used the internal code-reviewer plus PAL `clink` with
+Claude (observed model `claude-opus-5-5`). No API review provider was configured;
+Claude was the eligible external CLI, other clients were unavailable/retired and
+the authoring OpenAI provider was excluded. External native file-read receipt
+was not exposed (`raw_events_removed_for_normal`), and some shell inspections
+were denied. Its findings/approval are attributed without claiming independently
+verified complete receipt or corroboration. It reported checking five snapshot
+hashes; the full provenance verification is author-attributed. Internal review
+inspected the supplied source, XML and logs without claiming to execute tests.
+
+This closes Task 3's scoped acceptance. No bundled construct has been dropped or
+silently approximated. Production integration, publication, whole-PR readiness
+and the separately tracked commerce assertion remain outside this approval.

@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Tasks 1, 2 and 25 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Tasks 1–3 and 25 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -95,7 +95,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 3: Prove the portable regex generation grammar
 
-- **Status:** in-progress
+- **Status:** done
 - **Depends on:** Tasks 1, 25
 - **Size:** M
 - **Can run in parallel with:** Task 2
@@ -107,7 +107,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [x] 3.1 Use the actual post-preprocessing corpus and proven seeded stream to specify/implement the candidate regex parser and generator.
 - [x] 3.2 Do not add address fallback, book providers or uniqueness; those are production behavior.
 - [x] 3.3 Classify/support every bundled generation pattern and reject unsupported syntax before consuming randomness.
-- [ ] 3.4 Run semantic matching invariants and equal seeded generation cases on all targets; record unresolved constructs as feasibility blockers.
+- [x] 3.4 Run semantic matching invariants and equal seeded generation cases on all targets; record unresolved constructs as feasibility blockers.
 
 ### Execution context
 
@@ -118,6 +118,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - **2026-11-23 — observed:** Final local capture `70fc55c9-6b10-483c-a32e-951010f9139d` passed 30 JVM, 28 Node and 28 browser cases plus both coverage gates. Regex measurement is 165/165 lines, 197/197 branches, 1,444/1,444 instructions; random measurement remains 46/46 lines and 32/32 branches. The parser also rejects excessive expansion work from nested empty repetitions before any draw. Hosted matrix and independent review remain pending.
 - **2026-11-23 — observed:** [Run 45228848073](https://github.com/serpro69/kotlin-faker/actions/runs/45228848073) passed all five jobs at `95f89b358e930d1f918f01cc876eac0ffc773389`, with 258 non-skipped cases across nine configurations, both device links, complete corpus matching/equality and both 100% JVM coverage gates. Downloaded XML and Apple logs confirm the result. Final independent evidence review is pending.
 - **2026-11-23 — review corrections:** External P3 feedback led to explicit construct-start diagnostics, reason-specific/isolated limit checks, no-draw verification for every literal, deterministic shorthand endpoint checks and inventory uniqueness assertions. Local correction verification passed all 86 cases plus 100% coverage (regex 168/168 lines, 197/197 branches). The requested construct audit and inherited production-promotion follow-up are recorded in feasibility.md; final corrected-source target checks and review remain pending.
+- **2026-11-23 — complete:** Final correction [run 45231592739](https://github.com/serpro69/kotlin-faker/actions/runs/45231592739) passed all five jobs at `d53cfaae56ffd98a265265b7950049e6ac6d2ce6`, with 258 successful cases, both device links and complete measured coverage. The nine common regex cases, strengthened within their existing test methods, ran in all nine configurations. Both independent reviewers approved the corrected source and evidence; no acceptance blocker or evidence request remains. Optional production-promotion test hardening is recorded with Task 8 / Task 31 owners in feasibility.md. Task 3 is complete; stop here per the user's requested scope, leaving Task 4 pending.
 
 ## Task 4: Consume one minimal probe artifact and decide feasibility
 
