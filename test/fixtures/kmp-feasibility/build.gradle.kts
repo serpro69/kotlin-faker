@@ -20,6 +20,9 @@ kotlin {
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
             systemProperty("payload.sourceRoot", file("../../../core/src/jvmMain/resources/locales").absolutePath)
+            systemProperty("regex.inventory", layout.buildDirectory.file("inventory/regex-inputs.tsv").get().asFile.absolutePath)
+            dependsOn("inventoryInputs")
+            inputs.file(layout.buildDirectory.file("inventory/regex-inputs.tsv"))
             inputs.dir(file("../../../core/src/jvmMain/resources/locales"))
             javaLauncher.set(javaToolchains.launcherFor {
                 languageVersion.set(JavaLanguageVersion.of(
@@ -96,10 +99,51 @@ tasks.register<JacocoCoverageVerification>("randomCoverageVerification") {
         }
     }
 }
-tasks.withType<JacocoReportBase>().configureEach {
+tasks.withType<JacocoReportBase>().matching { it.name.startsWith("randomCoverage") }.configureEach {
     dependsOn(requireRandomCoverageData)
     executionData(randomExecutionData)
     classDirectories.setFrom(randomClasses)
+    sourceDirectories.setFrom(files("src/commonMain/kotlin"))
+}
+
+val regexClasses = fileTree(layout.buildDirectory.dir("classes/kotlin/jvm/main")) {
+    include("probe/regex/**")
+}
+val requireRegexCoverageData = tasks.register("requireRegexCoverageData") {
+    dependsOn(tasks.named("jvmTest"))
+    doLast {
+        check(randomExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
+        check(!regexClasses.isEmpty) { "Missing compiled regex mechanism classes" }
+    }
+}
+val regexCoverageReport = tasks.register<JacocoReport>("regexCoverageReport") {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+tasks.register<JacocoCoverageVerification>("regexCoverageVerification") {
+    dependsOn(regexCoverageReport)
+    violationRules {
+        rule {
+            limit {
+                counter = "CLASS"
+                value = "COVEREDCOUNT"
+                minimum = "9".toBigDecimal()
+            }
+            for (metric in listOf("LINE", "BRANCH")) {
+                limit {
+                    counter = metric
+                    minimum = "1.0".toBigDecimal()
+                }
+            }
+        }
+    }
+}
+tasks.withType<JacocoReportBase>().matching { it.name.startsWith("regexCoverage") }.configureEach {
+    dependsOn(requireRegexCoverageData)
+    executionData(randomExecutionData)
+    classDirectories.setFrom(regexClasses)
     sourceDirectories.setFrom(files("src/commonMain/kotlin"))
 }
 

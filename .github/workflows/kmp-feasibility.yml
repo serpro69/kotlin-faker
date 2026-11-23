@@ -64,7 +64,7 @@ jobs:
           xcodebuild -version
           xcrun simctl list devices available
           xcrun simctl list runtimes
-      - name: Run isolated payload, random and dependency checks
+      - name: Run isolated payload, random, regex and dependency checks
         run: |
           mkdir -p test/fixtures/kmp-feasibility/build/measurements
           probe_time_flags=(-v)
@@ -78,9 +78,9 @@ jobs:
           fi
       - name: Measure compiled payload artifacts
         run: ./gradlew -p test/fixtures/kmp-feasibility measurePayloadArtifacts --no-daemon --console=plain
-      - name: Require complete JVM line and branch coverage for the random mechanism
+      - name: Require complete JVM line and branch coverage for the mechanisms
         if: matrix.name == 'jvm-web'
-        run: ./gradlew -p test/fixtures/kmp-feasibility randomCoverageVerification --no-daemon --console=plain
+        run: ./gradlew -p test/fixtures/kmp-feasibility randomCoverageVerification regexCoverageVerification --no-daemon --console=plain
       - name: Require executed common tests in every requested runtime
         env:
           PROBE_REPORTS: ${{ matrix.reports }}
@@ -110,6 +110,15 @@ jobs:
               'invalidArgumentsFailBeforeConsumingRandomness',
               'seededSamplingSatisfiesRangeAndPermutationInvariants',
               'sameSeedInstancesKeepIndependentState',
+              'seededRegexResultsMatchIndependentReference',
+              'supportedGrammarProducesIndependentRegexMatches',
+              'parsingAndLiteralNodesDoNotConsumeRandomness',
+              'choicesRepetitionAndClassOrderHaveSpecifiedConsumption',
+              'repetitionAndAlphabetBoundsAreInclusive',
+              'unsupportedOrMalformedPatternsFailBeforeAnyDraw',
+              'parserAndOutputLimitsFailBeforeAnyDraw',
+              'everyBundledRegexPatternIsClassifiedAndGeneratesMatchingValues',
+              'cryptographyLengthsAndPreprocessingLiteralsArePreserved',
           }
           for task in os.environ['PROBE_REPORTS'].split():
               cases = [case for path in (root / task).glob('TEST-*.xml')
@@ -118,6 +127,7 @@ jobs:
               assert expected <= names, (task, 'missing common tests', names)
               if task == 'jvmTest':
                   assert 'everyCompiledSourceReconstructsTheOriginalProductionConversion' in names
+                  assert 'commonCorpusMatchesEveryTaskOneInventoryOccurrence' in names
               assert all(case.find('skipped') is None and case.find('failure') is None
                          and case.find('error') is None for case in cases), task
               print(task, 'executed', len(cases), 'tests')

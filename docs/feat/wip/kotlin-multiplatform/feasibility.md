@@ -664,3 +664,122 @@ No job-duration claim relies on metadata timestamps. No outstanding Task 25
 finding remains. Production migration, external artifact consumption, full PR
 readiness and the inherited commerce assertion are outside this approval.
 No merge, production publication or release is authorized by this probe.
+
+## Task 3: portable regex generation
+
+Task 3's candidate grammar is fixed before implementation. It consumes the Task 1
+post-preprocessing patterns and the proven Task 25 stream. These are internal
+mechanism APIs; production `regexify`, preprocessing and Regex-overload options
+remain assigned to Task 8.
+
+### Grammar and random consumption
+
+- Literals (including Unicode scalar values and `/`), concatenation, `(...)`,
+  `(?:...)`, and `|` alternatives. Empty patterns/groups/alternatives are allowed.
+- Character classes with ordered literals and ascending BMP ranges; a leading
+  `^` complements the class within printable ASCII (`U+0020..U+007E`). Nested
+  classes/intersections and supplementary code points inside classes are rejected.
+  Each class is limited to 256 distinct characters to bound expanded alphabets.
+- Escaped metacharacters and `\d`, `\D`, `\w`, `\W`, `\s`, `\S`, plus
+  `\t`, `\n`, `\r`, `\f`, `\v`. Escaped hyphens are accepted only inside classes.
+  Digit/word classes use ASCII; word order is
+  digits, uppercase letters, lowercase letters, underscore. Whitespace order is
+  tab, newline, vertical tab, form feed, carriage return, space. Complement shorthands
+  and dot select from printable ASCII, retaining only matching characters.
+- Optional root-leading `^` and root-trailing `$` assertions. Other anchor
+  positions, lookarounds, backreferences, flags, named/atomic groups, Unicode
+  property/hex/octal escapes and unknown escapes are rejected explicitly.
+- Repetition `?`, `{n}`, `{n,m}`, `*` and `+`. The unbounded forms use a fixed
+  maximum of **16** repetitions. Open brace bounds (`{n,}`), lazy and possessive
+  suffixes are unsupported. Counts are nonnegative decimal integers with
+  `n <= m`; an empty generation alphabet is rejected.
+
+Literal/group/concatenation/anchor nodes consume no random words themselves.
+An alternative with multiple branches consumes one bounded index; each character
+class consumes one index, even for a singleton. Variable repetition consumes one
+inclusive count before generating its body left-to-right; fixed repetition draws
+no count. Class duplicates are removed while preserving source order. Generation
+is not claimed to be uniform over all matching strings.
+
+Parsing and validation finish before any random draw, including invalid syntax
+in an alternative that might not be selected. Diagnostics report the UTF-16
+pattern position and reason. The candidate limits patterns to 16,384 UTF-16
+units, nested groups to 64, maximum generated output to 4,096 UTF-16 units and
+generation work to 65,536 AST node visits. Limits apply to every parsed subtree,
+including subtrees inside zero-count repetitions. The work limit also bounds
+nested repetitions of empty groups, whose output-length bound alone is zero.
+Oversized counts/expansions fail before random consumption. These explicit
+limits bound parser recursion and output, and do not exclude any inventoried
+bundled pattern. Supplementary literal pairs are treated as a single atom.
+
+### Corpus and independent checks
+
+`RegexCorpusTest` reads the already verified embedded projections and retains
+source/key/input/transformed-pattern tuples. It applies only Task 1's documented
+syntax preprocessing: skip address values containing `#`; replace finance `#`
+with `0`; replace vehicle `#`/`?` with `0`/`A`; take the named bank BBAN field.
+The generator itself has no payload/provider dependency. The JVM comparison
+checks every tuple against the independently produced Task 1 YAML inventory,
+without dropping duplicates or relying only on counts or fingerprints.
+
+All **122,923 occurrences** are accounted for: **122,872 distinct patterns**,
+including **312 syntax patterns** and **122,560 literals**. Every distinct literal
+is parsed/generated and compared exactly; each syntax pattern is generated for
+seeds `0`, `1`, `-1` and checked against a separately compiled Kotlin Regex.
+The 936 syntax outputs also have a fixed length-prefixed UTF-16 FNV-1a fingerprint,
+`61af7582c14d505d`, recorded from the JVM semantic run and matched on Node.
+This fingerprint checks cross-target equality; it is not an independent semantic
+oracle. Separate tests cover all six cryptography lengths and the four existing
+FakerService regression patterns. Slash delimiters and finance `L` remain literals.
+
+Independent fixed generation vectors are reproducible with:
+
+```sh
+python3 test/fixtures/kmp-feasibility/regex_reference.py
+```
+
+That script expands five named patterns' choices directly using the Task 25
+arbitrary-precision oracle, without importing any regex parser or Kotlin code.
+It covers alternation, classes, fixed/variable/optional/unbounded repetitions,
+negation, `\S`, dot, Unicode literals and the subsequent raw word for six seeds.
+The expectations are fixed in `PortableRegexTest`, not regenerated by Gradle.
+The initial standalone derivation is capture `c2234f9e-138a-42cd-b362-0b851d7748d0`;
+the committed script's matching output is capture `ab8d0a1e-0641-4852-857e-9b7d8d48f710`.
+AKIA-prefixed examples are artificial test strings, not credentials.
+
+The matching oracle wraps each complete pattern in `^(?:pattern)$` before calling
+`matches`. Initial capture `49fec876-d7e4-4eaf-82a3-9f07be699b8b` found that the
+compiled Kotlin 2.3.21 JS matcher checks the extent of the first unanchored native
+match: `(|a)()` chose the empty alternative and rejected `a` despite its valid
+full match. Explicit anchors make the engine backtrack to the complete match.
+The generator and the empty-alternative requirement were preserved.
+
+### Verification and coverage
+
+Use the existing five-job matrix, with the new named common regex cases required
+in each runtime and the complete inventory comparison required in each JVM job.
+`regexCoverageVerification` measures the handwritten parser/AST/generator package,
+requiring 100% JVM line/branch coverage, at least nine covered classes, and
+nonempty execution data/class files. `randomCoverageVerification` remains separate.
+These measurements exclude fixture/test code and do not measure JS or Native.
+
+Initial measured coverage exposed JaCoCo's exception-flow limitation around a
+helper returning `Nothing`: caught exceptions did not mark some helper call sites.
+Error branches now explicitly throw constructed diagnostics. The implementation
+also removes an unreachable closing-bracket check and computes alternative
+maximum length directly rather than inlining a collection operation's unreachable
+empty-input path. No test was removed or threshold relaxed. Captures
+`3c8f661c-8e0f-4f84-9d99-d903410549d9` and `d0b7e554-ee13-4f7f-ab61-cdd0c2a174b8`
+retain those intermediate coverage failures; behavioral checks passed.
+
+Local capture `70fc55c9-6b10-483c-a32e-951010f9139d` passed 30 JVM, 28 Node and
+28 browser cases and both coverage gates. The regex report contains 165/165
+lines, 197/197 branches, 1,444/1,444 instructions and ten covered classes; random
+coverage remains unchanged at 100%. These are JVM measurements alongside
+separate JS behavioral execution. No root build configuration changed; Task 25's
+root Spotless result applies to its unchanged configured source scope, which
+excludes this standalone fixture.
+
+Final hosted target execution and independent review are pending. No bundled
+construct has been dropped or silently approximated, and no production migration
+is included.

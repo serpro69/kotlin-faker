@@ -95,7 +95,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 3: Prove the portable regex generation grammar
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Tasks 1, 25
 - **Size:** M
 - **Can run in parallel with:** Task 2
@@ -104,10 +104,18 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ### Subtasks
 
-- [ ] 3.1 Use the actual post-preprocessing corpus and proven seeded stream to specify/implement the candidate regex parser and generator.
-- [ ] 3.2 Do not add address fallback, book providers or uniqueness; those are production behavior.
-- [ ] 3.3 Classify/support every bundled generation pattern and reject unsupported syntax before consuming randomness.
+- [x] 3.1 Use the actual post-preprocessing corpus and proven seeded stream to specify/implement the candidate regex parser and generator.
+- [x] 3.2 Do not add address fallback, book providers or uniqueness; those are production behavior.
+- [x] 3.3 Classify/support every bundled generation pattern and reject unsupported syntax before consuming randomness.
 - [ ] 3.4 Run semantic matching invariants and equal seeded generation cases on all targets; record unresolved constructs as feasibility blockers.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `121a30e1c` after Task 25's completed target matrix and independent reviews. User explicitly requested this one additional task and then a stop. Scope remains the standalone harness, its corpus tests, coverage/workflow wiring and evidence; production preprocessing/provider behavior is unchanged.
+- **2026-11-23 — observed:** Task 1 inventory has 122,923 occurrences / 122,872 distinct patterns: 312 distinct syntax patterns and 122,560 distinct literals. The four existing FakerService regex regressions add anchors, dot, `\S`, `*` and `+`; cryptography adds six fixed hexadecimal lengths. Slashes and finance `L` are literal input characters, as recorded in the inventory.
+- **2026-11-23 — approach:** First implement the bounded parser/AST and generator with focused semantic/seeded tests and an offline reference script (four substantive files). Then add common full-corpus and JVM inventory-comparison tests plus build/workflow wiring (four files). Reuse Task 2's embedded projections for test inputs and Task 25's sampler for generation; introduce no provider, resolver or new runtime dependency.
+- **2026-11-23 — observed:** Focused JVM grammar checks passed (`067e1ea0-ed27-48b0-802b-c452385fb3b8`). The first full run (`49fec876-d7e4-4eaf-82a3-9f07be699b8b`) passed all 30 JVM tests and the full Node corpus, but Node's matcher rejected `a` for `(|a)()`. Inspection of the compiled Kotlin 2.3.21 JS stdlib showed `matches` checks the first unanchored `RegExp.exec` match's extent. The independent matcher now wraps the entire pattern in explicit anchors, requiring backtracking to a complete match. Generator behavior and the empty-alternative requirement are unchanged; both targets already produced corpus fingerprint `61af7582c14d505d`.
+- **2026-11-23 — observed:** Final local capture `70fc55c9-6b10-483c-a32e-951010f9139d` passed 30 JVM, 28 Node and 28 browser cases plus both coverage gates. Regex measurement is 165/165 lines, 197/197 branches, 1,444/1,444 instructions; random measurement remains 46/46 lines and 32/32 branches. The parser also rejects excessive expansion work from nested empty repetitions before any draw. Hosted matrix and independent review remain pending.
 
 ## Task 4: Consume one minimal probe artifact and decide feasibility
 
