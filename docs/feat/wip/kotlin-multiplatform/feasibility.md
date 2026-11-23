@@ -611,9 +611,10 @@ floor, not Task 4's later external-publication consumer checks.
 The internal isolated reviewer found no source defects. External Claude review
 (observed model `claude-opus-5-5`) found no sampling defect and suggested two P3
 improvements: reject empty/missing coverage measurements and correct a comment
-describing `2^62` as the signed boundary. Both are addressed. Its first response
-requested hosted evidence and the offline oracle output; final follow-up is
-pending. PAL returned no observable file-read trace (`raw_events_removed_for_normal`),
+describing `2^62` as the signed boundary. Both are addressed and both reviewers
+accepted the source corrections. The external reviewer checked the recovered
+oracle output against all fixed vectors; only hosted evidence remained open.
+PAL returned no observable file-read trace (`raw_events_removed_for_normal`),
 so this external review is attributed without claiming verified source receipt
 or independent corroboration. No systemic P0/P1 findings require indexing.
 
@@ -625,8 +626,41 @@ with the corresponding missing-input diagnostic; original outputs were restored
 (capture `b67543d9-cd12-4cb9-907f-62ee7855549e`). These are intentional negative
 checks, not failed behavioral tests or retries.
 
-The user explicitly authorized pushing the candidate for iOS CI, superseding an
-earlier local-only instruction. Hosted results and final independent review are
-pending; Task 25 remains open until its JVM 11/iOS simulator execution and device
-link evidence is recorded. No merge, production publication or release is
-authorized by this probe.
+### Hosted Task 25 evidence
+
+[Run 45223240006](https://github.com/serpro69/kotlin-faker/actions/runs/45223240006)
+passed all five jobs at `15f72144f61898aeb680161b40167035550e4800`:
+
+| Job | Executed cases | Additional evidence |
+| --- | ---: | --- |
+| `jvm-web` | JVM 20, Node 19, browser 19 | Coverage verification passed: 46/46 lines, 32/32 branches, 359/359 instructions, two executable classes. |
+| `jvm-min` | JVM 11: 20 | All eleven random tests executed. |
+| `compiler-floor` | JVM 20, Node 19, browser 19 | Kotlin 2.3.20. |
+| `ios` | Simulator: 19 | Kotlin 2.3.21; device test consumer linked in job 137863028760. |
+| `ios-compiler-floor` | Simulator: 19 | Kotlin 2.3.20; device test consumer linked in job 137863027456. |
+
+The downloaded XML totals **174 cases**, including all eleven random tests in
+each of nine runtime/compiler configurations (**99 random-test executions**),
+with zero failures/errors/skips. Both Apple job logs record the candidate SHA,
+the simulator task and successful `linkDebugTestIosArm64`; physical-device
+execution remains outside the agreed matrix. Existing payload/toolchain cases
+also passed. Test reports and coverage XML are retained for GitHub's configured
+artifact retention period; the counts and revision above are the durable record.
+
+Earlier run 45222552566 was initially absent from GitHub's listing, so a manual
+dispatch created 45222731919 and concurrency cancelled the original. The review
+correction push then superseded 45222731919. Neither cancelled run is counted as
+passing; no behavioral failure was retried. The final run above passed without
+reruns, including the initially queued lower-compiler Apple job.
+
+The user explicitly authorized pushing for iOS CI, superseding an earlier
+local-only instruction. Final internal review approved Task 25 after inspecting
+all hosted XML and both Apple logs. External review also accepted the task's
+evidence and closed its requests. Its native file-read receipt remains unverified;
+denied shell attempts do not establish inspection. The non-Apple compiler/JDK
+attribution uses artifact names, reviewed matrix configuration and successful
+jobs; Apple versions and device links are also explicit in the supplied logs.
+No job-duration claim relies on metadata timestamps. No outstanding Task 25
+finding remains. Production migration, external artifact consumption, full PR
+readiness and the inherited commerce assertion are outside this approval.
+No merge, production publication or release is authorized by this probe.

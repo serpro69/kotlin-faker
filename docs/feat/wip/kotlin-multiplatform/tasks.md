@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Tasks 1 and 2 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Tasks 1, 2 and 25 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -70,7 +70,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 25: Prove seeded generation and sampling independently
 
-- **Status:** in-progress
+- **Status:** done
 - **Depends on:** Task 1
 - **Size:** M
 - **Can run in parallel with:** Task 2
@@ -81,8 +81,8 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 - [x] 25.1 Implement the candidate raw seeded stream and explicit bounded-number/byte/float/shuffle operations in the minimal harness.
 - [x] 25.2 Specify seed mapping, overflow/bit rules, consumption order and independent reference vectors without provider or payload logic.
-- [ ] 25.3 Execute mixed-operation, boundary and rejection cases on JVM, JS and iOS.
-- [ ] 25.4 Record the sampling specification and evidence in `feasibility.md`; raw RNG agreement alone does not complete the task.
+- [x] 25.3 Execute mixed-operation, boundary and rejection cases on JVM, JS and iOS.
+- [x] 25.4 Record the sampling specification and evidence in `feasibility.md`; raw RNG agreement alone does not complete the task.
 
 ### Execution context
 
@@ -91,6 +91,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - **2026-11-23 — execution slices:** Keep mechanism/reference/tests (four substantive files) separate from coverage/workflow wiring (two files) and documentation. The isolated fixture uses Gradle's built-in JaCoCo plugin with verified stable 0.8.16 for the two handwritten random classes; this does not install or alter Task 31's production Kover gate.
 - **2026-11-23 — observed:** First capture `5f879df3-d86c-47ae-8809-a7ffcf68e483` passed 20 JVM tests and failed one of 19 Node tests: Kotlin/JS emitted the expected Float literal as `0.99999994`, whereas the sampler returned exact `1 - 2^-24`. Corrected the endpoint test to compare IEEE bits and the exact Double value; no sampler or valid assertion was weakened. All six mixed-operation reference vectors passed in that run.
 - **2026-11-23 — explicitly accepted:** After initially requesting local commits only, the user explicitly authorized pushing to test iOS in CI (“you can push to test iOS in CI, that's fine”). This supersedes the earlier no-push instruction. Push the Task 25 candidate to the existing feature branch and run the prepared hosted matrix; no merge or release is authorized.
+- **2026-11-23 — complete:** [Run 45223240006](https://github.com/serpro69/kotlin-faker/actions/runs/45223240006) passed all five jobs at `15f72144f61898aeb680161b40167035550e4800`: 174 executed cases across nine runtime/compiler configurations, including all 99 random-test executions, both device links and 100% measured JVM line/branch coverage. Both independent reviewers accepted the final source/evidence with no open findings or evidence requests. Review receipt/attribution limits are recorded in feasibility.md. This completes Task 25 only; Task 3 may now start, while production migration/publication and the inherited commerce assertion remain separately scoped.
 
 ## Task 3: Prove the portable regex generation grammar
 
