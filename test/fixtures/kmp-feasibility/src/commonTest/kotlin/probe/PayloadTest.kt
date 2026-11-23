@@ -13,9 +13,17 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import probe.payload.PayloadStore
+import probe.payload.generatedExpectations
 import probe.payload.localeLayers
 import probe.payload.payloadProjections
 import probe.payload.payloadSources
+
+internal data class PayloadExpectation(
+    val sourcePath: String,
+    val category: String?,
+    val utf16Length: Int,
+    val checksum: ULong,
+)
 
 class PayloadTest {
     @Test
@@ -23,13 +31,25 @@ class PayloadTest {
         assertEquals(326, payloadSources.size)
         assertEquals(59, localeLayers.size)
         val keys = payloadProjections.map { payloadSources[it.sourceId].path to it.category }
+        val expected = generatedExpectations().associateBy { it.sourcePath to it.category }
         assertEquals(keys.size, keys.toSet().size)
+        assertEquals(keys.toSet(), expected.keys)
         assertEquals(payloadSources.indices.toSet(), payloadProjections.map { it.sourceId }.toSet())
+        // Independently calculated vectors include non-ASCII, a surrogate pair, dollar,
+        // backslash and NUL. Check the verifier before trusting its whole-corpus results.
+        assertEquals(0xcbf29ce484222325uL, checksum(""))
+        assertEquals(0x85944171f73967e8uL, checksum("foobar"))
+        assertEquals(0x79319608151cd730uL, checksum("東京"))
+        assertEquals(0xe296218fb8c1ff82uL, checksum("🙂$\\\u0000"))
         for (entry in payloadProjections) {
             val source = payloadSources[entry.sourceId]
+            val reference = expected.getValue(source.path to entry.category)
+            val encoded = entry.json()
+            assertEquals(reference.utf16Length, encoded.length, source.path)
+            assertEquals(reference.checksum, checksum(encoded), "${source.path} / ${entry.category}")
             val store = PayloadStore()
             val decoded = store.projection(source.path, entry.category)
-            assertEquals(entry.json(), decoded.toString(), "${source.path} / ${entry.category}")
+            assertEquals(encoded, decoded.toString(), "${source.path} / ${entry.category}")
             assertCanonicalKeys(decoded)
             assertEquals(1, store.decodedCount)
         }
@@ -73,12 +93,12 @@ class PayloadTest {
     fun sourceIdentityOverlayOrderAndLocaleMetadataAreRetained() {
         assertEquals(listOf("en", "fr", "fr-CA"), localeLayers.getValue("fr-CA"))
         assertEquals(listOf("en"), localeLayers.getValue("en"))
-        fun priority(path: String, category: String) = payloadProjections.single {
+        fun kindRank(path: String, category: String) = payloadProjections.single {
             payloadSources[it.sourceId].path == path && it.category == category
-        }.sourcePriority
-        assertEquals(0, priority("de.yml", "name"))
-        assertEquals(1, priority("en/name.yml", "name"))
-        assertEquals(2, priority("en/cat.yml", "creature"))
+        }.sourceKindRank
+        assertEquals(0, kindRank("de.yml", "name"))
+        assertEquals(1, kindRank("en/name.yml", "name"))
+        assertEquals(2, kindRank("en/cat.yml", "creature"))
         val metadata = PayloadStore().projection("en.yml", null).jsonObject
         assertEquals("AM", metadata.getValue("time").jsonObject.getValue("am").jsonPrimitive.content)
     }
@@ -93,6 +113,12 @@ class PayloadTest {
         assertEquals(listOf("市", "区", "町", "村", "郡"),
             address.getValue("city_suffix").jsonArray.map { it.jsonPrimitive.content })
         assertTrue(address.getValue("postcode").jsonArray.size > 100_000)
+    }
+
+    private fun checksum(value: String): ULong {
+        var hash = 0xcbf29ce484222325uL
+        for (char in value) hash = (hash xor char.code.toULong()) * 0x100000001b3uL
+        return hash
     }
 
     private fun assertCanonicalKeys(value: JsonElement) {

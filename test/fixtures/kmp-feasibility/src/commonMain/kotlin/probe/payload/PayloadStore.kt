@@ -13,7 +13,7 @@ internal data class PayloadSource(
 internal data class PayloadProjection(
     val sourceId: Int,
     val category: String?, // null retains non-faker locale metadata, such as en.time
-    val sourcePriority: Int, // locale-wide (0), primary file (1), secondary file (2)
+    val sourceKindRank: Int, // locale-wide (0), primary file (1), secondary file (2)
     val chunks: Int,
     val json: () -> String,
 )

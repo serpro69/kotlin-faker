@@ -268,8 +268,12 @@ the production JSON conversion, orders object keys lexically and partitions
 each source into its individual faker categories. Non-faker root metadata is
 retained in a separate projection. Arrays and scalar kinds are unchanged.
 The generated manifest retains source paths, logical locales, parsed root keys,
-resource names, locale layers (`en`, base, exact) and file precedence
-(locale-wide, primary resource, secondary resource). It records ordering inputs;
+resource names, locale layers (`en`, base, exact) and source-kind ranks
+(locale-wide, primary resource, secondary resource). The ranks classify files;
+they are not a universal overlay algorithm. Default English selects a secondary
+resource instead of combining it with a primary resource; localized layers use
+the ordered source inputs. Task 5 implements those selection/merge rules. The
+manifest records ordering inputs;
 it does not perform fallback merging or expression resolution.
 
 Each projection has its own supplier file; string chunks are bounded to 8,000
@@ -291,8 +295,15 @@ pending. The first build-script compile attempt
 `5a41a0d8-b8b9-4908-bfda-d2326793a36c` failed on ambiguous Kotlin `sumOf`
 overloads; an explicitly typed integer fold fixed the generator before execution.
 
-Verification uses two independent comparisons: common tests round-trip every
-compiled projection and assert canonical object ordering on every target; a JVM
+Verification compares each compiled projection's UTF-16 length and 64-bit FNV-1a
+fingerprint against constants calculated from source JSON before compilation.
+This catches target-specific literal changes that a self-round-trip could miss.
+Expected values are generated only into `commonTest`; they are absent from main
+artifacts. The verifier uses [FNV-1a constants](https://www.ietf.org/ietf-ftp/rfc/rfc9923.pdf)
+over UTF-16 code units, with independently calculated ASCII/Unicode/surrogate/
+escaping/NUL vectors. It is an integrity check for accidental compiler/encoding
+changes, not a cryptographic authenticity guarantee. Common tests then round-trip
+every projection and assert canonical object ordering on every target; a JVM
 test reads every original YAML document independently and compares the entire
 converted JSON tree with one reconstructed from compiled projections. Dedicated
 shared cases exercise a single German category without decoding sibling
@@ -301,12 +312,31 @@ failure, Ukrainian aliases, the two Boolean quirks, English time metadata and
 the large Japanese address projection. Full corpus enumeration is a verification
 pass; ordinary category access remains lazy.
 
-### Migration follow-up: IBAN object order
+### Migration follow-up: map order and IBAN extraction
 
 Canonical ordering places `bban_pattern` before `length`, while current
 `Bank.ibanDetails` extracts the last field from a stringified map. Values survive
 unchanged, but blindly retaining that parsing would select the length instead
 of the pattern. **Owner: Task 15 implementer, coordinated with Tasks 5/8.** Read
 the named `bban_pattern` entry through the common resolver and test all IBAN
-patterns; do not rely on map rendering order. This is deferred because Task 2
-contains no bank provider/resolver and changes no production behavior.
+patterns; do not rely on map rendering order.
+
+This also affects generic `FakerService.getRawValue` paths: the two-/three-key
+overloads sample `values.toList()`, and nested maps can be rendered with
+`toString()`. **Owner: Task 5 implementer, coordinated with Tasks 6/8.** Audit
+both map sampling and rendered-map callers, define the deterministic key order
+explicitly, and add semantic/seeded cases. Major-release seeded output may change,
+but accidentally interpreting the wrong map field is not acceptable. Canonical
+sorting stays as specified by the design. These provider/resolver adaptations
+are deferred because Task 2 changes no production behavior.
+
+### Review corrections in progress
+
+The internal reviewer found no source defects and requested final hosted evidence.
+The external Claude reviewer found a P2 gap in the original cross-target fidelity
+test: each target compared compiled JSON with its own round-trip. The generated
+test-only fingerprints above address that gap; the strengthened checks require a
+fresh target run. Its P3 suggestions led to broader map-order follow-up, explicit
+source-kind semantics/English selection documentation, and an updated build-script
+comment. External read receipts were stripped by PAL's normal response, so its
+findings are attributed without claiming independently verified read coverage.

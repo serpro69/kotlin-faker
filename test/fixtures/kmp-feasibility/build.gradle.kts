@@ -35,9 +35,13 @@ kotlin {
                 .builtBy(tasks.named("generatePayload")))
             dependencies { implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0") }
         }
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
+        commonTest {
+            kotlin.srcDir(files(layout.buildDirectory.dir("generated/payload/commonTest"))
+                .builtBy(tasks.named("generatePayload")))
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
+            }
         }
         jvmTest.dependencies {
             implementation(kotlin("test-junit5"))
@@ -49,5 +53,5 @@ kotlin {
     }
 }
 
-// This fixture only probes dependencies and test discovery. No Faker code is copied here.
+// This fixture probes dependencies and the complete embedded payload. No Faker code is copied here.
 apply(from = "inventory.gradle.kts")

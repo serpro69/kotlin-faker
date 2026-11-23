@@ -36,12 +36,19 @@ bytes without splitting surrogate pairs; supplier methods avoid constant folding
 and oversized initializers. The accessor decodes and caches only the requested
 physical source/category. It does not resolve locale fallback or expressions.
 
-Shared tests round-trip every projection and check lazy decoding, aliases,
+Shared tests compare every projection with its pre-compilation UTF-16 length
+and 64-bit FNV-1a fingerprint, round-trip it, and check lazy decoding, aliases,
 Unicode, metadata and existing Boolean coercions. The JVM test independently
 converts all authoring YAML and reconstructs it from the compiled projections,
 checking every scalar, key and array position. Object key order is canonicalized.
+Fingerprint expectations are generated under `commonTest`, so verification
+metadata does not enlarge the main library artifact. Golden vectors check the
+UTF-16 fingerprint implementation, including surrogate pairs and escaped text.
 The `no` root and Spanish `NO` scalar remain `false`, exactly as in the current
 production conversion; the manifest keeps logical filename locale separately.
+Source-kind ranks classify locale-wide, primary and secondary files. Selection
+and merging belong to Task 5: in particular, default English selects a secondary
+resource instead of overlaying it on a primary resource.
 
 After compiling targets, run `measurePayloadArtifacts` to produce
 `build/payload-artifacts.tsv`. Generation sizes and a reproducible source hash

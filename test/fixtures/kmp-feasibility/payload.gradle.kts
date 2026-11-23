@@ -23,6 +23,7 @@ tasks.register("generatePayload") {
         val output = outputDirectory.get().asFile
         output.deleteRecursively()
         val sourcesOutput = output.resolve("commonMain").also { it.mkdirs() }
+        val testSourcesOutput = output.resolve("commonTest").also { it.mkdirs() }
         val files = sourceDirectory.walkTopDown()
             .filter { it.isFile && it.extension in setOf("yml", "yaml") }
             .sortedBy { it.relativeTo(sourceDirectory).invariantSeparatorsPath }.toList()
@@ -70,13 +71,14 @@ tasks.register("generatePayload") {
 
         val sourceEntries = mutableListOf<String>()
         val projectionEntries = mutableListOf<String>()
+        val expectationEntries = mutableListOf<String>()
         val locales = sortedSetOf<String>()
         var jsonBytes = 0L
         var chunkCount = 0
         var largestChunkBytes = 0
         var largestChunkChars = 0
 
-        fun emitProjection(sourceId: Int, category: String?, priority: Int, value: Any?) {
+        fun emitProjection(sourceId: Int, category: String?, kindRank: Int, value: Any?) {
             val id = projectionEntries.size
             val json = mapper.writeValueAsString(canonical(value))
             val parts = chunks(json)
@@ -99,7 +101,14 @@ tasks.register("generatePayload") {
             generated.writeText(code)
             check(generated.readText() == code) { "UTF-8 encoding lost source characters: $id" }
             val categoryLiteral = category?.let(::literal) ?: "null"
-            projectionEntries += "PayloadProjection($sourceId, $categoryLiteral, $priority, ${parts.size}, ::payload$id)"
+            projectionEntries += "PayloadProjection($sourceId, $categoryLiteral, $kindRank, ${parts.size}, ::payload$id)"
+            // FNV-1a constants (RFC 9923), over UTF-16 units. This is a test integrity
+            // fingerprint, not a security hash. Calculate it before Kotlin literal compilation.
+            val checksum = json.fold(0xcbf29ce484222325uL) { hash, char ->
+                (hash xor char.code.toULong()) * 0x100000001b3uL
+            }
+            val sourcePath = files[sourceId].relativeTo(sourceDirectory).invariantSeparatorsPath
+            expectationEntries += "probe.PayloadExpectation(${literal(sourcePath)}, $categoryLiteral, ${json.length}, 0x${checksum.toString(16)}uL)"
         }
 
         files.forEachIndexed { id, file ->
@@ -118,21 +127,21 @@ tasks.register("generatePayload") {
             if (metadata.isNotEmpty()) emitProjection(id, null, 0, metadata)
             faker.entries.sortedBy { it.key as String }.forEach { (key, value) ->
                 val category = key as String
-                val priority = when (resource) { null -> 0; category -> 1; else -> 2 }
-                emitProjection(id, category, priority, value)
+                val kindRank = when (resource) { null -> 0; category -> 1; else -> 2 }
+                emitProjection(id, category, kindRank, value)
             }
         }
 
-        fun emitIndex(name: String, type: String, entries: List<String>) {
+        fun emitIndex(name: String, type: String, entries: List<String>, destination: File = sourcesOutput) {
             val groups = entries.chunked(32)
-            sourcesOutput.resolve("$name.kt").writeText(buildString {
+            destination.resolve("$name.kt").writeText(buildString {
                 appendLine("package probe.payload")
                 appendLine("internal fun $name(): List<$type> = buildList {")
                 groups.indices.forEach { appendLine("    addAll(${name}Part$it())") }
                 appendLine("}")
             })
             groups.forEachIndexed { i, group ->
-                sourcesOutput.resolve("${name}Part$i.kt").writeText(buildString {
+                destination.resolve("${name}Part$i.kt").writeText(buildString {
                     appendLine("package probe.payload")
                     appendLine("internal fun ${name}Part$i(): List<$type> = listOf(")
                     group.forEach { appendLine("    $it,") }
@@ -142,6 +151,7 @@ tasks.register("generatePayload") {
         }
         emitIndex("generatedSources", "PayloadSource", sourceEntries)
         emitIndex("generatedProjections", "PayloadProjection", projectionEntries)
+        emitIndex("generatedExpectations", "probe.PayloadExpectation", expectationEntries, testSourcesOutput)
         sourcesOutput.resolve("LocaleLayers.kt").writeText(buildString {
             appendLine("package probe.payload")
             appendLine("internal val localeLayers: Map<String, List<String>> = mapOf(")
@@ -168,6 +178,7 @@ tasks.register("generatePayload") {
             "maxChunkChars" to largestChunkChars,
             "payloadJsonUtf8Bytes" to jsonBytes,
             "generatedSourceBytes" to generatedFiles.sumOf { it.length() },
+            "generatedTestSourceBytes" to testSourcesOutput.listFiles()!!.sumOf { it.length() },
             "generatedSourceSha256" to digest.digest().joinToString("") { "%02x".format(it) },
         )
         output.resolve("manifest.json").writeText(mapper.writeValueAsString(report) + "\n")
