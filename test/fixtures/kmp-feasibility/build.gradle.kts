@@ -1,6 +1,12 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.gradle.testing.jacoco.tasks.JacocoCoverageVerification
+import org.gradle.testing.jacoco.tasks.JacocoReport
+import org.gradle.testing.jacoco.tasks.JacocoReportBase
 
-plugins { kotlin("multiplatform") }
+plugins {
+    kotlin("multiplatform")
+    jacoco
+}
 
 group = "io.github.serpro69.kfaker.probe"
 version = "0.0.0-local"
@@ -53,5 +59,36 @@ kotlin {
     }
 }
 
-// This fixture probes dependencies and the complete embedded payload. No Faker code is copied here.
+// JVM measurement for the handwritten random mechanism only; production Kover belongs to Task 31.
+jacoco { toolVersion = "0.8.16" }
+val randomClasses = fileTree(layout.buildDirectory.dir("classes/kotlin/jvm/main")) {
+    include("probe/random/**")
+}
+val randomCoverageReport = tasks.register<JacocoReport>("randomCoverageReport") {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+tasks.register<JacocoCoverageVerification>("randomCoverageVerification") {
+    dependsOn(randomCoverageReport)
+    violationRules {
+        rule {
+            for (metric in listOf("LINE", "BRANCH")) {
+                limit {
+                    counter = metric
+                    minimum = "1.0".toBigDecimal()
+                }
+            }
+        }
+    }
+}
+tasks.withType<JacocoReportBase>().configureEach {
+    dependsOn(tasks.named("jvmTest"))
+    executionData(layout.buildDirectory.file("jacoco/jvmTest.exec"))
+    classDirectories.setFrom(randomClasses)
+    sourceDirectories.setFrom(files("src/commonMain/kotlin"))
+}
+
+// This fixture probes mechanisms only. No Faker code is copied here.
 apply(from = "inventory.gradle.kts")

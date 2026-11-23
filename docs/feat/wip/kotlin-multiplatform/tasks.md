@@ -70,7 +70,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 25: Prove seeded generation and sampling independently
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Task 1
 - **Size:** M
 - **Can run in parallel with:** Task 2
@@ -79,10 +79,18 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ### Subtasks
 
-- [ ] 25.1 Implement the candidate raw seeded stream and explicit bounded-number/byte/float/shuffle operations in the minimal harness.
-- [ ] 25.2 Specify seed mapping, overflow/bit rules, consumption order and independent reference vectors without provider or payload logic.
+- [x] 25.1 Implement the candidate raw seeded stream and explicit bounded-number/byte/float/shuffle operations in the minimal harness.
+- [x] 25.2 Specify seed mapping, overflow/bit rules, consumption order and independent reference vectors without provider or payload logic.
 - [ ] 25.3 Execute mixed-operation, boundary and rejection cases on JVM, JS and iOS.
 - [ ] 25.4 Record the sampling specification and evidence in `feasibility.md`; raw RNG agreement alone does not complete the task.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `ab013f348532ce6a088fc2144aef0daa724f5ee8` on `feat/kmp_support`. Tasks 1/2 are complete. This task changes only the standalone mechanism harness, its existing target workflow and evidence; production random/provider behavior remains at the baseline.
+- **2026-11-23 — approach:** Implement separate SplitMix64 and sampling components, with signed seed bit preservation, unsigned modulo-2^64 arithmetic, rejection-based bounds, fixed float/byte consumption and descending Fisher–Yates. Use independent arbitrary-precision reference vectors and scripted-word boundary tests. Reuse the Task 1/2 hosted matrix for Apple execution; local Linux cannot execute iOS. No new runtime dependency or production API is introduced.
+- **2026-11-23 — execution slices:** Keep mechanism/reference/tests (four substantive files) separate from coverage/workflow wiring (two files) and documentation. The isolated fixture uses Gradle's built-in JaCoCo plugin with verified stable 0.8.16 for the two handwritten random classes; this does not install or alter Task 31's production Kover gate.
+- **2026-11-23 — observed:** First capture `5f879df3-d86c-47ae-8809-a7ffcf68e483` passed 20 JVM tests and failed one of 19 Node tests: Kotlin/JS emitted the expected Float literal as `0.99999994`, whereas the sampler returned exact `1 - 2^-24`. Corrected the endpoint test to compare IEEE bits and the exact Double value; no sampler or valid assertion was weakened. All six mixed-operation reference vectors passed in that run.
+- **2026-11-23 — explicitly accepted:** After initially requesting local commits only, the user explicitly authorized pushing to test iOS in CI (“you can push to test iOS in CI, that's fine”). This supersedes the earlier no-push instruction. Push the Task 25 candidate to the existing feature branch and run the prepared hosted matrix; no merge or release is authorized.
 
 ## Task 3: Prove the portable regex generation grammar
 

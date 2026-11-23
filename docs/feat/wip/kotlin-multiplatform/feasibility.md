@@ -7,6 +7,9 @@ the later RNG, regex, publication or production migration tasks. The separate
 inherited repository-check failure is recorded at the end; scoped feasibility
 completion does not establish PR merge readiness.
 
+Task 25's candidate sampling specification and current evidence are recorded
+[below](#task-25-controlled-seeded-operations); its execution status is in tasks.md.
+
 ## Trial configuration
 
 The standalone [harness](../../../../test/fixtures/kmp-feasibility/) has its own
@@ -460,3 +463,145 @@ Both reviewers inspected this qualification and retained Task 2 approval: the
 unchanged legacy assertion leaves no payload-task criterion unmet. The recorded
 fix and deterministic verification remain prerequisites for treating the full
 PR gate as ready, regardless of whether a later random sample happens to pass.
+
+## Task 25: controlled seeded operations
+
+This probe separates `SplitMix64` (raw 64-bit words) from `RandomSampling`
+(derived operations) under `test/fixtures/kmp-feasibility/src/commonMain/kotlin/probe/random/`.
+Both are internal, have no payload/provider dependency, and use no platform RNG
+or `kotlin.random.Random` algorithms. Production still uses its existing JVM
+implementation. The specification below is the candidate for promotion in Task 6,
+not a promise to preserve old JVM sequences or cross-release output.
+
+### Raw stream and seed mapping
+
+The implementation adapts [Sebastiano Vigna's public-domain SplitMix64 reference](https://prng.di.unimi.it/splitmix.c),
+with attribution beside the code. A signed `Long` seed initializes the state with
+the same 64-bit two's-complement representation. Zero, negative values and both
+signed extremes are valid; there is no warmup, hashing or family-specific mixing.
+For each word, first add `0x9e3779b97f4a7c15` to state, then mix a copy:
+
+```text
+z = (state xor (state >> 30)) * 0xbf58476d1ce4e5b9
+z = (z     xor (z     >> 27)) * 0x94d049bb133111eb
+word = z xor (z >> 31)
+```
+
+All additions and multiplications operate modulo `2^64`; all shifts are logical.
+Kotlin unsigned conversions retain the signed seed's bits and `ULong.shr` fills
+with zeros ([conversion contract](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/to-u-long.html),
+[shift contract](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-u-long/shr.html)).
+Each instance owns independent mutable state. Sequential access is assumed;
+thread safety and cryptographic unpredictability are outside this contract.
+
+### Sampling and consumption specification
+
+Let `W` be the next unsigned 64-bit word and `M = 2^64`. Every scalar operation
+consumes a fresh whole word, including singleton intervals and bound one. No
+operation caches leftover bits. Invalid inputs throw `IllegalArgumentException`
+before drawing any words.
+
+| Operation | Result and consumption |
+| --- | --- |
+| `nextInt()` | Interpret the high 32 bits of one word as signed two's complement. |
+| `nextLong()` | Interpret all bits of one word as signed two's complement. |
+| `nextBoolean()` | True iff bit 63 is set; consume one word. |
+| `nextInt(bound)`, `nextLong(bound)` | Require a positive bound; return `[0, bound)` using the rejection rule below. Both use all 64 random bits. |
+| `intInRange(first,last)` | Require `first <= last`; compute inclusive width in `Long`, sample an offset, then add `first`. Supports all `2^32` signed Int values. |
+| `longInRange(first,last)` | Require `first <= last`; compute inclusive width modulo `M`. Width zero denotes the complete signed Long interval: use `W` directly as the offset. Otherwise use rejection sampling. Add `first` modulo `M`, then interpret as signed. |
+| `nextFloat()` | `(W >> 40) / 2^24`, one word, exact binary fraction in `[0,1)`. Maximum is `1 - 2^-24`, IEEE bits `0x3f7fffff`. |
+| `nextDouble()` | `(W >> 11) / 2^53`, one word, exact binary fraction in `[0,1)`. Maximum is `1 - 2^-53`, IEEE bits `0x3fefffffffffffff`. |
+| `nextBytes(size)` | Require nonnegative size. Consume `ceil(size/8)` words; emit each word's least significant byte first. Discard any unused high-byte suffix at the end of the call. Size zero consumes nothing. |
+| `shuffled(list)` | Copy the list, then for indices `n-1` down to `1`, sample `j` in `[0,i+1)` and swap `i,j`, even when equal. Preserve duplicates and caller input. Empty/singleton lists consume nothing. |
+
+For a positive width `n`, calculate `t = M mod n` (in fixed-width Kotlin,
+`(0uL - n) % n`). Draw until `W >= t`, returning `W mod n`. The accepted
+interval has length `M - t`, divisible by `n`, so every residue has the same
+number of preimages. Each rejection advances the raw stream and is observable
+in subsequent calls. There is no retry cap or biased fallback; this internal
+mechanism uses SplitMix64, whose full-period stream reaches every word. The
+scripted source in tests is solely an independent consumption oracle.
+
+The explicit `*InRange` names make both endpoints inclusive in this probe.
+Task 6 must adapt legacy overloads deliberately: current `nextInt(min,max)` is
+inclusive and current `nextLong(min,max)` is exclusive at `max`. This task does
+not silently change those production APIs. Task 10 owns higher-level collection
+subsets/UUID formatting; Tasks 6/13 own Faker configuration and family ownership.
+
+### Independent vectors and semantic checks
+
+`random_reference.py` is an offline Python 3 standard-library oracle. It uses
+arbitrary-precision integers, computes state from `seed + position * increment`,
+uses `divmod(2^64,width)` for rejection, and packs floating values as IEEE bytes.
+It neither imports nor executes Kotlin. Run it from the repository root:
+
+```sh
+python3 test/fixtures/kmp-feasibility/random_reference.py
+```
+
+The six seeds are `0`, `1`, `-1`, `Long.MIN_VALUE`, `Long.MAX_VALUE`, and
+`0x0123456789abcdef`. Each has five raw-word expectations and a mixed sequence:
+raw Int, raw Long, bound 10, bound `2^62+1`, full Int interval, full Long
+interval, `-17..19`, `-4000000000..5000000000`, Boolean, Float bits, Double
+bits, eleven bytes, shuffle of `0..7`, then one raw Long. The final word checks
+consumption after byte truncation and shuffle rejections. Expected constants are
+checked in `RandomSamplingTest`, never regenerated during the Gradle build.
+
+Eleven common tests additionally verify rejection at and below exact thresholds
+(including maximum Int/Long bounds and width `2^64-1`), signed-range endpoints,
+power-of-two and singleton consumption, Boolean/float endpoints, little-endian
+byte blocks, discarded suffixes, shuffle order/input preservation/duplicates,
+invalid inputs with no draws, independent instance state and range/permutation
+invariants across 128 mixed iterations for each seed. This combines reference
+equality with semantic assertions; raw RNG agreement alone is insufficient.
+
+The initial local run passed all JVM cases but exposed a test-literal issue on
+JS: the compiler emits the expected Float literal as decimal `0.99999994` while
+the algorithm's exact binary fraction is `0.999999940395355224609375`. The endpoint
+test now compares both IEEE bits and the exact Double value. It retains strict
+equality, without a tolerance or changes to the generator. Kotlin documents JS's
+wider Float range in [the bit-conversion API](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/to-bits.html).
+
+### Verification and coverage
+
+Run the existing harness matrix plus `randomCoverageVerification` on JVM:
+
+```sh
+./gradlew -p test/fixtures/kmp-feasibility jvmTest jsNodeTest jsBrowserTest randomCoverageVerification
+./gradlew -p test/fixtures/kmp-feasibility jvmTest -PprobeTestJdk=11
+./gradlew -p test/fixtures/kmp-feasibility iosSimulatorArm64Test linkDebugTestIosArm64
+```
+
+Repeat the existing compiler-floor jobs with `-PprobeKotlinVersion=2.3.20`.
+The workflow requires all eleven named random tests to execute without failure
+or skip in each requested runtime, alongside the existing payload/toolchain tests.
+Device evidence is compilation/linking of the test consumer, not device execution.
+
+The standalone build uses Gradle's built-in JaCoCo plugin with stable JaCoCo
+0.8.16 ([Gradle 8.14.3 configuration](https://docs.gradle.org/8.14.3/userguide/jacoco_plugin.html),
+[JaCoCo releases](https://www.jacoco.org/jacoco/trunk/doc/changes.html)).
+`randomCoverageVerification` requires 100% JVM line and branch coverage of
+`probe/random/**`; `randomCoverageReport` writes XML/HTML under `build/reports/jacoco/`.
+This measures the two handwritten mechanism classes, excluding generated payload,
+test code and the offline Python oracle. It does not measure JS/Native coverage
+or change Task 31's selected production Kover gate. Target behavior still requires
+actual common-test execution in each environment.
+
+Local capture `84e29e1f-51fe-4dd3-96d1-14a7db7b5196` passed `jvmTest`, `jsNodeTest`
+and `randomCoverageVerification`: 20 JVM cases and 19 Node cases, no failures,
+errors or skips. The JaCoCo XML reports 46/46 lines, 32/32 branches and 359/359
+instructions covered across the two executable classes. The raw-word interface
+has no executable body. The initial failure is retained as capture
+`5f879df3-d86c-47ae-8809-a7ffcf68e483`; the offline oracle output is capture
+`8552d701-b941-4495-8455-3b30929f2449`.
+
+Local browser capture `32c47e2f-f7bd-4281-81d6-2ee4a6019088` passed all 19 cases,
+without failures/errors/skips, using installed Brave as the Chromium runner.
+Root `spotlessCheck` passed in capture `3aecce10-0063-44e7-a770-423394ef2945`;
+its configured source scope does not include this standalone fixture.
+
+The user explicitly authorized pushing the candidate for iOS CI, superseding an
+earlier local-only instruction. Hosted results and final independent review are
+pending; Task 25 remains open until its JVM 11/iOS simulator execution and device
+link evidence is recorded. No merge, production publication or release is
+authorized by this probe.
