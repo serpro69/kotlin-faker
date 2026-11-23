@@ -1,4 +1,5 @@
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 
 plugins {
@@ -12,20 +13,29 @@ dependencies {
     testImplementation(libs.bundles.test.kotest)
 }
 
+val jvmCompilerVersion = libs.versions.jvmCompiler.map { JavaLanguageVersion.of(it) }
+val jvmMinTargetVersion = libs.versions.jvmMinTarget
+
 configure<JavaPluginExtension> {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(jvmCompilerVersion)
     }
 }
 
 configure<KotlinJvmProjectExtension> {
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(jvmCompilerVersion)
+    }
+    // Provider tests consume this JAR on the minimum supported JVM, even with a newer compiler JDK.
+    compilerOptions {
+        jvmTarget.set(jvmMinTargetVersion.map { JvmTarget.fromTarget(it) })
+        freeCompilerArgs.add(jvmMinTargetVersion.map { "-Xjdk-release=$it" })
     }
 }
 
-tasks.withType<JavaCompile> {
+tasks.withType<JavaCompile>().configureEach {
     options.encoding = "UTF-8"
+    options.release.set(jvmMinTargetVersion.map { it.toInt() })
 }
 
 configurations.create("testHelper")
