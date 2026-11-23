@@ -147,7 +147,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 26: Enable production targets and common tests early
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Task 4
 - **Size:** M
 - **Can run in parallel with:** —
@@ -160,6 +160,15 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [ ] 26.2 Scope JVM dependencies correctly and install the selected kotlin.test commonTest/JVM JUnit 5 integration while preserving existing JVM Kotest specs.
 - [ ] 26.3 Define only closed common configuration/resource/random contracts and execute a real production common test on every target; later components may not reference legacy JVM facades.
 - [ ] 26.4 Verify actual production common test discovery/execution on every target using the selected tuple; Task 31 must enforce those checks before extraction.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `66d8752afc046f4fd185ae489a6d17130f1a2348` on `feat/kmp_support`, after Task 4's completed mechanism gate. The production baseline uses Kotlin 2.1.21 / Gradle 8.14.3, JVM 11/21 test launchers and compiler JDK 21; core has only JVM sources. Capture `ad033c5f-d95b-4e1b-9f7a-a2c138a5decb` completed core JVM minimum/maximum checks and repository API checks successfully before changes.
+- **2026-11-23 — approach:** Bounded slices: validate the producer compiler with existing JVM/API tooling; stabilize the two failing JVM documentation cases; scope JVM dependencies/resources and add the reusable portable convention; add minimal internal common configuration/resource/random contracts, shared discovery tests and hosted execution evidence. Preserve the legacy JVM facade/provider behavior and existing Kotest specs. No resolver, seeded algorithm, provider migration or production publication is part of this task.
+- **2026-11-23 — authorization:** Existing permission to push this feature branch for hosted iOS verification remains applicable. Task 26 verifies production targets; required CI/coverage/publication guard enforcement remains Task 31 and must precede extraction.
+- **2026-11-23 — observed:** The application Kotlin BOM forced 2.3 metadata into Gradle 8.14.3's embedded build-logic compiler. Temporary compiler/language/frontend overrides exposed further script incompatibilities and were removed. The final correction removes that BOM from buildSrc, retaining Gradle's embedded compiler while using KGP 2.3.21 for production. Configuration succeeds without custom compiler flags (`8093fcb9-28e5-48e7-a52d-a6e34b0c4081`). The API baseline records seven additive synthetic IRandom dispatchers; existing DefaultImpls signatures remain.
+- **2026-11-23 — observed:** Verification exposed two inherited probabilistic documentation assertions: PICK_RANDOMLY assumed mixed choices, and clearAll assumed independently sampled batches must overlap. Tests now use explicit choices/replayed draws and stronger exact assertions; production behavior is unchanged. Restoring generated resources specifically to jvmTest preserved all three locale cases lost during initial resource scoping. Node/Yarn downloads needed module-scoped Ivy repositories under the existing PREFER_SETTINGS policy.
+- **2026-11-23 — observed:** Capture `3849fb60-4440-407d-aa93-c9d47a5bd4e2` passed core JVM 11/21, Node/browser, common metadata compilation, repository API and formatting checks. Both JVM reports contain 4,423 cases: all 4,415 baseline cases, three common cases and five existing Java cases newly discovered through Jupiter. Each JS runner executed all three common cases. Local coverage from `00bf29bc-de9c-4829-9901-e913824c0b8f` covers all 15 instructions/3 methods/1 line in GenerationConfiguration; the interfaces contain no executable bodies. Hosted production execution, tooling checks and final review remain pending.
 
 ## Task 31: Enforce target checks, coverage and publication guards
 

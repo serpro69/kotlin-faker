@@ -1,8 +1,10 @@
 package io.github.serpro69.kfaker.integration.docs
 
 import io.github.serpro69.kfaker.Faker
+import io.github.serpro69.kfaker.fakerConfig
 import io.kotest.core.spec.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
+import kotlin.random.Random
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -42,8 +44,14 @@ class UniqueGenerator :
             }
 
             it("should clear all records of generated values") {
+                // Replay the same draws after clearing: random batches need not overlap by chance.
+                var stream = Random(42)
+                val replayableRandom =
+                    object : Random() {
+                        override fun nextBits(bitCount: Int) = stream.nextBits(bitCount)
+                    }
+                val faker = Faker(fakerConfig { random = replayableRandom })
                 // --8<-- [start:unique_data_generator_three]
-                val faker = Faker()
                 faker.unique.configuration {
                     enable(faker::address)
                     enable(faker::name)
@@ -60,11 +68,12 @@ class UniqueGenerator :
                 faker.unique.clearAll()
                 // --8<-- [end:unique_data_generator_four]
 
+                stream = Random(42)
                 val otherCountries = List(100) { faker.address.country() }
                 val otherNames = List(100) { faker.name.firstName() }
 
-                assertTrue(countries.any { otherCountries.contains(it) })
-                assertTrue(names.any { otherNames.contains(it) })
+                assertEquals(countries, otherCountries)
+                assertEquals(names, otherNames)
             }
 
             it("should disable generation of unique values for a provider") {

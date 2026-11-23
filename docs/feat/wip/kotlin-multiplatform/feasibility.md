@@ -1088,5 +1088,104 @@ and execution evidence comes from XML/task logs and successful job conclusions.
 The observation is retained as an evidence limit, not a source defect or an
 unmet mechanism requirement.
 
+## Task 26: production target setup
+
+Baseline `66d8752afc046f4fd185ae489a6d17130f1a2348`, 2026-11-23. This task adopts
+Kotlin/KGP 2.3.21 in the production catalog while retaining Gradle 8.14.3,
+compiler JDK 21 and JVM 11/21 execution. BCV 0.17.0, Dokka 2.0.0, Spotless 7.2.1,
+NMCP 1.0.2 and the existing semantic-versioning plugins retain their pins.
+The new common test integration uses kotlin.test 2.3.21, Jupiter 5.11.0 and
+JUnit Platform launcher 1.11.0 alongside the existing Kotest 5.9.1 engine.
+
+### Production boundaries
+
+`faker-multiplatform-conventions` extends the existing library/JVM convention
+and opts core into JS browser/Node, iosArm64 and iosSimulatorArm64. Other modules
+retain their current JVM conventions. JS and Native are enabled by default;
+the existing build properties can still disable a target family for local work.
+The verification workflow explicitly enables both families and disables build-cache
+reuse, checking named non-skipped common cases on the real core source sets.
+Required PR integration and publication/coverage enforcement remain Task 31.
+
+Reflection, the Kotlin JVM bundle/BOM and generated legacy resources are now
+confined to JVM source sets. The jvmTest generated-resource overlay is retained
+because removing it silently removed the French, Japanese and Chinese locale
+discovery cases. Task 5 owns replacing that classloader-based enumeration and
+removing legacy packaged resources. Jackson, ICU and RgxGen remain JVM dependencies.
+
+`runtime/GenerationContracts.kt` contains only internal raw configuration values,
+a source/category JSON-text lookup contract and a bounded-selection contract.
+They contain no references to the JVM Faker/config/service/provider types. Null
+resource categories select non-faker metadata; missing projections return null
+for the later resolver to report. Normalization, fallback, decoding and seeded
+algorithms are not implemented here. The common test verifies these actual
+declarations compile and execute on each target, not provider completeness.
+The public Faker facade and providers remain in jvmMain.
+
+### Build integration corrections
+
+The initial version-only update failed because buildSrc imported the application
+Kotlin BOM, upgrading its libraries beyond Gradle's embedded compiler metadata
+support (`5d9a7725-1d9f-4eea-94e4-edbe50507520`). Temporary compiler overrides
+encountered the old script language defaults and K2 script frontend limitation
+(`d3ec69d8-cf00-4931-b0ea-5557bf1e1cad`, `2464b5e7-5fc7-401a-945f-44dd0de2b4bd`).
+They were removed. The final fix removes the application BOM from buildSrc and
+retains Gradle's own compiler/library integration; configuration passed in
+`8093fcb9-28e5-48e7-a52d-a6e34b0c4081`. No metadata bypass or compiler frontend
+override remains. Kotlin's removed dependency-handler `platform` call is replaced
+with Gradle's `project.dependencies.platform` in the JVM source set.
+
+The Kotlin 2.3 default JVM interface mode adds seven synthetic default-argument
+dispatchers to IRandom. The inspected API diff removes no prior signature and
+retains IRandom.DefaultImpls; the baseline records those additions. Repository
+API checks passed (`96428d40-30d0-4053-ada7-bf18f0890eeb`). This follows the
+[compatible default-method mode](https://kotlinlang.org/docs/whatsnew22.html#changes-to-default-method-generation-for-interface-functions).
+
+Central PREFER_SETTINGS policy ignored KGP's temporary Node/Yarn repositories
+(`901d2108-e552-41e7-853a-f38d81768575`). The shared settings now declare the
+same distribution layouts with content restricted to org.nodejs:node and
+com.yarnpkg:yarn. The layouts were checked against KGP 2.3.21's source/installed
+classes; the broader repository policy is unchanged. These are build tools,
+not consumer dictionary downloads. The root Yarn lock records the test tool graph.
+
+### JVM test corrections and local verification
+
+Baseline capture `ad033c5f-d95b-4e1b-9f7a-a2c138a5decb` passed existing core
+JVM minimum/maximum and repository API checks; retained XML has 4,415 cases per
+JVM launcher. Upgrade verification exposed two pre-existing probabilistic
+documentation assertions. The Extras PICK_RANDOMLY case wrongly required a mix
+of choices; it now supplies four explicit choices and checks exact outputs.
+The UniqueGenerator clearAll case assumed independently sampled name batches
+must overlap; it now replays the random stream and checks both complete lists.
+The library's class-generation/uniqueness behavior is unchanged. Failures remain
+in captures `59f3ac7e-992b-412d-bedb-21e9b53810d6` and
+`8a35eafa-2384-445c-a9cb-ec5b3cb1925b`, not discarded as successful retries.
+
+Final core capture `3849fb60-4440-407d-aa93-c9d47a5bd4e2` passed:
+
+- `:kotlin-faker:jvmTest` and `:kotlin-faker:jvmMaxJdkTest`: 4,423 cases each.
+- `:kotlin-faker:jsNodeTest` and `:kotlin-faker:jsBrowserTest`: three cases each.
+- `:kotlin-faker:compileCommonMainKotlinMetadata`, repository `apiCheck` and `spotlessCheck`.
+
+Comparing case names with the baseline finds no missing case. The eight additional
+JVM cases are the three common tests plus five existing Java Jupiter cases that
+the former engine configuration did not discover. Explicit Jupiter integration
+now runs those Java configuration tests on both JVM versions.
+
+A temporary JaCoCo 0.8.16 init script, outside production configuration, measures
+the executable common class: 15/15 instructions, 3/3 methods, 1/1 line and no
+branch instructions. The two interfaces have no executable bodies. Capture
+`00bf29bc-de9c-4829-9901-e913824c0b8f` records this focused measurement and the
+subsequent successful core Dokka/CLI checks. Production Kover installation and
+enforcement remain Task 31; JS/iOS coverage is not inferred from JVM measurement.
+
+### Remaining acceptance evidence
+
+Hosted execution of actual production iOS common tests/device linking, the
+repository-wide JVM regression run, final source review and evidence review are
+pending. Owner: Task 26 implementer. Complete those checks and record the actual
+job/test results before marking this task done or starting Task 31.
+No remote publication, tag, merge or release is authorized by this setup task.
+
 Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
 and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).

@@ -2,7 +2,7 @@ import Yaml_to_json_gradle.Yaml2JsonPlugin
 import Yaml_to_json_gradle.Yaml2JsonPluginExtension
 
 plugins {
-    `faker-lib-conventions`
+    `faker-multiplatform-conventions`
     `yaml-to-json`
 }
 
@@ -29,4 +29,6 @@ configure<Yaml2JsonPluginExtension> {
     output.set(File("$cwd/build/generated/src/jvmMain/resources"))
 }
 
-tasks.withType<ProcessResources>().configureEach { dependsOn(tasks["yaml2json"]) }
+tasks.named("jvmProcessResources") { dependsOn(tasks["yaml2json"]) }
+
+tasks.named("jvmTestProcessResources") { dependsOn(tasks["yaml2json"]) }

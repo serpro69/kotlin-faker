@@ -1,0 +1,111 @@
+name: KMP production setup
+
+on:
+  push:
+    branches: [feat/kmp_support]
+    paths:
+      - 'buildSrc/**'
+      - 'gradle/**'
+      - 'gradle.properties'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'core/**'
+      - 'faker/**'
+      - 'extension/**'
+      - 'kotlin-js-store/**'
+      - '.github/workflows/kmp-production.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kmp-production-${{ github.ref }}
+  cancel-in-progress: true
+
+# Task 26 execution evidence. Task 31 integrates required PR checks and coverage/release guards.
+jobs:
+  production:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: jvm-web
+            os: ubuntu-latest
+            tasks: jvmTest jvmMaxJdkTest :kotlin-faker:jsNodeTest :kotlin-faker:jsBrowserTest :kotlin-faker:compileCommonMainKotlinMetadata apiCheck spotlessCheck
+            reports: jvmTest jvmMaxJdkTest jsNodeTest jsBrowserTest
+          - name: ios
+            os: macos-latest
+            tasks: :kotlin-faker:iosSimulatorArm64Test :kotlin-faker:linkDebugTestIosArm64 :kotlin-faker:compileCommonMainKotlinMetadata
+            reports: iosSimulatorArm64Test
+    name: Production ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Select and record Apple environment
+        if: runner.os == 'macOS'
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.0.1.app
+          uname -m
+          xcodebuild -version
+          xcrun simctl list runtimes
+      - name: Exercise actual production sources and existing JVM suites
+        run: |
+          mkdir -p build/kmp-evidence
+          if ./gradlew ${{ matrix.tasks }} -PkotlinFaker_enableKotlinJs=true -PkotlinFaker_enableKotlinNative=true --no-build-cache --continue --console=plain --stacktrace > build/kmp-evidence/tasks.log 2>&1; then
+            cat build/kmp-evidence/tasks.log
+          else
+            task_exit=$?
+            cat build/kmp-evidence/tasks.log
+            exit "$task_exit"
+          fi
+      - name: Require executed production common cases
+        env:
+          PRODUCTION_REPORTS: ${{ matrix.reports }}
+          PRODUCTION_TASKS: ${{ matrix.tasks }}
+        run: |
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = Path('core/build/test-results')
+          expected = {
+              'configurationRetainsExplicitLocaleAndSeed',
+              'resourceContractPreservesSourceAndCategoryIdentity',
+              'randomContractAcceptsAnIndependentCommonImplementation',
+          }
+          for task in os.environ['PRODUCTION_REPORTS'].split():
+              cases = [case for path in (root / task).glob('TEST-*.xml')
+                       for case in ET.parse(path).iter('testcase')
+                       if case.attrib['classname'].endswith('.GenerationContractsTest')]
+              names = {case.attrib['name'].split('[')[0].removesuffix('()') for case in cases}
+              assert names == expected and len(cases) == len(expected), (task, names)
+              assert all(case.find('skipped') is None and case.find('failure') is None
+                         and case.find('error') is None for case in cases), task
+              print(task, 'executed', len(cases), 'production common cases')
+          log = Path('build/kmp-evidence/tasks.log').read_text()
+          for task in [':kotlin-faker:compileCommonMainKotlinMetadata', ':kotlin-faker:linkDebugTestIosArm64']:
+              if task in os.environ['PRODUCTION_TASKS'].split():
+                  assert f'> Task {task}' in log.splitlines(), (task, 'did not execute')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kmp-production-${{ matrix.name }}
+          path: |
+            build/kmp-evidence/
+            **/build/test-results/
+            **/build/reports/
+          if-no-files-found: error

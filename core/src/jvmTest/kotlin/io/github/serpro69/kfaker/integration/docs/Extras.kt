@@ -15,6 +15,7 @@ import io.kotest.matchers.collections.shouldNotContain
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
 import java.util.*
+import kotlin.random.Random
 import kotlin.reflect.KClass
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
@@ -315,25 +316,28 @@ class Extras :
                     // --8<-- [end:extras_random_instance_twenty_one]
                 }
 
-                // --8<-- [start:extras_random_instance_twenty_two]
                 it("should randomly pick a default or a random value") {
+                    // Independent random choices can legitimately select all or no defaults.
+                    // Supply mixed choices explicitly so this example test cannot fail by chance.
+                    val choices = listOf(true, false, true, false).iterator()
+                    val choiceRandom =
+                        object : Random() {
+                            override fun nextBits(bitCount: Int) = 0
+
+                            override fun nextBoolean() = choices.next()
+                        }
+                    val faker = Faker(fakerConfig { random = choiceRandom })
+                    // --8<-- [start:extras_random_instance_twenty_two]
                     val testClass: TestClass =
-                        Faker().randomClass.randomClassInstance {
+                        faker.randomClass.randomClassInstance {
                             defaultValuesStrategy = PICK_RANDOMLY
                         }
-                    assert(
-                        testClass.iMin == Int.MIN_VALUE ||
-                            testClass.iMax == Int.MAX_VALUE ||
-                            testClass.s == "sometimes a string... is just a string" ||
-                            testClass.foo.i == 369
-                    )
-                    assert(
-                        !(testClass.iMin == Int.MIN_VALUE &&
-                            testClass.iMax == Int.MAX_VALUE &&
-                            testClass.s == "sometimes a string... is just a string" &&
-                            testClass.foo.i == 369)
-                    )
                     // --8<-- [end:extras_random_instance_twenty_two]
+                    assertEquals(Int.MIN_VALUE, testClass.iMin)
+                    assertEquals(0, testClass.iMax)
+                    assertEquals("sometimes a string... is just a string", testClass.s)
+                    assertEquals(0, testClass.foo.i)
+                    assertEquals(false, choices.hasNext())
                 }
             }
 

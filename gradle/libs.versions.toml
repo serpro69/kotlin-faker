@@ -4,7 +4,7 @@ commons-io = "2.15.1"
 guava = "33.4.8-jre"
 icu4j = "77.1"
 jackson = "2.21.1"
-kotlin = "2.1.21"
+kotlin = "2.3.21"
 kotlinpoet = "2.2.0"
 rgxgen = "2.0"
 # buildsrc and plugins
@@ -19,6 +19,7 @@ plugin-spotless = "7.2.1"
 # test
 kotest = "5.9.1"
 junit = "5.11.0"
+junit-platform = "1.11.0"
 
 ### Java compilation ###
 # Faker's minimum supported Java version.
@@ -57,6 +58,8 @@ gradle-plugin-nmcp = { module = "com.gradleup.nmcp:com.gradleup.nmcp.gradle.plug
 
 # Test
 test-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
+test-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+test-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
 test-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 test-kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
 test-kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
