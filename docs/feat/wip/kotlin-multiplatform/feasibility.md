@@ -1179,13 +1179,62 @@ branch instructions. The two interfaces have no executable bodies. Capture
 subsequent successful core Dokka/CLI checks. Production Kover installation and
 enforcement remain Task 31; JS/iOS coverage is not inferred from JVM measurement.
 
-### Remaining acceptance evidence
+### Hosted production verification
 
-Hosted execution of actual production iOS common tests/device linking, the
-repository-wide JVM regression run, final source review and evidence review are
-pending. Owner: Task 26 implementer. Complete those checks and record the actual
-job/test results before marking this task done or starting Task 31.
-No remote publication, tag, merge or release is authorized by this setup task.
+[Run 45250478318](https://github.com/serpro69/kotlin-faker/actions/runs/45250478318)
+passed both production jobs at `57156de08bd7f8d9fde6d6be6e18293d73b876de`.
+The downloaded XML contains **16,333 passing cases, zero skipped/failed cases**
+across 41 task reports. Capture `6f668469-2658-421b-bca8-86bca59f835e` checks every
+report. Common cases executed three times in each of five environments, for
+**15 actual common-test executions**. Core has 4,423 cases on each JVM launcher
+and three each in Node/browser; the iOS simulator contributes three.
+
+The Linux job ran repository-wide `jvmTest`, `jvmMaxJdkTest`, `apiCheck` and
+`spotlessCheck`, along with core JS/browser and common metadata compilation.
+The Apple task log records simulator compile/link/execution, device test linking
+and common metadata compilation with 21 tasks executed. Both target families
+were explicitly enabled and build-cache reuse disabled. The selected Apple
+environment remains Xcode 26.0.1 on macos-latest Arm64.
+
+Local tooling capture `00bf29bc-de9c-4829-9901-e913824c0b8f` also executed core
+`dokkaGfmPartial` and six CLI unit tests successfully. This verifies CLI JVM
+compilation/execution, not native-image creation. Native-image integration remains
+Task 20/final release verification. Signing, actual production publication/BOM
+consumption and remote upload/tag guard certification are not claimed here.
+
+Final independent source/evidence review remains pending. Owner: Task 26
+implementer. Close that review before marking this task done or starting Task 31.
+Task 31 must make target checks required and enforce production coverage/release
+guards before extraction. No remote publication, tag, merge or release is
+authorized by this setup task.
+
+### Corrections from the broader PR checks and review
+
+The existing PR workflow [45250494766](https://github.com/serpro69/kotlin-faker/actions/runs/45250494766)
+at the same candidate passed docs, API validation and native-image build/smoke
+checks. Its host `check` jobs failed on inherited test assumptions: Ubuntu rejected
+a valid sorted shuffle `[38, 89]` and the literal place name `Wagga Wagga`;
+Windows/macOS rejected non-overlapping independently sampled name batches after
+disableAll. The relevant production code/data and failed assertions were unchanged
+from the Task 26 base. These failed results are retained, not counted as passes.
+
+The correction replaces both service/provider shuffle assertions with explicit
+draws, exact shuffled/unshuffled permutations and input-preservation checks.
+The disableAll example now supplies a repeated draw and requires both providers
+to accept it twice. The existing integration-helper exception lists now recognize
+`Wagga Wagga` from `en/australia.yml` and `Lime #5` from `en/cannabis.yml`, resolving
+the literal-hash issue previously assigned to Task 15. Provider/data migration
+and its common-target assertions remain in their planned tasks. No dictionary
+entry or production generator was changed.
+
+Both code reviewers found no P0–P2 source defect in the initial candidate.
+External P3 suggestions led to explicit `val faker = Faker()` setup in affected
+Markdown examples and exclusive routing of the Node/Yarn coordinates to their
+official distribution repositories. These changes retain PREFER_SETTINGS and
+the same KGP distribution layouts; Maven repositories cannot supply those tools.
+Focused correction capture `30f569e5-ca8b-4509-86cd-840587fd1f0a` passed JVM 11/21
+random/uniqueness tests, travel suites, browser/Node and formatting checks.
+Final corrected-source hosted verification and independent review are pending.
 
 Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
 and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).

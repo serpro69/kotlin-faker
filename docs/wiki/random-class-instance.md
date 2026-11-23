@@ -232,6 +232,7 @@ One can choose between generating values only for non-optional constructor param
 
 === "kotlin :material-language-kotlin:"
     ```kotlin
+    val faker = Faker()
     --8<-- "Extras.kt:extras_random_instance_twenty_two"
     ```
 

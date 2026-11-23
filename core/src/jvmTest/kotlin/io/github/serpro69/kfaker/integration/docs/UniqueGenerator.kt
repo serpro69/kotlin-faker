@@ -98,8 +98,13 @@ class UniqueGenerator :
             }
 
             it("should disable generation of unique values for all providers") {
+                // A repeated draw must be accepted after disabling both providers.
+                val repeatedRandom =
+                    object : Random() {
+                        override fun nextBits(bitCount: Int) = 0
+                    }
+                val faker = Faker(fakerConfig { random = repeatedRandom })
                 // --8<-- [start:unique_data_generator_six]
-                val faker = Faker()
                 faker.unique.configuration {
                     enable(faker::address)
                     enable(faker::name)
@@ -108,14 +113,8 @@ class UniqueGenerator :
                 faker.unique.configuration { disableAll() } // ❶
                 // --8<-- [end:unique_data_generator_six]
 
-                val countries = List(100) { faker.address.country() }
-                val names = List(100) { faker.name.firstName() }
-
-                val otherCountries = List(100) { faker.address.country() }
-                val otherNames = List(100) { faker.name.firstName() }
-
-                assertTrue(countries.any { otherCountries.contains(it) })
-                assertTrue(names.any { otherNames.contains(it) })
+                assertEquals(faker.address.country(), faker.address.country())
+                assertEquals(faker.name.firstName(), faker.name.firstName())
             }
         }
 

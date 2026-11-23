@@ -230,9 +230,11 @@ private val duplicatedValues = listOf(
     "Boom Boom", // superMario#characters
     "Pom Pom", // superMario#characters
     "Min Min", // superSmashBros#fighter
+    "Wagga Wagga", // australia#locations: an intentional place name, not a repeated expression
 )
 
 private val valuesWithHashKey = listOf(
+    "Lime #5", // cannabis#strains: literal data recorded in the feasibility inventory
     "A# .NET", // programmingLanguage#name
     "A# (Axiom)", // programmingLanguage#name
     "C# – ISO/I EC 23270", //programmingLanguage#name
