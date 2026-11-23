@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Task 1 is complete; Task 2 is in progress and subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Tasks 1 and 2 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -45,7 +45,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 2: Prove the full embedded payload and lazy decoding
 
-- **Status:** in-progress
+- **Status:** done
 - **Depends on:** Task 1
 - **Size:** M
 - **Can run in parallel with:** Task 25
@@ -54,16 +54,19 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ### Subtasks
 
-- [ ] 2.1 Resolve anchors and split locale-wide inputs into source/category projections with an overlay manifest; implement bounded suppliers and a minimal lazy accessor.
-- [ ] 2.2 Keep providers, expressions, uniqueness and random generators out of this payload task.
-- [ ] 2.3 Verify every source value survives projection; compile/access the full payload on all targets and prove one category lookup does not parse unrelated categories of a locale-wide file.
-- [ ] 2.4 Record generated-source/artifact sizes, decoded-category counts and compilation costs in `feasibility.md`.
+- [x] 2.1 Resolve anchors and split locale-wide inputs into source/category projections with an overlay manifest; implement bounded suppliers and a minimal lazy accessor.
+- [x] 2.2 Keep providers, expressions, uniqueness and random generators out of this payload task.
+- [x] 2.3 Verify every source value survives projection; compile/access the full payload on all targets and prove one category lookup does not parse unrelated categories of a locale-wide file.
+- [x] 2.4 Record generated-source/artifact sizes, decoded-category counts and compilation costs in `feasibility.md`.
 
 ### Execution context
 
 - **2026-11-23 — observed:** Started from clean `ae5373ab90129e0c8ddb5d5660b71ca4e931f7cf` on `feat/kmp_support`. Task 1 is complete. Scope is the existing standalone harness, its CI checks and evidence; no production provider/resolver/RNG or publication code is introduced.
 - **2026-11-23 — selected:** Preserve the current SnakeYAML/Jackson conversion in this probe, including the `no.yml` parsed root key `false` and the Spanish Boolean scalar. Retain logical file locale separately in the manifest and prove exact document reconstruction; do not edit YAML or silently coerce values. Task 5 must explicitly decide any behavior correction before resolver integration.
 - **2026-11-23 — approach:** Two ordered slices keep the work bounded: (1) generator, manifest/accessor and build wiring; (2) full-source/shared tests, workflow measurements and evidence. Generate bounded string suppliers under build outputs, with independent source/category decoding and explicit locale/source overlay metadata.
+- **2026-11-23 — observed:** [Run 45214931092](https://github.com/serpro69/kotlin-faker/actions/runs/45214931092) passed all five jobs at `b9942303b`, with 75 non-skipped cases and both iOS device links. JVM reconstruction covers all 326 original documents; every target checks all 666 compiled projections against pre-compilation lengths/fingerprints and round-trips them. Generation is reproducible across hosts. [Measured sizes/costs](feasibility.md#hosted-verification-and-measured-costs) include accounting limits and decoded counts.
+- **2026-11-23 — complete:** The external P2 fidelity-test gap was corrected using test-only expectations; P3 source-kind semantics and map-order follow-up were clarified. Task 5/15 carry direct links. Both independent reviewers approved scoped Task 2 after final evidence review, with no remaining acceptance blocker. Optional naming/timing notes, review coverage limits and future harness-owner actions are recorded in feasibility.md. This completes the payload feasibility task, not the remaining RNG/regex/publication milestone or PR merge readiness.
+- **2026-11-23 — separate inherited failure:** The repository-wide macOS commerce integration test rejected literal `Lime #5`; the dictionary/provider/helper are unchanged from the Task 2 base. [Evidence and concrete remediation](feasibility.md#separate-inherited-repository-check-failure) are assigned to Task 15 / PR maintainer. The full PR check gate is failed; the five isolated payload jobs all passed. This unrelated assertion is not retried or weakened within Task 2.
 
 ## Task 25: Prove seeded generation and sampling independently
 
@@ -157,7 +160,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 ### Subtasks
 
 - [ ] 5.1 Promote internal generator/accessor code only; implement immutable projected/merged views keyed by locale, source/category/secondary-resource identity and overlay order, with JVM adapters.
-- [ ] 5.2 Preserve overlays/aliases/special categories; characterize third-level localized merging, record the preserve/fix decision and update stale reflection-based resolver KDoc.
+- [ ] 5.2 Preserve overlays/aliases/special categories; characterize third-level localized merging, record the preserve/fix decision and update stale reflection-based resolver KDoc. Audit map sampling/rendering and English secondary-source selection per [Task 2's map-order follow-up](feasibility.md#migration-follow-up-map-order-and-iban-extraction).
 - [ ] 5.3 Remove main-artifact locales/** YAML/JSON at runtime cutover while retaining authoring/test inputs; adapt FakerIT enumeration to a generated locale manifest and explicit test-fixture lookup.
 - [ ] 5.4 Verify cold/warm caches and reversed sibling loads with identical generation calls on every target; inspect the JAR for complete embedded data, no legacy locale files and no probe scaffolding.
 
@@ -376,8 +379,8 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 ### Subtasks
 
 - [ ] 15.1 Move `faker/commerce` and `faker/tech` to common sources/dependencies and typed factories.
-- [ ] 15.2 Adapt Finance/Bank/Company/Vehicle behavior to the common utilities without losing argument/preprocessing semantics.
-- [ ] 15.3 Cover every shared function through typed cases and focused banking/card/plate pattern tests.
+- [ ] 15.2 Adapt Finance/Bank/Company/Vehicle behavior to the common utilities without losing argument/preprocessing semantics. Replace IBAN last-field string parsing with named `bban_pattern` access per [Task 2's map-order follow-up](feasibility.md#migration-follow-up-map-order-and-iban-extraction).
+- [ ] 15.3 Cover every shared function through typed cases and focused banking/card/plate pattern tests. Address the inherited `Lime #5` literal-hash false positive with deterministic coverage per [the recorded CI failure](feasibility.md#separate-inherited-repository-check-failure).
 - [ ] 15.4 Verify published variants and seeded/semantic behavior on JVM, JS and iOS.
 
 ## Task 16: Port creatures, games and Japanese media

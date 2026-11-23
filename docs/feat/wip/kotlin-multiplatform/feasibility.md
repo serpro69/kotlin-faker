@@ -1,9 +1,11 @@
 # KMP feasibility evidence
 
-Task 1 inventory and toolchain checks, started 2026-11-23 at revision
-`9a3844298b58c45d60e01d39cc72694163fcbdd1`. This is an execution record,
-not approval of the later payload, RNG, regex, publication or migration tasks.
-Task 1 completed on 2026-11-23 after the hosted matrix and independent review passed.
+Execution evidence for Tasks 1 and 2, started 2026-11-23 at revision
+`9a3844298b58c45d60e01d39cc72694163fcbdd1`. Both tasks completed on 2026-11-23
+after their hosted matrices and independent reviews passed. This does not approve
+the later RNG, regex, publication or production migration tasks. The separate
+inherited repository-check failure is recorded at the end; scoped feasibility
+completion does not establish PR merge readiness.
 
 ## Trial configuration
 
@@ -259,8 +261,8 @@ the only completed source review. There are no systemic findings to index.
 
 ## Task 2: complete embedded payload
 
-Implementation is in progress from `ae5373ab90129e0c8ddb5d5660b71ca4e931f7cf`.
-The preferred chunked-JSON representation is being measured in the existing
+Implementation started from `ae5373ab90129e0c8ddb5d5660b71ca4e931f7cf`.
+The preferred chunked-JSON representation has passed the target matrix in the existing
 standalone harness. No production data provider or resolver is copied here.
 
 `payload.gradle.kts` expands YAML aliases using the production loader, performs
@@ -285,13 +287,13 @@ or runtime network/asset setup are added.
 
 Initial generation produced 666 projections from all 326 files/59 locales,
 1,020 literal chunks, 4,265,767 UTF-8 JSON bytes and 5,104,345 generated Kotlin
-source bytes. Largest observed chunk: 8,000 UTF-16 units / 13,941 modified-UTF-8
+source bytes. Observed maxima: 8,000 UTF-16 units and 13,941 modified-UTF-8
 bytes. These are generation measurements, not published package sizes.
 The local JVM/Node run passed (capture
 `4764ee75-f998-41ac-bda1-bd4cfdc604ef`): 9 JVM cases, including complete original
 document reconstruction, and 8 Node cases. Both enumerated all 666 projections.
-Browser/Apple compilation, final artifact/resource measurements and review are
-pending. The first build-script compile attempt
+The strengthened checks subsequently passed the full hosted matrix below. The
+first build-script compile attempt
 `5a41a0d8-b8b9-4908-bfda-d2326793a36c` failed on ambiguous Kotlin `sumOf`
 overloads; an explicitly typed integer fold fixed the generator before execution.
 
@@ -330,13 +332,131 @@ but accidentally interpreting the wrong map field is not acceptable. Canonical
 sorting stays as specified by the design. These provider/resolver adaptations
 are deferred because Task 2 changes no production behavior.
 
-### Review corrections in progress
+### Hosted verification and measured costs
+
+[Run 45214931092](https://github.com/serpro69/kotlin-faker/actions/runs/45214931092)
+passed on implementation commit `b9942303bdd6447332bc90315f7815d2774f945a`.
+All five jobs passed, with **75 cases and zero skips/failures/errors**: 9 JVM
+cases on each of three JVM configurations, 8 cases on each of four JS
+browser/Node configurations, and 8 cases on each of two iOS simulators.
+Both Apple jobs linked simulator and physical-device test binaries. Physical
+device installation/execution remains outside the agreed scope.
+
+All five generated manifests agree on the main-source SHA-256
+`5f9803a27c6b55f27ec011c88205d39c4859b5ceef4a99b3fb7ab506d23b7649`.
+They also agree on 59,413 generated test-source bytes for the independent
+fingerprint expectations. A separate local regeneration matched the main hash
+(capture `b56940b4-7432-482c-8aa6-8e5e612e6741`). Capture
+`99c23dc9-5c83-4de7-a294-52756b339859` checks the downloaded final XML/manifests
+and totals all 75 passing cases. The earlier run 45212550760 passed before the
+fingerprint improvement; it is retained as history, not substituted for the
+strengthened checks.
+
+| Output (producer Kotlin 2.3.21) | Bytes | Interpretation |
+| --- | ---: | --- |
+| JVM JAR | 2,613,474 | Probe main classes plus complete embedded payload; excludes test expectations. |
+| JS main klib directory | 5,691,149 | Unpacked compiler output, not a download bundle. |
+| JS payload module | 5,209,654 | Development JavaScript; test code and runtime dependencies are separate modules. |
+| iOS device main klib directory | 5,672,741 | Main compilation output. |
+| iOS simulator main klib directory | 5,672,751 | Main compilation output. |
+| iOS device debug test binary | 17,444,296 | Includes tests, expectations and runtime libraries; not the eventual library distribution size. |
+| iOS simulator debug test binary | 17,595,240 | Same test-binary limitation; dSYM files measured separately. |
+
+The 2.3.20 floor has the same JVM/JS main sizes and iOS main klib sizes in this
+run; its device/simulator test binaries are 17,445,296 / 17,596,280 bytes.
+Artifact reports exclude incremental compiler caches, and include unpacked klib
+directories as well as packaged outputs. No published-package or tree-shaken
+download-size claim follows from these measurements.
+
+| Job | Timed build wall time | Reported maximum RSS |
+| --- | ---: | ---: |
+| Producer JVM/browser/Node | 112.13 s | 120.18 MiB |
+| JVM 11 | 57.37 s | 122.89 MiB |
+| Compiler-floor JVM/browser/Node | 115.64 s | 123.09 MiB |
+| Producer iOS | 91.00 s | 2,444.59 MiB |
+| Compiler-floor iOS | 224.35 s | 2,357.61 MiB |
+
+These are `/usr/bin/time` reports around the Gradle invocation, including setup
+and tests. They are **not aggregate memory measurements**: detached compiler
+daemons can fall outside the timed process accounting, particularly on JVM/JS.
+They must not be used to claim the whole JVM/JS build needs only 120 MiB.
+Separate Gradle profiles measured producer generation at 2.194 s, JVM compilation
+at 31.950 s, JS compilation at 22.523 s, iOS simulator/device main compilation at
+8.535 / 2.847 s, and their test linking at 13.526 / 9.933 s. Floor iOS generation
+took 3.119 s, main compilations 17.664 / 11.314 s, and links 34.470 / 29.579 s.
+These are observations with differing hosts/caches, not a comparative benchmark
+or performance SLA. Existing runner labels/capacity and default memory settings
+were sufficient; no larger machine or heap increase was requested.
+
+The lazy-access case observes decoded counts **0 → 1 → 1 → 2 → 3** for cold
+German names, repeated names, another German category and English names; a failed
+lookup leaves the count at 3. The full-corpus test deliberately creates a fresh
+store per projection. It proves complete availability without making ordinary
+lookups eager. Provider initialization/cache/uniqueness costs remain production
+work in Tasks 5–13.
+
+### Review corrections and remaining notes
 
 The internal reviewer found no source defects and requested final hosted evidence.
 The external Claude reviewer found a P2 gap in the original cross-target fidelity
 test: each target compared compiled JSON with its own round-trip. The generated
 test-only fingerprints above address that gap; the strengthened checks require a
-fresh target run. Its P3 suggestions led to broader map-order follow-up, explicit
+fresh target run, which passed above. Its P3 suggestions led to broader map-order follow-up, explicit
 source-kind semantics/English selection documentation, and an updated build-script
 comment. External read receipts were stripped by PAL's normal response, so its
 findings are attributed without claiming independently verified read coverage.
+
+The follow-up found the fingerprint correction sound and no remaining P0/P1/P2
+source finding. Task 5/15 now link directly to the map-order work in both tasks
+and implementation documents. The optional test-name nit is retained as author
+context: the test still asserts locale-layer overlay order as well as source-kind
+classification, so its existing name remains descriptive.
+
+The reviewer also raised JS timeout headroom. The final Node full-corpus case
+took 1.237 s (producer) and 0.965 s (floor), with no timeout failures; the browser
+cases also passed. KGP 2.3.21's `KotlinMocha.kt` source confirms a 2 s default.
+Current settings are retained rather than treating the suggested 1.3 s observation
+threshold as a new acceptance SLA. **Owner: Task 3/4 harness implementer**, reassess
+per-case runtime against configured limits as the regex/consumer corpus grows;
+split expensive cases or set an explicit justified timeout if headroom becomes
+insufficient, while retaining complete corpus coverage. Browser XML timings are
+rounded near zero here and are not a useful performance benchmark.
+
+Both independent reviewers subsequently returned **APPROVE for Task 2** after
+the strengthened matrix and documentation were supplied. No P0/P1/P2 finding or
+Task 2 acceptance prerequisite remains. The internal reviewer inspected all five
+sets of XML/manifests and the profiles; the external reviewer inspected a subset
+and used the supplied aggregate for some counts/costs. External read trace receipt
+remains unverified because PAL strips it. Neither reviewer executed the tests.
+
+### Separate inherited repository check failure
+
+The repository-wide PR workflow [45214943353](https://github.com/serpro69/kotlin-faker/actions/runs/45214943353),
+also on `b9942303b`, failed its macOS commerce integration check. The failure is
+`CommerceFakerIT` → `cannabis#strains` → “resolved value should not contain yaml
+expression”: the returned **`Lime #5`** matches the helper's blanket
+`#\{.*}|#++` regex but is absent from `valuesWithHashKey`.
+
+`core/src/jvmMain/resources/locales/en/cannabis.yml` already contains that literal;
+`Cannabis.strains()` returns dictionary values without numerifying them. Both
+files and `test/.../IntegrationTestHelper.kt` are byte-identical at the Task 2
+base and candidate. The helper already exempts other legitimate literal-hash
+values. This is an inherited test/data mismatch, not a failed payload integrity
+check. Failure evidence is retained in capture
+`5cc67d72-d252-46cf-8b39-4ee22f613efe`, original job 137834447800.
+
+**Owner: Task 15 implementer / PR maintainer.** Add a narrowly justified literal
+exception for `Lime #5` using the existing helper convention (or a more precise
+unresolved-template check), add/perform deterministic coverage of that literal
+and a genuinely unresolved placeholder, then rerun the focused commerce suite
+and the failed macOS check. Do not alter the dictionary value or retry the random
+suite merely to hide the failure. It is deferred under the design's instruction
+to record unrelated failures rather than expand this mechanism-only task.
+**Task 2 is verified; the full PR check gate remains failed until this is fixed.**
+API, Linux/Windows checks, CodeQL, docs and native CLI checks passed on this source
+candidate. No merge or release readiness is claimed.
+
+Both reviewers inspected this qualification and retained Task 2 approval: the
+unchanged legacy assertion leaves no payload-task criterion unmet. The recorded
+fix and deterministic verification remain prerequisites for treating the full
+PR gate as ready, regardless of whether a later random sample happens to pass.

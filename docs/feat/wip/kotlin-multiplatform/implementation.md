@@ -100,6 +100,8 @@ Promote the proven generator/accessor from Task 2, declare reproducible task inp
 
 Preserve base/exact overlays, aliases, nested expressions and phone/currency/separator cases. Add production tests characterizing missing third-level localized keys, record the preserve-versus-scoped-fix decision in `feasibility.md`, and implement any required scoped correction with regression coverage. Update stale resolver KDoc to describe dictionary dispatch rather than reflected provider calls.
 
+Apply the [Task 2 map-order follow-up](feasibility.md#migration-follow-up-map-order-and-iban-extraction): audit both map-value sampling and nested-map rendering against canonical key ordering, and preserve default English secondary-resource selection rather than interpreting source-kind ranks as unconditional overlays.
+
 At the runtime cutover exclude `locales/**` YAML and generated JSON from main JVM resources and remove their generation/resource processing dependency when no longer used. Keep authoring YAML and explicit test fixtures. Replace `FakerIT`'s classpath-YAML enumeration with a generated locale manifest; adapt fixture lookup explicitly instead of relying on accidental classloader overrides. Audit repository consumers and record direct resource-path access as a packaging break. Unrelated BLNS/image assets remain intact.
 
 Step → verify: actual production resolver/fallback/cross-category cases run on all targets, including reversed loading of sibling secondary resources and cold/warm caches with identical generation calls; existing JVM facade tests pass. Inspect the fresh JVM JAR for absence of legacy locale YAML/JSON and completeness of embedded data, and verify locale-enumeration tests still execute rather than becoming empty.
@@ -231,6 +233,8 @@ Step → verify: each shared public function has a type-checked invocation case;
 **Port commerce and technology, including regex-backed providers.**
 
 Migrate `faker/commerce` and `faker/tech`. Adapt `Finance`, `Bank`, `Company`, `Vehicle` and their constructor/delegation requirements to the proven common APIs. Keep the existing preprocessing and argument behavior visible in tests, and use common API dependencies on core.
+
+For Bank, use named `bban_pattern` access instead of last-field parsing of rendered maps; the [Task 2 follow-up](feasibility.md#migration-follow-up-map-order-and-iban-extraction) explains why canonical ordering requires this change.
 
 Step → verify: bank, credit-card and state-specific plate paths cover the actual pattern corpus, while other provider functions have type-checked shared cases and deterministic outputs. Verify both module artifacts resolve and execute on all targets.
 
