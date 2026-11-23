@@ -1347,4 +1347,6 @@ Local production evidence so far: `ad16ca5f-e685-4fc4-8e73-22ec7d056afa` passed
 `kmpCoverageCheck` and both 4,423-case JVM suites;
 `1207e9db-e740-44f5-b7c1-75ec848ec617` passed Node/browser tests, repository API
 checks and formatting; `c12e38dd-7db3-4a7b-bcf0-37d6102d9db6` passed the evidence
-verifier's negative controls. Isolated control and hosted results remain pending.
+verifier's negative controls. The production target/coverage jobs and isolated
+controls subsequently passed. The current CI state, scheduler cancellations and
+remaining acceptance work are recorded in the [Task 31 resume checkpoint](tasks.md#resume-checkpoint--2026-11-23).
