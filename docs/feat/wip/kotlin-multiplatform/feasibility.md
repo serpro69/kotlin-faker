@@ -23,7 +23,7 @@ No remote publication task is configured.
 | Common tests | kotlin.test annotations/assertions; JUnit Jupiter 5.11.0 and platform launcher 1.11.0 on JVM; KGP runners on JS/Native. |
 | Build-time inventory | Production versions SnakeYAML 2.2 and ICU4J 77.1. |
 | Apple trial | macos-latest Arm64, explicitly selected Xcode 26.0.1, iOS 26 simulator; execution pending. |
-| Provisional consumer floors | JVM: Kotlin 2.2.21; KMP: Kotlin 2.3.21. API probes at those compilers must pass before these become tested floors. Real artifact consumption remains Tasks 4/29/21. |
+| Provisional consumer floors | JVM and KMP: Kotlin 2.3.20; JVM and Node API probes passed locally. Apple/browser confirmation remains pending. Real artifact consumption remains Tasks 4/29/21. |
 | Language/API settings | Compiler defaults, no metadata-version skip flags. No explicit lowering of producer metadata. |
 
 Kotlin 2.4.21 is newer, but the selected stable 2.3 patch line is sufficient for
@@ -34,6 +34,15 @@ probe checks actual resolved APIs instead. Production convention plugins (BCV
 0.17.0, Dokka 2.0.0, Spotless 7.2.1, NMCP 1.0.2 and semantic versioning) are not
 applied to this isolated harness. Their existing pins remain unchanged and their
 compatibility must be checked in Task 26 before production adoption.
+
+An earlier Kotlin 2.2.21 trial failed: the JVM compiler required ExperimentalTime
+opt-in for the timestamp path and the JS compiler could not resolve the selected
+stdlib/serialization APIs. Capture `3b1ab7a7-51c4-4872-819e-d1f1b8c18d16`
+retains the diagnostics. Kotlin 2.3.20 subsequently compiled and ran the same JVM
+and Node cases without opt-ins or metadata bypasses (capture
+`0eebd6b5-8c36-40fc-b5b1-f422cc14df3b`). Select 2.3.20 as the practical candidate
+floor aligned with serialization's compiler baseline, not a claim that every
+earlier patch/compiler combination has been exhaustively ruled out.
 
 The optional Intel iOS simulator is not advertised by this trial: the selected
 matrix exercises Arm64 only. Android remains a JVM consumer. There are no desktop

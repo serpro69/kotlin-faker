@@ -25,15 +25,32 @@ jobs:
             os: ubuntu-latest
             tasks: inventoryInputs jvmTest jsNodeTest jsBrowserTest
             reports: jvmTest jsNodeTest jsBrowserTest
+          - name: jvm-min
+            os: ubuntu-latest
+            tasks: jvmTest -PprobeTestJdk=11
+            reports: jvmTest
+          - name: compiler-floor
+            os: ubuntu-latest
+            tasks: jvmTest jsNodeTest jsBrowserTest -PprobeKotlinVersion=2.3.20
+            reports: jvmTest jsNodeTest jsBrowserTest
           - name: ios
             os: macos-latest
             tasks: iosSimulatorArm64Test linkDebugTestIosArm64
+            reports: iosSimulatorArm64Test
+          - name: ios-compiler-floor
+            os: macos-latest
+            tasks: iosSimulatorArm64Test linkDebugTestIosArm64 -PprobeKotlinVersion=2.3.20
             reports: iosSimulatorArm64Test
     name: Probe ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        if: matrix.name == 'jvm-min'
+        with:
+          distribution: temurin
+          java-version: '11'
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

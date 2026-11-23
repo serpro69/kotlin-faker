@@ -19,7 +19,7 @@ JDK 11. On an Arm64 Mac with Xcode 26.0.1 and an available iOS simulator:
 ./gradlew -p test/fixtures/kmp-feasibility iosSimulatorArm64Test linkDebugTestIosArm64
 ```
 
-`-PprobeKotlinVersion=2.2.21` selects the provisional lower compiler for API
+`-PprobeKotlinVersion=2.3.20` selects the provisional lower compiler for API
 compatibility experiments. Keep failed runs as evidence; do not use metadata
 version bypass flags. Real published-artifact consumers are added in Task 4.
 
