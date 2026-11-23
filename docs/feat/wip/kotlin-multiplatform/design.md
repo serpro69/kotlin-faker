@@ -1,6 +1,6 @@
 # Kotlin Multiplatform support
 
-Status: proposed; scope agreed, feasibility work and independent review pending.
+Status: ready to begin the ordered implementation plan at Task 1, after a fresh coherence/readiness pass. Feasibility results and later stage-specific API decisions remain explicit prerequisites, not completed evidence. Review dispositions and the fresh-pass fixes are recorded in [review-remediation.md](review-remediation.md).
 
 Issue: [#226](https://github.com/serpro69/kotlin-faker/issues/226). Target: the next major release; no numeric release version is assumed. Companion documents: [implementation](implementation.md), [tasks](tasks.md), [isolated fact-check](verification.md).
 
@@ -23,7 +23,7 @@ The following decisions were explicitly agreed during brainstorming:
 | Regex generation | A documented portable syntax must cover every bundled generation pattern. Unsupported syntax fails explicitly; RgxGen syntax parity is not required. |
 | JVM features | Arbitrary-class construction and existing JVM image functionality remain JVM-specific. |
 
-Success is observable: an independent consumer resolves released coordinates from `commonMain`, runs supported providers on every advertised target, and passes shared behavior and seeded-output checks. Merely compiling an empty common artifact does not satisfy the issue.
+Success is observable: an independent consumer resolves released coordinates from `commonMain`, compiles every advertised variant and runs supported providers in the runtime environments specified below, passing shared behavior and seeded-output checks. Merely compiling an empty common artifact does not satisfy the issue.
 
 This is recurring library infrastructure, not a one-off conversion. Contributors must be able to update YAML and add providers without manually maintaining a second set of dictionaries. The measured source tree contains 326 dictionary files in 59 locale groups, totaling 6,451,142 UTF-8 source bytes; English accounts for 1,737,094 bytes and Japanese `address.yml` alone for 2,534,253 bytes. These are source measurements, not predicted package sizes. The repository has 17 domain modules, including the JVM-specific pictures module.
 
@@ -69,19 +69,23 @@ flowchart TD
     JVM[JVM class generation and images] --> RT
 ```
 
-`AbstractFaker` owns one runtime per Faker instance. That runtime owns its random stream, merged dictionary cache and unique-value state. Pure source data can be shared immutably. Provider creation, data decoding and cache hits must not consume randomness. Explicit creation of a provider must not change later generated values relative to lazy creation.
+`AbstractFaker` owns one runtime per Faker instance. That runtime owns its random stream, merged dictionary views and unique-value state. Pure source data can be shared immutably. Provider construction and data-cache loading must not consume randomness or change later generation. Generated-value memoization is separate from dictionary caching and must have explicit call-sequence tests.
 
-Retain existing domain boundaries and coordinates. Move portable implementations to `commonMain`; do not duplicate provider behavior in `jvmMain`, `jsMain` and `iosMain`. Full reflective discovery is unnecessary for dictionary resolution or provider registration.
+Do not share the current mutable category-only `EnumMap` unchanged. Several providers use one primary category with different secondary resource files. Cache decoded source projections by logical source identity and category; cache immutable resolved views by normalized locale, primary category, secondary resource identity and the ordered overlay inputs. A secondary resource name is distinct from an ordinary nested function key or argument. Loading a sibling provider must neither satisfy the wrong cache entry nor mutate another provider's view. Test cold/warm access and reversed sibling construction/loading with the same subsequent generation calls.
+
+Retain existing domain boundaries and coordinates. Move portable implementations to `commonMain`; do not duplicate provider behavior in `jvmMain`, `jsMain` and `iosMain`. Full reflective discovery is unnecessary for dictionary resolution or provider registration. Task 30 explicitly closes the common declarations for `FakerConfig`, `AbstractFaker`, `FakerService`, `IRandom`, `RandomService` and provider bases before Task 27 moves concrete providers. Temporary JVM adapters must be removed or retained solely as JVM convenience APIs, not assumed to become common automatically.
 
 ### Embedded dictionaries
 
 Keep existing YAML paths as authoring inputs during the migration so documentation includes and contributor workflows remain usable. Extend or refactor `yaml-to-json` to produce generated common sources under the build directory. Preserve SnakeYAML's handling of anchors and aliases; JVM build tooling may continue using Jackson and ICU4J.
 
-The preferred first candidate is canonical JSON carried in bounded Kotlin string chunks. Generate separate lazy suppliers by resource/category rather than a single giant static initializer. Chunk by encoded JVM constant limits as well as source length; split initializer methods/classes as needed. The Japanese address file makes a single-literal implementation unacceptable. Generated files are build outputs, never hand-edited or checked in as a parallel dictionary source.
+The preferred first candidate is canonical JSON carried in bounded Kotlin string chunks. Resolve YAML anchors/aliases first, then partition locale-wide files into category projections while retaining source-file identity and overlay precedence in a generated index. A name lookup must not deserialize the whole locale-wide object. Generate separate lazy suppliers for these projections rather than a single giant static initializer. Chunk by encoded JVM constant limits as well as source length; split initializer methods/classes as needed. The Japanese address file makes a single-literal implementation unacceptable. Generated files are build outputs, never hand-edited or checked in as a parallel dictionary source.
 
 The common decoder uses the `kotlinx.serialization` JSON tree API, with an internal boundary that keeps JSON types out of public provider signatures. Arrays retain source order. Any operation sampling object values must use an explicit deterministic key order, not map/hash iteration. Preserve scalar distinctions and existing consumed shapes; inventory unexpected types before choosing conversion behavior.
 
-Package every locale and category. Decode only data needed by an accessed provider, with dependencies loaded as required by expressions. Lazy decoding is an initialization/memory property, not a promise of tree-shaken download size. No runtime downloads or consumer asset-copy steps are introduced.
+Package every locale and category through embedded data. Decode only data needed by an accessed provider, with dependencies loaded as required by expressions. Lazy decoding is an initialization/memory property, not a promise of tree-shaken download size. No runtime downloads or consumer asset-copy steps are introduced.
+
+At the Task 5 runtime cutover, remove `locales/**` YAML and generated JSON from the **main JVM artifact**; keep the YAML authoring inputs and intentional test fixtures in the repository. Do not ship the old representations beside embedded data. Update the current locale-enumeration test, which reads classpath YAML, to use a generated locale manifest. Treat direct consumer classloader access to these internal resource paths as an explicit major-release packaging break; audit repository consumers before removal. Task 20 narrows the CLI native-image resource configuration after checking its remaining resources, including BLNS JSON and image assets. Removing the broad JSON rule must not strip unrelated required resources.
 
 ### Resolution and locale fallback
 
@@ -97,7 +101,9 @@ Faker owns the seeded algorithm and the algorithms that turn random bits into bo
 
 The first candidate is a common implementation of the small reference SplitMix64 generator, with explicit unsigned wraparound, seed initialization and golden vectors. Finalize its sampling rules in the feasibility slice: unbiased bounded integer sampling, fixed floating-point bit conversion, byte ordering and shuffle order. No host numeric formatting or platform RNG is used in seeded generation. Preserve attribution for any reused implementation. This is not a claim that Kotlin's existing seeded factory uses different platform RNGs: inspected Kotlin source uses common XorWow code; the stronger concern is independence from runtime upgrades and derived algorithms.
 
-Configuration stores a seed as configuration rather than sharing an already-advanced seeded generator across new Faker instances. Every Faker created from the same seeded configuration starts independently. A supplied custom random implementation remains an advanced option; reproducibility then requires identical caller-supplied behavior and initial state. Arbitrary callbacks and unordered caller collections also require identical observable behavior/iteration order; Faker cannot invent an ordering for arbitrary generic objects.
+Configuration stores a seed rather than an already-advanced seeded generator. Every Faker created from the same seeded configuration starts independently at the **same raw random sequence**, including different families such as `Faker` and `BooksFaker`. This can correlate their selections; it does not promise equal final provider values or statistically independent streams. Do not mix seeds with a Faker identifier: callers who need separate streams supply distinct seeds. Document this major-release change from today's shared configuration-owned stream.
+
+A caller-supplied `Random` object remains caller-owned: reusing that object across Fakers deliberately shares its advancing state, and interleaving calls affects output. A configured `randomSeed` continues to take precedence over `random`. Tests and the migration guide must distinguish these two configuration modes. Custom randomness, callbacks, regex exclusions and unordered caller collections require identical observable behavior/initial state or iteration order across targets; Faker cannot impose cross-platform semantics on arbitrary caller implementations.
 
 The contract assumes sequential use of each Faker instance. Concurrent scheduling of calls and unseeded output are not reproducible contracts. Neither generation nor uniqueness becomes a cryptographic or thread-safety feature in this migration.
 
@@ -109,7 +115,7 @@ Use explicit provider/function identifiers or common instance-based configuratio
 
 Characterize clearing and wrapped-call behavior explicitly: current local/global reset operations differ, and methods that bypass `resolveUniqueValue` are not automatically unique merely because they are called through `.unique`. Do not claim blanket per-method uniqueness without defining and testing it. Source inspection also found exclusion rejection branches that can recurse without checking the retry limit; Task 7 must bound every rejected attempt. Typed factories must fix the existing one-argument clone mismatch for providers with additional constructor arguments.
 
-Exclusion matching also influences seeded output. Audit existing regex exclusions when defining portability: arbitrary platform regex behavior cannot silently determine the number of retries. A portable exclusion syntax or a caller-supplied predicate with an explicit determinism condition must be specified before this API is finalized. This is a release-blocking contract question assigned to Task 7, not an implicit narrowing of the agreed guarantee.
+Keep user-supplied exclusions as Kotlin `Regex` values and retain `containsMatchIn` matching. Their reproducibility condition is that the pattern/options compile and yield the same match decisions on the targets being compared, just as a supplied random source or callback must behave identically. Kotlin explicitly documents platform differences in regex syntax/options and matching; do not promise that arbitrary patterns are portable. Task 7 tests representative portable exclusions and documents this condition. No exclusion DSL, custom matching engine or separate portability gate is required. This decision supersedes the original A7 blocker; it does not relax the separate portable **generation** contract for `regexify`.
 
 ### Portable regex generation
 
@@ -141,11 +147,35 @@ Pictures retain their current JVM artifact and behavior. Existing BLNS and Kotes
 
 Use the existing convention-plugin structure. Portable modules declare JVM, JS (browser and Node test environments), `iosArm64` and `iosSimulatorArm64`. An Intel simulator artifact is conditional on the selected Kotlin toolchain still supporting it; this does not justify adding desktop Native or Wasm targets. Android/JVM consumers remain covered through the JVM artifact; a new Android-specific library artifact is unnecessary unless resolution tests demonstrate a need.
 
-Add generated common sources through declared task outputs/dependencies. Scope JDK libraries, kotlin-reflect, JVM resource paths and JUnit/Kotest JVM runner dependencies to JVM source sets. Domain modules expose core as a common API dependency because their public classes inherit core types. Preserve independently versioned module compatibility in published metadata and BOM checks.
+Use this verification matrix consistently; “all targets” in task verification means these applicable compile and execution checks, not running an iOS device binary directly on a Mac:
+
+| Variant/environment | Required evidence |
+| --- | --- |
+| JVM | Compile and run shared/provider/consumer cases on the supported minimum and maximum JDKs. |
+| JS browser and Node | Compile and run the shared/provider/consumer cases in both environments. |
+| iOS simulator Arm64 | Compile, link and run shared/provider/consumer cases on the selected Mac/Xcode simulator runtime. |
+| iOS device Arm64 | Compile the library and compile/link the representative consumer; physical-device installation/execution is not required for this shared-library migration. |
+| Optional Intel simulator | Task 1 decides whether to advertise it and records its matching build/test host; do not claim its runtime tests passed without that runner. |
+
+Actual device-only behavior, if later introduced, requires matching execution evidence rather than relying on the shared-library assumption. No such device-only feature is planned here.
+
+Task 26 applies the validated producer/dependency tuple to the real catalog, wrapper and build conventions and enables production core JVM, JS browser/Node and iOS compile/test targets **before Task 5 introduces shared production behavior**. Task 31 installs their required PR jobs, the chosen coverage measurement and publication guard before extraction begins. Keep the public `Faker` facade in `jvmMain` until Task 13. Each extracted common component has a closed common dependency graph: pass locale/configuration values and a common random-operation interface into it; JVM adapters call that implementation. No common component may reach back into the legacy JVM `FakerConfig`, `FakerService`, `IRandom` or provider classes. Subsequent tasks port these facades only once their dependencies are common.
+
+Add generated common sources through declared task outputs/dependencies. Scope JDK libraries, kotlin-reflect and JUnit/Kotest JVM runner dependencies to JVM source sets. Remove legacy locale resource packaging at Task 5 rather than merely moving its source-set registration. Domain modules expose core as a common API dependency because their public classes inherit core types. Task 29 prepares the shared opt-in domain convention before parallel domain migrations: reuse the established portable targets/tests, use common `api(core)`, and keep the existing `:test`/`testHelper` JVM test JAR in `jvmTest` only. Each domain task opts its own module in; pictures and extensions retain their JVM convention. Preserve independently versioned module compatibility in published metadata and BOM checks.
+
+Compilation/test enablement is separate from publication readiness. Task 31 blocks remote migration publication, including dependent JVM modules and the BOM, while allowing project-local staging. The guard covers direct Maven uploads, NMCP aggregate upload tasks, `publishToAppropriateCentralRepository` and tagging/release entry points; guarding only the wrapper task cannot prevent its dependencies from uploading. A skipped publication must not permit a release tag to be created.
+
+Task 21 proves the graph and Task 22 prepares the publisher, but neither opens the remote gate. It stays closed until final verification/documentation in Task 24 is complete and a separate release action is authorized. Every production slice from Task 5 onward tests the **actual changed common sources** on JVM, JS and an iOS simulator, enforced by the Task 31 jobs. Task 30 closes common runtime declarations, Tasks 27/28 close concrete providers, Task 13 exposes the facade and Task 29 verifies actual core artifact consumption before domain migration.
 
 Publish root KMP metadata and every advertised target artifact. Retain the current root-POM JVM redirect only if independent Gradle/KMP and Maven/JVM fixtures prove both paths work; otherwise use standard KMP root metadata and document explicit JVM coordinates for Maven consumers. A local repository test must use coordinates without project substitution. No remote release is part of the feasibility work.
 
-Mac runners execute iOS simulator binaries. Keep current JVM minimum/maximum checks, CLI checks and supported JVM consumers. Add explicit JS and iOS jobs and check results; host-only JVM runs cannot count as target coverage. Preserve signed release behavior and publish each coordinate once.
+Mac runners execute iOS simulator binaries. Use one macOS publishing job (`macos-latest`, with the supported Xcode/runner combination validated and recorded in Task 1) for root, JVM, JS, iOS and BOM publications. Task 22 replaces the current Ubuntu root/JVM publication matrix with this single publisher. Linux/Windows remain verification hosts, not additional publishers of those coordinates. This avoids depending on version-sensitive Linux-to-Apple cross-compilation and prevents duplicate root/BOM uploads. Keep current JVM minimum/maximum, CLI and signing checks; host-only JVM runs cannot count as target coverage.
+
+### Shared test execution
+
+Use **`kotlin.test` annotations and assertions in `commonTest`**, with the version aligned to the selected Kotlin toolchain. Configure its JVM JUnit 5 integration alongside the existing Kotest/JUnit engine, and use KGP's JS and Native test execution. Task 1 verifies discovery/execution of at least one common test on each target; Task 26 installs that setup in production and Task 31 makes the jobs and chosen coverage check required before new production behavior is added. No Kotest multiplatform compiler plugin or KSP test generator is introduced.
+
+Existing Kotest `DescribeSpec` and reflection-based integration suites stay in `jvmTest`. Add ordinary type-checked common tests for migrated behavior and selectively move reusable fixtures/assertion logic; do not mechanically move DescribeSpec classes into `commonTest` or require a wholesale rewrite of unrelated JVM specs. Test evidence must show the common cases actually ran, not merely that compilation or a zero-test task succeeded.
 
 ## Dependency decisions and evidence limits
 
@@ -153,15 +183,17 @@ Existing baseline: Kotlin 2.1.21, Gradle 8.14.3, JVM runtime target 11, compiler
 
 The JSON tree API was checked against serialization 1.11.0 documentation; that release is built against Kotlin 2.3.20, which is not by itself a declared minimum consumer compiler version. Date APIs were checked against datetime 0.8.0 documentation, which declares Kotlin stdlib 2.1.20 or newer. Its instant type is `kotlin.time.Instant` (experimental in Kotlin 2.1.21), and it has no direct `OffsetDateTime` value-type replacement. Those checks establish candidate capabilities, not compatibility with the current build. Task 1 selects and records a supported Kotlin/Gradle/plugin/library tuple, preferring stable releases and limiting upgrades to what this migration requires. No version pin in the current repository was changed during design.
 
+Task 1 must also choose explicit **minimum consumer Kotlin versions for JVM and KMP**, resolving stdlib/dependency requirements and any language/API settings. The producer compiler version alone does not determine one universal consumer floor: JVM metadata and JS/Native klib compatibility differ. Prefer the lowest practical documented consumer floor compatible with the chosen features; record a required increase as a major-release migration cost. Tasks 4, 29 and 21 compile consumers with those declared floors, with Task 29/21 using real production artifacts. Do not infer support from a producer build or a fixture that silently upgrades its consumer compiler. Publish the tested compiler/stdlib/platform requirements in Task 23.
+
 Avoid a serialization compiler plugin solely for parsing JSON trees. Avoid adding KSP solely to replace explicit provider factories. ICU4J may remain a build-time data source even after its runtime removal. Choose a regex dependency only after verifying its targets, syntax, failure behavior and controllable randomness; no suitable replacement is asserted by this document.
 
 ## Feasibility milestone and acceptance
 
-First prove the risky parts in a small standalone fixture, then integrate them into production. A prototype is evidence, not a second supported Faker implementation. Its temporary implementation files must be replaced with real artifact consumption as production paths become available.
+Limit pre-production investigation to the uncertain mechanisms. Task 1 inventories inputs and selects the trial toolchain/test and consumer-version matrix. Task 2 compiles and lazily decodes the **full dictionary payload** without a provider/resolver implementation. Task 25 checks the seeded generator/sampling independently. Task 3 checks the corpus-driven regex grammar/generator using that stream. Task 4 publishes one minimal probe artifact and consumes it externally; it does not emulate a core/domain module graph or prove the repository's production publishing hooks.
 
-The milestone must compile the **full dictionary payload**, exercise names/addresses and one domain path, demonstrate fallback, cross-category references, uniqueness and representative regex generation, and compare identical seeded cases on JVM, JS and an iOS simulator. Publish the candidate artifacts to a project-local repository and consume them from a separate KMP build.
+The fixture under `test/fixtures/kmp-feasibility/` contains no copied Faker facade, address fallback, cross-category resolver, books provider or uniqueness subsystem. Those behaviors are tested directly in production after Task 26 enables targets. Candidate data/random/regex components may be promoted into production once, retiring their superseded fixture copies; do not maintain a second implementation. Keep the standalone probe outside root project includes, the BOM and release aggregation, using separate local-only coordinates. Its public probe entry points and test/build scaffolding never enter production source roots or artifacts. Promote only internal mechanism code/generated data; Task 29 checks packaged/public surfaces for probe leakage. The external consumer harness can later consume actual artifacts in Tasks 29 and 21.
 
-Record toolchain versions, commands, artifact sizes, cold provider initialization, decoded-category counts and compile/resource costs. There is no agreed numeric performance SLA. Hard failures are compiler/constant limits, missing data, eager decoding of all locales, required network/asset setup, target incompatibility, seeded mismatches or a need to raise CI capacity without an explicit design revision. Lazy loading must not consume random values. Performance measurements inform the representation decision; they are not fabricated pass thresholds.
+Record toolchain/test versions, declared consumer floors, commands, artifact sizes, lazy payload decoding and compile/resource costs. There is no agreed numeric performance SLA. Hard failures are compiler/constant limits, missing data, eager decoding of all locales, required network/asset setup, target incompatibility, seeded mismatches or a need to raise CI capacity without an explicit design revision. Provider initialization/fallback/uniqueness measurements belong to production Tasks 5–13. Prototype publication proves only the basic KMP artifact/dependency mechanism; root-POM rewriting, signing and the real module graph are verified against production artifacts.
 
 The production release requires:
 
@@ -175,17 +207,17 @@ The production release requires:
 
 | ID | Testable assumption or open decision | Owner task / consequence |
 | --- | --- | --- |
-| A1 | Chunked embedded data fits compiler and existing CI resource limits with all locales. | Tasks 2–4; change representation if it fails, not locale scope. |
+| A1 | Chunked embedded data fits compiler and existing CI resource limits with all locales. | Tasks 2 and 4; change representation if it fails, not locale scope. |
 | A2 | Bundled regex patterns admit a bounded portable grammar. | Tasks 1 and 3; record exact grammar before production migration. |
 | A3 | Pinned locale character data and common text operations can meet deterministic behavior for supported inputs. | Tasks 1 and 12; document any proposed accepted-input change before adoption. |
-| A4 | A supported dependency/toolchain tuple works with existing publishing and API tooling. | Tasks 1 and 4; no untested version compatibility claim. |
-| A5 | JVM/JS/iOS means Kotlin consumers through common metadata, not independent npm or Swift SDKs. | Validate in design review; export product work changes scope. |
+| A4 | The chosen toolchain/test tuple supports declared consumer Kotlin floors and real publishing/API tooling. | Tasks 1/4 probe; Tasks 26/29/21 verify actual production configuration. |
+| A5 | JVM/JS/iOS means Kotlin consumers through common metadata, not independent npm or Swift SDKs. | Adopted interpretation of #226's commonMain request; independent export products change scope. |
 | A6 | Browser/Node and physical/simulator iOS are the intended environments. | Tasks 1 and 4 validate declared target availability and simulator execution. |
-| A7 | Portable uniqueness exclusions can preserve the seeded contract without a general regex matching engine. | Task 7 must settle the API or reopen the design. |
-| A8 | Existing extension modules remain JVM-only while core/domain providers become common. | Review this boundary; Task 20 proves existing JVM integration. |
+| A7 | Caller regex exclusions have equivalent matching behavior on compared targets. | Documented input condition, not a release-blocking engine question; Task 7 retains common Regex and tests portable examples. |
+| A8 | Existing extension modules remain JVM-only while core/domain providers become common. | Adopted scope boundary; Task 20 proves existing JVM integration. |
 | A9 | Date return shape and JVM facade can be clear breaking APIs without compatibility scaffolding. | Tasks 9 and 11 record signatures and migration entries before moving callers. |
 
-Do not mark the design implementation-ready for broad provider migration until the feasibility gates have evidence. No feasibility build or prototype was run as part of writing these documents.
+Readiness is staged: Task 1 can begin now. Tasks 2/25/3/4 establish feasibility; only their successful exit permits production setup and extraction. Tasks 9/10/11/12 record exact changed JVM/UUID/date/locale API decisions before changing their callers. Task 30 requires those contracts to be closed, and Task 29 requires actual artifact-consumer evidence before broad domain migration. These are execution gates with owners and observable outcomes, not reasons to repeat the entire design interview. No feasibility build or prototype was run during documentation review.
 
 ## Alternatives and rationale
 
@@ -224,3 +256,4 @@ This is a non-trivial migration with real data-distribution and API trade-offs. 
 - [Datetime 0.8.0 documentation](https://github.com/Kotlin/kotlinx-datetime/blob/v0.8.0/README.md): common date/instant conversion capabilities; exact release tuple remains to be validated.
 - [SplitMix reference](https://prng.di.unimi.it/splitmix.c): candidate fixed seeded generator; validate the complete sampling layer separately.
 - [RgxGen](https://github.com/curious-odd-man/RgxGen): existing Java dependency and its documented generation syntax.
+- [Common tests](https://kotlinlang.org/docs/multiplatform/multiplatform-run-tests.html), [Kotlin binary compatibility](https://kotlinlang.org/docs/kotlin-evolution-principles.html#evolving-the-binary-format) and [Regex platform differences](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-regex/): sources for the review corrections.

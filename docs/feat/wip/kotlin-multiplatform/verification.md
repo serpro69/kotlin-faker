@@ -4,6 +4,8 @@ Date: 2026-11-23. Method: `kk:chain-of-verification:isolated`, explicitly reques
 
 This report verifies selected factual foundations of [design.md](design.md). It is not a design review, architecture conformance review, compilation result or proof of the proposed implementation. All implementation tasks remain pending.
 
+This is the **historical initial-draft fact-check**. The subsequent two design reviews and their corroborated corrections are recorded in [review-remediation.md](review-remediation.md). That record and the revised live documents supersede the original task references, prototype scope and exclusion-gate recommendation below; source observations remain evidence about the inspected baseline.
+
 ## Initial answer
 
 The initial draft made four sets of factual claims, with explicit feasibility limits:
@@ -85,7 +87,7 @@ No verified claim establishes successful compilation, publication, target execut
 
 Proceed with the agreed scope and a bounded feasibility milestone. The repository has useful KMP build groundwork, but real common runtime behavior and complete publication are still work. Embedded full-locale data and portable generation are justified candidates; neither dependency examples nor source inspection substitute for cross-target and independent-consumer evidence. The reconciled design and implementation plan preserve those limits explicitly.
 
-## Document validation
+## Initial document validation (historical)
 
 Authoring checks passed for local file links and heading anchors, fenced blocks, trailing whitespace, required task metadata, all 24 task identifiers and an acyclic dependency graph. All 97 implementation subtasks remain unchecked. These checks validate document structure, not implementation behavior or independent design quality.
 
