@@ -1,21 +1,6 @@
 name: KMP production setup
 
 on:
-  push:
-    branches: [feat/kmp_support]
-    paths:
-      - 'buildSrc/**'
-      - 'gradle/**'
-      - 'gradle.properties'
-      - 'build.gradle.kts'
-      - 'settings.gradle.kts'
-      - 'core/**'
-      - 'faker/**'
-      - 'extension/**'
-      - 'kotlin-js-store/**'
-      - '.github/workflows/kmp-production.yml'
-      - '.github/workflows/run_gradle.yml'
-      - 'scripts/*kmp*.py'
   workflow_dispatch:
 
 permissions:
@@ -25,7 +10,7 @@ concurrency:
   group: kmp-production-${{ github.ref }}
   cancel-in-progress: true
 
-# The feature-branch runner uses the same required checks as pull requests.
+# Manual diagnostics use the same required checks as pull requests.
 jobs:
   production:
     strategy:

@@ -1281,7 +1281,7 @@ select every project applying `faker-multiplatform-conventions`. The first runs
 JVM 11/21, the second runs Node and headless Chrome, and the third executes the
 Arm64 simulator tests plus device test-binary linking and common metadata
 compilation. `writeKmpVerificationPlan` records the selected project paths.
-The PR matrix and feature-branch workflow both use `run_gradle.yml`; selected
+The PR matrix and manually dispatched production workflow both use `run_gradle.yml`; selected
 checks must succeed in the final PR result. Docs-only filtering remains allowed.
 Authoring-dictionary changes also trigger the existing feasibility/fidelity and
 external probe-consumer workflow, whose result is required by the PR finalizer.

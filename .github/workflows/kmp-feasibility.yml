@@ -2,7 +2,7 @@ name: KMP feasibility
 
 on:
   push:
-    branches: [codex/kmp-task1-feasibility, feat/kmp_support]
+    branches: [codex/kmp-task1-feasibility]
     paths:
       - 'test/fixtures/kmp-feasibility/**'
       - 'core/src/jvmMain/resources/locales/**'

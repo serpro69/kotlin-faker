@@ -132,6 +132,7 @@ def exercise_build(root: Path, target: str) -> None:
                         for source in candidate.rglob("src/commonTest/kotlin")}
             (candidate / "control-common-tests.json").write_text(json.dumps(selected))
             command = [str(candidate / "gradlew"), "--console=plain", "--no-build-cache",
+                       "-PsigningKey=", "-PsigningPassword=",
                        "--stacktrace", "-I", str(init), *arguments]
             log_path = evidence / f"{target}-{label}.log"
             with log_path.open("w") as log:
@@ -144,8 +145,10 @@ def exercise_build(root: Path, target: str) -> None:
             if (candidate / "FORBIDDEN_ACTION").exists():
                 raise RuntimeError("An inert upload/tag action ran: the guard failed")
             if blocked_paths:
-                rejection = next(line for line in output.splitlines()
-                                 if line.startswith("KMP migration blocks "))
+                rejection = next((line for line in output.splitlines()
+                                  if line.startswith("KMP migration blocks ")), None)
+                if rejection is None:
+                    raise RuntimeError(f"{label}: missing migration guard diagnostic; see {log_path}")
                 rejected = rejection.split("authorized: ", 1)[1].split(". Use ", 1)[0].split(", ")
                 if set(blocked_paths) - set(rejected):
                     raise RuntimeError(f"Guard omitted tasks: {set(blocked_paths) - set(rejected)}")

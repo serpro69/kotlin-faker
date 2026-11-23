@@ -166,3 +166,39 @@ seed-minus-one values come from `random_reference.py` and the corresponding
 `RandomSamplingTest` vectors: raw seed-minus-one word `e4d971771b652c20` is signed
 Long `-1956407806741107680`. Regex choices come from `regex_reference.py` and
 `PortableRegexTest`; these are test oracles, not copied generator implementations.
+
+### Updating the reviewed dictionary baseline
+
+During the migration, dictionary changes select the required fidelity workflow.
+The fixture deliberately retains its reviewed baseline until Task 8 promotes the
+production corpus guard. A changed expected value needs maintainer review of the
+dictionary diff and fidelity/semantic evidence; do not update expectations merely
+to make a failed build green.
+
+| Pinned baseline | Test locations | Reproduction and update condition |
+| --- | --- | --- |
+| 326 source files, 59 locales | `PayloadTest` and `PublishedProbeTest` | Run `inventoryInputs generatePayload`; compare `build/inventory/summary.txt` and `build/generated/payload/manifest.json`. Update after the JVM source-reconstruction test proves all original documents survive. |
+| 666 projections and payload fingerprint `14376e443dcf410f` | `PublishedProbeTest` | Use the independent Python command above after generation and source reconstruction. The fingerprint must come from pre-compilation expectations, never the published artifact. |
+| 122923 occurrences, 122872 distinct patterns, 312 syntax patterns, 122560 literals | `RegexCorpusTest` | Recompute from `build/inventory/regex-inputs.tsv` with the command below; the JVM inventory comparison must still cover every source/key occurrence. |
+| Corpus fingerprint `61af7582c14d505d` | `RegexCorpusTest` | After reviewing count changes, run the corpus test on JVM, Node, browser and iOS. All per-pattern independent matcher checks must reach the final fingerprint assertion and report the same new actual value. Review that change before updating the expected hex value and rerunning successfully. This fingerprint is a cross-target consistency baseline recorded from generator output, not an independent algorithm oracle; the fixed `PortableRegexTest` vectors remain unchanged for dictionary-only edits. |
+
+From the repository root, after `./gradlew -p test/fixtures/kmp-feasibility inventoryInputs generatePayload`:
+
+```sh
+python3 - <<'PY'
+import re
+from pathlib import Path
+rows = Path('test/fixtures/kmp-feasibility/build/inventory/regex-inputs.tsv').read_text().splitlines()[1:]
+escapes = {'\\': '\\', 't': '\t', 'n': '\n', 'r': '\r'}
+patterns = [re.sub(r'\\([\\tnr])', lambda m: escapes[m[1]], row.split('\t')[3]) for row in rows]
+distinct = set(patterns)
+syntax = {pattern for pattern in distinct if any(char in '\\[]{}()*+?|.^$' for char in pattern)}
+print('occurrences, distinct, syntax, literals:', len(patterns), len(distinct), len(syntax), len(distinct - syntax))
+PY
+```
+
+The corpus test class is `probe.RegexCorpusTest`; the JVM inventory comparison is
+`commonCorpusMatchesEveryTaskOneInventoryOccurrence`. The full target commands
+earlier in this README run these checks. Keep the failing comparison reports with
+the reviewed baseline update. A new unsupported pattern must be fixed or given
+an explicitly agreed grammar change, not removed from the inventory.
