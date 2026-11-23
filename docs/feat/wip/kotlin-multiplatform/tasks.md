@@ -122,7 +122,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 4: Consume one minimal probe artifact and decide feasibility
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** Tasks 2, 3, 25
 - **Size:** M
 - **Can run in parallel with:** —
@@ -135,6 +135,13 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [ ] 4.2 Run JVM, JS browser/Node and iOS simulator checks without copying Faker/provider code or emulating the production module graph.
 - [ ] 4.3 Complete `feasibility.md` with measured payload costs, grammar, seeded specification, toolchain/test tuple and consumer floors.
 - [ ] 4.4 Resolve genuine mechanism failures before production extraction; reserve production POM/signing/BOM validation for Tasks 29/21/22.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean `ee1434410eb9e482c5a569e0358eb248a205b964` on `feat/kmp_support`. Tasks 2/3/25 and their hosted matrices are complete. Scope is the standalone probe, an independent coordinate consumer, the existing feasibility workflow and evidence; production configuration and mechanisms remain unchanged.
+- **2026-11-23 — approach:** First add local publication, a primitive-valued probe boundary and an independent Kotlin 2.3.20 consumer (five substantive files). Then wire hosted verification and evidence. Stage producer Kotlin 2.3.21 artifacts into a file repository; prohibit Maven Local fallback and project substitution. Verify every payload projection, lazy decoding, seeded sampling and regex semantics on JVM 11/21, browser, Node and iOS simulator, with device linking. Record actual transitive stdlib resolution separately from compiler floors.
+- **2026-11-23 — authorization:** Reuse the earlier explicit permission recorded under Task 25 to push this feature branch for hosted iOS verification. This authorizes CI execution, not a merge, remote artifact release or production migration.
+- **2026-11-23 — observed:** Capture `9310cf13-1217-47a2-88ee-c5c224e1868d` failed common metadata transformation because the Linux staging subset lacked Apple publications. Run that explicit check on macOS against the complete staged repository; Linux still compiles the actual consumer common source for JVM/JS. Final local capture `0497e43f-519a-487a-992b-10bac0201da3` passed all 15 JVM/Node/browser cases and the boundary coverage gate. Hosted minimum-JDK/Apple checks and independent review remain pending.
 
 ## Task 26: Enable production targets and common tests early
 

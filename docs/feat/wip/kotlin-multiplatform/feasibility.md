@@ -11,6 +11,9 @@ Detailed [sampling](#task-25-controlled-seeded-operations) and
 [regex](#task-3-portable-regex-generation) specifications/evidence appear below;
 execution status is tracked in tasks.md.
 
+Task 4's independent publication checks are being implemented below; its final
+decision requires the hosted consumer matrix and independent review.
+
 ## Trial configuration
 
 The standalone [harness](../../../../test/fixtures/kmp-feasibility/) has its own
@@ -904,3 +907,64 @@ inspected the supplied source, XML and logs without claiming to execute tests.
 This closes Task 3's scoped acceptance. No bundled construct has been dropped or
 silently approximated. Production integration, publication, whole-PR readiness
 and the separately tracked commerce assertion remain outside this approval.
+
+
+## Task 4: independent artifact consumption
+
+Baseline: `ee1434410eb9e482c5a569e0358eb248a205b964`, 2026-11-23. The
+standalone producer publishes a single mechanism module, with KMP root/target
+publications, to `test/fixtures/kmp-feasibility/build/probe-repository/` under
+`io.github.serpro69.kfaker.probe:kfaker-kmp-feasibility:0.0.0-local`.
+Gradle's built-in `maven-publish` and KGP defaults supply the publications. No
+production publishing helper, root-POM rewrite, signing or BOM is copied here.
+
+The separate `consumer/` settings pins Kotlin 2.3.20; the producer remains on
+2.3.21. Its `commonMain` entry point imports the published `MechanismProbe` class.
+Both common metadata compilation and target execution are required. The consumer
+has no included build, project substitution, producer source directory or Maven
+Local repository; its Maven Central filter excludes the probe group. Its only
+producer access is the file repository. The probe API exposes primitive values
+and strings, delegating to the already-tested mechanisms without copying Faker,
+provider, resolver or uniqueness code.
+
+Five consumer cases cover every one of the 666 projections (326 sources, 59
+locales), JSON decoding/round-trip equality, source/category identities, lazy
+counts 0 → 1 → 1 → 2 → 2 after failure → 3, Japanese Unicode, seeded sampling,
+regex vectors/independent matching, and rejection without random advancement.
+The payload aggregate `14376e443dcf410f` was independently calculated in Python
+from Task 2's generated pre-compilation expectations, in numeric part order:
+FNV-1a over each `path\tcategory-or--\tUTF16-length\t16-digit-checksum\n` row.
+The consumer recomputes individual checksums from the published strings before
+folding those same rows. The fixed expectation is test-only; no producer test
+sources or expected checksums are dependencies of the consumer. Task 2's existing
+JVM source reconstruction remains the independent source-fidelity oracle.
+
+### Compiler and runtime requirements
+
+The source-only trial floor of Kotlin/stdlib 2.3.20 is distinct from the published
+consumer result. The probe's generated metadata requires **stdlib 2.3.21** on
+JVM/JS, while the independent consumer compiler stays **2.3.20**. No force,
+metadata bypass or compiler upgrade is used. Native uses its compiler-bundled
+stdlib. This is a declaration of the tested publication graph, not a claim that
+stdlib 2.3.20 is incompatible or that every earlier compiler was ruled out.
+Production consumer floors remain subject to actual artifact checks in Tasks
+29/21. The other trial versions and target/JDK/Xcode requirements above are retained.
+
+### Verification and pending decision
+
+Local staging capture `f913fec8-472e-4be5-9393-c113ae2faaa0` produced root/JVM/JS
+artifacts. Initial consumer capture `daa3c056-0564-434c-8f8c-87234451e16d` passed
+five JVM and five Node cases. Final common-source/browser/coverage verification,
+hosted JVM 11 and Apple checks, artifact measurements and independent review are
+pending; Task 4 remains in progress. Owner: Task 4 implementer. Complete those
+checks before deciding feasibility or starting Task 26.
+
+The new facade and common consumer entry point are measured from the resolved
+JVM JAR and consumer classes by JaCoCo 0.8.16. The gate requires both classes and
+100% line/branch coverage; it cannot pass from an empty class set or missing
+execution data. Existing random/regex coverage gates remain unchanged. Runtime
+library downloads during an uncached Gradle build are ordinary dependency setup;
+the published mechanisms make no dictionary network requests or asset-copy calls.
+
+Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
+and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).

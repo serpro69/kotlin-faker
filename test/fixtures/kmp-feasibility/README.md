@@ -22,7 +22,8 @@ JDK 11. On an Arm64 Mac with Xcode 26.0.1 and an available iOS simulator:
 
 `-PprobeKotlinVersion=2.3.20` selects the provisional lower compiler for API
 compatibility experiments. Keep failed runs as evidence; do not use metadata
-version bypass flags. Real published-artifact consumers are added in Task 4.
+version bypass flags. The independent `consumer/` build pins Kotlin 2.3.20 and
+consumes artifacts produced by the default Kotlin 2.3.21 build.
 
 Reports are under `build/test-results/` and `build/inventory/`. The inventory
 uses the production SnakeYAML/ICU versions, expands YAML aliases and records
@@ -84,3 +85,48 @@ embedded dictionaries. JVM tests compare every occurrence with Task 1's inventor
 reproducible with `python3 test/fixtures/kmp-feasibility/regex_reference.py`.
 `regexCoverageVerification` enforces 100% JVM line/branch coverage for the handwritten
 regex mechanism; both coverage reports are under `build/reports/jacoco/`.
+
+## Published probe consumer
+
+The sole probe module publishes root metadata and target artifacts as
+`io.github.serpro69.kfaker.probe:kfaker-kmp-feasibility:0.0.0-local` to
+`build/probe-repository/`. This is a file repository, outside production includes,
+the BOM and release aggregation. No remote repository or signing is configured.
+
+On Linux, stage the root/JVM/JS publications and run the independent consumer:
+
+```sh
+./gradlew -p test/fixtures/kmp-feasibility publishKotlinMultiplatformPublicationToProbeRepository publishJvmPublicationToProbeRepository publishJsPublicationToProbeRepository
+./gradlew -p test/fixtures/kmp-feasibility/consumer jvmTest jsNodeTest jsBrowserTest boundaryCoverageVerification
+./gradlew -p test/fixtures/kmp-feasibility/consumer jvmTest -PprobeTestJdk=11
+```
+
+On the supported Arm64 Mac, stage every publication and execute/link the consumer:
+The explicit common metadata compilation needs all declared target publications,
+including iOS, so it runs against this complete repository.
+
+```sh
+./gradlew -p test/fixtures/kmp-feasibility publishAllPublicationsToProbeRepository
+./gradlew -p test/fixtures/kmp-feasibility/consumer compileCommonMainKotlinMetadata iosSimulatorArm64Test linkDebugTestIosArm64
+```
+
+The consumer declares the coordinates in `commonMain`, with no producer sources,
+project substitutions or Maven Local fallback. Maven Central excludes the probe
+group. It checks every payload projection against a fixed aggregate of Task 2's
+pre-compilation expectations, round-trips the decoded data, observes lazy counts,
+and checks seeded random/regex vectors and failure behavior. Ordinary build-tool
+and runtime-library downloads are needed for an uncached build; generation itself
+is synchronous and offline, with no dictionary download or asset setup.
+
+The consumer compiler stays at 2.3.20. Published dependency metadata requests
+stdlib 2.3.21 on JVM/JS; this differs from the earlier source-only 2.3.20 probe.
+Native uses the compiler's bundled stdlib. Production floors must still be checked
+against actual core/domain publications in Tasks 29/21.
+
+`boundaryCoverageVerification` measures the resolved JVM artifact's probe facade
+and the consumer's common entry point, requiring 100% line/branch coverage. It
+does not use producer class directories. Existing mechanism coverage remains in
+the producer. JS/iOS are behavioral checks, not measured coverage claims.
+The workflow retains named consumer XML, dependency graphs, common/device task
+logs, publication metadata and file sizes/hashes. See the Task 4 section in
+`feasibility.md` for the decision, evidence and remaining production gates.

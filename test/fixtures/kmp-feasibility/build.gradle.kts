@@ -5,11 +5,22 @@ import org.gradle.testing.jacoco.tasks.JacocoReportBase
 
 plugins {
     kotlin("multiplatform")
+    `maven-publish`
     jacoco
 }
 
 group = "io.github.serpro69.kfaker.probe"
 version = "0.0.0-local"
+
+// One isolated mechanism module; no production publication conventions or remote repository.
+publishing {
+    repositories {
+        maven {
+            name = "Probe"
+            url = uri(layout.buildDirectory.dir("probe-repository"))
+        }
+    }
+}
 
 apply(from = "payload.gradle.kts")
 

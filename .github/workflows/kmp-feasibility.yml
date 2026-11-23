@@ -144,3 +144,110 @@ jobs:
             test/fixtures/kmp-feasibility/build/payload-artifacts.tsv
             test/fixtures/kmp-feasibility/build/measurements/
           if-no-files-found: error
+
+  consumer:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: jvm-web
+            os: ubuntu-latest
+            publications: publishKotlinMultiplatformPublicationToProbeRepository publishJvmPublicationToProbeRepository publishJsPublicationToProbeRepository
+            tasks: jvmTest jsNodeTest jsBrowserTest boundaryCoverageVerification
+            reports: jvmTest jsNodeTest jsBrowserTest
+          - name: jvm-min
+            os: ubuntu-latest
+            publications: publishKotlinMultiplatformPublicationToProbeRepository publishJvmPublicationToProbeRepository
+            tasks: jvmTest -PprobeTestJdk=11
+            reports: jvmTest
+          - name: ios
+            os: macos-latest
+            publications: publishAllPublicationsToProbeRepository
+            tasks: compileCommonMainKotlinMetadata iosSimulatorArm64Test linkDebugTestIosArm64
+            reports: iosSimulatorArm64Test
+    name: Published consumer ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        if: matrix.name == 'jvm-min'
+        with:
+          distribution: temurin
+          java-version: '11'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Select and record Apple environment
+        if: runner.os == 'macOS'
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.0.1.app
+          uname -m
+          xcodebuild -version
+          xcrun simctl list runtimes
+      - name: Stage producer 2.3.21 into the project-local repository
+        run: ./gradlew -p test/fixtures/kmp-feasibility ${{ matrix.publications }} --no-daemon --profile --console=plain --stacktrace
+      - name: Consume with Kotlin 2.3.20
+        run: |
+          mkdir -p test/fixtures/kmp-feasibility/consumer/build/evidence
+          if ./gradlew -p test/fixtures/kmp-feasibility/consumer ${{ matrix.tasks }} --no-daemon --profile --console=plain --stacktrace > test/fixtures/kmp-feasibility/consumer/build/evidence/tasks.log 2>&1; then
+            cat test/fixtures/kmp-feasibility/consumer/build/evidence/tasks.log
+          else
+            consumer_exit=$?
+            cat test/fixtures/kmp-feasibility/consumer/build/evidence/tasks.log
+            exit "$consumer_exit"
+          fi
+      - name: Record consumer dependency versions
+        run: ./gradlew -p test/fixtures/kmp-feasibility/consumer dependencies --no-daemon --console=plain > test/fixtures/kmp-feasibility/consumer/build/evidence/dependencies.txt
+      - name: Require executed artifact-consumer cases and record staged files
+        env:
+          CONSUMER_REPORTS: ${{ matrix.reports }}
+          CONSUMER_TASKS: ${{ matrix.tasks }}
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = Path('test/fixtures/kmp-feasibility')
+          expected = {
+              'publishedPayloadContainsEveryProjection',
+              'publishedDecoderIsLazyAndPreservesUnicode',
+              'publishedSamplingMatchesIndependentVectors',
+              'publishedRegexMatchesIndependentVectorsAndSemantics',
+              'publishedFailuresPreserveTheRandomStream',
+          }
+          for task in os.environ['CONSUMER_REPORTS'].split():
+              cases = [case for path in (root / 'consumer/build/test-results' / task).glob('TEST-*.xml')
+                       for case in ET.parse(path).iter('testcase')]
+              names = {case.attrib['name'].split('[')[0].removesuffix('()') for case in cases}
+              assert names == expected, (task, 'unexpected or missing consumer tests', names)
+              assert len(cases) == len(expected), (task, 'duplicate consumer cases')
+              assert all(case.find('skipped') is None and case.find('failure') is None
+                         and case.find('error') is None for case in cases), task
+              print(task, 'executed', len(cases), 'published consumer tests')
+          log = (root / 'consumer/build/evidence/tasks.log').read_text()
+          for task in ['compileCommonMainKotlinMetadata', 'linkDebugTestIosArm64']:
+              if task in os.environ['CONSUMER_TASKS'].split():
+                  assert f'> Task :{task}' in log.splitlines(), (task, 'did not execute')
+          repository = root / 'build/probe-repository'
+          artifacts = sorted(p for p in repository.rglob('*') if p.suffix in {'.jar', '.klib', '.module', '.pom'})
+          assert artifacts, 'no staged artifacts'
+          manifest = ''.join(f'{p.relative_to(repository)}\t{p.stat().st_size}\t{hashlib.sha256(p.read_bytes()).hexdigest()}\n'
+                             for p in artifacts)
+          (root / 'consumer/build/evidence/publication-files.tsv').write_text(manifest)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kmp-consumer-${{ matrix.name }}
+          path: |
+            test/fixtures/kmp-feasibility/consumer/build/test-results/
+            test/fixtures/kmp-feasibility/consumer/build/reports/
+            test/fixtures/kmp-feasibility/consumer/build/evidence/
+            test/fixtures/kmp-feasibility/build/reports/profile/
+            test/fixtures/kmp-feasibility/build/probe-repository/**/*.module
+            test/fixtures/kmp-feasibility/build/probe-repository/**/*.pom
+          if-no-files-found: error
