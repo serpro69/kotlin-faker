@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Tasks 1–4 and 25 are complete; the mechanism feasibility gate passed. Task 26 is next; subsequent production tasks remain pending behind their explicit gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Tasks 1–4, 25 and 26 are complete; mechanism feasibility and production target setup are verified. Task 31 is next and must install required checks, coverage and publication guards before extraction. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -147,7 +147,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 26: Enable production targets and common tests early
 
-- **Status:** in-progress
+- **Status:** done
 - **Depends on:** Task 4
 - **Size:** M
 - **Can run in parallel with:** —
@@ -156,10 +156,10 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ### Subtasks
 
-- [ ] 26.1 Apply the validated tuple to the production catalog/wrapper/plugins and wire reusable portable targets; retain the JVM facade and verify existing JVM checks.
-- [ ] 26.2 Scope JVM dependencies correctly and install the selected kotlin.test commonTest/JVM JUnit 5 integration while preserving existing JVM Kotest specs.
-- [ ] 26.3 Define only closed common configuration/resource/random contracts and execute a real production common test on every target; later components may not reference legacy JVM facades.
-- [ ] 26.4 Verify actual production common test discovery/execution on every target using the selected tuple; Task 31 must enforce those checks before extraction.
+- [x] 26.1 Apply the validated tuple to the production catalog/wrapper/plugins and wire reusable portable targets; retain the JVM facade and verify existing JVM checks.
+- [x] 26.2 Scope JVM dependencies correctly and install the selected kotlin.test commonTest/JVM JUnit 5 integration while preserving existing JVM Kotest specs.
+- [x] 26.3 Define only closed common configuration/resource/random contracts and execute a real production common test on every target; later components may not reference legacy JVM facades.
+- [x] 26.4 Verify actual production common test discovery/execution on every target using the selected tuple; Task 31 must enforce those checks before extraction.
 
 ### Execution context
 
@@ -171,6 +171,8 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - **2026-11-23 — observed:** Capture `3849fb60-4440-407d-aa93-c9d47a5bd4e2` passed core JVM 11/21, Node/browser, common metadata compilation, repository API and formatting checks. Both JVM reports contain 4,423 cases: all 4,415 baseline cases, three common cases and five existing Java cases newly discovered through Jupiter. Each JS runner executed all three common cases. Local coverage from `00bf29bc-de9c-4829-9901-e913824c0b8f` covers all 15 instructions/3 methods/1 line in GenerationConfiguration; the interfaces contain no executable bodies. Hosted production execution, tooling checks and final review remain pending.
 - **2026-11-23 — observed:** [Run 45250478318](https://github.com/serpro69/kotlin-faker/actions/runs/45250478318) passed both jobs at `57156de08bd7f8d9fde6d6be6e18293d73b876de`: 16,333 passing cases with zero skips, including 15 common-case executions across JVM 11/21, browser, Node and iOS. Device linking and common metadata compilation executed. Repository-wide JVM/API/formatting checks passed; local core Dokka and six CLI cases also passed. Native-image, signing and publication-readiness claims remain outside Task 26. Final independent evidence review is pending.
 - **2026-11-23 — verification corrections:** The separate existing PR run `45250494766` passed API/docs/native-image checks but exposed inherited assertion failures on all three hosts: a shuffled subset may legitimately stay sorted; separately sampled name batches need not overlap after disableAll; `Wagga Wagga` is valid literal data. Fixed the shuffle checks with controlled draws and exact flag-dependent results, disableAll with a repeated draw, and the existing literal exceptions for Wagga Wagga and the previously recorded Lime #5. No production generator or dictionary changed. Capture `30f569e5-ca8b-4509-86cd-840587fd1f0a` passed focused JVM 11/21, travel, JS and formatting checks. External P3 feedback also led to explicit Faker initialization in the Markdown snippets and exclusive Node/Yarn repository routing. Corrected-source hosted checks and review remain pending.
+- **2026-11-23 — observed:** Corrected candidate `263938beb6481fce4cd368f559e073cb7869b374` passed [production run 45254467042](https://github.com/serpro69/kotlin-faker/actions/runs/45254467042) (16,333 cases, zero skips) and [the complete PR workflow 45254478142](https://github.com/serpro69/kotlin-faker/actions/runs/45254478142), including all three host checks and native-image smoke tests. The source fixes and documentation clarifications are verified; final evidence-review closure remains pending.
+- **2026-11-23 — complete:** Both independent reviewers approved the corrected source and final evidence, with no outstanding finding or essential evidence request. Task 26 is complete; stop after this requested task. Task 31 is next and remains a prerequisite for extraction. The exact literal exception is implemented, while Task 15 still owns deterministic literal/unresolved-placeholder coverage. Review receipt limits and PR synthetic-merge provenance are recorded in feasibility.md; no release or remote publication readiness is claimed.
 
 ## Task 31: Enforce target checks, coverage and publication guards
 
@@ -420,7 +422,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 - [ ] 15.1 Move `faker/commerce` and `faker/tech` to common sources/dependencies and typed factories.
 - [ ] 15.2 Adapt Finance/Bank/Company/Vehicle behavior to the common utilities without losing argument/preprocessing semantics. Replace IBAN last-field string parsing with named `bban_pattern` access per [Task 2's map-order follow-up](feasibility.md#migration-follow-up-map-order-and-iban-extraction).
-- [ ] 15.3 Cover every shared function through typed cases and focused banking/card/plate pattern tests. Address the inherited `Lime #5` literal-hash false positive with deterministic coverage per [the recorded CI failure](feasibility.md#separate-inherited-repository-check-failure).
+- [ ] 15.3 Cover every shared function through typed cases and focused banking/card/plate pattern tests. Retain Task 26's `Lime #5` literal exception and add deterministic coverage of that literal and a genuinely unresolved placeholder per [the recorded CI failure](feasibility.md#separate-inherited-repository-check-failure).
 - [ ] 15.4 Verify published variants and seeded/semantic behavior on JVM, JS and iOS.
 
 ## Task 16: Port creatures, games and Japanese media

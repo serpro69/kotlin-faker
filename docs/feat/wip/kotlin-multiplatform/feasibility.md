@@ -1,19 +1,19 @@
 # KMP feasibility evidence
 
-Execution evidence for completed Tasks 1–4 and 25. Work began on 2026-11-23 at
+Execution evidence for completed Tasks 1–4, 25 and 26. Work began on 2026-11-23 at
 `9a3844298b58c45d60e01d39cc72694163fcbdd1`; each section records its own candidate
-and verification. All five tasks completed after their hosted matrices and
-independent reviews passed. The mechanism feasibility milestone is complete;
-production migration remains pending. The inherited repository-check failure still limits
-whole-PR readiness.
+and verification, with review coverage and limits recorded per task. The mechanism
+feasibility milestone and production target setup are complete. Corrected Task 26
+production and PR checks passed; historical failures below retain their provenance.
+Production extraction awaits Task 31's required checks, coverage and release guards.
 
 Detailed [sampling](#task-25-controlled-seeded-operations) and
 [regex](#task-3-portable-regex-generation) specifications/evidence appear below;
 execution status is tracked in tasks.md.
 
-Task 4's independent publication checks and final reviews passed, as recorded
-below. The completed hosted matrix supports proceeding to production setup in
-Task 26; it does not establish production publication or release readiness.
+Task 4's independent publication checks and Task 26's production setup checks
+passed, as recorded below. They do not establish production publication or release
+readiness.
 
 ## Trial configuration
 
@@ -1202,9 +1202,8 @@ compilation/execution, not native-image creation. Native-image integration remai
 Task 20/final release verification. Signing, actual production publication/BOM
 consumption and remote upload/tag guard certification are not claimed here.
 
-Final independent source/evidence review remains pending. Owner: Task 26
-implementer. Close that review before marking this task done or starting Task 31.
-Task 31 must make target checks required and enforce production coverage/release
+Final independent source/evidence reviews approved the corrected candidate, as
+recorded below. Task 26 is complete. Task 31 must make target checks required and enforce production coverage/release
 guards before extraction. No remote publication, tag, merge or release is
 authorized by this setup task.
 
@@ -1222,10 +1221,11 @@ The correction replaces both service/provider shuffle assertions with explicit
 draws, exact shuffled/unshuffled permutations and input-preservation checks.
 The disableAll example now supplies a repeated draw and requires both providers
 to accept it twice. The existing integration-helper exception lists now recognize
-`Wagga Wagga` from `en/australia.yml` and `Lime #5` from `en/cannabis.yml`, resolving
-the literal-hash issue previously assigned to Task 15. Provider/data migration
-and its common-target assertions remain in their planned tasks. No dictionary
-entry or production generator was changed.
+`Wagga Wagga` from `en/australia.yml` and `Lime #5` from `en/cannabis.yml`.
+This adds the literal-hash exception previously assigned to Task 15; Task 15 still
+owns the planned deterministic literal/unresolved-placeholder coverage. Provider/data
+migration and its common-target assertions remain in their planned tasks. No
+dictionary entry or production generator was changed.
 
 Both code reviewers found no P0–P2 source defect in the initial candidate.
 External P3 suggestions led to explicit `val faker = Faker()` setup in affected
@@ -1234,7 +1234,39 @@ official distribution repositories. These changes retain PREFER_SETTINGS and
 the same KGP distribution layouts; Maven repositories cannot supply those tools.
 Focused correction capture `30f569e5-ca8b-4509-86cd-840587fd1f0a` passed JVM 11/21
 random/uniqueness tests, travel suites, browser/Node and formatting checks.
-Final corrected-source hosted verification and independent review are pending.
+Corrected-source production run
+[45254467042](https://github.com/serpro69/kotlin-faker/actions/runs/45254467042)
+passed both jobs at `263938beb6481fce4cd368f559e073cb7869b374`. Its 41 XML task
+reports again contain 16,333 passing cases, zero failures/errors/skips and 15
+common-case executions across all five environments. Capture
+`06ef9877-aba0-426c-8988-22349be6ad04` validates every report. The complete PR run
+[45254478142](https://github.com/serpro69/kotlin-faker/actions/runs/45254478142)
+also passed all eight jobs: Ubuntu/Windows/macOS `check`, API, docs, native-image
+build/smoke, change detection and final aggregation. These results supersede the
+earlier failing PR outcome without discarding its diagnostics.
+
+The final documentation distinguishes the Lime #5 exception added here from
+its still-planned deterministic literal/unresolved-placeholder tests in Task 15.
+Both independent reviewers approved the final corrected source and evidence;
+no finding or essential evidence request remains. Task 26 is complete.
+
+The internal reviewer inspected the source changes, unchanged consumers,
+representative raw reports and execution logs. External review used PAL's Claude
+CLI with observed model `claude-opus-5-5` (Anthropic). Both returned scoped
+**APPROVE**. External read receipts were stripped and some Bash inspections were
+denied, so its findings remain attributed rather than independently corroborated;
+some aggregate counts rely on the supplied extraction summaries. Neither reviewer
+ran builds or tests. API review was unavailable; other eligible CLI executables
+were absent and Gemini was retired. No systemic P0/P1 finding needs indexing.
+
+Production verification checks out `263938beb` directly. The PR workflow tests
+GitHub's synthetic merge `6fdee05` of that head into
+`9a3844298b58c45d60e01d39cc72694163fcbdd1`. Its combined log omits reusable-workflow
+host logs; job conclusions support the host-check result. A separately retrieved
+Windows job log also shows Node/Yarn setup and both JS test tasks executing,
+followed by BUILD SUCCESSFUL. No cache-free claim is inferred for every dependency
+download. Signing, actual production artifact/BOM consumption, required-job/Kover
+enforcement and upload/tag guards remain the later tasks' responsibilities.
 
 Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
 and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).
