@@ -5,20 +5,20 @@
 > Verification: [verification.md](verification.md)
 > Review remediation: [review-remediation.md](review-remediation.md)
 > Issue: [#226](https://github.com/serpro69/kotlin-faker/issues/226)
-> Status: pending
+> Status: in-progress
 > Created: 2026-11-23
 > Release: next major
 > Not Doing: desktop Native/Wasm, portable class construction/images, locale splitting, remote dictionaries, full regex parity, npm/Swift SDKs, new concurrency/crypto guarantees, cross-release seeded stability
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Ready to start Task 1 and follow the explicit feasibility/production gates. All implementation work remains pending. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Task 1 is in progress; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
 ## Task 1: Inventory inputs, test execution and consumer compatibility
 
-- **Status:** pending
+- **Status:** in-progress
 - **Depends on:** —
 - **Size:** M
 - **Can run in parallel with:** —
@@ -31,6 +31,12 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - [ ] 1.2 Select and verify the producer Kotlin/Gradle/Xcode/library tuple and explicit JVM/KMP minimum consumer Kotlin/stdlib floors; record upgrade impact and language/API settings.
 - [ ] 1.3 Initialize the minimal probe harness with kotlin.test common tests, JVM JUnit 5 integration and JS/Native runners; keep existing Kotest specs in jvmTest, without a new multiplatform Kotest/KSP runner.
 - [ ] 1.4 Record the compile/runtime matrix and exact task/runner names; prove common test discovery in each execution environment and device compilation/linking, inspect coverage instrumentation and record unavailable checks.
+
+### Execution context
+
+- **2026-11-23 — observed:** Started from clean revision `9a3844298b58c45d60e01d39cc72694163fcbdd1`. Scope is the standalone `test/fixtures/kmp-feasibility/` harness and input/toolchain evidence; production sources, versions and release configuration remain unchanged. Later mechanism and migration tasks remain pending.
+- **2026-11-23 — explicitly accepted:** The user selected an existing GitHub Actions runner for Apple execution because the local host is Linux. Prepare an isolated feasibility branch/workflow to obtain actual simulator and device-link evidence.
+- **2026-11-23 — observed:** Source inspection found no JaCoCo/Kover configuration or measured coverage gate. Task 1 will select and document measurement for Task 31; existing test success cannot establish 100% coverage.
 
 ## Task 2: Prove the full embedded payload and lazy decoding
 
