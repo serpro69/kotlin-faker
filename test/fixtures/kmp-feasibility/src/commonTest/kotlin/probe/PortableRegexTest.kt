@@ -75,6 +75,18 @@ class PortableRegexTest {
         assertEquals(5, words.consumed)
         assertEquals("abc", generator.generate("[a-cba]{3}"))
         assertEquals(8, words.consumed)
+        val endpoints = listOf(
+            "\\d" to (10 to "09"), "\\D" to (85 to " ~"),
+            "\\w" to (63 to "0_"), "\\W" to (32 to " ~"),
+            "\\s" to (6 to "\t "), "\\S" to (94 to "!~"),
+        )
+        for ((pattern, expectation) in endpoints) {
+            val (size, expected) = expectation
+            val source = ScriptedWords(listOf(size.toULong(), (size - 1).toULong()))
+            val shorthand = PortableRegex(RandomSampling(source))
+            assertEquals(expected, shorthand.generate(pattern) + shorthand.generate(pattern), pattern)
+            assertEquals(2, source.consumed)
+        }
     }
 
     @Test
@@ -112,6 +124,17 @@ class PortableRegexTest {
         val failure = assertFailsWith<RegexGenerationException> { generator.generate("ab\\q") }
         assertEquals(2, failure.position)
         assertTrue(failure.message!!.contains("unsupported escape"))
+        for ((pattern, position, reason) in listOf(
+            Triple("[z-a]", 1, "descending character range"),
+            Triple("(abc", 0, "unclosed group"),
+            Triple("a{2", 1, "expected closing repetition brace"),
+            Triple("a{4096}a", 0, "maximum generated output"),
+            Triple("((){4096}){4096}", 10, "maximum generation work"),
+        )) {
+            val diagnostic = assertFailsWith<RegexGenerationException> { generator.generate(pattern) }
+            assertEquals(position, diagnostic.position, pattern)
+            assertTrue(diagnostic.message.orEmpty().contains(reason), pattern)
+        }
     }
 
     @Test
@@ -121,12 +144,18 @@ class PortableRegexTest {
         assertEquals("", generator.generate("a{0}".repeat(4096)))
         assertEquals("a", generator.generate("(".repeat(64) + "a" + ")".repeat(64)))
         assertEquals("", generator.generate("(){4096}".repeat(15) + "(){4079}"))
-        for (pattern in listOf(
-            "a".repeat(16385), "a".repeat(4097), "(a{4096}){2}",
-            "(".repeat(65) + "a" + ")".repeat(65), "😀{2049}",
-            "((){4096}){4096}", "(){4096}".repeat(15) + "(){4080}",
+        for ((pattern, reason) in listOf(
+            "a".repeat(16385) to "pattern exceeds",
+            "a{0}".repeat(4097) to "pattern exceeds",
+            "a".repeat(4097) to "maximum generated output",
+            "(a{4096}){2}" to "maximum generated output",
+            ("(".repeat(65) + "a" + ")".repeat(65)) to "group nesting exceeds",
+            "😀{2049}" to "maximum generated output",
+            "((){4096}){4096}" to "maximum generation work",
+            ("(){4096}".repeat(15) + "(){4080}") to "maximum generation work",
         )) {
-            assertFailsWith<RegexGenerationException> { generator.generate(pattern) }
+            val failure = assertFailsWith<RegexGenerationException> { generator.generate(pattern) }
+            assertTrue(failure.message.orEmpty().contains(reason), pattern)
         }
     }
 

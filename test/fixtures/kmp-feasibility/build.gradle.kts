@@ -67,11 +67,11 @@ jacoco { toolVersion = "0.8.16" }
 val randomClasses = fileTree(layout.buildDirectory.dir("classes/kotlin/jvm/main")) {
     include("probe/random/**")
 }
-val randomExecutionData = layout.buildDirectory.file("jacoco/jvmTest.exec")
+val jvmExecutionData = layout.buildDirectory.file("jacoco/jvmTest.exec")
 val requireRandomCoverageData = tasks.register("requireRandomCoverageData") {
     dependsOn(tasks.named("jvmTest"))
     doLast {
-        check(randomExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
+        check(jvmExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
         check(!randomClasses.isEmpty) { "Missing compiled random mechanism classes" }
     }
 }
@@ -101,7 +101,7 @@ tasks.register<JacocoCoverageVerification>("randomCoverageVerification") {
 }
 tasks.withType<JacocoReportBase>().matching { it.name.startsWith("randomCoverage") }.configureEach {
     dependsOn(requireRandomCoverageData)
-    executionData(randomExecutionData)
+    executionData(jvmExecutionData)
     classDirectories.setFrom(randomClasses)
     sourceDirectories.setFrom(files("src/commonMain/kotlin"))
 }
@@ -112,7 +112,7 @@ val regexClasses = fileTree(layout.buildDirectory.dir("classes/kotlin/jvm/main")
 val requireRegexCoverageData = tasks.register("requireRegexCoverageData") {
     dependsOn(tasks.named("jvmTest"))
     doLast {
-        check(randomExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
+        check(jvmExecutionData.get().asFile.isFile) { "Missing JVM coverage execution data" }
         check(!regexClasses.isEmpty) { "Missing compiled regex mechanism classes" }
     }
 }
@@ -142,7 +142,7 @@ tasks.register<JacocoCoverageVerification>("regexCoverageVerification") {
 }
 tasks.withType<JacocoReportBase>().matching { it.name.startsWith("regexCoverage") }.configureEach {
     dependsOn(requireRegexCoverageData)
-    executionData(randomExecutionData)
+    executionData(jvmExecutionData)
     classDirectories.setFrom(regexClasses)
     sourceDirectories.setFrom(files("src/commonMain/kotlin"))
 }

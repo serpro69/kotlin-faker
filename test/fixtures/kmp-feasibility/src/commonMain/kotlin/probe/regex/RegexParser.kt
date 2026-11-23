@@ -1,11 +1,11 @@
 package probe.regex
 
-internal sealed class RegexNode(val maxLength: Int) {
-    class Text(val value: String) : RegexNode(value.length)
-    class Characters(val values: String) : RegexNode(1)
-    class Sequence(val children: List<RegexNode>, length: Int) : RegexNode(length)
-    class Alternative(val branches: List<RegexNode>, length: Int) : RegexNode(length)
-    class Repetition(val body: RegexNode, val first: Int, val last: Int, length: Int) : RegexNode(length)
+internal sealed class RegexNode(val maxLength: Int, val position: Int) {
+    class Text(val value: String, position: Int) : RegexNode(value.length, position)
+    class Characters(val values: String, position: Int) : RegexNode(1, position)
+    class Sequence(val children: List<RegexNode>, length: Int, position: Int) : RegexNode(length, position)
+    class Alternative(val branches: List<RegexNode>, length: Int, position: Int) : RegexNode(length, position)
+    class Repetition(val body: RegexNode, val first: Int, val last: Int, length: Int, position: Int) : RegexNode(length, position)
 }
 
 internal class RegexGenerationException(val position: Int, reason: String) :
@@ -21,7 +21,7 @@ internal class RegexParser(private val pattern: String) {
     private var position = 0
 
     fun parse(): RegexNode {
-        if (pattern.length > 16384) throw failure("pattern exceeds 16384 UTF-16 units", 16384)
+        if (pattern.length > 16384) throw failure("pattern exceeds 16384 UTF-16 units", 0)
         if (current() == '^') position++
         val root = alternative(0)
         if (current() == '$') position++
@@ -45,11 +45,12 @@ internal class RegexParser(private val pattern: String) {
             }
             is RegexNode.Repetition -> 1L + node.last * checkWork(node.body)
         }
-        if (steps > 65536) throw failure("maximum generation work exceeds 65536 node visits")
+        if (steps > 65536) throw failure("maximum generation work exceeds 65536 node visits", node.position)
         return steps
     }
 
     private fun alternative(depth: Int): RegexNode {
+        val start = position
         val branches = mutableListOf(sequence(depth))
         var length = branches[0].maxLength
         while (current() == '|') {
@@ -59,10 +60,11 @@ internal class RegexParser(private val pattern: String) {
             length = maxOf(length, branch.maxLength)
         }
         return if (branches.size == 1) branches.single()
-        else RegexNode.Alternative(branches, length)
+        else RegexNode.Alternative(branches, length, start)
     }
 
     private fun sequence(depth: Int): RegexNode {
+        val start = position
         val children = mutableListOf<RegexNode>()
         var length = 0L
         while (position < pattern.length) {
@@ -71,10 +73,10 @@ internal class RegexParser(private val pattern: String) {
             if (depth == 0 && char == '$' && position == pattern.lastIndex) break
             val node = repeated(atom(depth))
             length += node.maxLength
-            checkLength(length)
+            checkLength(length, start)
             children += node
         }
-        return RegexNode.Sequence(children, length.toInt())
+        return RegexNode.Sequence(children, length.toInt(), start)
     }
 
     private fun atom(depth: Int): RegexNode {
@@ -96,9 +98,9 @@ internal class RegexParser(private val pattern: String) {
             '[' -> characterClass(start)
             '\\' -> {
                 val values = escape(start)
-                if (values.length == 1) RegexNode.Text(values) else RegexNode.Characters(values)
+                if (values.length == 1) RegexNode.Text(values, start) else RegexNode.Characters(values, start)
             }
-            '.' -> RegexNode.Characters(printable)
+            '.' -> RegexNode.Characters(printable, start)
             '^', '$' -> throw failure("anchors are supported only at the root edges", start)
             '*', '+', '?', '{', '}', ']' -> throw failure("unexpected metacharacter", start)
             else -> {
@@ -111,7 +113,7 @@ internal class RegexParser(private val pattern: String) {
                     if (char.isLowSurrogate()) throw failure("unpaired surrogate", start)
                     char.toString()
                 }
-                RegexNode.Text(value)
+                RegexNode.Text(value, start)
             }
         }
     }
@@ -126,7 +128,7 @@ internal class RegexParser(private val pattern: String) {
                 position++
                 val first = count()
                 val last = if (current() == ',') { position++; count() } else first
-                if (current() != '}') throw failure("expected closing repetition brace")
+                if (current() != '}') throw failure("expected closing repetition brace", start)
                 position++
                 if (first > last) throw failure("reversed repetition bounds", start)
                 first to last
@@ -134,8 +136,8 @@ internal class RegexParser(private val pattern: String) {
             else -> return body
         }
         val length = body.maxLength.toLong() * bounds.second
-        checkLength(length)
-        return RegexNode.Repetition(body, bounds.first, bounds.second, length.toInt())
+        checkLength(length, start)
+        return RegexNode.Repetition(body, bounds.first, bounds.second, length.toInt(), start)
     }
 
     private fun count(): Int {
@@ -153,9 +155,9 @@ internal class RegexParser(private val pattern: String) {
         val negated = current() == '^'
         if (negated) position++
         val values = linkedSetOf<Char>()
-        fun add(chars: Iterable<Char>) {
+        fun add(chars: Iterable<Char>, at: Int) {
             for (char in chars) {
-                if (char.isSurrogate()) throw failure("surrogate ranges are unsupported")
+                if (char.isSurrogate()) throw failure("surrogate ranges are unsupported", at)
                 values += char
                 if (values.size > 256) throw failure("character class exceeds 256 distinct characters", start)
             }
@@ -163,25 +165,26 @@ internal class RegexParser(private val pattern: String) {
         while (current() != ']') {
             if (current() == null) throw failure("unclosed character class", start)
             if (pattern.startsWith("&&", position)) throw failure("class intersections are unsupported")
-            val first = classAtom()
+            val atomStart = position
+            val first = classAtom(start)
             if (current() == '-' && pattern.getOrNull(position + 1) != ']') {
                 position++
-                val last = classAtom()
-                if (first.length != 1 || last.length != 1) throw failure("range endpoints must be literals")
-                if (first[0] > last[0]) throw failure("descending character range")
-                add(first[0]..last[0])
-            } else add(first.asIterable())
+                val last = classAtom(start)
+                if (first.length != 1 || last.length != 1) throw failure("range endpoints must be literals", atomStart)
+                if (first[0] > last[0]) throw failure("descending character range", atomStart)
+                add(first[0]..last[0], atomStart)
+            } else add(first.asIterable(), atomStart)
         }
         position++
         if (values.isEmpty()) throw failure("empty character class", start)
         val alphabet = if (negated) printable.filter { it !in values } else values.joinToString("")
         if (alphabet.isEmpty()) throw failure("class has no characters in the generation alphabet", start)
-        return RegexNode.Characters(alphabet)
+        return RegexNode.Characters(alphabet, start)
     }
 
-    private fun classAtom(): String {
+    private fun classAtom(classStart: Int): String {
         val start = position
-        val char = current() ?: throw failure("unclosed character class")
+        val char = current() ?: throw failure("unclosed character class", classStart)
         position++
         if (char == '\\') return escape(start, inClass = true)
         if (char == '[') throw failure("nested classes are unsupported", start)
@@ -210,8 +213,8 @@ internal class RegexParser(private val pattern: String) {
         }
     }
 
-    private fun checkLength(length: Long) {
-        if (length > 4096) throw failure("maximum generated output exceeds 4096 UTF-16 units")
+    private fun checkLength(length: Long, start: Int) {
+        if (length > 4096) throw failure("maximum generated output exceeds 4096 UTF-16 units", start)
     }
 
     private fun current(): Char? = pattern.getOrNull(position)

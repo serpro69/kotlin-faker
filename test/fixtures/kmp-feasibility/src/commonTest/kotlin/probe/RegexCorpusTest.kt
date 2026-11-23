@@ -12,6 +12,7 @@ import probe.payload.PayloadStore
 import probe.payload.payloadProjections
 import probe.payload.payloadSources
 import probe.random.RandomSampling
+import probe.random.RandomWords
 import probe.regex.PortableRegex
 
 internal data class RegexInput(val source: String, val key: String, val input: String, val pattern: String)
@@ -61,7 +62,7 @@ class RegexCorpusTest {
         val syntax = distinct.filter { pattern -> pattern.any { it in "\\[]{}()*+?|.^$" } }.toSet()
         assertEquals(312, syntax.size)
         assertEquals(122560, distinct.size - syntax.size)
-        val literalGenerator = PortableRegex(RandomSampling(0))
+        val literalGenerator = PortableRegex(RandomSampling(RandomWords { error("literal consumed randomness") }))
         var fingerprint = 0xcbf29ce484222325uL
         for (pattern in distinct) {
             if (pattern !in syntax) {

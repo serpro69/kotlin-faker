@@ -703,7 +703,11 @@ is not claimed to be uniform over all matching strings.
 
 Parsing and validation finish before any random draw, including invalid syntax
 in an alternative that might not be selected. Diagnostics report the UTF-16
-pattern position and reason. The candidate limits patterns to 16,384 UTF-16
+start offset of the offending token, range, bound, sequence or repetition and a
+reason. Unclosed delimiters refer to their opener; a missing count refers to its
+expected start; an oversized whole pattern refers to position zero. AST nodes
+retain their start so expansion-work errors identify the offending subtree.
+The candidate limits patterns to 16,384 UTF-16
 units, nested groups to 64, maximum generated output to 4,096 UTF-16 units and
 generation work to 65,536 AST node visits. Limits apply to every parsed subtree,
 including subtrees inside zero-count repetitions. The work limit also bounds
@@ -731,6 +735,28 @@ The 936 syntax outputs also have a fixed length-prefixed UTF-16 FNV-1a fingerpri
 This fingerprint checks cross-target equality; it is not an independent semantic
 oracle. Separate tests cover all six cryptography lengths and the four existing
 FakerService regression patterns. Slash delimiters and finance `L` remain literals.
+
+The reviewer-requested construct audit of the **312 distinct syntax patterns**
+is nonexclusive (one pattern can appear in several rows):
+
+| Construct | Distinct patterns |
+| --- | ---: |
+| Character classes | 290 |
+| Ascending ranges within classes | 282 |
+| Capturing groups / alternatives | 2 / 2 |
+| Optional `?` | 4 |
+| Fixed `{n}` / bounded `{n,m}` repetition | 51 / 60 |
+| `\d` | 37 |
+| Literal slashes | 17 |
+| Negated classes, noncapturing groups, anchors, dot, `*`, `+` | 0 each |
+| `\D`, `\w`, `\W`, `\s`, `\S`, other escapes, open brace bounds | 0 each |
+
+The four inherited public regression patterns additionally require anchors,
+dot, `\S`, `*` and `+`. Noncapturing/negative classes and the remaining ASCII
+shorthands are part of the documented public-input subset, covered by focused
+semantic and deterministic tests; they are not claimed as dictionary requirements.
+Audit capture `f34ec972-1564-4b51-8843-a1a38d64f87b` used the hosted inventory
+with SHA-256 `8e8e9d1eb3a39310f6b052fcd55bea7a50275db28e2518957f521c8671458c2d`.
 
 Independent fixed generation vectors are reproducible with:
 
@@ -780,6 +806,67 @@ separate JS behavioral execution. No root build configuration changed; Task 25's
 root Spotless result applies to its unchanged configured source scope, which
 excludes this standalone fixture.
 
-Final hosted target execution and independent review are pending. No bundled
-construct has been dropped or silently approximated, and no production migration
-is included.
+Controlled missing-input checks also passed: with `jvmTest` excluded and the
+`.exec` file or compiled regex directory temporarily moved, verification failed
+at `requireRegexCoverageData` with the corresponding diagnostic. Original outputs
+were restored (capture `f66b6ac9-ab22-4fb3-a911-5289e33841d5`).
+
+### Hosted Task 3 evidence
+
+[Run 45228848073](https://github.com/serpro69/kotlin-faker/actions/runs/45228848073)
+passed all five jobs on the first hosted attempt at
+`95f89b358e930d1f918f01cc876eac0ffc773389`:
+
+| Job | Executed cases | Additional evidence |
+| --- | ---: | --- |
+| `jvm-web` | JVM 30, Node 28, browser 28 | Both coverage gates passed. |
+| `jvm-min` | JVM 11: 30 | Includes all nine common regex cases and the full inventory comparison. |
+| `compiler-floor` | JVM 30, Node 28, browser 28 | Kotlin 2.3.20. |
+| `ios` | Simulator: 28 | Kotlin 2.3.21; device test consumer linked in job 137882598531. |
+| `ios-compiler-floor` | Simulator: 28 | Kotlin 2.3.20; device test consumer linked in job 137882598366. |
+
+Downloaded XML confirms **258 executed cases**, including all nine common regex
+tests in each of nine runtime/compiler configurations (**81 regex-test executions**)
+and the additional inventory comparison in each JVM job. There are no failures,
+errors or skips. This includes matching the full corpus fingerprint, independent
+reference vectors and semantic/boundary assertions on both iOS compilers.
+Both Apple logs identify the candidate SHA, simulator task and successful device
+link. Physical-device execution is outside the agreed matrix.
+
+Hosted coverage matches the local measurement: regex 165/165 lines, 197/197
+branches, 1,444/1,444 instructions and ten classes; random 46/46 lines, 32/32
+branches and two classes. Reports are retained for the configured GitHub artifact
+retention period; these counts and the revision are the durable record. No job
+duration claim relies on run metadata timestamps.
+
+### Task 3 review corrections
+
+The internal reviewer approved the initial implementation and its hosted evidence.
+External review found no P0–P2 defect and suggested three P3 improvements plus two
+nits, all addressed: AST/source offsets now identify diagnostic starts; limit
+tests assert reasons and isolate the pattern-length rule with zero-output repeats;
+all literal corpus generation uses a source that fails on any draw; scripted
+first/last choices lock every shorthand alphabet's ordering; and inventory
+locations are checked for uniqueness and exact key-set equality. Shared JVM
+coverage data also has a neutral variable name. Generated values and consumption
+remain unchanged.
+
+Correction capture `f5055be2-26cf-4712-9686-4cc26ac19358` passed the same 30 JVM,
+28 Node and 28 browser cases plus both coverage gates. Regex coverage is now
+168/168 lines, 197/197 branches, 1,465/1,465 instructions and ten classes. The
+earlier hosted measurement above is attributed to its original revision.
+All 19 initial candidate/related snapshot hashes were checked against the review
+provenance manifest; hosted `summary.txt` confirms `regexInputRows=122923`.
+
+**Migration follow-up — owner: Task 8 implementer / Task 31 CI owner.** The
+standalone workflow's inherited path filter excludes dictionary edits, and the
+probe's counts/fingerprint intentionally record the inventoried snapshot. When
+promoting the corpus guard, derive expectations from declared production inputs
+and ensure dictionary edits trigger the target checks. Verify with a dictionary
+change and an unsupported pattern that cannot pass by skipping its target job.
+This does not weaken the current complete-corpus comparison or claim production
+CI enforcement is already installed.
+
+Final correction target execution and independent evidence review are pending.
+No bundled construct has been dropped or silently approximated, and no production
+migration is included.
