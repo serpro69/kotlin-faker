@@ -179,14 +179,26 @@ tasks.register("generatePayload") {
 tasks.register("measurePayloadArtifacts") {
     doLast {
         val directory = layout.buildDirectory.get().asFile
-        val files = directory.walkTopDown().onEnter { it.name != "node_modules" }
-            .filter { it.isFile && (it.extension in setOf("jar", "klib", "kexe") ||
-                (it.extension in setOf("js", "mjs") && "testDevelopmentExecutable" in it.path)) }
-            .sortedBy { it.relativeTo(directory).invariantSeparatorsPath }.toList()
-        check(files.isNotEmpty()) { "Build target artifacts before measuring them" }
+        val sizes = sortedMapOf<String, Long>()
+        // Measure actual outputs, excluding incremental compiler caches and stale cache versions.
+        listOf("libs", "bin", "compileSync/js/test/testDevelopmentExecutable/kotlin").forEach { path ->
+            directory.resolve(path).walkTopDown()
+                .filter { it.isFile && it.extension in setOf("jar", "klib", "kexe", "js", "mjs") }
+                .forEach { sizes[it.relativeTo(directory).invariantSeparatorsPath] = it.length() }
+        }
+        // KGP emits unpacked klibs for main compilations; these are directories, not .klib files.
+        directory.resolve("classes/kotlin").listFiles()?.filter { it.isDirectory && it.name != "jvm" }
+            ?.forEach { target ->
+                val main = target.resolve("main")
+                if (main.isDirectory) {
+                    sizes[main.relativeTo(directory).invariantSeparatorsPath + "/"] =
+                        main.walkTopDown().filter { it.isFile }.sumOf { it.length() }
+                }
+            }
+        check(sizes.isNotEmpty()) { "Build target artifacts before measuring them" }
         val report = directory.resolve("payload-artifacts.tsv")
-        report.writeText("path\tbytes\n" + files.joinToString("\n", postfix = "\n") {
-            "${it.relativeTo(directory).invariantSeparatorsPath}\t${it.length()}"
+        report.writeText("path\tbytes\n" + sizes.entries.joinToString("\n", postfix = "\n") {
+            "${it.key}\t${it.value}"
         })
         println(report.readText())
     }
