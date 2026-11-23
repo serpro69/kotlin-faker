@@ -1,6 +1,6 @@
 # Kotlin Multiplatform support
 
-Status: Tasks 1–3 and 25 complete; input inventory, validated trial toolchain, full embedded payload, controlled seeded sampling and portable regex generation results are recorded in [feasibility.md](feasibility.md). Publication feasibility and later stage-specific API decisions remain explicit prerequisites. Review dispositions and the fresh-pass fixes are recorded in [review-remediation.md](review-remediation.md).
+Status: Tasks 1–4 and 25 complete; the mechanism feasibility milestone passed, including independent consumption of the published probe. The inventory, toolchain/consumer floors, payload costs, seeded/regex specifications and representation decision are recorded in [feasibility.md](feasibility.md). Task 26 is next; production publication and later stage-specific API decisions remain explicit prerequisites. Review dispositions and the fresh-pass fixes are recorded in [review-remediation.md](review-remediation.md).
 
 Issue: [#226](https://github.com/serpro69/kotlin-faker/issues/226). Target: the next major release; no numeric release version is assumed. Companion documents: [implementation](implementation.md), [tasks](tasks.md), [isolated fact-check](verification.md).
 

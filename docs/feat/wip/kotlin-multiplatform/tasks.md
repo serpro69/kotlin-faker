@@ -12,7 +12,7 @@
 
 Tasks 1–4 plus Task 25 are the mechanism-only feasibility milestone. Task 26 adopts the production toolchain/targets and Task 31 enforces CI/coverage/publication controls before extraction. Task 30 closes common runtime/base declarations; Tasks 27/28 close core providers; Task 13 exposes the facade and Task 29 validates its publications. New task IDs preserve the old review references and are placed in dependency order.
 
-Tasks 1–3 and 25 are complete; subsequent tasks remain pending behind the explicit feasibility/production gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
+Tasks 1–4 and 25 are complete; the mechanism feasibility gate passed. Task 26 is next; subsequent production tasks remain pending behind their explicit gates. Size exemptions cover identical moves/registrations only, not new algorithms, generators, decoders, conventions or test families. The former exclusion-engine blocker is retired: Kotlin Regex remains, with equivalent caller-pattern behavior required for seeded equality. Dependencies below are technical prerequisites; shared wrapper-file edits need coordination without creating arbitrary correctness edges.
 
 Target checks follow the design's explicit matrix: run JVM, browser, Node and the declared iOS simulator cases; compile/link the iOS device consumer. Do not treat a skipped or compile-only task as execution evidence.
 
@@ -122,7 +122,7 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ## Task 4: Consume one minimal probe artifact and decide feasibility
 
-- **Status:** in-progress
+- **Status:** done
 - **Depends on:** Tasks 2, 3, 25
 - **Size:** M
 - **Can run in parallel with:** —
@@ -131,10 +131,10 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 
 ### Subtasks
 
-- [ ] 4.1 Publish one minimal probe under distinct local-only coordinates, outside root includes/BOM/release aggregation; consume it independently at the declared compiler floors.
-- [ ] 4.2 Run JVM, JS browser/Node and iOS simulator checks without copying Faker/provider code or emulating the production module graph.
-- [ ] 4.3 Complete `feasibility.md` with measured payload costs, grammar, seeded specification, toolchain/test tuple and consumer floors.
-- [ ] 4.4 Resolve genuine mechanism failures before production extraction; reserve production POM/signing/BOM validation for Tasks 29/21/22.
+- [x] 4.1 Publish one minimal probe under distinct local-only coordinates, outside root includes/BOM/release aggregation; consume it independently at the declared compiler floors.
+- [x] 4.2 Run JVM, JS browser/Node and iOS simulator checks without copying Faker/provider code or emulating the production module graph.
+- [x] 4.3 Complete `feasibility.md` with measured payload costs, grammar, seeded specification, toolchain/test tuple and consumer floors.
+- [x] 4.4 Resolve genuine mechanism failures before production extraction; reserve production POM/signing/BOM validation for Tasks 29/21/22.
 
 ### Execution context
 
@@ -142,6 +142,8 @@ Target checks follow the design's explicit matrix: run JVM, browser, Node and th
 - **2026-11-23 — approach:** First add local publication, a primitive-valued probe boundary and an independent Kotlin 2.3.20 consumer (five substantive files). Then wire hosted verification and evidence. Stage producer Kotlin 2.3.21 artifacts into a file repository; prohibit Maven Local fallback and project substitution. Verify every payload projection, lazy decoding, seeded sampling and regex semantics on JVM 11/21, browser, Node and iOS simulator, with device linking. Record actual transitive stdlib resolution separately from compiler floors.
 - **2026-11-23 — authorization:** Reuse the earlier explicit permission recorded under Task 25 to push this feature branch for hosted iOS verification. This authorizes CI execution, not a merge, remote artifact release or production migration.
 - **2026-11-23 — observed:** Capture `9310cf13-1217-47a2-88ee-c5c224e1868d` failed common metadata transformation because the Linux staging subset lacked Apple publications. Run that explicit check on macOS against the complete staged repository; Linux still compiles the actual consumer common source for JVM/JS. Final local capture `0497e43f-519a-487a-992b-10bac0201da3` passed all 15 JVM/Node/browser cases and the boundary coverage gate. Hosted minimum-JDK/Apple checks and independent review remain pending.
+- **2026-11-23 — observed:** [Run 45241697525](https://github.com/serpro69/kotlin-faker/actions/runs/45241697525) passed all eight jobs at `9b7ba49b42e5f98f2a6ef4245761e4fea4fecd2e`: 283 successful cases, including 25 independent artifact-consumer executions; common metadata compilation and all three device links executed. The published boundary has 17/17 JVM lines covered and no branch instructions. The tested consumer compiler floor is 2.3.20; the published JVM/JS stdlib requirement is 2.3.21. Full measurements and the feasible representation decision are in feasibility.md. Independent final evidence review remains pending.
+- **2026-11-23 — complete:** Both independent reviewers approved the final source/evidence and documentation corrections, with no remaining finding or essential evidence request. The reproducible fingerprint command, source of seeded vectors, publication sizes/costs, review limits and inherited dictionary-trigger follow-up are recorded in feasibility.md/README. Task 4 and the mechanism feasibility milestone are complete. Stop after this requested task; Task 26 is next, and production publication/release remain separately gated.
 
 ## Task 26: Enable production targets and common tests early
 

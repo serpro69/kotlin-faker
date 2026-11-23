@@ -96,17 +96,17 @@ the BOM and release aggregation. No remote repository or signing is configured.
 On Linux, stage the root/JVM/JS publications and run the independent consumer:
 
 ```sh
-./gradlew -p test/fixtures/kmp-feasibility publishKotlinMultiplatformPublicationToProbeRepository publishJvmPublicationToProbeRepository publishJsPublicationToProbeRepository
+./gradlew -p test/fixtures/kmp-feasibility clean publishKotlinMultiplatformPublicationToProbeRepository publishJvmPublicationToProbeRepository publishJsPublicationToProbeRepository
 ./gradlew -p test/fixtures/kmp-feasibility/consumer jvmTest jsNodeTest jsBrowserTest boundaryCoverageVerification
 ./gradlew -p test/fixtures/kmp-feasibility/consumer jvmTest -PprobeTestJdk=11
 ```
 
-On the supported Arm64 Mac, stage every publication and execute/link the consumer:
+On the supported Arm64 Mac, stage every publication and execute/link the consumer.
 The explicit common metadata compilation needs all declared target publications,
-including iOS, so it runs against this complete repository.
+including iOS, so it runs against this complete repository:
 
 ```sh
-./gradlew -p test/fixtures/kmp-feasibility publishAllPublicationsToProbeRepository
+./gradlew -p test/fixtures/kmp-feasibility clean publishAllPublicationsToProbeRepository
 ./gradlew -p test/fixtures/kmp-feasibility/consumer compileCommonMainKotlinMetadata iosSimulatorArm64Test linkDebugTestIosArm64
 ```
 
@@ -130,3 +130,39 @@ the producer. JS/iOS are behavioral checks, not measured coverage claims.
 The workflow retains named consumer XML, dependency graphs, common/device task
 logs, publication metadata and file sizes/hashes. See the Task 4 section in
 `feasibility.md` for the decision, evidence and remaining production gates.
+
+To reproduce the consumer's fixed payload fingerprint after `generatePayload`,
+run this standalone Python reference from the repository root. It reads the
+pre-compilation expectations, not the compiled artifact being tested. Dictionary
+changes require reviewing the source-fidelity results before updating the golden
+value; the script never rewrites the consumer test.
+
+```sh
+python3 - <<'PY'
+import json
+import re
+from pathlib import Path
+
+root = Path('test/fixtures/kmp-feasibility/build/generated/payload/commonTest')
+parts = sorted(root.glob('generatedExpectationsPart*.kt'),
+               key=lambda p: int(re.search(r'Part(\d+)', p.name)[1]))
+assert parts, 'Run generatePayload first'
+rows = []
+for part in parts:
+    entries = re.findall(r'PayloadExpectation\(("[^"]+"), (null|"[^"]+"), (\d+), 0x([a-f0-9]+)uL\)', part.read_text())
+    assert entries, part
+    for path, category, length, checksum in entries:
+        category = '-' if category == 'null' else json.loads(category)
+        rows.append(f'{json.loads(path)}\t{category}\t{length}\t{int(checksum, 16):016x}\n')
+hash_value = 0xcbf29ce484222325
+for char in ''.join(rows):
+    hash_value = ((hash_value ^ ord(char)) * 0x100000001b3) & ((1 << 64) - 1)
+print(f'{len(rows)} projections: {hash_value:016x}')
+PY
+```
+
+The current result is `666 projections: 14376e443dcf410f`. Consumer seed-0 and
+seed-minus-one values come from `random_reference.py` and the corresponding
+`RandomSamplingTest` vectors: raw seed-minus-one word `e4d971771b652c20` is signed
+Long `-1956407806741107680`. Regex choices come from `regex_reference.py` and
+`PortableRegexTest`; these are test oracles, not copied generator implementations.

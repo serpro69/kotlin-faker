@@ -1,18 +1,19 @@
 # KMP feasibility evidence
 
-Execution evidence for completed Tasks 1–3 and 25. Work began on 2026-11-23 at
+Execution evidence for completed Tasks 1–4 and 25. Work began on 2026-11-23 at
 `9a3844298b58c45d60e01d39cc72694163fcbdd1`; each section records its own candidate
-and verification. All four tasks completed after their hosted matrices and
-independent reviews passed. The publication probe and production migration remain
-pending. The separately recorded inherited repository-check failure still limits
+and verification. All five tasks completed after their hosted matrices and
+independent reviews passed. The mechanism feasibility milestone is complete;
+production migration remains pending. The inherited repository-check failure still limits
 whole-PR readiness.
 
 Detailed [sampling](#task-25-controlled-seeded-operations) and
 [regex](#task-3-portable-regex-generation) specifications/evidence appear below;
 execution status is tracked in tasks.md.
 
-Task 4's independent publication checks are being implemented below; its final
-decision requires the hosted consumer matrix and independent review.
+Task 4's independent publication checks and final reviews passed, as recorded
+below. The completed hosted matrix supports proceeding to production setup in
+Task 26; it does not establish production publication or release readiness.
 
 ## Trial configuration
 
@@ -33,8 +34,8 @@ No remote publication task is configured.
 | Common tests | kotlin.test annotations/assertions; JUnit Jupiter 5.11.0 and platform launcher 1.11.0 on JVM; KGP runners on JS/Native. |
 | Build-time inventory | Production versions SnakeYAML 2.2 and ICU4J 77.1. |
 | Apple trial | macos-latest resolved to macOS 26.7.2, image macos-26-arm64 20261117.0516.1; explicitly selected Xcode 26.0.1 (17A400). Both compiler versions passed simulator execution and device linking. |
-| Provisional consumer floors | JVM and KMP: Kotlin 2.3.20; API probes passed on JVM, browser, Node and iOS simulator. Real artifact consumption remains Tasks 4/29/21. |
-| Minimum resolved stdlib | 2.3.20 for the consumer-floor probe; producer defaults to 2.3.21. Native uses the stdlib bundled with the selected compiler. No forced lower stdlib or metadata bypass. |
+| Tested probe consumer compiler floors | JVM and KMP: Kotlin 2.3.20; Task 4's independent consumer passed on JVM 11/21, browser, Node and iOS simulator, including common metadata compilation and device linking. Actual production artifacts remain Tasks 29/21. |
+| Published stdlib requirement | 2.3.21 in producer metadata and the resolved JVM/JS graph. The earlier source-only floor probe resolved 2.3.20; it is historical evidence, not the publication requirement. Native tests use the selected 2.3.20 compiler distribution; its logical Gradle stdlib dependency resolves to 2.3.21 but that Native Maven variant supplies no binary. No forced lower stdlib or metadata bypass. |
 | Language/API settings | Compiler defaults, no metadata-version skip flags. No explicit lowering of producer metadata. |
 
 Kotlin 2.4.21 is newer, but the selected stable 2.3 patch line is sufficient for
@@ -945,8 +946,13 @@ The source-only trial floor of Kotlin/stdlib 2.3.20 is distinct from the publish
 consumer result. The probe's generated metadata requires **stdlib 2.3.21** on
 JVM/JS, while the independent consumer compiler stays **2.3.20**. No force,
 metadata bypass or compiler upgrade is used. Native uses its compiler-bundled
-stdlib. This is a declaration of the tested publication graph, not a claim that
+stdlib; its Gradle report selects the logical stdlib 2.3.21 Native variant, which
+has no binary artifact. The retained task log identifies the 2.3.20 Native
+distribution. This is a declaration of the tested publication graph, not a claim that
 stdlib 2.3.20 is incompatible or that every earlier compiler was ruled out.
+Retain the producer's normal stdlib dependency and declare **2.3.21** as the
+published JVM/JS floor instead of forcing an untested lower version. The intended
+2.3.20 consumer compiler remains supported by the actual artifact checks.
 Production consumer floors remain subject to actual artifact checks in Tasks
 29/21. The other trial versions and target/JDK/Xcode requirements above are retained.
 
@@ -954,10 +960,39 @@ Production consumer floors remain subject to actual artifact checks in Tasks
 
 Local staging capture `f913fec8-472e-4be5-9393-c113ae2faaa0` produced root/JVM/JS
 artifacts. Initial consumer capture `daa3c056-0564-434c-8f8c-87234451e16d` passed
-five JVM and five Node cases. Final common-source/browser/coverage verification,
-hosted JVM 11 and Apple checks, artifact measurements and independent review are
-pending; Task 4 remains in progress. Owner: Task 4 implementer. Complete those
-checks before deciding feasibility or starting Task 26.
+five JVM and five Node cases. Capture `9310cf13-1217-47a2-88ee-c5c224e1868d`
+failed `transformCommonMainDependenciesMetadata`: Linux had staged only
+root/JVM/JS artifacts, but KGP resolves metadata for every declared target,
+including iOS. The explicit common metadata compile now runs on macOS against
+all staged variants. Linux still compiles the actual consumer common source into
+JVM/JS artifacts; no advertised target or payload was removed to avoid the failure.
+
+Final local capture `0497e43f-519a-487a-992b-10bac0201da3` passed **15 cases**
+(five each on JVM 21, Node and Chromium) plus the published-boundary coverage gate.
+Coverage XML reports 2/2 classes, 17/17 lines, 88/88 instructions and no branch
+instructions in these wrappers. This is JVM measurement only. The Node complete
+payload case took 1.025 s against the existing 2 s per-case timeout; no timeout
+increase was needed. Browser XML rounds durations and is not a benchmark.
+`dependencyInsight` capture `b0e4e095-775b-4f37-be53-ebc5da28baca` confirms JVM
+stdlib 2.3.21 selected through the producer, with compiler/test libraries still
+2.3.20. The workflow YAML and both inline evidence-check scripts parsed successfully.
+Production Spotless conventions do not include this standalone fixture.
+
+Hosted run [45241697525](https://github.com/serpro69/kotlin-faker/actions/runs/45241697525)
+at `9b7ba49b42e5f98f2a6ef4245761e4fea4fecd2e` has passed all three consumer jobs:
+**25 non-skipped cases** across JVM 11, JVM 21, Node, Chrome and iOS simulator.
+The Apple consumer log proves execution of `compileCommonMainKotlinMetadata`
+and `linkDebugTestIosArm64`, with 11 tasks executed and no up-to-date substitute.
+All five original producer jobs also passed. The final run has **eight successful
+jobs and 283 non-skipped cases**: 258 producer cases plus 25 external consumer
+cases. Capture `0b1b6c70-ff90-4d66-90f0-250d07ac6413` checks every downloaded XML.
+Both producer Apple configurations linked device binaries too. No failed test
+was retried; queued Apple jobs eventually obtained runners in the original run.
+The Apple job log records macos-26-arm64 image `20261117.0516.1`, Xcode 26.0.1
+(17A400) and the consumer's Kotlin/Native 2.3.20 distribution. JDK 11 CI installed
+Temurin 11.0.33+10 and ran the explicitly selected `probeTestJdk=11` launcher;
+compilation used Temurin 21.0.13+9. Both independent reviewers approved the final
+source/evidence and documentation corrections; Task 4 is complete.
 
 The new facade and common consumer entry point are measured from the resolved
 JVM JAR and consumer classes by JaCoCo 0.8.16. The gate requires both classes and
@@ -965,6 +1000,93 @@ JVM JAR and consumer classes by JaCoCo 0.8.16. The gate requires both classes an
 execution data. Existing random/regex coverage gates remain unchanged. Runtime
 library downloads during an uncached Gradle build are ordinary dependency setup;
 the published mechanisms make no dictionary network requests or asset-copy calls.
+
+### Published sizes and costs
+
+The complete Mac staging repository has five `.module` and five `.pom` files;
+all root `available-at` links resolve to staged target metadata. These are standard
+probe publications, not evidence for the production POM rewrite or Maven-only
+fallback. Linux jobs deliberately stage only the variants they execute, so their
+all-configuration dependency reports contain `FAILED` entries for unstaged targets.
+Those entries are not claimed as passing resolution; the Mac repository and
+explicit common compile cover the complete graph.
+
+| Staged binary, Mac producer 2.3.21 | Bytes |
+| --- | ---: |
+| Root common metadata JAR | 241,474 |
+| JVM JAR | 2,638,097 |
+| JS klib | 1,820,961 |
+| iOS device klib | 1,808,926 |
+| iOS simulator klib | 1,808,990 |
+
+Each Native target also has a 261-byte metadata JAR. Sources and POM/module files
+are additional outputs, individually accounted for by `publication-files.tsv`.
+The Linux JS klib was 1,820,963 bytes; these are observed packaged sizes, not a
+claim of byte-identical archives across hosts, compressed application download
+sizes, or the unpacked compiler-output sizes reported by Task 2.
+
+| Profile | Producer staging | Consumer compilation/tests |
+| --- | ---: | ---: |
+| JVM 21 / browser / Node | 71.73 s | 92.18 s |
+| JVM 11 | 68.55 s | 42.648 s |
+| Mac / common metadata / iOS | 259.07 s | 183.59 s |
+
+Mac producer generation took 4.271 s; full common metadata compilation 27.247 s;
+device/simulator main compilation 20.686 / 23.777 s. The consumer common compile
+took 7.830 s and its device/simulator links 19.865 / 28.405 s. These Gradle profiles
+include different cache/download conditions and are not controlled benchmarks.
+Task 2 retains the process-RSS measurements and their accounting limits; Task 4
+adds no aggregate-memory claim. No runner capacity or heap setting was increased.
+The iOS full-payload consumer case took 1.337 s; browser timings remain rounded.
+
+### Review follow-up and decision gate
+
+Initial internal and external reviews found no P0–P2 source defect and withheld
+acceptance pending hosted evidence. External P3 comments prompted reconciliation
+of the summary stdlib floor/status and a reproducible Python command in the
+harness README. Capture `12370f86-1e4d-49a4-b7f8-0a5e38292a6f` executed that exact
+documented command and reproduced `666 projections: 14376e443dcf410f`. The README
+also identifies the seed-minus-one oracle and starts local publication from
+`clean` to prevent mixing artifacts from earlier producer builds.
+
+**Inherited follow-up — owner: Task 31 implementer.** The existing feasibility
+workflow path filter watches the fixture/workflow but not dictionary-only changes.
+The current CI evidence uses the exact reviewed corpus. When installing production
+target gates, include authoring dictionaries in their triggers and verify a
+dictionary-only change runs generation/consumer fidelity checks. This is not a
+missing mechanism or a reason to change dictionary values in Task 4.
+
+**Mechanism decision: feasible.** Retain bounded embedded JSON suppliers, lazy
+per-category decoding, SplitMix64 with the recorded sampling contract, and the
+proven portable regex grammar. Complete source fidelity, independent publication
+consumption and the target execution matrix show no remaining mechanism blocker.
+All locales remain included, synchronous and offline; no compiler/constant limit,
+eager global decoding, seeded mismatch or additional CI capacity was required.
+Both independent reviews accepted this scoped decision; Task 4 is complete.
+Production wiring belongs to Task 26, CI/coverage
+and upload guards to Task 31, and actual resolver/provider and publication graph
+verification to their later tasks. Probe APIs/test scaffolding never become
+production APIs. No merge, remote release or issue closure follows from this result.
+
+Final review coverage: the isolated code-reviewer inspected all changed files,
+the revised documentation, hosted consumer XML, producer suite totals, target
+metadata/dependencies and execution/link evidence and returned **APPROVE** with
+no findings or outstanding requests. External review used PAL's Claude CLI with
+observed model `claude-opus-5-5` (Anthropic), also **APPROVE** after the P3 fixes.
+API review was unavailable; the other eligible CLI executables were absent and
+Gemini was retired. Its unchanged mechanisms/lockfile were not re-reviewed on
+follow-up, and some producer totals came from the author-produced summary.
+PAL stripped read-event receipts and denied attempted Bash verification, so the
+external findings/approval remain attributed, without a corroboration or complete
+read-coverage claim. Neither reviewer ran the builds/tests. No systemic P0/P1
+finding or new convention needs indexing.
+
+A fresh `gh run view` export retained inconsistent job `completedAt` fields
+(including end times earlier than starts). These API timing fields are not used
+for duration or ordering claims; the reported costs come from Gradle profiles,
+and execution evidence comes from XML/task logs and successful job conclusions.
+The observation is retained as an evidence limit, not a source defect or an
+unmet mechanism requirement.
 
 Publication wiring references: [KMP publication structure](https://kotlinlang.org/docs/multiplatform/multiplatform-publish-lib-setup.html)
 and [Gradle 8.14.3 Maven publishing](https://docs.gradle.org/8.14.3/userguide/publishing_maven.html).
