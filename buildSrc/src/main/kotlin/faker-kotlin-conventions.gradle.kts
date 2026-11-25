@@ -14,18 +14,20 @@ plugins {
 }
 
 kotlin {
-    sourceSets {
-        configureEach {
-            withSourcesJar()
+    withSourcesJar()
 
+    sourceSets {
+        jvmMain {
             resources.srcDir("build/generated/src/jvmMain/resources")
             dependencies {
-                implementation(platform(libs.kotlin.bom.get()))
+                implementation(project.dependencies.platform(libs.kotlin.bom.get()))
                 implementation(libs.bundles.kotlin)
             }
         }
 
         jvmTest {
+            // Preserve the legacy test resource overlay until Task 5 replaces locale discovery.
+            resources.srcDir("build/generated/src/jvmMain/resources")
             dependencies {
                 implementation(libs.bundles.test.kotest)
             }

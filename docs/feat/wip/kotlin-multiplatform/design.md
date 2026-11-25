@@ -1,6 +1,6 @@
 # Kotlin Multiplatform support
 
-Status: ready to begin the ordered implementation plan at Task 1, after a fresh coherence/readiness pass. Feasibility results and later stage-specific API decisions remain explicit prerequisites, not completed evidence. Review dispositions and the fresh-pass fixes are recorded in [review-remediation.md](review-remediation.md).
+Status: Tasks 1–4, 25 and 26 complete; mechanism feasibility and production target/common-test setup are verified. The inventory, toolchain/consumer floors, payload costs, seeded/regex specifications and production setup evidence are recorded in [feasibility.md](feasibility.md). Task 31 is next: required target checks, coverage and publication guards must precede extraction. Production publication and later stage-specific API decisions remain explicit prerequisites. Review dispositions and the fresh-pass fixes are recorded in [review-remediation.md](review-remediation.md).
 
 Issue: [#226](https://github.com/serpro69/kotlin-faker/issues/226). Target: the next major release; no numeric release version is assumed. Companion documents: [implementation](implementation.md), [tasks](tasks.md), [isolated fact-check](verification.md).
 

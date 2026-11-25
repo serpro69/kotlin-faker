@@ -1,9 +1,11 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import io.github.serpro69.semverkt.gradle.plugin.tasks.TagTask
 import utils.configureGradleDaemonJvm
+import utils.installMigrationPublicationGuard
 
 plugins {
     id("faker-base")
+    id("faker-kmp-checks")
     id("com.gradleup.nmcp.aggregation")
     alias(libs.plugins.bcv)
     alias(libs.plugins.benmanes.versions)
@@ -11,6 +13,8 @@ plugins {
 }
 
 group = "io.github.serpro69"
+
+installMigrationPublicationGuard()
 
 apiValidation { ignoredProjects.addAll(listOf("cli-bot", "test")) }
 
@@ -22,7 +26,8 @@ nmcpAggregation {
         username.set(ossrhUsername ?: System.getenv("MAVEN_CENTRAL_USERNAME"))
         password.set(ossrhPassword ?: System.getenv("MAVEN_CENTRAL_PASSWORD"))
         publishingType = "USER_MANAGED"
-        publicationName = "KotlinFaker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
+        publicationName =
+            "KotlinFaker $version ${fakerSettings.enabledPublicationNamePrefixes.get()}"
     }
 }
 

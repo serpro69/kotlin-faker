@@ -138,10 +138,17 @@ public abstract interface class io/github/serpro69/kfaker/IRandom {
 	public abstract fun randomString (IILjava/util/Locale;ZZZZ)Ljava/lang/String;
 	public abstract fun randomString (ILjava/util/Locale;ZZZZ)Ljava/lang/String;
 	public abstract fun randomString (IZ)Ljava/lang/String;
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;IILjava/util/Locale;ZZZZILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;ILjava/util/Locale;ZZZZILjava/lang/Object;)Ljava/lang/String;
+	public static synthetic fun randomString$default (Lio/github/serpro69/kfaker/IRandom;IZILjava/lang/Object;)Ljava/lang/String;
 	public abstract fun randomSublist (Ljava/util/List;IZ)Ljava/util/List;
 	public abstract fun randomSublist (Ljava/util/List;Lkotlin/ranges/IntRange;Z)Ljava/util/List;
+	public static synthetic fun randomSublist$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/List;IZILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun randomSublist$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/List;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/List;
 	public abstract fun randomSubset (Ljava/util/Set;IZ)Ljava/util/Set;
 	public abstract fun randomSubset (Ljava/util/Set;Lkotlin/ranges/IntRange;Z)Ljava/util/Set;
+	public static synthetic fun randomSubset$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/Set;IZILjava/lang/Object;)Ljava/util/Set;
+	public static synthetic fun randomSubset$default (Lio/github/serpro69/kfaker/IRandom;Ljava/util/Set;Lkotlin/ranges/IntRange;ZILjava/lang/Object;)Ljava/util/Set;
 	public abstract fun randomValue (Ljava/util/List;)Ljava/lang/Object;
 	public abstract fun randomValue ([Ljava/lang/Object;)Ljava/lang/Object;
 }

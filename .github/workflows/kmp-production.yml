@@ -1,0 +1,37 @@
+name: KMP production setup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kmp-production-${{ github.ref }}
+  cancel-in-progress: true
+
+# Manual diagnostics use the same required checks as pull requests.
+jobs:
+  production:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: jvm
+            os: ubuntu-latest
+            task: kmpJvmCheck
+          - target: js
+            os: ubuntu-latest
+            task: kmpJsCheck
+          - target: ios
+            os: macos-latest
+            task: kmpIosCheck
+          - target: coverage
+            os: ubuntu-latest
+            task: kmpCoverageCheck
+    name: Production ${{ matrix.target }}
+    uses: ./.github/workflows/run_gradle.yml
+    with:
+      runs-on: ${{ matrix.os }}
+      task: ${{ matrix.task }}
+      kmp-target: ${{ matrix.target }}

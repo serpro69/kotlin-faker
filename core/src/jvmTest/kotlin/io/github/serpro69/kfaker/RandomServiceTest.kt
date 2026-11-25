@@ -8,7 +8,6 @@ import io.kotest.matchers.collections.shouldBeSortedWith
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.collections.shouldHaveSize
-import io.kotest.matchers.collections.shouldNotBeSortedWith
 import io.kotest.matchers.ints.shouldBeInRange
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
@@ -280,12 +279,15 @@ internal class RandomServiceTest :
                 }
 
                 it("should return a random shuffled sublist") {
-                    val sublist = randomService.randomSublist(list, size = 10, shuffled = true)
-                    assertSoftly {
-                        list shouldContainAll sublist
-                        if (sublist.size > 1)
-                            sublist shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    // A shuffle can remain sorted; fixed draws make the flag's effect testable.
+                    val zeroBits = object : Random() {
+                        override fun nextBits(bitCount: Int) = 0
                     }
+                    val controlled = RandomService(fakerConfig { random = zeroBits })
+                    val values = listOf(1, 2)
+                    controlled.randomSublist(values, size = 2, shuffled = false) shouldBe listOf(1, 2)
+                    controlled.randomSublist(values, size = 2, shuffled = true) shouldBe listOf(2, 1)
+                    values.toList() shouldBe listOf(1, 2)
                 }
             }
 
@@ -323,13 +325,15 @@ internal class RandomServiceTest :
                 }
 
                 it("should return a random shuffled subset") {
-                    val subset =
-                        randomService.randomSubset(set, sizeRange = 10..20, shuffled = true)
-                    assertSoftly {
-                        set shouldContainAll subset
-                        if (subset.size > 1)
-                            subset shouldNotBeSortedWith Comparator { o1, o2 -> o1.compareTo(o2) }
+                    // A shuffle can remain sorted; fixed draws make the flag's effect testable.
+                    val zeroBits = object : Random() {
+                        override fun nextBits(bitCount: Int) = 0
                     }
+                    val controlled = RandomService(fakerConfig { random = zeroBits })
+                    val values = linkedSetOf(1, 2)
+                    controlled.randomSubset(values, size = 2, shuffled = false).toList() shouldBe listOf(1, 2)
+                    controlled.randomSubset(values, size = 2, shuffled = true).toList() shouldBe listOf(2, 1)
+                    values.toList() shouldBe listOf(1, 2)
                 }
             }
 

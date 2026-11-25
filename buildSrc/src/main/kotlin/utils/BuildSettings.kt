@@ -14,7 +14,7 @@ abstract class BuildSettings @Inject constructor(private val providers: Provider
     val enableKotlinJs: Provider<Boolean> = fakerFlag("enableKotlinJs", true)
 
     /** Controls whether Kotlin Multiplatform Native is enabled */
-    val enableKotlinNative: Provider<Boolean> = fakerFlag("enableKotlinNative", false)
+    val enableKotlinNative: Provider<Boolean> = fakerFlag("enableKotlinNative", true)
 
     /**
      * Comma separated list of MavenPublication names that will have the publishing task enabled.

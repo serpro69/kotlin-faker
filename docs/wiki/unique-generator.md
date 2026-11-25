@@ -57,6 +57,7 @@ It is also possible to clear all records of generated values:
 
 === "kotlin :material-language-kotlin:"
     ```kotlin
+    val faker = Faker()
     --8<-- "UniqueGenerator.kt:unique_data_generator_three"
     --8<-- "UniqueGenerator.kt:unique_data_generator_four"
     ```
@@ -97,6 +98,7 @@ As well as for all providers:
 
 === "kotlin :material-language-kotlin:"
     ```kotlin
+    val faker = Faker()
     --8<-- "UniqueGenerator.kt:unique_data_generator_six"
     ```
 
